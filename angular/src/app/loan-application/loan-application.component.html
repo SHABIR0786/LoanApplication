@@ -172,6 +172,56 @@
                                     <input type="radio" value="arm" [(ngModel)]="loanApplication.amortizationType"
                                            name="amortizationType">
                                     <span>ARM (type): </span>
+
+                                    <input type="text" class="form-control" name="amortizationTypeExplain"
+                                           id="amortizationTypeExplain" required minlength="2"
+                                           placeholder="Explain..."
+                                           *ngIf="loanApplication.amortizationType === 'other'"
+                                           maxlength="32" [(ngModel)]="loanApplication.amortizationTypeExplain"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="col-8">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="propertyAddress">
+                                    {{ "Subject Property Address" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="propertyAddress"
+                                           placeholder="Street, city, state & ZIP"
+                                           id="propertyAddress" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.propertyAddress"
+                                           #propertyAddressModel="ngModel"
+                                           #propertyAddressEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="propertyAddressModel"
+                                            [controlEl]="propertyAddressEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group row required">
+                                <label class="col-md-6 col-form-label" for="numberOfUnits">
+                                    {{ "No. of Units" | localize }}
+                                </label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="numberOfUnits"
+                                           id="numberOfUnits" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.numberOfUnits"
+                                           #numberOfUnitsModel="ngModel"
+                                           #numberOfUnitsEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="numberOfUnitsModel"
+                                            [controlEl]="numberOfUnitsEl"
+                                    ></abp-validation-summary>
                                 </div>
                             </div>
                         </div>
