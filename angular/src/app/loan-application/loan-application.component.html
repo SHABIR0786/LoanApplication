@@ -14,18 +14,166 @@
                 <div class="card-header">
                 </div>
                 <div class="card-body">
-                    <div class="form-group row required">
-                        <label class="col-md-3 col-form-label" for="name">
-                            {{ "Name" | localize }}
-                        </label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="name" id="name" required minlength="2"
-                                   maxlength="32" [(ngModel)]="loanApplication.name" #nameModel="ngModel" #nameEl
-                            />
-                            <abp-validation-summary
-                                    [control]="nameModel"
-                                    [controlEl]="nameEl"
-                            ></abp-validation-summary>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label">
+                                    {{ "Mortgage" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="radio" value="va" [(ngModel)]="loanApplication.mortgageType"
+                                           name="mortgageType">
+                                    <span>VA</span>
+                                    <input type="radio" value="conventional"
+                                           [(ngModel)]="loanApplication.mortgageType" name="mortgageType">
+                                    <span>Conventional</span>
+                                    <input type="radio" value="other" [(ngModel)]="loanApplication.mortgageType"
+                                           name="mortgageType">
+                                    <span>Other (explain)</span>
+
+                                    <input type="text" class="form-control" name="mortgageTypeExplain"
+                                           id="mortgageTypeExplain" required minlength="2"
+                                           placeholder="Explain..."
+                                           *ngIf="loanApplication.mortgageType === 'other'"
+                                           maxlength="32" [(ngModel)]="loanApplication.mortgageTypeExplain"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label">
+                                    {{ "Applied for" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="radio" value="fha" [(ngModel)]="loanApplication.appliedFor"
+                                           name="appliedFor">
+                                    <span>FHA</span>
+                                    <input type="radio" value="rural"
+                                           [(ngModel)]="loanApplication.appliedFor" name="appliedFor">
+                                    <span>USDA/Rural </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="agencyCaseNumber">
+                                    {{ "Agency Case Number" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="agencyCaseNumber"
+                                           id="agencyCaseNumber" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.agencyCaseNumber"
+                                           #agencyCaseNumberModel="ngModel"
+                                           #agencyCaseNumberEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="agencyCaseNumberModel"
+                                            [controlEl]="agencyCaseNumberEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="lenderCaseNumber">
+                                    {{ "Lender Case Number" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="lenderCaseNumber"
+                                           id="lenderCaseNumber" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.lenderCaseNumber"
+                                           #lenderCaseNumberModel="ngModel"
+                                           #lenderCaseNumberEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="lenderCaseNumberModel"
+                                            [controlEl]="lenderCaseNumberEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="amount">
+                                    {{ "Amount" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="amount"
+                                           id="amount" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.amount"
+                                           #amountModel="ngModel"
+                                           #amountEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="amountModel"
+                                            [controlEl]="amountEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="interestRate">
+                                    {{ "Interest Rate" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="interestRate"
+                                           id="interestRate" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.interestRate"
+                                           #interestRateModel="ngModel"
+                                           #interestRateEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="interestRateModel"
+                                            [controlEl]="interestRateEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label" for="numberOfMonths">
+                                    {{ "No. of months" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="numberOfMonths"
+                                           id="numberOfMonths" required minlength="2"
+                                           maxlength="32" [(ngModel)]="loanApplication.numberOfMonths"
+                                           #numberOfMonthsModel="ngModel"
+                                           #numberOfMonthsEl
+                                    />
+                                    <abp-validation-summary
+                                            [control]="numberOfMonthsModel"
+                                            [controlEl]="numberOfMonthsEl"
+                                    ></abp-validation-summary>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label">
+                                    {{ "Amortization Type" | localize }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="radio" value="fixedRate" [(ngModel)]="loanApplication.amortizationType"
+                                           name="amortizationType">
+                                    <span>Fixed Rate</span>
+                                    <input type="radio" value="gpm" [(ngModel)]="loanApplication.amortizationType"
+                                           name="amortizationType">
+                                    <span>GPM</span>
+                                    <input type="radio" value="other" [(ngModel)]="loanApplication.amortizationType"
+                                           name="amortizationType">
+                                    <span>Other (explain): </span>
+                                    <input type="radio" value="arm" [(ngModel)]="loanApplication.amortizationType"
+                                           name="amortizationType">
+                                    <span>ARM (type): </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
