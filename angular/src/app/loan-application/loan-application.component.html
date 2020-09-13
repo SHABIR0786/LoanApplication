@@ -703,7 +703,7 @@
                                             {{ "Home Phone" | localize }}
                                         </label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="homePhone" id="homePhone "
+                                            <input type="number" class="form-control" name="homePhone" id="homePhone "
                                                 required minlength="2" maxlength="32"
                                                 [(ngModel)]="loanApplication.homePhone" #homePhoneModel="ngModel"
                                                 #homePhoneEl />
@@ -1109,24 +1109,24 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="form-group row required">
-                                        <label class="col-md-3 col-form-label" for="coEmployersAddress1">
+                                        <label class="col-md-3 col-form-label" for="employersAddress1">
                                             {{ "Employer's Address" | localize }}
                                         </label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="coEmployersAddress1"
-                                                id="coEmployersAddress1" required minlength="2" maxlength="32"
+                                            <input type="text" class="form-control" name="employersAddress1"
+                                                id="employersAddress1" required minlength="2" maxlength="32"
                                                 [disabled]="loanApplication.isSelfEmployer1"
-                                                [(ngModel)]="loanApplication.coEmployersAddress1"
-                                                #coEmployersAddress1Model="ngModel" #coEmployersAddress1El />
-                                            <abp-validation-summary [control]="coEmployersAddress1Model"
-                                                [controlEl]="coEmployersAddress1El"></abp-validation-summary>
+                                                [(ngModel)]="loanApplication.employersAddress1"
+                                                #employersAddress1Model="ngModel" #employersAddress1El />
+                                            <abp-validation-summary [control]="employersAddress1Model"
+                                                [controlEl]="employersAddress1El"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="isSelfEmployer1"
-                                            id="isSelfEmployer1" value="isSelfEmploye1r"
+                                            id="isSelfEmployer1" value="isSelfEmploye1"
                                             [(ngModel)]="loanApplication.isSelfEmployer1" />
                                         <label class="form-check-label" for="isSelfEmployer1">
                                             Self Employer
@@ -1182,16 +1182,16 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group row required">
-                                        <label class="col-md-3 col-form-label" for="business1">
+                                        <label class="col-md-3 col-form-label" for="businessPhone1">
                                             {{ "Business Phone" | localize }}
                                         </label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="business1" id="business1"
+                                            <input type="text" class="form-control" name="businessPhone1" id="businessPhone1"
                                                 required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.business1" #business1Model="ngModel"
-                                                #business1El />
-                                            <abp-validation-summary [control]="business1Model"
-                                                [controlEl]="business1El">
+                                                [(ngModel)]="loanApplication.businessPhone1" #businessPhone1Model="ngModel"
+                                                #businessPhone1El />
+                                            <abp-validation-summary [control]="businessPhone1Model"
+                                                [controlEl]="businessPhone1El">
                                             </abp-validation-summary>
                                         </div>
                                     </div>
