@@ -22,16 +22,16 @@ namespace LoanManagement.Property_Information
         public double AmountExistingLiens { get; set; }
         public double PresentValueOfLot { get; set; }
         public double CostOfImprovements { get; set; }
-        public string RefinanceYearAcquired { get; set; }
-        public double RefinanceOriginalCost { get; set; }
-        public double RefinanceAmountExistingLiens { get; set; }
-        public string RefinancePurpose { get; set; }
-        public string RefinanceImprovements { get; set; }
-        public string RefinanceImprovementsExtras { get; set; }
+        public string YearAcquiredRefinance { get; set; }
+        public double OriginalCostRefinance { get; set; }
+        public double AmountExistingLiensRefinance { get; set; }
+        public string PurposeOfRefinance { get; set; }
+        public string ImprovementsRefinance { get; set; }
+        public string ImprovementCostRefinance { get; set; }
         public string TitleHeldNames { get; set; }
         public string TitleHeldManner { get; set; }
         public string SourceOfPayment { get; set; }
-        public string EstateWillHeldIn { get; set; }
+        public string EstateHeldIn { get; set; }
         public virtual LoanApplication LoanApplication { get; set; }
     }
 }
