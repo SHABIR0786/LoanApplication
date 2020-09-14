@@ -19,7 +19,7 @@ export class LoanApplicationComponent implements OnInit {
         toolbarSettings: {
             toolbarExtraButtons: [
                 {
-                    text: 'Finish', class: 'btn btn-info', event: () => {
+                    text: 'Save', class: 'btn btn-info', event: () => {
                         console.log(this.loanApplication);
                     }
                 }
