@@ -3,18 +3,16 @@ using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace LoanManagement.Borrower_Information
+namespace LoanManagement
 {
     public class BorrowerInformation : FullAuditedEntity<long>, IMayHaveTenant
     {
-        [Required]
-        [StringLength(100)]
-        public string BorrowersName { get; set; }
+        [Required] [StringLength(100)] public string BorrowersName { get; set; }
 
-        [StringLength(100)]
-        public string SocialSecurityNumber { get; set; }
+        [StringLength(100)] public string SocialSecurityNumber { get; set; }
         public string HomePhone { get; set; }
         public DateTime DOB { get; set; }
         public int? YearsSchool { get; set; }
@@ -30,5 +28,7 @@ namespace LoanManagement.Borrower_Information
         public int? FormerAddressNoOfYears { get; set; }
 
         public int? TenantId { get; set; }
+        public virtual ICollection<LoanApplication> BorrowerLoanApplication { get; set; }
+        public virtual ICollection<LoanApplication> CoBorrowerLoanApplication { get; set; }
     }
 }
