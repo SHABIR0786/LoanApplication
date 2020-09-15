@@ -41,6 +41,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
 //Wizard modulel
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { BorrowerInformationServiceProxy } from '@shared/service-proxies/service-proxies';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -93,7 +94,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgxPaginationModule,
     NgWizardModule.forRoot(ngWizardConfig)
   ],
-  providers: [],
+  providers: [BorrowerInformationServiceProxy],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,
