@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using LoanManagement.BorrowerEmploymentInformations.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
