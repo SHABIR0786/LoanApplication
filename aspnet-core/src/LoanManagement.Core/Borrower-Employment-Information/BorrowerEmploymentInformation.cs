@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using LoanManagement.BorrowerTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -39,6 +40,9 @@ namespace LoanManagement.Borrower_Information
         public Decimal? MonthlyIncome3 { get; set; }
         public string Position3 { get; set; }
         public string BusinessPhone3 { get; set; }
+        public long? BorrowerTypeId { get; set; }
+        [ForeignKey("BorrowerTypeId")]
+        public BorrowerType BorrowerType { get; set; }
         public int? TenantId { get; set; }
         public virtual ICollection<LoanApplication> BorrowerLoanApplication { get; set; }
         public virtual ICollection<LoanApplication> CoBorrowerLoanApplication { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using LoanManagement.BorrowerTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,10 @@ namespace LoanManagement
 
         public string FormerAddressType { get; set; }
         public int? FormerAddressNoOfYears { get; set; }
+
+        public long? BorrowerTypeId { get; set; }
+        [ForeignKey("BorrowerTypeId")]
+        public BorrowerType BorrowerType { get; set; }
 
         public int? TenantId { get; set; }
         public virtual ICollection<LoanApplication> BorrowerLoanApplication { get; set; }
