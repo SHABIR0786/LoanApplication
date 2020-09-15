@@ -686,7 +686,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="borrowersName"
                                                    id="borrowersName" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.borrowersName"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.borrowersName"
                                                    #borrowersNameModel="ngModel" #borrowersNameEl/>
                                             <abp-validation-summary [control]="borrowersNameModel"
                                                                     [controlEl]="borrowersNameEl"></abp-validation-summary>
@@ -701,7 +701,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="socialSecurityNumber"
                                                    id="socialSecurityNumber" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.socialSecurityNumber"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.socialSecurityNumber"
                                                    #socialSecurityNumberModel="ngModel" #socialSecurityNumberEl/>
                                             <abp-validation-summary [control]="socialSecurityNumberModel"
                                                                     [controlEl]="socialSecurityNumberEl"></abp-validation-summary>
@@ -716,7 +716,7 @@
                                         <div class="col-md-9">
                                             <input type="number" class="form-control" name="homePhone" id="homePhone "
                                                    required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.homePhone" #homePhoneModel="ngModel"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.homePhone" #homePhoneModel="ngModel"
                                                    #homePhoneEl/>
                                             <abp-validation-summary [control]="homePhoneModel"
                                                                     [controlEl]="homePhoneEl">
@@ -731,7 +731,7 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="dOB" id="dOB" required
-                                                   minlength="2" maxlength="32" [(ngModel)]="loanApplication.dOB"
+                                                   minlength="2" maxlength="32" [(ngModel)]="loanApplication.borrowerInformation.dOB"
                                                    #dOBModel="ngModel" #dOBEl/>
                                             <abp-validation-summary [control]="dOBModel" [controlEl]="dOBEl">
                                             </abp-validation-summary>
@@ -746,7 +746,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="yrsSchool" id="yrsSchool"
                                                    required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.yrsSchool" #yrsSchoolModel="ngModel"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.yrsSchool" #yrsSchoolModel="ngModel"
                                                    #yrsSchoolEl/>
                                             <abp-validation-summary [control]="yrsSchoolModel"
                                                                     [controlEl]="yrsSchoolEl">
@@ -763,7 +763,7 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="marital" id="married"
-                                                       value="married" checked [(ngModel)]="loanApplication.marital">
+                                                       value="married" checked [(ngModel)]="loanApplication.borrowerInformation.marital">
                                                 <label class="form-check-label" for="married">
                                                     Married
                                                 </label>
@@ -771,7 +771,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="marital"
                                                        id="unMarried" value="unMarried"
-                                                       [(ngModel)]="loanApplication.marital">
+                                                       [(ngModel)]="loanApplication.borrowerInformation.marital">
                                                 <label class="form-check-label" for="unMarried">
                                                     UnMarried
                                                 </label>
@@ -780,7 +780,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="marital"
                                                        id="sperated" value="sperated"
-                                                       [(ngModel)]="loanApplication.marital">
+                                                       [(ngModel)]="loanApplication.borrowerInformation.marital">
                                                 <label class="form-check-label" for="sperated">
                                                     Seperated
                                                 </label>
@@ -798,7 +798,7 @@
                                             <input type="text" class="form-control" name="presentAddress"
                                                    placeholder="Street, city, state & ZIP" id="presentAddress" required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.presentAddress"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.presentAddress"
                                                    #presentAddressModel="ngModel" #presentAddressEl/>
                                             <abp-validation-summary [control]="presentAddressModel"
                                                                     [controlEl]="presentAddressEl"></abp-validation-summary>
@@ -811,11 +811,11 @@
                                     </label>
                                     <div class="col-md-9">
                                         <input type="radio" id="presentOwe" value="presentOwe"
-                                               [(ngModel)]="loanApplication.presentAddressType"
+                                               [(ngModel)]="loanApplication.borrowerInformation.presentAddressType"
                                                name="presentAddressType">
                                         <span>Own</span>
                                         <input type="radio" id="presentRent" value="presentRent"
-                                               [(ngModel)]="loanApplication.presentAddressType"
+                                               [(ngModel)]="loanApplication.borrowerInformation.presentAddressType"
                                                name="presentAddressType">
                                         <span>Rent</span>
                                         <input type="number" class="form-control" name="presentAddressNoOfYears"
@@ -823,7 +823,7 @@
                                                placeholder="No of years"
                                                *ngIf="loanApplication.presentAddressType === 'presentRent'"
                                                maxlength="32"
-                                               [(ngModel)]="loanApplication.presentAddressNoOfYears"/>
+                                               [(ngModel)]="loanApplication.borrowerInformation.presentAddressNoOfYears"/>
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -836,7 +836,7 @@
                                             <input type="text" class="form-control" name="mailingAddress"
                                                    placeholder="street, city, state & ZIP" id="mailingAddress" required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mailingAddress"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.mailingAddress"
                                                    #mailingAddressModel="ngModel" #mailingAddressEl/>
                                             <abp-validation-summary [control]="mailingAddressModel"
                                                                     [controlEl]="mailingAddressEl"></abp-validation-summary>
@@ -855,7 +855,7 @@
                                             <input type="text" class="form-control" name="formerAddress"
                                                    placeholder="street, city, state & ZIP" id="formerAddress" required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.formerAddress"
+                                                   [(ngModel)]="loanApplication.borrowerInformation.formerAddress"
                                                    #formerAddressModel="ngModel" #formerAddressEl/>
                                             <abp-validation-summary [control]="formerAddressModel"
                                                                     [controlEl]="formerAddressEl"></abp-validation-summary>
@@ -868,15 +868,15 @@
                                     </label>
                                     <div class="col-md-9">
                                         <input type="radio" value="formerOwe" id="formerOwe"
-                                               [(ngModel)]="loanApplication.formerAddressType" name="formerAddressType">
+                                               [(ngModel)]="loanApplication.borrowerInformation.formerAddressType" name="formerAddressType">
                                         <span>Own</span>
                                         <input type="radio" value="formerRent" id="formerRent"
-                                               [(ngModel)]="loanApplication.formerAddressType" name="formerAddressType">
+                                               [(ngModel)]="loanApplication.borrowerInformation.formerAddressType" name="formerAddressType">
                                         <span>Rent</span>
                                         <input type="number" class="form-control" name="formerAddressNoOfYears"
                                                id="formerAddressNoOfYears" required minlength="2"
                                                placeholder="No of years"
-                                               *ngIf="loanApplication.formerAddressType === 'formerRent'" maxlength="32"
+                                               *ngIf="loanApplication.borrowerInformation.formerAddressType === 'formerRent'" maxlength="32"
                                                [(ngModel)]="loanApplication.formerAddressNoOfYears"/>
                                     </div>
                                 </div>
@@ -894,7 +894,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="coBorrowersName"
                                                    id="coBorrowersName" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coBorrowersName"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.borrowersName"
                                                    #coBorrowersNameModel="ngModel" #coBorrowersNameEl/>
                                             <abp-validation-summary [control]="coBorrowersNameModel"
                                                                     [controlEl]="coBorrowersNameEl"></abp-validation-summary>
@@ -909,7 +909,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="coSocialSecurityNumber"
                                                    id="coSocialSecurityNumber" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coSocialSecurityNumber"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.socialSecurityNumber"
                                                    #coSocialSecurityNumberModel="ngModel" #coSocialSecurityNumberEl/>
                                             <abp-validation-summary [control]="coSocialSecurityNumberModel"
                                                                     [controlEl]="coSocialSecurityNumberEl"></abp-validation-summary>
@@ -924,7 +924,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="coHomePhone" id="coHomePhone "
                                                    required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coHomePhone" #coHomePhoneModel="ngModel"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.homePhone" #coHomePhoneModel="ngModel"
                                                    #coHomePhoneEl/>
                                             <abp-validation-summary [control]="coHomePhoneModel"
                                                                     [controlEl]="coHomePhoneEl">
@@ -939,7 +939,7 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="coDOB" id="coDOB" required
-                                                   minlength="2" maxlength="32" [(ngModel)]="loanApplication.coDOB"
+                                                   minlength="2" maxlength="32" [(ngModel)]="loanApplication.coBorrowerInformation.dob"
                                                    #coDOBModel="ngModel" #coDOBEl/>
                                             <abp-validation-summary [control]="coDOBModel" [controlEl]="coDOBEl">
                                             </abp-validation-summary>
@@ -954,7 +954,7 @@
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="coYrsSchool" id="coYrsSchool"
                                                    required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coYrsSchool" #coYrsSchoolModel="ngModel"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.yearsSchool" #coYrsSchoolModel="ngModel"
                                                    #coYrsSchoolEl/>
                                             <abp-validation-summary [control]="coYrsSchoolModel"
                                                                     [controlEl]="coYrsSchoolEl">
@@ -972,7 +972,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="coMarital"
                                                        id="coMarried" value="coMarried" checked
-                                                       [(ngModel)]="loanApplication.coMarital"/>
+                                                       [(ngModel)]="loanApplication.coBorrowerInformation.marital"/>
                                                 <label class="form-check-label" for="coMarried">
                                                     Married
                                                 </label>
@@ -980,7 +980,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="coMarital"
                                                        id="coUnMarried" value="coUnMarried"
-                                                       [(ngModel)]="loanApplication.coMarital"/>
+                                                       [(ngModel)]="loanApplication.coBorrowerInformation.marital"/>
                                                 <label class="form-check-label" for="coUnMarried">
                                                     UnMarried
                                                 </label>
@@ -989,7 +989,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="coMarital"
                                                        id="coSperated" value="coSperated"
-                                                       [(ngModel)]="loanApplication.coMarital">
+                                                       [(ngModel)]="loanApplication.coBorrowerInformation.marital">
                                                 <label class="form-check-label" for="coSperated">
                                                     Seperated
                                                 </label>
@@ -1014,7 +1014,7 @@
                                                    placeholder="Street, city, state & ZIP" id="coPresentAddress"
                                                    required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coPresentAddress"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.presentAddress"
                                                    #coPresentAddressModel="ngModel" #coPresentAddressEl/>
                                             <abp-validation-summary [control]="coPresentAddressModel"
                                                                     [controlEl]="coPresentAddressEl"></abp-validation-summary>
@@ -1027,18 +1027,18 @@
                                     </label>
                                     <div class="col-md-9">
                                         <input type="radio" value="coPresentOwe"
-                                               [(ngModel)]="loanApplication.coPresentAddressType"
+                                               [(ngModel)]="loanApplication.coBorrowerInformation.coPresentAddressType"
                                                name="coPresentAddressType"/>
                                         <span>Own</span>
                                         <input type="radio" value="coPresentRent"
-                                               [(ngModel)]="loanApplication.coPresentAddressType"
+                                               [(ngModel)]="loanApplication.coBorrowerInformation.presentAddressType"
                                                name="coPresentAddressType"/>
                                         <span>Rent</span>
                                         <input type="number" class="form-control" name="coPresentAddressNoOfYears"
                                                id="coPresentAddressNoOfYears" required minlength="2"
                                                placeholder="No of years"
-                                               *ngIf="loanApplication.coPresentAddressType === 'coPresentRent'"
-                                               maxlength="32" [(ngModel)]="loanApplication.coPresentAddressNoOfYears"/>
+                                               *ngIf="loanApplication.coBorrowerInformation.presentAddressType === 'coPresentRent'"
+                                               maxlength="32" [(ngModel)]="loanApplication.coBorrowerInformation.presentAddressNoOfYears"/>
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -1052,7 +1052,7 @@
                                                    placeholder="street, city, state & ZIP" id="coMailingAddress"
                                                    required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coMailingAddress"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.mailingAddress"
                                                    #coMailingAddressModel="ngModel" #coMailingAddressEl/>
                                             <abp-validation-summary [control]="coMailingAddressModel"
                                                                     [controlEl]="coMailingAddressEl"></abp-validation-summary>
@@ -1071,7 +1071,7 @@
                                             <input type="text" class="form-control" name="coFormerAddress"
                                                    placeholder="street, city, state & ZIP" id="coFormerAddress" required
                                                    minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.coFormerAddress"
+                                                   [(ngModel)]="loanApplication.coBorrowerInformation.formerAddressModel"
                                                    #coFormerAddressModel="ngModel" #coFormerAddressEl/>
                                             <abp-validation-summary [control]="coFormerAddressModel"
                                                                     [controlEl]="coFormerAddressEl"></abp-validation-summary>
@@ -1083,18 +1083,18 @@
                                     </label>
                                     <div class="col-md-9">
                                         <input type="radio" value="coFormerOwe"
-                                               [(ngModel)]="loanApplication.coFormerAddressType" id="coFormerOwe"
+                                               [(ngModel)]="loanApplication.coBorrowerInformation.coFormerAddressType" id="coFormerOwe"
                                                name="coFormerAddressType"/>
                                         <span>Own</span>
                                         <input type="radio" value="coFormerRent" id="coFormerRent"
-                                               [(ngModel)]="loanApplication.coFormerAddressType"
+                                               [(ngModel)]="loanApplication.coBorrowerInformation.formerAddressType"
                                                name="coFormerAddressType"/>
                                         <span>Rent</span>
                                         <input type="number" class="form-control" name="coFormerAddressNoOfYears"
                                                id="coFormerAddressNoOfYears" required minlength="2"
                                                placeholder="No of years"
-                                               *ngIf="loanApplication.coFormerAddressType === 'coFormerRent'"
-                                               maxlength="32" [(ngModel)]="loanApplication.coFormerAddressNoOfYears"/>
+                                               *ngIf="loanApplication.coBorrowerInformation.formerAddressType === 'coFormerRent'"
+                                               maxlength="32" [(ngModel)]="loanApplication.formerAddressNoOfYears"/>
                                     </div>
                                 </div>
                             </div>
