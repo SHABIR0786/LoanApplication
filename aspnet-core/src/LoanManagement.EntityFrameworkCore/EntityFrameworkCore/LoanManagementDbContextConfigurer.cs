@@ -15,10 +15,10 @@ namespace LoanManagement.EntityFrameworkCore
             builder.UseMySql(connectionString, mySqlOptions =>
             {
                 mySqlOptions.ServerVersion(new Version(10, 3, 17), ServerType.MariaDb);
-                mySqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                    errorNumbersToAdd: null);
+                //mySqlOptions.EnableRetryOnFailure(
+                //    maxRetryCount: 10,
+                //    maxRetryDelay: TimeSpan.FromSeconds(30),
+                //    errorNumbersToAdd: null);
             });
 
             if(webHostEnvironment == null || webHostEnvironment.IsDevelopment())
@@ -34,10 +34,10 @@ namespace LoanManagement.EntityFrameworkCore
             builder.UseMySql(connection, mySqlOptions =>
             {
                 mySqlOptions.ServerVersion(new Version(10, 3, 17), ServerType.MariaDb);
-                mySqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                    errorNumbersToAdd: null);
+                //mySqlOptions.EnableRetryOnFailure(
+                //    maxRetryCount: 10,
+                //    maxRetryDelay: TimeSpan.FromSeconds(30),
+                //    errorNumbersToAdd: null);
             });
 
             if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
