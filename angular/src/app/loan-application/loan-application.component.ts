@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { BorrowerInformationServiceProxy, CreateOrUpdateBorrowerEmploymentInformationDto, CreateOrUpdateBorrowerInformationDto, CreateUserDto } from '@shared/service-proxies/service-proxies';
+import { BorrowerEmploymentInformation, BorrowerEmploymentInformationServiceProxy, BorrowerInformationServiceProxy, CreateOrUpdateBorrowerEmploymentInformationDto, CreateOrUpdateBorrowerInformationDto, CreateUserDto } from '@shared/service-proxies/service-proxies';
 import {NgWizardConfig, NgWizardService, StepChangedArgs, THEME} from 'ng-wizard';
 
 @Component({
@@ -35,7 +35,9 @@ export class LoanApplicationComponent implements OnInit {
     };
 
     constructor(private ngWizardService: NgWizardService,
-        private _borrowerInformationService: BorrowerInformationServiceProxy,) {
+        private _borrowerInformationService: BorrowerInformationServiceProxy,
+        private _borrowerEmploymentInformationService: BorrowerEmploymentInformationServiceProxy,
+        ) {
     }
 
     ngOnInit(): void {
@@ -80,5 +82,20 @@ export class LoanApplicationComponent implements OnInit {
 
          this.loanApplication.borrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
          this.loanApplication.coBorrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
+
+
+         this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.borrowerEmploymentinfromation)
+         .subscribe((result)=>{
+            if(result){
+                
+            }
+         });
+
+         this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.coBorrowerEmploymentinfromation)
+         .subscribe((result)=>{
+            if(result){
+                
+            }
+         });
     }
 }

@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LoanManagement.Core\LoanManagement.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AssetAndLiablities\Dto\" />
+  </ItemGroup>
 </Project>
