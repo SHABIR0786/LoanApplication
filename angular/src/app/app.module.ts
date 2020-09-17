@@ -42,6 +42,8 @@ import { LoanApplicationComponent } from './loan-application/loan-application.co
 //Wizard modulel
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { BorrowerEmploymentInformation, BorrowerEmploymentInformationServiceProxy, BorrowerInformationServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BorrowerInformationComponent } from './loan-application/borrower-information/borrower-information.component';
+import { EmploymentInformationComponent } from './loan-application/employment-information/employment-information.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -76,7 +78,9 @@ const ngWizardConfig: NgWizardConfig = {
     SidebarLogoComponent,
     SidebarUserPanelComponent,
     SidebarMenuComponent,
-    LoanApplicationComponent
+    LoanApplicationComponent,
+    BorrowerInformationComponent,
+    EmploymentInformationComponent
   ],
   imports: [
     CommonModule,
