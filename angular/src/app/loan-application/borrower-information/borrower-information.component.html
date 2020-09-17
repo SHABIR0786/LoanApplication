@@ -1,0 +1,207 @@
+<div class="row">
+    <div class="col-12">
+        <h5>{{heading}}</h5>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="borrowersName">
+                {{ "Borrower’s Name" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="borrowersName"
+                       id="borrowersName" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.borrowersName"
+                       #borrowersNameModel="ngModel" #borrowersNameEl/>
+                <abp-validation-summary [control]="borrowersNameModel"
+                                        [controlEl]="borrowersNameEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="socialSecurityNumber">
+                {{ "Social Security Number " | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="socialSecurityNumber"
+                       id="socialSecurityNumber" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.socialSecurityNumber"
+                       #socialSecurityNumberModel="ngModel" #socialSecurityNumberEl/>
+                <abp-validation-summary [control]="socialSecurityNumberModel"
+                                        [controlEl]="socialSecurityNumberEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="homePhone">
+                {{ "Home Phone" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="homePhone" id="homePhone"
+                       required minlength="2" maxlength="32"
+                       [(ngModel)]="data.homePhone" #homePhoneModel="ngModel"
+                       #homePhoneEl/>
+                <abp-validation-summary [control]="homePhoneModel"
+                                        [controlEl]="homePhoneEl">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="dOB">
+                {{ "Birth" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="dOB" id="dOB" required
+                       minlength="2" maxlength="32" [(ngModel)]="data.dOB"
+                       #dOBModel="ngModel" #dOBEl/>
+                <abp-validation-summary [control]="dOBModel" [controlEl]="dOBEl">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="yrsSchool">
+                {{ "Yrs. School" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="yrsSchool" id="yrsSchool"
+                       required minlength="2" maxlength="32"
+                       [(ngModel)]="data.yrsSchool" #yrsSchoolModel="ngModel"
+                       #yrsSchoolEl/>
+                <abp-validation-summary [control]="yrsSchoolModel"
+                                        [controlEl]="yrsSchoolEl">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label">
+                {{ "Marital Status" | localize }}
+            </label>
+            <div class="col-md-9">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="marital" id="married"
+                           value="married" checked [(ngModel)]="data.marital">
+                    <label class="form-check-label" for="married">
+                        Married
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="marital"
+                           id="unMarried" value="unMarried"
+                           [(ngModel)]="data.marital">
+                    <label class="form-check-label" for="unMarried">
+                        UnMarried
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="marital"
+                           id="sperated" value="sperated"
+                           [(ngModel)]="data.marital">
+                    <label class="form-check-label" for="sperated">
+                        Seperated
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="presentAddress">
+                {{ "Present Address" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="presentAddress"
+                       placeholder="Street, city, state & ZIP" id="presentAddress" required
+                       minlength="2" maxlength="32"
+                       [(ngModel)]="data.presentAddress"
+                       #presentAddressModel="ngModel" #presentAddressEl/>
+                <abp-validation-summary [control]="presentAddressModel"
+                                        [controlEl]="presentAddressEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <label class="col-md-3 col-form-label">
+            <!-- {{ "Marital Status" | localize }} -->
+        </label>
+        <div class="col-md-9">
+            <input type="radio" id="presentOwe" value="presentOwe"
+                   [(ngModel)]="data.presentAddressType"
+                   name="presentAddressType">
+            <span>Own</span>
+            <input type="radio" id="presentRent" value="presentRent"
+                   [(ngModel)]="data.presentAddressType"
+                   name="presentAddressType">
+            <span>Rent</span>
+            <input type="number" class="form-control" name="presentAddressNoOfYears"
+                   id="presentAddressNoOfYears" required minlength="2"
+                   placeholder="No of years"
+                   *ngIf="data.presentAddressType === 'presentRent'"
+                   maxlength="32"
+                   [(ngModel)]="data.presentAddressNoOfYears"/>
+        </div>
+    </div>
+    <div class="col-8">
+        <label style="font-size: 10px;">If different from above</label>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="mailingAddress">
+                {{ "Mailing Address" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="mailingAddress"
+                       placeholder="street, city, state & ZIP" id="mailingAddress" required
+                       minlength="2" maxlength="32"
+                       [(ngModel)]="data.mailingAddress"
+                       #mailingAddressModel="ngModel" #mailingAddressEl/>
+                <abp-validation-summary [control]="mailingAddressModel"
+                                        [controlEl]="mailingAddressEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <label style="font-size: 10px;">If residing at present address for less than two
+            years,
+            complete the following: </label>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="formerAddress">
+                {{ "Former Address" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="formerAddress"
+                       placeholder="street, city, state & ZIP" id="formerAddress" required
+                       minlength="2" maxlength="32"
+                       [(ngModel)]="data.formerAddress"
+                       #formerAddressModel="ngModel" #formerAddressEl/>
+                <abp-validation-summary [control]="formerAddressModel"
+                                        [controlEl]="formerAddressEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <label class="col-md-3 col-form-label">
+            <!-- {{ "Marital Status" | localize }} -->
+        </label>
+        <div class="col-md-9">
+            <input type="radio" value="formerOwe" id="formerOwe"
+                   [(ngModel)]="data.formerAddressType" name="formerAddressType">
+            <span>Own</span>
+            <input type="radio" value="formerRent" id="formerRent"
+                   [(ngModel)]="data.formerAddressType" name="formerAddressType">
+            <span>Rent</span>
+            <input type="number" class="form-control" name="formerAddressNoOfYears"
+                   id="formerAddressNoOfYears" required minlength="2"
+                   placeholder="No of years"
+                   *ngIf="data.formerAddressType === 'formerRent'" maxlength="32"
+                   [(ngModel)]="data.formerAddressNoOfYears"/>
+        </div>
+    </div>
+</div>

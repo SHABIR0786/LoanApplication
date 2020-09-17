@@ -1,0 +1,141 @@
+<div class="row">
+    <div class="col-12" *ngIf="showHeading">
+        <h4>Borrower</h4>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="isSelfEmployer1" id="isSelfEmployer1"
+                   [(ngModel)]="data.isSelfEmployer"/>
+            <label class="form-check-label" for="isSelfEmployer1">
+                Self Employer
+            </label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="employersName1">
+                {{ "Employer's Name" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="employersName1"
+                       id="employersName1" required minlength="2" maxlength="32"
+                       [disabled]="data.isSelfEmployer"
+                       [(ngModel)]="data.employersName"
+                       #employersNameModel="ngModel" #employersName1El/>
+                <abp-validation-summary [control]="employersNameModel"
+                                        [controlEl]="employersName1El"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="employersAddress1">
+                {{ "Employer's Address" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="employersAddress1"
+                       id="employersAddress1" required minlength="2" maxlength="32"
+                       [disabled]="data.isSelfEmployer" [(ngModel)]="data.employersAddress"
+                       #employersAddressModel="ngModel" #employersAddress1El/>
+                <abp-validation-summary [control]="employersAddressModel"
+                                        [controlEl]="employersAddress1El"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required" *ngIf="!secondary">
+            <label class="col-md-3 col-form-label" for="yearOnThisJob1">
+                {{ "Yrs. on this job" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="yearOnThisJob1"
+                       id="yearOnThisJob1" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.yearOnThisJob"
+                       #yearOnThisJobModel="ngModel" #yearOnThisJob1El/>
+                <abp-validation-summary [control]="yearOnThisJobModel"
+                                        [controlEl]="yearOnThisJob1El"></abp-validation-summary>
+            </div>
+        </div>
+
+        <div class="form-group row required" *ngIf="secondary">
+            <label class="col-md-3 col-form-label" for="datesFromTo">
+                {{ "Dates (from – to)" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="datesFromTo"
+                       id="datesFromTo" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.datesFromTo"
+                       #datesFromToModel="ngModel" #datesFromToEl/>
+                <abp-validation-summary [control]="datesFromToModel"
+                                        [controlEl]="datesFromToEl">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required" *ngIf="!secondary">
+            <label class="col-md-3 col-form-label" for="yearInThisLineOfWork1">
+                {{ "Yrs. employed in this line of work/profession " | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="yearInThisLineOfWork1"
+                       id="yearInThisLineOfWork1" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.yearInThisLineOfWork"
+                       #yearInThisLineOfWorkModel="ngModel" #yearInThisLineOfWork1El/>
+                <abp-validation-summary [control]="yearInThisLineOfWorkModel"
+                                        [controlEl]="yearInThisLineOfWork1El">
+                </abp-validation-summary>
+            </div>
+        </div>
+
+        <div class="form-group row required" *ngIf="secondary">
+            <label class="col-md-3 col-form-label" for="monthlyIncome">
+                {{ "Monthly Income" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="monthlyIncome"
+                       id="monthlyIncome" required minlength="2" maxlength="32"
+                       [(ngModel)]="data.monthlyIncome"
+                       #yearInThisLineOfWorkModel="ngModel" #monthlyIncomeEl/>
+                <abp-validation-summary [control]="yearInThisLineOfWorkModel"
+                                        [controlEl]="monthlyIncomeEl">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="position1">
+                {{ "Position/Title/Type of Business" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="position1" id="position1"
+                       required minlength="2" maxlength="32"
+                       [(ngModel)]="data.position" #positionModel="ngModel"
+                       #position1El/>
+                <abp-validation-summary [control]="positionModel"
+                                        [controlEl]="position1El">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="businessPhone1">
+                {{ "Business Phone" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="businessPhone1"
+                       id="businessPhone1"
+                       required minlength="2" maxlength="32"
+                       [(ngModel)]="data.businessPhone"
+                       #businessPhoneModel="ngModel"
+                       #businessPhone1El/>
+                <abp-validation-summary [control]="businessPhoneModel"
+                                        [controlEl]="businessPhone1El">
+                </abp-validation-summary>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
