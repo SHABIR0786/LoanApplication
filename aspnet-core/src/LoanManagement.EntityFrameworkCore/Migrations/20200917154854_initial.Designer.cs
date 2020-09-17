@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20200915190148_Init")]
-    partial class Init
+    [Migration("20200917154854_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1489,6 +1489,9 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("BorrowerTypeId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("BorrowersName")
                         .IsRequired()
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
@@ -1557,13 +1560,56 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BorrowerTypeId");
+
                     b.ToTable("BorrowerInformation");
+                });
+
+            modelBuilder.Entity("LoanManagement.BorrowerTypes.BorrowerType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BorrowerType");
                 });
 
             modelBuilder.Entity("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerTypeId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("BusinessPhone1")
@@ -1659,6 +1705,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
 
                     b.ToTable("BorrowerEmploymentInformation");
                 });
@@ -2150,6 +2198,20 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("LoanManagement.BorrowerInformation", b =>
+                {
+                    b.HasOne("LoanManagement.BorrowerTypes.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId");
+                });
+
+            modelBuilder.Entity("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", b =>
+                {
+                    b.HasOne("LoanManagement.BorrowerTypes.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId");
                 });
 
             modelBuilder.Entity("LoanManagement.LoanApplication", b =>
