@@ -6,6 +6,7 @@ using LoanManagement.MultiTenancy;
 using LoanManagement.Borrower_Information;
 using LoanManagement.Property_Information;
 using LoanManagement.AssetAndLiablities;
+using LoanManagement.DetailsOfTransactions;
 
 namespace LoanManagement.EntityFrameworkCore
 {
@@ -19,6 +20,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<MortgageType> MortgageTypes { get; set; }
         public DbSet<PropertyInformation> PropertyInformation { get; set; }
         public DbSet<AssetAndLiablity> AssetAndLiablities { get; set; }
+        public DbSet<DetailsOfTransaction> DetailsOfTransactions { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)
