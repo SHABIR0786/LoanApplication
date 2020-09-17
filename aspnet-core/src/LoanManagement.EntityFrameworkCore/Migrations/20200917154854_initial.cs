@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class Init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -444,7 +444,7 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BorrowerEmploymentInformation",
+                name: "BorrowerType",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -456,65 +456,12 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    EmployersName1 = table.Column<string>(maxLength: 100, nullable: false),
-                    EmployersAddress1 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer1 = table.Column<bool>(nullable: false),
-                    YearOnThisJob1 = table.Column<int>(nullable: true),
-                    YearInThisLineOfWork1 = table.Column<int>(nullable: true),
-                    Position1 = table.Column<string>(nullable: true),
-                    BusinessPhone1 = table.Column<string>(nullable: true),
-                    EmployersName2 = table.Column<string>(nullable: true),
-                    EmployersAddress2 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer2 = table.Column<bool>(nullable: false),
-                    DateFromTo2 = table.Column<DateTime>(nullable: false),
-                    MonthlyIncome2 = table.Column<decimal>(nullable: true),
-                    Position2 = table.Column<string>(nullable: true),
-                    BusinessPhone2 = table.Column<string>(nullable: true),
-                    EmployersName3 = table.Column<string>(nullable: true),
-                    EmployersAddress3 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer3 = table.Column<bool>(nullable: false),
-                    DateFromTo3 = table.Column<DateTime>(nullable: false),
-                    MonthlyIncome3 = table.Column<decimal>(nullable: true),
-                    Position3 = table.Column<string>(nullable: true),
-                    BusinessPhone3 = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
                     TenantId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BorrowerEmploymentInformation", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BorrowerInformation",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    BorrowersName = table.Column<string>(maxLength: 100, nullable: false),
-                    SocialSecurityNumber = table.Column<string>(maxLength: 100, nullable: true),
-                    HomePhone = table.Column<string>(nullable: true),
-                    DOB = table.Column<DateTime>(nullable: false),
-                    YearsSchool = table.Column<int>(nullable: true),
-                    Marital = table.Column<string>(nullable: true),
-                    PresentAddress = table.Column<string>(nullable: true),
-                    PresentAddressType = table.Column<string>(nullable: true),
-                    PresentAddressNoOfYears = table.Column<int>(nullable: true),
-                    MailingAddress = table.Column<string>(nullable: true),
-                    FormerAddressModel = table.Column<string>(nullable: true),
-                    FormerAddressType = table.Column<string>(nullable: true),
-                    FormerAddressNoOfYears = table.Column<int>(nullable: true),
-                    TenantId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BorrowerInformation", x => x.Id);
+                    table.PrimaryKey("PK_BorrowerType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -915,7 +862,7 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LoanApplications",
+                name: "BorrowerEmploymentInformation",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -927,53 +874,79 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    MortgageTypeId = table.Column<long>(nullable: false),
-                    PropertyInfoId = table.Column<long>(nullable: false),
-                    BorrowerInfoId = table.Column<long>(nullable: false),
-                    CoBorrowerInfoId = table.Column<long>(nullable: false),
-                    BorrowerEmploymentInfoId = table.Column<long>(nullable: false),
-                    CoBorrowerEmploymentInfoId = table.Column<long>(nullable: false),
+                    EmployersName1 = table.Column<string>(maxLength: 100, nullable: false),
+                    EmployersAddress1 = table.Column<string>(maxLength: 100, nullable: true),
+                    IsSelfEmployer1 = table.Column<bool>(nullable: false),
+                    YearOnThisJob1 = table.Column<int>(nullable: true),
+                    YearInThisLineOfWork1 = table.Column<int>(nullable: true),
+                    Position1 = table.Column<string>(nullable: true),
+                    BusinessPhone1 = table.Column<string>(nullable: true),
+                    EmployersName2 = table.Column<string>(nullable: true),
+                    EmployersAddress2 = table.Column<string>(maxLength: 100, nullable: true),
+                    IsSelfEmployer2 = table.Column<bool>(nullable: false),
+                    DateFromTo2 = table.Column<DateTime>(nullable: false),
+                    MonthlyIncome2 = table.Column<decimal>(nullable: true),
+                    Position2 = table.Column<string>(nullable: true),
+                    BusinessPhone2 = table.Column<string>(nullable: true),
+                    EmployersName3 = table.Column<string>(nullable: true),
+                    EmployersAddress3 = table.Column<string>(maxLength: 100, nullable: true),
+                    IsSelfEmployer3 = table.Column<bool>(nullable: false),
+                    DateFromTo3 = table.Column<DateTime>(nullable: false),
+                    MonthlyIncome3 = table.Column<decimal>(nullable: true),
+                    Position3 = table.Column<string>(nullable: true),
+                    BusinessPhone3 = table.Column<string>(nullable: true),
+                    BorrowerTypeId = table.Column<long>(nullable: true),
                     TenantId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LoanApplications", x => x.Id);
+                    table.PrimaryKey("PK_BorrowerEmploymentInformation", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmplo~",
-                        column: x => x.BorrowerEmploymentInfoId,
-                        principalTable: "BorrowerEmploymentInformation",
+                        name: "FK_BorrowerEmploymentInformation_BorrowerType_BorrowerTypeId",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BorrowerInformation",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    BorrowersName = table.Column<string>(maxLength: 100, nullable: false),
+                    SocialSecurityNumber = table.Column<string>(maxLength: 100, nullable: true),
+                    HomePhone = table.Column<string>(nullable: true),
+                    DOB = table.Column<DateTime>(nullable: false),
+                    YearsSchool = table.Column<int>(nullable: true),
+                    Marital = table.Column<string>(nullable: true),
+                    PresentAddress = table.Column<string>(nullable: true),
+                    PresentAddressType = table.Column<string>(nullable: true),
+                    PresentAddressNoOfYears = table.Column<int>(nullable: true),
+                    MailingAddress = table.Column<string>(nullable: true),
+                    FormerAddressModel = table.Column<string>(nullable: true),
+                    FormerAddressType = table.Column<string>(nullable: true),
+                    FormerAddressNoOfYears = table.Column<int>(nullable: true),
+                    BorrowerTypeId = table.Column<long>(nullable: true),
+                    TenantId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BorrowerInformation", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LoanApplications_BorrowerInformation_BorrowerInfoId",
-                        column: x => x.BorrowerInfoId,
-                        principalTable: "BorrowerInformation",
+                        name: "FK_BorrowerInformation_BorrowerType_BorrowerTypeId",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEmp~",
-                        column: x => x.CoBorrowerEmploymentInfoId,
-                        principalTable: "BorrowerEmploymentInformation",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_BorrowerInformation_CoBorrowerInfoId",
-                        column: x => x.CoBorrowerInfoId,
-                        principalTable: "BorrowerInformation",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_MortgageTypes_MortgageTypeId",
-                        column: x => x.MortgageTypeId,
-                        principalTable: "MortgageTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_PropertyInformation_PropertyInfoId",
-                        column: x => x.PropertyInfoId,
-                        principalTable: "PropertyInformation",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1074,6 +1047,68 @@ namespace LoanManagement.Migrations
                         name: "FK_AbpRoleClaims_AbpRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AbpRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LoanApplications",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    MortgageTypeId = table.Column<long>(nullable: false),
+                    PropertyInfoId = table.Column<long>(nullable: false),
+                    BorrowerInfoId = table.Column<long>(nullable: false),
+                    CoBorrowerInfoId = table.Column<long>(nullable: false),
+                    BorrowerEmploymentInfoId = table.Column<long>(nullable: false),
+                    CoBorrowerEmploymentInfoId = table.Column<long>(nullable: false),
+                    TenantId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LoanApplications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmplo~",
+                        column: x => x.BorrowerEmploymentInfoId,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerInformation_BorrowerInfoId",
+                        column: x => x.BorrowerInfoId,
+                        principalTable: "BorrowerInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEmp~",
+                        column: x => x.CoBorrowerEmploymentInfoId,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerInformation_CoBorrowerInfoId",
+                        column: x => x.CoBorrowerInfoId,
+                        principalTable: "BorrowerInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_MortgageTypes_MortgageTypeId",
+                        column: x => x.MortgageTypeId,
+                        principalTable: "MortgageTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_PropertyInformation_PropertyInfoId",
+                        column: x => x.PropertyInfoId,
+                        principalTable: "PropertyInformation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1422,6 +1457,16 @@ namespace LoanManagement.Migrations
                 column: "WebhookEventId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BorrowerEmploymentInformation_BorrowerTypeId",
+                table: "BorrowerEmploymentInformation",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BorrowerInformation_BorrowerTypeId",
+                table: "BorrowerInformation",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_BorrowerEmploymentInfoId",
                 table: "LoanApplications",
                 column: "BorrowerEmploymentInfoId");
@@ -1575,6 +1620,9 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUsers");
+
+            migrationBuilder.DropTable(
+                name: "BorrowerType");
         }
     }
 }

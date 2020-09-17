@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { BorrowerInformationServiceProxy, CreateOrUpdateBorrowerInformationDto, CreateUserDto } from '@shared/service-proxies/service-proxies';
+import { BorrowerInformationServiceProxy, CreateOrUpdateBorrowerEmploymentInformationDto, CreateOrUpdateBorrowerInformationDto, CreateUserDto } from '@shared/service-proxies/service-proxies';
 import {NgWizardConfig, NgWizardService, StepChangedArgs, THEME} from 'ng-wizard';
 
 @Component({
@@ -15,7 +15,9 @@ export class LoanApplicationComponent implements OnInit {
         mortgageType: {},
         propertyInfo: {},
         borrowerInformation : new CreateOrUpdateBorrowerInformationDto(),
-        coBorrowerInformation : new CreateOrUpdateBorrowerInformationDto()
+        coBorrowerInformation : new CreateOrUpdateBorrowerInformationDto(),
+        borrowerEmploymentinfromation : new CreateOrUpdateBorrowerEmploymentInformationDto(),
+        coBorrowerEmploymentinfromation : new CreateOrUpdateBorrowerEmploymentInformationDto(),
     };
 
     config: NgWizardConfig = {
@@ -74,6 +76,9 @@ export class LoanApplicationComponent implements OnInit {
             if(result){
                 
             }
-         })
+         });
+
+         this.loanApplication.borrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
+         this.loanApplication.coBorrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
     }
 }

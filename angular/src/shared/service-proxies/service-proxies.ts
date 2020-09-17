@@ -141,6 +141,311 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
+export class BorrowerEmploymentInformationServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    get(id: number | undefined): Observable<BorrowerEmploymentInformationDto> {
+        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/Get?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGet(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGet(<any>response_);
+                } catch (e) {
+                    return <Observable<BorrowerEmploymentInformationDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<BorrowerEmploymentInformationDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGet(response: HttpResponseBase): Observable<BorrowerEmploymentInformationDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = BorrowerEmploymentInformationDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<BorrowerEmploymentInformationDto>(<any>null);
+    }
+
+    /**
+     * @param keyword (optional) 
+     * @param tenantId (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getPaginatedAll(keyword: string | null | undefined, tenantId: number | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<BorrowerEmploymentInformationDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/GetPaginatedAll?";
+        if (keyword !== undefined && keyword !== null)
+            url_ += "Keyword=" + encodeURIComponent("" + keyword) + "&";
+        if (tenantId !== undefined && tenantId !== null)
+            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPaginatedAll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPaginatedAll(<any>response_);
+                } catch (e) {
+                    return <Observable<BorrowerEmploymentInformationDtoPagedResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<BorrowerEmploymentInformationDtoPagedResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPaginatedAll(response: HttpResponseBase): Observable<BorrowerEmploymentInformationDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = BorrowerEmploymentInformationDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<BorrowerEmploymentInformationDtoPagedResultDto>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createOrUpdate(body: CreateOrUpdateBorrowerEmploymentInformationDto | undefined): Observable<ResponseMessagesDto> {
+        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/CreateOrUpdate";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrUpdate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrUpdate(<any>response_);
+                } catch (e) {
+                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrUpdate(response: HttpResponseBase): Observable<ResponseMessagesDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ResponseMessagesDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ResponseMessagesDto>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    delete(id: number | undefined): Observable<ResponseMessagesDto> {
+        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/Delete?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDelete(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDelete(<any>response_);
+                } catch (e) {
+                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDelete(response: HttpResponseBase): Observable<ResponseMessagesDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ResponseMessagesDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ResponseMessagesDto>(<any>null);
+    }
+
+    /**
+     * @param tenantId (optional) 
+     * @return Success
+     */
+    getAll(tenantId: number | null | undefined): Observable<BorrowerEmploymentInformation[]> {
+        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/GetAll?";
+        if (tenantId !== undefined && tenantId !== null)
+            url_ += "tenantId=" + encodeURIComponent("" + tenantId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAll(<any>response_);
+                } catch (e) {
+                    return <Observable<BorrowerEmploymentInformation[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<BorrowerEmploymentInformation[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAll(response: HttpResponseBase): Observable<BorrowerEmploymentInformation[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(BorrowerEmploymentInformation.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<BorrowerEmploymentInformation[]>(<any>null);
+    }
+}
+
+@Injectable()
 export class BorrowerInformationServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -2519,25 +2824,32 @@ export interface IRegisterOutput {
     canLogin: boolean;
 }
 
-export class BorrowerInformationDto implements IBorrowerInformationDto {
-    borrowersName: string;
-    socialSecurityNumber: string | undefined;
-    homePhone: string | undefined;
-    dob: moment.Moment;
-    yearsSchool: number | undefined;
-    marital: string | undefined;
-    presentAddress: string | undefined;
-    presentAddressType: string | undefined;
-    presentAddressNoOfYears: number | undefined;
-    mailingAddress: string | undefined;
-    formerAddressModel: string | undefined;
-    formerAddressType: string | undefined;
-    formerAddressNoOfYears: number | undefined;
-    borrowerTypeId: number | undefined;
-    tenantId: number | undefined;
+export class BorrowerEmploymentInformationDto implements IBorrowerEmploymentInformationDto {
     id: number;
+    employersName1: string | undefined;
+    employersAddress1: string | undefined;
+    isSelfEmployer1: boolean;
+    yearOnThisJob1: number | undefined;
+    yearInThisLineOfWork1: number | undefined;
+    position1: string | undefined;
+    businessPhone1: string | undefined;
+    employersName2: string | undefined;
+    employersAddress2: string | undefined;
+    isSelfEmployer2: boolean;
+    dateFromTo2: moment.Moment;
+    monthlyIncome2: number | undefined;
+    position2: string | undefined;
+    businessPhone2: string | undefined;
+    employersName3: string | undefined;
+    employersAddress3: string | undefined;
+    isSelfEmployer3: boolean;
+    dateFromTo3: moment.Moment;
+    monthlyIncome3: number | undefined;
+    position3: string | undefined;
+    businessPhone3: string | undefined;
+    borrowerTypeId: number | undefined;
 
-    constructor(data?: IBorrowerInformationDto) {
+    constructor(data?: IBorrowerEmploymentInformationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2548,85 +2860,106 @@ export class BorrowerInformationDto implements IBorrowerInformationDto {
 
     init(_data?: any) {
         if (_data) {
-            this.borrowersName = _data["borrowersName"];
-            this.socialSecurityNumber = _data["socialSecurityNumber"];
-            this.homePhone = _data["homePhone"];
-            this.dob = _data["dob"] ? moment(_data["dob"].toString()) : <any>undefined;
-            this.yearsSchool = _data["yearsSchool"];
-            this.marital = _data["marital"];
-            this.presentAddress = _data["presentAddress"];
-            this.presentAddressType = _data["presentAddressType"];
-            this.presentAddressNoOfYears = _data["presentAddressNoOfYears"];
-            this.mailingAddress = _data["mailingAddress"];
-            this.formerAddressModel = _data["formerAddressModel"];
-            this.formerAddressType = _data["formerAddressType"];
-            this.formerAddressNoOfYears = _data["formerAddressNoOfYears"];
-            this.borrowerTypeId = _data["borrowerTypeId"];
-            this.tenantId = _data["tenantId"];
             this.id = _data["id"];
+            this.employersName1 = _data["employersName1"];
+            this.employersAddress1 = _data["employersAddress1"];
+            this.isSelfEmployer1 = _data["isSelfEmployer1"];
+            this.yearOnThisJob1 = _data["yearOnThisJob1"];
+            this.yearInThisLineOfWork1 = _data["yearInThisLineOfWork1"];
+            this.position1 = _data["position1"];
+            this.businessPhone1 = _data["businessPhone1"];
+            this.employersName2 = _data["employersName2"];
+            this.employersAddress2 = _data["employersAddress2"];
+            this.isSelfEmployer2 = _data["isSelfEmployer2"];
+            this.dateFromTo2 = _data["dateFromTo2"] ? moment(_data["dateFromTo2"].toString()) : <any>undefined;
+            this.monthlyIncome2 = _data["monthlyIncome2"];
+            this.position2 = _data["position2"];
+            this.businessPhone2 = _data["businessPhone2"];
+            this.employersName3 = _data["employersName3"];
+            this.employersAddress3 = _data["employersAddress3"];
+            this.isSelfEmployer3 = _data["isSelfEmployer3"];
+            this.dateFromTo3 = _data["dateFromTo3"] ? moment(_data["dateFromTo3"].toString()) : <any>undefined;
+            this.monthlyIncome3 = _data["monthlyIncome3"];
+            this.position3 = _data["position3"];
+            this.businessPhone3 = _data["businessPhone3"];
+            this.borrowerTypeId = _data["borrowerTypeId"];
         }
     }
 
-    static fromJS(data: any): BorrowerInformationDto {
+    static fromJS(data: any): BorrowerEmploymentInformationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new BorrowerInformationDto();
+        let result = new BorrowerEmploymentInformationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["borrowersName"] = this.borrowersName;
-        data["socialSecurityNumber"] = this.socialSecurityNumber;
-        data["homePhone"] = this.homePhone;
-        data["dob"] = this.dob ? this.dob.toISOString() : <any>undefined;
-        data["yearsSchool"] = this.yearsSchool;
-        data["marital"] = this.marital;
-        data["presentAddress"] = this.presentAddress;
-        data["presentAddressType"] = this.presentAddressType;
-        data["presentAddressNoOfYears"] = this.presentAddressNoOfYears;
-        data["mailingAddress"] = this.mailingAddress;
-        data["formerAddressModel"] = this.formerAddressModel;
-        data["formerAddressType"] = this.formerAddressType;
-        data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
-        data["borrowerTypeId"] = this.borrowerTypeId;
-        data["tenantId"] = this.tenantId;
         data["id"] = this.id;
+        data["employersName1"] = this.employersName1;
+        data["employersAddress1"] = this.employersAddress1;
+        data["isSelfEmployer1"] = this.isSelfEmployer1;
+        data["yearOnThisJob1"] = this.yearOnThisJob1;
+        data["yearInThisLineOfWork1"] = this.yearInThisLineOfWork1;
+        data["position1"] = this.position1;
+        data["businessPhone1"] = this.businessPhone1;
+        data["employersName2"] = this.employersName2;
+        data["employersAddress2"] = this.employersAddress2;
+        data["isSelfEmployer2"] = this.isSelfEmployer2;
+        data["dateFromTo2"] = this.dateFromTo2 ? this.dateFromTo2.toISOString() : <any>undefined;
+        data["monthlyIncome2"] = this.monthlyIncome2;
+        data["position2"] = this.position2;
+        data["businessPhone2"] = this.businessPhone2;
+        data["employersName3"] = this.employersName3;
+        data["employersAddress3"] = this.employersAddress3;
+        data["isSelfEmployer3"] = this.isSelfEmployer3;
+        data["dateFromTo3"] = this.dateFromTo3 ? this.dateFromTo3.toISOString() : <any>undefined;
+        data["monthlyIncome3"] = this.monthlyIncome3;
+        data["position3"] = this.position3;
+        data["businessPhone3"] = this.businessPhone3;
+        data["borrowerTypeId"] = this.borrowerTypeId;
         return data; 
     }
 
-    clone(): BorrowerInformationDto {
+    clone(): BorrowerEmploymentInformationDto {
         const json = this.toJSON();
-        let result = new BorrowerInformationDto();
+        let result = new BorrowerEmploymentInformationDto();
         result.init(json);
         return result;
     }
 }
 
-export interface IBorrowerInformationDto {
-    borrowersName: string;
-    socialSecurityNumber: string | undefined;
-    homePhone: string | undefined;
-    dob: moment.Moment;
-    yearsSchool: number | undefined;
-    marital: string | undefined;
-    presentAddress: string | undefined;
-    presentAddressType: string | undefined;
-    presentAddressNoOfYears: number | undefined;
-    mailingAddress: string | undefined;
-    formerAddressModel: string | undefined;
-    formerAddressType: string | undefined;
-    formerAddressNoOfYears: number | undefined;
-    borrowerTypeId: number | undefined;
-    tenantId: number | undefined;
+export interface IBorrowerEmploymentInformationDto {
     id: number;
+    employersName1: string | undefined;
+    employersAddress1: string | undefined;
+    isSelfEmployer1: boolean;
+    yearOnThisJob1: number | undefined;
+    yearInThisLineOfWork1: number | undefined;
+    position1: string | undefined;
+    businessPhone1: string | undefined;
+    employersName2: string | undefined;
+    employersAddress2: string | undefined;
+    isSelfEmployer2: boolean;
+    dateFromTo2: moment.Moment;
+    monthlyIncome2: number | undefined;
+    position2: string | undefined;
+    businessPhone2: string | undefined;
+    employersName3: string | undefined;
+    employersAddress3: string | undefined;
+    isSelfEmployer3: boolean;
+    dateFromTo3: moment.Moment;
+    monthlyIncome3: number | undefined;
+    position3: string | undefined;
+    businessPhone3: string | undefined;
+    borrowerTypeId: number | undefined;
 }
 
-export class BorrowerInformationDtoPagedResultDto implements IBorrowerInformationDtoPagedResultDto {
+export class BorrowerEmploymentInformationDtoPagedResultDto implements IBorrowerEmploymentInformationDtoPagedResultDto {
+    items: BorrowerEmploymentInformationDto[] | undefined;
     totalCount: number;
-    items: BorrowerInformationDto[] | undefined;
 
-    constructor(data?: IBorrowerInformationDtoPagedResultDto) {
+    constructor(data?: IBorrowerEmploymentInformationDtoPagedResultDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2637,65 +2970,72 @@ export class BorrowerInformationDtoPagedResultDto implements IBorrowerInformatio
 
     init(_data?: any) {
         if (_data) {
-            this.totalCount = _data["totalCount"];
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
-                    this.items.push(BorrowerInformationDto.fromJS(item));
+                    this.items.push(BorrowerEmploymentInformationDto.fromJS(item));
             }
+            this.totalCount = _data["totalCount"];
         }
     }
 
-    static fromJS(data: any): BorrowerInformationDtoPagedResultDto {
+    static fromJS(data: any): BorrowerEmploymentInformationDtoPagedResultDto {
         data = typeof data === 'object' ? data : {};
-        let result = new BorrowerInformationDtoPagedResultDto();
+        let result = new BorrowerEmploymentInformationDtoPagedResultDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
+        data["totalCount"] = this.totalCount;
         return data; 
     }
 
-    clone(): BorrowerInformationDtoPagedResultDto {
+    clone(): BorrowerEmploymentInformationDtoPagedResultDto {
         const json = this.toJSON();
-        let result = new BorrowerInformationDtoPagedResultDto();
+        let result = new BorrowerEmploymentInformationDtoPagedResultDto();
         result.init(json);
         return result;
     }
 }
 
-export interface IBorrowerInformationDtoPagedResultDto {
+export interface IBorrowerEmploymentInformationDtoPagedResultDto {
+    items: BorrowerEmploymentInformationDto[] | undefined;
     totalCount: number;
-    items: BorrowerInformationDto[] | undefined;
 }
 
-export class CreateOrUpdateBorrowerInformationDto implements ICreateOrUpdateBorrowerInformationDto {
-    borrowersName: string;
-    socialSecurityNumber: string | undefined;
-    homePhone: string | undefined;
-    dob: moment.Moment;
-    yearsSchool: number | undefined;
-    marital: string | undefined;
-    presentAddress: string | undefined;
-    presentAddressType: string | undefined;
-    presentAddressNoOfYears: number | undefined;
-    mailingAddress: string | undefined;
-    formerAddressModel: string | undefined;
-    formerAddressType: string | undefined;
-    formerAddressNoOfYears: number | undefined;
-    borrowerTypeId: number | undefined;
-    tenantId: number | undefined;
+export class CreateOrUpdateBorrowerEmploymentInformationDto implements ICreateOrUpdateBorrowerEmploymentInformationDto {
     id: number;
+    employersName1: string | undefined;
+    employersAddress1: string | undefined;
+    isSelfEmployer1: boolean;
+    yearOnThisJob1: number | undefined;
+    yearInThisLineOfWork1: number | undefined;
+    position1: string | undefined;
+    businessPhone1: string | undefined;
+    employersName2: string | undefined;
+    employersAddress2: string | undefined;
+    isSelfEmployer2: boolean;
+    dateFromTo2: moment.Moment;
+    monthlyIncome2: number | undefined;
+    position2: string | undefined;
+    businessPhone2: string | undefined;
+    employersName3: string | undefined;
+    employersAddress3: string | undefined;
+    isSelfEmployer3: boolean;
+    dateFromTo3: moment.Moment;
+    monthlyIncome3: number | undefined;
+    position3: string | undefined;
+    businessPhone3: string | undefined;
+    borrowerTypeId: number | undefined;
 
-    constructor(data?: ICreateOrUpdateBorrowerInformationDto) {
+    constructor(data?: ICreateOrUpdateBorrowerEmploymentInformationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2706,78 +3046,99 @@ export class CreateOrUpdateBorrowerInformationDto implements ICreateOrUpdateBorr
 
     init(_data?: any) {
         if (_data) {
-            this.borrowersName = _data["borrowersName"];
-            this.socialSecurityNumber = _data["socialSecurityNumber"];
-            this.homePhone = _data["homePhone"];
-            this.dob = _data["dob"] ? moment(_data["dob"].toString()) : <any>undefined;
-            this.yearsSchool = _data["yearsSchool"];
-            this.marital = _data["marital"];
-            this.presentAddress = _data["presentAddress"];
-            this.presentAddressType = _data["presentAddressType"];
-            this.presentAddressNoOfYears = _data["presentAddressNoOfYears"];
-            this.mailingAddress = _data["mailingAddress"];
-            this.formerAddressModel = _data["formerAddressModel"];
-            this.formerAddressType = _data["formerAddressType"];
-            this.formerAddressNoOfYears = _data["formerAddressNoOfYears"];
-            this.borrowerTypeId = _data["borrowerTypeId"];
-            this.tenantId = _data["tenantId"];
             this.id = _data["id"];
+            this.employersName1 = _data["employersName1"];
+            this.employersAddress1 = _data["employersAddress1"];
+            this.isSelfEmployer1 = _data["isSelfEmployer1"];
+            this.yearOnThisJob1 = _data["yearOnThisJob1"];
+            this.yearInThisLineOfWork1 = _data["yearInThisLineOfWork1"];
+            this.position1 = _data["position1"];
+            this.businessPhone1 = _data["businessPhone1"];
+            this.employersName2 = _data["employersName2"];
+            this.employersAddress2 = _data["employersAddress2"];
+            this.isSelfEmployer2 = _data["isSelfEmployer2"];
+            this.dateFromTo2 = _data["dateFromTo2"] ? moment(_data["dateFromTo2"].toString()) : <any>undefined;
+            this.monthlyIncome2 = _data["monthlyIncome2"];
+            this.position2 = _data["position2"];
+            this.businessPhone2 = _data["businessPhone2"];
+            this.employersName3 = _data["employersName3"];
+            this.employersAddress3 = _data["employersAddress3"];
+            this.isSelfEmployer3 = _data["isSelfEmployer3"];
+            this.dateFromTo3 = _data["dateFromTo3"] ? moment(_data["dateFromTo3"].toString()) : <any>undefined;
+            this.monthlyIncome3 = _data["monthlyIncome3"];
+            this.position3 = _data["position3"];
+            this.businessPhone3 = _data["businessPhone3"];
+            this.borrowerTypeId = _data["borrowerTypeId"];
         }
     }
 
-    static fromJS(data: any): CreateOrUpdateBorrowerInformationDto {
+    static fromJS(data: any): CreateOrUpdateBorrowerEmploymentInformationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new CreateOrUpdateBorrowerInformationDto();
+        let result = new CreateOrUpdateBorrowerEmploymentInformationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["borrowersName"] = this.borrowersName;
-        data["socialSecurityNumber"] = this.socialSecurityNumber;
-        data["homePhone"] = this.homePhone;
-        data["dob"] = this.dob ? this.dob.toISOString() : <any>undefined;
-        data["yearsSchool"] = this.yearsSchool;
-        data["marital"] = this.marital;
-        data["presentAddress"] = this.presentAddress;
-        data["presentAddressType"] = this.presentAddressType;
-        data["presentAddressNoOfYears"] = this.presentAddressNoOfYears;
-        data["mailingAddress"] = this.mailingAddress;
-        data["formerAddressModel"] = this.formerAddressModel;
-        data["formerAddressType"] = this.formerAddressType;
-        data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
-        data["borrowerTypeId"] = this.borrowerTypeId;
-        data["tenantId"] = this.tenantId;
         data["id"] = this.id;
+        data["employersName1"] = this.employersName1;
+        data["employersAddress1"] = this.employersAddress1;
+        data["isSelfEmployer1"] = this.isSelfEmployer1;
+        data["yearOnThisJob1"] = this.yearOnThisJob1;
+        data["yearInThisLineOfWork1"] = this.yearInThisLineOfWork1;
+        data["position1"] = this.position1;
+        data["businessPhone1"] = this.businessPhone1;
+        data["employersName2"] = this.employersName2;
+        data["employersAddress2"] = this.employersAddress2;
+        data["isSelfEmployer2"] = this.isSelfEmployer2;
+        data["dateFromTo2"] = this.dateFromTo2 ? this.dateFromTo2.toISOString() : <any>undefined;
+        data["monthlyIncome2"] = this.monthlyIncome2;
+        data["position2"] = this.position2;
+        data["businessPhone2"] = this.businessPhone2;
+        data["employersName3"] = this.employersName3;
+        data["employersAddress3"] = this.employersAddress3;
+        data["isSelfEmployer3"] = this.isSelfEmployer3;
+        data["dateFromTo3"] = this.dateFromTo3 ? this.dateFromTo3.toISOString() : <any>undefined;
+        data["monthlyIncome3"] = this.monthlyIncome3;
+        data["position3"] = this.position3;
+        data["businessPhone3"] = this.businessPhone3;
+        data["borrowerTypeId"] = this.borrowerTypeId;
         return data; 
     }
 
-    clone(): CreateOrUpdateBorrowerInformationDto {
+    clone(): CreateOrUpdateBorrowerEmploymentInformationDto {
         const json = this.toJSON();
-        let result = new CreateOrUpdateBorrowerInformationDto();
+        let result = new CreateOrUpdateBorrowerEmploymentInformationDto();
         result.init(json);
         return result;
     }
 }
 
-export interface ICreateOrUpdateBorrowerInformationDto {
-    borrowersName: string;
-    socialSecurityNumber: string | undefined;
-    homePhone: string | undefined;
-    dob: moment.Moment;
-    yearsSchool: number | undefined;
-    marital: string | undefined;
-    presentAddress: string | undefined;
-    presentAddressType: string | undefined;
-    presentAddressNoOfYears: number | undefined;
-    mailingAddress: string | undefined;
-    formerAddressModel: string | undefined;
-    formerAddressType: string | undefined;
-    formerAddressNoOfYears: number | undefined;
-    borrowerTypeId: number | undefined;
-    tenantId: number | undefined;
+export interface ICreateOrUpdateBorrowerEmploymentInformationDto {
     id: number;
+    employersName1: string | undefined;
+    employersAddress1: string | undefined;
+    isSelfEmployer1: boolean;
+    yearOnThisJob1: number | undefined;
+    yearInThisLineOfWork1: number | undefined;
+    position1: string | undefined;
+    businessPhone1: string | undefined;
+    employersName2: string | undefined;
+    employersAddress2: string | undefined;
+    isSelfEmployer2: boolean;
+    dateFromTo2: moment.Moment;
+    monthlyIncome2: number | undefined;
+    position2: string | undefined;
+    businessPhone2: string | undefined;
+    employersName3: string | undefined;
+    employersAddress3: string | undefined;
+    isSelfEmployer3: boolean;
+    dateFromTo3: moment.Moment;
+    monthlyIncome3: number | undefined;
+    position3: string | undefined;
+    businessPhone3: string | undefined;
+    borrowerTypeId: number | undefined;
 }
 
 export class ResponseMessagesDto implements IResponseMessagesDto {
@@ -2840,16 +3201,16 @@ export interface IResponseMessagesDto {
 }
 
 export class BorrowerType implements IBorrowerType {
-    type: string | undefined;
-    tenantId: number | undefined;
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
+    type: string | undefined;
+    tenantId: number | undefined;
 
     constructor(data?: IBorrowerType) {
         if (data) {
@@ -2862,16 +3223,16 @@ export class BorrowerType implements IBorrowerType {
 
     init(_data?: any) {
         if (_data) {
-            this.type = _data["type"];
-            this.tenantId = _data["tenantId"];
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
             this.isDeleted = _data["isDeleted"];
             this.deleterUserId = _data["deleterUserId"];
             this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
+            this.type = _data["type"];
+            this.tenantId = _data["tenantId"];
         }
     }
 
@@ -2884,16 +3245,16 @@ export class BorrowerType implements IBorrowerType {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["type"] = this.type;
-        data["tenantId"] = this.tenantId;
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
+        data["type"] = this.type;
+        data["tenantId"] = this.tenantId;
         return data; 
     }
 
@@ -2906,19 +3267,27 @@ export class BorrowerType implements IBorrowerType {
 }
 
 export interface IBorrowerType {
-    type: string | undefined;
-    tenantId: number | undefined;
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
+    type: string | undefined;
+    tenantId: number | undefined;
 }
 
 export class MortgageType implements IMortgageType {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     type: string;
     typeExplain: string | undefined;
     appliedFor: string | undefined;
@@ -2930,14 +3299,6 @@ export class MortgageType implements IMortgageType {
     amortizationType: string | undefined;
     amortizationTypeExplain: string | undefined;
     loanApplication: LoanApplication;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 
     constructor(data?: IMortgageType) {
         if (data) {
@@ -2950,6 +3311,14 @@ export class MortgageType implements IMortgageType {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
             this.type = _data["type"];
             this.typeExplain = _data["typeExplain"];
             this.appliedFor = _data["appliedFor"];
@@ -2961,14 +3330,6 @@ export class MortgageType implements IMortgageType {
             this.amortizationType = _data["amortizationType"];
             this.amortizationTypeExplain = _data["amortizationTypeExplain"];
             this.loanApplication = _data["loanApplication"] ? LoanApplication.fromJS(_data["loanApplication"]) : <any>undefined;
-            this.isDeleted = _data["isDeleted"];
-            this.deleterUserId = _data["deleterUserId"];
-            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
         }
     }
 
@@ -2981,6 +3342,14 @@ export class MortgageType implements IMortgageType {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["type"] = this.type;
         data["typeExplain"] = this.typeExplain;
         data["appliedFor"] = this.appliedFor;
@@ -2992,14 +3361,6 @@ export class MortgageType implements IMortgageType {
         data["amortizationType"] = this.amortizationType;
         data["amortizationTypeExplain"] = this.amortizationTypeExplain;
         data["loanApplication"] = this.loanApplication ? this.loanApplication.toJSON() : <any>undefined;
-        data["isDeleted"] = this.isDeleted;
-        data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3012,6 +3373,14 @@ export class MortgageType implements IMortgageType {
 }
 
 export interface IMortgageType {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     type: string;
     typeExplain: string | undefined;
     appliedFor: string | undefined;
@@ -3023,17 +3392,17 @@ export interface IMortgageType {
     amortizationType: string | undefined;
     amortizationTypeExplain: string | undefined;
     loanApplication: LoanApplication;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 }
 
 export class PropertyInformation implements IPropertyInformation {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     address: string;
     numberOfUnits: string | undefined;
     legalDescription: string | undefined;
@@ -3057,14 +3426,6 @@ export class PropertyInformation implements IPropertyInformation {
     sourceOfPayment: string | undefined;
     estateHeldIn: string | undefined;
     loanApplication: LoanApplication;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 
     constructor(data?: IPropertyInformation) {
         if (data) {
@@ -3077,6 +3438,14 @@ export class PropertyInformation implements IPropertyInformation {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
             this.address = _data["address"];
             this.numberOfUnits = _data["numberOfUnits"];
             this.legalDescription = _data["legalDescription"];
@@ -3100,14 +3469,6 @@ export class PropertyInformation implements IPropertyInformation {
             this.sourceOfPayment = _data["sourceOfPayment"];
             this.estateHeldIn = _data["estateHeldIn"];
             this.loanApplication = _data["loanApplication"] ? LoanApplication.fromJS(_data["loanApplication"]) : <any>undefined;
-            this.isDeleted = _data["isDeleted"];
-            this.deleterUserId = _data["deleterUserId"];
-            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
         }
     }
 
@@ -3120,6 +3481,14 @@ export class PropertyInformation implements IPropertyInformation {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["address"] = this.address;
         data["numberOfUnits"] = this.numberOfUnits;
         data["legalDescription"] = this.legalDescription;
@@ -3143,14 +3512,6 @@ export class PropertyInformation implements IPropertyInformation {
         data["sourceOfPayment"] = this.sourceOfPayment;
         data["estateHeldIn"] = this.estateHeldIn;
         data["loanApplication"] = this.loanApplication ? this.loanApplication.toJSON() : <any>undefined;
-        data["isDeleted"] = this.isDeleted;
-        data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3163,6 +3524,14 @@ export class PropertyInformation implements IPropertyInformation {
 }
 
 export interface IPropertyInformation {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     address: string;
     numberOfUnits: string | undefined;
     legalDescription: string | undefined;
@@ -3186,17 +3555,299 @@ export interface IPropertyInformation {
     sourceOfPayment: string | undefined;
     estateHeldIn: string | undefined;
     loanApplication: LoanApplication;
+}
+
+export class BorrowerInformation implements IBorrowerInformation {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
+    borrowersName: string;
+    socialSecurityNumber: string | undefined;
+    homePhone: string | undefined;
+    dob: moment.Moment;
+    yearsSchool: number | undefined;
+    marital: string | undefined;
+    presentAddress: string | undefined;
+    presentAddressType: string | undefined;
+    presentAddressNoOfYears: number | undefined;
+    mailingAddress: string | undefined;
+    formerAddressModel: string | undefined;
+    formerAddressType: string | undefined;
+    formerAddressNoOfYears: number | undefined;
+    borrowerTypeId: number | undefined;
+    borrowerType: BorrowerType;
+    tenantId: number | undefined;
+    borrowerLoanApplication: LoanApplication[] | undefined;
+    coBorrowerLoanApplication: LoanApplication[] | undefined;
+
+    constructor(data?: IBorrowerInformation) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
+            this.borrowersName = _data["borrowersName"];
+            this.socialSecurityNumber = _data["socialSecurityNumber"];
+            this.homePhone = _data["homePhone"];
+            this.dob = _data["dob"] ? moment(_data["dob"].toString()) : <any>undefined;
+            this.yearsSchool = _data["yearsSchool"];
+            this.marital = _data["marital"];
+            this.presentAddress = _data["presentAddress"];
+            this.presentAddressType = _data["presentAddressType"];
+            this.presentAddressNoOfYears = _data["presentAddressNoOfYears"];
+            this.mailingAddress = _data["mailingAddress"];
+            this.formerAddressModel = _data["formerAddressModel"];
+            this.formerAddressType = _data["formerAddressType"];
+            this.formerAddressNoOfYears = _data["formerAddressNoOfYears"];
+            this.borrowerTypeId = _data["borrowerTypeId"];
+            this.borrowerType = _data["borrowerType"] ? BorrowerType.fromJS(_data["borrowerType"]) : <any>undefined;
+            this.tenantId = _data["tenantId"];
+            if (Array.isArray(_data["borrowerLoanApplication"])) {
+                this.borrowerLoanApplication = [] as any;
+                for (let item of _data["borrowerLoanApplication"])
+                    this.borrowerLoanApplication.push(LoanApplication.fromJS(item));
+            }
+            if (Array.isArray(_data["coBorrowerLoanApplication"])) {
+                this.coBorrowerLoanApplication = [] as any;
+                for (let item of _data["coBorrowerLoanApplication"])
+                    this.coBorrowerLoanApplication.push(LoanApplication.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): BorrowerInformation {
+        data = typeof data === 'object' ? data : {};
+        let result = new BorrowerInformation();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
+        data["borrowersName"] = this.borrowersName;
+        data["socialSecurityNumber"] = this.socialSecurityNumber;
+        data["homePhone"] = this.homePhone;
+        data["dob"] = this.dob ? this.dob.toISOString() : <any>undefined;
+        data["yearsSchool"] = this.yearsSchool;
+        data["marital"] = this.marital;
+        data["presentAddress"] = this.presentAddress;
+        data["presentAddressType"] = this.presentAddressType;
+        data["presentAddressNoOfYears"] = this.presentAddressNoOfYears;
+        data["mailingAddress"] = this.mailingAddress;
+        data["formerAddressModel"] = this.formerAddressModel;
+        data["formerAddressType"] = this.formerAddressType;
+        data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
+        data["borrowerTypeId"] = this.borrowerTypeId;
+        data["borrowerType"] = this.borrowerType ? this.borrowerType.toJSON() : <any>undefined;
+        data["tenantId"] = this.tenantId;
+        if (Array.isArray(this.borrowerLoanApplication)) {
+            data["borrowerLoanApplication"] = [];
+            for (let item of this.borrowerLoanApplication)
+                data["borrowerLoanApplication"].push(item.toJSON());
+        }
+        if (Array.isArray(this.coBorrowerLoanApplication)) {
+            data["coBorrowerLoanApplication"] = [];
+            for (let item of this.coBorrowerLoanApplication)
+                data["coBorrowerLoanApplication"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): BorrowerInformation {
+        const json = this.toJSON();
+        let result = new BorrowerInformation();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IBorrowerInformation {
+    id: number;
     creationTime: moment.Moment;
     creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
+    borrowersName: string;
+    socialSecurityNumber: string | undefined;
+    homePhone: string | undefined;
+    dob: moment.Moment;
+    yearsSchool: number | undefined;
+    marital: string | undefined;
+    presentAddress: string | undefined;
+    presentAddressType: string | undefined;
+    presentAddressNoOfYears: number | undefined;
+    mailingAddress: string | undefined;
+    formerAddressModel: string | undefined;
+    formerAddressType: string | undefined;
+    formerAddressNoOfYears: number | undefined;
+    borrowerTypeId: number | undefined;
+    borrowerType: BorrowerType;
+    tenantId: number | undefined;
+    borrowerLoanApplication: LoanApplication[] | undefined;
+    coBorrowerLoanApplication: LoanApplication[] | undefined;
+}
+
+export class LoanApplication implements ILoanApplication {
     id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
+    mortgageTypeId: number;
+    mortgageType: MortgageType;
+    propertyInfoId: number;
+    propertyInfo: PropertyInformation;
+    borrowerInfoId: number;
+    borrowerInfo: BorrowerInformation;
+    coBorrowerInfoId: number;
+    coBorrowerInfo: BorrowerInformation;
+    borrowerEmploymentInfoId: number;
+    borrowerEmploymentInfo: BorrowerEmploymentInformation;
+    coBorrowerEmploymentInfoId: number;
+    coBorrowerEmploymentInfo: BorrowerEmploymentInformation;
+    tenantId: number | undefined;
+
+    constructor(data?: ILoanApplication) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
+            this.mortgageTypeId = _data["mortgageTypeId"];
+            this.mortgageType = _data["mortgageType"] ? MortgageType.fromJS(_data["mortgageType"]) : <any>undefined;
+            this.propertyInfoId = _data["propertyInfoId"];
+            this.propertyInfo = _data["propertyInfo"] ? PropertyInformation.fromJS(_data["propertyInfo"]) : <any>undefined;
+            this.borrowerInfoId = _data["borrowerInfoId"];
+            this.borrowerInfo = _data["borrowerInfo"] ? BorrowerInformation.fromJS(_data["borrowerInfo"]) : <any>undefined;
+            this.coBorrowerInfoId = _data["coBorrowerInfoId"];
+            this.coBorrowerInfo = _data["coBorrowerInfo"] ? BorrowerInformation.fromJS(_data["coBorrowerInfo"]) : <any>undefined;
+            this.borrowerEmploymentInfoId = _data["borrowerEmploymentInfoId"];
+            this.borrowerEmploymentInfo = _data["borrowerEmploymentInfo"] ? BorrowerEmploymentInformation.fromJS(_data["borrowerEmploymentInfo"]) : <any>undefined;
+            this.coBorrowerEmploymentInfoId = _data["coBorrowerEmploymentInfoId"];
+            this.coBorrowerEmploymentInfo = _data["coBorrowerEmploymentInfo"] ? BorrowerEmploymentInformation.fromJS(_data["coBorrowerEmploymentInfo"]) : <any>undefined;
+            this.tenantId = _data["tenantId"];
+        }
+    }
+
+    static fromJS(data: any): LoanApplication {
+        data = typeof data === 'object' ? data : {};
+        let result = new LoanApplication();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
+        data["mortgageTypeId"] = this.mortgageTypeId;
+        data["mortgageType"] = this.mortgageType ? this.mortgageType.toJSON() : <any>undefined;
+        data["propertyInfoId"] = this.propertyInfoId;
+        data["propertyInfo"] = this.propertyInfo ? this.propertyInfo.toJSON() : <any>undefined;
+        data["borrowerInfoId"] = this.borrowerInfoId;
+        data["borrowerInfo"] = this.borrowerInfo ? this.borrowerInfo.toJSON() : <any>undefined;
+        data["coBorrowerInfoId"] = this.coBorrowerInfoId;
+        data["coBorrowerInfo"] = this.coBorrowerInfo ? this.coBorrowerInfo.toJSON() : <any>undefined;
+        data["borrowerEmploymentInfoId"] = this.borrowerEmploymentInfoId;
+        data["borrowerEmploymentInfo"] = this.borrowerEmploymentInfo ? this.borrowerEmploymentInfo.toJSON() : <any>undefined;
+        data["coBorrowerEmploymentInfoId"] = this.coBorrowerEmploymentInfoId;
+        data["coBorrowerEmploymentInfo"] = this.coBorrowerEmploymentInfo ? this.coBorrowerEmploymentInfo.toJSON() : <any>undefined;
+        data["tenantId"] = this.tenantId;
+        return data; 
+    }
+
+    clone(): LoanApplication {
+        const json = this.toJSON();
+        let result = new LoanApplication();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface ILoanApplication {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
+    mortgageTypeId: number;
+    mortgageType: MortgageType;
+    propertyInfoId: number;
+    propertyInfo: PropertyInformation;
+    borrowerInfoId: number;
+    borrowerInfo: BorrowerInformation;
+    coBorrowerInfoId: number;
+    coBorrowerInfo: BorrowerInformation;
+    borrowerEmploymentInfoId: number;
+    borrowerEmploymentInfo: BorrowerEmploymentInformation;
+    coBorrowerEmploymentInfoId: number;
+    coBorrowerEmploymentInfo: BorrowerEmploymentInformation;
+    tenantId: number | undefined;
 }
 
 export class BorrowerEmploymentInformation implements IBorrowerEmploymentInformation {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     employersName1: string;
     employersAddress1: string | undefined;
     isSelfEmployer1: boolean;
@@ -3223,14 +3874,6 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
     tenantId: number | undefined;
     borrowerLoanApplication: LoanApplication[] | undefined;
     coBorrowerLoanApplication: LoanApplication[] | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 
     constructor(data?: IBorrowerEmploymentInformation) {
         if (data) {
@@ -3243,6 +3886,14 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = _data["creatorUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
             this.employersName1 = _data["employersName1"];
             this.employersAddress1 = _data["employersAddress1"];
             this.isSelfEmployer1 = _data["isSelfEmployer1"];
@@ -3277,14 +3928,6 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
                 for (let item of _data["coBorrowerLoanApplication"])
                     this.coBorrowerLoanApplication.push(LoanApplication.fromJS(item));
             }
-            this.isDeleted = _data["isDeleted"];
-            this.deleterUserId = _data["deleterUserId"];
-            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
         }
     }
 
@@ -3297,6 +3940,14 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["employersName1"] = this.employersName1;
         data["employersAddress1"] = this.employersAddress1;
         data["isSelfEmployer1"] = this.isSelfEmployer1;
@@ -3331,14 +3982,6 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
             for (let item of this.coBorrowerLoanApplication)
                 data["coBorrowerLoanApplication"].push(item.toJSON());
         }
-        data["isDeleted"] = this.isDeleted;
-        data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3351,6 +3994,14 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
 }
 
 export interface IBorrowerEmploymentInformation {
+    id: number;
+    creationTime: moment.Moment;
+    creatorUserId: number | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: number | undefined;
+    isDeleted: boolean;
+    deleterUserId: number | undefined;
+    deletionTime: moment.Moment | undefined;
     employersName1: string;
     employersAddress1: string | undefined;
     isSelfEmployer1: boolean;
@@ -3377,140 +4028,10 @@ export interface IBorrowerEmploymentInformation {
     tenantId: number | undefined;
     borrowerLoanApplication: LoanApplication[] | undefined;
     coBorrowerLoanApplication: LoanApplication[] | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 }
 
-export class LoanApplication implements ILoanApplication {
-    mortgageTypeId: number;
-    mortgageType: MortgageType;
-    propertyInfoId: number;
-    propertyInfo: PropertyInformation;
-    borrowerInfoId: number;
-    borrowerInfo: BorrowerInformation;
-    coBorrowerInfoId: number;
-    coBorrowerInfo: BorrowerInformation;
-    borrowerEmploymentInfoId: number;
-    borrowerEmploymentInfo: BorrowerEmploymentInformation;
-    coBorrowerEmploymentInfoId: number;
-    coBorrowerEmploymentInfo: BorrowerEmploymentInformation;
-    tenantId: number | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
+export class BorrowerInformationDto implements IBorrowerInformationDto {
     id: number;
-
-    constructor(data?: ILoanApplication) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.mortgageTypeId = _data["mortgageTypeId"];
-            this.mortgageType = _data["mortgageType"] ? MortgageType.fromJS(_data["mortgageType"]) : <any>undefined;
-            this.propertyInfoId = _data["propertyInfoId"];
-            this.propertyInfo = _data["propertyInfo"] ? PropertyInformation.fromJS(_data["propertyInfo"]) : <any>undefined;
-            this.borrowerInfoId = _data["borrowerInfoId"];
-            this.borrowerInfo = _data["borrowerInfo"] ? BorrowerInformation.fromJS(_data["borrowerInfo"]) : <any>undefined;
-            this.coBorrowerInfoId = _data["coBorrowerInfoId"];
-            this.coBorrowerInfo = _data["coBorrowerInfo"] ? BorrowerInformation.fromJS(_data["coBorrowerInfo"]) : <any>undefined;
-            this.borrowerEmploymentInfoId = _data["borrowerEmploymentInfoId"];
-            this.borrowerEmploymentInfo = _data["borrowerEmploymentInfo"] ? BorrowerEmploymentInformation.fromJS(_data["borrowerEmploymentInfo"]) : <any>undefined;
-            this.coBorrowerEmploymentInfoId = _data["coBorrowerEmploymentInfoId"];
-            this.coBorrowerEmploymentInfo = _data["coBorrowerEmploymentInfo"] ? BorrowerEmploymentInformation.fromJS(_data["coBorrowerEmploymentInfo"]) : <any>undefined;
-            this.tenantId = _data["tenantId"];
-            this.isDeleted = _data["isDeleted"];
-            this.deleterUserId = _data["deleterUserId"];
-            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
-        }
-    }
-
-    static fromJS(data: any): LoanApplication {
-        data = typeof data === 'object' ? data : {};
-        let result = new LoanApplication();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["mortgageTypeId"] = this.mortgageTypeId;
-        data["mortgageType"] = this.mortgageType ? this.mortgageType.toJSON() : <any>undefined;
-        data["propertyInfoId"] = this.propertyInfoId;
-        data["propertyInfo"] = this.propertyInfo ? this.propertyInfo.toJSON() : <any>undefined;
-        data["borrowerInfoId"] = this.borrowerInfoId;
-        data["borrowerInfo"] = this.borrowerInfo ? this.borrowerInfo.toJSON() : <any>undefined;
-        data["coBorrowerInfoId"] = this.coBorrowerInfoId;
-        data["coBorrowerInfo"] = this.coBorrowerInfo ? this.coBorrowerInfo.toJSON() : <any>undefined;
-        data["borrowerEmploymentInfoId"] = this.borrowerEmploymentInfoId;
-        data["borrowerEmploymentInfo"] = this.borrowerEmploymentInfo ? this.borrowerEmploymentInfo.toJSON() : <any>undefined;
-        data["coBorrowerEmploymentInfoId"] = this.coBorrowerEmploymentInfoId;
-        data["coBorrowerEmploymentInfo"] = this.coBorrowerEmploymentInfo ? this.coBorrowerEmploymentInfo.toJSON() : <any>undefined;
-        data["tenantId"] = this.tenantId;
-        data["isDeleted"] = this.isDeleted;
-        data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
-        return data; 
-    }
-
-    clone(): LoanApplication {
-        const json = this.toJSON();
-        let result = new LoanApplication();
-        result.init(json);
-        return result;
-    }
-}
-
-export interface ILoanApplication {
-    mortgageTypeId: number;
-    mortgageType: MortgageType;
-    propertyInfoId: number;
-    propertyInfo: PropertyInformation;
-    borrowerInfoId: number;
-    borrowerInfo: BorrowerInformation;
-    coBorrowerInfoId: number;
-    coBorrowerInfo: BorrowerInformation;
-    borrowerEmploymentInfoId: number;
-    borrowerEmploymentInfo: BorrowerEmploymentInformation;
-    coBorrowerEmploymentInfoId: number;
-    coBorrowerEmploymentInfo: BorrowerEmploymentInformation;
-    tenantId: number | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
-}
-
-export class BorrowerInformation implements IBorrowerInformation {
     borrowersName: string;
     socialSecurityNumber: string | undefined;
     homePhone: string | undefined;
@@ -3525,20 +4046,9 @@ export class BorrowerInformation implements IBorrowerInformation {
     formerAddressType: string | undefined;
     formerAddressNoOfYears: number | undefined;
     borrowerTypeId: number | undefined;
-    borrowerType: BorrowerType;
     tenantId: number | undefined;
-    borrowerLoanApplication: LoanApplication[] | undefined;
-    coBorrowerLoanApplication: LoanApplication[] | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
-    id: number;
 
-    constructor(data?: IBorrowerInformation) {
+    constructor(data?: IBorrowerInformationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3549,6 +4059,7 @@ export class BorrowerInformation implements IBorrowerInformation {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.borrowersName = _data["borrowersName"];
             this.socialSecurityNumber = _data["socialSecurityNumber"];
             this.homePhone = _data["homePhone"];
@@ -3563,38 +4074,20 @@ export class BorrowerInformation implements IBorrowerInformation {
             this.formerAddressType = _data["formerAddressType"];
             this.formerAddressNoOfYears = _data["formerAddressNoOfYears"];
             this.borrowerTypeId = _data["borrowerTypeId"];
-            this.borrowerType = _data["borrowerType"] ? BorrowerType.fromJS(_data["borrowerType"]) : <any>undefined;
             this.tenantId = _data["tenantId"];
-            if (Array.isArray(_data["borrowerLoanApplication"])) {
-                this.borrowerLoanApplication = [] as any;
-                for (let item of _data["borrowerLoanApplication"])
-                    this.borrowerLoanApplication.push(LoanApplication.fromJS(item));
-            }
-            if (Array.isArray(_data["coBorrowerLoanApplication"])) {
-                this.coBorrowerLoanApplication = [] as any;
-                for (let item of _data["coBorrowerLoanApplication"])
-                    this.coBorrowerLoanApplication.push(LoanApplication.fromJS(item));
-            }
-            this.isDeleted = _data["isDeleted"];
-            this.deleterUserId = _data["deleterUserId"];
-            this.deletionTime = _data["deletionTime"] ? moment(_data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierUserId = _data["lastModifierUserId"];
-            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorUserId = _data["creatorUserId"];
-            this.id = _data["id"];
         }
     }
 
-    static fromJS(data: any): BorrowerInformation {
+    static fromJS(data: any): BorrowerInformationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new BorrowerInformation();
+        let result = new BorrowerInformationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["borrowersName"] = this.borrowersName;
         data["socialSecurityNumber"] = this.socialSecurityNumber;
         data["homePhone"] = this.homePhone;
@@ -3609,38 +4102,20 @@ export class BorrowerInformation implements IBorrowerInformation {
         data["formerAddressType"] = this.formerAddressType;
         data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
         data["borrowerTypeId"] = this.borrowerTypeId;
-        data["borrowerType"] = this.borrowerType ? this.borrowerType.toJSON() : <any>undefined;
         data["tenantId"] = this.tenantId;
-        if (Array.isArray(this.borrowerLoanApplication)) {
-            data["borrowerLoanApplication"] = [];
-            for (let item of this.borrowerLoanApplication)
-                data["borrowerLoanApplication"].push(item.toJSON());
-        }
-        if (Array.isArray(this.coBorrowerLoanApplication)) {
-            data["coBorrowerLoanApplication"] = [];
-            for (let item of this.coBorrowerLoanApplication)
-                data["coBorrowerLoanApplication"].push(item.toJSON());
-        }
-        data["isDeleted"] = this.isDeleted;
-        data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorUserId"] = this.creatorUserId;
-        data["id"] = this.id;
         return data; 
     }
 
-    clone(): BorrowerInformation {
+    clone(): BorrowerInformationDto {
         const json = this.toJSON();
-        let result = new BorrowerInformation();
+        let result = new BorrowerInformationDto();
         result.init(json);
         return result;
     }
 }
 
-export interface IBorrowerInformation {
+export interface IBorrowerInformationDto {
+    id: number;
     borrowersName: string;
     socialSecurityNumber: string | undefined;
     homePhone: string | undefined;
@@ -3655,18 +4130,165 @@ export interface IBorrowerInformation {
     formerAddressType: string | undefined;
     formerAddressNoOfYears: number | undefined;
     borrowerTypeId: number | undefined;
-    borrowerType: BorrowerType;
     tenantId: number | undefined;
-    borrowerLoanApplication: LoanApplication[] | undefined;
-    coBorrowerLoanApplication: LoanApplication[] | undefined;
-    isDeleted: boolean;
-    deleterUserId: number | undefined;
-    deletionTime: moment.Moment | undefined;
-    lastModificationTime: moment.Moment | undefined;
-    lastModifierUserId: number | undefined;
-    creationTime: moment.Moment;
-    creatorUserId: number | undefined;
+}
+
+export class BorrowerInformationDtoPagedResultDto implements IBorrowerInformationDtoPagedResultDto {
+    items: BorrowerInformationDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: IBorrowerInformationDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(BorrowerInformationDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): BorrowerInformationDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new BorrowerInformationDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data; 
+    }
+
+    clone(): BorrowerInformationDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new BorrowerInformationDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IBorrowerInformationDtoPagedResultDto {
+    items: BorrowerInformationDto[] | undefined;
+    totalCount: number;
+}
+
+export class CreateOrUpdateBorrowerInformationDto implements ICreateOrUpdateBorrowerInformationDto {
     id: number;
+    borrowersName: string;
+    socialSecurityNumber: string | undefined;
+    homePhone: string | undefined;
+    dob: moment.Moment;
+    yearsSchool: number | undefined;
+    marital: string | undefined;
+    presentAddress: string | undefined;
+    presentAddressType: string | undefined;
+    presentAddressNoOfYears: number | undefined;
+    mailingAddress: string | undefined;
+    formerAddressModel: string | undefined;
+    formerAddressType: string | undefined;
+    formerAddressNoOfYears: number | undefined;
+    borrowerTypeId: number | undefined;
+    tenantId: number | undefined;
+
+    constructor(data?: ICreateOrUpdateBorrowerInformationDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.borrowersName = _data["borrowersName"];
+            this.socialSecurityNumber = _data["socialSecurityNumber"];
+            this.homePhone = _data["homePhone"];
+            this.dob = _data["dob"] ? moment(_data["dob"].toString()) : <any>undefined;
+            this.yearsSchool = _data["yearsSchool"];
+            this.marital = _data["marital"];
+            this.presentAddress = _data["presentAddress"];
+            this.presentAddressType = _data["presentAddressType"];
+            this.presentAddressNoOfYears = _data["presentAddressNoOfYears"];
+            this.mailingAddress = _data["mailingAddress"];
+            this.formerAddressModel = _data["formerAddressModel"];
+            this.formerAddressType = _data["formerAddressType"];
+            this.formerAddressNoOfYears = _data["formerAddressNoOfYears"];
+            this.borrowerTypeId = _data["borrowerTypeId"];
+            this.tenantId = _data["tenantId"];
+        }
+    }
+
+    static fromJS(data: any): CreateOrUpdateBorrowerInformationDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CreateOrUpdateBorrowerInformationDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["borrowersName"] = this.borrowersName;
+        data["socialSecurityNumber"] = this.socialSecurityNumber;
+        data["homePhone"] = this.homePhone;
+        data["dob"] = this.dob ? this.dob.toISOString() : <any>undefined;
+        data["yearsSchool"] = this.yearsSchool;
+        data["marital"] = this.marital;
+        data["presentAddress"] = this.presentAddress;
+        data["presentAddressType"] = this.presentAddressType;
+        data["presentAddressNoOfYears"] = this.presentAddressNoOfYears;
+        data["mailingAddress"] = this.mailingAddress;
+        data["formerAddressModel"] = this.formerAddressModel;
+        data["formerAddressType"] = this.formerAddressType;
+        data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
+        data["borrowerTypeId"] = this.borrowerTypeId;
+        data["tenantId"] = this.tenantId;
+        return data; 
+    }
+
+    clone(): CreateOrUpdateBorrowerInformationDto {
+        const json = this.toJSON();
+        let result = new CreateOrUpdateBorrowerInformationDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface ICreateOrUpdateBorrowerInformationDto {
+    id: number;
+    borrowersName: string;
+    socialSecurityNumber: string | undefined;
+    homePhone: string | undefined;
+    dob: moment.Moment;
+    yearsSchool: number | undefined;
+    marital: string | undefined;
+    presentAddress: string | undefined;
+    presentAddressType: string | undefined;
+    presentAddressNoOfYears: number | undefined;
+    mailingAddress: string | undefined;
+    formerAddressModel: string | undefined;
+    formerAddressType: string | undefined;
+    formerAddressNoOfYears: number | undefined;
+    borrowerTypeId: number | undefined;
+    tenantId: number | undefined;
 }
 
 export class ChangeUiThemeInput implements IChangeUiThemeInput {
@@ -3713,6 +4335,7 @@ export interface IChangeUiThemeInput {
 }
 
 export class MortgageTypeDto implements IMortgageTypeDto {
+    id: number;
     type: string;
     typeExplain: string | undefined;
     appliedFor: string | undefined;
@@ -3723,7 +4346,6 @@ export class MortgageTypeDto implements IMortgageTypeDto {
     numberOfMonths: number | undefined;
     amortizationType: string | undefined;
     amortizationTypeExplain: string | undefined;
-    id: number;
 
     constructor(data?: IMortgageTypeDto) {
         if (data) {
@@ -3736,6 +4358,7 @@ export class MortgageTypeDto implements IMortgageTypeDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.type = _data["type"];
             this.typeExplain = _data["typeExplain"];
             this.appliedFor = _data["appliedFor"];
@@ -3746,7 +4369,6 @@ export class MortgageTypeDto implements IMortgageTypeDto {
             this.numberOfMonths = _data["numberOfMonths"];
             this.amortizationType = _data["amortizationType"];
             this.amortizationTypeExplain = _data["amortizationTypeExplain"];
-            this.id = _data["id"];
         }
     }
 
@@ -3759,6 +4381,7 @@ export class MortgageTypeDto implements IMortgageTypeDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["type"] = this.type;
         data["typeExplain"] = this.typeExplain;
         data["appliedFor"] = this.appliedFor;
@@ -3769,7 +4392,6 @@ export class MortgageTypeDto implements IMortgageTypeDto {
         data["numberOfMonths"] = this.numberOfMonths;
         data["amortizationType"] = this.amortizationType;
         data["amortizationTypeExplain"] = this.amortizationTypeExplain;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3782,6 +4404,7 @@ export class MortgageTypeDto implements IMortgageTypeDto {
 }
 
 export interface IMortgageTypeDto {
+    id: number;
     type: string;
     typeExplain: string | undefined;
     appliedFor: string | undefined;
@@ -3792,10 +4415,10 @@ export interface IMortgageTypeDto {
     numberOfMonths: number | undefined;
     amortizationType: string | undefined;
     amortizationTypeExplain: string | undefined;
-    id: number;
 }
 
 export class PropertyInformationDto implements IPropertyInformationDto {
+    id: number;
     address: string;
     numberOfUnits: string | undefined;
     legalDescription: string | undefined;
@@ -3818,7 +4441,6 @@ export class PropertyInformationDto implements IPropertyInformationDto {
     titleHeldManner: string | undefined;
     sourceOfPayment: string | undefined;
     estateHeldIn: string | undefined;
-    id: number;
 
     constructor(data?: IPropertyInformationDto) {
         if (data) {
@@ -3831,6 +4453,7 @@ export class PropertyInformationDto implements IPropertyInformationDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.address = _data["address"];
             this.numberOfUnits = _data["numberOfUnits"];
             this.legalDescription = _data["legalDescription"];
@@ -3853,7 +4476,6 @@ export class PropertyInformationDto implements IPropertyInformationDto {
             this.titleHeldManner = _data["titleHeldManner"];
             this.sourceOfPayment = _data["sourceOfPayment"];
             this.estateHeldIn = _data["estateHeldIn"];
-            this.id = _data["id"];
         }
     }
 
@@ -3866,6 +4488,7 @@ export class PropertyInformationDto implements IPropertyInformationDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["address"] = this.address;
         data["numberOfUnits"] = this.numberOfUnits;
         data["legalDescription"] = this.legalDescription;
@@ -3888,7 +4511,6 @@ export class PropertyInformationDto implements IPropertyInformationDto {
         data["titleHeldManner"] = this.titleHeldManner;
         data["sourceOfPayment"] = this.sourceOfPayment;
         data["estateHeldIn"] = this.estateHeldIn;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3901,6 +4523,7 @@ export class PropertyInformationDto implements IPropertyInformationDto {
 }
 
 export interface IPropertyInformationDto {
+    id: number;
     address: string;
     numberOfUnits: string | undefined;
     legalDescription: string | undefined;
@@ -3923,13 +4546,12 @@ export interface IPropertyInformationDto {
     titleHeldManner: string | undefined;
     sourceOfPayment: string | undefined;
     estateHeldIn: string | undefined;
-    id: number;
 }
 
 export class LoanApplicationDto implements ILoanApplicationDto {
+    id: number;
     mortgageType: MortgageTypeDto;
     propertyInformation: PropertyInformationDto;
-    id: number;
 
     constructor(data?: ILoanApplicationDto) {
         if (data) {
@@ -3946,9 +4568,9 @@ export class LoanApplicationDto implements ILoanApplicationDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.mortgageType = _data["mortgageType"] ? MortgageTypeDto.fromJS(_data["mortgageType"]) : new MortgageTypeDto();
             this.propertyInformation = _data["propertyInformation"] ? PropertyInformationDto.fromJS(_data["propertyInformation"]) : new PropertyInformationDto();
-            this.id = _data["id"];
         }
     }
 
@@ -3961,9 +4583,9 @@ export class LoanApplicationDto implements ILoanApplicationDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["mortgageType"] = this.mortgageType ? this.mortgageType.toJSON() : <any>undefined;
         data["propertyInformation"] = this.propertyInformation ? this.propertyInformation.toJSON() : <any>undefined;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -3976,14 +4598,14 @@ export class LoanApplicationDto implements ILoanApplicationDto {
 }
 
 export interface ILoanApplicationDto {
+    id: number;
     mortgageType: MortgageTypeDto;
     propertyInformation: PropertyInformationDto;
-    id: number;
 }
 
 export class LoanApplicationDtoPagedResultDto implements ILoanApplicationDtoPagedResultDto {
-    totalCount: number;
     items: LoanApplicationDto[] | undefined;
+    totalCount: number;
 
     constructor(data?: ILoanApplicationDtoPagedResultDto) {
         if (data) {
@@ -3996,12 +4618,12 @@ export class LoanApplicationDtoPagedResultDto implements ILoanApplicationDtoPage
 
     init(_data?: any) {
         if (_data) {
-            this.totalCount = _data["totalCount"];
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
                     this.items.push(LoanApplicationDto.fromJS(item));
             }
+            this.totalCount = _data["totalCount"];
         }
     }
 
@@ -4014,12 +4636,12 @@ export class LoanApplicationDtoPagedResultDto implements ILoanApplicationDtoPage
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
+        data["totalCount"] = this.totalCount;
         return data; 
     }
 
@@ -4032,8 +4654,8 @@ export class LoanApplicationDtoPagedResultDto implements ILoanApplicationDtoPage
 }
 
 export interface ILoanApplicationDtoPagedResultDto {
-    totalCount: number;
     items: LoanApplicationDto[] | undefined;
+    totalCount: number;
 }
 
 export class CreateRoleDto implements ICreateRoleDto {
@@ -4104,12 +4726,12 @@ export interface ICreateRoleDto {
 }
 
 export class RoleDto implements IRoleDto {
+    id: number;
     name: string;
     displayName: string;
     normalizedName: string | undefined;
     description: string | undefined;
     grantedPermissions: string[] | undefined;
-    id: number;
 
     constructor(data?: IRoleDto) {
         if (data) {
@@ -4122,6 +4744,7 @@ export class RoleDto implements IRoleDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.name = _data["name"];
             this.displayName = _data["displayName"];
             this.normalizedName = _data["normalizedName"];
@@ -4131,7 +4754,6 @@ export class RoleDto implements IRoleDto {
                 for (let item of _data["grantedPermissions"])
                     this.grantedPermissions.push(item);
             }
-            this.id = _data["id"];
         }
     }
 
@@ -4144,6 +4766,7 @@ export class RoleDto implements IRoleDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["normalizedName"] = this.normalizedName;
@@ -4153,7 +4776,6 @@ export class RoleDto implements IRoleDto {
             for (let item of this.grantedPermissions)
                 data["grantedPermissions"].push(item);
         }
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4166,21 +4788,21 @@ export class RoleDto implements IRoleDto {
 }
 
 export interface IRoleDto {
+    id: number;
     name: string;
     displayName: string;
     normalizedName: string | undefined;
     description: string | undefined;
     grantedPermissions: string[] | undefined;
-    id: number;
 }
 
 export class RoleListDto implements IRoleListDto {
+    id: number;
     name: string | undefined;
     displayName: string | undefined;
     isStatic: boolean;
     isDefault: boolean;
     creationTime: moment.Moment;
-    id: number;
 
     constructor(data?: IRoleListDto) {
         if (data) {
@@ -4193,12 +4815,12 @@ export class RoleListDto implements IRoleListDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.name = _data["name"];
             this.displayName = _data["displayName"];
             this.isStatic = _data["isStatic"];
             this.isDefault = _data["isDefault"];
             this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
-            this.id = _data["id"];
         }
     }
 
@@ -4211,12 +4833,12 @@ export class RoleListDto implements IRoleListDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["isStatic"] = this.isStatic;
         data["isDefault"] = this.isDefault;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4229,12 +4851,12 @@ export class RoleListDto implements IRoleListDto {
 }
 
 export interface IRoleListDto {
+    id: number;
     name: string | undefined;
     displayName: string | undefined;
     isStatic: boolean;
     isDefault: boolean;
     creationTime: moment.Moment;
-    id: number;
 }
 
 export class RoleListDtoListResultDto implements IRoleListDtoListResultDto {
@@ -4289,10 +4911,10 @@ export interface IRoleListDtoListResultDto {
 }
 
 export class PermissionDto implements IPermissionDto {
+    id: number;
     name: string | undefined;
     displayName: string | undefined;
     description: string | undefined;
-    id: number;
 
     constructor(data?: IPermissionDto) {
         if (data) {
@@ -4305,10 +4927,10 @@ export class PermissionDto implements IPermissionDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.name = _data["name"];
             this.displayName = _data["displayName"];
             this.description = _data["description"];
-            this.id = _data["id"];
         }
     }
 
@@ -4321,10 +4943,10 @@ export class PermissionDto implements IPermissionDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["description"] = this.description;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4337,10 +4959,10 @@ export class PermissionDto implements IPermissionDto {
 }
 
 export interface IPermissionDto {
+    id: number;
     name: string | undefined;
     displayName: string | undefined;
     description: string | undefined;
-    id: number;
 }
 
 export class PermissionDtoListResultDto implements IPermissionDtoListResultDto {
@@ -4395,11 +5017,11 @@ export interface IPermissionDtoListResultDto {
 }
 
 export class RoleEditDto implements IRoleEditDto {
+    id: number;
     name: string;
     displayName: string;
     description: string | undefined;
     isStatic: boolean;
-    id: number;
 
     constructor(data?: IRoleEditDto) {
         if (data) {
@@ -4412,11 +5034,11 @@ export class RoleEditDto implements IRoleEditDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.name = _data["name"];
             this.displayName = _data["displayName"];
             this.description = _data["description"];
             this.isStatic = _data["isStatic"];
-            this.id = _data["id"];
         }
     }
 
@@ -4429,11 +5051,11 @@ export class RoleEditDto implements IRoleEditDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["description"] = this.description;
         data["isStatic"] = this.isStatic;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4446,11 +5068,11 @@ export class RoleEditDto implements IRoleEditDto {
 }
 
 export interface IRoleEditDto {
+    id: number;
     name: string;
     displayName: string;
     description: string | undefined;
     isStatic: boolean;
-    id: number;
 }
 
 export class FlatPermissionDto implements IFlatPermissionDto {
@@ -4572,8 +5194,8 @@ export interface IGetRoleForEditOutput {
 }
 
 export class RoleDtoPagedResultDto implements IRoleDtoPagedResultDto {
-    totalCount: number;
     items: RoleDto[] | undefined;
+    totalCount: number;
 
     constructor(data?: IRoleDtoPagedResultDto) {
         if (data) {
@@ -4586,12 +5208,12 @@ export class RoleDtoPagedResultDto implements IRoleDtoPagedResultDto {
 
     init(_data?: any) {
         if (_data) {
-            this.totalCount = _data["totalCount"];
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
                     this.items.push(RoleDto.fromJS(item));
             }
+            this.totalCount = _data["totalCount"];
         }
     }
 
@@ -4604,12 +5226,12 @@ export class RoleDtoPagedResultDto implements IRoleDtoPagedResultDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
+        data["totalCount"] = this.totalCount;
         return data; 
     }
 
@@ -4622,8 +5244,8 @@ export class RoleDtoPagedResultDto implements IRoleDtoPagedResultDto {
 }
 
 export interface IRoleDtoPagedResultDto {
-    totalCount: number;
     items: RoleDto[] | undefined;
+    totalCount: number;
 }
 
 export class ApplicationInfoDto implements IApplicationInfoDto {
@@ -4690,11 +5312,11 @@ export interface IApplicationInfoDto {
 }
 
 export class UserLoginInfoDto implements IUserLoginInfoDto {
+    id: number;
     name: string | undefined;
     surname: string | undefined;
     userName: string | undefined;
     emailAddress: string | undefined;
-    id: number;
 
     constructor(data?: IUserLoginInfoDto) {
         if (data) {
@@ -4707,11 +5329,11 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.name = _data["name"];
             this.surname = _data["surname"];
             this.userName = _data["userName"];
             this.emailAddress = _data["emailAddress"];
-            this.id = _data["id"];
         }
     }
 
@@ -4724,11 +5346,11 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["surname"] = this.surname;
         data["userName"] = this.userName;
         data["emailAddress"] = this.emailAddress;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4741,17 +5363,17 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
 }
 
 export interface IUserLoginInfoDto {
+    id: number;
     name: string | undefined;
     surname: string | undefined;
     userName: string | undefined;
     emailAddress: string | undefined;
-    id: number;
 }
 
 export class TenantLoginInfoDto implements ITenantLoginInfoDto {
+    id: number;
     tenancyName: string | undefined;
     name: string | undefined;
-    id: number;
 
     constructor(data?: ITenantLoginInfoDto) {
         if (data) {
@@ -4764,9 +5386,9 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.tenancyName = _data["tenancyName"];
             this.name = _data["name"];
-            this.id = _data["id"];
         }
     }
 
@@ -4779,9 +5401,9 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["tenancyName"] = this.tenancyName;
         data["name"] = this.name;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4794,9 +5416,9 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
 }
 
 export interface ITenantLoginInfoDto {
+    id: number;
     tenancyName: string | undefined;
     name: string | undefined;
-    id: number;
 }
 
 export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInformationsOutput {
@@ -4910,10 +5532,10 @@ export interface ICreateTenantDto {
 }
 
 export class TenantDto implements ITenantDto {
+    id: number;
     tenancyName: string;
     name: string;
     isActive: boolean;
-    id: number;
 
     constructor(data?: ITenantDto) {
         if (data) {
@@ -4926,10 +5548,10 @@ export class TenantDto implements ITenantDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.tenancyName = _data["tenancyName"];
             this.name = _data["name"];
             this.isActive = _data["isActive"];
-            this.id = _data["id"];
         }
     }
 
@@ -4942,10 +5564,10 @@ export class TenantDto implements ITenantDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["tenancyName"] = this.tenancyName;
         data["name"] = this.name;
         data["isActive"] = this.isActive;
-        data["id"] = this.id;
         return data; 
     }
 
@@ -4958,15 +5580,15 @@ export class TenantDto implements ITenantDto {
 }
 
 export interface ITenantDto {
+    id: number;
     tenancyName: string;
     name: string;
     isActive: boolean;
-    id: number;
 }
 
 export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
-    totalCount: number;
     items: TenantDto[] | undefined;
+    totalCount: number;
 
     constructor(data?: ITenantDtoPagedResultDto) {
         if (data) {
@@ -4979,12 +5601,12 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
 
     init(_data?: any) {
         if (_data) {
-            this.totalCount = _data["totalCount"];
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
                     this.items.push(TenantDto.fromJS(item));
             }
+            this.totalCount = _data["totalCount"];
         }
     }
 
@@ -4997,12 +5619,12 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
+        data["totalCount"] = this.totalCount;
         return data; 
     }
 
@@ -5015,8 +5637,8 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
 }
 
 export interface ITenantDtoPagedResultDto {
-    totalCount: number;
     items: TenantDto[] | undefined;
+    totalCount: number;
 }
 
 export class AuthenticateModel implements IAuthenticateModel {
@@ -5354,6 +5976,7 @@ export interface ICreateUserDto {
 }
 
 export class UserDto implements IUserDto {
+    id: number;
     userName: string;
     name: string;
     surname: string;
@@ -5363,7 +5986,6 @@ export class UserDto implements IUserDto {
     lastLoginTime: moment.Moment | undefined;
     creationTime: moment.Moment;
     roleNames: string[] | undefined;
-    id: number;
 
     constructor(data?: IUserDto) {
         if (data) {
@@ -5376,6 +5998,7 @@ export class UserDto implements IUserDto {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.userName = _data["userName"];
             this.name = _data["name"];
             this.surname = _data["surname"];
@@ -5389,7 +6012,6 @@ export class UserDto implements IUserDto {
                 for (let item of _data["roleNames"])
                     this.roleNames.push(item);
             }
-            this.id = _data["id"];
         }
     }
 
@@ -5402,6 +6024,7 @@ export class UserDto implements IUserDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["userName"] = this.userName;
         data["name"] = this.name;
         data["surname"] = this.surname;
@@ -5415,7 +6038,6 @@ export class UserDto implements IUserDto {
             for (let item of this.roleNames)
                 data["roleNames"].push(item);
         }
-        data["id"] = this.id;
         return data; 
     }
 
@@ -5428,6 +6050,7 @@ export class UserDto implements IUserDto {
 }
 
 export interface IUserDto {
+    id: number;
     userName: string;
     name: string;
     surname: string;
@@ -5437,7 +6060,6 @@ export interface IUserDto {
     lastLoginTime: moment.Moment | undefined;
     creationTime: moment.Moment;
     roleNames: string[] | undefined;
-    id: number;
 }
 
 export class RoleDtoListResultDto implements IRoleDtoListResultDto {
@@ -5633,8 +6255,8 @@ export interface IResetPasswordDto {
 }
 
 export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
-    totalCount: number;
     items: UserDto[] | undefined;
+    totalCount: number;
 
     constructor(data?: IUserDtoPagedResultDto) {
         if (data) {
@@ -5647,12 +6269,12 @@ export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
 
     init(_data?: any) {
         if (_data) {
-            this.totalCount = _data["totalCount"];
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
                     this.items.push(UserDto.fromJS(item));
             }
+            this.totalCount = _data["totalCount"];
         }
     }
 
@@ -5665,12 +6287,12 @@ export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
+        data["totalCount"] = this.totalCount;
         return data; 
     }
 
@@ -5683,8 +6305,8 @@ export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
 }
 
 export interface IUserDtoPagedResultDto {
-    totalCount: number;
     items: UserDto[] | undefined;
+    totalCount: number;
 }
 
 export class ApiException extends Error {
