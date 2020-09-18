@@ -12,6 +12,8 @@ namespace LoanManagement.Profiles
             CreateMap<LoanApplicationDto, LoanApplication>();
             CreateMap<MortgageTypeDto, MortgageType>();
             CreateMap<PropertyInformationDto, PropertyInformation>();
+            CreateMap<BorrowerInformationDto, BorrowerInformation>();
+            CreateMap<BorrowerEmploymentInformationDto, BorrowerEmploymentInformation>();
         }
     }
 }

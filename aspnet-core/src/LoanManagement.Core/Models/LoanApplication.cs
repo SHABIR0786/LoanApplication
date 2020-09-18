@@ -24,12 +24,23 @@ namespace LoanManagement.Models
         public long? CoBorrowerInfoId { get; set; }
         public virtual BorrowerInformation CoBorrowerInfo { get; set; }
 
-        public long? BorrowerEmploymentInfoId { get; set; }
-        public virtual BorrowerEmploymentInformation BorrowerEmploymentInfo { get; set; }
+        public long? BorrowerEmploymentInfoId1 { get; set; }
+        public virtual BorrowerEmploymentInformation BorrowerEmploymentInfo1 { get; set; }
 
-        public long? CoBorrowerEmploymentInfoId { get; set; }
-        public virtual BorrowerEmploymentInformation CoBorrowerEmploymentInfo { get; set; }
+        public long? BorrowerEmploymentInfoId2 { get; set; }
+        public virtual BorrowerEmploymentInformation BorrowerEmploymentInfo2 { get; set; }
 
+        public long? BorrowerEmploymentInfoId3 { get; set; }
+        public virtual BorrowerEmploymentInformation BorrowerEmploymentInfo3 { get; set; }
+
+        public long? CoBorrowerEmploymentInfoId1 { get; set; }
+        public virtual BorrowerEmploymentInformation CoBorrowerEmploymentInfo1 { get; set; }
+
+        public long? CoBorrowerEmploymentInfoId2 { get; set; }
+        public virtual BorrowerEmploymentInformation CoBorrowerEmploymentInfo2 { get; set; }
+
+        public long? CoBorrowerEmploymentInfoId3 { get; set; }
+        public virtual BorrowerEmploymentInformation CoBorrowerEmploymentInfo3 { get; set; }
 
         public int? TenantId { get; set; }
     }

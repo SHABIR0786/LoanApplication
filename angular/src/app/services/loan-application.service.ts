@@ -8,6 +8,6 @@ import {HttpClient} from '@angular/common/http';
 export class LoanApplicationService extends BaseService {
 
     constructor(http: HttpClient) {
-        super(http, 'loan');
+        super(http, 'Loan');
     }
 }
