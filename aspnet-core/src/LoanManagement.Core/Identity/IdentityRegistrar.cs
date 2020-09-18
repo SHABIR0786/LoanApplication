@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using LoanManagement.Authorization;
+﻿using LoanManagement.Authorization;
 using LoanManagement.Authorization.Roles;
 using LoanManagement.Authorization.Users;
 using LoanManagement.Editions;
 using LoanManagement.MultiTenancy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LoanManagement.Identity
 {

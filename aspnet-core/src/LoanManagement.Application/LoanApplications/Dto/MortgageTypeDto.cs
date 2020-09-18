@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Abp.Application.Services.Dto;
 
 namespace LoanManagement.LoanApplications.Dto
 {
     public class MortgageTypeDto : EntityDto<int>
     {
-        [Required] public string Type { get; set; }
+        [Required]
+        public string Type { get; set; }
         public string TypeExplain { get; set; }
         public string AppliedFor { get; set; }
         public string AgencyCaseNumber { get; set; }

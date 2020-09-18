@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LoanManagement.Configuration;
+using LoanManagement.Web;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using LoanManagement.Configuration;
-using LoanManagement.Web;
 
 namespace LoanManagement.EntityFrameworkCore
 {

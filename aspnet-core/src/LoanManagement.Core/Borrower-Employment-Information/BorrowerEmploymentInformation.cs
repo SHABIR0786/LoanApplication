@@ -1,19 +1,20 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
-using LoanManagement.BorrowerTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace LoanManagement.Borrower_Information
 {
     public class BorrowerEmploymentInformation : FullAuditedEntity<long>, IMayHaveTenant
     {
-        [Required] [StringLength(100)] public string EmployersName1 { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string EmployersName1 { get; set; }
 
-        [StringLength(100)] public string EmployersAddress1 { get; set; }
+        [StringLength(100)]
+        public string EmployersAddress1 { get; set; }
         public Boolean IsSelfEmployer1 { get; set; }
         public int? YearOnThisJob1 { get; set; }
         public int? YearInThisLineOfWork1 { get; set; }
@@ -34,15 +35,15 @@ namespace LoanManagement.Borrower_Information
         //Employer 3
         public string EmployersName3 { get; set; }
 
-        [StringLength(100)] public string EmployersAddress3 { get; set; }
+        [StringLength(100)]
+        public string EmployersAddress3 { get; set; }
         public Boolean IsSelfEmployer3 { get; set; }
         public DateTime DateFromTo3 { get; set; }
         public Decimal? MonthlyIncome3 { get; set; }
         public string Position3 { get; set; }
         public string BusinessPhone3 { get; set; }
-        public long? BorrowerTypeId { get; set; }
-        [ForeignKey("BorrowerTypeId")]
-        public BorrowerType BorrowerType { get; set; }
+        public string BorrowerType { get; set; }
+
         public int? TenantId { get; set; }
         public virtual ICollection<LoanApplication> BorrowerLoanApplication { get; set; }
         public virtual ICollection<LoanApplication> CoBorrowerLoanApplication { get; set; }

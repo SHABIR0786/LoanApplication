@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using LoanManagement.Roles.Dto;
 using LoanManagement.Users.Dto;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Users
 {

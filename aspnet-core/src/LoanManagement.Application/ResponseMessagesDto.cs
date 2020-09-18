@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LoanManagement
+﻿namespace LoanManagement
 {
     public class ResponseMessagesDto
     {

@@ -6,7 +6,7 @@ using LoanManagement.Authorization;
 namespace LoanManagement
 {
     [DependsOn(
-        typeof(LoanManagementCoreModule), 
+        typeof(LoanManagementCoreModule),
         typeof(AbpAutoMapperModule))]
     public class LoanManagementApplicationModule : AbpModule
     {

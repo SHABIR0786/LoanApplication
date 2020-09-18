@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Abp.Application.Services.Dto;
 
 namespace LoanManagement.LoanApplications.Dto
 {

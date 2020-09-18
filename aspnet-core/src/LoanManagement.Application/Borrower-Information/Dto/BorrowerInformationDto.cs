@@ -1,6 +1,6 @@
+using Abp.Application.Services.Dto;
 using System;
 using System.ComponentModel.DataAnnotations;
-using Abp.Application.Services.Dto;
 
 namespace LoanManagement.BorrowerInformations
 {
@@ -9,7 +9,7 @@ namespace LoanManagement.BorrowerInformations
         [Required]
         [StringLength(100)]
         public string BorrowersName { get; set; }
-        [StringLength(100)] 
+        [StringLength(100)]
         public string SocialSecurityNumber { get; set; }
         public string HomePhone { get; set; }
         public DateTime DOB { get; set; }
@@ -25,7 +25,7 @@ namespace LoanManagement.BorrowerInformations
         public string FormerAddressType { get; set; }
         public int? FormerAddressNoOfYears { get; set; }
 
-        public long? BorrowerTypeId { get; set; }
+        public string BorrowerType { get; set; }
 
         public int? TenantId { get; set; }
     }

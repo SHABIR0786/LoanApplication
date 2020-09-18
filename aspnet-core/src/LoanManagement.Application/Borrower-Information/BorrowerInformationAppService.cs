@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp;
+﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LoanManagement.BorrowerInformations
 {
@@ -27,7 +27,7 @@ namespace LoanManagement.BorrowerInformations
                  {
                      Id = i.Id,
                      BorrowersName = i.BorrowersName,
-                     BorrowerTypeId = i.BorrowerTypeId,
+                     BorrowerType = i.BorrowerType,
                      PresentAddress = i.PresentAddress
                  })
                  .FirstOrDefaultAsync();
@@ -93,7 +93,7 @@ namespace LoanManagement.BorrowerInformations
                 FormerAddressModel = input.FormerAddressModel,
                 FormerAddressType = input.FormerAddressType,
                 FormerAddressNoOfYears = input.FormerAddressNoOfYears,
-                BorrowerTypeId = input.BorrowerTypeId,
+                BorrowerType = input.BorrowerType,
                 TenantId = input.TenantId
             });
 

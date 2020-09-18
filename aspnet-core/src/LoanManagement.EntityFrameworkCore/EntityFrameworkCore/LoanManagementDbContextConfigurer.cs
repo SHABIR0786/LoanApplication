@@ -1,10 +1,9 @@
-using System;
-using System.Data.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Pomelo.EntityFrameworkCore.MySql.Storage;
+using System;
+using System.Data.Common;
 
 namespace LoanManagement.EntityFrameworkCore
 {
@@ -21,7 +20,7 @@ namespace LoanManagement.EntityFrameworkCore
                 //    errorNumbersToAdd: null);
             });
 
-            if(webHostEnvironment == null || webHostEnvironment.IsDevelopment())
+            if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
             {
                 builder.EnableSensitiveDataLogging();
                 builder.EnableDetailedErrors();

@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using LoanManagement.Authorization.Accounts.Dto;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Authorization.Accounts
 {

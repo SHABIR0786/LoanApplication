@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Abp.Authorization.Roles;
+﻿using Abp.Authorization.Roles;
 using LoanManagement.Authorization.Users;
+using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.Authorization.Roles
 {
@@ -23,6 +23,6 @@ namespace LoanManagement.Authorization.Roles
         }
 
         [StringLength(MaxDescriptionLength)]
-        public string Description {get; set;}
+        public string Description { get; set; }
     }
 }

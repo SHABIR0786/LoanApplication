@@ -1,9 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using Abp.Auditing;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using LoanManagement.Authorization.Users;
+using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.Users.Dto
 {

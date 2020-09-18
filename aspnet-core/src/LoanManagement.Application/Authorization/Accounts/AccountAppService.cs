@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using Abp.Configuration;
 using Abp.Zero.Configuration;
 using LoanManagement.Authorization.Accounts.Dto;
 using LoanManagement.Authorization.Users;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Authorization.Accounts
 {

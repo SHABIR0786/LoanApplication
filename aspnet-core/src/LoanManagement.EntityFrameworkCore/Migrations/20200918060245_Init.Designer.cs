@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20200917203246_step6AssestAndLiablities")]
-    partial class step6AssestAndLiablities
+    [Migration("20200918060245_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1947,22 +1947,99 @@ namespace LoanManagement.Migrations
                     b.ToTable("BorrowerEmploymentInformation");
                 });
 
+            modelBuilder.Entity("LoanManagement.DetailsOfTransactions.DetailsOfTransaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("Alterations")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("BorrowersClosingCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("CashFrom")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal?>("Discount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("EstimatedClosingCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("EstimatedPreparedItem")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("FundingFee")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<decimal?>("Land")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("LoanAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("OtherCredits")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("PurchasePrice")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("Refinance")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("SubOrdinateFinancing")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DetailsOfTransactions");
+                });
+
             modelBuilder.Entity("LoanManagement.LoanApplication", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long>("BorrowerEmploymentInfoId")
+                    b.Property<long?>("BorrowerEmploymentInfoId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("BorrowerInfoId")
+                    b.Property<long?>("BorrowerInfoId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CoBorrowerEmploymentInfoId")
+                    b.Property<long?>("CoBorrowerEmploymentInfoId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CoBorrowerInfoId")
+                    b.Property<long?>("CoBorrowerInfoId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreationTime")
@@ -1986,10 +2063,10 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("MortgageTypeId")
+                    b.Property<long?>("MortgageTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("PropertyInfoId")
+                    b.Property<long?>("PropertyInfoId")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("TenantId")
@@ -2455,38 +2532,30 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", "BorrowerEmploymentInfo")
                         .WithMany("BorrowerLoanApplication")
                         .HasForeignKey("BorrowerEmploymentInfoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LoanManagement.BorrowerInformation", "BorrowerInfo")
                         .WithMany("BorrowerLoanApplication")
                         .HasForeignKey("BorrowerInfoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo")
                         .WithMany("CoBorrowerLoanApplication")
                         .HasForeignKey("CoBorrowerEmploymentInfoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LoanManagement.BorrowerInformation", "CoBorrowerInfo")
                         .WithMany("CoBorrowerLoanApplication")
                         .HasForeignKey("CoBorrowerInfoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LoanManagement.MortgageType", "MortgageType")
                         .WithOne("LoanApplication")
-                        .HasForeignKey("LoanManagement.LoanApplication", "MortgageTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LoanManagement.LoanApplication", "MortgageTypeId");
 
                     b.HasOne("LoanManagement.Property_Information.PropertyInformation", "PropertyInfo")
                         .WithOne("LoanApplication")
-                        .HasForeignKey("LoanManagement.LoanApplication", "PropertyInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LoanManagement.LoanApplication", "PropertyInfoId");
                 });
 
             modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>

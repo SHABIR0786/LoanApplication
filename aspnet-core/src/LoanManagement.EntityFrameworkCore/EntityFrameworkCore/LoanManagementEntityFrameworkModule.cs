@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace LoanManagement.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(LoanManagementCoreModule), 
+        typeof(LoanManagementCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class LoanManagementEntityFrameworkModule : AbpModule
     {

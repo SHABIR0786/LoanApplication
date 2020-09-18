@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Abp.Authorization;
+﻿using Abp.Authorization;
 using Abp.Runtime.Session;
 using LoanManagement.Configuration.Dto;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Configuration
 {
