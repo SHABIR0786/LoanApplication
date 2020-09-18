@@ -1,5 +1,4 @@
-﻿using LoanManagement.BorrowerEmploymentInformations;
-using LoanManagement.LoanApplications;
+﻿using LoanManagement.LoanApplications;
 using LoanManagement.LoanApplications.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,12 +8,10 @@ namespace LoanManagement.Controllers
     [Route("api/[controller]/[action]")]
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
-        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationAppService;
         private readonly ILoanAppService _loanAppService;
 
-        public UniformResidentialLoanController(IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService, ILoanAppService loanAppService)
+        public UniformResidentialLoanController(ILoanAppService loanAppService)
         {
-            _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
         }
 
@@ -31,16 +28,17 @@ namespace LoanManagement.Controllers
                 await _loanAppService.CreateAsync(input);
             }
 
-            if (input.BorrowerEmploymentInfromation != null)
-            {
-                responseMessage = await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
-                if (responseMessage.Error)
-                    return BadRequest(responseMessage);
-            }
+            return Json(await _loanAppService.UpdateAsync(input));
+        }
 
-            await _loanAppService.UpdateAsync(input);
 
-            return Json(responseMessage);
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] long id)
+        {
+            if (id == null)
+                return BadRequest(ModelState);
+
+            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long>(id)));
         }
     }
 }

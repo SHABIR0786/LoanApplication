@@ -18,17 +18,17 @@ export class LoanApplicationComponent implements OnInit {
 
     loanApplication: any = {
         mortgageType: {},
-        propertyInfo: {},
-        borrowerInformation: new CreateOrUpdateBorrowerInformationDto(),
-        coBorrowerInformation: new CreateOrUpdateBorrowerInformationDto(),
+        propertyInformation: {},
+        borrowerInformation: {},
+        coBorrowerInformation: {},
 
-        borrowerEmploymentInformation1: new CreateOrUpdateBorrowerEmploymentInformationDto(),
-        borrowerEmploymentInformation2: new CreateOrUpdateBorrowerEmploymentInformationDto(),
-        borrowerEmploymentInformation3: new CreateOrUpdateBorrowerEmploymentInformationDto(),
+        borrowerEmploymentInformation1: {},
+        borrowerEmploymentInformation2: {},
+        borrowerEmploymentInformation3: {},
 
-        coBorrowerEmploymentInformation1: new CreateOrUpdateBorrowerEmploymentInformationDto(),
-        coBorrowerEmploymentInformation2: new CreateOrUpdateBorrowerEmploymentInformationDto(),
-        coBorrowerEmploymentInformation3: new CreateOrUpdateBorrowerEmploymentInformationDto(),
+        coBorrowerEmploymentInformation1: {},
+        coBorrowerEmploymentInformation2: {},
+        coBorrowerEmploymentInformation3: {},
     };
 
     config: NgWizardConfig = {
@@ -39,7 +39,7 @@ export class LoanApplicationComponent implements OnInit {
                 {
                     text: 'Save', class: 'btn btn-info', event: () => {
                         console.log(this.loanApplication);
-                        this._loanApplicationService.post('', this.loanApplication).subscribe(response => {
+                        this._loanApplicationService.post('Create', this.loanApplication).subscribe(response => {
                             console.log(response);
                         }, error => {
                             console.log(error);

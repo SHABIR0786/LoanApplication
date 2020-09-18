@@ -90,7 +90,7 @@ export class BaseService {
     }
 
     private urlGenerator(route: string): string {
-        const baseURL = `${AppConsts.remoteServiceBaseUrl}/api`;
+        const baseURL = `${AppConsts.remoteServiceBaseUrl}/api/services/app`;
         return [baseURL, this.baseRoute, route].filter(obj => obj).join('/');
     }
 }
