@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.LoanApplications.Dto
 {
-    public class PropertyInformationDto : EntityDto<int>
+    public class PropertyInformationDto : EntityDto<long>
     {
-        [Required] public string Address { get; set; }
+        [Required]
+        public string Address { get; set; }
         public string NumberOfUnits { get; set; }
         public string LegalDescription { get; set; }
         public string YearBuilt { get; set; }
