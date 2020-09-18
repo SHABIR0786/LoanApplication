@@ -1,4 +1,4 @@
-﻿using LoanManagement.DatabaseServices.Interfaces;
+using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,7 +8,6 @@ namespace LoanManagement.Controllers
     [Route("api/[controller]/[action]")]
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
-        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationAppService;
         private readonly ILoanAppService _loanAppService;
         private readonly IMortageService _mortageService;
         private readonly IPropertyInformationService _propertyInformationService;
@@ -25,7 +24,6 @@ namespace LoanManagement.Controllers
             IAssetAndLiablityService assetAndLiablityService,
             IDetailOfTransactionService detailOfTransactionService)
         {
-            _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
             _mortageService = mortageService;
             _propertyInformationService = propertyInformationService;
@@ -88,6 +86,15 @@ namespace LoanManagement.Controllers
             await _loanAppService.UpdateAsync(input);
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] long id)
+        {
+            if (id == null)
+                return BadRequest(ModelState);
+
+            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long>(id)));
         }
     }
 }
