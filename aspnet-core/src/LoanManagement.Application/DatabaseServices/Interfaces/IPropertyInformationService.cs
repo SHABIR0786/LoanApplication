@@ -1,6 +1,6 @@
 ﻿using Abp.Application.Services;
 using LoanManagement.LoanApplications.Dto;
-using LoanManagement.Roles.Dto;
+using LoanManagement.ViewModels;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
