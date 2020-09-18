@@ -3,8 +3,8 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.LoanApplications.Dto;
-using LoanManagement.Property_Information;
-using LoanManagement.Roles.Dto;
+using LoanManagement.Models;
+using LoanManagement.ViewModels;
 using System;
 using System.Threading.Tasks;
 

@@ -1,7 +1,5 @@
-﻿using LoanManagement.BorrowerEmploymentInformations;
-using LoanManagement.DatabaseServices.Interfaces;
-using LoanManagement.LoanApplications;
-using LoanManagement.LoanApplications.Dto;
+﻿using LoanManagement.DatabaseServices.Interfaces;
+using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -14,17 +12,26 @@ namespace LoanManagement.Controllers
         private readonly ILoanAppService _loanAppService;
         private readonly IMortageService _mortageService;
         private readonly IPropertyInformationService _propertyInformationService;
+        private readonly IBorrowerInformationAppService _borrowerInformationAppService;
+        private readonly IAssetAndLiablityService _assetAndLiablityService;
+        private readonly IDetailOfTransactionService _detailOfTransactionService;
 
         public UniformResidentialLoanController(
             IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
             ILoanAppService loanAppService,
             IMortageService mortageService,
-            IPropertyInformationService propertyInformationService)
+            IPropertyInformationService propertyInformationService,
+            IBorrowerInformationAppService borrowerInformationAppService,
+            IAssetAndLiablityService assetAndLiablityService,
+            IDetailOfTransactionService detailOfTransactionService)
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
             _mortageService = mortageService;
-            propertyInformationService = _propertyInformationService;
+            _propertyInformationService = propertyInformationService;
+            _borrowerInformationAppService = borrowerInformationAppService;
+            _assetAndLiablityService = assetAndLiablityService;
+            _detailOfTransactionService = detailOfTransactionService;
         }
 
         [HttpPost]
@@ -47,11 +54,10 @@ namespace LoanManagement.Controllers
                     await _mortageService.UpdateAsync(input.MortgageType);
 
             if (input.BorrowerEmploymentInfromation != null)
-            {
-                responseMessage = await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
-                if (responseMessage.Error)
-                    return BadRequest(responseMessage);
-            }
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
+
+            if (input.BorrowerEmploymentInfromation != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
 
             if (input.PropertyInformation != null)
                 if (input.PropertyInformation.Id == default)
@@ -59,9 +65,29 @@ namespace LoanManagement.Controllers
                 else
                     await _propertyInformationService.UpdateAsync(input.PropertyInformation);
 
+            if (input.BorrowerInformation != null)
+                await _borrowerInformationAppService.CreateOrUpdateAsync(input.BorrowerInformation);
+
+            if (input.CoBorrowerInformation != null)
+                await _borrowerInformationAppService.CreateOrUpdateAsync(input.CoBorrowerInformation);
+
+            if (input.AssetAndLiablity != null)
+            {
+                if (input.AssetAndLiablity.Id == default)
+                    await _assetAndLiablityService.CreateAsync(input.AssetAndLiablity);
+                else
+                    await _assetAndLiablityService.UpdateAsync(input.AssetAndLiablity);
+            }
+
+            if (input.DetailsOfTransaction != null)
+                if (input.DetailsOfTransaction.Id == default)
+                    await _detailOfTransactionService.CreateAsync(input.DetailsOfTransaction);
+                else
+                    await _detailOfTransactionService.UpdateAsync(input.DetailsOfTransaction);
+
             await _loanAppService.UpdateAsync(input);
 
-            return Json(responseMessage);
+            return Ok();
         }
     }
 }
