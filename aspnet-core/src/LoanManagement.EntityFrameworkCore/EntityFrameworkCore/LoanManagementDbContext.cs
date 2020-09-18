@@ -2,10 +2,8 @@
 using LoanManagement.AssetAndLiablities;
 using LoanManagement.Authorization.Roles;
 using LoanManagement.Authorization.Users;
-using LoanManagement.Borrower_Information;
 using LoanManagement.DetailsOfTransactions;
 using LoanManagement.MultiTenancy;
-using LoanManagement.Property_Information;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoanManagement.EntityFrameworkCore
@@ -56,15 +54,39 @@ namespace LoanManagement.EntityFrameworkCore
                     .OnDelete(DeleteBehavior.Restrict);
 
                 loanApplication
-                    .HasOne(i => i.BorrowerEmploymentInfo)
-                    .WithMany(i => i.BorrowerLoanApplication)
-                    .HasForeignKey(i => i.BorrowerEmploymentInfoId)
+                    .HasOne(i => i.BorrowerEmploymentInfo1)
+                    .WithMany(i => i.BorrowerLoanApplication1)
+                    .HasForeignKey(i => i.BorrowerEmploymentInfoId1)
                     .OnDelete(DeleteBehavior.Restrict);
 
                 loanApplication
-                    .HasOne(i => i.CoBorrowerEmploymentInfo)
-                    .WithMany(i => i.CoBorrowerLoanApplication)
-                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId)
+                    .HasOne(i => i.BorrowerEmploymentInfo2)
+                    .WithMany(i => i.BorrowerLoanApplication2)
+                    .HasForeignKey(i => i.BorrowerEmploymentInfoId2)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                loanApplication
+                    .HasOne(i => i.BorrowerEmploymentInfo3)
+                    .WithMany(i => i.BorrowerLoanApplication3)
+                    .HasForeignKey(i => i.BorrowerEmploymentInfoId3)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                loanApplication
+                    .HasOne(i => i.CoBorrowerEmploymentInfo1)
+                    .WithMany(i => i.CoBorrowerLoanApplication1)
+                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId1)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                loanApplication
+                    .HasOne(i => i.CoBorrowerEmploymentInfo2)
+                    .WithMany(i => i.CoBorrowerLoanApplication2)
+                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId2)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                loanApplication
+                    .HasOne(i => i.CoBorrowerEmploymentInfo3)
+                    .WithMany(i => i.CoBorrowerLoanApplication3)
+                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId3)
                     .OnDelete(DeleteBehavior.Restrict);
             });
         }

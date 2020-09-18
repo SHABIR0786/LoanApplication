@@ -1,7 +1,7 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System.ComponentModel.DataAnnotations;
 
-namespace LoanManagement.Property_Information
+namespace LoanManagement
 {
     public class PropertyInformation : FullAuditedEntity<long>
     {

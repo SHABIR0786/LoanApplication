@@ -1,5 +1,4 @@
 using AutoMapper;
-using LoanManagement.Property_Information;
 
 namespace LoanManagement.LoanApplications.Dto
 {
@@ -10,6 +9,8 @@ namespace LoanManagement.LoanApplications.Dto
             CreateMap<LoanApplicationDto, LoanApplication>();
             CreateMap<MortgageTypeDto, MortgageType>();
             CreateMap<PropertyInformationDto, PropertyInformation>();
+            CreateMap<BorrowerInformationDto, BorrowerInformation>();
+            CreateMap<BorrowerEmploymentInformationDto, BorrowerEmploymentInformation>();
         }
     }
 }
