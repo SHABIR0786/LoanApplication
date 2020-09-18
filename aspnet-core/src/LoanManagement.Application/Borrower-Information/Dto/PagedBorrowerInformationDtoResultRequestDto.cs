@@ -4,8 +4,8 @@ namespace LoanManagement.BorrowerInformations
 {
     public class PagedBorrowerInformationDtoResultRequestDto : PagedResultRequestDto
     {
-         public string Keyword { get; set; }
-         public int? TenantId { get; set; }
+        public string Keyword { get; set; }
+        public int? TenantId { get; set; }
     }
 }
 

@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using LoanManagement.Sessions;
 using Shouldly;
+using System.Threading.Tasks;
 using Xunit;
-using LoanManagement.Sessions;
 
 namespace LoanManagement.Tests.Sessions
 {

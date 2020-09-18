@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -444,6 +444,93 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AssetAndLiablities",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    AssetsCompletion = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    CashOrMarketValue = table.Column<decimal>(nullable: true),
+                    CashDepositPurchaseHeldBy = table.Column<string>(nullable: true),
+                    NameOfBank1 = table.Column<string>(nullable: true),
+                    AddressOfBank1 = table.Column<string>(nullable: true),
+                    BankAccountNo1 = table.Column<string>(nullable: true),
+                    Amount1 = table.Column<decimal>(nullable: true),
+                    NameOfCompany1 = table.Column<string>(nullable: true),
+                    AddressOfCompany1 = table.Column<string>(nullable: true),
+                    CompanyAccountNo1 = table.Column<string>(nullable: true),
+                    PaymentMethod1 = table.Column<string>(nullable: true),
+                    UnpaidBalance1 = table.Column<decimal>(nullable: true),
+                    NameOfBank2 = table.Column<string>(nullable: true),
+                    AddressOfBank2 = table.Column<string>(nullable: true),
+                    BankAccountNo2 = table.Column<string>(nullable: true),
+                    BankAmount2 = table.Column<decimal>(nullable: true),
+                    NameOfCompany2 = table.Column<string>(nullable: true),
+                    AddressOfCompany2 = table.Column<string>(nullable: true),
+                    CompanyAccountNo2 = table.Column<string>(nullable: true),
+                    PaymentMethod2 = table.Column<string>(nullable: true),
+                    UnpaidBalance2 = table.Column<decimal>(nullable: false),
+                    NameOfBank3 = table.Column<string>(nullable: true),
+                    AddressOfBank3 = table.Column<string>(nullable: true),
+                    BankAccountNo3 = table.Column<string>(nullable: true),
+                    BankAmount3 = table.Column<decimal>(nullable: true),
+                    NameOfCompany3 = table.Column<string>(nullable: true),
+                    AddressOfCompany3 = table.Column<string>(nullable: true),
+                    CompanyAccountNo3 = table.Column<string>(nullable: true),
+                    PaymentMethod3 = table.Column<string>(nullable: true),
+                    UnpaidBalance3 = table.Column<decimal>(nullable: true),
+                    NameOfBank4 = table.Column<string>(nullable: true),
+                    AddressOfBank4 = table.Column<string>(nullable: true),
+                    BankAccountNo4 = table.Column<string>(nullable: true),
+                    BankAmount4 = table.Column<decimal>(nullable: true),
+                    NameOfCompany4 = table.Column<string>(nullable: true),
+                    AddressOfCompany4 = table.Column<string>(nullable: true),
+                    CompanyAccountNo4 = table.Column<string>(nullable: true),
+                    PaymentMethod4 = table.Column<string>(nullable: true),
+                    UnpaidBalance4 = table.Column<decimal>(nullable: true),
+                    NameOfCompany5 = table.Column<string>(nullable: true),
+                    AddressOfCompany5 = table.Column<string>(nullable: true),
+                    CompanyAccountNo5 = table.Column<string>(nullable: true),
+                    PaymentMethod5 = table.Column<string>(nullable: true),
+                    UnpaidBalance5 = table.Column<decimal>(nullable: false),
+                    NameOfCompany6 = table.Column<string>(nullable: true),
+                    AddressOfCompany6 = table.Column<string>(nullable: true),
+                    CompanyAccountNo6 = table.Column<string>(nullable: true),
+                    PaymentMethod6 = table.Column<string>(nullable: true),
+                    UnpaidBalance6 = table.Column<decimal>(nullable: true),
+                    StockBondCompanyDescription = table.Column<string>(nullable: true),
+                    LifeInsuranceNetCashValue = table.Column<decimal>(nullable: true),
+                    SubtotalLiquidAssets = table.Column<decimal>(nullable: true),
+                    RealEstateOwned = table.Column<decimal>(nullable: true),
+                    RetirementFund = table.Column<decimal>(nullable: true),
+                    NetworthOfBussiness = table.Column<decimal>(nullable: true),
+                    AutomobileOwned = table.Column<decimal>(nullable: true),
+                    OtherAssests = table.Column<decimal>(nullable: true),
+                    TotalAssests = table.Column<decimal>(nullable: true),
+                    SeparateMaintenancePaymentsOwedTo = table.Column<decimal>(nullable: true),
+                    JobRelatedExpense = table.Column<decimal>(nullable: true),
+                    TotalMoneyPayment = table.Column<decimal>(nullable: true),
+                    NetWorth = table.Column<decimal>(nullable: true),
+                    TotalLiablities = table.Column<decimal>(nullable: true),
+                    AlternateName = table.Column<string>(nullable: true),
+                    CreditorName = table.Column<string>(nullable: true),
+                    AccountName = table.Column<string>(nullable: true),
+                    TenantId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssetAndLiablities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BorrowerType",
                 columns: table => new
                 {
@@ -462,6 +549,40 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BorrowerType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DetailsOfTransactions",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    PurchasePrice = table.Column<decimal>(nullable: true),
+                    Alterations = table.Column<decimal>(nullable: true),
+                    Land = table.Column<decimal>(nullable: true),
+                    Refinance = table.Column<decimal>(nullable: true),
+                    EstimatedPreparedItem = table.Column<decimal>(nullable: true),
+                    EstimatedClosingCost = table.Column<decimal>(nullable: true),
+                    FundingFee = table.Column<decimal>(nullable: true),
+                    Discount = table.Column<decimal>(nullable: true),
+                    TotalCost = table.Column<decimal>(nullable: true),
+                    SubOrdinateFinancing = table.Column<decimal>(nullable: true),
+                    BorrowersClosingCost = table.Column<decimal>(nullable: true),
+                    OtherCredits = table.Column<decimal>(nullable: true),
+                    LoanAmount = table.Column<decimal>(nullable: true),
+                    CashFrom = table.Column<decimal>(nullable: true),
+                    TenantId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetailsOfTransactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1064,12 +1185,12 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    MortgageTypeId = table.Column<long>(nullable: false),
-                    PropertyInfoId = table.Column<long>(nullable: false),
-                    BorrowerInfoId = table.Column<long>(nullable: false),
-                    CoBorrowerInfoId = table.Column<long>(nullable: false),
-                    BorrowerEmploymentInfoId = table.Column<long>(nullable: false),
-                    CoBorrowerEmploymentInfoId = table.Column<long>(nullable: false),
+                    MortgageTypeId = table.Column<long>(nullable: true),
+                    PropertyInfoId = table.Column<long>(nullable: true),
+                    BorrowerInfoId = table.Column<long>(nullable: true),
+                    CoBorrowerInfoId = table.Column<long>(nullable: true),
+                    BorrowerEmploymentInfoId = table.Column<long>(nullable: true),
+                    CoBorrowerEmploymentInfoId = table.Column<long>(nullable: true),
                     TenantId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -1104,13 +1225,13 @@ namespace LoanManagement.Migrations
                         column: x => x.MortgageTypeId,
                         principalTable: "MortgageTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_LoanApplications_PropertyInformation_PropertyInfoId",
                         column: x => x.PropertyInfoId,
                         principalTable: "PropertyInformation",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -1581,6 +1702,12 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpWebhookSubscriptions");
+
+            migrationBuilder.DropTable(
+                name: "AssetAndLiablities");
+
+            migrationBuilder.DropTable(
+                name: "DetailsOfTransactions");
 
             migrationBuilder.DropTable(
                 name: "LoanApplications");

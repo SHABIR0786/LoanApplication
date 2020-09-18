@@ -1,11 +1,8 @@
 ﻿using Abp.Application.Services.Dto;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LoanManagement.DetailsOfTransaction.Dto
 {
-    public class CreateOrUpdateDetailsOfTransactionDto: EntityDto<long>
+    public class CreateOrUpdateDetailsOfTransactionDto : EntityDto<long>
     {
         public decimal? PurchasePrice { get; set; }
         public decimal? Alterations { get; set; }

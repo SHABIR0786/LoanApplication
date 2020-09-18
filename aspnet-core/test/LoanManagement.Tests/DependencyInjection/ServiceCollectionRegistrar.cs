@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Abp.Dependency;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor.MsDependencyInjection;
-using Abp.Dependency;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace LoanManagement.Tests.DependencyInjection
 {

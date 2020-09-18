@@ -1,12 +1,12 @@
-﻿using System;
-using System.Transactions;
-using Microsoft.EntityFrameworkCore;
-using Abp.Dependency;
+﻿using Abp.Dependency;
 using Abp.Domain.Uow;
 using Abp.EntityFrameworkCore.Uow;
 using Abp.MultiTenancy;
 using LoanManagement.EntityFrameworkCore.Seed.Host;
 using LoanManagement.EntityFrameworkCore.Seed.Tenants;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Transactions;
 
 namespace LoanManagement.EntityFrameworkCore.Seed
 {

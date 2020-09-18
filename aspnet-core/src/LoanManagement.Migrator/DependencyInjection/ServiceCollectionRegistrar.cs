@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Abp.Dependency;
 using Castle.Windsor.MsDependencyInjection;
-using Abp.Dependency;
 using LoanManagement.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LoanManagement.Migrator.DependencyInjection
 {

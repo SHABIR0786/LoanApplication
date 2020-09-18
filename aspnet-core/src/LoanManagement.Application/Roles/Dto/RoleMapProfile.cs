@@ -1,8 +1,8 @@
-using System.Linq;
-using AutoMapper;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
+using AutoMapper;
 using LoanManagement.Authorization.Roles;
+using System.Linq;
 
 namespace LoanManagement.Roles.Dto
 {

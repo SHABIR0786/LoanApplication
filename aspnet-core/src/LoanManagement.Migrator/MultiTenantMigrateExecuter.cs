@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using Abp.Data;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
@@ -11,6 +8,9 @@ using Abp.Runtime.Security;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.EntityFrameworkCore.Seed;
 using LoanManagement.MultiTenancy;
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace LoanManagement.Migrator
 {

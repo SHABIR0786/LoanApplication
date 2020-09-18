@@ -1,11 +1,10 @@
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Abp;
 using Abp.Extensions;
 using Abp.Notifications;
 using Abp.Timing;
-using Abp.Web.Security.AntiForgery;
 using LoanManagement.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Web.Host.Controllers
 {

@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Abp.MultiTenancy;
+﻿using Abp.MultiTenancy;
 using LoanManagement.Editions;
 using LoanManagement.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LoanManagement.EntityFrameworkCore.Seed.Tenants
 {

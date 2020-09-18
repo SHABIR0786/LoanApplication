@@ -1,6 +1,5 @@
-using System;
-using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
+using System;
 
 namespace LoanManagement.BorrowerEmploymentInformations.Dto
 {
@@ -34,6 +33,6 @@ namespace LoanManagement.BorrowerEmploymentInformations.Dto
         public Decimal? MonthlyIncome3 { get; set; }
         public string Position3 { get; set; }
         public string BusinessPhone3 { get; set; }
-        public long? BorrowerTypeId { get; set; }
+        public string BorrowerType { get; set; }
     }
 }

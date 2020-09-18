@@ -1,11 +1,11 @@
-using Microsoft.Extensions.Configuration;
-using Castle.MicroKernel.Registration;
 using Abp.Events.Bus;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Castle.MicroKernel.Registration;
 using LoanManagement.Configuration;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Migrator.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace LoanManagement.Migrator
 {
@@ -31,7 +31,7 @@ namespace LoanManagement.Migrator
 
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.ReplaceService(
-                typeof(IEventBus), 
+                typeof(IEventBus),
                 () => IocManager.IocContainer.Register(
                     Component.For<IEventBus>().Instance(NullEventBus.Instance)
                 )

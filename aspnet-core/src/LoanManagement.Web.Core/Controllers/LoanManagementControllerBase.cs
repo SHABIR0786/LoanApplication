@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LoanManagement.Controllers
 {
-    public abstract class LoanManagementControllerBase: AbpController
+    public abstract class LoanManagementControllerBase : AbpController
     {
         protected LoanManagementControllerBase()
         {

@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Abp.Zero.EntityFrameworkCore;
+﻿using Abp.Zero.EntityFrameworkCore;
+using LoanManagement.AssetAndLiablities;
 using LoanManagement.Authorization.Roles;
 using LoanManagement.Authorization.Users;
-using LoanManagement.MultiTenancy;
 using LoanManagement.Borrower_Information;
-using LoanManagement.Property_Information;
-using LoanManagement.AssetAndLiablities;
 using LoanManagement.DetailsOfTransactions;
+using LoanManagement.MultiTenancy;
+using LoanManagement.Property_Information;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoanManagement.EntityFrameworkCore
 {

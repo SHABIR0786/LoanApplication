@@ -1,8 +1,8 @@
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Abp.Application.Editions;
 using Abp.Application.Features;
 using LoanManagement.Editions;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LoanManagement.EntityFrameworkCore.Seed.Host
 {

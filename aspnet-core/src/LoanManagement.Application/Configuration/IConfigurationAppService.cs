@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using LoanManagement.Configuration.Dto;
+﻿using LoanManagement.Configuration.Dto;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Configuration
 {

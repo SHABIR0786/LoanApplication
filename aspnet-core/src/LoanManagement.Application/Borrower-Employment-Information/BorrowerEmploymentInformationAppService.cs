@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp;
+﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using LoanManagement.Borrower_Information;
 using LoanManagement.BorrowerEmploymentInformations.Dto;
-using LoanManagement.BorrowerInformations;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LoanManagement.BorrowerEmploymentInformations
 {
@@ -50,7 +48,7 @@ namespace LoanManagement.BorrowerEmploymentInformations
                      MonthlyIncome3 = i.MonthlyIncome3,
                      Position3 = i.Position3,
                      BusinessPhone3 = i.BusinessPhone3,
-                     BorrowerTypeId = i.BorrowerTypeId
+                     BorrowerType = i.BorrowerType
                  })
                  .FirstOrDefaultAsync();
             return result;
@@ -95,7 +93,7 @@ namespace LoanManagement.BorrowerEmploymentInformations
                     MonthlyIncome3 = i.MonthlyIncome3,
                     Position3 = i.Position3,
                     BusinessPhone3 = i.BusinessPhone3,
-                    BorrowerTypeId = i.BorrowerTypeId
+                    BorrowerType = i.BorrowerType
                 })
                     .ToListAsync());
         }
@@ -114,9 +112,45 @@ namespace LoanManagement.BorrowerEmploymentInformations
             return result;
         }
 
-        private async Task<ResponseMessagesDto> UpdateAsync(CreateOrUpdateBorrowerEmploymentInformationDto input)
+        public async Task<ResponseMessagesDto> UpdateAsync(CreateOrUpdateBorrowerEmploymentInformationDto input)
         {
-            return null;
+            var result = await _borrowerEmploymentInformationRepository.UpdateAsync(input.Id, borrower =>
+            {
+                borrower.Id = input.Id;
+                borrower.EmployersName1 = input.EmployersName1;
+                borrower.EmployersAddress1 = input.EmployersAddress1;
+                borrower.IsSelfEmployer1 = input.IsSelfEmployer1;
+                borrower.YearOnThisJob1 = input.YearOnThisJob1;
+                borrower.YearInThisLineOfWork1 = input.YearInThisLineOfWork1;
+                borrower.Position1 = input.Position1;
+                borrower.BusinessPhone1 = input.BusinessPhone1;
+                borrower.EmployersName2 = input.EmployersName2;
+                borrower.EmployersAddress2 = input.EmployersAddress2;
+                borrower.IsSelfEmployer2 = input.IsSelfEmployer2;
+                borrower.DateFromTo2 = input.DateFromTo2;
+                borrower.MonthlyIncome2 = input.MonthlyIncome2;
+                borrower.Position2 = input.Position2;
+                borrower.BusinessPhone2 = input.BusinessPhone2;
+                borrower.EmployersName3 = input.EmployersName3;
+                borrower.EmployersAddress3 = input.EmployersAddress3;
+                borrower.IsSelfEmployer3 = input.IsSelfEmployer3;
+                borrower.DateFromTo3 = input.DateFromTo3;
+                borrower.MonthlyIncome3 = input.MonthlyIncome3;
+                borrower.Position3 = input.Position3;
+                borrower.BusinessPhone3 = input.BusinessPhone3;
+                borrower.BorrowerType = input.BorrowerType;
+                return Task.CompletedTask;
+            });
+
+            await UnitOfWorkManager.Current.SaveChangesAsync();
+
+            return new ResponseMessagesDto()
+            {
+                Id = result.Id,
+                SuccessMessage = AppConsts.SuccessfullyUpdated,
+                Success = true,
+                Error = false,
+            };
         }
 
         private async Task<ResponseMessagesDto> CreateAsync(CreateOrUpdateBorrowerEmploymentInformationDto input)
@@ -145,7 +179,7 @@ namespace LoanManagement.BorrowerEmploymentInformations
                 MonthlyIncome3 = input.MonthlyIncome3,
                 Position3 = input.Position3,
                 BusinessPhone3 = input.BusinessPhone3,
-                BorrowerTypeId = input.BorrowerTypeId
+                BorrowerType = input.BorrowerType
             });
 
             await UnitOfWorkManager.Current.SaveChangesAsync();

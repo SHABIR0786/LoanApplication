@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
@@ -15,6 +13,8 @@ using LoanManagement.Authorization.Users;
 using LoanManagement.Editions;
 using LoanManagement.MultiTenancy.Dto;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LoanManagement.MultiTenancy
 {
