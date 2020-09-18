@@ -1,4 +1,4 @@
-﻿using LoanManagement.LoanApplications;
+using LoanManagement.LoanApplications;
 using LoanManagement.LoanApplications.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
