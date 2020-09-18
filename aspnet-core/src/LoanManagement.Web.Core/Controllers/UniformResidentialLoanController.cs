@@ -1,4 +1,5 @@
 using LoanManagement.DatabaseServices.Interfaces;
+using LoanManagement.Enums;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -54,22 +55,40 @@ namespace LoanManagement.Controllers
                     await _mortageService.UpdateAsync(input.MortgageType);
 
             if (input.BorrowerEmploymentInformation1 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.Borrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation1);
+            }
 
             if (input.BorrowerEmploymentInformation2 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.Borrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation2);
+            }
 
             if (input.BorrowerEmploymentInformation3 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.Borrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation3);
+            }
 
             if (input.CoBorrowerEmploymentInformation1 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.CoBorrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation1);
+            }
 
             if (input.CoBorrowerEmploymentInformation2 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.CoBorrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation2);
+            }
 
             if (input.CoBorrowerEmploymentInformation3 != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.CoBorrower;
                 await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation3);
+            }
 
             if (input.PropertyInformation != null)
                 if (input.PropertyInformation.Id == default)
@@ -78,10 +97,16 @@ namespace LoanManagement.Controllers
                     await _propertyInformationService.UpdateAsync(input.PropertyInformation);
 
             if (input.BorrowerInformation != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.Borrower;
                 await _borrowerInformationAppService.CreateOrUpdateAsync(input.BorrowerInformation);
+            }
 
             if (input.CoBorrowerInformation != null)
+            {
+                input.BorrowerEmploymentInformation1.BorrowerTypeId = (int)BorrowerType.CoBorrower;
                 await _borrowerInformationAppService.CreateOrUpdateAsync(input.CoBorrowerInformation);
+            }
 
             if (input.AssetAndLiablity != null)
             {
