@@ -1,10 +1,9 @@
 ﻿using Abp.Application.Services.Dto;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.ViewModels
 {
-    public class BorrowerInformationDto : EntityDto<int>
+    public class BorrowerInformationDto : EntityDto<long>
     {
         public string BorrowersName { get; set; }
         public string SocialSecurityNumber { get; set; }

@@ -54,17 +54,17 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public async Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<PagedResultDto<PropertyInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<PropertyInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<PropertyInformationDto> GetAsync(EntityDto<long> input)
+        public Task<PropertyInformationDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
