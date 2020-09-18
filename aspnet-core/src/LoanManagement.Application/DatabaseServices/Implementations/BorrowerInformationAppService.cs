@@ -29,7 +29,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                  {
                      Id = i.Id,
                      BorrowersName = i.BorrowersName,
-                     BorrowerType = i.BorrowerType,
+                     BorrowerType = i.BorrowerType.Name,
                      PresentAddress = i.PresentAddress
                  })
                  .FirstOrDefaultAsync();
@@ -89,7 +89,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 borrowerInformation.FormerAddressModel = input.FormerAddressModel;
                 borrowerInformation.FormerAddressType = input.FormerAddressType;
                 borrowerInformation.FormerAddressNoOfYears = input.FormerAddressNoOfYears;
-                borrowerInformation.BorrowerType = input.BorrowerType;
+                borrowerInformation.BorrowerTypeId = input.BorrowerTypeId;
                 borrowerInformation.TenantId = input.TenantId;
 
                 return Task.CompletedTask;
