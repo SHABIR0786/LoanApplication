@@ -4,7 +4,9 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -22,7 +24,21 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var result = await _repository.FirstOrDefaultAsync(x => x.Id == input.Id);
+                var result = await _repository.GetAllIncluding()
+                    .Include(i => i.AssetAndLiablity)
+                    .Include(i => i.DetailsOfTransaction)
+                    .Include(i => i.BorrowerEmploymentInfo1)
+                    .Include(i => i.BorrowerEmploymentInfo2)
+                    .Include(i => i.BorrowerEmploymentInfo3)
+                    .Include(i => i.MortgageType)
+                    .Include(i => i.PropertyInfo)
+                    .Include(i => i.BorrowerInfo)
+                    .Include(i => i.CoBorrowerInfo)
+                    .Include(i => i.CoBorrowerEmploymentInfo1)
+                    .Include(i => i.CoBorrowerEmploymentInfo2)
+                    .Include(i => i.CoBorrowerEmploymentInfo3)
+                    .FirstOrDefaultAsync(i => i.Id == input.Id);
+
                 return ObjectMapper.Map<LoanApplicationDto>(result);
             }
             catch (Exception e)
@@ -72,23 +88,35 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, loanApplication =>
             {
-                //if (input.BorrowerEmploymentInfromation != null && input.BorrowerEmploymentInfromation.Id != default)
-                //    loanApplication.BorrowerEmploymentInfoId = input.BorrowerEmploymentInfromation.Id;
+                if (input.BorrowerInformation != null && input.BorrowerInformation.Id != default)
+                    loanApplication.BorrowerInfoId = input.BorrowerInformation.Id;
 
-                //if (input.BorrowerInformation != null && input.BorrowerInformation.Id != default)
-                //    loanApplication.BorrowerInfoId = input.BorrowerInformation.Id;
+                if (input.CoBorrowerInformation != null && input.CoBorrowerInformation.Id != default)
+                    loanApplication.CoBorrowerInfoId = input.CoBorrowerInformation.Id;
 
-                //if (input.CoBorrowerEmploymentInfromation != null && input.CoBorrowerEmploymentInfromation.Id != default)
-                //    loanApplication.CoBorrowerEmploymentInfoId = input.CoBorrowerEmploymentInfromation.Id;
+                if (input.BorrowerEmploymentInformation1 != null && input.BorrowerEmploymentInformation1.Id != default)
+                    loanApplication.BorrowerEmploymentInfoId1 = input.BorrowerEmploymentInformation1.Id;
 
-                //if (input.CoBorrowerInformation != null && input.CoBorrowerInformation.Id != default)
-                //    loanApplication.CoBorrowerInfoId = input.CoBorrowerInformation.Id;
+                if (input.BorrowerEmploymentInformation2 != null && input.BorrowerEmploymentInformation2.Id != default)
+                    loanApplication.BorrowerEmploymentInfoId2 = input.BorrowerEmploymentInformation2.Id;
 
-                //if (input.MortgageType != null && input.MortgageType.Id != default)
-                //    loanApplication.MortgageTypeId = input.MortgageType.Id;
+                if (input.BorrowerEmploymentInformation3 != null && input.BorrowerEmploymentInformation3.Id != default)
+                    loanApplication.BorrowerEmploymentInfoId3 = input.BorrowerEmploymentInformation3.Id;
 
-                //if (input.PropertyInformation != null && input.PropertyInformation.Id != default)
-                //    loanApplication.PropertyInfoId = input.PropertyInformation.Id;
+                if (input.CoBorrowerEmploymentInformation1 != null && input.CoBorrowerEmploymentInformation1.Id != default)
+                    loanApplication.BorrowerEmploymentInfoId1 = input.CoBorrowerEmploymentInformation1.Id;
+
+                if (input.CoBorrowerEmploymentInformation2 != null && input.CoBorrowerEmploymentInformation2.Id != default)
+                    loanApplication.CoBorrowerEmploymentInfoId2 = input.CoBorrowerEmploymentInformation2.Id;
+
+                if (input.CoBorrowerEmploymentInformation3 != null && input.CoBorrowerEmploymentInformation3.Id != default)
+                    loanApplication.CoBorrowerEmploymentInfoId3 = input.CoBorrowerEmploymentInformation3.Id;
+
+                if (input.MortgageType != null && input.MortgageType.Id != default)
+                    loanApplication.MortgageTypeId = input.MortgageType.Id;
+
+                if (input.PropertyInformation != null && input.PropertyInformation.Id != default)
+                    loanApplication.PropertyInfoId = input.PropertyInformation.Id;
 
                 if (input.AssetAndLiablity != null && input.AssetAndLiablity.Id != default)
                     loanApplication.AssetAndLiablityId = input.AssetAndLiablity.Id;

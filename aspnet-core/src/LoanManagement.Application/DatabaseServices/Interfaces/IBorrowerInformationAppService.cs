@@ -14,7 +14,7 @@ namespace LoanManagement.DatabaseServices.Interfaces
 
         Task<PagedResultDto<BorrowerInformationDto>> GetPaginatedAllAsync(PagedBorrowerInformationDtoResultRequestDto input);
 
-        Task<ResponseMessagesDto> CreateOrUpdateAsync(CreateOrUpdateBorrowerInformationDto input);
+        Task<ResponseMessagesDto> CreateOrUpdateAsync(BorrowerInformationDto input);
 
         Task<ResponseMessagesDto> DeleteAsync(EntityDto<long> input);
 

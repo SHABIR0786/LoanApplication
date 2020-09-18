@@ -8,6 +8,7 @@ namespace LoanManagement.Controllers
     [Route("api/[controller]/[action]")]
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
+        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationAppService;
         private readonly ILoanAppService _loanAppService;
         private readonly IMortageService _mortageService;
         private readonly IPropertyInformationService _propertyInformationService;
@@ -24,6 +25,7 @@ namespace LoanManagement.Controllers
             IAssetAndLiablityService assetAndLiablityService,
             IDetailOfTransactionService detailOfTransactionService)
         {
+            _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
             _mortageService = mortageService;
             _propertyInformationService = propertyInformationService;
@@ -51,11 +53,23 @@ namespace LoanManagement.Controllers
                 else
                     await _mortageService.UpdateAsync(input.MortgageType);
 
-            if (input.BorrowerEmploymentInfromation != null)
-                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
+            if (input.BorrowerEmploymentInformation1 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation1);
 
-            if (input.BorrowerEmploymentInfromation != null)
-                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInfromation);
+            if (input.BorrowerEmploymentInformation2 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation2);
+
+            if (input.BorrowerEmploymentInformation3 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.BorrowerEmploymentInformation3);
+
+            if (input.CoBorrowerEmploymentInformation1 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation1);
+
+            if (input.CoBorrowerEmploymentInformation2 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation2);
+
+            if (input.CoBorrowerEmploymentInformation3 != null)
+                await _borrowerEmploymentInformationAppService.CreateOrUpdateAsync(input.CoBorrowerEmploymentInformation3);
 
             if (input.PropertyInformation != null)
                 if (input.PropertyInformation.Id == default)
@@ -89,12 +103,12 @@ namespace LoanManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] long id)
+        public async Task<IActionResult> Get([FromQuery] long? id)
         {
-            if (id == null)
+            if (!id.HasValue)
                 return BadRequest(ModelState);
 
-            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long>(id)));
+            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long>(id.Value)));
         }
     }
 }

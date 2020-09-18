@@ -1,10 +1,9 @@
 ﻿using Abp.Application.Services.Dto;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.ViewModels
 {
-    public class BorrowerEmploymentInformationDto : EntityDto<int>
+    public class BorrowerEmploymentInformationDto : EntityDto<long>
     {
         public string EmployersName { get; set; }
         public string EmployersAddress { get; set; }

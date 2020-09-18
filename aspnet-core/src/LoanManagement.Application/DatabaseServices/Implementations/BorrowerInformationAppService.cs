@@ -59,7 +59,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     .ToListAsync());
         }
 
-        public async Task<ResponseMessagesDto> CreateOrUpdateAsync(CreateOrUpdateBorrowerInformationDto input)
+        public async Task<ResponseMessagesDto> CreateOrUpdateAsync(BorrowerInformationDto input)
         {
             ResponseMessagesDto result;
             if (input.Id == 0)
@@ -73,11 +73,10 @@ namespace LoanManagement.DatabaseServices.Implementations
             return result;
         }
 
-        private async Task<ResponseMessagesDto> UpdateBorrowerInformationAsync(CreateOrUpdateBorrowerInformationDto input)
+        private async Task<ResponseMessagesDto> UpdateBorrowerInformationAsync(BorrowerInformationDto input)
         {
             var result = await _borrowerInformationRepository.UpdateAsync(input.Id, borrowerInformation =>
             {
-                borrowerInformation.BorrowersName = input.BorrowersName;
                 borrowerInformation.SocialSecurityNumber = input.SocialSecurityNumber;
                 borrowerInformation.HomePhone = input.HomePhone;
                 borrowerInformation.DOB = input.DOB;
@@ -117,26 +116,9 @@ namespace LoanManagement.DatabaseServices.Implementations
             };
         }
 
-        private async Task<ResponseMessagesDto> CreateBorrowerInformationAsync(CreateOrUpdateBorrowerInformationDto input)
+        private async Task<ResponseMessagesDto> CreateBorrowerInformationAsync(BorrowerInformationDto input)
         {
-            var borrowerInformation = new BorrowerInformation()
-            {
-                BorrowersName = input.BorrowersName,
-                SocialSecurityNumber = input.SocialSecurityNumber,
-                HomePhone = input.HomePhone,
-                DOB = input.DOB,
-                YearsSchool = input.YearsSchool,
-                Marital = input.Marital,
-                PresentAddress = input.PresentAddress,
-                PresentAddressType = input.PresentAddressType,
-                PresentAddressNoOfYears = input.PresentAddressNoOfYears,
-                MailingAddress = input.MailingAddress,
-                FormerAddressModel = input.FormerAddressModel,
-                FormerAddressType = input.FormerAddressType,
-                FormerAddressNoOfYears = input.FormerAddressNoOfYears,
-                BorrowerType = input.BorrowerType,
-                TenantId = input.TenantId
-            };
+            var borrowerInformation = ObjectMapper.Map<BorrowerInformation>(input);
             var result = await _borrowerInformationRepository.InsertAsync(borrowerInformation);
 
             await UnitOfWorkManager.Current.SaveChangesAsync();

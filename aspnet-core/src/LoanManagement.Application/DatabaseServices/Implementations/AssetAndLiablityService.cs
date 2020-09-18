@@ -13,6 +13,11 @@ namespace LoanManagement.DatabaseServices.Implementations
     {
         private readonly IRepository<AssetAndLiablity, long> _repository;
 
+        public AssetAndLiablityService(IRepository<AssetAndLiablity, long> repository)
+        {
+            _repository = repository;
+        }
+
         public async Task<CreateOrUpdateAssetAndLiablityDto> CreateAsync(CreateOrUpdateAssetAndLiablityDto input)
         {
             var assetAndLiablity = new AssetAndLiablity
