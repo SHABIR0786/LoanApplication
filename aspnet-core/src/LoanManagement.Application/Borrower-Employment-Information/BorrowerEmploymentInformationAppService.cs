@@ -155,7 +155,7 @@ namespace LoanManagement.BorrowerEmploymentInformations
 
         private async Task<ResponseMessagesDto> CreateAsync(CreateOrUpdateBorrowerEmploymentInformationDto input)
         {
-            var result = await _borrowerEmploymentInformationRepository.InsertAsync(new BorrowerEmploymentInformation()
+            var borrowerEmploymentInformation = new BorrowerEmploymentInformation()
             {
                 Id = input.Id,
                 EmployersName1 = input.EmployersName1,
@@ -180,26 +180,19 @@ namespace LoanManagement.BorrowerEmploymentInformations
                 Position3 = input.Position3,
                 BusinessPhone3 = input.BusinessPhone3,
                 BorrowerType = input.BorrowerType
-            });
+            };
+            var result = await _borrowerEmploymentInformationRepository.InsertAsync(borrowerEmploymentInformation);
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
-            if (result.Id != 0)
-            {
-                return new ResponseMessagesDto()
-                {
-                    Id = result.Id,
-                    SuccessMessage = AppConsts.SuccessfullyInserted,
-                    Success = true,
-                    Error = false,
-                };
-            }
+            result.Id = borrowerEmploymentInformation.Id;
+
             return new ResponseMessagesDto()
             {
-                Id = 0,
-                ErrorMessage = AppConsts.InsertFailure,
-                Success = false,
-                Error = true,
+                Id = result.Id,
+                SuccessMessage = AppConsts.SuccessfullyInserted,
+                Success = true,
+                Error = false,
             };
         }
 

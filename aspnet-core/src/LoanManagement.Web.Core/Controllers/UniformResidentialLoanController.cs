@@ -1,4 +1,5 @@
 ﻿using LoanManagement.BorrowerEmploymentInformations;
+using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.LoanApplications;
 using LoanManagement.LoanApplications.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,16 @@ namespace LoanManagement.Controllers
     {
         private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationAppService;
         private readonly ILoanAppService _loanAppService;
+        private readonly IMortageService _mortageService;
 
-        public UniformResidentialLoanController(IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService, ILoanAppService loanAppService)
+        public UniformResidentialLoanController(
+            IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
+            ILoanAppService loanAppService,
+            IMortageService mortageService)
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
+            _mortageService = mortageService;
         }
 
         [HttpPost]
@@ -30,6 +36,12 @@ namespace LoanManagement.Controllers
             {
                 await _loanAppService.CreateAsync(input);
             }
+
+            if(input.MortgageType != null)
+                if(input.MortgageType.Id == default)
+                    await _mortageService.CreateAsync(input.MortgageType);
+                else
+                    await _mortageService.UpdateAsync(input.MortgageType);
 
             if (input.BorrowerEmploymentInfromation != null)
             {
