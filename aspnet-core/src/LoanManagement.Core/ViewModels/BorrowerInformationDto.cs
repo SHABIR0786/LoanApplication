@@ -18,7 +18,8 @@ namespace LoanManagement.ViewModels
         public string FormerAddressModel { get; set; }
         public string FormerAddressType { get; set; }
         public int? FormerAddressNoOfYears { get; set; }
-        public string BorrowerType { get; set; }
+        public int BorrowerTypeId { get; set; }
         public int? TenantId { get; set; }
+        public string BorrowerType { get; set; }
     }
 }
