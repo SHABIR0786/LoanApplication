@@ -94,6 +94,12 @@ namespace LoanManagement.EntityFrameworkCore
                 borrowerEmploymentInformation.HasData(new BorrowerType { Id = 1, Name = "Borrower" },
                                                       new BorrowerType { Id = 2, Name = "Co-Borrower" });
             });
+
+            modelBuilder.Entity<HousingExpenseType>(housingExpenseType =>
+            {
+                housingExpenseType.HasData(new HousingExpenseType { Id = 1, Name = "Present" },
+                                           new HousingExpenseType { Id = 2, Name = "Proposed" });
+            });
         }
     }
 }
