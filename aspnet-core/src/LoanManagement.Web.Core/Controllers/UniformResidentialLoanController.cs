@@ -16,6 +16,8 @@ namespace LoanManagement.Controllers
         private readonly IBorrowerInformationAppService _borrowerInformationAppService;
         private readonly IAssetAndLiablityService _assetAndLiablityService;
         private readonly IDetailOfTransactionService _detailOfTransactionService;
+        private readonly IGrossMonthlyIncomeService _grossMonthlyIncomeService;
+        private readonly ICombinedMonthlyHousingExpenseService _combinedMonthlyHousingExpenseService;
 
         public UniformResidentialLoanController(
             IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
@@ -24,7 +26,9 @@ namespace LoanManagement.Controllers
             IPropertyInformationService propertyInformationService,
             IBorrowerInformationAppService borrowerInformationAppService,
             IAssetAndLiablityService assetAndLiablityService,
-            IDetailOfTransactionService detailOfTransactionService)
+            IDetailOfTransactionService detailOfTransactionService,
+            IGrossMonthlyIncomeService grossMonthlyIncomeService,
+            ICombinedMonthlyHousingExpenseService combinedMonthlyHousingExpenseService)
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
@@ -33,6 +37,8 @@ namespace LoanManagement.Controllers
             _borrowerInformationAppService = borrowerInformationAppService;
             _assetAndLiablityService = assetAndLiablityService;
             _detailOfTransactionService = detailOfTransactionService;
+            _grossMonthlyIncomeService = grossMonthlyIncomeService;
+            _combinedMonthlyHousingExpenseService = combinedMonthlyHousingExpenseService;
         }
 
         [HttpPost]
@@ -121,6 +127,46 @@ namespace LoanManagement.Controllers
                     await _detailOfTransactionService.CreateAsync(input.DetailsOfTransaction);
                 else
                     await _detailOfTransactionService.UpdateAsync(input.DetailsOfTransaction);
+
+            if (input.GrossMonthlyIncomeBorrower != null)
+            {
+                input.GrossMonthlyIncomeBorrower.BorrowerTypeId = (int)BorrowerType.Borrower;
+                input.GrossMonthlyIncomeBorrower.LoanApplicationId = input.Id;
+                if (input.GrossMonthlyIncomeBorrower.Id == default)
+                    await _grossMonthlyIncomeService.CreateAsync(input.GrossMonthlyIncomeBorrower);
+                else
+                    await _grossMonthlyIncomeService.UpdateAsync(input.GrossMonthlyIncomeBorrower);
+            }
+
+            if (input.GrossMonthlyIncomeCoBorrower != null)
+            {
+                input.GrossMonthlyIncomeCoBorrower.BorrowerTypeId = (int)BorrowerType.Borrower;
+                input.GrossMonthlyIncomeCoBorrower.LoanApplicationId = input.Id;
+                if (input.GrossMonthlyIncomeCoBorrower.Id == default)
+                    await _grossMonthlyIncomeService.CreateAsync(input.GrossMonthlyIncomeCoBorrower);
+                else
+                    await _grossMonthlyIncomeService.UpdateAsync(input.GrossMonthlyIncomeCoBorrower);
+            }
+
+            if (input.CombinedMonthlyHousingExpensePresent != null)
+            {
+                input.CombinedMonthlyHousingExpensePresent.HousingExpenseTypeId = (int)HousingExpenseType.Present;
+                input.CombinedMonthlyHousingExpensePresent.LoanApplicationId = input.Id;
+                if (input.CombinedMonthlyHousingExpensePresent.Id == default)
+                    await _combinedMonthlyHousingExpenseService.CreateAsync(input.CombinedMonthlyHousingExpensePresent);
+                else
+                    await _combinedMonthlyHousingExpenseService.UpdateAsync(input.CombinedMonthlyHousingExpensePresent);
+            }
+
+            if (input.CombinedMonthlyHousingExpenseProposed != null)
+            {
+                input.CombinedMonthlyHousingExpenseProposed.HousingExpenseTypeId = (int)HousingExpenseType.Proposed;
+                input.CombinedMonthlyHousingExpenseProposed.LoanApplicationId = input.Id;
+                if (input.CombinedMonthlyHousingExpenseProposed.Id == default)
+                    await _combinedMonthlyHousingExpenseService.CreateAsync(input.CombinedMonthlyHousingExpenseProposed);
+                else
+                    await _combinedMonthlyHousingExpenseService.UpdateAsync(input.CombinedMonthlyHousingExpenseProposed);
+            }
 
             await _loanAppService.UpdateAsync(input);
 
