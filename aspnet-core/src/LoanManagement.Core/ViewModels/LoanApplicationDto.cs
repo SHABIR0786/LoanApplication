@@ -20,5 +20,11 @@ namespace LoanManagement.ViewModels
 
         public CreateOrUpdateAssetAndLiablityDto AssetAndLiablity { get; set; }
         public CreateOrUpdateDetailsOfTransactionDto DetailsOfTransaction { get; set; }
+
+        public GrossMonthlyIncomeDto GrossMonthlyIncomeBorrower { get; set; }
+        public GrossMonthlyIncomeDto GrossMonthlyIncomeCoBorrower { get; set; }
+
+        public CombinedMonthlyHousingExpenseDto CombinedMonthlyHousingExpensePresent { get; set; }
+        public CombinedMonthlyHousingExpenseDto CombinedMonthlyHousingExpenseProposed { get; set; }
     }
 }

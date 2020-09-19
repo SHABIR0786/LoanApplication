@@ -8,6 +8,12 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Migrations\20200918220320_AddBorrowerType.cs" />
+    <Compile Remove="Migrations\20200918220320_AddBorrowerType.Designer.cs" />
+    <Compile Remove="Migrations\20200919065311_AddLoanApplicationFK.cs" />
+    <Compile Remove="Migrations\20200919065311_AddLoanApplicationFK.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>

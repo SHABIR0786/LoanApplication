@@ -96,6 +96,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 borrower.YearInThisLineOfWork = input.YearInThisLineOfWork;
                 borrower.Position = input.Position;
                 borrower.BusinessPhone = input.BusinessPhone;
+                borrower.BorrowerTypeId = input.BorrowerTypeId;
                 return Task.CompletedTask;
             });
 
@@ -121,7 +122,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 YearOnThisJob = input.YearOnThisJob,
                 YearInThisLineOfWork = input.YearInThisLineOfWork,
                 Position = input.Position,
-                BusinessPhone = input.BusinessPhone
+                BusinessPhone = input.BusinessPhone,
+                BorrowerTypeId = input.BorrowerTypeId
             };
             var result = await _borrowerEmploymentInformationRepository.InsertAsync(borrowerEmploymentInformation);
 
