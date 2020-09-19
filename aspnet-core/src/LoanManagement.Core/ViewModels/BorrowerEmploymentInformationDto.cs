@@ -15,5 +15,6 @@ namespace LoanManagement.ViewModels
         public Decimal? MonthlyIncome { get; set; }
         public DateTime DateFromTo { get; set; }
         public int? TenantId { get; set; }
+        public int BorrowerTypeId { get; set; }
     }
 }

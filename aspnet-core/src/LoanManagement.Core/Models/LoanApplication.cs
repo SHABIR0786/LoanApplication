@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
@@ -42,6 +43,10 @@ namespace LoanManagement.Models
         public long? CoBorrowerEmploymentInfoId3 { get; set; }
         public virtual BorrowerEmploymentInformation CoBorrowerEmploymentInfo3 { get; set; }
 
+        public int MonthlyIncomeAndCombinedHousingExpenseId { get; set; }
         public int? TenantId { get; set; }
+
+        public List<GrossMonthlyIncome> GrossMonthlyIncomes { get; set; }
+        public List<CombinedMonthlyHousingExpense> CombinedMonthlyHousingExpenses { get; set; }
     }
 }

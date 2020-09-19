@@ -30,6 +30,12 @@ export class LoanApplicationComponent implements OnInit {
         coBorrowerEmploymentInformation1: {},
         coBorrowerEmploymentInformation2: {},
         coBorrowerEmploymentInformation3: {},
+
+        grossMonthlyIncomeBorrower: {},
+        grossMonthlyIncomeCoBorrower: {},
+        combinedMonthlyHousingExpensePresent: {},
+        combinedMonthlyHousingExpenseProposed: {},
+        grossMonthlyTotal: {}
     };
 
     config: NgWizardConfig = {

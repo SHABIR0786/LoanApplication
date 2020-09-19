@@ -28,16 +28,15 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="mortgageType" id="va"
-                                                       value="va" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.type">
+                                                    value="va" checked [(ngModel)]="loanApplication.mortgageType.type">
                                                 <label class="form-check-label" for="va">
                                                     VA
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="mortgageType"
-                                                       id="conventional" value="conventional"
-                                                       [(ngModel)]="loanApplication.mortgageType.type">
+                                                    id="conventional" value="conventional"
+                                                    [(ngModel)]="loanApplication.mortgageType.type">
                                                 <label class="form-check-label" for="conventional">
                                                     Conventional
                                                 </label>
@@ -45,17 +44,17 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="mortgageType"
-                                                       id="mortgageTypeOther" value="other"
-                                                       [(ngModel)]="loanApplication.mortgageType.type">
+                                                    id="mortgageTypeOther" value="other"
+                                                    [(ngModel)]="loanApplication.mortgageType.type">
                                                 <label class="form-check-label" for="mortgageTypeOther">
                                                     Other (explain)
                                                 </label>
                                             </div>
 
                                             <input type="text" class="form-control" name="mortgageTypeExplain"
-                                                   id="mortgageTypeExplain" required minlength="2"
-                                                   *ngIf="loanApplication.mortgageType.type === 'other'" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.typeExplain"/>
+                                                id="mortgageTypeExplain" required minlength="2"
+                                                *ngIf="loanApplication.mortgageType.type === 'other'" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.typeExplain" />
                                         </div>
                                     </div>
                                 </div>
@@ -67,16 +66,16 @@
                                         <div class="col-md-9">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="appliedFor" id="fha"
-                                                       value="fha" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.appliedFor">
+                                                    value="fha" checked
+                                                    [(ngModel)]="loanApplication.mortgageType.appliedFor">
                                                 <label class="form-check-label" for="fha">
                                                     FHA
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="appliedFor"
-                                                       id="rural" value="rural"
-                                                       [(ngModel)]="loanApplication.mortgageType.appliedFor">
+                                                    id="rural" value="rural"
+                                                    [(ngModel)]="loanApplication.mortgageType.appliedFor">
                                                 <label class="form-check-label" for="rural">
                                                     USDA/Rural
                                                 </label>
@@ -91,11 +90,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="agencyCaseNumber"
-                                                   id="agencyCaseNumber" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.agencyCaseNumber"
-                                                   #agencyCaseNumberModel="ngModel" #agencyCaseNumberEl/>
+                                                id="agencyCaseNumber" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.agencyCaseNumber"
+                                                #agencyCaseNumberModel="ngModel" #agencyCaseNumberEl />
                                             <abp-validation-summary [control]="agencyCaseNumberModel"
-                                                                    [controlEl]="agencyCaseNumberEl"></abp-validation-summary>
+                                                [controlEl]="agencyCaseNumberEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -106,11 +105,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="lenderCaseNumber"
-                                                   id="lenderCaseNumber" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.lenderCaseNumber"
-                                                   #lenderCaseNumberModel="ngModel" #lenderCaseNumberEl/>
+                                                id="lenderCaseNumber" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.lenderCaseNumber"
+                                                #lenderCaseNumberModel="ngModel" #lenderCaseNumberEl />
                                             <abp-validation-summary [control]="lenderCaseNumberModel"
-                                                                    [controlEl]="lenderCaseNumberEl"></abp-validation-summary>
+                                                [controlEl]="lenderCaseNumberEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +120,9 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="number" class="form-control" name="amount" id="amount" required
-                                                   minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.amount"
-                                                   #amountModel="ngModel" #amountEl/>
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.amount" #amountModel="ngModel"
+                                                #amountEl />
                                             <abp-validation-summary [control]="amountModel" [controlEl]="amountEl">
                                             </abp-validation-summary>
                                         </div>
@@ -136,12 +135,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="number" class="form-control" name="interestRate"
-                                                   id="interestRate" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.interestRate"
-                                                   #interestRateModel="ngModel"
-                                                   #interestRateEl/>
+                                                id="interestRate" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.interestRate"
+                                                #interestRateModel="ngModel" #interestRateEl />
                                             <abp-validation-summary [control]="interestRateModel"
-                                                                    [controlEl]="interestRateEl">
+                                                [controlEl]="interestRateEl">
                                             </abp-validation-summary>
                                         </div>
                                     </div>
@@ -153,11 +151,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="number" class="form-control" name="numberOfMonths"
-                                                   id="numberOfMonths" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.numberOfMonths"
-                                                   #numberOfMonthsModel="ngModel" #numberOfMonthsEl/>
+                                                id="numberOfMonths" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.numberOfMonths"
+                                                #numberOfMonthsModel="ngModel" #numberOfMonthsEl />
                                             <abp-validation-summary [control]="numberOfMonthsModel"
-                                                                    [controlEl]="numberOfMonthsEl"></abp-validation-summary>
+                                                [controlEl]="numberOfMonthsEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -170,8 +168,8 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="amortizationType"
-                                                       id="fixedRate" value="fixedRate" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.amortizationType">
+                                                    id="fixedRate" value="fixedRate" checked
+                                                    [(ngModel)]="loanApplication.mortgageType.amortizationType">
                                                 <label class="form-check-label" for="fixedRate">
                                                     Fixed Rate
                                                 </label>
@@ -179,8 +177,8 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="amortizationType"
-                                                       id="gpm" value="gpm" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.amortizationType">
+                                                    id="gpm" value="gpm" checked
+                                                    [(ngModel)]="loanApplication.mortgageType.amortizationType">
                                                 <label class="form-check-label" for="gpm">
                                                     GPM
                                                 </label>
@@ -188,34 +186,34 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="amortizationType"
-                                                       id="amortizationTypeOther" value="other" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.amortizationType">
+                                                    id="amortizationTypeOther" value="other" checked
+                                                    [(ngModel)]="loanApplication.mortgageType.amortizationType">
                                                 <label class="form-check-label" for="amortizationTypeOther">
                                                     Other (explain):
                                                 </label>
                                             </div>
 
                                             <input type="text" class="form-control" name="amortizationTypeExplain"
-                                                   id="amortizationTypeExplain" required minlength="2"
-                                                   *ngIf="loanApplication.mortgageType.amortizationType === 'other'"
-                                                   maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.amortizationTypeExplain"/>
+                                                id="amortizationTypeExplain" required minlength="2"
+                                                *ngIf="loanApplication.mortgageType.amortizationType === 'other'"
+                                                maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.amortizationTypeExplain" />
 
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="amortizationType"
-                                                       id="armType" value="armType" checked
-                                                       [(ngModel)]="loanApplication.mortgageType.amortizationType">
+                                                    id="armType" value="armType" checked
+                                                    [(ngModel)]="loanApplication.mortgageType.amortizationType">
                                                 <label class="form-check-label" for="armType">
                                                     ARM (type):
                                                 </label>
                                             </div>
 
                                             <input type="text" class="form-control" name="amortizationTypeARM"
-                                                   id="amortizationTypeARM" required minlength="2"
-                                                   *ngIf="loanApplication.mortgageType.amortizationType === 'armType'"
-                                                   maxlength="32"
-                                                   [(ngModel)]="loanApplication.mortgageType.amortizationTypeExplain"/>
+                                                id="amortizationTypeARM" required minlength="2"
+                                                *ngIf="loanApplication.mortgageType.amortizationType === 'armType'"
+                                                maxlength="32"
+                                                [(ngModel)]="loanApplication.mortgageType.amortizationTypeExplain" />
 
                                         </div>
                                     </div>
@@ -231,12 +229,12 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="propertyAddress"
-                                                   placeholder="Street, city, state & ZIP" id="propertyAddress" required
-                                                   minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.address"
-                                                   #propertyAddressModel="ngModel" #propertyAddressEl/>
+                                                placeholder="Street, city, state & ZIP" id="propertyAddress" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.address"
+                                                #propertyAddressModel="ngModel" #propertyAddressEl />
                                             <abp-validation-summary [control]="propertyAddressModel"
-                                                                    [controlEl]="propertyAddressEl"></abp-validation-summary>
+                                                [controlEl]="propertyAddressEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -247,11 +245,11 @@
                                         </label>
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" name="numberOfUnits"
-                                                   id="numberOfUnits" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.numberOfUnits"
-                                                   #numberOfUnitsModel="ngModel" #numberOfUnitsEl/>
+                                                id="numberOfUnits" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.numberOfUnits"
+                                                #numberOfUnitsModel="ngModel" #numberOfUnitsEl />
                                             <abp-validation-summary [control]="numberOfUnitsModel"
-                                                                    [controlEl]="numberOfUnitsEl"></abp-validation-summary>
+                                                [controlEl]="numberOfUnitsEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -263,13 +261,12 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="propertyLegalDescription"
-                                                   placeholder="Attach description if necessary"
-                                                   id="propertyLegalDescription" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.legalDescription"
-                                                   #propertyLegalDescriptionModel="ngModel"
-                                                   #propertyLegalDescriptionEl/>
+                                                placeholder="Attach description if necessary"
+                                                id="propertyLegalDescription" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.legalDescription"
+                                                #propertyLegalDescriptionModel="ngModel" #propertyLegalDescriptionEl />
                                             <abp-validation-summary [control]="propertyLegalDescriptionModel"
-                                                                    [controlEl]="propertyLegalDescriptionEl"></abp-validation-summary>
+                                                [controlEl]="propertyLegalDescriptionEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -280,12 +277,11 @@
                                         </label>
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" name="yearBuilt" id="yearBuilt"
-                                                   required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.yearBuilt"
-                                                   #yearBuiltModel="ngModel"
-                                                   #yearBuiltEl/>
+                                                required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.yearBuilt"
+                                                #yearBuiltModel="ngModel" #yearBuiltEl />
                                             <abp-validation-summary [control]="yearBuiltModel"
-                                                                    [controlEl]="yearBuiltEl">
+                                                [controlEl]="yearBuiltEl">
                                             </abp-validation-summary>
                                         </div>
                                     </div>
@@ -299,16 +295,16 @@
                                         <div class="col-md-9">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="purposeOfLoan"
-                                                       id="purchase" value="purchase" checked
-                                                       [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan"/>
+                                                    id="purchase" value="purchase" checked
+                                                    [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan" />
                                                 <label class="form-check-label" for="purchase">
                                                     Primary Residence
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="purposeOfLoan"
-                                                       id="construction" value="construction"
-                                                       [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan"/>
+                                                    id="construction" value="construction"
+                                                    [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan" />
                                                 <label class="form-check-label" for="construction">
                                                     Secondary Residence
                                                 </label>
@@ -316,8 +312,8 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="purposeOfLoan"
-                                                       id="constructionPermanent" value="constructionPermanent"
-                                                       [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan"/>
+                                                    id="constructionPermanent" value="constructionPermanent"
+                                                    [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan" />
                                                 <label class="form-check-label" for="constructionPermanent">
                                                     Investment
                                                 </label>
@@ -325,18 +321,18 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="purposeOfLoan"
-                                                       id="purposeOfLoanOther" value="other"
-                                                       [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan"/>
+                                                    id="purposeOfLoanOther" value="other"
+                                                    [(ngModel)]="loanApplication.propertyInformation.purposeOfLoan" />
                                                 <label class="form-check-label" for="purposeOfLoanOther">
                                                     Other (explain)
                                                 </label>
                                             </div>
 
                                             <input type="text" class="form-control" name="purposeOfLoanExplain"
-                                                   id="purposeOfLoanExplain" required minlength="2"
-                                                   *ngIf="loanApplication.propertyInformation.purposeOfLoan === 'other'"
-                                                   maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.purposeOfLoanExplain"/>
+                                                id="purposeOfLoanExplain" required minlength="2"
+                                                *ngIf="loanApplication.propertyInformation.purposeOfLoan === 'other'"
+                                                maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.purposeOfLoanExplain" />
                                         </div>
                                     </div>
                                 </div>
@@ -349,16 +345,16 @@
                                         <div class="col-md-9">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="propertyWillBe"
-                                                       id="primaryResidence" value="primaryResidence" checked
-                                                       [(ngModel)]="loanApplication.propertyInformation.propertyWillBe"/>
+                                                    id="primaryResidence" value="primaryResidence" checked
+                                                    [(ngModel)]="loanApplication.propertyInformation.propertyWillBe" />
                                                 <label class="form-check-label" for="primaryResidence">
                                                     Primary Residence
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="propertyWillBe"
-                                                       id="secondaryResidence" value="secondaryResidence"
-                                                       [(ngModel)]="loanApplication.propertyInformation.propertyWillBe"/>
+                                                    id="secondaryResidence" value="secondaryResidence"
+                                                    [(ngModel)]="loanApplication.propertyInformation.propertyWillBe" />
                                                 <label class="form-check-label" for="secondaryResidence">
                                                     Secondary Residence
                                                 </label>
@@ -366,8 +362,8 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="propertyWillBe"
-                                                       id="investment" value="investment"
-                                                       [(ngModel)]="loanApplication.propertyInformation.propertyWillBe"/>
+                                                    id="investment" value="investment"
+                                                    [(ngModel)]="loanApplication.propertyInformation.propertyWillBe" />
                                                 <label class="form-check-label" for="investment">
                                                     Investment
                                                 </label>
@@ -388,11 +384,11 @@
                                         </label>
                                         <div>
                                             <input type="text" class="form-control" name="yearLotAcquired"
-                                                   id="yearLotAcquired" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.yearLotAcquired"
-                                                   #yearLotAcquiredModel="ngModel" #yearLotAcquiredEl/>
+                                                id="yearLotAcquired" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.yearLotAcquired"
+                                                #yearLotAcquiredModel="ngModel" #yearLotAcquiredEl />
                                             <abp-validation-summary [control]="yearLotAcquiredModel"
-                                                                    [controlEl]="yearLotAcquiredEl"></abp-validation-summary>
+                                                [controlEl]="yearLotAcquiredEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -404,12 +400,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="originalCost"
-                                                   id="originalCost" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.originalCost"
-                                                   #originalCostModel="ngModel"
-                                                   #originalCostEl/>
+                                                id="originalCost" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.originalCost"
+                                                #originalCostModel="ngModel" #originalCostEl />
                                             <abp-validation-summary [control]="originalCostModel"
-                                                                    [controlEl]="originalCostEl">
+                                                [controlEl]="originalCostEl">
                                             </abp-validation-summary>
                                         </div>
                                     </div>
@@ -422,11 +417,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="amountExistingLiens"
-                                                   id="amountExistingLiens" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.amountExistingLiens"
-                                                   #amountExistingLiensModel="ngModel" #amountExistingLiensEl/>
+                                                id="amountExistingLiens" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.amountExistingLiens"
+                                                #amountExistingLiensModel="ngModel" #amountExistingLiensEl />
                                             <abp-validation-summary [control]="amountExistingLiensModel"
-                                                                    [controlEl]="amountExistingLiensEl"></abp-validation-summary>
+                                                [controlEl]="amountExistingLiensEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -438,11 +433,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="presentValueOfLot"
-                                                   id="presentValueOfLot" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.presentValueOfLot"
-                                                   #presentValueOfLotModel="ngModel" #presentValueOfLotEl/>
+                                                id="presentValueOfLot" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.presentValueOfLot"
+                                                #presentValueOfLotModel="ngModel" #presentValueOfLotEl />
                                             <abp-validation-summary [control]="presentValueOfLotModel"
-                                                                    [controlEl]="presentValueOfLotEl"></abp-validation-summary>
+                                                [controlEl]="presentValueOfLotEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -454,11 +449,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="costOfImprovements"
-                                                   id="costOfImprovements" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.costOfImprovements"
-                                                   #costOfImprovementsModel="ngModel" #costOfImprovementsEl/>
+                                                id="costOfImprovements" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.costOfImprovements"
+                                                #costOfImprovementsModel="ngModel" #costOfImprovementsEl />
                                             <abp-validation-summary [control]="costOfImprovementsModel"
-                                                                    [controlEl]="costOfImprovementsEl"></abp-validation-summary>
+                                                [controlEl]="costOfImprovementsEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -470,12 +465,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="valueCostTotal"
-                                                   [disabled]="true"
-                                                   id="valueCostTotal" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.valueCostTotal"
-                                                   #valueCostTotalModel="ngModel" #valueCostTotalEl/>
+                                                [disabled]="true" id="valueCostTotal" required minlength="2"
+                                                maxlength="32" [(ngModel)]="loanApplication.valueCostTotal"
+                                                #valueCostTotalModel="ngModel" #valueCostTotalEl />
                                             <abp-validation-summary [control]="valueCostTotalModel"
-                                                                    [controlEl]="valueCostTotalEl"></abp-validation-summary>
+                                                [controlEl]="valueCostTotalEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -492,11 +486,11 @@
                                         </label>
                                         <div>
                                             <input type="text" class="form-control" name="yearAcquiredRefinance"
-                                                   id="yearAcquiredRefinance" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.yearAcquiredRefinance"
-                                                   #yearAcquiredRefinanceModel="ngModel" #yearAcquiredRefinanceEl/>
+                                                id="yearAcquiredRefinance" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.yearAcquiredRefinance"
+                                                #yearAcquiredRefinanceModel="ngModel" #yearAcquiredRefinanceEl />
                                             <abp-validation-summary [control]="yearAcquiredRefinanceModel"
-                                                                    [controlEl]="yearAcquiredRefinanceEl"></abp-validation-summary>
+                                                [controlEl]="yearAcquiredRefinanceEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -508,11 +502,11 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control" name="originalCostRefinance"
-                                                   id="originalCostRefinance" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.originalCostRefinance"
-                                                   #originalCostRefinanceModel="ngModel" #originalCostRefinanceEl/>
+                                                id="originalCostRefinance" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.originalCostRefinance"
+                                                #originalCostRefinanceModel="ngModel" #originalCostRefinanceEl />
                                             <abp-validation-summary [control]="originalCostRefinanceModel"
-                                                                    [controlEl]="originalCostRefinanceEl"></abp-validation-summary>
+                                                [controlEl]="originalCostRefinanceEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -524,13 +518,13 @@
                                         </label>
                                         <div>
                                             <input type="number" class="form-control"
-                                                   name="amountExistingLiensRefinance" id="amountExistingLiensRefinance"
-                                                   required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.amountExistingLiensRefinance"
-                                                   #amountExistingLiensRefinanceModel="ngModel"
-                                                   #amountExistingLiensRefinanceEl/>
+                                                name="amountExistingLiensRefinance" id="amountExistingLiensRefinance"
+                                                required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.amountExistingLiensRefinance"
+                                                #amountExistingLiensRefinanceModel="ngModel"
+                                                #amountExistingLiensRefinanceEl />
                                             <abp-validation-summary [control]="amountExistingLiensRefinanceModel"
-                                                                    [controlEl]="amountExistingLiensRefinanceEl"></abp-validation-summary>
+                                                [controlEl]="amountExistingLiensRefinanceEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -542,11 +536,11 @@
                                         </label>
                                         <div>
                                             <input type="text" class="form-control" name="purposeOfRefinance"
-                                                   id="purposeOfRefinance" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.purposeOfRefinance"
-                                                   #purposeOfRefinanceModel="ngModel" #purposeOfRefinanceEl/>
+                                                id="purposeOfRefinance" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.purposeOfRefinance"
+                                                #purposeOfRefinanceModel="ngModel" #purposeOfRefinanceEl />
                                             <abp-validation-summary [control]="purposeOfRefinanceModel"
-                                                                    [controlEl]="purposeOfRefinanceEl"></abp-validation-summary>
+                                                [controlEl]="purposeOfRefinanceEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -561,16 +555,16 @@
                                             <div class="col-6">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio"
-                                                           name="describeImprovements" id="made" value="made" checked
-                                                           [(ngModel)]="loanApplication.propertyInformation.improvementsRefinance">
+                                                        name="describeImprovements" id="made" value="made" checked
+                                                        [(ngModel)]="loanApplication.propertyInformation.improvementsRefinance">
                                                     <label class="form-check-label" for="made">
                                                         made
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio"
-                                                           name="describeImprovements" id="toBeMade" value="toBeMade"
-                                                           [(ngModel)]="loanApplication.propertyInformation.improvementsRefinance">
+                                                        name="describeImprovements" id="toBeMade" value="toBeMade"
+                                                        [(ngModel)]="loanApplication.propertyInformation.improvementsRefinance">
                                                     <label class="form-check-label" for="toBeMade">
                                                         to be made
                                                     </label>
@@ -578,13 +572,13 @@
                                             </div>
                                             <div class="col-6">
                                                 <input type="number" class="form-control"
-                                                       name="improvementCostRefinance" id="improvementCostRefinance"
-                                                       required minlength="2" maxlength="32"
-                                                       [(ngModel)]="loanApplication.propertyInformation.improvementCostRefinance"
-                                                       #improvementCostRefinanceModel="ngModel"
-                                                       #improvementCostRefinanceEl/>
+                                                    name="improvementCostRefinance" id="improvementCostRefinance"
+                                                    required minlength="2" maxlength="32"
+                                                    [(ngModel)]="loanApplication.propertyInformation.improvementCostRefinance"
+                                                    #improvementCostRefinanceModel="ngModel"
+                                                    #improvementCostRefinanceEl />
                                                 <abp-validation-summary [control]="improvementCostRefinanceModel"
-                                                                        [controlEl]="improvementCostRefinanceEl"></abp-validation-summary>
+                                                    [controlEl]="improvementCostRefinanceEl"></abp-validation-summary>
                                             </div>
                                         </div>
                                     </div>
@@ -597,11 +591,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="titleHeldName"
-                                                   id="titleHeldName" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.titleHeldNames"
-                                                   #titleHeldNameModel="ngModel" #titleHeldNameEl/>
+                                                id="titleHeldName" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.titleHeldNames"
+                                                #titleHeldNameModel="ngModel" #titleHeldNameEl />
                                             <abp-validation-summary [control]="titleHeldNameModel"
-                                                                    [controlEl]="titleHeldNameEl"></abp-validation-summary>
+                                                [controlEl]="titleHeldNameEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -613,12 +607,11 @@
                                         </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="titleManner" id="titleManner"
-                                                   required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.propertyInformation.titleHeldManner"
-                                                   #titleMannerModel="ngModel"
-                                                   #titleMannerEl/>
+                                                required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.titleHeldManner"
+                                                #titleMannerModel="ngModel" #titleMannerEl />
                                             <abp-validation-summary [control]="titleMannerModel"
-                                                                    [controlEl]="titleMannerEl">
+                                                [controlEl]="titleMannerEl">
                                             </abp-validation-summary>
                                         </div>
                                     </div>
@@ -631,12 +624,12 @@
                                         </label>
                                         <div>
                                             <textarea class="form-control" name="sourceOfPaymentExplain"
-                                                      id="sourceOfPaymentExplain" required minlength="2" maxlength="32"
-                                                      [(ngModel)]="loanApplication.propertyInformation.sourceOfPayment"
-                                                      #sourceOfPaymentExplainModel="ngModel" #sourceOfPaymentExplainEl
-                                                      rows="3"></textarea>
+                                                id="sourceOfPaymentExplain" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.propertyInformation.sourceOfPayment"
+                                                #sourceOfPaymentExplainModel="ngModel" #sourceOfPaymentExplainEl
+                                                rows="3"></textarea>
                                             <abp-validation-summary [control]="sourceOfPaymentExplainModel"
-                                                                    [controlEl]="sourceOfPaymentExplainEl"></abp-validation-summary>
+                                                [controlEl]="sourceOfPaymentExplainEl"></abp-validation-summary>
                                         </div>
                                     </div>
                                 </div>
@@ -649,16 +642,16 @@
                                         <div class="col-md-9">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="estateHeldIn"
-                                                       id="feeSimple" value="feeSimple" checked
-                                                       [(ngModel)]="loanApplication.propertyInformation.estateHeldIn">
+                                                    id="feeSimple" value="feeSimple" checked
+                                                    [(ngModel)]="loanApplication.propertyInformation.estateHeldIn">
                                                 <label class="form-check-label" for="feeSimple">
                                                     Fee Simple
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="estateHeldIn"
-                                                       id="leasehold" value="leasehold"
-                                                       [(ngModel)]="loanApplication.propertyInformation.estateHeldIn">
+                                                    id="leasehold" value="leasehold"
+                                                    [(ngModel)]="loanApplication.propertyInformation.estateHeldIn">
                                                 <label class="form-check-label" for="leasehold">
                                                     Leasehold (show expiration date)
                                                 </label>
@@ -672,58 +665,45 @@
                             <!-- III. BORROWER INFORMATION -->
 
                             <!-- Borrower -->
-                            <app-borrower-information
-                                    heading="Borrower"
-                                    [data]="loanApplication.borrowerInformation"
-                                    (onDataChange)="onBorrowerChange($event)"
-                            ></app-borrower-information>
+                            <app-borrower-information heading="Borrower" [data]="loanApplication.borrowerInformation"
+                                (onDataChange)="onBorrowerChange($event)"></app-borrower-information>
                             <!-- Co Borrower -->
-                            <app-borrower-information
-                                    heading="Co Borrower"
-                                    [data]="loanApplication.coBorrowerInformation"
-                                    (onDataChange)="onCoBorrowerChange($event)"
-                            >
+                            <app-borrower-information heading="Co Borrower"
+                                [data]="loanApplication.coBorrowerInformation"
+                                (onDataChange)="onCoBorrowerChange($event)">
                             </app-borrower-information>
                         </ng-wizard-step>
                         <ng-wizard-step [title]="'Step 4'" [description]="'EMPLOYMENT INFORMATION'">
                             <!-- IV. EMPLOYMENT INFORMATION -->
 
-                            <app-employment-information
-                                    [showHeading]="true"
-                                    heading="Borrower"
-                                    [data]="loanApplication.borrowerEmploymentInformation1"
-                                    (onDataChange)="onChange('borrowerEmploymentInformation1', $event)"
-                            ></app-employment-information>
-                            <app-employment-information
-                                    [secondary]="true"
-                                    [data]="loanApplication.borrowerEmploymentInformation2"
-                                    (onDataChange)="onChange('borrowerEmploymentInformation2', $event)"
-                            ></app-employment-information>
-                            <app-employment-information
-                                    [secondary]="true"
-                                    [data]="loanApplication.borrowerEmploymentInformation3"
-                                    (onDataChange)="onChange('borrowerEmploymentInformation3', $event)"
-                            ></app-employment-information>
+                            <app-employment-information [showHeading]="true" heading="Borrower"
+                                [data]="loanApplication.borrowerEmploymentInformation1"
+                                (onDataChange)="onChange('borrowerEmploymentInformation1', $event)">
+                            </app-employment-information>
+                            <app-employment-information [secondary]="true"
+                                [data]="loanApplication.borrowerEmploymentInformation2"
+                                (onDataChange)="onChange('borrowerEmploymentInformation2', $event)">
+                            </app-employment-information>
+                            <app-employment-information [secondary]="true"
+                                [data]="loanApplication.borrowerEmploymentInformation3"
+                                (onDataChange)="onChange('borrowerEmploymentInformation3', $event)">
+                            </app-employment-information>
 
-                            <app-employment-information
-                                    [showHeading]="true"
-                                    heading="Borrower"
-                                    [data]="loanApplication.coBorrowerEmploymentInformation1"
-                                    (onDataChange)="onChange('coBorrowerEmploymentInformation1', $event)"
-                            ></app-employment-information>
-                            <app-employment-information
-                                    [secondary]="true"
-                                    [data]="loanApplication.coBorrowerEmploymentInformation2"
-                                    (onDataChange)="onChange('coBorrowerEmploymentInformation2', $event)"
-                            ></app-employment-information>
-                            <app-employment-information
-                                    [secondary]="true"
-                                    [data]="loanApplication.coBorrowerEmploymentInformation3"
-                                    (onDataChange)="onChange('coBorrowerEmploymentInformation3', $event)"
-                            ></app-employment-information>
+                            <app-employment-information [showHeading]="true" heading="Borrower"
+                                [data]="loanApplication.coBorrowerEmploymentInformation1"
+                                (onDataChange)="onChange('coBorrowerEmploymentInformation1', $event)">
+                            </app-employment-information>
+                            <app-employment-information [secondary]="true"
+                                [data]="loanApplication.coBorrowerEmploymentInformation2"
+                                (onDataChange)="onChange('coBorrowerEmploymentInformation2', $event)">
+                            </app-employment-information>
+                            <app-employment-information [secondary]="true"
+                                [data]="loanApplication.coBorrowerEmploymentInformation3"
+                                (onDataChange)="onChange('coBorrowerEmploymentInformation3', $event)">
+                            </app-employment-information>
                         </ng-wizard-step>
                         <ng-wizard-step [title]="'Step 5'"
-                                        [description]="'MONTHLY INCOME AND COMBINED HOUSING EXPENSE INFORMATION'">
+                            [description]="'MONTHLY INCOME AND COMBINED HOUSING EXPENSE INFORMATION'">
                             <!-- IV. EMPLOYMENT INFORMATION -->
                             <!-- <div class="col-12">
                                 <h4>MONTHLY INCOME AND COMBINED HOUSING EXPENSE INFORMATION</h4>
@@ -743,57 +723,269 @@
                                     </tr>
                                     <tr>
                                         <td>Base Empl. Income*</td>
-                                        <td contenteditable='true' type="number"></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td contenteditable='true' type="number">
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control" name="cBborrowerOvertime"
+                                                id="cBborrowerOvertime" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.overtime"
+                                                #coBorrowerOvertimeModel="ngModel" #coBorrowerOvertimeEl />
+                                            <abp-validation-summary [control]="coBorrowerOvertimeModel"
+                                                [controlEl]="coBorrowerOvertimeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>Rent</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td > 
+                                            <input type="text" class="form-control"
+                                                name="prentRent" id="prentRent" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.rent"
+                                                #prentRentModel="ngModel" #prentRentEl />
+                                            <abp-validation-summary [control]="prentRentModel"
+                                                [controlEl]="prentRentEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                            name="proposedRent" id="proposedRent" required
+                                            minlength="2" maxlength="32"
+                                            [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.rent"
+                                            #proposedRentModel="ngModel" #proposedRentEl />
+                                        <abp-validation-summary [control]="proposedRentModel"
+                                            [controlEl]="proposedRentEl">
+                                        </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Overtime</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="borrowerOvertime" id="borrowerOvertime" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.overtime"
+                                                #borrowerOvertimeModel="ngModel" #borrowerOvertimeEl />
+                                            <abp-validation-summary [control]="borrowerOvertimeModel"
+                                                [controlEl]="borrowerOvertimeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerOverTime" id="coBorrowerOverTime" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.overTime"
+                                                #coBorrowerOverTimeModel="ngModel" #coBorrowerOverTimeEl />
+                                            <abp-validation-summary [control]="coBorrowerOverTimeModel"
+                                                [controlEl]="coBorrowerOverTimeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>First Mortgage (P&I)</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerBonuses" id="coBorrowerBonuses" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.Bonuses"
+                                                #coBorrowerBonusesModel="ngModel" #coBorrowerBonusesEl />
+                                            <abp-validation-summary [control]="coBorrowerBonusesModel"
+                                                [controlEl]="coBorrowerBonusesEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >j <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Bonuses</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="borrowerBonuses" id="borrowerBonuses" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.bonuses"
+                                                #borrowerBonusesModel="ngModel" #borrowerBonusesEl />
+                                            <abp-validation-summary [control]="borrowerBonusesModel"
+                                                [controlEl]="borrowerBonusesEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerBonuses" id="coBorrowerBonuses" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.bonuses"
+                                                #coBorrowerBonusesModel="ngModel" #coBorrowerBonusesEl />
+                                            <abp-validation-summary [control]="coBorrowerBonusesModel"
+                                                [controlEl]="coBorrowerBonusesEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>Other Financing (P&I)</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >n <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >o <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Commissions</td>
-                                        <td contenteditable='true' type="number"></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td > 
+                                            <input type="text" class="form-control"
+                                                name="borrowerCommissions" id="borrowerCommissions" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.commissions"
+                                                #borrowerCommissionsModel="ngModel" #borrowerCommissionsEl />
+                                            <abp-validation-summary [control]="borrowerCommissionsModel"
+                                                [controlEl]="borrowerCommissionsEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerCommissions" id="coBorrowerCommissions" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.commissions"
+                                                #coBorrowerCommissionsModel="ngModel" #coBorrowerCommissionsEl />
+                                            <abp-validation-summary [control]="coBorrowerCommissionsModel"
+                                                [controlEl]="coBorrowerCommissionsEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>Hazard Insurance</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >s <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >t <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Dividends/Interest</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="borrowerDividendsOrInterest" id="borrowerDividendsOrInterest" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.dividendsOrInterest"
+                                                #borrowerDividendsOrInterestModel="ngModel" #borrowerDividendsOrInterestEl />
+                                            <abp-validation-summary [control]="borrowerDividendsOrInterestModel"
+                                                [controlEl]="borrowerDividendsOrInterestEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerDividendsOrInterest" id="coBorrowerDividendsOrInterest" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.dividendsOrInterest"
+                                                #coBorrowerDividendsOrInterestModel="ngModel" #coBorrowerDividendsOrInterestEl />
+                                            <abp-validation-summary [control]="coBorrowerDividendsOrInterestModel"
+                                                [controlEl]="coBorrowerDividendsOrInterestEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>Real Estate Taxes</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >x <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >y
+                                            <input type="text" class="form-control"
+                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Net Rental Income</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >
+                                             <input type="text" class="form-control"
+                                                name="borrowerNetRentalIncome" id="borrowerNetRentalIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.netRentalIncome"
+                                                #borrowerNetRentalIncomeModel="ngModel" #borrowerNetRentalIncomeEl />
+                                            <abp-validation-summary [control]="borrowerNetRentalIncomeModel"
+                                                [controlEl]="borrowerNetRentalIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                            <input type="text" class="form-control"
+                                                name="coBorrowerNetRentalIncome" id="coBorrowerNetRentalIncome" required
+                                                minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.netRentalIncome"
+                                                #coBorrowerNetRentalIncomeModel="ngModel" #coBorrowerNetRentalIncomeEl />
+                                            <abp-validation-summary [control]="coBorrowerNetRentalIncomeModel"
+                                                [controlEl]="coBorrowerNetRentalIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >
+                                        </td>
                                         <td>Mortgage Insurance</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >c
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >d
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="font-size: 10px;" rowspan="2">Other (before completing, Homeowner
@@ -801,17 +993,66 @@
                                             see the notice in “describe
                                             other income,” below)
                                         </td>
-                                        <td contenteditable='true' rowspan="2"></td>
-                                        <td contenteditable='true' rowspan="2"></td>
-                                        <td contenteditable='true' rowspan="2"></td>
+                                        <td  rowspan="2">
+                                            <input type="text" class="form-control" name="borrowerOther"
+                                                id="borrowerOther" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.other"
+                                                #borrowerOtherModel="ngModel" #borrowerOtherEl />
+                                            <abp-validation-summary [control]="borrowerOtherModel"
+                                                [controlEl]="borrowerOtherEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td  rowspan="2">
+                                            <input type="text" class="form-control" name="coBorrowerOther"
+                                            id="coBorrowerOther" required minlength="2" maxlength="32"
+                                            [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.other"
+                                            #coBorrowerOtherModel="ngModel" #coBorrowerOtherEl />
+                                        <abp-validation-summary [control]="coBorrowerOtherModel"
+                                            [controlEl]="coBorrowerOtherEl">
+                                        </abp-validation-summary>
+                                        </td>
+                                        <td  rowspan="2" style="width: 100px;">
+                                        </td>
                                         <td>Homeowner Assn. Dues</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >h
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >i
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Other</td>
-                                        <td contenteditable='true'></td>
-                                        <td contenteditable='true'></td>
+                                        <td >j
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
+                                        <td >k
+                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
+                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
+                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
+                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
+                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                            </abp-validation-summary>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold">Total</td>
@@ -851,19 +1092,19 @@
                                             <td style="width: 30px !important;">Monthly Amount</td>
                                         </tr>
                                         <tr>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
                                         </tr>
                                         <tr>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
                                         </tr>
                                         <tr>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
-                                            <td contenteditable='true'></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -889,16 +1130,16 @@
                                         <span>Completed: </span>
                                         <div class="form-check-inline">
                                             <input class="form-check-input" type="radio" name="assetsCompletion"
-                                                   id="jointly" value="jointly" checked
-                                                   [(ngModel)]="loanApplication.assetsCompletion">
+                                                id="jointly" value="jointly" checked
+                                                [(ngModel)]="loanApplication.assetsCompletion">
                                             <label class="form-check-label" for="jointly">
                                                 Jointly
                                             </label>
                                         </div>
                                         <div class="form-check-inline">
                                             <input class="form-check-input" type="radio" name="assetsCompletion"
-                                                   id="notJointly" value="notJointly"
-                                                   [(ngModel)]="loanApplication.assetsCompletion">
+                                                id="notJointly" value="notJointly"
+                                                [(ngModel)]="loanApplication.assetsCompletion">
                                             <label class="form-check-label" for="notJointly">
                                                 Not Jointly
                                             </label>
@@ -909,7 +1150,7 @@
                                     <tr>
                                         <td style="width: 20%">
                                             <span class="text-bold text-center">Assets</span>
-                                            <br/>
+                                            <br />
                                             Description
                                         </td>
                                         <td class="text-bold text-center" style="width: 20%">Cash or Market Value</td>
@@ -1067,7 +1308,7 @@
                                                     <td contenteditable='true'></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="height: 40px;">f</td>
+                                                    <td style="height: 40px;"></td>
                                                     <td>Estimated closing costs</td>
                                                     <td contenteditable='true'></td>
                                                 </tr>
@@ -1142,7 +1383,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <div><b>If you answer “Yes” to any questions a through i,
-                                                please use continuation sheet for explanation. </b></div>
+                                                    please use continuation sheet for explanation. </b></div>
                                             <br>
                                             <div>
                                                 a. Are there any outstanding judgments against you?
@@ -1188,13 +1429,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1203,13 +1444,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1218,13 +1459,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1233,13 +1474,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1248,13 +1489,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1267,7 +1508,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <div><b>If you answer “Yes” to any questions a through i, please use
-                                                continuation sheet for explanation. </b></div>
+                                                    continuation sheet for explanation. </b></div>
                                             <br>
                                             <div>
                                                 f. Are you presently delinquent or in default on any Federal
@@ -1324,13 +1565,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1340,13 +1581,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1355,13 +1596,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1370,13 +1611,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1385,13 +1626,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1400,13 +1641,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1415,13 +1656,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1430,13 +1671,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1445,13 +1686,13 @@
                                                 <div class="col-6">
                                                     <span style="float: right">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span style="padding-left: 20px;">
                                                         <input class="form-check-input" type="radio" checked
-                                                               [(ngModel)]="loanApplication.mortgageType">
+                                                            [(ngModel)]="loanApplication.mortgageType">
                                                     </span>
 
                                                 </div>
@@ -1563,8 +1804,8 @@
                                             <span><b>BORROWER</b> </span>
                                             <div class="form-check-inline" style="float: right">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     I do not wish to furnish this information
                                                 </label>
@@ -1574,8 +1815,8 @@
                                             <span><b>CO-BORROWER </b> </span>
                                             <div class="form-check-inline" style="float: right">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     I do not wish to furnish this information
                                                 </label>
@@ -1588,16 +1829,16 @@
                                             <span><b>Ethnicity</b> </span>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Hispanic or Latino
                                                 </label>
                                             </div>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Not Hispanic or Latino
                                                 </label>
@@ -1607,16 +1848,16 @@
                                             <span><b>Ethnicity</b> </span>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Hispanic or Latino
                                                 </label>
                                             </div>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Not Hispanic or Latino
                                                 </label>
@@ -1629,40 +1870,40 @@
                                             <span><b>Race:</b></span>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     American Indian or Alaska Native
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Asian
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Black or African American
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Native Hawaiian or Other Pacific Islander
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     White
                                                 </label>
@@ -1672,40 +1913,40 @@
                                             <span><b>Race:</b></span>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     American Indian or Alaska Native
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Asian
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Black or African American
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Native Hawaiian or Other Pacific Islander
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     White
                                                 </label>
@@ -1717,16 +1958,16 @@
                                             <span><b>Sex</b> </span>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Male
                                                 </label>
                                             </div>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Female
                                                 </label>
@@ -1736,16 +1977,16 @@
                                             <span><b>Sex</b> </span>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Male
                                                 </label>
                                             </div>
                                             <div class="form-check-inline" style="float: right;">
                                                 <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                                       id="jointly" value="jointly" checked
-                                                       [(ngModel)]="loanApplication.assetsCompletion">
+                                                    id="jointly" value="jointly" checked
+                                                    [(ngModel)]="loanApplication.assetsCompletion">
                                                 <label class="form-check-label" for="jointly">
                                                     Female
                                                 </label>
@@ -1761,8 +2002,8 @@
                                     </p>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                               id="jointly" value="jointly" checked
-                                               [(ngModel)]="loanApplication.assetsCompletion">
+                                            id="jointly" value="jointly" checked
+                                            [(ngModel)]="loanApplication.assetsCompletion">
                                         <label class="form-check-label" for="jointly">
                                             In a face-to-face interview
                                         </label>
@@ -1770,8 +2011,8 @@
                                     <br>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                               id="jointly" value="jointly" checked
-                                               [(ngModel)]="loanApplication.assetsCompletion">
+                                            id="jointly" value="jointly" checked
+                                            [(ngModel)]="loanApplication.assetsCompletion">
                                         <label class="form-check-label" for="jointly">
                                             In a telephone interview
                                         </label>
@@ -1779,8 +2020,8 @@
                                     <br>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                               id="jointly" value="jointly" checked
-                                               [(ngModel)]="loanApplication.assetsCompletion">
+                                            id="jointly" value="jointly" checked
+                                            [(ngModel)]="loanApplication.assetsCompletion">
                                         <label class="form-check-label" for="jointly">
                                             By the applicant and submitted by fax or mail
                                         </label>
@@ -1788,8 +2029,8 @@
                                     <br>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" name="assetsCompletion"
-                                               id="jointly" value="jointly" checked
-                                               [(ngModel)]="loanApplication.assetsCompletion">
+                                            id="jointly" value="jointly" checked
+                                            [(ngModel)]="loanApplication.assetsCompletion">
                                         <label class="form-check-label" for="jointly">
                                             By the applicant and submitted via e-mail or the Internet
                                         </label>
