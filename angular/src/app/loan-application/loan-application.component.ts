@@ -17,6 +17,7 @@ export class LoanApplicationComponent implements OnInit {
     [x: string]: any;
 
     loanApplication: any = {
+        id: undefined,
         mortgageType: {},
         propertyInformation: {},
         borrowerInformation: {},
@@ -39,8 +40,9 @@ export class LoanApplicationComponent implements OnInit {
                 {
                     text: 'Save', class: 'btn btn-info', event: () => {
                         console.log(this.loanApplication);
-                        this._loanApplicationService.post('Create', this.loanApplication).subscribe(response => {
+                        this._loanApplicationService.post('Create', this.loanApplication).subscribe((response: any) => {
                             console.log(response);
+                            this.loanApplication.id = response.data.result.id
                         }, error => {
                             console.log(error);
                         });
