@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20200918062636_RemoveBorrowerType")]
-    partial class RemoveBorrowerType
+    [Migration("20200920095006_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1284,7 +1284,206 @@ namespace LoanManagement.Migrations
                     b.ToTable("AbpWebhookSubscriptions");
                 });
 
-            modelBuilder.Entity("LoanManagement.AssetAndLiablities.AssetAndLiablity", b =>
+            modelBuilder.Entity("LoanManagement.Authorization.Roles.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasMaxLength(5000);
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsStatic")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("NormalizedName")
+                        .IsRequired()
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.HasIndex("DeleterUserId");
+
+                    b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("TenantId", "NormalizedName");
+
+                    b.ToTable("AbpRoles");
+                });
+
+            modelBuilder.Entity("LoanManagement.Authorization.Users.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AuthenticationSource")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("EmailConfirmationCode")
+                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
+                        .HasMaxLength(328);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsEmailConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsLockoutEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsPhoneNumberConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsTwoFactorEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LockoutEndDateUtc")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
+
+                    b.Property<string>("NormalizedEmailAddress")
+                        .IsRequired()
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .IsRequired()
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("PasswordResetCode")
+                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
+                        .HasMaxLength(328);
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.HasIndex("DeleterUserId");
+
+                    b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("TenantId", "NormalizedEmailAddress");
+
+                    b.HasIndex("TenantId", "NormalizedUserName");
+
+                    b.ToTable("AbpUsers");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.AssetAndLiablity", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1520,213 +1719,83 @@ namespace LoanManagement.Migrations
                     b.ToTable("AssetAndLiablities");
                 });
 
-            modelBuilder.Entity("LoanManagement.Authorization.Roles.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(5000);
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
-
-                    b.Property<bool>("IsDefault")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsStatic")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("NormalizedName")
-                        .IsRequired()
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
-
-                    b.Property<int?>("TenantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatorUserId");
-
-                    b.HasIndex("DeleterUserId");
-
-                    b.HasIndex("LastModifierUserId");
-
-                    b.HasIndex("TenantId", "NormalizedName");
-
-                    b.ToTable("AbpRoles");
-                });
-
-            modelBuilder.Entity("LoanManagement.Authorization.Users.User", b =>
+            modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AuthenticationSource")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("EmailConfirmationCode")
-                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
-                        .HasMaxLength(328);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsEmailConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsLockoutEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsPhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsTwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("LockoutEndDateUtc")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
-
-                    b.Property<string>("NormalizedEmailAddress")
-                        .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("PasswordResetCode")
-                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
-                        .HasMaxLength(328);
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
-
-                    b.Property<int?>("TenantId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatorUserId");
-
-                    b.HasIndex("DeleterUserId");
-
-                    b.HasIndex("LastModifierUserId");
-
-                    b.HasIndex("TenantId", "NormalizedEmailAddress");
-
-                    b.HasIndex("TenantId", "NormalizedUserName");
-
-                    b.ToTable("AbpUsers");
-                });
-
-            modelBuilder.Entity("LoanManagement.BorrowerInformation", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("BorrowerType")
+                    b.Property<string>("BusinessPhone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateFromTo")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EmployersAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("EmployersName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSelfEmployer")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("MonthlyIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearInThisLineOfWork")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearOnThisJob")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
+
+                    b.ToTable("BorrowerEmploymentInformation");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.BorrowerInformation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("BorrowersName")
                         .IsRequired()
@@ -1796,26 +1865,42 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BorrowerTypeId");
+
                     b.ToTable("BorrowerInformation");
                 });
 
-            modelBuilder.Entity("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", b =>
+            modelBuilder.Entity("LoanManagement.Models.BorrowerType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BorrowerType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Borrower"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Co-Borrower"
+                        });
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.CombinedMonthlyHousingExpense", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    b.Property<string>("BorrowerType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("BusinessPhone1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("BusinessPhone2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("BusinessPhone3")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -1823,51 +1908,25 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("DateFromTo2")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DateFromTo3")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("EmployersAddress1")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                    b.Property<decimal>("FirstMortage")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("EmployersAddress2")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                    b.Property<decimal>("HazardInsurance")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("EmployersAddress3")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                    b.Property<decimal>("HomeOwnerAssociationDue")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("EmployersName1")
-                        .IsRequired()
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("EmployersName2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("EmployersName3")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("HousingExpenseTypeId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsSelfEmployer1")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsSelfEmployer2")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsSelfEmployer3")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -1876,36 +1935,34 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal?>("MonthlyIncome2")
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("MortgageInsurance")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<decimal?>("MonthlyIncome3")
+                    b.Property<decimal>("Other")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Position1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("OtherMortage")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Position2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("RealEstateTaxes")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Position3")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("TenantId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("YearInThisLineOfWork1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("YearOnThisJob1")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Rental")
+                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("BorrowerEmploymentInformation");
+                    b.HasIndex("HousingExpenseTypeId");
+
+                    b.HasIndex("LoanApplicationId");
+
+                    b.ToTable("CombinedMonthlyHousingExpense");
                 });
 
-            modelBuilder.Entity("LoanManagement.DetailsOfTransactions.DetailsOfTransaction", b =>
+            modelBuilder.Entity("LoanManagement.Models.DetailsOfTransaction", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1982,23 +2039,74 @@ namespace LoanManagement.Migrations
                     b.ToTable("DetailsOfTransactions");
                 });
 
-            modelBuilder.Entity("LoanManagement.LoanApplication", b =>
+            modelBuilder.Entity("LoanManagement.Models.GrossMonthlyIncome", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("BorrowerEmploymentInfoId")
+                    b.Property<decimal>("BasicIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Bonuses")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Commissions")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("BorrowerInfoId")
+                    b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("CoBorrowerEmploymentInfoId")
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("DividendAndInterest")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("CoBorrowerInfoId")
+                    b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
+
+                    b.Property<decimal>("NetRentalIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Other")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Overtime")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
+
+                    b.HasIndex("LoanApplicationId");
+
+                    b.ToTable("GrossMonthlyIncome");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.HousingExpenseType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2021,6 +2129,90 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HousingExpenseType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreationTime = new DateTime(2020, 9, 20, 14, 50, 5, 693, DateTimeKind.Local).AddTicks(3409),
+                            IsDeleted = false,
+                            Name = "Present"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreationTime = new DateTime(2020, 9, 20, 14, 50, 5, 695, DateTimeKind.Local).AddTicks(5489),
+                            IsDeleted = false,
+                            Name = "Proposed"
+                        });
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("AssetAndLiablityId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerEmploymentInfoId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerEmploymentInfoId2")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerEmploymentInfoId3")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerInfoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId2")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId3")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerInfoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DetailsOfTransactionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("MonthlyIncomeAndCombinedHousingExpenseId")
+                        .HasColumnType("int");
+
                     b.Property<long?>("MortgageTypeId")
                         .HasColumnType("bigint");
 
@@ -2032,13 +2224,25 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BorrowerEmploymentInfoId");
+                    b.HasIndex("AssetAndLiablityId");
+
+                    b.HasIndex("BorrowerEmploymentInfoId1");
+
+                    b.HasIndex("BorrowerEmploymentInfoId2");
+
+                    b.HasIndex("BorrowerEmploymentInfoId3");
 
                     b.HasIndex("BorrowerInfoId");
 
-                    b.HasIndex("CoBorrowerEmploymentInfoId");
+                    b.HasIndex("CoBorrowerEmploymentInfoId1");
+
+                    b.HasIndex("CoBorrowerEmploymentInfoId2");
+
+                    b.HasIndex("CoBorrowerEmploymentInfoId3");
 
                     b.HasIndex("CoBorrowerInfoId");
+
+                    b.HasIndex("DetailsOfTransactionId");
 
                     b.HasIndex("MortgageTypeId")
                         .IsUnique();
@@ -2049,7 +2253,7 @@ namespace LoanManagement.Migrations
                     b.ToTable("LoanApplications");
                 });
 
-            modelBuilder.Entity("LoanManagement.MortgageType", b =>
+            modelBuilder.Entity("LoanManagement.Models.MortgageType", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -2113,69 +2317,7 @@ namespace LoanManagement.Migrations
                     b.ToTable("MortgageTypes");
                 });
 
-            modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConnectionString")
-                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1024);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("EditionId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("TenancyName")
-                        .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatorUserId");
-
-                    b.HasIndex("DeleterUserId");
-
-                    b.HasIndex("EditionId");
-
-                    b.HasIndex("LastModifierUserId");
-
-                    b.HasIndex("TenancyName");
-
-                    b.ToTable("AbpTenants");
-                });
-
-            modelBuilder.Entity("LoanManagement.Property_Information.PropertyInformation", b =>
+            modelBuilder.Entity("LoanManagement.Models.PropertyInformation", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -2273,6 +2415,68 @@ namespace LoanManagement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyInformation");
+                });
+
+            modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConnectionString")
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
+                        .HasMaxLength(1024);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("EditionId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("TenancyName")
+                        .IsRequired()
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.HasIndex("DeleterUserId");
+
+                    b.HasIndex("EditionId");
+
+                    b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("TenancyName");
+
+                    b.ToTable("AbpTenants");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -2471,35 +2675,115 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("LoanManagement.LoanApplication", b =>
+            modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
                 {
-                    b.HasOne("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", "BorrowerEmploymentInfo")
-                        .WithMany("BorrowerLoanApplication")
-                        .HasForeignKey("BorrowerEmploymentInfoId")
+                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
+                        .WithMany("BorrowerEmploymentInformations")
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.BorrowerInformation", b =>
+                {
+                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.CombinedMonthlyHousingExpense", b =>
+                {
+                    b.HasOne("LoanManagement.Models.HousingExpenseType", "HousingExpenseType")
+                        .WithMany()
+                        .HasForeignKey("HousingExpenseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany("CombinedMonthlyHousingExpenses")
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.GrossMonthlyIncome", b =>
+                {
+                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany("GrossMonthlyIncomes")
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
+                {
+                    b.HasOne("LoanManagement.Models.AssetAndLiablity", "AssetAndLiablity")
+                        .WithMany()
+                        .HasForeignKey("AssetAndLiablityId");
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo1")
+                        .WithMany("BorrowerLoanApplication1")
+                        .HasForeignKey("BorrowerEmploymentInfoId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.BorrowerInformation", "BorrowerInfo")
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo2")
+                        .WithMany("BorrowerLoanApplication2")
+                        .HasForeignKey("BorrowerEmploymentInfoId2")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo3")
+                        .WithMany("BorrowerLoanApplication3")
+                        .HasForeignKey("BorrowerEmploymentInfoId3")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~2")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerInformation", "BorrowerInfo")
                         .WithMany("BorrowerLoanApplication")
                         .HasForeignKey("BorrowerInfoId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.Borrower_Information.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo")
-                        .WithMany("CoBorrowerLoanApplication")
-                        .HasForeignKey("CoBorrowerEmploymentInfoId")
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo1")
+                        .WithMany("CoBorrowerLoanApplication1")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.BorrowerInformation", "CoBorrowerInfo")
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo2")
+                        .WithMany("CoBorrowerLoanApplication2")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId2")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo3")
+                        .WithMany("CoBorrowerLoanApplication3")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId3")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~2")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerInformation", "CoBorrowerInfo")
                         .WithMany("CoBorrowerLoanApplication")
                         .HasForeignKey("CoBorrowerInfoId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.MortgageType", "MortgageType")
-                        .WithOne("LoanApplication")
-                        .HasForeignKey("LoanManagement.LoanApplication", "MortgageTypeId");
+                    b.HasOne("LoanManagement.Models.DetailsOfTransaction", "DetailsOfTransaction")
+                        .WithMany()
+                        .HasForeignKey("DetailsOfTransactionId");
 
-                    b.HasOne("LoanManagement.Property_Information.PropertyInformation", "PropertyInfo")
+                    b.HasOne("LoanManagement.Models.MortgageType", "MortgageType")
                         .WithOne("LoanApplication")
-                        .HasForeignKey("LoanManagement.LoanApplication", "PropertyInfoId");
+                        .HasForeignKey("LoanManagement.Models.LoanApplication", "MortgageTypeId");
+
+                    b.HasOne("LoanManagement.Models.PropertyInformation", "PropertyInfo")
+                        .WithOne("LoanApplication")
+                        .HasForeignKey("LoanManagement.Models.LoanApplication", "PropertyInfoId");
                 });
 
             modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
