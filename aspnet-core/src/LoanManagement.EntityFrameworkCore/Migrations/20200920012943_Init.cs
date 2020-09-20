@@ -1372,8 +1372,8 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 9, 20, 14, 50, 5, 693, DateTimeKind.Local).AddTicks(3409), null, null, null, false, null, null, "Present" },
-                    { 2, new DateTime(2020, 9, 20, 14, 50, 5, 695, DateTimeKind.Local).AddTicks(5489), null, null, null, false, null, null, "Proposed" }
+                    { 1, new DateTime(2020, 9, 20, 6, 29, 42, 572, DateTimeKind.Local).AddTicks(8515), null, null, null, false, null, null, "Present" },
+                    { 2, new DateTime(2020, 9, 20, 6, 29, 42, 573, DateTimeKind.Local).AddTicks(3611), null, null, null, false, null, null, "Proposed" }
                 });
 
             migrationBuilder.CreateIndex(
