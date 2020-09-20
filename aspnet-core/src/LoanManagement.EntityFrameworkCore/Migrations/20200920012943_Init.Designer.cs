@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20200920095006_Init")]
+    [Migration("20200920012943_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -2140,14 +2140,14 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 9, 20, 14, 50, 5, 693, DateTimeKind.Local).AddTicks(3409),
+                            CreationTime = new DateTime(2020, 9, 20, 6, 29, 42, 572, DateTimeKind.Local).AddTicks(8515),
                             IsDeleted = false,
                             Name = "Present"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 9, 20, 14, 50, 5, 695, DateTimeKind.Local).AddTicks(5489),
+                            CreationTime = new DateTime(2020, 9, 20, 6, 29, 42, 573, DateTimeKind.Local).AddTicks(3611),
                             IsDeleted = false,
                             Name = "Proposed"
                         });
