@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace LoanManagement.Migrations
 {
@@ -534,17 +534,9 @@ namespace LoanManagement.Migrations
                 name: "BorrowerType",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
-                    TenantId = table.Column<int>(nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -583,6 +575,26 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetailsOfTransactions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HousingExpenseType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HousingExpenseType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -995,29 +1007,17 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    EmployersName1 = table.Column<string>(maxLength: 100, nullable: false),
-                    EmployersAddress1 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer1 = table.Column<bool>(nullable: false),
-                    YearOnThisJob1 = table.Column<int>(nullable: true),
-                    YearInThisLineOfWork1 = table.Column<int>(nullable: true),
-                    Position1 = table.Column<string>(nullable: true),
-                    BusinessPhone1 = table.Column<string>(nullable: true),
-                    EmployersName2 = table.Column<string>(nullable: true),
-                    EmployersAddress2 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer2 = table.Column<bool>(nullable: false),
-                    DateFromTo2 = table.Column<DateTime>(nullable: false),
-                    MonthlyIncome2 = table.Column<decimal>(nullable: true),
-                    Position2 = table.Column<string>(nullable: true),
-                    BusinessPhone2 = table.Column<string>(nullable: true),
-                    EmployersName3 = table.Column<string>(nullable: true),
-                    EmployersAddress3 = table.Column<string>(maxLength: 100, nullable: true),
-                    IsSelfEmployer3 = table.Column<bool>(nullable: false),
-                    DateFromTo3 = table.Column<DateTime>(nullable: false),
-                    MonthlyIncome3 = table.Column<decimal>(nullable: true),
-                    Position3 = table.Column<string>(nullable: true),
-                    BusinessPhone3 = table.Column<string>(nullable: true),
-                    BorrowerTypeId = table.Column<long>(nullable: true),
-                    TenantId = table.Column<int>(nullable: true)
+                    EmployersName = table.Column<string>(maxLength: 100, nullable: false),
+                    EmployersAddress = table.Column<string>(nullable: true),
+                    IsSelfEmployer = table.Column<bool>(nullable: false),
+                    YearOnThisJob = table.Column<int>(nullable: true),
+                    YearInThisLineOfWork = table.Column<int>(nullable: true),
+                    Position = table.Column<string>(nullable: true),
+                    BusinessPhone = table.Column<string>(nullable: true),
+                    MonthlyIncome = table.Column<decimal>(nullable: true),
+                    DateFromTo = table.Column<DateTime>(nullable: false),
+                    TenantId = table.Column<int>(nullable: true),
+                    BorrowerTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1027,7 +1027,7 @@ namespace LoanManagement.Migrations
                         column: x => x.BorrowerTypeId,
                         principalTable: "BorrowerType",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1056,7 +1056,7 @@ namespace LoanManagement.Migrations
                     FormerAddressModel = table.Column<string>(nullable: true),
                     FormerAddressType = table.Column<string>(nullable: true),
                     FormerAddressNoOfYears = table.Column<int>(nullable: true),
-                    BorrowerTypeId = table.Column<long>(nullable: true),
+                    BorrowerTypeId = table.Column<int>(nullable: false),
                     TenantId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -1067,7 +1067,7 @@ namespace LoanManagement.Migrations
                         column: x => x.BorrowerTypeId,
                         principalTable: "BorrowerType",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1185,20 +1185,45 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
+                    AssetAndLiablityId = table.Column<long>(nullable: true),
+                    DetailsOfTransactionId = table.Column<long>(nullable: true),
                     MortgageTypeId = table.Column<long>(nullable: true),
                     PropertyInfoId = table.Column<long>(nullable: true),
                     BorrowerInfoId = table.Column<long>(nullable: true),
                     CoBorrowerInfoId = table.Column<long>(nullable: true),
-                    BorrowerEmploymentInfoId = table.Column<long>(nullable: true),
-                    CoBorrowerEmploymentInfoId = table.Column<long>(nullable: true),
+                    BorrowerEmploymentInfoId1 = table.Column<long>(nullable: true),
+                    BorrowerEmploymentInfoId2 = table.Column<long>(nullable: true),
+                    BorrowerEmploymentInfoId3 = table.Column<long>(nullable: true),
+                    CoBorrowerEmploymentInfoId1 = table.Column<long>(nullable: true),
+                    CoBorrowerEmploymentInfoId2 = table.Column<long>(nullable: true),
+                    CoBorrowerEmploymentInfoId3 = table.Column<long>(nullable: true),
+                    MonthlyIncomeAndCombinedHousingExpenseId = table.Column<int>(nullable: false),
                     TenantId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoanApplications", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_LoanApplications_AssetAndLiablities_AssetAndLiablityId",
+                        column: x => x.AssetAndLiablityId,
+                        principalTable: "AssetAndLiablities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmplo~",
-                        column: x => x.BorrowerEmploymentInfoId,
+                        column: x => x.BorrowerEmploymentInfoId1,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~1",
+                        column: x => x.BorrowerEmploymentInfoId2,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~2",
+                        column: x => x.BorrowerEmploymentInfoId3,
                         principalTable: "BorrowerEmploymentInformation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1210,7 +1235,19 @@ namespace LoanManagement.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEmp~",
-                        column: x => x.CoBorrowerEmploymentInfoId,
+                        column: x => x.CoBorrowerEmploymentInfoId1,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~1",
+                        column: x => x.CoBorrowerEmploymentInfoId2,
+                        principalTable: "BorrowerEmploymentInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~2",
+                        column: x => x.CoBorrowerEmploymentInfoId3,
                         principalTable: "BorrowerEmploymentInformation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1218,6 +1255,12 @@ namespace LoanManagement.Migrations
                         name: "FK_LoanApplications_BorrowerInformation_CoBorrowerInfoId",
                         column: x => x.CoBorrowerInfoId,
                         principalTable: "BorrowerInformation",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LoanApplications_DetailsOfTransactions_DetailsOfTransactionId",
+                        column: x => x.DetailsOfTransactionId,
+                        principalTable: "DetailsOfTransactions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -1232,6 +1275,105 @@ namespace LoanManagement.Migrations
                         principalTable: "PropertyInformation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CombinedMonthlyHousingExpense",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    Rental = table.Column<decimal>(nullable: false),
+                    FirstMortage = table.Column<decimal>(nullable: false),
+                    OtherMortage = table.Column<decimal>(nullable: false),
+                    HazardInsurance = table.Column<decimal>(nullable: false),
+                    RealEstateTaxes = table.Column<decimal>(nullable: false),
+                    MortgageInsurance = table.Column<decimal>(nullable: false),
+                    HomeOwnerAssociationDue = table.Column<decimal>(nullable: false),
+                    Other = table.Column<decimal>(nullable: false),
+                    HousingExpenseTypeId = table.Column<int>(nullable: false),
+                    LoanApplicationId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CombinedMonthlyHousingExpense", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CombinedMonthlyHousingExpense_HousingExpenseType_HousingExpe~",
+                        column: x => x.HousingExpenseTypeId,
+                        principalTable: "HousingExpenseType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CombinedMonthlyHousingExpense_LoanApplications_LoanApplicati~",
+                        column: x => x.LoanApplicationId,
+                        principalTable: "LoanApplications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GrossMonthlyIncome",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    BasicIncome = table.Column<decimal>(nullable: false),
+                    Overtime = table.Column<decimal>(nullable: false),
+                    Bonuses = table.Column<decimal>(nullable: false),
+                    Commissions = table.Column<decimal>(nullable: false),
+                    DividendAndInterest = table.Column<decimal>(nullable: false),
+                    NetRentalIncome = table.Column<decimal>(nullable: false),
+                    Other = table.Column<decimal>(nullable: false),
+                    BorrowerTypeId = table.Column<int>(nullable: false),
+                    LoanApplicationId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GrossMonthlyIncome", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GrossMonthlyIncome_BorrowerType_BorrowerTypeId",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GrossMonthlyIncome_LoanApplications_LoanApplicationId",
+                        column: x => x.LoanApplicationId,
+                        principalTable: "LoanApplications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "BorrowerType",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Borrower" },
+                    { 2, "Co-Borrower" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HousingExpenseType",
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 9, 20, 6, 29, 42, 572, DateTimeKind.Local).AddTicks(8515), null, null, null, false, null, null, "Present" },
+                    { 2, new DateTime(2020, 9, 20, 6, 29, 42, 573, DateTimeKind.Local).AddTicks(3611), null, null, null, false, null, null, "Proposed" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -1588,9 +1730,44 @@ namespace LoanManagement.Migrations
                 column: "BorrowerTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LoanApplications_BorrowerEmploymentInfoId",
+                name: "IX_CombinedMonthlyHousingExpense_HousingExpenseTypeId",
+                table: "CombinedMonthlyHousingExpense",
+                column: "HousingExpenseTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CombinedMonthlyHousingExpense_LoanApplicationId",
+                table: "CombinedMonthlyHousingExpense",
+                column: "LoanApplicationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GrossMonthlyIncome_BorrowerTypeId",
+                table: "GrossMonthlyIncome",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GrossMonthlyIncome_LoanApplicationId",
+                table: "GrossMonthlyIncome",
+                column: "LoanApplicationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_AssetAndLiablityId",
                 table: "LoanApplications",
-                column: "BorrowerEmploymentInfoId");
+                column: "AssetAndLiablityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_BorrowerEmploymentInfoId1",
+                table: "LoanApplications",
+                column: "BorrowerEmploymentInfoId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_BorrowerEmploymentInfoId2",
+                table: "LoanApplications",
+                column: "BorrowerEmploymentInfoId2");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_BorrowerEmploymentInfoId3",
+                table: "LoanApplications",
+                column: "BorrowerEmploymentInfoId3");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_BorrowerInfoId",
@@ -1598,14 +1775,29 @@ namespace LoanManagement.Migrations
                 column: "BorrowerInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LoanApplications_CoBorrowerEmploymentInfoId",
+                name: "IX_LoanApplications_CoBorrowerEmploymentInfoId1",
                 table: "LoanApplications",
-                column: "CoBorrowerEmploymentInfoId");
+                column: "CoBorrowerEmploymentInfoId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_CoBorrowerEmploymentInfoId2",
+                table: "LoanApplications",
+                column: "CoBorrowerEmploymentInfoId2");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_CoBorrowerEmploymentInfoId3",
+                table: "LoanApplications",
+                column: "CoBorrowerEmploymentInfoId3");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_CoBorrowerInfoId",
                 table: "LoanApplications",
                 column: "CoBorrowerInfoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanApplications_DetailsOfTransactionId",
+                table: "LoanApplications",
+                column: "DetailsOfTransactionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_MortgageTypeId",
@@ -1704,13 +1896,10 @@ namespace LoanManagement.Migrations
                 name: "AbpWebhookSubscriptions");
 
             migrationBuilder.DropTable(
-                name: "AssetAndLiablities");
+                name: "CombinedMonthlyHousingExpense");
 
             migrationBuilder.DropTable(
-                name: "DetailsOfTransactions");
-
-            migrationBuilder.DropTable(
-                name: "LoanApplications");
+                name: "GrossMonthlyIncome");
 
             migrationBuilder.DropTable(
                 name: "AbpDynamicEntityProperties");
@@ -1728,16 +1917,10 @@ namespace LoanManagement.Migrations
                 name: "AbpWebhookEvents");
 
             migrationBuilder.DropTable(
-                name: "BorrowerEmploymentInformation");
+                name: "HousingExpenseType");
 
             migrationBuilder.DropTable(
-                name: "BorrowerInformation");
-
-            migrationBuilder.DropTable(
-                name: "MortgageTypes");
-
-            migrationBuilder.DropTable(
-                name: "PropertyInformation");
+                name: "LoanApplications");
 
             migrationBuilder.DropTable(
                 name: "AbpDynamicProperties");
@@ -1747,6 +1930,24 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUsers");
+
+            migrationBuilder.DropTable(
+                name: "AssetAndLiablities");
+
+            migrationBuilder.DropTable(
+                name: "BorrowerEmploymentInformation");
+
+            migrationBuilder.DropTable(
+                name: "BorrowerInformation");
+
+            migrationBuilder.DropTable(
+                name: "DetailsOfTransactions");
+
+            migrationBuilder.DropTable(
+                name: "MortgageTypes");
+
+            migrationBuilder.DropTable(
+                name: "PropertyInformation");
 
             migrationBuilder.DropTable(
                 name: "BorrowerType");
