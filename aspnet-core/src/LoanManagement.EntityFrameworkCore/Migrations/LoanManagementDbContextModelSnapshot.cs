@@ -2138,14 +2138,14 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 9, 19, 11, 57, 43, 633, DateTimeKind.Local).AddTicks(2668),
+                            CreationTime = new DateTime(2020, 9, 20, 6, 29, 42, 572, DateTimeKind.Local).AddTicks(8515),
                             IsDeleted = false,
                             Name = "Present"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 9, 19, 11, 57, 43, 633, DateTimeKind.Local).AddTicks(6646),
+                            CreationTime = new DateTime(2020, 9, 20, 6, 29, 42, 573, DateTimeKind.Local).AddTicks(3611),
                             IsDeleted = false,
                             Name = "Proposed"
                         });
