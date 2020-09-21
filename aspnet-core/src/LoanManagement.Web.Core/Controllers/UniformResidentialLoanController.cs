@@ -170,7 +170,7 @@ namespace LoanManagement.Controllers
 
             await _loanAppService.UpdateAsync(input);
 
-            return Ok();
+            return Json(input);
         }
 
         [HttpGet]
