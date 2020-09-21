@@ -792,21 +792,21 @@
                                         <td>First Mortgage (P&I)</td>
                                         <td >
                                             <input type="text" class="form-control"
-                                                name="coBorrowerBonuses" id="coBorrowerBonuses" required
+                                                name="firstMortagePresent" id="firstMortagePresent" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.Bonuses"
-                                                #coBorrowerBonusesModel="ngModel" #coBorrowerBonusesEl />
-                                            <abp-validation-summary [control]="coBorrowerBonusesModel"
-                                                [controlEl]="coBorrowerBonusesEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.firstMortage"
+                                                #firstMortagePresentModel="ngModel" #firstMortagePresentEl />
+                                            <abp-validation-summary [control]="firstMortagePresentModel"
+                                                [controlEl]="firstMortagePresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >j <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td > <input type="text" class="form-control"
+                                                name="firstMortagepPoposed" id="firstMortageProposed" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.firstMortage"
+                                                #firstMortagepPoposedModel="ngModel" #firstMortageProposedEl />
+                                            <abp-validation-summary [control]="firstMortagepPoposedModel"
+                                                [controlEl]="firstMortageProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -835,22 +835,22 @@
                                         <td >
                                         </td>
                                         <td>Other Financing (P&I)</td>
-                                        <td >n <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td ><input type="text" class="form-control"
+                                                name="otherFinancingPresent" id="otherFinancinPresent" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.otherFinancing"
+                                                #otherFinancinPresentModel="ngModel" #otherFinancinPresentEl />
+                                            <abp-validation-summary [control]="otherFinancinPresentModel"
+                                                [controlEl]="otherFinancinPresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >o <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td ><input type="text" class="form-control"
+                                                name="otherFinancinProposed" id="otherFinancinProposed" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.otherFinancing"
+                                                #otherFinancinProposedModel="ngModel" #otherFinancinProposedEl />
+                                            <abp-validation-summary [control]="otherFinancinProposedModel"
+                                                [controlEl]="otherFinancinProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -879,22 +879,22 @@
                                         <td >
                                         </td>
                                         <td>Hazard Insurance</td>
-                                        <td >s <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td ><input type="text" class="form-control"
+                                                name="hazardInsurancePresent" id="hazardInsurancePresent" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.hazardInsurance"
+                                                #hazardInsurancePresentModel="ngModel" #hazardInsurancePresentEl />
+                                            <abp-validation-summary [control]="hazardInsurancePresentModel"
+                                                [controlEl]="hazardInsurancePresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >t <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td ><input type="text" class="form-control"
+                                                name="hazardInsuranceProposed" id="hazardInsuranceProposed" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.hazardInsurance"
+                                                #hazardInsuranceProposedModel="ngModel" #hazardInsuranceProposedEl />
+                                            <abp-validation-summary [control]="hazardInsuranceProposedModel"
+                                                [controlEl]="hazardInsuranceProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -923,23 +923,23 @@
                                         <td >
                                         </td>
                                         <td>Real Estate Taxes</td>
-                                        <td >x <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                        <td ><input type="text" class="form-control"
+                                                name="realStateTaxesPresent" id="realStateTaxesPresent" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.realStateTaxes"
+                                                #realStateTaxesPresentModel="ngModel" #realStateTaxesPresentEl />
+                                            <abp-validation-summary [control]="realStateTaxesPresentModel"
+                                                [controlEl]="realStateTaxesPresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >y
+                                        <td >
                                             <input type="text" class="form-control"
-                                                name="borrowerBaseEmplIncome" id="borrowerBaseEmplIncome" required
+                                                name="realStateTaxesProposed" id="realStateTaxesProposed" required
                                                 minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.realStateTaxes"
+                                                #realStateTaxesProposedModel="ngModel" #realStateTaxesProposedEl />
+                                            <abp-validation-summary [control]="realStateTaxesProposedModel"
+                                                [controlEl]="realStateTaxesProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -968,22 +968,22 @@
                                         <td >
                                         </td>
                                         <td>Mortgage Insurance</td>
-                                        <td >c
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="mortgageInsurancePresent"
+                                                id="mortgageInsurancePresent" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.mortgageInsurance"
+                                                #mortgageInsurancePresentModel="ngModel" #mortgageInsurancePresentEl />
+                                            <abp-validation-summary [control]="mortgageInsurancePresentModel"
+                                                [controlEl]="mortgageInsurancePresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >d
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="mortgageInsuranceProposed"
+                                                id="mortgageInsuranceProposed" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.mortgageInsurance"
+                                                #mortgageInsuranceProposedModel="ngModel" #mortgageInsuranceProposedEl />
+                                            <abp-validation-summary [control]="mortgageInsuranceProposedModel"
+                                                [controlEl]="mortgageInsuranceProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -994,7 +994,7 @@
                                             other income,” below)
                                         </td>
                                         <td  rowspan="2">
-                                            <input type="text" class="form-control" name="borrowerOther"
+                                            <input style="height: 80px;" type="text" class="form-control" name="borrowerOther"
                                                 id="borrowerOther" required minlength="2" maxlength="32"
                                                 [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.other"
                                                 #borrowerOtherModel="ngModel" #borrowerOtherEl />
@@ -1003,7 +1003,7 @@
                                             </abp-validation-summary>
                                         </td>
                                         <td  rowspan="2">
-                                            <input type="text" class="form-control" name="coBorrowerOther"
+                                            <input style="height: 80px;" type="text" class="form-control" name="coBorrowerOther"
                                             id="coBorrowerOther" required minlength="2" maxlength="32"
                                             [(ngModel)]="loanApplication.grossMonthlyIncomeCoBorrower.other"
                                             #coBorrowerOtherModel="ngModel" #coBorrowerOtherEl />
@@ -1014,43 +1014,43 @@
                                         <td  rowspan="2" style="width: 100px;">
                                         </td>
                                         <td>Homeowner Assn. Dues</td>
-                                        <td >h
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="homeOwnerAssignDuesPresent"
+                                                id="homeOwnerAssignDuesPresent" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.homeOwnerAssignDues"
+                                                #homeOwnerAssignDuesPresentModel="ngModel" #homeOwnerAssignDuesPresentEl />
+                                            <abp-validation-summary [control]="homeOwnerAssignDuesPresentModel"
+                                                [controlEl]="homeOwnerAssignDuesPresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >i
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="homeOwnerAssignDuesProposed"
+                                                id="homeOwnerAssignDuesProposed" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.homeOwnerAssignDues"
+                                                #homeOwnerAssignDuesProposedModel="ngModel" #homeOwnerAssignDuesProposedEl />
+                                            <abp-validation-summary [control]="homeOwnerAssignDuesProposedModel"
+                                                [controlEl]="homeOwnerAssignDuesProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Other</td>
-                                        <td >j
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="otherPresent"
+                                                id="otherPresent" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpensePresent.other"
+                                                #otherPresentModel="ngModel" #otherPresentEl />
+                                            <abp-validation-summary [control]="otherPresentModel"
+                                                [controlEl]="otherPresentEl">
                                             </abp-validation-summary>
                                         </td>
-                                        <td >k
-                                            <input type="text" class="form-control" name="borrowerBaseEmplIncome"
-                                                id="borrowerBaseEmplIncome" required minlength="2" maxlength="32"
-                                                [(ngModel)]="loanApplication.grossMonthlyIncomeBorrower.baseEmplIncome"
-                                                #borrowerBaseEmplIncomeModel="ngModel" #borrowerBaseEmplIncomeEl />
-                                            <abp-validation-summary [control]="borrowerBaseEmplIncomeModel"
-                                                [controlEl]="borrowerBaseEmplIncomeEl">
+                                        <td >
+                                            <input type="text" class="form-control" name="otherProposed"
+                                                id="otherProposed" required minlength="2" maxlength="32"
+                                                [(ngModel)]="loanApplication.combinedMonthlyHousingExpenseProposed.other"
+                                                #otherProposedModel="ngModel" #otherProposedEl />
+                                            <abp-validation-summary [control]="otherProposedModel"
+                                                [controlEl]="otherProposedEl">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
