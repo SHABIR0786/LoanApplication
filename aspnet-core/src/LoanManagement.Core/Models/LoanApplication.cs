@@ -48,5 +48,6 @@ namespace LoanManagement.Models
 
         public List<GrossMonthlyIncome> GrossMonthlyIncomes { get; set; }
         public List<CombinedMonthlyHousingExpense> CombinedMonthlyHousingExpenses { get; set; }
+        public List<OtherIncome> OtherIncomes { get; set; }
     }
 }
