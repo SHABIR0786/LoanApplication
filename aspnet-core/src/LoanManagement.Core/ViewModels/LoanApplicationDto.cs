@@ -1,5 +1,6 @@
 using Abp.Application.Services.Dto;
 using LoanManagement.LoanApplications.Dto;
+using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {
@@ -26,5 +27,7 @@ namespace LoanManagement.ViewModels
 
         public CombinedMonthlyHousingExpenseDto CombinedMonthlyHousingExpensePresent { get; set; }
         public CombinedMonthlyHousingExpenseDto CombinedMonthlyHousingExpenseProposed { get; set; }
+
+        public List<OtherIncomeDto> OtherIncomes { get; set; }
     }
 }
