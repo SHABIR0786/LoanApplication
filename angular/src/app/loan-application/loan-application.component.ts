@@ -40,21 +40,9 @@ export class LoanApplicationComponent implements OnInit {
             toolbarExtraButtons: [
                 {
                     text: 'Save', class: 'btn btn-info', event: () => {
-                        const formData = Object.assign({}, this.loanApplication);
-
-                        console.log(formData);
-
-                        for (const key in formData) {
-                            if (formData.hasOwnProperty(key)) {
-                                if (typeof formData[key] === 'object' && Object.keys(formData[key]).length === 0) {
-                                    formData[key] = undefined;
-                                }
-                            }
-                        }
-
+                        const formData = this.sanitizeFormData();
                         this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
-                            console.log(response);
-                            this.loanApplication.id = response.result.id;
+                            this.loanApplication = this.prepareFormData(response.result);
                         }, error => {
                             console.log(error);
                         });
@@ -138,11 +126,28 @@ export class LoanApplicationComponent implements OnInit {
         this.loanApplication.coBorrowerInformation = data;
     }
 
-    onEmploymentInfoChange(data) {
-        this.loanApplication.borrowerEmploymentInformation = data;
-    }
-
     onChange(prop, data) {
         this.loanApplication[prop] = data;
+    }
+
+    sanitizeFormData() {
+        const formData = Object.assign({}, this.loanApplication);
+        for (const key in formData) {
+            if (formData.hasOwnProperty(key)) {
+                if (typeof formData[key] === 'object' && Object.keys(formData[key]).length === 0) {
+                    formData[key] = undefined;
+                }
+            }
+        }
+        return formData;
+    }
+
+    prepareFormData(response) {
+        for (const key in response) {
+            if (response.hasOwnProperty(key)) {
+                response[key] = response[key] || {};
+            }
+        }
+        return response;
     }
 }
