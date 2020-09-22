@@ -1,4 +1,5 @@
 ﻿using Abp;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
@@ -41,52 +42,39 @@ namespace LoanManagement.DatabaseServices.Implementations
             return result;
         }
 
-        public async Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetPaginatedAllAsync(PagedBorrowerEmploymentInformationDtoResultRequestDto input)
+        public async Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId)
         {
-            var filteredBorrower = _borrowerEmploymentInformationRepository.GetAll()
-                .Where(i => i.IsDeleted == false && (!input.TenantId.HasValue || i.TenantId == input.TenantId))
-                .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
-                    x => x.EmployersName.Contains(input.Keyword));
-
-            var pagedAndFilteredBorrowers = filteredBorrower
-                .OrderBy(i => i.EmployersName)
-                .PageBy(input);
-
-            var totalCount = filteredBorrower.Count();
-
-            return new PagedResultDto<BorrowerEmploymentInformationDto>(
-                totalCount: totalCount,
-                items: await pagedAndFilteredBorrowers.Select(i => new BorrowerEmploymentInformationDto()
-                {
-                    Id = i.Id,
-                    EmployersName = i.EmployersName,
-                    EmployersAddress = i.EmployersAddress,
-                    IsSelfEmployer = i.IsSelfEmployer,
-                    YearOnThisJob = i.YearOnThisJob,
-                    YearInThisLineOfWork = i.YearInThisLineOfWork,
-                    Position = i.Position,
-                    BusinessPhone = i.BusinessPhone
-                })
-                .ToListAsync());
-        }
-
-        public async Task<ResponseMessagesDto> CreateOrUpdateAsync(BorrowerEmploymentInformationDto input)
-        {
-            ResponseMessagesDto result;
-            if (input.Id == 0)
-            {
-                result = await CreateAsync(input);
-            }
-            else
-            {
-                result = await UpdateAsync(input);
-            }
+            var result = await _borrowerEmploymentInformationRepository.GetAllListAsync();
             return result;
         }
 
-        public async Task<ResponseMessagesDto> UpdateAsync(BorrowerEmploymentInformationDto input)
+        public Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
-            var result = await _borrowerEmploymentInformationRepository.UpdateAsync(input.Id, borrower =>
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<BorrowerEmploymentInformationDto> CreateAsync(BorrowerEmploymentInformationDto input)
+        {
+            var borrowerEmploymentInformation = new BorrowerEmploymentInformation()
+            {
+                EmployersName = input.EmployersName,
+                EmployersAddress = input.EmployersAddress,
+                IsSelfEmployer = input.IsSelfEmployer,
+                YearOnThisJob = input.YearOnThisJob,
+                YearInThisLineOfWork = input.YearInThisLineOfWork,
+                Position = input.Position,
+                BusinessPhone = input.BusinessPhone,
+                BorrowerTypeId = input.BorrowerTypeId
+            };
+            await _borrowerEmploymentInformationRepository.InsertAsync(borrowerEmploymentInformation);
+            await UnitOfWorkManager.Current.SaveChangesAsync();
+            input.Id = borrowerEmploymentInformation.Id;
+            return input;
+        }
+
+        public async Task<BorrowerEmploymentInformationDto> UpdateAsync(BorrowerEmploymentInformationDto input)
+        {
+            await _borrowerEmploymentInformationRepository.UpdateAsync(input.Id, borrower =>
             {
                 borrower.Id = input.Id;
                 borrower.EmployersName = input.EmployersName;
@@ -99,63 +87,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                 borrower.BorrowerTypeId = input.BorrowerTypeId;
                 return Task.CompletedTask;
             });
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
-            return new ResponseMessagesDto()
-            {
-                Id = result.Id,
-                SuccessMessage = AppConsts.SuccessfullyUpdated,
-                Success = true,
-                Error = false,
-            };
+            return input;
         }
 
-        private async Task<ResponseMessagesDto> CreateAsync(BorrowerEmploymentInformationDto input)
+        public Task DeleteAsync(EntityDto<long> input)
         {
-            var borrowerEmploymentInformation = new BorrowerEmploymentInformation()
-            {
-                Id = input.Id,
-                EmployersName = input.EmployersName,
-                EmployersAddress = input.EmployersAddress,
-                IsSelfEmployer = input.IsSelfEmployer,
-                YearOnThisJob = input.YearOnThisJob,
-                YearInThisLineOfWork = input.YearInThisLineOfWork,
-                Position = input.Position,
-                BusinessPhone = input.BusinessPhone,
-                BorrowerTypeId = input.BorrowerTypeId
-            };
-            var result = await _borrowerEmploymentInformationRepository.InsertAsync(borrowerEmploymentInformation);
-
-            await UnitOfWorkManager.Current.SaveChangesAsync();
-
-            result.Id = borrowerEmploymentInformation.Id;
-
-            return new ResponseMessagesDto()
-            {
-                Id = result.Id,
-                SuccessMessage = AppConsts.SuccessfullyInserted,
-                Success = true,
-                Error = false,
-            };
-        }
-
-        public async Task<ResponseMessagesDto> DeleteAsync(EntityDto<long> input)
-        {
-            await _borrowerEmploymentInformationRepository.UpdateAsync(new BorrowerEmploymentInformation { IsDeleted = true });
-            return new ResponseMessagesDto()
-            {
-                Id = input.Id,
-                SuccessMessage = AppConsts.SuccessfullyDeleted,
-                Success = true,
-                Error = false,
-            };
-        }
-
-        public async Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId)
-        {
-            var result = await _borrowerEmploymentInformationRepository.GetAllListAsync();
-            return result;
+            throw new System.NotImplementedException();
         }
     }
 }

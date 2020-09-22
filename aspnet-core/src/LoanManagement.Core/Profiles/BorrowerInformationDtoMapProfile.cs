@@ -9,8 +9,6 @@ namespace LoanManagement.Profiles
     {
         public BorrowerInformationDtoMapProfile()
         {
-            CreateMap<BorrowerInformationDto, BorrowerInformation>();
-            CreateMap<PropertyInformationDto, PropertyInformation>();
         }
     }
 }

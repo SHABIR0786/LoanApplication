@@ -1,4 +1,5 @@
 ﻿using Abp;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
@@ -36,47 +37,38 @@ namespace LoanManagement.DatabaseServices.Implementations
             return result;
         }
 
-        public async Task<PagedResultDto<BorrowerInformationDto>> GetPaginatedAllAsync(PagedBorrowerInformationDtoResultRequestDto input)
+        public async Task<BorrowerInformationDto> CreateAsync(BorrowerInformationDto input)
         {
-            var filteredBorrower = _borrowerInformationRepository.GetAll()
-                .Where(i => i.IsDeleted == false && (!input.TenantId.HasValue || i.TenantId == input.TenantId))
-                .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
-                    x => x.BorrowersName.Contains(input.Keyword));
+            var borrowerInformation = new BorrowerInformation
+            {
+                BorrowersName = input.BorrowersName,
+                SocialSecurityNumber = input.SocialSecurityNumber,
+                HomePhone = input.HomePhone,
+                DOB = input.DOB,
+                YearsSchool = input.YearsSchool,
+                Marital = input.Marital,
+                PresentAddress = input.PresentAddress,
+                PresentAddressType = input.PresentAddressType,
+                PresentAddressNoOfYears = input.PresentAddressNoOfYears,
+                MailingAddress = input.MailingAddress,
+                FormerAddressModel = input.FormerAddressModel,
+                FormerAddressType = input.FormerAddressType,
+                FormerAddressNoOfYears = input.FormerAddressNoOfYears,
+                BorrowerTypeId = input.BorrowerTypeId,
+                TenantId = input.TenantId
+            };
 
-            var pagedAndFilteredBorrowers = filteredBorrower
-                .OrderBy(i => i.BorrowersName)
-                .PageBy(input);
-
-            var totalCount = filteredBorrower.Count();
-
-            return new PagedResultDto<BorrowerInformationDto>(
-                totalCount: totalCount,
-                items: await pagedAndFilteredBorrowers.Select(i => new BorrowerInformationDto()
-                {
-                    Id = i.Id,
-                    BorrowersName = i.BorrowersName
-                })
-                    .ToListAsync());
+            await _borrowerInformationRepository.InsertAsync(borrowerInformation);
+            await UnitOfWorkManager.Current.SaveChangesAsync();
+            input.Id = borrowerInformation.Id;
+            return input;
         }
 
-        public async Task<ResponseMessagesDto> CreateOrUpdateAsync(BorrowerInformationDto input)
+        public async Task<BorrowerInformationDto> UpdateAsync(BorrowerInformationDto input)
         {
-            ResponseMessagesDto result;
-            if (input.Id == 0)
+            await _borrowerInformationRepository.UpdateAsync(input.Id, borrowerInformation =>
             {
-                result = await CreateBorrowerInformationAsync(input);
-            }
-            else
-            {
-                result = await UpdateBorrowerInformationAsync(input);
-            }
-            return result;
-        }
-
-        private async Task<ResponseMessagesDto> UpdateBorrowerInformationAsync(BorrowerInformationDto input)
-        {
-            var result = await _borrowerInformationRepository.UpdateAsync(input.Id, borrowerInformation =>
-            {
+                borrowerInformation.BorrowersName = input.BorrowersName;
                 borrowerInformation.SocialSecurityNumber = input.SocialSecurityNumber;
                 borrowerInformation.HomePhone = input.HomePhone;
                 borrowerInformation.DOB = input.DOB;
@@ -91,75 +83,27 @@ namespace LoanManagement.DatabaseServices.Implementations
                 borrowerInformation.FormerAddressNoOfYears = input.FormerAddressNoOfYears;
                 borrowerInformation.BorrowerTypeId = input.BorrowerTypeId;
                 borrowerInformation.TenantId = input.TenantId;
-
                 return Task.CompletedTask;
             });
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
-            if (result.Id != 0)
-            {
-                return new ResponseMessagesDto()
-                {
-                    Id = result.Id,
-                    SuccessMessage = AppConsts.SuccessfullyUpdated,
-                    Success = true,
-                    Error = false,
-                };
-            }
-            return new ResponseMessagesDto()
-            {
-                Id = 0,
-                ErrorMessage = AppConsts.UpdateFailure,
-                Success = false,
-                Error = true,
-            };
-        }
-
-        private async Task<ResponseMessagesDto> CreateBorrowerInformationAsync(BorrowerInformationDto input)
-        {
-            var borrowerInformation = ObjectMapper.Map<BorrowerInformation>(input);
-            var result = await _borrowerInformationRepository.InsertAsync(borrowerInformation);
-
-            await UnitOfWorkManager.Current.SaveChangesAsync();
-
-            input.Id = borrowerInformation.Id;
-
-            if (result.Id != 0)
-            {
-                return new ResponseMessagesDto()
-                {
-                    Id = result.Id,
-                    SuccessMessage = AppConsts.SuccessfullyInserted,
-                    Success = true,
-                    Error = false,
-                };
-            }
-            return new ResponseMessagesDto()
-            {
-                Id = 0,
-                ErrorMessage = AppConsts.InsertFailure,
-                Success = false,
-                Error = true,
-            };
-        }
-
-        public async Task<ResponseMessagesDto> DeleteAsync(EntityDto<long> input)
-        {
-            await _borrowerInformationRepository.UpdateAsync(new BorrowerInformation { IsDeleted = true });
-            return new ResponseMessagesDto()
-            {
-                Id = input.Id,
-                SuccessMessage = AppConsts.SuccessfullyDeleted,
-                Success = true,
-                Error = false,
-            };
+            return input;
         }
 
         public async Task<List<BorrowerInformation>> GetAllAsync(long? tenantId)
         {
             var result = await _borrowerInformationRepository.GetAllListAsync();
             return result;
+        }
+
+        public Task<PagedResultDto<BorrowerInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task DeleteAsync(EntityDto<long> input)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

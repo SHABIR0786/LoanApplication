@@ -1,4 +1,5 @@
-﻿using Abp.Application.Services.Dto;
+﻿using Abp;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class GrossMonthlyIncomeService : IGrossMonthlyIncomeService
+    public class GrossMonthlyIncomeService : AbpServiceBase, IGrossMonthlyIncomeService
     {
         private readonly IRepository<GrossMonthlyIncome, long> _repository;
 
@@ -31,9 +32,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 Overtime = input.Overtime
             };
             await _repository.InsertAsync(grossMonthlyIncome);
-
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             input.Id = grossMonthlyIncome.Id;
-
             return input;
         }
 
@@ -68,7 +68,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 return Task.CompletedTask;
             });
-
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }
     }

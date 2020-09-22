@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.ViewModels
 {
-    public class MortgageTypeDto : EntityDto<int>
+    public class MortgageTypeDto : EntityDto<long>
     {
         [Required]
         public string Type { get; set; }

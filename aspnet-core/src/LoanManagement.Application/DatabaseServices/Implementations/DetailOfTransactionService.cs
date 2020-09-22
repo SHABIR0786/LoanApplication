@@ -38,9 +38,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 TotalCost = input.TotalCost
             };
             await _repository.InsertAsync(detailsOfTransaction);
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
             input.Id = detailsOfTransaction.Id;
             return input;
         }

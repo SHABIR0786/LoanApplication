@@ -19,7 +19,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<MortgageTypeDto> CreateAsync(MortgageTypeDto input)
         {
-            await _repository.InsertAsync(new MortgageType
+            var mortgageType = new MortgageType
             {
                 AgencyCaseNumber = input.AgencyCaseNumber,
                 AmortizationType = input.AmortizationType,
@@ -31,14 +31,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                 NumberOfMonths = input.NumberOfMonths,
                 Type = input.Type,
                 TypeExplain = input.TypeExplain
-            });
-
+            };
+            await _repository.InsertAsync(mortgageType);
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
+            input.Id = mortgageType.Id;
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<int> input)
+        public Task DeleteAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
@@ -48,7 +48,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<MortgageTypeDto> GetAsync(EntityDto<int> input)
+        public Task<MortgageTypeDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
