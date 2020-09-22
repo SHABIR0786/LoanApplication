@@ -1,4 +1,5 @@
-﻿using Abp.Application.Services.Dto;
+﻿using Abp;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class CombinedMonthlyHousingExpenseService : ICombinedMonthlyHousingExpenseService
+    public class CombinedMonthlyHousingExpenseService : AbpServiceBase, ICombinedMonthlyHousingExpenseService
     {
         private readonly IRepository<CombinedMonthlyHousingExpense, long> _repository;
 
@@ -20,6 +21,9 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             var combinedMonthlyHousingExpense = new CombinedMonthlyHousingExpense
             {
+                HousingExpenseTypeId = input.HousingExpenseTypeId,
+                HomeOwnerAssociationDue = input.HomeOwnerAssociationDue,
+                HazardInsurance = input.HazardInsurance,
                 FirstMortage = input.FirstMortage,
                 LoanApplicationId = input.LoanApplicationId,
                 MortgageInsurance = input.MortgageInsurance,
@@ -29,9 +33,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 Rental = input.Rental,
             };
             await _repository.InsertAsync(combinedMonthlyHousingExpense);
-
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             input.Id = combinedMonthlyHousingExpense.Id;
-
             return input;
         }
 
@@ -54,6 +57,9 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, combinedMonthlyHousingExpense =>
             {
+                combinedMonthlyHousingExpense.HousingExpenseTypeId = input.HousingExpenseTypeId;
+                combinedMonthlyHousingExpense.HomeOwnerAssociationDue = input.HomeOwnerAssociationDue;
+                combinedMonthlyHousingExpense.HazardInsurance = input.HazardInsurance;
                 combinedMonthlyHousingExpense.FirstMortage = input.FirstMortage;
                 combinedMonthlyHousingExpense.LoanApplicationId = input.LoanApplicationId;
                 combinedMonthlyHousingExpense.MortgageInsurance = input.MortgageInsurance;
@@ -64,7 +70,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 return Task.CompletedTask;
             });
-
+            await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }
     }

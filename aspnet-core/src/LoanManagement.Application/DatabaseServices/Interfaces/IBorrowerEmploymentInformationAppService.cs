@@ -7,18 +7,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
-    public interface IBorrowerEmploymentInformationAppService : IApplicationService
+    public interface IBorrowerEmploymentInformationAppService : IAsyncCrudAppService<BorrowerEmploymentInformationDto, long, PagedLoanApplicationResultRequestDto, BorrowerEmploymentInformationDto, BorrowerEmploymentInformationDto>
     {
-
-        Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long> input);
-
-        Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetPaginatedAllAsync(PagedBorrowerEmploymentInformationDtoResultRequestDto input);
-
-        Task<ResponseMessagesDto> CreateOrUpdateAsync(BorrowerEmploymentInformationDto input);
-
-        Task<ResponseMessagesDto> DeleteAsync(EntityDto<long> input);
-
-        Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId);
-
     }
 }

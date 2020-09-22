@@ -47,9 +47,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 YearLotAcquired = input.YearLotAcquired,
             };
             await _repository.InsertAsync(propertyInformation);
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
             input.Id = propertyInformation.Id;
             return input;
         }

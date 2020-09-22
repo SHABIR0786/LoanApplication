@@ -55,22 +55,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanApplication = new LoanApplication
-                {
-                    //MortgageType = ObjectMapper.Map<MortgageType>(input.MortgageType),
-                    //PropertyInfo = ObjectMapper.Map<PropertyInformation>(input.PropertyInformation),
-
-                    //BorrowerInfo = ObjectMapper.Map<BorrowerInformation>(input.BorrowerInformation),
-                    //CoBorrowerInfo = ObjectMapper.Map<BorrowerInformation>(input.CoBorrowerInformation),
-
-                    //BorrowerEmploymentInfo1 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.BorrowerEmploymentInformation1),
-                    //BorrowerEmploymentInfo2 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.BorrowerEmploymentInformation2),
-                    //BorrowerEmploymentInfo3 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.BorrowerEmploymentInformation3),
-
-                    //CoBorrowerEmploymentInfo1 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.CoBorrowerEmploymentInformation1),
-                    //CoBorrowerEmploymentInfo2 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.CoBorrowerEmploymentInformation2),
-                    //CoBorrowerEmploymentInfo3 = ObjectMapper.Map<BorrowerEmploymentInformation>(input.CoBorrowerEmploymentInformation3),
-                };
+                var loanApplication = new LoanApplication();
                 await _repository.InsertAsync(loanApplication);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 

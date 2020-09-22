@@ -92,11 +92,8 @@ namespace LoanManagement.DatabaseServices.Implementations
             };
 
             await _repository.InsertAsync(assetAndLiablity);
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
-
             input.Id = assetAndLiablity.Id;
-
             return input;
         }
 
