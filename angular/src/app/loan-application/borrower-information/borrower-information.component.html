@@ -4,12 +4,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="borrowersName">
+            <label class="col-md-3 col-form-label" for="borrowersName-{{id}}">
                 {{ "Borrower’s Name" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="borrowersName"
-                       id="borrowersName" required minlength="2" maxlength="32"
+                <input type="text" class="form-control" name="borrowersName-{{id}}"
+                       id="borrowersName-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.borrowersName"
                        #borrowersNameModel="ngModel" #borrowersNameEl/>
                 <abp-validation-summary [control]="borrowersNameModel"
@@ -19,12 +19,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="socialSecurityNumber">
+            <label class="col-md-3 col-form-label" for="socialSecurityNumber-{{id}}">
                 {{ "Social Security Number " | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="socialSecurityNumber"
-                       id="socialSecurityNumber" required minlength="2" maxlength="32"
+                <input type="text" class="form-control" name="socialSecurityNumber-{{id}}"
+                       id="socialSecurityNumber-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.socialSecurityNumber"
                        #socialSecurityNumberModel="ngModel" #socialSecurityNumberEl/>
                 <abp-validation-summary [control]="socialSecurityNumberModel"
@@ -34,11 +34,11 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="homePhone">
+            <label class="col-md-3 col-form-label" for="homePhone-{{id}}">
                 {{ "Home Phone" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="number" class="form-control" name="homePhone" id="homePhone"
+                <input type="number" class="form-control" name="homePhone-{{id}}" id="homePhone-{{id}}"
                        required minlength="2" maxlength="32"
                        [(ngModel)]="data.homePhone" #homePhoneModel="ngModel"
                        #homePhoneEl/>
@@ -50,11 +50,11 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="dOB">
+            <label class="col-md-3 col-form-label" for="dOB-{{id}}">
                 {{ "Birth" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="dOB" id="dOB" required
+                <input type="text" class="form-control" name="dOB-{{id}}" id="dOB-{{id}}" required
                        minlength="2" maxlength="32" [(ngModel)]="data.dOB"
                        #dOBModel="ngModel" #dOBEl/>
                 <abp-validation-summary [control]="dOBModel" [controlEl]="dOBEl">
@@ -64,11 +64,11 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="yrsSchool">
+            <label class="col-md-3 col-form-label" for="yrsSchool-{{id}}">
                 {{ "Yrs. School" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="yrsSchool" id="yrsSchool"
+                <input type="text" class="form-control" name="yrsSchool-{{id}}" id="yrsSchool-{{id}}"
                        required minlength="2" maxlength="32"
                        [(ngModel)]="data.yrsSchool" #yrsSchoolModel="ngModel"
                        #yrsSchoolEl/>
@@ -84,29 +84,28 @@
                 {{ "Marital Status" | localize }}
             </label>
             <div class="col-md-9">
-
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="marital" id="married"
+                    <input class="form-check-input" type="radio" name="marital-{{id}}" id="married-{{id}}"
                            value="married" checked [(ngModel)]="data.marital">
-                    <label class="form-check-label" for="married">
+                    <label class="form-check-label" for="married-{{id}}">
                         Married
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="marital"
-                           id="unMarried" value="unMarried"
+                    <input class="form-check-input" type="radio" name="marital-{{id}}"
+                           id="unMarried-{{id}}" value="unMarried"
                            [(ngModel)]="data.marital">
-                    <label class="form-check-label" for="unMarried">
+                    <label class="form-check-label" for="unMarried-{{id}}">
                         UnMarried
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="marital"
-                           id="sperated" value="sperated"
+                    <input class="form-check-input" type="radio" name="marital-{{id}}"
+                           id="separated-{{id}}" value="separated"
                            [(ngModel)]="data.marital">
-                    <label class="form-check-label" for="sperated">
-                        Seperated
+                    <label class="form-check-label" for="separated-{{id}}">
+                        Separated
                     </label>
                 </div>
             </div>
@@ -115,12 +114,12 @@
 
     <div class="col-8">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="presentAddress">
+            <label class="col-md-3 col-form-label" for="presentAddress-{{id}}">
                 {{ "Present Address" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="presentAddress"
-                       placeholder="Street, city, state & ZIP" id="presentAddress" required
+                <input type="text" class="form-control" name="presentAddress-{{id}}"
+                       placeholder="Street, city, state & ZIP" id="presentAddress-{{id}}" required
                        minlength="2" maxlength="32"
                        [(ngModel)]="data.presentAddress"
                        #presentAddressModel="ngModel" #presentAddressEl/>
@@ -130,35 +129,39 @@
         </div>
     </div>
     <div class="col-4">
-        <label class="col-md-3 col-form-label">
-            <!-- {{ "Marital Status" | localize }} -->
-        </label>
-        <div class="col-md-9">
-            <input type="radio" id="presentOwe" value="presentOwe"
-                   [(ngModel)]="data.presentAddressType"
-                   name="presentAddressType">
-            <span>Own</span>
-            <input type="radio" id="presentRent" value="presentRent"
-                   [(ngModel)]="data.presentAddressType"
-                   name="presentAddressType">
-            <span>Rent</span>
-            <input type="number" class="form-control" name="presentAddressNoOfYears"
-                   id="presentAddressNoOfYears" required minlength="2"
-                   placeholder="No of years"
-                   *ngIf="data.presentAddressType === 'presentRent'"
-                   maxlength="32"
-                   [(ngModel)]="data.presentAddressNoOfYears"/>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="presentAddressType-{{id}}"
+                   id="presentOwe-{{id}}" value="presentOwe"
+                   [(ngModel)]="data.presentAddressType">
+            <label class="form-check-label" for="presentOwe-{{id}}">
+                Own
+            </label>
         </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="presentAddressType-{{id}}"
+                   id="presentRent-{{id}}" value="presentRent"
+                   [(ngModel)]="data.presentAddressType">
+            <label class="form-check-label" for="presentRent-{{id}}">
+                Rent
+            </label>
+        </div>
+
+        <input type="number" class="form-control" name="presentAddressNoOfYears-{{id}}"
+               id="presentAddressNoOfYears-{{id}}" required minlength="2"
+               placeholder="No of years"
+               *ngIf="data.presentAddressType === 'presentRent'"
+               maxlength="32"
+               [(ngModel)]="data.presentAddressNoOfYears"/>
     </div>
     <div class="col-8">
         <label style="font-size: 10px;">If different from above</label>
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="mailingAddress">
+            <label class="col-md-3 col-form-label" for="mailingAddress-{{id}}">
                 {{ "Mailing Address" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="mailingAddress"
-                       placeholder="street, city, state & ZIP" id="mailingAddress" required
+                <input type="text" class="form-control" name="mailingAddress-{{id}}"
+                       placeholder="street, city, state & ZIP" id="mailingAddress-{{id}}" required
                        minlength="2" maxlength="32"
                        [(ngModel)]="data.mailingAddress"
                        #mailingAddressModel="ngModel" #mailingAddressEl/>
@@ -172,12 +175,12 @@
             years,
             complete the following: </label>
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="formerAddress">
+            <label class="col-md-3 col-form-label" for="formerAddress-{{id}}">
                 {{ "Former Address" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="formerAddress"
-                       placeholder="street, city, state & ZIP" id="formerAddress" required
+                <input type="text" class="form-control" name="formerAddress-{{id}}"
+                       placeholder="street, city, state & ZIP" id="formerAddress-{{id}}" required
                        minlength="2" maxlength="32"
                        [(ngModel)]="data.formerAddress"
                        #formerAddressModel="ngModel" #formerAddressEl/>
@@ -187,21 +190,28 @@
         </div>
     </div>
     <div class="col-4">
-        <label class="col-md-3 col-form-label">
-            <!-- {{ "Marital Status" | localize }} -->
-        </label>
-        <div class="col-md-9">
-            <input type="radio" value="formerOwe" id="formerOwe"
-                   [(ngModel)]="data.formerAddressType" name="formerAddressType">
-            <span>Own</span>
-            <input type="radio" value="formerRent" id="formerRent"
-                   [(ngModel)]="data.formerAddressType" name="formerAddressType">
-            <span>Rent</span>
-            <input type="number" class="form-control" name="formerAddressNoOfYears"
-                   id="formerAddressNoOfYears" required minlength="2"
-                   placeholder="No of years"
-                   *ngIf="data.formerAddressType === 'formerRent'" maxlength="32"
-                   [(ngModel)]="data.formerAddressNoOfYears"/>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="formerOwe-{{id}}"
+                   id="formerOwe-{{id}}" value="formerOwe"
+                   [(ngModel)]="data.formerAddressType">
+            <label class="form-check-label" for="formerOwe-{{id}}">
+                Own
+            </label>
         </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="formerOwe-{{id}}"
+                   id="formerRent-{{id}}" value="formerRent"
+                   [(ngModel)]="data.formerAddressType">
+            <label class="form-check-label" for="formerRent-{{id}}">
+                Rent
+            </label>
+        </div>
+
+        <input type="number" class="form-control" name="formerAddressNoOfYears-{{id}}"
+               id="formerAddressNoOfYears-{{id}}" required minlength="2"
+               placeholder="No of years"
+               *ngIf="data.formerAddressType === 'formerRent'"
+               maxlength="32"
+               [(ngModel)]="data.formerAddressNoOfYears"/>
     </div>
 </div>

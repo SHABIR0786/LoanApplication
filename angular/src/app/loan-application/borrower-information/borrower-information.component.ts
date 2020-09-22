@@ -7,6 +7,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 })
 export class BorrowerInformationComponent implements OnInit, DoCheck  {
 
+    id = Math.random().toString(36).substring(2);
     @Input() heading = 'Borrower';
     @Input() data: any = {};
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();

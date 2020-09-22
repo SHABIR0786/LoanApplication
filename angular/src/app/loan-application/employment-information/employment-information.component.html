@@ -4,21 +4,21 @@
     </div>
     <div class="col-12">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="isSelfEmployer1" id="isSelfEmployer1"
+            <input class="form-check-input" type="checkbox" name="isSelfEmployer1-{{id}}" id="isSelfEmployer1-{{id}}"
                    [(ngModel)]="data.isSelfEmployer"/>
-            <label class="form-check-label" for="isSelfEmployer1">
+            <label class="form-check-label" for="isSelfEmployer1-{{id}}">
                 Self Employer
             </label>
         </div>
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="employersName1">
+            <label class="col-md-3 col-form-label" for="employersName1-{{id}}">
                 {{ "Employer's Name" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="employersName1"
-                       id="employersName1" required minlength="2" maxlength="32"
+                <input type="text" class="form-control" name="employersName1-{{id}}"
+                       id="employersName1-{{id}}" required minlength="2" maxlength="32"
                        [disabled]="data.isSelfEmployer"
                        [(ngModel)]="data.employersName"
                        #employersNameModel="ngModel" #employersName1El/>
@@ -29,12 +29,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="employersAddress1">
+            <label class="col-md-3 col-form-label" for="employersAddress1-{{id}}">
                 {{ "Employer's Address" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="employersAddress1"
-                       id="employersAddress1" required minlength="2" maxlength="32"
+                <input type="text" class="form-control" name="employersAddress1-{{id}}"
+                       id="employersAddress1-{{id}}" required minlength="2" maxlength="32"
                        [disabled]="data.isSelfEmployer" [(ngModel)]="data.employersAddress"
                        #employersAddressModel="ngModel" #employersAddress1El/>
                 <abp-validation-summary [control]="employersAddressModel"
@@ -44,12 +44,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required" *ngIf="!secondary">
-            <label class="col-md-3 col-form-label" for="yearOnThisJob1">
+            <label class="col-md-3 col-form-label" for="yearOnThisJob1-{{id}}">
                 {{ "Yrs. on this job" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="number" class="form-control" name="yearOnThisJob1"
-                       id="yearOnThisJob1" required minlength="2" maxlength="32"
+                <input type="number" class="form-control" name="yearOnThisJob1-{{id}}"
+                       id="yearOnThisJob1-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.yearOnThisJob"
                        #yearOnThisJobModel="ngModel" #yearOnThisJob1El/>
                 <abp-validation-summary [control]="yearOnThisJobModel"
@@ -58,12 +58,12 @@
         </div>
 
         <div class="form-group row required" *ngIf="secondary">
-            <label class="col-md-3 col-form-label" for="datesFromTo">
+            <label class="col-md-3 col-form-label" for="datesFromTo-{{id}}">
                 {{ "Dates (from – to)" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="datesFromTo"
-                       id="datesFromTo" required minlength="2" maxlength="32"
+                <input type="text" class="form-control" name="datesFromTo-{{id}}"
+                       id="datesFromTo-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.datesFromTo"
                        #datesFromToModel="ngModel" #datesFromToEl/>
                 <abp-validation-summary [control]="datesFromToModel"
@@ -74,12 +74,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required" *ngIf="!secondary">
-            <label class="col-md-3 col-form-label" for="yearInThisLineOfWork1">
+            <label class="col-md-3 col-form-label" for="yearInThisLineOfWork1-{{id}}">
                 {{ "Yrs. employed in this line of work/profession " | localize }}
             </label>
             <div class="col-md-9">
-                <input type="number" class="form-control" name="yearInThisLineOfWork1"
-                       id="yearInThisLineOfWork1" required minlength="2" maxlength="32"
+                <input type="number" class="form-control" name="yearInThisLineOfWork1-{{id}}"
+                       id="yearInThisLineOfWork1-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.yearInThisLineOfWork"
                        #yearInThisLineOfWorkModel="ngModel" #yearInThisLineOfWork1El/>
                 <abp-validation-summary [control]="yearInThisLineOfWorkModel"
@@ -89,12 +89,12 @@
         </div>
 
         <div class="form-group row required" *ngIf="secondary">
-            <label class="col-md-3 col-form-label" for="monthlyIncome">
+            <label class="col-md-3 col-form-label" for="monthlyIncome-{{id}}">
                 {{ "Monthly Income" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="number" class="form-control" name="monthlyIncome"
-                       id="monthlyIncome" required minlength="2" maxlength="32"
+                <input type="number" class="form-control" name="monthlyIncome-{{id}}"
+                       id="monthlyIncome-{{id}}" required minlength="2" maxlength="32"
                        [(ngModel)]="data.monthlyIncome"
                        #yearInThisLineOfWorkModel="ngModel" #monthlyIncomeEl/>
                 <abp-validation-summary [control]="yearInThisLineOfWorkModel"
@@ -105,11 +105,11 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="position1">
+            <label class="col-md-3 col-form-label" for="position1-{{id}}">
                 {{ "Position/Title/Type of Business" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="position1" id="position1"
+                <input type="text" class="form-control" name="position1-{{id}}" id="position1-{{id}}"
                        required minlength="2" maxlength="32"
                        [(ngModel)]="data.position" #positionModel="ngModel"
                        #position1El/>
@@ -121,12 +121,12 @@
     </div>
     <div class="col-6">
         <div class="form-group row required">
-            <label class="col-md-3 col-form-label" for="businessPhone1">
+            <label class="col-md-3 col-form-label" for="businessPhone1-{{id}}">
                 {{ "Business Phone" | localize }}
             </label>
             <div class="col-md-9">
-                <input type="text" class="form-control" name="businessPhone1"
-                       id="businessPhone1"
+                <input type="text" class="form-control" name="businessPhone1-{{id}}"
+                       id="businessPhone1-{{id}}"
                        required minlength="2" maxlength="32"
                        [(ngModel)]="data.businessPhone"
                        #businessPhoneModel="ngModel"
