@@ -7,6 +7,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 })
 export class EmploymentInformationComponent implements OnInit, DoCheck {
 
+    id = Math.random().toString(36).substring(2);
     @Input() heading = 'Borrower';
     @Input() data: any = {};
     @Input() showHeading: boolean = false;
