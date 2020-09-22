@@ -3,6 +3,7 @@ using LoanManagement.Enums;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.Controllers
@@ -19,6 +20,7 @@ namespace LoanManagement.Controllers
         private readonly IDetailOfTransactionService _detailOfTransactionService;
         private readonly IGrossMonthlyIncomeService _grossMonthlyIncomeService;
         private readonly ICombinedMonthlyHousingExpenseService _combinedMonthlyHousingExpenseService;
+        private readonly IOtherIncomeService _otherIncomeService;
 
         public UniformResidentialLoanController(
             IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
@@ -29,7 +31,8 @@ namespace LoanManagement.Controllers
             IAssetAndLiablityService assetAndLiablityService,
             IDetailOfTransactionService detailOfTransactionService,
             IGrossMonthlyIncomeService grossMonthlyIncomeService,
-            ICombinedMonthlyHousingExpenseService combinedMonthlyHousingExpenseService)
+            ICombinedMonthlyHousingExpenseService combinedMonthlyHousingExpenseService,
+            IOtherIncomeService otherIncomeService)
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
@@ -40,6 +43,7 @@ namespace LoanManagement.Controllers
             _detailOfTransactionService = detailOfTransactionService;
             _grossMonthlyIncomeService = grossMonthlyIncomeService;
             _combinedMonthlyHousingExpenseService = combinedMonthlyHousingExpenseService;
+            _otherIncomeService = otherIncomeService;
         }
 
         [HttpPost]
@@ -201,11 +205,22 @@ namespace LoanManagement.Controllers
                         await _combinedMonthlyHousingExpenseService.UpdateAsync(input.CombinedMonthlyHousingExpenseProposed);
                 }
 
+                if (input.OtherIncomes != null && input.OtherIncomes.Any())
+                {
+                    foreach (var otherIncome in input.OtherIncomes)
+                    {
+                        if (otherIncome.Id == default)
+                            await _otherIncomeService.CreateAsync(otherIncome);
+                        else
+                            await _otherIncomeService.UpdateAsync(otherIncome);
+                    }
+                }
+
                 await _loanAppService.UpdateAsync(input);
 
                 return Json(input);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
