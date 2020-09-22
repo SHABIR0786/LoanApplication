@@ -42,11 +42,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             return result;
         }
 
-        public async Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId)
-        {
-            var result = await _borrowerEmploymentInformationRepository.GetAllListAsync();
-            return result;
-        }
+        //public async Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId)
+        //{
+        //    var result = await _borrowerEmploymentInformationRepository.GetAllListAsync();
+        //    return result;
+        //}
 
         public Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {

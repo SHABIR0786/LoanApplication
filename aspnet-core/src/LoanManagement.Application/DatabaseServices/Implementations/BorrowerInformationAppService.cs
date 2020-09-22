@@ -90,11 +90,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public async Task<List<BorrowerInformation>> GetAllAsync(long? tenantId)
-        {
-            var result = await _borrowerInformationRepository.GetAllListAsync();
-            return result;
-        }
+        //public async Task<List<BorrowerInformation>> GetAllAsync(long? tenantId)
+        //{
+        //    var result = await _borrowerInformationRepository.GetAllListAsync();
+        //    return result;
+        //}
 
         public Task<PagedResultDto<BorrowerInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
