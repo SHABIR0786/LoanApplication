@@ -1124,7 +1124,7 @@
                                     <div class="col-12 text-right">
                                         <span>Completed: </span>
                                         <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="assetsCompletion"
+                                            <input class="form-check-input" type="radio" name="assetsCompletionJointly"
                                                    id="assetsCompletion" value="jointly" checked
                                                    [(ngModel)]="loanApplication.assetAndLiability.assetsCompletion">
                                             <label class="form-check-label" for="assetsCompletionJointly">
@@ -1150,7 +1150,7 @@
                                             Description
                                             <input type="text" class="form-control" name="assestsDescription"
                                                    id="assestsDescription" required minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.assetAndLiability.assestsDescription"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.description"
                                                    #assestsDescriptionModel="ngModel" #assestsDescriptionEl/>
                                             <abp-validation-summary [control]="assestsDescriptionModel"
                                                                     [controlEl]="assestsDescriptionEl">
@@ -1175,7 +1175,7 @@
                                                    name="cashDepositeTowardPurchaseHeldBy"
                                                    id="cashDepositeTowardPurchaseHeldBy" required minlength="2"
                                                    maxlength="32"
-                                                   [(ngModel)]="loanApplication.assetAndLiability.cashDepositeTowardPurchaseHeldBy"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.cashDepositPurchaseHeldBy"
                                                    #cashDepositeTowardPurchaseHeldByModel="ngModel"
                                                    #cashDepositeTowardPurchaseHeldByModelEl/>
                                             <abp-validation-summary [control]="cashDepositeTowardPurchaseHeldByModel"
@@ -1210,12 +1210,19 @@
                                     <tr>
                                         <td rowspan="2" colspan="2">
                                             Name and address of Bank, S&L, or Credit Union
-                                            <input type="text" class="form-control" name="nameAndAddressOfBank1"
-                                                   id="nameAndAddressOfBank1" minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.assetAndLiability.nameAndAddressOfBank1"
-                                                   #nameAndAddressOfBank1Model="ngModel" #nameAndAddressOfBank1El/>
-                                            <abp-validation-summary [control]="nameAndAddressOfBank1Model"
-                                                                    [controlEl]="nameAndAddressOfBank1El">
+                                            <input type="text" class="form-control" name="nameOfBank1"
+                                                   id="nameOfBank1" placeholder="Name of Bank"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.nameOfBank1"
+                                                   #nameOfBank1Model="ngModel" #nameOfBank1El/>
+                                            <abp-validation-summary [control]="nameOfBank1Model"
+                                                                    [controlEl]="nameOfBank1El">
+                                            </abp-validation-summary>
+                                            <input type="text" class="form-control" name="addressOfBank1"
+                                                   id="addressOfBank1" placeholder="Address of Bank"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.addressOfBank1"
+                                                   #addressOfBank1Model="ngModel" #addressOfBank1El/>
+                                            <abp-validation-summary [control]="addressOfBank1Model"
+                                                                    [controlEl]="addressOfBank1El">
                                             </abp-validation-summary>
                                         </td>
                                         <td>
@@ -1243,13 +1250,22 @@
                                     </tr>
                                     <tr>
                                         <td style="height: 50px;">
-                                            <input type="text" class="form-control" name="nameAndAddressOfCompany1"
-                                                   id="nameAndAddressOfCompany1" minlength="2" maxlength="32"
-                                                   [(ngModel)]="loanApplication.assetAndLiability.nameAndAddressOfCompany1"
-                                                   #nameAndAddressOfCompany1Model="ngModel"
-                                                   #nameAndAddressOfCompany1El/>
-                                            <abp-validation-summary [control]="nameAndAddressOfCompany1Model"
-                                                                    [controlEl]="nameAndAddressOfCompany1El">
+                                            <input type="text" class="form-control" name="nameOfCompany1"
+                                                   id="nameOfCompany1" placeholder="Name of Company"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.nameOfCompany1"
+                                                   #nameOfCompany1Model="ngModel"
+                                                   #nameOfCompany1El/>
+                                            <abp-validation-summary [control]="nameOfCompany1Model"
+                                                                    [controlEl]="nameOfCompany1El">
+                                            </abp-validation-summary>
+
+                                            <input type="text" class="form-control" name="addressOfCompany1"
+                                                   id="addressOfCompany1" placeholder="Address of Company"
+                                                   [(ngModel)]="loanApplication.assetAndLiability.addressOfCompany1"
+                                                   #addressOfCompany1Model="ngModel"
+                                                   #addressOfCompany1El/>
+                                            <abp-validation-summary [control]="addressOfCompany1Model"
+                                                                    [controlEl]="addressOfCompany1El">
                                             </abp-validation-summary>
                                         </td>
                                     </tr>
@@ -1261,15 +1277,13 @@
                                                 </div>
                                                 <div class="col-8">
                                                     <input type="text" class="form-control"
-                                                           name="assetsAndLiabilityAccountNo1"
-                                                           id="assetsAndLiabilityAccountNo1" minlength="2"
-                                                           maxlength="32"
-                                                           [(ngModel)]="loanApplication.assetAndLiability.assetsAndLiabilityAccountNo1"
-                                                           #assetsAndLiabilityAccountNo1Model="ngModel"
-                                                           #assetsAndLiabilityAccountNo1El/>
+                                                           name="bankAccountNo1" id="bankAccountNo1"
+                                                           [(ngModel)]="loanApplication.assetAndLiability.bankAccountNo1"
+                                                           #bankAccountNo1Model="ngModel"
+                                                           #bankAccountNo1El/>
                                                     <abp-validation-summary
-                                                            [control]="assetsAndLiabilityAccountNo1Model"
-                                                            [controlEl]="assetsAndLiabilityAccountNo1El">
+                                                            [control]="bankAccountNo1Model"
+                                                            [controlEl]="bankAccountNo1El">
                                                     </abp-validation-summary>
                                                 </div>
                                             </div>
@@ -1292,15 +1306,15 @@
                                                     </div>
                                                     <div class="col-8">
                                                         <input type="text" class="form-control"
-                                                               name="assetsAndLiabilityAccountNo1"
-                                                               id="assetsAndLiabilityAccountNo1" minlength="2"
+                                                               name="companyAccountNo1"
+                                                               id="companyAccountNo1" minlength="2"
                                                                maxlength="32"
-                                                               [(ngModel)]="loanApplication.assetAndLiability.assetsAndLiabilityAccountNo1"
-                                                               #assetsAndLiabilityAccountNo1Model="ngModel"
-                                                               #assetsAndLiabilityAccountNo1El/>
+                                                               [(ngModel)]="loanApplication.assetAndLiability.companyAccountNo1"
+                                                               #companyAccountNo1Model="ngModel"
+                                                               #companyAccountNo1El/>
                                                         <abp-validation-summary
-                                                                [control]="assetsAndLiabilityAccountNo1Model"
-                                                                [controlEl]="assetsAndLiabilityAccountNo1El">
+                                                                [control]="companyAccountNo1Model"
+                                                                [controlEl]="companyAccountNo1El">
                                                         </abp-validation-summary>
                                                     </div>
                                                 </div>
