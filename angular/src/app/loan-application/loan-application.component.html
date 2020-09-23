@@ -980,8 +980,8 @@
                                     <tr>
                                         <td style="font-size: 10px;" rowspan="2">Other (before completing, Homeowner
                                             Assn. Dues
-                                            see the notice in “describe
-                                            other income,” below)
+                                            see the notice in â€œdescribe
+                                            other income,â€� below)
                                         </td>
                                         <td rowspan="2">
                                             <input style="height: 80px;" type="text" class="form-control"
@@ -1159,7 +1159,7 @@
                                         <td class="text-bold text-center" style="width: 20%">Cash or Market Value</td>
                                         <td rowspan="2" colspan="3">
                                             <span class="text-bold">Liabilities and Pledged Assets.</span> List the
-                                            creditor’s name, address, and
+                                            creditorâ€™s name, address, and
                                             account number for all outstanding debts, including
                                             automobile loans, revolving charge accounts, real estate loans, alimony,
                                             child support, stock pledges, etc. Use
@@ -1710,6 +1710,7 @@
                                         </div>
                                     </tr>
 
+
                                     <!--Life Insurance-->
                                     <tr>
                                         <td>
@@ -1962,42 +1963,138 @@
                                                 <tr>
                                                     <td style="height: 40px;">a</td>
                                                     <td>Purchase price</td>
-                                                    <td contenteditable='true' class="width-80"></td>
+                                                    <td class="width-80">
+                                                        <input type="text" class="form-control"
+                                                               name="purchasePrice"
+                                                               id="purchasePrice" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.purchasePrice"
+                                                               #purchasePriceModel="ngModel"
+                                                               #purchasePriceEl/>
+                                                        <abp-validation-summary
+                                                                [control]="purchasePriceModel"
+                                                                [controlEl]="purchasePriceEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">b</td>
                                                     <td>Alterations, improvements, repairs</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="alterationOrImprovement"
+                                                               id="alterationOrImprovement" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.alterationOrImprovement"
+                                                               #alterationOrImprovementModel="ngModel"
+                                                               #alterationOrImprovementEl/>
+                                                        <abp-validation-summary
+                                                                [control]="alterationOrImprovementModel"
+                                                                [controlEl]="alterationOrImprovementModel">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">c</td>
                                                     <td>Land (if acquired separately)</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="land"
+                                                               id="land" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.land"
+                                                               #landModel="ngModel"
+                                                               #landEl/>
+                                                        <abp-validation-summary
+                                                                [control]="landModel"
+                                                                [controlEl]="landEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">d</td>
                                                     <td>Refinance (incl. debts to be paid off)</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="refinance"
+                                                               id="refinance" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.refinance"
+                                                               #refinanceModel="ngModel"
+                                                               #refinanceEl/>
+                                                        <abp-validation-summary
+                                                                [control]="refinanceModel"
+                                                                [controlEl]="refinanceEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">e</td>
                                                     <td>Estimated prepaid items</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="estimatedPrepaidItems"
+                                                               id="estimatedPrepaidItems" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.estimatedPrepaidItems"
+                                                               #estimatedPrepaidItemsModel="ngModel"
+                                                               #estimatedPrepaidItemsEl/>
+                                                        <abp-validation-summary
+                                                                [control]="estimatedPrepaidItemsModel"
+                                                                [controlEl]="estimatedPrepaidItemsEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="height: 40px;"></td>
+                                                    <td style="height: 40px;">f</td>
                                                     <td>Estimated closing costs</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="estimatedClosingCosts"
+                                                               id="estimatedClosingCosts" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.estimatedClosingCosts"
+                                                               #estimatedClosingCostsModel="ngModel"
+                                                               #estimatedClosingCostsEl/>
+                                                        <abp-validation-summary
+                                                                [control]="estimatedClosingCostsModel"
+                                                                [controlEl]="estimatedClosingCostsEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">g</td>
                                                     <td>PMI, MIP, Funding Fee</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="fundungFee"
+                                                               id="fundungFee" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.fundungFee"
+                                                               #fundungFeeModel="ngModel"
+                                                               #fundungFeeEl/>
+                                                        <abp-validation-summary
+                                                                [control]="fundungFeeModel"
+                                                                [controlEl]="fundungFeeEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">h</td>
                                                     <td>Discount (if Borrower will pay)</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="discount"
+                                                               id="discount" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.discount"
+                                                               #discountModel="ngModel"
+                                                               #discountEl/>
+                                                        <abp-validation-summary
+                                                                [control]="discountModel"
+                                                                [controlEl]="discountEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
 
                                             </table>
@@ -2007,46 +2104,131 @@
                                                 <tr>
                                                     <td style="height: 40px;">i</td>
                                                     <td>Total costs (add items a through h)</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">j</td>
                                                     <td>Subordinate financing</td>
-                                                    <td contenteditable='true' class="width-80"></td>
+                                                    <td class="width-80">
+                                                        <input type="text" class="form-control"
+                                                               name="subordinateFinancing"
+                                                               id="subordinateFinancing" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.subordinateFinancing"
+                                                               #subordinateFinancingModel="ngModel"
+                                                               #subordinateFinancingEl/>
+                                                        <abp-validation-summary
+                                                                [control]="subordinateFinancingModel"
+                                                                [controlEl]="subordinateFinancingEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">k</td>
-                                                    <td>Borrower’s closing costs paid by seller</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>Borrowerâ€™s closing costs paid by seller</td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="borrowersClosingCosts"
+                                                               id="borrowersClosingCosts" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.borrowersClosingCosts"
+                                                               #borrowersClosingCostsModel="ngModel"
+                                                               #borrowersClosingCostsModelEl/>
+                                                        <abp-validation-summary
+                                                                [control]="borrowersClosingCostsModel"
+                                                                [controlEl]="borrowersClosingCostsModelEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">l</td>
                                                     <td>Other Credits (explain) <b>Borrower Paid Fees</b></td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="otherCredits"
+                                                               id="otherCredits" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.otherCredits"
+                                                               #otherCreditsModel="ngModel"
+                                                               #otherCreditsEl/>
+                                                        <abp-validation-summary
+                                                                [control]="otherCreditsModel"
+                                                                [controlEl]="otherCreditsEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">m</td>
                                                     <td>Loan amount (exclude PMI, MIP, Funding Fee financed)</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="loadAmountExludeFundungFeeFinanced"
+                                                               id="loadAmountExludeFundungFeeFinanced" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.loadAmountExludeFundungFeeFinanced"
+                                                               #loadAmountExludeFundungFeeFinancedModel="ngModel"
+                                                               #loadAmountExludeFundungFeeFinancedEl/>
+                                                        <abp-validation-summary
+                                                                [control]="loadAmountExludeFundungFeeFinancedModel"
+                                                                [controlEl]="loadAmountExludeFundungFeeFinancedEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">n</td>
                                                     <td>PMI, MIP, Funding Fee financed</td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="fundingFeeFinanced"
+                                                               id="fundingFeeFinanced" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.fundingFeeFinanced"
+                                                               #fundingFeeFinancedModel="ngModel"
+                                                               #fundingFeeFinancedEl/>
+                                                        <abp-validation-summary
+                                                                [control]="fundingFeeFinancedModel"
+                                                                [controlEl]="fundingFeeFinancedEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">o</td>
                                                     <td>Loan amount
                                                         (add m & n)
                                                     </td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="loanAmountMAndN"
+                                                               id="loanAmountMAndN" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.loanAmountMAndN"
+                                                               #loanAmountMAndNModel="ngModel"
+                                                               #loanAmountMAndNEl/>
+                                                        <abp-validation-summary
+                                                                [control]="loanAmountMAndNModel"
+                                                                [controlEl]="loanAmountMAndNEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 40px;">p</td>
                                                     <td>Cash from/to Borrower
                                                         (subtract j, k, l & o from i)
                                                     </td>
-                                                    <td contenteditable='true'></td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                               name="cashFromToBorrower"
+                                                               id="cashFromToBorrower" minlength="2"
+                                                               maxlength="32"
+                                                               [(ngModel)]="loanApplication.detailsOfTransaction.cashFromToBorrower"
+                                                               #cashFromToBorrowerModel="ngModel"
+                                                               #cashFromToBorrowerEl/>
+                                                        <abp-validation-summary
+                                                                [control]="cashFromToBorrowerModel"
+                                                                [controlEl]="cashFromToBorrowerEl">
+                                                        </abp-validation-summary>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -2059,7 +2241,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-8">
-                                            <div><b>If you answer “Yes” to any questions a through i,
+                                            <div><b>If you answer â€œYesâ€� to any questions a through i,
                                                 please use continuation sheet for explanation. </b></div>
                                             <br>
                                             <div>
@@ -2085,7 +2267,7 @@
                                                 (This would include such loans as home mortgage loans, SBA loans, home
                                                 improvement loans, educational loans, manufactured (mobile) home loans,
                                                 any
-                                                mortgage, financial obligation, bond, or loan guarantee. If “Yes,”
+                                                mortgage, financial obligation, bond, or loan guarantee. If â€œYes,â€�
                                                 provide
                                                 details, including date, name, and address of Lender, FHA or VA case
                                                 number,
@@ -2184,7 +2366,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-8">
-                                            <div><b>If you answer “Yes” to any questions a through i, please use
+                                            <div><b>If you answer â€œYesâ€� to any questions a through i, please use
                                                 continuation sheet for explanation. </b></div>
                                             <br>
                                             <div>
@@ -2214,7 +2396,7 @@
                                             <div>
                                                 l. Do you intend to occupy the property as your primary
                                                 residence?
-                                                If Yes,” complete question m below.
+                                                If Yes,â€� complete question m below.
                                             </div>
                                             <div>
                                                 m. Have you had an ownership interest in a property in the last
@@ -2222,9 +2404,9 @@
                                             </div>
                                             <br>
                                             <div>
-                                                (1) What type of property did you own—principal residence
+                                                (1) What type of property did you ownâ€”principal residence
                                                 (PR), second home (SH), or investment property (IP)?
-                                                (2) How did you hold title to the home— by yourself (S),
+                                                (2) How did you hold title to the homeâ€” by yourself (S),
                                                 jointly with your spouse (SP), or jointly with another person (O)?
                                             </div>
                                         </div>
@@ -2438,9 +2620,9 @@
                                 <div class="col-12">
                                     <table>
                                         <tr>
-                                            <th width="500px">Borrower’s Signature</th>
+                                            <th width="500px">Borrowerâ€™s Signature</th>
                                             <th width="200px">Date</th>
-                                            <th width="500px">Co-Borrower’s Signature</th>
+                                            <th width="500px">Co-Borrowerâ€™s Signature</th>
                                             <th width="200px">Date</th>
                                         </tr>
                                         <tr>
@@ -2716,7 +2898,7 @@
                                 <table style="width:100%">
                                     <tr>
                                         <th>
-                                            Loan Originator’s Signature
+                                            Loan Originatorâ€™s Signature
                                         </th>
                                         <th>
                                             Date
@@ -2732,13 +2914,13 @@
                                 <table style="width:100%">
                                     <tr>
                                         <th>
-                                            Loan Originator’s Name (print or type)
+                                            Loan Originatorâ€™s Name (print or type)
                                         </th>
                                         <th>
                                             Loan Originator Identifier
                                         </th>
                                         <th>
-                                            Loan Originator’s Phone Number (including area code)
+                                            Loan Originatorâ€™s Phone Number (including area code)
                                         </th>
                                     </tr>
                                     <tr>
@@ -2754,13 +2936,13 @@
                                 <table style="width:100%">
                                     <tr>
                                         <th>
-                                            Loan Origination Company’s Name
+                                            Loan Origination Companyâ€™s Name
                                         </th>
                                         <th>
                                             Loan Origination Company Identifier
                                         </th>
                                         <th>
-                                            Loan Origination Company’s Address
+                                            Loan Origination Companyâ€™s Address
                                         </th>
                                     </tr>
                                     <tr>
@@ -2776,13 +2958,13 @@
                                 <table style="width:100%">
                                     <!-- <tr>
                                         <th>
-                                            Loan Origination Company’s Name
+                                            Loan Origination Companyâ€™s Name
                                         </th>
                                         <th>
                                             Loan Origination Company Identifier
                                         </th>
                                         <th>
-                                            Loan Origination Company’s Address
+                                            Loan Origination Companyâ€™s Address
                                         </th>
                                     </tr> -->
                                     <tr>

@@ -32,7 +32,8 @@ export class LoanApplicationComponent implements OnInit {
         combinedMonthlyHousingExpenseProposed: {},
         grossMonthlyTotal: {},
 
-        assestAndLiabilities: {}
+        assestAndLiabilities: {},
+        detailsOfTransaction: {}
     };
 
     config: NgWizardConfig = {
