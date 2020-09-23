@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<CreateOrUpdateDetailsOfTransactionDto> CreateAsync(CreateOrUpdateDetailsOfTransactionDto input)
+        public async Task<DetailsOfTransactionDto> CreateAsync(DetailsOfTransactionDto input)
         {
             var detailsOfTransaction = new DetailsOfTransaction
             {
@@ -48,17 +48,17 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<CreateOrUpdateDetailsOfTransactionDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<DetailsOfTransactionDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<CreateOrUpdateDetailsOfTransactionDto> GetAsync(EntityDto<long> input)
+        public Task<DetailsOfTransactionDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<CreateOrUpdateDetailsOfTransactionDto> UpdateAsync(CreateOrUpdateDetailsOfTransactionDto input)
+        public async Task<DetailsOfTransactionDto> UpdateAsync(DetailsOfTransactionDto input)
         {
             await _repository.UpdateAsync(input.Id, detailsOfTransaction =>
             {

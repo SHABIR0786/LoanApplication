@@ -2,7 +2,7 @@
 
 namespace LoanManagement.ViewModels
 {
-    public class CreateOrUpdateDetailsOfTransactionDto : EntityDto<long>
+    public class DetailsOfTransactionDto : EntityDto<long>
     {
         public decimal? PurchasePrice { get; set; }
         public decimal? Alterations { get; set; }

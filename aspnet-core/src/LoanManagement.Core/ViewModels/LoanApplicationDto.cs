@@ -19,8 +19,8 @@ namespace LoanManagement.ViewModels
         public BorrowerEmploymentInformationDto CoBorrowerEmploymentInformation2 { get; set; }
         public BorrowerEmploymentInformationDto CoBorrowerEmploymentInformation3 { get; set; }
 
-        public CreateOrUpdateAssetAndLiablityDto AssetAndLiablity { get; set; }
-        public CreateOrUpdateDetailsOfTransactionDto DetailsOfTransaction { get; set; }
+        public AssetAndLiabilityDto AssetAndLiability { get; set; }
+        public DetailsOfTransactionDto DetailsOfTransaction { get; set; }
 
         public GrossMonthlyIncomeDto GrossMonthlyIncomeBorrower { get; set; }
         public GrossMonthlyIncomeDto GrossMonthlyIncomeCoBorrower { get; set; }

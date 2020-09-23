@@ -2,7 +2,7 @@
 
 namespace LoanManagement.ViewModels
 {
-    public class CreateOrUpdateAssetAndLiablityDto : EntityDto<long>
+    public class AssetAndLiabilityDto : EntityDto<long>
     {
         public string AssetsCompletion { get; set; }
         public string Description { get; set; }

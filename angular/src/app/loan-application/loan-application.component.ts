@@ -32,7 +32,7 @@ export class LoanApplicationComponent implements OnInit {
         combinedMonthlyHousingExpenseProposed: {},
         grossMonthlyTotal: {},
 
-        assestAndLiabilities: {},
+        assetAndLiability: {},
         detailsOfTransaction: {}
     };
 
