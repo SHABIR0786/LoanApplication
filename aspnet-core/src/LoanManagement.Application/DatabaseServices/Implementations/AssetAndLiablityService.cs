@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<CreateOrUpdateAssetAndLiablityDto> CreateAsync(CreateOrUpdateAssetAndLiablityDto input)
+        public async Task<AssetAndLiabilityDto> CreateAsync(AssetAndLiabilityDto input)
         {
             var assetAndLiablity = new AssetAndLiablity
             {
@@ -102,17 +102,17 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<CreateOrUpdateAssetAndLiablityDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<AssetAndLiabilityDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<CreateOrUpdateAssetAndLiablityDto> GetAsync(EntityDto<long> input)
+        public Task<AssetAndLiabilityDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<CreateOrUpdateAssetAndLiablityDto> UpdateAsync(CreateOrUpdateAssetAndLiablityDto input)
+        public async Task<AssetAndLiabilityDto> UpdateAsync(AssetAndLiabilityDto input)
         {
             await _repository.UpdateAsync(input.Id, assetAndLiablity =>
             {

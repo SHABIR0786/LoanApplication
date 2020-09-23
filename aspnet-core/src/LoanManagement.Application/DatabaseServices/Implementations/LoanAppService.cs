@@ -102,8 +102,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.PropertyInformation != null && input.PropertyInformation.Id != default)
                     loanApplication.PropertyInfoId = input.PropertyInformation.Id;
 
-                if (input.AssetAndLiablity != null && input.AssetAndLiablity.Id != default)
-                    loanApplication.AssetAndLiablityId = input.AssetAndLiablity.Id;
+                if (input.AssetAndLiability != null && input.AssetAndLiability.Id != default)
+                    loanApplication.AssetAndLiablityId = input.AssetAndLiability.Id;
 
                 if (input.DetailsOfTransaction != null && input.DetailsOfTransaction.Id != default)
                     loanApplication.DetailsOfTransactionId = input.DetailsOfTransaction.Id;

@@ -32,7 +32,8 @@ namespace LoanManagement.Controllers
             IDetailOfTransactionService detailOfTransactionService,
             IGrossMonthlyIncomeService grossMonthlyIncomeService,
             ICombinedMonthlyHousingExpenseService combinedMonthlyHousingExpenseService,
-            IOtherIncomeService otherIncomeService)
+            IOtherIncomeService otherIncomeService
+        )
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
@@ -151,12 +152,12 @@ namespace LoanManagement.Controllers
                 // Borrower Employment Information End
 
 
-                if (input.AssetAndLiablity != null)
+                if (input.AssetAndLiability != null)
                 {
-                    if (input.AssetAndLiablity.Id == default)
-                        await _assetAndLiablityService.CreateAsync(input.AssetAndLiablity);
+                    if (input.AssetAndLiability.Id == default)
+                        await _assetAndLiablityService.CreateAsync(input.AssetAndLiability);
                     else
-                        await _assetAndLiablityService.UpdateAsync(input.AssetAndLiablity);
+                        await _assetAndLiablityService.UpdateAsync(input.AssetAndLiability);
                 }
 
                 if (input.DetailsOfTransaction != null)

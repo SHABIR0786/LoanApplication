@@ -20,6 +20,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<DetailsOfTransaction> DetailsOfTransactions { get; set; }
         public DbSet<GrossMonthlyIncome> GrossMonthlyIncome { get; set; }
         public DbSet<CombinedMonthlyHousingExpense> CombinedMonthlyHousingExpense { get; set; }
+        public DbSet<OtherIncome> OtherIncome { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)
