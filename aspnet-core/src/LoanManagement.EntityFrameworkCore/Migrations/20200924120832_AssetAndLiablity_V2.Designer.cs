@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200924120832_AssetAndLiablity_V2")]
+    partial class AssetAndLiablity_V2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1481,13 +1483,13 @@ namespace LoanManagement.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.AssetAndLiability", b =>
+            modelBuilder.Entity("LoanManagement.Models.AssetAndLiablity", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("AccountNumber")
+                    b.Property<string>("AccountName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("AddressOfBank1")
@@ -1756,7 +1758,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AssetAndLiabilities");
+                    b.ToTable("AssetAndLiablities");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
@@ -2180,14 +2182,14 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 9, 24, 17, 23, 38, 679, DateTimeKind.Local).AddTicks(9177),
+                            CreationTime = new DateTime(2020, 9, 24, 17, 8, 31, 423, DateTimeKind.Local).AddTicks(3804),
                             IsDeleted = false,
                             Name = "Present"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 9, 24, 17, 23, 38, 682, DateTimeKind.Local).AddTicks(429),
+                            CreationTime = new DateTime(2020, 9, 24, 17, 8, 31, 425, DateTimeKind.Local).AddTicks(5483),
                             IsDeleted = false,
                             Name = "Proposed"
                         });
@@ -2811,7 +2813,7 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
                 {
-                    b.HasOne("LoanManagement.Models.AssetAndLiability", "AssetAndLiablity")
+                    b.HasOne("LoanManagement.Models.AssetAndLiablity", "AssetAndLiablity")
                         .WithMany()
                         .HasForeignKey("AssetAndLiablityId");
 

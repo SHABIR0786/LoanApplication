@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200924122219_AssetAndLiability_V4")]
+    partial class AssetAndLiability_V4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1756,7 +1758,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AssetAndLiabilities");
+                    b.ToTable("AssetAndLiablities");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
@@ -2180,14 +2182,14 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 9, 24, 17, 23, 38, 679, DateTimeKind.Local).AddTicks(9177),
+                            CreationTime = new DateTime(2020, 9, 24, 17, 22, 18, 496, DateTimeKind.Local).AddTicks(4427),
                             IsDeleted = false,
                             Name = "Present"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 9, 24, 17, 23, 38, 682, DateTimeKind.Local).AddTicks(429),
+                            CreationTime = new DateTime(2020, 9, 24, 17, 22, 18, 497, DateTimeKind.Local).AddTicks(7247),
                             IsDeleted = false,
                             Name = "Proposed"
                         });

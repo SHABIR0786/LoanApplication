@@ -3,7 +3,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace LoanManagement.Models
 {
-    public class AssetAndLiablity : FullAuditedEntity<long>, IMayHaveTenant
+    public class AssetAndLiability : FullAuditedEntity<long>, IMayHaveTenant
     {
         public string AssetsCompletion { get; set; }
         public string Description { get; set; }
@@ -71,6 +71,7 @@ namespace LoanManagement.Models
         public decimal? UnpaidBalance5 { get; set; }
 
 
+        public decimal? LifeInsuranceNetFaceAmount { get; set; }
         public decimal? LifeInsuranceNetCashValue { get; set; }
         public decimal? SubtotalLiquidAssets { get; set; }
         public decimal? RealEstateOwned { get; set; }
@@ -96,10 +97,15 @@ namespace LoanManagement.Models
         public string JobRelatedExpenses { get; set; }
         public decimal? JobRelatedExpensesPayment { get; set; }
 
+        
+        public decimal? TotalAssets { get; set; }
+        public decimal? NetWorth { get; set; }
+        public decimal? TotalLiabilities { get; set; }
+
 
         public string AlternateName { get; set; }
         public string CreditorName { get; set; }
-        public string AccountName { get; set; }
+        public string AccountNumber { get; set; }
         public int? TenantId { get; set; }
     }
 }
