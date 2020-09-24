@@ -21,6 +21,10 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<GrossMonthlyIncome> GrossMonthlyIncome { get; set; }
         public DbSet<CombinedMonthlyHousingExpense> CombinedMonthlyHousingExpense { get; set; }
         public DbSet<OtherIncome> OtherIncome { get; set; }
+        public DbSet<AcknowledgementAndAgreement> AcknowledgementAndAgreements { get; set; }
+        public DbSet<InformationForGovermentMonitoringPurpose> InformationForGovermentMonitoringPurposes { get; set; }
+        public DbSet<InformationForGovermentMonitoringPurposeBorrowerAndCo> InformationForGovermentMonitoringPurposeBorrowerAndCos { get; set; }
+        public DbSet<Declaration> Declarations { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)
