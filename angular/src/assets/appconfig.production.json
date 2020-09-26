@@ -1,5 +1,5 @@
 {
-  "remoteServiceBaseUrl": "https://ezonlinemortgage.com/loan-backend",
+  "remoteServiceBaseUrl": "https://198.251.72.158/loan-backend",
   "appBaseUrl": "http://localhost:4200",
   "localeMappings": [
     {
