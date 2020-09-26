@@ -84,12 +84,37 @@
                 </label>
                 <select class="form-control" name="sourceOfDownPayment" id="sourceOfDownPayment"
                         formControlName="sourceOfDownPayment" required [(ngModel)]="data.sourceOfDownPayment">
-                    <option [value]="sourceOfDownPayment.id"
+                    <option [ngValue]="sourceOfDownPayment.id"
                             *ngFor="let sourceOfDownPayment of sourceOfDownPayments">{{sourceOfDownPayment.name}}</option>
                 </select>
                 <span *ngIf="form.controls.sourceOfDownPayment.errors && form.controls.sourceOfDownPayment.errors.required"
                       class="text-danger">This field is required
                 </span>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.sourceOfDownPayment === 4">
+            <div class="form-group">
+                <label for="giftAmount">
+                    {{ "Gift Amount" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="number" class="form-control" name="giftAmount" id="giftAmount"
+                           formControlName="giftAmount" [(ngModel)]="data.giftAmount"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.sourceOfDownPayment === 4">
+            <div class="form-group">
+                <label for="giftExplanation">
+                    {{ "Gift Explanation" | localize }}
+                </label>
+                <input type="text" class="form-control" name="giftExplanation" id="giftExplanation"
+                       formControlName="giftExplanation" [(ngModel)]="data.giftExplanation"/>
             </div>
         </div>
 
