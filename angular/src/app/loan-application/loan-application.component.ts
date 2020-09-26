@@ -33,7 +33,10 @@ export class LoanApplicationComponent implements OnInit {
         grossMonthlyTotal: {},
 
         assetAndLiability: {},
-        detailsOfTransaction: {}
+        detailsOfTransaction: {},
+
+        borrowerDeclaration: {},
+        coBorrowerDeclaration: {}
     };
 
     config: NgWizardConfig = {
