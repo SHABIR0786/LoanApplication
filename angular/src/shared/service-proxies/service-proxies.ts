@@ -28,7 +28,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     isTenantAvailable(body: IsTenantAvailableInput | undefined): Observable<IsTenantAvailableOutput> {
@@ -84,7 +84,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     register(body: RegisterInput | undefined): Observable<RegisterOutput> {
@@ -141,616 +141,6 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
-export class BorrowerEmploymentInformationServiceProxy {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @param id (optional) 
-     * @return Success
-     */
-    get(id: number | undefined): Observable<BorrowerEmploymentInformationDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/Get?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGet(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGet(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerEmploymentInformationDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerEmploymentInformationDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGet(response: HttpResponseBase): Observable<BorrowerEmploymentInformationDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = BorrowerEmploymentInformationDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerEmploymentInformationDto>(<any>null);
-    }
-
-    /**
-     * @param keyword (optional) 
-     * @param tenantId (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
-     * @return Success
-     */
-    getPaginatedAll(keyword: string | null | undefined, tenantId: number | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<BorrowerEmploymentInformationDtoPagedResultDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/GetPaginatedAll?";
-        if (keyword !== undefined && keyword !== null)
-            url_ += "Keyword=" + encodeURIComponent("" + keyword) + "&";
-        if (tenantId !== undefined && tenantId !== null)
-            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&";
-        if (skipCount === null)
-            throw new Error("The parameter 'skipCount' cannot be null.");
-        else if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
-        if (maxResultCount === null)
-            throw new Error("The parameter 'maxResultCount' cannot be null.");
-        else if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetPaginatedAll(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetPaginatedAll(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerEmploymentInformationDtoPagedResultDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerEmploymentInformationDtoPagedResultDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetPaginatedAll(response: HttpResponseBase): Observable<BorrowerEmploymentInformationDtoPagedResultDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = BorrowerEmploymentInformationDtoPagedResultDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerEmploymentInformationDtoPagedResultDto>(<any>null);
-    }
-
-    /**
-     * @param body (optional) 
-     * @return Success
-     */
-    createOrUpdate(body: CreateOrUpdateBorrowerEmploymentInformationDto | undefined): Observable<ResponseMessagesDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/CreateOrUpdate";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json-patch+json",
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrUpdate(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processCreateOrUpdate(<any>response_);
-                } catch (e) {
-                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processCreateOrUpdate(response: HttpResponseBase): Observable<ResponseMessagesDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ResponseMessagesDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<ResponseMessagesDto>(<any>null);
-    }
-
-    /**
-     * @param id (optional) 
-     * @return Success
-     */
-    delete(id: number | undefined): Observable<ResponseMessagesDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/Delete?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDelete(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDelete(<any>response_);
-                } catch (e) {
-                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDelete(response: HttpResponseBase): Observable<ResponseMessagesDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ResponseMessagesDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<ResponseMessagesDto>(<any>null);
-    }
-
-    /**
-     * @param tenantId (optional) 
-     * @return Success
-     */
-    getAll(tenantId: number | null | undefined): Observable<BorrowerEmploymentInformation[]> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerEmploymentInformation/GetAll?";
-        if (tenantId !== undefined && tenantId !== null)
-            url_ += "tenantId=" + encodeURIComponent("" + tenantId) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAll(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetAll(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerEmploymentInformation[]>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerEmploymentInformation[]>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetAll(response: HttpResponseBase): Observable<BorrowerEmploymentInformation[]> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(BorrowerEmploymentInformation.fromJS(item));
-            }
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerEmploymentInformation[]>(<any>null);
-    }
-}
-
-@Injectable()
-export class BorrowerInformationServiceProxy {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @param id (optional) 
-     * @return Success
-     */
-    get(id: number | undefined): Observable<BorrowerInformationDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerInformation/Get?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGet(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGet(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerInformationDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerInformationDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGet(response: HttpResponseBase): Observable<BorrowerInformationDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = BorrowerInformationDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerInformationDto>(<any>null);
-    }
-
-    /**
-     * @param keyword (optional) 
-     * @param tenantId (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
-     * @return Success
-     */
-    getPaginatedAll(keyword: string | null | undefined, tenantId: number | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<BorrowerInformationDtoPagedResultDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerInformation/GetPaginatedAll?";
-        if (keyword !== undefined && keyword !== null)
-            url_ += "Keyword=" + encodeURIComponent("" + keyword) + "&";
-        if (tenantId !== undefined && tenantId !== null)
-            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&";
-        if (skipCount === null)
-            throw new Error("The parameter 'skipCount' cannot be null.");
-        else if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
-        if (maxResultCount === null)
-            throw new Error("The parameter 'maxResultCount' cannot be null.");
-        else if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetPaginatedAll(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetPaginatedAll(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerInformationDtoPagedResultDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerInformationDtoPagedResultDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetPaginatedAll(response: HttpResponseBase): Observable<BorrowerInformationDtoPagedResultDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = BorrowerInformationDtoPagedResultDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerInformationDtoPagedResultDto>(<any>null);
-    }
-
-    /**
-     * @param body (optional) 
-     * @return Success
-     */
-    createOrUpdate(body: CreateOrUpdateBorrowerInformationDto | undefined): Observable<ResponseMessagesDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerInformation/CreateOrUpdate";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json-patch+json",
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrUpdate(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processCreateOrUpdate(<any>response_);
-                } catch (e) {
-                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processCreateOrUpdate(response: HttpResponseBase): Observable<ResponseMessagesDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ResponseMessagesDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<ResponseMessagesDto>(<any>null);
-    }
-
-    /**
-     * @param id (optional) 
-     * @return Success
-     */
-    delete(id: number | undefined): Observable<ResponseMessagesDto> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerInformation/Delete?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDelete(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDelete(<any>response_);
-                } catch (e) {
-                    return <Observable<ResponseMessagesDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<ResponseMessagesDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDelete(response: HttpResponseBase): Observable<ResponseMessagesDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ResponseMessagesDto.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<ResponseMessagesDto>(<any>null);
-    }
-
-    /**
-     * @param tenantId (optional) 
-     * @return Success
-     */
-    getAll(tenantId: number | null | undefined): Observable<BorrowerInformation[]> {
-        let url_ = this.baseUrl + "/api/services/app/BorrowerInformation/GetAll?";
-        if (tenantId !== undefined && tenantId !== null)
-            url_ += "tenantId=" + encodeURIComponent("" + tenantId) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "text/plain"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAll(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetAll(<any>response_);
-                } catch (e) {
-                    return <Observable<BorrowerInformation[]>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<BorrowerInformation[]>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetAll(response: HttpResponseBase): Observable<BorrowerInformation[]> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200.push(BorrowerInformation.fromJS(item));
-            }
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<BorrowerInformation[]>(<any>null);
-    }
-}
-
-@Injectable()
 export class ConfigurationServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -762,7 +152,7 @@ export class ConfigurationServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     changeUiTheme(body: ChangeUiThemeInput | undefined): Observable<void> {
@@ -826,7 +216,7 @@ export class LoanServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     get(id: number | undefined): Observable<LoanApplicationDto> {
@@ -882,9 +272,9 @@ export class LoanServiceProxy {
     }
 
     /**
-     * @param keyword (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
+     * @param keyword (optional)
+     * @param skipCount (optional)
+     * @param maxResultCount (optional)
      * @return Success
      */
     getAll(keyword: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<LoanApplicationDtoPagedResultDto> {
@@ -946,7 +336,7 @@ export class LoanServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     create(body: LoanApplicationDto | undefined): Observable<LoanApplicationDto> {
@@ -1002,7 +392,7 @@ export class LoanServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     update(body: LoanApplicationDto | undefined): Observable<LoanApplicationDto> {
@@ -1058,7 +448,7 @@ export class LoanServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     delete(id: number | undefined): Observable<void> {
@@ -1122,7 +512,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     create(body: CreateRoleDto | undefined): Observable<RoleDto> {
@@ -1178,7 +568,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param permission (optional) 
+     * @param permission (optional)
      * @return Success
      */
     getRoles(permission: string | null | undefined): Observable<RoleListDtoListResultDto> {
@@ -1232,7 +622,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     update(body: RoleDto | undefined): Observable<RoleDto> {
@@ -1288,7 +678,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     delete(id: number | undefined): Observable<void> {
@@ -1391,7 +781,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     getRoleForEdit(id: number | undefined): Observable<GetRoleForEditOutput> {
@@ -1447,7 +837,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     get(id: number | undefined): Observable<RoleDto> {
@@ -1503,9 +893,9 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @param keyword (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
+     * @param keyword (optional)
+     * @param skipCount (optional)
+     * @param maxResultCount (optional)
      * @return Success
      */
     getAll(keyword: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<RoleDtoPagedResultDto> {
@@ -1642,7 +1032,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     create(body: CreateTenantDto | undefined): Observable<TenantDto> {
@@ -1698,7 +1088,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     delete(id: number | undefined): Observable<void> {
@@ -1750,7 +1140,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     get(id: number | undefined): Observable<TenantDto> {
@@ -1806,10 +1196,10 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param keyword (optional) 
-     * @param isActive (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
+     * @param keyword (optional)
+     * @param isActive (optional)
+     * @param skipCount (optional)
+     * @param maxResultCount (optional)
      * @return Success
      */
     getAll(keyword: string | null | undefined, isActive: boolean | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<TenantDtoPagedResultDto> {
@@ -1873,7 +1263,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     update(body: TenantDto | undefined): Observable<TenantDto> {
@@ -1941,7 +1331,7 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     authenticate(body: AuthenticateModel | undefined): Observable<AuthenticateResultModel> {
@@ -2052,7 +1442,7 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     externalAuthenticate(body: ExternalAuthenticateModel | undefined): Observable<ExternalAuthenticateResultModel> {
@@ -2120,7 +1510,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     create(body: CreateUserDto | undefined): Observable<UserDto> {
@@ -2176,7 +1566,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     update(body: UserDto | undefined): Observable<UserDto> {
@@ -2232,7 +1622,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     delete(id: number | undefined): Observable<void> {
@@ -2335,7 +1725,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     changeLanguage(body: ChangeUserLanguageDto | undefined): Observable<void> {
@@ -2387,7 +1777,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     changePassword(body: ChangePasswordDto | undefined): Observable<boolean> {
@@ -2443,7 +1833,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param body (optional) 
+     * @param body (optional)
      * @return Success
      */
     resetPassword(body: ResetPasswordDto | undefined): Observable<boolean> {
@@ -2499,7 +1889,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param id (optional)
      * @return Success
      */
     get(id: number | undefined): Observable<UserDto> {
@@ -2555,10 +1945,10 @@ export class UserServiceProxy {
     }
 
     /**
-     * @param keyword (optional) 
-     * @param isActive (optional) 
-     * @param skipCount (optional) 
-     * @param maxResultCount (optional) 
+     * @param keyword (optional)
+     * @param isActive (optional)
+     * @param skipCount (optional)
+     * @param maxResultCount (optional)
      * @return Success
      */
     getAll(keyword: string | null | undefined, isActive: boolean | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<UserDtoPagedResultDto> {
@@ -2650,7 +2040,7 @@ export class IsTenantAvailableInput implements IIsTenantAvailableInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["tenancyName"] = this.tenancyName;
-        return data; 
+        return data;
     }
 
     clone(): IsTenantAvailableInput {
@@ -2702,7 +2092,7 @@ export class IsTenantAvailableOutput implements IIsTenantAvailableOutput {
         data = typeof data === 'object' ? data : {};
         data["state"] = this.state;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 
     clone(): IsTenantAvailableOutput {
@@ -2761,7 +2151,7 @@ export class RegisterInput implements IRegisterInput {
         data["emailAddress"] = this.emailAddress;
         data["password"] = this.password;
         data["captchaResponse"] = this.captchaResponse;
-        return data; 
+        return data;
     }
 
     clone(): RegisterInput {
@@ -2809,7 +2199,7 @@ export class RegisterOutput implements IRegisterOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["canLogin"] = this.canLogin;
-        return data; 
+        return data;
     }
 
     clone(): RegisterOutput {
@@ -2918,7 +2308,7 @@ export class BorrowerEmploymentInformationDto implements IBorrowerEmploymentInfo
         data["position3"] = this.position3;
         data["businessPhone3"] = this.businessPhone3;
         data["borrowerTypeId"] = this.borrowerTypeId;
-        return data; 
+        return data;
     }
 
     clone(): BorrowerEmploymentInformationDto {
@@ -2994,7 +2384,7 @@ export class BorrowerEmploymentInformationDtoPagedResultDto implements IBorrower
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): BorrowerEmploymentInformationDtoPagedResultDto {
@@ -3104,7 +2494,7 @@ export class CreateOrUpdateBorrowerEmploymentInformationDto implements ICreateOr
         data["position3"] = this.position3;
         data["businessPhone3"] = this.businessPhone3;
         data["borrowerTypeId"] = this.borrowerTypeId;
-        return data; 
+        return data;
     }
 
     clone(): CreateOrUpdateBorrowerEmploymentInformationDto {
@@ -3181,7 +2571,7 @@ export class ResponseMessagesDto implements IResponseMessagesDto {
         data["success"] = this.success;
         data["errorMessage"] = this.errorMessage;
         data["error"] = this.error;
-        return data; 
+        return data;
     }
 
     clone(): ResponseMessagesDto {
@@ -3255,7 +2645,7 @@ export class BorrowerType implements IBorrowerType {
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
         data["type"] = this.type;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 
     clone(): BorrowerType {
@@ -3361,7 +2751,7 @@ export class MortgageType implements IMortgageType {
         data["amortizationType"] = this.amortizationType;
         data["amortizationTypeExplain"] = this.amortizationTypeExplain;
         data["loanApplication"] = this.loanApplication ? this.loanApplication.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 
     clone(): MortgageType {
@@ -3512,7 +2902,7 @@ export class PropertyInformation implements IPropertyInformation {
         data["sourceOfPayment"] = this.sourceOfPayment;
         data["estateHeldIn"] = this.estateHeldIn;
         data["loanApplication"] = this.loanApplication ? this.loanApplication.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 
     clone(): PropertyInformation {
@@ -3676,7 +3066,7 @@ export class BorrowerInformation implements IBorrowerInformation {
             for (let item of this.coBorrowerLoanApplication)
                 data["coBorrowerLoanApplication"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 
     clone(): BorrowerInformation {
@@ -3804,7 +3194,7 @@ export class LoanApplication implements ILoanApplication {
         data["coBorrowerEmploymentInfoId"] = this.coBorrowerEmploymentInfoId;
         data["coBorrowerEmploymentInfo"] = this.coBorrowerEmploymentInfo ? this.coBorrowerEmploymentInfo.toJSON() : <any>undefined;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 
     clone(): LoanApplication {
@@ -3982,7 +3372,7 @@ export class BorrowerEmploymentInformation implements IBorrowerEmploymentInforma
             for (let item of this.coBorrowerLoanApplication)
                 data["coBorrowerLoanApplication"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 
     clone(): BorrowerEmploymentInformation {
@@ -4103,7 +3493,7 @@ export class BorrowerInformationDto implements IBorrowerInformationDto {
         data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
         data["borrowerTypeId"] = this.borrowerTypeId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 
     clone(): BorrowerInformationDto {
@@ -4172,7 +3562,7 @@ export class BorrowerInformationDtoPagedResultDto implements IBorrowerInformatio
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): BorrowerInformationDtoPagedResultDto {
@@ -4261,7 +3651,7 @@ export class CreateOrUpdateBorrowerInformationDto implements ICreateOrUpdateBorr
         data["formerAddressNoOfYears"] = this.formerAddressNoOfYears;
         data["borrowerTypeId"] = this.borrowerTypeId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 
     clone(): CreateOrUpdateBorrowerInformationDto {
@@ -4319,7 +3709,7 @@ export class ChangeUiThemeInput implements IChangeUiThemeInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["theme"] = this.theme;
-        return data; 
+        return data;
     }
 
     clone(): ChangeUiThemeInput {
@@ -4392,7 +3782,7 @@ export class MortgageTypeDto implements IMortgageTypeDto {
         data["numberOfMonths"] = this.numberOfMonths;
         data["amortizationType"] = this.amortizationType;
         data["amortizationTypeExplain"] = this.amortizationTypeExplain;
-        return data; 
+        return data;
     }
 
     clone(): MortgageTypeDto {
@@ -4511,7 +3901,7 @@ export class PropertyInformationDto implements IPropertyInformationDto {
         data["titleHeldManner"] = this.titleHeldManner;
         data["sourceOfPayment"] = this.sourceOfPayment;
         data["estateHeldIn"] = this.estateHeldIn;
-        return data; 
+        return data;
     }
 
     clone(): PropertyInformationDto {
@@ -4586,7 +3976,7 @@ export class LoanApplicationDto implements ILoanApplicationDto {
         data["id"] = this.id;
         data["mortgageType"] = this.mortgageType ? this.mortgageType.toJSON() : <any>undefined;
         data["propertyInformation"] = this.propertyInformation ? this.propertyInformation.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 
     clone(): LoanApplicationDto {
@@ -4642,7 +4032,7 @@ export class LoanApplicationDtoPagedResultDto implements ILoanApplicationDtoPage
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): LoanApplicationDtoPagedResultDto {
@@ -4706,7 +4096,7 @@ export class CreateRoleDto implements ICreateRoleDto {
             for (let item of this.grantedPermissions)
                 data["grantedPermissions"].push(item);
         }
-        return data; 
+        return data;
     }
 
     clone(): CreateRoleDto {
@@ -4776,7 +4166,7 @@ export class RoleDto implements IRoleDto {
             for (let item of this.grantedPermissions)
                 data["grantedPermissions"].push(item);
         }
-        return data; 
+        return data;
     }
 
     clone(): RoleDto {
@@ -4839,7 +4229,7 @@ export class RoleListDto implements IRoleListDto {
         data["isStatic"] = this.isStatic;
         data["isDefault"] = this.isDefault;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        return data; 
+        return data;
     }
 
     clone(): RoleListDto {
@@ -4895,7 +4285,7 @@ export class RoleListDtoListResultDto implements IRoleListDtoListResultDto {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 
     clone(): RoleListDtoListResultDto {
@@ -4947,7 +4337,7 @@ export class PermissionDto implements IPermissionDto {
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["description"] = this.description;
-        return data; 
+        return data;
     }
 
     clone(): PermissionDto {
@@ -5001,7 +4391,7 @@ export class PermissionDtoListResultDto implements IPermissionDtoListResultDto {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 
     clone(): PermissionDtoListResultDto {
@@ -5056,7 +4446,7 @@ export class RoleEditDto implements IRoleEditDto {
         data["displayName"] = this.displayName;
         data["description"] = this.description;
         data["isStatic"] = this.isStatic;
-        return data; 
+        return data;
     }
 
     clone(): RoleEditDto {
@@ -5109,7 +4499,7 @@ export class FlatPermissionDto implements IFlatPermissionDto {
         data["name"] = this.name;
         data["displayName"] = this.displayName;
         data["description"] = this.description;
-        return data; 
+        return data;
     }
 
     clone(): FlatPermissionDto {
@@ -5176,7 +4566,7 @@ export class GetRoleForEditOutput implements IGetRoleForEditOutput {
             for (let item of this.grantedPermissionNames)
                 data["grantedPermissionNames"].push(item);
         }
-        return data; 
+        return data;
     }
 
     clone(): GetRoleForEditOutput {
@@ -5232,7 +4622,7 @@ export class RoleDtoPagedResultDto implements IRoleDtoPagedResultDto {
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): RoleDtoPagedResultDto {
@@ -5294,7 +4684,7 @@ export class ApplicationInfoDto implements IApplicationInfoDto {
                     data["features"][key] = this.features[key];
             }
         }
-        return data; 
+        return data;
     }
 
     clone(): ApplicationInfoDto {
@@ -5351,7 +4741,7 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
         data["surname"] = this.surname;
         data["userName"] = this.userName;
         data["emailAddress"] = this.emailAddress;
-        return data; 
+        return data;
     }
 
     clone(): UserLoginInfoDto {
@@ -5404,7 +4794,7 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
         data["id"] = this.id;
         data["tenancyName"] = this.tenancyName;
         data["name"] = this.name;
-        return data; 
+        return data;
     }
 
     clone(): TenantLoginInfoDto {
@@ -5455,7 +4845,7 @@ export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInform
         data["application"] = this.application ? this.application.toJSON() : <any>undefined;
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["tenant"] = this.tenant ? this.tenant.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 
     clone(): GetCurrentLoginInformationsOutput {
@@ -5512,7 +4902,7 @@ export class CreateTenantDto implements ICreateTenantDto {
         data["adminEmailAddress"] = this.adminEmailAddress;
         data["connectionString"] = this.connectionString;
         data["isActive"] = this.isActive;
-        return data; 
+        return data;
     }
 
     clone(): CreateTenantDto {
@@ -5568,7 +4958,7 @@ export class TenantDto implements ITenantDto {
         data["tenancyName"] = this.tenancyName;
         data["name"] = this.name;
         data["isActive"] = this.isActive;
-        return data; 
+        return data;
     }
 
     clone(): TenantDto {
@@ -5625,7 +5015,7 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): TenantDtoPagedResultDto {
@@ -5675,7 +5065,7 @@ export class AuthenticateModel implements IAuthenticateModel {
         data["userNameOrEmailAddress"] = this.userNameOrEmailAddress;
         data["password"] = this.password;
         data["rememberClient"] = this.rememberClient;
-        return data; 
+        return data;
     }
 
     clone(): AuthenticateModel {
@@ -5729,7 +5119,7 @@ export class AuthenticateResultModel implements IAuthenticateResultModel {
         data["encryptedAccessToken"] = this.encryptedAccessToken;
         data["expireInSeconds"] = this.expireInSeconds;
         data["userId"] = this.userId;
-        return data; 
+        return data;
     }
 
     clone(): AuthenticateResultModel {
@@ -5778,7 +5168,7 @@ export class ExternalLoginProviderInfoModel implements IExternalLoginProviderInf
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["clientId"] = this.clientId;
-        return data; 
+        return data;
     }
 
     clone(): ExternalLoginProviderInfoModel {
@@ -5828,7 +5218,7 @@ export class ExternalAuthenticateModel implements IExternalAuthenticateModel {
         data["authProvider"] = this.authProvider;
         data["providerKey"] = this.providerKey;
         data["providerAccessCode"] = this.providerAccessCode;
-        return data; 
+        return data;
     }
 
     clone(): ExternalAuthenticateModel {
@@ -5882,7 +5272,7 @@ export class ExternalAuthenticateResultModel implements IExternalAuthenticateRes
         data["encryptedAccessToken"] = this.encryptedAccessToken;
         data["expireInSeconds"] = this.expireInSeconds;
         data["waitingForActivation"] = this.waitingForActivation;
-        return data; 
+        return data;
     }
 
     clone(): ExternalAuthenticateResultModel {
@@ -5954,7 +5344,7 @@ export class CreateUserDto implements ICreateUserDto {
                 data["roleNames"].push(item);
         }
         data["password"] = this.password;
-        return data; 
+        return data;
     }
 
     clone(): CreateUserDto {
@@ -6038,7 +5428,7 @@ export class UserDto implements IUserDto {
             for (let item of this.roleNames)
                 data["roleNames"].push(item);
         }
-        return data; 
+        return data;
     }
 
     clone(): UserDto {
@@ -6098,7 +5488,7 @@ export class RoleDtoListResultDto implements IRoleDtoListResultDto {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 
     clone(): RoleDtoListResultDto {
@@ -6141,7 +5531,7 @@ export class ChangeUserLanguageDto implements IChangeUserLanguageDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["languageName"] = this.languageName;
-        return data; 
+        return data;
     }
 
     clone(): ChangeUserLanguageDto {
@@ -6187,7 +5577,7 @@ export class ChangePasswordDto implements IChangePasswordDto {
         data = typeof data === 'object' ? data : {};
         data["currentPassword"] = this.currentPassword;
         data["newPassword"] = this.newPassword;
-        return data; 
+        return data;
     }
 
     clone(): ChangePasswordDto {
@@ -6237,7 +5627,7 @@ export class ResetPasswordDto implements IResetPasswordDto {
         data["adminPassword"] = this.adminPassword;
         data["userId"] = this.userId;
         data["newPassword"] = this.newPassword;
-        return data; 
+        return data;
     }
 
     clone(): ResetPasswordDto {
@@ -6293,7 +5683,7 @@ export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
                 data["items"].push(item.toJSON());
         }
         data["totalCount"] = this.totalCount;
-        return data; 
+        return data;
     }
 
     clone(): UserDtoPagedResultDto {

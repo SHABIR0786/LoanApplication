@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BorrowerEmploymentInformationServiceProxy, BorrowerInformationServiceProxy} from '@shared/service-proxies/service-proxies';
 import {NgWizardConfig, NgWizardService, StepChangedArgs, THEME} from 'ng-wizard';
 import {LoanApplicationService} from '../services/loan-application.service';
 
@@ -11,30 +10,7 @@ import {LoanApplicationService} from '../services/loan-application.service';
 export class LoanApplicationComponent implements OnInit {
     [x: string]: any;
 
-    loanApplication: any = {
-        id: undefined,
-        mortgageType: {},
-        propertyInformation: {},
-        borrowerInformation: {},
-        coBorrowerInformation: {},
-
-        borrowerEmploymentInformation1: {},
-        borrowerEmploymentInformation2: {},
-        borrowerEmploymentInformation3: {},
-
-        coBorrowerEmploymentInformation1: {},
-        coBorrowerEmploymentInformation2: {},
-        coBorrowerEmploymentInformation3: {},
-
-        grossMonthlyIncomeBorrower: {},
-        grossMonthlyIncomeCoBorrower: {},
-        combinedMonthlyHousingExpensePresent: {},
-        combinedMonthlyHousingExpenseProposed: {},
-        grossMonthlyTotal: {},
-
-        assetAndLiability: {},
-        detailsOfTransaction: {}
-    };
+    loanApplication: any = {};
 
     config: NgWizardConfig = {
         selected: 0,
@@ -55,82 +31,15 @@ export class LoanApplicationComponent implements OnInit {
         }
     };
 
-    constructor(private ngWizardService: NgWizardService,
-                private _borrowerInformationService: BorrowerInformationServiceProxy,
-                private _borrowerEmploymentInformationService: BorrowerEmploymentInformationServiceProxy,
-                private _loanApplicationService: LoanApplicationService
+    constructor(private ngWizardService: NgWizardService, private _loanApplicationService: LoanApplicationService
     ) {
     }
 
     ngOnInit(): void {
     }
 
-    showPreviousStep(event?: Event) {
-        this.ngWizardService.previous();
-    }
-
-    showNextStep(event?: Event) {
-        this.ngWizardService.next();
-    }
-
-    resetWizard(event?: Event) {
-        this.ngWizardService.reset();
-    }
-
-    setTheme(theme: THEME) {
-        this.ngWizardService.theme(theme);
-    }
-
     stepChanged(args: StepChangedArgs) {
         console.log(args.step);
-    }
-
-    finish() {
-        this.loanApplication.borrowerInformation.tenantId = this.appSession.tenantId;
-        this.loanApplication.coBorrowerInformation.tenantId = this.appSession.tenantId;
-        this._borrowerInformationService.createOrUpdate(this.loanApplication.borrowerInformation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this._borrowerInformationService.createOrUpdate(this.loanApplication.coBorrowerInformation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this.loanApplication.borrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
-        this.loanApplication.coBorrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
-
-
-        this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.borrowerEmploymentinfromation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.coBorrowerEmploymentinfromation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-    }
-
-    onBorrowerChange(data) {
-        this.loanApplication.borrowerInformation = data;
-    }
-
-    onCoBorrowerChange(data) {
-        this.loanApplication.coBorrowerInformation = data;
-    }
-
-    onChange(prop, data) {
-        this.loanApplication[prop] = data;
     }
 
     sanitizeFormData() {
