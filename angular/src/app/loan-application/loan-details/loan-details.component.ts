@@ -47,6 +47,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             downPaymentAmount: new FormControl(this.data.downPaymentAmount, [Validators.required]),
             downPaymentPercentage: new FormControl(this.data.downPaymentPercentage),
             sourceOfDownPayment: new FormControl(this.data.sourceOfDownPayment, [Validators.required]),
+            giftAmount: new FormControl(this.data.giftAmount),
+            giftExplanation: new FormControl(this.data.giftExplanation),
 
             refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
             yearAcquired: new FormControl(this.data.yearAcquired),

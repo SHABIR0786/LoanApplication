@@ -9,6 +9,8 @@ export interface ILoanDetailModel {
     downPaymentAmount?: number;
     downPaymentPercentage?: number;
     sourceOfDownPayment?: number;
+    giftAmount?: number;
+    giftExplanation?: string;
 
     refinancingCurrentHome?: boolean;
     yearAcquired?: string;
