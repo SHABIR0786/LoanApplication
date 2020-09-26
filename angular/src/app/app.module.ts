@@ -41,6 +41,8 @@ import {LoanApplicationComponent} from './loan-application/loan-application.comp
 // Wizard module
 import {NgWizardConfig, NgWizardModule, THEME} from 'ng-wizard';
 import { LoanDetailsComponent } from './loan-application/loan-details/loan-details.component';
+import { PersonalInformationComponent } from './loan-application/personal-information/personal-information.component';
+import { ExpensesComponent } from './loan-application/expenses/expenses.component';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -77,6 +79,8 @@ const ngWizardConfig: NgWizardConfig = {
         SidebarMenuComponent,
         LoanApplicationComponent,
         LoanDetailsComponent,
+        PersonalInformationComponent,
+        ExpensesComponent,
     ],
     imports: [
         CommonModule,
