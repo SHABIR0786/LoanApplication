@@ -161,10 +161,12 @@ namespace LoanManagement.Controllers
                 }
 
                 if (input.DetailsOfTransaction != null)
+                {
                     if (input.DetailsOfTransaction.Id == default)
                         await _detailOfTransactionService.CreateAsync(input.DetailsOfTransaction);
                     else
                         await _detailOfTransactionService.UpdateAsync(input.DetailsOfTransaction);
+                }
 
                 if (input.GrossMonthlyIncomeBorrower != null)
                 {

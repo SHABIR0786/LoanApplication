@@ -7,7 +7,7 @@ namespace LoanManagement.Models
     public class LoanApplication : FullAuditedEntity<long>, IMayHaveTenant
     {
         public long? AssetAndLiablityId { get; set; }
-        public AssetAndLiablity AssetAndLiablity { get; set; }
+        public AssetAndLiability AssetAndLiablity { get; set; }
 
         public long? DetailsOfTransactionId { get; set; }
         public DetailsOfTransaction DetailsOfTransaction { get; set; }
