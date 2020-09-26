@@ -1,0 +1,225 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-12">
+            <h4>My Loan Information</h4>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label for="referredBy">
+                    {{ "Who Referred You? (Real Estate Agent, Family, Friend, Internet, etc.) Please list by Full Name, if Applicable" | localize }}
+                </label>
+                <input type="text" class="form-control" name="referredBy" id="referredBy"
+                       formControlName="referredBy" [(ngModel)]="data.referredBy"/>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="purposeOfLoan">
+                    {{ "Loan Purpose" | localize }}
+                </label>
+                <select class="form-control" name="purposeOfLoan" id="purposeOfLoan"
+                        formControlName="purposeOfLoan" required [(ngModel)]="data.purposeOfLoan">
+                    <option [ngValue]="loanPurpose.id"
+                            *ngFor="let loanPurpose of loanPurposes">{{loanPurpose.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 1">
+            <div class="form-group">
+                <label for="estimatedPurchasePrice">
+                    {{ "Estimated Purchase Price" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="number" class="form-control" name="estimatedPurchasePrice" id="estimatedPurchasePrice"
+                           formControlName="estimatedPurchasePrice" required [(ngModel)]="data.estimatedPurchasePrice"/>
+                </div>
+                <span *ngIf="form.controls.estimatedPurchasePrice.errors && form.controls.estimatedPurchasePrice.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 1">
+            <div class="form-group">
+                <label for="downPaymentAmount">
+                    {{ "Down Payment Amount" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="number" class="form-control" name="downPaymentAmount" id="downPaymentAmount"
+                           formControlName="downPaymentAmount" required [(ngModel)]="data.downPaymentAmount"/>
+                </div>
+                <span *ngIf="form.controls.downPaymentAmount.errors && form.controls.downPaymentAmount.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 1">
+            <div class="form-group">
+                <label for="downPaymentPercentage">
+                    {{ "Down Payment Percentage" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">%</div>
+                    </div>
+                    <input type="number" class="form-control" name="downPaymentPercentage" id="downPaymentPercentage"
+                           formControlName="downPaymentPercentage" [(ngModel)]="data.downPaymentPercentage"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 1">
+            <div class="form-group">
+                <label for="sourceOfDownPayment">
+                    {{ "Source of Down Payment" | localize }}
+                </label>
+                <select class="form-control" name="sourceOfDownPayment" id="sourceOfDownPayment"
+                        formControlName="sourceOfDownPayment" required [(ngModel)]="data.sourceOfDownPayment">
+                    <option [value]="sourceOfDownPayment.id"
+                            *ngFor="let sourceOfDownPayment of sourceOfDownPayments">{{sourceOfDownPayment.name}}</option>
+                </select>
+                <span *ngIf="form.controls.sourceOfDownPayment.errors && form.controls.sourceOfDownPayment.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3">
+            <div class="form-group">
+                <label for="estimatedValue">
+                    {{ "Estimated Value" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="number" class="form-control" name="estimatedValue" id="estimatedValue"
+                           formControlName="estimatedValue" [(ngModel)]="data.estimatedValue"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3">
+            <div class="form-group">
+                <label for="currentLoanAmount">
+                    {{ "Current Loan Amount" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="number" class="form-control" name="currentLoanAmount" id="currentLoanAmount"
+                           formControlName="currentLoanAmount" [(ngModel)]="data.currentLoanAmount"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6" *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3">
+            <div class="form-group">
+                <label for="requestedLoanAmount">
+                    {{ "Requested Loan Amount" | localize }}
+                </label>
+                <input type="number" class="form-control" name="requestedLoanAmount" id="requestedLoanAmount"
+                       formControlName="requestedLoanAmount" required [(ngModel)]="data.requestedLoanAmount"/>
+                <span *ngIf="form.controls.requestedLoanAmount.errors && form.controls.requestedLoanAmount.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="yearAcquired">
+                    {{ "When did you acquire this property?" | localize }}
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input type="text" class="form-control" name="yearAcquired" id="yearAcquired"
+                           formControlName="yearAcquired" [(ngModel)]="data.yearAcquired"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="originalPrice">
+                    {{ "What was the original price of the home?" | localize }}
+                </label>
+                <input type="text" class="form-control" name="originalPrice" id="originalPrice"
+                       formControlName="originalPrice" [(ngModel)]="data.originalPrice"/>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="city">
+                    {{ "City" | localize }}
+                </label>
+                <input type="text" class="form-control" name="city" id="city"
+                       formControlName="city" [(ngModel)]="data.city"/>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="stateId">
+                    {{ "State" | localize }}
+                </label>
+                <select class="form-control" name="stateId" id="stateId"
+                        formControlName="stateId" required [(ngModel)]="data.stateId">
+                    <!--<option [ngValue]="loanPurpose.id"
+                            *ngFor="let loanPurpose of loanPurposes">{{loanPurpose.name}}</option>-->
+                </select>
+                <span *ngIf="form.controls.stateId.errors && form.controls.stateId.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="propertyTypeId">
+                    {{ "Property Type" | localize }}
+                </label>
+                <select class="form-control" name="propertyTypeId" id="propertyTypeId"
+                        formControlName="propertyTypeId" required [(ngModel)]="data.propertyTypeId">
+                    <!--<option [ngValue]="loanPurpose.id"
+                            *ngFor="let loanPurpose of loanPurposes">{{loanPurpose.name}}</option>-->
+                </select>
+                <span *ngIf="form.controls.propertyTypeId.errors && form.controls.propertyTypeId.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <label for="propertyUseId">
+                    {{ "Property Use" | localize }}
+                </label>
+                <select class="form-control" name="propertyUseId" id="propertyUseId"
+                        formControlName="propertyUseId" required [(ngModel)]="data.propertyUseId">
+                    <!--<option [ngValue]="loanPurpose.id"
+                            *ngFor="let loanPurpose of loanPurposes">{{loanPurpose.name}}</option>-->
+                </select>
+                <span *ngIf="form.controls.propertyUseId.errors && form.controls.propertyUseId.errors.required"
+                      class="text-danger">This field is required
+                </span>
+            </div>
+        </div>
+
+    </div>
+</form>

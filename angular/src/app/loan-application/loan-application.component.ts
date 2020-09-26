@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {NgWizardConfig, NgWizardService, StepChangedArgs, THEME} from 'ng-wizard';
+import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {LoanApplicationService} from '../services/loan-application.service';
+import {ILoanApplicationModel} from '../interfaces/ILoanApplication';
 
 @Component({
     selector: 'app-loan-application',
@@ -10,7 +11,7 @@ import {LoanApplicationService} from '../services/loan-application.service';
 export class LoanApplicationComponent implements OnInit {
     [x: string]: any;
 
-    loanApplication: any = {};
+    loanApplication: ILoanApplicationModel = {};
 
     config: NgWizardConfig = {
         selected: 0,
@@ -38,8 +39,9 @@ export class LoanApplicationComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    stepChanged(args: StepChangedArgs) {
-        console.log(args.step);
+    onChange(data, key) {
+        this.loanApplication[key] = data;
+        console.log(this.loanApplication);
     }
 
     sanitizeFormData() {

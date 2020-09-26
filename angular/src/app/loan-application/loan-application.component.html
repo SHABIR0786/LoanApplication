@@ -15,7 +15,11 @@
                 <div class="card-header">
                 </div>
                 <div class="card-body">
-
+                    <ng-wizard [config]="config">
+                        <ng-wizard-step title="Step 1" description="Loan Details">
+                            <app-loan-details (onDataChange)="onChange($event, 'loanDetails')"></app-loan-details>
+                        </ng-wizard-step>
+                    </ng-wizard>
                 </div>
             </div>
         </div>
