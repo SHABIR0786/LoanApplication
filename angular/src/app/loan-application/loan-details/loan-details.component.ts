@@ -22,6 +22,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     sourceOfDownPayments = [];
     propertyTypes = [];
     propertyUses = [];
+    loanOfficers = [];
 
     constructor() {
     }
@@ -33,6 +34,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.loadSourceOfDownPayments();
         this.loadPropertyTypes();
         this.loadPropertyUses();
+        this.loadLoanOfficers();
     }
 
     ngDoCheck() {
@@ -45,6 +47,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     initForm() {
         this.form = new FormGroup({
             referredBy: new FormControl(this.data.referredBy),
+            isWorkingWithOfficer: new FormControl(this.data.isWorkingWithOfficer, [Validators.required]),
+            loanOfficerId: new FormControl(this.data.loanOfficerId, [Validators.required]),
             purposeOfLoan: new FormControl(this.data.purposeOfLoan, [Validators.required]),
             estimatedValue: new FormControl(this.data.estimatedValue),
             currentLoanAmount: new FormControl(this.data.currentLoanAmount),
@@ -60,7 +64,11 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             payLoanWithNewLoan: new FormControl(this.data.payLoanWithNewLoan),
 
             refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
-            yearAcquired: new FormControl(this.data.yearAcquired),
+            yearAcquired: new FormControl(this.data.yearAcquired, [
+                Validators.pattern('^\\d{4}$'),
+                Validators.min(1900),
+                Validators.max(new Date().getFullYear()),
+            ]),
             originalPrice: new FormControl(this.data.originalPrice),
             city: new FormControl(this.data.city),
             stateId: new FormControl(this.data.stateId),
@@ -116,6 +124,16 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
                 this.form.get('giftAmount').setValue(null);
                 this.form.get('giftExplanation').setValue(null);
             }
+        });
+
+        this.form.get('isWorkingWithOfficer').valueChanges.subscribe(isWorkingWithOfficer => {
+            if (isWorkingWithOfficer) {
+                this.form.get('loanOfficerId').setValidators([Validators.required]);
+            } else {
+                this.form.get('loanOfficerId').setValue(null);
+                this.form.get('loanOfficerId').setValidators(null);
+            }
+            this.form.get('loanOfficerId').updateValueAndValidity();
         });
     }
 
@@ -179,6 +197,15 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             {
                 id: 3,
                 name: 'Investment Home'
+            }
+        ];
+    }
+
+    loadLoanOfficers() {
+        this.loanOfficers = [
+            {
+                id: 1,
+                name: 'John Doe'
             }
         ];
     }

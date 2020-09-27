@@ -1,5 +1,7 @@
 export interface ILoanDetailModel {
     id?: number;
+    isWorkingWithOfficer?: boolean;
+    loanOfficerId?: number;
     referredBy?: string;
     purposeOfLoan?: number;
     estimatedValue?: number;
