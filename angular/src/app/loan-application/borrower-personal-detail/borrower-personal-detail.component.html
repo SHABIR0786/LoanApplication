@@ -1,0 +1,115 @@
+<div class="row" [formGroup]="form">
+    <div class="col-12 mt-3 mb-1">
+        <h5>{{heading}}</h5>
+    </div>
+
+    <div class="col-3">
+        <div class="form-group">
+            <label for="firstName-{{id}}">
+                {{ "First Name" | localize }}
+            </label>
+            <input type="text" class="form-control" name="firstName" id="firstName-{{id}}"
+                   formControlName="firstName" [(ngModel)]="data.firstName"/>
+            <validation-summary [control]="form.controls.firstName"></validation-summary>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label for="middleInitial-{{id}}">
+                {{ "Middle Initial" | localize }}
+            </label>
+            <input type="text" class="form-control" name="middleInitial" id="middleInitial-{{id}}"
+                   formControlName="middleInitial" [(ngModel)]="data.middleInitial"/>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label for="lastName-{{id}}">
+                {{ "Last Name" | localize }}
+            </label>
+            <input type="text" class="form-control" name="lastName" id="lastName-{{id}}"
+                   formControlName="lastName" [(ngModel)]="data.lastName"/>
+            <validation-summary [control]="form.controls.lastName"></validation-summary>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label for="suffix-{{id}}">
+                {{ "Suffix" | localize }}
+            </label>
+            <input type="text" class="form-control" name="suffix" id="suffix-{{id}}"
+                   formControlName="suffix" [(ngModel)]="data.suffix"/>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="email-{{id}}">
+                {{ "Email" | localize }}
+            </label>
+            <input type="email" class="form-control" name="email" id="email-{{id}}"
+                   formControlName="email" [(ngModel)]="data.email"/>
+            <validation-summary [control]="form.controls.email"></validation-summary>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="dateOfBirth-{{id}}">
+                {{ "Date of Birth" | localize }}
+            </label>
+            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth-{{id}}"
+                   formControlName="dateOfBirth" [(ngModel)]="data.dateOfBirth"/>
+            <validation-summary [control]="form.controls.dateOfBirth"></validation-summary>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="socialSecurityNumber-{{id}}">
+                {{ "Social Security Number" | localize }}
+            </label>
+            <input type="text" class="form-control" name="socialSecurityNumber" id="socialSecurityNumber-{{id}}"
+                   formControlName="socialSecurityNumber" [(ngModel)]="data.socialSecurityNumber"/>
+            <validation-summary [control]="form.controls.socialSecurityNumber"></validation-summary>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="maritalStatusId-{{id}}">
+                {{ "Marital Status" | localize }}
+            </label>
+            <select class="form-control" name="maritalStatusId" id="maritalStatusId-{{id}}"
+                    formControlName="maritalStatusId" required [(ngModel)]="data.maritalStatusId">
+                <option [ngValue]="maritalStatus.id"
+                        *ngFor="let maritalStatus of maritalStatuses">{{maritalStatus.name}}</option>
+            </select>
+            <validation-summary [control]="form.controls.maritalStatusId"></validation-summary>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="numberOfDependents-{{id}}">
+                {{ "Number of Dependents" | localize }}
+            </label>
+            <input type="number" class="form-control" name="numberOfDependents" id="numberOfDependents-{{id}}"
+                   formControlName="numberOfDependents" [(ngModel)]="data.numberOfDependents"/>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="cellPhone-{{id}}">
+                {{ "Cell Phone" | localize }}
+            </label>
+            <input type="text" class="form-control" name="cellPhone" id="cellPhone-{{id}}"
+                   formControlName="cellPhone" [(ngModel)]="data.cellPhone"/>
+            <validation-summary [control]="form.controls.cellPhone"></validation-summary>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="homePhone-{{id}}">
+                {{ "Home Phone" | localize }}
+            </label>
+            <input type="text" class="form-control" name="homePhone" id="homePhone-{{id}}"
+                   formControlName="homePhone" [(ngModel)]="data.homePhone"/>
+        </div>
+    </div>
+</div>

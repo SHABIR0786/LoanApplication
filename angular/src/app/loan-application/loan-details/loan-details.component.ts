@@ -10,7 +10,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoanDetailsComponent implements OnInit, DoCheck {
 
     id = Math.random().toString(36).substring(2);
-    @Input() heading = 'Borrower';
     @Input() data: ILoanDetailModel = {
         purposeOfLoan: 1
     };

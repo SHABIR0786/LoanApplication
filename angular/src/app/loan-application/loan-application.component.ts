@@ -14,7 +14,7 @@ export class LoanApplicationComponent implements OnInit {
     loanApplication: ILoanApplicationModel = {};
 
     config: NgWizardConfig = {
-        selected: 0,
+        selected: 1,
         theme: THEME.default,
         toolbarSettings: {
             toolbarExtraButtons: [
