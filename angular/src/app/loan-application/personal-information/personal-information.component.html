@@ -1,1 +1,65 @@
-<p>personal-information works!</p>
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            <h5>Joint Credit</h5>
+        </div>
+
+        <div class="col-12 row">
+            <div class="col-12">
+                <label>Are you applying for joint credit with a co-borrower?</label>
+                <i class="fa fa-info-circle ml-2" aria-hidden="true" tooltipPlacement="right"
+                   tooltip="Applicants should complete this form as “Borrower” or “Co-Borrower,” as applicable. Co-Borrower information must also be provided (and the appropriate box checked) when the income or assets of a person other than the Borrower (including the Borrower’s spouse) will be used as a basis for loan qualification or the income or assets of the Borrower’s spouse or other person who has community property or similar rights pursuant to applicable state law will not be used as a basis for loan qualification, but his or her liabilities must be considered because the spouse or other person who has community property or similar rights and the Borrower resides in a community property state, the security property is located in a community property state, or the Borrower is relying on other property located in a community property state as a basis for repayment of the loan.">
+                </i>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="isApplyingWithCoBorrower"
+                           id="isApplyingWithCoBorrowerYes"
+                           formControlName="isApplyingWithCoBorrower" [value]="true"
+                           [(ngModel)]="data.isApplyingWithCoBorrower">
+                    <label class="form-check-label" for="isApplyingWithCoBorrowerYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="isApplyingWithCoBorrower"
+                           id="isApplyingWithCoBorrowerNo"
+                           formControlName="isApplyingWithCoBorrower" [value]="false"
+                           [(ngModel)]="data.isApplyingWithCoBorrower">
+                    <label class="form-check-label" for="isApplyingWithCoBorrowerNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 row" *ngIf="data.isApplyingWithCoBorrower">
+            <div class="col-12">
+                <label>The income/assets of a person other than the Borrower (including the borrower’s spouse) will be
+                    used for loan qualification.</label>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="useIncomeOfPersonOtherThanBorrower"
+                           id="useIncomeOfPersonOtherThanBorrowerYes"
+                           formControlName="useIncomeOfPersonOtherThanBorrower" [value]="true"
+                           [(ngModel)]="data.useIncomeOfPersonOtherThanBorrower">
+                    <label class="form-check-label" for="useIncomeOfPersonOtherThanBorrowerYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="useIncomeOfPersonOtherThanBorrower"
+                           id="useIncomeOfPersonOtherThanBorrowerNo"
+                           formControlName="useIncomeOfPersonOtherThanBorrower" [value]="false"
+                           [(ngModel)]="data.useIncomeOfPersonOtherThanBorrower">
+                    <label class="form-check-label" for="useIncomeOfPersonOtherThanBorrowerNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <app-borrower-personal-detail [form]="form.get('borrower')" [data]="data.borrower" heading="Borrower"
+                                      (onDataChange)="onChange($event, 'borrower')" class="col-12">
+        </app-borrower-personal-detail>
+
+        <app-borrower-personal-detail *ngIf="data.isApplyingWithCoBorrower" [form]="form.get('coBorrower')"
+                                      heading="Co-Borrower" [data]="data.borrower"
+                                      (onDataChange)="onChange($event, 'borrower')"
+                                      class="col-12">
+        </app-borrower-personal-detail>
+    </div>
+</form>

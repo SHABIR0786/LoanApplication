@@ -45,6 +45,7 @@ import {ValidationSummaryComponent} from './validation-summary/validation-summar
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import { PersonalInformationComponent } from './loan-application/personal-information/personal-information.component';
 import { ExpensesComponent } from './loan-application/expenses/expenses.component';
+import { BorrowerPersonalDetailComponent } from './loan-application/borrower-personal-detail/borrower-personal-detail.component';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -84,6 +85,7 @@ const ngWizardConfig: NgWizardConfig = {
         ValidationSummaryComponent,
 		PersonalInformationComponent,
         ExpensesComponent,
+        BorrowerPersonalDetailComponent,
     ],
     imports: [
         CommonModule,
