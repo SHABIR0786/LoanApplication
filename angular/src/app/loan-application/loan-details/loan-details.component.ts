@@ -17,16 +17,22 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
+    states = [];
     loanPurposes = [];
     sourceOfDownPayments = [];
+    propertyTypes = [];
+    propertyUses = [];
 
     constructor() {
     }
 
     ngOnInit(): void {
         this.initForm();
+        this.loadStates();
         this.loadLoanPurposes();
         this.loadSourceOfDownPayments();
+        this.loadPropertyTypes();
+        this.loadPropertyUses();
     }
 
     ngDoCheck() {
@@ -49,6 +55,9 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             sourceOfDownPayment: new FormControl(this.data.sourceOfDownPayment, [Validators.required]),
             giftAmount: new FormControl(this.data.giftAmount),
             giftExplanation: new FormControl(this.data.giftExplanation),
+            haveSecondMortgage: new FormControl(this.data.haveSecondMortgage),
+            secondMortgageAmount: new FormControl(this.data.secondMortgageAmount),
+            payLoanWithNewLoan: new FormControl(this.data.payLoanWithNewLoan),
 
             refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
             yearAcquired: new FormControl(this.data.yearAcquired),
@@ -94,6 +103,20 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             sourceOfDownPaymentControl.updateValueAndValidity();
             requestedLoanAmount.updateValueAndValidity();
         });
+
+        this.form.get('haveSecondMortgage').valueChanges.subscribe(haveSecondMortgage => {
+            if (!haveSecondMortgage) {
+                this.form.get('secondMortgageAmount').setValue(null);
+                this.form.get('payLoanWithNewLoan').setValue(null);
+            }
+        });
+
+        this.form.get('sourceOfDownPayment').valueChanges.subscribe(sourceOfDownPayment => {
+            if (sourceOfDownPayment !== 4) {
+                this.form.get('giftAmount').setValue(null);
+                this.form.get('giftExplanation').setValue(null);
+            }
+        });
     }
 
     loadLoanPurposes() {
@@ -110,6 +133,53 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
                 id: 3,
                 name: 'Cash-Out Refinance'
             },
+        ];
+    }
+
+    loadStates() {
+        this.states = [
+            {
+                id: 1,
+                name: 'CA'
+            }
+        ];
+    }
+
+    loadPropertyTypes() {
+        this.propertyTypes = [
+            {
+                id: 1,
+                name: 'Single Family Residence'
+            },
+            {
+                id: 2,
+                name: 'Condominium'
+            },
+            {
+                id: 3,
+                name: '2+ Units'
+            },
+            {
+                id: 4,
+                name: 'Co Operative'
+            },
+        ];
+    }
+
+    loadPropertyUses() {
+        this.propertyUses = [
+            {
+                id: 1,
+                name: 'Primary Home'
+            },
+            {
+                id: 2,
+                name: 'Vacation Home'
+            },
+            {
+                id: 3,
+                name: 'Investment Home'
+            }
         ];
     }
 

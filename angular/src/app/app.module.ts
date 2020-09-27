@@ -40,7 +40,9 @@ import {SidebarMenuComponent} from './layout/sidebar-menu.component';
 import {LoanApplicationComponent} from './loan-application/loan-application.component';
 // Wizard module
 import {NgWizardConfig, NgWizardModule, THEME} from 'ng-wizard';
-import { LoanDetailsComponent } from './loan-application/loan-details/loan-details.component';
+import {LoanDetailsComponent} from './loan-application/loan-details/loan-details.component';
+import {ValidationSummaryComponent} from './validation-summary/validation-summary.component';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -77,6 +79,7 @@ const ngWizardConfig: NgWizardConfig = {
         SidebarMenuComponent,
         LoanApplicationComponent,
         LoanDetailsComponent,
+        ValidationSummaryComponent,
     ],
     imports: [
         CommonModule,
@@ -85,6 +88,7 @@ const ngWizardConfig: NgWizardConfig = {
         HttpClientModule,
         HttpClientJsonpModule,
         ModalModule.forChild(),
+        TooltipModule.forRoot(),
         BsDropdownModule,
         CollapseModule,
         TabsModule,
@@ -92,7 +96,7 @@ const ngWizardConfig: NgWizardConfig = {
         ServiceProxyModule,
         SharedModule,
         NgxPaginationModule,
-        NgWizardModule.forRoot(ngWizardConfig)
+        NgWizardModule.forRoot(ngWizardConfig),
     ],
     providers: [],
     entryComponents: [
