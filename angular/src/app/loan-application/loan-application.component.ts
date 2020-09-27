@@ -11,10 +11,14 @@ import {ILoanApplicationModel} from '../interfaces/ILoanApplicationModel';
 export class LoanApplicationComponent implements OnInit {
     [x: string]: any;
 
-    loanApplication: ILoanApplicationModel = {};
+    loanApplication: ILoanApplicationModel = {
+        orderCredit: {},
+        additionalDetails: {},
+        eConsent: {},
+    };
 
     config: NgWizardConfig = {
-        selected: 1,
+        selected: 0,
         theme: THEME.default,
         toolbarSettings: {
             toolbarExtraButtons: [
