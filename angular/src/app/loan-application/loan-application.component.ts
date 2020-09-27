@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {LoanApplicationService} from '../services/loan-application.service';
-import {ILoanApplicationModel} from '../interfaces/ILoanApplication';
+import {ILoanApplicationModel} from '../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-loan-application',

@@ -12,6 +12,10 @@ export interface ILoanDetailModel {
     giftAmount?: number;
     giftExplanation?: string;
 
+    haveSecondMortgage?: boolean;
+    secondMortgageAmount?: number;
+    payLoanWithNewLoan?: boolean;
+
     refinancingCurrentHome?: boolean;
     yearAcquired?: string;
     originalPrice?: number;
