@@ -1,1 +1,158 @@
-<p>expenses works!</p>
+<div class="row" [formGroup]="form">
+    <div class="col-12 mt-3 mb-1">
+        <h5>Current Monthly Housing Expenses</h5>
+    </div>
+
+    <div class="col-12 row">
+        <div class="col-12">
+            <label>A monthly housing expense refers to the sum of the principal and interest amount on the primary residence, plus other related expenses.  </label>
+            <label>Do you currently rent or own? If you currently live with family please select Rent. *</label>
+            <i class="fa fa-info-circle ml-2" aria-hidden="true" tooltipPlacement="right"
+               tooltip="Applicants should complete this form as “Borrower” or “Co-Borrower,” as applicable. Co-Borrower information must also be provided (and the appropriate box checked) when the income or assets of a person other than the Borrower (including the Borrower’s spouse) will be used as a basis for loan qualification or the income or assets of the Borrower’s spouse or other person who has community property or similar rights pursuant to applicable state law will not be used as a basis for loan qualification, but his or her liabilities must be considered because the spouse or other person who has community property or similar rights and the Borrower resides in a community property state, the security property is located in a community property state, or the Borrower is relying on other property located in a community property state as a basis for repayment of the loan.">
+            </i>
+        </div>
+        <div class="col-12 mb-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="isLiveWithFamilySelectRent"
+                       id="isLiveWithFamilySelectRent" (change)="onRentChange()"
+                       formControlName="isLiveWithFamilySelectRent" [value]="true"
+                       [(ngModel)]="data.isLiveWithFamilySelectRent">
+                <label class="form-check-label" for="isLiveWithFamilySelectRent">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="isLiveWithFamilySelectRent"
+                       id="isLiveWithFamilySelectRentNo" (change)="onRentChange()"
+                       formControlName="isLiveWithFamilySelectRent" [value]="true"
+                       [(ngModel)]="data.isLiveWithFamilySelectRent">
+                <label class="form-check-label" for="isLiveWithFamilySelectRentNo">No</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12" *ngIf="data.isLiveWithFamilySelectRent">
+        <div class="form-group">
+            <label for="rent">
+                Rent
+            </label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                </div>
+                <input type="number" class="form-control" name="rent" id="rent"
+                       formControlName="rent" required [(ngModel)]="data.rent"/>
+            </div>
+            <validation-summary [control]="form.controls.rent"></validation-summary>
+        </div>
+    </div>
+    <div class="col-12" *ngIf="data.isLiveWithFamilySelectRent">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        First Mortgage (P&I)
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        Second Mortgage (P&I)
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        Hazard Insurance 
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        Real Estate Taxes
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        Mortgage Insurance
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="rent">
+                        Homeowners Association 
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="number" class="form-control" name="rent" id="rent"
+                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                    </div>
+                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="col-12">
+    <div class="form-group">
+        <label for="otherHousingExpenses">
+            Other Housing Expenses
+        </label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+            </div>
+            <input type="number" class="form-control" name="otherHousingExpenses" id="otherHousingExpenses"
+                   formControlName="otherHousingExpenses" required [(ngModel)]="data.otherHousingExpenses"/>
+        </div>
+        <validation-summary [control]="form.controls.otherHousingExpenses"></validation-summary>
+    </div>
+   </div>
+</div>
