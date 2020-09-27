@@ -207,6 +207,10 @@
                                 </div>
                             </div>
                         </ng-wizard-step>
+                        <ng-wizard-step title="Step 8" description="Declaration">
+                            <app-declaration
+                                    (onDataChange)="onChange($event, 'declaration')"></app-declaration>
+                        </ng-wizard-step>
                     </ng-wizard>
                 </div>
             </div>
