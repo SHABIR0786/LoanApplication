@@ -36,19 +36,22 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         this.form = new FormGroup({
             isApplyingWithCoBorrower: new FormControl(this.data.isApplyingWithCoBorrower, [Validators.required]),
             useIncomeOfPersonOtherThanBorrower: new FormControl(this.data.useIncomeOfPersonOtherThanBorrower, [Validators.required]),
+            agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [Validators.required]),
             borrower: this.initBorrowerForm(this.data.borrower),
             coBorrower: this.initBorrowerForm(this.data.coBorrower)
         });
 
         this.form.get('isApplyingWithCoBorrower').valueChanges.subscribe(isApplyingWithCoBorrower => {
-            debugger;
             if (isApplyingWithCoBorrower) {
                 this.form.get('useIncomeOfPersonOtherThanBorrower').setValidators([Validators.required]);
-                // this.form.setControl('coBorrower', this.initBorrowerForm(this.data.coBorrower));
+
+                this.data.coBorrower = {};
+                this.form.setControl('coBorrower', this.initBorrowerForm(this.data.coBorrower));
             } else {
                 this.form.get('useIncomeOfPersonOtherThanBorrower').setValue(null);
                 this.form.get('useIncomeOfPersonOtherThanBorrower').setValidators(null);
-                // this.form.removeControl('coBorrower');
+
+                this.form.removeControl('coBorrower');
             }
             this.form.get('useIncomeOfPersonOtherThanBorrower').updateValueAndValidity();
         });

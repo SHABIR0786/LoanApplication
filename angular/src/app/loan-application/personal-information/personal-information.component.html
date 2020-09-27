@@ -27,6 +27,7 @@
                     <label class="form-check-label" for="isApplyingWithCoBorrowerNo">No</label>
                 </div>
             </div>
+            <validation-summary [control]="form.controls.isApplyingWithCoBorrower" class="col-12"></validation-summary>
         </div>
 
         <div class="col-12 row" *ngIf="data.isApplyingWithCoBorrower">
@@ -50,11 +51,37 @@
                     <label class="form-check-label" for="useIncomeOfPersonOtherThanBorrowerNo">No</label>
                 </div>
             </div>
+            <validation-summary [control]="form.controls.useIncomeOfPersonOtherThanBorrower"
+                                class="col-12"></validation-summary>
         </div>
 
         <app-borrower-personal-detail [form]="form.get('borrower')" [data]="data.borrower" heading="Borrower"
                                       (onDataChange)="onChange($event, 'borrower')" class="col-12">
         </app-borrower-personal-detail>
+
+        <div class="col-12">
+            <h6>Privacy Policy</h6>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="agreePrivacyPolicy"
+                       formControlName="agreePrivacyPolicy" [(ngModel)]="data.agreePrivacyPolicy">
+                <label class="form-check-label" for="agreePrivacyPolicy">
+                    I/We have read and accepted the terms of the Privacy Policy
+                </label>
+                <validation-summary [control]="form.controls.agreePrivacyPolicy" class="col-12"></validation-summary>
+            </div>
+
+            <p class="mt-3">
+                <span class="text-bold">TCPA Consent Agreement</span>
+                <br/>
+                By providing your phone number, you consent and agree to being contacted by us regarding your loan
+                inquiry and mortgage products and services at the telephone number provided. You agree that we, or one
+                of our authorized third parties, may contact you, including through automated means, via telephone or
+                mobile device, even if your telephone number is listed on a Do-Not-Call registry. This consent is not
+                required to obtain our goods and services. If you prefer to be contacted by other means, please contact
+                us via the information below.
+            </p>
+            <span>support@ezonlinemortgage.com</span>
+        </div>
 
         <app-borrower-personal-detail *ngIf="data.isApplyingWithCoBorrower" [form]="form.get('coBorrower')"
                                       heading="Co-Borrower" [data]="data.borrower"
