@@ -5,17 +5,15 @@ export interface IDeclarationModel {
     isPropertyForeClosedUponOrGivenTitle?: boolean;
     isPartyToLawsuit?: boolean;
     isObligatedOnAnyLoanWhichResultedForeclosure?: boolean;
-    isPresentlyDelinquent ?: boolean;
-    isObligatedToPayAlimonyChildSupport ?: boolean;
+    isPresentlyDelinquent?: boolean;
+    isObligatedToPayAlimonyChildSupport?: boolean;
     isAnyPartOfTheDownPayment?: boolean;
     isCoMakerOrEndorser?: boolean;
     isUSCitizen?: boolean;
-    isPermanentResidentSlien  ?: boolean;
-    isIntendToOccupyThePropertyAsYourPrimary  ?: boolean;
+    isPermanentResidentSlien?: boolean;
+    isIntendToOccupyThePropertyAsYourPrimary?: boolean;
     isOwnershipInterestInPropertyInTheLastThreeYears?: boolean;
-    declarationsSection: string;
+    declarationsSection?: string;
 
 
-
-    
 }
