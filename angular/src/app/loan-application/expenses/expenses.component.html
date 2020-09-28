@@ -5,7 +5,8 @@
 
     <div class="col-12 row">
         <div class="col-12">
-            <label>A monthly housing expense refers to the sum of the principal and interest amount on the primary residence, plus other related expenses.  </label>
+            <label>A monthly housing expense refers to the sum of the principal and interest amount on the primary
+                residence, plus other related expenses. </label>
             <label>Do you currently rent or own? If you currently live with family please select Rent. *</label>
             <i class="fa fa-info-circle ml-2" aria-hidden="true" tooltipPlacement="right"
                tooltip="Applicants should complete this form as “Borrower” or “Co-Borrower,” as applicable. Co-Borrower information must also be provided (and the appropriate box checked) when the income or assets of a person other than the Borrower (including the Borrower’s spouse) will be used as a basis for loan qualification or the income or assets of the Borrower’s spouse or other person who has community property or similar rights pursuant to applicable state law will not be used as a basis for loan qualification, but his or her liabilities must be considered because the spouse or other person who has community property or similar rights and the Borrower resides in a community property state, the security property is located in a community property state, or the Borrower is relying on other property located in a community property state as a basis for repayment of the loan.">
@@ -14,15 +15,15 @@
         <div class="col-12 mb-2">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="isLiveWithFamilySelectRent"
-                       id="isLiveWithFamilySelectRent" (change)="onRentChange()"
+                       id="isLiveWithFamilySelectRent"
                        formControlName="isLiveWithFamilySelectRent" [value]="true"
                        [(ngModel)]="data.isLiveWithFamilySelectRent">
                 <label class="form-check-label" for="isLiveWithFamilySelectRent">Yes</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="isLiveWithFamilySelectRent"
-                       id="isLiveWithFamilySelectRentNo" (change)="onRentChange()"
-                       formControlName="isLiveWithFamilySelectRent" [value]="true"
+                       id="isLiveWithFamilySelectRentNo"
+                       formControlName="isLiveWithFamilySelectRent" [value]="false"
                        [(ngModel)]="data.isLiveWithFamilySelectRent">
                 <label class="form-check-label" for="isLiveWithFamilySelectRentNo">No</label>
             </div>
@@ -44,115 +45,113 @@
             <validation-summary [control]="form.controls.rent"></validation-summary>
         </div>
     </div>
-    <div class="col-12" *ngIf="data.isLiveWithFamilySelectRent">
+    <div class="col-12" *ngIf="!data.isLiveWithFamilySelectRent">
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
+                    <label for="firstMortgage">
                         First Mortgage (P&I)
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="firstMortgage" id="firstMortgage"
+                               formControlName="firstMortgage" required [(ngModel)]="data.firstMortgage"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                    <validation-summary [control]="form.controls.firstMortgage"></validation-summary>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
+                    <label for="secondMortgage">
                         Second Mortgage (P&I)
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="secondMortgage" id="secondMortgage"
+                               formControlName="secondMortgage" [(ngModel)]="data.secondMortgage"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
-                        Hazard Insurance 
+                    <label for="hazardInsurance">
+                        Hazard Insurance
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="hazardInsurance" id="hazardInsurance"
+                               formControlName="hazardInsurance" [(ngModel)]="data.hazardInsurance"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
+                    <label for="realEstateTaxes">
                         Real Estate Taxes
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="realEstateTaxes" id="realEstateTaxes"
+                               formControlName="realEstateTaxes" required [(ngModel)]="data.realEstateTaxes"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                    <validation-summary [control]="form.controls.realEstateTaxes"></validation-summary>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
+                    <label for="mortgageInsurance">
                         Mortgage Insurance
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="mortgageInsurance" id="mortgageInsurance"
+                               formControlName="mortgageInsurance" required [(ngModel)]="data.mortgageInsurance"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                    <validation-summary [control]="form.controls.mortgageInsurance"></validation-summary>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="rent">
-                        Homeowners Association 
+                    <label for="homeOwnersAssociation">
+                        Homeowners Association
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                         </div>
-                        <input type="number" class="form-control" name="rent" id="rent"
-                               formControlName="rent" required [(ngModel)]="data.rent"/>
+                        <input type="number" class="form-control" name="homeOwnersAssociation" id="homeOwnersAssociation"
+                               formControlName="homeOwnersAssociation" required [(ngModel)]="data.homeOwnersAssociation"/>
                     </div>
-                    <validation-summary [control]="form.controls.rent"></validation-summary>
+                    <validation-summary [control]="form.controls.homeOwnersAssociation"></validation-summary>
                 </div>
             </div>
         </div>
     </div>
-   <div class="col-12">
-    <div class="form-group">
-        <label for="otherHousingExpenses">
-            Other Housing Expenses
-        </label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">$</div>
+    <div class="col-12">
+        <div class="form-group">
+            <label for="otherHousingExpenses">
+                Other Housing Expenses
+            </label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                </div>
+                <input type="number" class="form-control" name="otherHousingExpenses" id="otherHousingExpenses"
+                       formControlName="otherHousingExpenses" required [(ngModel)]="data.otherHousingExpenses"/>
             </div>
-            <input type="number" class="form-control" name="otherHousingExpenses" id="otherHousingExpenses"
-                   formControlName="otherHousingExpenses" required [(ngModel)]="data.otherHousingExpenses"/>
+            <validation-summary [control]="form.controls.otherHousingExpenses"></validation-summary>
         </div>
-        <validation-summary [control]="form.controls.otherHousingExpenses"></validation-summary>
     </div>
-   </div>
 </div>
