@@ -19,6 +19,7 @@ export class LoanApplicationComponent implements OnInit {
         },
         expenses: {},
         employmentIncome: {
+            borrowerMonthlyIncome: {},
             borrowerEmploymentInfo: [{}]
         },
         orderCredit: {},

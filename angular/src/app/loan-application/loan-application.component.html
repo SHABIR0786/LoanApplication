@@ -32,6 +32,7 @@
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 4" description="Employment and Income">
                             <app-employment-income
+                                    [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
                                     [data]="loanApplication.employmentIncome"
                                     (onDataChange)="onChange($event, 'employmentIncome')"></app-employment-income>
                         </ng-wizard-step>
