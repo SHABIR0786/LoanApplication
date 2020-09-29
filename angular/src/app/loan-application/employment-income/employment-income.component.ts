@@ -1,5 +1,5 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IEmploymentIncomeModel} from '../../interfaces/IEmploymentIncomeModel';
 
 @Component({
@@ -9,19 +9,26 @@ import {IEmploymentIncomeModel} from '../../interfaces/IEmploymentIncomeModel';
 })
 export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
-    @Input() data: IEmploymentIncomeModel = {
-        borrowerEmploymentInfo: []
-    };
+    @Input() data: IEmploymentIncomeModel = {};
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
+    states = [];
 
     constructor() {
     }
 
+    get borrowerEmploymentInfo(): FormArray {
+        return this.form.get('borrowerEmploymentInfo') as FormArray;
+    }
+
+    getBorrowerEmpInfoFormGroup(index) {
+        return this.borrowerEmploymentInfo.controls[index] as FormGroup;
+    }
+
     ngOnInit(): void {
         this.initForm();
-        this.data.borrowerEmploymentInfo.push({employerName: 'Folio3'});
+        this.loadStates();
     }
 
     ngDoCheck() {
@@ -31,19 +38,57 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
         }
     }
 
+    loadStates() {
+        this.states = [
+            {
+                id: 1,
+                name: 'CA'
+            }
+        ];
+    }
 
     initForm() {
-        console.log(this.data);
         this.form = new FormGroup({
-            // isLiveWithFamilySelectRent: new FormControl(this.data.isLiveWithFamilySelectRent),
-            // rent: new FormControl(this.data.rent, [Validators.required]),
-            // otherHousingExpenses: new FormControl(this.data.otherHousingExpenses, [Validators.required]),
-            // firstMortgage: new FormControl(this.data.firstMortgage, [Validators.required]),
-            // secondMortgage: new FormControl(this.data.secondMortgage),
-            // hazardInsurance: new FormControl(this.data.hazardInsurance),
-            // realEstateTaxes: new FormControl(this.data.realEstateTaxes, [Validators.required]),
-            // mortgageInsurance: new FormControl(this.data.mortgageInsurance, [Validators.required]),
-            // homeOwnersAssociation: new FormControl(this.data.homeOwnersAssociation, [Validators.required])
+            borrowerEmploymentInfo: new FormArray([]),
         });
+        this.addBorrowerEmploymentInfo();
+
+        this.form.valueChanges.subscribe(data => {
+            if (this.form.valid) {
+                this.onDataChange.next(this.form.value);
+            }
+        });
+    }
+
+    newBorrowerEmploymentInfo(): FormGroup {
+        return new FormGroup({
+            isSelfEmployed: new FormControl(''),
+            employerName: new FormControl('', [Validators.required]),
+            position: new FormControl('', [Validators.required]),
+            address1: new FormControl(''),
+            address2: new FormControl(''),
+            city: new FormControl(''),
+            stateId: new FormControl(''),
+            zipCode: new FormControl(''),
+            startDate: new FormControl('', [Validators.required]),
+            endDate: new FormControl(''),
+            borrowerTypeId: new FormControl(''),
+        });
+    }
+
+    addBorrowerEmploymentInfo() {
+        this.borrowerEmploymentInfo.push(this.newBorrowerEmploymentInfo());
+    }
+
+    clearEmploymentInfoForm($event, index) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.getBorrowerEmpInfoFormGroup(index).reset();
+    }
+
+    removeEmploymentInfoForm($event, index) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.borrowerEmploymentInfo.removeAt(index);
     }
 }
