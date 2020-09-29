@@ -1,0 +1,32 @@
+<div class="row" [formGroup]="form">
+    <div class="col-12 mt-3 mb-1">
+        <h5>Borrower Employment Information</h5>
+    </div>
+
+    <div class="col-12">
+        <p>
+            If employed in current position for less than two years or if currently employed in more than one position,
+            choose the option to Add Another Employer. If you do not remember the exact dates of your previous
+            employment, please enter estimated dates.
+        </p>
+        <p>
+            **If you receive other sources of income (ex. Retirement, Social Security, Alimony, etc.) please note the
+            source of income under Employer Name and Position.
+        </p>
+        <p>
+            ***If you are retired, please put in retired for employer name and position.
+        </p>
+    </div>
+    <p *ngFor="let employmentIncome of test.borrowerEmploymentInfo">
+        {{employmentIncome.employerName}}
+    </p>
+    <accordion class="col-12">
+        <accordion-group [heading]="employmentIncome.employerName || 'Employer 1'"
+                         *ngFor="let employmentIncome of test.borrowerEmploymentInfo">
+            This content is straight in the template.
+        </accordion-group>
+        <accordion-group heading="Group without isOpenChange event listener">
+            <p>Some content</p>
+        </accordion-group>
+    </accordion>
+</div>

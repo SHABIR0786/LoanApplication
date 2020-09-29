@@ -15,10 +15,11 @@ export class LoanApplicationComponent implements OnInit {
         orderCredit: {},
         additionalDetails: {},
         eConsent: {},
+        employmentIncome: {}
     };
 
     config: NgWizardConfig = {
-        selected: 0,
+        selected: 3,
         theme: THEME.default,
         toolbarSettings: {
             toolbarExtraButtons: [

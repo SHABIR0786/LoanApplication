@@ -47,6 +47,8 @@ import { PersonalInformationComponent } from './loan-application/personal-inform
 import { ExpensesComponent } from './loan-application/expenses/expenses.component';
 import { BorrowerPersonalDetailComponent } from './loan-application/borrower-personal-detail/borrower-personal-detail.component';
 import { DeclarationComponent } from './loan-application/declaration/declaration.component';
+import { EmploymentIncomeComponent } from './loan-application/employment-income/employment-income.component';
+import {AccordionModule} from 'ngx-bootstrap/accordion';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -88,6 +90,7 @@ const ngWizardConfig: NgWizardConfig = {
         ExpensesComponent,
         BorrowerPersonalDetailComponent,
         DeclarationComponent,
+        EmploymentIncomeComponent,
     ],
     imports: [
         CommonModule,
@@ -105,6 +108,7 @@ const ngWizardConfig: NgWizardConfig = {
         SharedModule,
         NgxPaginationModule,
         NgWizardModule.forRoot(ngWizardConfig),
+        AccordionModule.forRoot(),
     ],
     providers: [],
     entryComponents: [
