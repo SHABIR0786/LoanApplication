@@ -165,20 +165,7 @@
 
                 <!-- sixth -->
                 <tr>
-                    <td> (This would include such loans as home mortgage loans, SBA loans,
-                        home
-                        improvement loans, educational loans, manufactured (mobile) home
-                        loans,
-                        any
-                        mortgage, financial obligation, bond, or loan guarantee. If
-                        â€œYes,â€�
-                        provide
-                        details, including date, name, and address of Lender, FHA or VA case
-                        number,
-                        if any, and reasons for the action.)</td>
-                    <td>
-                        <!-- f -->
-                <tr>
+                    <!-- f -->
                     <td>f. Are you presently delinquent or in default on any Federal
                         debt or any other loan, mortgage, financial obligation, bond, or
                         loan
@@ -433,21 +420,35 @@
                         </div>
                     </td>
                 </tr>
-
                 <tr>
                     <td>
-                        <label>
-                            For the Declarations section, you are required to explain any "Yes" answers to questions a
-                            through i.
-                        </label>
-                        <div class="col-12">
-                            <div class="form-check-inline">
-                                <input style="float: right" class="form-check-input" type="text"
-                                    name="declarationsSection" id="declarationsSection"
-                                    [(ngModel)]="data.declarationsSection">
+                        <div class="form-group">
+                            <label for="firstMortgage">
+                                For the Declarations section, you are required to explain any "Yes" answers to questions
+                                a
+                                through i.
+                            </label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="declarationsSection"
+                                    id="declarationsSection" formControlName="declarationsSection" required
+                                    [(ngModel)]="data.declarationsSection" />
                             </div>
+                            <validation-summary [control]="form.controls.declarationsSection"></validation-summary>
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
+        <div>
+            <h4>
+                Borrower Demographic Information
+            </h4>
+            <p>
+                The purpose of collecting this information is to help ensure that all applicants are treated fairly and that the housing needs of communities and neighborhoods are being fulfilled. For residential mortgage lending, Federal law requires that we ask applicants for their demographic information (ethnicity, sex, and race) in order to monitor our compliance with equal credit opportunity, fair housing, and home mortgage disclosure laws. You are not required to provide this information, but are encouraged to do so. You may select one or more designations for "ethnicity" and one or more designations for "Race." The law provides that we may not discriminate on the basis of this information, or on whether you choose to provide it. However, if you choose not to provide the information and you have made this application in person, Federal regulations require us to note your ethnicity, sex, and race on the basis of visual observation or surname. The law also provides that we may not discriminate on the basis of age or marital status information you provide in this application. If you do not wish to provide some or all of this information, please check below.  
+            </p>
+            <h5>
+                Ethnicity - Check one or more
+            </h5>
+        </div>
+    </div>
+</div>
