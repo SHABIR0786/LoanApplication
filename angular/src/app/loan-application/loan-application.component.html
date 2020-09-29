@@ -26,7 +26,9 @@
                                     (onDataChange)="onChange($event, 'personalInformation')"></app-personal-information>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 3" description="Expenses">
-                            <app-expenses (onDataChange)="onChange($event, 'expenses')"></app-expenses>
+                            <app-expenses
+                                    [data]="loanApplication.expenses"
+                                    (onDataChange)="onChange($event, 'expenses')"></app-expenses>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 4" description="Employment and Income">
                             <app-employment-income

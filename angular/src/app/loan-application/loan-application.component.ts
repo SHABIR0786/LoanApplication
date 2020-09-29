@@ -12,10 +12,18 @@ export class LoanApplicationComponent implements OnInit {
     [x: string]: any;
 
     loanApplication: ILoanApplicationModel = {
+        loanDetails: {},
+        personalInformation: {
+            borrower: {},
+            coBorrower: {},
+        },
+        expenses: {},
+        employmentIncome: {
+            borrowerEmploymentInfo: [{}]
+        },
         orderCredit: {},
         additionalDetails: {},
-        eConsent: {},
-        employmentIncome: {}
+        eConsent: {}
     };
 
     config: NgWizardConfig = {

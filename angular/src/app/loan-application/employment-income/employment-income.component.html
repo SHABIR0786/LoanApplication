@@ -17,16 +17,251 @@
             ***If you are retired, please put in retired for employer name and position.
         </p>
     </div>
-    <p *ngFor="let employmentIncome of test.borrowerEmploymentInfo">
-        {{employmentIncome.employerName}}
-    </p>
-    <accordion class="col-12">
-        <accordion-group [heading]="employmentIncome.employerName || 'Employer 1'"
-                         *ngFor="let employmentIncome of test.borrowerEmploymentInfo">
-            This content is straight in the template.
+    <div class="col-12" formArrayName="borrowerEmploymentInfo">
+        <div class="row" *ngFor="let employmentIncome of data.borrowerEmploymentInfo; let i = index">
+            <div class="col-12">
+                <h6 class="pull-left float-left">{{employmentIncome.employerName || 'Employer ' + (i + 1)}}</h6>
+                <button class="btn btn-primary mr-1 float-right pull-right"
+                        (click)="clearEmploymentInfoForm($event, i)">Clear
+                </button>
+                <button class="btn btn-danger mr-1 float-right pull-right" *ngIf="i > 0"
+                        (click)="removeEmploymentInfoForm($event, i)">Remove
+                </button>
+            </div>
+            <div class="col-12 row mt-2" [formGroupName]="i">
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isSelfEmployed"
+                               formControlName="isSelfEmployed"/>
+                        <label class="form-check-label" for="isSelfEmployed">
+                            I'm self-employed.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="employerName-{{i}}">
+                            {{ "Employer Name" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="employerName" id="employerName-{{i}}"
+                               formControlName="employerName" [(ngModel)]="employmentIncome.employerName"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.employerName"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="position-{{i}}">
+                            {{ "Position" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="position" id="position-{{i}}"
+                               formControlName="position" [(ngModel)]="employmentIncome.position"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.position"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="address1-{{i}}">
+                            {{ "Address 1" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="address1" id="address1-{{i}}"
+                               formControlName="address1" [(ngModel)]="employmentIncome.address1"/>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="address2-{{i}}">
+                            {{ "Address 2" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="address2" id="address2-{{i}}"
+                               formControlName="address2" [(ngModel)]="employmentIncome.address2"/>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="city-{{i}}">
+                            {{ "City" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="city" id="city-{{i}}"
+                               formControlName="city" [(ngModel)]="employmentIncome.city"/>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="stateId-{{i}}">
+                            {{ "State" | localize }}
+                        </label>
+                        <select class="form-control" name="stateId" id="stateId-{{i}}"
+                                formControlName="stateId" required [(ngModel)]="employmentIncome.stateId">
+                            <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="zipCode-{{i}}">
+                            {{ "Zip Code" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="zipCode" id="zipCode-{{i}}"
+                               formControlName="zipCode" [(ngModel)]="employmentIncome.zipCode"/>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="startDate-{{i}}">
+                            {{ "Start Date" | localize }}
+                        </label>
+                        <input type="date" class="form-control" name="startDate" id="startDate-{{i}}"
+                               formControlName="startDate" [(ngModel)]="employmentIncome.startDate"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.startDate"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6" *ngIf="i !== 0">
+                    <div class="form-group">
+                        <label for="endDate-{{i}}">
+                            {{ "End Date" | localize }}
+                        </label>
+                        <input type="date" class="form-control" name="endDate" id="endDate-{{i}}"
+                               formControlName="endDate" [(ngModel)]="employmentIncome.endDate"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<accordion class="col-12" formArrayName="borrowerEmploymentInfo">
+        <accordion-group *ngFor="let employmentIncome of data.borrowerEmploymentInfo; let i = index">
+
+            <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
+                <span class="pull-left float-left">{{employmentIncome.employerName || 'Employer 1'}}</span>
+                <a class="mr-1 float-right pull-right" (click)="clearEmploymentInfoForm($event, i)">Clear</a>
+                <a class="mr-1 float-right pull-right" *ngIf="i > 0" (click)="removeEmploymentInfoForm($event, i)">Remove</a>
+            </button>
+
+            <div class="row mt-2" [formGroupName]="i">
+                <div class="form-check col-12">
+                    <input class="form-check-input" type="checkbox" id="isSelfEmployed"
+                           formControlName="isSelfEmployed"/>
+                    <label class="form-check-label" for="isSelfEmployed">
+                        I'm self-employed.
+                    </label>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="employerName-{{i}}">
+                            {{ "Employer Name" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="employerName" id="employerName-{{i}}"
+                               formControlName="employerName" [(ngModel)]="employmentIncome.employerName"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.employerName"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="position-{{i}}">
+                            {{ "Position" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="position" id="position-{{i}}"
+                               formControlName="position" [(ngModel)]="employmentIncome.position"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.position"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="address1-{{i}}">
+                            {{ "Address 1" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="address1" id="address1-{{i}}"
+                               formControlName="address1" [(ngModel)]="employmentIncome.address1"/>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="address2-{{i}}">
+                            {{ "Address 2" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="address2" id="address2-{{i}}"
+                               formControlName="address2" [(ngModel)]="employmentIncome.address2"/>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="city-{{i}}">
+                            {{ "City" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="city" id="city-{{i}}"
+                               formControlName="city" [(ngModel)]="employmentIncome.city"/>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="stateId-{{i}}">
+                            {{ "State" | localize }}
+                        </label>
+                        <select class="form-control" name="stateId" id="stateId-{{i}}"
+                                formControlName="stateId" required [(ngModel)]="employmentIncome.stateId">
+                            <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="zipCode-{{i}}">
+                            {{ "Zip Code" | localize }}
+                        </label>
+                        <input type="text" class="form-control" name="zipCode" id="zipCode-{{i}}"
+                               formControlName="zipCode" [(ngModel)]="employmentIncome.zipCode"/>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="startDate-{{i}}">
+                            {{ "Start Date" | localize }}
+                        </label>
+                        <input type="date" class="form-control" name="startDate" id="startDate-{{i}}"
+                               formControlName="startDate" [(ngModel)]="employmentIncome.startDate"/>
+                        <validation-summary
+                                [control]="getBorrowerEmpInfoFormGroup(i).controls.startDate"></validation-summary>
+                    </div>
+                </div>
+
+                <div class="col-6" *ngIf="i !== 0">
+                    <div class="form-group">
+                        <label for="endDate-{{i}}">
+                            {{ "End Date" | localize }}
+                        </label>
+                        <input type="date" class="form-control" name="endDate" id="endDate-{{i}}"
+                               formControlName="endDate" [(ngModel)]="employmentIncome.endDate"/>
+                    </div>
+                </div>
+
+            </div>
         </accordion-group>
-        <accordion-group heading="Group without isOpenChange event listener">
-            <p>Some content</p>
-        </accordion-group>
-    </accordion>
+    </accordion>-->
+
+    <div class="col-12">
+        <button class="btn btn-primary" (click)="addBorrowerEmploymentInfo()">Add Another Employer</button>
+    </div>
 </div>
