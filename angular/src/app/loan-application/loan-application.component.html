@@ -17,16 +17,21 @@
                 <div class="card-body">
                     <ng-wizard [config]="config">
                         <ng-wizard-step title="Step 1" description="Loan Details">
-                            <app-loan-details (onDataChange)="onChange($event, 'loanDetails')"></app-loan-details>
+                            <app-loan-details [data]="loanApplication.loanDetails"
+                                              (onDataChange)="onChange($event, 'loanDetails')"></app-loan-details>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 2" description="Personal Information">
                             <app-personal-information
+                                    [data]="loanApplication.personalInformation"
                                     (onDataChange)="onChange($event, 'personalInformation')"></app-personal-information>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 3" description="Expenses">
                             <app-expenses (onDataChange)="onChange($event, 'expenses')"></app-expenses>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 4" description="Employment and Income">
+                            <app-employment-income
+                                    [data]="loanApplication.employmentIncome"
+                                    (onDataChange)="onChange($event, 'employmentIncome')"></app-employment-income>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 5" description="Order Credit">
                             <div class="row">
@@ -48,7 +53,6 @@
 
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="agreeCreditAuthAgreement"
-                                               formControlName="agreeCreditAuthAgreement"
                                                [(ngModel)]="loanApplication.orderCredit.agreeCreditAuthAgreement">
                                         <label class="form-check-label" for="agreeCreditAuthAgreement">
                                             I accept the Credit Authorization Agreement.
@@ -208,8 +212,7 @@
                             </div>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 8" description="Declaration">
-                            <app-declaration
-                                    (onDataChange)="onChange($event, 'declaration')"></app-declaration>
+                            <!--<app-declaration (onDataChange)="onChange($event, 'declaration')"></app-declaration>-->
                         </ng-wizard-step>
                     </ng-wizard>
                 </div>
