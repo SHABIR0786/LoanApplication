@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
 
 @Component({
   selector: 'app-declaration',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeclarationComponent implements OnInit {
 
+  @Input() data: IDeclarationModel = {};
   constructor() { }
 
   ngOnInit(): void {
