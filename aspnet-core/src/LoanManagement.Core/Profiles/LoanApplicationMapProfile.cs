@@ -10,9 +10,6 @@ namespace LoanManagement.Profiles
         public LoanApplicationMapProfile()
         {
             CreateMap<LoanApplicationDto, LoanApplication>().ReverseMap();
-            CreateMap<MortgageTypeDto, MortgageType>().ReverseMap();
-            CreateMap<PropertyInformationDto, PropertyInformation>().ReverseMap();
-            CreateMap<BorrowerInformationDto, BorrowerInformation>().ReverseMap();
             CreateMap<BorrowerEmploymentInformationDto, BorrowerEmploymentInformation>().ReverseMap();
         }
     }

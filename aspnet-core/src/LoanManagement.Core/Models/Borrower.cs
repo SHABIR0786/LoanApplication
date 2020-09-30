@@ -26,7 +26,5 @@ namespace LoanManagement.Models
 
         public string HomePhone { get; set; }
 
-
-
     }
 }

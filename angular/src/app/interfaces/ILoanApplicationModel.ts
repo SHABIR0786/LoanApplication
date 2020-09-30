@@ -6,14 +6,16 @@ import {ICreditAuthAgreementModel} from './ICreditAuthAgreementModel';
 import {IExpenseModel} from './IExpenseModel';
 import {IEmploymentIncomeModel} from './IEmploymentIncomeModel';
 import {IDeclarationModel} from './IDeclarationModel';
+import { IDeclarationBorrowereDemographicsInformationModel } from './IDeclarationBorrowereDemographicsInformationModel';
 
 export interface ILoanApplicationModel {
+    additionalDetails?: IAdditionalDetailModel;
     loanDetails?: ILoanDetailModel;
-    personalInformation?: IPersonalDetailModel;
+    personalDetail?: IPersonalDetailModel;
     expenses?: IExpenseModel;
     employmentIncome?: IEmploymentIncomeModel;
-    orderCredit?: ICreditAuthAgreementModel;
-    additionalDetails?: IAdditionalDetailModel;
+    orderCredit?: ICreditAuthAgreementModel;   
     eConsent?: IConsentDetailModel;
     declaration?: IDeclarationModel;
+    IDeclarationBorrowereDemographicsInformationModel? : IDeclarationBorrowereDemographicsInformationModel;
 }
