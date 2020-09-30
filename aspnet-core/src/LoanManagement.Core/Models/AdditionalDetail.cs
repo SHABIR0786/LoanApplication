@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
-    public class EConsent : FullAuditedEntity<long>
+    public class AdditionalDetail : FullAuditedEntity<long>
     {
-        public bool AgreeEConsent { get; set; }
+        public string NameOfIndividualsOnTitle { get; set; }
+
     }
 }

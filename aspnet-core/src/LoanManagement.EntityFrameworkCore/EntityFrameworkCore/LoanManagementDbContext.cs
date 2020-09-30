@@ -11,17 +11,21 @@ namespace LoanManagement.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
 
-        public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformation { get; set; }
-        public DbSet<BorrowerInformation> BorrowerInformation { get; set; }
+        public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformations { get; set; }
         public DbSet<LoanApplication> LoanApplications { get; set; }
+        public DbSet<AdditionalDetail> AdditionalDetails { get; set; }
+        public DbSet<AdditionalIncome> AdditionalIncomes { get; set; }
+        public DbSet<Borrower> Borrowers { get; set; }
+        public DbSet<BorrowerMonthlyIncome> BorrowerMonthlyIncomes { get; set; }
+        public DbSet<BorrowerType> BorrowerTypes { get; set; }
+        public DbSet<ConsentDetail> ConsentDetails { get; set; }
+        public DbSet<CreditAuthAgreement> CreditAuthAgreements { get; set; }
+        public DbSet<Declaration> Declarations { get; set; }
+        public DbSet<DeclarationBorrowereDemographicsInformation> DeclarationBorrowereDemographicsInformations { get; set; }
+        public DbSet<EmploymentIncome> EmploymentIncomes { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
         public DbSet<LoanDetail> LoanDetails { get; set; }
-        public DbSet<MortgageType> MortgageTypes { get; set; }
-        public DbSet<PropertyInformation> PropertyInformation { get; set; }
-        public DbSet<AssetAndLiability> AssetAndLiabilities { get; set; }
-        public DbSet<DetailsOfTransaction> DetailsOfTransactions { get; set; }
-        public DbSet<GrossMonthlyIncome> GrossMonthlyIncome { get; set; }
-        public DbSet<CombinedMonthlyHousingExpense> CombinedMonthlyHousingExpense { get; set; }
-        public DbSet<OtherIncome> OtherIncome { get; set; }
+        public DbSet<PersonalDetail> PersonalDetails { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)
@@ -34,63 +38,6 @@ namespace LoanManagement.EntityFrameworkCore
 
             modelBuilder.Entity<LoanApplication>(loanApplication =>
             {
-                loanApplication
-                    .HasOne(i => i.MortgageType)
-                    .WithOne(i => i.LoanApplication)
-                    .HasForeignKey<LoanApplication>(i => i.MortgageTypeId);
-
-                loanApplication
-                    .HasOne(i => i.PropertyInfo)
-                    .WithOne(i => i.LoanApplication)
-                    .HasForeignKey<LoanApplication>(i => i.PropertyInfoId);
-
-                loanApplication
-                    .HasOne(i => i.BorrowerInfo)
-                    .WithMany(i => i.BorrowerLoanApplication)
-                    .HasForeignKey(i => i.BorrowerInfoId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.CoBorrowerInfo)
-                    .WithMany(i => i.CoBorrowerLoanApplication)
-                    .HasForeignKey(i => i.CoBorrowerInfoId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.BorrowerEmploymentInfo1)
-                    .WithMany(i => i.BorrowerLoanApplication1)
-                    .HasForeignKey(i => i.BorrowerEmploymentInfoId1)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.BorrowerEmploymentInfo2)
-                    .WithMany(i => i.BorrowerLoanApplication2)
-                    .HasForeignKey(i => i.BorrowerEmploymentInfoId2)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.BorrowerEmploymentInfo3)
-                    .WithMany(i => i.BorrowerLoanApplication3)
-                    .HasForeignKey(i => i.BorrowerEmploymentInfoId3)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.CoBorrowerEmploymentInfo1)
-                    .WithMany(i => i.CoBorrowerLoanApplication1)
-                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId1)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.CoBorrowerEmploymentInfo2)
-                    .WithMany(i => i.CoBorrowerLoanApplication2)
-                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId2)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                loanApplication
-                    .HasOne(i => i.CoBorrowerEmploymentInfo3)
-                    .WithMany(i => i.CoBorrowerLoanApplication3)
-                    .HasForeignKey(i => i.CoBorrowerEmploymentInfoId3)
-                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<BorrowerType>(borrowerEmploymentInformation =>
@@ -99,11 +46,6 @@ namespace LoanManagement.EntityFrameworkCore
                                                       new BorrowerType { Id = 2, Name = "Co-Borrower" });
             });
 
-            modelBuilder.Entity<HousingExpenseType>(housingExpenseType =>
-            {
-                housingExpenseType.HasData(new HousingExpenseType { Id = 1, Name = "Present" },
-                                           new HousingExpenseType { Id = 2, Name = "Proposed" });
-            });
         }
     }
 }
