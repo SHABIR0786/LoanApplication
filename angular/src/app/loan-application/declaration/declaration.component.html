@@ -453,7 +453,7 @@
                 <div class="row">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="isHispanicOrLatino"
-                               formControlName="isHispanicOrLatino" [(ngModel)]="data.isHispanicOrLatino">
+                               formControlName="isHispanicOrLatino" [(ngModel)]="data2.isHispanicOrLatino">
                         <label class="form-check-label" for="isHispanicOrLatino">
                             Hispanic or Latino
                         </label>
@@ -465,7 +465,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isMexican"
-                                   formControlName="isMexican" [(ngModel)]="data.isMexican">
+                                   formControlName="isMexican" [(ngModel)]="data2.isMexican">
                             <label class="form-check-label" for="isMexican">
                                 Mexican
                             </label>
@@ -475,7 +475,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isPuertoRican"
-                                   formControlName="isPuertoRican" [(ngModel)]="data.isPuertoRican">
+                                   formControlName="isPuertoRican" [(ngModel)]="data2.isPuertoRican">
                             <label class="form-check-label" for="isPuertoRican">
                                 Puerto Rican
                             </label>
@@ -485,7 +485,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isCuban"
-                                   formControlName="isCuban" [(ngModel)]="data.isCuban">
+                                   formControlName="isCuban" [(ngModel)]="data2.isCuban">
                             <label class="form-check-label" for="isCuban">
                                 Cuban
                             </label>
@@ -498,7 +498,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isOtherHispanicOrLatino"
-                                   formControlName="isOtherHispanicOrLatino" [(ngModel)]="data.isOtherHispanicOrLatino">
+                                   formControlName="isOtherHispanicOrLatino" [(ngModel)]="data2.isOtherHispanicOrLatino">
                             <label class="form-check-label" for="isOtherHispanicOrLatino">
                                 Other Hispanic or Latino
                             </label>
@@ -511,7 +511,7 @@
                     <div class="input-group">
                         <input type="number" class="form-control" name="origin"
                             id="origin" formControlName="origin" required
-                            [(ngModel)]="data.origin" />
+                            [(ngModel)]="data2.origin" />
                     </div>
                     <validation-summary [control]="form.controls.origin"></validation-summary>
                 </div>
@@ -522,7 +522,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isNotHispanicOrLatino"
-                                   formControlName="isNotHispanicOrLatino" [(ngModel)]="data.isNotHispanicOrLatino">
+                                   formControlName="isNotHispanicOrLatino" [(ngModel)]="data2.isNotHispanicOrLatino">
                             <label class="form-check-label" for="isNotHispanicOrLatino">
                                 Not Hispanic or Latino
                             </label>
@@ -534,7 +534,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isNotProvideInformation"
-                                   formControlName="isNotProvideInformation" [(ngModel)]="data.isNotProvideInformation">
+                                   formControlName="isNotProvideInformation" [(ngModel)]="data2.isNotProvideInformation">
                             <label class="form-check-label" for="isNotProvideInformation">
                                 I do not wish to provide this information.
                             </label>
@@ -549,7 +549,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isAmericanIndianOrAlaskaNative"
-                                   formControlName="isAmericanIndianOrAlaskaNative" [(ngModel)]="data.isAmericanIndianOrAlaskaNative">
+                                   formControlName="isAmericanIndianOrAlaskaNative" [(ngModel)]="data2.isAmericanIndianOrAlaskaNative">
                             <label class="form-check-label" for="isAmericanIndianOrAlaskaNative">
                                 American Indian or Alaska Native
                             </label>
@@ -562,7 +562,7 @@
                     <div class="input-group">
                         <input type="number" class="form-control" name="nameOfEnrolledOrPrincipalTribe"
                             id="nameOfEnrolledOrPrincipalTribe" formControlName="nameOfEnrolledOrPrincipalTribe" required
-                            [(ngModel)]="data.nameOfEnrolledOrPrincipalTribe" />
+                            [(ngModel)]="data2.nameOfEnrolledOrPrincipalTribe" />
                     </div>
                     <validation-summary [control]="form.controls.nameOfEnrolledOrPrincipalTribe"></validation-summary>
                 </div>
@@ -572,7 +572,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isAsian"
-                                   formControlName="isAsian" [(ngModel)]="data.isAsian">
+                                   formControlName="isAsian" [(ngModel)]="data2.isAsian">
                             <label class="form-check-label" for="isAsian">
                                 Asian
                             </label>
@@ -584,7 +584,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isAsianIndian"
-                                   formControlName="isAsianIndian" [(ngModel)]="data.isAsianIndian">
+                                   formControlName="isAsianIndian" [(ngModel)]="data2.isAsianIndian">
                             <label class="form-check-label" for="isAsianIndian">
                                 Asian Indian
                             </label>
@@ -594,7 +594,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isChinese"
-                                   formControlName="isChinese" [(ngModel)]="data.isChinese">
+                                   formControlName="isChinese" [(ngModel)]="data2.isChinese">
                             <label class="form-check-label" for="isChinese">
                                 Chinese
                             </label>
@@ -604,7 +604,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isFilipino"
-                                   formControlName="isFilipino" [(ngModel)]="data.isFilipino">
+                                   formControlName="isFilipino" [(ngModel)]="data2.isFilipino">
                             <label class="form-check-label" for="isFilipino">
                                 Filipino
                             </label>
@@ -617,7 +617,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isJapanese"
-                                   formControlName="isJapanese" [(ngModel)]="data.isJapanese">
+                                   formControlName="isJapanese" [(ngModel)]="data2.isJapanese">
                             <label class="form-check-label" for="isJapanese">
                                 Japanese
                             </label>
@@ -627,7 +627,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isKorean"
-                                   formControlName="isKorean" [(ngModel)]="data.isKorean">
+                                   formControlName="isKorean" [(ngModel)]="data2.isKorean">
                             <label class="form-check-label" for="isKorean">
                                 Korean
                             </label>
@@ -637,7 +637,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isVietnamese"
-                                   formControlName="isVietnamese" [(ngModel)]="data.isVietnamese">
+                                   formControlName="isVietnamese" [(ngModel)]="data2.isVietnamese">
                             <label class="form-check-label" for="isVietnamese">
                                 Vietnamese
                             </label>
@@ -650,7 +650,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isOtherAsian"
-                                   formControlName="isOtherAsian" [(ngModel)]="data.isOtherAsian">
+                                   formControlName="isOtherAsian" [(ngModel)]="data2.isOtherAsian">
                             <label class="form-check-label" for="isOtherAsian">
                                 Other Asian
                             </label>
@@ -662,7 +662,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="enterRace"
-                                   formControlName="enterRace" [(ngModel)]="data.enterRace">
+                                   formControlName="enterRace" [(ngModel)]="data2.enterRace">
                             <label class="form-check-label" for="enterRace">
                                 Enter Race
                             </label>
@@ -678,7 +678,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isBlackOrAfricanAmerican"
-                                   formControlName="isBlackOrAfricanAmerican" [(ngModel)]="data.isBlackOrAfricanAmerican">
+                                   formControlName="isBlackOrAfricanAmerican" [(ngModel)]="data2.isBlackOrAfricanAmerican">
                             <label class="form-check-label" for="isBlackOrAfricanAmerican">
                                 Black or African American
                             </label>
@@ -690,7 +690,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isNativeHawaiianOrOtherPacificIslander"
-                                   formControlName="isNativeHawaiianOrOtherPacificIslander" [(ngModel)]="data.isNativeHawaiianOrOtherPacificIslander">
+                                   formControlName="isNativeHawaiianOrOtherPacificIslander" [(ngModel)]="data2.isNativeHawaiianOrOtherPacificIslander">
                             <label class="form-check-label" for="isNativeHawaiianOrOtherPacificIslander">
                                 Native Hawaiian or Other Pacific Islander
                             </label>
@@ -702,7 +702,7 @@
                     <div class="col-6">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isNativeHawaiian"
-                                   formControlName="isNativeHawaiian" [(ngModel)]="data.isNativeHawaiian">
+                                   formControlName="isNativeHawaiian" [(ngModel)]="data2.isNativeHawaiian">
                             <label class="form-check-label" for="isNativeHawaiian">
                                 Native Hawaiian
                             </label>
@@ -713,7 +713,7 @@
                     <div class="col-6">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isGuamanianOrChamorro"
-                                   formControlName="isGuamanianOrChamorro" [(ngModel)]="data.isGuamanianOrChamorro">
+                                   formControlName="isGuamanianOrChamorro" [(ngModel)]="data2.isGuamanianOrChamorro">
                             <label class="form-check-label" for="isGuamanianOrChamorro">
                                 Guamanian or Chamorro
                             </label>
@@ -725,7 +725,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isSamoan"
-                                   formControlName="isSamoan" [(ngModel)]="data.isSamoan">
+                                   formControlName="isSamoan" [(ngModel)]="data2.isSamoan">
                             <label class="form-check-label" for="isSamoan">
                                 Samoan
                             </label>
@@ -737,7 +737,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isOtherPacificIslander"
-                                   formControlName="isOtherPacificIslander" [(ngModel)]="data.isOtherPacificIslander">
+                                   formControlName="isOtherPacificIslander" [(ngModel)]="data2.isOtherPacificIslander">
                             <label class="form-check-label" for="isOtherPacificIslander">
                                 Other Pacific Islander
                             </label>
@@ -750,7 +750,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="EnterRace2"
-                                   formControlName="EnterRace2" [(ngModel)]="data.EnterRace2">
+                                   formControlName="EnterRace2" [(ngModel)]="data2.EnterRace2">
                             <label class="form-check-label" for="EnterRace2">
                                 Enter Race
                             </label>
@@ -764,7 +764,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isWhite"
-                                   formControlName="isWhite" [(ngModel)]="data.isWhite">
+                                   formControlName="isWhite" [(ngModel)]="data2.isWhite">
                             <label class="form-check-label" for="isWhite">
                                 White
                             </label>
@@ -777,7 +777,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isWishToprovideInformation"
-                                   formControlName="isWishToprovideInformation" [(ngModel)]="data.isWishToprovideInformation">
+                                   formControlName="isWishToprovideInformation" [(ngModel)]="data2.isWishToprovideInformation">
                             <label class="form-check-label" for="isWishToprovideInformation">
                                 I do not wish to provide this information.
                             </label>
@@ -794,7 +794,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isMale"
-                                   formControlName="isMale" [(ngModel)]="data.isMale">
+                                   formControlName="isMale" [(ngModel)]="data2.isMale">
                             <label class="form-check-label" for="isMale">
                                 I do not wish to provide this information.
                             </label>
@@ -807,7 +807,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isFemale"
-                                   formControlName="isFemale" [(ngModel)]="data.isFemale">
+                                   formControlName="isFemale" [(ngModel)]="data2.isFemale">
                             <label class="form-check-label" for="isFemale">
                                 I do not wish to provide this information.
                             </label>
@@ -820,7 +820,7 @@
                     <div class="col-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="isDonotProvideSexInformattion"
-                                   formControlName="isDonotProvideSexInformattion" [(ngModel)]="data.isDonotProvideSexInformattion">
+                                   formControlName="isDonotProvideSexInformattion" [(ngModel)]="data2.isDonotProvideSexInformattion">
                             <label class="form-check-label" for="isDonotProvideSexInformattion">
                                 I do not wish to provide this information.
                             </label>
