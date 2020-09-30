@@ -14,6 +14,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformation { get; set; }
         public DbSet<BorrowerInformation> BorrowerInformation { get; set; }
         public DbSet<LoanApplication> LoanApplications { get; set; }
+        public DbSet<LoanDetail> LoanDetails { get; set; }
         public DbSet<MortgageType> MortgageTypes { get; set; }
         public DbSet<PropertyInformation> PropertyInformation { get; set; }
         public DbSet<AssetAndLiability> AssetAndLiabilities { get; set; }
