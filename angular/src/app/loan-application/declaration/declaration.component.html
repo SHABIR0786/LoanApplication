@@ -449,6 +449,386 @@
             <h5>
                 Ethnicity - Check one or more
             </h5>
+            <div class="col-12">
+                <div class="row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isHispanicOrLatino"
+                               formControlName="isHispanicOrLatino" [(ngModel)]="data.isHispanicOrLatino">
+                        <label class="form-check-label" for="isHispanicOrLatino">
+                            Hispanic or Latino
+                        </label>
+                        <validation-summary [control]="form.controls.isHispanicOrLatino" class="col-12"></validation-summary>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isMexican"
+                                   formControlName="isMexican" [(ngModel)]="data.isMexican">
+                            <label class="form-check-label" for="isMexican">
+                                Mexican
+                            </label>
+                            <validation-summary [control]="form.controls.isMexican" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isPuertoRican"
+                                   formControlName="isPuertoRican" [(ngModel)]="data.isPuertoRican">
+                            <label class="form-check-label" for="isPuertoRican">
+                                Puerto Rican
+                            </label>
+                            <validation-summary [control]="form.controls.isPuertoRican" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isCuban"
+                                   formControlName="isCuban" [(ngModel)]="data.isCuban">
+                            <label class="form-check-label" for="isCuban">
+                                Cuban
+                            </label>
+                            <validation-summary [control]="form.controls.isCuban" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isOtherHispanicOrLatino"
+                                   formControlName="isOtherHispanicOrLatino" [(ngModel)]="data.isOtherHispanicOrLatino">
+                            <label class="form-check-label" for="isOtherHispanicOrLatino">
+                                Other Hispanic or Latino
+                            </label>
+                            <validation-summary [control]="form.controls.isOtherHispanicOrLatino" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label>Enter Origin</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="origin"
+                            id="origin" formControlName="origin" required
+                            [(ngModel)]="data.origin" />
+                    </div>
+                    <validation-summary [control]="form.controls.origin"></validation-summary>
+                </div>
+                <p>
+                    For example: Argentinean, Colombian, Dominican, Nicaraguan, Salvadoran, Spaniard, and so on.
+                </p>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isNotHispanicOrLatino"
+                                   formControlName="isNotHispanicOrLatino" [(ngModel)]="data.isNotHispanicOrLatino">
+                            <label class="form-check-label" for="isNotHispanicOrLatino">
+                                Not Hispanic or Latino
+                            </label>
+                            <validation-summary [control]="form.controls.isNotHispanicOrLatino" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isNotProvideInformation"
+                                   formControlName="isNotProvideInformation" [(ngModel)]="data.isNotProvideInformation">
+                            <label class="form-check-label" for="isNotProvideInformation">
+                                I do not wish to provide this information.
+                            </label>
+                            <validation-summary [control]="form.controls.isNotProvideInformation" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <h5>
+                    Race - Check one or more
+                </h5>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isAmericanIndianOrAlaskaNative"
+                                   formControlName="isAmericanIndianOrAlaskaNative" [(ngModel)]="data.isAmericanIndianOrAlaskaNative">
+                            <label class="form-check-label" for="isAmericanIndianOrAlaskaNative">
+                                American Indian or Alaska Native
+                            </label>
+                            <validation-summary [control]="form.controls.isAmericanIndianOrAlaskaNative" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="nameOfEnrolledOrPrincipalTribe"
+                            id="nameOfEnrolledOrPrincipalTribe" formControlName="nameOfEnrolledOrPrincipalTribe" required
+                            [(ngModel)]="data.nameOfEnrolledOrPrincipalTribe" />
+                    </div>
+                    <validation-summary [control]="form.controls.nameOfEnrolledOrPrincipalTribe"></validation-summary>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isAsian"
+                                   formControlName="isAsian" [(ngModel)]="data.isAsian">
+                            <label class="form-check-label" for="isAsian">
+                                Asian
+                            </label>
+                            <validation-summary [control]="form.controls.isAsian" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isAsianIndian"
+                                   formControlName="isAsianIndian" [(ngModel)]="data.isAsianIndian">
+                            <label class="form-check-label" for="isAsianIndian">
+                                Asian Indian
+                            </label>
+                            <validation-summary [control]="form.controls.isAsianIndian" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isChinese"
+                                   formControlName="isChinese" [(ngModel)]="data.isChinese">
+                            <label class="form-check-label" for="isChinese">
+                                Chinese
+                            </label>
+                            <validation-summary [control]="form.controls.isChinese" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isFilipino"
+                                   formControlName="isFilipino" [(ngModel)]="data.isFilipino">
+                            <label class="form-check-label" for="isFilipino">
+                                Filipino
+                            </label>
+                            <validation-summary [control]="form.controls.isFilipino" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isJapanese"
+                                   formControlName="isJapanese" [(ngModel)]="data.isJapanese">
+                            <label class="form-check-label" for="isJapanese">
+                                Japanese
+                            </label>
+                            <validation-summary [control]="form.controls.isJapanese" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isKorean"
+                                   formControlName="isKorean" [(ngModel)]="data.isKorean">
+                            <label class="form-check-label" for="isKorean">
+                                Korean
+                            </label>
+                            <validation-summary [control]="form.controls.isKorean" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isVietnamese"
+                                   formControlName="isVietnamese" [(ngModel)]="data.isVietnamese">
+                            <label class="form-check-label" for="isVietnamese">
+                                Vietnamese
+                            </label>
+                            <validation-summary [control]="form.controls.isVietnamese" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isOtherAsian"
+                                   formControlName="isOtherAsian" [(ngModel)]="data.isOtherAsian">
+                            <label class="form-check-label" for="isOtherAsian">
+                                Other Asian
+                            </label>
+                            <validation-summary [control]="form.controls.isOtherAsian" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="enterRace"
+                                   formControlName="enterRace" [(ngModel)]="data.enterRace">
+                            <label class="form-check-label" for="enterRace">
+                                Enter Race
+                            </label>
+                            <validation-summary [control]="form.controls.enterRace" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <p>For example: Hmong, Laotian, Thai, Pakistani, Cambodian, and so on.</p>
+                
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isBlackOrAfricanAmerican"
+                                   formControlName="isBlackOrAfricanAmerican" [(ngModel)]="data.isBlackOrAfricanAmerican">
+                            <label class="form-check-label" for="isBlackOrAfricanAmerican">
+                                Black or African American
+                            </label>
+                            <validation-summary [control]="form.controls.isBlackOrAfricanAmerican" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isNativeHawaiianOrOtherPacificIslander"
+                                   formControlName="isNativeHawaiianOrOtherPacificIslander" [(ngModel)]="data.isNativeHawaiianOrOtherPacificIslander">
+                            <label class="form-check-label" for="isNativeHawaiianOrOtherPacificIslander">
+                                Native Hawaiian or Other Pacific Islander
+                            </label>
+                            <validation-summary [control]="form.controls.isNativeHawaiianOrOtherPacificIslander" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isNativeHawaiian"
+                                   formControlName="isNativeHawaiian" [(ngModel)]="data.isNativeHawaiian">
+                            <label class="form-check-label" for="isNativeHawaiian">
+                                Native Hawaiian
+                            </label>
+                            <validation-summary [control]="form.controls.isNativeHawaiian" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isGuamanianOrChamorro"
+                                   formControlName="isGuamanianOrChamorro" [(ngModel)]="data.isGuamanianOrChamorro">
+                            <label class="form-check-label" for="isGuamanianOrChamorro">
+                                Guamanian or Chamorro
+                            </label>
+                            <validation-summary [control]="form.controls.isGuamanianOrChamorro" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isSamoan"
+                                   formControlName="isSamoan" [(ngModel)]="data.isSamoan">
+                            <label class="form-check-label" for="isSamoan">
+                                Samoan
+                            </label>
+                            <validation-summary [control]="form.controls.isSamoan" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isOtherPacificIslander"
+                                   formControlName="isOtherPacificIslander" [(ngModel)]="data.isOtherPacificIslander">
+                            <label class="form-check-label" for="isOtherPacificIslander">
+                                Other Pacific Islander
+                            </label>
+                            <validation-summary [control]="form.controls.isOtherPacificIslander" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="EnterRace2"
+                                   formControlName="EnterRace2" [(ngModel)]="data.EnterRace2">
+                            <label class="form-check-label" for="EnterRace2">
+                                Enter Race
+                            </label>
+                            <validation-summary [control]="form.controls.EnterRace2" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+                <p>For example: Fijian, Tongan, and so on.</p>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isWhite"
+                                   formControlName="isWhite" [(ngModel)]="data.isWhite">
+                            <label class="form-check-label" for="isWhite">
+                                White
+                            </label>
+                            <validation-summary [control]="form.controls.isWhite" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isWishToprovideInformation"
+                                   formControlName="isWishToprovideInformation" [(ngModel)]="data.isWishToprovideInformation">
+                            <label class="form-check-label" for="isWishToprovideInformation">
+                                I do not wish to provide this information.
+                            </label>
+                            <validation-summary [control]="form.controls.isWishToprovideInformation" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>
+                    Sex
+                </h5>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isMale"
+                                   formControlName="isMale" [(ngModel)]="data.isMale">
+                            <label class="form-check-label" for="isMale">
+                                I do not wish to provide this information.
+                            </label>
+                            <validation-summary [control]="form.controls.isMale" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isFemale"
+                                   formControlName="isFemale" [(ngModel)]="data.isFemale">
+                            <label class="form-check-label" for="isFemale">
+                                I do not wish to provide this information.
+                            </label>
+                            <validation-summary [control]="form.controls.isFemale" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isDonotProvideSexInformattion"
+                                   formControlName="isDonotProvideSexInformattion" [(ngModel)]="data.isDonotProvideSexInformattion">
+                            <label class="form-check-label" for="isDonotProvideSexInformattion">
+                                I do not wish to provide this information.
+                            </label>
+                            <validation-summary [control]="form.controls.isDonotProvideSexInformattion" class="col-12"></validation-summary>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
