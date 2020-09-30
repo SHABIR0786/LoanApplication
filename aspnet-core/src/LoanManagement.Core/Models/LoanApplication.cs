@@ -6,6 +6,9 @@ namespace LoanManagement.Models
 {
     public class LoanApplication : FullAuditedEntity<long>, IMayHaveTenant
     {
+        public long? LoanDetailId { get; set; }
+        public LoanDetail LoanDetail { get; set; }
+
         public long? AssetAndLiablityId { get; set; }
         public AssetAndLiability AssetAndLiablity { get; set; }
 

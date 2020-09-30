@@ -21,6 +21,7 @@ namespace LoanManagement.Controllers
         private readonly IGrossMonthlyIncomeService _grossMonthlyIncomeService;
         private readonly ICombinedMonthlyHousingExpenseService _combinedMonthlyHousingExpenseService;
         private readonly IOtherIncomeService _otherIncomeService;
+        private readonly ILoanDetailServices _loanDetailServices;
 
         public UniformResidentialLoanController(
             IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
@@ -32,7 +33,9 @@ namespace LoanManagement.Controllers
             IDetailOfTransactionService detailOfTransactionService,
             IGrossMonthlyIncomeService grossMonthlyIncomeService,
             ICombinedMonthlyHousingExpenseService combinedMonthlyHousingExpenseService,
-            IOtherIncomeService otherIncomeService
+            IOtherIncomeService otherIncomeService,
+
+            ILoanDetailServices loanDetailServices
         )
         {
             _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
@@ -45,6 +48,7 @@ namespace LoanManagement.Controllers
             _grossMonthlyIncomeService = grossMonthlyIncomeService;
             _combinedMonthlyHousingExpenseService = combinedMonthlyHousingExpenseService;
             _otherIncomeService = otherIncomeService;
+            _loanDetailServices = loanDetailServices;
         }
 
         [HttpPost]
@@ -58,6 +62,14 @@ namespace LoanManagement.Controllers
                 if (input.Id == default)
                 {
                     await _loanAppService.CreateAsync(input);
+                }
+
+                if (input.LoanDetails != null)
+                {
+                    if (input.LoanDetails.Id == default)
+                        await _loanDetailServices.CreateAsync(input.LoanDetails);
+                    else
+                        await _loanDetailServices.UpdateAsync(input.LoanDetails);
                 }
 
                 if (input.MortgageType != null)

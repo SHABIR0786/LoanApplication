@@ -6,6 +6,8 @@ namespace LoanManagement.ViewModels
 {
     public class LoanApplicationDto : EntityDto<long>
     {
+        public LoanDetailDto LoanDetails { get; set; }
+
         public MortgageTypeDto MortgageType { get; set; }
         public PropertyInformationDto PropertyInformation { get; set; }
         public BorrowerInformationDto BorrowerInformation { get; set; }
