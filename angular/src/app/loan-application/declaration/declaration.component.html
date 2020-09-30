@@ -1,834 +1,491 @@
-<div class="row">
+<div class="row" [formGroup]="form">
+    <div class="col-12 mt-3 mb-1">
+        <h5>Borrower Declarations</h5>
+    </div>
     <div class="col-12">
-        <div class="">
-            <table style="width:100%">
-                <tr>
-                    <th>If you answer â€œYesâ€� to any questions a through i,
-                        please use continuation sheet for explanation.</th>
-                    <th>Borrower</th>
-                    <th>Co-Borrower</th>
-                </tr>
-                <tr>
-                    <td>a. Are there any outstanding judgments against you?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="assetsCompletion" id="assetsCompletionJointly" value="yes"
-                                            [(ngModel)]="data.isOutstandingJudgmentsAgainstYou">
-                                        <label class="form-check-label" for="assetsCompletionJointly">
-                                            Yes
-                                        </label>
-                                    </div>
+        <table style="width:100%">
+            <tr>
+                <td>a. Are there any outstanding judgments against you?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isOutstandingJudgmentsAgainstYou"
+                                           name="isOutstandingJudgmentsAgainstYou"
+                                           id="isOutstandingJudgmentsAgainstYouYes" [value]="true"
+                                           [(ngModel)]="data.isOutstandingJudgmentsAgainstYou">
+                                    <label class="form-check-label" for="isOutstandingJudgmentsAgainstYouYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="assetsCompletion" id="assetsCompletionNotJointly" value="no"
-                                            [(ngModel)]="data.isOutstandingJudgmentsAgainstYou">
-                                        <label class="form-check-label" for="assetsCompletionNotJointly">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isOutstandingJudgmentsAgainstYou"
+                                           name="isOutstandingJudgmentsAgainstYou"
+                                           id="isOutstandingJudgmentsAgainstYouNo" [value]="false"
+                                           [(ngModel)]="data.isOutstandingJudgmentsAgainstYou">
+                                    <label class="form-check-label" for="isOutstandingJudgmentsAgainstYouNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>b. Have you been declared bankrupt within the past 7 years?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsDeclaredBankruptWithin7Years" id="IsDeclaredBankruptWithin7Years"
-                                            value="yes" [(ngModel)]="data.isDeclaredBankrupt">
-                                        <label class="form-check-label" for="IsDeclaredBankruptWithin7Years">
-                                            Yes
-                                        </label>
-                                    </div>
+            <tr>
+                <td>b. Have you been declared bankrupt within the past 7 years?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isDeclaredBankrupt"
+                                           name="isDeclaredBankrupt" id="isDeclaredBankruptYes"
+                                           [value]="true" [(ngModel)]="data.isDeclaredBankrupt">
+                                    <label class="form-check-label" for="isDeclaredBankruptYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsDeclaredBankruptWithin7Years" id="IsDeclaredBankruptWithin7Years"
-                                            value="no" [(ngModel)]="data.isDeclaredBankrupt">
-                                        <label class="form-check-label" for="IsDeclaredBankruptWithin7Years">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isDeclaredBankrupt"
+                                           name="isDeclaredBankrupt" id="isDeclaredBankruptNo"
+                                           [value]="false" [(ngModel)]="data.isDeclaredBankrupt">
+                                    <label class="form-check-label" for="isDeclaredBankruptNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>c. Have you had property foreclosed upon or given title
-                        or deed in lieu thereof in the last 7 years?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsPropertyForeClosedWithin7Years"
-                                            id="IsPropertyForeClosedWithin7Years" value="yes"
-                                            [(ngModel)]="data.isPropertyForeClosedUponOrGivenTitle">
-                                        <label class="form-check-label" for="IsPropertyForeClosedWithin7Years">
-                                            Yes
-                                        </label>
-                                    </div>
+            <tr>
+                <td>c. Have you had property foreclosed upon or given title
+                    or deed in lieu thereof in the last 7 years?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isPropertyForeClosedUponOrGivenTitle"
+                                           name="isPropertyForeClosedUponOrGivenTitle"
+                                           id="isPropertyForeClosedUponOrGivenTitleYes" [value]="true"
+                                           [(ngModel)]="data.isPropertyForeClosedUponOrGivenTitle">
+                                    <label class="form-check-label" for="isPropertyForeClosedUponOrGivenTitleYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsPropertyForeClosedWithin7Years"
-                                            id="IsPropertyForeClosedWithin7Years" value="no"
-                                            [(ngModel)]="data.isPropertyForeClosedUponOrGivenTitle">
-                                        <label class="form-check-label" for="IsPropertyForeClosedWithin7Years">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isPropertyForeClosedUponOrGivenTitle"
+                                           name="isPropertyForeClosedUponOrGivenTitle"
+                                           id="isPropertyForeClosedUponOrGivenTitleNo" [value]="false"
+                                           [(ngModel)]="data.isPropertyForeClosedUponOrGivenTitle">
+                                    <label class="form-check-label" for="isPropertyForeClosedUponOrGivenTitleNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>d. Are you a party to a lawsuit?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsPartyLawsuit" id="IsPartyLawsuit" value="yes"
-                                            [(ngModel)]="data.isPartyToLawsuit">
-                                        <label class="form-check-label" for="IsPartyLawsuit">
-                                            Yes
-                                        </label>
-                                    </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>d. Are you a party to a lawsuit?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isPartyToLawsuit"
+                                           name="isPartyToLawsuit" id="isPartyToLawsuitYes" [value]="true"
+                                           [(ngModel)]="data.isPartyToLawsuit">
+                                    <label class="form-check-label" for="isPartyToLawsuitYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsPartyLawsuit" id="IsPartyLawsuit" value="no"
-                                            [(ngModel)]="data.isPartyToLawsuit">
-                                        <label class="form-check-label" for="IsPartyLawsuit">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isPartyToLawsuit"
+                                           name="isPartyToLawsuit" id="isPartyToLawsuitNo" [value]="false"
+                                           [(ngModel)]="data.isPartyToLawsuit">
+                                    <label class="form-check-label" for="isPartyToLawsuitNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td>e. Have you directly or indirectly been obligated on any
-                        loan which resulted in foreclosure, transfer of title
-                        in lieu of foreclosure, or judgment?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsObligatedOnAnyLoan" id="IsObligatedOnAnyLoan" value="yes"
-                                            [(ngModel)]="data.isObligatedOnAnyLoanWhichResultedForeclosure">
-                                        <label class="form-check-label" for="IsObligatedOnAnyLoan">
-                                            Yes
-                                        </label>
-                                    </div>
+            <tr>
+                <td>e. Have you directly or indirectly been obligated on any
+                    loan which resulted in foreclosure, transfer of title
+                    in lieu of foreclosure, or judgment?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isObligatedOnAnyLoanWhichResultedForeclosure"
+                                           name="isObligatedOnAnyLoanWhichResultedForeclosure"
+                                           id="isObligatedOnAnyLoanWhichResultedForeclosureYes" [value]="true"
+                                           [(ngModel)]="data.isObligatedOnAnyLoanWhichResultedForeclosure">
+                                    <label class="form-check-label"
+                                           for="isObligatedOnAnyLoanWhichResultedForeclosureYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsObligatedOnAnyLoan" id="IsObligatedOnAnyLoan" value="no"
-                                            [(ngModel)]="data.isObligatedOnAnyLoanWhichResultedForeclosure">
-                                        <label class="form-check-label" for="IsObligatedOnAnyLoan">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isObligatedOnAnyLoanWhichResultedForeclosure"
+                                           name="isObligatedOnAnyLoanWhichResultedForeclosure"
+                                           id="isObligatedOnAnyLoanWhichResultedForeclosureNo" [value]="false"
+                                           [(ngModel)]="data.isObligatedOnAnyLoanWhichResultedForeclosure">
+                                    <label class="form-check-label"
+                                           for="isObligatedOnAnyLoanWhichResultedForeclosureNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- sixth -->
-                <tr>
-                    <!-- f -->
-                    <td>f. Are you presently delinquent or in default on any Federal
-                        debt or any other loan, mortgage, financial obligation, bond, or
-                        loan
-                        guarantee?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsPresentlyDelinquentOrInDefaultFederal"
-                                            id="IsPresentlyDelinquentOrInDefaultFederal" value="yes"
-                                            [(ngModel)]="data.isPresentlyDelinquent">
-                                        <label class="form-check-label" for="IsPresentlyDelinquentOrInDefaultFederal">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- sixth -->
+            <tr>
+                <!-- f -->
+                <td>f. Are you presently delinquent or in default on any Federal
+                    debt or any other loan, mortgage, financial obligation, bond, or
+                    loan
+                    guarantee?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isPresentlyDelinquent"
+                                           name="isPresentlyDelinquent"
+                                           id="isPresentlyDelinquentYes" [value]="true"
+                                           [(ngModel)]="data.isPresentlyDelinquent">
+                                    <label class="form-check-label" for="isPresentlyDelinquentYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsPresentlyDelinquentOrInDefaultFederal"
-                                            id="IsPresentlyDelinquentOrInDefaultFederal" value="no"
-                                            [(ngModel)]="data.isPresentlyDelinquent">
-                                        <label class="form-check-label" for="IsPresentlyDelinquentOrInDefaultFederal">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isPresentlyDelinquent"
+                                           name="isPresentlyDelinquent"
+                                           id="isPresentlyDelinquentNo" [value]="false"
+                                           [(ngModel)]="data.isPresentlyDelinquent">
+                                    <label class="form-check-label" for="isPresentlyDelinquentNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- g -->
-                <tr>
-                    <td>g. Are you obligated to pay alimony, child support, or
-                        separate maintenance?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsObligatedToPayOrChildSupport" id="IsObligatedToPayOrChildSupport"
-                                            value="yes" [(ngModel)]="data.isObligatedToPayAlimonyChildSupport">
-                                        <label class="form-check-label" for="IsObligatedToPayOrChildSupport">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- g -->
+            <tr>
+                <td>g. Are you obligated to pay alimony, child support, or
+                    separate maintenance?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isObligatedToPayAlimonyChildSupport"
+                                           name="isObligatedToPayAlimonyChildSupport"
+                                           id="isObligatedToPayAlimonyChildSupportYes"
+                                           [value]="true" [(ngModel)]="data.isObligatedToPayAlimonyChildSupport">
+                                    <label class="form-check-label" for="isObligatedToPayAlimonyChildSupportYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsObligatedToPayOrChildSupport" id="IsObligatedToPayOrChildSupport"
-                                            value="no" [(ngModel)]="data.isObligatedToPayAlimonyChildSupport">
-                                        <label class="form-check-label" for="IsObligatedToPayOrChildSupport">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isObligatedToPayAlimonyChildSupport"
+                                           name="isObligatedToPayAlimonyChildSupport"
+                                           id="isObligatedToPayAlimonyChildSupportNo"
+                                           [value]="false" [(ngModel)]="data.isObligatedToPayAlimonyChildSupport">
+                                    <label class="form-check-label" for="isObligatedToPayAlimonyChildSupportNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- h -->
-                <tr>
-                    <td>h. Is any part of the down payment borrowed?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsAnyPartPaymentBorrowed" id="IsAnyPartPaymentBorrowed" value="yes"
-                                            [(ngModel)]="data.isAnyPartOfTheDownPayment">
-                                        <label class="form-check-label" for="IsAnyPartPaymentBorrowed">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- h -->
+            <tr>
+                <td>h. Is any part of the down payment borrowed?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isAnyPartOfTheDownPayment"
+                                           name="isAnyPartOfTheDownPayment" id="isAnyPartOfTheDownPaymentYes"
+                                           [value]="true"
+                                           [(ngModel)]="data.isAnyPartOfTheDownPayment">
+                                    <label class="form-check-label" for="isAnyPartOfTheDownPaymentYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsAnyPartPaymentBorrowed" id="IsAnyPartPaymentBorrowed" value="no"
-                                            [(ngModel)]="data.isAnyPartOfTheDownPayment">
-                                        <label class="form-check-label" for="IsAnyPartPaymentBorrowed">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isAnyPartOfTheDownPayment"
+                                           name="isAnyPartOfTheDownPayment" id="isAnyPartOfTheDownPaymentNo"
+                                           [value]="false"
+                                           [(ngModel)]="data.isAnyPartOfTheDownPayment">
+                                    <label class="form-check-label" for="isAnyPartOfTheDownPaymentNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- i -->
-                <tr>
-                    <td>i. Are you a co-maker or endorser on a note? </td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsCoMakerOrEndorserOnANote" id="IsCoMakerOrEndorserOnANote"
-                                            value="yes" [(ngModel)]="data.isCoMakerOrEndorser">
-                                        <label class="form-check-label" for="IsCoMakerOrEndorserOnANote">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- i -->
+            <tr>
+                <td>i. Are you a co-maker or endorser on a note?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isCoMakerOrEndorser"
+                                           name="isCoMakerOrEndorser" id="isCoMakerOrEndorserYes"
+                                           [value]="true" [(ngModel)]="data.isCoMakerOrEndorser">
+                                    <label class="form-check-label" for="isCoMakerOrEndorserYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsCoMakerOrEndorserOnANote" id="IsCoMakerOrEndorserOnANote" value="no"
-                                            [(ngModel)]="data.isCoMakerOrEndorser">
-                                        <label class="form-check-label" for="IsCoMakerOrEndorserOnANote">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isCoMakerOrEndorser"
+                                           name="isCoMakerOrEndorser" id="isCoMakerOrEndorserNo"
+                                           [value]="false"
+                                           [(ngModel)]="data.isCoMakerOrEndorser">
+                                    <label class="form-check-label" for="isCoMakerOrEndorserNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- j -->
-                <tr>
-                    <td>j. Are you a U.S. citizen?</td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsUsCitizen" id="IsUsCitizen" value="yes"
-                                            [(ngModel)]="data.isUSCitizen">
-                                        <label class="form-check-label" for="IsUsCitizen">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- j -->
+            <tr>
+                <td>j. Are you a U.S. citizen?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isUSCitizen"
+                                           name="isUSCitizen" id="isUSCitizenYes" [value]="true"
+                                           [(ngModel)]="data.isUSCitizen">
+                                    <label class="form-check-label" for="isUSCitizenYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsUsCitizen" id="IsUsCitizen" value="no"
-                                            [(ngModel)]="data.isUSCitizen">
-                                        <label class="form-check-label" for="IsUsCitizen">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isUSCitizen"
+                                           name="isUSCitizen" id="isUSCitizenNo" [value]="false"
+                                           [(ngModel)]="data.isUSCitizen">
+                                    <label class="form-check-label" for="isUSCitizenNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- k -->
-                <tr>
-                    <td>k. Are you a permanent resident alien? </td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsPermenentResidentAlien" id="IsPermenentResidentAlien" value="yes"
-                                            [(ngModel)]="data.isPermanentResidentSlien">
-                                        <label class="form-check-label" for="IsPermenentResidentAlien">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- k -->
+            <tr>
+                <td>k. Are you a permanent resident alien?</td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isPermanentResidentSlien"
+                                           name="isPermanentResidentSlien" id="isPermanentResidentSlienYes"
+                                           [value]="true"
+                                           [(ngModel)]="data.isPermanentResidentSlien">
+                                    <label class="form-check-label" for="isPermanentResidentSlienYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsPermenentResidentAlien" id="IsPermenentResidentAlien" value="no"
-                                            [(ngModel)]="data.isPermanentResidentSlien">
-                                        <label class="form-check-label" for="IsPermenentResidentAlien">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isPermanentResidentSlien"
+                                           name="isPermanentResidentSlien" id="isPermanentResidentSlienNo"
+                                           [value]="false"
+                                           [(ngModel)]="data.isPermanentResidentSlien">
+                                    <label class="form-check-label" for="isPermanentResidentSlienNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>l. Do you intend to occupy the property as your primary
-                        residence? </td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsIntendToOccuppyTheProperty" id="IsIntendToOccuppyTheProperty"
-                                            value="yes" [(ngModel)]="data.isIntendToOccupyThePropertyAsYourPrimary">
-                                        <label class="form-check-label" for="IsIntendToOccuppyTheProperty">
-                                            Yes
-                                        </label>
-                                    </div>
+            <tr>
+                <td>l. Do you intend to occupy the property as your primary
+                    residence?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isIntendToOccupyThePropertyAsYourPrimary"
+                                           name="isIntendToOccupyThePropertyAsYourPrimary"
+                                           id="isIntendToOccupyThePropertyAsYourPrimaryYes"
+                                           [value]="true"
+                                           [(ngModel)]="data.isIntendToOccupyThePropertyAsYourPrimary">
+                                    <label class="form-check-label"
+                                           for="isIntendToOccupyThePropertyAsYourPrimaryYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsIntendToOccuppyTheProperty" id="IsIntendToOccuppyTheProperty"
-                                            value="no" [(ngModel)]="data.isIntendToOccupyThePropertyAsYourPrimary">
-                                        <label class="form-check-label" for="IsIntendToOccuppyTheProperty">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isIntendToOccupyThePropertyAsYourPrimary"
+                                           name="isIntendToOccupyThePropertyAsYourPrimary"
+                                           id="isIntendToOccupyThePropertyAsYourPrimaryNo"
+                                           [value]="false"
+                                           [(ngModel)]="data.isIntendToOccupyThePropertyAsYourPrimary">
+                                    <label class="form-check-label"
+                                           for="isIntendToOccupyThePropertyAsYourPrimaryNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
 
-                <!-- m -->
-                <tr>
-                    <td>m. Have you had an ownership interest in a property in the last
-                        three years? </td>
-                    <td>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="float: right" class="form-check-input" type="radio"
-                                            name="IsOwnedPropertyLastThreeYears" id="IsOwnedPropertyLastThreeYears"
-                                            value="yes"
-                                            [(ngModel)]="data.isOwnershipInterestInPropertyInTheLastThreeYears">
-                                        <label class="form-check-label" for="IsOwnedPropertyLastThreeYears">
-                                            Yes
-                                        </label>
-                                    </div>
+            <!-- m -->
+            <tr>
+                <td>m. Have you had an ownership interest in a property in the last
+                    three years?
+                </td>
+                <td>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="float: right" class="form-check-input" type="radio"
+                                           formControlName="isOwnershipInterestInPropertyInTheLastThreeYears"
+                                           name="isOwnershipInterestInPropertyInTheLastThreeYears"
+                                           id="isOwnershipInterestInPropertyInTheLastThreeYearsYes"
+                                           [value]="true"
+                                           [(ngModel)]="data.isOwnershipInterestInPropertyInTheLastThreeYears">
+                                    <label class="form-check-label"
+                                           for="isOwnershipInterestInPropertyInTheLastThreeYearsYes">
+                                        Yes
+                                    </label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-check-inline">
-                                        <input style="padding-left: 20px;" class="form-check-input" type="radio"
-                                            name="IsOwnedPropertyLastThreeYears" id="IsOwnedPropertyLastThreeYears"
-                                            value="no"
-                                            [(ngModel)]="data.isOwnershipInterestInPropertyInTheLastThreeYears">
-                                        <label class="form-check-label" for="IsOwnedPropertyLastThreeYears">
-                                            No
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-inline">
+                                    <input style="padding-left: 20px;" class="form-check-input" type="radio"
+                                           formControlName="isOwnershipInterestInPropertyInTheLastThreeYears"
+                                           name="isOwnershipInterestInPropertyInTheLastThreeYears"
+                                           id="isOwnershipInterestInPropertyInTheLastThreeYearsNo"
+                                           [value]="false"
+                                           [(ngModel)]="data.isOwnershipInterestInPropertyInTheLastThreeYears">
+                                    <label class="form-check-label"
+                                           for="isOwnershipInterestInPropertyInTheLastThreeYearsNo">
+                                        No
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="firstMortgage">
-                                For the Declarations section, you are required to explain any "Yes" answers to questions
-                                a
-                                through i.
-                            </label>
-                            <div class="input-group">
-                                <input type="number" class="form-control" name="declarationsSection"
-                                    id="declarationsSection" formControlName="declarationsSection" required
-                                    [(ngModel)]="data.declarationsSection" />
-                            </div>
-                            <validation-summary [control]="form.controls.declarationsSection"></validation-summary>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <h4>
-                Borrower Demographic Information
-            </h4>
-            <p>
-                The purpose of collecting this information is to help ensure that all applicants are treated fairly and that the housing needs of communities and neighborhoods are being fulfilled. For residential mortgage lending, Federal law requires that we ask applicants for their demographic information (ethnicity, sex, and race) in order to monitor our compliance with equal credit opportunity, fair housing, and home mortgage disclosure laws. You are not required to provide this information, but are encouraged to do so. You may select one or more designations for "ethnicity" and one or more designations for "Race." The law provides that we may not discriminate on the basis of this information, or on whether you choose to provide it. However, if you choose not to provide the information and you have made this application in person, Federal regulations require us to note your ethnicity, sex, and race on the basis of visual observation or surname. The law also provides that we may not discriminate on the basis of age or marital status information you provide in this application. If you do not wish to provide some or all of this information, please check below.  
-            </p>
-            <h5>
-                Ethnicity - Check one or more
-            </h5>
-            <div class="col-12">
-                <div class="row">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="isHispanicOrLatino"
-                               formControlName="isHispanicOrLatino" [(ngModel)]="data2.isHispanicOrLatino">
-                        <label class="form-check-label" for="isHispanicOrLatino">
-                            Hispanic or Latino
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="form-group mt-3">
+                        <label for="declarationsSection">
+                            For the Declarations section, you are required to explain any "Yes" answers to questions
+                            a through i.
                         </label>
-                        <validation-summary [control]="form.controls.isHispanicOrLatino" class="col-12"></validation-summary>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isMexican"
-                                   formControlName="isMexican" [(ngModel)]="data2.isMexican">
-                            <label class="form-check-label" for="isMexican">
-                                Mexican
-                            </label>
-                            <validation-summary [control]="form.controls.isMexican" class="col-12"></validation-summary>
+                        <div class="input-group">
+                            <textarea rows="2" class="form-control" name="declarationsSection"
+                                      id="declarationsSection" formControlName="declarationsSection"
+                                      [(ngModel)]="data.declarationsSection"></textarea>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isPuertoRican"
-                                   formControlName="isPuertoRican" [(ngModel)]="data2.isPuertoRican">
-                            <label class="form-check-label" for="isPuertoRican">
-                                Puerto Rican
-                            </label>
-                            <validation-summary [control]="form.controls.isPuertoRican" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isCuban"
-                                   formControlName="isCuban" [(ngModel)]="data2.isCuban">
-                            <label class="form-check-label" for="isCuban">
-                                Cuban
-                            </label>
-                            <validation-summary [control]="form.controls.isCuban" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isOtherHispanicOrLatino"
-                                   formControlName="isOtherHispanicOrLatino" [(ngModel)]="data2.isOtherHispanicOrLatino">
-                            <label class="form-check-label" for="isOtherHispanicOrLatino">
-                                Other Hispanic or Latino
-                            </label>
-                            <validation-summary [control]="form.controls.isOtherHispanicOrLatino" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <label>Enter Origin</label>
-                    <div class="input-group">
-                        <input type="number" class="form-control" name="origin"
-                            id="origin" formControlName="origin" required
-                            [(ngModel)]="data2.origin" />
-                    </div>
-                    <validation-summary [control]="form.controls.origin"></validation-summary>
-                </div>
-                <p>
-                    For example: Argentinean, Colombian, Dominican, Nicaraguan, Salvadoran, Spaniard, and so on.
-                </p>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isNotHispanicOrLatino"
-                                   formControlName="isNotHispanicOrLatino" [(ngModel)]="data2.isNotHispanicOrLatino">
-                            <label class="form-check-label" for="isNotHispanicOrLatino">
-                                Not Hispanic or Latino
-                            </label>
-                            <validation-summary [control]="form.controls.isNotHispanicOrLatino" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isNotProvideInformation"
-                                   formControlName="isNotProvideInformation" [(ngModel)]="data2.isNotProvideInformation">
-                            <label class="form-check-label" for="isNotProvideInformation">
-                                I do not wish to provide this information.
-                            </label>
-                            <validation-summary [control]="form.controls.isNotProvideInformation" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <h5>
-                    Race - Check one or more
-                </h5>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isAmericanIndianOrAlaskaNative"
-                                   formControlName="isAmericanIndianOrAlaskaNative" [(ngModel)]="data2.isAmericanIndianOrAlaskaNative">
-                            <label class="form-check-label" for="isAmericanIndianOrAlaskaNative">
-                                American Indian or Alaska Native
-                            </label>
-                            <validation-summary [control]="form.controls.isAmericanIndianOrAlaskaNative" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-group">
-                        <input type="number" class="form-control" name="nameOfEnrolledOrPrincipalTribe"
-                            id="nameOfEnrolledOrPrincipalTribe" formControlName="nameOfEnrolledOrPrincipalTribe" required
-                            [(ngModel)]="data2.nameOfEnrolledOrPrincipalTribe" />
-                    </div>
-                    <validation-summary [control]="form.controls.nameOfEnrolledOrPrincipalTribe"></validation-summary>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isAsian"
-                                   formControlName="isAsian" [(ngModel)]="data2.isAsian">
-                            <label class="form-check-label" for="isAsian">
-                                Asian
-                            </label>
-                            <validation-summary [control]="form.controls.isAsian" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isAsianIndian"
-                                   formControlName="isAsianIndian" [(ngModel)]="data2.isAsianIndian">
-                            <label class="form-check-label" for="isAsianIndian">
-                                Asian Indian
-                            </label>
-                            <validation-summary [control]="form.controls.isAsianIndian" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isChinese"
-                                   formControlName="isChinese" [(ngModel)]="data2.isChinese">
-                            <label class="form-check-label" for="isChinese">
-                                Chinese
-                            </label>
-                            <validation-summary [control]="form.controls.isChinese" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isFilipino"
-                                   formControlName="isFilipino" [(ngModel)]="data2.isFilipino">
-                            <label class="form-check-label" for="isFilipino">
-                                Filipino
-                            </label>
-                            <validation-summary [control]="form.controls.isFilipino" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isJapanese"
-                                   formControlName="isJapanese" [(ngModel)]="data2.isJapanese">
-                            <label class="form-check-label" for="isJapanese">
-                                Japanese
-                            </label>
-                            <validation-summary [control]="form.controls.isJapanese" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isKorean"
-                                   formControlName="isKorean" [(ngModel)]="data2.isKorean">
-                            <label class="form-check-label" for="isKorean">
-                                Korean
-                            </label>
-                            <validation-summary [control]="form.controls.isKorean" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isVietnamese"
-                                   formControlName="isVietnamese" [(ngModel)]="data2.isVietnamese">
-                            <label class="form-check-label" for="isVietnamese">
-                                Vietnamese
-                            </label>
-                            <validation-summary [control]="form.controls.isVietnamese" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isOtherAsian"
-                                   formControlName="isOtherAsian" [(ngModel)]="data2.isOtherAsian">
-                            <label class="form-check-label" for="isOtherAsian">
-                                Other Asian
-                            </label>
-                            <validation-summary [control]="form.controls.isOtherAsian" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="enterRace"
-                                   formControlName="enterRace" [(ngModel)]="data2.enterRace">
-                            <label class="form-check-label" for="enterRace">
-                                Enter Race
-                            </label>
-                            <validation-summary [control]="form.controls.enterRace" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <p>For example: Hmong, Laotian, Thai, Pakistani, Cambodian, and so on.</p>
-                
-
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isBlackOrAfricanAmerican"
-                                   formControlName="isBlackOrAfricanAmerican" [(ngModel)]="data2.isBlackOrAfricanAmerican">
-                            <label class="form-check-label" for="isBlackOrAfricanAmerican">
-                                Black or African American
-                            </label>
-                            <validation-summary [control]="form.controls.isBlackOrAfricanAmerican" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isNativeHawaiianOrOtherPacificIslander"
-                                   formControlName="isNativeHawaiianOrOtherPacificIslander" [(ngModel)]="data2.isNativeHawaiianOrOtherPacificIslander">
-                            <label class="form-check-label" for="isNativeHawaiianOrOtherPacificIslander">
-                                Native Hawaiian or Other Pacific Islander
-                            </label>
-                            <validation-summary [control]="form.controls.isNativeHawaiianOrOtherPacificIslander" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isNativeHawaiian"
-                                   formControlName="isNativeHawaiian" [(ngModel)]="data2.isNativeHawaiian">
-                            <label class="form-check-label" for="isNativeHawaiian">
-                                Native Hawaiian
-                            </label>
-                            <validation-summary [control]="form.controls.isNativeHawaiian" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isGuamanianOrChamorro"
-                                   formControlName="isGuamanianOrChamorro" [(ngModel)]="data2.isGuamanianOrChamorro">
-                            <label class="form-check-label" for="isGuamanianOrChamorro">
-                                Guamanian or Chamorro
-                            </label>
-                            <validation-summary [control]="form.controls.isGuamanianOrChamorro" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isSamoan"
-                                   formControlName="isSamoan" [(ngModel)]="data2.isSamoan">
-                            <label class="form-check-label" for="isSamoan">
-                                Samoan
-                            </label>
-                            <validation-summary [control]="form.controls.isSamoan" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isOtherPacificIslander"
-                                   formControlName="isOtherPacificIslander" [(ngModel)]="data2.isOtherPacificIslander">
-                            <label class="form-check-label" for="isOtherPacificIslander">
-                                Other Pacific Islander
-                            </label>
-                            <validation-summary [control]="form.controls.isOtherPacificIslander" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="EnterRace2"
-                                   formControlName="EnterRace2" [(ngModel)]="data2.EnterRace2">
-                            <label class="form-check-label" for="EnterRace2">
-                                Enter Race
-                            </label>
-                            <validation-summary [control]="form.controls.EnterRace2" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-                <p>For example: Fijian, Tongan, and so on.</p>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isWhite"
-                                   formControlName="isWhite" [(ngModel)]="data2.isWhite">
-                            <label class="form-check-label" for="isWhite">
-                                White
-                            </label>
-                            <validation-summary [control]="form.controls.isWhite" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isWishToprovideInformation"
-                                   formControlName="isWishToprovideInformation" [(ngModel)]="data2.isWishToprovideInformation">
-                            <label class="form-check-label" for="isWishToprovideInformation">
-                                I do not wish to provide this information.
-                            </label>
-                            <validation-summary [control]="form.controls.isWishToprovideInformation" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <h5>
-                    Sex
-                </h5>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isMale"
-                                   formControlName="isMale" [(ngModel)]="data2.isMale">
-                            <label class="form-check-label" for="isMale">
-                                I do not wish to provide this information.
-                            </label>
-                            <validation-summary [control]="form.controls.isMale" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isFemale"
-                                   formControlName="isFemale" [(ngModel)]="data2.isFemale">
-                            <label class="form-check-label" for="isFemale">
-                                I do not wish to provide this information.
-                            </label>
-                            <validation-summary [control]="form.controls.isFemale" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="isDonotProvideSexInformattion"
-                                   formControlName="isDonotProvideSexInformattion" [(ngModel)]="data2.isDonotProvideSexInformattion">
-                            <label class="form-check-label" for="isDonotProvideSexInformattion">
-                                I do not wish to provide this information.
-                            </label>
-                            <validation-summary [control]="form.controls.isDonotProvideSexInformattion" class="col-12"></validation-summary>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
