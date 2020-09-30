@@ -6,10 +6,12 @@ export interface IDeclarationBorrowereDemographicsInformationModel {
     isCuban?: boolean;
     isOtherHispanicOrLatino?: boolean;
     origin?: string;
+
     isNotHispanicOrLatino?: boolean;
     isNotProvideInformation?: boolean;
     isAmericanIndianOrAlaskaNative?: boolean;
     nameOfEnrolledOrPrincipalTribe?: string;
+
     isAsian?: boolean;
     isAsianIndian?: boolean;
     isChinese?: boolean;
@@ -18,16 +20,21 @@ export interface IDeclarationBorrowereDemographicsInformationModel {
     isKorean?: boolean;
     isVietnamese?: boolean;
     isOtherAsian?: boolean;
+
+
     enterRace?: string;
     isBlackOrAfricanAmerican?: boolean;
     isNativeHawaiianOrOtherPacificIslander?: boolean;
     isNativeHawaiian?: boolean;
     isGuamanianOrChamorro?: boolean;
+    isSamoan?: boolean;
     isOtherPacificIslander?: boolean;
     EnterRace2?: string;
     isWhite?: boolean;
     isWishToprovideInformation?: boolean;
+
+
     isMale?: boolean;
-    isFeeMale?: boolean;
+    isFemale?: boolean;
     isDonotProvideSexInformattion?: boolean;
 }
