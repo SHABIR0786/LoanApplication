@@ -5,6 +5,7 @@ import {IConsentDetailModel} from './IConsentDetailModel';
 import {ICreditAuthAgreementModel} from './ICreditAuthAgreementModel';
 import {IExpenseModel} from './IExpenseModel';
 import {IEmploymentIncomeModel} from './IEmploymentIncomeModel';
+import {IDeclarationModel} from './IDeclarationModel';
 
 export interface ILoanApplicationModel {
     loanDetails?: ILoanDetailModel;
@@ -14,4 +15,5 @@ export interface ILoanApplicationModel {
     orderCredit?: ICreditAuthAgreementModel;
     additionalDetails?: IAdditionalDetailModel;
     eConsent?: IConsentDetailModel;
+    declaration?: IDeclarationModel;
 }

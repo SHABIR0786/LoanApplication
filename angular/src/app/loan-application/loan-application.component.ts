@@ -24,11 +24,12 @@ export class LoanApplicationComponent implements OnInit {
         },
         orderCredit: {},
         additionalDetails: {},
-        eConsent: {}
+        eConsent: {},
+        declaration: {},
     };
 
     config: NgWizardConfig = {
-        selected: 3,
+        selected: 7,
         theme: THEME.default,
         toolbarSettings: {
             toolbarExtraButtons: [
