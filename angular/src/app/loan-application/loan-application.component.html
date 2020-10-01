@@ -216,6 +216,7 @@
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 8" description="Declaration">
                             <app-declaration [data]="loanApplication.declaration"
+                                             [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
                                              (onDataChange)="onChange($event, 'declaration')"></app-declaration>
                         </ng-wizard-step>
                     </ng-wizard>

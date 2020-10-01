@@ -1,6 +1,6 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {IPersonalDetailModel} from '../../interfaces/IPersonalDetailModel';
+import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 
 @Component({
@@ -10,7 +10,7 @@ import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 })
 export class PersonalInformationComponent implements OnInit, DoCheck {
 
-    @Input() data: IPersonalDetailModel = {
+    @Input() data: IPersonalInformationModel = {
         borrower: {},
         coBorrower: {},
     };

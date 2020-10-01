@@ -1,4 +1,4 @@
-export interface IConsentDetailModel {
+export interface IConsentModel {
     id?: number;
     agreeEConsent?: boolean;
 }

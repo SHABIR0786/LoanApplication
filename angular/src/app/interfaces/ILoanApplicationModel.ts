@@ -1,21 +1,20 @@
 import {ILoanDetailModel} from './ILoanDetailModel';
-import {IPersonalDetailModel} from './IPersonalDetailModel';
+import {IPersonalInformationModel} from './IPersonalInformationModel';
 import {IAdditionalDetailModel} from './IAdditionalDetailModel';
-import {IConsentDetailModel} from './IConsentDetailModel';
+import {IConsentModel} from './IConsentModel';
 import {ICreditAuthAgreementModel} from './ICreditAuthAgreementModel';
 import {IExpenseModel} from './IExpenseModel';
 import {IEmploymentIncomeModel} from './IEmploymentIncomeModel';
+import {IBorrowerDeclarationModel} from './IBorrowerDeclarationModel';
 import {IDeclarationModel} from './IDeclarationModel';
-import { IDeclarationBorrowereDemographicsInformationModel } from './IDeclarationBorrowereDemographicsInformationModel';
 
 export interface ILoanApplicationModel {
-    additionalDetails?: IAdditionalDetailModel;
     loanDetails?: ILoanDetailModel;
-    personalDetail?: IPersonalDetailModel;
+    personalInformation?: IPersonalInformationModel;
     expenses?: IExpenseModel;
     employmentIncome?: IEmploymentIncomeModel;
-    orderCredit?: ICreditAuthAgreementModel;   
-    eConsent?: IConsentDetailModel;
+    orderCredit?: ICreditAuthAgreementModel;
+    additionalDetails?: IAdditionalDetailModel;
+    eConsent?: IConsentModel;
     declaration?: IDeclarationModel;
-    IDeclarationBorrowereDemographicsInformationModel? : IDeclarationBorrowereDemographicsInformationModel;
 }
