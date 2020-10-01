@@ -2,6 +2,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
+import {IAddressModel} from '../../interfaces/IAddressModel';
 
 @Component({
     selector: 'app-personal-information',
@@ -13,16 +14,24 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     @Input() data: IPersonalInformationModel = {
         borrower: {},
         coBorrower: {},
+        residentialAddress: {},
+        mailingAddress: {},
     };
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
+    states = [];
 
     constructor() {
     }
 
+    get residentialAddressForm(): FormGroup {
+        return this.form.get('residentialAddress') as FormGroup;
+    }
+
     ngOnInit(): void {
         this.initForm();
+        this.loadStates();
     }
 
     ngDoCheck() {
@@ -32,13 +41,25 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         }
     }
 
+    loadStates() {
+        this.states = [
+            {
+                id: 1,
+                name: 'CA'
+            }
+        ];
+    }
+
     initForm() {
         this.form = new FormGroup({
             isApplyingWithCoBorrower: new FormControl(this.data.isApplyingWithCoBorrower, [Validators.required]),
             useIncomeOfPersonOtherThanBorrower: new FormControl(this.data.useIncomeOfPersonOtherThanBorrower, [Validators.required]),
             agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [Validators.required]),
             borrower: this.initBorrowerForm(this.data.borrower),
-            coBorrower: this.initBorrowerForm(this.data.coBorrower)
+            coBorrower: this.initBorrowerForm(this.data.coBorrower),
+            isMailingAddressSameAsResidential: new FormControl(this.data.isMailingAddressSameAsResidential),
+            residentialAddress: this.initAddressForm(this.data.residentialAddress, 1, true),
+            mailingAddress: this.initAddressForm(this.data.mailingAddress, 2, false),
         });
 
         this.form.get('isApplyingWithCoBorrower').valueChanges.subscribe(isApplyingWithCoBorrower => {
@@ -55,6 +76,15 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             }
             this.form.get('useIncomeOfPersonOtherThanBorrower').updateValueAndValidity();
         });
+
+        this.form.get('isMailingAddressSameAsResidential').valueChanges.subscribe(isMailingAddressSameAsResidential => {
+            if (isMailingAddressSameAsResidential) {
+                this.form.removeControl('mailingAddress');
+            } else {
+                this.data.mailingAddress = {};
+                this.form.addControl('mailingAddress', this.initAddressForm(this.data.mailingAddress, 2, false));
+            }
+        });
     }
 
     initBorrowerForm(data: IBorrowerModel) {
@@ -70,6 +100,18 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             numberOfDependents: new FormControl(data.numberOfDependents),
             cellPhone: new FormControl(data.cellPhone, [Validators.required]),
             homePhone: new FormControl(data.homePhone),
+        });
+    }
+
+    initAddressForm(data: IAddressModel, addressTypeId: number, required: boolean) {
+        return new FormGroup({
+            addressLine1: new FormControl(data.addressLine1, required ? [Validators.required] : []),
+            addressLine2: new FormControl(data.addressLine2,),
+            city: new FormControl(data.city, required ? [Validators.required] : []),
+            stateId: new FormControl(data.stateId, required ? [Validators.required] : []),
+            zipCode: new FormControl(data.zipCode, required ? [Validators.required] : []),
+            totalYears: new FormControl(data.totalYears, required ? [Validators.required] : []),
+            totalMonths: new FormControl(data.totalMonths),
         });
     }
 
