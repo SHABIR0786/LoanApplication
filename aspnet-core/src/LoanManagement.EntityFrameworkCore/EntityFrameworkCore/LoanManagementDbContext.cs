@@ -22,7 +22,6 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<CreditAuthAgreement> CreditAuthAgreements { get; set; }
         public DbSet<Declaration> Declarations { get; set; }
         public DbSet<DeclarationBorrowereDemographicsInformation> DeclarationBorrowereDemographicsInformations { get; set; }
-        public DbSet<EmploymentIncome> EmploymentIncomes { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<LoanDetail> LoanDetails { get; set; }
         public DbSet<PersonalDetail> PersonalDetails { get; set; }

@@ -12,9 +12,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class EmploymentIncomeService : AbpServiceBase, IEmploymentIncomeService
     {
-        private readonly IRepository<EmploymentIncome, long> _repository;
+        private readonly IRepository<BorrowerMonthlyIncome, long> _repository;
 
-        public EmploymentIncomeService(IRepository<EmploymentIncome, long> repository)
+        public EmploymentIncomeService(IRepository<BorrowerMonthlyIncome, long> repository)
         {
             _repository = repository;
         }
@@ -33,7 +33,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var employmentIncome = new EmploymentIncome
+                var employmentIncome = new BorrowerMonthlyIncome
                 {
                 };
                 await _repository.InsertAsync(employmentIncome);

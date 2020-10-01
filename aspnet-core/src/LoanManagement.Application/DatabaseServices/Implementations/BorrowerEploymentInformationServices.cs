@@ -10,33 +10,45 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailsService
+    public class BorrowerEploymentInformationServices : AbpServiceBase, IBorrowerEmploymentInformationAppService
     {
-        private readonly IRepository<AdditionalDetail, long> _repository;
+        private readonly IRepository<BorrowerEmploymentInformation, long> _repository;
 
-        public AdditionalDetailServices(IRepository<AdditionalDetail, long> repository)
+        public BorrowerEploymentInformationServices(IRepository<BorrowerEmploymentInformation, long> repository)
         {
             _repository = repository;
         }
 
-        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long> input)
+        public async Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<AdditionalDetailsDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<AdditionalDetailsDto> CreateAsync(AdditionalDetailsDto input)
+        public async Task<BorrowerEmploymentInformationDto> CreateAsync(BorrowerEmploymentInformationDto input)
         {
             try
             {
-                var additionalDetail = new AdditionalDetail
+                var additionalDetail = new BorrowerEmploymentInformation
                 {
                     Id = input.Id,
-                    NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle
+                    EmployersName = input.EmployersName,
+                    EmployersAddress1 = input.EmployersAddress1,
+                    EmployersAddress2 = input.EmployersAddress2,
+                    IsSelfEmployed = input.IsSelfEmployed,
+                    YearOnThisJob = input.YearOnThisJob,
+                    YearInThisLineOfWork = input.YearInThisLineOfWork,
+                    Position = input.Position,
+                    City = input.City,
+                    StateId = input.StateId,
+                    ZipCode = input.ZipCode,
+                    StartDate = input.StartDate,
+                    EndDate = input.EndDate,
+                    BorrowerTypeId = input.BorrowerTypeId
                 };
                 await _repository.InsertAsync(additionalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -50,11 +62,24 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
         }
 
-        public async Task<AdditionalDetailsDto> UpdateAsync(AdditionalDetailsDto input)
+        public async Task<BorrowerEmploymentInformationDto> UpdateAsync(BorrowerEmploymentInformationDto input)
         {
             await _repository.UpdateAsync(input.Id, additionalDetail =>
             {
-                additionalDetail.NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle;
+                additionalDetail.Id = input.Id;
+                additionalDetail.EmployersName = input.EmployersName;
+                additionalDetail.EmployersAddress1 = input.EmployersAddress1;
+                additionalDetail.EmployersAddress2 = input.EmployersAddress2;
+                additionalDetail.IsSelfEmployed = input.IsSelfEmployed;
+                additionalDetail.YearOnThisJob = input.YearOnThisJob;
+                additionalDetail.YearInThisLineOfWork = input.YearInThisLineOfWork;
+                additionalDetail.Position = input.Position;
+                additionalDetail.City = input.City;
+                additionalDetail.StateId = input.StateId;
+                additionalDetail.ZipCode = input.ZipCode;
+                additionalDetail.StartDate = input.StartDate;
+                additionalDetail.EndDate = input.EndDate;
+                additionalDetail.BorrowerTypeId = input.BorrowerTypeId;
 
                 return Task.CompletedTask;
             });
