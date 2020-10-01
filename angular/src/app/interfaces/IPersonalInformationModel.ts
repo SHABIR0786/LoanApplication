@@ -1,6 +1,6 @@
 import {IBorrowerModel} from './IBorrowerModel';
 
-export interface IPersonalDetailModel {
+export interface IPersonalInformationModel {
     id?: number;
     isApplyingWithCoBorrower?: boolean;
     useIncomeOfPersonOtherThanBorrower?: boolean;
