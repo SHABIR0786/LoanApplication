@@ -7,6 +7,7 @@ import {IExpenseModel} from './IExpenseModel';
 import {IEmploymentIncomeModel} from './IEmploymentIncomeModel';
 import {IBorrowerDeclarationModel} from './IBorrowerDeclarationModel';
 import {IDeclarationModel} from './IDeclarationModel';
+import {IDeclarationBorrowereDemographicsInformationModel} from './IDeclarationBorrowereDemographicsInformationModel';
 
 export interface ILoanApplicationModel {
     loanDetails?: ILoanDetailModel;
@@ -17,4 +18,5 @@ export interface ILoanApplicationModel {
     additionalDetails?: IAdditionalDetailModel;
     eConsent?: IConsentModel;
     declaration?: IDeclarationModel;
+    declarationBorrowereDemographics?: IDeclarationBorrowereDemographicsInformationModel;
 }
