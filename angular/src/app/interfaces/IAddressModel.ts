@@ -1,11 +1,11 @@
 export interface IAddressModel {
     id?: number;
-    addressType?: string;
+    addressTypeId?: number;
     addressLine1?: string;
     addressLine2?: string;
-    City?: string;
-    state?: string;
-    zipCode?: number;
-    years?: string;
-    months?: number;
+    city?: string;
+    stateId?: number;
+    zipCode?: string;
+    totalYears?: string;
+    totalMonths?: string;
 }
