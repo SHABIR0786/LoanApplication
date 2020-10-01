@@ -18,9 +18,6 @@ namespace LoanManagement.Models
         public long? AdditionalIncomeId { get; set; }
         public virtual AdditionalIncome AdditionalIncome { get; set; }
 
-        public long? EmploymentIncomeId { get; set; }
-        public virtual EmploymentIncome EmploymentIncome { get; set; }
-
         public long? CreditAuthAgreementId { get; set; }
         public virtual CreditAuthAgreement CreditAuthAgreement { get; set; }
 

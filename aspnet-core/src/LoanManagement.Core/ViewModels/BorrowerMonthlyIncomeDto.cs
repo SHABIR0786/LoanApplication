@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities;
+﻿using Abp.Application.Services.Dto;
+using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
-    public class BorrowerMonthlyIncomeDto : FullAuditedEntity<long>
+    public class BorrowerMonthlyIncomeDto : EntityDto<long>
     {
 
         public int? Base { get; set; }

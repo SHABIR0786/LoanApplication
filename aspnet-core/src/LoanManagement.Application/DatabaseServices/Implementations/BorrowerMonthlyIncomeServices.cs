@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class BorrowerMonthlyIncomeServices : AbpServiceBase, IAdditionalDetailsService
+    public class BorrowerMonthlyIncomeServices : AbpServiceBase, IBorrowerMonthlyIncomeServices
     {
         private readonly IRepository<BorrowerMonthlyIncome, long> _repository;
 
