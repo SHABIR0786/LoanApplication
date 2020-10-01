@@ -77,7 +77,7 @@
                 inquiry and mortgage products and services at the telephone number provided. You agree that we, or one
                 of our authorized third parties, may contact you, including through automated means, via telephone or
                 mobile device, even if your telephone number is listed on a Do-Not-Call registry. This consent is not
-                required to obtain our goods and services. If you prefer to be contacted by other means, please contact
+                to obtain our goods and services. If you prefer to be contacted by other means, please contact
                 us via the information below.
             </p>
             <span>support@ezonlinemortgage.com</span>
@@ -88,5 +88,169 @@
                                       (onDataChange)="onChange($event, 'borrower')"
                                       class="col-12">
         </app-borrower-personal-detail>
+
+        <div class="col-12 mb-1 mt-3">
+            <h5>Borrower Residential Address</h5>
+        </div>
+
+        <div class="col-12 row" formGroupName="residentialAddress">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="addressLine1-residential">
+                        {{ "Address Line 1" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="addressLine1-residential"
+                           id="addressLine1-residential"
+                           formControlName="addressLine1" [(ngModel)]="data.residentialAddress.addressLine1"/>
+                    <validation-summary [control]="residentialAddressForm.controls.addressLine1"></validation-summary>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="addressLine2-residential">
+                        {{ "Address Line 2" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="addressLine2-residential"
+                           id="addressLine2-residential"
+                           formControlName="addressLine2" [(ngModel)]="data.residentialAddress.addressLine2"/>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="city-residential">
+                        {{ "City" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="city-residential" id="city-residential"
+                           formControlName="city" [(ngModel)]="data.residentialAddress.city"/>
+                    <validation-summary [control]="residentialAddressForm.controls.city"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="stateId-residential">
+                        {{ "State" | localize }}
+                    </label>
+                    <select class="form-control" name="stateId-residential" id="stateId-residential"
+                            formControlName="stateId" [(ngModel)]="data.residentialAddress.stateId">
+                        <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                    </select>
+                    <validation-summary [control]="residentialAddressForm.controls.stateId"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="zipCode-residential">
+                        {{ "Zip Code" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="zipCode-residential" id="zipCode-residential"
+                           formControlName="zipCode" [(ngModel)]="data.residentialAddress.zipCode"/>
+                    <validation-summary [control]="residentialAddressForm.controls.zipCode"></validation-summary>
+                </div>
+            </div>
+            <p class="col-12">
+                How long have you been at this address?
+            </p>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="totalYears-residential">
+                        {{ "Years" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="totalYears-residential" id="totalYears-residential"
+                           formControlName="totalYears" [(ngModel)]="data.residentialAddress.totalYears"/>
+                    <validation-summary [control]="residentialAddressForm.controls.totalYears"></validation-summary>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="totalMonths-residential">
+                        {{ "Months" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="totalMonths-residential" id="totalMonths-residential"
+                           formControlName="totalMonths" [(ngModel)]="data.residentialAddress.totalMonths"/>
+                    <validation-summary [control]="residentialAddressForm.controls.totalMonths"></validation-summary>
+                </div>
+            </div>
+            <p class="col-12">
+                We recommend entering at least your last 2 years of address history.
+            </p>
+        </div>
+
+        <div class="col-12 mb-1 mt-3">
+            <h5>Borrower Mailing Address</h5>
+        </div>
+
+        <div class="col-12 row">
+            <div class="col-12">
+                <label>Is the mailing address the same as the residential address?</label>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="isMailingAddressSameAsResidential"
+                           id="isMailingAddressSameAsResidentialYes"
+                           formControlName="isMailingAddressSameAsResidential" [value]="true"
+                           [(ngModel)]="data.isMailingAddressSameAsResidential">
+                    <label class="form-check-label" for="isMailingAddressSameAsResidentialYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="isMailingAddressSameAsResidential"
+                           id="isMailingAddressSameAsResidentialNo"
+                           formControlName="isMailingAddressSameAsResidential" [value]="false"
+                           [(ngModel)]="data.isMailingAddressSameAsResidential">
+                    <label class="form-check-label" for="isMailingAddressSameAsResidentialNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 row" formGroupName="mailingAddress" *ngIf="data.isMailingAddressSameAsResidential === false">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="addressLine1-mailing">
+                        {{ "Address Line 1" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="addressLine1-mailing"
+                           id="addressLine1-mailing"
+                           formControlName="addressLine1" [(ngModel)]="data.mailingAddress.addressLine1"/>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="addressLine2-mailing">
+                        {{ "Address Line 2" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="addressLine2-mailing"
+                           id="addressLine2-mailing"
+                           formControlName="addressLine2" [(ngModel)]="data.mailingAddress.addressLine2"/>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="city-mailing">
+                        {{ "City" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="city-mailing" id="city-mailing"
+                           formControlName="city" [(ngModel)]="data.mailingAddress.city"/>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="stateId-mailing">
+                        {{ "State" | localize }}
+                    </label>
+                    <select class="form-control" name="stateId-mailing" id="stateId-mailing"
+                            formControlName="stateId" [(ngModel)]="data.mailingAddress.stateId">
+                        <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="zipCode-mailing">
+                        {{ "Zip Code" | localize }}
+                    </label>
+                    <input type="text" class="form-control" name="zipCode-mailing" id="zipCode-mailing"
+                           formControlName="zipCode" [(ngModel)]="data.mailingAddress.zipCode"/>
+                </div>
+            </div>
+        </div>
     </div>
 </form>

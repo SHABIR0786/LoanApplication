@@ -1,4 +1,5 @@
 import {IBorrowerModel} from './IBorrowerModel';
+import {IAddressModel} from './IAddressModel';
 
 export interface IPersonalInformationModel {
     id?: number;
@@ -7,4 +8,8 @@ export interface IPersonalInformationModel {
     agreePrivacyPolicy?: boolean;
     borrower?: IBorrowerModel;
     coBorrower?: IBorrowerModel;
+    residentialAddress?: IAddressModel;
+    previousAddress?: IAddressModel;
+    mailingAddress?: IAddressModel;
+    isMailingAddressSameAsResidential?: boolean;
 }
