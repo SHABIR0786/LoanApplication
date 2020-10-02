@@ -209,7 +209,7 @@
             </div>
         </div>
 
-        <div class="col-12 row">
+        <div class="col-12 row" *ngIf="data.purposeOfLoan && data.purposeOfLoan !== 1">
             <div class="col-12">
                 <label>Do you have a second mortgage?</label>
             </div>
@@ -262,6 +262,27 @@
 
         <div class="col-12 mt-3 mb-1">
             <h5>Property Details</h5>
+        </div>
+
+        <div class="col-12 row" *ngIf="data.purposeOfLoan === 1">
+            <div class="col-12">
+                <label>Have you started looking for a home?
+                    <span class="text-danger">*</span>
+                </label>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="startedLookingForNewHome"
+                           id="startedLookingForNewHomeYes" formControlName="startedLookingForNewHome" [value]="true">
+                    <label class="form-check-label" for="startedLookingForNewHomeYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="startedLookingForNewHome"
+                           id="startedLookingForNewHomeNo" formControlName="startedLookingForNewHome" [value]="false">
+                    <label class="form-check-label" for="startedLookingForNewHomeNo">No</label>
+                </div>
+                <validation-summary [control]="form.controls.startedLookingForNewHome"></validation-summary>
+            </div>
         </div>
 
         <div class="col-12 row" *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3">
@@ -327,7 +348,7 @@
                    tooltip="Only the states in which we're licensed to do business are listed here.">
                 </i>
                 <select class="form-control" name="stateId" id="stateId"
-                        formControlName="stateId" required [(ngModel)]="data.stateId">
+                        formControlName="stateId" [(ngModel)]="data.stateId">
                     <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
                 </select>
                 <validation-summary [control]="form.controls.stateId"></validation-summary>
@@ -341,7 +362,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="propertyTypeId" id="propertyTypeId"
-                        formControlName="propertyTypeId" required [(ngModel)]="data.propertyTypeId">
+                        formControlName="propertyTypeId" [(ngModel)]="data.propertyTypeId">
                     <option [ngValue]="propertyType.id"
                             *ngFor="let propertyType of propertyTypes">{{propertyType.name}}</option>
                 </select>
@@ -356,7 +377,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="propertyUseId" id="propertyUseId"
-                        formControlName="propertyUseId" required [(ngModel)]="data.propertyUseId">
+                        formControlName="propertyUseId" [(ngModel)]="data.propertyUseId">
                     <option [ngValue]="propertyUse.id"
                             *ngFor="let propertyUse of propertyUses">{{propertyUse.name}}</option>
                 </select>

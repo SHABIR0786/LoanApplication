@@ -235,10 +235,7 @@
                                              (onDataChange)="onChange($event, 'declaration')"></app-declaration>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 9" description="Summary">
-                            <div class="col-12">
-                                <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                <button class="btn btn-primary float-right" (click)="submitForm()">Submit</button>
-                            </div>
+                            <app-summary (onSubmit)="submitForm()"></app-summary>
                         </ng-wizard-step>
                     </ng-wizard>
                 </div>

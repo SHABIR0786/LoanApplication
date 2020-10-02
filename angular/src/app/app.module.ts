@@ -43,12 +43,14 @@ import {NgWizardConfig, NgWizardModule, THEME} from 'ng-wizard';
 import {LoanDetailsComponent} from './loan-application/loan-details/loan-details.component';
 import {ValidationSummaryComponent} from './validation-summary/validation-summary.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
-import { PersonalInformationComponent } from './loan-application/personal-information/personal-information.component';
-import { ExpensesComponent } from './loan-application/expenses/expenses.component';
-import { BorrowerPersonalDetailComponent } from './loan-application/borrower-personal-detail/borrower-personal-detail.component';
-import { DeclarationComponent } from './loan-application/declaration/declaration.component';
-import { EmploymentIncomeComponent } from './loan-application/employment-income/employment-income.component';
+import {PersonalInformationComponent} from './loan-application/personal-information/personal-information.component';
+import {ExpensesComponent} from './loan-application/expenses/expenses.component';
+import {BorrowerPersonalDetailComponent} from './loan-application/borrower-personal-detail/borrower-personal-detail.component';
+import {DeclarationComponent} from './loan-application/declaration/declaration.component';
+import {EmploymentIncomeComponent} from './loan-application/employment-income/employment-income.component';
 import {AccordionModule} from 'ngx-bootstrap/accordion';
+import {SummaryComponent} from './loan-application/summary/summary.component';
+import {DataService} from './services/data.service';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -86,11 +88,12 @@ const ngWizardConfig: NgWizardConfig = {
         LoanApplicationComponent,
         LoanDetailsComponent,
         ValidationSummaryComponent,
-		PersonalInformationComponent,
+        PersonalInformationComponent,
         ExpensesComponent,
         BorrowerPersonalDetailComponent,
         DeclarationComponent,
         EmploymentIncomeComponent,
+        SummaryComponent,
     ],
     imports: [
         CommonModule,
@@ -110,7 +113,9 @@ const ngWizardConfig: NgWizardConfig = {
         NgWizardModule.forRoot(ngWizardConfig),
         AccordionModule.forRoot(),
     ],
-    providers: [],
+    providers: [
+        DataService
+    ],
     entryComponents: [
         // tenants
         CreateTenantDialogComponent,

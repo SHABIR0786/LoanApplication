@@ -2,6 +2,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 import {ILoanDetailModel} from '../../interfaces/ILoanDetailModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NgWizardService} from 'ng-wizard';
+import {DataService} from '../../services/data.service';
 
 @Component({
     selector: 'app-loan-details',
@@ -24,7 +25,10 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     propertyUses = [];
     loanOfficers = [];
 
-    constructor(private _ngWizardService: NgWizardService) {
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _dataService: DataService
+    ) {
     }
 
     ngOnInit(): void {
@@ -39,6 +43,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
+        this._dataService.updateValidations(this.form);
         if (this.form.valid) {
             this.onDataChange.next(this.form.value);
         }
@@ -63,6 +68,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             secondMortgageAmount: new FormControl(this.data.secondMortgageAmount),
             payLoanWithNewLoan: new FormControl(this.data.payLoanWithNewLoan),
 
+            startedLookingForNewHome: new FormControl(this.data.startedLookingForNewHome),
             refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
             yearAcquired: new FormControl(this.data.yearAcquired, [
                 Validators.pattern('^\\d{4}$'),
@@ -71,9 +77,9 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             ]),
             originalPrice: new FormControl(this.data.originalPrice),
             city: new FormControl(this.data.city),
-            stateId: new FormControl(this.data.stateId),
-            propertyTypeId: new FormControl(this.data.propertyTypeId),
-            propertyUseId: new FormControl(this.data.propertyUseId),
+            stateId: new FormControl(this.data.stateId, [Validators.required]),
+            propertyTypeId: new FormControl(this.data.propertyTypeId, [Validators.required]),
+            propertyUseId: new FormControl(this.data.propertyUseId, [Validators.required]),
         });
 
         const estimatedPurchasePriceControl = this.form.get('estimatedPurchasePrice');
@@ -83,12 +89,15 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
         const requestedLoanAmount = this.form.get('requestedLoanAmount');
 
+        const startedLookingForNewHome = this.form.get('startedLookingForNewHome');
+
         this.form.get('purposeOfLoan').valueChanges.subscribe(purposeOfLoan => {
 
             if (purposeOfLoan === 1) {
                 estimatedPurchasePriceControl.setValidators([Validators.required]);
                 downPaymentAmountControl.setValidators([Validators.required]);
                 sourceOfDownPaymentControl.setValidators([Validators.required]);
+                startedLookingForNewHome.setValidators([Validators.required]);
 
                 requestedLoanAmount.setValue(null);
                 requestedLoanAmount.setValidators(null);
@@ -102,6 +111,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
                 sourceOfDownPaymentControl.setValue(null);
                 sourceOfDownPaymentControl.setValidators(null);
                 downPaymentPercentage.setValue(null);
+                startedLookingForNewHome.setValidators(null);
+                startedLookingForNewHome.setValue(null);
 
                 requestedLoanAmount.setValidators([Validators.required]);
             }
@@ -110,6 +121,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             downPaymentAmountControl.updateValueAndValidity();
             sourceOfDownPaymentControl.updateValueAndValidity();
             requestedLoanAmount.updateValueAndValidity();
+            startedLookingForNewHome.updateValueAndValidity();
         });
 
         this.form.get('haveSecondMortgage').valueChanges.subscribe(haveSecondMortgage => {

@@ -18,6 +18,7 @@ export interface ILoanDetailModel {
     secondMortgageAmount?: number;
     payLoanWithNewLoan?: boolean;
 
+    startedLookingForNewHome?: boolean;
     refinancingCurrentHome?: boolean;
     yearAcquired?: string;
     originalPrice?: number;
