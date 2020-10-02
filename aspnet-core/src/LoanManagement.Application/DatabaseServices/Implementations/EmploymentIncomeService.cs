@@ -12,11 +12,16 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class EmploymentIncomeService : AbpServiceBase, IEmploymentIncomeService
     {
-        private readonly IRepository<BorrowerMonthlyIncome, long> _repository;
+        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationRepository;
+        private readonly IBorrowerMonthlyIncomeServices _borrowerMonthlyIncomeRepository;
 
-        public EmploymentIncomeService(IRepository<BorrowerMonthlyIncome, long> repository)
+        public EmploymentIncomeService(
+            IBorrowerEmploymentInformationAppService borrowerEmploymentInformationRepository,
+            IBorrowerMonthlyIncomeServices borrowerMonthlyIncomeRepository
+            )
         {
-            _repository = repository;
+            _borrowerEmploymentInformationRepository = borrowerEmploymentInformationRepository;
+            _borrowerMonthlyIncomeRepository = borrowerMonthlyIncomeRepository;
         }
 
         public async Task<EmploymentIncomeDto> GetAsync(EntityDto<long> input)
@@ -33,13 +38,43 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var employmentIncome = new BorrowerMonthlyIncome
+                #region Borrower Monthly Income
+                if (input.BorrowerMonthlyIncome != null)
                 {
-                };
-                await _repository.InsertAsync(employmentIncome);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
+                    if (input.BorrowerMonthlyIncome.Id == default)
+                        await _borrowerMonthlyIncomeRepository.CreateAsync(input.BorrowerMonthlyIncome);
+                    else
+                        await _borrowerMonthlyIncomeRepository.UpdateAsync(input.BorrowerMonthlyIncome);
+                }
+                #endregion
+                #region Co-Borrower Monthly Income
+                if (input.CoBorrowerMonthlyIncome != null)
+                {
+                    if (input.CoBorrowerMonthlyIncome.Id == default)
+                        await _borrowerMonthlyIncomeRepository.CreateAsync(input.CoBorrowerMonthlyIncome);
+                    else
+                        await _borrowerMonthlyIncomeRepository.UpdateAsync(input.CoBorrowerMonthlyIncome);
+                }
+                #endregion
+                #region Borrower Employment Information
+                if (input.BorrowerEmploymentInformations != null)
+                {
+                    if (input.BorrowerEmploymentInformations.Id == default)
+                        await _borrowerEmploymentInformationRepository.CreateAsync(input.BorrowerEmploymentInformations);
+                    else
+                        await _borrowerEmploymentInformationRepository.UpdateAsync(input.BorrowerEmploymentInformations);
+                }
+                #endregion
 
-                input.Id = employmentIncome.Id;
+                #region Co-BorrowerEmploymentInformation
+                if (input.CoBorrowerEmploymentInformations != null)
+                {
+                    if (input.CoBorrowerMonthlyIncome.Id == default)
+                        await _borrowerEmploymentInformationRepository.CreateAsync(input.CoBorrowerEmploymentInformations);
+                    else
+                        await _borrowerEmploymentInformationRepository.UpdateAsync(input.CoBorrowerEmploymentInformations);
+                }
+                #region
                 return input;
             }
             catch (Exception e)
@@ -50,13 +85,13 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<EmploymentIncomeDto> UpdateAsync(EmploymentIncomeDto input)
         {
-            await _repository.UpdateAsync(input.Id, employmentIncome =>
-            {
-                return Task.CompletedTask;
-            });
+            //await _repository.UpdateAsync(input.Id, employmentIncome =>
+            //{
+            //    return Task.CompletedTask;
+            //});
 
-            await UnitOfWorkManager.Current.SaveChangesAsync();
-            return input;
+            //await UnitOfWorkManager.Current.SaveChangesAsync();
+            return null;
         }
 
         public Task DeleteAsync(EntityDto<long> input)
