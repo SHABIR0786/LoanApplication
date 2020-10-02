@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-12 mb-1">
+        <h4>Summary</h4>
+        <hr class="mt-2 mb-3"/>
+    </div>
+
+    <div class="col-12">
+        <h5>Loan Details</h5>
+
+        <div class="row">
+            <div class="col-12">
+                Purpose of your Loan
+                <span class="text-danger" *ngIf="showGroupError('purposeOfLoan')">
+                    <i class="fa fa-info-circle ml-2"></i>
+                    Required
+                </span>
+            </div>
+            <div class="col-12">
+                Property Details
+                <span class="text-danger" *ngIf="showGroupError('propertyDetails')">
+                    <i class="fa fa-info-circle ml-2"></i>
+                    Required
+                </span>
+            </div>
+        </div>
+
+        <hr class="mt-2 mb-3"/>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
+        <button class="btn btn-primary float-right" (click)="submitForm()">Submit</button>
+    </div>
+</div>
