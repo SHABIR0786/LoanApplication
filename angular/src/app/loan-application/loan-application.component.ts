@@ -92,6 +92,15 @@ export class LoanApplicationComponent implements OnInit {
         return response;
     }
 
+    submitForm() {
+        const formData = this.sanitizeFormData();
+        this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
+            this.loanApplication = this.prepareFormData(response.result);
+        }, error => {
+            console.log(error);
+        });
+    }
+
     proceedToNext() {
         this._ngWizardService.next();
     }
