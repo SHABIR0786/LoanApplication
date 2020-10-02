@@ -10,38 +10,38 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailsService
+    public class CreditAuthAgreementService : AbpServiceBase, ICreditAuthAgreementService
     {
-        private readonly IRepository<AdditionalDetail, long> _repository;
+        private readonly IRepository<CreditAuthAgreement, long> _repository;
 
-        public AdditionalDetailServices(IRepository<AdditionalDetail, long> repository)
+        public CreditAuthAgreementService(IRepository<CreditAuthAgreement, long> repository)
         {
             _repository = repository;
         }
 
-        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long> input)
+        public async Task<CreditAuthAgreementDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<AdditionalDetailsDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<CreditAuthAgreementDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<AdditionalDetailsDto> CreateAsync(AdditionalDetailsDto input)
+        public async Task<CreditAuthAgreementDto> CreateAsync(CreditAuthAgreementDto input)
         {
             try
             {
-                var additionalDetail = new AdditionalDetail
+                var creditAuthAgreement = new CreditAuthAgreement
                 {
                     Id = input.Id,
-                    NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle
+                    AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement
                 };
-                await _repository.InsertAsync(additionalDetail);
+                await _repository.InsertAsync(creditAuthAgreement);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 
-                input.Id = additionalDetail.Id;
+                input.Id = creditAuthAgreement.Id;
                 return input;
             }
             catch (Exception e)
@@ -50,12 +50,12 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
         }
 
-        public async Task<AdditionalDetailsDto> UpdateAsync(AdditionalDetailsDto input)
+        public async Task<CreditAuthAgreementDto> UpdateAsync(CreditAuthAgreementDto input)
         {
-            await _repository.UpdateAsync(input.Id, additionalDetail =>
+            await _repository.UpdateAsync(input.Id, creditAuthAgreement =>
             {
-                additionalDetail.NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle;
-
+                creditAuthAgreement.Id = input.Id;
+                creditAuthAgreement.AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement;
                 return Task.CompletedTask;
             });
 

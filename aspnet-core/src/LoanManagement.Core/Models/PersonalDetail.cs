@@ -11,7 +11,7 @@ namespace LoanManagement.Models
         public bool? AgreePrivacyPolicy { get; set; }
         public Borrower Borrower { get; set; }
         public Borrower CoBorrower { get; set; }
-          public List<Address> Addresses { get; set; }
+        public List<Address> Addresses { get; set; }
 
     }
 }

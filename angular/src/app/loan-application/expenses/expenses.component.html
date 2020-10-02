@@ -34,6 +34,7 @@
         <div class="form-group">
             <label for="rent">
                 Rent
+                <span class="text-danger">*</span>
             </label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -51,6 +52,7 @@
                 <div class="form-group">
                     <label for="firstMortgage">
                         First Mortgage (P&I)
+                        <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -96,6 +98,7 @@
                 <div class="form-group">
                     <label for="realEstateTaxes">
                         Real Estate Taxes
+                        <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -111,6 +114,7 @@
                 <div class="form-group">
                     <label for="mortgageInsurance">
                         Mortgage Insurance
+                        <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -126,6 +130,7 @@
                 <div class="form-group">
                     <label for="homeOwnersAssociation">
                         Homeowners Association
+                        <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -143,6 +148,7 @@
         <div class="form-group">
             <label for="otherHousingExpenses">
                 Other Housing Expenses
+                <span class="text-danger">*</span>
             </label>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -153,5 +159,10 @@
             </div>
             <validation-summary [control]="form.controls.otherHousingExpenses"></validation-summary>
         </div>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
+        <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
     </div>
 </div>

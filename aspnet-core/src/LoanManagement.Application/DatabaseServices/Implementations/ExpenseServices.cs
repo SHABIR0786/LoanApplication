@@ -33,13 +33,23 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanDetail = new Expense
+                var expense = new Expense
                 {
+                    Id = input.Id,
+                    IsLiveWithFamilySelectRent = input.IsLiveWithFamilySelectRent,
+                    Rent = input.Rent,
+                    OtherHousingExpenses = input.OtherHousingExpenses,
+                    FirstMortgage = input.FirstMortgage,
+                    SecondMortgage = input.SecondMortgage,
+                    HazardInsurance = input.HazardInsurance,
+                    RealEstateTaxes = input.RealEstateTaxes,
+                    MortgageInsurance = input.MortgageInsurance,
+                    HomeOwnersAssociation = input.HomeOwnersAssociation,
                 };
-                await _repository.InsertAsync(loanDetail);
+                await _repository.InsertAsync(expense);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 
-                input.Id = loanDetail.Id;
+                input.Id = expense.Id;
                 return input;
             }
             catch (Exception e)
@@ -50,7 +60,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<ExpensesDto> UpdateAsync(ExpensesDto input)
         {
-            await _repository.UpdateAsync(input.Id, loanDetail =>
+            await _repository.UpdateAsync(input.Id, expense =>
             {
                 return Task.CompletedTask;
             });
