@@ -12,8 +12,6 @@
     <section class="content px-2">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header">
-                </div>
                 <div class="card-body">
                     <ng-wizard [config]="config">
                         <ng-wizard-step title="Step 1" description="Loan Details">
@@ -64,7 +62,8 @@
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
+                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next
+                                    </button>
                                 </div>
                             </div>
                         </ng-wizard-step>
@@ -85,7 +84,8 @@
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
+                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next
+                                    </button>
                                 </div>
                             </div>
                         </ng-wizard-step>
@@ -224,7 +224,8 @@
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
+                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next
+                                    </button>
                                 </div>
                             </div>
                         </ng-wizard-step>
@@ -234,6 +235,10 @@
                                              (onDataChange)="onChange($event, 'declaration')"></app-declaration>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 9" description="Summary">
+                            <div class="col-12">
+                                <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
+                                <button class="btn btn-primary float-right" (click)="submitForm()">Submit</button>
+                            </div>
                         </ng-wizard-step>
                     </ng-wizard>
                 </div>

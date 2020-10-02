@@ -363,11 +363,15 @@ export class DeclarationComponent implements OnInit, DoCheck {
         this.form.get(`${borrowerType}Demographic`).get('sex').setValue(values);
     }
 
-    // proceedToNext() {
-    //     if (this.form.valid) {
-    //         this._ngWizardService.next();
-    //     } else {
-    //         this.form.markAllAsTouched();
-    //     }
-    // }
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
+    }
 }
