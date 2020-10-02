@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationModel';
 import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
 import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicModel';
+import {NgWizardService} from 'ng-wizard';
 
 @Component({
     selector: 'app-declaration',
@@ -274,7 +275,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     private _isApplyingWithCoBorrower = false;
 
-    constructor() {
+    constructor(private _ngWizardService: NgWizardService) {
     }
 
     @Input() set isApplyingWithCoBorrower(value: boolean) {
@@ -360,5 +361,17 @@ export class DeclarationComponent implements OnInit, DoCheck {
             id: e.id
         }));
         this.form.get(`${borrowerType}Demographic`).get('sex').setValue(values);
+    }
+
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
     }
 }

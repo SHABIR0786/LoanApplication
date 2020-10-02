@@ -1,6 +1,7 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IExpenseModel} from '@app/interfaces/IExpenseModel';
+import {NgWizardService} from 'ng-wizard';
 
 @Component({
     selector: 'app-expenses',
@@ -14,7 +15,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     form: FormGroup;
 
-    constructor() {
+    constructor(private _ngWizardService: NgWizardService) {
     }
 
     ngOnInit(): void {
@@ -72,5 +73,17 @@ export class ExpensesComponent implements OnInit, DoCheck {
             this.form.get('mortgageInsurance').updateValueAndValidity();
             this.form.get('homeOwnersAssociation').updateValueAndValidity();
         });
+    }
+
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
     }
 }

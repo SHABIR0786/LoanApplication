@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201001212008_ChangesinModels")]
+    partial class ChangesinModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2088,6 +2090,58 @@ namespace LoanManagement.Migrations
                     b.ToTable("DeclarationBorrowereDemographicsInformations");
                 });
 
+            modelBuilder.Entity("LoanManagement.Models.EmploymentIncome", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerEmploymentInformationsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerMonthlyIncomeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInformationsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerMonthlyIncomeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowerEmploymentInformationsId");
+
+                    b.HasIndex("BorrowerMonthlyIncomeId");
+
+                    b.HasIndex("CoBorrowerEmploymentInformationsId");
+
+                    b.HasIndex("CoBorrowerMonthlyIncomeId");
+
+                    b.ToTable("EmploymentIncomes");
+                });
+
             modelBuilder.Entity("LoanManagement.Models.Expense", b =>
                 {
                     b.Property<long>("Id")
@@ -2186,6 +2240,9 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<long?>("EmploymentIncomeId")
+                        .HasColumnType("bigint");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
@@ -2217,6 +2274,8 @@ namespace LoanManagement.Migrations
                     b.HasIndex("DeclarationBorrowereDemographicsInformationId");
 
                     b.HasIndex("DeclarationId");
+
+                    b.HasIndex("EmploymentIncomeId");
 
                     b.HasIndex("LoanDetailId");
 
@@ -2667,6 +2726,25 @@ namespace LoanManagement.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("LoanManagement.Models.EmploymentIncome", b =>
+                {
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInformations")
+                        .WithMany()
+                        .HasForeignKey("BorrowerEmploymentInformationsId");
+
+                    b.HasOne("LoanManagement.Models.BorrowerMonthlyIncome", "BorrowerMonthlyIncome")
+                        .WithMany()
+                        .HasForeignKey("BorrowerMonthlyIncomeId");
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInformations")
+                        .WithMany()
+                        .HasForeignKey("CoBorrowerEmploymentInformationsId");
+
+                    b.HasOne("LoanManagement.Models.BorrowerMonthlyIncome", "CoBorrowerMonthlyIncome")
+                        .WithMany()
+                        .HasForeignKey("CoBorrowerMonthlyIncomeId");
+                });
+
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
                 {
                     b.HasOne("LoanManagement.Models.AdditionalDetail", "AdditionalDetail")
@@ -2692,6 +2770,10 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.Declaration", "Declaration")
                         .WithMany()
                         .HasForeignKey("DeclarationId");
+
+                    b.HasOne("LoanManagement.Models.EmploymentIncome", "EmploymentIncome")
+                        .WithMany()
+                        .HasForeignKey("EmploymentIncomeId");
 
                     b.HasOne("LoanManagement.Models.LoanDetail", "LoanDetail")
                         .WithMany()

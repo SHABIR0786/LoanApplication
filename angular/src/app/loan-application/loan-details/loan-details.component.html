@@ -1,8 +1,5 @@
 <form [formGroup]="form">
     <div class="row">
-        <div class="col-12 mb-3">
-            <h4>My Loan Information</h4>
-        </div>
         <div class="col-12">
             <div class="form-group">
                 <label for="referredBy">
@@ -15,26 +12,34 @@
 
         <div class="col-12 row">
             <div class="col-12">
-                <label>Are you currently working with a EZ Online Mortgage loan officer?</label>
+                <label>
+                    Are you currently working with a EZ Online Mortgage loan officer?
+                    <span class="text-danger">*</span>
+                </label>
             </div>
             <div class="col-12 mb-2">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="isWorkingWithOfficer" id="isWorkingWithOfficerYes"
-                           formControlName="isWorkingWithOfficer" [value]="true" [(ngModel)]="data.isWorkingWithOfficer">
+                    <input class="form-check-input" type="radio" name="isWorkingWithOfficer"
+                           id="isWorkingWithOfficerYes"
+                           formControlName="isWorkingWithOfficer" [value]="true"
+                           [(ngModel)]="data.isWorkingWithOfficer">
                     <label class="form-check-label" for="isWorkingWithOfficerYes">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="isWorkingWithOfficer" id="isWorkingWithOfficerNo"
-                           formControlName="isWorkingWithOfficer" [value]="false" [(ngModel)]="data.isWorkingWithOfficer">
+                           formControlName="isWorkingWithOfficer" [value]="false"
+                           [(ngModel)]="data.isWorkingWithOfficer">
                     <label class="form-check-label" for="isWorkingWithOfficerNo">No</label>
                 </div>
             </div>
+            <validation-summary class="col-12" [control]="form.controls.isWorkingWithOfficer"></validation-summary>
         </div>
 
         <div class="col-12" *ngIf="data.isWorkingWithOfficer">
             <div class="form-group">
                 <label for="loanOfficerId">
                     {{ "Choose the loan officer below" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="loanOfficerId" id="loanOfficerId"
                         formControlName="loanOfficerId" required [(ngModel)]="data.loanOfficerId">
@@ -53,12 +58,14 @@
             <div class="form-group">
                 <label for="purposeOfLoan">
                     {{ "Loan Purpose" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="purposeOfLoan" id="purposeOfLoan"
                         formControlName="purposeOfLoan" required [(ngModel)]="data.purposeOfLoan">
                     <option [ngValue]="loanPurpose.id"
                             *ngFor="let loanPurpose of loanPurposes">{{loanPurpose.name}}</option>
                 </select>
+                <validation-summary [control]="form.controls.purposeOfLoan"></validation-summary>
             </div>
         </div>
 
@@ -66,6 +73,7 @@
             <div class="form-group">
                 <label for="estimatedPurchasePrice">
                     {{ "Estimated Purchase Price" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -82,6 +90,7 @@
             <div class="form-group">
                 <label for="downPaymentAmount">
                     {{ "Down Payment Amount" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -113,6 +122,7 @@
             <div class="form-group">
                 <label for="sourceOfDownPayment">
                     {{ "Source of Down Payment" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="sourceOfDownPayment" id="sourceOfDownPayment"
                         formControlName="sourceOfDownPayment" required [(ngModel)]="data.sourceOfDownPayment">
@@ -186,6 +196,7 @@
             <div class="form-group">
                 <label for="requestedLoanAmount">
                     {{ "Requested Loan Amount" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -198,7 +209,7 @@
             </div>
         </div>
 
-        <div class="col-12 row">
+        <div class="col-12 row" *ngIf="data.purposeOfLoan && data.purposeOfLoan !== 1">
             <div class="col-12">
                 <label>Do you have a second mortgage?</label>
             </div>
@@ -253,6 +264,27 @@
             <h5>Property Details</h5>
         </div>
 
+        <div class="col-12 row" *ngIf="data.purposeOfLoan === 1">
+            <div class="col-12">
+                <label>Have you started looking for a home?
+                    <span class="text-danger">*</span>
+                </label>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="startedLookingForNewHome"
+                           id="startedLookingForNewHomeYes" formControlName="startedLookingForNewHome" [value]="true">
+                    <label class="form-check-label" for="startedLookingForNewHomeYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="startedLookingForNewHome"
+                           id="startedLookingForNewHomeNo" formControlName="startedLookingForNewHome" [value]="false">
+                    <label class="form-check-label" for="startedLookingForNewHomeNo">No</label>
+                </div>
+                <validation-summary [control]="form.controls.startedLookingForNewHome"></validation-summary>
+            </div>
+        </div>
+
         <div class="col-12 row" *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3">
             <div class="col-12">
                 <label>Are you refinancing your current home?</label>
@@ -275,6 +307,7 @@
             <div class="form-group row">
                 <label for="yearAcquired" class="col-12">
                     {{ "When did you acquire this property?" | localize }}
+                    <span class="text-danger">*</span>
                     <span class="float-right">YYYY</span>
                 </label>
                 <div class="col-12">
@@ -309,12 +342,13 @@
             <div class="form-group">
                 <label for="stateId">
                     {{ "State" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <i class="fa fa-info-circle ml-2" aria-hidden="true"
                    tooltip="Only the states in which we're licensed to do business are listed here.">
                 </i>
                 <select class="form-control" name="stateId" id="stateId"
-                        formControlName="stateId" required [(ngModel)]="data.stateId">
+                        formControlName="stateId" [(ngModel)]="data.stateId">
                     <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
                 </select>
                 <validation-summary [control]="form.controls.stateId"></validation-summary>
@@ -325,9 +359,10 @@
             <div class="form-group">
                 <label for="propertyTypeId">
                     {{ "Property Type" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="propertyTypeId" id="propertyTypeId"
-                        formControlName="propertyTypeId" required [(ngModel)]="data.propertyTypeId">
+                        formControlName="propertyTypeId" [(ngModel)]="data.propertyTypeId">
                     <option [ngValue]="propertyType.id"
                             *ngFor="let propertyType of propertyTypes">{{propertyType.name}}</option>
                 </select>
@@ -339,14 +374,19 @@
             <div class="form-group">
                 <label for="propertyUseId">
                     {{ "Property Use" | localize }}
+                    <span class="text-danger">*</span>
                 </label>
                 <select class="form-control" name="propertyUseId" id="propertyUseId"
-                        formControlName="propertyUseId" required [(ngModel)]="data.propertyUseId">
+                        formControlName="propertyUseId" [(ngModel)]="data.propertyUseId">
                     <option [ngValue]="propertyUse.id"
                             *ngFor="let propertyUse of propertyUses">{{propertyUse.name}}</option>
                 </select>
                 <validation-summary [control]="form.controls.propertyUseId"></validation-summary>
             </div>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
         </div>
 
     </div>
