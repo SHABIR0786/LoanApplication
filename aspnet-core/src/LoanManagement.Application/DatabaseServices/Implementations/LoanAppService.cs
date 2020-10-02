@@ -20,6 +20,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         private readonly ICreditAuthAgreementService _creditAuthAgreementService;
         private readonly IEmploymentIncomeService _employmentIncomeService;
         private readonly IPersonalDetailService _personalDetailService;
+        private readonly IDeclarationService _declarationService;
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
@@ -29,7 +30,8 @@ namespace LoanManagement.DatabaseServices.Implementations
         IEConsentService eConsentService,
         ICreditAuthAgreementService creditAuthAgreementService,
         IEmploymentIncomeService employmentIncomeService,
-        IPersonalDetailService personalDetailService
+        IPersonalDetailService personalDetailService,
+        IDeclarationService declarationService
             )
         {
             _repository = repository;
@@ -40,6 +42,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _creditAuthAgreementService = creditAuthAgreementService;
             _employmentIncomeService = employmentIncomeService;
             _personalDetailService = personalDetailService;
+            _declarationService = declarationService;
         }
 
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long> input)
@@ -83,14 +86,17 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, loanApplication =>
             {
+                #region Loadn Detail
                 if (input.LoanDetail != null)
                 {
                     if (input.LoanDetail.Id == default)
-                         _loanDetailServices.CreateAsync(input.LoanDetail);
+                        _loanDetailServices.CreateAsync(input.LoanDetail);
                     else
                         _loanDetailServices.UpdateAsync(input.LoanDetail);
                 }
+                #endregion
 
+                #region Personal Information
                 if (input.PersonalInformation != null)
                 {
                     if (input.PersonalInformation.Id == default)
@@ -98,7 +104,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         _personalDetailService.UpdateAsync(input.PersonalInformation);
                 }
+                #endregion
 
+                #region Additional Details
                 if (input.AdditionalDetails != null)
                 {
                     if (input.PersonalInformation.Id == default)
@@ -106,7 +114,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         _additionalDetailsService.UpdateAsync(input.AdditionalDetails);
                 }
+                #endregion
 
+                #region Expenses
                 if (input.Expenses != null)
                 {
                     if (input.Expenses.Id == default)
@@ -114,7 +124,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         _expensesService.UpdateAsync(input.Expenses);
                 }
+                #endregion
 
+                #region EConsent
                 if (input.EConsent != null)
                 {
                     if (input.EConsent.Id == default)
@@ -122,7 +134,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         _eConsentService.UpdateAsync(input.EConsent);
                 }
+                #endregion
 
+                #region Credit AuthAgreement
                 if (input.CreditAuthAgreement != null)
                 {
                     if (input.CreditAuthAgreement.Id == default)
@@ -130,14 +144,24 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         _creditAuthAgreementService.UpdateAsync(input.CreditAuthAgreement);
                 }
+                #endregion
 
+                #region Declaration
+                if (input.Declaration != null)
+                {
+                    if (input.Declaration.Id == default)
+                        _declarationService.CreateAsync(input.Declaration);
+                    else
+                        _declarationService.UpdateAsync(input.Declaration);
+                }
+                #endregion
+
+                #region Employment Income
                 if (input.EmploymentIncome != null)
                 {
-                    if (input.EmploymentIncome.Id == default)
-                        _employmentIncomeService.CreateAsync(input.EmploymentIncome);
-                    else
-                        _employmentIncomeService.UpdateAsync(input.EmploymentIncome);
+                    _employmentIncomeService.CreateAsync(input.EmploymentIncome);
                 }
+                #endregion
                 return Task.CompletedTask;
             });
 
