@@ -1,6 +1,7 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IEmploymentIncomeModel} from '../../interfaces/IEmploymentIncomeModel';
+import {NgWizardService} from 'ng-wizard';
 
 @Component({
     selector: 'app-employment-income',
@@ -17,7 +18,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     incomeSources = [];
     private _isApplyingWithCoBorrower = false;
 
-    constructor() {
+    constructor(private _ngWizardService: NgWizardService) {
     }
 
     @Input() set isApplyingWithCoBorrower(value: boolean) {
@@ -193,5 +194,17 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     trackByFn(index: any, item: any) {
         return index;
+    }
+
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
     }
 }

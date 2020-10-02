@@ -9,7 +9,6 @@ import {ILoanApplicationModel} from '../interfaces/ILoanApplicationModel';
     styleUrls: ['./loan-application.component.css']
 })
 export class LoanApplicationComponent implements OnInit {
-    [x: string]: any;
 
     loanApplication: ILoanApplicationModel = {
         loanDetails: {},
@@ -39,9 +38,14 @@ export class LoanApplicationComponent implements OnInit {
     config: NgWizardConfig = {
         selected: 0,
         theme: THEME.default,
+        anchorSettings: {
+            enableAllAnchors: true
+        },
         toolbarSettings: {
+            showNextButton: false,
+            showPreviousButton: false,
             toolbarExtraButtons: [
-                {
+                /*{
                     text: 'Save', class: 'btn btn-info', event: () => {
                         const formData = this.sanitizeFormData();
                         this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
@@ -50,12 +54,12 @@ export class LoanApplicationComponent implements OnInit {
                             console.log(error);
                         });
                     }
-                }
+                }*/
             ]
         }
     };
 
-    constructor(private ngWizardService: NgWizardService, private _loanApplicationService: LoanApplicationService
+    constructor(private _ngWizardService: NgWizardService, private _loanApplicationService: LoanApplicationService
     ) {
     }
 
@@ -86,5 +90,13 @@ export class LoanApplicationComponent implements OnInit {
             }
         }
         return response;
+    }
+
+    proceedToNext() {
+        this._ngWizardService.next();
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
     }
 }
