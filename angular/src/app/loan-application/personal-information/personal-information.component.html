@@ -167,12 +167,106 @@
                     </label>
                     <input type="text" class="form-control" name="totalMonths-residential" id="totalMonths-residential"
                            formControlName="totalMonths" [(ngModel)]="data.residentialAddress.totalMonths"/>
-                    <validation-summary [control]="residentialAddressForm.controls.totalMonths"></validation-summary>
                 </div>
             </div>
-            <p class="col-12">
-                We recommend entering at least your last 2 years of address history.
-            </p>
+        </div>
+
+        <div class="col-12 row" formArrayName="previousAddresses">
+            <div class="col-12 row"
+                 *ngFor="let previousAddress of data.previousAddresses; let i = index; trackBy: trackByFn;">
+                <div class="col-12 mb-1 mt-3">
+                    <h5>Borrower Previous Address</h5>
+                </div>
+                <div class="col-12 row" [formGroupName]="i">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="addressLine1-{{i}}">
+                                {{ "Address Line 1" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="addressLine1-{{i}}"
+                                   id="addressLine1-{{i}}"
+                                   formControlName="addressLine1" [(ngModel)]="previousAddress.addressLine1"/>
+                            <validation-summary
+                                    [control]="getPreviousAddressForm(i).controls.addressLine1"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="addressLine2-{{i}}">
+                                {{ "Address Line 2" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="addressLine2-{{i}}"
+                                   id="addressLine2-{{i}}"
+                                   formControlName="addressLine2" [(ngModel)]="previousAddress.addressLine2"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="city-{{i}}">
+                                {{ "City" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="city-{{i}}" id="city-{{i}}"
+                                   formControlName="city" [(ngModel)]="previousAddress.city"/>
+                            <validation-summary
+                                    [control]="getPreviousAddressForm(i).controls.city"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="stateId-{{i}}">
+                                {{ "State" | localize }}
+                            </label>
+                            <select class="form-control" name="stateId-{{i}}" id="stateId-{{i}}"
+                                    formControlName="stateId" [(ngModel)]="previousAddress.stateId">
+                                <option [ngValue]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                            </select>
+                            <validation-summary
+                                    [control]="getPreviousAddressForm(i).controls.stateId"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="zipCode-{{i}}">
+                                {{ "Zip Code" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="zipCode-{{i}}" id="zipCode-{{i}}"
+                                   formControlName="zipCode" [(ngModel)]="previousAddress.zipCode"/>
+                            <validation-summary
+                                    [control]="getPreviousAddressForm(i).controls.zipCode"></validation-summary>
+                        </div>
+                    </div>
+                    <p class="col-12">
+                        How long have you been at this address?
+                    </p>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="totalYears-{{i}}">
+                                {{ "Years" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="totalYears-{{i}}" id="totalYears-{{i}}"
+                                   formControlName="totalYears" [(ngModel)]="previousAddress.totalYears"/>
+                            <validation-summary
+                                    [control]="getPreviousAddressForm(i).controls.totalYears"></validation-summary>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="totalMonths-{{i}}">
+                                {{ "Months" | localize }}
+                            </label>
+                            <input type="text" class="form-control" name="totalMonths-{{i}}" id="totalMonths-{{i}}"
+                                   formControlName="totalMonths" [(ngModel)]="previousAddress.totalMonths"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="col-12" *ngIf="previousAddressesFormArray.length < 2">
+            We recommend entering at least your last 2 years of address history.
+        </p>
+        <div class="col-12" *ngIf="previousAddressesFormArray.length < 2">
+            <button class="btn btn-primary" (click)="addPreviousAddress()">Add Previous Address</button>
         </div>
 
         <div class="col-12 mb-1 mt-3">
