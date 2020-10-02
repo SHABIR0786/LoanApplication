@@ -90,7 +90,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.LoanDetail != null)
                 {
                     if (input.LoanDetail.Id == default)
-                        _loanDetailServices.CreateAsync(input.LoanDetail);
+                         _loanDetailServices.CreateAsync(input.LoanDetail);
                     else
                         _loanDetailServices.UpdateAsync(input.LoanDetail);
                 }
