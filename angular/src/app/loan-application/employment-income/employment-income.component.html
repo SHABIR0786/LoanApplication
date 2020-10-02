@@ -19,7 +19,8 @@
         </p>
     </div>
     <div class="col-12" formArrayName="borrowerEmploymentInfo">
-        <div class="row" *ngFor="let employmentIncome of data.borrowerEmploymentInfo; let i = index; trackBy: trackByFn;">
+        <div class="row"
+             *ngFor="let employmentIncome of data.borrowerEmploymentInfo; let i = index; trackBy: trackByFn;">
             <div class="col-12">
                 <h6 class="pull-left float-left">{{employmentIncome.employerName || 'Employer ' + (i + 1)}}</h6>
                 <button class="btn btn-primary mr-1 float-right pull-right"
@@ -143,7 +144,9 @@
         </div>
     </div>
     <div class="col-12">
-        <button class="btn btn-primary" (click)="addBorrowerEmploymentInfo()">Add Another Employer</button>
+        <button class="btn btn-primary" (click)="addBorrowerEmploymentInfo()"
+                [disabled]="data.borrowerEmploymentInfo && data.borrowerEmploymentInfo.length >= 8">Add Another Employer
+        </button>
     </div>
     <!--Borrower Employment Information End-->
 
@@ -161,7 +164,8 @@
             </p>
         </div>
         <div class="col-12" formArrayName="coBorrowerEmploymentInfo">
-            <div class="row" *ngFor="let employmentIncome of data.coBorrowerEmploymentInfo; let i = index; trackBy: trackByFn">
+            <div class="row"
+                 *ngFor="let employmentIncome of data.coBorrowerEmploymentInfo; let i = index; trackBy: trackByFn">
                 <div class="col-12">
                     <h6 class="pull-left float-left">{{employmentIncome.employerName || 'Employer ' + (i + 1)}}</h6>
                     <button class="btn btn-primary mr-1 float-right pull-right"
@@ -291,7 +295,8 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" (click)="addCoBorrowerEmploymentInfo()">Add Another Employer</button>
+            <button class="btn btn-primary" (click)="addCoBorrowerEmploymentInfo()"
+                    [disabled]="data.coBorrowerEmploymentInfo && data.coBorrowerEmploymentInfo.length >= 8">Add Another Employer</button>
         </div>
     </div>
     <!--Co-Borrower Employment Information End-->

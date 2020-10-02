@@ -1,5 +1,5 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {IAddressModel} from '../../interfaces/IAddressModel';
@@ -16,6 +16,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         coBorrower: {},
         residentialAddress: {},
         mailingAddress: {},
+        previousAddresses: [],
     };
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
 
@@ -27,6 +28,18 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     get residentialAddressForm(): FormGroup {
         return this.form.get('residentialAddress') as FormGroup;
+    }
+
+    get previousAddressesFormArray(): FormArray {
+        return this.form.get('previousAddresses') as FormArray;
+    }
+
+    getPreviousAddressForm(index): FormGroup {
+        return this.previousAddressesFormArray.controls[index] as FormGroup;
+    }
+
+    addPreviousAddress() {
+        this.previousAddressesFormArray.push(this.initAddressForm({}, 3, true));
     }
 
     ngOnInit(): void {
@@ -60,6 +73,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             isMailingAddressSameAsResidential: new FormControl(this.data.isMailingAddressSameAsResidential),
             residentialAddress: this.initAddressForm(this.data.residentialAddress, 1, true),
             mailingAddress: this.initAddressForm(this.data.mailingAddress, 2, false),
+            previousAddresses: new FormArray([]),
         });
 
         this.form.get('isApplyingWithCoBorrower').valueChanges.subscribe(isApplyingWithCoBorrower => {
@@ -117,5 +131,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     onChange(event, key) {
         this.data[key] = event;
+    }
+
+    trackByFn(index: any, item: any) {
+        return index;
     }
 }

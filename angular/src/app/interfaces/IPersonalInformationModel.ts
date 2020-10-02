@@ -9,7 +9,7 @@ export interface IPersonalInformationModel {
     borrower?: IBorrowerModel;
     coBorrower?: IBorrowerModel;
     residentialAddress?: IAddressModel;
-    previousAddress?: IAddressModel;
+    previousAddresses?: IAddressModel[];
     mailingAddress?: IAddressModel;
     isMailingAddressSameAsResidential?: boolean;
 }
