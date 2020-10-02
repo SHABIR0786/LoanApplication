@@ -51,6 +51,7 @@ import {EmploymentIncomeComponent} from './loan-application/employment-income/em
 import {AccordionModule} from 'ngx-bootstrap/accordion';
 import {SummaryComponent} from './loan-application/summary/summary.component';
 import {DataService} from './services/data.service';
+import { EconsentComponent } from './loan-application/econsent/econsent.component';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -94,6 +95,7 @@ const ngWizardConfig: NgWizardConfig = {
         DeclarationComponent,
         EmploymentIncomeComponent,
         SummaryComponent,
+        EconsentComponent,
     ],
     imports: [
         CommonModule,
