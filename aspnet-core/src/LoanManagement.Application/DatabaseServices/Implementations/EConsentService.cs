@@ -10,36 +10,38 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class EmploymentIncomeService : AbpServiceBase, IEmploymentIncomeService
+    public class EConsentService : AbpServiceBase, IEConsentService
     {
-        private readonly IRepository<BorrowerMonthlyIncome, long> _repository;
+        private readonly IRepository<ConsentDetail, long> _repository;
 
-        public EmploymentIncomeService(IRepository<BorrowerMonthlyIncome, long> repository)
+        public EConsentService(IRepository<ConsentDetail, long> repository)
         {
             _repository = repository;
         }
 
-        public async Task<EmploymentIncomeDto> GetAsync(EntityDto<long> input)
+        public async Task<EConsentDto> GetAsync(EntityDto<long> input)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<EmploymentIncomeDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
+        public Task<PagedResultDto<EConsentDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<EmploymentIncomeDto> CreateAsync(EmploymentIncomeDto input)
+        public async Task<EConsentDto> CreateAsync(EConsentDto input)
         {
             try
             {
-                var employmentIncome = new BorrowerMonthlyIncome
+                var consentDetail = new ConsentDetail
                 {
+                    Id = input.Id,
+                    AgreeEConsent = input.AgreeEConsent,
                 };
-                await _repository.InsertAsync(employmentIncome);
+                await _repository.InsertAsync(consentDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 
-                input.Id = employmentIncome.Id;
+                input.Id = consentDetail.Id;
                 return input;
             }
             catch (Exception e)
@@ -48,10 +50,12 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
         }
 
-        public async Task<EmploymentIncomeDto> UpdateAsync(EmploymentIncomeDto input)
+        public async Task<EConsentDto> UpdateAsync(EConsentDto input)
         {
-            await _repository.UpdateAsync(input.Id, employmentIncome =>
+            await _repository.UpdateAsync(input.Id, consentDetail =>
             {
+                consentDetail.Id = input.Id;
+                consentDetail.AgreeEConsent = input.AgreeEConsent;
                 return Task.CompletedTask;
             });
 

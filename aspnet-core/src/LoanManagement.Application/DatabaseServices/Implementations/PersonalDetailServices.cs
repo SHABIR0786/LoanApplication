@@ -35,6 +35,10 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var personalDetail = new PersonalDetail
                 {
+                    Id = input.Id,
+                    IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
+                    UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
+                    AgreePrivacyPolicy = input.AgreePrivacyPolicy
                 };
                 await _repository.InsertAsync(personalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -52,6 +56,10 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, personalDetail =>
             {
+                personalDetail.Id = input.Id;
+                personalDetail.IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower;
+                personalDetail.UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower;
+                personalDetail.AgreePrivacyPolicy = input.AgreePrivacyPolicy;
                 return Task.CompletedTask;
             });
 
