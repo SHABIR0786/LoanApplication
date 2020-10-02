@@ -46,6 +46,7 @@
                     <div class="form-group">
                         <label for="employerName-borrower-{{i}}">
                             {{ "Employer Name" | localize }}
+                            <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control" name="employerName-borrower"
                                id="employerName-borrower-{{i}}"
@@ -59,6 +60,7 @@
                     <div class="form-group">
                         <label for="position-borrower-{{i}}">
                             {{ "Position" | localize }}
+                            <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control" name="position-borrower" id="position-borrower-{{i}}"
                                formControlName="position" [(ngModel)]="employmentIncome.position"/>
@@ -123,6 +125,7 @@
                     <div class="form-group">
                         <label for="startDate-borrower-{{i}}">
                             {{ "Start Date" | localize }}
+                            <span class="text-danger">*</span>
                         </label>
                         <input type="date" class="form-control" name="startDate-borrower" id="startDate-borrower-{{i}}"
                                formControlName="startDate" [(ngModel)]="employmentIncome.startDate"/>
@@ -191,6 +194,7 @@
                         <div class="form-group">
                             <label for="employerName-coBorrower-{{i}}">
                                 {{ "Employer Name" | localize }}
+                                <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control" name="employerName-coBorrower"
                                    id="employerName-coBorrower-{{i}}"
@@ -204,6 +208,7 @@
                         <div class="form-group">
                             <label for="position-coBorrower-{{i}}">
                                 {{ "Position" | localize }}
+                                <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control" name="position-coBorrower"
                                    id="position-coBorrower-{{i}}"
@@ -272,6 +277,7 @@
                         <div class="form-group">
                             <label for="startDate-coBorrower-{{i}}">
                                 {{ "Start Date" | localize }}
+                                <span class="text-danger">*</span>
                             </label>
                             <input type="date" class="form-control" name="startDate-coBorrower"
                                    id="startDate-coBorrower-{{i}}"
@@ -296,7 +302,9 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" (click)="addCoBorrowerEmploymentInfo()"
-                    [disabled]="data.coBorrowerEmploymentInfo && data.coBorrowerEmploymentInfo.length >= 8">Add Another Employer</button>
+                    [disabled]="data.coBorrowerEmploymentInfo && data.coBorrowerEmploymentInfo.length >= 8">Add Another
+                Employer
+            </button>
         </div>
     </div>
     <!--Co-Borrower Employment Information End-->
@@ -646,4 +654,9 @@
         </div>
     </div>
     <!--Additional Income End-->
+
+    <div class="col-12">
+        <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
+        <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next</button>
+    </div>
 </div>

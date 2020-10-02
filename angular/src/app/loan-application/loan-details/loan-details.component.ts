@@ -1,6 +1,7 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ILoanDetailModel} from '../../interfaces/ILoanDetailModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {NgWizardService} from 'ng-wizard';
 
 @Component({
     selector: 'app-loan-details',
@@ -23,7 +24,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     propertyUses = [];
     loanOfficers = [];
 
-    constructor() {
+    constructor(private _ngWizardService: NgWizardService) {
     }
 
     ngOnInit(): void {
@@ -134,6 +135,14 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             }
             this.form.get('loanOfficerId').updateValueAndValidity();
         });
+    }
+
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
     }
 
     loadLoanPurposes() {

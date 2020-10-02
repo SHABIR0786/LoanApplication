@@ -3,6 +3,7 @@ import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {IAddressModel} from '../../interfaces/IAddressModel';
+import {NgWizardService} from 'ng-wizard';
 
 @Component({
     selector: 'app-personal-information',
@@ -23,7 +24,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     form: FormGroup;
     states = [];
 
-    constructor() {
+    constructor(private _ngWizardService: NgWizardService) {
     }
 
     get residentialAddressForm(): FormGroup {
@@ -135,5 +136,17 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     trackByFn(index: any, item: any) {
         return index;
+    }
+
+    proceedToNext() {
+        if (this.form.valid) {
+            this._ngWizardService.next();
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    proceedToPrevious() {
+        this._ngWizardService.previous();
     }
 }
