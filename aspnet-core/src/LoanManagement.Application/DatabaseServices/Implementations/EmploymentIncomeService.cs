@@ -74,7 +74,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     else
                         await _borrowerEmploymentInformationRepository.UpdateAsync(input.CoBorrowerEmploymentInformations);
                 }
-                #region
+                #endregion
                 return input;
             }
             catch (Exception e)
