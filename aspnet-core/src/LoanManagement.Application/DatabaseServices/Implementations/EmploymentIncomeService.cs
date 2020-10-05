@@ -1,10 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
-using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
-using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
