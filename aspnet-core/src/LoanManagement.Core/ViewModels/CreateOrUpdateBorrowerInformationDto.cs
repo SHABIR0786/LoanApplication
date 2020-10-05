@@ -12,7 +12,7 @@ namespace LoanManagement.ViewModels
         [StringLength(100)]
         public string SocialSecurityNumber { get; set; }
         public string HomePhone { get; set; }
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public int? YearsSchool { get; set; }
         public string Marital { get; set; }
         public string PresentAddress { get; set; }
