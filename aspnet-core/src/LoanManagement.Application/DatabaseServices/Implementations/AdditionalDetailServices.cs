@@ -35,7 +35,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 var additionalDetail = new AdditionalDetail
                 {
                     Id = input.Id,
-                    NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle
+                    NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
                 };
                 await _repository.InsertAsync(additionalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();

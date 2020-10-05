@@ -21,24 +21,17 @@ namespace LoanManagement.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] LoanApplicationDto input)
         {
-            try
+            if (input == null || !ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (input.Id == default)
             {
-                if (input == null || !ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                if (input.Id == default)
-                {
-                    await _loanAppService.CreateAsync(input);
-                }
-
-                await _loanAppService.UpdateAsync(input);
-
-                return Json(input);
+                await _loanAppService.CreateAsync(input);
             }
-            catch (Exception e)
-            {
-                throw e;
-            }
+
+            await _loanAppService.UpdateAsync(input);
+
+            return Json(input);
         }
 
         [HttpGet]
