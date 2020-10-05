@@ -8,7 +8,7 @@ namespace LoanManagement.ViewModels
         public string BorrowersName { get; set; }
         public string SocialSecurityNumber { get; set; }
         public string HomePhone { get; set; }
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public int? YearsSchool { get; set; }
         public string Marital { get; set; }
         public string PresentAddress { get; set; }
@@ -18,7 +18,7 @@ namespace LoanManagement.ViewModels
         public string FormerAddressModel { get; set; }
         public string FormerAddressType { get; set; }
         public int? FormerAddressNoOfYears { get; set; }
-        public int BorrowerTypeId { get; set; }
+        public int? BorrowerTypeId { get; set; }
         public int? TenantId { get; set; }
         public string BorrowerType { get; set; }
     }

@@ -16,6 +16,6 @@ namespace LoanManagement.Models
 
         [ForeignKey("BorrowerTypeId")]
         public BorrowerType BorrowerType { get; set; }
-        public int BorrowerTypeId { get; set; }
+        public int? BorrowerTypeId { get; set; }
     }
 }
