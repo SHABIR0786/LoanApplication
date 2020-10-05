@@ -13,6 +13,6 @@ namespace LoanManagement.Models
         public int? RealEstateTaxes { get; set; }
         public int? MortgageInsurance { get; set; }
         public int? HomeOwnersAssociation { get; set; }
-
+        public LoanApplication LoanApplication { get; set; }
     }
 }

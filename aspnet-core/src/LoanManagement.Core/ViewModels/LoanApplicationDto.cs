@@ -17,6 +17,5 @@ namespace LoanManagement.ViewModels
 
         public DeclarationDto Declaration { get; set; }
         public DeclarationBorrowereDemographicsInformationDto DeclarationBorrowereDemographicsInformation { get; set; }
-
     }
 }

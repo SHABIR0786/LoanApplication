@@ -83,15 +83,18 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<LoanApplicationDto> UpdateAsync(LoanApplicationDto input)
         {
-            await _repository.UpdateAsync(input.Id, loanApplication =>
+            await _repository.UpdateAsync(input.Id, async loanApplication =>
             {
                 #region Loan Detail
                 if (input.LoanDetails != null)
                 {
                     if (input.LoanDetails.Id == default)
-                        _loanDetailServices.CreateAsync(input.LoanDetails);
+                    {
+                        input.LoanDetails = await _loanDetailServices.CreateAsync(input.LoanDetails);
+                        loanApplication.LoanDetailId = input.LoanDetails.Id;
+                    }
                     else
-                        _loanDetailServices.UpdateAsync(input.LoanDetails);
+                        await _loanDetailServices.UpdateAsync(input.LoanDetails);
                 }
                 #endregion
 
@@ -99,9 +102,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.PersonalInformation != null)
                 {
                     if (input.PersonalInformation.Id == default)
-                        _personalDetailService.CreateAsync(input.PersonalInformation);
+                    {
+                        input.PersonalInformation = await _personalDetailService.CreateAsync(input.PersonalInformation);
+                        loanApplication.PersonalDetailId = input.PersonalInformation.Id;
+                    }
                     else
-                        _personalDetailService.UpdateAsync(input.PersonalInformation);
+                        await _personalDetailService.UpdateAsync(input.PersonalInformation);
                 }
                 #endregion
 
@@ -109,9 +115,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.AdditionalDetails != null)
                 {
                     if (input.AdditionalDetails.Id == default)
-                        _additionalDetailsService.CreateAsync(input.AdditionalDetails);
+                    {
+                        input.AdditionalDetails = await _additionalDetailsService.CreateAsync(input.AdditionalDetails);
+                        loanApplication.AdditionalDetailsId = input.AdditionalDetails.Id;
+                    }
                     else
-                        _additionalDetailsService.UpdateAsync(input.AdditionalDetails);
+                        await _additionalDetailsService.UpdateAsync(input.AdditionalDetails);
                 }
                 #endregion
 
@@ -119,9 +128,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.Expenses != null)
                 {
                     if (input.Expenses.Id == default)
-                        _expensesService.CreateAsync(input.Expenses);
+                    {
+                        input.Expenses = await _expensesService.CreateAsync(input.Expenses);
+                        loanApplication.ExpenseId = input.Expenses.Id;
+                    }
                     else
-                        _expensesService.UpdateAsync(input.Expenses);
+                        await _expensesService.UpdateAsync(input.Expenses);
                 }
                 #endregion
 
@@ -129,9 +141,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.EConsent != null)
                 {
                     if (input.EConsent.Id == default)
-                        _eConsentService.CreateAsync(input.EConsent);
+                    {
+                        input.EConsent = await _eConsentService.CreateAsync(input.EConsent);
+                        loanApplication.ConsentDetail.Id = input.EConsent.Id;
+                    }
                     else
-                        _eConsentService.UpdateAsync(input.EConsent);
+                        await _eConsentService.UpdateAsync(input.EConsent);
                 }
                 #endregion
 
@@ -139,9 +154,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.CreditAuthAgreement != null)
                 {
                     if (input.CreditAuthAgreement.Id == default)
-                        _creditAuthAgreementService.CreateAsync(input.CreditAuthAgreement);
+                    {
+                        input.CreditAuthAgreement = await _creditAuthAgreementService.CreateAsync(input.CreditAuthAgreement);
+                        loanApplication.CreditAuthAgreement.Id = input.CreditAuthAgreement.Id;
+                    }
                     else
-                        _creditAuthAgreementService.UpdateAsync(input.CreditAuthAgreement);
+                        await _creditAuthAgreementService.UpdateAsync(input.CreditAuthAgreement);
                 }
                 #endregion
 
@@ -149,19 +167,21 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.Declaration != null)
                 {
                     if (input.Declaration.Id == default)
-                        _declarationService.CreateAsync(input.Declaration);
+                    {
+                        input.Declaration = await _declarationService.CreateAsync(input.Declaration);
+                        loanApplication.Declaration.Id = input.Declaration.Id;
+                    }
                     else
-                        _declarationService.UpdateAsync(input.Declaration);
+                        await _declarationService.UpdateAsync(input.Declaration);
                 }
                 #endregion
 
                 #region Employment Income
                 if (input.EmploymentIncome != null)
                 {
-                    _employmentIncomeService.CreateAsync(input.EmploymentIncome);
+                    input.EmploymentIncome = await _employmentIncomeService.CreateAsync(input.EmploymentIncome);
                 }
                 #endregion
-                return Task.CompletedTask;
             });
 
             await UnitOfWorkManager.Current.SaveChangesAsync();

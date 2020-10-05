@@ -39,11 +39,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.BorrowerMonthlyIncome != null)
                 {
                     if (input.BorrowerMonthlyIncome.Id == default)
+                    {
                         await _borrowerMonthlyIncomeRepository.CreateAsync(input.BorrowerMonthlyIncome);
+                    }
                     else
                         await _borrowerMonthlyIncomeRepository.UpdateAsync(input.BorrowerMonthlyIncome);
                 }
                 #endregion
+
                 #region Co-Borrower Monthly Income
                 if (input.CoBorrowerMonthlyIncome != null)
                 {

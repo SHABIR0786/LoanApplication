@@ -29,6 +29,9 @@ namespace LoanManagement.Models
         public long? DeclarationBorrowereDemographicsInformationId { get; set; }
         public virtual DeclarationBorrowereDemographicsInformation DeclarationBorrowereDemographicsInformation { get; set; }
 
+        public long? ExpenseId { get; set; }
+        public Expense Expense { get; set; }
+
         public int? TenantId { get; set; }
     }
 }
