@@ -16,13 +16,12 @@ namespace LoanManagement.Models
 
         public string SocialSecurityNumber { get; set; }
 
-        public int MaritalStatusId { get; set; }
+        public int? MaritalStatusId { get; set; }
 
-        public int NumberOfDependents { get; set; }
+        public int? NumberOfDependents { get; set; }
 
         public string CellPhone { get; set; }
 
         public string HomePhone { get; set; }
-
     }
 }
