@@ -2,6 +2,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IExpenseModel} from '@app/interfaces/IExpenseModel';
 import {NgWizardService} from 'ng-wizard';
+import {DataService} from '../../services/data.service';
 
 @Component({
     selector: 'app-expenses',
@@ -15,7 +16,10 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     form: FormGroup;
 
-    constructor(private _ngWizardService: NgWizardService) {
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _dataService: DataService
+    ) {
     }
 
     ngOnInit(): void {
@@ -24,6 +28,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
+        this._dataService.updateValidations(this.form, 'monthlyHousingExpenses');
         if (this.form.valid) {
             this.onDataChange.next(this.form.value);
         }

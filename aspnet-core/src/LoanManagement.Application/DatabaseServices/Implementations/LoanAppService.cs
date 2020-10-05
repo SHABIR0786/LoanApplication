@@ -14,8 +14,8 @@ namespace LoanManagement.DatabaseServices.Implementations
     {
         private readonly IRepository<LoanApplication, long> _repository;
         private readonly ILoanDetailServices _loanDetailServices;
-        private readonly IAdditionalDetailsService _additionalDetailsService;
-        private readonly IExpensesService _expensesService;
+        private readonly IAdditionalDetailService _additionalDetailsService;
+        private readonly IExpenseService _expensesService;
         private readonly IEConsentService _eConsentService;
         private readonly ICreditAuthAgreementService _creditAuthAgreementService;
         private readonly IEmploymentIncomeService _employmentIncomeService;
@@ -24,14 +24,14 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
-        ILoanDetailServices loanDetailServices,
-        IAdditionalDetailsService additionalDetailsService,
-        IExpensesService expensesService,
-        IEConsentService eConsentService,
-        ICreditAuthAgreementService creditAuthAgreementService,
-        IEmploymentIncomeService employmentIncomeService,
-        IPersonalDetailService personalDetailService,
-        IDeclarationService declarationService
+            ILoanDetailServices loanDetailServices,
+            IAdditionalDetailService additionalDetailsService,
+            IExpenseService expensesService,
+            IEConsentService eConsentService,
+            ICreditAuthAgreementService creditAuthAgreementService,
+            IEmploymentIncomeService employmentIncomeService,
+            IPersonalDetailService personalDetailService,
+            IDeclarationService declarationService
             )
         {
             _repository = repository;
@@ -72,7 +72,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 var loanApplication = new LoanApplication();
                 await _repository.InsertAsync(loanApplication);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
-
                 input.Id = loanApplication.Id;
                 return input;
             }
@@ -86,13 +85,13 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, loanApplication =>
             {
-                #region Loadn Detail
-                if (input.LoanDetail != null)
+                #region Loan Detail
+                if (input.LoanDetails != null)
                 {
-                    if (input.LoanDetail.Id == default)
-                         _loanDetailServices.CreateAsync(input.LoanDetail);
+                    if (input.LoanDetails.Id == default)
+                        _loanDetailServices.CreateAsync(input.LoanDetails);
                     else
-                        _loanDetailServices.UpdateAsync(input.LoanDetail);
+                        _loanDetailServices.UpdateAsync(input.LoanDetails);
                 }
                 #endregion
 
@@ -109,7 +108,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Additional Details
                 if (input.AdditionalDetails != null)
                 {
-                    if (input.PersonalInformation.Id == default)
+                    if (input.AdditionalDetails.Id == default)
                         _additionalDetailsService.CreateAsync(input.AdditionalDetails);
                     else
                         _additionalDetailsService.UpdateAsync(input.AdditionalDetails);

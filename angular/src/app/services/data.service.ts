@@ -1,23 +1,39 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 
 @Injectable()
 export class DataService {
 
-    validationSource = new BehaviorSubject<any[]>([]);
+    errors = {};
+    validationSource = new BehaviorSubject<any>(this.errors);
     validations = this.validationSource.asObservable();
 
     constructor() {
     }
 
-    updateValidations(formGroup: FormGroup) {
+    updateValidations(formGroup: FormGroup, formName: string) {
         if (formGroup) {
-            const errors = Object.keys(formGroup.controls).map(key => ({
-                controlName: key,
-                error: formGroup.controls[key].errors !== null
-            })).filter(error => error.error);
-            this.validationSource.next(errors);
+            this.errors[formName] = Object.keys(formGroup.controls)
+                .map(key => ({
+                    controlName: key,
+                    error: formGroup.controls[key].errors !== null
+                })).filter(error => error.error);
+            this.validationSource.next(this.errors);
+        }
+    }
+
+    updateValidationsFormArr(formArray: FormArray, formName: string) {
+        if (formArray && formArray.length) {
+            const arr = formArray.controls.map((formGroup: FormGroup) => {
+                return Object.keys(formGroup.controls)
+                    .map(key => ({
+                        controlName: key,
+                        error: formGroup.controls[key].errors !== null
+                    })).filter(error => error.error);
+            });
+            this.errors[formName] = [].concat.apply([], arr);
+            this.validationSource.next(this.errors);
         }
     }
 }

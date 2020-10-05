@@ -1,6 +1,6 @@
 import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService} from 'ng-wizard';
+import {NgWizardService, STEP_STATE} from 'ng-wizard';
 import {IConsentModel} from '../../interfaces/IConsentModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 

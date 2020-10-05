@@ -4,13 +4,12 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailsService
+    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailService
     {
         private readonly IRepository<AdditionalDetail, long> _repository;
 

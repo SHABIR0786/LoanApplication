@@ -10,7 +10,8 @@ import {DataService} from '../../services/data.service';
 export class SummaryComponent implements OnInit {
 
     @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
-    errors: string[] = [];
+    @Output() proceedToStep: EventEmitter<any> = new EventEmitter<any>();
+    errors = {};
 
     constructor(
         private _ngWizardService: NgWizardService,
@@ -45,16 +46,38 @@ export class SummaryComponent implements OnInit {
                     'downPaymentAmount',
                     'sourceOfDownPayment',
                 ];
-                return this.errors.some((error: any) => fields.includes(error.controlName));
+                return (this.errors['loanDetails'] || []).some((error: any) => fields.includes(error.controlName));
             case 'propertyDetails':
                 fields = [
                     'stateId',
                     'propertyTypeId',
                     'propertyUseId',
                 ];
-                return this.errors.some((error: any) => fields.includes(error.controlName));
+                return (this.errors['loanDetails'] || []).some((error: any) => fields.includes(error.controlName));
+            case 'jointCredit':
+                fields = [
+                    'isApplyingWithCoBorrower',
+                    'useIncomeOfPersonOtherThanBorrower',
+                ];
+                return (this.errors['jointCredit'] || []).some((error: any) => fields.includes(error.controlName));
+            case 'borrowerPersonalInformation':
+                return (this.errors['borrowerPersonalInformation'] || []).length;
+            case 'residentialAddress':
+                return (this.errors['residentialAddress'] || []).length;
+            case 'monthlyHousingExpenses':
+                return (this.errors['monthlyHousingExpenses'] || []).length;
+            case 'borrowerEmploymentIncome':
+                return (this.errors['borrowerEmploymentIncome'] || []).length;
         }
 
         return false;
+    }
+
+    hasAnyErrors() {
+        return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
+    }
+
+    goToStep(index: number) {
+        this.proceedToStep.emit(index - 1);
     }
 }
