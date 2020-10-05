@@ -49,6 +49,6 @@ namespace LoanManagement.ViewModels
         public int? PropertyTypeId { get; set; }
 
         public int? PropertyUseId { get; set; }
-        public long LoanApplicationId { get; set; }
+        public long? LoanApplicationId { get; set; }
     }
 }
