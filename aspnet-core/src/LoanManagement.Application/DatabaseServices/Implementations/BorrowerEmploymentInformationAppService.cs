@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class BorrowerEploymentInformationServices : AbpServiceBase, IBorrowerEmploymentInformationAppService
+    public class BorrowerEmploymentInformationAppService : AbpServiceBase, IBorrowerEmploymentInformationAppService
     {
         private readonly IRepository<BorrowerEmploymentInformation, long> _repository;
 
-        public BorrowerEploymentInformationServices(IRepository<BorrowerEmploymentInformation, long> repository)
+        public BorrowerEmploymentInformationAppService(IRepository<BorrowerEmploymentInformation, long> repository)
         {
             _repository = repository;
         }
