@@ -4,6 +4,6 @@ namespace LoanManagement.ViewModels
 {
     public class EConsentDto : EntityDto<long>
     {
-        public bool AgreeEConsent { get; set; }
+        public bool? AgreeEConsent { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace LoanManagement.LoanApplications.Dto
         public string PurposeOfLoanExplain { get; set; }
         public string PropertyWillBe { get; set; }
         public string YearLotAcquired { get; set; }
-        public double OriginalCost { get; set; }
-        public double AmountExistingLiens { get; set; }
-        public double PresentValueOfLot { get; set; }
-        public double CostOfImprovements { get; set; }
+        public double? OriginalCost { get; set; }
+        public double? AmountExistingLiens { get; set; }
+        public double? PresentValueOfLot { get; set; }
+        public double? CostOfImprovements { get; set; }
         public string YearAcquiredRefinance { get; set; }
-        public double OriginalCostRefinance { get; set; }
-        public double AmountExistingLiensRefinance { get; set; }
+        public double? OriginalCostRefinance { get; set; }
+        public double? AmountExistingLiensRefinance { get; set; }
         public string PurposeOfRefinance { get; set; }
         public string ImprovementsRefinance { get; set; }
         public string ImprovementCostRefinance { get; set; }
