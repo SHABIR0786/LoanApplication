@@ -9,8 +9,9 @@ namespace LoanManagement.Models
         public bool? UseIncomeOfPersonOtherThanBorrower { get; set; }
         public bool? AgreePrivacyPolicy { get; set; }
         [CanBeNull]
-        public Borrower Borrower { get; set; }
+        public BorrowerDto Borrower { get; set; }
         [CanBeNull]
-        public Borrower CoBorrower { get; set; }
+        public BorrowerDto CoBorrower { get; set; }
+        public long LoanApplicationId { get; set; }
     }
 }

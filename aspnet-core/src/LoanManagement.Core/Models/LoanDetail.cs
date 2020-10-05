@@ -1,4 +1,5 @@
 using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
