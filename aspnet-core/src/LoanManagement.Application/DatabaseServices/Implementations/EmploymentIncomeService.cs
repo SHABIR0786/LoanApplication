@@ -38,6 +38,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Borrower Monthly Income
                 if (input.BorrowerMonthlyIncome != null)
                 {
+                    input.BorrowerMonthlyIncome.LoanApplicationId = input.Id;
                     if (input.BorrowerMonthlyIncome.Id == default)
                     {
                         await _borrowerMonthlyIncomeRepository.CreateAsync(input.BorrowerMonthlyIncome);
@@ -50,6 +51,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Co-Borrower Monthly Income
                 if (input.CoBorrowerMonthlyIncome != null)
                 {
+                    input.CoBorrowerMonthlyIncome.LoanApplicationId = input.Id;
                     if (input.CoBorrowerMonthlyIncome.Id == default)
                         await _borrowerMonthlyIncomeRepository.CreateAsync(input.CoBorrowerMonthlyIncome);
                     else
@@ -59,6 +61,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Borrower Employment Information
                 if (input.BorrowerEmploymentInformations != null)
                 {
+                    input.BorrowerEmploymentInformations.LoanApplicationId = input.Id;
                     if (input.BorrowerEmploymentInformations.Id == default)
                         await _borrowerEmploymentInformationRepository.CreateAsync(input.BorrowerEmploymentInformations);
                     else
@@ -69,6 +72,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Co-BorrowerEmploymentInformation
                 if (input.CoBorrowerEmploymentInformations != null)
                 {
+                    input.CoBorrowerEmploymentInformations.LoanApplicationId = input.Id;
                     if (input.CoBorrowerMonthlyIncome.Id == default)
                         await _borrowerEmploymentInformationRepository.CreateAsync(input.CoBorrowerEmploymentInformations);
                     else

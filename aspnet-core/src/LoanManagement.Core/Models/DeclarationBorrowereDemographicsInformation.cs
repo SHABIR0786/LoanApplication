@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
@@ -32,5 +33,9 @@ namespace LoanManagement.Models
         public bool? IsMale { get; set; }
         public bool? IsFemale { get; set; }
         public bool? IsDonotProvideSexInformattion { get; set; }
+
+        [ForeignKey("LoanApplicationId")]
+        public LoanApplication LoanApplication { get; set; }
+        public long LoanApplicationId { get; set; }
     }
 }
