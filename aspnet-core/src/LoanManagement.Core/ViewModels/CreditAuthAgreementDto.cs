@@ -5,6 +5,6 @@ namespace LoanManagement.ViewModels
     public class CreditAuthAgreementDto : EntityDto<long>
     {
         public bool? AgreeCreditAuthAgreement { get; set; }
-        public long LoanApplicationId { get; set; }
+        public long? LoanApplicationId { get; set; }
     }
 }

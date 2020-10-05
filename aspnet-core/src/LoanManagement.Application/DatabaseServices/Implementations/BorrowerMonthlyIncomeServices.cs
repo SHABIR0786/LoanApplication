@@ -41,6 +41,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     Commissions = input.Commissions,
                     Dividends = input.Dividends,
                     BorrowerTypeId = input.BorrowerTypeId,
+                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _repository.InsertAsync(additionalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -65,6 +66,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 additionalDetail.Commissions = input.Commissions;
                 additionalDetail.Dividends = input.Dividends;
                 additionalDetail.BorrowerTypeId = input.BorrowerTypeId;
+                additionalDetail.LoanApplicationId = input.LoanApplicationId.Value;
 
                 return Task.CompletedTask;
             });
