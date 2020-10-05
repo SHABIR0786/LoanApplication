@@ -10,8 +10,8 @@ namespace LoanManagement.Models
         public bool IsApplyingWithCoBorrower { get; set; }
         public bool UseIncomeOfPersonOtherThanBorrower { get; set; }
         public bool AgreePrivacyPolicy { get; set; }
-        public Borrower Borrower { get; set; }
-        public Borrower CoBorrower { get; set; }
+        public BorrowerDto Borrower { get; set; }
+        public BorrowerDto CoBorrower { get; set; }
 
 
     }
