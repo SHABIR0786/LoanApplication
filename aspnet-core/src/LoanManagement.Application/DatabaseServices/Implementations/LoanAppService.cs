@@ -72,7 +72,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 var loanApplication = new LoanApplication();
                 await _repository.InsertAsync(loanApplication);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
-
                 input.Id = loanApplication.Id;
                 return input;
             }
@@ -86,13 +85,13 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, loanApplication =>
             {
-                #region Loadn Detail
-                if (input.LoanDetail != null)
+                #region Loan Detail
+                if (input.LoanDetails != null)
                 {
-                    if (input.LoanDetail.Id == default)
-                        _loanDetailServices.CreateAsync(input.LoanDetail);
+                    if (input.LoanDetails.Id == default)
+                        _loanDetailServices.CreateAsync(input.LoanDetails);
                     else
-                        _loanDetailServices.UpdateAsync(input.LoanDetail);
+                        _loanDetailServices.UpdateAsync(input.LoanDetails);
                 }
                 #endregion
 

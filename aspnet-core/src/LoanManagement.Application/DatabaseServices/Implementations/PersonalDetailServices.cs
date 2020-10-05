@@ -34,7 +34,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var personalDetail = new PersonalDetail
                 {
-                    Id = input.Id,
                     IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
                     UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
                     AgreePrivacyPolicy = input.AgreePrivacyPolicy
