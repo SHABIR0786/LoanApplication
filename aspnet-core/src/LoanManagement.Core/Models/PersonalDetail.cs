@@ -16,11 +16,9 @@ namespace LoanManagement.Models
         public Borrower CoBorrower { get; set; }
 
         public List<Address> Addresses { get; set; }
-
-        public Address residentialAddress { get; set; }
-
-        public Address previousAddresses { get; set; }
-        public Address mailingAddress { get; set; }
-        public bool isMailingAddressSameAsResidential { get; set; }
+        public bool IsMailingAddressSameAsResidential { get; set; }
+    public Address ResidentialAddress { get; set; }
+     public List<Address> PreviousAddresses { get; set; }
+      public Address MailingAddress { get; set; }
     }
 }

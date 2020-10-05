@@ -94,6 +94,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     BorrowerId = input.CoBorrower?.Id,
                     CoBorrowerId = input.Borrower?.Id,
                 };
+
                 await _repository.InsertAsync(personalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 
