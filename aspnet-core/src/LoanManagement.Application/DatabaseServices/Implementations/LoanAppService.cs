@@ -14,8 +14,8 @@ namespace LoanManagement.DatabaseServices.Implementations
     {
         private readonly IRepository<LoanApplication, long> _repository;
         private readonly ILoanDetailServices _loanDetailServices;
-        private readonly IAdditionalDetailsService _additionalDetailsService;
-        private readonly IExpensesService _expensesService;
+        private readonly IAdditionalDetailService _additionalDetailsService;
+        private readonly IExpenseService _expensesService;
         private readonly IEConsentService _eConsentService;
         private readonly ICreditAuthAgreementService _creditAuthAgreementService;
         private readonly IEmploymentIncomeService _employmentIncomeService;
@@ -25,8 +25,8 @@ namespace LoanManagement.DatabaseServices.Implementations
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
             ILoanDetailServices loanDetailServices,
-            IAdditionalDetailsService additionalDetailsService,
-            IExpensesService expensesService,
+            IAdditionalDetailService additionalDetailsService,
+            IExpenseService expensesService,
             IEConsentService eConsentService,
             ICreditAuthAgreementService creditAuthAgreementService,
             IEmploymentIncomeService employmentIncomeService,

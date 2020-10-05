@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
-    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailsService
+    public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailService
     {
         private readonly IRepository<AdditionalDetail, long> _repository;
 
