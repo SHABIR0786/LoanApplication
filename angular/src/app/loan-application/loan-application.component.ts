@@ -39,7 +39,8 @@ export class LoanApplicationComponent implements OnInit {
         selected: 0,
         theme: THEME.default,
         anchorSettings: {
-            enableAllAnchors: true
+            markDoneStep: false,
+            enableAllAnchors: true,
         },
         toolbarSettings: {
             showNextButton: false,
@@ -107,5 +108,10 @@ export class LoanApplicationComponent implements OnInit {
 
     proceedToPrevious() {
         this._ngWizardService.previous();
+    }
+
+    goToStep(index) {
+        this.config.selected = index;
+        this._ngWizardService.reset();
     }
 }

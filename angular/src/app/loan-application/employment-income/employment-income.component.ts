@@ -2,6 +2,7 @@ import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IEmploymentIncomeModel} from '../../interfaces/IEmploymentIncomeModel';
 import {NgWizardService} from 'ng-wizard';
+import {DataService} from '../../services/data.service';
 
 @Component({
     selector: 'app-employment-income',
@@ -18,7 +19,10 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     incomeSources = [];
     private _isApplyingWithCoBorrower = false;
 
-    constructor(private _ngWizardService: NgWizardService) {
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _dataService: DataService
+    ) {
     }
 
     @Input() set isApplyingWithCoBorrower(value: boolean) {
@@ -67,6 +71,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
+        this._dataService.updateValidationsFormArr(this.form.get('borrowerEmploymentInfo') as FormArray, 'borrowerEmploymentIncome');
         if (this.form.valid) {
             this.onDataChange.next(this.form.value);
         }

@@ -4,6 +4,7 @@ import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationMo
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {IAddressModel} from '../../interfaces/IAddressModel';
 import {NgWizardService} from 'ng-wizard';
+import {DataService} from '../../services/data.service';
 
 @Component({
     selector: 'app-personal-information',
@@ -24,7 +25,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     form: FormGroup;
     states = [];
 
-    constructor(private _ngWizardService: NgWizardService) {
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _dataService: DataService
+    ) {
     }
 
     get residentialAddressForm(): FormGroup {
@@ -50,6 +54,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
+        this._dataService.updateValidations(this.form, 'jointCredit');
+        this._dataService.updateValidations(this.form.get('borrower') as FormGroup, 'borrowerPersonalInformation');
+        this._dataService.updateValidations(this.form.get('residentialAddress') as FormGroup, 'residentialAddress');
+        this._dataService.updateValidations(this.form.get('mailingAddress') as FormGroup, 'mailingAddress');
         if (this.form.valid) {
             this.onDataChange.next(this.form.value);
         }
