@@ -57,7 +57,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     IsPermanentResidentSlien = input.IsPermanentResidentSlien,
                     IsIntendToOccupyThePropertyAsYourPrimary = input.IsIntendToOccupyThePropertyAsYourPrimary,
                     IsOwnershipInterestInPropertyInTheLastThreeYears = input.IsOwnershipInterestInPropertyInTheLastThreeYears,
-                    declarationsSection = input.declarationsSection,
+                    DeclarationsSection = input.DeclarationsSection,
                 };
                 await _repository.InsertAsync(expense);
                 await UnitOfWorkManager.Current.SaveChangesAsync();

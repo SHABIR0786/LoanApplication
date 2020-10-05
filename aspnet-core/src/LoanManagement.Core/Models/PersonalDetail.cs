@@ -13,5 +13,9 @@ namespace LoanManagement.Models
         public Borrower CoBorrower { get; set; }
         public List<Address> Addresses { get; set; }
 
+        [ForeignKey("LoanApplicationId")]
+        public LoanApplication LoanApplication { get; set; }
+        public long LoanApplicationId { get; set; }
+
     }
 }

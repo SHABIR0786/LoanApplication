@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
@@ -17,6 +18,9 @@ namespace LoanManagement.Models
         public bool? IsPermanentResidentSlien { get; set; }
         public bool? IsIntendToOccupyThePropertyAsYourPrimary { get; set; }
         public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get; set; }
-        public string declarationsSection { get; set; }
+        public string DeclarationsSection { get; set; }
+        [ForeignKey("LoanApplicationId")]
+        public LoanApplication LoanApplication { get; set; }
+        public long LoanApplicationId { get; set; }
     }
 }
