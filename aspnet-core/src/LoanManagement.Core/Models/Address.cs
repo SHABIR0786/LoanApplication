@@ -1,5 +1,4 @@
 using Abp.Domain.Entities.Auditing;
-using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
@@ -15,6 +14,6 @@ namespace LoanManagement.Models
         public int ZipCode { get; set; }
         public int Years { get; set; }
         public int Months { get; set; }
-        
+
     }
 }

@@ -1,7 +1,5 @@
-﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,7 +25,7 @@ namespace LoanManagement.Models
         public BorrowerType BorrowerType { get; set; }
         public int BorrowerTypeId { get; set; }
 
-        
-      
+
+
     }
 }

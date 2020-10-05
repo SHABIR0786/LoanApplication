@@ -1,7 +1,5 @@
 using Abp.Application.Services.Dto;
-using LoanManagement.LoanApplications.Dto;
 using LoanManagement.Models;
-using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {

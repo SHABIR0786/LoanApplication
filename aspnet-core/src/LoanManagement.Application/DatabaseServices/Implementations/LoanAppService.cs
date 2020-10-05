@@ -24,14 +24,14 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
-        ILoanDetailServices loanDetailServices,
-        IAdditionalDetailsService additionalDetailsService,
-        IExpensesService expensesService,
-        IEConsentService eConsentService,
-        ICreditAuthAgreementService creditAuthAgreementService,
-        IEmploymentIncomeService employmentIncomeService,
-        IPersonalDetailService personalDetailService,
-        IDeclarationService declarationService
+            ILoanDetailServices loanDetailServices,
+            IAdditionalDetailsService additionalDetailsService,
+            IExpensesService expensesService,
+            IEConsentService eConsentService,
+            ICreditAuthAgreementService creditAuthAgreementService,
+            IEmploymentIncomeService employmentIncomeService,
+            IPersonalDetailService personalDetailService,
+            IDeclarationService declarationService
             )
         {
             _repository = repository;
@@ -90,7 +90,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.LoanDetail != null)
                 {
                     if (input.LoanDetail.Id == default)
-                         _loanDetailServices.CreateAsync(input.LoanDetail);
+                        _loanDetailServices.CreateAsync(input.LoanDetail);
                     else
                         _loanDetailServices.UpdateAsync(input.LoanDetail);
                 }
@@ -109,7 +109,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Additional Details
                 if (input.AdditionalDetails != null)
                 {
-                    if (input.PersonalInformation.Id == default)
+                    if (input.AdditionalDetails.Id == default)
                         _additionalDetailsService.CreateAsync(input.AdditionalDetails);
                     else
                         _additionalDetailsService.UpdateAsync(input.AdditionalDetails);

@@ -4,7 +4,6 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -14,6 +13,14 @@ namespace LoanManagement.DatabaseServices.Implementations
     {
         private readonly IRepository<Declaration, long> _repository;
         private readonly IRepository<DeclarationBorrowereDemographicsInformation, long> _declarationBorrowerRepository;
+
+        public DeclarationService(
+            IRepository<Declaration, long> repository,
+            IRepository<DeclarationBorrowereDemographicsInformation, long> declarationBorrowerRepository)
+        {
+            _repository = repository;
+            _declarationBorrowerRepository = declarationBorrowerRepository;
+        }
 
         public DeclarationService(IRepository<Declaration, long> repository)
         {
