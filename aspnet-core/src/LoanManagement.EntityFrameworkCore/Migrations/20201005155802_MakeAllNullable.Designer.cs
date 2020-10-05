@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201005155802_MakeAllNullable")]
+    partial class MakeAllNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1626,9 +1628,6 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("BorrowerTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CellPhone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -1677,9 +1676,6 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("NumberOfDependents")
                         .HasColumnType("int");
 
-                    b.Property<int>("PersonalDetailId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SocialSecurityNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -1687,8 +1683,6 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
 
                     b.ToTable("Borrowers");
                 });
@@ -2664,15 +2658,6 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.PersonalDetail", null)
                         .WithMany("Addresses")
                         .HasForeignKey("PersonalDetailId");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
-                {
-                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>

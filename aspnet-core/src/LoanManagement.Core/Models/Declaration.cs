@@ -1,5 +1,4 @@
 ﻿using Abp.Domain.Entities.Auditing;
-using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
@@ -17,7 +16,7 @@ namespace LoanManagement.Models
         public bool? IsUSCitizen { get; set; }
         public bool? IsPermanentResidentSlien { get; set; }
         public bool? IsIntendToOccupyThePropertyAsYourPrimary { get; set; }
-        public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get;  set; }
+        public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get; set; }
         public string declarationsSection { get; set; }
     }
 }

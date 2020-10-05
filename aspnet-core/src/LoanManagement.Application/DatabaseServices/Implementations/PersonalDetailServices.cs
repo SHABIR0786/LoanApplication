@@ -4,7 +4,6 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -40,7 +39,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var personalDetail = new PersonalDetail
                 {
-                    Id = input.Id,
                     IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
                     UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
                     AgreePrivacyPolicy = input.AgreePrivacyPolicy

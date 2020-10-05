@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <ng-wizard [config]="config">
-                        <ng-wizard-step title="Step 1" description="Loan Details">
+                        <ng-wizard-step title="Step 1" description="Loan Details" [state]="">
                             <app-loan-details [data]="loanApplication.loanDetails"
                                               (onDataChange)="onChange($event, 'loanDetails')"></app-loan-details>
                         </ng-wizard-step>
@@ -100,7 +100,7 @@
                                              (onDataChange)="onChange($event, 'declaration')"></app-declaration>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 9" description="Summary">
-                            <app-summary (onSubmit)="submitForm()"></app-summary>
+                            <app-summary (onSubmit)="submitForm()" (proceedToStep)="goToStep($event)"></app-summary>
                         </ng-wizard-step>
                     </ng-wizard>
                 </div>

@@ -156,13 +156,13 @@
         <div class="col-12 mb-3">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="agreeEConsent"
-                       id="agreeEConsentYes" [value]="true"
+                       id="agreeEConsentYes" [value]="true" formControlName="agreeEConsent"
                        [(ngModel)]="data.agreeEConsent">
                 <label class="form-check-label" for="agreeEConsentYes">Agree</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="agreeEConsent"
-                       id="agreeEConsentNo" [value]="false"
+                       id="agreeEConsentNo" [value]="false" formControlName="agreeEConsent"
                        [(ngModel)]="data.agreeEConsent">
                 <label class="form-check-label" for="agreeEConsentNo">Don't Agree</label>
             </div>

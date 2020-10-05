@@ -1,12 +1,11 @@
 using Abp.Application.Services.Dto;
 using LoanManagement.Models;
-using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {
     public class LoanApplicationDto : EntityDto<long>
     {
-        public LoanDetailDto LoanDetail { get; set; }
+        public LoanDetailDto LoanDetails { get; set; }
 
         public PersonalInformationDto PersonalInformation { get; set; }
         public ExpensesDto Expenses { get; set; }

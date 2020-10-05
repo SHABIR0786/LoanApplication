@@ -1,4 +1,3 @@
-using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,9 +18,9 @@ namespace LoanManagement.Models
 
         public string SocialSecurityNumber { get; set; }
 
-        public int MaritalStatusId { get; set; }
+        public int? MaritalStatusId { get; set; }
 
-        public int NumberOfDependents { get; set; }
+        public int? NumberOfDependents { get; set; }
 
         public string CellPhone { get; set; }
 

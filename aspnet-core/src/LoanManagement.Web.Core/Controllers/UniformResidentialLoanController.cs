@@ -1,9 +1,7 @@
 using LoanManagement.DatabaseServices.Interfaces;
-using LoanManagement.Enums;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.Controllers
@@ -11,18 +9,12 @@ namespace LoanManagement.Controllers
     [Route("api/[controller]/[action]")]
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
-        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationAppService;
         private readonly ILoanAppService _loanAppService;
-        private readonly ILoanDetailServices _loanDetailServices;
 
         public UniformResidentialLoanController(
-            IBorrowerEmploymentInformationAppService borrowerEmploymentInformationAppService,
-            ILoanAppService loanAppService,
-
-            ILoanDetailServices loanDetailServices
+            ILoanAppService loanAppService
         )
         {
-            _borrowerEmploymentInformationAppService = borrowerEmploymentInformationAppService;
             _loanAppService = loanAppService;
         }
 
