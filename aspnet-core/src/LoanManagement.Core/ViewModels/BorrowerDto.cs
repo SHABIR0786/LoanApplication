@@ -27,7 +27,7 @@ namespace LoanManagement.Models
 
         public string HomePhone { get; set; }
 
-        public int PersonalDetailId { get; set; }
+        public int? PersonalDetailId { get; set; }
         public int BorrowerTypeId { get; set; }
 
     }

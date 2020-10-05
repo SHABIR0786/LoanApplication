@@ -11,6 +11,6 @@ namespace LoanManagement.Models
         public int? Commissions { get; set; }
         public int? Dividends { get; set; }
         public int? BorrowerTypeId { get; set; }
-        public long LoanApplicationId { get; set; }
+        public long? LoanApplicationId { get; set; }
     }
 }

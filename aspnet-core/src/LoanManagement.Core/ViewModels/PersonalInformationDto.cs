@@ -10,6 +10,6 @@ namespace LoanManagement.Models
         public bool? AgreePrivacyPolicy { get; set; }
         [CanBeNull] public BorrowerDto Borrower { get; set; }
         [CanBeNull] public BorrowerDto CoBorrower { get; set; }
-        public long LoanApplicationId { get; set; }
+        public long? LoanApplicationId { get; set; }
     }
 }
