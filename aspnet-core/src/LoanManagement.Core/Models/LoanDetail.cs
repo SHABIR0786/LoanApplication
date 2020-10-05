@@ -52,7 +52,7 @@ namespace LoanManagement.Models
 
         public int? PropertyUseId { get; set; }
 
-
+        public bool? StartedLookingForNewHome { get; set; }
 
 
     }

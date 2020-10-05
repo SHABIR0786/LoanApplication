@@ -37,16 +37,9 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var personalDetail = new PersonalDetail
-                {
-                    IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
-                    UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
-                    AgreePrivacyPolicy = input.AgreePrivacyPolicy
-                };
-                await _repository.InsertAsync(personalDetail);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
 
-                if(input.Borrower != null)
+
+                if (input.Borrower != null)
                 {
                     var borrower = new Borrower
                     {
@@ -62,8 +55,11 @@ namespace LoanManagement.DatabaseServices.Implementations
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
                         PersonalDetailId = input.Borrower.PersonalDetailId,
-                        BorrowerTypeId = input.Borrower.BorrowerTypeId
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
                     };
+
+                    await _borrowerRepository.InsertAsync(borrower);
+                    input.Borrower.Id = borrower.Id;
                 }
 
                 if (input.CoBorrower != null)
@@ -82,10 +78,24 @@ namespace LoanManagement.DatabaseServices.Implementations
                         CellPhone = input.CoBorrower.CellPhone,
                         HomePhone = input.CoBorrower.HomePhone,
                         PersonalDetailId = input.Borrower.PersonalDetailId,
-                        BorrowerTypeId = input.Borrower.BorrowerTypeId
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
+
                     };
+
+                    await _borrowerRepository.InsertAsync(borrower);
+                    input.CoBorrower.Id = borrower.Id;
                 }
 
+                var personalDetail = new PersonalDetail
+                {
+                    IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
+                    UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
+                    AgreePrivacyPolicy = input.AgreePrivacyPolicy,
+                    BorrowerId = input.CoBorrower?.Id,
+                    CoBorrowerId = input.Borrower?.Id,
+                };
+                await _repository.InsertAsync(personalDetail);
+                await UnitOfWorkManager.Current.SaveChangesAsync();
 
                 input.Id = personalDetail.Id;
                 return input;
@@ -104,6 +114,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 personalDetail.IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower;
                 personalDetail.UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower;
                 personalDetail.AgreePrivacyPolicy = input.AgreePrivacyPolicy;
+                // personalDetail.Addresses= input.
+            
                 return Task.CompletedTask;
             });
 

@@ -13,8 +13,7 @@ namespace LoanManagement.Models
         public string EmployersAddress1 { get; set; }
         public string EmployersAddress2 { get; set; }
         public bool? IsSelfEmployed { get; set; }
-        public int? YearOnThisJob { get; set; }
-        public int? YearInThisLineOfWork { get; set; }
+       
         public string Position { get; set; }
         public string City { get; set; }
         public int? StateId { get; set; }
