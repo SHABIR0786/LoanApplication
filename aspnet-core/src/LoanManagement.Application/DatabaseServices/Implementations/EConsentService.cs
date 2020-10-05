@@ -36,6 +36,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     Id = input.Id,
                     AgreeEConsent = input.AgreeEConsent,
+                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _repository.InsertAsync(consentDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -55,6 +56,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 consentDetail.Id = input.Id;
                 consentDetail.AgreeEConsent = input.AgreeEConsent;
+                consentDetail.LoanApplicationId = input.LoanApplicationId.Value;
                 return Task.CompletedTask;
             });
 

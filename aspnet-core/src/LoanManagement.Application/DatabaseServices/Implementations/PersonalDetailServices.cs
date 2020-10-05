@@ -61,7 +61,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.Borrower.NumberOfDependents,
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
-                        PersonalDetailId = input.Borrower.PersonalDetailId,
+                        PersonalDetailId = input.Borrower.PersonalDetailId.Value,
                         BorrowerTypeId = input.Borrower.BorrowerTypeId
                     };
                 }
@@ -81,7 +81,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.CoBorrower.NumberOfDependents,
                         CellPhone = input.CoBorrower.CellPhone,
                         HomePhone = input.CoBorrower.HomePhone,
-                        PersonalDetailId = input.Borrower.PersonalDetailId,
+                        PersonalDetailId = input.Borrower.PersonalDetailId.Value,
                         BorrowerTypeId = input.Borrower.BorrowerTypeId
                     };
                 }
