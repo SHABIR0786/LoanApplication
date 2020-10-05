@@ -10,6 +10,6 @@ namespace LoanManagement.Models
         public int? Bonuses { get; set; }
         public int? Commissions { get; set; }
         public int? Dividends { get; set; }
-        public int BorrowerTypeId { get; set; }
+        public int? BorrowerTypeId { get; set; }
     }
 }

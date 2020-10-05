@@ -11,9 +11,9 @@ namespace LoanManagement.Models
 
         public string City { get; set; }
         public string State { get; set; }
-        public int ZipCode { get; set; }
-        public int Years { get; set; }
-        public int Months { get; set; }
+        public int? ZipCode { get; set; }
+        public int? Years { get; set; }
+        public int? Months { get; set; }
 
     }
 }
