@@ -1,4 +1,5 @@
 using Abp;
+using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
@@ -35,7 +36,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 var creditAuthAgreement = new CreditAuthAgreement
                 {
                     Id = input.Id,
-                    AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement
+                    AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement,
+                    LoanApplicationId = input.LoanApplicationId.Value
                 };
                 await _repository.InsertAsync(creditAuthAgreement);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -55,6 +57,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 creditAuthAgreement.Id = input.Id;
                 creditAuthAgreement.AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement;
+                creditAuthAgreement.LoanApplicationId = input.LoanApplicationId.Value;
                 return Task.CompletedTask;
             });
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {LoanApplicationService} from '../services/loan-application.service';
 import {ILoanApplicationModel} from '../interfaces/ILoanApplicationModel';
+import { LoanDetailServicesServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
     selector: 'app-loan-application',
@@ -60,7 +61,9 @@ export class LoanApplicationComponent implements OnInit {
         }
     };
 
-    constructor(private _ngWizardService: NgWizardService, private _loanApplicationService: LoanApplicationService
+    constructor(private _ngWizardService: NgWizardService,
+         private _loanApplicationService: LoanApplicationService,
+         private _loanDetailService: LoanDetailServicesServiceProxy
     ) {
     }
 
@@ -100,6 +103,7 @@ export class LoanApplicationComponent implements OnInit {
         }, error => {
             console.log(error);
         });
+     //   this._loanDetailService.create();  Asad you can use this post Api service too
     }
 
     proceedToNext() {
