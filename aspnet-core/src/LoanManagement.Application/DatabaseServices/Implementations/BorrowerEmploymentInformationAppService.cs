@@ -39,8 +39,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     EmployersAddress1 = input.EmployersAddress1,
                     EmployersAddress2 = input.EmployersAddress2,
                     IsSelfEmployed = input.IsSelfEmployed,
-                    YearOnThisJob = input.YearOnThisJob,
-                    YearInThisLineOfWork = input.YearInThisLineOfWork,
                     Position = input.Position,
                     City = input.City,
                     StateId = input.StateId,
@@ -70,8 +68,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 additionalDetail.EmployersAddress1 = input.EmployersAddress1;
                 additionalDetail.EmployersAddress2 = input.EmployersAddress2;
                 additionalDetail.IsSelfEmployed = input.IsSelfEmployed;
-                additionalDetail.YearOnThisJob = input.YearOnThisJob;
-                additionalDetail.YearInThisLineOfWork = input.YearInThisLineOfWork;
                 additionalDetail.Position = input.Position;
                 additionalDetail.City = input.City;
                 additionalDetail.StateId = input.StateId;

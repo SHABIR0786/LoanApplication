@@ -8,7 +8,6 @@ namespace LoanManagement.Models
         public decimal? Amount { get; set; }
         public int? IncomeSourceId { get; set; }
 
-        [ForeignKey("BorrowerTypeId")]
         public BorrowerType BorrowerType { get; set; }
         public int? BorrowerTypeId { get; set; }
 

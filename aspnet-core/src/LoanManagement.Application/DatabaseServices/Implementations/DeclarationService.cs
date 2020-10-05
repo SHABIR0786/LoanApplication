@@ -91,6 +91,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     IsAsian = input.IsAsian,
                     IsAsianIndian = input.IsAsianIndian,
                     IsChinese = input.IsChinese,
+                    IsFilipino = input.IsFilipino,
                     IsJapanese = input.IsJapanese,
                     IsKorean = input.IsKorean,
                     IsVietnamese = input.IsVietnamese,
