@@ -136,7 +136,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Expenses
                 if (input.Expenses != null)
                 {
-                    input.Expenses.LoanApplicationId = input.Id;
                     if (input.Expenses.Id == default)
                     {
                         input.Expenses = await _expensesService.CreateAsync(input.Expenses);
@@ -189,7 +188,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Employment Income
                 if (input.EmploymentIncome != null)
                 {
-                    //input.EmploymentIncome = await _employmentIncomeService.CreateAsync(input.EmploymentIncome);
+                    input.EmploymentIncome.LoanApplicationId = input.Id;
+                    input.EmploymentIncome = await _employmentIncomeService.CreateAsync(input.EmploymentIncome);
                 }
                 #endregion
             });

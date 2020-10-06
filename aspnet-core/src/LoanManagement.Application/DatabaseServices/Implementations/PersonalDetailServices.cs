@@ -60,6 +60,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
                     };
 
+                    input.Borrower.BorrowerTypeId = borrower.BorrowerTypeId;
+
                     await _borrowerRepository.InsertAsync(borrower);
                     await UnitOfWorkManager.Current.SaveChangesAsync();
 
@@ -83,6 +85,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         HomePhone = input.CoBorrower.HomePhone,
                         BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
                     };
+
+                    input.Borrower.BorrowerTypeId = borrower.BorrowerTypeId;
 
                     await _borrowerRepository.InsertAsync(borrower);
                     await UnitOfWorkManager.Current.SaveChangesAsync();

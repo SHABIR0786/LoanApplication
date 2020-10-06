@@ -63,7 +63,6 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, additionalDetail =>
             {
-                additionalDetail.Id = input.Id;
                 additionalDetail.EmployersName = input.EmployersName;
                 additionalDetail.EmployersAddress1 = input.EmployersAddress1;
                 additionalDetail.EmployersAddress2 = input.EmployersAddress2;
@@ -74,7 +73,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 additionalDetail.ZipCode = input.ZipCode;
                 additionalDetail.StartDate = input.StartDate;
                 additionalDetail.EndDate = input.EndDate;
-                additionalDetail.BorrowerTypeId = input.BorrowerTypeId;
 
                 return Task.CompletedTask;
             });

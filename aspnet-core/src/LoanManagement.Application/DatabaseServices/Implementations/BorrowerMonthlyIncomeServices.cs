@@ -59,14 +59,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id, additionalDetail =>
             {
-                additionalDetail.Id = input.Id;
                 additionalDetail.Base = input.Base;
                 additionalDetail.Overtime = input.Overtime;
                 additionalDetail.Bonuses = input.Bonuses;
                 additionalDetail.Commissions = input.Commissions;
                 additionalDetail.Dividends = input.Dividends;
-                additionalDetail.BorrowerTypeId = input.BorrowerTypeId;
-                additionalDetail.LoanApplicationId = input.LoanApplicationId.Value;
 
                 return Task.CompletedTask;
             });
