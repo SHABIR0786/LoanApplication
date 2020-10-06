@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace LoanManagement.Migrations
 {
@@ -517,82 +517,6 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CreditAuthAgreements", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DeclarationBorrowereDemographicsInformations",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    IsHispanicOrLatino = table.Column<bool>(nullable: true),
-                    IsMexican = table.Column<bool>(nullable: true),
-                    IsPuertoRican = table.Column<bool>(nullable: true),
-                    IsCuban = table.Column<bool>(nullable: true),
-                    IsOtherHispanicOrLatino = table.Column<bool>(nullable: true),
-                    Origin = table.Column<string>(nullable: true),
-                    IsNotHispanicOrLatino = table.Column<bool>(nullable: true),
-                    IsNotProvideInformation = table.Column<bool>(nullable: true),
-                    IsAmericanIndianOrAlaskaNative = table.Column<bool>(nullable: true),
-                    NameOfEnrolledOrPrincipalTribe = table.Column<string>(nullable: true),
-                    IsAsian = table.Column<bool>(nullable: true),
-                    IsAsianIndian = table.Column<bool>(nullable: true),
-                    IsChinese = table.Column<bool>(nullable: true),
-                    IsFilipino = table.Column<bool>(nullable: true),
-                    IsJapanese = table.Column<bool>(nullable: true),
-                    IsKorean = table.Column<bool>(nullable: true),
-                    IsVietnamese = table.Column<bool>(nullable: true),
-                    IsOtherAsian = table.Column<bool>(nullable: true),
-                    EnterRace = table.Column<string>(nullable: true),
-                    IsWhite = table.Column<bool>(nullable: true),
-                    IsWishToprovideInformation = table.Column<bool>(nullable: true),
-                    IsMale = table.Column<bool>(nullable: true),
-                    IsFemale = table.Column<bool>(nullable: true),
-                    IsDonotProvideSexInformattion = table.Column<bool>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DeclarationBorrowereDemographicsInformations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Declarations",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
-                    IsOutstandingJudgmentsAgainstYou = table.Column<bool>(nullable: true),
-                    IsDeclaredBankrupt = table.Column<bool>(nullable: true),
-                    IsPropertyForeClosedUponOrGivenTitle = table.Column<bool>(nullable: true),
-                    IsPartyToLawsuit = table.Column<bool>(nullable: true),
-                    IsObligatedOnAnyLoanWhichResultedForeclosure = table.Column<bool>(nullable: true),
-                    IsPresentlyDelinquent = table.Column<bool>(nullable: true),
-                    IsObligatedToPayAlimonyChildSupport = table.Column<bool>(nullable: true),
-                    IsAnyPartOfTheDownPayment = table.Column<bool>(nullable: true),
-                    IsCoMakerOrEndorser = table.Column<bool>(nullable: true),
-                    IsUSCitizen = table.Column<bool>(nullable: true),
-                    IsPermanentResidentSlien = table.Column<bool>(nullable: true),
-                    IsIntendToOccupyThePropertyAsYourPrimary = table.Column<bool>(nullable: true),
-                    IsOwnershipInterestInPropertyInTheLastThreeYears = table.Column<bool>(nullable: true),
-                    DeclarationsSection = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Declarations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1251,8 +1175,6 @@ namespace LoanManagement.Migrations
                     AdditionalIncomeId = table.Column<long>(nullable: true),
                     CreditAuthAgreementId = table.Column<long>(nullable: true),
                     ConsentDetailId = table.Column<long>(nullable: true),
-                    DeclarationId = table.Column<long>(nullable: true),
-                    DeclarationBorrowereDemographicsInformationId = table.Column<long>(nullable: true),
                     ExpenseId = table.Column<long>(nullable: true),
                     TenantId = table.Column<int>(nullable: true)
                 },
@@ -1281,18 +1203,6 @@ namespace LoanManagement.Migrations
                         name: "FK_LoanApplications_CreditAuthAgreements_CreditAuthAgreementId",
                         column: x => x.CreditAuthAgreementId,
                         principalTable: "CreditAuthAgreements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_DeclarationBorrowereDemographicsInformation~",
-                        column: x => x.DeclarationBorrowereDemographicsInformationId,
-                        principalTable: "DeclarationBorrowereDemographicsInformations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_LoanApplications_Declarations_DeclarationId",
-                        column: x => x.DeclarationId,
-                        principalTable: "Declarations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -1390,6 +1300,109 @@ namespace LoanManagement.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BorrowerMonthlyIncomes_LoanApplications_LoanApplicationId",
+                        column: x => x.LoanApplicationId,
+                        principalTable: "LoanApplications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeclarationBorrowereDemographicsInformations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    IsHispanicOrLatino = table.Column<bool>(nullable: true),
+                    IsMexican = table.Column<bool>(nullable: true),
+                    IsPuertoRican = table.Column<bool>(nullable: true),
+                    IsCuban = table.Column<bool>(nullable: true),
+                    IsOtherHispanicOrLatino = table.Column<bool>(nullable: true),
+                    Origin = table.Column<string>(nullable: true),
+                    IsNotHispanicOrLatino = table.Column<bool>(nullable: true),
+                    CanNotProvideEthnic = table.Column<bool>(nullable: true),
+                    IsAmericanIndianOrAlaskaNative = table.Column<bool>(nullable: true),
+                    NameOfEnrolledOrPrincipalTribe = table.Column<string>(nullable: true),
+                    IsAsian = table.Column<bool>(nullable: true),
+                    IsAsianIndian = table.Column<bool>(nullable: true),
+                    IsChinese = table.Column<bool>(nullable: true),
+                    IsFilipino = table.Column<bool>(nullable: true),
+                    IsJapanese = table.Column<bool>(nullable: true),
+                    IsKorean = table.Column<bool>(nullable: true),
+                    IsVietnamese = table.Column<bool>(nullable: true),
+                    IsOtherAsian = table.Column<bool>(nullable: true),
+                    IsBlackOrAfricanAmerican = table.Column<bool>(nullable: true),
+                    IsNativeHawaiianOrOtherPacificIslander = table.Column<bool>(nullable: true),
+                    IsNativeHawaiian = table.Column<bool>(nullable: true),
+                    IsGuamanianOrChamorro = table.Column<bool>(nullable: true),
+                    IsSamoan = table.Column<bool>(nullable: true),
+                    IsOtherPacificIslander = table.Column<bool>(nullable: true),
+                    EnterRace = table.Column<string>(nullable: true),
+                    IsWhite = table.Column<bool>(nullable: true),
+                    CanNotProvideRace = table.Column<bool>(nullable: true),
+                    IsMale = table.Column<bool>(nullable: true),
+                    IsFemale = table.Column<bool>(nullable: true),
+                    CanNotProvideSex = table.Column<bool>(nullable: true),
+                    BorrowerTypeId = table.Column<int>(nullable: false),
+                    LoanApplicationId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeclarationBorrowereDemographicsInformations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DeclarationBorrowereDemographicsInformations_BorrowerTypes_B~",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DeclarationBorrowereDemographicsInformations_LoanApplication~",
+                        column: x => x.LoanApplicationId,
+                        principalTable: "LoanApplications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Declarations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    IsOutstandingJudgmentsAgainstYou = table.Column<bool>(nullable: true),
+                    IsDeclaredBankrupt = table.Column<bool>(nullable: true),
+                    IsPropertyForeClosedUponOrGivenTitle = table.Column<bool>(nullable: true),
+                    IsPartyToLawsuit = table.Column<bool>(nullable: true),
+                    IsObligatedOnAnyLoanWhichResultedForeclosure = table.Column<bool>(nullable: true),
+                    IsPresentlyDelinquent = table.Column<bool>(nullable: true),
+                    IsObligatedToPayAlimonyChildSupport = table.Column<bool>(nullable: true),
+                    IsAnyPartOfTheDownPayment = table.Column<bool>(nullable: true),
+                    IsCoMakerOrEndorser = table.Column<bool>(nullable: true),
+                    IsUSCitizen = table.Column<bool>(nullable: true),
+                    IsPermanentResidentSlien = table.Column<bool>(nullable: true),
+                    IsIntendToOccupyThePropertyAsYourPrimary = table.Column<bool>(nullable: true),
+                    IsOwnershipInterestInPropertyInTheLastThreeYears = table.Column<bool>(nullable: true),
+                    DeclarationsSection = table.Column<string>(nullable: true),
+                    LoanApplicationId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Declarations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Declarations_LoanApplications_LoanApplicationId",
                         column: x => x.LoanApplicationId,
                         principalTable: "LoanApplications",
                         principalColumn: "Id",
@@ -1785,6 +1798,21 @@ namespace LoanManagement.Migrations
                 column: "BorrowerTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DeclarationBorrowereDemographicsInformations_BorrowerTypeId",
+                table: "DeclarationBorrowereDemographicsInformations",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeclarationBorrowereDemographicsInformations_LoanApplication~",
+                table: "DeclarationBorrowereDemographicsInformations",
+                column: "LoanApplicationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Declarations_LoanApplicationId",
+                table: "Declarations",
+                column: "LoanApplicationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_AdditionalDetailId",
                 table: "LoanApplications",
                 column: "AdditionalDetailId");
@@ -1803,16 +1831,6 @@ namespace LoanManagement.Migrations
                 name: "IX_LoanApplications_CreditAuthAgreementId",
                 table: "LoanApplications",
                 column: "CreditAuthAgreementId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LoanApplications_DeclarationBorrowereDemographicsInformation~",
-                table: "LoanApplications",
-                column: "DeclarationBorrowereDemographicsInformationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LoanApplications_DeclarationId",
-                table: "LoanApplications",
-                column: "DeclarationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_ExpenseId",
@@ -1933,6 +1951,12 @@ namespace LoanManagement.Migrations
                 name: "BorrowerMonthlyIncomes");
 
             migrationBuilder.DropTable(
+                name: "DeclarationBorrowereDemographicsInformations");
+
+            migrationBuilder.DropTable(
+                name: "Declarations");
+
+            migrationBuilder.DropTable(
                 name: "AbpDynamicEntityProperties");
 
             migrationBuilder.DropTable(
@@ -1970,12 +1994,6 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "CreditAuthAgreements");
-
-            migrationBuilder.DropTable(
-                name: "DeclarationBorrowereDemographicsInformations");
-
-            migrationBuilder.DropTable(
-                name: "Declarations");
 
             migrationBuilder.DropTable(
                 name: "Expenses");

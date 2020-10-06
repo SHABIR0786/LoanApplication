@@ -23,12 +23,6 @@ namespace LoanManagement.Models
         public long? ConsentDetailId { get; set; }
         public virtual ConsentDetail ConsentDetail { get; set; }
 
-        public long? DeclarationId { get; set; }
-        public virtual Declaration Declaration { get; set; }
-
-        public long? DeclarationBorrowereDemographicsInformationId { get; set; }
-        public virtual DeclarationBorrowereDemographicsInformation DeclarationBorrowereDemographicsInformation { get; set; }
-
         public long? ExpenseId { get; set; }
         public Expense Expense { get; set; }
 

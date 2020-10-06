@@ -14,6 +14,5 @@ namespace LoanManagement.ViewModels
         public EConsentDto EConsent { get; set; }
 
         public DeclarationDto Declaration { get; set; }
-        public DeclarationBorrowereDemographicsInformationDto DeclarationBorrowereDemographicsInformation { get; set; }
     }
 }
