@@ -54,7 +54,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.Borrower.NumberOfDependents,
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        MiddleInitial = input.Borrower.MiddleInitial
                     };
 
                     input.Borrower.BorrowerTypeId = borrower.BorrowerTypeId;
@@ -79,7 +80,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.CoBorrower.NumberOfDependents,
                         CellPhone = input.CoBorrower.CellPhone,
                         HomePhone = input.CoBorrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        MiddleInitial = input.CoBorrower.MiddleInitial
                     };
 
                     input.CoBorrower.BorrowerTypeId = borrower.BorrowerTypeId;
@@ -172,7 +174,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.Borrower.NumberOfDependents,
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        MiddleInitial = input.Borrower.MiddleInitial
                     };
 
                     await _borrowerRepository.InsertAsync(borrower);
@@ -193,6 +196,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         borrower.NumberOfDependents = input.Borrower.NumberOfDependents;
                         borrower.CellPhone = input.Borrower.CellPhone;
                         borrower.HomePhone = input.Borrower.HomePhone;
+                        borrower.MiddleInitial = input.Borrower.MiddleInitial;
 
                         return Task.CompletedTask;
                     });
@@ -214,7 +218,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.CoBorrower.NumberOfDependents,
                         CellPhone = input.CoBorrower.CellPhone,
                         HomePhone = input.CoBorrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        MiddleInitial = input.CoBorrower.MiddleInitial
                     };
 
                     await _borrowerRepository.InsertAsync(borrower);
@@ -235,6 +240,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         borrower.NumberOfDependents = input.CoBorrower.NumberOfDependents;
                         borrower.CellPhone = input.CoBorrower.CellPhone;
                         borrower.HomePhone = input.CoBorrower.HomePhone;
+                        borrower.MiddleInitial = input.CoBorrower.MiddleInitial;
 
                         return Task.CompletedTask;
                     });
