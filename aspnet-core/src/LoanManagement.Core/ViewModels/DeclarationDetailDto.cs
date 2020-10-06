@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+using Abp.Application.Services.Dto;
 
-namespace LoanManagement.Models
+namespace LoanManagement.ViewModels
 {
-    public class Declaration : FullAuditedEntity<long>
+    public class DeclarationDetailDto : EntityDto<long>
     {
         public bool? IsOutstandingJudgmentsAgainstYou { get; set; }
         public bool? IsDeclaredBankrupt { get; set; }
@@ -18,8 +18,6 @@ namespace LoanManagement.Models
         public bool? IsIntendToOccupyThePropertyAsYourPrimary { get; set; }
         public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get; set; }
         public string DeclarationsSection { get; set; }
-        public long LoanApplicationId { get; set; }
 
-        public LoanApplication LoanApplication { get; set; }
     }
 }

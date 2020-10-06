@@ -1997,7 +1997,12 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("Declarations");
                 });
@@ -2007,6 +2012,18 @@ namespace LoanManagement.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
+
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("CanNotProvideEthnic")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("CanNotProvideRace")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("CanNotProvideSex")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2032,6 +2049,9 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsAsianIndian")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool?>("IsBlackOrAfricanAmerican")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool?>("IsChinese")
                         .HasColumnType("tinyint(1)");
 
@@ -2041,13 +2061,13 @@ namespace LoanManagement.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDonotProvideSexInformattion")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool?>("IsFemale")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsFilipino")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsGuamanianOrChamorro")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsHispanicOrLatino")
@@ -2065,10 +2085,13 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsMexican")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsNotHispanicOrLatino")
+                    b.Property<bool?>("IsNativeHawaiian")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsNotProvideInformation")
+                    b.Property<bool?>("IsNativeHawaiianOrOtherPacificIslander")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsNotHispanicOrLatino")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsOtherAsian")
@@ -2077,7 +2100,13 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsOtherHispanicOrLatino")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool?>("IsOtherPacificIslander")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool?>("IsPuertoRican")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsSamoan")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsVietnamese")
@@ -2086,13 +2115,13 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsWhite")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsWishToprovideInformation")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("NameOfEnrolledOrPrincipalTribe")
@@ -2102,6 +2131,10 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
+
+                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("DeclarationBorrowereDemographicsInformations");
                 });
@@ -2192,12 +2225,6 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreditAuthAgreementId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("DeclarationBorrowereDemographicsInformationId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeclarationId")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
@@ -2234,10 +2261,6 @@ namespace LoanManagement.Migrations
                     b.HasIndex("ConsentDetailId");
 
                     b.HasIndex("CreditAuthAgreementId");
-
-                    b.HasIndex("DeclarationBorrowereDemographicsInformationId");
-
-                    b.HasIndex("DeclarationId");
 
                     b.HasIndex("ExpenseId");
 
@@ -2715,6 +2738,30 @@ namespace LoanManagement.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("LoanManagement.Models.Declaration", b =>
+                {
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany()
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", b =>
+                {
+                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany()
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
                 {
                     b.HasOne("LoanManagement.Models.AdditionalDetail", "AdditionalDetail")
@@ -2732,14 +2779,6 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.CreditAuthAgreement", "CreditAuthAgreement")
                         .WithMany()
                         .HasForeignKey("CreditAuthAgreementId");
-
-                    b.HasOne("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", "DeclarationBorrowereDemographicsInformation")
-                        .WithMany()
-                        .HasForeignKey("DeclarationBorrowereDemographicsInformationId");
-
-                    b.HasOne("LoanManagement.Models.Declaration", "Declaration")
-                        .WithMany()
-                        .HasForeignKey("DeclarationId");
 
                     b.HasOne("LoanManagement.Models.Expense", "Expense")
                         .WithMany()
