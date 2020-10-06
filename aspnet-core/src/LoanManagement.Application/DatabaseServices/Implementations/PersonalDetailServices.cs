@@ -54,7 +54,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.Borrower.NumberOfDependents,
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
                         MiddleInitial = input.Borrower.MiddleInitial
                     };
 
@@ -174,7 +174,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         NumberOfDependents = input.Borrower.NumberOfDependents,
                         CellPhone = input.Borrower.CellPhone,
                         HomePhone = input.Borrower.HomePhone,
-                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
                         MiddleInitial = input.Borrower.MiddleInitial
                     };
 
