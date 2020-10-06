@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long> input)
+        public async Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var additionalDetail = new BorrowerEmploymentInformation
                 {
-                    Id = input.Id,
                     EmployersName = input.EmployersName,
                     EmployersAddress1 = input.EmployersAddress1,
                     EmployersAddress2 = input.EmployersAddress2,
@@ -61,7 +60,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<BorrowerEmploymentInformationDto> UpdateAsync(BorrowerEmploymentInformationDto input)
         {
-            await _repository.UpdateAsync(input.Id, additionalDetail =>
+            await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
                 additionalDetail.EmployersName = input.EmployersName;
                 additionalDetail.EmployersAddress1 = input.EmployersAddress1;
@@ -81,7 +80,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

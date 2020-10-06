@@ -26,7 +26,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _addressRepository = addressRepository;
         }
 
-        public Task<PersonalInformationDto> GetAsync(EntityDto<long> input)
+        public Task<PersonalInformationDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -40,13 +40,10 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-
-
                 if (input.Borrower != null)
                 {
                     var borrower = new Borrower
                     {
-                        Id = input.Borrower.Id,
                         FirstName = input.Borrower.FirstName,
                         LastName = input.Borrower.LastName,
                         Suffix = input.Borrower.Suffix,
@@ -72,7 +69,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     var borrower = new Borrower
                     {
-                        Id = input.CoBorrower.Id,
                         FirstName = input.CoBorrower.FirstName,
                         LastName = input.CoBorrower.LastName,
                         Suffix = input.CoBorrower.Suffix,
@@ -162,11 +158,10 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             if (input.Borrower != null)
             {
-                if (input.Borrower.Id == default)
+                if (!input.Borrower.Id.HasValue || input.Borrower.Id.Value == default)
                 {
                     var borrower = new Borrower
                     {
-                        Id = input.Borrower.Id,
                         FirstName = input.Borrower.FirstName,
                         LastName = input.Borrower.LastName,
                         Suffix = input.Borrower.Suffix,
@@ -186,7 +181,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     input.Borrower.Id = borrower.Id;
                 }
                 else
-                    await _borrowerRepository.UpdateAsync(input.Borrower.Id, borrower =>
+                    await _borrowerRepository.UpdateAsync(input.Borrower.Id.Value, borrower =>
                     {
                         borrower.FirstName = input.Borrower.FirstName;
                         borrower.LastName = input.Borrower.LastName;
@@ -205,11 +200,10 @@ namespace LoanManagement.DatabaseServices.Implementations
 
             if (input.CoBorrower != null)
             {
-                if (input.CoBorrower.Id == default)
+                if (!input.CoBorrower.Id.HasValue || input.CoBorrower.Id == default)
                 {
                     var borrower = new Borrower
                     {
-                        Id = input.CoBorrower.Id,
                         FirstName = input.CoBorrower.FirstName,
                         LastName = input.CoBorrower.LastName,
                         Suffix = input.CoBorrower.Suffix,
@@ -229,7 +223,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     input.CoBorrower.Id = borrower.Id;
                 }
                 else
-                    await _borrowerRepository.UpdateAsync(input.CoBorrower.Id, borrower =>
+                    await _borrowerRepository.UpdateAsync(input.CoBorrower.Id.Value, borrower =>
                     {
                         borrower.FirstName = input.CoBorrower.FirstName;
                         borrower.LastName = input.CoBorrower.LastName;
@@ -246,7 +240,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     });
             }
 
-            await _repository.UpdateAsync(input.Id, personalDetail =>
+            await _repository.UpdateAsync(input.Id.Value, personalDetail =>
             {
                 personalDetail.IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower;
                 personalDetail.UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower;
@@ -305,7 +299,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 foreach (var address in input.PreviousAddresses)
                 {
                     if (address.Id != default)
-                        await _addressRepository.UpdateAsync(address.Id, dbAddress =>
+                        await _addressRepository.UpdateAsync(address.Id.Value, dbAddress =>
                         {
                             dbAddress.AddressLine1 = address.AddressLine1;
                             dbAddress.AddressLine2 = address.AddressLine2;
@@ -320,7 +314,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
 
             if (input.MailingAddress != null && input.MailingAddress.Id != default)
-                await _addressRepository.UpdateAsync(input.MailingAddress.Id, dbAddress =>
+                await _addressRepository.UpdateAsync(input.MailingAddress.Id.Value, dbAddress =>
                 {
                     dbAddress.AddressLine1 = input.MailingAddress.AddressLine1;
                     dbAddress.AddressLine2 = input.MailingAddress.AddressLine2;
@@ -334,7 +328,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 });
 
             if (input.ResidentialAddress != null && input.ResidentialAddress.Id != default)
-                await _addressRepository.UpdateAsync(input.ResidentialAddress.Id, dbAddress =>
+                await _addressRepository.UpdateAsync(input.ResidentialAddress.Id.Value, dbAddress =>
                 {
                     dbAddress.AddressLine1 = input.ResidentialAddress.AddressLine1;
                     dbAddress.AddressLine2 = input.ResidentialAddress.AddressLine2;
@@ -351,7 +345,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

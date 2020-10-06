@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {
-    public class DemographicDto : EntityDto<long>
+    public class DemographicDto : EntityDto<long?>
     {
         public List<DemographicTypeDto> Ethnicity { get; set; }
         public List<DemographicTypeDto> Race { get; set; }

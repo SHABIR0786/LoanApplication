@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<EConsentDto> GetAsync(EntityDto<long> input)
+        public async Task<EConsentDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var consentDetail = new ConsentDetail
                 {
-                    Id = input.Id,
                     AgreeEConsent = input.AgreeEConsent,
                     FirstName = input.FirstName,
                     LastName = input.LastName,
@@ -54,9 +53,8 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<EConsentDto> UpdateAsync(EConsentDto input)
         {
-            await _repository.UpdateAsync(input.Id, consentDetail =>
+            await _repository.UpdateAsync(input.Id.Value, consentDetail =>
             {
-                consentDetail.Id = input.Id;
                 consentDetail.AgreeEConsent = input.AgreeEConsent;
                 consentDetail.FirstName = input.FirstName;
                 consentDetail.LastName = input.LastName;
@@ -68,7 +66,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

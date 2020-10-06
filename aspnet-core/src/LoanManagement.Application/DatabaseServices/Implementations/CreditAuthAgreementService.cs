@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<CreditAuthAgreementDto> GetAsync(EntityDto<long> input)
+        public async Task<CreditAuthAgreementDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var creditAuthAgreement = new CreditAuthAgreement
                 {
-                    Id = input.Id,
                     AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement,
                 };
                 await _repository.InsertAsync(creditAuthAgreement);
@@ -51,9 +50,8 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<CreditAuthAgreementDto> UpdateAsync(CreditAuthAgreementDto input)
         {
-            await _repository.UpdateAsync(input.Id, creditAuthAgreement =>
+            await _repository.UpdateAsync(input.Id.Value, creditAuthAgreement =>
             {
-                creditAuthAgreement.Id = input.Id;
                 creditAuthAgreement.AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement;
                 return Task.CompletedTask;
             });
@@ -62,7 +60,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

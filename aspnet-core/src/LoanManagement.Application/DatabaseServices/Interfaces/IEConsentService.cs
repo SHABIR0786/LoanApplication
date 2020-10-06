@@ -3,7 +3,7 @@ using LoanManagement.ViewModels;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
-    public interface IEConsentService : IAsyncCrudAppService<EConsentDto, long, PagedLoanApplicationResultRequestDto, EConsentDto, EConsentDto>
+    public interface IEConsentService : IAsyncCrudAppService<EConsentDto, long?, PagedLoanApplicationResultRequestDto, EConsentDto, EConsentDto>
     {
     }
 }

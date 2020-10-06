@@ -45,7 +45,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _declarationService = declarationService;
         }
 
-        public async Task<LoanApplicationDto> GetAsync(EntityDto<long> input)
+        public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<LoanApplicationDto> UpdateAsync(LoanApplicationDto input)
         {
-            await _repository.UpdateAsync(input.Id, async loanApplication =>
+            await _repository.UpdateAsync(input.Id.Value, async loanApplication =>
             {
                 #region Loadn App
                 if (input.Id == 0)
@@ -178,7 +178,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     if (input.Declaration.Id == default)
                     {
-                        input.Declaration.LoanApplicationId = input.Id;
+                        input.Declaration.LoanApplicationId = input.Id.Value;
                         input.Declaration = await _declarationService.CreateAsync(input.Declaration);
                     }
                     else
@@ -199,7 +199,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

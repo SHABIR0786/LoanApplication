@@ -3,7 +3,7 @@ using System;
 
 namespace LoanManagement.ViewModels
 {
-    public class BorrowerEmploymentInformationDto : EntityDto<long>
+    public class BorrowerEmploymentInformationDto : EntityDto<long?>
     {
         public string EmployersName { get; set; }
         public string EmployersAddress1 { get; set; }

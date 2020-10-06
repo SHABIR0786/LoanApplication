@@ -41,7 +41,7 @@ namespace LoanManagement.Controllers
             if (!id.HasValue)
                 return BadRequest(ModelState);
 
-            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long>(id.Value)));
+            return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long?>(id.Value)));
         }
     }
 }

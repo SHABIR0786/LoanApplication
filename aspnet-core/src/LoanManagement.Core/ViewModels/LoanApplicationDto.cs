@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 
 namespace LoanManagement.ViewModels
 {
-    public class LoanApplicationDto : EntityDto<long>
+    public class LoanApplicationDto : EntityDto<long?>
     {
         public LoanDetailDto LoanDetails { get; set; }
         public PersonalInformationDto PersonalInformation { get; set; }
