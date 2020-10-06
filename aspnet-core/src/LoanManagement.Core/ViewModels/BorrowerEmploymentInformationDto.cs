@@ -5,16 +5,16 @@ namespace LoanManagement.ViewModels
 {
     public class BorrowerEmploymentInformationDto : EntityDto<long?>
     {
-        public string EmployersName { get; set; }
-        public string EmployersAddress1 { get; set; }
-        public string EmployersAddress2 { get; set; }
+        public string EmployerName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
         public bool? IsSelfEmployed { get; set; }
         public int? YearOnThisJob { get; set; }
         public int? YearInThisLineOfWork { get; set; }
         public string Position { get; set; }
         public string City { get; set; }
         public int? StateId { get; set; }
-        public decimal? ZipCode { get; set; }
+        public int? ZipCode { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public decimal? MonthlyIncome { get; set; }

@@ -6,8 +6,10 @@ namespace LoanManagement.Models
     {
         public decimal? Amount { get; set; }
         public int? IncomeSourceId { get; set; }
+        public int? BorrowerTypeId { get; set; }
+        public long LoanApplicationId { get; set; }
 
         public BorrowerType BorrowerType { get; set; }
-        public int? BorrowerTypeId { get; set; }
+        public LoanApplication LoanApplication { get; set; }
     }
 }

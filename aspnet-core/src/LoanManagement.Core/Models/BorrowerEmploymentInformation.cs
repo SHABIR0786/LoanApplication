@@ -15,7 +15,7 @@ namespace LoanManagement.Models
         public string Position { get; set; }
         public string City { get; set; }
         public int? StateId { get; set; }
-        public decimal? ZipCode { get; set; }
+        public int? ZipCode { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
