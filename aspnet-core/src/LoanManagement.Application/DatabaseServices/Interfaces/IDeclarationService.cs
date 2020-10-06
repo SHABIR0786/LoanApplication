@@ -6,6 +6,6 @@ namespace LoanManagement.DatabaseServices.Interfaces
 {
     public interface IDeclarationService : IAsyncCrudAppService<DeclarationDto, long, PagedLoanApplicationResultRequestDto, DeclarationDto, DeclarationDto>
     {
-        Task<DeclarationBorrowereDemographicsInformationDto> CreateDeclarationBorrowereDemographicsInformation(DeclarationBorrowereDemographicsInformationDto input);
+        //Task<DeclarationBorrowereDemographicsInformationDto> CreateDeclarationBorrowereDemographicsInformation(DeclarationBorrowereDemographicsInformationDto input);
     }
 }
