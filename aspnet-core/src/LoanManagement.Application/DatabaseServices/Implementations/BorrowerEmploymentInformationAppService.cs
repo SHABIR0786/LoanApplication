@@ -34,9 +34,9 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var additionalDetail = new BorrowerEmploymentInformation
                 {
-                    EmployersName = input.EmployersName,
-                    EmployersAddress1 = input.EmployersAddress1,
-                    EmployersAddress2 = input.EmployersAddress2,
+                    EmployersName = input.EmployerName,
+                    EmployersAddress1 = input.Address1,
+                    EmployersAddress2 = input.Address2,
                     IsSelfEmployed = input.IsSelfEmployed,
                     Position = input.Position,
                     City = input.City,
@@ -63,9 +63,9 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
-                additionalDetail.EmployersName = input.EmployersName;
-                additionalDetail.EmployersAddress1 = input.EmployersAddress1;
-                additionalDetail.EmployersAddress2 = input.EmployersAddress2;
+                additionalDetail.EmployersName = input.EmployerName;
+                additionalDetail.EmployersAddress1 = input.Address1;
+                additionalDetail.EmployersAddress2 = input.Address2;
                 additionalDetail.IsSelfEmployed = input.IsSelfEmployed;
                 additionalDetail.Position = input.Position;
                 additionalDetail.City = input.City;

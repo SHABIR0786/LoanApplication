@@ -10,7 +10,9 @@ namespace LoanManagement.ViewModels
         [JsonIgnore]
         public new long? Id { get; set; }
         public long? LoanApplicationId { get; set; }
+        public List<AdditionalIncomeDto> AdditionalIncomes { get; set; }
         public List<BorrowerEmploymentInformationDto> BorrowerEmploymentInfo { get; set; }
+        public List<BorrowerEmploymentInformationDto> CoBorrowerEmploymentInfo { get; set; }
         public BorrowerMonthlyIncomeDto BorrowerMonthlyIncome { get; set; }
         public BorrowerMonthlyIncomeDto CoBorrowerMonthlyIncome { get; set; }
     }

@@ -1552,9 +1552,14 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerTypeId");
+
+                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("AdditionalIncomes");
                 });
@@ -1751,8 +1756,8 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("ZipCode")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int?>("ZipCode")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1931,6 +1936,9 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
@@ -1998,6 +2006,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
 
                     b.HasIndex("LoanApplicationId");
 
@@ -2207,9 +2217,6 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("AdditionalDetailsId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("AdditionalIncomeId")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("ConsentDetailId")
                         .HasColumnType("bigint");
 
@@ -2252,8 +2259,6 @@ namespace LoanManagement.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AdditionalDetailId");
-
-                    b.HasIndex("AdditionalIncomeId");
 
                     b.HasIndex("ConsentDetailId");
 
@@ -2689,6 +2694,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
                         .HasForeignKey("BorrowerTypeId");
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany()
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Address", b =>
@@ -2737,6 +2748,12 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.Declaration", b =>
                 {
+                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
+                        .WithMany()
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany()
                         .HasForeignKey("LoanApplicationId")
@@ -2764,10 +2781,6 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.AdditionalDetail", "AdditionalDetail")
                         .WithMany()
                         .HasForeignKey("AdditionalDetailId");
-
-                    b.HasOne("LoanManagement.Models.AdditionalIncome", "AdditionalIncome")
-                        .WithMany()
-                        .HasForeignKey("AdditionalIncomeId");
 
                     b.HasOne("LoanManagement.Models.ConsentDetail", "ConsentDetail")
                         .WithMany()

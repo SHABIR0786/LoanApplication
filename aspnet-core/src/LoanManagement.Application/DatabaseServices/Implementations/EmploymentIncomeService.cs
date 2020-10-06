@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -11,14 +12,17 @@ namespace LoanManagement.DatabaseServices.Implementations
     {
         private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationRepository;
         private readonly IBorrowerMonthlyIncomeServices _borrowerMonthlyIncomeRepository;
+        private readonly IAdditionalIncomeService _additionalIncomeService;
 
         public EmploymentIncomeService(
             IBorrowerEmploymentInformationAppService borrowerEmploymentInformationRepository,
-            IBorrowerMonthlyIncomeServices borrowerMonthlyIncomeRepository
+            IBorrowerMonthlyIncomeServices borrowerMonthlyIncomeRepository,
+            IAdditionalIncomeService additionalIncomeService
             )
         {
             _borrowerEmploymentInformationRepository = borrowerEmploymentInformationRepository;
             _borrowerMonthlyIncomeRepository = borrowerMonthlyIncomeRepository;
+            _additionalIncomeService = additionalIncomeService;
         }
 
         public Task<EmploymentIncomeDto> GetAsync(EntityDto<long?> input)
@@ -61,16 +65,39 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 #region Employment Information
 
-                foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
-                {
-                    borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
-                    if (borrowerEmploymentInfo.Id == default)
-                        await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
-                    else
-                        await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
-                }
+                if (input.BorrowerEmploymentInfo != null && input.BorrowerEmploymentInfo.Any())
+                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
+                    {
+                        borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
+                        if (borrowerEmploymentInfo.Id == default)
+                            await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        else
+                            await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
+                    }
+
+                if (input.CoBorrowerEmploymentInfo != null && input.CoBorrowerEmploymentInfo.Any())
+                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo)
+                    {
+                        borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
+                        if (borrowerEmploymentInfo.Id == default)
+                            await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        else
+                            await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
+                    }
 
                 #endregion
+
+                if (input.AdditionalIncomes != null && input.AdditionalIncomes.Any())
+                {
+                    foreach (var additionalIncome in input.AdditionalIncomes)
+                    {
+                        additionalIncome.LoanApplicationId = input.LoanApplicationId.Value;
+                        if (!additionalIncome.Id.HasValue || additionalIncome.Id.Value == default)
+                            await _additionalIncomeService.CreateAsync(additionalIncome);
+                        else
+                            await _additionalIncomeService.UpdateAsync(additionalIncome);
+                    }
+                }
 
                 return input;
             }
