@@ -3,6 +3,7 @@ import {ILoanDetailModel} from '../../interfaces/ILoanDetailModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-loan-details',
@@ -12,9 +13,7 @@ import {DataService} from '../../services/data.service';
 export class LoanDetailsComponent implements OnInit, DoCheck {
 
     id = Math.random().toString(36).substring(2);
-    @Input() data: ILoanDetailModel = {
-        purposeOfLoan: 1
-    };
+    @Input() data: ILoanDetailModel = {};
     @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
@@ -39,11 +38,16 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.loadPropertyTypes();
         this.loadPropertyUses();
         this.loadLoanOfficers();
+
+        this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
+            this.form.patchValue(formData.loanDetails);
+        });
     }
 
     ngDoCheck() {
         this.data = this.form.value;
         this._dataService.updateValidations(this.form, 'loanDetails');
+
         if (this.form.valid) {
             this.onDataChange.next(this.form.value);
         }
@@ -51,6 +55,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
+            id: new FormControl(undefined),
             referredBy: new FormControl(this.data.referredBy),
             isWorkingWithOfficer: new FormControl(this.data.isWorkingWithOfficer, [Validators.required]),
             loanOfficerId: new FormControl(this.data.loanOfficerId, [Validators.required]),
