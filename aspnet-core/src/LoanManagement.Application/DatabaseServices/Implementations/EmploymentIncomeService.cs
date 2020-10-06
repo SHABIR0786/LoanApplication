@@ -59,27 +59,19 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
                 #endregion
 
-                #region Borrower Employment Information
-                if (input.BorrowerEmploymentInformations != null)
+                #region Employment Information
+
+                foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
                 {
-                    input.BorrowerEmploymentInformations.LoanApplicationId = input.LoanApplicationId;
-                    if (input.BorrowerEmploymentInformations.Id == default)
-                        await _borrowerEmploymentInformationRepository.CreateAsync(input.BorrowerEmploymentInformations);
+                    borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
+                    if (borrowerEmploymentInfo.Id == default)
+                        await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
                     else
-                        await _borrowerEmploymentInformationRepository.UpdateAsync(input.BorrowerEmploymentInformations);
+                        await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
                 }
+
                 #endregion
 
-                #region Co-BorrowerEmploymentInformation
-                if (input.CoBorrowerEmploymentInformations != null)
-                {
-                    input.CoBorrowerEmploymentInformations.LoanApplicationId = input.LoanApplicationId;
-                    if (input.CoBorrowerMonthlyIncome.Id == default)
-                        await _borrowerEmploymentInformationRepository.CreateAsync(input.CoBorrowerEmploymentInformations);
-                    else
-                        await _borrowerEmploymentInformationRepository.UpdateAsync(input.CoBorrowerEmploymentInformations);
-                }
-                #endregion
                 return input;
             }
             catch (Exception e)

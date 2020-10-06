@@ -45,6 +45,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     StartDate = input.StartDate,
                     EndDate = input.EndDate,
                     BorrowerTypeId = input.BorrowerTypeId,
+                    LoanApplicationId = input.LoanApplicationId.Value
                 };
                 await _repository.InsertAsync(additionalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
