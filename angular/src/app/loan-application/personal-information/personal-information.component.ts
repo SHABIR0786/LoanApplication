@@ -1,10 +1,11 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {IAddressModel} from '../../interfaces/IAddressModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-personal-information',
@@ -50,6 +51,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     ngOnInit(): void {
         this.initForm();
         this.loadStates();
+
+        this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
+            this.form.patchValue(formData.personalInformation);
+        });
     }
 
     ngDoCheck() {
@@ -74,6 +79,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
+            id: new FormControl(undefined),
             isApplyingWithCoBorrower: new FormControl(this.data.isApplyingWithCoBorrower, [Validators.required]),
             useIncomeOfPersonOtherThanBorrower: new FormControl(this.data.useIncomeOfPersonOtherThanBorrower, [Validators.required]),
             agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [Validators.required]),
@@ -112,6 +118,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initBorrowerForm(data: IBorrowerModel) {
         return new FormGroup({
+            id: new FormControl(undefined),
             firstName: new FormControl(data.firstName, [Validators.required]),
             middleInitial: new FormControl(data.middleInitial),
             lastName: new FormControl(data.lastName, [Validators.required]),
@@ -128,8 +135,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initAddressForm(data: IAddressModel, addressTypeId: number, required: boolean) {
         return new FormGroup({
+            id: new FormControl(undefined),
             addressLine1: new FormControl(data.addressLine1, required ? [Validators.required] : []),
-            addressLine2: new FormControl(data.addressLine2,),
+            addressLine2: new FormControl(data.addressLine2),
             city: new FormControl(data.city, required ? [Validators.required] : []),
             stateId: new FormControl(data.stateId, required ? [Validators.required] : []),
             zipCode: new FormControl(data.zipCode, required ? [Validators.required] : []),
