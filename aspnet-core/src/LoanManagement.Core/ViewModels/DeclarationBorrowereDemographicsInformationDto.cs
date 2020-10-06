@@ -32,7 +32,5 @@ namespace LoanManagement.ViewModels
         public bool? IsMale { get; set; }
         public bool? IsFemale { get; set; }
         public bool? IsDonotProvideSexInformattion { get; set; }
-
-        public long? LoanApplicationId { get; set; }
     }
 }
