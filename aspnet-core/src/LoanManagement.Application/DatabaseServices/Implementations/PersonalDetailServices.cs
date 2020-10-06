@@ -86,7 +86,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower
                     };
 
-                    input.Borrower.BorrowerTypeId = borrower.BorrowerTypeId;
+                    input.CoBorrower.BorrowerTypeId = borrower.BorrowerTypeId;
 
                     await _borrowerRepository.InsertAsync(borrower);
                     await UnitOfWorkManager.Current.SaveChangesAsync();

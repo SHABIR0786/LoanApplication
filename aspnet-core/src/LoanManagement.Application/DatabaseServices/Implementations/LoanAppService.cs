@@ -94,6 +94,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     input.Id = loanApplication.Id;
                 }
                 #endregion
+
                 #region Loan Detail
                 if (input.LoanDetails != null)
                 {
@@ -177,8 +178,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     if (input.Declaration.Id == default)
                     {
+                        input.Declaration.LoanApplicationId = input.Id;
                         input.Declaration = await _declarationService.CreateAsync(input.Declaration);
-                        loanApplication.DeclarationId = input.Declaration.Id;
                     }
                     else
                         await _declarationService.UpdateAsync(input.Declaration);
