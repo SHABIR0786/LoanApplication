@@ -160,15 +160,15 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #endregion
 
                 #region Credit AuthAgreement
-                if (input.CreditAuthAgreement != null)
+                if (input.OrderCredit != null)
                 {
-                    if (input.CreditAuthAgreement.Id == default)
+                    if (input.OrderCredit.Id == default)
                     {
-                        input.CreditAuthAgreement = await _creditAuthAgreementService.CreateAsync(input.CreditAuthAgreement);
-                        loanApplication.CreditAuthAgreementId = input.CreditAuthAgreement.Id;
+                        input.OrderCredit = await _creditAuthAgreementService.CreateAsync(input.OrderCredit);
+                        loanApplication.CreditAuthAgreementId = input.OrderCredit.Id;
                     }
                     else
-                        await _creditAuthAgreementService.UpdateAsync(input.CreditAuthAgreement);
+                        await _creditAuthAgreementService.UpdateAsync(input.OrderCredit);
                 }
                 #endregion
 
