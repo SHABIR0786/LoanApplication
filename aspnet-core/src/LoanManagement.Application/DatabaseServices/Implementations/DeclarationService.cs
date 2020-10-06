@@ -6,6 +6,7 @@ using LoanManagement.Enums;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -100,113 +101,117 @@ namespace LoanManagement.DatabaseServices.Implementations
                         BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
                         LoanApplicationId = input.LoanApplicationId
                     };
-                    foreach (var ethnic in input.BorrowerDemographic.Ethnicity)
-                        switch ((Ethnic)ethnic.Id)
+
+                    if (input.BorrowerDemographic.Ethnicity != null && input.BorrowerDemographic.Ethnicity.Any())
+                        foreach (var ethnic in input.BorrowerDemographic.Ethnicity)
+                            switch ((Ethnic)ethnic.Id)
+                            {
+                                case Ethnic.HispanicOrLatino:
+                                    borrowerDemographic.IsHispanicOrLatino = true;
+                                    break;
+                                case Ethnic.Mexican:
+                                    borrowerDemographic.IsMexican = true;
+                                    break;
+                                case Ethnic.PuertoRican:
+                                    borrowerDemographic.IsPuertoRican = true;
+                                    break;
+                                case Ethnic.Cuban:
+                                    borrowerDemographic.IsCuban = true;
+                                    break;
+                                case Ethnic.OtherHispanicOrLatino:
+                                    borrowerDemographic.IsOtherHispanicOrLatino = true;
+                                    borrowerDemographic.Origin = ethnic.OtherValue;
+                                    break;
+                                case Ethnic.NotHispanicOrLatino:
+                                    borrowerDemographic.IsNotHispanicOrLatino = true;
+                                    break;
+                                case Ethnic.CanNotProvideEthnic:
+                                    borrowerDemographic.CanNotProvideEthnic = true;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                    if (input.BorrowerDemographic.Race != null && input.BorrowerDemographic.Race.Any())
+                        foreach (var race in input.BorrowerDemographic.Race)
                         {
-                            case Ethnic.HispanicOrLatino:
-                                borrowerDemographic.IsHispanicOrLatino = true;
-                                break;
-                            case Ethnic.Mexican:
-                                borrowerDemographic.IsMexican = true;
-                                break;
-                            case Ethnic.PuertoRican:
-                                borrowerDemographic.IsPuertoRican = true;
-                                break;
-                            case Ethnic.Cuban:
-                                borrowerDemographic.IsCuban = true;
-                                break;
-                            case Ethnic.OtherHispanicOrLatino:
-                                borrowerDemographic.IsOtherHispanicOrLatino = true;
-                                borrowerDemographic.Origin = ethnic.OtherValue;
-                                break;
-                            case Ethnic.NotHispanicOrLatino:
-                                borrowerDemographic.IsNotHispanicOrLatino = true;
-                                break;
-                            case Ethnic.CanNotProvideEthnic:
-                                borrowerDemographic.CanNotProvideEthnic = true;
-                                break;
-                            default:
-                                break;
+                            switch ((Race)race.Id)
+                            {
+                                case Race.AmericanIndianOrAlaskaNative:
+                                    borrowerDemographic.IsAmericanIndianOrAlaskaNative = true;
+                                    break;
+                                case Race.Asian:
+                                    borrowerDemographic.IsAsian = true;
+                                    break;
+                                case Race.AsianIndian:
+                                    borrowerDemographic.IsAsianIndian = true;
+                                    break;
+                                case Race.Chinese:
+                                    borrowerDemographic.IsChinese = true;
+                                    break;
+                                case Race.Filipino:
+                                    borrowerDemographic.IsFilipino = true;
+                                    break;
+                                case Race.Japanese:
+                                    borrowerDemographic.IsJapanese = true;
+                                    break;
+                                case Race.Korean:
+                                    borrowerDemographic.IsKorean = true;
+                                    break;
+                                case Race.Vietnamese:
+                                    borrowerDemographic.IsVietnamese = true;
+                                    break;
+                                case Race.OtherAsian:
+                                    borrowerDemographic.IsOtherAsian = true;
+                                    break;
+                                case Race.BlackOrAfricanAmerican:
+                                    borrowerDemographic.IsBlackOrAfricanAmerican = true;
+                                    break;
+                                case Race.NativeHawaiianOrOtherPacificIslander:
+                                    borrowerDemographic.IsNativeHawaiianOrOtherPacificIslander = true;
+                                    break;
+                                case Race.NativeHawaiian:
+                                    borrowerDemographic.IsNativeHawaiian = true;
+                                    break;
+                                case Race.GuamanianOrChamorro:
+                                    borrowerDemographic.IsGuamanianOrChamorro = true;
+                                    break;
+                                case Race.Samoan:
+                                    borrowerDemographic.IsSamoan = true;
+                                    break;
+                                case Race.OtherPacificIslander:
+                                    borrowerDemographic.IsOtherPacificIslander = true;
+                                    borrowerDemographic.EnterRace = race.OtherValue;
+                                    break;
+                                case Race.White:
+                                    borrowerDemographic.IsWhite = true;
+                                    break;
+                                case Race.CanNotProvideRace:
+                                    borrowerDemographic.CanNotProvideRace = true;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
 
-                    foreach (var race in input.BorrowerDemographic.Race)
-                    {
-                        switch ((Race)race.Id)
+                    if (input.BorrowerDemographic.Sex != null && input.BorrowerDemographic.Sex.Any())
+                        foreach (var sex in input.BorrowerDemographic.Sex)
                         {
-                            case Race.AmericanIndianOrAlaskaNative:
-                                borrowerDemographic.IsAmericanIndianOrAlaskaNative = true;
-                                break;
-                            case Race.Asian:
-                                borrowerDemographic.IsAsian = true;
-                                break;
-                            case Race.AsianIndian:
-                                borrowerDemographic.IsAsianIndian = true;
-                                break;
-                            case Race.Chinese:
-                                borrowerDemographic.IsChinese = true;
-                                break;
-                            case Race.Filipino:
-                                borrowerDemographic.IsFilipino = true;
-                                break;
-                            case Race.Japanese:
-                                borrowerDemographic.IsJapanese = true;
-                                break;
-                            case Race.Korean:
-                                borrowerDemographic.IsKorean = true;
-                                break;
-                            case Race.Vietnamese:
-                                borrowerDemographic.IsVietnamese = true;
-                                break;
-                            case Race.OtherAsian:
-                                borrowerDemographic.IsOtherAsian = true;
-                                break;
-                            case Race.BlackOrAfricanAmerican:
-                                borrowerDemographic.IsBlackOrAfricanAmerican = true;
-                                break;
-                            case Race.NativeHawaiianOrOtherPacificIslander:
-                                borrowerDemographic.IsNativeHawaiianOrOtherPacificIslander = true;
-                                break;
-                            case Race.NativeHawaiian:
-                                borrowerDemographic.IsNativeHawaiian = true;
-                                break;
-                            case Race.GuamanianOrChamorro:
-                                borrowerDemographic.IsGuamanianOrChamorro = true;
-                                break;
-                            case Race.Samoan:
-                                borrowerDemographic.IsSamoan = true;
-                                break;
-                            case Race.OtherPacificIslander:
-                                borrowerDemographic.IsOtherPacificIslander = true;
-                                borrowerDemographic.EnterRace = race.OtherValue;
-                                break;
-                            case Race.White:
-                                borrowerDemographic.IsWhite = true;
-                                break;
-                            case Race.CanNotProvideRace:
-                                borrowerDemographic.CanNotProvideRace = true;
-                                break;
-                            default:
-                                break;
+                            switch ((Sex)sex.Id)
+                            {
+                                case Sex.Female:
+                                    borrowerDemographic.IsFemale = true;
+                                    break;
+                                case Sex.Male:
+                                    borrowerDemographic.IsMale = true;
+                                    break;
+                                case Sex.CanNotProvideSex:
+                                    borrowerDemographic.CanNotProvideSex = true;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-                    }
-
-                    foreach (var sex in input.BorrowerDemographic.Sex)
-                    {
-                        switch ((Sex)sex.Id)
-                        {
-                            case Sex.Female:
-                                borrowerDemographic.IsFemale = true;
-                                break;
-                            case Sex.Male:
-                                borrowerDemographic.IsMale = true;
-                                break;
-                            case Sex.CanNotProvideSex:
-                                borrowerDemographic.CanNotProvideSex = true;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
 
                     await _declarationBorrowerRepository.InsertAsync(borrowerDemographic);
                 }
@@ -218,7 +223,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                         LoanApplicationId = input.LoanApplicationId
                     };
-                    foreach (var ethnic in input.CoBorrowerDemographic.Ethnicity)
+                    if (input.CoBorrowerDemographic.Ethnicity != null && input.CoBorrowerDemographic.Ethnicity.Any())
+                        foreach (var ethnic in input.CoBorrowerDemographic.Ethnicity)
                         switch ((Ethnic)ethnic.Id)
                         {
                             case Ethnic.HispanicOrLatino:
@@ -246,8 +252,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                             default:
                                 break;
                         }
-
-                    foreach (var race in input.CoBorrowerDemographic.Race)
+                    if (input.CoBorrowerDemographic.Race != null && input.CoBorrowerDemographic.Race.Any())
+                        foreach (var race in input.CoBorrowerDemographic.Race)
                     {
                         switch ((Race)race.Id)
                         {
@@ -307,8 +313,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 break;
                         }
                     }
-
-                    foreach (var sex in input.CoBorrowerDemographic.Sex)
+                    if (input.CoBorrowerDemographic.Sex != null && input.CoBorrowerDemographic.Sex.Any())
+                        foreach (var sex in input.CoBorrowerDemographic.Sex)
                     {
                         switch ((Sex)sex.Id)
                         {
