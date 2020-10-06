@@ -6,7 +6,6 @@ namespace LoanManagement.Models
 {
     public class BorrowerEmploymentInformation : FullAuditedEntity<long>
     {
-        [Required]
         [StringLength(100)]
         public string EmployersName { get; set; }
         public string EmployersAddress1 { get; set; }

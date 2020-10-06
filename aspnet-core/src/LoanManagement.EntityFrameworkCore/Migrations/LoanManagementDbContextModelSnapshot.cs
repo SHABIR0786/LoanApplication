@@ -1721,7 +1721,6 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("EmployersName")
-                        .IsRequired()
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
 
@@ -1771,9 +1770,7 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("Base")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasMaxLength(100);
+                        .HasColumnType("int");
 
                     b.Property<int?>("Bonuses")
                         .HasColumnType("int");
