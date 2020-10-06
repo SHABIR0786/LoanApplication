@@ -166,7 +166,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     if (input.CreditAuthAgreement.Id == default)
                     {
                         input.CreditAuthAgreement = await _creditAuthAgreementService.CreateAsync(input.CreditAuthAgreement);
-                        loanApplication.CreditAuthAgreement.Id = input.CreditAuthAgreement.Id;
+                        loanApplication.CreditAuthAgreementId = input.CreditAuthAgreement.Id;
                     }
                     else
                         await _creditAuthAgreementService.UpdateAsync(input.CreditAuthAgreement);
