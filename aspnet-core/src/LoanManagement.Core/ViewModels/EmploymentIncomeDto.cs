@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 namespace LoanManagement.ViewModels
 {
-    public class EmploymentIncomeDto : EntityDto<long>
+    public class EmploymentIncomeDto : EntityDto<long?>
     {
         [JsonIgnore]
-        public new long Id { get; set; }
+        public new long? Id { get; set; }
         public long? LoanApplicationId { get; set; }
         public BorrowerEmploymentInformationDto BorrowerEmploymentInformations { get; set; }
         public BorrowerEmploymentInformationDto CoBorrowerEmploymentInformations { get; set; }

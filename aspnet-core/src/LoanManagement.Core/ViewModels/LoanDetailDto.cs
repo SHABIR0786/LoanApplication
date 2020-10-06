@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 
 namespace LoanManagement.ViewModels
 {
-    public class LoanDetailDto : EntityDto<long>
+    public class LoanDetailDto : EntityDto<long?>
     {
         public bool? IsWorkingWithOfficer { get; set; }
 

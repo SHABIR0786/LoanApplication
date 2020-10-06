@@ -4,7 +4,7 @@ using LoanManagement.ViewModels;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
-    public interface IBorrowerMonthlyIncomeServices : IAsyncCrudAppService<BorrowerMonthlyIncomeDto, long, PagedLoanApplicationResultRequestDto, BorrowerMonthlyIncomeDto, BorrowerMonthlyIncomeDto>
+    public interface IBorrowerMonthlyIncomeServices : IAsyncCrudAppService<BorrowerMonthlyIncomeDto, long?, PagedLoanApplicationResultRequestDto, BorrowerMonthlyIncomeDto, BorrowerMonthlyIncomeDto>
     {
     }
 }

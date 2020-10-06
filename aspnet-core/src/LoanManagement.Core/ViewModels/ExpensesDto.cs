@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 
 namespace LoanManagement.ViewModels
 {
-    public class ExpensesDto : EntityDto<long>
+    public class ExpensesDto : EntityDto<long?>
     {
         public string IsLiveWithFamilySelectRent { get; set; }
         public int? Rent { get; set; }

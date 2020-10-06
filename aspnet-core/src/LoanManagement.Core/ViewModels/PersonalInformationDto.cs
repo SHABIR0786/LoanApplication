@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {
-    public class PersonalInformationDto : EntityDto<long>
+    public class PersonalInformationDto : EntityDto<long?>
     {
         public bool? IsApplyingWithCoBorrower { get; set; }
         public bool? UseIncomeOfPersonOtherThanBorrower { get; set; }

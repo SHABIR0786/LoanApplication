@@ -21,7 +21,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _borrowerMonthlyIncomeRepository = borrowerMonthlyIncomeRepository;
         }
 
-        public Task<EmploymentIncomeDto> GetAsync(EntityDto<long> input)
+        public Task<EmploymentIncomeDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -93,7 +93,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return null;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

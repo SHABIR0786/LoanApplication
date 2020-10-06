@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<BorrowerMonthlyIncomeDto> GetAsync(EntityDto<long> input)
+        public Task<BorrowerMonthlyIncomeDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 var additionalDetail = new BorrowerMonthlyIncome
                 {
-                    Id = input.Id,
                     Base = input.Base,
                     Overtime = input.Overtime,
                     Bonuses = input.Bonuses,
@@ -57,7 +56,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<BorrowerMonthlyIncomeDto> UpdateAsync(BorrowerMonthlyIncomeDto input)
         {
-            await _repository.UpdateAsync(input.Id, additionalDetail =>
+            await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
                 additionalDetail.Base = input.Base;
                 additionalDetail.Overtime = input.Overtime;
@@ -72,7 +71,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

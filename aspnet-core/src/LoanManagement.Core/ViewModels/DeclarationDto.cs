@@ -3,10 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace LoanManagement.ViewModels
 {
-    public class DeclarationDto : EntityDto<long>
+    public class DeclarationDto : EntityDto<long?>
     {
         [JsonIgnore]
-        public new long Id { get; set; }
+        public new long? Id { get; set; }
         public long LoanApplicationId { get; set; }
         public DeclarationDetailDto BorrowerDeclaration { get; set; }
         public DemographicDto BorrowerDemographic { get; set; }

@@ -3,7 +3,7 @@ using LoanManagement.ViewModels;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
-    public interface ILoanDetailServices : IAsyncCrudAppService<LoanDetailDto, long, PagedLoanApplicationResultRequestDto, LoanDetailDto, LoanDetailDto>
+    public interface ILoanDetailServices : IAsyncCrudAppService<LoanDetailDto, long?, PagedLoanApplicationResultRequestDto, LoanDetailDto, LoanDetailDto>
     {
     }
 }

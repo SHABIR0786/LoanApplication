@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 
 namespace LoanManagement.ViewModels
 {
-    public class BorrowerDto : EntityDto<long>
+    public class BorrowerDto : EntityDto<long?>
     {
         public string FirstName { get; set; }
         public string MiddleInitial { get; set; }

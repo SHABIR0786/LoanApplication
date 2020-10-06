@@ -28,7 +28,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<DeclarationDto> GetAsync(EntityDto<long> input)
+        public Task<DeclarationDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -51,7 +51,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     borrowerDeclaration = new Declaration
                     {
-                        Id = input.Id,
                         IsOutstandingJudgmentsAgainstYou = input.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou,
                         IsDeclaredBankrupt = input.BorrowerDeclaration.IsDeclaredBankrupt,
                         IsPropertyForeClosedUponOrGivenTitle = input.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle,
@@ -75,7 +74,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     coBorrowerDeclaration = new Declaration
                     {
-                        Id = input.Id,
                         IsOutstandingJudgmentsAgainstYou = input.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou,
                         IsDeclaredBankrupt = input.CoBorrowerDeclaration.IsDeclaredBankrupt,
                         IsPropertyForeClosedUponOrGivenTitle = input.CoBorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle,
@@ -396,7 +394,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<DeclarationDto> UpdateAsync(DeclarationDto input)
         {
-            await _repository.UpdateAsync(input.Id, expense =>
+            await _repository.UpdateAsync(input.Id.Value, expense =>
             {
                 return Task.CompletedTask;
             });
@@ -405,7 +403,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

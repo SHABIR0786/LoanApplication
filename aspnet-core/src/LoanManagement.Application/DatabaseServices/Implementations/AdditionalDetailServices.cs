@@ -18,7 +18,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long> input)
+        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -30,28 +30,20 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<AdditionalDetailsDto> CreateAsync(AdditionalDetailsDto input)
         {
-            try
+            var additionalDetail = new AdditionalDetail
             {
-                var additionalDetail = new AdditionalDetail
-                {
-                    Id = input.Id,
-                    NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
-                };
-                await _repository.InsertAsync(additionalDetail);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
+                NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
+            };
+            await _repository.InsertAsync(additionalDetail);
+            await UnitOfWorkManager.Current.SaveChangesAsync();
 
-                input.Id = additionalDetail.Id;
-                return input;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            input.Id = additionalDetail.Id;
+            return input;
         }
 
         public async Task<AdditionalDetailsDto> UpdateAsync(AdditionalDetailsDto input)
         {
-            await _repository.UpdateAsync(input.Id, additionalDetail =>
+            await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
                 additionalDetail.NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle;
                 return Task.CompletedTask;
@@ -61,7 +53,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

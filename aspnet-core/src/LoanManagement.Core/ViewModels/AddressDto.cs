@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 
 namespace LoanManagement.ViewModels
 {
-    public class AddressDto : EntityDto<long>
+    public class AddressDto : EntityDto<long?>
     {
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
