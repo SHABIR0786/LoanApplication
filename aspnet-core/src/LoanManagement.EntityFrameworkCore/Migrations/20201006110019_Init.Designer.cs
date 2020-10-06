@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20201005165046_AddExpenseId")]
-    partial class AddExpenseId
+    [Migration("20201006110019_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1603,7 +1603,7 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("Months")
                         .HasColumnType("int");
 
-                    b.Property<long?>("PersonalDetailId")
+                    b.Property<long>("PersonalDetailId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("State")
@@ -1619,7 +1619,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("PersonalDetailId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
@@ -1677,9 +1677,6 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("NumberOfDependents")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonalDetailId")
                         .HasColumnType("int");
 
                     b.Property<string>("SocialSecurityNumber")
@@ -1745,6 +1742,9 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Position")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -1754,18 +1754,14 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("YearInThisLineOfWork")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("YearOnThisJob")
-                        .HasColumnType("int");
-
                     b.Property<decimal?>("ZipCode")
                         .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerTypeId");
+
+                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("BorrowerEmploymentInformations");
                 });
@@ -1814,12 +1810,17 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
                     b.Property<int?>("Overtime")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerTypeId");
+
+                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("BorrowerMonthlyIncomes");
                 });
@@ -1941,6 +1942,9 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("DeclarationsSection")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
@@ -1994,9 +1998,6 @@ namespace LoanManagement.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("declarationsSection")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -2240,8 +2241,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("DeclarationId");
 
-                    b.HasIndex("ExpenseId")
-                        .IsUnique();
+                    b.HasIndex("ExpenseId");
 
                     b.HasIndex("LoanDetailId");
 
@@ -2340,6 +2340,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("SourceOfDownPayment")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("StartedLookingForNewHome")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("StateId")
                         .HasColumnType("int");
 
@@ -2382,6 +2385,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsMailingAddressSameAsResidential")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -2669,9 +2675,11 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.Address", b =>
                 {
-                    b.HasOne("LoanManagement.Models.PersonalDetail", null)
+                    b.HasOne("LoanManagement.Models.PersonalDetail", "PersonalDetail")
                         .WithMany("Addresses")
-                        .HasForeignKey("PersonalDetailId");
+                        .HasForeignKey("PersonalDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
@@ -2688,6 +2696,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
                         .HasForeignKey("BorrowerTypeId");
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany()
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerMonthlyIncome", b =>
@@ -2695,6 +2709,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
                         .HasForeignKey("BorrowerTypeId");
+
+                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
+                        .WithMany()
+                        .HasForeignKey("LoanApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
@@ -2724,8 +2744,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("DeclarationId");
 
                     b.HasOne("LoanManagement.Models.Expense", "Expense")
-                        .WithOne("LoanApplication")
-                        .HasForeignKey("LoanManagement.Models.LoanApplication", "ExpenseId");
+                        .WithMany()
+                        .HasForeignKey("ExpenseId");
 
                     b.HasOne("LoanManagement.Models.LoanDetail", "LoanDetail")
                         .WithMany()

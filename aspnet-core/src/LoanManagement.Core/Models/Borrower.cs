@@ -1,6 +1,4 @@
 using Abp.Domain.Entities.Auditing;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
@@ -26,11 +24,7 @@ namespace LoanManagement.Models
 
         public string HomePhone { get; set; }
 
-        //[ForeignKey("PersonalDetailId")]
-        //public PersonalDetail PersonalDetail { get; set; }
-        public int PersonalDetailId { get; set; }
 
-        [ForeignKey("BorrowerTypeId")]
         public BorrowerType BorrowerType { get; set; }
         public int BorrowerTypeId { get; set; }
 

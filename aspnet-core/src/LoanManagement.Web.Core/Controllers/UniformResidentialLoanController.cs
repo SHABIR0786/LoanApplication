@@ -1,7 +1,7 @@
+using Abp.Runtime.Validation;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace LoanManagement.Controllers
@@ -18,6 +18,7 @@ namespace LoanManagement.Controllers
             _loanAppService = loanAppService;
         }
 
+        [DisableValidation]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] LoanApplicationDto input)
         {

@@ -86,7 +86,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             await _repository.UpdateAsync(input.Id, async loanApplication =>
             {
                 #region Loadn App
-                if(input.Id == 0)
+                if (input.Id == 0)
                 {
                     var loanApplicationOb = new LoanApplication();
                     await _repository.InsertAsync(loanApplicationOb);
@@ -97,7 +97,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Loan Detail
                 if (input.LoanDetails != null)
                 {
-                    input.LoanDetails.LoanApplicationId = input.Id;
                     if (input.LoanDetails.Id == default)
                     {
                         input.LoanDetails = await _loanDetailServices.CreateAsync(input.LoanDetails);
@@ -111,7 +110,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Personal Information
                 if (input.PersonalInformation != null)
                 {
-                    input.PersonalInformation.LoanApplicationId = input.Id;
                     if (input.PersonalInformation.Id == default)
                     {
                         input.PersonalInformation = await _personalDetailService.CreateAsync(input.PersonalInformation);
@@ -125,7 +123,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Additional Details
                 if (input.AdditionalDetails != null)
                 {
-                    input.AdditionalDetails.LoanApplicationId = input.Id;
                     if (input.AdditionalDetails.Id == default)
                     {
                         input.AdditionalDetails = await _additionalDetailsService.CreateAsync(input.AdditionalDetails);
@@ -153,11 +150,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region EConsent
                 if (input.EConsent != null)
                 {
-                    input.EConsent.LoanApplicationId = input.Id;
                     if (input.EConsent.Id == default)
                     {
                         input.EConsent = await _eConsentService.CreateAsync(input.EConsent);
-                        loanApplication.ConsentDetail.Id = input.EConsent.Id;
+                        loanApplication.ConsentDetailId = input.EConsent.Id;
                     }
                     else
                         await _eConsentService.UpdateAsync(input.EConsent);
@@ -167,7 +163,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Credit AuthAgreement
                 if (input.CreditAuthAgreement != null)
                 {
-                    input.CreditAuthAgreement.LoanApplicationId = input.Id;
                     if (input.CreditAuthAgreement.Id == default)
                     {
                         input.CreditAuthAgreement = await _creditAuthAgreementService.CreateAsync(input.CreditAuthAgreement);
@@ -181,11 +176,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Declaration
                 if (input.Declaration != null)
                 {
-                    input.Declaration.LoanApplicationId = input.Id;
                     if (input.Declaration.Id == default)
                     {
                         input.Declaration = await _declarationService.CreateAsync(input.Declaration);
-                        loanApplication.Declaration.Id = input.Declaration.Id;
+                        loanApplication.DeclarationId = input.Declaration.Id;
                     }
                     else
                         await _declarationService.UpdateAsync(input.Declaration);
@@ -195,8 +189,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Employment Income
                 if (input.EmploymentIncome != null)
                 {
-                    input.EmploymentIncome.LoanApplicationId = input.Id;
-                    input.EmploymentIncome = await _employmentIncomeService.CreateAsync(input.EmploymentIncome);
+                    //input.EmploymentIncome = await _employmentIncomeService.CreateAsync(input.EmploymentIncome);
                 }
                 #endregion
             });
