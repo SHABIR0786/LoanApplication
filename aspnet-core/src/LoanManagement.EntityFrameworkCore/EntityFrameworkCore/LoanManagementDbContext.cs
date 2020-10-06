@@ -11,6 +11,7 @@ namespace LoanManagement.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
 
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformations { get; set; }
         public DbSet<LoanApplication> LoanApplications { get; set; }
         public DbSet<AdditionalDetail> AdditionalDetails { get; set; }

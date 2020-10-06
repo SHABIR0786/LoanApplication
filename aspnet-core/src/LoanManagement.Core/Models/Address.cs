@@ -15,7 +15,7 @@ namespace LoanManagement.Models
         public int? Years { get; set; }
         public int? Months { get; set; }
 
-        public long? PersonalDetailId { get; set; }
+        public long PersonalDetailId { get; set; }
         public PersonalDetail PersonalDetail { get; set; }
     }
 }

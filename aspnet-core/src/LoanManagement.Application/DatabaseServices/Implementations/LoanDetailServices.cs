@@ -56,7 +56,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     SecondMortgageAmount = input.SecondMortgageAmount,
                     SourceOfDownPayment = input.SourceOfDownPayment,
                     StateId = input.StateId,
-                    LoanApplicationId = input.LoanApplicationId.Value,
                     YearAcquired = input.YearAcquired
                 };
                 await _repository.InsertAsync(loanDetail);
@@ -98,7 +97,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 loanDetail.SourceOfDownPayment = input.SourceOfDownPayment;
                 loanDetail.StateId = input.StateId;
                 loanDetail.YearAcquired = input.YearAcquired;
-                loanDetail.LoanApplicationId = input.LoanApplicationId.Value;
 
                 return Task.CompletedTask;
             });

@@ -36,7 +36,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     Id = input.Id,
                     NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
-                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _repository.InsertAsync(additionalDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -55,7 +54,6 @@ namespace LoanManagement.DatabaseServices.Implementations
             await _repository.UpdateAsync(input.Id, additionalDetail =>
             {
                 additionalDetail.NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle;
-                additionalDetail.LoanApplicationId = input.LoanApplicationId.Value;
                 return Task.CompletedTask;
             });
 

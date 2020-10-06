@@ -1,5 +1,4 @@
 ﻿using Abp.Domain.Entities.Auditing;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
@@ -9,8 +8,5 @@ namespace LoanManagement.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        [ForeignKey("LoanApplicationId")]
-        public LoanApplication LoanApplication { get; set; }
-        public long LoanApplicationId { get; set; }
     }
 }

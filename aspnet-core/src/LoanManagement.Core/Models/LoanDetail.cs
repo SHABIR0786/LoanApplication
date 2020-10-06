@@ -1,5 +1,4 @@
 using Abp.Domain.Entities.Auditing;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
@@ -54,7 +53,5 @@ namespace LoanManagement.Models
         public int? PropertyUseId { get; set; }
 
         public bool? StartedLookingForNewHome { get; set; }
-
-
     }
 }

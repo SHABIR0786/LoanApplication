@@ -1,7 +1,8 @@
 using Abp.Application.Services.Dto;
 using JetBrains.Annotations;
+using System.Collections.Generic;
 
-namespace LoanManagement.Models
+namespace LoanManagement.ViewModels
 {
     public class PersonalInformationDto : EntityDto<long>
     {
@@ -12,6 +13,10 @@ namespace LoanManagement.Models
         public BorrowerDto Borrower { get; set; }
         [CanBeNull]
         public BorrowerDto CoBorrower { get; set; }
-        public long LoanApplicationId { get; set; }
+        public bool IsMailingAddressSameAsResidential { get; set; }
+
+        public AddressDto ResidentialAddress { get; set; }
+        public List<AddressDto> PreviousAddresses { get; set; }
+        public AddressDto MailingAddress { get; set; }
     }
 }

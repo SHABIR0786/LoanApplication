@@ -44,7 +44,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     RealEstateTaxes = input.RealEstateTaxes,
                     MortgageInsurance = input.MortgageInsurance,
                     HomeOwnersAssociation = input.HomeOwnersAssociation,
-                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _repository.InsertAsync(expense);
                 await UnitOfWorkManager.Current.SaveChangesAsync();

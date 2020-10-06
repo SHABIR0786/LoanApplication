@@ -58,7 +58,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     IsIntendToOccupyThePropertyAsYourPrimary = input.IsIntendToOccupyThePropertyAsYourPrimary,
                     IsOwnershipInterestInPropertyInTheLastThreeYears = input.IsOwnershipInterestInPropertyInTheLastThreeYears,
                     DeclarationsSection = input.DeclarationsSection,
-                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _repository.InsertAsync(expense);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -103,7 +102,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     IsMale = input.IsMale,
                     IsFemale = input.IsFemale,
                     IsDonotProvideSexInformattion = input.IsDonotProvideSexInformattion,
-                    LoanApplicationId = input.LoanApplicationId.Value,
                 };
                 await _declarationBorrowerRepository.InsertAsync(model);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
