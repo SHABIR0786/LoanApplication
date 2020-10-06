@@ -9,7 +9,7 @@ namespace LoanManagement.ViewModels
         public ExpensesDto Expenses { get; set; }
         public EmploymentIncomeDto EmploymentIncome { get; set; }
 
-        public CreditAuthAgreementDto CreditAuthAgreement { get; set; }
+        public CreditAuthAgreementDto OrderCredit { get; set; }
         public AdditionalDetailsDto AdditionalDetails { get; set; }
         public EConsentDto EConsent { get; set; }
 
