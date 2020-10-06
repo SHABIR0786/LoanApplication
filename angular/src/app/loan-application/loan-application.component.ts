@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {LoanApplicationService} from '../services/loan-application.service';
 import {ILoanApplicationModel} from '../interfaces/ILoanApplicationModel';
-import { LoanDetailServicesServiceProxy } from '@shared/service-proxies/service-proxies';
+import {DataService} from '../services/data.service';
 
 @Component({
     selector: 'app-loan-application',
@@ -12,7 +12,9 @@ import { LoanDetailServicesServiceProxy } from '@shared/service-proxies/service-
 export class LoanApplicationComponent implements OnInit {
 
     loanApplication: ILoanApplicationModel = {
-        loanDetails: {},
+        loanDetails: {
+            purposeOfLoan: 1
+        },
         personalInformation: {
             borrower: {},
             coBorrower: {},
@@ -61,9 +63,10 @@ export class LoanApplicationComponent implements OnInit {
         }
     };
 
-    constructor(private _ngWizardService: NgWizardService,
-         private _loanApplicationService: LoanApplicationService,
-         private _loanDetailService: LoanDetailServicesServiceProxy
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _loanApplicationService: LoanApplicationService,
+        private _dataService: DataService,
     ) {
     }
 
@@ -100,10 +103,11 @@ export class LoanApplicationComponent implements OnInit {
         const formData = this.sanitizeFormData();
         this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
             this.loanApplication = this.prepareFormData(response.result);
+            this._dataService.updateFormData(this.loanApplication);
+            // this.
         }, error => {
             console.log(error);
         });
-     //   this._loanDetailService.create();  Asad you can use this post Api service too
     }
 
     proceedToNext() {
