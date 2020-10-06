@@ -65,7 +65,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         IsIntendToOccupyThePropertyAsYourPrimary = input.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary,
                         IsOwnershipInterestInPropertyInTheLastThreeYears = input.BorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
                         DeclarationsSection = input.BorrowerDeclaration.DeclarationsSection,
-                        LoanApplicationId = input.LoanApplicationId
+                        LoanApplicationId = input.LoanApplicationId,
+                        BorrowerTypeId = (int) Enums.BorrowerType.Borrower
                     };
                     await _repository.InsertAsync(borrowerDeclaration);
                 }
@@ -88,7 +89,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         IsIntendToOccupyThePropertyAsYourPrimary = input.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary,
                         IsOwnershipInterestInPropertyInTheLastThreeYears = input.CoBorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
                         DeclarationsSection = input.CoBorrowerDeclaration.DeclarationsSection,
-                        LoanApplicationId = input.LoanApplicationId
+                        LoanApplicationId = input.LoanApplicationId,
+                        BorrowerTypeId = (int) Enums.BorrowerType.CoBorrower
                     };
                     await _repository.InsertAsync(coBorrowerDeclaration);
                 }

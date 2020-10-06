@@ -18,8 +18,11 @@ namespace LoanManagement.Models
         public bool? IsIntendToOccupyThePropertyAsYourPrimary { get; set; }
         public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get; set; }
         public string DeclarationsSection { get; set; }
+        public int BorrowerTypeId { get; set; }
         public long LoanApplicationId { get; set; }
 
+        
+        public BorrowerType BorrowerType { get; set; }
         public LoanApplication LoanApplication { get; set; }
     }
 }
