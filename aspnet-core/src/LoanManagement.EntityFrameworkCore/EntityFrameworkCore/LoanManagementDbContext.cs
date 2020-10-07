@@ -59,7 +59,8 @@ namespace LoanManagement.EntityFrameworkCore
             modelBuilder.Entity<BorrowerType>(borrowerEmploymentInformation =>
             {
                 borrowerEmploymentInformation.HasData(new BorrowerType { Id = 1, Name = "Borrower" },
-                                                      new BorrowerType { Id = 2, Name = "Co-Borrower" });
+                                                      new BorrowerType { Id = 2, Name = "Co-Borrower" },
+                                                      new BorrowerType { Id = 3, Name = "Both" });
             });
 
             modelBuilder.Entity<State>(State =>

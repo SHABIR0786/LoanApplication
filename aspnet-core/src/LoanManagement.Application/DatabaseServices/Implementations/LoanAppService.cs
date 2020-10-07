@@ -156,7 +156,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 City = address.City,
                                 Id = address.Id,
                                 Months = address.Months,
-                                State = address.State,
+                                StateId = address.StateId,
                                 Years = address.Years,
 
                             };
@@ -170,7 +170,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 City = address.City,
                                 Id = address.Id,
                                 Months = address.Months,
-                                State = address.State,
+                                StateId = address.StateId,
                                 Years = address.Years,
 
                             };
@@ -191,7 +191,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             City = address.City,
                             Id = address.Id,
                             Months = address.Months,
-                            State = address.State,
+                            StateId = address.StateId,
                             Years = address.Years,
                         });
                     }
@@ -331,7 +331,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             PropertyStatus = manualAssetEntries.PropertyStatus,
                             PropertyType = manualAssetEntries.PropertyType,
                             PurchasePrice = manualAssetEntries.PurchasePrice,
-                            State = manualAssetEntries.State,
+                            StateId = manualAssetEntries.StateId,
                             TaxesInsuranceAndOther = manualAssetEntries.TaxesInsuranceAndOther,
 
                         });

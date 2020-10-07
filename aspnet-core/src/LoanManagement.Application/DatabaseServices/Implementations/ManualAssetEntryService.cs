@@ -33,6 +33,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 Address2 = input.Address2,
                 AssetTypeId = input.AssetTypeId,
                 BankName = input.BankName,
+                BorrowerTypeId = input.BorrowerTypeId,
                 CashValue = input.CashValue,
                 City = input.City,
                 Description = input.Description,
@@ -98,6 +99,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 manualAssetEntry.Address2 = input.Address2;
                 manualAssetEntry.AssetTypeId = input.AssetTypeId;
                 manualAssetEntry.BankName = input.BankName;
+                manualAssetEntry.BorrowerTypeId = input.BorrowerTypeId;
                 manualAssetEntry.CashValue = input.CashValue;
                 manualAssetEntry.City = input.City;
                 manualAssetEntry.Description = input.Description;
@@ -112,6 +114,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 manualAssetEntry.PropertyType = input.PropertyType;
                 manualAssetEntry.PurchasePrice = input.PurchasePrice;
                 manualAssetEntry.StateId = input.StateId;
+                manualAssetEntry.TaxesInsuranceAndOther = input.TaxesInsuranceAndOther;
+                manualAssetEntry.ZipCode = input.ZipCode;
 
                 if (input.StockAndBonds != null && input.StockAndBonds.Any())
                     foreach (var stockAndBond in input.StockAndBonds)
