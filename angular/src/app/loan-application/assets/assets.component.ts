@@ -25,6 +25,7 @@ export class AssetsComponent implements OnInit, DoCheck {
   form: FormGroup;
   states = [];
   assetTypes = [];
+  borrowerTypeIds = [];
 
   constructor(
     private _ngWizardService: NgWizardService,
@@ -39,6 +40,7 @@ export class AssetsComponent implements OnInit, DoCheck {
     this.initForm();
     this.loadStates();
     this.loadAssetTypes();
+    this.loadBelongsTo();
 
     this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
       if (formData && formData.manualAssetEntries) {
@@ -244,6 +246,22 @@ export class AssetsComponent implements OnInit, DoCheck {
     ];
   }
 
+  loadBelongsTo() {
+    this.borrowerTypeIds = [
+      {
+        id: 1,
+        name: "Borrower",
+      },
+      {
+        id: 2,
+        name: "Co-Borrower",
+      },
+      {
+        id: 3,
+        name: "Both",
+      }
+    ];
+  }
   getAssetTypeById(assetTypeId) {
     const data = this.assetTypes.find((type) => type.id === assetTypeId);
     return data ? data.name : null;
