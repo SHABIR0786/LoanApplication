@@ -61,6 +61,10 @@ export class AssetsComponent implements OnInit, DoCheck {
         this.manualAssetEntries.push(this.initAssetForm(1));
     }
 
+    removeAsset(index) {
+        this.manualAssetEntries.removeAt(index);
+    }
+
     initAssetForm(assetTypeId) {
         const form = new FormGroup({
             id: new FormControl(''),

@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <div class="row">
-        <div class="col-12 mb-1">
+        <div class="col-12 mb-4">
             <h4>Manage Your Assets</h4>
         </div>
         <div class="col-12">
@@ -14,18 +14,15 @@
             </div>
 
             <hr class="mt-2 mb-3"/>
-            <p>Add assets manually with the Add Asset button.</p>
+            <p *ngIf="!data.length">Add assets manually with the Add Asset button.</p>
 
             <div class="col-12" formArrayName="manualAssetEntries">
                 <div class="row" *ngFor="let asset of data; let i = index; trackBy: trackByFn" [formGroupName]="i">
                     <div class="col-12">
                         <h6 class="pull-left float-left">{{getAssetTypeById(asset.assetTypeId)}}</h6>
-                        <!--<button class="btn btn-primary mr-1 float-right pull-right"
-                                (click)="clearCoBorrowerEmploymentInfoForm($event, i)">Clear
+                        <button class="btn btn-danger mr-1 float-right pull-right"
+                                (click)="removeAsset(i)">Remove
                         </button>
-                        <button class="btn btn-danger mr-1 float-right pull-right" *ngIf="i > 0"
-                                (click)="removeCoBorrowerEmploymentInfoForm($event, i)">Remove
-                        </button>-->
                     </div>
                     <div class="col-12 row mt-2" *ngIf="asset.assetTypeId !== 7">
 
