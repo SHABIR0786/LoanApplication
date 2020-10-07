@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IExpenseModel} from '@app/interfaces/IExpenseModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-expenses',
@@ -24,6 +25,12 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     ngOnInit(): void {
         this.initForm();
+
+        this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
+            if (formData && formData.expenses) {
+                this.form.patchValue(formData.expenses);
+            }
+        });
     }
 
     ngDoCheck() {
@@ -36,6 +43,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
+            id: new FormControl(this.data.id),
             isLiveWithFamilySelectRent: new FormControl(this.data.isLiveWithFamilySelectRent),
             rent: new FormControl(this.data.rent, [Validators.required]),
             otherHousingExpenses: new FormControl(this.data.otherHousingExpenses, [Validators.required]),

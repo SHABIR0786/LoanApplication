@@ -40,7 +40,9 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.loadLoanOfficers();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
-            this.form.patchValue(formData.loanDetails);
+            if (formData && formData.loanDetails) {
+                this.form.patchValue(formData.loanDetails);
+            }
         });
     }
 
@@ -55,7 +57,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
-            id: new FormControl(undefined),
+            id: new FormControl(this.data.id),
             referredBy: new FormControl(this.data.referredBy),
             isWorkingWithOfficer: new FormControl(this.data.isWorkingWithOfficer, [Validators.required]),
             loanOfficerId: new FormControl(this.data.loanOfficerId, [Validators.required]),
