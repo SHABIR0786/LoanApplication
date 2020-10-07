@@ -24,6 +24,8 @@ namespace LoanManagement.Models
         public long? ExpenseId { get; set; }
         public Expense Expense { get; set; }
 
+        public List<ManualAssetEntry> ManualAssetEntries { get; set; }
+
         public List<DeclarationBorrowereDemographicsInformation> DemographicsInformations { get; set; }
         public List<Declaration> Declarations { get; set; }
         public List<AdditionalIncome> AdditionalIncomes { get; set; }
