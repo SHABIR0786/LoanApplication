@@ -40,7 +40,7 @@ export class LoanApplicationComponent implements OnInit {
     };
 
     config: NgWizardConfig = {
-        selected: 3,
+        selected: 0,
         theme: THEME.default,
         anchorSettings: {
             markDoneStep: false,
