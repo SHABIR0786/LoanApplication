@@ -5,6 +5,7 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 AccountNumber = input.AccountNumber,
                 Address = input.Address,
-                Address2 = input.AccountNumber,
+                Address2 = input.Address2,
                 AssetTypeId = input.AssetTypeId,
                 BankName = input.BankName,
                 CashValue = input.CashValue,
@@ -45,7 +46,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 PropertyStatus = input.PropertyStatus,
                 PropertyType = input.PropertyType,
                 PurchasePrice = input.PurchasePrice,
-                State = input.State,
+                StateId = input.StateId,
                 StockAndBonds = input.StockAndBonds != null && input.StockAndBonds.Any() ? input.StockAndBonds.Select(i => new StockAndBond
                 {
                     AccountNumber = i.AccountNumber,
@@ -88,15 +89,13 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<ManualAssetEntryDto> UpdateAsync(ManualAssetEntryDto input)
         {
-            var manualAssetEntry = new ManualAssetEntry
-            {
+            var stockAndBonds = new List<StockAndBond>();
 
-            };
             await _repository.UpdateAsync(input.Id.Value, async manualAssetEntry =>
             {
                 manualAssetEntry.AccountNumber = input.AccountNumber;
                 manualAssetEntry.Address = input.Address;
-                manualAssetEntry.Address2 = input.AccountNumber;
+                manualAssetEntry.Address2 = input.Address2;
                 manualAssetEntry.AssetTypeId = input.AssetTypeId;
                 manualAssetEntry.BankName = input.BankName;
                 manualAssetEntry.CashValue = input.CashValue;
@@ -112,22 +111,28 @@ namespace LoanManagement.DatabaseServices.Implementations
                 manualAssetEntry.PropertyStatus = input.PropertyStatus;
                 manualAssetEntry.PropertyType = input.PropertyType;
                 manualAssetEntry.PurchasePrice = input.PurchasePrice;
-                manualAssetEntry.State = input.State;
+                manualAssetEntry.StateId = input.StateId;
 
                 if (input.StockAndBonds != null && input.StockAndBonds.Any())
                     foreach (var stockAndBond in input.StockAndBonds)
                     {
                         if (!stockAndBond.Id.HasValue || stockAndBond.Id.Value == default)
                         {
-                            manualAssetEntry.StockAndBonds.Add(new StockAndBond
+                            var dbStockAndBond = new StockAndBond
                             {
                                 AccountNumber = stockAndBond.AccountNumber,
                                 CompanyName = stockAndBond.CompanyName,
                                 Value = stockAndBond.Value
-                            });
+                            };
+                            manualAssetEntry.StockAndBonds.Add(dbStockAndBond);
+                            stockAndBonds.Add(dbStockAndBond);
                         }
                         else
                         {
+                            stockAndBonds.Add(new StockAndBond
+                            {
+                                Id = stockAndBond.Id.Value
+                            });
                             await _stockAndBondRepository.UpdateAsync(stockAndBond.Id.Value, dbStockAndBond =>
                             {
                                 dbStockAndBond.AccountNumber = stockAndBond.AccountNumber;
@@ -145,11 +150,11 @@ namespace LoanManagement.DatabaseServices.Implementations
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
-            if (manualAssetEntry.StockAndBonds != null && manualAssetEntry.StockAndBonds.Any())
+            if (stockAndBonds != null && stockAndBonds.Any())
             {
-                for (var index = 0; index < manualAssetEntry.StockAndBonds.Count; index++)
+                for (var index = 0; index < stockAndBonds.Count; index++)
                 {
-                    input.StockAndBonds[index].Id = manualAssetEntry.StockAndBonds[index].Id;
+                    input.StockAndBonds[index].Id = stockAndBonds[index].Id;
                 }
             }
             return input;

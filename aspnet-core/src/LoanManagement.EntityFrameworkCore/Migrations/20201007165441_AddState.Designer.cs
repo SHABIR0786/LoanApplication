@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201007165441_AddState")]
+    partial class AddState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1665,91 +1667,84 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 566, DateTimeKind.Local).AddTicks(8026),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 746, DateTimeKind.Local).AddTicks(6013),
                             IsDeleted = false,
                             Name = "Cash deposit on sales contract"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(813),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8018),
                             IsDeleted = false,
                             Name = "Certificate of Deposit"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(857),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8062),
                             IsDeleted = false,
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 4L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(860),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8065),
                             IsDeleted = false,
                             Name = "Gifts"
                         },
                         new
                         {
                             Id = 5L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(862),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8067),
                             IsDeleted = false,
                             Name = "Gift of equity"
                         },
                         new
                         {
                             Id = 6L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(864),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8069),
                             IsDeleted = false,
                             Name = "Money Market Fund"
                         },
                         new
                         {
                             Id = 7L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(866),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8071),
                             IsDeleted = false,
                             Name = "Mutual Funds"
                         },
                         new
                         {
                             Id = 8L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(868),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8073),
                             IsDeleted = false,
                             Name = "Net Proceeds from Real Estate Funds"
                         },
                         new
                         {
                             Id = 9L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(870),
-                            IsDeleted = false,
-                            Name = "Real Estate Owned"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(872),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8075),
                             IsDeleted = false,
                             Name = "Retirement Funds"
                         },
                         new
                         {
-                            Id = 11L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(873),
+                            Id = 10L,
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8077),
                             IsDeleted = false,
                             Name = "Savings Account"
                         },
                         new
                         {
-                            Id = 12L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(875),
+                            Id = 11L,
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8079),
                             IsDeleted = false,
                             Name = "Stocks & Bonds"
                         },
                         new
                         {
-                            Id = 13L,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 568, DateTimeKind.Local).AddTicks(877),
+                            Id = 12L,
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 747, DateTimeKind.Local).AddTicks(8081),
                             IsDeleted = false,
                             Name = "Trust Account"
                         });
@@ -2701,413 +2696,413 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(6800),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(668),
                             IsDeleted = false,
                             Name = "AL"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8608),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1751),
                             IsDeleted = false,
                             Name = "AK"
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8627),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1768),
                             IsDeleted = false,
                             Name = "AS"
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8629),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1770),
                             IsDeleted = false,
                             Name = "AZ"
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8631),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1772),
                             IsDeleted = false,
                             Name = "AR"
                         },
                         new
                         {
                             Id = 6,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8633),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1775),
                             IsDeleted = false,
                             Name = "CA"
                         },
                         new
                         {
                             Id = 7,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8635),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1777),
                             IsDeleted = false,
                             Name = "CO"
                         },
                         new
                         {
                             Id = 8,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8637),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1799),
                             IsDeleted = false,
                             Name = "CT"
                         },
                         new
                         {
                             Id = 9,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8660),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1801),
                             IsDeleted = false,
                             Name = "DE"
                         },
                         new
                         {
                             Id = 10,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8662),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1803),
                             IsDeleted = false,
                             Name = "DC"
                         },
                         new
                         {
                             Id = 11,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8664),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1805),
                             IsDeleted = false,
                             Name = "FM"
                         },
                         new
                         {
                             Id = 12,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8665),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1806),
                             IsDeleted = false,
                             Name = "FL"
                         },
                         new
                         {
                             Id = 13,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8667),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1808),
                             IsDeleted = false,
                             Name = "GA"
                         },
                         new
                         {
                             Id = 14,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8669),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1810),
                             IsDeleted = false,
                             Name = "GU"
                         },
                         new
                         {
                             Id = 15,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8671),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1812),
                             IsDeleted = false,
                             Name = "HI"
                         },
                         new
                         {
                             Id = 16,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8673),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1814),
                             IsDeleted = false,
                             Name = "ID"
                         },
                         new
                         {
                             Id = 17,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8675),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1815),
                             IsDeleted = false,
                             Name = "IL"
                         },
                         new
                         {
                             Id = 18,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8676),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1817),
                             IsDeleted = false,
                             Name = "IN"
                         },
                         new
                         {
                             Id = 19,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8678),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1819),
                             IsDeleted = false,
                             Name = "IA"
                         },
                         new
                         {
                             Id = 20,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8680),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1821),
                             IsDeleted = false,
                             Name = "KS"
                         },
                         new
                         {
                             Id = 21,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8682),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1822),
                             IsDeleted = false,
                             Name = "KY"
                         },
                         new
                         {
                             Id = 22,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8684),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1824),
                             IsDeleted = false,
                             Name = "LA"
                         },
                         new
                         {
                             Id = 23,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8685),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1826),
                             IsDeleted = false,
                             Name = "ME"
                         },
                         new
                         {
                             Id = 24,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8687),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1828),
                             IsDeleted = false,
                             Name = "MH"
                         },
                         new
                         {
                             Id = 25,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8689),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1830),
                             IsDeleted = false,
                             Name = "MD"
                         },
                         new
                         {
                             Id = 26,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8691),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1832),
                             IsDeleted = false,
                             Name = "MA"
                         },
                         new
                         {
                             Id = 27,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8693),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1834),
                             IsDeleted = false,
                             Name = "MI"
                         },
                         new
                         {
                             Id = 28,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8694),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1836),
                             IsDeleted = false,
                             Name = "MN"
                         },
                         new
                         {
                             Id = 29,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8696),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1838),
                             IsDeleted = false,
                             Name = "MS"
                         },
                         new
                         {
                             Id = 30,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8698),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1839),
                             IsDeleted = false,
                             Name = "MO"
                         },
                         new
                         {
                             Id = 31,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8700),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1841),
                             IsDeleted = false,
                             Name = "MT"
                         },
                         new
                         {
                             Id = 32,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8702),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1843),
                             IsDeleted = false,
                             Name = "NE"
                         },
                         new
                         {
                             Id = 33,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8703),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1845),
                             IsDeleted = false,
                             Name = "NV"
                         },
                         new
                         {
                             Id = 34,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8705),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1847),
                             IsDeleted = false,
                             Name = "NH"
                         },
                         new
                         {
                             Id = 35,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8707),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1849),
                             IsDeleted = false,
                             Name = "NJ"
                         },
                         new
                         {
                             Id = 36,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8709),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1851),
                             IsDeleted = false,
                             Name = "NM"
                         },
                         new
                         {
                             Id = 37,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8710),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1853),
                             IsDeleted = false,
                             Name = "NY"
                         },
                         new
                         {
                             Id = 38,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8712),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1854),
                             IsDeleted = false,
                             Name = "NC"
                         },
                         new
                         {
                             Id = 39,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8714),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1856),
                             IsDeleted = false,
                             Name = "ND"
                         },
                         new
                         {
                             Id = 40,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8716),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1858),
                             IsDeleted = false,
                             Name = "MP"
                         },
                         new
                         {
                             Id = 41,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8717),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1860),
                             IsDeleted = false,
                             Name = "OH"
                         },
                         new
                         {
                             Id = 42,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8719),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1862),
                             IsDeleted = false,
                             Name = "OK"
                         },
                         new
                         {
                             Id = 43,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8721),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1864),
                             IsDeleted = false,
                             Name = "OR"
                         },
                         new
                         {
                             Id = 44,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8723),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1866),
                             IsDeleted = false,
                             Name = "PW"
                         },
                         new
                         {
                             Id = 45,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8725),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1868),
                             IsDeleted = false,
                             Name = "PA"
                         },
                         new
                         {
                             Id = 46,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8726),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1870),
                             IsDeleted = false,
                             Name = "PR"
                         },
                         new
                         {
                             Id = 47,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8728),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1872),
                             IsDeleted = false,
                             Name = "RI"
                         },
                         new
                         {
                             Id = 48,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8730),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1873),
                             IsDeleted = false,
                             Name = "SC"
                         },
                         new
                         {
                             Id = 49,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8732),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1875),
                             IsDeleted = false,
                             Name = "SD"
                         },
                         new
                         {
                             Id = 50,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8734),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1877),
                             IsDeleted = false,
                             Name = "TN"
                         },
                         new
                         {
                             Id = 51,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8735),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1879),
                             IsDeleted = false,
                             Name = "TX"
                         },
                         new
                         {
                             Id = 52,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8737),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1881),
                             IsDeleted = false,
                             Name = "UT"
                         },
                         new
                         {
                             Id = 53,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8739),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1883),
                             IsDeleted = false,
                             Name = "VT"
                         },
                         new
                         {
                             Id = 54,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8741),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1885),
                             IsDeleted = false,
                             Name = "VI"
                         },
                         new
                         {
                             Id = 55,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8742),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1886),
                             IsDeleted = false,
                             Name = "VA"
                         },
                         new
                         {
                             Id = 56,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8744),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1888),
                             IsDeleted = false,
                             Name = "WA"
                         },
                         new
                         {
                             Id = 57,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8746),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1890),
                             IsDeleted = false,
                             Name = "WV"
                         },
                         new
                         {
                             Id = 58,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8747),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1892),
                             IsDeleted = false,
                             Name = "WI"
                         },
                         new
                         {
                             Id = 59,
-                            CreationTime = new DateTime(2020, 10, 7, 23, 11, 42, 571, DateTimeKind.Local).AddTicks(8749),
+                            CreationTime = new DateTime(2020, 10, 7, 21, 54, 40, 751, DateTimeKind.Local).AddTicks(1894),
                             IsDeleted = false,
                             Name = "WY"
                         });
