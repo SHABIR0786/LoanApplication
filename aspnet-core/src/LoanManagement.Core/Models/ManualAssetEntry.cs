@@ -7,6 +7,11 @@ namespace LoanManagement.Models
 {
     public class ManualAssetEntry : FullAuditedEntity<long>
     {
+        public ManualAssetEntry()
+        {
+            StockAndBonds = new List<StockAndBond>();
+        }
+
         public long AssetTypeId { get; set; }
         public string AccountNumber { get; set; }
         [Column(TypeName = "decimal(18,2)")]

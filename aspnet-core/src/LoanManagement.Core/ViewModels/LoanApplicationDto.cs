@@ -1,4 +1,5 @@
 using Abp.Application.Services.Dto;
+using System.Collections.Generic;
 
 namespace LoanManagement.ViewModels
 {
@@ -7,6 +8,7 @@ namespace LoanManagement.ViewModels
         public LoanDetailDto LoanDetails { get; set; }
         public PersonalInformationDto PersonalInformation { get; set; }
         public ExpensesDto Expenses { get; set; }
+        public List<ManualAssetEntryDto> ManualAssetEntries { get; set; }
         public EmploymentIncomeDto EmploymentIncome { get; set; }
 
         public CreditAuthAgreementDto OrderCredit { get; set; }

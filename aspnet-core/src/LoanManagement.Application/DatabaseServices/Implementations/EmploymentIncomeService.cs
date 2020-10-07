@@ -43,7 +43,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.BorrowerMonthlyIncome != null)
                 {
                     input.BorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
-                    if (input.BorrowerMonthlyIncome.Id == default)
+                    if (!input.BorrowerMonthlyIncome.Id.HasValue || input.BorrowerMonthlyIncome.Id.Value == default)
                     {
                         await _borrowerMonthlyIncomeRepository.CreateAsync(input.BorrowerMonthlyIncome);
                     }
@@ -56,7 +56,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.CoBorrowerMonthlyIncome != null)
                 {
                     input.CoBorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
-                    if (input.CoBorrowerMonthlyIncome.Id == default)
+                    if (!input.CoBorrowerMonthlyIncome.Id.HasValue || input.CoBorrowerMonthlyIncome.Id.Value == default)
                         await _borrowerMonthlyIncomeRepository.CreateAsync(input.CoBorrowerMonthlyIncome);
                     else
                         await _borrowerMonthlyIncomeRepository.UpdateAsync(input.CoBorrowerMonthlyIncome);
@@ -69,7 +69,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
-                        if (borrowerEmploymentInfo.Id == default)
+                        if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
                             await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
                         else
                             await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
@@ -79,7 +79,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo)
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
-                        if (borrowerEmploymentInfo.Id == default)
+                        if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
                             await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
                         else
                             await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);

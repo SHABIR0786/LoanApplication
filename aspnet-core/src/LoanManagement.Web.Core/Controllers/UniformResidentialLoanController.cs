@@ -25,7 +25,7 @@ namespace LoanManagement.Controllers
             if (input == null || !ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (input.Id == default)
+            if (!input.Id.HasValue || input.Id.Value == default)
             {
                 await _loanAppService.CreateAsync(input);
             }
