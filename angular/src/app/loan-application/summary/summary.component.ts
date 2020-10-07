@@ -74,7 +74,8 @@ export class SummaryComponent implements OnInit {
     }
 
     hasAnyErrors() {
-        return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
+        return false;
+        // return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
     }
 
     goToStep(index: number) {

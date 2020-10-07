@@ -23,6 +23,7 @@ export class LoanApplicationComponent implements OnInit {
             previousAddresses: [],
         },
         expenses: {},
+        assets: [],
         employmentIncome: {
             borrowerMonthlyIncome: {},
             borrowerEmploymentInfo: [{}]

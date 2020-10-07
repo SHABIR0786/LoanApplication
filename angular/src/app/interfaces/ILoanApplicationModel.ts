@@ -8,11 +8,13 @@ import {IEmploymentIncomeModel} from './IEmploymentIncomeModel';
 import {IBorrowerDeclarationModel} from './IBorrowerDeclarationModel';
 import {IDeclarationModel} from './IDeclarationModel';
 import {IDeclarationBorrowereDemographicsInformationModel} from './IDeclarationBorrowereDemographicsInformationModel';
+import {IAssetModel} from './IAssetModel';
 
 export interface ILoanApplicationModel {
     loanDetails?: ILoanDetailModel;
     personalInformation?: IPersonalInformationModel;
     expenses?: IExpenseModel;
+    assets?: IAssetModel[];
     employmentIncome?: IEmploymentIncomeModel;
     orderCredit?: ICreditAuthAgreementModel;
     additionalDetails?: IAdditionalDetailModel;
