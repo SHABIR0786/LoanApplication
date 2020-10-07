@@ -113,7 +113,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             AddressType = Enums.AddressType.Previous.ToString(),
                             City = address.City,
                             Months = address.Months,
-                            State = address.State,
+                            StateId = address.StateId,
                             Years = address.Years,
                             ZipCode = address.ZipCode,
                         });
@@ -127,7 +127,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         AddressType = Enums.AddressType.Mailing.ToString(),
                         City = input.MailingAddress.City,
                         Months = input.MailingAddress.Months,
-                        State = input.MailingAddress.State,
+                        StateId = input.MailingAddress.StateId,
                         Years = input.MailingAddress.Years,
                         ZipCode = input.MailingAddress.ZipCode,
                     });
@@ -140,7 +140,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         AddressType = Enums.AddressType.Residential.ToString(),
                         City = input.ResidentialAddress.City,
                         Months = input.ResidentialAddress.Months,
-                        State = input.ResidentialAddress.State,
+                        StateId = input.ResidentialAddress.StateId,
                         Years = input.ResidentialAddress.Years,
                         ZipCode = input.ResidentialAddress.ZipCode,
                     });
@@ -272,7 +272,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 AddressType = Enums.AddressType.Previous.ToString(),
                                 City = address.City,
                                 Months = address.Months,
-                                State = address.State,
+                                StateId = address.StateId,
                                 Years = address.Years,
                                 ZipCode = address.ZipCode,
                             };
@@ -290,7 +290,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         AddressType = Enums.AddressType.Mailing.ToString(),
                         City = input.MailingAddress.City,
                         Months = input.MailingAddress.Months,
-                        State = input.MailingAddress.State,
+                        StateId = input.MailingAddress.StateId,
                         Years = input.MailingAddress.Years,
                         ZipCode = input.MailingAddress.ZipCode,
                     };
@@ -307,7 +307,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         AddressType = Enums.AddressType.Residential.ToString(),
                         City = input.ResidentialAddress.City,
                         Months = input.ResidentialAddress.Months,
-                        State = input.ResidentialAddress.State,
+                        StateId = input.ResidentialAddress.StateId,
                         Years = input.ResidentialAddress.Years,
                         ZipCode = input.ResidentialAddress.ZipCode,
                     };
@@ -328,7 +328,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             dbAddress.AddressLine2 = address.AddressLine2;
                             dbAddress.City = address.City;
                             dbAddress.Months = address.Months;
-                            dbAddress.State = address.State;
+                            dbAddress.StateId = address.StateId;
                             dbAddress.Years = address.Years;
                             dbAddress.ZipCode = address.ZipCode;
 
@@ -343,7 +343,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     dbAddress.AddressLine2 = input.MailingAddress.AddressLine2;
                     dbAddress.City = input.MailingAddress.City;
                     dbAddress.Months = input.MailingAddress.Months;
-                    dbAddress.State = input.MailingAddress.State;
+                    dbAddress.StateId = input.MailingAddress.StateId;
                     dbAddress.Years = input.MailingAddress.Years;
                     dbAddress.ZipCode = input.MailingAddress.ZipCode;
 
@@ -357,7 +357,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     dbAddress.AddressLine2 = input.ResidentialAddress.AddressLine2;
                     dbAddress.City = input.ResidentialAddress.City;
                     dbAddress.Months = input.ResidentialAddress.Months;
-                    dbAddress.State = input.ResidentialAddress.State;
+                    dbAddress.StateId = input.ResidentialAddress.StateId;
                     dbAddress.Years = input.ResidentialAddress.Years;
                     dbAddress.ZipCode = input.ResidentialAddress.ZipCode;
 

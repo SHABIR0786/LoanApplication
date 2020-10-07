@@ -30,7 +30,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 AccountNumber = input.AccountNumber,
                 Address = input.Address,
-                Address2 = input.AccountNumber,
+                Address2 = input.Address2,
                 AssetTypeId = input.AssetTypeId,
                 BankName = input.BankName,
                 CashValue = input.CashValue,
@@ -46,7 +46,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 PropertyStatus = input.PropertyStatus,
                 PropertyType = input.PropertyType,
                 PurchasePrice = input.PurchasePrice,
-                State = input.State,
+                StateId = input.StateId,
                 StockAndBonds = input.StockAndBonds != null && input.StockAndBonds.Any() ? input.StockAndBonds.Select(i => new StockAndBond
                 {
                     AccountNumber = i.AccountNumber,
@@ -95,7 +95,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 manualAssetEntry.AccountNumber = input.AccountNumber;
                 manualAssetEntry.Address = input.Address;
-                manualAssetEntry.Address2 = input.AccountNumber;
+                manualAssetEntry.Address2 = input.Address2;
                 manualAssetEntry.AssetTypeId = input.AssetTypeId;
                 manualAssetEntry.BankName = input.BankName;
                 manualAssetEntry.CashValue = input.CashValue;
@@ -111,7 +111,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 manualAssetEntry.PropertyStatus = input.PropertyStatus;
                 manualAssetEntry.PropertyType = input.PropertyType;
                 manualAssetEntry.PurchasePrice = input.PurchasePrice;
-                manualAssetEntry.State = input.State;
+                manualAssetEntry.StateId = input.StateId;
 
                 if (input.StockAndBonds != null && input.StockAndBonds.Any())
                     foreach (var stockAndBond in input.StockAndBonds)
