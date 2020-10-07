@@ -52,6 +52,7 @@ import {AccordionModule} from 'ngx-bootstrap/accordion';
 import {SummaryComponent} from './loan-application/summary/summary.component';
 import {DataService} from './services/data.service';
 import { EconsentComponent } from './loan-application/econsent/econsent.component';
+import { AssetsComponent } from './loan-application/assets/assets.component';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.default
@@ -96,6 +97,7 @@ const ngWizardConfig: NgWizardConfig = {
         EmploymentIncomeComponent,
         SummaryComponent,
         EconsentComponent,
+        AssetsComponent,
     ],
     imports: [
         CommonModule,

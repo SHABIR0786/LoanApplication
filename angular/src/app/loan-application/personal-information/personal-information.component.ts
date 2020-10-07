@@ -53,7 +53,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         this.loadStates();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
-            this.form.patchValue(formData.personalInformation);
+            if (formData && formData.personalInformation) {
+                this.form.patchValue(formData.personalInformation);
+            }
         });
     }
 
@@ -79,7 +81,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
-            id: new FormControl(undefined),
+            id: new FormControl(this.data.id),
             isApplyingWithCoBorrower: new FormControl(this.data.isApplyingWithCoBorrower, [Validators.required]),
             useIncomeOfPersonOtherThanBorrower: new FormControl(this.data.useIncomeOfPersonOtherThanBorrower, [Validators.required]),
             agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [Validators.required]),
@@ -118,7 +120,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initBorrowerForm(data: IBorrowerModel) {
         return new FormGroup({
-            id: new FormControl(undefined),
+            id: new FormControl(data.id),
             firstName: new FormControl(data.firstName, [Validators.required]),
             middleInitial: new FormControl(data.middleInitial),
             lastName: new FormControl(data.lastName, [Validators.required]),
@@ -135,7 +137,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     initAddressForm(data: IAddressModel, addressTypeId: number, required: boolean) {
         return new FormGroup({
-            id: new FormControl(undefined),
+            id: new FormControl(data.id),
             addressLine1: new FormControl(data.addressLine1, required ? [Validators.required] : []),
             addressLine2: new FormControl(data.addressLine2),
             city: new FormControl(data.city, required ? [Validators.required] : []),

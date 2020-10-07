@@ -11,7 +11,7 @@ export class DataService {
     validations = this.validationSource.asObservable();
 
     formDataSource = new BehaviorSubject<ILoanApplicationModel>({});
-    formData = this.validationSource.asObservable();
+    formData = this.formDataSource.asObservable();
 
     constructor() {
     }

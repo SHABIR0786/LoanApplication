@@ -1,0 +1,163 @@
+{
+  "loanDetails": {
+    "referredBy": "Khalil Referred me",
+    "isWorkingWithOfficer": false,
+    "loanOfficerId": null,
+    "purposeOfLoan": 1,
+    "estimatedValue": null,
+    "currentLoanAmount": null,
+    "requestedLoanAmount": null,
+    "estimatedPurchasePrice": 10000,
+    "downPaymentAmount": 5000,
+    "downPaymentPercentage": 50,
+    "sourceOfDownPayment": 1,
+    "giftAmount": null,
+    "giftExplanation": null,
+    "haveSecondMortgage": false,
+    "secondMortgageAmount": null,
+    "payLoanWithNewLoan": null,
+    "refinancingCurrentHome": null,
+    "yearAcquired": null,
+    "originalPrice": null,
+    "city": "Bakersfield",
+    "stateId": 1,
+    "propertyTypeId": 1,
+    "propertyUseId": 1
+  },
+  "personalInformation": {
+    "isApplyingWithCoBorrower": false,
+    "useIncomeOfPersonOtherThanBorrower": null,
+    "agreePrivacyPolicy": true,
+    "borrower": {
+      "firstName": "Anthony",
+      "middleInitial": null,
+      "lastName": "Adams",
+      "suffix": null,
+      "email": "anthony@ce.mintemail.com",
+      "dateOfBirth": "2020-10-14",
+      "socialSecurityNumber": "111111111",
+      "maritalStatusId": 1,
+      "numberOfDependents": null,
+      "cellPhone": "6618737193",
+      "homePhone": null
+    }
+  },
+  "expenses": {
+    "isLiveWithFamilySelectRent": false,
+    "rent": null,
+    "otherHousingExpenses": 8,
+    "firstMortgage": 1000,
+    "secondMortgage": 151,
+    "hazardInsurance": 5482,
+    "realEstateTaxes": 74,
+    "mortgageInsurance": 58,
+    "homeOwnersAssociation": 195
+  },
+  "employmentIncome": {
+    "borrowerMonthlyIncome": {
+      "base": 1515,
+      "overtime": 15,
+      "bonuses": 181,
+      "commissions": 542,
+      "dividends": 5,
+      "borrowerTypeId": 1
+    },
+    "borrowerEmploymentInfo": [
+      {
+        "isSelfEmployed": "",
+        "employerName": "Folio3",
+        "position": "SSE",
+        "address1": "5912 Auburn Oaks Dr",
+        "address2": "",
+        "city": "Bakersfield",
+        "stateId": 1,
+        "zipCode": "93306",
+        "startDate": "2020-09-27",
+        "endDate": "",
+        "borrowerTypeId": 1
+      }
+    ],
+    "additionalIncomes": [
+      {
+        "borrowerTypeId": 1,
+        "incomeSourceId": 1,
+        "amount": 1
+      },
+      {
+        "borrowerTypeId": 1,
+        "incomeSourceId": 3,
+        "amount": 2
+      },
+      {
+        "borrowerTypeId": 1,
+        "incomeSourceId": 4,
+        "amount": 3
+      }
+    ]
+  },
+  "orderCredit": {
+    "agreeCreditAuthAgreement": true
+  },
+  "additionalDetails": {
+    "nameOfIndividualsOnTitle": "Faraz,Khalil,Asad"
+  },
+  "eConsent": {
+    "agreeEConsent": false
+  },
+  "declaration": {
+    "borrowerDeclaration": {
+      "isOutstandingJudgmentsAgainstYou": true,
+      "isDeclaredBankrupt": false,
+      "isPropertyForeClosedUponOrGivenTitle": true,
+      "isPartyToLawsuit": false,
+      "isObligatedOnAnyLoanWhichResultedForeclosure": true,
+      "isPresentlyDelinquent": true,
+      "isObligatedToPayAlimonyChildSupport": true,
+      "isAnyPartOfTheDownPayment": false,
+      "isCoMakerOrEndorser": true,
+      "isUSCitizen": false,
+      "isPermanentResidentSlien": true,
+      "isIntendToOccupyThePropertyAsYourPrimary": false,
+      "isOwnershipInterestInPropertyLastThreeYears": true,
+      "declarationsSection": "Yes for declaration"
+    },
+    "borrowerDemographic": {
+      "ethnicity": [
+        {
+          "id": 1
+        },
+        {
+          "id": 5,
+          "otherValue": "Spainard"
+        }
+      ],
+      "race": [
+        {
+          "id": 1,
+          "otherValue": "American"
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 5
+        },
+        {
+          "id": 9,
+          "otherValue": "Pakistani"
+        },
+        {
+          "id": 13
+        },
+        {
+          "id": 14
+        }
+      ],
+      "sex": [
+        {
+          "id": 2
+        }
+      ]
+    }
+  }
+}

@@ -3,6 +3,7 @@ import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IEmploymentIncomeModel} from '../../interfaces/IEmploymentIncomeModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-employment-income',
@@ -67,6 +68,12 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
         this.initForm();
         this.loadStates();
         this.loadIncomeSources();
+
+        this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
+            if (formData && formData.employmentIncome) {
+                this.form.patchValue(formData.employmentIncome);
+            }
+        });
     }
 
     ngDoCheck() {
@@ -88,6 +95,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
+            id: new FormControl(this.data.id),
             borrowerMonthlyIncome: this.initBorrowerMonthlyIncome(1),
             borrowerEmploymentInfo: new FormArray([]),
             additionalIncomes: new FormArray([]),
@@ -107,6 +115,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     initBorrowerMonthlyIncome(borrowerTypeId: number) {
         return new FormGroup({
+            id: new FormControl(''),
             base: new FormControl(''),
             overtime: new FormControl(''),
             bonuses: new FormControl(''),
@@ -118,6 +127,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     newBorrowerEmploymentInfo(borrowerTypeId): FormGroup {
         return new FormGroup({
+            id: new FormControl(''),
             isSelfEmployed: new FormControl(''),
             employerName: new FormControl('', [Validators.required]),
             position: new FormControl('', [Validators.required]),
@@ -134,6 +144,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
     newAdditionalIncome(borrowerTypeId): FormGroup {
         return new FormGroup({
+            id: new FormControl(''),
             borrowerTypeId: new FormControl(1),
             incomeSourceId: new FormControl(''),
             amount: new FormControl(''),
