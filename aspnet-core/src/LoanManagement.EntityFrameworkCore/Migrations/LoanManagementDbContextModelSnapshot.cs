@@ -1625,6 +1625,41 @@ namespace LoanManagement.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("LoanManagement.Models.AssetType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetType");
+                });
+
             modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
                 {
                     b.Property<long>("Id")
@@ -2392,6 +2427,9 @@ namespace LoanManagement.Migrations
                     b.Property<string>("Address2")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<long>("AssetTypeId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("BankName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -2461,14 +2499,13 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("TaxesInsuranceAndOther")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("ZipCode")
                         .HasColumnType("varchar(9) CHARACTER SET utf8mb4")
                         .HasMaxLength(9);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AssetTypeId");
 
                     b.HasIndex("LoanApplicationId");
 
@@ -2949,6 +2986,12 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
                 {
+                    b.HasOne("LoanManagement.Models.AssetType", "AssetType")
+                        .WithMany("ManualAssetEntries")
+                        .HasForeignKey("AssetTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("ManualAssetEntries")
                         .HasForeignKey("LoanApplicationId")

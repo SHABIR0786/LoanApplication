@@ -7,7 +7,7 @@ namespace LoanManagement.ViewModels
 {
     public class ManualAssetEntryDto : EntityDto<long?>
     {
-        public string Type { get; set; }
+        public long? AssetTypeId { get; set; }
         public string AccountNumber { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? CashValue { get; set; }
