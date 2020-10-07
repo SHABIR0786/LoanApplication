@@ -5,6 +5,7 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -88,10 +89,8 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<ManualAssetEntryDto> UpdateAsync(ManualAssetEntryDto input)
         {
-            var manualAssetEntry = new ManualAssetEntry
-            {
+            var stockAndBonds = new List<StockAndBond>();
 
-            };
             await _repository.UpdateAsync(input.Id.Value, async manualAssetEntry =>
             {
                 manualAssetEntry.AccountNumber = input.AccountNumber;
@@ -119,15 +118,21 @@ namespace LoanManagement.DatabaseServices.Implementations
                     {
                         if (!stockAndBond.Id.HasValue || stockAndBond.Id.Value == default)
                         {
-                            manualAssetEntry.StockAndBonds.Add(new StockAndBond
+                            var dbStockAndBond = new StockAndBond
                             {
                                 AccountNumber = stockAndBond.AccountNumber,
                                 CompanyName = stockAndBond.CompanyName,
                                 Value = stockAndBond.Value
-                            });
+                            };
+                            manualAssetEntry.StockAndBonds.Add(dbStockAndBond);
+                            stockAndBonds.Add(dbStockAndBond);
                         }
                         else
                         {
+                            stockAndBonds.Add(new StockAndBond
+                            {
+                                Id = stockAndBond.Id.Value
+                            });
                             await _stockAndBondRepository.UpdateAsync(stockAndBond.Id.Value, dbStockAndBond =>
                             {
                                 dbStockAndBond.AccountNumber = stockAndBond.AccountNumber;
@@ -145,11 +150,11 @@ namespace LoanManagement.DatabaseServices.Implementations
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
-            if (manualAssetEntry.StockAndBonds != null && manualAssetEntry.StockAndBonds.Any())
+            if (stockAndBonds != null && stockAndBonds.Any())
             {
-                for (var index = 0; index < manualAssetEntry.StockAndBonds.Count; index++)
+                for (var index = 0; index < stockAndBonds.Count; index++)
                 {
-                    input.StockAndBonds[index].Id = manualAssetEntry.StockAndBonds[index].Id;
+                    input.StockAndBonds[index].Id = stockAndBonds[index].Id;
                 }
             }
             return input;
