@@ -4,6 +4,8 @@ import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationMo
 import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
 import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicModel';
 import {NgWizardService} from 'ng-wizard';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import {DataService} from '../../services/data.service';
 
 @Component({
     selector: 'app-declaration',
@@ -275,15 +277,20 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     private _isApplyingWithCoBorrower = false;
 
-    constructor(private _ngWizardService: NgWizardService) {
+    constructor(
+        private _ngWizardService: NgWizardService,
+        private _dataService: DataService
+    ) {
     }
 
     @Input() set isApplyingWithCoBorrower(value: boolean) {
         this._isApplyingWithCoBorrower = value;
         if (this.form) {
             if (value) {
-                this.form.addControl('coBorrowerDeclaration', this.initDeclarationForm(this.data.borrowerDeclaration));
-                this.form.addControl('coBorrowerDemographic', this.initDemographicForm(this.data.borrowerDemographic));
+                this.data.coBorrowerDeclaration = {};
+                this.data.coBorrowerDemographic = {};
+                this.form.addControl('coBorrowerDeclaration', this.initDeclarationForm(this.data.coBorrowerDeclaration));
+                this.form.addControl('coBorrowerDemographic', this.initDemographicForm(this.data.coBorrowerDemographic));
             } else {
                 this.form.removeControl('coBorrowerDeclaration');
                 this.form.removeControl('coBorrowerDemographic');
@@ -297,6 +304,12 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     ngOnInit(): void {
         this.initForm();
+
+        this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
+            if (formData && formData.declaration) {
+                this.form.patchValue(formData.declaration);
+            }
+        });
     }
 
     ngDoCheck(): void {
@@ -308,6 +321,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
+            id: new FormControl(this.data.id),
             borrowerDeclaration: this.initDeclarationForm(this.data.borrowerDeclaration),
             borrowerDemographic: this.initDemographicForm(this.data.borrowerDemographic),
         });
@@ -315,6 +329,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     initDeclarationForm(borrowerDeclaration: IBorrowerDeclarationModel): FormGroup {
         return new FormGroup({
+            id: new FormControl(borrowerDeclaration.id),
             isOutstandingJudgmentsAgainstYou: new FormControl(borrowerDeclaration.isOutstandingJudgmentsAgainstYou),
             isDeclaredBankrupt: new FormControl(borrowerDeclaration.isDeclaredBankrupt),
             isPropertyForeClosedUponOrGivenTitle: new FormControl(borrowerDeclaration.isPropertyForeClosedUponOrGivenTitle),
@@ -334,9 +349,10 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     initDemographicForm(borrowerDemographic: IBorrowerDemographicModel): FormGroup {
         return new FormGroup({
-            ethnicity: new FormControl(borrowerDemographic.ethnicity),
-            race: new FormControl(borrowerDemographic.race),
-            sex: new FormControl(borrowerDemographic.sex),
+            id: new FormControl(borrowerDemographic.id),
+            ethnicity: new FormControl(borrowerDemographic.ethnicity || []),
+            race: new FormControl(borrowerDemographic.race || []),
+            sex: new FormControl(borrowerDemographic.sex || []),
         });
     }
 
