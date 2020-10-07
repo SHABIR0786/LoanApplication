@@ -5,6 +5,7 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -148,6 +149,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                 await UnitOfWorkManager.Current.SaveChangesAsync();
 
                 input.Id = personalDetail.Id;
+
+                AssignAddressIds(personalDetail?.Addresses, input);
+
                 return input;
             }
             catch (Exception e)
@@ -158,6 +162,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<PersonalInformationDto> UpdateAsync(PersonalInformationDto input)
         {
+            var newAddresses = new List<Address>();
             if (input.Borrower != null)
             {
                 if (!input.Borrower.Id.HasValue || input.Borrower.Id.Value == default)
@@ -204,7 +209,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
             if (input.CoBorrower != null)
             {
-                if (!input.CoBorrower.Id.HasValue || input.CoBorrower.Id == default)
+                if (!input.CoBorrower.Id.HasValue || input.CoBorrower.Id.Value == default)
                 {
                     var borrower = new Borrower
                     {
@@ -258,8 +263,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
                     foreach (var address in input.PreviousAddresses)
                     {
-                        if (address.Id == default)
-                            personalDetail.Addresses.Add(new Address
+                        if (!address.Id.HasValue ||  address.Id.Value == default)
+                        {
+                            var newAddress = new Address
                             {
                                 AddressLine1 = address.AddressLine1,
                                 AddressLine2 = address.AddressLine2,
@@ -269,11 +275,15 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 State = address.State,
                                 Years = address.Years,
                                 ZipCode = address.ZipCode,
-                            });
+                            };
+                            personalDetail.Addresses.Add(newAddress);
+                            newAddresses.Add(newAddress);
+                        }
                     }
 
-                if (input.MailingAddress != null && input.MailingAddress.Id == default)
-                    personalDetail.Addresses.Add(new Address
+                if (input.MailingAddress != null && input.MailingAddress.Id.Value == default)
+                {
+                    var address = new Address
                     {
                         AddressLine1 = input.MailingAddress.AddressLine1,
                         AddressLine2 = input.MailingAddress.AddressLine2,
@@ -283,10 +293,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                         State = input.MailingAddress.State,
                         Years = input.MailingAddress.Years,
                         ZipCode = input.MailingAddress.ZipCode,
-                    });
+                    };
+                    personalDetail.Addresses.Add(address);
+                    newAddresses.Add(address);
+                }
 
-                if (input.ResidentialAddress != null && input.ResidentialAddress.Id == default)
-                    personalDetail.Addresses.Add(new Address
+                if (input.ResidentialAddress != null && input.ResidentialAddress.Id.Value == default)
+                {
+                    var address = new Address
                     {
                         AddressLine1 = input.ResidentialAddress.AddressLine1,
                         AddressLine2 = input.ResidentialAddress.AddressLine2,
@@ -296,7 +310,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                         State = input.ResidentialAddress.State,
                         Years = input.ResidentialAddress.Years,
                         ZipCode = input.ResidentialAddress.ZipCode,
-                    });
+                    };
+                    personalDetail.Addresses.Add(address);
+                    newAddresses.Add(address);
+                }
 
                 return Task.CompletedTask;
             });
@@ -348,12 +365,47 @@ namespace LoanManagement.DatabaseServices.Implementations
                 });
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
+
+            AssignAddressIds(newAddresses, input);
+
             return input;
         }
 
         public Task DeleteAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
+        }
+
+        private void AssignAddressIds(List<Address> addresses, PersonalInformationDto input)
+        {
+            if (addresses != null && addresses.Any())
+            {
+                var previousAddress = addresses
+                    .Where(i => i.AddressType == Enums.AddressType.Previous.ToString())
+                    .ToList();
+                if (previousAddress.Any())
+                    for (var index = 0; index < previousAddress.Count; index++)
+                        input.PreviousAddresses[index].Id = previousAddress[index].Id;
+
+                for (var index = 0; index < addresses.Count; index++)
+                {
+                    var address = addresses[index];
+                    Enum.TryParse(address.AddressType, out Enums.AddressType addressType);
+                    switch (addressType)
+                    {
+                        case Enums.AddressType.Residential:
+                            input.ResidentialAddress.Id = address.Id;
+                            break;
+                        case Enums.AddressType.Previous:
+                            continue;
+                        case Enums.AddressType.Mailing:
+                            input.MailingAddress.Id = address.Id;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

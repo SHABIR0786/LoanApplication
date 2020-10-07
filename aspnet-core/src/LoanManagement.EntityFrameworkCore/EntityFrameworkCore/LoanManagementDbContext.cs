@@ -25,6 +25,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<DeclarationBorrowereDemographicsInformation> DeclarationBorrowereDemographicsInformations { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ManualAssetEntry> ManualAssetEntries { get; set; }
+        public DbSet<StockAndBond> StockAndBonds { get; set; }
         public DbSet<LoanDetail> LoanDetails { get; set; }
         public DbSet<PersonalDetail> PersonalDetails { get; set; }
 
@@ -37,8 +38,20 @@ namespace LoanManagement.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<LoanApplication>(loanApplication =>
+            modelBuilder.Entity<AssetType>(assetType =>
             {
+                assetType.HasData(new AssetType { Id = 1, Name = "Cash deposit on sales contract" },
+                                  new AssetType { Id = 2, Name = "Certificate of Deposit" },
+                                  new AssetType { Id = 3, Name = "Checking Account" },
+                                  new AssetType { Id = 4, Name = "Gifts" },
+                                  new AssetType { Id = 5, Name = "Gift of equity" },
+                                  new AssetType { Id = 6, Name = "Money Market Fund" },
+                                  new AssetType { Id = 7, Name = "Mutual Funds" },
+                                  new AssetType { Id = 8, Name = "Net Proceeds from Real Estate Funds" },
+                                  new AssetType { Id = 9, Name = "Retirement Funds" },
+                                  new AssetType { Id = 10, Name = "Savings Account" },
+                                  new AssetType { Id = 11, Name = "Stocks & Bonds" },
+                                  new AssetType { Id = 12, Name = "Trust Account" });
             });
 
             modelBuilder.Entity<BorrowerType>(borrowerEmploymentInformation =>

@@ -23,6 +23,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         private readonly IEmploymentIncomeService _employmentIncomeService;
         private readonly IPersonalDetailService _personalDetailService;
         private readonly IDeclarationService _declarationService;
+        private readonly IManualAssetEntryService _manualAssetEntryService;
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
@@ -33,7 +34,8 @@ namespace LoanManagement.DatabaseServices.Implementations
             ICreditAuthAgreementService creditAuthAgreementService,
             IEmploymentIncomeService employmentIncomeService,
             IPersonalDetailService personalDetailService,
-            IDeclarationService declarationService
+            IDeclarationService declarationService,
+            IManualAssetEntryService manualAssetEntryService
             )
         {
             _repository = repository;
@@ -45,6 +47,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _employmentIncomeService = employmentIncomeService;
             _personalDetailService = personalDetailService;
             _declarationService = declarationService;
+            _manualAssetEntryService = manualAssetEntryService;
         }
 
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
@@ -762,7 +765,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Loan Detail
                 if (input.LoanDetails != null)
                 {
-                    if (input.LoanDetails.Id == default)
+                    if (!input.LoanDetails.Id.HasValue || input.LoanDetails.Id.Value == default)
                     {
                         input.LoanDetails = await _loanDetailServices.CreateAsync(input.LoanDetails);
                         loanApplication.LoanDetailId = input.LoanDetails.Id;
@@ -775,7 +778,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Personal Information
                 if (input.PersonalInformation != null)
                 {
-                    if (input.PersonalInformation.Id == default)
+                    if (!input.PersonalInformation.Id.HasValue || input.PersonalInformation.Id.Value == default)
                     {
                         input.PersonalInformation = await _personalDetailService.CreateAsync(input.PersonalInformation);
                         loanApplication.PersonalDetailId = input.PersonalInformation.Id;
@@ -788,7 +791,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Additional Details
                 if (input.AdditionalDetails != null)
                 {
-                    if (input.AdditionalDetails.Id == default)
+                    if (!input.AdditionalDetails.Id.HasValue || input.AdditionalDetails.Id.Value == default)
                     {
                         input.AdditionalDetails = await _additionalDetailsService.CreateAsync(input.AdditionalDetails);
                         loanApplication.AdditionalDetailsId = input.AdditionalDetails.Id;
@@ -801,7 +804,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Expenses
                 if (input.Expenses != null)
                 {
-                    if (input.Expenses.Id == default)
+                    if (!input.Expenses.Id.HasValue || input.Expenses.Id.Value == default)
                     {
                         input.Expenses = await _expensesService.CreateAsync(input.Expenses);
                         loanApplication.ExpenseId = input.Expenses.Id;
@@ -811,10 +814,27 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
                 #endregion
 
+                #region Manual Asset Entry
+
+                if(input.ManualAssetEntries != null && input.ManualAssetEntries.Any())
+                {
+                    foreach (var manualAssetEntries in input.ManualAssetEntries)
+                    {
+                        manualAssetEntries.LoanApplicationId = input.Id.Value;
+
+                        if (manualAssetEntries.Id.HasValue || manualAssetEntries.Id.Value == default)
+                            await _manualAssetEntryService.CreateAsync(manualAssetEntries);
+                        else
+                            await _manualAssetEntryService.UpdateAsync(manualAssetEntries);
+                    }
+                }
+
+                #endregion
+
                 #region EConsent
                 if (input.EConsent != null)
                 {
-                    if (input.EConsent.Id == default)
+                    if (!input.EConsent.Id.HasValue || input.EConsent.Id.Value == default)
                     {
                         input.EConsent = await _eConsentService.CreateAsync(input.EConsent);
                         loanApplication.ConsentDetailId = input.EConsent.Id;
@@ -827,7 +847,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Credit AuthAgreement
                 if (input.OrderCredit != null)
                 {
-                    if (input.OrderCredit.Id == default)
+                    if (!input.OrderCredit.Id.HasValue || input.OrderCredit.Id.Value == default)
                     {
                         input.OrderCredit = await _creditAuthAgreementService.CreateAsync(input.OrderCredit);
                         loanApplication.CreditAuthAgreementId = input.OrderCredit.Id;
@@ -840,7 +860,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Declaration
                 if (input.Declaration != null)
                 {
-                    if (input.Declaration.Id == default)
+                    if (!input.Declaration.Id.HasValue || input.Declaration.Id.Value == default)
                     {
                         input.Declaration.LoanApplicationId = input.Id.Value;
                         input.Declaration = await _declarationService.CreateAsync(input.Declaration);
