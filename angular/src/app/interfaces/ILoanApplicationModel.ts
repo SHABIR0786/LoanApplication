@@ -14,7 +14,7 @@ export interface ILoanApplicationModel {
     loanDetails?: ILoanDetailModel;
     personalInformation?: IPersonalInformationModel;
     expenses?: IExpenseModel;
-    assets?: IAssetModel[];
+    manualAssetEntries?: IAssetModel[];
     employmentIncome?: IEmploymentIncomeModel;
     orderCredit?: ICreditAuthAgreementModel;
     additionalDetails?: IAdditionalDetailModel;

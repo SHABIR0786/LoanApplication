@@ -28,13 +28,18 @@
                                     [data]="loanApplication.expenses"
                                     (onDataChange)="onChange($event, 'expenses')"></app-expenses>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 4" description="Employment and Income">
+                        <ng-wizard-step title="Step 4" description="Assets">
+                            <app-assets
+                                    [data]="loanApplication.manualAssetEntries"
+                                    (onDataChange)="onChange($event, 'manualAssetEntries')"></app-assets>
+                        </ng-wizard-step>
+                        <ng-wizard-step title="Step 5" description="Employment and Income">
                             <app-employment-income
                                     [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
                                     [data]="loanApplication.employmentIncome"
                                     (onDataChange)="onChange($event, 'employmentIncome')"></app-employment-income>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 5" description="Order Credit">
+                        <ng-wizard-step title="Step 6" description="Order Credit">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <h4>Credit Authorization Agreement</h4>
@@ -67,7 +72,7 @@
                                 </div>
                             </div>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 6" description="Additional Details">
+                        <ng-wizard-step title="Step 7" description="Additional Details">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <h4>Other Disclosures and Details</h4>
@@ -89,17 +94,17 @@
                                 </div>
                             </div>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 7" description="eConsent">
+                        <ng-wizard-step title="Step 8" description="eConsent">
                             <app-econsent [data]="loanApplication.eConsent"
                                           [borrower]="loanApplication.personalInformation"
                                           (onDataChange)="onChange($event, 'eConsent')"></app-econsent>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 8" description="Declaration">
+                        <ng-wizard-step title="Step 9" description="Declaration">
                             <app-declaration [data]="loanApplication.declaration"
                                              [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
                                              (onDataChange)="onChange($event, 'declaration')"></app-declaration>
                         </ng-wizard-step>
-                        <ng-wizard-step title="Step 9" description="Summary">
+                        <ng-wizard-step title="Step 10" description="Summary">
                             <app-summary (onSubmit)="submitForm()" (proceedToStep)="goToStep($event)"></app-summary>
                         </ng-wizard-step>
                     </ng-wizard>
