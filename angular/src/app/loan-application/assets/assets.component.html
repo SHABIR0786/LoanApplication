@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-12 row mt-2" *ngIf="asset.assetTypeId !== 7">
 
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="assetTypeId-{{i}}">
                                     {{ "Select Type Of Asset" | localize }}
@@ -34,6 +34,17 @@
                                 <select class="form-control" name="assetTypeId" id="assetTypeId-{{i}}"
                                         formControlName="assetTypeId">
                                     <option [ngValue]="assetType.id" *ngFor="let assetType of assetTypes">{{assetType.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="borrowerTypeId-{{i}}">
+                                    {{ "Belongs To" | localize }}
+                                </label>
+                                <select class="form-control" name="borrowerTypeId" id="borrowerTypeId-{{i}}"
+                                        formControlName="borrowerTypeId">
+                                    <option [ngValue]="borrowerTypeId.id" *ngFor="let borrowerTypeId of borrowerTypeIds">{{borrowerTypeId.name}}</option>
                                 </select>
                             </div>
                         </div>
