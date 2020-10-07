@@ -822,10 +822,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                     {
                         manualAssetEntries.LoanApplicationId = input.Id.Value;
 
-                        if (manualAssetEntries.Id.HasValue || manualAssetEntries.Id.Value == default)
-                            await _manualAssetEntryService.CreateAsync(manualAssetEntries);
-                        else
+                        if (manualAssetEntries.Id.HasValue && manualAssetEntries.Id.Value != default)
                             await _manualAssetEntryService.UpdateAsync(manualAssetEntries);
+                        else
+                            await _manualAssetEntryService.CreateAsync(manualAssetEntries);
                     }
                 }
 

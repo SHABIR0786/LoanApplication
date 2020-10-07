@@ -1,7 +1,6 @@
 export class IAssetModel {
     id?: number;
-    AssetTypeId?: number;
-
+    assetTypeId?: number;
     name?: string;
     bankName?: string;
     description?: string;
@@ -12,16 +11,14 @@ export class IAssetModel {
     city?: string;
     stateId?: number;
     zipCode?: string;
-
-    propertyStatusId?: number;
-    propertyUsedAsId?: number;
-    propertyTypeId?: number;
+    propertyStatus?: number;
+    propertyIsUsedAs?: number;
+    propertyType?: number;
     presentMarketValue?: number;
     outstandingMortgageBalance?: number;
     monthlyMortgagePayment?: number;
     purchasePrice?: number;
     grossRentalIncome?: number;
-    otherIncome?: number;
-
+    taxesInsuranceAndOther?: number;
     stockAndBonds?: any[];
 }

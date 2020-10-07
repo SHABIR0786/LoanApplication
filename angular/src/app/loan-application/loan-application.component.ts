@@ -23,7 +23,7 @@ export class LoanApplicationComponent implements OnInit {
             previousAddresses: [],
         },
         expenses: {},
-        assets: [],
+        manualAssetEntries: [],
         employmentIncome: {
             borrowerMonthlyIncome: {},
             borrowerEmploymentInfo: [{}]
@@ -40,7 +40,7 @@ export class LoanApplicationComponent implements OnInit {
     };
 
     config: NgWizardConfig = {
-        selected: 0,
+        selected: 3,
         theme: THEME.default,
         anchorSettings: {
             markDoneStep: false,
