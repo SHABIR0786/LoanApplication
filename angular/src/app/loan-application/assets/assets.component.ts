@@ -78,6 +78,7 @@ export class AssetsComponent implements OnInit, DoCheck {
     const form = new FormGroup({
       id: new FormControl(""),
       assetTypeId: new FormControl(assetTypeId),
+      borrowerTypeId: new FormControl(""),
       name: new FormControl(""),
       bankName: new FormControl(""),
       description: new FormControl(""),
@@ -259,7 +260,7 @@ export class AssetsComponent implements OnInit, DoCheck {
       {
         id: 3,
         name: "Both",
-      }
+      },
     ];
   }
   getAssetTypeById(assetTypeId) {

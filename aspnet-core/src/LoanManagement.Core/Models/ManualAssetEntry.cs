@@ -89,6 +89,7 @@ namespace LoanManagement.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal? TaxesInsuranceAndOther { get; set; }
         public long LoanApplicationId { get; set; }
+        public int BorrowerTypeId { get; set; }
 
         public State State { get; set; }    
         public AssetType AssetType { get; set; }
@@ -97,5 +98,6 @@ namespace LoanManagement.Models
         /// Valid for Stock And Bonds
         /// </summary>
         public List<StockAndBond> StockAndBonds { get; set; }
+        public BorrowerType BorrowerType { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace LoanManagement.ViewModels
     public class ManualAssetEntryDto : EntityDto<long?>
     {
         public long AssetTypeId { get; set; }
+        //public long AssetTypeId { get; set; }
         public string AccountNumber { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? CashValue { get; set; }
@@ -84,6 +85,7 @@ namespace LoanManagement.ViewModels
         [Column(TypeName = "decimal(18,2)")]
         public decimal? TaxesInsuranceAndOther { get; set; }
         public long LoanApplicationId { get; set; }
+        public int BorrowerTypeId { get; set; }
         /// <summary>
         /// Valid for Stock And Bonds
         /// </summary>

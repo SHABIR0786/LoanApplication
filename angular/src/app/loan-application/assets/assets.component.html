@@ -42,6 +42,13 @@
                                 <label for="borrowerTypeId-{{i}}">
                                     {{ "Belongs To" | localize }}
                                 </label>
+                                <i
+                                    class="fa fa-info-circle ml-2"
+                                    aria-hidden="true"
+                                    tooltipPlacement="right"
+                                    tooltip="This Statement and any applicable supporting schedules may be completed jointly by both married and unmarried Co-Borrowers if their assets and liabilities are sufficiently joined so that the Statement can be meaningfully and fairly presented on a combined basis; otherwise, separate Statements and Schedules are required. If the Co-Borrower section was completed about a non-applicant spouse or other person, this Statement and supporting schedules must be completed about that spouse or other person also."
+                                >
+                                </i>
                                 <select class="form-control" name="borrowerTypeId" id="borrowerTypeId-{{i}}"
                                         formControlName="borrowerTypeId">
                                     <option [ngValue]="borrowerTypeId.id" *ngFor="let borrowerTypeId of borrowerTypeIds">{{borrowerTypeId.name}}</option>
