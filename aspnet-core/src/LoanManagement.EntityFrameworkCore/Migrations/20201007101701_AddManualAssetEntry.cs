@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace LoanManagement.Migrations
 {
@@ -8,6 +8,26 @@ namespace LoanManagement.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AssetType",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssetType", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ManualAssetEntries",
                 columns: table => new
@@ -21,7 +41,7 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
+                    AssetTypeId = table.Column<long>(nullable: false),
                     AccountNumber = table.Column<string>(nullable: true),
                     CashValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Address = table.Column<string>(nullable: true),
@@ -46,6 +66,12 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ManualAssetEntries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ManualAssetEntries_AssetType_AssetTypeId",
+                        column: x => x.AssetTypeId,
+                        principalTable: "AssetType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ManualAssetEntries_LoanApplications_LoanApplicationId",
                         column: x => x.LoanApplicationId,
@@ -84,6 +110,11 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ManualAssetEntries_AssetTypeId",
+                table: "ManualAssetEntries",
+                column: "AssetTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ManualAssetEntries_LoanApplicationId",
                 table: "ManualAssetEntries",
                 column: "LoanApplicationId");
@@ -101,6 +132,9 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "ManualAssetEntries");
+
+            migrationBuilder.DropTable(
+                name: "AssetType");
         }
     }
 }

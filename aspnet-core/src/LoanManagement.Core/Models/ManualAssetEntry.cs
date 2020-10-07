@@ -7,7 +7,7 @@ namespace LoanManagement.Models
 {
     public class ManualAssetEntry : FullAuditedEntity<long>
     {
-        public string Type { get; set; }
+        public long AssetTypeId { get; set; }
         public string AccountNumber { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? CashValue { get; set; }
@@ -84,10 +84,12 @@ namespace LoanManagement.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal? TaxesInsuranceAndOther { get; set; }
         public long LoanApplicationId { get; set; }
+
+        public AssetType AssetType { get; set; }
+        public LoanApplication LoanApplication { get; set; }
         /// <summary>
         /// Valid for Stock And Bonds
         /// </summary>
         public List<StockAndBond> StockAndBonds { get; set; }
-        public LoanApplication LoanApplication { get; set; }
     }
 }
