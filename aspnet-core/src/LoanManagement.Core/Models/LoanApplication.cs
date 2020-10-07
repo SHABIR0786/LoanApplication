@@ -26,6 +26,8 @@ namespace LoanManagement.Models
 
         public List<ManualAssetEntry> ManualAssetEntries { get; set; }
 
+         public List<BorrowerEmploymentInformation> BorrowerEmploymentInformations { get; set; }
+        public List<BorrowerMonthlyIncome> BorrowerMonthlyIncomes { get; set; }
         public List<DeclarationBorrowereDemographicsInformation> DemographicsInformations { get; set; }
         public List<Declaration> Declarations { get; set; }
         public List<AdditionalIncome> AdditionalIncomes { get; set; }
