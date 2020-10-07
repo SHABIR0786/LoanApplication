@@ -1,6 +1,5 @@
 using Abp.Application.Services;
 using LoanManagement.ViewModels;
-using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {

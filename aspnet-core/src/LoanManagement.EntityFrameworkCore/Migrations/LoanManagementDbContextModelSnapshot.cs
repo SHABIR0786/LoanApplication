@@ -1827,7 +1827,7 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerType", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -2696,7 +2696,7 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("BorrowerTypeId");
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany()
+                        .WithMany("AdditionalIncomes")
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2755,7 +2755,7 @@ namespace LoanManagement.Migrations
                         .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany()
+                        .WithMany("Declarations")
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2770,7 +2770,7 @@ namespace LoanManagement.Migrations
                         .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany()
+                        .WithMany("DemographicsInformations")
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

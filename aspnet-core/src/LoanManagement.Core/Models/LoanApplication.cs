@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Abp.Domain.Entities;
+﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
@@ -26,6 +26,7 @@ namespace LoanManagement.Models
 
         public List<DeclarationBorrowereDemographicsInformation> DemographicsInformations { get; set; }
         public List<Declaration> Declarations { get; set; }
+        public List<AdditionalIncome> AdditionalIncomes { get; set; }
 
         public int? TenantId { get; set; }
     }

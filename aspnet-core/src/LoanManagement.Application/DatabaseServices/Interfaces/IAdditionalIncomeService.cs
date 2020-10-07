@@ -5,6 +5,6 @@ namespace LoanManagement.DatabaseServices.Interfaces
 {
     public interface IAdditionalIncomeService : IAsyncCrudAppService<AdditionalIncomeDto, long?, PagedLoanApplicationResultRequestDto, AdditionalIncomeDto, AdditionalIncomeDto>
     {
-        
+
     }
 }

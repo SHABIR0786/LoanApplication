@@ -55,7 +55,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     i.LoanDetail,
                     i => i.AdditionalDetail,
                     i => i.PersonalDetail,
-                    i => i.AdditionalIncome,
+                    i => i.AdditionalIncomes,
                     i => i.CreditAuthAgreement,
                     i => i.ConsentDetail,
                     i => i.Expense
@@ -124,7 +124,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 };
 
-               
+
 
                 if (result.Declarations != null && result.Declarations.Any())
                 {
@@ -415,10 +415,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 });
                             }
 
-                             viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
+                            viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
 
-                              if (demographicsInformation.IsFemale.HasValue &&
-                                demographicsInformation.IsFemale.Value)
+                            if (demographicsInformation.IsFemale.HasValue &&
+                              demographicsInformation.IsFemale.Value)
                             {
                                 viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
                                 {
@@ -436,8 +436,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 });
                             }
 
-                             if (demographicsInformation.CanNotProvideSex.HasValue &&
-                                demographicsInformation.CanNotProvideSex.Value)
+                            if (demographicsInformation.CanNotProvideSex.HasValue &&
+                               demographicsInformation.CanNotProvideSex.Value)
                             {
                                 viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
                                 {
@@ -449,7 +449,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         }
                         if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                         {
-                             viewModel.Declaration.BorrowerDemographic = new DemographicDto();
+                            viewModel.Declaration.BorrowerDemographic = new DemographicDto();
                             viewModel.Declaration.BorrowerDemographic.Ethnicity = new List<DemographicTypeDto>();
 
                             if (demographicsInformation.IsHispanicOrLatino.HasValue &&
@@ -679,10 +679,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 });
                             }
 
-                             viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
+                            viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
 
-                              if (demographicsInformation.IsFemale.HasValue &&
-                                demographicsInformation.IsFemale.Value)
+                            if (demographicsInformation.IsFemale.HasValue &&
+                              demographicsInformation.IsFemale.Value)
                             {
                                 viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
                                 {
@@ -700,8 +700,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 });
                             }
 
-                             if (demographicsInformation.CanNotProvideSex.HasValue &&
-                                demographicsInformation.CanNotProvideSex.Value)
+                            if (demographicsInformation.CanNotProvideSex.HasValue &&
+                               demographicsInformation.CanNotProvideSex.Value)
                             {
                                 viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
                                 {
