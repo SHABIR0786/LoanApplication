@@ -12,7 +12,7 @@ namespace LoanManagement.Models
         public string Origin { get; set; }
         public bool? IsNotHispanicOrLatino { get; set; }
         public bool? CanNotProvideEthnic { get; set; }
- 
+
 
 
         public bool? IsAmericanIndianOrAlaskaNative { get; set; }
