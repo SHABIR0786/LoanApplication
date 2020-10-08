@@ -905,19 +905,24 @@
             <label for="amount-{{ i }}">
               {{ "Amount" | localize }}
             </label>
-            <div class="input-group">
+            <input
+            type="text"
+            class="form-control"
+            name="amount"
+            id="amount-{{ i }}"
+            formControlName="amount"
+            [(ngModel)]="additionalIncome.amount"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
+            <!-- <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text">$</div>
               </div>
-              <input
-                type="number"
-                class="form-control"
-                name="amount"
-                id="amount-{{ i }}"
-                formControlName="amount"
-                [(ngModel)]="additionalIncome.amount"
-              />
-            </div>
+             
+            </div> -->
           </div>
         </div>
       </div>
