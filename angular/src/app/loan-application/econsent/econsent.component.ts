@@ -1,10 +1,10 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService, STEP_STATE} from 'ng-wizard';
-import {IConsentModel} from '../../interfaces/IConsentModel';
-import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
-import {DataService} from '../../services/data.service';
-import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgWizardService, STEP_STATE } from 'ng-wizard';
+import { IConsentModel } from '../../interfaces/IConsentModel';
+import { IBorrowerModel } from '../../interfaces/IBorrowerModel';
+import { DataService } from '../../services/data.service';
+import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
 
 @Component({
     selector: 'app-econsent',
@@ -37,9 +37,7 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this.onDataChange.next(this.form.value);
     }
 
     initForm() {

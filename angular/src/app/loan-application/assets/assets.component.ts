@@ -30,7 +30,7 @@ export class AssetsComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService
-  ) {}
+  ) { }
 
   get manualAssetEntries(): FormArray {
     return this.form.get("manualAssetEntries") as FormArray;
@@ -55,9 +55,7 @@ export class AssetsComponent implements OnInit, DoCheck {
     this.data = this.form.value.manualAssetEntries;
     this._dataService.updateValidations(this.form, "manualAssetEntries");
 
-    if (this.form.valid) {
-      this.onDataChange.next(this.form.value.manualAssetEntries);
-    }
+    this.onDataChange.next(this.form.value.manualAssetEntries);
   }
 
   initForm() {

@@ -55,9 +55,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     this.data = this.form.value;
     this._dataService.updateValidations(this.form, "loanDetails");
 
-    if (this.form.valid) {
-      this.onDataChange.next(this.form.value);
-    }
+    this.onDataChange.next(this.form.value);
   }
 
   initForm() {

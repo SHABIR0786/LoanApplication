@@ -36,9 +36,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
     ngDoCheck() {
         this.data = this.form.value;
         this._dataService.updateValidations(this.form, 'monthlyHousingExpenses');
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this.onDataChange.next(this.form.value);
     }
 
     initForm() {
