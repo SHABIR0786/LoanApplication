@@ -68,6 +68,8 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                     new MenuItem(this.l('Expense'), '/app/expense', 'fab fa-wpforms', ''),
                     new MenuItem(this.l('Asset'), '/app/asset', 'fab fa-wpforms', ''),
                     new MenuItem(this.l('Employment Income'), '/app/employment-income', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Order Credit'), '/app/order-credit', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Additional Detail'), '/app/additional-detail', 'fab fa-wpforms', ''),
                     new MenuItem(this.l('EConsent'), '/app/econsent', 'fab fa-wpforms', ''),
                     new MenuItem(this.l('Declaration'), '/app/declaration', 'fab fa-wpforms', ''),
                     new MenuItem(this.l('Summary'), '/app/summary', 'fab fa-wpforms', ''),
