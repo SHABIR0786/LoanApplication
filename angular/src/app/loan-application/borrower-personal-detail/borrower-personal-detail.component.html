@@ -72,7 +72,7 @@
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" name="socialSecurityNumber" id="socialSecurityNumber-{{id}}"
-                   formControlName="socialSecurityNumber" [(ngModel)]="data.socialSecurityNumber"/>
+                   formControlName="socialSecurityNumber" [(ngModel)]="data.socialSecurityNumber" mask="(000) 00 0000" />
             <validation-summary [control]="form.controls.socialSecurityNumber"></validation-summary>
         </div>
     </div>
@@ -106,7 +106,7 @@
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" name="cellPhone" id="cellPhone-{{id}}"
-                   formControlName="cellPhone" [(ngModel)]="data.cellPhone"/>
+                   formControlName="cellPhone" [(ngModel)]="data.cellPhone" mask="(000) 000 0000"/>
             <validation-summary [control]="form.controls.cellPhone"></validation-summary>
         </div>
     </div>
@@ -116,7 +116,7 @@
                 {{ "Home Phone" | localize }}
             </label>
             <input type="text" class="form-control" name="homePhone" id="homePhone-{{id}}"
-                   formControlName="homePhone" [(ngModel)]="data.homePhone"/>
+                   formControlName="homePhone" [(ngModel)]="data.homePhone" mask="(000) 000 0000"/>
         </div>
     </div>
 </div>
