@@ -1,298 +1,294 @@
-<div class="row">
-  <div class="col-12 mb-1">
-    <div class="row">
-      <div class="col-8">
-        <h4>Summary</h4>
-      </div>
-      <div class="col-4" *ngIf="!isShowAllStepsReadOnlyModeBool">
-        <button class="btn btn-secondary float-right" (click)="expandAll()">
-          <i class="fas fa-angle-right"></i> Expand All
-        </button>
-      </div>
-      <div class="col-4" *ngIf="isShowAllStepsReadOnlyModeBool">
-        <button class="btn btn-secondary float-right" (click)="collapse()">
-          <i class="fas fa-angle-down"></i> Collapse
-        </button>
-      </div>
-    </div>
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12" *ngIf="isShowAllStepsReadOnlyModeBool">
-    <div class="row">
-      <div class="col-6">
+<section class="content px-2">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
         <div class="row">
-          <div class="col-8">
-            <h5>Loan Details</h5>
-            <div class="mt-5">
-              <h6 class="font-weight-normal form-text text-muted mb-3"></h6>
-              Who Referred You? (Real Estate Agent, Family, Friend, Internet,
-              etc.) Please list by Full Name, if Applicable
-
-              <p class="font-weight-bold">
-                {{ formData.loanDetails.referredBy }}
-              </p>
+          <div class="col-12 mb-1">
+            <div class="row">
+              <div class="col-8">
+                <h4>Summary</h4>
+              </div>
+              <div class="col-4" *ngIf="!isShowAllStepsReadOnlyModeBool">
+                <button class="btn btn-secondary float-right" (click)="expandAll()">
+                  <i class="fas fa-angle-right"></i> Expand All
+                </button>
+              </div>
+              <div class="col-4" *ngIf="isShowAllStepsReadOnlyModeBool">
+                <button class="btn btn-secondary float-right" (click)="collapse()">
+                  <i class="fas fa-angle-down"></i> Collapse
+                </button>
+              </div>
             </div>
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12" *ngIf="isShowAllStepsReadOnlyModeBool">
             <div class="row">
               <div class="col-6">
-                <h6 class="font-weight-normal form-text text-muted mb-2">
-                  Are you currently working with a William Raveis Mortgage loan
-                  officer? *
-                </h6>
-                <p class="font-weight-bold">
-                  {{ formData.loanDetails.referredBy }}
-                </p>
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                  <h6 class="font-weight-normal form-text text-muted mb-2">
-                    Choose the loan officer below *
-                  </h6>
-                  <p class="font-weight-bold">
-                    {{ formData.loanDetails.referredBy }}
-                  </p>
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Loan Details</h5>
+                    <div class="mt-5">
+                      <h6 class="font-weight-normal form-text text-muted mb-3"></h6>
+                      Who Referred You? (Real Estate Agent, Family, Friend, Internet,
+                      etc.) Please list by Full Name, if Applicable
+
+                      <p class="font-weight-bold">
+                        {{ formData.loanDetails.referredBy }}
+                      </p>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <h6 class="font-weight-normal form-text text-muted mb-2">
+                          Are you currently working with a William Raveis Mortgage loan
+                          officer? *
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ formData.loanDetails.referredBy }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <h6 class="font-weight-normal form-text text-muted mb-2">
+                          Choose the loan officer below *
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ formData.loanDetails.referredBy }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div class="col-6"></div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Loan Details</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(1)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                Purpose of your Loan
+                <span class="text-danger" *ngIf="showGroupError('purposeOfLoan')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+              <div class="col-12">
+                Property Details
+                <span class="text-danger" *ngIf="showGroupError('propertyDetails')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Personal Information</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(2)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                Joint Credit
+                <span class="text-danger" *ngIf="showGroupError('jointCredit')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+              <div class="col-12">
+                Borrower
+                <span class="text-danger" *ngIf="showGroupError('borrowerPersonalInformation')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+              <div class="col-12">
+                Borrower Residential Address
+                <span class="text-danger" *ngIf="showGroupError('residentialAddress')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+              <div class="col-12">Borrower Mailing Address</div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Expenses</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(3)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                Current Monthly Housing Expenses
+                <span class="text-danger" *ngIf="showGroupError('monthlyHousingExpenses')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Expenses</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(4)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Employment and Income</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(5)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                Borrower Employment Information
+                <span class="text-danger" *ngIf="showGroupError('borrowerEmploymentIncome')">
+                  <i class="fa fa-info-circle ml-2"></i>
+                  Required
+                </span>
+              </div>
+              <div class="col-12">Borrower Gross Monthly Income</div>
+
+              <div class="col-12">Additional Gross Monthly Income</div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Order Credit</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(6)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">Credit Authorization Agreement</div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Additional Details</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(7)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">Other Disclosures and Details</div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>eConsent</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(8)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <div class="row">
+              <div class="col-9">
+                <h5>Declarations</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary float-right" (click)="goToStep(9)">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">Borrower Declarations</div>
+              <div class="col-12">Borrower Demographic Information</div>
+            </div>
+
+            <hr class="mt-2 mb-3" />
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-secondary" (click)="proceedToPrevious()">
+              Back
+            </button>
+            <button class="btn btn-primary float-right" (click)="submitForm()" [disabled]="hasAnyErrors()">
+              Submit
+            </button>
           </div>
         </div>
+
       </div>
-      <div class="col-6"></div>
     </div>
   </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Loan Details</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(1)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        Purpose of your Loan
-        <span class="text-danger" *ngIf="showGroupError('purposeOfLoan')">
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-      <div class="col-12">
-        Property Details
-        <span class="text-danger" *ngIf="showGroupError('propertyDetails')">
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Personal Information</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(2)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        Joint Credit
-        <span class="text-danger" *ngIf="showGroupError('jointCredit')">
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-      <div class="col-12">
-        Borrower
-        <span
-          class="text-danger"
-          *ngIf="showGroupError('borrowerPersonalInformation')"
-        >
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-      <div class="col-12">
-        Borrower Residential Address
-        <span class="text-danger" *ngIf="showGroupError('residentialAddress')">
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-      <div class="col-12">Borrower Mailing Address</div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Expenses</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(3)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        Current Monthly Housing Expenses
-        <span
-          class="text-danger"
-          *ngIf="showGroupError('monthlyHousingExpenses')"
-        >
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Expenses</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(4)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Employment and Income</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(5)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        Borrower Employment Information
-        <span
-          class="text-danger"
-          *ngIf="showGroupError('borrowerEmploymentIncome')"
-        >
-          <i class="fa fa-info-circle ml-2"></i>
-          Required
-        </span>
-      </div>
-      <div class="col-12">Borrower Gross Monthly Income</div>
-
-      <div class="col-12">Additional Gross Monthly Income</div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Order Credit</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(6)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">Credit Authorization Agreement</div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Additional Details</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(7)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">Other Disclosures and Details</div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>eConsent</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(8)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <div class="col-9">
-        <h5>Declarations</h5>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-secondary float-right" (click)="goToStep(9)">
-          Edit
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">Borrower Declarations</div>
-      <div class="col-12">Borrower Demographic Information</div>
-    </div>
-
-    <hr class="mt-2 mb-3" />
-  </div>
-
-  <div class="col-12">
-    <button class="btn btn-secondary" (click)="proceedToPrevious()">
-      Back
-    </button>
-    <button
-      class="btn btn-primary float-right"
-      (click)="submitForm()"
-      [disabled]="hasAnyErrors()"
-    >
-      Submit
-    </button>
-  </div>
-</div>
+</section>
