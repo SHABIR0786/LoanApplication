@@ -222,7 +222,19 @@
         <label for="giftAmount">
           {{ "Gift Amount" | localize }}
         </label>
-        <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          name="giftAmount"
+          id="giftAmount"
+          formControlName="giftAmount"
+          [(ngModel)]="data.giftAmount"
+          placeholder="$"
+          prefix="$ "
+          mask="separator.2"
+          thousandSeparator=","
+        />
+        <!-- <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">$</div>
           </div>
@@ -233,8 +245,12 @@
             id="giftAmount"
             formControlName="giftAmount"
             [(ngModel)]="data.giftAmount"
+            placeholder="$"
+          prefix="$ "
+          mask="separator.2"
+          thousandSeparator=","
           />
-        </div>
+        </div> -->
       </div>
     </div>
 
