@@ -12,8 +12,7 @@ import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 })
 export class ExpensesComponent implements OnInit, DoCheck {
 
-    @Input() data: IExpenseModel = {};
-    @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+    data: IExpenseModel = {};
 
     form: FormGroup;
 
@@ -24,6 +23,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
     }
 
     ngOnInit(): void {
+        this.data = this._dataService.loanApplication.expenses;
+
         this.initForm();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -36,9 +37,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
     ngDoCheck() {
         this.data = this.form.value;
         this._dataService.updateValidations(this.form, 'monthlyHousingExpenses');
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this._dataService.updateData(this.form.value, 'expenses');
     }
 
     initForm() {

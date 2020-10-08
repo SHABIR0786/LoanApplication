@@ -1,6 +1,6 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService, STEP_STATE} from 'ng-wizard';
+import {NgWizardService} from 'ng-wizard';
 import {IConsentModel} from '../../interfaces/IConsentModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {DataService} from '../../services/data.service';
@@ -13,9 +13,8 @@ import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 })
 export class EconsentComponent implements OnInit, DoCheck {
 
-    @Input() data: IConsentModel = {};
-    @Input() borrower: IBorrowerModel = {};
-    @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+    data: IConsentModel = {};
+    borrower: IBorrowerModel = {};
 
     form: FormGroup;
 
@@ -26,6 +25,9 @@ export class EconsentComponent implements OnInit, DoCheck {
     }
 
     ngOnInit(): void {
+        this.data = this._dataService.loanApplication.eConsent;
+        this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+
         this.initForm();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -37,9 +39,7 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this._dataService.updateData(this.form.value, 'eConsent');
     }
 
     initForm() {
