@@ -9,6 +9,14 @@ import {TenantsComponent} from './tenants/tenants.component';
 import {RolesComponent} from 'app/roles/roles.component';
 import {ChangePasswordComponent} from './users/change-password/change-password.component';
 import {LoanApplicationComponent} from './loan-application/loan-application.component';
+import { LoanDetailsComponent } from './loan-application/loan-details/loan-details.component';
+import { PersonalInformationComponent } from './loan-application/personal-information/personal-information.component';
+import { ExpensesComponent } from './loan-application/expenses/expenses.component';
+import { AssetsComponent } from './loan-application/assets/assets.component';
+import { EmploymentIncomeComponent } from './loan-application/employment-income/employment-income.component';
+import { SummaryComponent } from './loan-application/summary/summary.component';
+import { DeclarationComponent } from './loan-application/declaration/declaration.component';
+import { EconsentComponent } from './loan-application/econsent/econsent.component';
 
 @NgModule({
     imports: [
@@ -22,6 +30,14 @@ import {LoanApplicationComponent} from './loan-application/loan-application.comp
                     {path: 'roles', component: RolesComponent, data: {permission: 'Pages.Roles'}, canActivate: [AppRouteGuard]},
                     {path: 'tenants', component: TenantsComponent, data: {permission: 'Pages.Tenants'}, canActivate: [AppRouteGuard]},
                     {path: 'apply-loan', component: LoanApplicationComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'loan-detail', component: LoanDetailsComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'personal-information', component: PersonalInformationComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'expense', component: ExpensesComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'asset', component: AssetsComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'employment-income', component: EmploymentIncomeComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'econsent', component: EconsentComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'declaration', component: DeclarationComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'summary', component: SummaryComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
                     {path: 'about', component: AboutComponent},
                     {path: 'update-password', component: ChangePasswordComponent}
                 ]
