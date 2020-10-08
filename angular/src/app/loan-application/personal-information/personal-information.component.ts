@@ -80,9 +80,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       this.form.get("mailingAddress") as FormGroup,
       "mailingAddress"
     );
-    if (this.form.valid) {
+   
       this.onDataChange.next(this.form.value);
-    }
   }
 
   loadStates() {
