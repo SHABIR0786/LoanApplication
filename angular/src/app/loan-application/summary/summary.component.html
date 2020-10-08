@@ -71,7 +71,7 @@
                                 <h5>Loan Details</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(1)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/loan-detail')">
                                     Edit
                                 </button>
                             </div>
@@ -80,7 +80,7 @@
                         <div class="row">
                             <div class="col-12">
                                 Purpose of your Loan
-                                <span class="text-danger" *ngIf="showGroupError('purposeOfLoan')">
+                                <span class="text-danger" *ngIf="showGroupError('app/purposeOfLoan')">
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
@@ -103,7 +103,7 @@
                                 <h5>Personal Information</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(2)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/personal-information')">
                                     Edit
                                 </button>
                             </div>
@@ -143,7 +143,7 @@
                                 <h5>Expenses</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(3)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/expense')">
                                     Edit
                                 </button>
                             </div>
@@ -164,10 +164,10 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-9">
-                                <h5>Expenses</h5>
+                                <h5>Asset</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(4)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/asset')">
                                     Edit
                                 </button>
                             </div>
@@ -182,7 +182,7 @@
                                 <h5>Employment and Income</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(5)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/employment-income')">
                                     Edit
                                 </button>
                             </div>
@@ -210,7 +210,7 @@
                                 <h5>Order Credit</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(6)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/order-credit')">
                                     Edit
                                 </button>
                             </div>
@@ -229,7 +229,7 @@
                                 <h5>Additional Details</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(7)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/additional-detail')">
                                     Edit
                                 </button>
                             </div>
@@ -248,7 +248,7 @@
                                 <h5>eConsent</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(8)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/econsent')">
                                     Edit
                                 </button>
                             </div>
@@ -263,7 +263,7 @@
                                 <h5>Declarations</h5>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary float-right" (click)="goToStep(9)">
+                                <button class="btn btn-secondary float-right" (click)="goToStep('app/declaration')">
                                     Edit
                                 </button>
                             </div>

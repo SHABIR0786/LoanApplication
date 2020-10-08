@@ -5,6 +5,7 @@ import {IConsentModel} from '../../interfaces/IConsentModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-econsent',
@@ -20,7 +21,8 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -54,13 +56,13 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            this._route.navigate(["app/declaration"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        this._route.navigate(["app/additional-detail"]);
     }
 }

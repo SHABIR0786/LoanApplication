@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {IAdditionalDetailModel} from '../../interfaces/IAdditionalDetailModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-additional-details',
@@ -11,7 +12,8 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
 
     data: IAdditionalDetailModel = {};
 
-    constructor(private _dataService: DataService) {
+    constructor(private _dataService: DataService,
+        private _route: Router,) {
     }
 
     ngDoCheck(): void {
@@ -24,10 +26,12 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         // this._ngWizardService.next();
+        this._route.navigate(["app/econsent"]);
     }
 
     proceedToPrevious() {
         // this._ngWizardService.previous();
+        this._route.navigate(["app/order-credit"]);
     }
 
 }

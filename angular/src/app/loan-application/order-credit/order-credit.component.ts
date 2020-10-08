@@ -1,5 +1,6 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
-import {DataService} from '../../services/data.service';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'app-order-credit',
@@ -10,7 +11,10 @@ export class OrderCreditComponent implements OnInit, DoCheck {
 
     data: any = {};
 
-    constructor(private _dataService: DataService) {
+    constructor(
+        private _dataService: DataService,
+        private _route: Router,
+    ) {
     }
 
     ngDoCheck(): void {
@@ -23,9 +27,10 @@ export class OrderCreditComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         // this._ngWizardService.next();
+        this._route.navigate(["app/additional-detail"]);
     }
 
     proceedToPrevious() {
-        // this._ngWizardService.previous();
+        this._route.navigate(["app/employment-income"]);
     }
 }

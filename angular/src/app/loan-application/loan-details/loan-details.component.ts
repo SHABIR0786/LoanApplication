@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-loan-details',
@@ -24,7 +25,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -184,7 +186,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            //this._ngWizardService.next();
+            this._route.navigate(["app/personal-information"]);
         } else {
             this.form.markAllAsTouched();
         }

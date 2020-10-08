@@ -6,6 +6,7 @@ import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicMo
 import {NgWizardService} from 'ng-wizard';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 import {DataService} from '../../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-declaration',
@@ -277,7 +278,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -372,13 +374,13 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            this._route.navigate(["app/summary"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        this._route.navigate(["app/econsent"]);
     }
 }

@@ -4,6 +4,7 @@ import {IExpenseModel} from '@app/interfaces/IExpenseModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-expenses',
@@ -18,7 +19,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -89,13 +91,15 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            //this._ngWizardService.next();
+            this._route.navigate(["app/asset"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        this._route.navigate(["app/personal-information"]);
+       // this._ngWizardService.previous();
     }
 }
