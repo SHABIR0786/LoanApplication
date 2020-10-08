@@ -1,4 +1,3 @@
-
 <div>
     <section class="content-header">
         <div class="container-fluid">
@@ -16,97 +15,32 @@
                 <div class="card-body">
                     <ng-wizard [config]="config">
                         <ng-wizard-step title="Step 1" description="Loan Details" [state]="">
-                            <app-loan-details [data]="loanApplication.loanDetails"
-                                              (onDataChange)="onChange($event, 'loanDetails')"></app-loan-details>
+                            <app-loan-details></app-loan-details>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 2" description="Personal Information">
-                            <app-personal-information
-                                    [data]="loanApplication.personalInformation"
-                                    (onDataChange)="onChange($event, 'personalInformation')"></app-personal-information>
+                            <app-personal-information></app-personal-information>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 3" description="Expenses">
-                            <app-expenses
-                                    [data]="loanApplication.expenses"
-                                    (onDataChange)="onChange($event, 'expenses')"></app-expenses>
+                            <app-expenses></app-expenses>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 4" description="Assets">
-                            <app-assets
-                                    [data]="loanApplication.manualAssetEntries"
-                                    (onDataChange)="onChange($event, 'manualAssetEntries')"></app-assets>
+                            <app-assets></app-assets>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 5" description="Employment and Income">
-                            <app-employment-income
-                                    [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
-                                    [data]="loanApplication.employmentIncome"
-                                    (onDataChange)="onChange($event, 'employmentIncome')"></app-employment-income>
+                            <app-employment-income></app-employment-income>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 6" description="Order Credit">
-                            <div class="row">
-                                <div class="col-12 mb-3">
-                                    <h4>Credit Authorization Agreement</h4>
-                                    <p>
-                                        You can agree, disagree or skip the eConsent agreement below.
-                                    </p>
-                                    <div class="econsent-wrapper">
-                                        <p>
-                                            During your mortgage loan application process, this institution performs a
-                                            Credit Check that requires us to obtain and confirm information regarding
-                                            your personal and financial background. This Credit Check includes, but is
-                                            not limited to, your marital status, number of dependents, current and past
-                                            employers, current deposit accounts, current and past consumer credit
-                                            accounts, and your mortgage and/or rental history.
-                                        </p>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="agreeCreditAuthAgreement"
-                                               [(ngModel)]="loanApplication.orderCredit.agreeCreditAuthAgreement">
-                                        <label class="form-check-label" for="agreeCreditAuthAgreement">
-                                            I accept the Credit Authorization Agreement.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next
-                                    </button>
-                                </div>
-                            </div>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 7" description="Additional Details">
-                            <div class="row">
-                                <div class="col-12 mb-3">
-                                    <h4>Other Disclosures and Details</h4>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="nameOfIndividualsOnTitle">
-                                            {{ "List names of all individuals who will be on Title" | localize }}
-                                        </label>
-                                        <input type="text" class="form-control" name="nameOfIndividualsOnTitle"
-                                               id="nameOfIndividualsOnTitle"
-                                               [(ngModel)]="loanApplication.additionalDetails.nameOfIndividualsOnTitle"/>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-secondary" (click)="proceedToPrevious()">Back</button>
-                                    <button class="btn btn-secondary float-right" (click)="proceedToNext()">Next
-                                    </button>
-                                </div>
-                            </div>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 8" description="eConsent">
-                            <app-econsent [data]="loanApplication.eConsent"
-                                          [borrower]="loanApplication.personalInformation"
-                                          (onDataChange)="onChange($event, 'eConsent')"></app-econsent>
+                            <app-econsent></app-econsent>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 9" description="Declaration">
-                            <app-declaration [data]="loanApplication.declaration"
-                                             [isApplyingWithCoBorrower]="loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower"
-                                             (onDataChange)="onChange($event, 'declaration')"></app-declaration>
+                            <app-declaration></app-declaration>
                         </ng-wizard-step>
                         <ng-wizard-step title="Step 10" description="Summary">
-                            <app-summary (onSubmit)="submitForm()" (proceedToStep)="goToStep($event)"></app-summary>
+                            <app-summary (proceedToStep)="goToStep($event)"></app-summary>
                         </ng-wizard-step>
                     </ng-wizard>
                 </div>

@@ -4,6 +4,7 @@ import {IExpenseModel} from '@app/interfaces/IExpenseModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-expenses',
@@ -12,18 +13,20 @@ import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 })
 export class ExpensesComponent implements OnInit, DoCheck {
 
-    @Input() data: IExpenseModel = {};
-    @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+    data: IExpenseModel = {};
 
     form: FormGroup;
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
     ngOnInit(): void {
+        this.data = this._dataService.loanApplication.expenses;
+
         this.initForm();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -36,7 +39,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
     ngDoCheck() {
         this.data = this.form.value;
         this._dataService.updateValidations(this.form, 'monthlyHousingExpenses');
-        this.onDataChange.next(this.form.value);
+        this._dataService.updateData(this.form.value, 'expenses');
     }
 
     initForm() {
@@ -88,13 +91,15 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            //this._ngWizardService.next();
+            this._route.navigate(["app/asset"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        this._route.navigate(["app/personal-information"]);
+       // this._ngWizardService.previous();
     }
 }
