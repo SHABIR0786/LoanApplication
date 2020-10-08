@@ -17,6 +17,8 @@ import {EmploymentIncomeComponent} from './loan-application/employment-income/em
 import {SummaryComponent} from './loan-application/summary/summary.component';
 import {DeclarationComponent} from './loan-application/declaration/declaration.component';
 import {EconsentComponent} from './loan-application/econsent/econsent.component';
+import {OrderCreditComponent} from './loan-application/order-credit/order-credit.component';
+import {AdditionalDetailsComponent} from './loan-application/additional-details/additional-details.component';
 
 @NgModule({
     imports: [
@@ -40,6 +42,13 @@ import {EconsentComponent} from './loan-application/econsent/econsent.component'
                     {path: 'expense', component: ExpensesComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
                     {path: 'asset', component: AssetsComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
                     {path: 'employment-income', component: EmploymentIncomeComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {path: 'order-credit', component: OrderCreditComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
+                    {
+                        path: 'additional-detail',
+                        component: AdditionalDetailsComponent,
+                        data: {permission: ''},
+                        canActivate: [AppRouteGuard]
+                    },
                     {path: 'econsent', component: EconsentComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
                     {path: 'declaration', component: DeclarationComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
                     {path: 'summary', component: SummaryComponent, data: {permission: ''}, canActivate: [AppRouteGuard]},
