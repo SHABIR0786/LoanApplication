@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationModel';
 import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
@@ -14,14 +14,14 @@ import {DataService} from '../../services/data.service';
 })
 export class DeclarationComponent implements OnInit, DoCheck {
 
-    @Input() data: IDeclarationModel = {
+    data: IDeclarationModel = {
         borrowerDeclaration: {},
         borrowerDemographic: {},
 
         coBorrowerDeclaration: {},
         coBorrowerDemographic: {},
     };
-    @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+    isApplyingWithCoBorrower = false;
     form: FormGroup;
     borrowerEthnics = [
         {
@@ -275,34 +275,17 @@ export class DeclarationComponent implements OnInit, DoCheck {
         },
     ];
 
-    private _isApplyingWithCoBorrower = false;
-
     constructor(
         private _ngWizardService: NgWizardService,
         private _dataService: DataService
     ) {
     }
 
-    @Input() set isApplyingWithCoBorrower(value: boolean) {
-        this._isApplyingWithCoBorrower = value;
-        if (this.form) {
-            if (value) {
-                this.data.coBorrowerDeclaration = {};
-                this.data.coBorrowerDemographic = {};
-                this.form.addControl('coBorrowerDeclaration', this.initDeclarationForm(this.data.coBorrowerDeclaration));
-                this.form.addControl('coBorrowerDemographic', this.initDemographicForm(this.data.coBorrowerDemographic));
-            } else {
-                this.form.removeControl('coBorrowerDeclaration');
-                this.form.removeControl('coBorrowerDemographic');
-            }
-        }
-    }
-
-    get isApplyingWithCoBorrower(): boolean {
-        return this._isApplyingWithCoBorrower;
-    }
-
     ngOnInit(): void {
+        this.data = this._dataService.loanApplication.declaration;
+        const loanApplication = this._dataService.loanApplication;
+        this.isApplyingWithCoBorrower = loanApplication.personalInformation && loanApplication.personalInformation.isApplyingWithCoBorrower;
+
         this.initForm();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -314,9 +297,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     ngDoCheck(): void {
         this.data = this.form.value;
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this._dataService.updateData(this.form.value, 'declaration');
     }
 
     initForm() {
@@ -325,6 +306,16 @@ export class DeclarationComponent implements OnInit, DoCheck {
             borrowerDeclaration: this.initDeclarationForm(this.data.borrowerDeclaration),
             borrowerDemographic: this.initDemographicForm(this.data.borrowerDemographic),
         });
+
+        if (this.isApplyingWithCoBorrower) {
+            this.data.coBorrowerDeclaration = {};
+            this.data.coBorrowerDemographic = {};
+            this.form.addControl('coBorrowerDeclaration', this.initDeclarationForm(this.data.coBorrowerDeclaration));
+            this.form.addControl('coBorrowerDemographic', this.initDemographicForm(this.data.coBorrowerDemographic));
+        } else {
+            this.form.removeControl('coBorrowerDeclaration');
+            this.form.removeControl('coBorrowerDemographic');
+        }
     }
 
     initDeclarationForm(borrowerDeclaration: IBorrowerDeclarationModel): FormGroup {
