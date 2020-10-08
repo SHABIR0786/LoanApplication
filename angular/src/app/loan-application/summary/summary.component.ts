@@ -3,6 +3,7 @@ import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 import {LoanApplicationService} from '../../services/loan-application.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-summary',
@@ -20,6 +21,7 @@ export class SummaryComponent implements OnInit {
         private _ngWizardService: NgWizardService,
         private _dataService: DataService,
         private _loanApplicationService: LoanApplicationService,
+        private _route: Router,
     ) {
     }
 
@@ -61,7 +63,9 @@ export class SummaryComponent implements OnInit {
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+      //  this._ngWizardService.previous();
+      this._route.navigate(["app/declaration"]);
+
     }
 
     showGroupError(groupName) {
@@ -109,8 +113,9 @@ export class SummaryComponent implements OnInit {
         // return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
     }
 
-    goToStep(index: number) {
-        this.proceedToStep.emit(index - 1);
+    goToStep(index: string) {
+        //this.proceedToStep.emit(index - 1);
+        this._route.navigate([index]);
     }
 
     expandAll() {

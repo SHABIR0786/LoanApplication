@@ -4,6 +4,7 @@ import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 import {IAssetModel} from '../../interfaces/IAssetModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-assets',
@@ -21,7 +22,8 @@ export class AssetsComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -263,5 +265,17 @@ export class AssetsComponent implements OnInit, DoCheck {
 
     trackByFn(index: any, item: any) {
         return index;
+    }
+
+    proceedToPrevious(){
+        if (this.form.valid) {
+            //this._ngWizardService.next();
+            this._route.navigate(["app/employment-income"]);
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+    proceedToNext(){
+        this._route.navigate(["app/expense"]);
     }
 }

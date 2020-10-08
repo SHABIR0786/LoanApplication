@@ -6,6 +6,7 @@ import {IAddressModel} from '../../interfaces/IAddressModel';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-personal-information',
@@ -26,7 +27,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
@@ -262,13 +264,15 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            //this._ngWizardService.next();
+            this._route.navigate(["app/expense"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        //this._ngWizardService.previous();
+        this._route.navigate(["app/loan-detail"]);
     }
 }
