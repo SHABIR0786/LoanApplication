@@ -47,7 +47,8 @@
           [(ngModel)]="data.isLiveWithFamilySelectRent"
         />
         <label class="form-check-label" for="isLiveWithFamilySelectRentNo"
-          >Own</label>
+          >Own</label
+        >
       </div>
     </div>
   </div>
@@ -65,20 +66,19 @@
         tooltip="Your current monthly rent payment."
       >
       </i>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">$</div>
-        </div>
-        <input
-          type="number"
-          class="form-control"
-          name="rent"
-          id="rent"
-          formControlName="rent"
-          required
-          [(ngModel)]="data.rent"
-        />
-      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="rent"
+        id="rent"
+        formControlName="rent"
+        required
+        [(ngModel)]="data.rent"
+        placeholder="$"
+        prefix="$ "
+        mask="separator.2"
+        thousandSeparator=","
+      />
       <validation-summary [control]="form.controls.rent"></validation-summary>
     </div>
   </div>
@@ -91,26 +91,25 @@
             <span class="text-danger">*</span>
           </label>
           <i
-        class="fa fa-info-circle ml-2"
-        aria-hidden="true"
-        tooltipPlacement="right"
-        tooltip="The total amount of your monthly mortgage payment that goes towards the Principal and Interest for your current mortgage"
-      >
-      </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="firstMortgage"
-              id="firstMortgage"
-              formControlName="firstMortgage"
-              required
-              [(ngModel)]="data.firstMortgage"
-            />
-          </div>
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="The total amount of your monthly mortgage payment that goes towards the Principal and Interest for your current mortgage"
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="firstMortgage"
+            id="firstMortgage"
+            formControlName="firstMortgage"
+            required
+            [(ngModel)]="data.firstMortgage"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
           <validation-summary
             [control]="form.controls.firstMortgage"
           ></validation-summary>
@@ -120,50 +119,48 @@
         <div class="form-group">
           <label for="secondMortgage"> Second Mortgage (P&I) </label>
           <i
-        class="fa fa-info-circle ml-2"
-        aria-hidden="true"
-        tooltipPlacement="right"
-        tooltip="The total monthly payment (principal and interest) for your second mortgage."
-      >
-      </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="secondMortgage"
-              id="secondMortgage"
-              formControlName="secondMortgage"
-              [(ngModel)]="data.secondMortgage"
-            />
-          </div>
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="The total monthly payment (principal and interest) for your second mortgage."
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="secondMortgage"
+            id="secondMortgage"
+            formControlName="secondMortgage"
+            [(ngModel)]="data.secondMortgage"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label for="hazardInsurance"> Hazard Insurance </label>
           <i
-        class="fa fa-info-circle ml-2"
-        aria-hidden="true"
-        tooltipPlacement="right"
-        tooltip="Your current monthly hazard insurance premium. Hazard insurance covers property damage caused by fire, wind, and other similar risks. Sometimes earthquakes and floods are covered. Most lenders require hazard insurance and may incorporate the insurance payment into your monthly first mortgage payment."
-      >
-      </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="hazardInsurance"
-              id="hazardInsurance"
-              formControlName="hazardInsurance"
-              [(ngModel)]="data.hazardInsurance"
-            />
-          </div>
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="Your current monthly hazard insurance premium. Hazard insurance covers property damage caused by fire, wind, and other similar risks. Sometimes earthquakes and floods are covered. Most lenders require hazard insurance and may incorporate the insurance payment into your monthly first mortgage payment."
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="hazardInsurance"
+            id="hazardInsurance"
+            formControlName="hazardInsurance"
+            [(ngModel)]="data.hazardInsurance"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
         </div>
       </div>
     </div>
@@ -175,26 +172,25 @@
             <span class="text-danger">*</span>
           </label>
           <i
-          class="fa fa-info-circle ml-2"
-          aria-hidden="true"
-          tooltipPlacement="right"
-          tooltip="Your current monthly property tax payments. Enter 0 or leave the field blank if the monthly property tax is included in your first mortgage payment."
-        >
-        </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="realEstateTaxes"
-              id="realEstateTaxes"
-              formControlName="realEstateTaxes"
-              required
-              [(ngModel)]="data.realEstateTaxes"
-            />
-          </div>
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="Your current monthly property tax payments. Enter 0 or leave the field blank if the monthly property tax is included in your first mortgage payment."
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="realEstateTaxes"
+            id="realEstateTaxes"
+            formControlName="realEstateTaxes"
+            required
+            [(ngModel)]="data.realEstateTaxes"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
           <validation-summary
             [control]="form.controls.realEstateTaxes"
           ></validation-summary>
@@ -207,26 +203,25 @@
             <span class="text-danger">*</span>
           </label>
           <i
-          class="fa fa-info-circle ml-2"
-          aria-hidden="true"
-          tooltipPlacement="right"
-          tooltip="Your current monthly mortgage insurance premium. Mortgage insurance is an insurance policy that protects a mortgage lender or title holder in the event that the borrower defaults on payments, dies, or is otherwise unable to meet the contractual obligations of the mortgage. Enter 0 or leave the field blank if this payment is included in your first mortgage payment."
-        >
-        </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="mortgageInsurance"
-              id="mortgageInsurance"
-              formControlName="mortgageInsurance"
-              required
-              [(ngModel)]="data.mortgageInsurance"
-            />
-          </div>
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="Your current monthly mortgage insurance premium. Mortgage insurance is an insurance policy that protects a mortgage lender or title holder in the event that the borrower defaults on payments, dies, or is otherwise unable to meet the contractual obligations of the mortgage. Enter 0 or leave the field blank if this payment is included in your first mortgage payment."
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="mortgageInsurance"
+            id="mortgageInsurance"
+            formControlName="mortgageInsurance"
+            required
+            [(ngModel)]="data.mortgageInsurance"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
           <validation-summary
             [control]="form.controls.mortgageInsurance"
           ></validation-summary>
@@ -239,27 +234,26 @@
             <span class="text-danger">*</span>
           </label>
           <i
-          class="fa fa-info-circle ml-2"
-          aria-hidden="true"
-          tooltipPlacement="right"
-          tooltip="Your current monthly homeowner's association dues, if any.
+            class="fa fa-info-circle ml-2"
+            aria-hidden="true"
+            tooltipPlacement="right"
+            tooltip="Your current monthly homeowner's association dues, if any.
           "
-        >
-        </i>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              name="homeOwnersAssociation"
-              id="homeOwnersAssociation"
-              formControlName="homeOwnersAssociation"
-              required
-              [(ngModel)]="data.homeOwnersAssociation"
-            />
-          </div>
+          >
+          </i>
+          <input
+            type="text"
+            class="form-control"
+            name="homeOwnersAssociation"
+            id="homeOwnersAssociation"
+            formControlName="homeOwnersAssociation"
+            required
+            [(ngModel)]="data.homeOwnersAssociation"
+            placeholder="$"
+            prefix="$ "
+            mask="separator.2"
+            thousandSeparator=","
+          />
           <validation-summary
             [control]="form.controls.homeOwnersAssociation"
           ></validation-summary>
@@ -277,22 +271,22 @@
         class="fa fa-info-circle ml-2"
         aria-hidden="true"
         tooltipPlacement="right"
-        tooltip="The total of any other monthly housing expenses you are currently paying. For example, utilities, gardening service, pest control, etc.">
+        tooltip="The total of any other monthly housing expenses you are currently paying. For example, utilities, gardening service, pest control, etc."
+      >
       </i>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">$</div>
-        </div>
-        <input
-          type="number"
-          class="form-control"
-          name="otherHousingExpenses"
-          id="otherHousingExpenses"
-          formControlName="otherHousingExpenses"
-          required
-          [(ngModel)]="data.otherHousingExpenses"
-        />
-      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="otherHousingExpenses"
+        id="otherHousingExpenses"
+        formControlName="otherHousingExpenses"
+        required
+        [(ngModel)]="data.otherHousingExpenses"
+        placeholder="$"
+        prefix="$ "
+        mask="separator.2"
+        thousandSeparator=","
+      />
       <validation-summary
         [control]="form.controls.otherHousingExpenses"
       ></validation-summary>
