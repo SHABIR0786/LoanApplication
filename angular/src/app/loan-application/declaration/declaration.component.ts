@@ -1,11 +1,11 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationModel';
-import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
-import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicModel';
-import {NgWizardService} from 'ng-wizard';
-import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
-import {DataService} from '../../services/data.service';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { IBorrowerDeclarationModel } from '../../interfaces/IBorrowerDeclarationModel';
+import { IDeclarationModel } from '../../interfaces/IDeclarationModel';
+import { IBorrowerDemographicModel } from '../../interfaces/IBorrowerDemographicModel';
+import { NgWizardService } from 'ng-wizard';
+import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
+import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'app-declaration',
@@ -314,9 +314,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     ngDoCheck(): void {
         this.data = this.form.value;
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this.onDataChange.next(this.form.value);
     }
 
     initForm() {
