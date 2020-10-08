@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NgWizardService} from 'ng-wizard';
-import {DataService} from '../../services/data.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgWizardService } from 'ng-wizard';
+import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'app-summary',
@@ -12,10 +12,12 @@ export class SummaryComponent implements OnInit {
     @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
     @Output() proceedToStep: EventEmitter<any> = new EventEmitter<any>();
     errors = {};
+    isShowAllStepsReadOnlyModeBool: boolean = false;
+    formData: any;
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
     ) {
     }
 
@@ -23,6 +25,11 @@ export class SummaryComponent implements OnInit {
         this._dataService.validations.subscribe(errors => {
             this.errors = errors;
         });
+
+        this._dataService.formData.subscribe((data) => {
+            this.formData = data;
+            debugger;
+        })
     }
 
     submitForm() {
@@ -80,5 +87,13 @@ export class SummaryComponent implements OnInit {
 
     goToStep(index: number) {
         this.proceedToStep.emit(index - 1);
+    }
+
+    expandAll() {
+        this.isShowAllStepsReadOnlyModeBool = true;
+    }
+
+    collapse() {
+        this.isShowAllStepsReadOnlyModeBool = false;
     }
 }
