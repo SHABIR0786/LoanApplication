@@ -9,12 +9,18 @@
                 <h4>Summary</h4>
               </div>
               <div class="col-4" *ngIf="!isShowAllStepsReadOnlyModeBool">
-                <button class="btn btn-secondary float-right" (click)="expandAll()">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="expandAll()"
+                >
                   <i class="fas fa-angle-right"></i> Expand All
                 </button>
               </div>
               <div class="col-4" *ngIf="isShowAllStepsReadOnlyModeBool">
-                <button class="btn btn-secondary float-right" (click)="collapse()">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="collapse()"
+                >
                   <i class="fas fa-angle-down"></i> Collapse
                 </button>
               </div>
@@ -29,9 +35,11 @@
                   <div class="col-8">
                     <h5>Loan Details</h5>
                     <div class="mt-5">
-                      <h6 class="font-weight-normal form-text text-muted mb-3"></h6>
-                      Who Referred You? (Real Estate Agent, Family, Friend, Internet,
-                      etc.) Please list by Full Name, if Applicable
+                      <h6
+                        class="font-weight-normal form-text text-muted mb-3"
+                      ></h6>
+                      Who Referred You? (Real Estate Agent, Family, Friend,
+                      Internet, etc.) Please list by Full Name, if Applicable
 
                       <p class="font-weight-bold">
                         {{ formData.loanDetails.referredBy }}
@@ -39,9 +47,11 @@
                     </div>
                     <div class="row">
                       <div class="col-6">
-                        <h6 class="font-weight-normal form-text text-muted mb-2">
-                          Are you currently working with a William Raveis Mortgage loan
-                          officer? *
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-2"
+                        >
+                          Are you currently working with a William Raveis
+                          Mortgage loan officer? *
                         </h6>
                         <p class="font-weight-bold">
                           {{ formData.loanDetails.referredBy }}
@@ -50,12 +60,292 @@
                     </div>
                     <div class="row">
                       <div class="col-6">
-                        <h6 class="font-weight-normal form-text text-muted mb-2">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-2"
+                        >
                           Choose the loan officer below *
                         </h6>
                         <p class="font-weight-bold">
                           {{ formData.loanDetails.referredBy }}
                         </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="mb-5">Expenses</h5>
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="mb-5">Current Monthly Housing Expenses</h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Do you currently rent or own? If you currently live
+                          with family please select Rent.
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              undefined ||
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              null
+                              ? "--"
+                              : formData.expenses.isLiveWithFamilySelectRent ===
+                                "true"
+                              ? "Rent"
+                              : "Own"
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        formData.expenses.isLiveWithFamilySelectRent !==
+                          undefined &&
+                        formData.expenses.isLiveWithFamilySelectRent !== null &&
+                        formData.expenses.isLiveWithFamilySelectRent === 'true'
+                      "
+                    >
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Rent
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.rent === undefined ||
+                              formData.expenses.rent === null
+                                ? "--"
+                                : "$ " + formData.expenses.rent
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Other Housing Expenses
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? "--"
+                                : "$ " + formData.expenses.otherHousingExpenses
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Total
+                          </h6>
+                          <p class="font-weight-bold border-left">
+                            {{
+                              formData.expenses.rent > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? "$ " +
+                                  (ConvertToInt(formData.expenses.rent) +
+                                    ConvertToInt(
+                                      formData.expenses.otherHousingExpenses
+                                    ))
+                                : ""
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        formData.expenses.isLiveWithFamilySelectRent !==
+                          undefined &&
+                        formData.expenses.isLiveWithFamilySelectRent !== null &&
+                        formData.expenses.isLiveWithFamilySelectRent === 'false'
+                      "
+                    >
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            First Mortgage (P&I)
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.firstMortgage === undefined ||
+                              formData.expenses.firstMortgage === null
+                                ? "--"
+                                : "$ " + formData.expenses.firstMortgage
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Second Mortgage (P&I)
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.secondMortgage === undefined ||
+                              formData.expenses.secondMortgage === null
+                                ? "--"
+                                : "$ " + formData.expenses.secondMortgage
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Hazard Insurance
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.hazardInsurance === undefined ||
+                              formData.expenses.hazardInsurance === null
+                                ? "--"
+                                : "$ " + formData.expenses.hazardInsurance
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Real Estate Taxes
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.realEstateTaxes === undefined ||
+                              formData.expenses.realEstateTaxes === null
+                                ? "--"
+                                : "$ " + formData.expenses.realEstateTaxes
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Mortgage Insurance
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.mortgageInsurance ===
+                                undefined ||
+                              formData.expenses.mortgageInsurance === null
+                                ? "--"
+                                : "$ " + formData.expenses.mortgageInsurance
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Homeowners Association
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.homeOwnersAssociation ===
+                                undefined ||
+                              formData.expenses.homeOwnersAssociation === null
+                                ? "--"
+                                : "$ " + formData.expenses.homeOwnersAssociation
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Other Housing Expenses
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? "--"
+                                : "$ " + formData.expenses.otherHousingExpenses
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Total
+                          </h6>
+                          <p class="font-weight-bold border-left">
+                            {{
+                              formData.expenses.firstMortgage > 0 ||
+                              formData.expenses.secondMortgage > 0 ||
+                              formData.expenses.hazardInsurance > 0 ||
+                              formData.expenses.realEstateTaxes > 0 ||
+                              formData.expenses.mortgageInsurance > 0 ||
+                              formData.expenses.homeOwnersAssociation > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? "$ " +
+                                  (ConvertToInt(
+                                    formData.expenses.firstMortgage
+                                  ) +
+                                    ConvertToInt(
+                                      formData.expenses.secondMortgage
+                                    ) +
+                                    ConvertToInt(
+                                      formData.expenses.hazardInsurance
+                                    ) +
+                                    ConvertToInt(
+                                      formData.expenses.realEstateTaxes
+                                    ) +
+                                    ConvertToInt(
+                                      formData.expenses.mortgageInsurance
+                                    ) +
+                                    ConvertToInt(
+                                      formData.expenses.homeOwnersAssociation
+                                    ) +
+                                    ConvertToInt(
+                                      formData.expenses.otherHousingExpenses
+                                    ))
+                                : ""
+                            }}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -71,7 +361,10 @@
                 <h5>Loan Details</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(1)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(1)"
+                >
                   Edit
                 </button>
               </div>
@@ -80,14 +373,20 @@
             <div class="row">
               <div class="col-12">
                 Purpose of your Loan
-                <span class="text-danger" *ngIf="showGroupError('purposeOfLoan')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('purposeOfLoan')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
               </div>
               <div class="col-12">
                 Property Details
-                <span class="text-danger" *ngIf="showGroupError('propertyDetails')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('propertyDetails')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
@@ -103,7 +402,10 @@
                 <h5>Personal Information</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(2)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(2)"
+                >
                   Edit
                 </button>
               </div>
@@ -119,14 +421,20 @@
               </div>
               <div class="col-12">
                 Borrower
-                <span class="text-danger" *ngIf="showGroupError('borrowerPersonalInformation')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('borrowerPersonalInformation')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
               </div>
               <div class="col-12">
                 Borrower Residential Address
-                <span class="text-danger" *ngIf="showGroupError('residentialAddress')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('residentialAddress')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
@@ -143,7 +451,10 @@
                 <h5>Expenses</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(3)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(3)"
+                >
                   Edit
                 </button>
               </div>
@@ -152,7 +463,10 @@
             <div class="row">
               <div class="col-12">
                 Current Monthly Housing Expenses
-                <span class="text-danger" *ngIf="showGroupError('monthlyHousingExpenses')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('monthlyHousingExpenses')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
@@ -168,7 +482,10 @@
                 <h5>Expenses</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(4)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(4)"
+                >
                   Edit
                 </button>
               </div>
@@ -183,7 +500,10 @@
                 <h5>Employment and Income</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(5)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(5)"
+                >
                   Edit
                 </button>
               </div>
@@ -192,7 +512,10 @@
             <div class="row">
               <div class="col-12">
                 Borrower Employment Information
-                <span class="text-danger" *ngIf="showGroupError('borrowerEmploymentIncome')">
+                <span
+                  class="text-danger"
+                  *ngIf="showGroupError('borrowerEmploymentIncome')"
+                >
                   <i class="fa fa-info-circle ml-2"></i>
                   Required
                 </span>
@@ -211,7 +534,10 @@
                 <h5>Order Credit</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(6)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(6)"
+                >
                   Edit
                 </button>
               </div>
@@ -230,7 +556,10 @@
                 <h5>Additional Details</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(7)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(7)"
+                >
                   Edit
                 </button>
               </div>
@@ -249,7 +578,10 @@
                 <h5>eConsent</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(8)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(8)"
+                >
                   Edit
                 </button>
               </div>
@@ -264,7 +596,10 @@
                 <h5>Declarations</h5>
               </div>
               <div class="col-3">
-                <button class="btn btn-secondary float-right" (click)="goToStep(9)">
+                <button
+                  class="btn btn-secondary float-right"
+                  (click)="goToStep(9)"
+                >
                   Edit
                 </button>
               </div>
@@ -282,12 +617,15 @@
             <button class="btn btn-secondary" (click)="proceedToPrevious()">
               Back
             </button>
-            <button class="btn btn-primary float-right" (click)="submitForm()" [disabled]="hasAnyErrors()">
+            <button
+              class="btn btn-primary float-right"
+              (click)="submitForm()"
+              [disabled]="hasAnyErrors()"
+            >
               Submit
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
