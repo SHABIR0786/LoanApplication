@@ -96,4 +96,8 @@ export class SummaryComponent implements OnInit {
     collapse() {
         this.isShowAllStepsReadOnlyModeBool = false;
     }
+
+    ConvertToInt(val) {
+        return parseInt(val);
+    }
 }
