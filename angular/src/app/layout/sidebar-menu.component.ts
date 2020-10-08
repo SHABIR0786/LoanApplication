@@ -59,18 +59,22 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             ),
             new MenuItem(
                 this.l('Apply Loan'),
-                '/app/apply-loan',
+                '',
                 'fab fa-wpforms',
-                ''
+                '',
+                [
+                    new MenuItem(this.l('Loan Detail'), '/app/loan-detail', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Personal Information'), '/app/personal-information', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Expense'), '/app/expense', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Asset'), '/app/asset', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Employment Income'), '/app/employment-income', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Order Credit'), '/app/order-credit', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Additional Detail'), '/app/additional-detail', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('EConsent'), '/app/econsent', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Declaration'), '/app/declaration', 'fab fa-wpforms', ''),
+                    new MenuItem(this.l('Summary'), '/app/summary', 'fab fa-wpforms', ''),
+                ]
             ),
-            new MenuItem(this.l('Loan Detail'),'/app/loan-detail','fab fa-wpforms',''),
-            new MenuItem(this.l('Personal Information'),'/app/personal-information','fab fa-wpforms',''),
-            new MenuItem(this.l('Expense'),'/app/expense','fab fa-wpforms',''),
-            new MenuItem(this.l('Asset'),'/app/asset','fab fa-wpforms',''),
-            new MenuItem(this.l('Employment Income'),'/app/employment-income','fab fa-wpforms',''),
-            new MenuItem(this.l('EConsent'),'/app/econsent','fab fa-wpforms',''),
-            new MenuItem(this.l('Declaration'),'/app/declaration','fab fa-wpforms',''),
-            new MenuItem(this.l('Summary'),'/app/summary','fab fa-wpforms',''),
             new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
             new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
                 new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [

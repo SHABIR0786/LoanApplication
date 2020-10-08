@@ -77,7 +77,6 @@ export class LoanApplicationComponent implements OnInit {
     onChange(data, key) {
         this.loanApplication[key] = data;
         console.log(this.loanApplication);
-        debugger;
         this._dataService.updateFormData(this.loanApplication);
     }
 
@@ -124,6 +123,5 @@ export class LoanApplicationComponent implements OnInit {
     goToStep(index) {
         this.config.selected = index;
         this._ngWizardService.reset();
-        debugger;
     }
 }
