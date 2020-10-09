@@ -20,6 +20,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         residentialAddress: {},
         mailingAddress: {},
         previousAddresses: [],
+
+        coBorrowerResidentialAddress: {},
+        coBorrowerMailingAddress: {},
+        coBorrowerPreviousAddresses: [],
     };
 
     form: FormGroup;
@@ -65,12 +69,24 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         return this.form.get('previousAddresses') as FormArray;
     }
 
-    getPreviousAddressForm(index): FormGroup {
-        return this.previousAddressesFormArray.controls[index] as FormGroup;
+    get coBorrowerPreviousAddressesFormArray(): FormArray {
+        return this.form.get('coBorrowerPreviousAddresses') as FormArray;
     }
 
     addPreviousAddress() {
         this.previousAddressesFormArray.push(this.initAddressForm({}, 3, true));
+    }
+
+    addCoBorrowerPreviousAddress() {
+        this.coBorrowerPreviousAddressesFormArray.push(this.initAddressForm({}, 3, true));
+    }
+
+    getPreviousAddressForm(index): FormGroup {
+        return this.previousAddressesFormArray.controls[index] as FormGroup;
+    }
+
+    getCoBorrowerPreviousAddressForm(index): FormGroup {
+        return this.coBorrowerPreviousAddressesFormArray.controls[index] as FormGroup;
     }
 
     ngOnInit(): void {
@@ -87,7 +103,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck() {
-        // this.data = this.form.value;
+        this.data = this.form.value;
+
         this._dataService.updateValidations(this.form, 'jointCredit');
         this._dataService.updateValidations(this.form.get('borrower') as FormGroup, 'borrowerPersonalInformation');
         this._dataService.updateValidations(this.form.get('residentialAddress') as FormGroup, 'residentialAddress');
@@ -174,56 +191,64 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [
                 Validators.required,
             ]),
-            borrower: this.initBorrowerForm(this.data.borrower),
-            coBorrower: this.initBorrowerForm(this.data.coBorrower),
-            isMailingAddressSameAsResidential: new FormControl(
-                this.data.isMailingAddressSameAsResidential
-            ),
-            residentialAddress: this.initAddressForm(
-                this.data.residentialAddress,
-                1,
-                true
-            ),
-            mailingAddress: this.initAddressForm(this.data.mailingAddress, 2, false),
+            borrower: this.initBorrowerForm(this.data.borrower || {}),
+            coBorrower: this.initBorrowerForm(this.data.coBorrower || {}),
+            isMailingAddressSameAsResidential: new FormControl(this.data.isMailingAddressSameAsResidential),
+            residentialAddress: this.initAddressForm(this.data.residentialAddress || {}, 1, true),
+            mailingAddress: this.initAddressForm(this.data.mailingAddress || {}, 2, false),
             previousAddresses: new FormArray([]),
+
+            coBorrowerIsMailingAddressSameAsResidential: new FormControl(this.data.coBorrowerIsMailingAddressSameAsResidential),
+            coBorrowerResidentialAddress: this.initAddressForm(this.data.coBorrowerResidentialAddress || {}, 1, true),
+            coBorrowerMailingAddress: this.initAddressForm(this.data.coBorrowerMailingAddress || {}, 2, false),
+            coBorrowerPreviousAddresses: new FormArray([]),
         });
 
-        this.form
-            .get('isApplyingWithCoBorrower')
-            .valueChanges.subscribe((isApplyingWithCoBorrower) => {
+        this.form.get('isApplyingWithCoBorrower').valueChanges.subscribe((isApplyingWithCoBorrower) => {
             if (isApplyingWithCoBorrower) {
-                this.form
-                    .get('useIncomeOfPersonOtherThanBorrower')
-                    .setValidators([Validators.required]);
+                this.form.get('useIncomeOfPersonOtherThanBorrower').setValidators([Validators.required]);
 
-                this.data.coBorrower = {};
-                this.form.setControl(
-                    'coBorrower',
-                    this.initBorrowerForm(this.data.coBorrower)
-                );
+                this.data.coBorrower = this.data.coBorrower || {};
+                this.form.setControl('coBorrower', this.initBorrowerForm(this.data.coBorrower));
+
+                this.data.coBorrowerResidentialAddress = this.data.coBorrowerResidentialAddress || {};
+                this.data.coBorrowerMailingAddress = this.data.coBorrowerMailingAddress || {};
+                this.form.addControl('coBorrowerResidentialAddress', this.initAddressForm(this.data.coBorrowerResidentialAddress, 1, true));
+                this.form.addControl('coBorrowerMailingAddress', this.initAddressForm(this.data.coBorrowerMailingAddress, 2, false));
+                this.form.addControl('coBorrowerPreviousAddresses', new FormArray([]));
+
             } else {
                 this.form.get('useIncomeOfPersonOtherThanBorrower').setValue(null);
-                this.form
-                    .get('useIncomeOfPersonOtherThanBorrower')
-                    .setValidators(null);
+                this.form.get('useIncomeOfPersonOtherThanBorrower').setValidators(null);
 
                 this.form.removeControl('coBorrower');
+                this.form.removeControl('coBorrowerResidentialAddress');
+                this.form.removeControl('coBorrowerMailingAddress');
+                this.form.removeControl('coBorrowerPreviousAddresses');
             }
-            this.form
-                .get('useIncomeOfPersonOtherThanBorrower')
-                .updateValueAndValidity();
+            this.form.get('useIncomeOfPersonOtherThanBorrower').updateValueAndValidity();
         });
 
-        this.form
-            .get('isMailingAddressSameAsResidential')
-            .valueChanges.subscribe((isMailingAddressSameAsResidential) => {
+        this.form.get('isMailingAddressSameAsResidential').valueChanges.subscribe((isMailingAddressSameAsResidential) => {
             if (isMailingAddressSameAsResidential) {
                 this.form.removeControl('mailingAddress');
             } else {
-                this.data.mailingAddress = {};
+                this.data.mailingAddress = this.data.mailingAddress || {};
                 this.form.addControl(
                     'mailingAddress',
                     this.initAddressForm(this.data.mailingAddress, 2, false)
+                );
+            }
+        });
+
+        this.form.get('coBorrowerIsMailingAddressSameAsResidential').valueChanges.subscribe((value) => {
+            if (value) {
+                this.form.removeControl('coBorrowerMailingAddress');
+            } else {
+                this.data.coBorrowerMailingAddress = this.data.coBorrowerMailingAddress || {};
+                this.form.addControl(
+                    'coBorrowerMailingAddress',
+                    this.initAddressForm(this.data.coBorrowerMailingAddress, 2, false)
                 );
             }
         });
