@@ -53,11 +53,27 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.data = this.form.value;
+    if (this.data.loanOfficerId) {
+      this.data.loanOfficerName = this.loanOfficers.find(i => i.id === this.data.loanOfficerId).name;
+    }
+    if (this.data.purposeOfLoan) {
+      this.data.loanPurpose = this.loanPurposes.find(i => i.id === this.data.purposeOfLoan).name;
+    }
+    if (this.data.sourceOfDownPayment) {
+      this.data.sourceOfDownPaymentName = this.sourceOfDownPayments.find(i => i.id === this.data.sourceOfDownPayment).name;
+    }
+    if (this.data.propertyTypeId) {
+      this.data.propertyTypeName = this.propertyTypes.find(i => i.id === this.data.propertyTypeId).name;
+    }
+    if (this.data.stateId) {
+      this.data.stateIdName = this.propertyTypes.find(i => i.id === this.data.stateId).name;
+    }
+    if (this.data.propertyUseId) {
+      this.data.propertyUseName = this.propertyUses.find(i => i.id === this.data.propertyUseId).name;
+    }
     this._dataService.updateValidations(this.form, "loanDetails");
 
-    if (this.form.valid) {
-      this.onDataChange.next(this.form.value);
-    }
+    this.onDataChange.next(this.form.value);
   }
 
   initForm() {
