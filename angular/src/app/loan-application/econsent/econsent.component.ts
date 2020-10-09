@@ -1,10 +1,11 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService, STEP_STATE} from 'ng-wizard';
+import {NgWizardService} from 'ng-wizard';
 import {IConsentModel} from '../../interfaces/IConsentModel';
 import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-econsent',
@@ -13,19 +14,22 @@ import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 })
 export class EconsentComponent implements OnInit, DoCheck {
 
-    @Input() data: IConsentModel = {};
-    @Input() borrower: IBorrowerModel = {};
-    @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+    data: IConsentModel = {};
+    borrower: IBorrowerModel = {};
 
     form: FormGroup;
 
     constructor(
         private _ngWizardService: NgWizardService,
-        private _dataService: DataService
+        private _dataService: DataService,
+        private _route: Router,
     ) {
     }
 
     ngOnInit(): void {
+        this.data = this._dataService.loanApplication.eConsent;
+        this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+
         this.initForm();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -37,9 +41,7 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
-        if (this.form.valid) {
-            this.onDataChange.next(this.form.value);
-        }
+        this._dataService.updateData(this.form.value, 'eConsent');
     }
 
     initForm() {
@@ -54,13 +56,13 @@ export class EconsentComponent implements OnInit, DoCheck {
 
     proceedToNext() {
         if (this.form.valid) {
-            this._ngWizardService.next();
+            this._route.navigate(["app/declaration"]);
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+        this._route.navigate(["app/additional-detail"]);
     }
 }

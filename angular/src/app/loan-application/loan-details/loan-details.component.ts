@@ -2,7 +2,6 @@ import {
   Component,
   DoCheck,
   EventEmitter,
-  Input,
   OnInit,
   Output,
 } from "@angular/core";
@@ -11,6 +10,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-loan-details",
@@ -19,8 +19,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 })
 export class LoanDetailsComponent implements OnInit, DoCheck {
   id = Math.random().toString(36).substring(2);
-  @Input() data: ILoanDetailModel = {};
-  @Output() onDataChange: EventEmitter<any> = new EventEmitter<any>();
+  data: ILoanDetailModel = {};
 
   form: FormGroup;
   states = [];
@@ -32,10 +31,13 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   constructor(
     private _ngWizardService: NgWizardService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _route: Router
   ) {}
 
   ngOnInit(): void {
+    this.data = this._dataService.loanApplication.loanDetails;
+
     this.initForm();
     this.loadStates();
     this.loadLoanPurposes();
@@ -54,26 +56,37 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   ngDoCheck() {
     this.data = this.form.value;
     if (this.data.loanOfficerId) {
-      this.data.loanOfficerName = this.loanOfficers.find(i => i.id === this.data.loanOfficerId).name;
+      this.data.loanOfficerName = this.loanOfficers.find(
+        (i) => i.id === this.data.loanOfficerId
+      ).name;
     }
     if (this.data.purposeOfLoan) {
-      this.data.loanPurpose = this.loanPurposes.find(i => i.id === this.data.purposeOfLoan).name;
+      this.data.loanPurpose = this.loanPurposes.find(
+        (i) => i.id === this.data.purposeOfLoan
+      ).name;
     }
     if (this.data.sourceOfDownPayment) {
-      this.data.sourceOfDownPaymentName = this.sourceOfDownPayments.find(i => i.id === this.data.sourceOfDownPayment).name;
+      this.data.sourceOfDownPaymentName = this.sourceOfDownPayments.find(
+        (i) => i.id === this.data.sourceOfDownPayment
+      ).name;
     }
     if (this.data.propertyTypeId) {
-      this.data.propertyTypeName = this.propertyTypes.find(i => i.id === this.data.propertyTypeId).name;
+      this.data.propertyTypeName = this.propertyTypes.find(
+        (i) => i.id === this.data.propertyTypeId
+      ).name;
     }
     if (this.data.stateId) {
-      this.data.stateIdName = this.propertyTypes.find(i => i.id === this.data.stateId).name;
+      this.data.stateIdName = this.propertyTypes.find(
+        (i) => i.id === this.data.stateId
+      ).name;
     }
     if (this.data.propertyUseId) {
-      this.data.propertyUseName = this.propertyUses.find(i => i.id === this.data.propertyUseId).name;
+      this.data.propertyUseName = this.propertyUses.find(
+        (i) => i.id === this.data.propertyUseId
+      ).name;
     }
     this._dataService.updateValidations(this.form, "loanDetails");
-
-    this.onDataChange.next(this.form.value);
+    this._dataService.updateData(this.form.value, "loanDetails");
   }
 
   initForm() {
@@ -207,7 +220,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   proceedToNext() {
     if (this.form.valid) {
-      this._ngWizardService.next();
+      //this._ngWizardService.next();
+      this._route.navigate(["app/personal-information"]);
     } else {
       this.form.markAllAsTouched();
     }
