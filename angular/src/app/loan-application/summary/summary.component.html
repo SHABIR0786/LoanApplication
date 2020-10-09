@@ -855,7 +855,362 @@
               </div>
             </div>
             <!-- EConsent End -->
+
+            <!-- Declarations Start -->
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="mt-5">Declarations</h5>
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mt-5">Borrower Declaration</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal text-muted form-text mt-3">
+                      a. Are there any outstanding judgments against you?
+                    </h6>
+                    <p class="font-weight-bold mt-3">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isOutstandingJudgmentsAgainstYou === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isOutstandingJudgmentsAgainstYou === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isOutstandingJudgmentsAgainstYou
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      b. Have you been declared bankrupt within the past 7
+                      years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isDeclaredBankrupt === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isDeclaredBankrupt === null
+                          ? "--"
+                          : formData.declaration.isDeclaredBankrupt
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      c. Have you had property foreclosed upon or given title or
+                      deed in lieu thereof in the last 7 years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPropertyForeClosedUponOrGivenTitle === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPropertyForeClosedUponOrGivenTitle === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPropertyForeClosedUponOrGivenTitle
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      d. Are you a party to a lawsuit?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPartyToLawsuit === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPartyToLawsuit === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPartyToLawsuit
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      e. Have you directly or indirectly been obligated on any
+                      loan which resulted in foreclosure, transfer of title in
+                      lieu of foreclosure, or judgment?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedOnAnyLoanWhichResultedForeclosure ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedOnAnyLoanWhichResultedForeclosure === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isObligatedOnAnyLoanWhichResultedForeclosure
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      f. Are you presently delinquent or in default on any
+                      Federal debt or any other loan, mortgage, financial
+                      obligation, bond or loan guarantee?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPresentlyDelinquent === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPresentlyDelinquent === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPresentlyDelinquent
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      g. Are you obligated to pay alimony, child support, or
+                      separate maintenance?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedToPayAlimonyChildSupport === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedToPayAlimonyChildSupport === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isObligatedToPayAlimonyChildSupport
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      h. Is any part of the down payment borrowed?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isAnyPartOfTheDownPayment === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isAnyPartOfTheDownPayment === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isAnyPartOfTheDownPayment
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      i. Are you a co-maker or endorser on a note?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isCoMakerOrEndorser === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isCoMakerOrEndorser === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isCoMakerOrEndorser
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      j. Are you a U.S. citizen?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration.isUSCitizen
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      k. Are you a permanent resident alien?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPermanentResidentSlien === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPermanentResidentSlien === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPermanentResidentSlien
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      l. Do you intend to occupy the property as your primary
+                      residence?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isIntendToOccupyThePropertyAsYourPrimary ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isIntendToOccupyThePropertyAsYourPrimary === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isIntendToOccupyThePropertyAsYourPrimary
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      m. Have you had any ownership interest in a property in
+                      the last three years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isOwnershipInterestInPropertyLastThreeYears ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isOwnershipInterestInPropertyLastThreeYears === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isOwnershipInterestInPropertyLastThreeYears
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      For the Declarations section, you are required to explain
+                      any "Yes" answers to questions a through i.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .declarationsSection === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .declarationsSection === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .declarationsSection
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="mt-5">&nbsp;</h5>
+                    <div class="row">
+                      <div class="col-11">
+                        <h5 class="mt-5">Borrower Demographic Information</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Hispanic or Latino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.startedLookingForNewHome ===
+                          undefined ||
+                        formData.loanDetails.startedLookingForNewHome === null
+                          ? "--"
+                          : formData.loanDetails.startedLookingForNewHome
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Mexican
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.startedLookingForNewHome ===
+                          undefined ||
+                        formData.loanDetails.startedLookingForNewHome === null
+                          ? "--"
+                          : formData.loanDetails.startedLookingForNewHome
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Declarations End -->
 
           <div *ngIf="!isShowAllStepsReadOnlyModeBool">
             <div class="col-12">
