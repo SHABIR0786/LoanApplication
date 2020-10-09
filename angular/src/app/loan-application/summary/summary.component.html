@@ -1177,11 +1177,14 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.loanDetails.startedLookingForNewHome ===
+                        formData.declaration.borrowerDemographic.ethnicity ===
                           undefined ||
-                        formData.loanDetails.startedLookingForNewHome === null
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
                           ? "--"
-                          : formData.loanDetails.startedLookingForNewHome
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                              2
+                            ) !== -1
                           ? "Yes"
                           : "No"
                       }}
@@ -1195,16 +1198,536 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.loanDetails.startedLookingForNewHome ===
+                        formData.declaration.borrowerDemographic.ethnicity ===
                           undefined ||
-                        formData.loanDetails.startedLookingForNewHome === null
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
                           ? "--"
-                          : formData.loanDetails.startedLookingForNewHome
+                          : formData.declaration.borrowerDemographic.ethnicity
                           ? "Yes"
                           : "No"
                       }}
                     </p>
                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Puerto Rican
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Cuban
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Hispanic or Latino - Enter Origin
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                              5
+                            ) !== -1
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      <!-- {{
+                        formData.declaration.borrowerDemographic.ethnicity
+                          | ethnicityOtherValue: 5
+                      }} -->
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Not Hispanic or Latino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      American Indian or Alaska Native
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Asian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Asian Indian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Chinese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Filipino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Japanese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Korean
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Vietnamese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Asian - Enter Race:
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Black or African American
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Native Hawaiian or Other Pacific Islander
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Native Hawaiian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Guamanian or Chamorro
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Samoan
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Pacific Islander - Enter Race:
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      White
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Female
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <h6 class="font-weight-normal form-text text-muted mt-3">
+                    Male
+                  </h6>
+                  <p class="font-weight-bold">
+                    {{
+                      formData.declaration.borrowerDemographic.sex ===
+                        undefined ||
+                      formData.declaration.borrowerDemographic.sex === null
+                        ? "--"
+                        : formData.declaration.borrowerDemographic.sex
+                        ? "Yes"
+                        : "No"
+                    }}
+                  </p>
+                </div>
+              </div>
+              -->
+              <div class="row">
+                <div class="col-8">
+                  <h6 class="font-weight-normal form-text text-muted mt-3">
+                    I do not wish to provide this information.
+                  </h6>
+                  <p class="font-weight-bold">
+                    {{
+                      formData.declaration.borrowerDemographic.sex ===
+                        undefined ||
+                      formData.declaration.borrowerDemographic.sex === null
+                        ? "--"
+                        : formData.declaration.borrowerDemographic.sex
+                        ? "Yes"
+                        : "No"
+                    }}
+                  </p>
                 </div>
               </div>
             </div>
