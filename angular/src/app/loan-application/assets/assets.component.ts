@@ -56,52 +56,52 @@ export class AssetsComponent implements OnInit, DoCheck {
 
     initForm() {
         this.form = new FormGroup({
-            manualAssetEntries: new FormArray([]),
+            manualAssetEntries: new FormArray(this.data.map(d => this.initAssetForm(d || {}))),
         });
     }
 
     addAsset() {
-        this.manualAssetEntries.push(this.initAssetForm(1));
+        this.manualAssetEntries.push(this.initAssetForm({assetTypeId: 1}));
     }
 
     removeAsset(index) {
         this.manualAssetEntries.removeAt(index);
     }
 
-    initAssetForm(assetTypeId) {
+    initAssetForm(data: IAssetModel = {}) {
         const form = new FormGroup({
-            id: new FormControl(''),
-            assetTypeId: new FormControl(assetTypeId),
-            borrowerTypeId: new FormControl(''),
-            name: new FormControl(''),
-            bankName: new FormControl(''),
-            description: new FormControl(''),
-            accountNumber: new FormControl(''),
-            cashValue: new FormControl(''),
-            address: new FormControl(''),
-            address2: new FormControl(''),
-            city: new FormControl(''),
-            stateId: new FormControl(''),
-            zipCode: new FormControl(''),
-            propertyStatus: new FormControl(''),
-            propertyIsUsedAs: new FormControl(''),
-            propertyType: new FormControl(''),
-            presentMarketValue: new FormControl(''),
-            outstandingMortgageBalance: new FormControl(''),
-            monthlyMortgagePayment: new FormControl(''),
-            purchasePrice: new FormControl(''),
-            grossRentalIncome: new FormControl(''),
-            taxesInsuranceAndOther: new FormControl(''),
-            stockAndBonds: new FormArray([]),
+            id: new FormControl(data.id),
+            assetTypeId: new FormControl(data.assetTypeId),
+            borrowerTypeId: new FormControl(data.borrowerTypeId),
+            name: new FormControl(data.name),
+            bankName: new FormControl(data.bankName),
+            description: new FormControl(data.description),
+            accountNumber: new FormControl(data.accountNumber),
+            cashValue: new FormControl(data.cashValue),
+            address: new FormControl(data.address),
+            address2: new FormControl(data.address2),
+            city: new FormControl(data.city),
+            stateId: new FormControl(data.stateId),
+            zipCode: new FormControl(data.zipCode),
+            propertyStatus: new FormControl(data.propertyStatus),
+            propertyIsUsedAs: new FormControl(data.propertyIsUsedAs),
+            propertyType: new FormControl(data.propertyType),
+            presentMarketValue: new FormControl(data.presentMarketValue),
+            outstandingMortgageBalance: new FormControl(data.outstandingMortgageBalance),
+            monthlyMortgagePayment: new FormControl(data.monthlyMortgagePayment),
+            purchasePrice: new FormControl(data.purchasePrice),
+            grossRentalIncome: new FormControl(data.grossRentalIncome),
+            taxesInsuranceAndOther: new FormControl(data.taxesInsuranceAndOther),
+            stockAndBonds: new FormArray((data.stockAndBonds || []).map(d => this.initStockAndBond(d || {}))),
         });
 
         form.get('assetTypeId').valueChanges.subscribe((id) => {
             if (id === 12) {
                 const control = form.get('stockAndBonds') as FormArray;
                 if (!control.length) {
-                    control.push(this.initStockAndBond());
-                    control.push(this.initStockAndBond());
-                    control.push(this.initStockAndBond());
+                    control.push(this.initStockAndBond({}));
+                    control.push(this.initStockAndBond({}));
+                    control.push(this.initStockAndBond({}));
                 }
             } else {
                 form.get('stockAndBonds').patchValue([]);
@@ -111,12 +111,12 @@ export class AssetsComponent implements OnInit, DoCheck {
         return form;
     }
 
-    initStockAndBond() {
+    initStockAndBond(data: any = {}) {
         return new FormGroup({
-            id: new FormControl(''),
-            companyName: new FormControl(''),
-            accountNumber: new FormControl(''),
-            value: new FormControl(''),
+            id: new FormControl(data.id),
+            companyName: new FormControl(data.companyName),
+            accountNumber: new FormControl(data.accountNumber),
+            value: new FormControl(data.value),
         });
     }
 
