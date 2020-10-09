@@ -1,11 +1,11 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output,} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {IPersonalInformationModel} from '../../interfaces/IPersonalInformationModel';
-import {IBorrowerModel} from '../../interfaces/IBorrowerModel';
-import {IAddressModel} from '../../interfaces/IAddressModel';
-import {NgWizardService} from 'ng-wizard';
-import {DataService} from '../../services/data.service';
-import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output, } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IPersonalInformationModel } from '../../interfaces/IPersonalInformationModel';
+import { IBorrowerModel } from '../../interfaces/IBorrowerModel';
+import { IAddressModel } from '../../interfaces/IAddressModel';
+import { NgWizardConfig, NgWizardService, THEME } from 'ng-wizard';
+import { DataService } from '../../services/data.service';
+import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,6 +24,31 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     form: FormGroup;
     states = [];
+
+    config: NgWizardConfig = {
+        selected: 0,
+        theme: THEME.default,
+        anchorSettings: {
+            markDoneStep: false,
+            enableAllAnchors: true,
+        },
+        toolbarSettings: {
+            showNextButton: false,
+            showPreviousButton: false,
+            toolbarExtraButtons: [
+                /*{
+                    text: 'Save', class: 'btn btn-info', event: () => {
+                        const formData = this.sanitizeFormData();
+                        this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
+                            this.loanApplication = this.prepareFormData(response.result);
+                        }, error => {
+                            console.log(error);
+                        });
+                    }
+                }*/
+            ]
+        }
+    };
 
     constructor(
         private _ngWizardService: NgWizardService,
@@ -62,7 +87,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck() {
-        this.data = this.form.value;
+        // this.data = this.form.value;
         this._dataService.updateValidations(this.form, 'jointCredit');
         this._dataService.updateValidations(this.form.get('borrower') as FormGroup, 'borrowerPersonalInformation');
         this._dataService.updateValidations(this.form.get('residentialAddress') as FormGroup, 'residentialAddress');
@@ -73,65 +98,65 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     loadStates() {
         this.states = [
-            {id: 1, name: 'AL'},
-            {id: 2, name: 'AK'},
-            {id: 3, name: 'AS'},
-            {id: 4, name: 'AZ'},
-            {id: 5, name: 'AR'},
-            {id: 6, name: 'CA'},
-            {id: 7, name: 'CO'},
-            {id: 8, name: 'CT'},
-            {id: 9, name: 'DE'},
-            {id: 10, name: 'DC'},
-            {id: 11, name: 'FM'},
-            {id: 12, name: 'FL'},
-            {id: 13, name: 'GA'},
-            {id: 14, name: 'GU'},
-            {id: 15, name: 'HI'},
-            {id: 16, name: 'ID'},
-            {id: 17, name: 'IL'},
-            {id: 18, name: 'IN'},
-            {id: 19, name: 'IA'},
-            {id: 20, name: 'KS'},
-            {id: 21, name: 'KY'},
-            {id: 22, name: 'LA'},
-            {id: 23, name: 'ME'},
-            {id: 24, name: 'MH'},
-            {id: 25, name: 'MD'},
-            {id: 26, name: 'MA'},
-            {id: 27, name: 'MI'},
-            {id: 28, name: 'MN'},
-            {id: 29, name: 'MS'},
-            {id: 30, name: 'MO'},
-            {id: 31, name: 'MT'},
-            {id: 32, name: 'NE'},
-            {id: 33, name: 'NV'},
-            {id: 34, name: 'NH'},
-            {id: 35, name: 'NJ'},
-            {id: 36, name: 'NM'},
-            {id: 37, name: 'NY'},
-            {id: 38, name: 'NC'},
-            {id: 39, name: 'ND'},
-            {id: 40, name: 'MP'},
-            {id: 41, name: 'OH'},
-            {id: 42, name: 'OK'},
-            {id: 43, name: 'OR'},
-            {id: 44, name: 'PW'},
-            {id: 45, name: 'PA'},
-            {id: 46, name: 'PR'},
-            {id: 47, name: 'RI'},
-            {id: 48, name: 'SC'},
-            {id: 49, name: 'SD'},
-            {id: 50, name: 'TN'},
-            {id: 51, name: 'TX'},
-            {id: 52, name: 'UT'},
-            {id: 53, name: 'VT'},
-            {id: 54, name: 'VI'},
-            {id: 55, name: 'VA'},
-            {id: 56, name: 'WA'},
-            {id: 57, name: 'WV'},
-            {id: 58, name: 'WI'},
-            {id: 59, name: 'WY'},
+            { id: 1, name: 'AL' },
+            { id: 2, name: 'AK' },
+            { id: 3, name: 'AS' },
+            { id: 4, name: 'AZ' },
+            { id: 5, name: 'AR' },
+            { id: 6, name: 'CA' },
+            { id: 7, name: 'CO' },
+            { id: 8, name: 'CT' },
+            { id: 9, name: 'DE' },
+            { id: 10, name: 'DC' },
+            { id: 11, name: 'FM' },
+            { id: 12, name: 'FL' },
+            { id: 13, name: 'GA' },
+            { id: 14, name: 'GU' },
+            { id: 15, name: 'HI' },
+            { id: 16, name: 'ID' },
+            { id: 17, name: 'IL' },
+            { id: 18, name: 'IN' },
+            { id: 19, name: 'IA' },
+            { id: 20, name: 'KS' },
+            { id: 21, name: 'KY' },
+            { id: 22, name: 'LA' },
+            { id: 23, name: 'ME' },
+            { id: 24, name: 'MH' },
+            { id: 25, name: 'MD' },
+            { id: 26, name: 'MA' },
+            { id: 27, name: 'MI' },
+            { id: 28, name: 'MN' },
+            { id: 29, name: 'MS' },
+            { id: 30, name: 'MO' },
+            { id: 31, name: 'MT' },
+            { id: 32, name: 'NE' },
+            { id: 33, name: 'NV' },
+            { id: 34, name: 'NH' },
+            { id: 35, name: 'NJ' },
+            { id: 36, name: 'NM' },
+            { id: 37, name: 'NY' },
+            { id: 38, name: 'NC' },
+            { id: 39, name: 'ND' },
+            { id: 40, name: 'MP' },
+            { id: 41, name: 'OH' },
+            { id: 42, name: 'OK' },
+            { id: 43, name: 'OR' },
+            { id: 44, name: 'PW' },
+            { id: 45, name: 'PA' },
+            { id: 46, name: 'PR' },
+            { id: 47, name: 'RI' },
+            { id: 48, name: 'SC' },
+            { id: 49, name: 'SD' },
+            { id: 50, name: 'TN' },
+            { id: 51, name: 'TX' },
+            { id: 52, name: 'UT' },
+            { id: 53, name: 'VT' },
+            { id: 54, name: 'VI' },
+            { id: 55, name: 'VA' },
+            { id: 56, name: 'WA' },
+            { id: 57, name: 'WV' },
+            { id: 58, name: 'WI' },
+            { id: 59, name: 'WY' },
         ];
     }
 
@@ -166,47 +191,47 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         this.form
             .get('isApplyingWithCoBorrower')
             .valueChanges.subscribe((isApplyingWithCoBorrower) => {
-            if (isApplyingWithCoBorrower) {
+                if (isApplyingWithCoBorrower) {
+                    this.form
+                        .get('useIncomeOfPersonOtherThanBorrower')
+                        .setValidators([Validators.required]);
+
+                    this.data.coBorrower = {};
+                    this.form.setControl(
+                        'coBorrower',
+                        this.initBorrowerForm(this.data.coBorrower)
+                    );
+                } else {
+                    this.form.get('useIncomeOfPersonOtherThanBorrower').setValue(null);
+                    this.form
+                        .get('useIncomeOfPersonOtherThanBorrower')
+                        .setValidators(null);
+
+                    this.form.removeControl('coBorrower');
+                }
                 this.form
                     .get('useIncomeOfPersonOtherThanBorrower')
-                    .setValidators([Validators.required]);
-
-                this.data.coBorrower = {};
-                this.form.setControl(
-                    'coBorrower',
-                    this.initBorrowerForm(this.data.coBorrower)
-                );
-            } else {
-                this.form.get('useIncomeOfPersonOtherThanBorrower').setValue(null);
-                this.form
-                    .get('useIncomeOfPersonOtherThanBorrower')
-                    .setValidators(null);
-
-                this.form.removeControl('coBorrower');
-            }
-            this.form
-                .get('useIncomeOfPersonOtherThanBorrower')
-                .updateValueAndValidity();
-        });
+                    .updateValueAndValidity();
+            });
 
         this.form
             .get('isMailingAddressSameAsResidential')
             .valueChanges.subscribe((isMailingAddressSameAsResidential) => {
-            if (isMailingAddressSameAsResidential) {
-                this.form.removeControl('mailingAddress');
-            } else {
-                this.data.mailingAddress = {};
-                this.form.addControl(
-                    'mailingAddress',
-                    this.initAddressForm(this.data.mailingAddress, 2, false)
-                );
-            }
-        });
+                if (isMailingAddressSameAsResidential) {
+                    this.form.removeControl('mailingAddress');
+                } else {
+                    this.data.mailingAddress = {};
+                    this.form.addControl(
+                        'mailingAddress',
+                        this.initAddressForm(this.data.mailingAddress, 2, false)
+                    );
+                }
+            });
     }
 
     initBorrowerForm(data: IBorrowerModel) {
         return new FormGroup({
-            id: new FormControl(data.id),
+            //id: new FormControl(data.id),
             firstName: new FormControl(data.firstName, [Validators.required]),
             middleInitial: new FormControl(data.middleInitial),
             lastName: new FormControl(data.lastName, [Validators.required]),
@@ -262,17 +287,23 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         return index;
     }
 
-    proceedToNext() {
+    proceedToNext(event?: string) {
         if (this.form.valid) {
-            //this._ngWizardService.next();
-            this._route.navigate(["app/expense"]);
+            if (event == "wzardStep") {
+                this._ngWizardService.next();
+            } else {
+                this._route.navigate(["app/expense"]);
+            }
         } else {
             this.form.markAllAsTouched();
         }
     }
 
-    proceedToPrevious() {
-        //this._ngWizardService.previous();
-        this._route.navigate(["app/loan-detail"]);
+    proceedToPrevious(event?: string) {
+        if (event == "wzardStep") {
+            this._ngWizardService.previous();
+        } else {
+            this._route.navigate(["app/loan-detail"]);
+        }
     }
 }
