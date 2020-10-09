@@ -13,6 +13,34 @@ export class DataService {
     formDataSource = new BehaviorSubject<ILoanApplicationModel>({});
     formData = this.formDataSource.asObservable();
 
+    loanApplication: ILoanApplicationModel = {
+        loanDetails: {
+            purposeOfLoan: 1
+        },
+        personalInformation: {
+            borrower: {},
+            coBorrower: {},
+            residentialAddress: {},
+            mailingAddress: {},
+            previousAddresses: [],
+        },
+        expenses: {},
+        manualAssetEntries: [],
+        employmentIncome: {
+            borrowerMonthlyIncome: {},
+            borrowerEmploymentInfo: [{}]
+        },
+        orderCredit: {},
+        additionalDetails: {},
+        eConsent: {},
+        declaration: {
+            borrowerDeclaration: {},
+            coBorrowerDeclaration: {},
+            borrowerDemographic: {},
+            coBorrowerDemographic: {},
+        },
+    };
+
     constructor() {
     }
 
@@ -43,5 +71,9 @@ export class DataService {
 
     updateFormData(formData: ILoanApplicationModel) {
         this.formDataSource.next(formData);
+    }
+
+    updateData(data, key) {
+        this.loanApplication[key] = data;
     }
 }
