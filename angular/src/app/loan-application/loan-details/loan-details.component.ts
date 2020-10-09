@@ -1,9 +1,9 @@
-import {Component, DoCheck, EventEmitter, OnInit, Output,} from '@angular/core';
-import {ILoanDetailModel} from '../../interfaces/ILoanDetailModel';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService} from 'ng-wizard';
-import {DataService} from '../../services/data.service';
-import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import { Component, DoCheck, EventEmitter, OnInit, Output, } from '@angular/core';
+import { ILoanDetailModel } from '../../interfaces/ILoanDetailModel';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgWizardConfig, NgWizardService, THEME } from 'ng-wizard';
+import { DataService } from '../../services/data.service';
+import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +22,22 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     propertyTypes = [];
     propertyUses = [];
     loanOfficers = [];
+
+
+    config: NgWizardConfig = {
+        selected: 0,
+        theme: THEME.default,
+        anchorSettings: {
+            markDoneStep: false,
+            enableAllAnchors: true,
+        },
+        toolbarSettings: {
+            showNextButton: false,
+            showPreviousButton: false,
+            toolbarExtraButtons: [
+            ]
+        }
+    };
 
     constructor(
         private _ngWizardService: NgWizardService,
@@ -156,38 +172,47 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.form
             .get('haveSecondMortgage')
             .valueChanges.subscribe((haveSecondMortgage) => {
-            if (!haveSecondMortgage) {
-                this.form.get('secondMortgageAmount').setValue(null);
-                this.form.get('payLoanWithNewLoan').setValue(null);
-            }
-        });
+                if (!haveSecondMortgage) {
+                    this.form.get('secondMortgageAmount').setValue(null);
+                    this.form.get('payLoanWithNewLoan').setValue(null);
+                }
+            });
 
         this.form
             .get('sourceOfDownPayment')
             .valueChanges.subscribe((sourceOfDownPayment) => {
-            if (sourceOfDownPayment !== 4) {
-                this.form.get('giftAmount').setValue(null);
-                this.form.get('giftExplanation').setValue(null);
-            }
-        });
+                if (sourceOfDownPayment !== 4) {
+                    this.form.get('giftAmount').setValue(null);
+                    this.form.get('giftExplanation').setValue(null);
+                }
+            });
 
         this.form
             .get('isWorkingWithOfficer')
             .valueChanges.subscribe((isWorkingWithOfficer) => {
-            if (isWorkingWithOfficer) {
-                this.form.get('loanOfficerId').setValidators([Validators.required]);
-            } else {
-                this.form.get('loanOfficerId').setValue(null);
-                this.form.get('loanOfficerId').setValidators(null);
-            }
-            this.form.get('loanOfficerId').updateValueAndValidity();
-        });
+                if (isWorkingWithOfficer) {
+                    this.form.get('loanOfficerId').setValidators([Validators.required]);
+                } else {
+                    this.form.get('loanOfficerId').setValue(null);
+                    this.form.get('loanOfficerId').setValidators(null);
+                }
+                this.form.get('loanOfficerId').updateValueAndValidity();
+            });
     }
 
-    proceedToNext() {
+    proceedToPrevious(event?: string) {
+        if(event == "wzardStep"){
+            this._ngWizardService.previous();
+        }
+    }
+
+    proceedToNext(event?: string) {
         if (this.form.valid) {
-            //this._ngWizardService.next();
-            this._route.navigate(["app/personal-information"]);
+            if (event == "wzardStep") {
+                this._ngWizardService.next();
+            } else {
+                this._route.navigate(["app/personal-information"]);
+            }
         } else {
             this.form.markAllAsTouched();
         }
