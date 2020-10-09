@@ -1616,25 +1616,33 @@
                         </p>
                       </div>
                     </div>
-
-                    <div class="row">
-                      <div class="col">
-                        <h6
-                          class="font-weight-normal form-text text-muted mb-3"
-                        >
-                          Description
-                        </h6>
-                        <p class="font-weight-bold">
-                          {{
-                            manualAssetEntry.description === undefined ||
-                            manualAssetEntry.description === null
-                              ? "--"
-                              : manualAssetEntry.description
-                          }}
-                        </p>
+                    <div
+                      *ngIf="
+                        manualAssetEntry.assetTypeId === 1 ||
+                        manualAssetEntry.assetTypeId === 4 ||
+                        (manualAssetEntry.assetTypeId === 5 &&
+                          manualAssetEntry.description)
+                      "
+                    >
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Description
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              manualAssetEntry.description === undefined ||
+                              manualAssetEntry.description === null
+                                ? "--"
+                                : manualAssetEntry.description
+                            }}
+                          </p>
+                        </div>
                       </div>
                     </div>
-
+                    
                     <div class="row">
                       <div class="col">
                         <h6
@@ -1652,6 +1660,7 @@
                         </p>
                       </div>
                     </div>
+                    
 
                     <div class="row">
                       <div class="col">
@@ -1760,10 +1769,367 @@
                         </p>
                       </div>
                     </div>
+
+                    <div
+                      *ngIf="
+                        manualAssetEntry.assetTypeId === 2 ||
+                        manualAssetEntry.assetTypeId === 6 ||
+                        manualAssetEntry.assetTypeId === 7 ||
+                        manualAssetEntry.assetTypeId === 8 ||
+                        (manualAssetEntry.assetTypeId === 10 &&
+                          manualAssetEntry.name)
+                      "
+                    >
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Name
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              manualAssetEntry.name === undefined ||
+                              manualAssetEntry.name === null
+                                ? "--"
+                                : manualAssetEntry.name
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        manualAssetEntry.assetTypeId === 3 &&
+                        manualAssetEntry.bankName
+                      "
+                    >
+                      <div class="row">
+                        <div class="col">
+                          <h6
+                            class="font-weight-normal form-text text-muted mb-3"
+                          >
+                            Bank Name
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              manualAssetEntry.bankName === undefined ||
+                              manualAssetEntry.bankName === null
+                                ? "--"
+                                : manualAssetEntry.bankName
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 ||
+                      manualAssetEntry.assetTypeId === 11
+                      
+                      &&
+                      manualAssetEntry.propertyStatus
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Property Status
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.propertyStatus === undefined ||
+                            manualAssetEntry.propertyStatus === null
+                              ? "--"
+                              : manualAssetEntry.propertyStatus
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.propertyIsUsedAs
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Property Is Used As
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.propertyIsUsedAs === undefined ||
+                            manualAssetEntry.propertyIsUsedAs === null
+                              ? "--"
+                              : manualAssetEntry.propertyIsUsedAs
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.propertyType
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Property Type
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.propertyType === undefined ||
+                            manualAssetEntry.propertyType === null
+                              ? "--"
+                              : manualAssetEntry.propertyType
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.presentMarketValue
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Present Market Value
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.presentMarketValue === undefined ||
+                            manualAssetEntry.presentMarketValue === null
+                              ? "--"
+                              : manualAssetEntry.presentMarketValue
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.outstandingMortgageBalance
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Outstanding Mortgage Balance
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.outstandingMortgageBalance ===
+                              undefined ||
+                            manualAssetEntry.outstandingMortgageBalance === null
+                              ? "--"
+                              : manualAssetEntry.outstandingMortgageBalance
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.monthlyMortgagePayment
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Monthly Mortgage Payment
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.monthlyMortgagePayment ===
+                              undefined ||
+                            manualAssetEntry.monthlyMortgagePayment === null
+                              ? "--"
+                              : manualAssetEntry.monthlyMortgagePayment
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.purchasePrice
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Purchase Price
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.purchasePrice === undefined ||
+                            manualAssetEntry.purchasePrice === null
+                              ? "--"
+                              : manualAssetEntry.purchasePrice
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.grossRentalIncome
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Gross Rental Income
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.grossRentalIncome === undefined ||
+                            manualAssetEntry.grossRentalIncome === null
+                              ? "--"
+                              : manualAssetEntry.grossRentalIncome
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+                      
+                      &&
+                      manualAssetEntry.companyName
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Company Name
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.companyName === undefined ||
+                            manualAssetEntry.companyName === null
+                              ? "--"
+                              : manualAssetEntry.companyName
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+                      
+                      &&
+                      manualAssetEntry.accountNumber
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Account Number
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.accountNumber === undefined ||
+                          manualAssetEntry.accountNumber === null
+                            ? "--"
+                            : manualAssetEntry.accountNumber
+                        }}
+                      </p>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+                      
+                      &&
+                      manualAssetEntry.value
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Value
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.value === undefined ||
+                          manualAssetEntry.value === null
+                            ? "--"
+                            : manualAssetEntry.value
+                        }}
+                      </p>
+                    </div>
+                    </div>
+                   
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 
+                      
+                      &&
+                      manualAssetEntry.taxesInsuranceAndOther
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        TaxesInsuranceAndOther
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.taxesInsuranceAndOther ===
+                            undefined ||
+                          manualAssetEntry.taxesInsuranceAndOther === null
+                            ? "--"
+                            : manualAssetEntry.taxesInsuranceAndOther
+                        }}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div></div>
 
             <!-- Assets End -->
 
