@@ -19,6 +19,9 @@ export class AssetsComponent implements OnInit, DoCheck {
     states = [];
     assetTypes = [];
     borrowerTypeIds = [];
+    propertyStatuses = [];
+    propertyIsUsedAsArr = [];
+    propertyTypes = [];
 
     constructor(
         private _ngWizardService: NgWizardService,
@@ -38,6 +41,9 @@ export class AssetsComponent implements OnInit, DoCheck {
         this.loadStates();
         this.loadAssetTypes();
         this.loadBelongsTo();
+        this.loadPropertyStatuses();
+        this.loadPropertyIsUsedAs();
+        this.loadPropertyTypes();
 
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
             if (formData && formData.manualAssetEntries) {
@@ -256,6 +262,18 @@ export class AssetsComponent implements OnInit, DoCheck {
                 name: 'Both',
             },
         ];
+    }
+
+    loadPropertyStatuses() {
+        this.propertyStatuses = [];
+    }
+
+    loadPropertyIsUsedAs() {
+        this.propertyIsUsedAsArr = [];
+    }
+
+    loadPropertyTypes() {
+        this.propertyTypes = [];
     }
 
     getAssetTypeById(assetTypeId) {
