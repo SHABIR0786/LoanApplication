@@ -91,7 +91,7 @@ namespace LoanManagement.Models
         public long LoanApplicationId { get; set; }
         public int BorrowerTypeId { get; set; }
 
-        public State State { get; set; }    
+        public State State { get; set; }
         public AssetType AssetType { get; set; }
         public LoanApplication LoanApplication { get; set; }
         /// <summary>
