@@ -267,7 +267,7 @@ export class AssetsComponent implements OnInit, DoCheck {
         return index;
     }
 
-    proceedToPrevious(){
+    proceedToNext(){
         if (this.form.valid) {
             //this._ngWizardService.next();
             this._route.navigate(["app/employment-income"]);
@@ -275,7 +275,7 @@ export class AssetsComponent implements OnInit, DoCheck {
             this.form.markAllAsTouched();
         }
     }
-    proceedToNext(){
+    proceedToPrevious(){
         this._route.navigate(["app/expense"]);
     }
 }
