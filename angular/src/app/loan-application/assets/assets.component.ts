@@ -1,10 +1,10 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output,} from '@angular/core';
+import {Component, DoCheck, OnInit,} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {NgWizardService} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 import {IAssetModel} from '../../interfaces/IAssetModel';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-assets',
@@ -267,15 +267,15 @@ export class AssetsComponent implements OnInit, DoCheck {
         return index;
     }
 
-    proceedToNext(){
+    proceedToNext() {
         if (this.form.valid) {
-            //this._ngWizardService.next();
-            this._route.navigate(["app/employment-income"]);
+            this._route.navigate(['app/employment-income']);
         } else {
             this.form.markAllAsTouched();
         }
     }
-    proceedToPrevious(){
-        this._route.navigate(["app/expense"]);
+
+    proceedToPrevious() {
+        this._route.navigate(['app/expense']);
     }
 }
