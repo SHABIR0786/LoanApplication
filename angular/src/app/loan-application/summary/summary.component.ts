@@ -1,6 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NgWizardService } from 'ng-wizard';
-import { DataService } from '../../services/data.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {NgWizardService} from 'ng-wizard';
+import {DataService} from '../../services/data.service';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import {LoanApplicationService} from '../../services/loan-application.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-summary',
@@ -9,15 +12,16 @@ import { DataService } from '../../services/data.service';
 })
 export class SummaryComponent implements OnInit {
 
-    @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
     @Output() proceedToStep: EventEmitter<any> = new EventEmitter<any>();
     errors = {};
-    isShowAllStepsReadOnlyModeBool: boolean = false;
-    formData: any;
+    isShowAllStepsReadOnlyModeBool = false;
+    formData: ILoanApplicationModel;
 
     constructor(
         private _ngWizardService: NgWizardService,
         private _dataService: DataService,
+        private _loanApplicationService: LoanApplicationService,
+        private _route: Router,
     ) {
     }
 
@@ -25,19 +29,43 @@ export class SummaryComponent implements OnInit {
         this._dataService.validations.subscribe(errors => {
             this.errors = errors;
         });
+        this.formData = this._dataService.loanApplication;
+    }
 
-        this._dataService.formData.subscribe((data) => {
-            this.formData = data;
-            debugger;
-        })
+    sanitizeFormData(formData) {
+        formData = Object.assign({}, formData);
+        for (const key in formData) {
+            if (formData.hasOwnProperty(key)) {
+                if (typeof formData[key] === 'object' && Object.keys(formData[key]).length === 0) {
+                    formData[key] = undefined;
+                }
+            }
+        }
+        return formData;
+    }
+
+    prepareFormData(response) {
+        for (const key in response) {
+            if (response.hasOwnProperty(key)) {
+                response[key] = response[key] || {};
+            }
+        }
+        return response;
     }
 
     submitForm() {
-        this.onSubmit.emit();
+        const formData = this.sanitizeFormData(this._dataService.loanApplication);
+        this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
+            this._dataService.loanApplication = this.prepareFormData(response.result);
+        }, error => {
+            console.log(error);
+        });
     }
 
     proceedToPrevious() {
-        this._ngWizardService.previous();
+      //  this._ngWizardService.previous();
+      this._route.navigate(["app/declaration"]);
+
     }
 
     showGroupError(groupName) {
@@ -81,12 +109,13 @@ export class SummaryComponent implements OnInit {
     }
 
     hasAnyErrors() {
-        // return false;
-        return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
+        return false;
+        // return Object.keys(this.errors).some(key => this.errors[key].length !== 0);
     }
 
-    goToStep(index: number) {
-        this.proceedToStep.emit(index - 1);
+    goToStep(index: string) {
+        //this.proceedToStep.emit(index - 1);
+        this._route.navigate([index]);
     }
 
     expandAll() {
@@ -95,5 +124,9 @@ export class SummaryComponent implements OnInit {
 
     collapse() {
         this.isShowAllStepsReadOnlyModeBool = false;
+    }
+
+    ConvertToInt(val) {
+        return parseInt(val);
     }
 }
