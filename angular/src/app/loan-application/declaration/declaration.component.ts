@@ -400,7 +400,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
     proceedToNext(event?: string) {
         debugger;
         if (this.form.valid) {
-            if (event == "wzardStep") {
+            if (event == "wizardStep") {
                 this._ngWizardService.next();
             } else {
                 this._route.navigate(["app/summary"]);
@@ -411,12 +411,12 @@ export class DeclarationComponent implements OnInit, DoCheck {
     }
 
     proceedToPrevious(event?: string) {
-        if (event == "wzardStep") {
+        if (event == "wizardStep") {
             this._ngWizardService.previous();
         }
         else{
             this._route.navigate(["app/econsent"]);
         }
-       
+
     }
 }
