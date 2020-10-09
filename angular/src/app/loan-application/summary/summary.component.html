@@ -69,6 +69,7 @@
             <h5>Personal Information</h5>
             <div class="mt-5">
               <a href="#" class="h6 mb-1">Joint Credit</a>
+              
               <h6 class="font-weight-normal form-text text-muted mb-3">
                 Are you applying for joint credit with a co-borrower?
               </h6>
@@ -84,6 +85,12 @@
                     : "No"
                 }}
               </p>
+              <div 
+              *ngIf="formData.personalInformation.isApplyingWithCoBorrower !==
+              undefined &&
+            formData.personalInformation.isApplyingWithCoBorrower !== null &&
+            formData.personalInformation.isApplyingWithCoBorrower === true"
+              >
 
               <h6 class="font-weight-normal form-text text-muted mb-3">
                 The income/assets of a person other than the Borrower (including
@@ -103,9 +110,11 @@
                       : "No"
                   }}
               </p>
+              </div>
               
             </div>
           </div>
+          
         </div>
       </div>
       <div class="col-6">
@@ -301,6 +310,12 @@
         <div class="row">
           <div class="col-8">
             <div class="mt-5">
+                <div 
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower !==
+                undefined &&
+              formData.personalInformation.isApplyingWithCoBorrower !== null &&
+              formData.personalInformation.isApplyingWithCoBorrower === true"
+                >
               <a href="#" class="h6 mb-1">Co-Borrower</a>
               <br /><br />
               <h6 class="font-weight-normal form-text text-muted mb-3">
@@ -450,6 +465,7 @@
 
               <br />
             </div>
+            </div>
           </div>
         </div>
       </div>
@@ -584,7 +600,12 @@
                     : "No"
                 }}
               </p>
-
+               <div
+               *ngIf="formData.personalInformation.isMailingAddressSameAsResidential !==
+               undefined &&
+             formData.personalInformation.isMailingAddressSameAsResidential !== null &&
+             formData.personalInformation.isMailingAddressSameAsResidential === false"
+               >
               <h6 class="font-weight-normal form-text text-muted mb-3">
                 Address Line 1
               </h6>
@@ -658,6 +679,7 @@
               </p>
 
               <br />
+               </div>
             </div>
           </div>
         </div>
