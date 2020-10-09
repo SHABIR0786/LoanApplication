@@ -1,10 +1,10 @@
-import {Component, DoCheck, EventEmitter, OnInit, Output,} from '@angular/core';
+import {Component, DoCheck, OnInit,} from '@angular/core';
 import {ILoanDetailModel} from '../../interfaces/ILoanDetailModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {NgWizardService} from 'ng-wizard';
+import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {DataService} from '../../services/data.service';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-loan-details',
@@ -23,10 +23,24 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     propertyUses = [];
     loanOfficers = [];
 
+    config: NgWizardConfig = {
+        selected: 0,
+        theme: THEME.default,
+        anchorSettings: {
+            markDoneStep: false,
+            enableAllAnchors: true,
+        },
+        toolbarSettings: {
+            showNextButton: false,
+            showPreviousButton: false,
+            toolbarExtraButtons: [],
+        },
+    };
+
     constructor(
         private _ngWizardService: NgWizardService,
         private _dataService: DataService,
-        private _route: Router,
+        private _route: Router
     ) {
     }
 
@@ -41,7 +55,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.loadPropertyUses();
         this.loadLoanOfficers();
 
-
         this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
             if (formData && formData.loanDetails) {
                 this.form.patchValue(formData.loanDetails);
@@ -51,8 +64,21 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     ngDoCheck() {
         this.data = this.form.value;
+
+        this.data.loanOfficerName = this.getDataById(this.loanOfficers, this.data.loanOfficerId);
+        this.data.loanPurpose = this.getDataById(this.loanPurposes, this.data.purposeOfLoan);
+        this.data.sourceOfDownPaymentName = this.getDataById(this.sourceOfDownPayments, this.data.sourceOfDownPayment);
+        this.data.propertyTypeName = this.getDataById(this.propertyTypes, this.data.propertyTypeId);
+        this.data.stateIdName = this.getDataById(this.states, this.data.stateId);
+        this.data.propertyUseName = this.getDataById(this.propertyUses, this.data.propertyUseId);
+
         this._dataService.updateValidations(this.form, 'loanDetails');
         this._dataService.updateData(this.form.value, 'loanDetails');
+    }
+
+    getDataById(arr, id) {
+        const data = (arr || []).find(i => i.id === id);
+        return data ? data.name : null;
     }
 
     initForm() {
@@ -184,12 +210,21 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         });
     }
 
-    proceedToNext() {
-        if (this.form.valid) {
-            //this._ngWizardService.next();
-            this._route.navigate(["app/personal-information"]);
+    proceedToPrevious(event?: string) {
+        if (event === 'wizardStep') {
+            this._ngWizardService.previous();
+        }
+    }
+
+    proceedToNext(event?: string) {
+        if (event === 'wizardStep') {
+            this._ngWizardService.next();
         } else {
-            this.form.markAllAsTouched();
+            if (this.form.valid) {
+                this._route.navigate(['app/personal-information']);
+            } else {
+                this.form.markAllAsTouched();
+            }
         }
     }
 
