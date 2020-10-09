@@ -55,7 +55,6 @@ export class ExpensesComponent implements OnInit, DoCheck {
             mortgageInsurance: new FormControl(this.data.mortgageInsurance, [Validators.required]),
             homeOwnersAssociation: new FormControl(this.data.homeOwnersAssociation, [Validators.required])
         });
-        debugger;
         this.form.get('isLiveWithFamilySelectRent').valueChanges.subscribe(isLiveWithFamilySelectRent => {
             if (isLiveWithFamilySelectRent === "true") {
                 this.form.get('rent').setValidators([Validators.required]);
@@ -90,7 +89,6 @@ export class ExpensesComponent implements OnInit, DoCheck {
     }
 
     proceedToNext() {
-        debugger;
         if (this.form.valid) {
             //this._ngWizardService.next();
             this._route.navigate(["app/asset"]);

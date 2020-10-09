@@ -1,12 +1,12 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { IBorrowerDeclarationModel } from '../../interfaces/IBorrowerDeclarationModel';
-import { IDeclarationModel } from '../../interfaces/IDeclarationModel';
-import { IBorrowerDemographicModel } from '../../interfaces/IBorrowerDemographicModel';
-import { NgWizardConfig, NgWizardService, THEME } from 'ng-wizard';
-import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
-import { DataService } from '../../services/data.service';
-import { Router } from '@angular/router';
+import {Component, DoCheck, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationModel';
+import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
+import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicModel';
+import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
+import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
+import {DataService} from '../../services/data.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-declaration',
@@ -398,24 +398,22 @@ export class DeclarationComponent implements OnInit, DoCheck {
     }
 
     proceedToNext(event?: string) {
-        debugger;
-        if (this.form.valid) {
-            if (event == "wizardStep") {
-                this._ngWizardService.next();
-            } else {
-                this._route.navigate(["app/summary"]);
-            }
+        if (event === 'wizardStep') {
+            this._ngWizardService.next();
         } else {
-            this.form.markAllAsTouched();
+            if (this.form.valid) {
+                this._route.navigate(['app/summary']);
+            } else {
+                this.form.markAllAsTouched();
+            }
         }
     }
 
     proceedToPrevious(event?: string) {
-        if (event == "wizardStep") {
+        if (event === 'wizardStep') {
             this._ngWizardService.previous();
-        }
-        else{
-            this._route.navigate(["app/econsent"]);
+        } else {
+            this._route.navigate(['app/econsent']);
         }
 
     }
