@@ -35,7 +35,7 @@
                   <button class="btn btn-secondary" (click)="proceedToPrevious()">
                     Back
                   </button>
-                  <button class="btn btn-secondary float-right" (click)="proceedToNext('wzardStep')">
+                  <button class="btn btn-secondary float-right" (click)="proceedToNext('wizardStep')">
                     Next
                   </button>
                 </div>
@@ -43,7 +43,7 @@
             </ng-wizard-step>
             <ng-wizard-step title="Step 2" description="Borrower">
               <div class="row">
-    
+
                 <div class="col-12 row" *ngIf="data.isApplyingWithCoBorrower">
                   <div class="col-12">
                     <label>The income/assets of a person other than the Borrower (including the
@@ -67,11 +67,11 @@
                   <validation-summary [control]="form.controls.useIncomeOfPersonOtherThanBorrower" class="col-12">
                   </validation-summary>
                 </div>
-    
+
                 <app-borrower-personal-detail [form]="form.get('borrower')" [data]="data.borrower" heading="Borrower"
                   (onDataChange)="onChange($event, 'borrower')" class="col-12">
                 </app-borrower-personal-detail>
-    
+
                 <div class="col-12">
                   <h6>Privacy Policy</h6>
                   <div class="form-check">
@@ -82,7 +82,7 @@
                     </label>
                     <validation-summary [control]="form.controls.agreePrivacyPolicy" class="col-12"></validation-summary>
                   </div>
-    
+
                   <p class="mt-3">
                     <span class="text-bold">TCPA Consent Agreement</span>
                     <br />
@@ -97,15 +97,15 @@
                   </p>
                   <span>support@ezonlinemortgage.com</span>
                 </div>
-    
+
                 <app-borrower-personal-detail *ngIf="data.isApplyingWithCoBorrower" [form]="form.get('coBorrower')"
                   heading="Co-Borrower" [data]="data.borrower" (onDataChange)="onChange($event, 'borrower')" class="col-12">
                 </app-borrower-personal-detail>
-    
+
                 <div class="col-12 mb-1 mt-3">
                   <h5>Borrower Residential Address</h5>
                 </div>
-    
+
                 <div class="col-12 row" formGroupName="residentialAddress">
                   <div class="col-6">
                     <div class="form-group">
@@ -187,7 +187,7 @@
                     </div>
                   </div>
                 </div>
-    
+
                 <div class="col-12 row" formArrayName="previousAddresses">
                   <div class="col-12 row" *ngFor="
                       let previousAddress of data.previousAddresses;
@@ -282,7 +282,7 @@
                     </div>
                   </div>
                 </div>
-    
+
                 <p class="col-12" *ngIf="previousAddressesFormArray.length < 2">
                   We recommend entering at least your last 2 years of address history.
                 </p>
@@ -291,11 +291,11 @@
                     Add Previous Address
                   </button>
                 </div>
-    
+
                 <div class="col-12 mb-1 mt-3">
                   <h5>Borrower Mailing Address</h5>
                 </div>
-    
+
                 <div class="col-12 row">
                   <div class="col-12">
                     <label>Is the mailing address the same as the residential address?</label>
@@ -315,7 +315,7 @@
                     </div>
                   </div>
                 </div>
-    
+
                 <div class="col-12 row" formGroupName="mailingAddress"
                   *ngIf="data.isMailingAddressSameAsResidential === false">
                   <div class="col-6">
@@ -368,9 +368,9 @@
                     </div>
                   </div>
                 </div>
-    
+
                 <div class="col-12">
-                  <button class="btn btn-secondary" (click)="proceedToPrevious('wzardStep')">
+                  <button class="btn btn-secondary" (click)="proceedToPrevious('wizardStep')">
                     Back
                   </button>
                   <button class="btn btn-secondary float-right" (click)="proceedToNext()">
@@ -380,7 +380,7 @@
               </div>
             </ng-wizard-step>
         </ng-wizard>
-          
+
         </form>
       </div>
     </div>
