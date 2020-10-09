@@ -46,7 +46,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
         this.form = new FormGroup({
             id: new FormControl(this.data.id),
             isLiveWithFamilySelectRent: new FormControl(this.data.isLiveWithFamilySelectRent),
-            rent: new FormControl(this.data.rent, [Validators.required]),
+            rent: new FormControl(this.data.rent),
             otherHousingExpenses: new FormControl(this.data.otherHousingExpenses, [Validators.required]),
             firstMortgage: new FormControl(this.data.firstMortgage, [Validators.required]),
             secondMortgage: new FormControl(this.data.secondMortgage),
@@ -55,9 +55,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
             mortgageInsurance: new FormControl(this.data.mortgageInsurance, [Validators.required]),
             homeOwnersAssociation: new FormControl(this.data.homeOwnersAssociation, [Validators.required])
         });
-
         this.form.get('isLiveWithFamilySelectRent').valueChanges.subscribe(isLiveWithFamilySelectRent => {
-            if (isLiveWithFamilySelectRent) {
+            if (isLiveWithFamilySelectRent === "true") {
                 this.form.get('rent').setValidators([Validators.required]);
 
                 this.form.get('firstMortgage').setValue(null);

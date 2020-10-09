@@ -3,10 +3,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {IBorrowerDeclarationModel} from '../../interfaces/IBorrowerDeclarationModel';
 import {IDeclarationModel} from '../../interfaces/IDeclarationModel';
 import {IBorrowerDemographicModel} from '../../interfaces/IBorrowerDemographicModel';
-import {NgWizardService} from 'ng-wizard';
+import {NgWizardConfig, NgWizardService, THEME} from 'ng-wizard';
 import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
 import {DataService} from '../../services/data.service';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-declaration',
@@ -14,6 +14,31 @@ import { Router } from '@angular/router';
     styleUrls: ['./declaration.component.css']
 })
 export class DeclarationComponent implements OnInit, DoCheck {
+
+    config: NgWizardConfig = {
+        selected: 0,
+        theme: THEME.default,
+        anchorSettings: {
+            markDoneStep: false,
+            enableAllAnchors: true,
+        },
+        toolbarSettings: {
+            showNextButton: false,
+            showPreviousButton: false,
+            toolbarExtraButtons: [
+                /*{
+                    text: 'Save', class: 'btn btn-info', event: () => {
+                        const formData = this.sanitizeFormData();
+                        this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
+                            this.loanApplication = this.prepareFormData(response.result);
+                        }, error => {
+                            console.log(error);
+                        });
+                    }
+                }*/
+            ]
+        }
+    };
 
     data: IDeclarationModel = {
         borrowerDeclaration: {},
@@ -372,15 +397,24 @@ export class DeclarationComponent implements OnInit, DoCheck {
         this.form.get(`${borrowerType}Demographic`).get('sex').setValue(values);
     }
 
-    proceedToNext() {
-        if (this.form.valid) {
-            this._route.navigate(["app/summary"]);
+    proceedToNext(event?: string) {
+        if (event === 'wizardStep') {
+            this._ngWizardService.next();
         } else {
-            this.form.markAllAsTouched();
+            if (this.form.valid) {
+                this._route.navigate(['app/summary']);
+            } else {
+                this.form.markAllAsTouched();
+            }
         }
     }
 
-    proceedToPrevious() {
-        this._route.navigate(["app/econsent"]);
+    proceedToPrevious(event?: string) {
+        if (event === 'wizardStep') {
+            this._ngWizardService.previous();
+        } else {
+            this._route.navigate(['app/econsent']);
+        }
+
     }
 }
