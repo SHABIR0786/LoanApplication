@@ -24,7 +24,7 @@ export class BorrowerPersonalDetailComponent implements OnInit, DoCheck {
   maritalStatuses = [];
   suffixes = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.loadMaritalStatuses();
@@ -33,9 +33,7 @@ export class BorrowerPersonalDetailComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.data = this.form.value;
-    if (this.form.valid) {
-      this.onDataChange.next(this.form.value);
-    }
+    this.onDataChange.next(this.form.value);
   }
 
   loadMaritalStatuses() {

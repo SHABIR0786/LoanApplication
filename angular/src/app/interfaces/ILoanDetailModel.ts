@@ -1,5 +1,5 @@
 export interface ILoanDetailModel {
-    id?: number;
+        id?: number;
     isWorkingWithOfficer?: boolean;
     loanOfficerId?: number;
     referredBy?: string;
@@ -26,4 +26,12 @@ export interface ILoanDetailModel {
     stateId?: number;
     propertyTypeId?: number;
     propertyUseId?: number;
+
+    loanOfficerName?: string;
+    loanPurpose?: string;
+    sourceOfDownPaymentName?: string;
+    stateIdName?: string;
+    propertyUseName?: string;
+    propertyTypeName?: string;
+
 }
