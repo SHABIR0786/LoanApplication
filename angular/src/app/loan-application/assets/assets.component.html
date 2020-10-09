@@ -18,10 +18,10 @@
                   </button>
                 </div>
               </div>
-        
+
               <hr class="mt-2 mb-3" />
               <p *ngIf="!data.length">Add assets manually with the Add Asset button.</p>
-        
+
               <div class="col-12" formArrayName="manualAssetEntries">
                 <div class="row" *ngFor="let asset of data; let i = index; trackBy: trackByFn" [formGroupName]="i">
                   <div class="col-12">
@@ -32,7 +32,7 @@
                       Remove
                     </button>
                   </div>
-                  <div class="col-12 row mt-2" *ngIf="asset.assetTypeId !== 7">
+                  <div class="col-12 row mt-2">
                     <div class="col-6">
                       <div class="form-group">
                         <label for="assetTypeId-{{ i }}">
@@ -61,7 +61,7 @@
                         </select>
                       </div>
                     </div>
-        
+
                     <div class="col-4" *ngIf="[1, 4, 5].indexOf(asset.assetTypeId) !== -1">
                       <div class="form-group">
                         <label for="description-{{ i }}">
@@ -71,7 +71,7 @@
                           formControlName="description" />
                       </div>
                     </div>
-        
+
                     <div class="col-4" *ngIf="[3, 11].indexOf(asset.assetTypeId) !== -1">
                       <div class="form-group">
                         <label for="bankName-{{ i }}">
@@ -81,7 +81,7 @@
                           formControlName="bankName" />
                       </div>
                     </div>
-        
+
                     <div class="col-4" *ngIf="[2, 6, 7, 8, 10, 13].indexOf(asset.assetTypeId) !== -1">
                       <div class="form-group">
                         <label for="name-{{ i }}">
@@ -90,7 +90,7 @@
                         <input type="text" class="form-control" name="name" id="name-{{ i }}" formControlName="name" />
                       </div>
                     </div>
-        
+
                     <div class="col-4" *ngIf="[9, 12].indexOf(asset.assetTypeId) === -1">
                       <div class="form-group">
                         <label for="accountNumber-{{ i }}">
@@ -100,7 +100,7 @@
                           formControlName="accountNumber" />
                       </div>
                     </div>
-        
+
                     <div class="col-4" *ngIf="[9, 12].indexOf(asset.assetTypeId) === -1">
                       <div class="form-group">
                         <label for="cashValue-{{ i }}">
@@ -110,7 +110,7 @@
                           formControlName="cashValue" placeholder="$" prefix="$ " mask="separator.2" thousandSeparator="," />
                       </div>
                     </div>
-        
+
                     <div class="col-12 row" *ngIf="asset.assetTypeId !== 12">
                       <div class="col-6">
                         <div class="form-group">
@@ -121,7 +121,7 @@
                             formControlName="address" />
                         </div>
                       </div>
-        
+
                       <div class="col-6">
                         <div class="form-group">
                           <label for="address2-{{ i }}">
@@ -131,7 +131,7 @@
                             formControlName="address2" />
                         </div>
                       </div>
-        
+
                       <div class="col-4">
                         <div class="form-group">
                           <label for="city-{{ i }}">
@@ -140,7 +140,7 @@
                           <input type="text" class="form-control" name="city" id="city-{{ i }}" formControlName="city" />
                         </div>
                       </div>
-        
+
                       <div class="col-4">
                         <div class="form-group">
                           <label for="stateId-{{ i }}">
@@ -153,7 +153,7 @@
                           </select>
                         </div>
                       </div>
-        
+
                       <div class="col-4">
                         <div class="form-group">
                           <label for="zipCode-{{ i }}">
@@ -164,7 +164,7 @@
                         </div>
                       </div>
                     </div>
-        
+
                     <div class="col-12 row" *ngIf="asset.assetTypeId === 9">
                       <div class="col-4">
                         <div class="form-group">
@@ -173,8 +173,8 @@
                           </label>
                           <select class="form-control" name="propertyStatus" id="propertyStatus-{{ i }}"
                             formControlName="propertyStatus">
-                            <option [ngValue]="state.id" *ngFor="let state of states">
-                              {{ state.name }}
+                            <option [ngValue]="propertyStatus.id" *ngFor="let propertyStatus of propertyStatuses">
+                              {{ propertyStatus.name }}
                             </option>
                           </select>
                         </div>
@@ -186,8 +186,8 @@
                           </label>
                           <select class="form-control" name="propertyIsUsedAs" id="propertyIsUsedAs-{{ i }}"
                             formControlName="propertyIsUsedAs">
-                            <option [ngValue]="state.id" *ngFor="let state of states">
-                              {{ state.name }}
+                            <option [ngValue]="propertyIsUsedAs.id" *ngFor="let propertyIsUsedAs of propertyIsUsedAsArr">
+                              {{ propertyIsUsedAs.name }}
                             </option>
                           </select>
                         </div>
@@ -199,8 +199,8 @@
                           </label>
                           <select class="form-control" name="propertyType" id="propertyType-{{ i }}"
                             formControlName="propertyType">
-                            <option [ngValue]="state.id" *ngFor="let state of states">
-                              {{ state.name }}
+                            <option [ngValue]="propertyType.id" *ngFor="let propertyType of propertyTypes">
+                              {{ propertyType.name }}
                             </option>
                           </select>
                         </div>
@@ -267,7 +267,7 @@
                       </div>
                     </div>
                   </div>
-        
+
                   <div class="col-12 mt-2" formArrayName="stockAndBonds" *ngIf="asset.assetTypeId === 12">
                     <div class="row" *ngFor="
                         let stockAndBond of asset.stockAndBonds;
@@ -283,7 +283,7 @@
                             formControlName="companyName" />
                         </div>
                       </div>
-        
+
                       <div class="col-4">
                         <div class="form-group">
                           <label for="accountNumber-{{ i }}-{{ j }}">
@@ -293,7 +293,7 @@
                             formControlName="accountNumber" />
                         </div>
                       </div>
-        
+
                       <div class="col-4">
                         <div class="form-group">
                           <label for="value-{{ i }}-{{ j }}">
@@ -305,7 +305,7 @@
                       </div>
                     </div>
                   </div>
-        
+
                   <hr class="col-12 mt-2 mb-3" />
                 </div>
               </div>
