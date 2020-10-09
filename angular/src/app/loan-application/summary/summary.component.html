@@ -446,6 +446,803 @@
 
             <hr class="mt-2 mb-3" />
 
+            <!-- Personal Information Start -->
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Personal Information</h5>
+                    <div class="mt-5">
+                      <a href="#" class="h6 mb-1">Joint Credit</a>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Are you applying for joint credit with a co-borrower?
+                      </h6>
+
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === undefined ||
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === null
+                            ? "--"
+                            : formData.personalInformation
+                                .isApplyingWithCoBorrower
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+                      <div
+                        *ngIf="
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower !== undefined &&
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower !== null &&
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === true
+                        "
+                      >
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          The income/assets of a person other than the Borrower
+                          (including the borrower’s spouse) will be used for
+                          loan qualification. *
+                        </h6>
+
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation
+                              .useIncomeOfPersonOtherThanBorrower ===
+                              undefined ||
+                            formData.personalInformation
+                              .useIncomeOfPersonOtherThanBorrower === null
+                              ? "--"
+                              : formData.personalInformation
+                                  .useIncomeOfPersonOtherThanBorrower
+                              ? "Yes"
+                              : "No"
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div>
+                      <button type="button" class="float-right btn btn-primary">
+                        Edit
+                      </button>
+                    </div>
+                    <div class="mt-5" style="margin-top: 4.1rem !important">
+                      <a href="#" class="h6 mb-1">Borrower</a><br />
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        First Name
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.firstName ===
+                            undefined ||
+                          formData.personalInformation.borrower.firstName ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.borrower.firstName
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Middle Initial
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower
+                            .middleInitial === undefined ||
+                          formData.personalInformation.borrower
+                            .middleInitial === null
+                            ? "--"
+                            : formData.personalInformation.borrower
+                                .middleInitial
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Last Name
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.lastName ===
+                            undefined ||
+                          formData.personalInformation.borrower.lastName ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.borrower.lastName
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Suffix
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.suffix ===
+                            undefined ||
+                          formData.personalInformation.borrower.suffix === null
+                            ? "--"
+                            : formData.personalInformation.borrower.suffix
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Email
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.email ===
+                            undefined ||
+                          formData.personalInformation.borrower.email === null
+                            ? "--"
+                            : formData.personalInformation.borrower.email
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Date Of Birth
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.dateOfBirth ===
+                            undefined ||
+                          formData.personalInformation.borrower.dateOfBirth ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.borrower.dateOfBirth
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Social Security Number
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower
+                            .socialSecurityNumber === undefined ||
+                          formData.personalInformation.borrower
+                            .socialSecurityNumber === null
+                            ? "--"
+                            : formData.personalInformation.borrower
+                                .socialSecurityNumber
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Marital Status
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower
+                            .maritalStatusId === undefined ||
+                          formData.personalInformation.borrower
+                            .maritalStatusId === null
+                            ? "--"
+                            : formData.personalInformation.borrower
+                                .maritalStatusId
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Number of Dependents
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower
+                            .numberOfDependents === undefined ||
+                          formData.personalInformation.borrower
+                            .numberOfDependents === null
+                            ? "--"
+                            : formData.personalInformation.borrower
+                                .numberOfDependents
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Cell Phone
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.cellPhone ===
+                            undefined ||
+                          formData.personalInformation.borrower.cellPhone ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.borrower.cellPhone
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Home Phone
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.borrower.homePhone ===
+                            undefined ||
+                          formData.personalInformation.borrower.homePhone ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.borrower.homePhone
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        I/We have read and accepted the terms of the Privacy
+                        Policy
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.agreePrivacyPolicy ===
+                            undefined ||
+                          formData.personalInformation.agreePrivacyPolicy ===
+                            null
+                            ? "--"
+                            : formData.personalInformation.agreePrivacyPolicy
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="mt-5">
+                      <div
+                        *ngIf="
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower !== undefined &&
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower !== null &&
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === true
+                        "
+                      >
+                        <a href="#" class="h6 mb-1">Co-Borrower</a>
+                        <br /><br />
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          First Name
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.firstName ===
+                              undefined ||
+                            formData.personalInformation.borrower.firstName ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.borrower.firstName
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Middle Initial
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower
+                              .middleInitial === undefined ||
+                            formData.personalInformation.borrower
+                              .middleInitial === null
+                              ? "--"
+                              : formData.personalInformation.borrower
+                                  .middleInitial
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Last Name
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.lastName ===
+                              undefined ||
+                            formData.personalInformation.borrower.lastName ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.borrower.lastName
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Suffix
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.suffix ===
+                              undefined ||
+                            formData.personalInformation.borrower.suffix ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.borrower.suffix
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Email
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.email ===
+                              undefined ||
+                            formData.personalInformation.borrower.email === null
+                              ? "--"
+                              : formData.personalInformation.borrower.email
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Date Of Birth
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower
+                              .dateOfBirth === undefined ||
+                            formData.personalInformation.borrower
+                              .dateOfBirth === null
+                              ? "--"
+                              : formData.personalInformation.borrower
+                                  .dateOfBirth
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Social Security Number
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower
+                              .socialSecurityNumber === undefined ||
+                            formData.personalInformation.borrower
+                              .socialSecurityNumber === null
+                              ? "--"
+                              : formData.personalInformation.borrower
+                                  .socialSecurityNumber
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Marital Status
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower
+                              .maritalStatusId === undefined ||
+                            formData.personalInformation.borrower
+                              .maritalStatusId === null
+                              ? "--"
+                              : formData.personalInformation.borrower
+                                  .maritalStatusId
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Number of Dependents
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower
+                              .numberOfDependents === undefined ||
+                            formData.personalInformation.borrower
+                              .numberOfDependents === null
+                              ? "--"
+                              : formData.personalInformation.borrower
+                                  .numberOfDependents
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Cell Phone
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.cellPhone ===
+                              undefined ||
+                            formData.personalInformation.borrower.cellPhone ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.borrower.cellPhone
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Home Phone
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.borrower.homePhone ===
+                              undefined ||
+                            formData.personalInformation.borrower.homePhone ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.borrower.homePhone
+                          }}
+                        </p>
+
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="mt-5">
+                      <a href="#" class="h6 mb-1"
+                        >Borrower Residential Address</a
+                      >
+                      <br /><br />
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Address Line 1
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .addressLine1 === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .addressLine1 === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .addressLine1
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Address Line 2
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .addressLine2 === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .addressLine2 === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .addressLine2
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        City
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .city === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .city === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .city
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        State
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .stateId === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .stateId === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .stateId
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Zip Code
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .zipCode === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .zipCode === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .zipCode
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Years
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .totalYears
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Months
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .totalMonths
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="mt-5">
+                      <a href="#" class="h6 mb-1">Borrower Mailing Address</a>
+                      <br /><br />
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Is the mailing address the same as the residential
+                        address?
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === undefined ||
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === null
+                            ? "--"
+                            : formData.personalInformation
+                                .isMailingAddressSameAsResidential
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+                      <div
+                        *ngIf="
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential !== undefined &&
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential !== null &&
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === false
+                        "
+                      >
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Address Line 1
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.mailingAddress
+                              .addressLine1 === undefined ||
+                            formData.personalInformation.mailingAddress
+                              .addressLine1 === null
+                              ? "--"
+                              : formData.personalInformation.mailingAddress
+                                  .addressLine1
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Address Line 2
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.mailingAddress
+                              .addressLine2 === undefined ||
+                            formData.personalInformation.mailingAddress
+                              .addressLine2 === null
+                              ? "--"
+                              : formData.personalInformation.mailingAddress
+                                  .addressLine2
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          City
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.mailingAddress.city ===
+                              undefined ||
+                            formData.personalInformation.mailingAddress.city ===
+                              null
+                              ? "--"
+                              : formData.personalInformation.mailingAddress.city
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          State
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.mailingAddress
+                              .stateId === undefined ||
+                            formData.personalInformation.mailingAddress
+                              .stateId === null
+                              ? "--"
+                              : formData.personalInformation.mailingAddress
+                                  .stateId
+                          }}
+                        </p>
+
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Zip Code
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            formData.personalInformation.mailingAddress
+                              .zipCode === undefined ||
+                            formData.personalInformation.mailingAddress
+                              .zipCode === null
+                              ? "--"
+                              : formData.personalInformation.mailingAddress
+                                  .zipCode
+                          }}
+                        </p>
+
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="mt-5">
+                      <a href="#" class="h6 mb-1"
+                        >Co-Borrower Residential Address</a
+                      >
+                      <br /><br />
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Same as the borrower's residential address? *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === undefined ||
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === null
+                            ? "--"
+                            : formData.personalInformation
+                                .isMailingAddressSameAsResidential
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Years *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .totalYears
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Months
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === null
+                            ? "--"
+                            : formData.personalInformation.residentialAddress
+                                .totalMonths
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="mt-5">
+                      <a href="#" class="h6 mb-1"
+                        >Co-Borrower Mailing Address</a
+                      >
+                      <br /><br />
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Is the mailing address the same as the residential
+                        address?
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === undefined ||
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === null
+                            ? "--"
+                            : formData.personalInformation
+                                .isMailingAddressSameAsResidential
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- personal Information End -->
+
+            <hr class="mt-2 mb-3" />
+
             <!-- Expenses Start -->
             <div class="row">
               <div class="col-6">
@@ -749,6 +1546,226 @@
               </div>
             </div>
             <!-- Expenses End -->
+
+            <hr class="mt-2 mb-3" />
+
+            <!-- Assets Start -->
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Assets</h5>
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mt-5">Manage Your Assets</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="row"
+              *ngFor="let manualAssetEntry of formData.manualAssetEntries"
+            >
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Select Type Of Asset
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.assetTypeId === undefined ||
+                            manualAssetEntry.assetTypeId === null
+                              ? "--"
+                              : manualAssetEntry.assetTypeId === 1
+                              ? "Cash Deposit on sales contract"
+                              : manualAssetEntry.assetTypeId === 2
+                              ? "Certificate of Deposit"
+                              : manualAssetEntry.assetTypeId === 3
+                              ? "Checking Account"
+                              : manualAssetEntry.assetTypeId === 4
+                              ? "Gifts"
+                              : manualAssetEntry.assetTypeId === 5
+                              ? "Gift of equity"
+                              : manualAssetEntry.assetTypeId === 6
+                              ? "Money Market Fund"
+                              : manualAssetEntry.assetTypeId === 7
+                              ? "Mutual Funds"
+                              : manualAssetEntry.assetTypeId === 8
+                              ? "Net Proceed from Real Estate Funds"
+                              : manualAssetEntry.assetTypeId === 9
+                              ? "Real Estate Owned"
+                              : manualAssetEntry.assetTypeId === 10
+                              ? "Retirement Funds"
+                              : manualAssetEntry.assetTypeId === 11
+                              ? "Saving Accounts"
+                              : manualAssetEntry.assetTypeId === 12
+                              ? "Stock and Bonds"
+                              : manualAssetEntry.assetTypeId === 13
+                              ? "Trust Account"
+                              : "--"
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Description
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.description === undefined ||
+                            manualAssetEntry.description === null
+                              ? "--"
+                              : manualAssetEntry.description
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Account Number
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.accountNumber === undefined ||
+                            manualAssetEntry.accountNumber === null
+                              ? "--"
+                              : manualAssetEntry.accountNumber
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Cash Value
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.cashValue === undefined ||
+                            manualAssetEntry.cashValue === null
+                              ? "--"
+                              : manualAssetEntry.cashValue
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Address
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.address === undefined ||
+                            manualAssetEntry.address === null
+                              ? "--"
+                              : manualAssetEntry.address
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Address 2
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.address2 === undefined ||
+                            manualAssetEntry.address2 === null
+                              ? "--"
+                              : manualAssetEntry.address2
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          City
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.city === undefined ||
+                            manualAssetEntry.city === null
+                              ? "--"
+                              : manualAssetEntry.city
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          State
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.stateId === undefined ||
+                            manualAssetEntry.stateId === null
+                              ? "--"
+                              : manualAssetEntry.stateId
+                          }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Zip Code
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.zipCode === undefined ||
+                            manualAssetEntry.zipCode === null
+                              ? "--"
+                              : manualAssetEntry.zipCode
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Assets End -->
 
             <hr class="mt-2 mb-3" />
 
