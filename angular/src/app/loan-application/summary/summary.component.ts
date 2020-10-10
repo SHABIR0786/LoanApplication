@@ -1,14 +1,14 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NgWizardService} from 'ng-wizard';
-import {DataService} from '../../services/data.service';
-import {ILoanApplicationModel} from '../../interfaces/ILoanApplicationModel';
-import {LoanApplicationService} from '../../services/loan-application.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgWizardService } from 'ng-wizard';
+import { DataService } from '../../services/data.service';
+import { ILoanApplicationModel } from '../../interfaces/ILoanApplicationModel';
+import { LoanApplicationService } from '../../services/loan-application.service';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-summary',
     templateUrl: './summary.component.html',
-    styleUrls: ['./summary.component.css']
+    styleUrls: ['./summary.component.css'],
 })
 export class SummaryComponent implements OnInit {
 
@@ -63,8 +63,8 @@ export class SummaryComponent implements OnInit {
     }
 
     proceedToPrevious() {
-      //  this._ngWizardService.previous();
-      this._route.navigate(["app/declaration"]);
+        //  this._ngWizardService.previous();
+        this._route.navigate(["app/declaration"]);
 
     }
 
