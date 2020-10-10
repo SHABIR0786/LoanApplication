@@ -56,11 +56,19 @@ namespace LoanManagement.EntityFrameworkCore
                                   new AssetType { Id = 13, Name = "Trust Account" });
             });
 
-            modelBuilder.Entity<BorrowerType>(borrowerEmploymentInformation =>
+            modelBuilder.Entity<BorrowerType>(borrowerType =>
             {
-                borrowerEmploymentInformation.HasData(new BorrowerType { Id = 1, Name = "Borrower" },
-                                                      new BorrowerType { Id = 2, Name = "Co-Borrower" },
-                                                      new BorrowerType { Id = 3, Name = "Both" });
+                borrowerType.HasData(new BorrowerType { Id = 1, Name = "Borrower" },
+                                     new BorrowerType { Id = 2, Name = "Co-Borrower" },
+                                     new BorrowerType { Id = 3, Name = "Both" });
+            });
+
+            modelBuilder.Entity<IncomeSource>(incomeSources =>
+            {
+                incomeSources.HasData(new IncomeSource { Id = 1, Name = "Accessory Unit Income" },
+                                      new IncomeSource { Id = 2, Name = "Alimony/Child Support" },
+                                      new IncomeSource { Id = 3, Name = "Automobile/Expense Account"},
+                                      new IncomeSource { Id = 4, Name = "Boarder Income"});
             });
 
             modelBuilder.Entity<State>(State =>
