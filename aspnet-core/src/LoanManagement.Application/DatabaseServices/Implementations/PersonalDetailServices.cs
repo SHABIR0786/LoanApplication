@@ -263,7 +263,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
                     foreach (var address in input.PreviousAddresses)
                     {
-                        if (!address.Id.HasValue ||  address.Id.Value == default)
+                        if (!address.Id.HasValue || address.Id.Value == default)
                         {
                             var newAddress = new Address
                             {
