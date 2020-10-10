@@ -353,7 +353,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         }
                     }
 
-                if (input.MailingAddress != null && input.MailingAddress.Id.Value == default)
+                if (input.MailingAddress != null && (!input.ResidentialAddress.Id.HasValue || input.ResidentialAddress.Id.Value == default))
                 {
                     var address = new Address
                     {
@@ -371,7 +371,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     newAddresses.Add(address);
                 }
 
-                if (input.CoBorrowerMailingAddress != null && input.CoBorrowerMailingAddress.Id.Value == default)
+                if (input.CoBorrowerMailingAddress != null && (!input.ResidentialAddress.Id.HasValue || input.ResidentialAddress.Id.Value == default))
                 {
                     var address = new Address
                     {
@@ -389,7 +389,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     newAddresses.Add(address);
                 }
 
-                if (input.ResidentialAddress != null && input.ResidentialAddress.Id.Value == default)
+                if (input.ResidentialAddress != null && (!input.ResidentialAddress.Id.HasValue || input.ResidentialAddress.Id.Value == default))
                 {
                     var address = new Address
                     {
@@ -407,7 +407,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     newAddresses.Add(address);
                 }
 
-                if (input.CoBorrowerResidentialAddress != null && input.CoBorrowerResidentialAddress.Id.Value == default)
+                if (input.CoBorrowerResidentialAddress != null && (!input.ResidentialAddress.Id.HasValue || input.ResidentialAddress.Id.Value == default))
                 {
                     var address = new Address
                     {
@@ -537,7 +537,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             if (addresses != null && addresses.Any())
             {
                 var previousAddress = addresses
-                    .Where(i => i.AddressType == Enums.AddressType.Previous.ToString() && i.BorrowerTypeId == (int) Enums.BorrowerType.Borrower)
+                    .Where(i => i.AddressType == Enums.AddressType.Previous.ToString() && i.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                     .ToList();
                 if (previousAddress.Any())
                     for (var index = 0; index < previousAddress.Count; index++)
