@@ -4,23 +4,24 @@ import {
   OnInit,
   EventEmitter,
   Output,
-} from '@angular/core';
-import { finalize } from 'rxjs/operators';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import * as _ from 'lodash';
-import { AppComponentBase } from '@shared/app-component-base';
+} from "@angular/core";
+import { finalize } from "rxjs/operators";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import * as _ from "lodash";
+import { AppComponentBase } from "@shared/app-component-base";
 import {
   RoleServiceProxy,
   RoleDto,
   PermissionDto,
   CreateRoleDto,
-  PermissionDtoListResultDto
-} from '@shared/service-proxies/service-proxies';
+  PermissionDtoListResultDto,
+} from "@shared/service-proxies/service-proxies";
 
 @Component({
-  templateUrl: 'create-role-dialog.component.html'
+  templateUrl: "create-role-dialog.component.html",
 })
-export class CreateRoleDialogComponent extends AppComponentBase
+export class CreateRoleDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   role = new RoleDto();
@@ -90,7 +91,7 @@ export class CreateRoleDialogComponent extends AppComponentBase
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'));
+        this.notify.info(this.l("SavedSuccessfully"));
         this.bsModalRef.hide();
         this.onSave.emit();
       });

@@ -2,17 +2,18 @@ import {
   Component,
   OnInit,
   Injector,
-  ChangeDetectionStrategy
-} from '@angular/core';
-import { AppComponentBase } from '@shared/app-component-base';
-import * as _ from 'lodash';
+  ChangeDetectionStrategy,
+} from "@angular/core";
+import { AppComponentBase } from "@shared/app-component-base";
+import * as _ from "lodash";
 
 @Component({
-  selector: 'account-languages',
-  templateUrl: './account-languages.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "account-languages",
+  templateUrl: "./account-languages.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountLanguagesComponent extends AppComponentBase
+export class AccountLanguagesComponent
+  extends AppComponentBase
   implements OnInit {
   languages: abp.localization.ILanguageInfo[];
   currentLanguage: abp.localization.ILanguageInfo;
@@ -31,7 +32,7 @@ export class AccountLanguagesComponent extends AppComponentBase
 
   changeLanguage(languageName: string): void {
     abp.utils.setCookieValue(
-      'Abp.Localization.CultureName',
+      "Abp.Localization.CultureName",
       languageName,
       new Date(new Date().getTime() + 5 * 365 * 86400000), // 5 year
       abp.appPath

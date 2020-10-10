@@ -1,4 +1,4 @@
 export interface IAdditionalDetailModel {
-    id?: number;
-    nameOfIndividualsOnTitle?: string;
+  id?: number;
+  nameOfIndividualsOnTitle?: string;
 }

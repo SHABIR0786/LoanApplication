@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EconsentComponent } from './econsent.component';
+import { EconsentComponent } from "./econsent.component";
 
-describe('EconsentComponent', () => {
+describe("EconsentComponent", () => {
   let component: EconsentComponent;
   let fixture: ComponentFixture<EconsentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EconsentComponent ]
-    })
-    .compileComponents();
+      declarations: [EconsentComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('EconsentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
