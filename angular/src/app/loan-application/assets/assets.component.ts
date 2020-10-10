@@ -27,7 +27,7 @@ export class AssetsComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router
-  ) {}
+  ) { }
 
   get manualAssetEntries(): FormArray {
     return this.form.get("manualAssetEntries") as FormArray;
@@ -108,8 +108,9 @@ export class AssetsComponent implements OnInit, DoCheck {
         (data.stockAndBonds || []).map((d) => this.initStockAndBond(d || {}))
       ),
     });
-
+    debugger;
     form.get("assetTypeId").valueChanges.subscribe((id) => {
+
       if (id === 12) {
         const control = form.get("stockAndBonds") as FormArray;
         if (!control.length) {
@@ -118,7 +119,27 @@ export class AssetsComponent implements OnInit, DoCheck {
           control.push(this.initStockAndBond({}));
         }
       } else {
+        debugger;
         form.get("stockAndBonds").patchValue([]);
+        form.get('description').setValue(null);
+        form.get('bankName').setValue(null);
+        form.get('accountNumber').setValue(null);
+        form.get('cashValue').setValue(null);
+        form.get('address').setValue(null);
+        form.get('address2').setValue(null);
+        form.get('city').setValue(null);
+        form.get('stateId').setValue(null);
+        form.get('zipCode').setValue(null);
+        form.get('propertyStatus').setValue(null);
+        form.get('propertyIsUsedAs').setValue(null);
+        form.get('propertyType').setValue(null);
+        form.get('presentMarketValue').setValue(null);
+        form.get('outstandingMortgageBalance').setValue(null);
+        form.get('monthlyMortgagePayment').setValue(null);
+        form.get('purchasePrice').setValue(null);
+        form.get('purchasePrice').setValue(null);
+        form.get('grossRentalIncome').setValue(null);
+        form.get('taxesInsuranceAndOther').setValue(null);
       }
     });
 
@@ -304,4 +325,5 @@ export class AssetsComponent implements OnInit, DoCheck {
   proceedToPrevious() {
     this._route.navigate(["app/expense"]);
   }
+
 }
