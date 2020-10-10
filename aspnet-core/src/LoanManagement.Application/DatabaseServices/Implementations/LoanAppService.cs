@@ -144,36 +144,67 @@ namespace LoanManagement.DatabaseServices.Implementations
                 viewModel.PersonalInformation = new PersonalInformationDto();
                 if (result.PersonalDetail.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
-                    viewModel.PersonalInformation.MailingAddress = new AddressDto();
                     foreach (var address in result.PersonalDetail.Addresses)
                     {
                         if (address.AddressType == Enums.AddressType.Mailing.ToString())
                         {
-                            viewModel.PersonalInformation.MailingAddress = new AddressDto
+                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                             {
-                                AddressLine1 = address.AddressLine1,
-                                AddressLine2 = address.AddressLine2,
-                                City = address.City,
-                                Id = address.Id,
-                                Months = address.Months,
-                                StateId = address.StateId,
-                                Years = address.Years,
+                                viewModel.PersonalInformation.MailingAddress = new AddressDto
+                                {
+                                    AddressLine1 = address.AddressLine1,
+                                    AddressLine2 = address.AddressLine2,
+                                    City = address.City,
+                                    Id = address.Id,
+                                    Months = address.Months,
+                                    StateId = address.StateId,
+                                    Years = address.Years,
+                                };
+                            }
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+                            {
+                                viewModel.PersonalInformation.CoBorrowerMailingAddress = new AddressDto
+                                {
+                                    AddressLine1 = address.AddressLine1,
+                                    AddressLine2 = address.AddressLine2,
+                                    City = address.City,
+                                    Id = address.Id,
+                                    Months = address.Months,
+                                    StateId = address.StateId,
+                                    Years = address.Years,
 
-                            };
+                                };
+                            }
                         }
+
                         if (address.AddressType == Enums.AddressType.Residential.ToString())
                         {
-                            viewModel.PersonalInformation.ResidentialAddress = new AddressDto
+                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                             {
-                                AddressLine1 = address.AddressLine1,
-                                AddressLine2 = address.AddressLine2,
-                                City = address.City,
-                                Id = address.Id,
-                                Months = address.Months,
-                                StateId = address.StateId,
-                                Years = address.Years,
-
-                            };
+                                viewModel.PersonalInformation.ResidentialAddress = new AddressDto
+                                {
+                                    AddressLine1 = address.AddressLine1,
+                                    AddressLine2 = address.AddressLine2,
+                                    City = address.City,
+                                    Id = address.Id,
+                                    Months = address.Months,
+                                    StateId = address.StateId,
+                                    Years = address.Years,
+                                };
+                            }
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+                            {
+                                viewModel.PersonalInformation.CoBorrowerResidentialAddress = new AddressDto
+                                {
+                                    AddressLine1 = address.AddressLine1,
+                                    AddressLine2 = address.AddressLine2,
+                                    City = address.City,
+                                    Id = address.Id,
+                                    Months = address.Months,
+                                    StateId = address.StateId,
+                                    Years = address.Years,
+                                };
+                            }
                         }
                     }
 
@@ -181,19 +212,38 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (result.PersonalDetail.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
                     viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
+                    viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
+
                     foreach (var address in result.PersonalDetail.Addresses)
                     {
-                        viewModel.PersonalInformation.PreviousAddresses.Add(new AddressDto
+                        if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
+                            viewModel.PersonalInformation.PreviousAddresses.Add(new AddressDto
+                            {
 
-                            AddressLine1 = address.AddressLine1,
-                            AddressLine2 = address.AddressLine2,
-                            City = address.City,
-                            Id = address.Id,
-                            Months = address.Months,
-                            StateId = address.StateId,
-                            Years = address.Years,
-                        });
+                                AddressLine1 = address.AddressLine1,
+                                AddressLine2 = address.AddressLine2,
+                                City = address.City,
+                                Id = address.Id,
+                                Months = address.Months,
+                                StateId = address.StateId,
+                                Years = address.Years,
+                            });
+                        }
+                        else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                        {
+                            viewModel.PersonalInformation.CoBorrowerPreviousAddresses.Add(new AddressDto
+                            {
+
+                                AddressLine1 = address.AddressLine1,
+                                AddressLine2 = address.AddressLine2,
+                                City = address.City,
+                                Id = address.Id,
+                                Months = address.Months,
+                                StateId = address.StateId,
+                                Years = address.Years,
+                            });
+                        }
                     }
                 }
 
