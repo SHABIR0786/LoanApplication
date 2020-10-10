@@ -7,7 +7,7 @@ import {DataService} from '../services/data.service';
 @Component({
     selector: 'app-loan-application',
     templateUrl: './loan-application.component.html',
-    styleUrls: ['./loan-application.component.css']
+    styleUrls: ['./loan-application.component.css'],
 })
 export class LoanApplicationComponent implements OnInit {
 
