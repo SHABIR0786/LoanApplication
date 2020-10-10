@@ -16,7 +16,10 @@ namespace LoanManagement.Models
         public int? Months { get; set; }
 
         public long PersonalDetailId { get; set; }
+        public int BorrowerTypeId { get; set; }
+
         public PersonalDetail PersonalDetail { get; set; }
         public State State { get; set; }
+        public BorrowerType BorrowerType { get; set; }
     }
 }

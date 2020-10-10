@@ -13,10 +13,16 @@ namespace LoanManagement.ViewModels
         public BorrowerDto Borrower { get; set; }
         [CanBeNull]
         public BorrowerDto CoBorrower { get; set; }
-        public bool? IsMailingAddressSameAsResidential { get; set; }
 
         public AddressDto ResidentialAddress { get; set; }
         public List<AddressDto> PreviousAddresses { get; set; }
         public AddressDto MailingAddress { get; set; }
+        public bool? IsMailingAddressSameAsResidential { get; set; }
+
+
+        public AddressDto CoBorrowerResidentialAddress { get; set; }
+        public List<AddressDto> CoBorrowerPreviousAddresses { get; set; }
+        public AddressDto CoBorrowerMailingAddress { get; set; }
+        public bool? CoBorrowerIsMailingAddressSameAsResidential { get; set; }
     }
 }

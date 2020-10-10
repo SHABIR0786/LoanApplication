@@ -101,6 +101,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     BorrowerId = input.CoBorrower?.Id,
                     CoBorrowerId = input.Borrower?.Id,
                     IsMailingAddressSameAsResidential = input.IsMailingAddressSameAsResidential,
+                    CoBorrowerIsMailingAddressSameAsResidential = input.CoBorrowerIsMailingAddressSameAsResidential
                 };
 
                 if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
@@ -116,6 +117,24 @@ namespace LoanManagement.DatabaseServices.Implementations
                             StateId = address.StateId,
                             Years = address.Years,
                             ZipCode = address.ZipCode,
+                            BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                        });
+                    }
+
+                if (input.CoBorrowerPreviousAddresses != null && input.CoBorrowerPreviousAddresses.Any())
+                    foreach (var address in input.CoBorrowerPreviousAddresses)
+                    {
+                        personalDetail.Addresses.Add(new Address
+                        {
+                            AddressLine1 = address.AddressLine1,
+                            AddressLine2 = address.AddressLine2,
+                            AddressType = Enums.AddressType.Previous.ToString(),
+                            City = address.City,
+                            Months = address.Months,
+                            StateId = address.StateId,
+                            Years = address.Years,
+                            ZipCode = address.ZipCode,
+                            BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                         });
                     }
 
@@ -130,6 +149,21 @@ namespace LoanManagement.DatabaseServices.Implementations
                         StateId = input.MailingAddress.StateId,
                         Years = input.MailingAddress.Years,
                         ZipCode = input.MailingAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                    });
+
+                if (input.CoBorrowerMailingAddress != null)
+                    personalDetail.Addresses.Add(new Address
+                    {
+                        AddressLine1 = input.CoBorrowerMailingAddress.AddressLine1,
+                        AddressLine2 = input.CoBorrowerMailingAddress.AddressLine2,
+                        AddressType = Enums.AddressType.Mailing.ToString(),
+                        City = input.CoBorrowerMailingAddress.City,
+                        Months = input.CoBorrowerMailingAddress.Months,
+                        StateId = input.CoBorrowerMailingAddress.StateId,
+                        Years = input.CoBorrowerMailingAddress.Years,
+                        ZipCode = input.CoBorrowerMailingAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                     });
 
                 if (input.ResidentialAddress != null)
@@ -143,6 +177,21 @@ namespace LoanManagement.DatabaseServices.Implementations
                         StateId = input.ResidentialAddress.StateId,
                         Years = input.ResidentialAddress.Years,
                         ZipCode = input.ResidentialAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                    });
+
+                if (input.CoBorrowerResidentialAddress != null)
+                    personalDetail.Addresses.Add(new Address
+                    {
+                        AddressLine1 = input.CoBorrowerResidentialAddress.AddressLine1,
+                        AddressLine2 = input.CoBorrowerResidentialAddress.AddressLine2,
+                        AddressType = Enums.AddressType.Residential.ToString(),
+                        City = input.CoBorrowerResidentialAddress.City,
+                        Months = input.CoBorrowerResidentialAddress.Months,
+                        StateId = input.CoBorrowerResidentialAddress.StateId,
+                        Years = input.CoBorrowerResidentialAddress.Years,
+                        ZipCode = input.CoBorrowerResidentialAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                     });
 
                 await _repository.InsertAsync(personalDetail);
@@ -275,6 +324,29 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 StateId = address.StateId,
                                 Years = address.Years,
                                 ZipCode = address.ZipCode,
+                                BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                            };
+                            personalDetail.Addresses.Add(newAddress);
+                            newAddresses.Add(newAddress);
+                        }
+                    }
+
+                if (input.CoBorrowerPreviousAddresses != null && input.CoBorrowerPreviousAddresses.Any())
+                    foreach (var address in input.PreviousAddresses)
+                    {
+                        if (!address.Id.HasValue || address.Id.Value == default)
+                        {
+                            var newAddress = new Address
+                            {
+                                AddressLine1 = address.AddressLine1,
+                                AddressLine2 = address.AddressLine2,
+                                AddressType = Enums.AddressType.Previous.ToString(),
+                                City = address.City,
+                                Months = address.Months,
+                                StateId = address.StateId,
+                                Years = address.Years,
+                                ZipCode = address.ZipCode,
+                                BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                             };
                             personalDetail.Addresses.Add(newAddress);
                             newAddresses.Add(newAddress);
@@ -293,6 +365,25 @@ namespace LoanManagement.DatabaseServices.Implementations
                         StateId = input.MailingAddress.StateId,
                         Years = input.MailingAddress.Years,
                         ZipCode = input.MailingAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                    };
+                    personalDetail.Addresses.Add(address);
+                    newAddresses.Add(address);
+                }
+
+                if (input.CoBorrowerMailingAddress != null && input.CoBorrowerMailingAddress.Id.Value == default)
+                {
+                    var address = new Address
+                    {
+                        AddressLine1 = input.CoBorrowerMailingAddress.AddressLine1,
+                        AddressLine2 = input.CoBorrowerMailingAddress.AddressLine2,
+                        AddressType = Enums.AddressType.Mailing.ToString(),
+                        City = input.CoBorrowerMailingAddress.City,
+                        Months = input.CoBorrowerMailingAddress.Months,
+                        StateId = input.CoBorrowerMailingAddress.StateId,
+                        Years = input.CoBorrowerMailingAddress.Years,
+                        ZipCode = input.CoBorrowerMailingAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                     };
                     personalDetail.Addresses.Add(address);
                     newAddresses.Add(address);
@@ -310,6 +401,25 @@ namespace LoanManagement.DatabaseServices.Implementations
                         StateId = input.ResidentialAddress.StateId,
                         Years = input.ResidentialAddress.Years,
                         ZipCode = input.ResidentialAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
+                    };
+                    personalDetail.Addresses.Add(address);
+                    newAddresses.Add(address);
+                }
+
+                if (input.CoBorrowerResidentialAddress != null && input.CoBorrowerResidentialAddress.Id.Value == default)
+                {
+                    var address = new Address
+                    {
+                        AddressLine1 = input.CoBorrowerResidentialAddress.AddressLine1,
+                        AddressLine2 = input.CoBorrowerResidentialAddress.AddressLine2,
+                        AddressType = Enums.AddressType.Residential.ToString(),
+                        City = input.CoBorrowerResidentialAddress.City,
+                        Months = input.CoBorrowerResidentialAddress.Months,
+                        StateId = input.CoBorrowerResidentialAddress.StateId,
+                        Years = input.CoBorrowerResidentialAddress.Years,
+                        ZipCode = input.CoBorrowerResidentialAddress.ZipCode,
+                        BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                     };
                     personalDetail.Addresses.Add(address);
                     newAddresses.Add(address);
@@ -320,6 +430,24 @@ namespace LoanManagement.DatabaseServices.Implementations
 
             if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
                 foreach (var address in input.PreviousAddresses)
+                {
+                    if (address.Id != default)
+                        await _addressRepository.UpdateAsync(address.Id.Value, dbAddress =>
+                        {
+                            dbAddress.AddressLine1 = address.AddressLine1;
+                            dbAddress.AddressLine2 = address.AddressLine2;
+                            dbAddress.City = address.City;
+                            dbAddress.Months = address.Months;
+                            dbAddress.StateId = address.StateId;
+                            dbAddress.Years = address.Years;
+                            dbAddress.ZipCode = address.ZipCode;
+
+                            return Task.CompletedTask;
+                        });
+                }
+
+            if (input.CoBorrowerPreviousAddresses != null && input.CoBorrowerPreviousAddresses.Any())
+                foreach (var address in input.CoBorrowerPreviousAddresses)
                 {
                     if (address.Id != default)
                         await _addressRepository.UpdateAsync(address.Id.Value, dbAddress =>
@@ -350,6 +478,20 @@ namespace LoanManagement.DatabaseServices.Implementations
                     return Task.CompletedTask;
                 });
 
+            if (input.CoBorrowerMailingAddress != null && input.CoBorrowerMailingAddress.Id != default)
+                await _addressRepository.UpdateAsync(input.MailingAddress.Id.Value, dbAddress =>
+                {
+                    dbAddress.AddressLine1 = input.CoBorrowerMailingAddress.AddressLine1;
+                    dbAddress.AddressLine2 = input.CoBorrowerMailingAddress.AddressLine2;
+                    dbAddress.City = input.CoBorrowerMailingAddress.City;
+                    dbAddress.Months = input.CoBorrowerMailingAddress.Months;
+                    dbAddress.StateId = input.CoBorrowerMailingAddress.StateId;
+                    dbAddress.Years = input.CoBorrowerMailingAddress.Years;
+                    dbAddress.ZipCode = input.CoBorrowerMailingAddress.ZipCode;
+
+                    return Task.CompletedTask;
+                });
+
             if (input.ResidentialAddress != null && input.ResidentialAddress.Id != default)
                 await _addressRepository.UpdateAsync(input.ResidentialAddress.Id.Value, dbAddress =>
                 {
@@ -360,6 +502,20 @@ namespace LoanManagement.DatabaseServices.Implementations
                     dbAddress.StateId = input.ResidentialAddress.StateId;
                     dbAddress.Years = input.ResidentialAddress.Years;
                     dbAddress.ZipCode = input.ResidentialAddress.ZipCode;
+
+                    return Task.CompletedTask;
+                });
+
+            if (input.CoBorrowerResidentialAddress != null && input.CoBorrowerResidentialAddress.Id != default)
+                await _addressRepository.UpdateAsync(input.ResidentialAddress.Id.Value, dbAddress =>
+                {
+                    dbAddress.AddressLine1 = input.CoBorrowerResidentialAddress.AddressLine1;
+                    dbAddress.AddressLine2 = input.CoBorrowerResidentialAddress.AddressLine2;
+                    dbAddress.City = input.CoBorrowerResidentialAddress.City;
+                    dbAddress.Months = input.CoBorrowerResidentialAddress.Months;
+                    dbAddress.StateId = input.CoBorrowerResidentialAddress.StateId;
+                    dbAddress.Years = input.CoBorrowerResidentialAddress.Years;
+                    dbAddress.ZipCode = input.CoBorrowerResidentialAddress.ZipCode;
 
                     return Task.CompletedTask;
                 });
@@ -381,11 +537,18 @@ namespace LoanManagement.DatabaseServices.Implementations
             if (addresses != null && addresses.Any())
             {
                 var previousAddress = addresses
-                    .Where(i => i.AddressType == Enums.AddressType.Previous.ToString())
+                    .Where(i => i.AddressType == Enums.AddressType.Previous.ToString() && i.BorrowerTypeId == (int) Enums.BorrowerType.Borrower)
                     .ToList();
                 if (previousAddress.Any())
                     for (var index = 0; index < previousAddress.Count; index++)
                         input.PreviousAddresses[index].Id = previousAddress[index].Id;
+
+                var coBorrowerPreviousAddresses = addresses
+                   .Where(i => i.AddressType == Enums.AddressType.Previous.ToString() && i.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+                   .ToList();
+                if (coBorrowerPreviousAddresses.Any())
+                    for (var index = 0; index < coBorrowerPreviousAddresses.Count; index++)
+                        input.CoBorrowerPreviousAddresses[index].Id = coBorrowerPreviousAddresses[index].Id;
 
                 for (var index = 0; index < addresses.Count; index++)
                 {
@@ -394,12 +557,18 @@ namespace LoanManagement.DatabaseServices.Implementations
                     switch (addressType)
                     {
                         case Enums.AddressType.Residential:
-                            input.ResidentialAddress.Id = address.Id;
+                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                                input.ResidentialAddress.Id = address.Id;
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                                input.CoBorrowerResidentialAddress.Id = address.Id;
                             break;
                         case Enums.AddressType.Previous:
                             continue;
                         case Enums.AddressType.Mailing:
-                            input.MailingAddress.Id = address.Id;
+                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                                input.MailingAddress.Id = address.Id;
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                                input.CoBorrowerMailingAddress.Id = address.Id;
                             break;
                         default:
                             break;

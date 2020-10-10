@@ -16,7 +16,7 @@ namespace LoanManagement.Models
         public long? BorrowerId { get; set; }
         public long? CoBorrowerId { get; set; }
         public bool? IsMailingAddressSameAsResidential { get; set; }
-
+        public bool? CoBorrowerIsMailingAddressSameAsResidential { get; set; }
         public Borrower Borrower { get; set; }
         public Borrower CoBorrower { get; set; }
         public List<Address> Addresses { get; set; }
