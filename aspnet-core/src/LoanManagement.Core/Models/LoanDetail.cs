@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
 
 namespace LoanManagement.Models
@@ -11,37 +12,36 @@ namespace LoanManagement.Models
         public string ReferredBy { get; set; }
 
         public int? PurposeOfLoan { get; set; }
-
-        public int? EstimatedValue { get; set; }
-
-        public int? CurrentLoanAmount { get; set; }
-
-        public int? RequestedLoanAmount { get; set; }
-
-        public int? EstimatedPurchasePrice { get; set; }
-
-        public int? DownPaymentAmount { get; set; }
-
-        public int? DownPaymentPercentage { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? EstimatedValue { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? CurrentLoanAmount { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? RequestedLoanAmount { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? EstimatedPurchasePrice { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? DownPaymentAmount { get; set; }
+        public double? DownPaymentPercentage { get; set; }
 
         public int? SourceOfDownPayment { get; set; }
-
-        public int? GiftAmount { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? GiftAmount { get; set; }
 
         public string GiftExplanation { get; set; }
 
 
         public bool? HaveSecondMortgage { get; set; }
-
-        public int? SecondMortgageAmount { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? SecondMortgageAmount { get; set; }
 
         public bool? PayLoanWithNewLoan { get; set; }
 
         public bool? RefinancingCurrentHome { get; set; }
 
         public string YearAcquired { get; set; }
-
-        public int? OriginalPrice { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? OriginalPrice { get; set; }
 
 
         public string City { get; set; }
