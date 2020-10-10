@@ -1,11 +1,11 @@
-import {IBorrowerDemographicModel} from './IBorrowerDemographicModel';
-import {IBorrowerDeclarationModel} from './IBorrowerDeclarationModel';
+import { IBorrowerDemographicModel } from "./IBorrowerDemographicModel";
+import { IBorrowerDeclarationModel } from "./IBorrowerDeclarationModel";
 
 export interface IDeclarationModel {
-    id?: number;
-    borrowerDeclaration?: IBorrowerDeclarationModel;
-    borrowerDemographic?: IBorrowerDemographicModel;
+  id?: number;
+  borrowerDeclaration?: IBorrowerDeclarationModel;
+  borrowerDemographic?: IBorrowerDemographicModel;
 
-    coBorrowerDeclaration?: IBorrowerDeclarationModel;
-    coBorrowerDemographic?: IBorrowerDemographicModel;
+  coBorrowerDeclaration?: IBorrowerDeclarationModel;
+  coBorrowerDemographic?: IBorrowerDemographicModel;
 }

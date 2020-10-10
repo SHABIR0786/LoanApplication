@@ -1,7 +1,7 @@
 export interface IConsentModel {
-    id?: number;
-    agreeEConsent?: boolean;
-    firstName?: string;
-    lastName?: string;
-    email?: string;
+  id?: number;
+  agreeEConsent?: boolean;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
 }

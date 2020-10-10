@@ -24,7 +24,7 @@ export class BorrowerPersonalDetailComponent implements OnInit, DoCheck {
   maritalStatuses = [];
   suffixes = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.loadMaritalStatuses();

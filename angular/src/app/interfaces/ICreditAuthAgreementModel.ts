@@ -1,4 +1,4 @@
 export interface ICreditAuthAgreementModel {
-    id?: number;
-    agreeCreditAuthAgreement?: boolean;
+  id?: number;
+  agreeCreditAuthAgreement?: boolean;
 }

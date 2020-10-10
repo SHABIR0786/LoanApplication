@@ -3,22 +3,23 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output
-} from '@angular/core';
-import { finalize } from 'rxjs/operators';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import * as _ from 'lodash';
-import { AppComponentBase } from '@shared/app-component-base';
+  Output,
+} from "@angular/core";
+import { finalize } from "rxjs/operators";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import * as _ from "lodash";
+import { AppComponentBase } from "@shared/app-component-base";
 import {
   UserServiceProxy,
   UserDto,
-  RoleDto
-} from '@shared/service-proxies/service-proxies';
+  RoleDto,
+} from "@shared/service-proxies/service-proxies";
 
 @Component({
-  templateUrl: './edit-user-dialog.component.html'
+  templateUrl: "./edit-user-dialog.component.html",
 })
-export class EditUserDialogComponent extends AppComponentBase
+export class EditUserDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   user = new UserDto();
@@ -86,7 +87,7 @@ export class EditUserDialogComponent extends AppComponentBase
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'));
+        this.notify.info(this.l("SavedSuccessfully"));
         this.bsModalRef.hide();
         this.onSave.emit();
       });
