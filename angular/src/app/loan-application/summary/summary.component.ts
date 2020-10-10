@@ -30,6 +30,7 @@ export class SummaryComponent implements OnInit {
             this.errors = errors;
         });
         this.formData = this._dataService.loanApplication;
+        console.log(this.formData)
     }
 
     sanitizeFormData(formData) {
