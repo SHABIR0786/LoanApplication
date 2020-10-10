@@ -1661,6 +1661,7 @@
                       </div>
                     </div>
 
+
                     <div class="row">
                       <div class="col">
                         <h6
@@ -1822,299 +1823,313 @@
                       </div>
                     </div>
                     <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 ||
-                        (manualAssetEntry.assetTypeId === 11 &&
-                          manualAssetEntry.propertyStatus)
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Property Status
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.propertyStatus === undefined ||
-                              manualAssetEntry.propertyStatus === null
-                                ? "--"
-                                : manualAssetEntry.propertyStatus
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.propertyIsUsedAs
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Property Is Used As
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.propertyIsUsedAs === undefined ||
-                              manualAssetEntry.propertyIsUsedAs === null
-                                ? "--"
-                                : manualAssetEntry.propertyIsUsedAs
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.propertyType
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Property Type
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.propertyType === undefined ||
-                              manualAssetEntry.propertyType === null
-                                ? "--"
-                                : manualAssetEntry.propertyType
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.presentMarketValue
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Present Market Value
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.presentMarketValue ===
-                                undefined ||
-                              manualAssetEntry.presentMarketValue === null
-                                ? "--"
-                                : manualAssetEntry.presentMarketValue
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.outstandingMortgageBalance
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Outstanding Mortgage Balance
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.outstandingMortgageBalance ===
-                                undefined ||
-                              manualAssetEntry.outstandingMortgageBalance ===
-                                null
-                                ? "--"
-                                : manualAssetEntry.outstandingMortgageBalance
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.monthlyMortgagePayment
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Monthly Mortgage Payment
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.monthlyMortgagePayment ===
-                                undefined ||
-                              manualAssetEntry.monthlyMortgagePayment === null
-                                ? "--"
-                                : manualAssetEntry.monthlyMortgagePayment
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.purchasePrice
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Purchase Price
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.purchasePrice === undefined ||
-                              manualAssetEntry.purchasePrice === null
-                                ? "--"
-                                : manualAssetEntry.purchasePrice
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.grossRentalIncome
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Gross Rental Income
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.grossRentalIncome ===
-                                undefined ||
-                              manualAssetEntry.grossRentalIncome === null
-                                ? "--"
-                                : manualAssetEntry.grossRentalIncome
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 12 &&
-                        manualAssetEntry.companyName
-                      "
-                    >
-                      <div class="row">
-                        <div class="col">
-                          <h6
-                            class="font-weight-normal form-text text-muted mb-3"
-                          >
-                            Company Name
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              manualAssetEntry.companyName === undefined ||
-                              manualAssetEntry.companyName === null
-                                ? "--"
-                                : manualAssetEntry.companyName
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 12 &&
-                        manualAssetEntry.accountNumber
-                      "
-                    >
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9 ||
+                      manualAssetEntry.assetTypeId === 11
+
+                      &&
+                      manualAssetEntry.propertyStatus
+                    "
+                  >
+                    <div class="row">
                       <div class="col">
                         <h6
                           class="font-weight-normal form-text text-muted mb-3"
                         >
-                          Account Number
+                          Property Status
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            manualAssetEntry.accountNumber === undefined ||
-                            manualAssetEntry.accountNumber === null
+                            manualAssetEntry.propertyStatus === undefined ||
+                            manualAssetEntry.propertyStatus === null
                               ? "--"
-                              : manualAssetEntry.accountNumber
+                              : manualAssetEntry.propertyStatus
                           }}
                         </p>
                       </div>
                     </div>
+                    </div>
                     <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 12 &&
-                        manualAssetEntry.value
-                      "
-                    >
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.propertyIsUsedAs
+                    "
+                  >
+                    <div class="row">
                       <div class="col">
                         <h6
                           class="font-weight-normal form-text text-muted mb-3"
                         >
-                          Value
+                          Property Is Used As
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            manualAssetEntry.value === undefined ||
-                            manualAssetEntry.value === null
+                            manualAssetEntry.propertyIsUsedAs === undefined ||
+                            manualAssetEntry.propertyIsUsedAs === null
                               ? "--"
-                              : manualAssetEntry.value
+                              : manualAssetEntry.propertyIsUsedAs
                           }}
                         </p>
                       </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.propertyType
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Property Type
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.propertyType === undefined ||
+                            manualAssetEntry.propertyType === null
+                              ? "--"
+                              : manualAssetEntry.propertyType
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.presentMarketValue
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Present Market Value
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.presentMarketValue === undefined ||
+                            manualAssetEntry.presentMarketValue === null
+                              ? "--"
+                              : manualAssetEntry.presentMarketValue
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.outstandingMortgageBalance
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Outstanding Mortgage Balance
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.outstandingMortgageBalance ===
+                              undefined ||
+                            manualAssetEntry.outstandingMortgageBalance === null
+                              ? "--"
+                              : manualAssetEntry.outstandingMortgageBalance
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.monthlyMortgagePayment
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Monthly Mortgage Payment
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.monthlyMortgagePayment ===
+                              undefined ||
+                            manualAssetEntry.monthlyMortgagePayment === null
+                              ? "--"
+                              : manualAssetEntry.monthlyMortgagePayment
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.purchasePrice
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Purchase Price
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.purchasePrice === undefined ||
+                            manualAssetEntry.purchasePrice === null
+                              ? "--"
+                              : manualAssetEntry.purchasePrice
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.grossRentalIncome
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Gross Rental Income
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.grossRentalIncome === undefined ||
+                            manualAssetEntry.grossRentalIncome === null
+                              ? "--"
+                              : manualAssetEntry.grossRentalIncome
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+
+                      &&
+                      manualAssetEntry.companyName
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          Company Name
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            manualAssetEntry.companyName === undefined ||
+                            manualAssetEntry.companyName === null
+                              ? "--"
+                              : manualAssetEntry.companyName
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+
+                      &&
+                      manualAssetEntry.accountNumber
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Account Number
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.accountNumber === undefined ||
+                          manualAssetEntry.accountNumber === null
+                            ? "--"
+                            : manualAssetEntry.accountNumber
+                        }}
+                      </p>
+                    </div>
+                    </div>
+                    <div
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 12
+
+                      &&
+                      manualAssetEntry.value
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Value
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.value === undefined ||
+                          manualAssetEntry.value === null
+                            ? "--"
+                            : manualAssetEntry.value
+                        }}
+                      </p>
+                    </div>
                     </div>
 
                     <div
-                      *ngIf="
-                        manualAssetEntry.assetTypeId === 9 &&
-                        manualAssetEntry.taxesInsuranceAndOther
-                      "
-                    >
-                      <div class="col">
-                        <h6
-                          class="font-weight-normal form-text text-muted mb-3"
-                        >
-                          TaxesInsuranceAndOther
-                        </h6>
-                        <p class="font-weight-bold">
-                          {{
-                            manualAssetEntry.taxesInsuranceAndOther ===
-                              undefined ||
-                            manualAssetEntry.taxesInsuranceAndOther === null
-                              ? "--"
-                              : manualAssetEntry.taxesInsuranceAndOther
-                          }}
-                        </p>
-                      </div>
+                    *ngIf="
+                      manualAssetEntry.assetTypeId === 9
+
+                      &&
+                      manualAssetEntry.taxesInsuranceAndOther
+                    "
+                  >
+                    <div class="col">
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        TaxesInsuranceAndOther
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          manualAssetEntry.taxesInsuranceAndOther ===
+                            undefined ||
+                          manualAssetEntry.taxesInsuranceAndOther === null
+                            ? "--"
+                            : manualAssetEntry.taxesInsuranceAndOther
+                        }}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div></div>
 
             <!-- Assets End -->
 
@@ -2225,6 +2240,7 @@
             <!-- EConsent End -->
 
             <!-- Declarations Start -->
+            <!-- Borrower Declaration Start -->
             <div class="row">
               <div class="col-6">
                 <div class="row">
@@ -2527,6 +2543,314 @@
                   </div>
                 </div>
               </div>
+              <!-- Co-Borrower Declarations Start -->
+
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="mt-5">Declarations</h5>
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mt-5">Co-Borrower Declarations
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal text-muted form-text mt-3">
+                      a. Are there any outstanding judgments against you?
+                    </h6>
+                    <p class="font-weight-bold mt-3">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isOutstandingJudgmentsAgainstYou === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isOutstandingJudgmentsAgainstYou === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isOutstandingJudgmentsAgainstYou
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      b. Have you been declared bankrupt within the past 7
+                      years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isDeclaredBankrupt === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isDeclaredBankrupt === null
+                          ? "--"
+                          : formData.declaration.isDeclaredBankrupt
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      c. Have you had property foreclosed upon or given title or
+                      deed in lieu thereof in the last 7 years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPropertyForeClosedUponOrGivenTitle === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPropertyForeClosedUponOrGivenTitle === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPropertyForeClosedUponOrGivenTitle
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      d. Are you a party to a lawsuit?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPartyToLawsuit === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPartyToLawsuit === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPartyToLawsuit
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      e. Have you directly or indirectly been obligated on any
+                      loan which resulted in foreclosure, transfer of title in
+                      lieu of foreclosure, or judgment?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedOnAnyLoanWhichResultedForeclosure ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedOnAnyLoanWhichResultedForeclosure === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isObligatedOnAnyLoanWhichResultedForeclosure
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      f. Are you presently delinquent or in default on any
+                      Federal debt or any other loan, mortgage, financial
+                      obligation, bond or loan guarantee?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPresentlyDelinquent === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPresentlyDelinquent === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPresentlyDelinquent
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      g. Are you obligated to pay alimony, child support, or
+                      separate maintenance?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedToPayAlimonyChildSupport === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isObligatedToPayAlimonyChildSupport === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isObligatedToPayAlimonyChildSupport
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      h. Is any part of the down payment borrowed?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isAnyPartOfTheDownPayment === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isAnyPartOfTheDownPayment === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isAnyPartOfTheDownPayment
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      i. Are you a co-maker or endorser on a note?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isCoMakerOrEndorser === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isCoMakerOrEndorser === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isCoMakerOrEndorser
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      j. Are you a U.S. citizen?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration.isUSCitizen
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      k. Are you a permanent resident alien?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isPermanentResidentSlien === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isPermanentResidentSlien === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isPermanentResidentSlien
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      l. Do you intend to occupy the property as your primary
+                      residence?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isIntendToOccupyThePropertyAsYourPrimary ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isIntendToOccupyThePropertyAsYourPrimary === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isIntendToOccupyThePropertyAsYourPrimary
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      m. Have you had any ownership interest in a property in
+                      the last three years?
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .isOwnershipInterestInPropertyLastThreeYears ===
+                          undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .isOwnershipInterestInPropertyLastThreeYears === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .isOwnershipInterestInPropertyLastThreeYears
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      For the Declarations section, you are required to explain
+                      any "Yes" answers to questions a through i.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDeclaration
+                          .declarationsSection === undefined ||
+                        formData.declaration.borrowerDeclaration
+                          .declarationsSection === null
+                          ? "--"
+                          : formData.declaration.borrowerDeclaration
+                              .declarationsSection
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Co-Borrower Declarations End -->
+
+              <!-- Borrower Declaration End -->
+              <!-- Borrower Demographic Information Start -->
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
@@ -2571,7 +2895,9 @@
                         formData.declaration.borrowerDemographic.ethnicity ===
                           null
                           ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -2
                           ? "Yes"
                           : "No"
                       }}
@@ -2590,7 +2916,9 @@
                         formData.declaration.borrowerDemographic.ethnicity ===
                           null
                           ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -3
                           ? "Yes"
                           : "No"
                       }}
@@ -2609,7 +2937,9 @@
                         formData.declaration.borrowerDemographic.ethnicity ===
                           null
                           ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -4
                           ? "Yes"
                           : "No"
                       }}
@@ -2623,8 +2953,16 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | ethnicityYesNo: 5
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                              5
+                            ) !== -1
+                          ? "Yes"
+                          : "No"
                       }}
                     </p>
                   </div>
@@ -2635,10 +2973,10 @@
                       class="font-weight-normal form-text text-muted mt-3"
                     ></h6>
                     <p class="font-weight-bold">
-                      {{
+                      <!-- {{
                         formData.declaration.borrowerDemographic.ethnicity
                           | ethnicityOtherValue: 5
-                      }}
+                      }} -->
                     </p>
                   </div>
                 </div>
@@ -3052,42 +3390,621 @@
                     </p>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                  <h6 class="font-weight-normal form-text text-muted mt-3">
-                    Male
-                  </h6>
-                  <p class="font-weight-bold">
-                    {{
-                      formData.declaration.borrowerDemographic.sex ===
-                        undefined ||
-                      formData.declaration.borrowerDemographic.sex === null
-                        ? "--"
-                        : formData.declaration.borrowerDemographic.sex
-                        ? "Yes"
-                        : "No"
-                    }}
-                  </p>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Male
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              -->
-              <div class="row">
-                <div class="col-8">
-                  <h6 class="font-weight-normal form-text text-muted mt-3">
-                    I do not wish to provide this information.
-                  </h6>
-                  <p class="font-weight-bold">
-                    {{
-                      formData.declaration.borrowerDemographic.sex ===
-                        undefined ||
-                      formData.declaration.borrowerDemographic.sex === null
-                        ? "--"
-                        : formData.declaration.borrowerDemographic.sex
-                        ? "Yes"
-                        : "No"
-                    }}
-                  </p>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                  <!-- Borrower Demographic Information End -->
+                  <!-- Co-Borrower Demographic Information Start -->
+
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="mt-5">&nbsp;</h5>
+                    <div class="row">
+                      <div class="col-11">
+                        <h5 class="mt-5">Co-Borrower Demographic Information</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Hispanic or Latino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                              2
+                            ) !== -1
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Mexican
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -2
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Puerto Rican
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -3
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Cuban
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                            2
+                          ) !== -4
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Hispanic or Latino - Enter Origin
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
+                              5
+                            ) !== -1
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      <!-- {{
+                        formData.declaration.borrowerDemographic.ethnicity
+                          | ethnicityOtherValue: 5
+                      }} -->
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Not Hispanic or Latino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.ethnicity ===
+                          null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.ethnicity
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      American Indian or Alaska Native
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Asian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Asian Indian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Chinese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Filipino
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Japanese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Korean
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Vietnamese
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Asian - Enter Race:
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Black or African American
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Native Hawaiian or Other Pacific Islander
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Native Hawaiian
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Guamanian or Chamorro
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Samoan
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Other Pacific Islander - Enter Race:
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6
+                      class="font-weight-normal form-text text-muted mt-3"
+                    ></h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      White
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.race ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.race === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.race
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Female
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Male
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      I do not wish to provide this information.
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.declaration.borrowerDemographic.sex ===
+                          undefined ||
+                        formData.declaration.borrowerDemographic.sex === null
+                          ? "--"
+                          : formData.declaration.borrowerDemographic.sex
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                </div>
+                <!-- Co-Borrower Demographic Information End -->
                 </div>
               </div>
             </div>
