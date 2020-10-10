@@ -58,11 +58,30 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<ExpensesDto> UpdateAsync(ExpensesDto input)
         {
-            await _repository.UpdateAsync(input.Id.Value, expense =>
-            {
-                return Task.CompletedTask;
-            });
+            if (input.IsLiveWithFamilySelectRent == true)
+                await _repository.UpdateAsync(input.Id.Value, expense =>
+               {
 
+                   expense.Rent = input.Rent;
+                   expense.OtherHousingExpenses = input.OtherHousingExpenses;
+
+
+
+                   return Task.CompletedTask;
+               });
+            else if (input.IsLiveWithFamilySelectRent == false)
+                await _repository.UpdateAsync(input.Id.Value, expense =>
+                  {
+
+                      expense.IsLiveWithFamilySelectRent = input.IsLiveWithFamilySelectRent;
+                      expense.FirstMortgage = input.FirstMortgage;
+                      expense.SecondMortgage = input.SecondMortgage;
+                      expense.HazardInsurance = input.HazardInsurance;
+                      expense.RealEstateTaxes = input.RealEstateTaxes;
+                      expense.MortgageInsurance = input.MortgageInsurance;
+                      expense.HomeOwnersAssociation = input.HomeOwnersAssociation;
+                      return Task.CompletedTask;
+                  });
             await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }
