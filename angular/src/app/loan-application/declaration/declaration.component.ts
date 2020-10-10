@@ -308,7 +308,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.data = this._dataService.loanApplication.declaration;
@@ -341,6 +341,61 @@ export class DeclarationComponent implements OnInit, DoCheck {
         this.data.borrowerDemographic
       ),
     });
+
+    if (this.data.borrowerDemographic) {
+      this.data.borrowerDemographic.ethnicity.forEach(element => {
+        this.borrowerEthnics.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+
+      this.data.borrowerDemographic.race.forEach(element => {
+        this.borrowerRaces.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+
+      this.data.borrowerDemographic.sex.forEach(element => {
+        this.borrowerSexArr.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+    }
+
+
+    if (this.data.coBorrowerDemographic) {
+      this.data.coBorrowerDemographic.ethnicity.forEach(element => {
+        this.coBorrowerEthnics.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+
+      this.data.coBorrowerDemographic.race.forEach(element => {
+        this.coBorrowerRaces.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+
+      this.data.coBorrowerDemographic.sex.forEach(element => {
+        this.coBorrowerSexArr.forEach(item => {
+          if (element.id == item.id) {
+            item.checked = true;
+          }
+        });
+      });
+    }
+
+
 
     if (this.isApplyingWithCoBorrower) {
       this.data.coBorrowerDeclaration = {};
@@ -449,6 +504,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
   }
 
   proceedToNext(event?: string) {
+    debugger;
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {
