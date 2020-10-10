@@ -12,27 +12,27 @@ namespace LoanManagement.ViewModels
 
         public int? PurposeOfLoan { get; set; }
 
-        public int? EstimatedValue { get; set; }
+        public decimal? EstimatedValue { get; set; }
 
-        public int? CurrentLoanAmount { get; set; }
+        public decimal? CurrentLoanAmount { get; set; }
 
-        public int? RequestedLoanAmount { get; set; }
+        public decimal? RequestedLoanAmount { get; set; }
 
-        public int? EstimatedPurchasePrice { get; set; }
+        public decimal? EstimatedPurchasePrice { get; set; }
 
-        public int? DownPaymentAmount { get; set; }
+        public decimal? DownPaymentAmount { get; set; }
 
-        public int? DownPaymentPercentage { get; set; }
+        public double? DownPaymentPercentage { get; set; }
 
         public int? SourceOfDownPayment { get; set; }
 
-        public int? GiftAmount { get; set; }
+        public decimal? GiftAmount { get; set; }
 
         public string GiftExplanation { get; set; }
 
         public bool? HaveSecondMortgage { get; set; }
 
-        public int? SecondMortgageAmount { get; set; }
+        public decimal? SecondMortgageAmount { get; set; }
 
         public bool? PayLoanWithNewLoan { get; set; }
 
@@ -40,7 +40,7 @@ namespace LoanManagement.ViewModels
 
         public string YearAcquired { get; set; }
 
-        public int? OriginalPrice { get; set; }
+        public decimal? OriginalPrice { get; set; }
 
         public string City { get; set; }
 
