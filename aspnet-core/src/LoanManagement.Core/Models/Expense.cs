@@ -1,17 +1,26 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
 
 namespace LoanManagement.Models
 {
     public class Expense : FullAuditedEntity<long>
     {
-        public string IsLiveWithFamilySelectRent { get; set; }
-        public int? Rent { get; set; }
-        public int? OtherHousingExpenses { get; set; }
-        public int? FirstMortgage { get; set; }
-        public int? SecondMortgage { get; set; }
-        public int? HazardInsurance { get; set; }
-        public int? RealEstateTaxes { get; set; }
-        public int? MortgageInsurance { get; set; }
-        public int? HomeOwnersAssociation { get; set; }
+        public bool? IsLiveWithFamilySelectRent { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Rent { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? OtherHousingExpenses { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? FirstMortgage { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? SecondMortgage { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? HazardInsurance { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? RealEstateTaxes { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? MortgageInsurance { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? HomeOwnersAssociation { get; set; }
     }
 }

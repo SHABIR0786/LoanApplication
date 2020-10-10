@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace LoanManagement.Migrations
 {
@@ -464,6 +464,26 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AssetType",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssetType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BorrowerTypes",
                 columns: table => new
                 {
@@ -532,19 +552,32 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    IsLiveWithFamilySelectRent = table.Column<string>(nullable: true),
-                    Rent = table.Column<int>(nullable: true),
-                    OtherHousingExpenses = table.Column<int>(nullable: true),
-                    FirstMortgage = table.Column<int>(nullable: true),
-                    SecondMortgage = table.Column<int>(nullable: true),
-                    HazardInsurance = table.Column<int>(nullable: true),
-                    RealEstateTaxes = table.Column<int>(nullable: true),
-                    MortgageInsurance = table.Column<int>(nullable: true),
-                    HomeOwnersAssociation = table.Column<int>(nullable: true)
+                    IsLiveWithFamilySelectRent = table.Column<bool>(nullable: true),
+                    Rent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OtherHousingExpenses = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    FirstMortgage = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    SecondMortgage = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    HazardInsurance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    RealEstateTaxes = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    MortgageInsurance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    HomeOwnersAssociation = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Expenses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IncomeSource",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IncomeSource", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -564,21 +597,21 @@ namespace LoanManagement.Migrations
                     LoanOfficerId = table.Column<int>(nullable: true),
                     ReferredBy = table.Column<string>(nullable: true),
                     PurposeOfLoan = table.Column<int>(nullable: true),
-                    EstimatedValue = table.Column<int>(nullable: true),
-                    CurrentLoanAmount = table.Column<int>(nullable: true),
-                    RequestedLoanAmount = table.Column<int>(nullable: true),
-                    EstimatedPurchasePrice = table.Column<int>(nullable: true),
-                    DownPaymentAmount = table.Column<int>(nullable: true),
-                    DownPaymentPercentage = table.Column<int>(nullable: true),
+                    EstimatedValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    CurrentLoanAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    RequestedLoanAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    EstimatedPurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DownPaymentAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DownPaymentPercentage = table.Column<double>(nullable: true),
                     SourceOfDownPayment = table.Column<int>(nullable: true),
-                    GiftAmount = table.Column<int>(nullable: true),
+                    GiftAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     GiftExplanation = table.Column<string>(nullable: true),
                     HaveSecondMortgage = table.Column<bool>(nullable: true),
-                    SecondMortgageAmount = table.Column<int>(nullable: true),
+                    SecondMortgageAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     PayLoanWithNewLoan = table.Column<bool>(nullable: true),
                     RefinancingCurrentHome = table.Column<bool>(nullable: true),
                     YearAcquired = table.Column<string>(nullable: true),
-                    OriginalPrice = table.Column<int>(nullable: true),
+                    OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     City = table.Column<string>(nullable: true),
                     StateId = table.Column<int>(nullable: true),
                     PropertyTypeId = table.Column<int>(nullable: true),
@@ -588,6 +621,26 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoanDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "States",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_States", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1074,7 +1127,8 @@ namespace LoanManagement.Migrations
                     AgreePrivacyPolicy = table.Column<bool>(nullable: true),
                     BorrowerId = table.Column<long>(nullable: true),
                     CoBorrowerId = table.Column<long>(nullable: true),
-                    IsMailingAddressSameAsResidential = table.Column<bool>(nullable: true)
+                    IsMailingAddressSameAsResidential = table.Column<bool>(nullable: true),
+                    CoBorrowerIsMailingAddressSameAsResidential = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1110,21 +1164,34 @@ namespace LoanManagement.Migrations
                     AddressLine1 = table.Column<string>(nullable: true),
                     AddressLine2 = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
+                    StateId = table.Column<int>(nullable: true),
                     ZipCode = table.Column<int>(nullable: true),
                     Years = table.Column<int>(nullable: true),
                     Months = table.Column<int>(nullable: true),
-                    PersonalDetailId = table.Column<long>(nullable: false)
+                    PersonalDetailId = table.Column<long>(nullable: false),
+                    BorrowerTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Addresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Addresses_BorrowerTypes_BorrowerTypeId",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Addresses_PersonalDetails_PersonalDetailId",
                         column: x => x.PersonalDetailId,
                         principalTable: "PersonalDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Addresses_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -1203,7 +1270,7 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Amount = table.Column<decimal>(nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     IncomeSourceId = table.Column<int>(nullable: true),
                     BorrowerTypeId = table.Column<int>(nullable: true),
                     LoanApplicationId = table.Column<long>(nullable: false)
@@ -1215,6 +1282,12 @@ namespace LoanManagement.Migrations
                         name: "FK_AdditionalIncomes_BorrowerTypes_BorrowerTypeId",
                         column: x => x.BorrowerTypeId,
                         principalTable: "BorrowerTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AdditionalIncomes_IncomeSource_IncomeSourceId",
+                        column: x => x.IncomeSourceId,
+                        principalTable: "IncomeSource",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -1281,11 +1354,11 @@ namespace LoanManagement.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    Base = table.Column<int>(nullable: true),
-                    Overtime = table.Column<int>(nullable: true),
-                    Bonuses = table.Column<int>(nullable: true),
-                    Commissions = table.Column<int>(nullable: true),
-                    Dividends = table.Column<int>(nullable: true),
+                    Base = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Overtime = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Bonuses = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Commissions = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Dividends = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     BorrowerTypeId = table.Column<int>(nullable: true),
                     LoanApplicationId = table.Column<long>(nullable: false)
                 },
@@ -1416,15 +1489,206 @@ namespace LoanManagement.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ManualAssetEntries",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    AssetTypeId = table.Column<long>(nullable: false),
+                    AccountNumber = table.Column<string>(nullable: true),
+                    CashValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    Address2 = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    StateId = table.Column<int>(nullable: false),
+                    ZipCode = table.Column<string>(maxLength: 9, nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    BankName = table.Column<string>(nullable: true),
+                    PropertyStatus = table.Column<string>(nullable: true),
+                    PropertyIsUsedAs = table.Column<string>(nullable: true),
+                    PropertyType = table.Column<string>(nullable: true),
+                    PresentMarketValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OutstandingMortgageBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    MonthlyMortgagePayment = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    GrossRentalIncome = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TaxesInsuranceAndOther = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    LoanApplicationId = table.Column<long>(nullable: false),
+                    BorrowerTypeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ManualAssetEntries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ManualAssetEntries_AssetType_AssetTypeId",
+                        column: x => x.AssetTypeId,
+                        principalTable: "AssetType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ManualAssetEntries_BorrowerTypes_BorrowerTypeId",
+                        column: x => x.BorrowerTypeId,
+                        principalTable: "BorrowerTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ManualAssetEntries_LoanApplications_LoanApplicationId",
+                        column: x => x.LoanApplicationId,
+                        principalTable: "LoanApplications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ManualAssetEntries_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StockAndBonds",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    CompanyName = table.Column<string>(nullable: true),
+                    AccountNumber = table.Column<string>(nullable: true),
+                    Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ManualAssetEntryId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StockAndBonds", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StockAndBonds_ManualAssetEntries_ManualAssetEntryId",
+                        column: x => x.ManualAssetEntryId,
+                        principalTable: "ManualAssetEntries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
-                table: "BorrowerTypes",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "Borrower" });
+                table: "AssetType",
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
+                values: new object[,]
+                {
+                    { 1L, new DateTime(2020, 10, 11, 1, 0, 40, 92, DateTimeKind.Local).AddTicks(9733), null, null, null, false, null, null, "Cash deposit on sales contract" },
+                    { 13L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(605), null, null, null, false, null, null, "Trust Account" },
+                    { 12L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(601), null, null, null, false, null, null, "Stocks & Bonds" },
+                    { 11L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(598), null, null, null, false, null, null, "Savings Account" },
+                    { 10L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(595), null, null, null, false, null, null, "Retirement Funds" },
+                    { 8L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(588), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
+                    { 9L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(591), null, null, null, false, null, null, "Real Estate Owned" },
+                    { 6L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(581), null, null, null, false, null, null, "Money Market Fund" },
+                    { 5L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(578), null, null, null, false, null, null, "Gift of equity" },
+                    { 4L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(575), null, null, null, false, null, null, "Gifts" },
+                    { 3L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(570), null, null, null, false, null, null, "Checking Account" },
+                    { 2L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(491), null, null, null, false, null, null, "Certificate of Deposit" },
+                    { 7L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(585), null, null, null, false, null, null, "Mutual Funds" }
+                });
 
             migrationBuilder.InsertData(
                 table: "BorrowerTypes",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "Co-Borrower" });
+                values: new object[,]
+                {
+                    { 1, "Borrower" },
+                    { 2, "Co-Borrower" },
+                    { 3, "Both" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "IncomeSource",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 4, "Boarder Income" },
+                    { 3, "Automobile/Expense Account" },
+                    { 1, "Accessory Unit Income" },
+                    { 2, "Alimony/Child Support" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "States",
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
+                values: new object[,]
+                {
+                    { 43, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6102), null, null, null, false, null, null, "OR" },
+                    { 32, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5963), null, null, null, false, null, null, "NE" },
+                    { 33, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5966), null, null, null, false, null, null, "NV" },
+                    { 34, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5970), null, null, null, false, null, null, "NH" },
+                    { 35, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5974), null, null, null, false, null, null, "NJ" },
+                    { 36, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5977), null, null, null, false, null, null, "NM" },
+                    { 37, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6007), null, null, null, false, null, null, "NY" },
+                    { 38, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6010), null, null, null, false, null, null, "NC" },
+                    { 39, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6090), null, null, null, false, null, null, "ND" },
+                    { 40, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6093), null, null, null, false, null, null, "MP" },
+                    { 41, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6096), null, null, null, false, null, null, "OH" },
+                    { 42, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6099), null, null, null, false, null, null, "OK" },
+                    { 44, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6105), null, null, null, false, null, null, "PW" },
+                    { 54, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6132), null, null, null, false, null, null, "VI" },
+                    { 46, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6110), null, null, null, false, null, null, "PR" },
+                    { 47, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6113), null, null, null, false, null, null, "RI" },
+                    { 48, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6116), null, null, null, false, null, null, "SC" },
+                    { 49, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6118), null, null, null, false, null, null, "SD" },
+                    { 50, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6121), null, null, null, false, null, null, "TN" },
+                    { 51, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6124), null, null, null, false, null, null, "TX" },
+                    { 52, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6127), null, null, null, false, null, null, "UT" },
+                    { 53, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6129), null, null, null, false, null, null, "VT" },
+                    { 31, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5959), null, null, null, false, null, null, "MT" },
+                    { 55, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6135), null, null, null, false, null, null, "VA" },
+                    { 56, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6138), null, null, null, false, null, null, "WA" },
+                    { 57, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6141), null, null, null, false, null, null, "WV" },
+                    { 45, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6107), null, null, null, false, null, null, "PA" },
+                    { 30, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5955), null, null, null, false, null, null, "MO" },
+                    { 20, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5918), null, null, null, false, null, null, "KS" },
+                    { 28, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5948), null, null, null, false, null, null, "MN" },
+                    { 1, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(4117), null, null, null, false, null, null, "AL" },
+                    { 2, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5827), null, null, null, false, null, null, "AK" },
+                    { 3, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5857), null, null, null, false, null, null, "AS" },
+                    { 4, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5862), null, null, null, false, null, null, "AZ" },
+                    { 5, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5866), null, null, null, false, null, null, "AR" },
+                    { 6, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5869), null, null, null, false, null, null, "CA" },
+                    { 7, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5872), null, null, null, false, null, null, "CO" },
+                    { 8, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5876), null, null, null, false, null, null, "CT" },
+                    { 9, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5879), null, null, null, false, null, null, "DE" },
+                    { 10, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5883), null, null, null, false, null, null, "DC" },
+                    { 11, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5886), null, null, null, false, null, null, "FM" },
+                    { 12, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5890), null, null, null, false, null, null, "FL" },
+                    { 13, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5893), null, null, null, false, null, null, "GA" },
+                    { 14, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5897), null, null, null, false, null, null, "GU" },
+                    { 15, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5900), null, null, null, false, null, null, "HI" },
+                    { 16, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5904), null, null, null, false, null, null, "ID" },
+                    { 17, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5908), null, null, null, false, null, null, "IL" },
+                    { 18, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5911), null, null, null, false, null, null, "IN" },
+                    { 19, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5915), null, null, null, false, null, null, "IA" },
+                    { 58, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6144), null, null, null, false, null, null, "WI" },
+                    { 21, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5922), null, null, null, false, null, null, "KY" },
+                    { 22, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5926), null, null, null, false, null, null, "LA" },
+                    { 23, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5930), null, null, null, false, null, null, "ME" },
+                    { 24, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5933), null, null, null, false, null, null, "MH" },
+                    { 25, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5937), null, null, null, false, null, null, "MD" },
+                    { 26, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5941), null, null, null, false, null, null, "MA" },
+                    { 27, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5944), null, null, null, false, null, null, "MI" },
+                    { 29, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5951), null, null, null, false, null, null, "MS" },
+                    { 59, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6147), null, null, null, false, null, null, "WY" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogs_TenantId_ExecutionDuration",
@@ -1775,14 +2039,29 @@ namespace LoanManagement.Migrations
                 column: "BorrowerTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AdditionalIncomes_IncomeSourceId",
+                table: "AdditionalIncomes",
+                column: "IncomeSourceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AdditionalIncomes_LoanApplicationId",
                 table: "AdditionalIncomes",
                 column: "LoanApplicationId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Addresses_BorrowerTypeId",
+                table: "Addresses",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Addresses_PersonalDetailId",
                 table: "Addresses",
                 column: "PersonalDetailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Addresses_StateId",
+                table: "Addresses",
+                column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BorrowerEmploymentInformations_BorrowerTypeId",
@@ -1860,6 +2139,26 @@ namespace LoanManagement.Migrations
                 column: "PersonalDetailId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ManualAssetEntries_AssetTypeId",
+                table: "ManualAssetEntries",
+                column: "AssetTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManualAssetEntries_BorrowerTypeId",
+                table: "ManualAssetEntries",
+                column: "BorrowerTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManualAssetEntries_LoanApplicationId",
+                table: "ManualAssetEntries",
+                column: "LoanApplicationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManualAssetEntries_StateId",
+                table: "ManualAssetEntries",
+                column: "StateId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PersonalDetails_BorrowerId",
                 table: "PersonalDetails",
                 column: "BorrowerId");
@@ -1868,6 +2167,11 @@ namespace LoanManagement.Migrations
                 name: "IX_PersonalDetails_CoBorrowerId",
                 table: "PersonalDetails",
                 column: "CoBorrowerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StockAndBonds_ManualAssetEntryId",
+                table: "StockAndBonds",
+                column: "ManualAssetEntryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1972,6 +2276,9 @@ namespace LoanManagement.Migrations
                 name: "Declarations");
 
             migrationBuilder.DropTable(
+                name: "StockAndBonds");
+
+            migrationBuilder.DropTable(
                 name: "AbpDynamicEntityProperties");
 
             migrationBuilder.DropTable(
@@ -1987,7 +2294,10 @@ namespace LoanManagement.Migrations
                 name: "AbpWebhookEvents");
 
             migrationBuilder.DropTable(
-                name: "LoanApplications");
+                name: "IncomeSource");
+
+            migrationBuilder.DropTable(
+                name: "ManualAssetEntries");
 
             migrationBuilder.DropTable(
                 name: "AbpDynamicProperties");
@@ -1997,6 +2307,15 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUsers");
+
+            migrationBuilder.DropTable(
+                name: "AssetType");
+
+            migrationBuilder.DropTable(
+                name: "LoanApplications");
+
+            migrationBuilder.DropTable(
+                name: "States");
 
             migrationBuilder.DropTable(
                 name: "AdditionalDetails");

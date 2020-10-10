@@ -4,11 +4,11 @@ namespace LoanManagement.Models
 {
     public class BorrowerMonthlyIncomeDto : EntityDto<long?>
     {
-        public int? Base { get; set; }
-        public int? Overtime { get; set; }
-        public int? Bonuses { get; set; }
-        public int? Commissions { get; set; }
-        public int? Dividends { get; set; }
+        public decimal? Base { get; set; }
+        public decimal? Overtime { get; set; }
+        public decimal? Bonuses { get; set; }
+        public decimal? Commissions { get; set; }
+        public decimal? Dividends { get; set; }
         public int? BorrowerTypeId { get; set; }
         public long? LoanApplicationId { get; set; }
     }

@@ -1,15 +1,20 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Abp.Domain.Entities.Auditing;
 
 namespace LoanManagement.Models
 {
     public class BorrowerMonthlyIncome : FullAuditedEntity<long>
     {
-        public int? Base { get; set; }
-        public int? Overtime { get; set; }
-        public int? Bonuses { get; set; }
-        public int? Commissions { get; set; }
-        public int? Dividends { get; set; }
-
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Base { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Overtime { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Bonuses { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Commissions { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Dividends { get; set; }
 
         public BorrowerType BorrowerType { get; set; }
         public int? BorrowerTypeId { get; set; }
