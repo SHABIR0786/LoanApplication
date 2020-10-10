@@ -2537,6 +2537,8 @@
                 </div>
               </div>
 
+              <!-- Borrower Declaration End -->
+
               <!-- Co-Borrower Declarations Start -->
 
               <div
@@ -2560,12 +2562,12 @@
                     </h6>
                     <p class="font-weight-bold mt-3">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isOutstandingJudgmentsAgainstYou === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isOutstandingJudgmentsAgainstYou === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isOutstandingJudgmentsAgainstYou
                           ? "Yes"
                           : "No"
@@ -2581,12 +2583,13 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isDeclaredBankrupt === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isDeclaredBankrupt === null
                           ? "--"
-                          : formData.declaration.isDeclaredBankrupt
+                          : formData.declaration.coBorrowerDeclaration.
+                          isDeclaredBankrupt
                           ? "Yes"
                           : "No"
                       }}
@@ -2601,12 +2604,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPropertyForeClosedUponOrGivenTitle === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPropertyForeClosedUponOrGivenTitle === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isPropertyForeClosedUponOrGivenTitle
                           ? "Yes"
                           : "No"
@@ -2621,12 +2624,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPartyToLawsuit === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPartyToLawsuit === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isPartyToLawsuit
                           ? "Yes"
                           : "No"
@@ -2643,13 +2646,13 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isObligatedOnAnyLoanWhichResultedForeclosure ===
                           undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isObligatedOnAnyLoanWhichResultedForeclosure === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isObligatedOnAnyLoanWhichResultedForeclosure
                           ? "Yes"
                           : "No"
@@ -2666,12 +2669,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPresentlyDelinquent === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPresentlyDelinquent === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isPresentlyDelinquent
                           ? "Yes"
                           : "No"
@@ -2687,12 +2690,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isObligatedToPayAlimonyChildSupport === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isObligatedToPayAlimonyChildSupport === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isObligatedToPayAlimonyChildSupport
                           ? "Yes"
                           : "No"
@@ -2707,12 +2710,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isAnyPartOfTheDownPayment === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isAnyPartOfTheDownPayment === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isAnyPartOfTheDownPayment
                           ? "Yes"
                           : "No"
@@ -2727,12 +2730,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isCoMakerOrEndorser === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isCoMakerOrEndorser === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isCoMakerOrEndorser
                           ? "Yes"
                           : "No"
@@ -2747,12 +2750,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                        formData.declaration.coBorrowerDeclaration.isUSCitizen ===
                           undefined ||
-                        formData.declaration.borrowerDeclaration.isUSCitizen ===
+                        formData.declaration.coBorrowerDeclaration.isUSCitizen ===
                           null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration.isUSCitizen
+                          : formData.declaration.coBorrowerDeclaration.isUSCitizen
                           ? "Yes"
                           : "No"
                       }}
@@ -2766,12 +2769,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPermanentResidentSlien === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isPermanentResidentSlien === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isPermanentResidentSlien
                           ? "Yes"
                           : "No"
@@ -2787,13 +2790,13 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isIntendToOccupyThePropertyAsYourPrimary ===
                           undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isIntendToOccupyThePropertyAsYourPrimary === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isIntendToOccupyThePropertyAsYourPrimary
                           ? "Yes"
                           : "No"
@@ -2809,13 +2812,13 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isOwnershipInterestInPropertyLastThreeYears ===
                           undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .isOwnershipInterestInPropertyLastThreeYears === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .isOwnershipInterestInPropertyLastThreeYears
                           ? "Yes"
                           : "No"
@@ -2831,12 +2834,12 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .declarationsSection === undefined ||
-                        formData.declaration.borrowerDeclaration
+                        formData.declaration.coBorrowerDeclaration
                           .declarationsSection === null
                           ? "--"
-                          : formData.declaration.borrowerDeclaration
+                          : formData.declaration.coBorrowerDeclaration
                               .declarationsSection
                       }}
                     </p>
@@ -2992,13 +2995,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3010,13 +3007,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3028,13 +3019,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 4
                       }}
                     </p>
                   </div>
@@ -3046,13 +3031,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 5
                       }}
                     </p>
                   </div>
@@ -3064,13 +3043,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 6
                       }}
                     </p>
                   </div>
@@ -3082,13 +3055,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 7
                       }}
                     </p>
                   </div>
@@ -3100,13 +3067,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 8
                       }}
                     </p>
                   </div>
@@ -3118,13 +3079,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 9
                       }}
                     </p>
                   </div>
@@ -3136,11 +3091,8 @@
                     ></h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
+                        formData.declaration.borrowerDemographic.race
+                          | otherValue: 9
                       }}
                     </p>
                   </div>
@@ -3152,13 +3104,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 10
                       }}
                     </p>
                   </div>
@@ -3170,13 +3116,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 11
                       }}
                     </p>
                   </div>
@@ -3188,13 +3128,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 12
                       }}
                     </p>
                   </div>
@@ -3206,13 +3140,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 13
                       }}
                     </p>
                   </div>
@@ -3224,13 +3152,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 14
                       }}
                     </p>
                   </div>
@@ -3242,13 +3164,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 15
                       }}
                     </p>
                   </div>
@@ -3260,11 +3176,8 @@
                     ></h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
+                        formData.declaration.borrowerDemographic.race
+                          | otherValue: 15
                       }}
                     </p>
                   </div>
@@ -3276,13 +3189,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 16
                       }}
                     </p>
                   </div>
@@ -3294,13 +3201,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.race | yesNo: 17
                       }}
                     </p>
                   </div>
@@ -3312,13 +3213,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.sex | yesNo: 1
                       }}
                     </p>
                   </div>
@@ -3330,13 +3225,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.sex | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3348,13 +3237,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.borrowerDemographic.sex | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3387,17 +3270,9 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
-                              2
-                            ) !== -1
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 1
                       }}
+
                     </p>
                   </div>
                 </div>
@@ -3408,16 +3283,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
-                              2
-                            ) !== -2
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3429,16 +3295,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
-                              2
-                            ) !== -3
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3450,16 +3307,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
-                              2
-                            ) !== -4
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 4
                       }}
                     </p>
                   </div>
@@ -3471,16 +3319,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity.indexOf(
-                              5
-                            ) !== -1
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 5
                       }}
                     </p>
                   </div>
@@ -3491,10 +3330,10 @@
                       class="font-weight-normal form-text text-muted mt-3"
                     ></h6>
                     <p class="font-weight-bold">
-                      <!-- {{
-                        formData.declaration.borrowerDemographic.ethnicity
+                      {{
+                        formData.declaration.coBorrowerDemographic.ethnicity
                           | otherValue: 5
-                      }} -->
+                      }}
                     </p>
                   </div>
                 </div>
@@ -3505,14 +3344,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 6
                       }}
                     </p>
                   </div>
@@ -3524,14 +3356,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.ethnicity ===
-                          null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.ethnicity
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 7
                       }}
                     </p>
                   </div>
@@ -3543,13 +3368,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 1
                       }}
                     </p>
                   </div>
@@ -3561,11 +3380,8 @@
                     ></h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
+                        formData.declaration.coBorrowerDemographic.race
+                          | otherValue: 1
                       }}
                     </p>
                   </div>
@@ -3577,13 +3393,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3595,13 +3405,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3613,13 +3417,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 4
                       }}
                     </p>
                   </div>
@@ -3631,13 +3429,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 5
                       }}
                     </p>
                   </div>
@@ -3649,13 +3441,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 6
                       }}
                     </p>
                   </div>
@@ -3667,13 +3453,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 7
                       }}
                     </p>
                   </div>
@@ -3685,13 +3465,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 8
                       }}
                     </p>
                   </div>
@@ -3703,13 +3477,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 9
                       }}
                     </p>
                   </div>
@@ -3721,11 +3489,8 @@
                     ></h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
+                        formData.declaration.coBorrowerDemographic.race
+                          | otherValue: 9
                       }}
                     </p>
                   </div>
@@ -3737,13 +3502,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 10
                       }}
                     </p>
                   </div>
@@ -3755,13 +3514,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 11
                       }}
                     </p>
                   </div>
@@ -3773,13 +3526,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 12
                       }}
                     </p>
                   </div>
@@ -3791,13 +3538,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 13
                       }}
                     </p>
                   </div>
@@ -3809,13 +3550,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 14
                       }}
                     </p>
                   </div>
@@ -3827,13 +3562,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 15
                       }}
                     </p>
                   </div>
@@ -3845,11 +3574,8 @@
                     ></h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
+                        formData.declaration.coBorrowerDemographic.race
+                        | otherValue: 15
                       }}
                     </p>
                   </div>
@@ -3861,13 +3587,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 16
                       }}
                     </p>
                   </div>
@@ -3879,13 +3599,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.race === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.race
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.race | yesNo: 17
                       }}
                     </p>
                   </div>
@@ -3897,13 +3611,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.sex | yesNo: 1
                       }}
                     </p>
                   </div>
@@ -3915,13 +3623,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.sex | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3933,13 +3635,7 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.sex ===
-                          undefined ||
-                        formData.declaration.borrowerDemographic.sex === null
-                          ? "--"
-                          : formData.declaration.borrowerDemographic.sex
-                          ? "Yes"
-                          : "No"
+                        formData.declaration.coBorrowerDemographic.sex | yesNo: 3
                       }}
                     </p>
                   </div>
