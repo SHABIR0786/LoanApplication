@@ -1,6 +1,6 @@
 export interface IBorrowerDemographicModel {
   id?: number;
-  ethnicity?: string[];
-  race?: string[];
-  sex?: string;
+  ethnicity?: any[];
+  race?: any[];
+  sex?: any;
 }
