@@ -41,7 +41,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.data = this._dataService.loanApplication.loanDetails;
@@ -59,6 +59,8 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.form.patchValue(formData.loanDetails);
       }
     });
+
+
   }
 
   ngDoCheck() {
@@ -222,6 +224,31 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         }
         this.form.get("loanOfficerId").updateValueAndValidity();
       });
+
+
+    this.form
+      .get("estimatedPurchasePrice")
+      .valueChanges.subscribe((estimatedPurchasePrice) => {
+
+        this.form.get("downPaymentAmount").setValue(null);
+        this.form.get("downPaymentPercentage").setValue(null);
+
+      });
+
+    this.form
+      .get("downPaymentAmount")
+      .valueChanges.subscribe((downPaymentAmount) => {
+        if (downPaymentAmount) {
+          var estimatedPurchasePrice = this.form.get("estimatedPurchasePrice").value;
+          debugger;
+          var percentage = (downPaymentAmount / estimatedPurchasePrice) * 100;
+          this.form.get("downPaymentPercentage").setValue(percentage);
+        }else{
+          this.form.get("downPaymentPercentage").setValue(null);
+        }
+
+      });
+
   }
 
   proceedToPrevious(event?: string) {
