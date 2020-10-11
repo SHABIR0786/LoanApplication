@@ -303,7 +303,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             borrowerDemographic.Origin = "";
             borrowerDemographic.NameOfEnrolledOrPrincipalTribe = "";
             borrowerDemographic.EnterRace = "";
-            
+
             if (demographic.Ethnicity != null && demographic.Ethnicity.Any())
                 foreach (var ethnic in demographic.Ethnicity)
                     switch ((Ethnic)ethnic.Id)

@@ -67,8 +67,8 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 incomeSources.HasData(new IncomeSource { Id = 1, Name = "Accessory Unit Income" },
                                       new IncomeSource { Id = 2, Name = "Alimony/Child Support" },
-                                      new IncomeSource { Id = 3, Name = "Automobile/Expense Account"},
-                                      new IncomeSource { Id = 4, Name = "Boarder Income"});
+                                      new IncomeSource { Id = 3, Name = "Automobile/Expense Account" },
+                                      new IncomeSource { Id = 4, Name = "Boarder Income" });
             });
 
             modelBuilder.Entity<State>(State =>
