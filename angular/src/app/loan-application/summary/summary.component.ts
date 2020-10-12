@@ -56,6 +56,7 @@ export class SummaryComponent implements OnInit {
   }
 
   submitForm() {
+    debugger;
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
     this._loanApplicationService.post("Add", formData).subscribe(
       (response: any) => {
