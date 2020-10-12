@@ -30,222 +30,214 @@
 
           <div class="col-12" *ngIf="isShowAllStepsReadOnlyModeBool">
             <!-- Loan Details Start -->
-            <div class="row">
+            <div class="row mb-5">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
                     <h5>Loan Details</h5>
-                    <div class="mt-5">
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
-                        Who Referred You? (Real Estate Agent, Family, Friend,
-                        Internet, etc.) Please list by Full Name, if Applicable
-                      </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button class="btn btn-primary float-right">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mb-3">
+                      Who Referred You? (Real Estate Agent, Family, Friend,
+                      Internet, etc.) Please list by Full Name, if Applicable
+                    </h6>
 
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.referredBy === undefined ||
+                        formData.loanDetails.referredBy === null
+                          ? "--"
+                          : formData.loanDetails.referredBy
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Are you currently working with a William Raveis Mortgage
+                      loan officer? *
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.isWorkingWithOfficer ===
+                          undefined ||
+                        formData.loanDetails.isWorkingWithOfficer === null
+                          ? "--"
+                          : formData.loanDetails.isWorkingWithOfficer
+                          ? "Yes"
+                          : "No"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Choose the loan officer below *
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.loanOfficerName === undefined ||
+                        formData.loanDetails.loanOfficerName === null
+                          ? "--"
+                          : formData.loanDetails.loanOfficerName
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <div class="h6">
+                      <a href="#" class="h6 mb-1">Purpose of your Loan</a>
+                    </div>
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Loan Purpose *
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.loanDetails.loanPurpose === undefined ||
+                        formData.loanDetails.loanPurpose === null
+                          ? "--"
+                          : formData.loanDetails.loanPurpose
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div *ngIf="formData.loanDetails.purposeOfLoan === 1">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Estimated Purchase Price *
+                      </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.loanDetails.referredBy === undefined ||
-                          formData.loanDetails.referredBy === null
+                          formData.loanDetails.estimatedPurchasePrice ===
+                            undefined ||
+                          formData.loanDetails.estimatedPurchasePrice === null
                             ? "--"
-                            : formData.loanDetails.referredBy
+                            : formData.loanDetails.estimatedPurchasePrice
                         }}
                       </p>
                     </div>
-                    <div class="row">
-                      <div class="col-8">
-                        <h6
-                          class="font-weight-normal form-text text-muted mt-3"
-                        >
-                          Are you currently working with a William Raveis
-                          Mortgage loan officer? *
-                        </h6>
-                        <p class="font-weight-bold">
-                          {{
-                            formData.loanDetails.isWorkingWithOfficer ===
-                              undefined ||
-                            formData.loanDetails.isWorkingWithOfficer === null
-                              ? "--"
-                              : formData.loanDetails.isWorkingWithOfficer
-                              ? "Yes"
-                              : "No"
-                          }}
-                        </p>
-                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Down Payment Amount *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.downPaymentAmount ===
+                            undefined ||
+                          formData.loanDetails.downPaymentAmount === null
+                            ? "--"
+                            : formData.loanDetails.downPaymentAmount
+                        }}
+                      </p>
                     </div>
-                    <div class="row">
-                      <div class="col-8">
-                        <h6
-                          class="font-weight-normal form-text text-muted mt-3"
-                        >
-                          Choose the loan officer below *
-                        </h6>
-                        <p class="font-weight-bold">
-                          {{
-                            formData.loanDetails.loanOfficerName ===
-                              undefined ||
-                            formData.loanDetails.loanOfficerName === null
-                              ? "--"
-                              : formData.loanDetails.loanOfficerName
-                          }}
-                        </p>
-                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Down Payment Percentage
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.downPaymentPercentage ===
+                            undefined ||
+                          formData.loanDetails.downPaymentPercentage === null
+                            ? "--"
+                            : formData.loanDetails.downPaymentPercentage
+                        }}
+                      </p>
                     </div>
-                    <div class="row">
-                      <div class="col-8">
-                        <h5>Purpose of your Loan</h5>
-                        <h6
-                          class="font-weight-normal form-text text-muted mt-3"
-                        >
-                          Loan Purpose *
-                        </h6>
-                        <p class="font-weight-bold">
-                          {{
-                            formData.loanDetails.loanPurpose === undefined ||
-                            formData.loanDetails.loanPurpose === null
-                              ? "--"
-                              : formData.loanDetails.loanPurpose
-                          }}
-                        </p>
-                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Source of Down Payment *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.sourceOfDownPaymentName ===
+                            undefined ||
+                          formData.loanDetails.sourceOfDownPaymentName === null
+                            ? "--"
+                            : formData.loanDetails.sourceOfDownPaymentName
+                        }}
+                      </p>
                     </div>
-                    <div *ngIf="formData.loanDetails.purposeOfLoan === 1">
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Estimated Purchase Price *
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.estimatedPurchasePrice ===
-                                undefined ||
-                              formData.loanDetails.estimatedPurchasePrice ===
-                                null
-                                ? "--"
-                                : formData.loanDetails.estimatedPurchasePrice
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Down Payment Amount *
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.downPaymentAmount ===
-                                undefined ||
-                              formData.loanDetails.downPaymentAmount === null
-                                ? "--"
-                                : formData.loanDetails.downPaymentAmount
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Down Payment Percentage
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.downPaymentPercentage ===
-                                undefined ||
-                              formData.loanDetails.downPaymentPercentage ===
-                                null
-                                ? "--"
-                                : formData.loanDetails.downPaymentPercentage
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Source of Down Payment *
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.sourceOfDownPaymentName ===
-                                undefined ||
-                              formData.loanDetails.sourceOfDownPaymentName ===
-                                null
-                                ? "--"
-                                : formData.loanDetails.sourceOfDownPaymentName
-                            }}
-                          </p>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    formData.loanDetails.purposeOfLoan === 2 ||
+                    formData.loanDetails.purposeOfLoan === 3
+                  "
+                >
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Estimated Value
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.estimatedValue === undefined ||
+                          formData.loanDetails.estimatedValue === null
+                            ? "--"
+                            : formData.loanDetails.estimatedValue
+                        }}
+                      </p>
                     </div>
-                    <div
-                      *ngIf="
-                        formData.loanDetails.purposeOfLoan === 2 ||
-                        formData.loanDetails.purposeOfLoan === 3
-                      "
-                    >
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Estimated Value
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.estimatedValue ===
-                                undefined ||
-                              formData.loanDetails.estimatedValue === null
-                                ? "--"
-                                : formData.loanDetails.estimatedValue
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Current Loan Amount
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.currentLoanAmount ===
-                                undefined ||
-                              formData.loanDetails.currentLoanAmount === null
-                                ? "--"
-                                : formData.loanDetails.currentLoanAmount
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Requested Loan Amount *
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.requestedLoanAmount ===
-                                undefined ||
-                              formData.loanDetails.requestedLoanAmount === null
-                                ? "--"
-                                : formData.loanDetails.requestedLoanAmount
-                            }}
-                          </p>
-                        </div>
-                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Current Loan Amount
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.currentLoanAmount ===
+                            undefined ||
+                          formData.loanDetails.currentLoanAmount === null
+                            ? "--"
+                            : formData.loanDetails.currentLoanAmount
+                        }}
+                      </p>
                     </div>
-                    <!-- <div class="row">
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Requested Loan Amount *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.requestedLoanAmount ===
+                            undefined ||
+                          formData.loanDetails.requestedLoanAmount === null
+                            ? "--"
+                            : formData.loanDetails.requestedLoanAmount
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="row">
                             <div class="col-8">
                               <h6 class="font-weight-normal form-text text-muted mb-2">
                                 Loan Type
@@ -255,81 +247,76 @@
                               </p>
                             </div>
                           </div> -->
-                    <div
-                      *ngIf="
-                        formData.loanDetails.purposeOfLoan === 2 ||
-                        formData.loanDetails.purposeOfLoan === 3
-                      "
-                    >
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Do you have a second mortgage?
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.haveSecondMortgage ===
-                                undefined ||
-                              formData.loanDetails.haveSecondMortgage === null
-                                ? "--"
-                                : formData.loanDetails.haveSecondMortgage
-                                ? "Yes"
-                                : "No"
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Second Mortgage Amount
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.secondMortgageAmount ===
-                                undefined ||
-                              formData.loanDetails.secondMortgageAmount === null
-                                ? "--"
-                                : formData.loanDetails.secondMortgageAmount
-                            }}
-                          </p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-8">
-                          <h6
-                            class="font-weight-normal form-text text-muted mt-3"
-                          >
-                            Do you want to pay off this loan with the new loan?
-                          </h6>
-                          <p class="font-weight-bold">
-                            {{
-                              formData.loanDetails.payLoanWithNewLoan ===
-                                undefined ||
-                              formData.loanDetails.payLoanWithNewLoan === null
-                                ? "--"
-                                : formData.loanDetails.payLoanWithNewLoan
-                                ? "Yes"
-                                : "No"
-                            }}
-                          </p>
-                        </div>
-                      </div>
+                <div
+                  *ngIf="
+                    formData.loanDetails.purposeOfLoan === 2 ||
+                    formData.loanDetails.purposeOfLoan === 3
+                  "
+                >
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Do you have a second mortgage?
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.haveSecondMortgage ===
+                            undefined ||
+                          formData.loanDetails.haveSecondMortgage === null
+                            ? "--"
+                            : formData.loanDetails.haveSecondMortgage
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Second Mortgage Amount
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.secondMortgageAmount ===
+                            undefined ||
+                          formData.loanDetails.secondMortgageAmount === null
+                            ? "--"
+                            : formData.loanDetails.secondMortgageAmount
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Do you want to pay off this loan with the new loan?
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.payLoanWithNewLoan ===
+                            undefined ||
+                          formData.loanDetails.payLoanWithNewLoan === null
+                            ? "--"
+                            : formData.loanDetails.payLoanWithNewLoan
+                            ? "Yes"
+                            : "No"
+                        }}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5>Property Details</h5>
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Have you started looking for a home? *
-                    </h6>
+                    <a href="#" class="h6 mb-1">Property Details</a>
+                    <div>
+                      <h6 class="font-weight-normal form-text text-muted mt-5">
+                        Have you started looking for a home? *
+                      </h6>
+                    </div>
                     <p class="font-weight-bold">
                       {{
                         formData.loanDetails.startedLookingForNewHome ===
@@ -512,7 +499,7 @@
               </div>
               <div class="col-6">
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-11">
                     <div>
                       <button type="button" class="float-right btn btn-primary">
                         Edit
@@ -1251,7 +1238,9 @@
                     <h5 class="mb-5">Expenses</h5>
                     <div class="row">
                       <div class="col">
-                        <h6 class="mb-5">Current Monthly Housing Expenses</h6>
+                        <a href="#" class="h6 mb-1"
+                          >Current Monthly Housing Expensesr</a
+                        >
                       </div>
                     </div>
                     <div class="row">
@@ -2120,6 +2109,346 @@
 
             <hr class="mt-2 mb-3" />
 
+            <!-- Employment and Income Start -->
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Employment and Income</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      type="button"
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/employment-income')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-11">
+                        <a href="#" class="h6 mb-1"
+                          >Borrower Employment Information</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row"
+                  *ngFor="
+                    let borrowerEmploymentInfo of formData.employmentIncome
+                      .borrowerEmploymentInfo;
+                    let i = index
+                  "
+                >
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-8">
+                        <h6
+                          class="font-weight-normal form-text text-muted mb-3"
+                        >
+                          I'm self-employed.
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{
+                            borrowerEmploymentInfo.isSelfEmployed ===
+                              undefined ||
+                            borrowerEmploymentInfo.isSelfEmployed === null
+                              ? "--"
+                              : borrowerEmploymentInfo.isSelfEmployed
+                              ? "Yes"
+                              : "No"
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <h6
+                          class="font-weight-normal form-text text-muted mt-3"
+                        >
+                          Employer Name *
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ borrowerEmploymentInfo.employerName || "--" }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <h6
+                          class="font-weight-normal form-text text-muted mt-3"
+                        >
+                          Position *
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ borrowerEmploymentInfo.position || "--" }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <h6
+                          class="font-weight-normal form-text text-muted mt-3"
+                        >
+                          Address 1
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ borrowerEmploymentInfo.address1 || "--" }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <h5></h5>
+                        <h6
+                          class="font-weight-normal form-text text-muted mt-3"
+                        >
+                          Address 2
+                        </h6>
+                        <p class="font-weight-bold">
+                          {{ borrowerEmploymentInfo.address2 || "--" }}
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            City
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.city || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            State
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.stateIdName || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Zip Code
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.zipCode || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Start Date *
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.startDate || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6" *ngIf="i > 0">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            End Date
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.endDate || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Length of Employment
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.borrowerTypeId || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                            <div class="col-8">
+                              <h6 class="font-weight-normal form-text text-muted mb-2">
+                                Loan Type
+                              </h6>
+                              <p class="font-weight-bold">
+                                {{ formData.loanDetails.referredBy }}
+                              </p>
+                            </div>
+                          </div> -->
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-11">
+                        <h5 class="h6">Borrower Gross Monthly Income</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Base
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome.base ||
+                          "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-4">
+                      Overtime
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome
+                          .overtime || "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-4">
+                      Bonuses
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome
+                          .bonuses || "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Commissions
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome
+                          .commissions || "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Dividends / Interest
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome
+                          .dividends || "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                      Total Borrower Income
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.employmentIncome.borrowerMonthlyIncome
+                          .commissions || "--"
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-11">
+                        <h5 class="h6">Additional Gross Monthly Income</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  *ngFor="
+                    let additionalIncome of formData.employmentIncome
+                      .additionalIncomes
+                  "
+                >
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Income Source
+                      </h6>
+                      <p class="font-weight-bold">
+                        <!-- {{
+                          formData.employmentIncome.additionalIncomes[0].incomeSourceIdName ||
+                            "--"
+                        }} -->
+                        {{ additionalIncome.incomeSourceIdName || "--" }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Amount
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{ additionalIncome.amount || "--" }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Employment and Income End -->
+
             <!-- Order Credit Start -->
 
             <div class="row">
@@ -2129,18 +2458,21 @@
                     <h5>Order Credit</h5>
                     <div class="row">
                       <div class="col-8">
-                        <h5 class="mt-5">Credit Authorization Agreement</h5>
+                        <div class="h6 mt-3">
+                          Credit Authorization Agreement
+                        </div>
                       </div>
                     </div>
                     <h6 class="font-weight-normal form-text text-muted mt-5">
                       I accept the Credit Authorization Agreement.
                     </h6>
-                    <p class="font-weight-bold mt-5">
+                    <p class="font-weight-bold">
                       {{
-                        formData.orderCredit === undefined ||
-                        formData.orderCredit === null
+                        formData.orderCredit.agreeCreditAuthAgreement ===
+                          undefined ||
+                        formData.orderCredit.agreeCreditAuthAgreement === null
                           ? "--"
-                          : formData.orderCredit
+                          : formData.orderCredit.agreeCreditAuthAgreement
                           ? "Yes"
                           : "No"
                       }}
@@ -2163,7 +2495,7 @@
                     <h5 class="mt-5">Additional Details</h5>
                     <div class="row">
                       <div class="col-8">
-                        <h5 class="mt-5">Other Disclosures and Details</h5>
+                        <div class="h6 mt-3">Other Disclosures and Details</div>
                       </div>
                     </div>
                     <h6 class="font-weight-normal text-muted form-text mt-5">
@@ -2241,7 +2573,7 @@
                     <h5 class="mt-5">Declarations</h5>
                     <div class="row">
                       <div class="col-8">
-                        <h5 class="mt-5">Borrower Declaration</h5>
+                        <div class="h6 mt-3">Borrower Declaration</div>
                       </div>
                     </div>
                   </div>
@@ -2550,7 +2882,7 @@
                     <h5 class="mt-5">&nbsp;</h5>
                     <div class="row">
                       <div class="col-8">
-                        <h5 class="mt-5">Co-Borrower Declarations</h5>
+                        <div class="h6 mt-3">Co-Borrower Declarations</div>
                       </div>
                     </div>
                   </div>
@@ -2588,8 +2920,8 @@
                         formData.declaration.coBorrowerDeclaration
                           .isDeclaredBankrupt === null
                           ? "--"
-                          : formData.declaration.coBorrowerDeclaration.
-                          isDeclaredBankrupt
+                          : formData.declaration.coBorrowerDeclaration
+                              .isDeclaredBankrupt
                           ? "Yes"
                           : "No"
                       }}
@@ -2750,12 +3082,13 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDeclaration.isUSCitizen ===
-                          undefined ||
-                        formData.declaration.coBorrowerDeclaration.isUSCitizen ===
-                          null
+                        formData.declaration.coBorrowerDeclaration
+                          .isUSCitizen === undefined ||
+                        formData.declaration.coBorrowerDeclaration
+                          .isUSCitizen === null
                           ? "--"
-                          : formData.declaration.coBorrowerDeclaration.isUSCitizen
+                          : formData.declaration.coBorrowerDeclaration
+                              .isUSCitizen
                           ? "Yes"
                           : "No"
                       }}
@@ -2848,8 +3181,6 @@
               </div>
               <!-- Co-Borrower Declarations End -->
 
-              <!-- Borrower Declaration End -->
-
               <!-- Borrower Demographic Information Start -->
               <div class="col-6">
                 <div class="row">
@@ -2857,7 +3188,9 @@
                     <h5 class="mt-5">&nbsp;</h5>
                     <div class="row">
                       <div class="col-11">
-                        <h5 class="mt-5">Borrower Demographic Information</h5>
+                        <div class="h6 mt-3">
+                          Borrower Demographic Information
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3104,7 +3437,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 10
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 10
                       }}
                     </p>
                   </div>
@@ -3116,7 +3450,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 11
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 11
                       }}
                     </p>
                   </div>
@@ -3128,7 +3463,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 12
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 12
                       }}
                     </p>
                   </div>
@@ -3140,7 +3476,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 13
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 13
                       }}
                     </p>
                   </div>
@@ -3152,7 +3489,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 14
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 14
                       }}
                     </p>
                   </div>
@@ -3164,7 +3502,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 15
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 15
                       }}
                     </p>
                   </div>
@@ -3189,7 +3528,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 16
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 16
                       }}
                     </p>
                   </div>
@@ -3201,7 +3541,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 17
+                        formData.declaration.borrowerDemographic.race
+                          | yesNo: 17
                       }}
                     </p>
                   </div>
@@ -3256,9 +3597,9 @@
                     <h5 class="mt-5">&nbsp;</h5>
                     <div class="row">
                       <div class="col-11">
-                        <h5 class="mt-5">
+                        <div class="h6 mt-3">
                           Co-Borrower Demographic Information
-                        </h5>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3270,9 +3611,9 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 1
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 1
                       }}
-
                     </p>
                   </div>
                 </div>
@@ -3283,7 +3624,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 2
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3295,7 +3637,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 3
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3307,7 +3650,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 4
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 4
                       }}
                     </p>
                   </div>
@@ -3319,7 +3663,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 5
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 5
                       }}
                     </p>
                   </div>
@@ -3344,7 +3689,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 6
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 6
                       }}
                     </p>
                   </div>
@@ -3356,7 +3702,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.ethnicity | yesNo: 7
+                        formData.declaration.coBorrowerDemographic.ethnicity
+                          | yesNo: 7
                       }}
                     </p>
                   </div>
@@ -3368,7 +3715,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 1
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 1
                       }}
                     </p>
                   </div>
@@ -3393,7 +3741,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 2
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3405,7 +3754,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 3
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 3
                       }}
                     </p>
                   </div>
@@ -3417,7 +3767,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 4
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 4
                       }}
                     </p>
                   </div>
@@ -3429,7 +3780,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 5
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 5
                       }}
                     </p>
                   </div>
@@ -3441,7 +3793,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 6
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 6
                       }}
                     </p>
                   </div>
@@ -3453,7 +3806,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 7
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 7
                       }}
                     </p>
                   </div>
@@ -3465,7 +3819,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 8
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 8
                       }}
                     </p>
                   </div>
@@ -3477,7 +3832,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 9
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 9
                       }}
                     </p>
                   </div>
@@ -3502,7 +3858,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 10
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 10
                       }}
                     </p>
                   </div>
@@ -3514,7 +3871,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 11
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 11
                       }}
                     </p>
                   </div>
@@ -3526,7 +3884,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 12
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 12
                       }}
                     </p>
                   </div>
@@ -3538,7 +3897,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 13
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 13
                       }}
                     </p>
                   </div>
@@ -3550,7 +3910,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 14
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 14
                       }}
                     </p>
                   </div>
@@ -3562,7 +3923,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 15
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 15
                       }}
                     </p>
                   </div>
@@ -3575,7 +3937,7 @@
                     <p class="font-weight-bold">
                       {{
                         formData.declaration.coBorrowerDemographic.race
-                        | otherValue: 15
+                          | otherValue: 15
                       }}
                     </p>
                   </div>
@@ -3587,7 +3949,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 16
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 16
                       }}
                     </p>
                   </div>
@@ -3599,7 +3962,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.race | yesNo: 17
+                        formData.declaration.coBorrowerDemographic.race
+                          | yesNo: 17
                       }}
                     </p>
                   </div>
@@ -3611,7 +3975,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.sex | yesNo: 1
+                        formData.declaration.coBorrowerDemographic.sex
+                          | yesNo: 1
                       }}
                     </p>
                   </div>
@@ -3623,7 +3988,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.sex | yesNo: 2
+                        formData.declaration.coBorrowerDemographic.sex
+                          | yesNo: 2
                       }}
                     </p>
                   </div>
@@ -3635,7 +4001,8 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.declaration.coBorrowerDemographic.sex | yesNo: 3
+                        formData.declaration.coBorrowerDemographic.sex
+                          | yesNo: 3
                       }}
                     </p>
                   </div>
