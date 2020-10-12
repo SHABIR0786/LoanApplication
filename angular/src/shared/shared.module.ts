@@ -8,8 +8,8 @@ import { AppUrlService } from "./nav/app-url.service";
 import { AppAuthService } from "./auth/app-auth.service";
 import { AppRouteGuard } from "./auth/auth-route-guard";
 import { LocalizePipe } from "@shared/pipes/localize.pipe";
-import { EthnicityOtherValue } from "@shared/pipes/OtherValue.pipe";
-import { EthnicityYesNo } from "@shared/pipes/YesNo.pipe";
+import { EthnicityOtherValuePipe } from "@shared/pipes/OtherValue.pipe";
+import { EthnicityYesNoPipe } from "@shared/pipes/YesNo.pipe";
 
 import { AbpPaginationControlsComponent } from "./components/pagination/abp-pagination-controls.component";
 import { AbpValidationSummaryComponent } from "./components/validation/abp-validation.summary.component";
@@ -28,8 +28,8 @@ import { EqualValidator } from "./directives/equal-validator.directive";
     AbpModalHeaderComponent,
     AbpModalFooterComponent,
     LocalizePipe,
-    EthnicityOtherValue,
-    EthnicityYesNo,
+    EthnicityOtherValuePipe,
+    EthnicityYesNoPipe,
     BusyDirective,
     EqualValidator,
   ],
@@ -39,8 +39,8 @@ import { EqualValidator } from "./directives/equal-validator.directive";
     AbpModalHeaderComponent,
     AbpModalFooterComponent,
     LocalizePipe,
-    EthnicityOtherValue,
-    EthnicityYesNo,
+    EthnicityOtherValuePipe,
+    EthnicityYesNoPipe,
     BusyDirective,
     EqualValidator,
   ],
