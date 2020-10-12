@@ -343,56 +343,68 @@ export class DeclarationComponent implements OnInit, DoCheck {
     });
 
     if (this.data.borrowerDemographic) {
-      this.data.borrowerDemographic.ethnicity.forEach(element => {
-        this.borrowerEthnics.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.borrowerDemographic.ethnicity) {
+        this.data.borrowerDemographic.ethnicity.forEach(element => {
+          this.borrowerEthnics.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
 
-      this.data.borrowerDemographic.race.forEach(element => {
-        this.borrowerRaces.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.borrowerDemographic.race) {
+        this.data.borrowerDemographic.race.forEach(element => {
+          this.borrowerRaces.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
 
-      this.data.borrowerDemographic.sex.forEach(element => {
-        this.borrowerSexArr.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.borrowerDemographic.sex) {
+        this.data.borrowerDemographic.sex.forEach(element => {
+          this.borrowerSexArr.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
     }
 
 
     if (this.data.coBorrowerDemographic) {
-      this.data.coBorrowerDemographic.ethnicity.forEach(element => {
-        this.coBorrowerEthnics.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.coBorrowerDemographic.ethnicity) {
+        this.data.coBorrowerDemographic.ethnicity.forEach(element => {
+          this.coBorrowerEthnics.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
 
-      this.data.coBorrowerDemographic.race.forEach(element => {
-        this.coBorrowerRaces.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.coBorrowerDemographic.race) {
+        this.data.coBorrowerDemographic.race.forEach(element => {
+          this.coBorrowerRaces.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
 
-      this.data.coBorrowerDemographic.sex.forEach(element => {
-        this.coBorrowerSexArr.forEach(item => {
-          if (element.id == item.id) {
-            item.checked = true;
-          }
+      if (this.data.coBorrowerDemographic.sex) {
+        this.data.coBorrowerDemographic.sex.forEach(element => {
+          this.coBorrowerSexArr.forEach(item => {
+            if (element.id == item.id) {
+              item.checked = true;
+            }
+          });
         });
-      });
+      }
     }
 
 
