@@ -11,4 +11,5 @@ export interface IBorrowerEmploymentInfoModel {
   startDate?: string;
   endDate?: string;
   borrowerTypeId?: number;
+  stateIdName?: string;
 }
