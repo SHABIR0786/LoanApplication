@@ -41,7 +41,12 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-11">
-                    <button class="btn btn-primary float-right">Edit</button>
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/loan-detail')"
+                    >
+                      Edit
+                    </button>
                   </div>
                 </div>
               </div>
@@ -501,7 +506,11 @@
                 <div class="row">
                   <div class="col-11">
                     <div>
-                      <button type="button" class="float-right btn btn-primary">
+                      <button
+                        type="button"
+                        class="float-right btn btn-primary"
+                        (click)="goToStep('app/personal-information')"
+                      >
                         Edit
                       </button>
                     </div>
@@ -1231,11 +1240,33 @@
             <hr class="mt-2 mb-3" />
 
             <!-- Expenses Start -->
+
+            <div class="row mb-5">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Expenses</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/expense')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mb-5">Expenses</h5>
                     <div class="row">
                       <div class="col">
                         <a href="#" class="h6 mb-1"
@@ -1540,11 +1571,31 @@
 
             <!-- Assets Start -->
 
-            <div class="row">
+            <div class="row mb-5">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
                     <h5>Assets</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/asset')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
                     <div class="row">
                       <div class="col-8">
                         <h5 class="mt-5">Manage Your Assets</h5>
@@ -2449,13 +2500,35 @@
 
             <!-- Employment and Income End -->
 
+            <hr class="mt-2 mb-3" />
+
             <!-- Order Credit Start -->
 
-            <div class="row">
+            <div class="row mb-5">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
                     <h5>Order Credit</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/order-credit')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
                     <div class="row">
                       <div class="col-8">
                         <div class="h6 mt-3">
@@ -2488,11 +2561,31 @@
 
             <!-- Additional Details Start -->
 
+            <div class="row mb-5">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Additional Details</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/additional-detail')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">Additional Details</h5>
                     <div class="row">
                       <div class="col-8">
                         <div class="h6 mt-3">Other Disclosures and Details</div>
@@ -2522,11 +2615,31 @@
 
             <!-- EConsent Start -->
 
+            <div class="row mb-5">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>eConsent</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/econsent')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">eConsent</h5>
                     <p class="font-weight-normal mt-5 text-muted">
                       {{
                         (formData.eConsent.firstName === undefined &&
@@ -2562,15 +2675,37 @@
 
             <!-- EConsent End -->
 
+            <hr class="mt-2 mb-3" />
+
             <!-- Declarations Start -->
 
             <!-- Borrower Declaration Start -->
 
+            <div class="row mb-5">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <h5>Declarations</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-11">
+                    <button
+                      class="btn btn-primary float-right"
+                      (click)="goToStep('app/declaration')"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">Declarations</h5>
                     <div class="row">
                       <div class="col-8">
                         <div class="h6 mt-3">Borrower Declaration</div>
@@ -3185,7 +3320,6 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">&nbsp;</h5>
                     <div class="row">
                       <div class="col-11">
                         <div class="h6 mt-3">
