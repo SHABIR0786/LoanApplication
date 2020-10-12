@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 @Pipe({
   name: "yesNo",
 })
-export class EthnicityYesNo implements PipeTransform {
+export class EthnicityYesNoPipe implements PipeTransform {
   transform(value: any[], id: number): string {
     if (value === undefined || value === null || value.length === 0)
       return "--";
