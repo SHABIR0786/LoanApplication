@@ -1209,7 +1209,6 @@
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Mailing Address</a
                       >
-                      <br /><br />
                       <h6 class="font-weight-normal form-text text-muted mb-3">
                         Is the mailing address the same as the residential
                         address?
@@ -2636,33 +2635,27 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div
+              class="row"
+              *ngIf="
+                !!formData.eConsent.firstName || !!formData.eConsent.firstName
+              "
+            >
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <p class="font-weight-normal mt-5 text-muted">
+                    <p class="font-weight-normal text-muted">
                       {{
-                        (formData.eConsent.firstName === undefined &&
-                          formData.eConsent.lastName === undefined &&
-                          formData.eConsent.agreeeConsent === undefined) ||
-                        (formData.eConsent.firstName === null &&
-                          formData.eConsent.lastName === null &&
-                          formData.eConsent.agreeeConsent === null)
-                          ? "--"
-                          : formData.eConsent.firstName +
-                            " " +
-                            formData.eConsent.lastName
+                        formData.eConsent.firstName +
+                          " " +
+                          formData.eConsent.lastName
                       }}
                     </p>
                     <p class="font-weight-bold">
                       {{
-                        (formData.eConsent.firstName === undefined &&
-                          formData.eConsent.lastName === undefined &&
-                          formData.eConsent.agreeeConsent === undefined) ||
-                        (formData.eConsent.firstName === null &&
-                          formData.eConsent.lastName === null &&
-                          formData.eConsent.agreeeConsent === null)
-                          ? "--"
+                        formData.eConsent.agreeEConsent === undefined ||
+                        formData.eConsent.agreeEConsent === null
+                          ? "Skipped"
                           : formData.eConsent.agreeEConsent
                           ? "Agreed"
                           : "Disagreed"
