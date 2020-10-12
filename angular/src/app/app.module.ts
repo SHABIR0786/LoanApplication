@@ -51,6 +51,7 @@ import { DeclarationComponent } from "./loan-application/declaration/declaration
 import { EmploymentIncomeComponent } from "./loan-application/employment-income/employment-income.component";
 import { AccordionModule } from "ngx-bootstrap/accordion";
 import { SummaryComponent } from "./loan-application/summary/summary.component";
+import { SummaryExpandDataComponent } from "./loan-application/summary/data-component/summary-expand-data.component";
 import { DataService } from "./services/data.service";
 import { EconsentComponent } from "./loan-application/econsent/econsent.component";
 import { AssetsComponent } from "./loan-application/assets/assets.component";
@@ -103,6 +104,7 @@ const ngWizardConfig: NgWizardConfig = {
     AssetsComponent,
     OrderCreditComponent,
     AdditionalDetailsComponent,
+    SummaryExpandDataComponent,
   ],
   imports: [
     CommonModule,
