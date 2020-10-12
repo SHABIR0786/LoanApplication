@@ -3329,156 +3329,87 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Hispanic or Latino
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 1
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Mexican
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 2
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Puerto Rican
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 3
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Cuban
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 4
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Other Hispanic or Latino - Enter Origin
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 5
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6
-                      class="font-weight-normal form-text text-muted mt-3"
-                    ></h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | otherValue: 5
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Not Hispanic or Latino
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 6
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      I do not wish to provide this information.
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.ethnicity
-                          | yesNo: 7
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      American Indian or Alaska Native
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 1
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.race
-                          | otherValue: 1
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Asian
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 2
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      Asian Indian
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.declaration.borrowerDemographic.race | yesNo: 3
-                      }}
-                    </p>
-                  </div>
-                </div>
+                <app-summary-expand-data
+                  heading="Hispanic or Latino"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 1
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Mexican"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 2
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Puerto Rican"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 3
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Cuban"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 4
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Other Hispanic or Latino - Enter Origin"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 5
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading=""
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | otherValue: 5
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Not Hispanic or Latino"
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 6
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="I do not wish to provide this information."
+                  [data]="
+                    formData.declaration.borrowerDemographic.ethnicity
+                      | yesNo: 7
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="American Indian or Alaska Native"
+                  [data]="
+                    formData.declaration.borrowerDemographic.race | yesNo: 1
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading=""
+                  [data]="
+                    formData.declaration.borrowerDemographic.race
+                      | otherValue: 1
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Asian"
+                  [data]="
+                    formData.declaration.borrowerDemographic.race | yesNo: 2
+                  "
+                ></app-summary-expand-data>
+                <app-summary-expand-data
+                  heading="Asian Indian"
+                  [data]="
+                    formData.declaration.borrowerDemographic.race | yesNo: 3
+                  "
+                ></app-summary-expand-data>
                 <div class="row">
                   <div class="col-8">
                     <h6 class="font-weight-normal form-text text-muted mt-3">
