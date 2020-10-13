@@ -25,7 +25,7 @@
                 </button>
               </div>
             </div>
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
           </div>
 
           <div class="col-12" *ngIf="isShowAllStepsReadOnlyModeBool">
@@ -444,7 +444,7 @@
             </div>
             <!-- Loan Details End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Personal Information Start -->
 
@@ -1267,7 +1267,7 @@
 
             <!-- personal Information End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Expenses Start -->
 
@@ -1601,7 +1601,7 @@
             </div>
             <!-- Expenses End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Assets Start -->
 
@@ -2197,7 +2197,7 @@
 
             <!-- Assets End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Employment and Income Start -->
 
@@ -2405,9 +2405,10 @@
                             </div>
                           </div> -->
                 </div>
+
+                <hr class="mt-2 mb-3 bg-secondary" />
               </div>
             </div>
-
             <div class="row">
               <div class="col-6">
                 <div class="row">
@@ -2524,8 +2525,8 @@
                 <div
                   class="col-6"
                   *ngFor="
-                    let borrowerEmploymentInfo of formData.employmentIncome
-                      .borrowerEmploymentInfo;
+                    let coBorrowerEmploymentInfo of formData.employmentIncome
+                      .coBorrowerEmploymentInfo;
                     let i = index
                   "
                 >
@@ -2540,11 +2541,11 @@
                           </h6>
                           <p class="font-weight-bold">
                             {{
-                              borrowerEmploymentInfo.isSelfEmployed ===
+                              coBorrowerEmploymentInfo.isSelfEmployed ===
                                 undefined ||
-                              borrowerEmploymentInfo.isSelfEmployed === null
+                              coBorrowerEmploymentInfo.isSelfEmployed === null
                                 ? "--"
-                                : borrowerEmploymentInfo.isSelfEmployed
+                                : coBorrowerEmploymentInfo.isSelfEmployed
                                 ? "Yes"
                                 : "No"
                             }}
@@ -2559,7 +2560,7 @@
                             Employer Name *
                           </h6>
                           <p class="font-weight-bold">
-                            {{ borrowerEmploymentInfo.employerName || "--" }}
+                            {{ coBorrowerEmploymentInfo.employerName || "--" }}
                           </p>
                         </div>
                       </div>
@@ -2571,7 +2572,7 @@
                             Position *
                           </h6>
                           <p class="font-weight-bold">
-                            {{ borrowerEmploymentInfo.position || "--" }}
+                            {{ coBorrowerEmploymentInfo.position || "--" }}
                           </p>
                         </div>
                       </div>
@@ -2583,7 +2584,7 @@
                             Address 1
                           </h6>
                           <p class="font-weight-bold">
-                            {{ borrowerEmploymentInfo.address1 || "--" }}
+                            {{ coBorrowerEmploymentInfo.address1 || "--" }}
                           </p>
                         </div>
                       </div>
@@ -2596,7 +2597,7 @@
                             Address 2
                           </h6>
                           <p class="font-weight-bold">
-                            {{ borrowerEmploymentInfo.address2 || "--" }}
+                            {{ coBorrowerEmploymentInfo.address2 || "--" }}
                           </p>
                         </div>
                       </div>
@@ -2609,7 +2610,7 @@
                               City
                             </h6>
                             <p class="font-weight-bold">
-                              {{ borrowerEmploymentInfo.city || "--" }}
+                              {{ coBorrowerEmploymentInfo.city || "--" }}
                             </p>
                           </div>
                         </div>
@@ -2621,7 +2622,7 @@
                               State
                             </h6>
                             <p class="font-weight-bold">
-                              {{ borrowerEmploymentInfo.stateIdName || "--" }}
+                              {{ coBorrowerEmploymentInfo.stateIdName || "--" }}
                             </p>
                           </div>
                         </div>
@@ -2633,7 +2634,7 @@
                               Zip Code
                             </h6>
                             <p class="font-weight-bold">
-                              {{ borrowerEmploymentInfo.zipCode || "--" }}
+                              {{ coBorrowerEmploymentInfo.zipCode || "--" }}
                             </p>
                           </div>
                         </div>
@@ -2645,7 +2646,7 @@
                               Start Date *
                             </h6>
                             <p class="font-weight-bold">
-                              {{ borrowerEmploymentInfo.startDate || "--" }}
+                              {{ coBorrowerEmploymentInfo.startDate || "--" }}
                             </p>
                           </div>
                         </div>
@@ -2657,7 +2658,7 @@
                               End Date
                             </h6>
                             <p class="font-weight-bold">
-                              {{ borrowerEmploymentInfo.endDate || "--" }}
+                              {{ coBorrowerEmploymentInfo.endDate || "--" }}
                             </p>
                           </div>
                         </div>
@@ -2670,7 +2671,7 @@
                             </h6>
                             <p class="font-weight-bold">
                               {{
-                                borrowerEmploymentInfo.borrowerTypeId || "--"
+                                coBorrowerEmploymentInfo.borrowerTypeId || "--"
                               }}
                             </p>
                           </div>
@@ -2688,6 +2689,8 @@
                             </div>
                           </div> -->
                   </div>
+
+                  <hr class="mt-2 mb-3 bg-secondary" />
                 </div>
               </div>
 
@@ -2717,8 +2720,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .base || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.base || "--"
                         }}
                       </p>
                     </div>
@@ -2730,8 +2733,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .overtime || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.overtime || "--"
                         }}
                       </p>
                     </div>
@@ -2743,8 +2746,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .bonuses || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.bonuses || "--"
                         }}
                       </p>
                     </div>
@@ -2756,8 +2759,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .commissions || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.commissions || "--"
                         }}
                       </p>
                     </div>
@@ -2769,8 +2772,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .dividends || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.dividends || "--"
                         }}
                       </p>
                     </div>
@@ -2782,8 +2785,8 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.borrowerMonthlyIncome
-                            .commissions || "--"
+                          formData.employmentIncome.coBorrowerMonthlyIncome
+                            ?.commissions || "--"
                         }}
                       </p>
                     </div>
@@ -2841,7 +2844,7 @@
 
             <!-- Employment and Income End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Order Credit Start -->
 
@@ -2898,7 +2901,7 @@
 
             <!-- Order Credit End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Additional Details Start -->
 
@@ -2952,7 +2955,7 @@
 
             <!-- Additional Details End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- EConsent Start -->
 
@@ -3010,7 +3013,7 @@
 
             <!-- EConsent End -->
 
-            <hr class="mt-2 mb-3" />
+            <hr class="mt-2 mb-3 bg-secondary" />
 
             <!-- Declarations Start -->
 
@@ -4450,7 +4453,7 @@
                 </div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4499,7 +4502,7 @@
                 <div class="col-12 mb-3">Borrower Mailing Address</div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4529,7 +4532,7 @@
                 </div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4548,7 +4551,7 @@
                 <div class="col-12 mt-3 mb-3">Manage Your Assets</div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4582,7 +4585,7 @@
                 <div class="col-12 mb-3">Additional Gross Monthly Income</div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4606,7 +4609,7 @@
                 </div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4630,7 +4633,7 @@
                 </div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4648,7 +4651,7 @@
                 </div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
@@ -4671,7 +4674,7 @@
                 <div class="col-12 mb-3">Borrower Demographic Information</div>
               </div>
 
-              <hr class="mt-2 mb-3" />
+              <hr class="mt-2 mb-3 bg-secondary" />
             </div>
 
             <div class="col-12">
