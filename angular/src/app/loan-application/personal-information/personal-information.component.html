@@ -62,24 +62,6 @@
                                         class="col-12"
                                 >
                                 </validation-summary>
-                                <div class="col-12">
-                                    <button
-                                            class="btn btn-secondary"
-                                            (click)="proceedToPrevious()"
-                                    >
-                                        Back
-                                    </button>
-                                    <button
-                                            class="btn btn-secondary float-right"
-                                            (click)="proceedToNext('wizardStep', 1)"
-                                    >
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                        </ng-wizard-step>
-                        <ng-wizard-step title="Step 2" description="Borrower">
-                            <div class="row">
                                 <div class="col-12 row" *ngIf="data.isApplyingWithCoBorrower">
                                     <div class="col-12">
                                         <label
@@ -128,7 +110,24 @@
                                     >
                                     </validation-summary>
                                 </div>
-
+                                <div class="col-12">
+                                    <button
+                                            class="btn btn-secondary"
+                                            (click)="proceedToPrevious()"
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                            class="btn btn-secondary float-right"
+                                            (click)="proceedToNext('wizardStep', 1)"
+                                    >
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-wizard-step>
+                        <ng-wizard-step title="Step 2" description="Borrower">
+                            <div class="row">
                                 <app-borrower-personal-detail
                                         [form]="form.get('borrower')"
                                         [data]="data.borrower"
