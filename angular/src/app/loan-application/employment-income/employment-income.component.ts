@@ -196,7 +196,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
         this.data.coBorrowerEmploymentInfo.length
       ) {
         this.data.coBorrowerEmploymentInfo.forEach((d) =>
-          this.addBorrowerEmploymentInfo(d)
+          this.addCoBorrowerEmploymentInfo(d)
         );
       } else {
         this.addCoBorrowerEmploymentInfo();
@@ -249,12 +249,14 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     this.borrowerEmploymentInfo.push(
       this.newBorrowerEmploymentInfo(data || { borrowerTypeId: 1 })
     );
+    debugger;
   }
 
   addCoBorrowerEmploymentInfo(data?: IBorrowerEmploymentInfoModel) {
     this.coBorrowerEmploymentInfo.push(
       this.newBorrowerEmploymentInfo(data || { borrowerTypeId: 2 })
     );
+    debugger;
   }
 
   addAdditionalIncome(data?: IAdditionalIncomeModel) {
