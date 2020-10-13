@@ -16,4 +16,8 @@ export class AppConsts {
   static readonly authorization = {
     encryptedAuthTokenName: "enc_auth_token",
   };
+
+  public  static typeBorrower = 1;
+  public  static typeCoBorrower = 2;
+  
 }
