@@ -74,14 +74,40 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     );
     this._dataService.updateData(this.form.value, "employmentIncome");
 
-    this.data.borrowerEmploymentInfo[0].stateIdName = this.getDataById(
-      this.states,
-      this.data.borrowerEmploymentInfo[0].stateId
-    );
-    this.data.additionalIncomes[0].incomeSourceIdName = this.getDataById(
-      this.incomeSources,
-      this.data.additionalIncomes[0].incomeSourceId
-    );
+    for (
+      let index = 0;
+      index < this.data.borrowerEmploymentInfo.length;
+      index++
+    ) {
+      const borrowerEmploymentInfo = this.data.borrowerEmploymentInfo[index];
+      borrowerEmploymentInfo.stateIdName = this.getDataById(
+        this.states,
+        borrowerEmploymentInfo.stateId
+      );
+    }
+
+    if (this.isApplyingWithCoBorrower)
+      for (
+        let index = 0;
+        index < this.data.coBorrowerEmploymentInfo.length;
+        index++
+      ) {
+        const coBorrowerEmploymentInfo = this.data.coBorrowerEmploymentInfo[
+          index
+        ];
+        coBorrowerEmploymentInfo.stateIdName = this.getDataById(
+          this.states,
+          coBorrowerEmploymentInfo.stateId
+        );
+      }
+
+    for (let index = 0; index < this.data.additionalIncomes.length; index++) {
+      const additionalIncomes = this.data.additionalIncomes[index];
+      additionalIncomes.incomeSourceIdName = this.getDataById(
+        this.incomeSources,
+        additionalIncomes.incomeSourceId
+      );
+    }
   }
 
   getDataById(arr, id) {
