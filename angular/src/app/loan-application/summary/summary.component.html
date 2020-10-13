@@ -108,6 +108,10 @@
                   <div class="col-8">
                     <div class="h6">
                       <a href="#" class="h6 mb-1">Purpose of your Loan</a>
+                      <span class="text-danger">
+                        <i class="fa fa-info-circle ml-2"></i>
+                        Required
+                      </span>
                     </div>
                     <h6 class="font-weight-normal form-text text-muted mt-3">
                       Loan Purpose *
@@ -317,6 +321,10 @@
                 <div class="row">
                   <div class="col-8">
                     <a href="#" class="h6 mb-1">Property Details</a>
+                    <span class="text-danger">
+                      <i class="fa fa-info-circle ml-2"></i>
+                      Required
+                    </span>
                     <div>
                       <h6 class="font-weight-normal form-text text-muted mt-5">
                         Have you started looking for a home? *
@@ -447,8 +455,12 @@
                     <h5>Personal Information</h5>
                     <div class="mt-5">
                       <a href="#" class="h6 mb-1">Joint Credit</a>
+                      <span class="text-danger">
+                        <i class="fa fa-info-circle ml-2"></i>
+                        Required
+                      </span>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6 class="font-weight-normal form-text text-muted mt-5">
                         Are you applying for joint credit with a co-borrower?
                       </h6>
 
@@ -515,9 +527,12 @@
                       </button>
                     </div>
                     <div class="mt-5" style="margin-top: 4.1rem !important">
-                      <a href="#" class="h6 mb-1">Borrower</a><br />
-
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <a href="#" class="h6 mb-1">Borrower</a>
+                      <span class="text-danger">
+                        <i class="fa fa-info-circle ml-2"></i>
+                        Required
+                      </span>
+                      <h6 class="font-weight-normal form-text text-muted mt-5">
                         First Name
                       </h6>
                       <p class="font-weight-bold">
@@ -703,15 +718,14 @@
                     <div class="mt-5">
                       <div
                         *ngIf="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower !== undefined &&
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower !== null &&
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === true
+                          formData.personalInformation.isApplyingWithCoBorrower
                         "
                       >
                         <a href="#" class="h6 mb-1">Co-Borrower</a>
+                        <span class="text-danger">
+                          <i class="fa fa-info-circle ml-2"></i>
+                          Required
+                        </span>
                         <br /><br />
                         <h6
                           class="font-weight-normal form-text text-muted mb-3"
@@ -906,6 +920,10 @@
                       <a href="#" class="h6 mb-1"
                         >Borrower Residential Address</a
                       >
+                      <span class="text-danger">
+                        <i class="fa fa-info-circle ml-2"></i>
+                        Required
+                      </span>
                       <br /><br />
                       <h6 class="font-weight-normal form-text text-muted mb-3">
                         Address Line 1
@@ -1023,7 +1041,6 @@
                   <div class="col-8">
                     <div class="mt-5">
                       <a href="#" class="h6 mb-1">Borrower Mailing Address</a>
-                      <br /><br />
                       <h6 class="font-weight-normal form-text text-muted mb-3">
                         Is the mailing address the same as the residential
                         address?
@@ -1144,10 +1161,19 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div
+                      class="mt-5"
+                      *ngIf="
+                        formData.personalInformation.isApplyingWithCoBorrower
+                      "
+                    >
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Residential Address</a
                       >
+                      <span class="text-danger">
+                        <i class="fa fa-info-circle ml-2"></i>
+                        Required
+                      </span>
                       <br /><br />
                       <h6 class="font-weight-normal form-text text-muted mb-3">
                         Same as the borrower's residential address? *
@@ -1205,7 +1231,12 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div
+                      class="mt-5"
+                      *ngIf="
+                        formData.personalInformation.isApplyingWithCoBorrower
+                      "
+                    >
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Mailing Address</a
                       >
@@ -1271,12 +1302,16 @@
                         <a href="#" class="h6 mb-1"
                           >Current Monthly Housing Expensesr</a
                         >
+                        <span class="text-danger">
+                          <i class="fa fa-info-circle ml-2"></i>
+                          Required
+                        </span>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text text-muted mt-5"
                         >
                           Do you currently rent or own? If you currently live
                           with family please select Rent.
@@ -1596,8 +1631,13 @@
                 <div class="row">
                   <div class="col-8">
                     <div class="row">
-                      <div class="col-8">
-                        <h5 class="mt-5">Manage Your Assets</h5>
+                      <div
+                        class="col-8"
+                        *ngFor="
+                          let manualAssetEntry of formData.manualAssetEntries
+                        "
+                      >
+                        <h5 class="h6 mt-3">Manage Your Assets</h5>
                       </div>
                     </div>
                   </div>
@@ -2185,31 +2225,35 @@
             </div>
 
             <div class="row mt-5">
-              <div class="col-6">
-                <div class="row">
+              <div
+                class="col-6"
+                *ngFor="
+                  let borrowerEmploymentInfo of formData.employmentIncome
+                    .borrowerEmploymentInfo;
+                  let i = index
+                "
+              >
+                <div class="row" *ngIf="i == 0">
                   <div class="col-8">
                     <div class="row">
-                      <div class="col-11">
+                      <div class="col-12">
                         <a href="#" class="h6 mb-1"
                           >Borrower Employment Information</a
                         >
+                        <span class="text-danger">
+                          <i class="fa fa-info-circle ml-2"></i>
+                          Required
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div
-                  class="row"
-                  *ngFor="
-                    let borrowerEmploymentInfo of formData.employmentIncome
-                      .borrowerEmploymentInfo;
-                    let i = index
-                  "
-                >
+                <div class="row">
                   <div class="col-8">
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text text-muted mt-5"
                         >
                           I'm self-employed.
                         </h6>
@@ -2362,6 +2406,9 @@
                           </div> -->
                 </div>
               </div>
+            </div>
+
+            <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
@@ -2375,7 +2422,7 @@
 
                 <div class="row">
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6 class="font-weight-normal form-text text-muted mt-5">
                       Base
                     </h6>
                     <p class="font-weight-bold">
@@ -2452,7 +2499,302 @@
                   </div>
                 </div>
               </div>
+            </div>
 
+            <!-- Co-Borrower Employment Information Start -->
+
+            <div *ngIf="formData.personalInformation.isApplyingWithCoBorrower">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="row">
+                        <div class="col-12">
+                          <a href="#" class="h6 mb-1"
+                            >Co-Borrower Employment Information</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div
+                  class="col-6"
+                  *ngFor="
+                    let borrowerEmploymentInfo of formData.employmentIncome
+                      .borrowerEmploymentInfo;
+                    let i = index
+                  "
+                >
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-5"
+                          >
+                            I'm self-employed.
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{
+                              borrowerEmploymentInfo.isSelfEmployed ===
+                                undefined ||
+                              borrowerEmploymentInfo.isSelfEmployed === null
+                                ? "--"
+                                : borrowerEmploymentInfo.isSelfEmployed
+                                ? "Yes"
+                                : "No"
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Employer Name *
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.employerName || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Position *
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.position || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Address 1
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.address1 || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-8">
+                          <h5></h5>
+                          <h6
+                            class="font-weight-normal form-text text-muted mt-3"
+                          >
+                            Address 2
+                          </h6>
+                          <p class="font-weight-bold">
+                            {{ borrowerEmploymentInfo.address2 || "--" }}
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-8">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              City
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{ borrowerEmploymentInfo.city || "--" }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-8">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              State
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{ borrowerEmploymentInfo.stateIdName || "--" }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-8">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              Zip Code
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{ borrowerEmploymentInfo.zipCode || "--" }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-8">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              Start Date *
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{ borrowerEmploymentInfo.startDate || "--" }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6" *ngIf="i > 0">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              End Date
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{ borrowerEmploymentInfo.endDate || "--" }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-8">
+                            <h6
+                              class="font-weight-normal form-text text-muted mt-3"
+                            >
+                              Length of Employment
+                            </h6>
+                            <p class="font-weight-bold">
+                              {{
+                                borrowerEmploymentInfo.borrowerTypeId || "--"
+                              }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                            <div class="col-8">
+                              <h6 class="font-weight-normal form-text text-muted mb-2">
+                                Loan Type
+                              </h6>
+                              <p class="font-weight-bold">
+                                {{ formData.loanDetails.referredBy }}
+                              </p>
+                            </div>
+                          </div> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Co-Borrower Employment Information End -->
+
+              <!-- Co-Borrower Gross Monthly Income Start -->
+
+              <div
+                class="row"
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+              >
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="row">
+                        <div class="col-11">
+                          <h5 class="h6">Co-Borrower Gross Monthly Income</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-5">
+                        Base
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .base || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-4">
+                        Overtime
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .overtime || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-4">
+                        Bonuses
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .bonuses || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Commissions
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .commissions || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Dividends / Interest
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .dividends || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        Total Borrower Income
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .commissions || "--"
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Co-Borrower Gross Monthly Income End -->
+
+            <div class="row mb-5">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
@@ -2529,7 +2871,7 @@
                 <div class="row">
                   <div class="col-8">
                     <div class="row">
-                      <div class="col-8">
+                      <div class="col-11">
                         <div class="h6 mt-3">
                           Credit Authorization Agreement
                         </div>
@@ -2701,7 +3043,7 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-8">
-                        <div class="h6 mt-3">Borrower Declaration</div>
+                        <div class="h6 mt-5">Borrower Declaration</div>
                       </div>
                     </div>
                   </div>
@@ -3007,10 +3349,9 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">&nbsp;</h5>
-                    <div class="row">
+                    <div class="row mt-5">
                       <div class="col-8">
-                        <div class="h6 mt-3">Co-Borrower Declarations</div>
+                        <div class="h6 mt-4">Co-Borrower Declarations</div>
                       </div>
                     </div>
                   </div>
@@ -3315,7 +3656,7 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-11">
-                        <div class="h6 mt-3">
+                        <div class="h6 mt-5">
                           Borrower Demographic Information
                         </div>
                       </div>
@@ -3652,10 +3993,9 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <h5 class="mt-5">&nbsp;</h5>
-                    <div class="row">
+                    <div class="row mt-3">
                       <div class="col-11">
-                        <div class="h6 mt-3">
+                        <div class="h6 mt-4">
                           Co-Borrower Demographic Information
                         </div>
                       </div>
@@ -4068,15 +4408,14 @@
               </div>
               <!-- Co-Borrower Demographic Information End -->
             </div>
+
+            <!-- Declarations End -->
           </div>
-
-          <!-- Declarations End -->
-
           <div *ngIf="!isShowAllStepsReadOnlyModeBool">
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Loan Details</h5>
+                  <h5 class="mt-3">Loan Details</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4089,7 +4428,7 @@
               </div>
 
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-3">
                   Purpose of your Loan
                   <span
                     class="text-danger"
@@ -4099,7 +4438,7 @@
                     Required
                   </span>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mb-3">
                   Property Details
                   <span
                     class="text-danger"
@@ -4117,7 +4456,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Personal Information</h5>
+                  <h5 class="mt-3">Personal Information</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4130,7 +4469,7 @@
               </div>
 
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-3">
                   Joint Credit
                   <span
                     class="text-danger"
@@ -4155,12 +4494,9 @@
                   <span
                     class="text-danger"
                     *ngIf="showGroupError('residentialAddress')"
-                  >
-                    <i class="fa fa-info-circle ml-2"></i>
-                    Required
-                  </span>
+                  ></span>
                 </div>
-                <div class="col-12">Borrower Mailing Address</div>
+                <div class="col-12 mb-3">Borrower Mailing Address</div>
               </div>
 
               <hr class="mt-2 mb-3" />
@@ -4169,7 +4505,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Expenses</h5>
+                  <h5 class="mt-3">Expenses</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4182,7 +4518,7 @@
               </div>
 
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-3 mb-3">
                   Current Monthly Housing Expenses
                   <span
                     class="text-danger"
@@ -4199,7 +4535,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Asset</h5>
+                  <h5 class="mt-3">Asset</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4209,6 +4545,7 @@
                     Edit
                   </button>
                 </div>
+                <div class="col-12 mt-3 mb-3">Manage Your Assets</div>
               </div>
 
               <hr class="mt-2 mb-3" />
@@ -4217,7 +4554,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Employment and Income</h5>
+                  <h5 class="mt-3">Employment and Income</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4230,7 +4567,7 @@
               </div>
 
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-3">
                   Borrower Employment Information
                   <span
                     class="text-danger"
@@ -4242,7 +4579,7 @@
                 </div>
                 <div class="col-12">Borrower Gross Monthly Income</div>
 
-                <div class="col-12">Additional Gross Monthly Income</div>
+                <div class="col-12 mb-3">Additional Gross Monthly Income</div>
               </div>
 
               <hr class="mt-2 mb-3" />
@@ -4251,7 +4588,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Order Credit</h5>
+                  <h5 class="mt-3">Order Credit</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4264,7 +4601,9 @@
               </div>
 
               <div class="row">
-                <div class="col-12">Credit Authorization Agreement</div>
+                <div class="col-12 mt-3 mb-3">
+                  Credit Authorization Agreement
+                </div>
               </div>
 
               <hr class="mt-2 mb-3" />
@@ -4273,7 +4612,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Additional Details</h5>
+                  <h5 class="mt-3">Additional Details</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4286,7 +4625,9 @@
               </div>
 
               <div class="row">
-                <div class="col-12">Other Disclosures and Details</div>
+                <div class="col-12 mt-3 mb-3">
+                  Other Disclosures and Details
+                </div>
               </div>
 
               <hr class="mt-2 mb-3" />
@@ -4295,7 +4636,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>eConsent</h5>
+                  <h5 class="mt-3 mb-3">eConsent</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4313,7 +4654,7 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
-                  <h5>Declarations</h5>
+                  <h5 class="mt-3">Declarations</h5>
                 </div>
                 <div class="col-3">
                   <button
@@ -4326,8 +4667,8 @@
               </div>
 
               <div class="row">
-                <div class="col-12">Borrower Declarations</div>
-                <div class="col-12">Borrower Demographic Information</div>
+                <div class="col-12 mt-3">Borrower Declarations</div>
+                <div class="col-12 mb-3">Borrower Demographic Information</div>
               </div>
 
               <hr class="mt-2 mb-3" />
