@@ -42,7 +42,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/loan-detail')"
                     >
                       Edit
@@ -514,13 +514,14 @@
                   </div>
                 </div>
               </div>
+
               <div class="col-6">
                 <div class="row">
                   <div class="col-11">
                     <div>
                       <button
                         type="button"
-                        class="float-right btn btn-primary"
+                        class="float-right btn btn-secondary"
                         (click)="goToStep('app/personal-information')"
                       >
                         Edit
@@ -709,18 +710,15 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-6">
+              <div
+                class="col-6"
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+              >
                 <div class="row">
                   <div class="col-8">
                     <div class="mt-5">
-                      <div
-                        *ngIf="
-                          formData.personalInformation.isApplyingWithCoBorrower
-                        "
-                      >
+                      <div>
                         <a href="#" class="h6 mb-1">Co-Borrower</a>
                         <span class="text-danger">
                           <i class="fa fa-info-circle ml-2"></i>
@@ -913,10 +911,11 @@
                   </div>
                 </div>
               </div>
+
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div>
                       <a href="#" class="h6 mb-1"
                         >Borrower Residential Address</a
                       >
@@ -1033,15 +1032,15 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-6">
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div>
                       <a href="#" class="h6 mb-1">Borrower Mailing Address</a>
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text text-muted mb-3 mt-3"
+                      >
                         Is the mailing address the same as the residential
                         address?
                       </h6>
@@ -1158,15 +1157,14 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6">
+
+              <div
+                class="col-6"
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+              >
                 <div class="row">
                   <div class="col-8">
-                    <div
-                      class="mt-5"
-                      *ngIf="
-                        formData.personalInformation.isApplyingWithCoBorrower
-                      "
-                    >
+                    <div class="mt-5">
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Residential Address</a
                       >
@@ -1225,22 +1223,20 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-6">
+              <div
+                class="col-6"
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+              >
                 <div class="row">
                   <div class="col-8">
-                    <div
-                      class="mt-5"
-                      *ngIf="
-                        formData.personalInformation.isApplyingWithCoBorrower
-                      "
-                    >
+                    <div class="mt-5">
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Mailing Address</a
                       >
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text text-muted mb-3 mt-3"
+                      >
                         Is the mailing address the same as the residential
                         address?
                       </h6>
@@ -1283,7 +1279,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/expense')"
                     >
                       Edit
@@ -1617,7 +1613,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/asset')"
                     >
                       Edit
@@ -2214,7 +2210,7 @@
                   <div class="col-11">
                     <button
                       type="button"
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/employment-income')"
                     >
                       Edit
@@ -2388,7 +2384,11 @@
                             Length of Employment
                           </h6>
                           <p class="font-weight-bold">
-                            {{ borrowerEmploymentInfo.borrowerTypeId || "--" }}
+                            {{
+                              (borrowerEmploymentInfo.startDate
+                                | dateDifference
+                                  : borrowerEmploymentInfo.endDate) || "--"
+                            }}
                           </p>
                         </div>
                       </div>
@@ -2671,7 +2671,9 @@
                             </h6>
                             <p class="font-weight-bold">
                               {{
-                                coBorrowerEmploymentInfo.borrowerTypeId || "--"
+                                coBorrowerEmploymentInfo.startDate
+                                  | dateDifference
+                                    : coBorrowerEmploymentInfo.endDate
                               }}
                             </p>
                           </div>
@@ -2860,7 +2862,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/order-credit')"
                     >
                       Edit
@@ -2917,7 +2919,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/additional-detail')"
                     >
                       Edit
@@ -2971,7 +2973,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/econsent')"
                     >
                       Edit
@@ -3031,7 +3033,7 @@
                 <div class="row">
                   <div class="col-11">
                     <button
-                      class="btn btn-primary float-right"
+                      class="btn btn-secondary float-right"
                       (click)="goToStep('app/declaration')"
                     >
                       Edit
@@ -3046,7 +3048,7 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-8">
-                        <div class="h6 mt-5">Borrower Declaration</div>
+                        <div class="h6 mt-3">Borrower Declaration</div>
                       </div>
                     </div>
                   </div>
@@ -3352,9 +3354,9 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <div class="row mt-5">
+                    <div class="row">
                       <div class="col-8">
-                        <div class="h6 mt-4">Co-Borrower Declarations</div>
+                        <div class="h6 mt-3">Co-Borrower Declarations</div>
                       </div>
                     </div>
                   </div>
@@ -3659,7 +3661,7 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-11">
-                        <div class="h6 mt-5">
+                        <div class="h6 mt-3">
                           Borrower Demographic Information
                         </div>
                       </div>
@@ -3996,9 +3998,9 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <div class="row mt-3">
+                    <div class="row">
                       <div class="col-11">
-                        <div class="h6 mt-4">
+                        <div class="h6 mt-3">
                           Co-Borrower Demographic Information
                         </div>
                       </div>
@@ -4414,7 +4416,8 @@
 
             <!-- Declarations End -->
           </div>
-          <div *ngIf="!isShowAllStepsReadOnlyModeBool">
+
+          <div class="col-12" *ngIf="!isShowAllStepsReadOnlyModeBool">
             <div class="col-12">
               <div class="row">
                 <div class="col-9">
@@ -4682,7 +4685,7 @@
                 Back
               </button>
               <button
-                class="btn btn-primary float-right"
+                class="btn btn-secondary float-right"
                 (click)="submitForm()"
                 [disabled]="hasAnyErrors()"
               >
