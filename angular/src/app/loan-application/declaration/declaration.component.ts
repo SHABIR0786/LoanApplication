@@ -516,7 +516,6 @@ export class DeclarationComponent implements OnInit, DoCheck {
   }
 
   proceedToNext(event?: string) {
-    debugger;
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {
