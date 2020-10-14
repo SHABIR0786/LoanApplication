@@ -4,11 +4,7 @@
       <div class="card-body">
         <div [formGroup]="form">
           <ng-wizard [config]="config">
-            <ng-wizard-step
-              title="Step 1"
-              description="Borrower Declarations"
-              [state]=""
-            >
+            <ng-wizard-step title="Borrower Declarations" [state]="">
               <div class="row">
                 <div class="col-12 row" formGroupName="borrowerDeclaration">
                   <h4 class="col-12 mb-1">Borrower Declarations</h4>
@@ -1341,10 +1337,7 @@
                 </div>
               </div>
             </ng-wizard-step>
-            <ng-wizard-step
-              title="Step 2"
-              description="Borrower Demographic Information"
-            >
+            <ng-wizard-step title="Borrower Demographic Information">
               <div class="row">
                 <div class="col-12">
                   <h4>Borrower Demographic Information</h4>
