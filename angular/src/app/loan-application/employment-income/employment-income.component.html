@@ -754,6 +754,25 @@
                 />
               </div>
             </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label>
+                  {{ "Total Borrower Income" | localize }}
+                </label>
+                <p>
+                  {{
+                    ConvertToInt(data.borrowerMonthlyIncome.base || 0) +
+                      ConvertToInt(data.borrowerMonthlyIncome.overtime || 0) +
+                      ConvertToInt(data.borrowerMonthlyIncome.bonuses || 0) +
+                      ConvertToInt(
+                        data.borrowerMonthlyIncome.commissions || 0
+                      ) +
+                      ConvertToInt(data.borrowerMonthlyIncome.dividends || 0)
+                  }}
+                </p>
+              </div>
+            </div>
           </div>
           <!--Borrower Monthly Income End-->
 
@@ -874,6 +893,25 @@
                     [(ngModel)]="data.coBorrowerMonthlyIncome.dividends"
                   />
                 </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label>
+                  {{ "Total Borrower Income" | localize }}
+                </label>
+                <p>
+                  {{
+                    ConvertToInt(data.coBorrowerMonthlyIncome.base || 0) +
+                      ConvertToInt(data.coBorrowerMonthlyIncome.overtime || 0) +
+                      ConvertToInt(data.coBorrowerMonthlyIncome.bonuses || 0) +
+                      ConvertToInt(
+                        data.coBorrowerMonthlyIncome.commissions || 0
+                      ) +
+                      ConvertToInt(data.coBorrowerMonthlyIncome.dividends || 0)
+                  }}
+                </p>
               </div>
             </div>
           </div>
