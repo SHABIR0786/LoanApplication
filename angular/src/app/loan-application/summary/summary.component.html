@@ -2493,8 +2493,25 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.employmentIncome.borrowerMonthlyIncome
-                          .commissions || "--"
+                        ConvertToInt(
+                          formData.employmentIncome.borrowerMonthlyIncome.base
+                        ) +
+                          ConvertToInt(
+                            formData.employmentIncome.borrowerMonthlyIncome
+                              .overtime
+                          ) +
+                          ConvertToInt(
+                            formData.employmentIncome.borrowerMonthlyIncome
+                              .bonuses
+                          ) +
+                          ConvertToInt(
+                            formData.employmentIncome.borrowerMonthlyIncome
+                              .commissions
+                          ) +
+                          ConvertToInt(
+                            formData.employmentIncome.borrowerMonthlyIncome
+                              .dividends
+                          ) || "--"
                       }}
                     </p>
                   </div>
@@ -2787,8 +2804,26 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.employmentIncome.coBorrowerMonthlyIncome
-                            ?.commissions || "--"
+                          ConvertToInt(
+                            formData.employmentIncome.coBorrowerMonthlyIncome
+                              ?.base
+                          ) +
+                            ConvertToInt(
+                              formData.employmentIncome.coBorrowerMonthlyIncome
+                                ?.overtime
+                            ) +
+                            ConvertToInt(
+                              formData.employmentIncome.coBorrowerMonthlyIncome
+                                ?.bonuses
+                            ) +
+                            ConvertToInt(
+                              formData.employmentIncome.coBorrowerMonthlyIncome
+                                ?.commissions
+                            ) +
+                            ConvertToInt(
+                              formData.employmentIncome.coBorrowerMonthlyIncome
+                                ?.dividends
+                            ) || "--"
                         }}
                       </p>
                     </div>
@@ -4479,7 +4514,17 @@
                   Joint Credit
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('jointCredit')"
+                    *ngIf="
+                      !formData.personalInformation ||
+                      (formData.personalInformation.isApplyingWithCoBorrower ===
+                      true
+                        ? formData.personalInformation
+                            .useIncomeOfPersonOtherThanBorrower === null ||
+                          formData.personalInformation
+                            .useIncomeOfPersonOtherThanBorrower === undefined
+                        : formData.personalInformation
+                            .isApplyingWithCoBorrower !== false)
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
                     Required
@@ -4489,20 +4534,106 @@
                   Borrower
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('borrowerPersonalInformation')"
+                    *ngIf="
+                      !formData.personalInformation ||
+                      !formData.personalInformation.borrower.firstName ||
+                      !formData.personalInformation.borrower.lastName ||
+                      !formData.personalInformation.borrower.email ||
+                      !formData.personalInformation.borrower.dateOfBirth ||
+                      !formData.personalInformation.borrower
+                        .socialSecurityNumber ||
+                      !formData.personalInformation.borrower.maritalStatusId ||
+                      !formData.personalInformation.borrower.cellPhone ||
+                      formData.personalInformation.agreePrivacyPolicy ===
+                        undefined ||
+                      formData.personalInformation.agreePrivacyPolicy === null
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
                     Required
                   </span>
                 </div>
+                <div
+                  class="col-12"
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                >
+                  Co-Borrower
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      !formData.personalInformation ||
+                      !formData.personalInformation.coBorrower.firstName ||
+                      !formData.personalInformation.coBorrower.lastName ||
+                      !formData.personalInformation.coBorrower.email ||
+                      !formData.personalInformation.coBorrower.dateOfBirth ||
+                      !formData.personalInformation.coBorrower
+                        .socialSecurityNumber ||
+                      !formData.personalInformation.coBorrower
+                        .maritalStatusId ||
+                      !formData.personalInformation.coBorrower.cellPhone
+                    "
+                  >
+                    <i class="fa fa-info-circle ml-2"></i>
+                    Required
+                  </span>
+                </div>
+
                 <div class="col-12">
                   Borrower Residential Address
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('residentialAddress')"
-                  ></span>
+                    *ngIf="
+                      !formData.personalInformation ||
+                      !formData.personalInformation.residentialAddress
+                        .addressLine1 ||
+                      !formData.personalInformation.residentialAddress.city ||
+                      !formData.personalInformation.residentialAddress
+                        .stateId ||
+                      !formData.personalInformation.residentialAddress
+                        .zipCode ||
+                      !formData.personalInformation.residentialAddress
+                        .totalYears
+                    "
+                  >
+                    <i class="fa fa-info-circle ml-2"></i>
+                    Required
+                  </span>
                 </div>
-                <div class="col-12 mb-3">Borrower Mailing Address</div>
+
+                <div class="col-12">Borrower Mailing Address</div>
+
+                <div
+                  class="col-12"
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                >
+                  Co-Borrower Residential Address
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      !formData.personalInformation ||
+                      !formData.personalInformation.coBorrowerResidentialAddress
+                        .addressLine1 ||
+                      !formData.personalInformation.coBorrowerResidentialAddress
+                        .city ||
+                      !formData.personalInformation.coBorrowerResidentialAddress
+                        .stateId ||
+                      !formData.personalInformation.coBorrowerResidentialAddress
+                        .zipCode ||
+                      !formData.personalInformation.coBorrowerResidentialAddress
+                        .totalYears
+                    "
+                  >
+                    <i class="fa fa-info-circle ml-2"></i>
+                    Required
+                  </span>
+                </div>
+
+                <div
+                  class="col-12"
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                >
+                  Co-Borrower Mailing Address
+                </div>
               </div>
 
               <hr class="mt-2 mb-3 bg-secondary" />
