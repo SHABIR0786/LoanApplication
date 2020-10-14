@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: "yesNo",
+  pure: true,
 })
 export class EthnicityYesNoPipe implements PipeTransform {
   transform(value: any[], id: number): string {
