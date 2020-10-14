@@ -353,4 +353,8 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     // this._ngWizardService.previous();
     this._route.navigate(["app/asset"]);
   }
+
+  ConvertToInt(val: any) {
+    return parseInt(val);
+  }
 }
