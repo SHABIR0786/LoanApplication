@@ -19,6 +19,7 @@ import { LayoutStoreService } from "./layout/layout-store.service";
 
 import { BusyDirective } from "./directives/busy.directive";
 import { EqualValidator } from "./directives/equal-validator.directive";
+import { BootstrapValidationCssDirective } from "./directives/bootstrap-validation-css.directive";
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgxPaginationModule],
@@ -32,6 +33,7 @@ import { EqualValidator } from "./directives/equal-validator.directive";
     EthnicityYesNoPipe,
     BusyDirective,
     EqualValidator,
+    BootstrapValidationCssDirective
   ],
   exports: [
     AbpPaginationControlsComponent,
@@ -43,6 +45,7 @@ import { EqualValidator } from "./directives/equal-validator.directive";
     EthnicityYesNoPipe,
     BusyDirective,
     EqualValidator,
+    BootstrapValidationCssDirective,
   ],
 })
 export class SharedModule {
