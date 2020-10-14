@@ -4473,7 +4473,20 @@
                   Purpose of your Loan
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('app/purposeOfLoan')"
+                    *ngIf="
+                      !formData.loanDetails ||
+                      (formData.loanDetails.loanPurpose ===
+                        'No Cash-Out Refinance' ||
+                      formData.loanDetails.loanPurpose === 'Cash-Out Refinance'
+                        ? !formData.loanDetails.requestedLoanAmount
+                        : formData.loanDetails.loanPurpose === 'Purchase a Home'
+                        ? !formData.loanDetails.estimatedPurchasePrice ||
+                          !formData.loanDetails.downPaymentAmount ||
+                          !formData.loanDetails.sourceOfDownPayment
+                        : true) ||
+                      formData.loanDetails.isWorkingWithOfficer === null ||
+                      formData.loanDetails.isWorkingWithOfficer === undefined
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
                     Required
@@ -4483,7 +4496,14 @@
                   Property Details
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('propertyDetails')"
+                    *ngIf="
+                      !formData.loanDetails ||
+                      !formData.loanDetails.propertyUseId ||
+                      !formData.loanDetails.propertyTypeId ||
+                      !formData.loanDetails.stateId ||
+                      formData.loanDetails.isWorkingWithOfficer === null ||
+                      formData.loanDetails.isWorkingWithOfficer === undefined
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
                     Required
@@ -4659,7 +4679,20 @@
                   Current Monthly Housing Expenses
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('monthlyHousingExpenses')"
+                    *ngIf="
+                      !formData.expenses ||
+                      (formData.expenses.isLiveWithFamilySelectRent === 'true'
+                        ? !formData.expenses.rent ||
+                          !formData.expenses.otherHousingExpenses
+                        : formData.expenses.isLiveWithFamilySelectRent ===
+                          'false'
+                        ? !formData.expenses.firstMortgage ||
+                          !formData.expenses.realEstateTaxes ||
+                          !formData.expenses.mortgageInsurance ||
+                          !formData.expenses.homeOwnersAssociation ||
+                          !formData.expenses.otherHousingExpenses
+                        : true)
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>Required
                   </span>
@@ -4708,7 +4741,18 @@
                   Borrower Employment Information
                   <span
                     class="text-danger"
-                    *ngIf="showGroupError('borrowerEmploymentIncome')"
+                    *ngIf="
+                      !formData.employmentIncome ||
+                      !formData.employmentIncome.borrowerEmploymentInfo ||
+                      formData.employmentIncome.borrowerEmploymentInfo
+                        .length === 0 ||
+                      !formData.employmentIncome.borrowerEmploymentInfo[0]
+                        .employerName ||
+                      !formData.employmentIncome.borrowerEmploymentInfo[0]
+                        .position ||
+                      !formData.employmentIncome.borrowerEmploymentInfo[0]
+                        .startDate
+                    "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
                     Required

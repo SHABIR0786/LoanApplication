@@ -42,6 +42,14 @@ export class AssetsComponent implements OnInit, DoCheck {
         this.isApplyingWithCoBorrower =
             loanApplication.personalInformation &&
             loanApplication.personalInformation.isApplyingWithCoBorrower;
+
+        if(loanApplication.manualAssetEntries){
+            if(!this.isApplyingWithCoBorrower){
+                loanApplication.manualAssetEntries.forEach((element)=>{
+                    element.borrowerTypeId = AppConsts.typeBorrower;
+                })
+            }
+        }
         this.initForm();
         this.loadStates();
         this.loadAssetTypes();
