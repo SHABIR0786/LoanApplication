@@ -4,6 +4,7 @@ import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Router } from "@angular/router";
+import { AppConsts } from "@shared/AppConsts";
 
 @Component({
   selector: "app-summary",
@@ -15,19 +16,42 @@ export class SummaryComponent implements OnInit {
   errors = {};
   isShowAllStepsReadOnlyModeBool = false;
   formData: ILoanApplicationModel;
+  isApplyingWithCoBorrower: boolean = false;
 
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
     private _route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._dataService.validations.subscribe((errors) => {
       this.errors = errors;
     });
     this.formData = this._dataService.loanApplication;
+    this.isApplyingWithCoBorrower =
+      this.formData.personalInformation &&
+      this.formData.personalInformation.isApplyingWithCoBorrower;
+    if (!this.isApplyingWithCoBorrower) {
+      if (this.formData.manualAssetEntries) {
+        this.formData.manualAssetEntries.forEach((element) => {
+          element.borrowerTypeId = AppConsts.typeBorrower;
+        })
+      }
+      if(this.formData.employmentIncome && this.formData.employmentIncome.coBorrowerEmploymentInfo){
+        this.formData.employmentIncome.coBorrowerEmploymentInfo =  [];
+      }
+      if(this.formData.employmentIncome && this.formData.employmentIncome.coBorrowerMonthlyIncome){
+        this.formData.employmentIncome.coBorrowerMonthlyIncome = {};
+      } 
+      if(this.formData.declaration && this.formData.declaration.coBorrowerDeclaration){
+        this.formData.declaration.coBorrowerDeclaration = {}
+      }  
+      if(this.formData.declaration && this.formData.declaration.coBorrowerDemographic){
+        this.formData.declaration.coBorrowerDemographic = {}
+      }  
+    }
     console.log(this.formData);
   }
 
@@ -56,7 +80,6 @@ export class SummaryComponent implements OnInit {
   }
 
   submitForm() {
-    debugger;
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
     this._loanApplicationService.post("Add", formData).subscribe(
       (response: any) => {
