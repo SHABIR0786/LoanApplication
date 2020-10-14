@@ -10,6 +10,7 @@ import { AppRouteGuard } from "./auth/auth-route-guard";
 import { LocalizePipe } from "@shared/pipes/localize.pipe";
 import { EthnicityOtherValuePipe } from "@shared/pipes/OtherValue.pipe";
 import { EthnicityYesNoPipe } from "@shared/pipes/YesNo.pipe";
+import { DateDifferencePipe } from "@shared/pipes/date-difference.pipe";
 
 import { AbpPaginationControlsComponent } from "./components/pagination/abp-pagination-controls.component";
 import { AbpValidationSummaryComponent } from "./components/validation/abp-validation.summary.component";
@@ -31,9 +32,10 @@ import { BootstrapValidationCssDirective } from "./directives/bootstrap-validati
     LocalizePipe,
     EthnicityOtherValuePipe,
     EthnicityYesNoPipe,
+    DateDifferencePipe,
     BusyDirective,
     EqualValidator,
-    BootstrapValidationCssDirective
+    BootstrapValidationCssDirective,
   ],
   exports: [
     AbpPaginationControlsComponent,
@@ -43,6 +45,7 @@ import { BootstrapValidationCssDirective } from "./directives/bootstrap-validati
     LocalizePipe,
     EthnicityOtherValuePipe,
     EthnicityYesNoPipe,
+    DateDifferencePipe,
     BusyDirective,
     EqualValidator,
     BootstrapValidationCssDirective,
