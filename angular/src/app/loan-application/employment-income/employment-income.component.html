@@ -199,7 +199,7 @@
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                   <div class="form-group">
                     <label for="startDate-borrower-{{ i }}">
                       {{ "Start Date" | localize }}
@@ -222,7 +222,7 @@
                   </div>
                 </div>
 
-                <div class="col-6" *ngIf="i !== 0">
+                <div class="col" *ngIf="i !== 0">
                   <div class="form-group">
                     <label for="endDate-borrower-{{ i }}">
                       {{ "End Date" | localize }}
@@ -235,6 +235,20 @@
                       formControlName="endDate"
                       [(ngModel)]="employmentIncome.endDate"
                     />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-group">
+                    <label>
+                      {{ "Length of Employment" | localize }}
+                    </label>
+                    <p>
+                      {{
+                        employmentIncome.startDate
+                          | dateDifference: employmentIncome.endDate
+                      }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -415,7 +429,6 @@
                         name="stateId-coBorrower"
                         id="stateId-coBorrower-{{ i }}"
                         formControlName="stateId"
-                        required
                         [(ngModel)]="employmentIncome.stateId"
                       >
                         <option
@@ -444,7 +457,7 @@
                     </div>
                   </div>
 
-                  <div class="col-6">
+                  <div class="col">
                     <div class="form-group">
                       <label for="startDate-coBorrower-{{ i }}">
                         {{ "Start Date" | localize }}
@@ -467,7 +480,7 @@
                     </div>
                   </div>
 
-                  <div class="col-6" *ngIf="i !== 0">
+                  <div class="col" *ngIf="i !== 0">
                     <div class="form-group">
                       <label for="endDate-coBorrower-{{ i }}">
                         {{ "End Date" | localize }}
@@ -480,6 +493,20 @@
                         formControlName="endDate"
                         [(ngModel)]="employmentIncome.endDate"
                       />
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group">
+                      <label>
+                        {{ "Length of Employment" | localize }}
+                      </label>
+                      <p>
+                        {{
+                          employmentIncome.startDate
+                            | dateDifference: employmentIncome.endDate
+                        }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -502,13 +529,13 @@
 
           <!--<accordion class="col-12" formArrayName="borrowerEmploymentInfo">
                     <accordion-group *ngFor="let employmentIncome of data.borrowerEmploymentInfo; let i = index">
-            
+
                         <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
                             <span class="pull-left float-left">{{employmentIncome.employerName || 'Employer 1'}}</span>
                             <a class="mr-1 float-right pull-right" (click)="clearEmploymentInfoForm($event, i)">Clear</a>
                             <a class="mr-1 float-right pull-right" *ngIf="i > 0" (click)="removeEmploymentInfoForm($event, i)">Remove</a>
                         </button>
-            
+
                         <div class="row mt-2" [formGroupName]="i">
                             <div class="form-check col-12">
                                 <input class="form-check-input" type="checkbox" id="isSelfEmployed"
@@ -517,7 +544,7 @@
                                     I'm self-employed.
                                 </label>
                             </div>
-            
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="employerName-{{i}}">
@@ -529,7 +556,7 @@
                                             [control]="getBorrowerEmpInfoFormGroup(i).controls.employerName"></validation-summary>
                                 </div>
                             </div>
-            
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="position-{{i}}">
@@ -541,7 +568,7 @@
                                             [control]="getBorrowerEmpInfoFormGroup(i).controls.position"></validation-summary>
                                 </div>
                             </div>
-            
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="address1-{{i}}">
@@ -551,7 +578,7 @@
                                            formControlName="address1" [(ngModel)]="employmentIncome.address1"/>
                                 </div>
                             </div>
-            
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="address2-{{i}}">
@@ -561,7 +588,7 @@
                                            formControlName="address2" [(ngModel)]="employmentIncome.address2"/>
                                 </div>
                             </div>
-            
+
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="city-{{i}}">
@@ -571,7 +598,7 @@
                                            formControlName="city" [(ngModel)]="employmentIncome.city"/>
                                 </div>
                             </div>
-            
+
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="stateId-{{i}}">
@@ -583,7 +610,7 @@
                                     </select>
                                 </div>
                             </div>
-            
+
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="zipCode-{{i}}">
@@ -593,7 +620,7 @@
                                            formControlName="zipCode" [(ngModel)]="employmentIncome.zipCode"/>
                                 </div>
                             </div>
-            
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="startDate-{{i}}">
@@ -605,7 +632,7 @@
                                             [control]="getBorrowerEmpInfoFormGroup(i).controls.startDate"></validation-summary>
                                 </div>
                             </div>
-            
+
                             <div class="col-6" *ngIf="i !== 0">
                                 <div class="form-group">
                                     <label for="endDate-{{i}}">
@@ -615,7 +642,7 @@
                                            formControlName="endDate" [(ngModel)]="employmentIncome.endDate"/>
                                 </div>
                             </div>
-            
+
                         </div>
                     </accordion-group>
                 </accordion>-->
@@ -946,7 +973,7 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                           </div>
-                         
+
                         </div> -->
                   </div>
                 </div>
