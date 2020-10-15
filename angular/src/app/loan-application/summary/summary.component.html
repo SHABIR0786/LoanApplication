@@ -525,7 +525,17 @@
                         Required
                       </span>
 
-                      <h6 class="font-weight-normal form-text text-muted mt-5">
+                      <h6
+                        class="font-weight-normal form-text mt-5"
+                        [ngClass]="
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === undefined ||
+                          formData.personalInformation
+                            .isApplyingWithCoBorrower === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Are you applying for joint credit with a co-borrower?
                       </h6>
 
@@ -553,7 +563,16 @@
                         "
                       >
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation
+                              .useIncomeOfPersonOtherThanBorrower ===
+                              undefined ||
+                            formData.personalInformation
+                              .useIncomeOfPersonOtherThanBorrower === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           The income/assets of a person other than the Borrower
                           (including the borrower’s spouse) will be used for
@@ -598,7 +617,17 @@
                         <i class="fa fa-info-circle ml-2"></i>
                         Required
                       </span>
-                      <h6 class="font-weight-normal form-text text-muted mt-5">
+                      <h6
+                        class="font-weight-normal form-text mt-5"
+                        [ngClass]="
+                          formData.personalInformation.borrower.firstName ===
+                            undefined ||
+                          formData.personalInformation.borrower.firstName ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         First Name
                       </h6>
                       <p class="font-weight-bold">
@@ -627,7 +656,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower
+                            .middleInitial === undefined ||
+                          formData.personalInformation.borrower
+                            .middleInitial === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Last Name
                       </h6>
                       <p class="font-weight-bold">
@@ -654,7 +693,16 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower.email ===
+                            undefined ||
+                          formData.personalInformation.borrower.email === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Email
                       </h6>
                       <p class="font-weight-bold">
@@ -667,7 +715,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower.dateOfBirth ===
+                            undefined ||
+                          formData.personalInformation.borrower.dateOfBirth ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Date Of Birth
                       </h6>
                       <p class="font-weight-bold">
@@ -681,7 +739,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower
+                            .socialSecurityNumber === undefined ||
+                          formData.personalInformation.borrower
+                            .socialSecurityNumber === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Social Security Number
                       </h6>
                       <p class="font-weight-bold">
@@ -696,7 +764,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower
+                            .maritalStatusId === undefined ||
+                          formData.personalInformation.borrower
+                            .maritalStatusId === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Marital Status
                       </h6>
                       <p class="font-weight-bold">
@@ -726,7 +804,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.borrower.cellPhone ===
+                            undefined ||
+                          formData.personalInformation.borrower.cellPhone ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Cell Phone
                       </h6>
                       <p class="font-weight-bold">
@@ -745,16 +833,26 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.personalInformation.borrower.homePhone ===
-                            undefined ||
-                          formData.personalInformation.borrower.homePhone ===
-                            null
+                          formData.personalInformation.borrower
+                            .middleInitial === undefined ||
+                          formData.personalInformation.borrower
+                            .middleInitial === null
                             ? "--"
                             : formData.personalInformation.borrower.homePhone
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.agreePrivacyPolicy ===
+                            undefined ||
+                          formData.personalInformation.agreePrivacyPolicy ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         I/We have read and accepted the terms of the Privacy
                         Policy
                       </h6>
@@ -775,7 +873,6 @@
                   </div>
                 </div>
               </div>
-
               <div
                 class="col-6"
                 *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
@@ -791,18 +888,27 @@
                         </span>
                         <br /><br />
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .firstName === undefined ||
+                            formData.personalInformation.coBorrower
+                              .firstName === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           First Name
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.firstName ===
-                              undefined ||
-                            formData.personalInformation.borrower.firstName ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .firstName === undefined ||
+                            formData.personalInformation.coBorrower
+                              .firstName === null
                               ? "--"
-                              : formData.personalInformation.borrower.firstName
+                              : formData.personalInformation.coBorrower
+                                  .firstName
                           }}
                         </p>
 
@@ -813,29 +919,37 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .middleInitial === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .middleInitial === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .middleInitial
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower.lastName ===
+                              undefined ||
+                            formData.personalInformation.coBorrower.lastName ===
+                              null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Last Name
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               undefined ||
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               null
                               ? "--"
-                              : formData.personalInformation.borrower.lastName
+                              : formData.personalInformation.coBorrower.lastName
                           }}
                         </p>
 
@@ -846,77 +960,110 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               undefined ||
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               null
                               ? "--"
-                              : formData.personalInformation.borrower.suffix
+                              : formData.personalInformation.coBorrower.suffix
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower.email ===
+                              undefined ||
+                            formData.personalInformation.coBorrower.email ===
+                              null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Email
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.email ===
+                            formData.personalInformation.coBorrower.email ===
                               undefined ||
-                            formData.personalInformation.borrower.email === null
+                            formData.personalInformation.coBorrower.email ===
+                              null
                               ? "--"
-                              : formData.personalInformation.borrower.email
+                              : formData.personalInformation.coBorrower.email
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .dateOfBirth === undefined ||
+                            formData.personalInformation.coBorrower
+                              .dateOfBirth === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Date Of Birth
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .dateOfBirth
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .socialSecurityNumber === undefined ||
+                            formData.personalInformation.coBorrower
+                              .socialSecurityNumber === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Social Security Number
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .socialSecurityNumber
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .maritalStatusId === undefined ||
+                            formData.personalInformation.coBorrower
+                              .maritalStatusId === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Marital Status
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .maritalStatusId
                           }}
                         </p>
@@ -928,45 +1075,53 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .numberOfDependents
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .cellPhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .cellPhone === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Cell Phone
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.cellPhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.cellPhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .cellPhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .cellPhone === null
                               ? "--"
-                              : formData.personalInformation.borrower.cellPhone
+                              : formData.personalInformation.coBorrower
+                                  .cellPhone
                           }}
                         </p>
 
-                        <h6
-                          class="font-weight-normal form-text text-muted mb-3"
-                        >
+                        <h6 class="font-weight-normal form-text mb-3">
                           Home Phone
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.homePhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.homePhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .homePhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .homePhone === null
                               ? "--"
-                              : formData.personalInformation.borrower.homePhone
+                              : formData.personalInformation.coBorrower
+                                  .homePhone
                           }}
                         </p>
 
@@ -989,7 +1144,17 @@
                         Required
                       </span>
                       <br /><br />
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .addressLine1 === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .addressLine1 === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Address Line 1
                       </h6>
                       <p class="font-weight-bold">
@@ -1019,7 +1184,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .city === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .city === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         City
                       </h6>
                       <p class="font-weight-bold">
@@ -1034,7 +1209,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .stateId === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .stateId === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         State
                       </h6>
                       <p class="font-weight-bold">
@@ -1049,7 +1234,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .zipCode === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .zipCode === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Zip Code
                       </h6>
                       <p class="font-weight-bold">
@@ -1064,7 +1259,17 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Years
                       </h6>
                       <p class="font-weight-bold">
@@ -1115,7 +1320,7 @@
                             .isMailingAddressSameAsResidential === undefined ||
                           formData.personalInformation
                             .isMailingAddressSameAsResidential === null
-                            ? "--"
+                            ? "Yes"
                             : formData.personalInformation
                                 .isMailingAddressSameAsResidential
                             ? "Yes"
@@ -1237,20 +1442,33 @@
                         <i class="fa fa-info-circle ml-2"></i>
                         Required
                       </span>
+                      <br /><br />
                       <h6
-                        class="font-weight-normal form-text text-muted mb-3 mt-3"
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
                       >
                         Same as the borrower's residential address? *
                       </h6>
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === undefined ||
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            undefined ||
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === null
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            null
                             ? "--"
                             : formData.personalInformation
-                                .isMailingAddressSameAsResidential
+                                .coBorrowerIsMailingAddressSameAsResidential
                             ? "Yes"
                             : "No"
                         }}
@@ -1261,13 +1479,14 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.personalInformation.residentialAddress
-                            .totalYears === undefined ||
-                          formData.personalInformation.residentialAddress
-                            .totalYears === null
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalYears ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalYears === null
                             ? "--"
-                            : formData.personalInformation.residentialAddress
-                                .totalYears
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.totalYears
                         }}
                       </p>
 
@@ -1276,13 +1495,14 @@
                       </h6>
                       <p class="font-weight-bold">
                         {{
-                          formData.personalInformation.residentialAddress
-                            .totalMonths === undefined ||
-                          formData.personalInformation.residentialAddress
-                            .totalMonths === null
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalMonths ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalMonths === null
                             ? "--"
-                            : formData.personalInformation.residentialAddress
-                                .totalMonths
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.totalMonths
                         }}
                       </p>
                     </div>
@@ -1296,12 +1516,22 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div>
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Mailing Address</a
                       >
                       <h6
-                        class="font-weight-normal form-text text-muted mb-3 mt-3"
+                        class="font-weight-normal form-text mb-3 mt-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
                       >
                         Is the mailing address the same as the residential
                         address?
@@ -1309,14 +1539,105 @@
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === undefined ||
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            undefined ||
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === null
-                            ? "--"
+                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            null
+                            ? "Yes"
                             : formData.personalInformation
-                                .isMailingAddressSameAsResidential
+                                .coBorrowerIsMailingAddressSameAsResidential
                             ? "Yes"
                             : "No"
+                        }}
+                      </p>
+
+                      <br />
+                    </div>
+                    <div
+                      *ngIf="
+                        formData.personalInformation
+                          .coBorrowerIsMailingAddressSameAsResidential !==
+                          undefined &&
+                        formData.personalInformation
+                          .coBorrowerIsMailingAddressSameAsResidential !==
+                          null &&
+                        formData.personalInformation
+                          .coBorrowerIsMailingAddressSameAsResidential === false
+                      "
+                    >
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Address Line 1
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .addressLine1 === undefined ||
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .addressLine1 === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerMailingAddress.addressLine1
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Address Line 2
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .addressLine2 === undefined ||
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .addressLine2 === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerMailingAddress.addressLine2
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        City
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .city === undefined ||
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .city === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerMailingAddress.city
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        State
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .stateId === undefined ||
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .stateId === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerMailingAddress.stateId
+                        }}
+                      </p>
+
+                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                        Zip Code
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .zipCode === undefined ||
+                          formData.personalInformation.coBorrowerMailingAddress
+                            .zipCode === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerMailingAddress.zipCode
                         }}
                       </p>
 
@@ -1373,7 +1694,15 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-5"
+                          class="font-weight-normal form-text mt-5"
+                          [ngClass]="
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              undefined ||
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Do you currently rent or own? If you currently live
                           with family please select Rent.
@@ -1404,7 +1733,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.rent === undefined ||
+                              formData.expenses.rent === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Rent
                           </h6>
@@ -1421,7 +1756,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Other Housing Expenses
                           </h6>
@@ -1439,7 +1781,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.rent > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? 'text-muted'
+                                : 'text-danger'
+                            "
                           >
                             Total
                           </h6>
@@ -1469,7 +1817,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.firstMortgage === undefined ||
+                              formData.expenses.firstMortgage === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             First Mortgage (P&I)
                           </h6>
@@ -1478,7 +1832,9 @@
                               formData.expenses.firstMortgage === undefined ||
                               formData.expenses.firstMortgage === null
                                 ? "--"
-                                : "$ " + formData.expenses.firstMortgage
+                                : "$
+                            " +
+                                  formData.expenses.firstMortgage
                             }}
                           </p>
                         </div>
@@ -1486,7 +1842,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.secondMortgage === undefined ||
+                              formData.expenses.secondMortgage === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Second Mortgage (P&I)
                           </h6>
@@ -1503,7 +1865,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.hazardInsurance === undefined ||
+                              formData.expenses.hazardInsurance === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Hazard Insurance
                           </h6>
@@ -1520,7 +1888,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.realEstateTaxes === undefined ||
+                              formData.expenses.realEstateTaxes === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Real Estate Taxes
                           </h6>
@@ -1537,7 +1911,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.mortgageInsurance ===
+                                undefined ||
+                              formData.expenses.mortgageInsurance === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Mortgage Insurance
                           </h6>
@@ -1555,7 +1936,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.homeOwnersAssociation ===
+                                undefined ||
+                              formData.expenses.homeOwnersAssociation === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Homeowners Association
                           </h6>
@@ -1573,7 +1961,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Other Housing Expenses
                           </h6>
@@ -1591,7 +1986,18 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.firstMortgage > 0 ||
+                              formData.expenses.secondMortgage > 0 ||
+                              formData.expenses.hazardInsurance > 0 ||
+                              formData.expenses.realEstateTaxes > 0 ||
+                              formData.expenses.mortgageInsurance > 0 ||
+                              formData.expenses.homeOwnersAssociation > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? 'text-muted'
+                                : 'text-danger'
+                            "
                           >
                             Total
                           </h6>
@@ -1643,7 +2049,15 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        formData.loanDetails.haveSecondMortgage === undefined ||
+                        formData.loanDetails.haveSecondMortgage === null
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Do you have a second mortgage?
                     </h6>
                     <p class="font-weight-bold">
@@ -1717,7 +2131,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.assetTypeId === undefined ||
+                            manualAssetEntry.assetTypeId === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Select Type Of Asset
                         </h6>
@@ -1727,15 +2147,18 @@
                             manualAssetEntry.assetTypeId === null
                               ? "--"
                               : manualAssetEntry.assetTypeId === 1
-                              ? "Cash Deposit on sales contract"
+                              ? "Cash Deposit on
+                          sales contract"
                               : manualAssetEntry.assetTypeId === 2
                               ? "Certificate of Deposit"
                               : manualAssetEntry.assetTypeId === 3
-                              ? "Checking Account"
+                              ? "Checking
+                          Account"
                               : manualAssetEntry.assetTypeId === 4
                               ? "Gifts"
                               : manualAssetEntry.assetTypeId === 5
-                              ? "Gift of equity"
+                              ? "Gift
+                          of equity"
                               : manualAssetEntry.assetTypeId === 6
                               ? "Money Market Fund"
                               : manualAssetEntry.assetTypeId === 7
@@ -1743,7 +2166,8 @@
                               : manualAssetEntry.assetTypeId === 8
                               ? "Net Proceed from Real Estate Funds"
                               : manualAssetEntry.assetTypeId === 9
-                              ? "Real Estate Owned"
+                              ? "Real Estate
+                          Owned"
                               : manualAssetEntry.assetTypeId === 10
                               ? "Retirement Funds"
                               : manualAssetEntry.assetTypeId === 11
@@ -1768,7 +2192,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.description === undefined ||
+                              manualAssetEntry.description === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Description
                           </h6>
@@ -1787,7 +2217,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.accountNumber === undefined ||
+                            manualAssetEntry.accountNumber === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Account Number
                         </h6>
@@ -1805,7 +2241,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.cashValue === undefined ||
+                            manualAssetEntry.cashValue === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Cash Value
                         </h6>
@@ -1823,7 +2265,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.address === undefined ||
+                            manualAssetEntry.address === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Address
                         </h6>
@@ -1841,7 +2289,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.address2 === undefined ||
+                            manualAssetEntry.address2 === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Address 2
                         </h6>
@@ -1859,7 +2313,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.city === undefined ||
+                            manualAssetEntry.city === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           City
                         </h6>
@@ -1877,7 +2337,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.stateId === undefined ||
+                            manualAssetEntry.stateId === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           State
                         </h6>
@@ -1895,7 +2361,13 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.zipCode === undefined ||
+                            manualAssetEntry.zipCode === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Zip Code
                         </h6>
@@ -1923,7 +2395,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.name === undefined ||
+                              manualAssetEntry.name === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Name
                           </h6>
@@ -1947,7 +2425,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.bankName === undefined ||
+                              manualAssetEntry.bankName === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Bank Name
                           </h6>
@@ -1972,7 +2456,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.propertyStatus === undefined ||
+                              manualAssetEntry.propertyStatus === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Property Status
                           </h6>
@@ -1996,7 +2486,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.propertyIsUsedAs === undefined ||
+                              manualAssetEntry.propertyIsUsedAs === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Property Is Used As
                           </h6>
@@ -2020,7 +2516,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.propertyType === undefined ||
+                              manualAssetEntry.propertyType === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Property Type
                           </h6>
@@ -2044,7 +2546,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.presentMarketValue ===
+                                undefined ||
+                              manualAssetEntry.presentMarketValue === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Present Market Value
                           </h6>
@@ -2069,7 +2578,15 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.outstandingMortgageBalance ===
+                                undefined ||
+                              manualAssetEntry.outstandingMortgageBalance ===
+                                null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Outstanding Mortgage Balance
                           </h6>
@@ -2095,7 +2612,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.monthlyMortgagePayment ===
+                                undefined ||
+                              manualAssetEntry.monthlyMortgagePayment === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Monthly Mortgage Payment
                           </h6>
@@ -2120,7 +2644,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.purchasePrice === undefined ||
+                              manualAssetEntry.purchasePrice === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Purchase Price
                           </h6>
@@ -2144,7 +2674,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.grossRentalIncome ===
+                                undefined ||
+                              manualAssetEntry.grossRentalIncome === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Gross Rental Income
                           </h6>
@@ -2169,7 +2706,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              manualAssetEntry.companyName === undefined ||
+                              manualAssetEntry.companyName === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Company Name
                           </h6>
@@ -2192,7 +2735,13 @@
                     >
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.accountNumber === undefined ||
+                            manualAssetEntry.accountNumber === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Account Number
                         </h6>
@@ -2214,7 +2763,13 @@
                     >
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.value === undefined ||
+                            manualAssetEntry.value === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Value
                         </h6>
@@ -2237,7 +2792,14 @@
                     >
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mb-3"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            manualAssetEntry.taxesInsuranceAndOther ===
+                              undefined ||
+                            manualAssetEntry.taxesInsuranceAndOther === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           TaxesInsuranceAndOther
                         </h6>
@@ -2315,7 +2877,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-5"
+                          class="font-weight-normal form-text mt-5"
+                          [ngClass]="
+                            borrowerEmploymentInfo.isSelfEmployed ===
+                              undefined ||
+                            borrowerEmploymentInfo.isSelfEmployed === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           I'm self-employed.
                         </h6>
@@ -2335,7 +2904,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3"
+                          [ngClass]="
+                            borrowerEmploymentInfo.employerName === undefined ||
+                            borrowerEmploymentInfo.employerName === null ||
+                            borrowerEmploymentInfo.employerName != ''
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Employer Name *
                         </h6>
@@ -2347,7 +2923,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3"
+                          [ngClass]="
+                            manualAssetEntry.taxesInsuranceAndOther ===
+                              undefined ||
+                            manualAssetEntry.taxesInsuranceAndOther === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Position *
                         </h6>
@@ -2359,7 +2942,7 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3 text-muted"
                         >
                           Address 1
                         </h6>
@@ -2372,7 +2955,7 @@
                       <div class="col-8">
                         <h5></h5>
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3 text-muted"
                         >
                           Address 2
                         </h6>
@@ -2385,7 +2968,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             City
                           </h6>
@@ -2397,7 +2980,13 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3"
+                            [ngClass]="
+                              manualAssetEntry.stateIdName === undefined ||
+                              manualAssetEntry.stateIdName === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             State
                           </h6>
@@ -2409,7 +2998,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Zip Code
                           </h6>
@@ -2421,7 +3010,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Start Date *
                           </h6>
@@ -2433,7 +3022,7 @@
                       <div class="row">
                         <div class="col-6" *ngIf="i > 0">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             End Date
                           </h6>
@@ -2445,7 +3034,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Length of Employment
                           </h6>
@@ -2587,7 +3176,11 @@
 
             <!-- Co-Borrower Employment Information Start -->
 
-            <div *ngIf="formData.personalInformation.isApplyingWithCoBorrower">
+            <div
+              *ngIf="
+                formData.personalInformation.isApplyingWithCoBorrower === true
+              "
+            >
               <div class="row">
                 <div class="col-6">
                   <div class="row">
@@ -2785,7 +3378,9 @@
 
               <div
                 class="row"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="col-6">
                   <div class="row">
@@ -3451,7 +4046,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -4095,7 +4692,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -4641,7 +5240,10 @@
                 </div>
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower
                   <span
@@ -4690,7 +5292,10 @@
 
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower Residential Address
                   <span
@@ -4716,7 +5321,10 @@
 
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower Mailing Address
                 </div>
