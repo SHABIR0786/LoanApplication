@@ -72,7 +72,16 @@
                 </div>
                 <div class="row">
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        formData.loanDetails.isWorkingWithOfficer ===
+                          undefined ||
+                        formData.loanDetails.isWorkingWithOfficer === null
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Are you currently working with a William Raveis Mortgage
                       loan officer? *
                     </h6>
@@ -89,9 +98,20 @@
                     </p>
                   </div>
                 </div>
-                <div class="row">
+                <div
+                  class="row"
+                  *ngIf="formData.loanDetails.isWorkingWithOfficer"
+                >
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        formData.loanDetails.loanOfficerName === undefined ||
+                        formData.loanDetails.loanOfficerName === null
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Choose the loan officer below *
                     </h6>
                     <p class="font-weight-bold">
@@ -113,7 +133,15 @@
                         Required
                       </span>
                     </div>
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        formData.loanDetails.loanPurpose === undefined ||
+                        formData.loanDetails.loanPurpose === null
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Loan Purpose *
                     </h6>
                     <p class="font-weight-bold">
@@ -129,7 +157,16 @@
                 <div *ngIf="formData.loanDetails.purposeOfLoan === 1">
                   <div class="row">
                     <div class="col-8">
-                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                      <h6
+                        class="font-weight-normal form-text mt-3"
+                        [ngClass]="
+                          formData.loanDetails.estimatedPurchasePrice ===
+                            undefined ||
+                          formData.loanDetails.estimatedPurchasePrice === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Estimated Purchase Price *
                       </h6>
                       <p class="font-weight-bold">
@@ -145,7 +182,16 @@
                   </div>
                   <div class="row">
                     <div class="col-8">
-                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                      <h6
+                        class="font-weight-normal form-text mt-3"
+                        [ngClass]="
+                          formData.loanDetails.downPaymentAmount ===
+                            undefined ||
+                          formData.loanDetails.downPaymentAmount === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Down Payment Amount *
                       </h6>
                       <p class="font-weight-bold">
@@ -177,7 +223,16 @@
                   </div>
                   <div class="row">
                     <div class="col-8">
-                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                      <h6
+                        class="font-weight-normal form-text mt-3"
+                        [ngClass]="
+                          formData.loanDetails.sourceOfDownPaymentName ===
+                            undefined ||
+                          formData.loanDetails.sourceOfDownPaymentName === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Source of Down Payment *
                       </h6>
                       <p class="font-weight-bold">
@@ -280,7 +335,10 @@
                       </p>
                     </div>
                   </div>
-                  <div class="row">
+                  <div
+                    class="row"
+                    *ngIf="formData.loanDetails.haveSecondMortgage"
+                  >
                     <div class="col-8">
                       <h6 class="font-weight-normal form-text text-muted mt-3">
                         Second Mortgage Amount
@@ -296,7 +354,13 @@
                       </p>
                     </div>
                   </div>
-                  <div class="row">
+                  <div
+                    class="row"
+                    *ngIf="
+                      formData.loanDetails.haveSecondMortgage === 2 ||
+                      formData.loanDetails.haveSecondMortgage === 3
+                    "
+                  >
                     <div class="col-8">
                       <h6 class="font-weight-normal form-text text-muted mt-3">
                         Do you want to pay off this loan with the new loan?
@@ -313,6 +377,7 @@
                         }}
                       </p>
                     </div>
+                    /div>
                   </div>
                 </div>
               </div>
@@ -717,7 +782,7 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div>
                       <div>
                         <a href="#" class="h6 mb-1">Co-Borrower</a>
                         <span class="text-danger">
@@ -1164,7 +1229,7 @@
               >
                 <div class="row">
                   <div class="col-8">
-                    <div class="mt-5">
+                    <div>
                       <a href="#" class="h6 mb-1"
                         >Co-Borrower Residential Address</a
                       >
@@ -1172,8 +1237,9 @@
                         <i class="fa fa-info-circle ml-2"></i>
                         Required
                       </span>
-                      <br /><br />
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
+                      <h6
+                        class="font-weight-normal form-text text-muted mb-3 mt-3"
+                      >
                         Same as the borrower's residential address? *
                       </h6>
                       <p class="font-weight-bold">
@@ -4760,6 +4826,19 @@
                 </div>
                 <div class="col-12">Borrower Gross Monthly Income</div>
 
+                <div
+                  class="col-12"
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                >
+                  Co-Borrower Employment Information
+                </div>
+
+                <div
+                  class="col-12"
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                >
+                  Co-Borrower Gross Monthly Income
+                </div>
                 <div class="col-12 mb-3">Additional Gross Monthly Income</div>
               </div>
 
