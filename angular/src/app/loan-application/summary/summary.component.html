@@ -576,17 +576,7 @@
                         }}
                       </p>
 
-                      <h6
-                        class="font-weight-normal form-text mb-3"
-                        [ngClass]="
-                          formData.personalInformation.borrower
-                            .middleInitial === undefined ||
-                          formData.personalInformation.borrower
-                            .middleInitial === null
-                            ? 'text-danger'
-                            : 'text-muted'
-                        "
-                      >
+                      <h6 class="font-weight-normal form-text mb-3 text-muted">
                         Middle Initial
                       </h6>
                       <p class="font-weight-bold">
@@ -889,15 +879,7 @@
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text mb-3"
-                          [ngClass]="
-                            formData.personalInformation.borrower
-                              .middleInitial === undefined ||
-                            formData.personalInformation.borrower
-                              .middleInitial === null
-                              ? 'text-danger'
-                              : 'text-muted'
-                          "
+                          class="font-weight-normal form-text mb-3 text-muted"
                         >
                           Middle Initial
                         </h6>
@@ -2876,7 +2858,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-5"
+                          class="font-weight-normal form-text mt-5"
+                          [ngClass]="
+                            borrowerEmploymentInfo.isSelfEmployed ===
+                              undefined ||
+                            borrowerEmploymentInfo.isSelfEmployed === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           I'm self-employed.
                         </h6>
@@ -2896,7 +2885,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3"
+                          [ngClass]="
+                            borrowerEmploymentInfo.employerName === undefined ||
+                            borrowerEmploymentInfo.employerName === null ||
+                            borrowerEmploymentInfo.employerName != ''
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Employer Name *
                         </h6>
@@ -2908,7 +2904,14 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3"
+                          [ngClass]="
+                            manualAssetEntry.taxesInsuranceAndOther ===
+                              undefined ||
+                            manualAssetEntry.taxesInsuranceAndOther === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Position *
                         </h6>
@@ -2920,7 +2923,7 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3 text-muted"
                         >
                           Address 1
                         </h6>
@@ -2933,7 +2936,7 @@
                       <div class="col-8">
                         <h5></h5>
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3 text-muted"
                         >
                           Address 2
                         </h6>
@@ -2946,7 +2949,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             City
                           </h6>
@@ -2958,7 +2961,13 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3"
+                            [ngClass]="
+                              manualAssetEntry.stateIdName === undefined ||
+                              manualAssetEntry.stateIdName === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             State
                           </h6>
@@ -2970,7 +2979,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Zip Code
                           </h6>
@@ -2982,7 +2991,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Start Date *
                           </h6>
@@ -2994,7 +3003,7 @@
                       <div class="row">
                         <div class="col-6" *ngIf="i > 0">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             End Date
                           </h6>
@@ -3006,7 +3015,7 @@
                       <div class="row">
                         <div class="col-8">
                           <h6
-                            class="font-weight-normal form-text text-muted mt-3"
+                            class="font-weight-normal form-text mt-3 text-muted"
                           >
                             Length of Employment
                           </h6>
