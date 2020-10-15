@@ -630,8 +630,8 @@
                     *ngIf="data.isApplyingWithCoBorrower"
                     [form]="form.get('coBorrower')"
                     heading="Co-Borrower"
-                    [data]="data.borrower"
-                    (onDataChange)="onChange($event, 'borrower')"
+                    [data]="data.coBorrower"
+                    (onDataChange)="onChange($event, 'coBorrower')"
                     class="col-12"
                   >
                   </app-borrower-personal-detail>
