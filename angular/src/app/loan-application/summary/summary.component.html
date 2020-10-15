@@ -652,9 +652,7 @@
                         [ngClass]="
                           formData.personalInformation.borrower.email ===
                             undefined ||
-                          (formData.personalInformation.borrower.email ===
-                            null.middleInitial) ===
-                            null
+                          formData.personalInformation.borrower.email === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1505,7 +1503,8 @@
               <div
                 class="col-6"
                 *ngIf="
-                  formData.personalInformation.isApplyingWithCoBorrower === true
+                  formData.personalInformation.isApplyingWithCoBorrower ===
+                  'true'
                 "
               >
                 <div class="row">
@@ -2744,7 +2743,12 @@
                     <div class="row">
                       <div class="col-8">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-3"
+                          class="font-weight-normal form-text mt-3"
+                          [ngClass]="
+                            borrowerEmploymentInfo.employerName
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Employer Name *
                         </h6>
