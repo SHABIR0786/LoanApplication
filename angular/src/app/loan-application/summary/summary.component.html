@@ -1616,9 +1616,9 @@
                         class="font-weight-normal form-text mb-3 mt-3"
                         [ngClass]="
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === undefined ||
+                            .isApplyingWithCoBorrower === undefined ||
                           formData.personalInformation
-                            .isMailingAddressSameAsResidential === null
+                            .isApplyingWithCoBorrower === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1693,7 +1693,15 @@
                     <div class="row">
                       <div class="col">
                         <h6
-                          class="font-weight-normal form-text text-muted mt-5"
+                          class="font-weight-normal form-text mt-5"
+                          [ngClass]="
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              undefined ||
+                            formData.expenses.isLiveWithFamilySelectRent ===
+                              null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Do you currently rent or own? If you currently live
                           with family please select Rent.
@@ -1724,7 +1732,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.rent === undefined ||
+                              formData.expenses.rent === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Rent
                           </h6>
@@ -1741,7 +1755,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Other Housing Expenses
                           </h6>
@@ -1759,7 +1780,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.rent > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? 'text-muted'
+                                : 'text-danger'
+                            "
                           >
                             Total
                           </h6>
@@ -1789,7 +1816,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.firstMortgage === undefined ||
+                              formData.expenses.firstMortgage === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             First Mortgage (P&I)
                           </h6>
@@ -1808,7 +1841,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.secondMortgage === undefined ||
+                              formData.expenses.secondMortgage === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Second Mortgage (P&I)
                           </h6>
@@ -1825,7 +1864,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.hazardInsurance === undefined ||
+                              formData.expenses.hazardInsurance === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Hazard Insurance
                           </h6>
@@ -1842,7 +1887,13 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.realEstateTaxes === undefined ||
+                              formData.expenses.realEstateTaxes === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Real Estate Taxes
                           </h6>
@@ -1859,7 +1910,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.mortgageInsurance ===
+                                undefined ||
+                              formData.expenses.mortgageInsurance === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Mortgage Insurance
                           </h6>
@@ -1877,7 +1935,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.homeOwnersAssociation ===
+                                undefined ||
+                              formData.expenses.homeOwnersAssociation === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Homeowners Association
                           </h6>
@@ -1895,7 +1960,14 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.otherHousingExpenses ===
+                                undefined ||
+                              formData.expenses.otherHousingExpenses === null
+                                ? 'text-danger'
+                                : 'text-muted'
+                            "
                           >
                             Other Housing Expenses
                           </h6>
@@ -1913,7 +1985,18 @@
                       <div class="row">
                         <div class="col">
                           <h6
-                            class="font-weight-normal form-text text-muted mb-3"
+                            class="font-weight-normal form-text mb-3"
+                            [ngClass]="
+                              formData.expenses.firstMortgage > 0 ||
+                              formData.expenses.secondMortgage > 0 ||
+                              formData.expenses.hazardInsurance > 0 ||
+                              formData.expenses.realEstateTaxes > 0 ||
+                              formData.expenses.mortgageInsurance > 0 ||
+                              formData.expenses.homeOwnersAssociation > 0 ||
+                              formData.expenses.otherHousingExpenses > 0
+                                ? 'text-muted'
+                                : 'text-danger'
+                            "
                           >
                             Total
                           </h6>
