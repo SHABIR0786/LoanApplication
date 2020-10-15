@@ -642,9 +642,7 @@
                         [ngClass]="
                           formData.personalInformation.borrower.email ===
                             undefined ||
-                          (formData.personalInformation.borrower.email ===
-                            null.middleInitial) ===
-                            null
+                          formData.personalInformation.borrower.email === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -857,10 +855,10 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.firstName ===
-                              undefined ||
-                            formData.personalInformation.borrower.firstName ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .firstName === undefined ||
+                            formData.personalInformation.coBorrower
+                              .firstName === null
                               ? 'text-danger'
                               : 'text-muted'
                           "
@@ -869,28 +867,37 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.firstName ===
-                              undefined ||
-                            formData.personalInformation.borrower.firstName ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .firstName === undefined ||
+                            formData.personalInformation.coBorrower
+                              .firstName === null
                               ? "--"
-                              : formData.personalInformation.borrower.firstName
+                              : formData.personalInformation.coBorrower
+                                  .firstName
                           }}
                         </p>
 
                         <h6
-                          class="font-weight-normal form-text mb-3 text-muted"
+                          class="font-weight-normal form-text mb-3"
+                          [ngClass]="
+                            formData.personalInformation.coBorrower
+                              .middleInitial === undefined ||
+                            formData.personalInformation.coBorrower
+                              .middleInitial === null
+                              ? 'text-danger'
+                              : 'text-muted'
+                          "
                         >
                           Middle Initial
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .middleInitial === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .middleInitial === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .middleInitial
                           }}
                         </p>
@@ -898,9 +905,9 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               undefined ||
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               null
                               ? 'text-danger'
                               : 'text-muted'
@@ -910,21 +917,21 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               undefined ||
-                            formData.personalInformation.borrower.lastName ===
+                            formData.personalInformation.coBorrower.lastName ===
                               null
                               ? "--"
-                              : formData.personalInformation.borrower.lastName
+                              : formData.personalInformation.coBorrower.lastName
                           }}
                         </p>
 
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               undefined ||
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               null
                               ? 'text-danger'
                               : 'text-muted'
@@ -934,21 +941,22 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               undefined ||
-                            formData.personalInformation.borrower.suffix ===
+                            formData.personalInformation.coBorrower.suffix ===
                               null
                               ? "--"
-                              : formData.personalInformation.borrower.suffix
+                              : formData.personalInformation.coBorrower.suffix
                           }}
                         </p>
 
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.email ===
+                            formData.personalInformation.coBorrower.email ===
                               undefined ||
-                            formData.personalInformation.borrower.email === null
+                            formData.personalInformation.coBorrower.email ===
+                              null
                               ? 'text-danger'
                               : 'text-muted'
                           "
@@ -957,20 +965,21 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.email ===
+                            formData.personalInformation.coBorrower.email ===
                               undefined ||
-                            formData.personalInformation.borrower.email === null
+                            formData.personalInformation.coBorrower.email ===
+                              null
                               ? "--"
-                              : formData.personalInformation.borrower.email
+                              : formData.personalInformation.coBorrower.email
                           }}
                         </p>
 
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === null
                               ? 'text-danger'
                               : 'text-muted'
@@ -980,12 +989,12 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .dateOfBirth === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .dateOfBirth
                           }}
                         </p>
@@ -993,9 +1002,9 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === null
                               ? 'text-danger'
                               : 'text-muted'
@@ -1005,12 +1014,12 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .socialSecurityNumber === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .socialSecurityNumber
                           }}
                         </p>
@@ -1018,9 +1027,9 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === null
                               ? 'text-danger'
                               : 'text-muted'
@@ -1030,12 +1039,12 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .maritalStatusId === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .maritalStatusId
                           }}
                         </p>
@@ -1043,9 +1052,9 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === null
                               ? 'text-danger'
                               : 'text-muted'
@@ -1055,12 +1064,12 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === undefined ||
-                            formData.personalInformation.borrower
+                            formData.personalInformation.coBorrower
                               .numberOfDependents === null
                               ? "--"
-                              : formData.personalInformation.borrower
+                              : formData.personalInformation.coBorrower
                                   .numberOfDependents
                           }}
                         </p>
@@ -1068,10 +1077,10 @@
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.cellPhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.cellPhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .cellPhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .cellPhone === null
                               ? 'text-danger'
                               : 'text-muted'
                           "
@@ -1080,22 +1089,23 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.cellPhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.cellPhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .cellPhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .cellPhone === null
                               ? "--"
-                              : formData.personalInformation.borrower.cellPhone
+                              : formData.personalInformation.coBorrower
+                                  .cellPhone
                           }}
                         </p>
 
                         <h6
                           class="font-weight-normal form-text mb-3"
                           [ngClass]="
-                            formData.personalInformation.borrower.homePhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.homePhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .homePhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .homePhone === null
                               ? 'text-danger'
                               : 'text-muted'
                           "
@@ -1104,12 +1114,13 @@
                         </h6>
                         <p class="font-weight-bold">
                           {{
-                            formData.personalInformation.borrower.homePhone ===
-                              undefined ||
-                            formData.personalInformation.borrower.homePhone ===
-                              null
+                            formData.personalInformation.coBorrower
+                              .homePhone === undefined ||
+                            formData.personalInformation.coBorrower
+                              .homePhone === null
                               ? "--"
-                              : formData.personalInformation.borrower.homePhone
+                              : formData.personalInformation.coBorrower
+                                  .homePhone
                           }}
                         </p>
 
@@ -1487,7 +1498,8 @@
               <div
                 class="col-6"
                 *ngIf="
-                  formData.personalInformation.isApplyingWithCoBorrower === true
+                  formData.personalInformation.isApplyingWithCoBorrower ===
+                  'true'
                 "
               >
                 <div class="row">
