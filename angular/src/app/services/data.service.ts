@@ -30,7 +30,7 @@ export class DataService {
       borrowerEmploymentInfo: [{}],
       coBorrowerMonthlyIncome: {},
       coBorrowerEmploymentInfo: [{}],
-      additionalIncomes: [{}]
+      additionalIncomes: [{}],
     },
     orderCredit: {},
     additionalDetails: {},
