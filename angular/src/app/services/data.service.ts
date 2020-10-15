@@ -28,6 +28,9 @@ export class DataService {
     employmentIncome: {
       borrowerMonthlyIncome: {},
       borrowerEmploymentInfo: [{}],
+      coBorrowerMonthlyIncome: {},
+      coBorrowerEmploymentInfo: [{}],
+      additionalIncomes: [{}]
     },
     orderCredit: {},
     additionalDetails: {},
