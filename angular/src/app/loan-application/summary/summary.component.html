@@ -850,7 +850,6 @@
                   </div>
                 </div>
               </div>
-
               <div
                 class="col-6"
                 *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
@@ -1179,10 +1178,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .addressLine2 === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .addressLine2 === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1204,10 +1203,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .city === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .city === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1229,10 +1228,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .stateId === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .stateId === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1254,10 +1253,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .zipCode === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .zipCode === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1279,10 +1278,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1304,10 +1303,10 @@
                       <h6
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
-                          formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1505,7 +1504,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -1518,12 +1519,18 @@
                         Required
                       </span>
                       <br /><br />
-                      <h6 class="font-weight-normal form-text mb-3">
-                        [ngClass]=" formData.personalInformation
-                        .isApplyingWithCoBorrower === undefined ||
-                        formData.personalInformation .isApplyingWithCoBorrower
-                        === null ? 'text-danger' : 'text-muted' " Same as the
-                        borrower's residential address? *
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === undefined ||
+                          formData.personalInformation
+                            .isMailingAddressSameAsResidential === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Same as the borrower's residential address? *
                       </h6>
                       <p class="font-weight-bold">
                         {{
@@ -1539,11 +1546,18 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text mb-3">
-                        [ngClass]=" formData.personalInformation
-                        .isApplyingWithCoBorrower === undefined ||
-                        formData.personalInformation .isApplyingWithCoBorrower
-                        === null ? 'text-danger' : 'text-muted' " Years *
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .totalYears === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalYears === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Years *
                       </h6>
                       <p class="font-weight-bold">
                         {{
@@ -1557,11 +1571,18 @@
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text mb-3">
-                        [ngClass]=" formData.personalInformation
-                        .isApplyingWithCoBorrower === undefined ||
-                        formData.personalInformation .isApplyingWithCoBorrower
-                        === null ? 'text-danger' : 'text-muted' " Months
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === undefined ||
+                          formData.personalInformation.residentialAddress
+                            .totalMonths === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Months
                       </h6>
                       <p class="font-weight-bold">
                         {{
@@ -1581,7 +1602,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -1593,9 +1616,9 @@
                         class="font-weight-normal form-text mb-3 mt-3"
                         [ngClass]="
                           formData.personalInformation
-                            .isApplyingWithCoBorrower === undefined ||
+                            .isMailingAddressSameAsResidential === undefined ||
                           formData.personalInformation
-                            .isApplyingWithCoBorrower === null
+                            .isMailingAddressSameAsResidential === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -2890,7 +2913,11 @@
 
             <!-- Co-Borrower Employment Information Start -->
 
-            <div *ngIf="formData.personalInformation.isApplyingWithCoBorrower">
+            <div
+              *ngIf="
+                formData.personalInformation.isApplyingWithCoBorrower === true
+              "
+            >
               <div class="row">
                 <div class="col-6">
                   <div class="row">
@@ -3088,7 +3115,9 @@
 
               <div
                 class="row"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="col-6">
                   <div class="row">
@@ -3754,7 +3783,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -4398,7 +4429,9 @@
 
               <div
                 class="col-6"
-                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                *ngIf="
+                  formData.personalInformation.isApplyingWithCoBorrower === true
+                "
               >
                 <div class="row">
                   <div class="col-8">
@@ -4944,7 +4977,10 @@
                 </div>
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower
                   <span
@@ -4993,7 +5029,10 @@
 
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower Residential Address
                   <span
@@ -5019,7 +5058,10 @@
 
                 <div
                   class="col-12"
-                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  *ngIf="
+                    formData.personalInformation.isApplyingWithCoBorrower ===
+                    true
+                  "
                 >
                   Co-Borrower Mailing Address
                 </div>
