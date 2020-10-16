@@ -391,7 +391,16 @@
                       Required
                     </span>
                     <div>
-                      <h6 class="font-weight-normal form-text text-muted mt-5">
+                      <h6
+                        class="font-weight-normal form-text mt-5"
+                        [ngClass]="
+                          formData.loanDetails.startedLookingForNewHome ===
+                            undefined ||
+                          formData.loanDetails.startedLookingForNewHome === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
                         Have you started looking for a home? *
                       </h6>
                     </div>
@@ -445,39 +454,56 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      City
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.loanDetails.city === undefined ||
-                        formData.loanDetails.city === null
-                          ? "--"
-                          : formData.loanDetails.city
-                      }}
-                    </p>
+                <div *ngIf="formData.loanDetails.startedLookingForNewHome">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="font-weight-normal form-text text-muted mt-3">
+                        City
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.city === undefined ||
+                          formData.loanDetails.city === null
+                            ? "--"
+                            : formData.loanDetails.city
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6
+                        class="font-weight-normal form-text mt-3"
+                        [ngClass]="
+                          !formData.loanDetails.stateIdName
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        State *
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.loanDetails.stateIdName === undefined ||
+                          formData.loanDetails.stateIdName === null
+                            ? "--"
+                            : formData.loanDetails.stateIdName
+                        }}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
-                      State *
-                    </h6>
-                    <p class="font-weight-bold">
-                      {{
-                        formData.loanDetails.stateIdName === undefined ||
-                        formData.loanDetails.stateIdName === null
-                          ? "--"
-                          : formData.loanDetails.stateIdName
-                      }}
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        formData.loanDetails.propertyTypeName === undefined ||
+                        formData.loanDetails.propertyTypeName === null
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Property Type *
                     </h6>
                     <p class="font-weight-bold">
@@ -492,7 +518,14 @@
                 </div>
                 <div class="row">
                   <div class="col-8">
-                    <h6 class="font-weight-normal form-text text-muted mt-3">
+                    <h6
+                      class="font-weight-normal form-text mt-3"
+                      [ngClass]="
+                        !formData.loanDetails.propertyUseName
+                          ? 'text-danger'
+                          : 'text-muted'
+                      "
+                    >
                       Property Use *
                     </h6>
                     <p class="font-weight-bold">
@@ -2876,16 +2909,7 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-8">
-                        <h6
-                          class="font-weight-normal form-text mt-5"
-                          [ngClass]="
-                            borrowerEmploymentInfo.isSelfEmployed ===
-                              undefined ||
-                            borrowerEmploymentInfo.isSelfEmployed === null
-                              ? 'text-danger'
-                              : 'text-muted'
-                          "
-                        >
+                        <h6 class="font-weight-normal form-text mt-5">
                           I'm self-employed.
                         </h6>
                         <p class="font-weight-bold">
@@ -2925,9 +2949,7 @@
                         <h6
                           class="font-weight-normal form-text mt-3"
                           [ngClass]="
-                            manualAssetEntry.taxesInsuranceAndOther ===
-                              undefined ||
-                            manualAssetEntry.taxesInsuranceAndOther === null
+                            !borrowerEmploymentInfo.position
                               ? 'text-danger'
                               : 'text-muted'
                           "
@@ -2982,8 +3004,7 @@
                           <h6
                             class="font-weight-normal form-text mt-3"
                             [ngClass]="
-                              manualAssetEntry.stateIdName === undefined ||
-                              manualAssetEntry.stateIdName === null
+                              !borrowerEmploymentInfo.stateIdName
                                 ? 'text-danger'
                                 : 'text-muted'
                             "
