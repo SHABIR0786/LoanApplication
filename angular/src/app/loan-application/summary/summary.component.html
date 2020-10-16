@@ -1952,9 +1952,10 @@
                               formData.expenses.rent > 0 ||
                               formData.expenses.otherHousingExpenses > 0
                                 ? "$ " +
-                                  (ConvertToInt(formData.expenses.rent) +
+                                  (ConvertToInt(formData.expenses.rent || 0) +
                                     ConvertToInt(
-                                      formData.expenses.otherHousingExpenses
+                                      formData.expenses.otherHousingExpenses ||
+                                        0
                                     ))
                                 : ""
                             }}
@@ -2168,25 +2169,27 @@
                               formData.expenses.otherHousingExpenses > 0
                                 ? "$ " +
                                   (ConvertToInt(
-                                    formData.expenses.firstMortgage
+                                    formData.expenses.firstMortgage || 0
                                   ) +
                                     ConvertToInt(
-                                      formData.expenses.secondMortgage
+                                      formData.expenses.secondMortgage || 0
                                     ) +
                                     ConvertToInt(
-                                      formData.expenses.hazardInsurance
+                                      formData.expenses.hazardInsurance || 0
                                     ) +
                                     ConvertToInt(
-                                      formData.expenses.realEstateTaxes
+                                      formData.expenses.realEstateTaxes || 0
                                     ) +
                                     ConvertToInt(
-                                      formData.expenses.mortgageInsurance
+                                      formData.expenses.mortgageInsurance || 0
                                     ) +
                                     ConvertToInt(
-                                      formData.expenses.homeOwnersAssociation
+                                      formData.expenses.homeOwnersAssociation ||
+                                        0
                                     ) +
                                     ConvertToInt(
-                                      formData.expenses.otherHousingExpenses
+                                      formData.expenses.otherHousingExpenses ||
+                                        0
                                     ))
                                 : ""
                             }}
@@ -3307,23 +3310,24 @@
                     <p class="font-weight-bold">
                       {{
                         ConvertToInt(
-                          formData.employmentIncome.borrowerMonthlyIncome.base
+                          formData.employmentIncome.borrowerMonthlyIncome
+                            .base || 0
                         ) +
                           ConvertToInt(
                             formData.employmentIncome.borrowerMonthlyIncome
-                              .overtime
+                              .overtime || 0
                           ) +
                           ConvertToInt(
                             formData.employmentIncome.borrowerMonthlyIncome
-                              .bonuses
+                              .bonuses || 0
                           ) +
                           ConvertToInt(
                             formData.employmentIncome.borrowerMonthlyIncome
-                              .commissions
+                              .commissions || 0
                           ) +
                           ConvertToInt(
                             formData.employmentIncome.borrowerMonthlyIncome
-                              .dividends
+                              .dividends || 0
                           ) || "--"
                       }}
                     </p>
@@ -3505,9 +3509,9 @@
                             </h6>
                             <p class="font-weight-bold">
                               {{
-                                coBorrowerEmploymentInfo.startDate
+                                (coBorrowerEmploymentInfo.startDate
                                   | dateDifference
-                                    : coBorrowerEmploymentInfo.endDate
+                                    : coBorrowerEmploymentInfo.endDate) || "--"
                               }}
                             </p>
                           </div>
@@ -3625,23 +3629,23 @@
                         {{
                           ConvertToInt(
                             formData.employmentIncome.coBorrowerMonthlyIncome
-                              ?.base
+                              ?.base || 0
                           ) +
                             ConvertToInt(
                               formData.employmentIncome.coBorrowerMonthlyIncome
-                                ?.overtime
+                                ?.overtime || 0
                             ) +
                             ConvertToInt(
                               formData.employmentIncome.coBorrowerMonthlyIncome
-                                ?.bonuses
+                                ?.bonuses || 0
                             ) +
                             ConvertToInt(
                               formData.employmentIncome.coBorrowerMonthlyIncome
-                                ?.commissions
+                                ?.commissions || 0
                             ) +
                             ConvertToInt(
                               formData.employmentIncome.coBorrowerMonthlyIncome
-                                ?.dividends
+                                ?.dividends || 0
                             ) || "--"
                         }}
                       </p>
