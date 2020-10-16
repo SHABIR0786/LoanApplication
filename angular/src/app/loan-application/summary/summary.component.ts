@@ -23,7 +23,7 @@ export class SummaryComponent implements OnInit {
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
     private _route: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._dataService.validations.subscribe((errors) => {
@@ -37,20 +37,32 @@ export class SummaryComponent implements OnInit {
       if (this.formData.manualAssetEntries) {
         this.formData.manualAssetEntries.forEach((element) => {
           element.borrowerTypeId = AppConsts.typeBorrower;
-        })
+        });
       }
-      if(this.formData.employmentIncome && this.formData.employmentIncome.coBorrowerEmploymentInfo){
-        this.formData.employmentIncome.coBorrowerEmploymentInfo =  [];
+      if (
+        this.formData.employmentIncome &&
+        this.formData.employmentIncome.coBorrowerEmploymentInfo
+      ) {
+        this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
-      if(this.formData.employmentIncome && this.formData.employmentIncome.coBorrowerMonthlyIncome){
+      if (
+        this.formData.employmentIncome &&
+        this.formData.employmentIncome.coBorrowerMonthlyIncome
+      ) {
         this.formData.employmentIncome.coBorrowerMonthlyIncome = {};
-      } 
-      if(this.formData.declaration && this.formData.declaration.coBorrowerDeclaration){
-        this.formData.declaration.coBorrowerDeclaration = {}
-      }  
-      if(this.formData.declaration && this.formData.declaration.coBorrowerDemographic){
-        this.formData.declaration.coBorrowerDemographic = {}
-      }  
+      }
+      if (
+        this.formData.declaration &&
+        this.formData.declaration.coBorrowerDeclaration
+      ) {
+        this.formData.declaration.coBorrowerDeclaration = {};
+      }
+      if (
+        this.formData.declaration &&
+        this.formData.declaration.coBorrowerDemographic
+      ) {
+        this.formData.declaration.coBorrowerDemographic = {};
+      }
     }
     console.log(this.formData);
   }
