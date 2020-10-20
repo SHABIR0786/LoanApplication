@@ -17,4 +17,5 @@ export interface IPersonalInformationModel {
   coBorrowerPreviousAddresses?: IAddressModel[];
   coBorrowerMailingAddress?: IAddressModel;
   coBorrowerIsMailingAddressSameAsResidential?: boolean;
+  coBorrowerResidentialAddressSameAsBorrowerResidential?: boolean;
 }
