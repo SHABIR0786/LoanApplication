@@ -6,7 +6,7 @@
           <div class="col-12 mb-3">
             <h4>Other Disclosures and Details</h4>
           </div>
-          <div class="col-12">
+          <div class="col-6">
             <div class="form-group">
               <label for="nameOfIndividualsOnTitle">
                 {{
@@ -20,6 +20,20 @@
                 name="nameOfIndividualsOnTitle"
                 id="nameOfIndividualsOnTitle"
                 [(ngModel)]="data.nameOfIndividualsOnTitle"
+              />
+            </div>
+          </div>
+          <div class="col-6" *ngIf="isApplyingWithCoBorrower">
+            <div class="form-group">
+              <label for="nameOfIndividualsCoBorrowerOnTitle">
+                {{ "Co-borrower name (optional)" | localize }}
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="nameOfIndividualsCoBorrowerOnTitle"
+                id="nameOfIndividualsCoBorrowerOnTitle"
+                [(ngModel)]="data.nameOfIndividualsCoBorrowerOnTitle"
               />
             </div>
           </div>
