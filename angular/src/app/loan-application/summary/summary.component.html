@@ -3837,7 +3837,7 @@
                     <h6 class="font-weight-normal text-muted form-text mt-5">
                       List names of all individuals who will be on Title
                     </h6>
-                    <p class="font-weight-bold mt-5">
+                    <p class="font-weight-bold">
                       {{
                         formData.additionalDetails.nameOfIndividualsOnTitle ===
                           undefined ||
@@ -3845,6 +3845,24 @@
                           null
                           ? "--"
                           : formData.additionalDetails.nameOfIndividualsOnTitle
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal text-muted form-text mt-3">
+                      Co-borrower name (optional)
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.additionalDetails
+                          .nameOfIndividualsCoBorrowerOnTitle === undefined ||
+                        formData.additionalDetails
+                          .nameOfIndividualsCoBorrowerOnTitle === null
+                          ? "--"
+                          : formData.additionalDetails
+                              .nameOfIndividualsCoBorrowerOnTitle
                       }}
                     </p>
                   </div>
