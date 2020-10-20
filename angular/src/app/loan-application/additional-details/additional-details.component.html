@@ -23,11 +23,9 @@
               />
             </div>
           </div>
-          <!-- T -->
-          <div
-            class="col-6" *ngIf="isApplyingWithCoBorrower">
+          <div class="col-6" *ngIf="isApplyingWithCoBorrower">
             <div class="form-group">
-              <label for="nameOfIndividualsOnTitle">
+              <label for="nameOfIndividualsCoBorrowerOnTitle">
                 {{ "Co-borrower name (optional)" | localize }}
               </label>
               <input
@@ -39,7 +37,6 @@
               />
             </div>
           </div>
-          <!-- TE -->
           <div class="col-12">
             <button class="btn btn-secondary" (click)="proceedToPrevious()">
               Back
