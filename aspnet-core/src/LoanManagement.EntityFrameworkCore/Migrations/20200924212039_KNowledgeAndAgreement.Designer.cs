@@ -3,14 +3,16 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200924212039_KNowledgeAndAgreement")]
+    partial class KNowledgeAndAgreement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1481,288 +1483,7 @@ namespace LoanManagement.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.AdditionalDetail", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("NameOfIndividualsOnTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdditionalDetails");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.AdditionalIncome", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal?>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("BorrowerTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("IncomeSourceId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("LoanApplicationId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
-
-                    b.HasIndex("IncomeSourceId");
-
-                    b.HasIndex("LoanApplicationId");
-
-                    b.ToTable("AdditionalIncomes");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.Address", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AddressLine1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("AddressLine2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("AddressType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("BorrowerTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("Months")
-                        .HasColumnType("int");
-
-                    b.Property<long>("PersonalDetailId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Years")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ZipCode")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
-
-                    b.HasIndex("PersonalDetailId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.AssetType", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AssetType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 92, DateTimeKind.Local).AddTicks(9733),
-                            IsDeleted = false,
-                            Name = "Cash deposit on sales contract"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(491),
-                            IsDeleted = false,
-                            Name = "Certificate of Deposit"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(570),
-                            IsDeleted = false,
-                            Name = "Checking Account"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(575),
-                            IsDeleted = false,
-                            Name = "Gifts"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(578),
-                            IsDeleted = false,
-                            Name = "Gift of equity"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(581),
-                            IsDeleted = false,
-                            Name = "Money Market Fund"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(585),
-                            IsDeleted = false,
-                            Name = "Mutual Funds"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(588),
-                            IsDeleted = false,
-                            Name = "Net Proceeds from Real Estate Funds"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(591),
-                            IsDeleted = false,
-                            Name = "Real Estate Owned"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(595),
-                            IsDeleted = false,
-                            Name = "Retirement Funds"
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(598),
-                            IsDeleted = false,
-                            Name = "Savings Account"
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(601),
-                            IsDeleted = false,
-                            Name = "Stocks & Bonds"
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(605),
-                            IsDeleted = false,
-                            Name = "Trust Account"
-                        });
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
+            modelBuilder.Entity("LoanManagement.Models.AcknowledgementAndAgreement", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1771,7 +1492,143 @@ namespace LoanManagement.Migrations
                     b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CellPhone")
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Signature")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
+
+                    b.ToTable("AcknowledgementAndAgreements");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.AssetAndLiability", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfBank1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfBank2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfBank3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfBank4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany5")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AddressOfCompany6")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AlternateName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("Amount1")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("AssetsCompletion")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("AutomobileAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("AutomobileMake")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AutomobileYear")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankAccountNo1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankAccountNo2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankAccountNo3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankAccountNo4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("BankAmount2")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("BankAmount3")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("BankAmount4")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("CashDepositPurchaseHeldBy")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("CashOrMarketValue")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("CompanyAccountNo1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CompanyAccountNo2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CompanyAccountNo3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CompanyAccountNo4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CompanyAccountNo5")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CompanyAccountNo6")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
@@ -1780,7 +1637,7 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("DateOfBirth")
+                    b.Property<string>("CreditorName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<long?>("DeleterUserId")
@@ -1789,10 +1646,272 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("FirstName")
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("JobRelatedExpenses")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("JobRelatedExpensesPayment")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("LifeInsuranceNetCashValue")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("LifeInsuranceNetFaceAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MaintenancePayment")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("MaintenancePaymentOwedTo")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("MonthlyPayment1")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MonthlyPayment2")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MonthlyPayment3")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MonthlyPayment4")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MonthlyPayment5")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("MonthlyPayment6")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int?>("MonthsLeft1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonthsLeft2")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonthsLeft3")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonthsLeft4")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonthsLeft5")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonthsLeft6")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NameOfBank1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfBank2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfBank3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfBank4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany3")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany4")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany5")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameOfCompany6")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("NetWorth")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("NetworthOfBussiness")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("OtherAssets")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("OtherAssetsAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("RealEstateOwned")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("RetirementFund")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("StockAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("StockCompanyDescription")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StockCompanyName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StockCompanyNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("SubtotalLiquidAssets")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalAssets")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("TotalLiabilities")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance1")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance2")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance3")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance4")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance5")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("UnpaidBalance6")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetAndLiabilities");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BusinessPhone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateFromTo")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EmployersAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("EmployersName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSelfEmployer")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("MonthlyIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearInThisLineOfWork")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearOnThisJob")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowerTypeId");
+
+                    b.ToTable("BorrowerEmploymentInformation");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.BorrowerInformation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BorrowersName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("FormerAddressModel")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("FormerAddressNoOfYears")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FormerAddressType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("HomePhone")
@@ -1807,159 +1926,36 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("MailingAddress")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("MaritalStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MiddleInitial")
+                    b.Property<string>("Marital")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("NumberOfDependents")
+                    b.Property<string>("PresentAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("PresentAddressNoOfYears")
                         .HasColumnType("int");
+
+                    b.Property<string>("PresentAddressType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("SocialSecurityNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Suffix")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
-
-                    b.ToTable("Borrowers");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("BorrowerTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("EmployersAddress1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("EmployersAddress2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("EmployersName")
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
 
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsSelfEmployed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("LoanApplicationId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Position")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("StateId")
+                    b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ZipCode")
+                    b.Property<int?>("YearsSchool")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerTypeId");
 
-                    b.HasIndex("LoanApplicationId");
-
-                    b.ToTable("BorrowerEmploymentInformations");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.BorrowerMonthlyIncome", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal?>("Base")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("Bonuses")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("BorrowerTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("Commissions")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<decimal?>("Dividends")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("LoanApplicationId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal?>("Overtime")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
-
-                    b.HasIndex("LoanApplicationId");
-
-                    b.ToTable("BorrowerMonthlyIncomes");
+                    b.ToTable("BorrowerInformation");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerType", b =>
@@ -1973,7 +1969,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BorrowerTypes");
+                    b.ToTable("BorrowerType");
 
                     b.HasData(
                         new
@@ -1985,22 +1981,14 @@ namespace LoanManagement.Migrations
                         {
                             Id = 2,
                             Name = "Co-Borrower"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Both"
                         });
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.ConsentDetail", b =>
+            modelBuilder.Entity("LoanManagement.Models.CombinedMonthlyHousingExpense", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    b.Property<bool?>("AgreeEConsent")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2014,49 +2002,17 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("FirstMortage")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("HazardInsurance")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal>("HomeOwnerAssociationDue")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ConsentDetails");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.CreditAuthAgreement", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<bool?>("AgreeCreditAuthAgreement")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("HousingExpenseTypeId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -2067,9 +2023,31 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("LoanApplicationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("MortgageInsurance")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Other")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("OtherMortage")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("RealEstateTaxes")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Rental")
+                        .HasColumnType("decimal(65,30)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("CreditAuthAgreements");
+                    b.HasIndex("HousingExpenseTypeId");
+
+                    b.HasIndex("LoanApplicationId");
+
+                    b.ToTable("CombinedMonthlyHousingExpense");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Declaration", b =>
@@ -2087,56 +2065,56 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("DeclarationsSection")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool?>("IsAnyPartOfTheDownPayment")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("HowYouHoldTitleHome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsCoMakerOrEndorser")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsAnyPartPaymentBorrowed")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeclaredBankrupt")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsCoMakerOrEndorserOnANote")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("IsDeclaredBankruptWithin7Years")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsIntendToOccupyThePropertyAsYourPrimary")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsIntendToOccuppyTheProperty")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsObligatedOnAnyLoanWhichResultedForeclosure")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsObligatedOnAnyLoan")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsObligatedToPayAlimonyChildSupport")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsObligatedToPayOrChildSupport")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsOutstandingJudgmentsAgainstYou")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsOutstandingJudgmentsAgainstYou")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsOwnershipInterestInPropertyInTheLastThreeYears")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsOwnedPropertyLastThreeYears")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsPartyToLawsuit")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsPartyLawsuit")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsPermanentResidentSlien")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsPermenentResidentAlien")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsPresentlyDelinquent")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsPresentlyDelinquentOrInDefaultFederal")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsPropertyForeClosedUponOrGivenTitle")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsPropertyForeClosedWithin7Years")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsUSCitizen")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("IsUsCitizen")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime(6)");
@@ -2144,35 +2122,33 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("LoanApplicationId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WhatTypeOfPropertyYouOwned")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerTypeId");
-
-                    b.HasIndex("LoanApplicationId");
 
                     b.ToTable("Declarations");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", b =>
+            modelBuilder.Entity("LoanManagement.Models.DetailsOfTransaction", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("BorrowerTypeId")
-                        .HasColumnType("int");
+                    b.Property<decimal?>("Alterations")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("CanNotProvideEthnic")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("BorrowersClosingCost")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("CanNotProvideRace")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("CanNotProvideSex")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("CashFrom")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2186,82 +2162,90 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("EnterRace")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal?>("Discount")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsAmericanIndianOrAlaskaNative")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("EstimatedClosingCost")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsAsian")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("EstimatedPreparedItem")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsAsianIndian")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsBlackOrAfricanAmerican")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsChinese")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsCuban")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("FundingFee")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsFemale")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("Land")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsFilipino")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool?>("IsGuamanianOrChamorro")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsHispanicOrLatino")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("LoanAmount")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsJapanese")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("OtherCredits")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsKorean")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("PurchasePrice")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsMale")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("Refinance")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsMexican")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("SubOrdinateFinancing")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsNativeHawaiian")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<int?>("TenantId")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IsNativeHawaiianOrOtherPacificIslander")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal?>("TotalCost")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsNotHispanicOrLatino")
-                        .HasColumnType("tinyint(1)");
+                    b.HasKey("Id");
 
-                    b.Property<bool?>("IsOtherAsian")
-                        .HasColumnType("tinyint(1)");
+                    b.ToTable("DetailsOfTransactions");
+                });
 
-                    b.Property<bool?>("IsOtherHispanicOrLatino")
-                        .HasColumnType("tinyint(1)");
+            modelBuilder.Entity("LoanManagement.Models.GrossMonthlyIncome", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsOtherPacificIslander")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal>("BasicIncome")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsPuertoRican")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal>("Bonuses")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsSamoan")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<int>("BorrowerTypeId")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IsVietnamese")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<decimal>("Commissions")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool?>("IsWhite")
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("DividendAndInterest")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -2273,11 +2257,14 @@ namespace LoanManagement.Migrations
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("NameOfEnrolledOrPrincipalTribe")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("NetRentalIncome")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Origin")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<decimal>("Other")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Overtime")
+                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 
@@ -2285,14 +2272,14 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("DeclarationBorrowereDemographicsInformations");
+                    b.ToTable("GrossMonthlyIncome");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.Expense", b =>
+            modelBuilder.Entity("LoanManagement.Models.HousingExpenseType", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2306,19 +2293,7 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<decimal?>("FirstMortgage")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("HazardInsurance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("HomeOwnersAssociation")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsLiveWithFamilySelectRent")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -2326,60 +2301,28 @@ namespace LoanManagement.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<decimal?>("MortgageInsurance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("OtherHousingExpenses")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("RealEstateTaxes")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("Rent")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("SecondMortgage")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Expenses");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.IncomeSource", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.ToTable("IncomeSource");
+                    b.ToTable("HousingExpenseType");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Name = "Accessory Unit Income"
+                            CreationTime = new DateTime(2020, 9, 24, 14, 20, 38, 260, DateTimeKind.Local).AddTicks(3755),
+                            IsDeleted = false,
+                            Name = "Present"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Alimony/Child Support"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Automobile/Expense Account"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Boarder Income"
+                            CreationTime = new DateTime(2020, 9, 24, 14, 20, 38, 264, DateTimeKind.Local).AddTicks(3937),
+                            IsDeleted = false,
+                            Name = "Proposed"
                         });
                 });
 
@@ -2529,13 +2472,31 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("AdditionalDetailId")
+                    b.Property<long?>("AssetAndLiablityId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("AdditionalDetailsId")
+                    b.Property<long?>("BorrowerEmploymentInfoId1")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("ConsentDetailId")
+                    b.Property<long?>("BorrowerEmploymentInfoId2")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerEmploymentInfoId3")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BorrowerInfoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId2")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerEmploymentInfoId3")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CoBorrowerInfoId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreationTime")
@@ -2544,16 +2505,13 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("CreditAuthAgreementId")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<long?>("ExpenseId")
+                    b.Property<long?>("DetailsOfTransactionId")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("IsDeleted")
@@ -2565,10 +2523,13 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("LoanDetailId")
+                    b.Property<int>("MonthlyIncomeAndCombinedHousingExpenseId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("MortgageTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("PersonalDetailId")
+                    b.Property<long?>("PropertyInfoId")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("TenantId")
@@ -2576,28 +2537,54 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdditionalDetailId");
+                    b.HasIndex("AssetAndLiablityId");
 
-                    b.HasIndex("ConsentDetailId");
+                    b.HasIndex("BorrowerEmploymentInfoId1");
 
-                    b.HasIndex("CreditAuthAgreementId");
+                    b.HasIndex("BorrowerEmploymentInfoId2");
 
-                    b.HasIndex("ExpenseId");
+                    b.HasIndex("BorrowerEmploymentInfoId3");
 
-                    b.HasIndex("LoanDetailId");
+                    b.HasIndex("BorrowerInfoId");
 
-                    b.HasIndex("PersonalDetailId");
+                    b.HasIndex("CoBorrowerEmploymentInfoId1");
+
+                    b.HasIndex("CoBorrowerEmploymentInfoId2");
+
+                    b.HasIndex("CoBorrowerEmploymentInfoId3");
+
+                    b.HasIndex("CoBorrowerInfoId");
+
+                    b.HasIndex("DetailsOfTransactionId");
+
+                    b.HasIndex("MortgageTypeId")
+                        .IsUnique();
+
+                    b.HasIndex("PropertyInfoId")
+                        .IsUnique();
 
                     b.ToTable("LoanApplications");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.LoanDetail", b =>
+            modelBuilder.Entity("LoanManagement.Models.MortgageType", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("City")
+                    b.Property<string>("AgencyCaseNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AmortizationType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AmortizationTypeExplain")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("double");
+
+                    b.Property<string>("AppliedFor")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
@@ -2606,40 +2593,16 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal?>("CurrentLoanAmount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<decimal?>("DownPaymentAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<double?>("DownPaymentPercentage")
+                    b.Property<double>("InterestRate")
                         .HasColumnType("double");
 
-                    b.Property<decimal?>("EstimatedPurchasePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("EstimatedValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("GiftAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("GiftExplanation")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("HaveSecondMortgage")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsWorkingWithOfficer")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -2648,82 +2611,33 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LoanOfficerId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("OriginalPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool?>("PayLoanWithNewLoan")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int?>("PropertyTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PropertyUseId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PurposeOfLoan")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReferredBy")
+                    b.Property<string>("LenderCaseNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("RefinancingCurrentHome")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<decimal?>("RequestedLoanAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("SecondMortgageAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("SourceOfDownPayment")
+                    b.Property<int?>("NumberOfMonths")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("StartedLookingForNewHome")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
-                    b.Property<int?>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("YearAcquired")
+                    b.Property<string>("TypeExplain")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoanDetails");
+                    b.ToTable("MortgageTypes");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
+            modelBuilder.Entity("LoanManagement.Models.OtherIncome", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Address2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<long>("AssetTypeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("BankName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
-
-                    b.Property<decimal?>("CashValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2736,12 +2650,6 @@ namespace LoanManagement.Migrations
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<decimal?>("GrossRentalIncome")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -2755,115 +2663,38 @@ namespace LoanManagement.Migrations
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal?>("MonthlyMortgagePayment")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("MonthlyAmount")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Type")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<decimal?>("OutstandingMortgageBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("PresentMarketValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("PropertyIsUsedAs")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("PropertyStatus")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("PropertyType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<decimal?>("PurchasePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("TaxesInsuranceAndOther")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("varchar(9) CHARACTER SET utf8mb4")
-                        .HasMaxLength(9);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AssetTypeId");
-
-                    b.HasIndex("BorrowerTypeId");
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.HasIndex("StateId");
-
-                    b.ToTable("ManualAssetEntries");
+                    b.ToTable("OtherIncome");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
+            modelBuilder.Entity("LoanManagement.Models.PropertyInformation", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("AgreePrivacyPolicy")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
-                    b.Property<long?>("BorrowerId")
-                        .HasColumnType("bigint");
+                    b.Property<double>("AmountExistingLiens")
+                        .HasColumnType("double");
 
-                    b.Property<long?>("CoBorrowerId")
-                        .HasColumnType("bigint");
+                    b.Property<double>("AmountExistingLiensRefinance")
+                        .HasColumnType("double");
 
-                    b.Property<bool?>("CoBorrowerIsMailingAddressSameAsResidential")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool?>("IsApplyingWithCoBorrower")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsMailingAddressSameAsResidential")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool?>("UseIncomeOfPersonOtherThanBorrower")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerId");
-
-                    b.HasIndex("CoBorrowerId");
-
-                    b.ToTable("PersonalDetails");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.State", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<double>("CostOfImprovements")
+                        .HasColumnType("double");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2877,461 +2708,14 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("EstateHeldIn")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("States");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(4117),
-                            IsDeleted = false,
-                            Name = "AL"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5827),
-                            IsDeleted = false,
-                            Name = "AK"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5857),
-                            IsDeleted = false,
-                            Name = "AS"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5862),
-                            IsDeleted = false,
-                            Name = "AZ"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5866),
-                            IsDeleted = false,
-                            Name = "AR"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5869),
-                            IsDeleted = false,
-                            Name = "CA"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5872),
-                            IsDeleted = false,
-                            Name = "CO"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5876),
-                            IsDeleted = false,
-                            Name = "CT"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5879),
-                            IsDeleted = false,
-                            Name = "DE"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5883),
-                            IsDeleted = false,
-                            Name = "DC"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5886),
-                            IsDeleted = false,
-                            Name = "FM"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5890),
-                            IsDeleted = false,
-                            Name = "FL"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5893),
-                            IsDeleted = false,
-                            Name = "GA"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5897),
-                            IsDeleted = false,
-                            Name = "GU"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5900),
-                            IsDeleted = false,
-                            Name = "HI"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5904),
-                            IsDeleted = false,
-                            Name = "ID"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5908),
-                            IsDeleted = false,
-                            Name = "IL"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5911),
-                            IsDeleted = false,
-                            Name = "IN"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5915),
-                            IsDeleted = false,
-                            Name = "IA"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5918),
-                            IsDeleted = false,
-                            Name = "KS"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5922),
-                            IsDeleted = false,
-                            Name = "KY"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5926),
-                            IsDeleted = false,
-                            Name = "LA"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5930),
-                            IsDeleted = false,
-                            Name = "ME"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5933),
-                            IsDeleted = false,
-                            Name = "MH"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5937),
-                            IsDeleted = false,
-                            Name = "MD"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5941),
-                            IsDeleted = false,
-                            Name = "MA"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5944),
-                            IsDeleted = false,
-                            Name = "MI"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5948),
-                            IsDeleted = false,
-                            Name = "MN"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5951),
-                            IsDeleted = false,
-                            Name = "MS"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5955),
-                            IsDeleted = false,
-                            Name = "MO"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5959),
-                            IsDeleted = false,
-                            Name = "MT"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5963),
-                            IsDeleted = false,
-                            Name = "NE"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5966),
-                            IsDeleted = false,
-                            Name = "NV"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5970),
-                            IsDeleted = false,
-                            Name = "NH"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5974),
-                            IsDeleted = false,
-                            Name = "NJ"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5977),
-                            IsDeleted = false,
-                            Name = "NM"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6007),
-                            IsDeleted = false,
-                            Name = "NY"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6010),
-                            IsDeleted = false,
-                            Name = "NC"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6090),
-                            IsDeleted = false,
-                            Name = "ND"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6093),
-                            IsDeleted = false,
-                            Name = "MP"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6096),
-                            IsDeleted = false,
-                            Name = "OH"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6099),
-                            IsDeleted = false,
-                            Name = "OK"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6102),
-                            IsDeleted = false,
-                            Name = "OR"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6105),
-                            IsDeleted = false,
-                            Name = "PW"
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6107),
-                            IsDeleted = false,
-                            Name = "PA"
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6110),
-                            IsDeleted = false,
-                            Name = "PR"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6113),
-                            IsDeleted = false,
-                            Name = "RI"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6116),
-                            IsDeleted = false,
-                            Name = "SC"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6118),
-                            IsDeleted = false,
-                            Name = "SD"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6121),
-                            IsDeleted = false,
-                            Name = "TN"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6124),
-                            IsDeleted = false,
-                            Name = "TX"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6127),
-                            IsDeleted = false,
-                            Name = "UT"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6129),
-                            IsDeleted = false,
-                            Name = "VT"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6132),
-                            IsDeleted = false,
-                            Name = "VI"
-                        },
-                        new
-                        {
-                            Id = 55,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6135),
-                            IsDeleted = false,
-                            Name = "VA"
-                        },
-                        new
-                        {
-                            Id = 56,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6138),
-                            IsDeleted = false,
-                            Name = "WA"
-                        },
-                        new
-                        {
-                            Id = 57,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6141),
-                            IsDeleted = false,
-                            Name = "WV"
-                        },
-                        new
-                        {
-                            Id = 58,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6144),
-                            IsDeleted = false,
-                            Name = "WI"
-                        },
-                        new
-                        {
-                            Id = 59,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6147),
-                            IsDeleted = false,
-                            Name = "WY"
-                        });
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.StockAndBond", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AccountNumber")
+                    b.Property<string>("ImprovementCostRefinance")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CompanyName")
+                    b.Property<string>("ImprovementsRefinance")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -3342,17 +2726,54 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ManualAssetEntryId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("LegalDescription")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("NumberOfUnits")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<double>("OriginalCost")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OriginalCostRefinance")
+                        .HasColumnType("double");
+
+                    b.Property<double>("PresentValueOfLot")
+                        .HasColumnType("double");
+
+                    b.Property<string>("PropertyWillBe")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PurposeOfLoan")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PurposeOfLoanExplain")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PurposeOfRefinance")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SourceOfPayment")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("TitleHeldManner")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("TitleHeldNames")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("YearAcquiredRefinance")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("YearBuilt")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("YearLotAcquired")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ManualAssetEntryId");
-
-                    b.ToTable("StockAndBonds");
+                    b.ToTable("PropertyInformation");
                 });
 
             modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
@@ -3613,43 +3034,7 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.AdditionalIncome", b =>
-                {
-                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
-
-                    b.HasOne("LoanManagement.Models.IncomeSource", "IncomeSource")
-                        .WithMany()
-                        .HasForeignKey("IncomeSourceId");
-
-                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany("AdditionalIncomes")
-                        .HasForeignKey("LoanApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.Address", b =>
-                {
-                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.PersonalDetail", "PersonalDetail")
-                        .WithMany("Addresses")
-                        .HasForeignKey("PersonalDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
+            modelBuilder.Entity("LoanManagement.Models.AcknowledgementAndAgreement", b =>
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
@@ -3661,24 +3046,31 @@ namespace LoanManagement.Migrations
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
-
-                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("BorrowerEmploymentInformations")
-                        .HasForeignKey("LoanApplicationId")
+                        .HasForeignKey("BorrowerTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.BorrowerMonthlyIncome", b =>
+            modelBuilder.Entity("LoanManagement.Models.BorrowerInformation", b =>
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.CombinedMonthlyHousingExpense", b =>
+                {
+                    b.HasOne("LoanManagement.Models.HousingExpenseType", "HousingExpenseType")
+                        .WithMany()
+                        .HasForeignKey("HousingExpenseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany("BorrowerMonthlyIncomes")
+                        .WithMany("CombinedMonthlyHousingExpenses")
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3691,15 +3083,9 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("BorrowerTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany("Declarations")
-                        .HasForeignKey("LoanApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", b =>
+            modelBuilder.Entity("LoanManagement.Models.GrossMonthlyIncome", b =>
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
@@ -3708,7 +3094,7 @@ namespace LoanManagement.Migrations
                         .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany("DemographicsInformations")
+                        .WithMany("GrossMonthlyIncomes")
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3729,74 +3115,72 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
                 {
-                    b.HasOne("LoanManagement.Models.AdditionalDetail", "AdditionalDetail")
+                    b.HasOne("LoanManagement.Models.AssetAndLiability", "AssetAndLiablity")
                         .WithMany()
-                        .HasForeignKey("AdditionalDetailId");
+                        .HasForeignKey("AssetAndLiablityId");
 
-                    b.HasOne("LoanManagement.Models.ConsentDetail", "ConsentDetail")
-                        .WithMany()
-                        .HasForeignKey("ConsentDetailId");
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo1")
+                        .WithMany("BorrowerLoanApplication1")
+                        .HasForeignKey("BorrowerEmploymentInfoId1")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.Models.CreditAuthAgreement", "CreditAuthAgreement")
-                        .WithMany()
-                        .HasForeignKey("CreditAuthAgreementId");
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo2")
+                        .WithMany("BorrowerLoanApplication2")
+                        .HasForeignKey("BorrowerEmploymentInfoId2")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~1")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.Models.Expense", "Expense")
-                        .WithMany()
-                        .HasForeignKey("ExpenseId");
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "BorrowerEmploymentInfo3")
+                        .WithMany("BorrowerLoanApplication3")
+                        .HasForeignKey("BorrowerEmploymentInfoId3")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_BorrowerEmpl~2")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.Models.LoanDetail", "LoanDetail")
-                        .WithMany()
-                        .HasForeignKey("LoanDetailId");
+                    b.HasOne("LoanManagement.Models.BorrowerInformation", "BorrowerInfo")
+                        .WithMany("BorrowerLoanApplication")
+                        .HasForeignKey("BorrowerInfoId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("LoanManagement.Models.PersonalDetail", "PersonalDetail")
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo1")
+                        .WithMany("CoBorrowerLoanApplication1")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo2")
+                        .WithMany("CoBorrowerLoanApplication2")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId2")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerEmploymentInformation", "CoBorrowerEmploymentInfo3")
+                        .WithMany("CoBorrowerLoanApplication3")
+                        .HasForeignKey("CoBorrowerEmploymentInfoId3")
+                        .HasConstraintName("FK_LoanApplications_BorrowerEmploymentInformation_CoBorrowerEm~2")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.BorrowerInformation", "CoBorrowerInfo")
+                        .WithMany("CoBorrowerLoanApplication")
+                        .HasForeignKey("CoBorrowerInfoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LoanManagement.Models.DetailsOfTransaction", "DetailsOfTransaction")
                         .WithMany()
-                        .HasForeignKey("PersonalDetailId");
+                        .HasForeignKey("DetailsOfTransactionId");
+
+                    b.HasOne("LoanManagement.Models.MortgageType", "MortgageType")
+                        .WithOne("LoanApplication")
+                        .HasForeignKey("LoanManagement.Models.LoanApplication", "MortgageTypeId");
+
+                    b.HasOne("LoanManagement.Models.PropertyInformation", "PropertyInfo")
+                        .WithOne("LoanApplication")
+                        .HasForeignKey("LoanManagement.Models.LoanApplication", "PropertyInfoId");
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
+            modelBuilder.Entity("LoanManagement.Models.OtherIncome", b =>
                 {
-                    b.HasOne("LoanManagement.Models.AssetType", "AssetType")
-                        .WithMany("ManualAssetEntries")
-                        .HasForeignKey("AssetTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
-                        .WithMany("ManualAssetEntries")
+                        .WithMany("OtherIncomes")
                         .HasForeignKey("LoanApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.State", "State")
-                        .WithMany("ManualAssetEntries")
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
-                {
-                    b.HasOne("LoanManagement.Models.Borrower", "Borrower")
-                        .WithMany()
-                        .HasForeignKey("BorrowerId");
-
-                    b.HasOne("LoanManagement.Models.Borrower", "CoBorrower")
-                        .WithMany()
-                        .HasForeignKey("CoBorrowerId");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.StockAndBond", b =>
-                {
-                    b.HasOne("LoanManagement.Models.ManualAssetEntry", "ManualAssetEntry")
-                        .WithMany("StockAndBonds")
-                        .HasForeignKey("ManualAssetEntryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
