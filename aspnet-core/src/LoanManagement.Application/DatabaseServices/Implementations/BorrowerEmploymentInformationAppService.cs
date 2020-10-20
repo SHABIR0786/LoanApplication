@@ -1,99 +1,89 @@
-﻿using Abp;
-using Abp.Application.Services;
+using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using Abp.Linq.Extensions;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
 {
     public class BorrowerEmploymentInformationAppService : AbpServiceBase, IBorrowerEmploymentInformationAppService
     {
-        private readonly IRepository<BorrowerEmploymentInformation, long> _borrowerEmploymentInformationRepository;
+        private readonly IRepository<BorrowerEmploymentInformation, long> _repository;
 
-        public BorrowerEmploymentInformationAppService(IRepository<BorrowerEmploymentInformation, long> borrowerEmploymentInformationRepository)
+        public BorrowerEmploymentInformationAppService(IRepository<BorrowerEmploymentInformation, long> repository)
         {
-            _borrowerEmploymentInformationRepository = borrowerEmploymentInformationRepository;
+            _repository = repository;
         }
 
-        public async Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long> input)
+        public async Task<BorrowerEmploymentInformationDto> GetAsync(EntityDto<long?> input)
         {
-            var result = await _borrowerEmploymentInformationRepository.GetAll()
-                 .Where(i => i.Id == input.Id)
-                 .Select(i =>
-                 new BorrowerEmploymentInformationDto()
-                 {
-                     Id = i.Id,
-                     EmployersName = i.EmployersName,
-                     EmployersAddress = i.EmployersAddress,
-                     IsSelfEmployer = i.IsSelfEmployer,
-                     YearOnThisJob = i.YearOnThisJob,
-                     YearInThisLineOfWork = i.YearInThisLineOfWork,
-                     Position = i.Position,
-                     BusinessPhone = i.BusinessPhone
-                 })
-                 .FirstOrDefaultAsync();
-            return result;
+            throw new NotImplementedException();
         }
-
-        //public async Task<List<BorrowerEmploymentInformation>> GetAllAsync(long? tenantId)
-        //{
-        //    var result = await _borrowerEmploymentInformationRepository.GetAllListAsync();
-        //    return result;
-        //}
 
         public Task<PagedResultDto<BorrowerEmploymentInformationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public async Task<BorrowerEmploymentInformationDto> CreateAsync(BorrowerEmploymentInformationDto input)
         {
-            var borrowerEmploymentInformation = new BorrowerEmploymentInformation()
+            try
             {
-                EmployersName = input.EmployersName,
-                EmployersAddress = input.EmployersAddress,
-                IsSelfEmployer = input.IsSelfEmployer,
-                YearOnThisJob = input.YearOnThisJob,
-                YearInThisLineOfWork = input.YearInThisLineOfWork,
-                Position = input.Position,
-                BusinessPhone = input.BusinessPhone,
-                BorrowerTypeId = input.BorrowerTypeId
-            };
-            await _borrowerEmploymentInformationRepository.InsertAsync(borrowerEmploymentInformation);
-            await UnitOfWorkManager.Current.SaveChangesAsync();
-            input.Id = borrowerEmploymentInformation.Id;
-            return input;
+                var additionalDetail = new BorrowerEmploymentInformation
+                {
+                    EmployersName = input.EmployerName,
+                    EmployersAddress1 = input.Address1,
+                    EmployersAddress2 = input.Address2,
+                    IsSelfEmployed = input.IsSelfEmployed,
+                    Position = input.Position,
+                    City = input.City,
+                    StateId = input.StateId,
+                    ZipCode = input.ZipCode,
+                    StartDate = input.StartDate,
+                    EndDate = input.EndDate,
+                    BorrowerTypeId = input.BorrowerTypeId,
+                    LoanApplicationId = input.LoanApplicationId.Value
+                };
+                await _repository.InsertAsync(additionalDetail);
+                await UnitOfWorkManager.Current.SaveChangesAsync();
+
+                input.Id = additionalDetail.Id;
+                return input;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<BorrowerEmploymentInformationDto> UpdateAsync(BorrowerEmploymentInformationDto input)
         {
-            await _borrowerEmploymentInformationRepository.UpdateAsync(input.Id, borrower =>
+            await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
-                borrower.Id = input.Id;
-                borrower.EmployersName = input.EmployersName;
-                borrower.EmployersAddress = input.EmployersAddress;
-                borrower.IsSelfEmployer = input.IsSelfEmployer;
-                borrower.YearOnThisJob = input.YearOnThisJob;
-                borrower.YearInThisLineOfWork = input.YearInThisLineOfWork;
-                borrower.Position = input.Position;
-                borrower.BusinessPhone = input.BusinessPhone;
-                borrower.BorrowerTypeId = input.BorrowerTypeId;
+                additionalDetail.EmployersName = input.EmployerName;
+                additionalDetail.EmployersAddress1 = input.Address1;
+                additionalDetail.EmployersAddress2 = input.Address2;
+                additionalDetail.IsSelfEmployed = input.IsSelfEmployed;
+                additionalDetail.Position = input.Position;
+                additionalDetail.City = input.City;
+                additionalDetail.StateId = input.StateId;
+                additionalDetail.ZipCode = input.ZipCode;
+                additionalDetail.StartDate = input.StartDate;
+                additionalDetail.EndDate = input.EndDate;
+
                 return Task.CompletedTask;
             });
+
             await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }
 
-        public Task DeleteAsync(EntityDto<long> input)
+        public Task DeleteAsync(EntityDto<long?> input)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
