@@ -1,50 +1,55 @@
-import {Component, OnInit} from '@angular/core';
-import {BorrowerEmploymentInformationServiceProxy, BorrowerInformationServiceProxy} from '@shared/service-proxies/service-proxies';
-import {NgWizardConfig, NgWizardService, StepChangedArgs, THEME} from 'ng-wizard';
-import {LoanApplicationService} from '../services/loan-application.service';
+import { Component, OnInit } from "@angular/core";
+import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
+import { LoanApplicationService } from "../services/loan-application.service";
+import { ILoanApplicationModel } from "../interfaces/ILoanApplicationModel";
+import { DataService } from "../services/data.service";
 
 @Component({
-    selector: 'app-loan-application',
-    templateUrl: './loan-application.component.html',
-    styleUrls: ['./loan-application.component.css']
+  selector: "app-loan-application",
+  templateUrl: "./loan-application.component.html",
+  styleUrls: ["./loan-application.component.css"],
 })
 export class LoanApplicationComponent implements OnInit {
-    [x: string]: any;
+  loanApplication: ILoanApplicationModel = {
+    loanDetails: {
+      purposeOfLoan: 1,
+    },
+    personalInformation: {
+      borrower: {},
+      coBorrower: {},
+      residentialAddress: {},
+      mailingAddress: {},
+      previousAddresses: [],
+    },
+    expenses: {},
+    manualAssetEntries: [],
+    employmentIncome: {
+      borrowerMonthlyIncome: {},
+      borrowerEmploymentInfo: [{}],
+    },
+    orderCredit: {},
+    additionalDetails: {},
+    eConsent: {},
+    declaration: {
+      borrowerDeclaration: {},
+      coBorrowerDeclaration: {},
+      borrowerDemographic: {},
+      coBorrowerDemographic: {},
+    },
+  };
 
-    loanApplication: any = {
-        id: undefined,
-        mortgageType: {},
-        propertyInformation: {},
-        borrowerInformation: {},
-        coBorrowerInformation: {},
-
-        borrowerEmploymentInformation1: {},
-        borrowerEmploymentInformation2: {},
-        borrowerEmploymentInformation3: {},
-
-        coBorrowerEmploymentInformation1: {},
-        coBorrowerEmploymentInformation2: {},
-        coBorrowerEmploymentInformation3: {},
-
-        grossMonthlyIncomeBorrower: {},
-        grossMonthlyIncomeCoBorrower: {},
-        combinedMonthlyHousingExpensePresent: {},
-        combinedMonthlyHousingExpenseProposed: {},
-        grossMonthlyTotal: {},
-
-        assetAndLiability: {},
-        detailsOfTransaction: {},
-
-        borrowerDeclaration: {},
-        coBorrowerDeclaration: {}
-    };
-
-    config: NgWizardConfig = {
-        selected: 0,
-        theme: THEME.default,
-        toolbarSettings: {
-            toolbarExtraButtons: [
-                {
+  config: NgWizardConfig = {
+    selected: 0,
+    theme: THEME.default,
+    anchorSettings: {
+      markDoneStep: false,
+      enableAllAnchors: true,
+    },
+    toolbarSettings: {
+      showNextButton: false,
+      showPreviousButton: false,
+      toolbarExtraButtons: [
+        /*{
                     text: 'Save', class: 'btn btn-info', event: () => {
                         const formData = this.sanitizeFormData();
                         this._loanApplicationService.post('Add', formData).subscribe((response: any) => {
@@ -53,107 +58,73 @@ export class LoanApplicationComponent implements OnInit {
                             console.log(error);
                         });
                     }
-                }
-            ]
+                }*/
+      ],
+    },
+  };
+
+  constructor(
+    private _ngWizardService: NgWizardService,
+    private _loanApplicationService: LoanApplicationService,
+    private _dataService: DataService
+  ) {}
+
+  ngOnInit(): void {}
+
+  onChange(data, key) {
+    this.loanApplication[key] = data;
+    console.log(this.loanApplication);
+    this._dataService.updateFormData(this.loanApplication);
+  }
+
+  sanitizeFormData() {
+    const formData = Object.assign({}, this.loanApplication);
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
         }
-    };
-
-    constructor(private ngWizardService: NgWizardService,
-                private _borrowerInformationService: BorrowerInformationServiceProxy,
-                private _borrowerEmploymentInformationService: BorrowerEmploymentInformationServiceProxy,
-                private _loanApplicationService: LoanApplicationService
-    ) {
+      }
     }
+    return formData;
+  }
 
-    ngOnInit(): void {
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
     }
+    return response;
+  }
 
-    showPreviousStep(event?: Event) {
-        this.ngWizardService.previous();
-    }
+  submitForm() {
+    const formData = this.sanitizeFormData();
+    this._loanApplicationService.post("Add", formData).subscribe(
+      (response: any) => {
+        this.loanApplication = this.prepareFormData(response.result);
+        this._dataService.updateFormData(this.loanApplication);
+        // this.
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
-    showNextStep(event?: Event) {
-        this.ngWizardService.next();
-    }
+  proceedToNext() {
+    this._ngWizardService.next();
+  }
 
-    resetWizard(event?: Event) {
-        this.ngWizardService.reset();
-    }
+  proceedToPrevious() {
+    this._ngWizardService.previous();
+  }
 
-    setTheme(theme: THEME) {
-        this.ngWizardService.theme(theme);
-    }
-
-    stepChanged(args: StepChangedArgs) {
-        console.log(args.step);
-    }
-
-    finish() {
-        this.loanApplication.borrowerInformation.tenantId = this.appSession.tenantId;
-        this.loanApplication.coBorrowerInformation.tenantId = this.appSession.tenantId;
-        this._borrowerInformationService.createOrUpdate(this.loanApplication.borrowerInformation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this._borrowerInformationService.createOrUpdate(this.loanApplication.coBorrowerInformation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this.loanApplication.borrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
-        this.loanApplication.coBorrowerEmploymentinfromation.tenantId = this.appSession.tenantId;
-
-
-        this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.borrowerEmploymentinfromation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-
-        this._borrowerEmploymentInformationService.createOrUpdate(this.loanApplication.coBorrowerEmploymentinfromation)
-            .subscribe((result) => {
-                if (result) {
-
-                }
-            });
-    }
-
-    onBorrowerChange(data) {
-        this.loanApplication.borrowerInformation = data;
-    }
-
-    onCoBorrowerChange(data) {
-        this.loanApplication.coBorrowerInformation = data;
-    }
-
-    onChange(prop, data) {
-        this.loanApplication[prop] = data;
-    }
-
-    sanitizeFormData() {
-        const formData = Object.assign({}, this.loanApplication);
-        for (const key in formData) {
-            if (formData.hasOwnProperty(key)) {
-                if (typeof formData[key] === 'object' && Object.keys(formData[key]).length === 0) {
-                    formData[key] = undefined;
-                }
-            }
-        }
-        return formData;
-    }
-
-    prepareFormData(response) {
-        for (const key in response) {
-            if (response.hasOwnProperty(key)) {
-                response[key] = response[key] || {};
-            }
-        }
-        return response;
-    }
+  goToStep(index) {
+    this.config.selected = index;
+    this._ngWizardService.reset();
+  }
 }

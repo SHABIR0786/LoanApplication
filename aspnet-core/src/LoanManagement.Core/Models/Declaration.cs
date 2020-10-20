@@ -1,36 +1,28 @@
-﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Abp.Domain.Entities.Auditing;
 
 namespace LoanManagement.Models
 {
-    public class Declaration : FullAuditedEntity<long>, IMayHaveTenant
+    public class Declaration : FullAuditedEntity<long>
     {
-        public string IsOutstandingJudgmentsAgainstYou { get; set; }
-        public string IsDeclaredBankruptWithin7Years { get; set; }
-        public string IsPropertyForeClosedWithin7Years { get; set; }
-        public string IsPartyLawsuit { get; set; }
-        public string IsObligatedOnAnyLoan { get; set; }
-
-        //next section
-        public string IsPresentlyDelinquentOrInDefaultFederal { get; set; }
-        public string IsObligatedToPayOrChildSupport { get; set; }
-        public string IsAnyPartPaymentBorrowed { get; set; }
-        public string IsCoMakerOrEndorserOnANote { get; set; }
-        public string IsUsCitizen { get; set; }
-        public string IsPermenentResidentAlien { get; set; }
-        public string IsIntendToOccuppyTheProperty { get; set; }
-        public string IsOwnedPropertyLastThreeYears { get; set; }
-
-        //end
-        public string WhatTypeOfPropertyYouOwned { get; set; }
-        public string HowYouHoldTitleHome { get; set; }
+        public bool? IsOutstandingJudgmentsAgainstYou { get; set; }
+        public bool? IsDeclaredBankrupt { get; set; }
+        public bool? IsPropertyForeClosedUponOrGivenTitle { get; set; }
+        public bool? IsPartyToLawsuit { get; set; }
+        public bool? IsObligatedOnAnyLoanWhichResultedForeclosure { get; set; }
+        public bool? IsPresentlyDelinquent { get; set; }
+        public bool? IsObligatedToPayAlimonyChildSupport { get; set; }
+        public bool? IsAnyPartOfTheDownPayment { get; set; }
+        public bool? IsCoMakerOrEndorser { get; set; }
+        public bool? IsUSCitizen { get; set; }
+        public bool? IsPermanentResidentSlien { get; set; }
+        public bool? IsIntendToOccupyThePropertyAsYourPrimary { get; set; }
+        public bool? IsOwnershipInterestInPropertyInTheLastThreeYears { get; set; }
+        public string DeclarationsSection { get; set; }
+        public long LoanApplicationId { get; set; }
         public int BorrowerTypeId { get; set; }
 
-        [ForeignKey("BorrowerTypeId")]
+
+        public LoanApplication LoanApplication { get; set; }
         public BorrowerType BorrowerType { get; set; }
-        public int? TenantId { get; set; }
     }
 }

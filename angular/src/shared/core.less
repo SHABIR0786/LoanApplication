@@ -1,5 +1,5 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~ng-wizard/themes/ng_wizard.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~ng-wizard/themes/ng_wizard.min.css";
 
 @media (min-width: 576px) {
   .nav-user-menu .user-image {
@@ -49,19 +49,27 @@ body.swal2-height-auto {
   margin-bottom: 4px !important;
 }
 
-@font-size: 12px;
-
-.col-form-label {
-  font-weight: 500 !important;
-  font-size: @font-size;
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 400;
 }
 
-body {
-  font-size: @font-size;
-}
+//@font-size: 12px;
+//
+//.col-form-label {
+//  font-weight: 500 !important;
+//  font-size: @font-size;
+//}
+//
+//body {
+//  font-size: @font-size;
+//}
+//
+//input.table-input {
+//  border: 0;
+//  width: 100%;
+//  height: inherit;
+//}
 
-input.table-input {
-  border: 0;
-  width: 100%;
-  height: inherit;
+.ng-wizard-theme-default {
+  box-shadow: unset !important;
 }

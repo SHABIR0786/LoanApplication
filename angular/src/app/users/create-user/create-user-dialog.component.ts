@@ -3,23 +3,24 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output
-} from '@angular/core';
-import { finalize } from 'rxjs/operators';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import * as _ from 'lodash';
-import { AppComponentBase } from '@shared/app-component-base';
+  Output,
+} from "@angular/core";
+import { finalize } from "rxjs/operators";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import * as _ from "lodash";
+import { AppComponentBase } from "@shared/app-component-base";
 import {
   UserServiceProxy,
   CreateUserDto,
-  RoleDto
-} from '@shared/service-proxies/service-proxies';
-import { AbpValidationError } from '@shared/components/validation/abp-validation.api';
+  RoleDto,
+} from "@shared/service-proxies/service-proxies";
+import { AbpValidationError } from "@shared/components/validation/abp-validation.api";
 
 @Component({
-  templateUrl: './create-user-dialog.component.html'
+  templateUrl: "./create-user-dialog.component.html",
 })
-export class CreateUserDialogComponent extends AppComponentBase
+export class CreateUserDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   user = new CreateUserDto();
@@ -28,15 +29,15 @@ export class CreateUserDialogComponent extends AppComponentBase
   defaultRoleCheckedStatus = false;
   passwordValidationErrors: Partial<AbpValidationError>[] = [
     {
-      name: 'pattern',
+      name: "pattern",
       localizationKey:
-        'PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber',
+        "PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber",
     },
   ];
   confirmPasswordValidationErrors: Partial<AbpValidationError>[] = [
     {
-      name: 'validateEqual',
-      localizationKey: 'PasswordsDoNotMatch',
+      name: "validateEqual",
+      localizationKey: "PasswordsDoNotMatch",
     },
   ];
 
@@ -100,7 +101,7 @@ export class CreateUserDialogComponent extends AppComponentBase
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'));
+        this.notify.info(this.l("SavedSuccessfully"));
         this.bsModalRef.hide();
         this.onSave.emit();
       });
