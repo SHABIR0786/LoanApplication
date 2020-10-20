@@ -640,9 +640,57 @@
                     <h5>Co Borrower Residential Address</h5>
                   </div>
 
+                  <div class="col-12 row">
+                    <div class="col-12">
+                      <label>Same as the borrower's residential address?</label>
+                    </div>
+                    <div class="col-12 mb-2">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="coBorrowerResidentialAddressSameAsBorrowerResidential"
+                          id="coBorrowerResidentialAddressSameAsBorrowerResidentialYes"
+                          formControlName="coBorrowerResidentialAddressSameAsBorrowerResidential"
+                          [value]="true"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddressSameAsBorrowerResidential
+                          "
+                        />
+                        <label
+                          class="form-check-label"
+                          for="coBorrowerResidentialAddressSameAsBorrowerResidentialYes"
+                          >Yes</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="coBorrowerResidentialAddressSameAsBorrowerResidential"
+                          id="coBorrowerResidentialAddressSameAsBorrowerResidentialNo"
+                          formControlName="coBorrowerResidentialAddressSameAsBorrowerResidential"
+                          [value]="false"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddressSameAsBorrowerResidential
+                          "
+                        />
+                        <label
+                          class="form-check-label"
+                          for="coBorrowerResidentialAddressSameAsBorrowerResidentialNo"
+                          >No</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
                   <div
                     class="col-12 row"
                     formGroupName="coBorrowerResidentialAddress"
+                    *ngIf="
+                      data.coBorrowerResidentialAddressSameAsBorrowerResidential ===
+                      false
+                    "
                   >
                     <div class="col-6">
                       <div class="form-group">
@@ -656,7 +704,9 @@
                           name="addressLine1-residential-coBorrower"
                           id="addressLine1-residential-coBorrower"
                           formControlName="addressLine1"
-                          [(ngModel)]="data.residentialAddress.addressLine1"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.addressLine1
+                          "
                         />
                         <validation-summary
                           [control]="
@@ -676,7 +726,9 @@
                           name="addressLine2-residential-coBorrower"
                           id="addressLine2-residential-coBorrower"
                           formControlName="addressLine2"
-                          [(ngModel)]="data.residentialAddress.addressLine2"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.addressLine2
+                          "
                         />
                       </div>
                     </div>
@@ -692,7 +744,7 @@
                           name="city-residential-coBorrower"
                           id="city-residential-coBorrower"
                           formControlName="city"
-                          [(ngModel)]="data.residentialAddress.city"
+                          [(ngModel)]="data.coBorrowerResidentialAddress.city"
                         />
                         <validation-summary
                           [control]="residentialAddressForm.controls.city"
@@ -710,7 +762,9 @@
                           name="stateId-residential-coBorrower"
                           id="stateId-residential-coBorrower"
                           formControlName="stateId"
-                          [(ngModel)]="data.residentialAddress.stateId"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.stateId
+                          "
                         >
                           <option
                             [ngValue]="state.id"
@@ -736,7 +790,9 @@
                           name="zipCode-residential-coBorrower"
                           id="zipCode-residential-coBorrower"
                           formControlName="zipCode"
-                          [(ngModel)]="data.residentialAddress.zipCode"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.zipCode
+                          "
                         />
                         <validation-summary
                           [control]="residentialAddressForm.controls.zipCode"
@@ -758,7 +814,9 @@
                           name="totalYears-residential-coBorrower"
                           id="totalYears-residential-coBorrower"
                           formControlName="totalYears"
-                          [(ngModel)]="data.residentialAddress.totalYears"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.totalYears
+                          "
                           maxlength="2"
                         />
                         <validation-summary
@@ -777,7 +835,9 @@
                           name="totalMonths-residential-coBorrower"
                           id="totalMonths-residential-coBorrower"
                           formControlName="totalMonths"
-                          [(ngModel)]="data.residentialAddress.totalMonths"
+                          [(ngModel)]="
+                            data.coBorrowerResidentialAddress.totalMonths
+                          "
                           maxlength="2"
                           max="11"
                         />

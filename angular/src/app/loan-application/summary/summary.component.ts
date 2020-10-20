@@ -46,6 +46,12 @@ export class SummaryComponent implements OnInit {
         this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
       if (
+        this.formData.additionalDetails &&
+        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle
+      ) {
+        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle = "";
+      }
+      if (
         this.formData.employmentIncome &&
         this.formData.employmentIncome.coBorrowerMonthlyIncome
       ) {

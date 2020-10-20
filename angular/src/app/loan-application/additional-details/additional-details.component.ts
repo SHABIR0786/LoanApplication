@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class AdditionalDetailsComponent implements OnInit, DoCheck {
   data: IAdditionalDetailModel = {};
+  isApplyingWithCoBorrower: boolean;
 
   constructor(private _dataService: DataService, private _route: Router) {}
 
@@ -19,6 +20,10 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.data = this._dataService.loanApplication.additionalDetails;
+    const loanApplication = this._dataService.loanApplication;
+    this.isApplyingWithCoBorrower =
+      loanApplication.personalInformation &&
+      loanApplication.personalInformation.isApplyingWithCoBorrower;
   }
 
   proceedToNext() {
