@@ -411,16 +411,20 @@
                       {{ "Second Mortgage Amount" | localize }}
                     </label>
                     <div class="input-group">
-                      <div class="input-group-prepend">
+                      <!-- <div class="input-group-prepend">
                         <div class="input-group-text">$</div>
-                      </div>
+                      </div> -->
                       <input
-                        type="number"
+                        type="text"
                         class="form-control"
                         name="secondMortgageAmount"
                         id="secondMortgageAmount"
                         formControlName="secondMortgageAmount"
                         [(ngModel)]="data.secondMortgageAmount"
+                        placeholder="$"
+                        prefix="$ "
+                        mask="separator.2"
+                        thousandSeparator=","
                       />
                     </div>
                   </div>
@@ -610,6 +614,10 @@
                       id="originalPrice"
                       formControlName="originalPrice"
                       [(ngModel)]="data.originalPrice"
+                      placeholder="$"
+                      prefix="$ "
+                      mask="separator.2"
+                      thousandSeparator=","
                     />
                   </div>
                 </div>
