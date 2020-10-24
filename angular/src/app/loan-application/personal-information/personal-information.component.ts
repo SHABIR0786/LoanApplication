@@ -259,7 +259,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             this.initBorrowerForm(this.data.coBorrower)
           );
 
-          debugger;
           this.data.coBorrowerResidentialAddress =
             this.data.coBorrowerResidentialAddress || {};
           this.data.coBorrowerMailingAddress =
