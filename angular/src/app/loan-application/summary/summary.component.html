@@ -1606,16 +1606,20 @@
                         class="text-danger"
                         *ngIf="
                           !formData.personalInformation ||
-                          !formData.personalInformation
-                            .coBorrowerResidentialAddress.addressLine1 ||
-                          !formData.personalInformation
-                            .coBorrowerResidentialAddress.city ||
-                          !formData.personalInformation
-                            .coBorrowerResidentialAddress.stateId ||
-                          !formData.personalInformation
-                            .coBorrowerResidentialAddress.zipCode ||
-                          !formData.personalInformation
-                            .coBorrowerResidentialAddress.totalYears
+                          formData.personalInformation
+                            .coBorrowerResidentialAddressSameAsBorrowerResidential ===
+                            false
+                            ? !formData.personalInformation
+                                .coBorrowerResidentialAddress.addressLine1 ||
+                              !formData.personalInformation
+                                .coBorrowerResidentialAddress.city ||
+                              !formData.personalInformation
+                                .coBorrowerResidentialAddress.stateId ||
+                              !formData.personalInformation
+                                .coBorrowerResidentialAddress.zipCode ||
+                              !formData.personalInformation
+                                .coBorrowerResidentialAddress.totalYears
+                            : false
                         "
                       >
                         <i class="fa fa-info-circle ml-2"></i>
@@ -1626,10 +1630,10 @@
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
                           formData.personalInformation
-                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            .coBorrowerResidentialAddressSameAsBorrowerResidential ===
                             undefined ||
                           formData.personalInformation
-                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            .coBorrowerResidentialAddressSameAsBorrowerResidential ===
                             null
                             ? 'text-danger'
                             : 'text-muted'
@@ -1640,21 +1644,165 @@
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation
-                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            .coBorrowerResidentialAddressSameAsBorrowerResidential ===
                             undefined ||
                           formData.personalInformation
-                            .coBorrowerIsMailingAddressSameAsResidential ===
+                            .coBorrowerResidentialAddressSameAsBorrowerResidential ===
                             null
                             ? "--"
                             : formData.personalInformation
-                                .coBorrowerIsMailingAddressSameAsResidential
+                                .coBorrowerResidentialAddressSameAsBorrowerResidential
                             ? "Yes"
                             : "No"
                         }}
                       </p>
 
-                      <h6 class="font-weight-normal form-text text-muted mb-3">
-                        Years *
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine1 ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine1 === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Address Line 1
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine1 ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine1 === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.addressLine1
+                        }}
+                      </p>
+
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine2 ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine2 === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Address Line 2
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine2 ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.addressLine2 === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.addressLine2
+                        }}
+                      </p>
+
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.city === undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.city === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        City
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.city === undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.city === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.city
+                        }}
+                      </p>
+
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.stateId ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.stateId === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        State
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.stateId ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.stateId === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.stateId
+                        }}
+                      </p>
+
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.zipCode ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.zipCode === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Zip Code
+                      </h6>
+                      <p class="font-weight-bold">
+                        {{
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.zipCode ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.zipCode === null
+                            ? "--"
+                            : formData.personalInformation
+                                .coBorrowerResidentialAddress.zipCode
+                        }}
+                      </p>
+
+                      <h6
+                        class="font-weight-normal form-text mb-3"
+                        [ngClass]="
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalYears ===
+                            undefined ||
+                          formData.personalInformation
+                            .coBorrowerResidentialAddress.totalYears === null
+                            ? 'text-danger'
+                            : 'text-muted'
+                        "
+                      >
+                        Years
                       </h6>
                       <p class="font-weight-bold">
                         {{
@@ -3837,7 +3985,7 @@
                     <h6 class="font-weight-normal text-muted form-text mt-5">
                       List names of all individuals who will be on Title
                     </h6>
-                    <p class="font-weight-bold mt-5">
+                    <p class="font-weight-bold">
                       {{
                         formData.additionalDetails.nameOfIndividualsOnTitle ===
                           undefined ||
@@ -3845,6 +3993,24 @@
                           null
                           ? "--"
                           : formData.additionalDetails.nameOfIndividualsOnTitle
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h6 class="font-weight-normal text-muted form-text mt-3">
+                      Co-borrower name (optional)
+                    </h6>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.additionalDetails
+                          .nameOfIndividualsCoBorrowerOnTitle === undefined ||
+                        formData.additionalDetails
+                          .nameOfIndividualsCoBorrowerOnTitle === null
+                          ? "--"
+                          : formData.additionalDetails
+                              .nameOfIndividualsCoBorrowerOnTitle
                       }}
                     </p>
                   </div>
