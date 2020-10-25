@@ -1,7 +1,11 @@
+//import { PersonalInformationComponent } from './../personal-information/personal-information.component';
+import { IBorrowerModel } from "./../../interfaces/IBorrowerModel";
+//import { Borrower } from './../../../shared/service-proxies/service-proxies';
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { DataService } from "../../services/data.service";
 import { IAdditionalDetailModel } from "../../interfaces/IAdditionalDetailModel";
 import { Router } from "@angular/router";
+import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 
 @Component({
   selector: "app-additional-details",
@@ -11,19 +15,44 @@ import { Router } from "@angular/router";
 export class AdditionalDetailsComponent implements OnInit, DoCheck {
   data: IAdditionalDetailModel = {};
   isApplyingWithCoBorrower: boolean;
+  borrower: IBorrowerModel = {};
+  coBorrower: IBorrowerModel = {};
+  personalInformation: IPersonalInformationModel = {};
 
   constructor(private _dataService: DataService, private _route: Router) {}
 
-  ngDoCheck(): void {
-    this._dataService.updateData(this.data, "additionalDetails");
-  }
-
   ngOnInit(): void {
+    this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+    this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+    this.personalInformation = this._dataService.loanApplication.personalInformation;
     this.data = this._dataService.loanApplication.additionalDetails;
+
+    if (!this.data.nameOfIndividualsOnTitle) {
+      this.data.nameOfIndividualsOnTitle = this.borrower.firstName ?? "";
+      this.data.nameOfIndividualsOnTitle +=
+        (this.data.nameOfIndividualsOnTitle ? " " : "") +
+        (this.borrower.lastName ?? "");
+    }
+
+    if (
+      this.personalInformation.isApplyingWithCoBorrower &&
+      !this.data.nameOfIndividualsCoBorrowerOnTitle
+    ) {
+      this.data.nameOfIndividualsCoBorrowerOnTitle =
+        this.coBorrower.firstName ?? "";
+      this.data.nameOfIndividualsCoBorrowerOnTitle +=
+        (this.data.nameOfIndividualsCoBorrowerOnTitle ? " " : "") +
+        (this.coBorrower.lastName ?? "");
+    }
+
     const loanApplication = this._dataService.loanApplication;
     this.isApplyingWithCoBorrower =
       loanApplication.personalInformation &&
       loanApplication.personalInformation.isApplyingWithCoBorrower;
+  }
+
+  ngDoCheck(): void {
+    this._dataService.updateData(this.data, "additionalDetails");
   }
 
   proceedToNext() {
