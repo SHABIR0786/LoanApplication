@@ -57,6 +57,7 @@ import { EconsentComponent } from "./loan-application/econsent/econsent.componen
 import { AssetsComponent } from "./loan-application/assets/assets.component";
 import { OrderCreditComponent } from "./loan-application/order-credit/order-credit.component";
 import { AdditionalDetailsComponent } from "./loan-application/additional-details/additional-details.component";
+import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -105,6 +106,7 @@ const ngWizardConfig: NgWizardConfig = {
     OrderCreditComponent,
     AdditionalDetailsComponent,
     SummaryExpandDataComponent,
+    LoanListComponent,
   ],
   imports: [
     CommonModule,
