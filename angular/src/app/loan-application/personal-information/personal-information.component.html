@@ -168,8 +168,20 @@
                     information below.
                   </p>
                   <span>support@ezonlinemortgage.com</span>
+                  <app-borrower-personal-detail
+                    *ngIf="data.isApplyingWithCoBorrower"
+                    [form]="form.get('coBorrower')"
+                    heading="Co-Borrower"
+                    [data]="data.coBorrower"
+                    (onDataChange)="onChange($event, 'coBorrower')"
+                    class="col-12"
+                  >
+                  </app-borrower-personal-detail>
                 </div>
-
+              </div>
+            </ng-wizard-step>
+            <ng-wizard-step title="ResidentialAddress">
+              <div class="row">
                 <div class="col-12 mb-1 mt-3">
                   <h5>Borrower Residential Address</h5>
                 </div>
@@ -497,7 +509,7 @@
                   *ngIf="previousAddressesFormArray.length < 2"
                 >
                   <button
-                    class="btn btn-primary"
+                    class="btn btn-secondary"
                     (click)="addPreviousAddress()"
                   >
                     Add Previous Address
@@ -638,17 +650,6 @@
 
                 <div class="row col-12" *ngIf="data.isApplyingWithCoBorrower">
                   <hr class="col-12 mt-2 mb-3" />
-
-                  <app-borrower-personal-detail
-                    *ngIf="data.isApplyingWithCoBorrower"
-                    [form]="form.get('coBorrower')"
-                    heading="Co-Borrower"
-                    [data]="data.coBorrower"
-                    (onDataChange)="onChange($event, 'coBorrower')"
-                    class="col-12"
-                  >
-                  </app-borrower-personal-detail>
-
                   <div class="col-12 mb-1 mt-3">
                     <h5>Co Borrower Residential Address</h5>
                   </div>
@@ -1066,7 +1067,7 @@
                     *ngIf="coBorrowerPreviousAddressesFormArray.length < 2"
                   >
                     <button
-                      class="btn btn-primary"
+                      class="btn btn-secondary"
                       (click)="addCoBorrowerPreviousAddress()"
                     >
                       Add Previous Address
