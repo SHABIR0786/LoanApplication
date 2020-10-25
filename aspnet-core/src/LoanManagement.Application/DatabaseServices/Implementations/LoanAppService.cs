@@ -127,7 +127,11 @@ namespace LoanManagement.DatabaseServices.Implementations
                         AgreeEConsent = result.ConsentDetail.AgreeEConsent,
                         FirstName = result.ConsentDetail.FirstName,
                         LastName = result.ConsentDetail.LastName,
-                        Email = result.ConsentDetail.Email
+                        Email = result.ConsentDetail.Email,
+                        CoborrowerEmail = result.ConsentDetail.CoborrowerEmail,
+                        CoborrowerFirstName = result.ConsentDetail.CoborrowerFirstName,
+                        CoborrowerLastName = result.ConsentDetail.CoborrowerLastName,
+                        CoborrowerAgreeEConsent = result.ConsentDetail.CoborrowerAgreeEConsent,
                     },
 
                     PersonalInformation = new PersonalInformationDto
