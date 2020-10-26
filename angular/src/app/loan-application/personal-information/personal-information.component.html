@@ -178,9 +178,24 @@
                   >
                   </app-borrower-personal-detail>
                 </div>
+
+                <div class="col-12">
+                  <button
+                    class="btn btn-secondary"
+                    (click)="proceedToPrevious('wizardStep')"
+                  >
+                    Back
+                  </button>
+                  <button
+                    class="btn btn-secondary float-right"
+                    (click)="proceedToNext('wizardStep', 2)"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </ng-wizard-step>
-            <ng-wizard-step title="ResidentialAddress">
+            <ng-wizard-step title="Residential Address">
               <div class="row">
                 <div class="col-12 mb-1 mt-3">
                   <h5>Borrower Residential Address</h5>

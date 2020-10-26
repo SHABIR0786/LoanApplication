@@ -443,19 +443,35 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       let fields = [];
       switch (stepIndex) {
         case 1:
-          fields = ["isApplyingWithCoBorrower"];
-          const hasError = fields.some(
-            (field) => this.form.get(field) && !this.form.get(field).valid
-          );
-
-          if (hasError) {
-            fields.forEach(
-              (field) =>
-                this.form.get(field) && this.form.get(field).markAsTouched()
+          {
+            fields = ["isApplyingWithCoBorrower"];
+            const hasError = fields.some(
+              (field) => this.form.get(field) && !this.form.get(field).valid
             );
-          } else {
-            this._ngWizardService.next();
+
+            if (hasError) {
+              fields.forEach(
+                (field) =>
+                  this.form.get(field) && this.form.get(field).markAsTouched()
+              );
+            } else {
+              this._ngWizardService.next();
+            }
           }
+          break;
+        // fields = ["isApplyingWithCoBorrower"];
+        // const hasError = fields.some(
+        //   (field) => this.form.get(field) && !this.form.get(field).valid
+        // );
+
+        // if (hasError) {
+        //   fields.forEach(
+        //     (field) =>
+        //       this.form.get(field) && this.form.get(field).markAsTouched()
+        //   );
+        // }
+        case 2:
+          this._ngWizardService.next();
           break;
       }
     } else {
