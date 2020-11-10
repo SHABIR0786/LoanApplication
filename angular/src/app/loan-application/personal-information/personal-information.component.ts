@@ -7,6 +7,7 @@ import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
+import { remove } from "lodash";
 
 @Component({
   selector: "app-personal-information",
@@ -79,6 +80,22 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     return this.coBorrowerPreviousAddressesFormArray.controls[
       index
     ] as FormGroup;
+  }
+
+  removeaddPreviousAddressForm($event, index) {
+    if ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+    }
+    this.previousAddressesFormArray.removeAt(index);
+  }
+
+  removeCoBorrowerPreviousAddressForm($event, index) {
+    if ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+    }
+    this.coBorrowerPreviousAddressesFormArray.removeAt(index);
   }
 
   ngOnInit(): void {
@@ -279,6 +296,36 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       });
 
     this.form
+      .get("residentialAddress")
+      .valueChanges.subscribe((residentialAddress) => {
+        debugger;
+        if (
+          residentialAddress.totalYears &&
+          residentialAddress.totalYears == 1
+        ) {
+          if (this.previousAddressesFormArray.length === 0)
+            this.addPreviousAddress();
+        } else {
+          this.removeaddPreviousAddressForm(null, 0);
+        }
+      });
+
+    this.form
+      .get("coBorrowerResidentialAddress")
+      .valueChanges.subscribe((coBorrowerResidentialAddress) => {
+        debugger;
+        if (
+          coBorrowerResidentialAddress.totalYears &&
+          coBorrowerResidentialAddress.totalYears == 1
+        ) {
+          if (this.coBorrowerPreviousAddressesFormArray.length === 0)
+            this.addCoBorrowerPreviousAddress();
+        } else {
+          this.removeCoBorrowerPreviousAddressForm(null, 0);
+        }
+      });
+
+    this.form
       .get("isMailingAddressSameAsResidential")
       .valueChanges.subscribe((isMailingAddressSameAsResidential) => {
         if (isMailingAddressSameAsResidential) {
@@ -297,18 +344,22 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       .valueChanges.subscribe(
         (coBorrowerResidentialAddressSameAsBorrowerResidential) => {
           if (coBorrowerResidentialAddressSameAsBorrowerResidential) {
-            this.form.removeControl("coBorrowerResidentialAddress");
           } else {
-            this.data.coBorrowerResidentialAddress =
-              this.data.coBorrowerResidentialAddress || {};
-            this.form.addControl(
-              "coBorrowerResidentialAddress",
-              this.initAddressForm(
-                this.data.coBorrowerResidentialAddress,
-                2,
-                false
-              )
-            );
+            this.data.coBorrowerResidentialAddress.addressLine1 = null;
+            this.data.coBorrowerResidentialAddress.addressLine2 = null;
+            this.data.coBorrowerResidentialAddress.city = null;
+            this.data.coBorrowerResidentialAddress.stateId = null;
+            this.data.coBorrowerResidentialAddress.zipCode = null;
+            // this.data.coBorrowerResidentialAddress =
+            //   this.data.coBorrowerResidentialAddress || {};
+            // this.form.addControl(
+            //   "coBorrowerResidentialAddress",
+            //   this.initAddressForm(
+            //     this.data.coBorrowerResidentialAddress,
+            //     2,
+            //     false
+            //   )
+            // );
           }
         }
       );
@@ -392,19 +443,35 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       let fields = [];
       switch (stepIndex) {
         case 1:
-          fields = ["isApplyingWithCoBorrower"];
-          const hasError = fields.some(
-            (field) => this.form.get(field) && !this.form.get(field).valid
-          );
-
-          if (hasError) {
-            fields.forEach(
-              (field) =>
-                this.form.get(field) && this.form.get(field).markAsTouched()
+          {
+            fields = ["isApplyingWithCoBorrower"];
+            const hasError = fields.some(
+              (field) => this.form.get(field) && !this.form.get(field).valid
             );
-          } else {
-            this._ngWizardService.next();
+
+            if (hasError) {
+              fields.forEach(
+                (field) =>
+                  this.form.get(field) && this.form.get(field).markAsTouched()
+              );
+            } else {
+              this._ngWizardService.next();
+            }
           }
+          break;
+        // fields = ["isApplyingWithCoBorrower"];
+        // const hasError = fields.some(
+        //   (field) => this.form.get(field) && !this.form.get(field).valid
+        // );
+
+        // if (hasError) {
+        //   fields.forEach(
+        //     (field) =>
+        //       this.form.get(field) && this.form.get(field).markAsTouched()
+        //   );
+        // }
+        case 2:
+          this._ngWizardService.next();
           break;
       }
     } else {

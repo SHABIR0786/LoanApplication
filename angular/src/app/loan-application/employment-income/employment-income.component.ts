@@ -187,6 +187,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
       ),
       borrowerEmploymentInfo: new FormArray([]),
       additionalIncomes: new FormArray([]),
+      coBorrowerEmploymentInfo: new FormArray([]),
     });
 
     if (
@@ -230,6 +231,68 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     } else {
       this.form.removeControl("coBorrowerMonthlyIncome");
       this.form.removeControl("coBorrowerEmploymentInfo");
+    }
+    var startDate;
+    this.form
+      .get("borrowerEmploymentInfo")
+      .valueChanges.subscribe((borrowerEmploymentInfo) => {
+        debugger;
+        if (
+          borrowerEmploymentInfo &&
+          borrowerEmploymentInfo[0].startDate &&
+          borrowerEmploymentInfo &&
+          borrowerEmploymentInfo.length == 1 &&
+          (!startDate ||
+            startDate.getFullYear() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getFullYear() ||
+            startDate.getDate() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getDate() ||
+            startDate.getMonth() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getMonth())
+        ) {
+          startDate = new Date(borrowerEmploymentInfo[0].startDate);
+          var Dateafter2Years;
+          var TodaysDate = new Date();
+          var year = TodaysDate.getFullYear();
+          var month = TodaysDate.getMonth();
+          var day = TodaysDate.getDate();
+          Dateafter2Years = new Date(year - 2, month, day);
+          if (startDate > Dateafter2Years) {
+            this.addBorrowerEmploymentInfo();
+          }
+        }
+      });
+    if (this.coBorrowerEmploymentInfo) {
+      var startDate;
+      this.form
+        .get("coBorrowerEmploymentInfo")
+        .valueChanges.subscribe((coBorrowerEmploymentInfo) => {
+          debugger;
+          if (
+            coBorrowerEmploymentInfo &&
+            coBorrowerEmploymentInfo[0].startDate &&
+            coBorrowerEmploymentInfo &&
+            coBorrowerEmploymentInfo.length == 1 &&
+            (!startDate ||
+              startDate.getFullYear() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getFullYear() ||
+              startDate.getDate() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getDate() ||
+              startDate.getMonth() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getMonth())
+          ) {
+            startDate = new Date(coBorrowerEmploymentInfo[0].startDate);
+            var Dateafter2Years;
+            var TodaysDate = new Date();
+            var year = TodaysDate.getFullYear();
+            var month = TodaysDate.getMonth();
+            var day = TodaysDate.getDate();
+            Dateafter2Years = new Date(year - 2, month, day);
+            if (startDate > Dateafter2Years) {
+              this.addCoBorrowerEmploymentInfo();
+            }
+          }
+        });
     }
   }
 
