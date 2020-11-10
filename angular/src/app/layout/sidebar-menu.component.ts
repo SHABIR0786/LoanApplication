@@ -32,6 +32,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
   signature = " fas fa-file-signature";
   summary = " fas fa-tasks";
   applyLoan = " fas fa-funnel-dollar";
+  loanList = " fas fa-clipboard-list";
 
   constructor(
     injector: Injector,
@@ -78,6 +79,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
         "fas fa-theater-masks",
         "Pages.Roles"
       ),
+      new MenuItem(this.l("Loan List"), "/app/loan-list", this.loanList, ""),
       new MenuItem(this.l("Apply Loan"), "", this.applyLoan, "", [
         new MenuItem(
           this.l("Loan Detail"),
@@ -92,6 +94,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
           ""
         ),
         new MenuItem(this.l("Expense"), "/app/expense", this.dollar2, ""),
+
         new MenuItem(this.l("Asset"), "/app/asset", this.coins, ""),
         new MenuItem(
           this.l("Employment Income"),

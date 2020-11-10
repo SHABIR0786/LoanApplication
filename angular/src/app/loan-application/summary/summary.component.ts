@@ -39,6 +39,7 @@ export class SummaryComponent implements OnInit {
           element.borrowerTypeId = AppConsts.typeBorrower;
         });
       }
+    } else {
       if (
         this.formData.employmentIncome &&
         this.formData.employmentIncome.coBorrowerEmploymentInfo
