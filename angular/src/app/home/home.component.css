@@ -1,0 +1,38 @@
+.know {
+  /* text-align: center; */
+  /* font: normal normal 900 16px/60px Avenir; */
+  letter-spacing: 3.2px;
+  /* color: #f47741; */
+  text-transform: uppercase;
+}
+
+.label {
+  text-align: left !important;
+  font: normal normal medium 13px/18px Avenir !important;
+  letter-spacing: 0px !important;
+  color: #091a52 !important;
+  opacity: 1 !important;
+  font-size: small !important;
+}
+
+input {
+  border: 1px solid #545454;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+.para {
+  text-align: center;
+  font: normal normal medium 13px/25px Avenir;
+  letter-spacing: 0px;
+  color: #828282;
+  opacity: 1;
+  /* font-size: x-small; */
+}
+
+.btn {
+  border-radius: 4px;
+  opacity: 1;
+  width: 174px;
+  height: 42px;
+}
