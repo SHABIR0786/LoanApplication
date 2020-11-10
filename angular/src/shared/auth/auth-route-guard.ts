@@ -22,10 +22,10 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (!this._sessionService.user) {
-      this._router.navigate(["/account/login"]);
-      return false;
-    }
+    // if (!this._sessionService.user) {
+    //   this._router.navigate(["/account/login"]);
+    //   return false;
+    // }
 
     if (!route.data || !route.data["permission"]) {
       return true;
@@ -47,9 +47,9 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
   }
 
   selectBestRoute(): string {
-    if (!this._sessionService.user) {
-      return "/account/login";
-    }
+    // if (!this._sessionService.user) {
+    //   return "/account/login";
+    // }
 
     if (this._permissionChecker.isGranted("Pages.Users")) {
       return "/app/admin/users";
