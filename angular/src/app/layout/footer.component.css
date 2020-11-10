@@ -1,0 +1,31 @@
+.bg {
+  background: #091a52 0% 0% no-repeat padding-box;
+  font: normal normal medium 13px/35px Avenir;
+}
+
+.text-color {
+  color: #ffffff;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  color: #7d86a4;
+  background-color: #7d86a4;
+}
+
+.icon {
+  opacity: 0.3;
+}
+
+.i-circle {
+  background: #091a52 0% 0% no-repeat padding-box;
+  border-radius: 50%;
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.img {
+  width: 96px;
+  height: 34px;
+}
