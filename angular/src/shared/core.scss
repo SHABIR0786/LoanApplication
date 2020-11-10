@@ -1,4 +1,5 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "./variable.scss";
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "~ng-wizard/themes/ng_wizard.min.css";
 
 @media (min-width: 576px) {
