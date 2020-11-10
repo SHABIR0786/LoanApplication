@@ -43,4 +43,10 @@ $spacers: map-merge(
   $spacers
 );
 
-$font-family-base: "Montserrat", sans-serif;
+@font-face {
+  font-family: "Avenir";
+  src: local("Avenir"),
+    url("/assets/fonts/Avenir-Font/AvenirLTStd-Roman.otf") format("opentype");
+}
+
+$font-family-base: "Avenir", sans-serif;
