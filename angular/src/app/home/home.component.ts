@@ -9,6 +9,8 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent extends AppComponentBase {
+  // buyingAHome: string = "Buying A home Guide";
+
   constructor(injector: Injector) {
     super(injector);
   }

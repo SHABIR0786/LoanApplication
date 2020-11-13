@@ -79,14 +79,24 @@ input {
 
 .start {
   background-image: url("assets/img/house.png");
+  background-repeat: no-repeat;
+
   background: #091a52 0% 0% no-repeat padding-box;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .i-circle {
   background: #091a52 0% 0% no-repeat padding-box;
   border-radius: 50%;
   border: 1px solid #ffffff;
-  padding: 10px;
+  padding: 9px;
+  width: 34px;
+  height: 34px;
   opacity: 0.3;
+}
+
+.bg {
+  background: url("assets/img/house-1.png") 0% 0% no-repeat;
+  width: 358px;
+  height: 662px;
 }
