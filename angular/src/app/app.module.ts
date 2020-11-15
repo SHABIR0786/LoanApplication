@@ -6,6 +6,7 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { TabsModule } from "ngx-bootstrap/tabs";
+import { CarouselModule } from "ngx-bootstrap/carousel";
 import { NgxPaginationModule } from "ngx-pagination";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -13,6 +14,7 @@ import { ServiceProxyModule } from "@shared/service-proxies/service-proxy.module
 import { SharedModule } from "@shared/shared.module";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 import { HomeComponent } from "@app/home/home.component";
+import { HomeMainCarousel } from "@app/home/home-main-carousel/home-main-carousel";
 import { AboutComponent } from "@app/about/about.component";
 // tenants
 import { TenantsComponent } from "@app/tenants/tenants.component";
@@ -67,6 +69,7 @@ const ngWizardConfig: NgWizardConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
+    HomeMainCarousel,
     AboutComponent,
     // tenants
     TenantsComponent,
@@ -119,6 +122,7 @@ const ngWizardConfig: NgWizardConfig = {
     BsDropdownModule,
     CollapseModule,
     TabsModule,
+    CarouselModule.forRoot(),
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
