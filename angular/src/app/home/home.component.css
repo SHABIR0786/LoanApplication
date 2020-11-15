@@ -37,13 +37,6 @@ input {
   height: 42px;
 }
 
-.pic {
-  background: transparent url("assets/img/Untitled-1.svg") 0% 0% no-repeat
-    padding-box;
-  margin-top: 12px;
-  margin-left: 9px;
-}
-
 .content {
   /* width: 554px;
   height: 100px; */
