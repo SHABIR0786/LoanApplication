@@ -19,11 +19,9 @@
 }
 
 .i-circle {
-  background: #091a52 0% 0% no-repeat padding-box;
   border-radius: 50%;
-  border: 1px solid #ffffff;
+  border: 1px solid grey;
   padding: 9px;
   width: 34px;
   height: 34px;
-  opacity: 0.3;
 }
