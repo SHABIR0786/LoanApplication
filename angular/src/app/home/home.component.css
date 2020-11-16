@@ -94,3 +94,10 @@ input {
   width: 358px;
   height: 662px;
 }
+
+option:hover,
+option:focus {
+  text-decoration: none;
+  color: #091a52;
+  background-color: #091a52 0% 0% no-repeat padding-box;
+}
