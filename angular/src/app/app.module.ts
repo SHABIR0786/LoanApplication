@@ -15,6 +15,7 @@ import { SharedModule } from "@shared/shared.module";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 import { HomeComponent } from "@app/home/home.component";
 import { HomeMainCarousel } from "@app/home/home-main-carousel/home-main-carousel";
+import { HomeTestmionals } from "@app/home/home-testmionals/home-testmionals";
 import { AboutComponent } from "@app/about/about.component";
 // tenants
 import { TenantsComponent } from "@app/tenants/tenants.component";
@@ -69,6 +70,7 @@ const ngWizardConfig: NgWizardConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
+    HomeTestmionals,
     HomeMainCarousel,
     AboutComponent,
     // tenants
