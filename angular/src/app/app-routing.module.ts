@@ -20,6 +20,7 @@ import { EconsentComponent } from "./loan-application/econsent/econsent.componen
 import { OrderCreditComponent } from "./loan-application/order-credit/order-credit.component";
 import { AdditionalDetailsComponent } from "./loan-application/additional-details/additional-details.component";
 import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
+import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 
 @NgModule({
   imports: [
@@ -125,6 +126,10 @@ import { LoanListComponent } from "./loan-application/loan-list/loan-list.compon
           },
           { path: "about", component: AboutComponent },
           { path: "update-password", component: ChangePasswordComponent },
+          {
+            path: "admin-panel",
+            component: AdminPanelComponent,
+          },
         ],
       },
     ]),
