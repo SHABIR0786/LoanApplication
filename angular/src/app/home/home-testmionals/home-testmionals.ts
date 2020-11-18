@@ -32,9 +32,7 @@ export class HomeTestmionals implements DoCheck, OnInit {
     ];
   }
 
-  ngDoCheck(): void {
-    console.log(this.testmionals);
-  }
+  ngDoCheck(): void {}
 
   ngOnInit(): void {
     this.loadTestmionals();

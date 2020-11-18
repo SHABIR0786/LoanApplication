@@ -177,11 +177,8 @@
       <div class="row p-0 m-0">
         <div
           class="col-4 img-fluid"
-          style="
-            background: url(assets/img/house-1.png) 0% 0% no-repeat;
-            background-size: 100% 100%;
-            padding: unset;
-          "
+          style="padding: unset; background-size: 100% 100%"
+          [ngStyle]="featuredMortgageImage"
         >
           <div
             class="img-fluid"
@@ -198,30 +195,25 @@
               style="margin: 0px 0px 0px 5px; padding: 30px; display: block"
             >
               <p class="font-weight-bold ml-3 text-white">
-                GET A NO-HASSLE LOAN FOR UP TO $697,650
+                {{ getANoHassleLoan }}
               </p>
               <h5 class="font-weight-bold ml-3 text-white">
-                Fast Closing FHA Loans
+                {{ fastClosing }}
               </h5>
               <p class="font-weight-bold ml-3 text-white">
-                Take Advantage of our FHA Elite Rates starting at…
+                {{ takeAdvantage }}
               </p>
-              <p class="font-weight-bold ml-3 text-orange">
+              <a class="font-weight-bold ml-3 text-orange">
                 Read More
                 <i class="text-orange fas fa-long-arrow-alt-right"></i>
-              </p>
+              </a>
             </div>
           </div>
         </div>
         <div
           class="col-8 img-fluid"
-          style="
-            background: url(assets/img/living-room.png) 0% 0% no-repeat;
-            background-size: 100%;
-            padding-left: 18px;
-            background-origin: content-box;
-            padding-right: 0px;
-          "
+          style="padding-left: 18px; padding-right: 0px"
+          [ngStyle]="featuredMortgageImage1"
         >
           <div
             class="img-fluid"
@@ -229,59 +221,48 @@
               background: #f47741 0% 0% no-repeat padding-box;
               opacity: 0.8;
               background-size: 100%;
-              margin-top: 9.4rem;
+              margin-top: 10.4rem;
               padding: unset;
             "
           >
             <div class="row">
               <div class="col-6" style="padding: 20px">
                 <h5 class="font-weight-bold ml-3 text-white">
-                  Conventional Jombo Rate
+                  {{ conventionalJomboRate }}
                 </h5>
                 <p class="text-white ml-3">
-                  Save cash with a low-rate conventional loan up to…
+                  {{ saveCash }}
                 </p>
-                <p class="font-weight-bold ml-3 text-dark-blue-3">
+                <a class="font-weight-bold ml-3 text-dark-blue-3">
                   Read More
                   <i class="text-dark-blue-3 fas fa-long-arrow-alt-right"></i>
-                </p>
+                </a>
               </div>
               <div class="col-5">
                 <h5
                   class="font-weight-bold text-white"
                   style="margin-top: 63px"
                 >
-                  GET A NO-HASSLE LOAN FOR UP TO $697,650
+                  {{ getANoHassleLoan1 }}
                 </h5>
               </div>
             </div>
           </div>
           <div class="row" style="margin-top: 1rem !important">
-            <div class="col-6">
-              <img class="img-fluid" src="assets/img/money.png" alt="" />
-              <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
-                Tap Into Your Equity
-              </h5>
-              <p class="font-weight-bold ml-3 text-grey">
-                We offer unique programs that let you refinance up…
-              </p>
-              <p class="font-weight-bold ml-3 text-orange">
-                Read More
-                <i class="text-orange fas fa-long-arrow-alt-right"></i>
-              </p>
-            </div>
-            <div class="col-6">
+            <div
+              class="col-6"
+              *ngFor="let featuredMortgageImage of featuredMortgageImages"
+            >
               <img
                 class="img-fluid"
-                src="assets/img/new-home.png"
+                [src]="featuredMortgageImage.image"
                 alt=""
-                style="height: 160px"
               />
               <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
-                Purchase Your Dream Home
+                {{ featuredMortgageImage.caption }}
               </h5>
               <p class="font-weight-bold ml-3 text-grey">
-                Your dream home may no longer be a dream…
+                {{ featuredMortgageImage.para }}
               </p>
               <p class="font-weight-bold ml-3 text-orange">
                 Read More
@@ -297,7 +278,6 @@
   <!-- KNOW ABOUT FEATURED MORTGAGE OPTION SECTION END -->
 
   <!-- KNOW ABOUT YOUR INDEPENDENT SECTION START -->
-
   <div class="bg-white">
     <div
       class="container-fluid bg-white text-right"
@@ -338,7 +318,7 @@
         </p>
         <div class="col-4 pl-4 img-fluid" style="z-index: 3; top: -4rem">
           <img
-            src="assets/img/Image 16.png"
+            [src]="youIndenentVideo"
             alt=""
             style="
               background: #091a52 0% 0% no-repeat padding-box;
@@ -375,351 +355,268 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- KNOW ABOUT YOUR INDEPENDENT SECTION START -->
+  <!-- KNOW ABOUT YOUR INDEPENDENT SECTION START -->
 
-    <!-- KNOW ABOUT TIPS SECTION START -->
+  <!-- KNOW ABOUT TIPS SECTION START -->
 
-    <div class="bg-light-grey">
-      <div class="row justify-content-center p-0 m-0">
-        <div class="col">
-          <div class="text-center mb-3">
-            <p class="text-orange font-weight-bold know">Know About</p>
-            <h4
-              class="text-dark-blue font-weight-bold"
-              style="letter-spacing: 1.5px; word-spacing: 1px"
-            >
-              Tips For Getting A Home
-            </h4>
-            <h4
-              class="text-dark-blue font-weight-bold mb-5"
-              style="letter-spacing: 1.5px; word-spacing: 1px"
-            >
-              Mortgage In California
-            </h4>
-          </div>
+  <div class="bg-light-grey">
+    <div class="row justify-content-center p-0 m-0">
+      <div class="col">
+        <div class="text-center mb-3">
+          <p class="text-orange font-weight-bold know">Know About</p>
+          <h4
+            class="text-dark-blue font-weight-bold text-wrap mt-4 mb-5"
+            style="letter-spacing: 1.5px; word-spacing: 1px; width: 83rem"
+          >
+            {{ tips }}
+          </h4>
         </div>
       </div>
-      <div class="container">
-        <div class="row justify-content-center p-0 m-0">
-          <div class="col-6">
-            <div class="text-white bg-dark-blue content">
-              <img
-                class="img-fluid pic1"
-                src="assets/img/mortgage.svg"
-                alt=""
-              />
-              <h5 class="font-weight-bold d-inline">
-                How To Apply For Your Loan
-              </h5>
-            </div>
-            <div class="mt-5 ml-5">
-              <span class="d-inline-block bg-orange" style="width: 7%">
-                <img src="assets/img/calculator.svg" />
-              </span>
-
-              <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
-                Calculate Loan Rate
-              </h5>
-            </div>
-
-            <div class="mt-5 ml-5">
-              <span class="d-inline-block bg-orange" style="width: 7%">
-                <img src="assets/img/support.svg" />
-              </span>
-
-              <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
-                Speak with an expert
-              </h5>
-            </div>
-            <div class="mt-5 ml-5">
-              <span class="d-inline-block bg-orange" style="width: 7%">
-                <img src="assets/img/agenda.svg" />
-              </span>
-
-              <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
-                Benefit of Preapproval
-              </h5>
-            </div>
-            <div class="mt-5 ml-5">
-              <span class="d-inline-block bg-orange" style="width: 7%">
-                <img src="assets/img/mortgage.svg" />
-              </span>
-
-              <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
-                Get A Free Quote
-              </h5>
-            </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center p-0 m-0">
+        <div class="col-6">
+          <div class="text-white bg-dark-blue content">
+            <img class="img-fluid pic1" src="assets/img/mortgage.svg" alt="" />
+            <h5 class="font-weight-bold d-inline">
+              {{ howToApplyLoan }}
+            </h5>
           </div>
-          <div class="col-6 pl-4">
-            <div>
-              <img src="assets/img/finance.png" alt="finance" />
-            </div>
+          <div
+            class="mt-6 ml-5"
+            *ngFor="let calculateLoanRate of calculateLoanRates"
+          >
+            <span class="d-inline-block bg-orange" style="width: 7%">
+              <img [src]="calculateLoanRate.image" />
+            </span>
+
+            <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
+              {{ calculateLoanRate.name }}
+            </h5>
+          </div>
+        </div>
+        <div class="col-6 pl-4">
+          <div>
+            <img [src]="tipsSectionImage" alt="finance" />
+          </div>
+          <div
+            class="card"
+            style="
+              z-index: 3;
+              top: -5rem;
+              box-shadow: 0px 3px 6px #091a5214;
+              border-radius: 4px;
+              left: 4rem;
+            "
+          >
             <div
-              class="card"
-              style="
-                z-index: 3;
-                top: -5rem;
-                box-shadow: 0px 3px 6px #091a5214;
-                border-radius: 4px;
-                left: 4rem;
-              "
+              class="card-header border-0"
+              style="background: #ffffff 0% 0% no-repeat padding-box"
             >
-              <div
-                class="card-header border-0"
-                style="background: #ffffff 0% 0% no-repeat padding-box"
+              <h5
+                class="text-dark-blue font-weight-bold mt-3"
+                style="padding-left: 18px"
               >
-                <h5
-                  class="text-dark-blue font-weight-bold mt-3"
-                  style="padding-left: 18px"
-                >
-                  Work With A High-Tech Mortgage Loan Broker
-                </h5>
-              </div>
-              <div class="card-body">
-                <div class="row p-0 m-0">
-                  <div class="col-1">
-                    <img src="assets/img/foursquare-check-in.svg" alt="" />
-                    <img
-                      src="assets/img/foursquare-check-in.svg"
-                      alt=""
-                      style="margin-top: 46px"
-                    />
-                    <img
-                      src="assets/img/foursquare-check-in.svg"
-                      alt=""
-                      style="margin-top: 46px"
-                    />
-                    <img
-                      src="assets/img/foursquare-check-in.svg"
-                      alt=""
-                      style="margin-top: 46px"
-                    />
-                  </div>
-                  <div class="col-11">
-                    <p>
-                      Our easy-to-use online tools streamline the mortgage
-                      process.
-                    </p>
-                    <p>
-                      Get mortgage estimates, instant rate quotes, and access to
-                      our online calculators.
-                    </p>
-                    <p>
-                      Loan applications can be done entirely online (or via fax)
-                      on our secure portal.
-                    </p>
-                    <p>
-                      Receive updates about your application – as well as
-                      helpful mortgage news – on your phone, tablet or laptop
-                    </p>
-                    <div class="mt-3">
-                      <button
-                        type="button"
-                        class="btn btn-orange text-white btn"
-                      >
-                        APPLY NOW
-                      </button>
-                    </div>
-                  </div>
+                Work With A High-Tech Mortgage Loan Broker
+              </h5>
+            </div>
+            <div class="card-body">
+              <div
+                class="row p-0 m-0"
+                *ngFor="let workWithLoanBroker of workWithLoanBrokers"
+              >
+                <div class="col-1">
+                  <img src="assets/img/foursquare-check-in.svg" alt="" />
+                </div>
+                <div class="col-11">
+                  <p>
+                    {{ workWithLoanBroker }}
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- KNOW ABOUT TIPS SECTION END -->
-
-    <!-- TESTIMONIALS SECTION START -->
-
-    <home-testmionals> </home-testmionals>
-
-    <!-- TESTIMONIALS SECTION END -->
-
-    <!-- KNOW ABOUT MORTGAGE RATA SECTION START -->
-
-    <div class="bg-white">
-      <div class="container bg-white">
-        <div class="row justify-content-center p-0 m-0">
-          <div class="col-9">
-            <div class="card border-0 shadow-none">
-              <div class="card-header border-0 bg-white text-center">
-                <p class="text-orange font-weight-bold know mt-5">Know About</p>
-                <h4
-                  class="text-dark-blue font-weight-bold"
-                  style="letter-spacing: 1.5px; word-spacing: 1px"
+              <div class="mt-3">
+                <button
+                  type="button"
+                  class="btn btn-orange text-white btn"
+                  style="margin-left: 3.4rem"
                 >
-                  Mortgage Rate updates, Featured Mortgage
-                </h4>
-                <h4
-                  class="text-dark-blue font-weight-bold mt-1"
-                  style="letter-spacing: 1.5px; word-spacing: 1px"
-                >
-                  Options or Request A Call Back Today
-                </h4>
-              </div>
-              <div class="card-body p-4">
-                <form>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="firstName" class="label font-weight-bold"
-                        >First Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="firstName"
-                        id="firstName"
-                        [(ngModel)]="firstName"
-                      />
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="text" class="label font-weight-bold"
-                        >Last Name</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="lastName"
-                        id="lastName"
-                        [(ngModel)]="lastName"
-                      />
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="Email" class="label font-weight-bold"
-                        >Email Address</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        name="email"
-                        id="email"
-                        [(ngModel)]="email"
-                      />
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="phoneNumber" class="label font-weight-bold"
-                        >Phone Number</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="phoneNumber"
-                        id="phoneNumber"
-                        [(ngModel)]="phoneNumber"
-                      />
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label
-                        for="mortgagePurpose"
-                        class="label font-weight-bold"
-                        >Mortgage Purposes</label
-                      >
-                      <select
-                        style="border: 1px solid #545454; border-radius: 6px"
-                        class="form-control label font-weight-bold"
-                        name="mortgagePurpose"
-                        id="mortgagePurpose"
-                      >
-                        <option
-                          selected="selected"
-                          disabled="disabled"
-                        ></option>
-                        <option
-                          class="label"
-                          [ngValue]="mortgagePurpose.id"
-                          *ngFor="let mortgagePurpose of mortgagePurposes"
-                        >
-                          {{ mortgagePurpose.name }}
-                        </option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label
-                        for="howDoYouWantToBorrow"
-                        class="label font-weight-bold"
-                        >How do you want to borrow</label
-                      >
-                      <select
-                        style="border: 1px solid #545454; border-radius: 6px"
-                        class="form-control label font-weight-bold"
-                        name="howDoYouWantToBorrow"
-                        id="howDoYouWantToBorrow"
-                      >
-                        <option
-                          selected="selected"
-                          disabled="disabled"
-                        ></option>
-                        <option
-                          class="label"
-                          [ngValue]="howDoYouWantToBorrow.id"
-                          *ngFor="
-                            let howDoYouWantToBorrow of howDoYouWantToBorrows
-                          "
-                        >
-                          {{ howDoYouWantToBorrow.name }}
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <p class="para">
-                    By completing this form, I agree that EZ Online Mortgage may
-                    contact me at the phone number provided via telephone, maybe
-                    prerecoreded message, artifical voice, and/or text message.
-                    I understand that I do not Have to consent to receive such
-                    calls or text messages in order to purchase goods or
-                    services from EZ Online mortgage.
-                  </p>
-                  <div class="text-center">
-                    <button
-                      type="submit"
-                      class="btn btn-orange text-center text-white btn"
-                    >
-                      SUBMIT
-                    </button>
-                  </div>
-                </form>
+                  APPLY NOW
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="container-fluid bg-white">
-        <div class="row p-0 m-0">
-          <div class="col-3 text-left mb-2">
-            <img
-              class="img-fluid mr-2"
-              src="assets/img/Untitled-1.svg"
-              alt=""
-            />
-            <img
-              class="img-fluid mr-2"
-              src="assets/img/Untitled-1.svg"
-              alt=""
-            />
-            <!-- <img class="img-fluid" src="assets/img/Untitled-1.svg" alt="" /> -->
-          </div>
-        </div>
-        <div class="row p-0 m-0">
-          <div class="col-3 text-left mb-2">
-            <img
-              class="img-fluid mr-2"
-              src="assets/img/Untitled-1.svg"
-              alt=""
-            />
-            <img
-              class="img-fluid mr-2"
-              src="assets/img/Untitled-1.svg"
-              alt=""
-            />
-            <!-- <img class="img-fluid" src="assets/img/Untitled-1.svg" alt="" /> -->
-          </div>
-        </div>
-      </div>
     </div>
-
-    <!-- KNOW ABOUT MORTGAGE RATA SECTION END -->
   </div>
+
+  <!-- KNOW ABOUT TIPS SECTION END -->
+
+  <!-- TESTIMONIALS SECTION START -->
+
+  <home-testmionals> </home-testmionals>
+
+  <!-- TESTIMONIALS SECTION END -->
+
+  <!-- KNOW ABOUT MORTGAGE RATA SECTION START -->
+
+  <div class="bg-white">
+    <div class="container bg-white">
+      <div class="row justify-content-center p-0 m-0">
+        <div class="col-9">
+          <div class="card border-0 shadow-none">
+            <div class="card-header border-0 bg-white text-center">
+              <p class="text-orange font-weight-bold know mt-5">Know About</p>
+              <h4
+                class="text-dark-blue font-weight-bold"
+                style="letter-spacing: 1.5px; word-spacing: 1px"
+              >
+                Mortgage Rate updates, Featured Mortgage
+              </h4>
+              <h4
+                class="text-dark-blue font-weight-bold mt-1"
+                style="letter-spacing: 1.5px; word-spacing: 1px"
+              >
+                Options or Request A Call Back Today
+              </h4>
+            </div>
+            <div class="card-body p-4">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="firstName" class="label font-weight-bold"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="firstName"
+                      id="firstName"
+                      [(ngModel)]="firstName"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="text" class="label font-weight-bold"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="lastName"
+                      id="lastName"
+                      [(ngModel)]="lastName"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="Email" class="label font-weight-bold"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      [(ngModel)]="email"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="phoneNumber" class="label font-weight-bold"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="phoneNumber"
+                      id="phoneNumber"
+                      [(ngModel)]="phoneNumber"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="mortgagePurpose" class="label font-weight-bold"
+                      >Mortgage Purposes</label
+                    >
+                    <select
+                      style="border: 1px solid #545454; border-radius: 6px"
+                      class="form-control label font-weight-bold"
+                      name="mortgagePurpose"
+                      id="mortgagePurpose"
+                    >
+                      <option selected="selected" disabled="disabled"></option>
+                      <option
+                        class="label"
+                        [ngValue]="mortgagePurpose.id"
+                        *ngFor="let mortgagePurpose of mortgagePurposes"
+                      >
+                        {{ mortgagePurpose.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label
+                      for="howDoYouWantToBorrow"
+                      class="label font-weight-bold"
+                      >How do you want to borrow</label
+                    >
+                    <select
+                      style="border: 1px solid #545454; border-radius: 6px"
+                      class="form-control label font-weight-bold"
+                      name="howDoYouWantToBorrow"
+                      id="howDoYouWantToBorrow"
+                    >
+                      <option selected="selected" disabled="disabled"></option>
+                      <option
+                        class="label"
+                        [ngValue]="howDoYouWantToBorrow.id"
+                        *ngFor="
+                          let howDoYouWantToBorrow of howDoYouWantToBorrows
+                        "
+                      >
+                        {{ howDoYouWantToBorrow.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <p class="para">
+                  By completing this form, I agree that EZ Online Mortgage may
+                  contact me at the phone number provided via telephone, maybe
+                  prerecoreded message, artifical voice, and/or text message. I
+                  understand that I do not Have to consent to receive such calls
+                  or text messages in order to purchase goods or services from
+                  EZ Online mortgage.
+                </p>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-orange text-center text-white btn"
+                  >
+                    SUBMIT
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-white">
+      <div class="row p-0 m-0">
+        <div class="col-3 text-left mb-2">
+          <img class="img-fluid mr-2" src="assets/img/Untitled-1.svg" alt="" />
+          <img class="img-fluid mr-2" src="assets/img/Untitled-1.svg" alt="" />
+          <!-- <img class="img-fluid" src="assets/img/Untitled-1.svg" alt="" /> -->
+        </div>
+      </div>
+      <div class="row p-0 m-0">
+        <div class="col-3 text-left mb-2">
+          <img class="img-fluid mr-2" src="assets/img/Untitled-1.svg" alt="" />
+          <img class="img-fluid mr-2" src="assets/img/Untitled-1.svg" alt="" />
+          <!-- <img class="img-fluid" src="assets/img/Untitled-1.svg" alt="" /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KNOW ABOUT MORTGAGE RATA SECTION END -->
 </div>
