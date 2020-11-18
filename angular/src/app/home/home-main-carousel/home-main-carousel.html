@@ -7,6 +7,7 @@
         background-size: 100% 100%;
         height: 500px;
       "
+      [ngStyle]="mainImage"
     >
       <div class="row p-0 m-0">
         <div class="col-1 mt-3">
@@ -60,9 +61,7 @@
               line-height: 1.5;
             "
           >
-            Best California Home
-            <br />
-            Loans
+            {{caption}}
           </h1>
           <h5
             class="text-white mb-5 mt-4"
@@ -93,11 +92,8 @@
   <slide>
     <div
       class="carousel-slider-img"
-      style="
-        background: url('assets/img/new-home.png') no-repeat;
-        background-size: 100% 100%;
-        height: 500px;
-      "
+      style="background-size: 100% 100%; height: 500px"
+      [ngStyle]="mainImage1"
     >
       <div class="row p-0 m-0">
         <div class="col-1 mt-3">
@@ -151,9 +147,7 @@
               line-height: 1.5;
             "
           >
-            Best California House
-            <br />
-            Loans
+            {{caption1}}
           </h1>
           <h5
             class="text-white mb-5 mt-4"
