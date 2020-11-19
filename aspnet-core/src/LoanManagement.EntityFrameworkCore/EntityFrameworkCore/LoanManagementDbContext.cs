@@ -4,6 +4,8 @@ using LoanManagement.Authorization.Users;
 using LoanManagement.Models;
 using LoanManagement.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace LoanManagement.EntityFrameworkCore
 {
@@ -28,6 +30,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<StockAndBond> StockAndBonds { get; set; }
         public DbSet<LoanDetail> LoanDetails { get; set; }
         public DbSet<PersonalDetail> PersonalDetails { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
         public DbSet<State> States { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
@@ -133,6 +136,20 @@ namespace LoanManagement.EntityFrameworkCore
                             new State { Id = 57, Name = "WV" },
                             new State { Id = 58, Name = "WI" },
                             new State { Id = 59, Name = "WY" });
+            });
+
+            modelBuilder.Entity<SiteSetting>(assetType =>
+            {
+                assetType.HasData(new SiteSetting
+                {
+                    Id = 1,
+                    PageIdentifier = "app/home",
+                    PageSetting = JsonConvert.SerializeObject(
+                    new
+                    {
+                        Sliders = new List<string> { "", "" }
+                    })
+                });
             });
         }
     }
