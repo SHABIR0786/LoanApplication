@@ -1,50 +1,480 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card my-5">
+        <div class="card-header">Site configuration</div>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card my-5">
         <div class="card-header">Site configuration</div>
         <div class="card-body">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-5">
-                <label for="page">Page</label>
-                <select id="page" class="form-control">
-                  <option selected disabled></option>
-                  <option value="app/home">Home page</option>
-                </select>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Path</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let page of pages">
+                <td>{{ page.name }}</td>
+                <td>{{ page.path }}</td>
+                <td>
+                  <button
+                    (click)="lgModal.show(); setPageId(page.id)"
+                    class="btn btn-orange text-white btn"
+                  >
+                    EDIT
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  bsModal
+  #lgModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-sizes-name1"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+          {{ currentPage ? pages[currentPage - 1].name : "" }}
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          (click)="lgModal.hide()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card border-0 shadow-none">
+          <div class="card-body">
+            <form *ngIf="currentPage === 1" [formGroup]="HomePageForm">
+              <h5 class="card-title">Top Carousel</h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="top-caraousel-slider">Sliders</label>
+                  <input
+                    type="file"
+                    id="top-caraousel-slider"
+                    name="top-caraousel-slider"
+                    class="form-control"
+                    multiple
+                    formControlName="sliders"
+                    [{ngModel}]="homePage.sliders"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="Header">Header</label>
+                  <input
+                    type="text"
+                    id="top-caraousel-header"
+                    name="top-caraousel-header"
+                    class="form-control"
+                    formControlName="header"
+                    [{ngModel}]="homePage.header"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="Sub-Header">Sub Header</label>
+                  <input
+                    type="text"
+                    id="top-caraousel-sub-header"
+                    name="top-caraousel-sub-header"
+                    class="form-control"
+                    formControlName="subHeader"
+                    [{ngModel}]="homePage.subHeader"
+                  />
+                </div>
               </div>
-            </div>
-            <h5 class="card-title">Top Carousel</h5>
-            <div class="form-row w-100">
-              <div class="form-group col-4">
-                <label for="top-caraousel-slider">Sliders</label>
-                <input
-                  type="file"
-                  id="top-caraousel-slider"
-                  name="top-caraousel-slider"
-                  class="form-control"
-                />
+
+              <hr />
+
+              <h5 class="card-title">Featured Mortgage Options Section 1</h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="image">Image</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    multiple
+                    formControlName="image"
+                    [{ngModel}]="homePage.image"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="top-captiom">Top Captiom</label>
+                  <input
+                    type="text"
+                    id="top-captiom"
+                    name="top-captiom"
+                    class="form-control"
+                    multiple
+                    formControlName="topCaptiom1"
+                    [{ngModel}]="homePage.topCaptiom1"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="heading">Heading</label>
+                  <input
+                    type="text"
+                    id="heading"
+                    name="heading"
+                    class="form-control"
+                    multiple
+                    formControlName="heading1"
+                    [{ngModel}]="homePage.heading1"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="bottom-caption">Bottom Caption</label>
+                  <input
+                    type="txet"
+                    id="bottom-caption"
+                    name="bottom-caption"
+                    class="form-control"
+                    multiple
+                    formControlName="bottomCaption1"
+                    [{ngModel}]="homePage.bottomCaption1"
+                  />
+                </div>
               </div>
-              <div class="form-group col-4">
-                <label for="top-caraousel-header">Header</label>
-                <input
-                  type="text"
-                  id="top-caraousel-header"
-                  name="top-caraousel-header"
-                  class="form-control"
-                />
+
+              <hr />
+
+              <h5 class="card-title">Featured Mortgage Options Section 2</h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="image">Image</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    multiple
+                    formControlName="image1"
+                    [{ngModel}]="homePage.image1"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="top-captiom">Top-Captiom</label>
+                  <input
+                    type="text"
+                    id="top-captiom"
+                    name="top-captiom"
+                    class="form-control"
+                    multiple
+                    formControlName="topCaptiom2"
+                    [{ngModel}]="homePage.topCaptiom2"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="heading">Heading</label>
+                  <input
+                    type="text"
+                    id="heading"
+                    name="heading"
+                    class="form-control"
+                    multiple
+                    formControlName="heading2"
+                    [{ngModel}]="homePage.heading2"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="bottom-caption">Bottom Caption</label>
+                  <input
+                    type="txet"
+                    id="bottom-caption"
+                    name="bottom-caption"
+                    class="form-control"
+                    multiple
+                    formControlName="bottomCaption2"
+                    [{ngModel}]="homePage.bottomCaption2"
+                  />
+                </div>
               </div>
-              <div class="form-group col-4">
-                <label for="top-caraousel-sub-header">Sub Header</label>
-                <input
-                  type="text"
-                  id="top-caraousel-sub-header"
-                  name="top-caraousel-sub-header"
-                  class="form-control"
-                />
+
+              <hr />
+
+              <h5 class="card-title">
+                Featured Mortgage Options Section 2 Sub Section 1
+              </h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="image">Image</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    multiple
+                    formControlName="image2"
+                    [{ngModel}]="homePage.image2"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="top-captiom">Top-Captiom</label>
+                  <input
+                    type="text"
+                    id="top-captiom"
+                    name="top-captiom"
+                    class="form-control"
+                    multiple
+                    formControlName="topCaptiom3"
+                    [{ngModel}]="homePage.topCaptiom3"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="heading">Heading</label>
+                  <input
+                    type="text"
+                    id="heading"
+                    name="heading"
+                    class="form-control"
+                    multiple
+                    formControlName="heading3"
+                    [{ngModel}]="homePage.heading3"
+                  />
+                </div>
               </div>
-            </div>
-          </form>
+
+              <hr />
+
+              <h5 class="card-title">
+                Featured Mortgage Options Section 2 Sub Section 2
+              </h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="image">Image</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    multiple
+                    formControlName="image3"
+                    [{ngModel}]="homePage.image3"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="top-captiom">Top Captiom</label>
+                  <input
+                    type="text"
+                    id="top-captiom"
+                    name="top-captiom"
+                    class="form-control"
+                    multiple
+                    formControlName="topCaptiom4"
+                    [{ngModel}]="homePage.topCaptiom4"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="heading">Heading</label>
+                  <input
+                    type="text"
+                    id="heading"
+                    name="heading"
+                    class="form-control"
+                    multiple
+                    formControlName="heading4"
+                    [{ngModel}]="homePage.heading4"
+                  />
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="card-title">
+                Your Independent Mortgage Broker In California Section
+              </h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="video">Video</label>
+                  <input
+                    type="file"
+                    id="video"
+                    name="video"
+                    class="form-control"
+                    multiple
+                    formControlName="video"
+                    [{ngModel}]="homePage.video"
+                  />
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="card-title">
+                Tips For Getting A Home Mortgage In California Section 1
+              </h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="main-heading">Main Heading</label>
+                  <input
+                    type="text"
+                    id="main-heading"
+                    name="main-heading"
+                    class="form-control"
+                    multiple
+                    formControlName="mainHeading"
+                    [{ngModel}]="homePage.mainHeading"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="sub-main-heading">Sub Main Heading</label>
+                  <input
+                    type="text"
+                    id="sub-main-heading"
+                    name="sub-main-heading"
+                    class="form-control"
+                    multiple
+                    formControlName="subMainHeading"
+                    [{ngModel}]="homePage.subMainHeading"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="sub-heading-1">Sub Heading 1</label>
+                  <input
+                    type="text"
+                    id="sub-heading-1"
+                    name="sub-heading-1"
+                    class="form-control"
+                    multiple
+                    formControlName="subHeading1"
+                    [{ngModel}]="homePage.subHeading1"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="sub-heading-2">Sub Heading 2</label>
+                  <input
+                    type="text"
+                    id="sub-heading-2"
+                    name="sub-heading-2"
+                    class="form-control"
+                    multiple
+                    formControlName="subHeading2"
+                    [{ngModel}]="homePage.subHeading2"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="sub-heading-3">Sub Heading 3</label>
+                  <input
+                    type="text"
+                    id="sub-heading-3"
+                    name="sub-heading-3"
+                    class="form-control"
+                    multiple
+                    formControlName="subHeading3"
+                    [{ngModel}]="homePage.subHeading3"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="sub-heading-4">Sub Heading 4</label>
+                  <input
+                    type="text"
+                    id="sub-heading-4"
+                    name="sub-heading-4"
+                    class="form-control"
+                    multiple
+                    formControlName="subHeading4"
+                    [{ngModel}]="homePage.subHeading4"
+                  />
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="card-title">
+                Tips For Getting A Home Mortgage In California Section 2
+              </h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="image">Image</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    multiple
+                    formControlName="image4"
+                    [{ngModel}]="homePage.image4"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="paragraph">Paragraph</label>
+                  <textarea
+                    class="form-control"
+                    rows="3"
+                    formControlName="paragraph"
+                    [{ngModel}]="homePage.paragraph"
+                  ></textarea>
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="card-title">Our Customer Says</h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label for="comments">Comments</label>
+                  <input
+                    type="text"
+                    id="comments"
+                    name="comments"
+                    class="form-control"
+                    multiple
+                    formControlName="comments"
+                    [{ngModel}]="homePage.comments"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label for="names">Names</label>
+                  <input
+                    type="text"
+                    id="names"
+                    name="names"
+                    class="form-control"
+                    multiple
+                    formControlName="names"
+                    [{ngModel}]="homePage.names"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
