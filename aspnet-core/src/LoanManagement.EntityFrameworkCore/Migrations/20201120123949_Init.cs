@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace LoanManagement.Migrations
 {
@@ -512,7 +512,11 @@ namespace LoanManagement.Migrations
                     AgreeEConsent = table.Column<bool>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(nullable: true),
+                    CoborrowerAgreeEConsent = table.Column<bool>(nullable: true),
+                    CoborrowerFirstName = table.Column<string>(nullable: true),
+                    CoborrowerLastName = table.Column<string>(nullable: true),
+                    CoborrowerEmail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -621,6 +625,28 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoanDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SiteSettings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorUserId = table.Column<long>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierUserId = table.Column<long>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeleterUserId = table.Column<long>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
+                    PageIdentifier = table.Column<string>(nullable: true),
+                    PageName = table.Column<string>(nullable: true),
+                    PageSetting = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SiteSettings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1588,19 +1614,19 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2020, 10, 11, 1, 0, 40, 92, DateTimeKind.Local).AddTicks(9733), null, null, null, false, null, null, "Cash deposit on sales contract" },
-                    { 13L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(605), null, null, null, false, null, null, "Trust Account" },
-                    { 12L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(601), null, null, null, false, null, null, "Stocks & Bonds" },
-                    { 11L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(598), null, null, null, false, null, null, "Savings Account" },
-                    { 10L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(595), null, null, null, false, null, null, "Retirement Funds" },
-                    { 8L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(588), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
-                    { 9L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(591), null, null, null, false, null, null, "Real Estate Owned" },
-                    { 6L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(581), null, null, null, false, null, null, "Money Market Fund" },
-                    { 5L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(578), null, null, null, false, null, null, "Gift of equity" },
-                    { 4L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(575), null, null, null, false, null, null, "Gifts" },
-                    { 3L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(570), null, null, null, false, null, null, "Checking Account" },
-                    { 2L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(491), null, null, null, false, null, null, "Certificate of Deposit" },
-                    { 7L, new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(585), null, null, null, false, null, null, "Mutual Funds" }
+                    { 1L, new DateTime(2020, 11, 20, 17, 39, 48, 800, DateTimeKind.Local).AddTicks(2166), null, null, null, false, null, null, "Cash deposit on sales contract" },
+                    { 13L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1268), null, null, null, false, null, null, "Trust Account" },
+                    { 12L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1267), null, null, null, false, null, null, "Stocks & Bonds" },
+                    { 11L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1266), null, null, null, false, null, null, "Savings Account" },
+                    { 10L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1264), null, null, null, false, null, null, "Retirement Funds" },
+                    { 8L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1262), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
+                    { 9L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1263), null, null, null, false, null, null, "Real Estate Owned" },
+                    { 6L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1260), null, null, null, false, null, null, "Money Market Fund" },
+                    { 5L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1246), null, null, null, false, null, null, "Gift of equity" },
+                    { 4L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1244), null, null, null, false, null, null, "Gifts" },
+                    { 3L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1242), null, null, null, false, null, null, "Checking Account" },
+                    { 2L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1213), null, null, null, false, null, null, "Certificate of Deposit" },
+                    { 7L, new DateTime(2020, 11, 20, 17, 39, 48, 801, DateTimeKind.Local).AddTicks(1261), null, null, null, false, null, null, "Mutual Funds" }
                 });
 
             migrationBuilder.InsertData(
@@ -1625,69 +1651,74 @@ namespace LoanManagement.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "SiteSettings",
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "PageIdentifier", "PageName", "PageSetting" },
+                values: new object[] { 1, new DateTime(2020, 11, 20, 17, 39, 48, 805, DateTimeKind.Local).AddTicks(2246), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"Checklist\":{\"MainHeader\":\"How To Apply For Your Loan\",\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
+
+            migrationBuilder.InsertData(
                 table: "States",
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 43, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6102), null, null, null, false, null, null, "OR" },
-                    { 32, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5963), null, null, null, false, null, null, "NE" },
-                    { 33, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5966), null, null, null, false, null, null, "NV" },
-                    { 34, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5970), null, null, null, false, null, null, "NH" },
-                    { 35, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5974), null, null, null, false, null, null, "NJ" },
-                    { 36, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5977), null, null, null, false, null, null, "NM" },
-                    { 37, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6007), null, null, null, false, null, null, "NY" },
-                    { 38, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6010), null, null, null, false, null, null, "NC" },
-                    { 39, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6090), null, null, null, false, null, null, "ND" },
-                    { 40, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6093), null, null, null, false, null, null, "MP" },
-                    { 41, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6096), null, null, null, false, null, null, "OH" },
-                    { 42, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6099), null, null, null, false, null, null, "OK" },
-                    { 44, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6105), null, null, null, false, null, null, "PW" },
-                    { 54, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6132), null, null, null, false, null, null, "VI" },
-                    { 46, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6110), null, null, null, false, null, null, "PR" },
-                    { 47, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6113), null, null, null, false, null, null, "RI" },
-                    { 48, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6116), null, null, null, false, null, null, "SC" },
-                    { 49, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6118), null, null, null, false, null, null, "SD" },
-                    { 50, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6121), null, null, null, false, null, null, "TN" },
-                    { 51, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6124), null, null, null, false, null, null, "TX" },
-                    { 52, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6127), null, null, null, false, null, null, "UT" },
-                    { 53, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6129), null, null, null, false, null, null, "VT" },
-                    { 31, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5959), null, null, null, false, null, null, "MT" },
-                    { 55, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6135), null, null, null, false, null, null, "VA" },
-                    { 56, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6138), null, null, null, false, null, null, "WA" },
-                    { 57, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6141), null, null, null, false, null, null, "WV" },
-                    { 45, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6107), null, null, null, false, null, null, "PA" },
-                    { 30, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5955), null, null, null, false, null, null, "MO" },
-                    { 20, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5918), null, null, null, false, null, null, "KS" },
-                    { 28, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5948), null, null, null, false, null, null, "MN" },
-                    { 1, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(4117), null, null, null, false, null, null, "AL" },
-                    { 2, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5827), null, null, null, false, null, null, "AK" },
-                    { 3, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5857), null, null, null, false, null, null, "AS" },
-                    { 4, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5862), null, null, null, false, null, null, "AZ" },
-                    { 5, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5866), null, null, null, false, null, null, "AR" },
-                    { 6, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5869), null, null, null, false, null, null, "CA" },
-                    { 7, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5872), null, null, null, false, null, null, "CO" },
-                    { 8, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5876), null, null, null, false, null, null, "CT" },
-                    { 9, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5879), null, null, null, false, null, null, "DE" },
-                    { 10, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5883), null, null, null, false, null, null, "DC" },
-                    { 11, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5886), null, null, null, false, null, null, "FM" },
-                    { 12, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5890), null, null, null, false, null, null, "FL" },
-                    { 13, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5893), null, null, null, false, null, null, "GA" },
-                    { 14, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5897), null, null, null, false, null, null, "GU" },
-                    { 15, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5900), null, null, null, false, null, null, "HI" },
-                    { 16, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5904), null, null, null, false, null, null, "ID" },
-                    { 17, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5908), null, null, null, false, null, null, "IL" },
-                    { 18, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5911), null, null, null, false, null, null, "IN" },
-                    { 19, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5915), null, null, null, false, null, null, "IA" },
-                    { 58, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6144), null, null, null, false, null, null, "WI" },
-                    { 21, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5922), null, null, null, false, null, null, "KY" },
-                    { 22, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5926), null, null, null, false, null, null, "LA" },
-                    { 23, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5930), null, null, null, false, null, null, "ME" },
-                    { 24, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5933), null, null, null, false, null, null, "MH" },
-                    { 25, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5937), null, null, null, false, null, null, "MD" },
-                    { 26, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5941), null, null, null, false, null, null, "MA" },
-                    { 27, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5944), null, null, null, false, null, null, "MI" },
-                    { 29, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5951), null, null, null, false, null, null, "MS" },
-                    { 59, new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6147), null, null, null, false, null, null, "WY" }
+                    { 43, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(258), null, null, null, false, null, null, "OR" },
+                    { 32, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(245), null, null, null, false, null, null, "NE" },
+                    { 33, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(246), null, null, null, false, null, null, "NV" },
+                    { 34, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(248), null, null, null, false, null, null, "NH" },
+                    { 35, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(249), null, null, null, false, null, null, "NJ" },
+                    { 36, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(250), null, null, null, false, null, null, "NM" },
+                    { 37, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(251), null, null, null, false, null, null, "NY" },
+                    { 38, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(252), null, null, null, false, null, null, "NC" },
+                    { 39, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(254), null, null, null, false, null, null, "ND" },
+                    { 40, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(255), null, null, null, false, null, null, "MP" },
+                    { 41, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(256), null, null, null, false, null, null, "OH" },
+                    { 42, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(257), null, null, null, false, null, null, "OK" },
+                    { 44, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(260), null, null, null, false, null, null, "PW" },
+                    { 54, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(272), null, null, null, false, null, null, "VI" },
+                    { 46, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(262), null, null, null, false, null, null, "PR" },
+                    { 47, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(263), null, null, null, false, null, null, "RI" },
+                    { 48, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(264), null, null, null, false, null, null, "SC" },
+                    { 49, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(265), null, null, null, false, null, null, "SD" },
+                    { 50, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(267), null, null, null, false, null, null, "TN" },
+                    { 51, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(268), null, null, null, false, null, null, "TX" },
+                    { 52, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(269), null, null, null, false, null, null, "UT" },
+                    { 53, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(270), null, null, null, false, null, null, "VT" },
+                    { 31, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(244), null, null, null, false, null, null, "MT" },
+                    { 55, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(273), null, null, null, false, null, null, "VA" },
+                    { 56, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(274), null, null, null, false, null, null, "WA" },
+                    { 57, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(275), null, null, null, false, null, null, "WV" },
+                    { 45, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(261), null, null, null, false, null, null, "PA" },
+                    { 30, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(243), null, null, null, false, null, null, "MO" },
+                    { 19, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(229), null, null, null, false, null, null, "IA" },
+                    { 28, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(240), null, null, null, false, null, null, "MN" },
+                    { 1, new DateTime(2020, 11, 20, 17, 39, 48, 803, DateTimeKind.Local).AddTicks(8928), null, null, null, false, null, null, "AL" },
+                    { 2, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(179), null, null, null, false, null, null, "AK" },
+                    { 3, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(192), null, null, null, false, null, null, "AS" },
+                    { 4, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(193), null, null, null, false, null, null, "AZ" },
+                    { 5, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(195), null, null, null, false, null, null, "AR" },
+                    { 6, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(196), null, null, null, false, null, null, "CA" },
+                    { 7, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(197), null, null, null, false, null, null, "CO" },
+                    { 8, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(198), null, null, null, false, null, null, "CT" },
+                    { 9, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(200), null, null, null, false, null, null, "DE" },
+                    { 10, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(201), null, null, null, false, null, null, "DC" },
+                    { 11, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(202), null, null, null, false, null, null, "FM" },
+                    { 12, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(203), null, null, null, false, null, null, "FL" },
+                    { 13, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(204), null, null, null, false, null, null, "GA" },
+                    { 14, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(206), null, null, null, false, null, null, "GU" },
+                    { 15, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(207), null, null, null, false, null, null, "HI" },
+                    { 16, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(226), null, null, null, false, null, null, "ID" },
+                    { 17, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(227), null, null, null, false, null, null, "IL" },
+                    { 18, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(228), null, null, null, false, null, null, "IN" },
+                    { 58, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(276), null, null, null, false, null, null, "WI" },
+                    { 20, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(230), null, null, null, false, null, null, "KS" },
+                    { 21, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(232), null, null, null, false, null, null, "KY" },
+                    { 22, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(233), null, null, null, false, null, null, "LA" },
+                    { 23, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(234), null, null, null, false, null, null, "ME" },
+                    { 24, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(235), null, null, null, false, null, null, "MH" },
+                    { 25, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(237), null, null, null, false, null, null, "MD" },
+                    { 26, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(238), null, null, null, false, null, null, "MA" },
+                    { 27, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(239), null, null, null, false, null, null, "MI" },
+                    { 29, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(242), null, null, null, false, null, null, "MS" },
+                    { 59, new DateTime(2020, 11, 20, 17, 39, 48, 804, DateTimeKind.Local).AddTicks(278), null, null, null, false, null, null, "WY" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -2274,6 +2305,9 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Declarations");
+
+            migrationBuilder.DropTable(
+                name: "SiteSettings");
 
             migrationBuilder.DropTable(
                 name: "StockAndBonds");

@@ -10,7 +10,7 @@ export interface ITipsForGettingAHomeMortgage {
 
 export interface IFeaturedMortgage {
   image2?: string;
-  topCaptiom3?: string;
+  topCaption3?: string;
   heading3?: string;
 }
 
@@ -27,13 +27,13 @@ export interface IHomePage {
   // Featured Mortgage Options Section 1
 
   image?: string;
-  topCaptiom1?: string;
+  topCaption1?: string;
   heading1?: string;
   bottomCaption1?: string;
   // Featured Mortgage Options Section 2
 
   image1?: string;
-  topCaptiom2?: string;
+  topCaption2?: string;
   heading2?: string;
   bottomCaption2?: string;
   // Featured Mortgage Options Section 2 Sub Section 1
