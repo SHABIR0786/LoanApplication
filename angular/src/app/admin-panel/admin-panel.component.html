@@ -1,15 +1,3 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card my-5">
-        <div class="card-header">Site configuration</div>
-        <div class="card-body">
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="row">
     <div class="col">
@@ -71,45 +59,61 @@
       <div class="modal-body">
         <div class="card border-0 shadow-none">
           <div class="card-body">
-            <form *ngIf="currentPage === 1" [formGroup]="HomePageForm">
-              <h5 class="card-title">Top Carousel</h5>
+            <form
+              *ngIf="currentPage === 1"
+              [formGroup]="HomePageForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <h5 class="card-title d-inline">Top Carousel</h5>
+              <button
+                type="button"
+                (click)="addMainCarousel()"
+                [disabled]="homePage.mainCarousels.length === 4"
+                class="btn btn-orange float-right mr-2 text-white"
+              >
+                Add
+              </button>
 
-              <div class="form-row w-100">
-                <div class="form-group col-4">
-                  <label for="top-caraousel-slider">Sliders</label>
-                  <input
-                    type="file"
-                    id="top-caraousel-slider"
-                    name="top-caraousel-slider"
-                    class="form-control"
-                    multiple
-                    formControlName="sliders"
-                    [{ngModel}]="homePage.sliders"
-                  />
+              <ng-container formArrayName="mainCarousels">
+                <div
+                  class="form-row w-100"
+                  *ngFor="
+                    let mainCarousel of mainCarousels.controls;
+                    let i = index
+                  "
+                >
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-4">
+                      <label for="slider-{{ i }}">Sliders</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        formControlName="slider"
+                      />
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="header-{{ i }}">Header</label>
+                      <input
+                        type="text"
+                        id="header-{{ i }}"
+                        name="header"
+                        class="form-control"
+                        formControlName="header"
+                      />
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="subHeader-{{ i }}">Sub Header</label>
+                      <input
+                        type="text"
+                        id="subHeader-{{ i }}"
+                        name="subHeader"
+                        class="form-control"
+                        formControlName="subHeader"
+                      />
+                    </div>
+                  </ng-container>
                 </div>
-                <div class="form-group col-4">
-                  <label for="Header">Header</label>
-                  <input
-                    type="text"
-                    id="top-caraousel-header"
-                    name="top-caraousel-header"
-                    class="form-control"
-                    formControlName="header"
-                    [{ngModel}]="homePage.header"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="Sub-Header">Sub Header</label>
-                  <input
-                    type="text"
-                    id="top-caraousel-sub-header"
-                    name="top-caraousel-sub-header"
-                    class="form-control"
-                    formControlName="subHeader"
-                    [{ngModel}]="homePage.subHeader"
-                  />
-                </div>
-              </div>
+              </ng-container>
 
               <hr />
 
@@ -123,9 +127,7 @@
                     id="image"
                     name="image"
                     class="form-control"
-                    multiple
                     formControlName="image"
-                    [{ngModel}]="homePage.image"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -135,9 +137,7 @@
                     id="top-captiom"
                     name="top-captiom"
                     class="form-control"
-                    multiple
                     formControlName="topCaptiom1"
-                    [{ngModel}]="homePage.topCaptiom1"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -147,9 +147,7 @@
                     id="heading"
                     name="heading"
                     class="form-control"
-                    multiple
                     formControlName="heading1"
-                    [{ngModel}]="homePage.heading1"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -159,9 +157,7 @@
                     id="bottom-caption"
                     name="bottom-caption"
                     class="form-control"
-                    multiple
                     formControlName="bottomCaption1"
-                    [{ngModel}]="homePage.bottomCaption1"
                   />
                 </div>
               </div>
@@ -180,7 +176,6 @@
                     class="form-control"
                     multiple
                     formControlName="image1"
-                    [{ngModel}]="homePage.image1"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -190,9 +185,7 @@
                     id="top-captiom"
                     name="top-captiom"
                     class="form-control"
-                    multiple
                     formControlName="topCaptiom2"
-                    [{ngModel}]="homePage.topCaptiom2"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -202,9 +195,7 @@
                     id="heading"
                     name="heading"
                     class="form-control"
-                    multiple
                     formControlName="heading2"
-                    [{ngModel}]="homePage.heading2"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -214,9 +205,7 @@
                     id="bottom-caption"
                     name="bottom-caption"
                     class="form-control"
-                    multiple
                     formControlName="bottomCaption2"
-                    [{ngModel}]="homePage.bottomCaption2"
                   />
                 </div>
               </div>
@@ -227,89 +216,48 @@
                 Featured Mortgage Options Section 2 Sub Section 1
               </h5>
 
-              <div class="form-row w-100">
-                <div class="form-group col-4">
-                  <label for="image">Image</label>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    class="form-control"
-                    multiple
-                    formControlName="image2"
-                    [{ngModel}]="homePage.image2"
-                  />
+              <ng-container formArrayName="featuredMortgages">
+                <div
+                  class="form-row w-100"
+                  *ngFor="
+                    let featuredMortgage of featuredMortgages.controls;
+                    let i = index
+                  "
+                >
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-4">
+                      <label for="image2-{{ i }}">Image</label>
+                      <input
+                        type="file"
+                        id="image2-{{ i }}"
+                        name="image2"
+                        class="form-control"
+                        formControlName="image2"
+                      />
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="topCaptiom3-{{ i }}">Top-Captiom</label>
+                      <input
+                        type="text"
+                        id="top-captiom"
+                        name="topCaptiom3-{{ i }}"
+                        class="form-control"
+                        formControlName="topCaptiom3"
+                      />
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="heading3-{{ i }}">Heading</label>
+                      <input
+                        type="text"
+                        id="heading3-{{ i }}"
+                        name="heading3"
+                        class="form-control"
+                        formControlName="heading3"
+                      />
+                    </div>
+                  </ng-container>
                 </div>
-                <div class="form-group col-4">
-                  <label for="top-captiom">Top-Captiom</label>
-                  <input
-                    type="text"
-                    id="top-captiom"
-                    name="top-captiom"
-                    class="form-control"
-                    multiple
-                    formControlName="topCaptiom3"
-                    [{ngModel}]="homePage.topCaptiom3"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="heading">Heading</label>
-                  <input
-                    type="text"
-                    id="heading"
-                    name="heading"
-                    class="form-control"
-                    multiple
-                    formControlName="heading3"
-                    [{ngModel}]="homePage.heading3"
-                  />
-                </div>
-              </div>
-
-              <hr />
-
-              <h5 class="card-title">
-                Featured Mortgage Options Section 2 Sub Section 2
-              </h5>
-
-              <div class="form-row w-100">
-                <div class="form-group col-4">
-                  <label for="image">Image</label>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    class="form-control"
-                    multiple
-                    formControlName="image3"
-                    [{ngModel}]="homePage.image3"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="top-captiom">Top Captiom</label>
-                  <input
-                    type="text"
-                    id="top-captiom"
-                    name="top-captiom"
-                    class="form-control"
-                    multiple
-                    formControlName="topCaptiom4"
-                    [{ngModel}]="homePage.topCaptiom4"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="heading">Heading</label>
-                  <input
-                    type="text"
-                    id="heading"
-                    name="heading"
-                    class="form-control"
-                    multiple
-                    formControlName="heading4"
-                    [{ngModel}]="homePage.heading4"
-                  />
-                </div>
-              </div>
+              </ng-container>
 
               <hr />
 
@@ -327,7 +275,6 @@
                     class="form-control"
                     multiple
                     formControlName="video"
-                    [{ngModel}]="homePage.video"
                   />
                 </div>
               </div>
@@ -339,79 +286,65 @@
               </h5>
 
               <div class="form-row w-100">
-                <div class="form-group col-4">
+                <div class="form-group col-6">
                   <label for="main-heading">Main Heading</label>
                   <input
                     type="text"
                     id="main-heading"
                     name="main-heading"
                     class="form-control"
-                    multiple
                     formControlName="mainHeading"
-                    [{ngModel}]="homePage.mainHeading"
                   />
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-6">
                   <label for="sub-main-heading">Sub Main Heading</label>
                   <input
                     type="text"
                     id="sub-main-heading"
                     name="sub-main-heading"
                     class="form-control"
-                    multiple
                     formControlName="subMainHeading"
-                    [{ngModel}]="homePage.subMainHeading"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="sub-heading-1">Sub Heading 1</label>
-                  <input
-                    type="text"
-                    id="sub-heading-1"
-                    name="sub-heading-1"
-                    class="form-control"
-                    multiple
-                    formControlName="subHeading1"
-                    [{ngModel}]="homePage.subHeading1"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="sub-heading-2">Sub Heading 2</label>
-                  <input
-                    type="text"
-                    id="sub-heading-2"
-                    name="sub-heading-2"
-                    class="form-control"
-                    multiple
-                    formControlName="subHeading2"
-                    [{ngModel}]="homePage.subHeading2"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="sub-heading-3">Sub Heading 3</label>
-                  <input
-                    type="text"
-                    id="sub-heading-3"
-                    name="sub-heading-3"
-                    class="form-control"
-                    multiple
-                    formControlName="subHeading3"
-                    [{ngModel}]="homePage.subHeading3"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="sub-heading-4">Sub Heading 4</label>
-                  <input
-                    type="text"
-                    id="sub-heading-4"
-                    name="sub-heading-4"
-                    class="form-control"
-                    multiple
-                    formControlName="subHeading4"
-                    [{ngModel}]="homePage.subHeading4"
                   />
                 </div>
               </div>
+
+              <ng-container formArrayName="tipsForGettingAHomeMortgages">
+                <div
+                  class="form-row w-100"
+                  *ngFor="
+                    let tipsForGettingAHomeMortgage of tipsForGettingAHomeMortgages.controls;
+                    let i = index
+                  "
+                >
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-6">
+                      <label for="picture-{{ i }}"
+                        >Picture {{ ConvertToInt(i) + 1 }}</label
+                      >
+                      <input
+                        type="file"
+                        id="picture-{{ i }}"
+                        name="picture"
+                        class="form-control"
+                        formControlName="picture"
+                      />
+                    </div>
+
+                    <div class="form-group col-6">
+                      <label for="heading-{{ i }}"
+                        >Sub Heading {{ ConvertToInt(i) + 1 }}</label
+                      >
+                      <input
+                        type="text"
+                        id="heading-{{ i }}"
+                        name="heading"
+                        class="form-control"
+                        formControlName="heading"
+                      />
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
 
               <hr />
 
@@ -429,7 +362,6 @@
                     class="form-control"
                     multiple
                     formControlName="image4"
-                    [{ngModel}]="homePage.image4"
                   />
                 </div>
                 <div class="form-group col-4">
@@ -438,41 +370,61 @@
                     class="form-control"
                     rows="3"
                     formControlName="paragraph"
-                    [{ngModel}]="homePage.paragraph"
                   ></textarea>
                 </div>
               </div>
 
               <hr />
 
-              <h5 class="card-title">Our Customer Says</h5>
+              <h5 class="card-title">Testimonials</h5>
 
-              <div class="form-row w-100">
-                <div class="form-group col-4">
-                  <label for="comments">Comments</label>
-                  <input
-                    type="text"
-                    id="comments"
-                    name="comments"
-                    class="form-control"
-                    multiple
-                    formControlName="comments"
-                    [{ngModel}]="homePage.comments"
-                  />
+              <button
+                type="button"
+                (click)="addTestimonial()"
+                [disabled]="homePage.testimonials.length === 4"
+                class="btn btn-orange float-right mr-2 text-white"
+              >
+                Add
+              </button>
+
+              <ng-container formArrayName="testimonials">
+                <div
+                  class="form-row w-100"
+                  *ngFor="
+                    let testimonial of testimonials.controls;
+                    let i = index
+                  "
+                >
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-4">
+                      <label for="comments-{{ i }}">Comments</label>
+                      <input
+                        type="text"
+                        id="comments-{{ i }}"
+                        name="comments"
+                        class="form-control"
+                        formControlName="comments"
+                      />
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="names-{{ i }}">Names</label>
+                      <input
+                        type="text"
+                        id="names-{{ i }}"
+                        name="names"
+                        class="form-control"
+                        formControlName="names"
+                      />
+                    </div>
+                  </ng-container>
                 </div>
-                <div class="form-group col-4">
-                  <label for="names">Names</label>
-                  <input
-                    type="text"
-                    id="names"
-                    name="names"
-                    class="form-control"
-                    multiple
-                    formControlName="names"
-                    [{ngModel}]="homePage.names"
-                  />
-                </div>
-              </div>
+                <button
+                  type="button"
+                  class="btn btn-orange float-right mr-2 text-white"
+                >
+                  Save
+                </button>
+              </ng-container>
             </form>
           </div>
         </div>
