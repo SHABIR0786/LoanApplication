@@ -144,10 +144,16 @@ namespace LoanManagement.EntityFrameworkCore
                 {
                     Id = 1,
                     PageIdentifier = "app/home",
+                    PageName = "Home page",
                     PageSetting = JsonConvert.SerializeObject(
                     new
                     {
-                        Sliders = new List<string> { "", "" }
+                        Sliders = new List<string>
+                        {
+                            "assets/img/house.png",
+                            "assets/img/new-home.png"
+                        },
+                        Header = ""
                     })
                 });
             });
