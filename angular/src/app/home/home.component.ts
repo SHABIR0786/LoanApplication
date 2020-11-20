@@ -82,7 +82,7 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
       { image: "assets/img/calculator.svg", name: "Calculate Loan Rate" },
       { image: "assets/img/support.svg", name: "Speak With An Expert" },
       { image: "assets/img/agenda.svg", name: "Benefit Of Preapproval" },
-      { image: "assets/img/mortgage.svg", name: "Get A Free Quote" },
+      { image: "assets/img/mortgage.svg", name: " " },
     ];
   }
 

@@ -14,8 +14,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let page of pages">
-                <td>{{ page.name }}</td>
-                <td>{{ page.path }}</td>
+                <td>{{ page.pageName }}</td>
+                <td>{{ page.pageIdentifier }}</td>
                 <td>
                   <button
                     (click)="lgModal.show(); setPageId(page.id)"
@@ -45,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 id="dialog-sizes-name1" class="modal-title pull-left">
-          {{ currentPage ? pages[currentPage - 1].name : "" }}
+          {{ currentPage ? pages[currentPage - 1].pageName : "" }}
         </h4>
         <button
           type="button"
@@ -64,51 +64,53 @@
               [formGroup]="HomePageForm"
               (ngSubmit)="onSubmit()"
             >
-              <h5 class="card-title d-inline">Top Carousel</h5>
-              <button
-                type="button"
-                (click)="addMainCarousel()"
-                [disabled]="homePage.mainCarousels.length === 4"
-                class="btn btn-orange float-right mr-2 text-white"
-              >
-                Add
-              </button>
+              <ng-container formArrayName="MainCarousels">
+                <h5 class="card-title d-inline">Main Carousels</h5>
+                <button
+                  type="button"
+                  (click)="addMainCarousel()"
+                  [disabled]="MainCarousels.controls.length === 4"
+                  class="btn btn-orange float-right mr-2 text-white"
+                >
+                  Add
+                </button>
 
-              <ng-container formArrayName="mainCarousels">
                 <div
                   class="form-row w-100"
                   *ngFor="
-                    let mainCarousel of mainCarousels.controls;
+                    let mainCarousel of MainCarousels.controls;
                     let i = index
                   "
                 >
                   <ng-container [formGroupName]="i">
                     <div class="form-group col-4">
-                      <label for="slider-{{ i }}">Sliders</label>
+                      <label for="FilePath-{{ i }}">Sliders</label>
                       <input
-                        type="file"
+                        type="text"
+                        id="FilePath-{{ i }}"
+                        name="FilePath-{{ i }}"
                         class="form-control"
-                        formControlName="slider"
+                        formControlName="FilePath"
                       />
                     </div>
                     <div class="form-group col-4">
-                      <label for="header-{{ i }}">Header</label>
+                      <label for="Header-{{ i }}">Header</label>
                       <input
                         type="text"
-                        id="header-{{ i }}"
-                        name="header"
+                        id="Header-{{ i }}"
+                        name="Header-{{ i }}"
                         class="form-control"
-                        formControlName="header"
+                        formControlName="Header"
                       />
                     </div>
                     <div class="form-group col-4">
-                      <label for="subHeader-{{ i }}">Sub Header</label>
+                      <label for="SubHeader-{{ i }}">Sub Header</label>
                       <input
                         type="text"
-                        id="subHeader-{{ i }}"
-                        name="subHeader"
+                        id="SubHeader-{{ i }}"
+                        name="SubHeader"
                         class="form-control"
-                        formControlName="subHeader"
+                        formControlName="SubHeader"
                       />
                     </div>
                   </ng-container>
@@ -117,303 +119,299 @@
 
               <hr />
 
-              <h5 class="card-title">Featured Mortgage Options Section 1</h5>
+              <h5 class="card-title">First Blog</h5>
 
-              <div class="form-row w-100">
+              <div class="form-row w-100" formGroupName="FirstBlog">
                 <div class="form-group col-4">
                   <label for="image">Image</label>
                   <input
-                    type="file"
-                    id="image"
-                    name="image"
+                    type="text"
                     class="form-control"
-                    formControlName="image"
+                    formControlName="FilePath"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="top-captiom">Top Captiom</label>
+                  <label for="top-Caption">Header</label>
                   <input
                     type="text"
-                    id="top-captiom"
-                    name="top-captiom"
                     class="form-control"
-                    formControlName="topCaptiom1"
+                    formControlName="Header"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="heading">Heading</label>
+                  <label>Sub Header</label>
                   <input
                     type="text"
-                    id="heading"
-                    name="heading"
                     class="form-control"
-                    formControlName="heading1"
+                    formControlName="SubHeader"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="bottom-caption">Bottom Caption</label>
+                  <label>Description</label>
                   <input
-                    type="txet"
-                    id="bottom-caption"
-                    name="bottom-caption"
+                    type="text"
                     class="form-control"
-                    formControlName="bottomCaption1"
+                    formControlName="Description"
                   />
                 </div>
               </div>
 
               <hr />
 
-              <h5 class="card-title">Featured Mortgage Options Section 2</h5>
+              <h5 class="card-title">Second Blog</h5>
 
-              <div class="form-row w-100">
+              <div class="form-row w-100" formGroupName="SecondBlog">
                 <div class="form-group col-4">
-                  <label for="image">Image</label>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    class="form-control"
-                    multiple
-                    formControlName="image1"
-                  />
-                </div>
-                <div class="form-group col-4">
-                  <label for="top-captiom">Top-Captiom</label>
+                  <label>Image</label>
                   <input
                     type="text"
-                    id="top-captiom"
-                    name="top-captiom"
                     class="form-control"
-                    formControlName="topCaptiom2"
+                    formControlName="FilePath"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="heading">Heading</label>
+                  <label>Header</label>
                   <input
                     type="text"
-                    id="heading"
-                    name="heading"
                     class="form-control"
-                    formControlName="heading2"
+                    formControlName="Header"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="bottom-caption">Bottom Caption</label>
+                  <label>Sub Header</label>
                   <input
-                    type="txet"
-                    id="bottom-caption"
-                    name="bottom-caption"
+                    type="text"
                     class="form-control"
-                    formControlName="bottomCaption2"
+                    formControlName="SubHeader"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Description"
                   />
                 </div>
               </div>
 
               <hr />
 
-              <h5 class="card-title">
-                Featured Mortgage Options Section 2 Sub Section 1
-              </h5>
+              <h5 class="card-title">Third Blog</h5>
 
-              <ng-container formArrayName="featuredMortgages">
-                <div
-                  class="form-row w-100"
-                  *ngFor="
-                    let featuredMortgage of featuredMortgages.controls;
-                    let i = index
-                  "
-                >
-                  <ng-container [formGroupName]="i">
-                    <div class="form-group col-4">
-                      <label for="image2-{{ i }}">Image</label>
-                      <input
-                        type="file"
-                        id="image2-{{ i }}"
-                        name="image2"
-                        class="form-control"
-                        formControlName="image2"
-                      />
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="topCaptiom3-{{ i }}">Top-Captiom</label>
-                      <input
-                        type="text"
-                        id="top-captiom"
-                        name="topCaptiom3-{{ i }}"
-                        class="form-control"
-                        formControlName="topCaptiom3"
-                      />
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="heading3-{{ i }}">Heading</label>
-                      <input
-                        type="text"
-                        id="heading3-{{ i }}"
-                        name="heading3"
-                        class="form-control"
-                        formControlName="heading3"
-                      />
-                    </div>
-                  </ng-container>
-                </div>
-              </ng-container>
-
-              <hr />
-
-              <h5 class="card-title">
-                Your Independent Mortgage Broker In California Section
-              </h5>
-
-              <div class="form-row w-100">
+              <div class="form-row w-100" formGroupName="ThirdBlog">
                 <div class="form-group col-4">
-                  <label for="video">Video</label>
+                  <label>Image</label>
                   <input
-                    type="file"
-                    id="video"
-                    name="video"
+                    type="text"
                     class="form-control"
-                    multiple
-                    formControlName="video"
+                    formControlName="FilePath"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Header</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Header"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Description"
                   />
                 </div>
               </div>
 
               <hr />
 
-              <h5 class="card-title">
-                Tips For Getting A Home Mortgage In California Section 1
-              </h5>
+              <h5 class="card-title">Forth Blog</h5>
 
-              <div class="form-row w-100">
-                <div class="form-group col-6">
-                  <label for="main-heading">Main Heading</label>
+              <div class="form-row w-100" formGroupName="ForthBlog">
+                <div class="form-group col-4">
+                  <label>Image</label>
                   <input
                     type="text"
-                    id="main-heading"
-                    name="main-heading"
                     class="form-control"
-                    formControlName="mainHeading"
+                    formControlName="FilePath"
                   />
                 </div>
-                <div class="form-group col-6">
-                  <label for="sub-main-heading">Sub Main Heading</label>
+                <div class="form-group col-4">
+                  <label>Header</label>
                   <input
                     type="text"
-                    id="sub-main-heading"
-                    name="sub-main-heading"
                     class="form-control"
-                    formControlName="subMainHeading"
+                    formControlName="Header"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Description"
                   />
                 </div>
               </div>
 
-              <ng-container formArrayName="tipsForGettingAHomeMortgages">
-                <div
-                  class="form-row w-100"
-                  *ngFor="
-                    let tipsForGettingAHomeMortgage of tipsForGettingAHomeMortgages.controls;
-                    let i = index
-                  "
-                >
-                  <ng-container [formGroupName]="i">
-                    <div class="form-group col-6">
-                      <label for="picture-{{ i }}"
-                        >Picture {{ ConvertToInt(i) + 1 }}</label
-                      >
-                      <input
-                        type="file"
-                        id="picture-{{ i }}"
-                        name="picture"
-                        class="form-control"
-                        formControlName="picture"
-                      />
-                    </div>
-
-                    <div class="form-group col-6">
-                      <label for="heading-{{ i }}"
-                        >Sub Heading {{ ConvertToInt(i) + 1 }}</label
-                      >
-                      <input
-                        type="text"
-                        id="heading-{{ i }}"
-                        name="heading"
-                        class="form-control"
-                        formControlName="heading"
-                      />
-                    </div>
-                  </ng-container>
-                </div>
-              </ng-container>
-
               <hr />
 
-              <h5 class="card-title">
-                Tips For Getting A Home Mortgage In California Section 2
-              </h5>
+              <h5 class="card-title">Video Section</h5>
 
-              <div class="form-row w-100">
+              <div class="form-row w-100" formGroupName="VideoSection">
                 <div class="form-group col-4">
-                  <label for="image">Image</label>
+                  <label>Video</label>
                   <input
-                    type="file"
-                    id="image"
-                    name="image"
+                    type="text"
                     class="form-control"
-                    multiple
-                    formControlName="image4"
+                    formControlName="FilePath"
                   />
                 </div>
                 <div class="form-group col-4">
-                  <label for="paragraph">Paragraph</label>
+                  <label>Sub Header</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="SubHeader"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Header</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Header"
+                  />
+                </div>
+                <div class="form-group col-4">
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Description"
+                  />
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="card-title">Tips Section</h5>
+
+              <div class="form-row w-100">
+                <div class="form-group col-4">
+                  <label>Header</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="KnowAboutHeader"
+                  />
+                </div>
+
+                <h6 class="card-subtitle mb-2 text-muted">Checklist</h6>
+
+                <ng-template formGroupName="Checklist">
+                  <div class="form-group col-4">
+                    <label>Main Header</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="MainHeader"
+                    />
+                  </div>
+                  <div class="form-group col-4">
+                    <label>Checklist 1</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="Checklist1"
+                    />
+                  </div>
+                  <div class="form-group col-4">
+                    <label>Checklist 2</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="Checklist2"
+                    />
+                  </div>
+                  <div class="form-group col-4">
+                    <label>Checklist 3</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="Checklist3"
+                    />
+                  </div>
+                  <div class="form-group col-4">
+                    <label>Checklist 4</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="Checklist4"
+                    />
+                  </div>
+                </ng-template>
+
+                <div class="form-group col-4">
+                  <label>Slogan</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="Slogan"
+                  />
+                </div>
+                <div class="form-group col-8">
+                  <label>Slogan Checklist</label>
                   <textarea
                     class="form-control"
-                    rows="3"
-                    formControlName="paragraph"
+                    formControlName="SloganChecklist"
                   ></textarea>
                 </div>
               </div>
 
               <hr />
 
-              <h5 class="card-title">Testimonials</h5>
+              <ng-container formArrayName="Testimonials">
+                <h5 class="card-title">Testimonials</h5>
 
-              <button
-                type="button"
-                (click)="addTestimonial()"
-                [disabled]="homePage.testimonials.length === 4"
-                class="btn btn-orange float-right mr-2 text-white"
-              >
-                Add
-              </button>
+                <button
+                  type="button"
+                  (click)="addTestimonial()"
+                  [disabled]="Testimonials.controls.length === 4"
+                  class="btn btn-orange float-right mr-2 text-white"
+                >
+                  Add
+                </button>
 
-              <ng-container formArrayName="testimonials">
                 <div
                   class="form-row w-100"
                   *ngFor="
-                    let testimonial of testimonials.controls;
+                    let testimonial of Testimonials.controls;
                     let i = index
                   "
                 >
                   <ng-container [formGroupName]="i">
-                    <div class="form-group col-4">
-                      <label for="comments-{{ i }}">Comments</label>
+                    <div class="form-group col-6">
+                      <label for="Comment-{{ i }}">Comments</label>
                       <input
                         type="text"
-                        id="comments-{{ i }}"
-                        name="comments"
+                        id="Comment-{{ i }}"
+                        name="Comment"
                         class="form-control"
-                        formControlName="comments"
+                        formControlName="Comment"
                       />
                     </div>
-                    <div class="form-group col-4">
-                      <label for="names-{{ i }}">Names</label>
+                    <div class="form-group col-6">
+                      <label for="Author-{{ i }}">Author</label>
                       <input
                         type="text"
-                        id="names-{{ i }}"
-                        name="names"
+                        id="Author-{{ i }}"
+                        name="Author"
                         class="form-control"
-                        formControlName="names"
+                        formControlName="Author"
                       />
                     </div>
                   </ng-container>
