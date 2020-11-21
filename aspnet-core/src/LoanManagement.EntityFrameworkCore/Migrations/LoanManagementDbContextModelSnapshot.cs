@@ -1672,91 +1672,91 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 92, DateTimeKind.Local).AddTicks(9733),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 976, DateTimeKind.Local).AddTicks(1231),
                             IsDeleted = false,
                             Name = "Cash deposit on sales contract"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(491),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2588),
                             IsDeleted = false,
                             Name = "Certificate of Deposit"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(570),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2719),
                             IsDeleted = false,
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 4L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(575),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2733),
                             IsDeleted = false,
                             Name = "Gifts"
                         },
                         new
                         {
                             Id = 5L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(578),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2741),
                             IsDeleted = false,
                             Name = "Gift of equity"
                         },
                         new
                         {
                             Id = 6L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(581),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2748),
                             IsDeleted = false,
                             Name = "Money Market Fund"
                         },
                         new
                         {
                             Id = 7L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(585),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2755),
                             IsDeleted = false,
                             Name = "Mutual Funds"
                         },
                         new
                         {
                             Id = 8L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(588),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2763),
                             IsDeleted = false,
                             Name = "Net Proceeds from Real Estate Funds"
                         },
                         new
                         {
                             Id = 9L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(591),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2770),
                             IsDeleted = false,
                             Name = "Real Estate Owned"
                         },
                         new
                         {
                             Id = 10L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(595),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2776),
                             IsDeleted = false,
                             Name = "Retirement Funds"
                         },
                         new
                         {
                             Id = 11L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(598),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2783),
                             IsDeleted = false,
                             Name = "Savings Account"
                         },
                         new
                         {
                             Id = 12L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(601),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2789),
                             IsDeleted = false,
                             Name = "Stocks & Bonds"
                         },
                         new
                         {
                             Id = 13L,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 95, DateTimeKind.Local).AddTicks(605),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 979, DateTimeKind.Local).AddTicks(2796),
                             IsDeleted = false,
                             Name = "Trust Account"
                         });
@@ -2001,6 +2001,18 @@ namespace LoanManagement.Migrations
 
                     b.Property<bool?>("AgreeEConsent")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("CoborrowerAgreeEConsent")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("CoborrowerEmail")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CoborrowerFirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CoborrowerLastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2383,146 +2395,6 @@ namespace LoanManagement.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LoanManagement.Models.InformationForGovermentMonitoringPurpose", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("AgencyCaseNumber")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("InterviewHeldedThrough")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("LenderCaseNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LoanOriginationCompanyIdentifier")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginationCompanysAddress")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginationCompanysName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorIdentifier")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsPhoneNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsSignature")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("TenantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InformationForGovermentMonitoringPurposes");
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.InformationForGovermentMonitoringPurposeBorrowerAndCo", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("BorrowerTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("InformationForGovermentMonitoringPurposeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("LoanOriginationCompanyIdentifier")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginationCompanysAddress")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginationCompanysName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorIdentifier")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsPhoneNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LoanOriginatorsSignature")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("TenantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BorrowerTypeId");
-
-                    b.HasIndex("InformationForGovermentMonitoringPurposeId");
-
-                    b.ToTable("InformationForGovermentMonitoringPurposeBorrowerAndCos");
-                });
-
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
                 {
                     b.Property<long>("Id")
@@ -2859,6 +2731,58 @@ namespace LoanManagement.Migrations
                     b.ToTable("PersonalDetails");
                 });
 
+            modelBuilder.Entity("LoanManagement.Models.SiteSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PageIdentifier")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PageName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PageSetting")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteSettings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 993, DateTimeKind.Local).AddTicks(6563),
+                            IsDeleted = false,
+                            PageIdentifier = "app/home",
+                            PageName = "Home page",
+                            PageSetting = "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}"
+                        });
+                });
+
             modelBuilder.Entity("LoanManagement.Models.State", b =>
                 {
                     b.Property<int>("Id")
@@ -2897,413 +2821,413 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(4117),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(2089),
                             IsDeleted = false,
                             Name = "AL"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5827),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4860),
                             IsDeleted = false,
                             Name = "AK"
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5857),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4928),
                             IsDeleted = false,
                             Name = "AS"
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5862),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4942),
                             IsDeleted = false,
                             Name = "AZ"
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5866),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4950),
                             IsDeleted = false,
                             Name = "AR"
                         },
                         new
                         {
                             Id = 6,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5869),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4959),
                             IsDeleted = false,
                             Name = "CA"
                         },
                         new
                         {
                             Id = 7,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5872),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4966),
                             IsDeleted = false,
                             Name = "CO"
                         },
                         new
                         {
                             Id = 8,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5876),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4972),
                             IsDeleted = false,
                             Name = "CT"
                         },
                         new
                         {
                             Id = 9,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5879),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4979),
                             IsDeleted = false,
                             Name = "DE"
                         },
                         new
                         {
                             Id = 10,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5883),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4986),
                             IsDeleted = false,
                             Name = "DC"
                         },
                         new
                         {
                             Id = 11,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5886),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4993),
                             IsDeleted = false,
                             Name = "FM"
                         },
                         new
                         {
                             Id = 12,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5890),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(4999),
                             IsDeleted = false,
                             Name = "FL"
                         },
                         new
                         {
                             Id = 13,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5893),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5007),
                             IsDeleted = false,
                             Name = "GA"
                         },
                         new
                         {
                             Id = 14,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5897),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5013),
                             IsDeleted = false,
                             Name = "GU"
                         },
                         new
                         {
                             Id = 15,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5900),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5020),
                             IsDeleted = false,
                             Name = "HI"
                         },
                         new
                         {
                             Id = 16,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5904),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5027),
                             IsDeleted = false,
                             Name = "ID"
                         },
                         new
                         {
                             Id = 17,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5908),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5034),
                             IsDeleted = false,
                             Name = "IL"
                         },
                         new
                         {
                             Id = 18,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5911),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5040),
                             IsDeleted = false,
                             Name = "IN"
                         },
                         new
                         {
                             Id = 19,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5915),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5047),
                             IsDeleted = false,
                             Name = "IA"
                         },
                         new
                         {
                             Id = 20,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5918),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5054),
                             IsDeleted = false,
                             Name = "KS"
                         },
                         new
                         {
                             Id = 21,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5922),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5060),
                             IsDeleted = false,
                             Name = "KY"
                         },
                         new
                         {
                             Id = 22,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5926),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5067),
                             IsDeleted = false,
                             Name = "LA"
                         },
                         new
                         {
                             Id = 23,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5930),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5074),
                             IsDeleted = false,
                             Name = "ME"
                         },
                         new
                         {
                             Id = 24,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5933),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5080),
                             IsDeleted = false,
                             Name = "MH"
                         },
                         new
                         {
                             Id = 25,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5937),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5087),
                             IsDeleted = false,
                             Name = "MD"
                         },
                         new
                         {
                             Id = 26,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5941),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5251),
                             IsDeleted = false,
                             Name = "MA"
                         },
                         new
                         {
                             Id = 27,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5944),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5264),
                             IsDeleted = false,
                             Name = "MI"
                         },
                         new
                         {
                             Id = 28,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5948),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5271),
                             IsDeleted = false,
                             Name = "MN"
                         },
                         new
                         {
                             Id = 29,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5951),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5278),
                             IsDeleted = false,
                             Name = "MS"
                         },
                         new
                         {
                             Id = 30,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5955),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5285),
                             IsDeleted = false,
                             Name = "MO"
                         },
                         new
                         {
                             Id = 31,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5959),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5292),
                             IsDeleted = false,
                             Name = "MT"
                         },
                         new
                         {
                             Id = 32,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5963),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5299),
                             IsDeleted = false,
                             Name = "NE"
                         },
                         new
                         {
                             Id = 33,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5966),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5306),
                             IsDeleted = false,
                             Name = "NV"
                         },
                         new
                         {
                             Id = 34,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5970),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5313),
                             IsDeleted = false,
                             Name = "NH"
                         },
                         new
                         {
                             Id = 35,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5974),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5319),
                             IsDeleted = false,
                             Name = "NJ"
                         },
                         new
                         {
                             Id = 36,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(5977),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5326),
                             IsDeleted = false,
                             Name = "NM"
                         },
                         new
                         {
                             Id = 37,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6007),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5333),
                             IsDeleted = false,
                             Name = "NY"
                         },
                         new
                         {
                             Id = 38,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6010),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5340),
                             IsDeleted = false,
                             Name = "NC"
                         },
                         new
                         {
                             Id = 39,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6090),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5347),
                             IsDeleted = false,
                             Name = "ND"
                         },
                         new
                         {
                             Id = 40,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6093),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5353),
                             IsDeleted = false,
                             Name = "MP"
                         },
                         new
                         {
                             Id = 41,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6096),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5360),
                             IsDeleted = false,
                             Name = "OH"
                         },
                         new
                         {
                             Id = 42,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6099),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5367),
                             IsDeleted = false,
                             Name = "OK"
                         },
                         new
                         {
                             Id = 43,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6102),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5374),
                             IsDeleted = false,
                             Name = "OR"
                         },
                         new
                         {
                             Id = 44,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6105),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5381),
                             IsDeleted = false,
                             Name = "PW"
                         },
                         new
                         {
                             Id = 45,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6107),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5388),
                             IsDeleted = false,
                             Name = "PA"
                         },
                         new
                         {
                             Id = 46,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6110),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5395),
                             IsDeleted = false,
                             Name = "PR"
                         },
                         new
                         {
                             Id = 47,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6113),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5401),
                             IsDeleted = false,
                             Name = "RI"
                         },
                         new
                         {
                             Id = 48,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6116),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5408),
                             IsDeleted = false,
                             Name = "SC"
                         },
                         new
                         {
                             Id = 49,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6118),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5415),
                             IsDeleted = false,
                             Name = "SD"
                         },
                         new
                         {
                             Id = 50,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6121),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5422),
                             IsDeleted = false,
                             Name = "TN"
                         },
                         new
                         {
                             Id = 51,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6124),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5429),
                             IsDeleted = false,
                             Name = "TX"
                         },
                         new
                         {
                             Id = 52,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6127),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5436),
                             IsDeleted = false,
                             Name = "UT"
                         },
                         new
                         {
                             Id = 53,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6129),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5442),
                             IsDeleted = false,
                             Name = "VT"
                         },
                         new
                         {
                             Id = 54,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6132),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5449),
                             IsDeleted = false,
                             Name = "VI"
                         },
                         new
                         {
                             Id = 55,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6135),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5456),
                             IsDeleted = false,
                             Name = "VA"
                         },
                         new
                         {
                             Id = 56,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6138),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5463),
                             IsDeleted = false,
                             Name = "WA"
                         },
                         new
                         {
                             Id = 57,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6141),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5470),
                             IsDeleted = false,
                             Name = "WV"
                         },
                         new
                         {
                             Id = 58,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6144),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5477),
                             IsDeleted = false,
                             Name = "WI"
                         },
                         new
                         {
                             Id = 59,
-                            CreationTime = new DateTime(2020, 10, 11, 1, 0, 40, 100, DateTimeKind.Local).AddTicks(6147),
+                            CreationTime = new DateTime(2020, 11, 21, 5, 57, 59, 989, DateTimeKind.Local).AddTicks(5483),
                             IsDeleted = false,
                             Name = "WY"
                         });
@@ -3712,19 +3636,6 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("LoanManagement.Models.InformationForGovermentMonitoringPurposeBorrowerAndCo", b =>
-                {
-                    b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
-                        .WithMany()
-                        .HasForeignKey("BorrowerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanManagement.Models.InformationForGovermentMonitoringPurpose", null)
-                        .WithMany("InformationForGovermentMonitoringPurposeBorrowerAndCo")
-                        .HasForeignKey("InformationForGovermentMonitoringPurposeId");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
