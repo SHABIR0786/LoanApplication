@@ -36,19 +36,24 @@ namespace LoanManagement.DatabaseServices.Implementations
         public async Task<PagedResultDto<SiteSettingDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             var query = _repository.GetAll();
-            var siteSettingsTask = query.Skip(input.SkipCount).Take(input.MaxResultCount)
+            var siteSettingsTask = await query.Skip(input.SkipCount).Take(input.MaxResultCount)
                 .ProjectTo<SiteSettingDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
-            var countTask = _repository.CountAsync();
+            var countTask = await _repository.CountAsync();
 
-            await Task.WhenAll(siteSettingsTask, countTask);
-
-            return new PagedResultDto<SiteSettingDto>(countTask.Result, siteSettingsTask.Result);
+            return new PagedResultDto<SiteSettingDto>(countTask, siteSettingsTask);
         }
 
-        public Task<SiteSettingDto> GetAsync(EntityDto<int> input)
+        public async Task<SiteSettingDto> GetAsync(EntityDto<int> input)
         {
-            throw new System.NotImplementedException();
+            var model = await _repository.GetAsync(input.Id);
+            return new SiteSettingDto
+            {
+                Id = model.Id,
+                PageIdentifier = model.PageIdentifier,
+                PageName = model.PageName,
+                PageSetting = model.PageSetting
+            };
         }
 
         public async Task<SiteSettingDto> UpdateAsync(SiteSettingDto input)
