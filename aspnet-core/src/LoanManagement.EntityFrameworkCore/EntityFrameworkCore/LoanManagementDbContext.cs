@@ -166,41 +166,42 @@ namespace LoanManagement.EntityFrameworkCore
                         },
                         SecondBlog = new
                         {
-                            FilePath = "assets/img/house.png",
+                            FilePath = "assets/img/living-room.png",
                             Header = "Conventional Jombo Rate",
                             SubHeader = "GET A NO-HASSLE LOAN FOR UP TO $697,650",
                             Description = "Save cash with a low-rate conventional loan up to"
                         },
                         ThirdBlog = new
                         {
-                            FilePath = "assets/img/house.png",
+                            FilePath = "assets/img/money.png",
                             Header = "Tap Into Your Equity",
                             SubHeader = "",
                             Description = "We offer unique programs that let you refinance up"
                         },
                         ForthBlog = new
                         {
-                            FilePath = "assets/img/house.png",
+                            FilePath = "assets/img/new-home.png",
                             Header = "Purchase Your Dream Home",
                             SubHeader = "",
                             Description = "Your dream home may no longer be a dream"
                         },
                         VideoSection = new
                         {
-                            FilePath = "",
+                            FilePath = "assets/img/Image 16.png",
                             Header = "Know about",
                             SubHeader = "YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA",
-                            Description = ""
+                            Description = "To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction."
                         },
                         KnowAboutHeader = "Tips For Getting A Home Mortgage In California",
+                        ChecklistMainHeader = "How To Apply For Your Loan",
                         Checklist = new
                         {
-                            MainHeader = "How To Apply For Your Loan",
                             Checklist1 = "Calculate Loan Rate",
                             Checklist2 = "Speak With An Expert",
                             Checklist3 = "Benefit Of Preapproval",
                             Checklist4 = "Get A Free Quote",
                         },
+                        SloganImage = "assets/img/finance.png",
                         Slogan = "Work With A High-Tech Mortgage Loan Broker",
                         SloganChecklist = "Our easy-to-use online tools streamline the mortgage process.\n" +
                                            "Get mortgage estimates, instant rate quotes, and access to our online calculators.\n" +
