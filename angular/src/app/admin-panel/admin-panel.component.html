@@ -357,15 +357,16 @@
                   />
                 </div>
 
-                <ng-template formGroupName="Checklist">
-                  <div class="form-group col-6">
-                    <label>Main Header</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="ChecklistMainHeader"
-                    />
-                  </div>
+                <div class="form-group col-6">
+                  <label>Main Header</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ChecklistMainHeader"
+                  />
+                </div>
+
+                <ng-container formGroupName="Checklist">
                   <div class="form-group col-6">
                     <label>Checklist 1</label>
                     <input
@@ -398,7 +399,7 @@
                       formControlName="Checklist4"
                     />
                   </div>
-                </ng-template>
+                </ng-container>
 
                 <div class="form-group col-6">
                   <label>Slogan</label>
