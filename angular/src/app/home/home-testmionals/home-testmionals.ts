@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit } from "@angular/core";
+import { Component, DoCheck, Input, OnInit } from "@angular/core";
+import { CommonHomeCard } from "common";
 import { CarouselConfig } from "ngx-bootstrap/carousel";
 
 @Component({
@@ -13,28 +14,9 @@ import { CarouselConfig } from "ngx-bootstrap/carousel";
   ],
 })
 export class HomeTestmionals implements DoCheck, OnInit {
-  testmionals = [];
+  @Input() data: CommonHomeCard[];
 
-  loadTestmionals() {
-    this.testmionals = [
-      {
-        id: 1,
-        comment:
-          " Thanks you for all your help in making the mortgage process gosmoothlyl my husband and i couldn,t have done it without you",
-        name: "Anne Davidson (San Francisco, CA)",
-      },
-      {
-        id: 2,
-        comment:
-          "Thanks you for all your help in making the mortgage process gosmoothlyl ",
-        name: "HELLO (San Francisco, CA)",
-      },
-    ];
-  }
+  ngOnInit(): void {}
 
   ngDoCheck(): void {}
-
-  ngOnInit(): void {
-    this.loadTestmionals();
-  }
 }

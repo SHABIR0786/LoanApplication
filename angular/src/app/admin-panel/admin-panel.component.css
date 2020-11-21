@@ -22,3 +22,8 @@ textarea {
 td {
   font-weight: 700px;
 }
+
+.modal-dialog {
+  max-width: none;
+  width: 60%;
+}

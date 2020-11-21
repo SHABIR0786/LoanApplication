@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { CommonHomeCard } from "common";
 
 @Component({
   templateUrl: "./home-main-carousel.html",
@@ -6,16 +7,14 @@ import { Component, DoCheck, OnInit } from "@angular/core";
   selector: "home-main-carousel",
 })
 export class HomeMainCarousel implements OnInit {
-  mainImage: object = {
-    background: "url('assets/img/house.png') no-repeat 0% 0% no-repeat",
-  };
-  caption: string = "Best California Home Loans";
+  @Input() data: CommonHomeCard[];
+  parsedData: CommonHomeCard[];
 
-  mainImage1: object = {
-    background: "url('assets/img/new-home.png') 0% 0% no-repeat",
-    "background-size": "100% 100%",
-  };
-  caption1: string = "Best California House Loans";
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.data = this.data.map((i) => {
+      i.background = `url('${i.FilePath}')`;
+      return i;
+    });
+    console.log(this.data);
+  }
 }
