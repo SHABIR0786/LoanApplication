@@ -1,15 +1,10 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import {
-  IFeaturedMortgage,
-  IMainCarousel,
-  ITestimonial,
-  ITipsForGettingAHomeMortgage,
-} from "./types";
 import { SiteSettingService } from "../services/siteSetting.service";
 import {
   CommonHomeCard,
   HomeSettings,
+  PageResult,
   Result,
   SiteSettings,
   Testimonial,
@@ -79,8 +74,9 @@ export class AdminPanelComponent implements OnInit, DoCheck {
         Description: [""],
       }),
       KnowAboutHeader: this.fb.control(""),
+
+      ChecklistMainHeader: this.fb.control(""),
       Checklist: this.fb.group({
-        MainHeader: [""],
         Checklist1: [""],
         Checklist2: [""],
         Checklist3: [""],
@@ -88,6 +84,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
       }),
       Slogan: this.fb.control(""),
       SloganChecklist: this.fb.control(""),
+      SloganImage: this.fb.control(""),
       Testimonials: this.fb.array(
         new Array(1).fill(
           this.initTestimonials({
@@ -105,7 +102,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
         maxResultCount: 10,
         skipCount: 0,
       })
-      .subscribe((response: Result<SiteSettings>) => {
+      .subscribe((response: Result<PageResult<SiteSettings>>) => {
         this.pages = response.result.items;
         console.log(this.pages);
       });
@@ -196,9 +193,9 @@ export class AdminPanelComponent implements OnInit, DoCheck {
             SubHeader: [data.VideoSection.SubHeader],
             Description: [data.VideoSection.Description],
           }),
-          KnowAboutHeader: this.fb.control(""),
+          KnowAboutHeader: this.fb.control(data.KnowAboutHeader),
+          ChecklistMainHeader: this.fb.control(data.ChecklistMainHeader),
           Checklist: this.fb.group({
-            MainHeader: [data.Checklist.MainHeader],
             Checklist1: [data.Checklist.Checklist1],
             Checklist2: [data.Checklist.Checklist2],
             Checklist3: [data.Checklist.Checklist3],
@@ -206,6 +203,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
           }),
           Slogan: this.fb.control(data.Slogan),
           SloganChecklist: this.fb.control(data.SloganChecklist),
+          SloganImage: this.fb.control(data.SloganImage),
           Testimonials: this.fb.array(
             data.Testimonials.map((i) => this.initTestimonials(i))
           ),
