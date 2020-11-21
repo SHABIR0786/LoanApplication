@@ -2,7 +2,7 @@
 <div class="bg-light">
   <!-- BEST CALIFORNIA HOME LOANS SECTION START -->
 
-  <home-main-carousel></home-main-carousel>
+  <home-main-carousel [data]="data.MainCarousels"></home-main-carousel>
 
   <!-- BEST CALIFORNIA HOME LOANS SECTION END -->
 
@@ -177,8 +177,13 @@
       <div class="row p-0 m-0">
         <div
           class="col-4 img-fluid"
-          style="padding: unset; background-size: 100% 100%"
-          [ngStyle]="featuredMortgageImage"
+          style="
+            padding: unset;
+            background-size: 100% 48.2% !important;
+            background-repeat: no-repeat !important;
+            background-origin: content-box !important;
+          "
+          [style.background]="[data.FirstBlog.background]"
         >
           <div
             class="img-fluid"
@@ -195,13 +200,13 @@
               style="margin: 0px 0px 0px 5px; padding: 30px; display: block"
             >
               <p class="font-weight-bold ml-3 text-white">
-                {{ getANoHassleLoan }}
+                {{ data.FirstBlog.Header }}
               </p>
               <h5 class="font-weight-bold ml-3 text-white">
-                {{ fastClosing }}
+                {{ data.FirstBlog.SubHeader }}
               </h5>
               <p class="font-weight-bold ml-3 text-white">
-                {{ takeAdvantage }}
+                {{ data.FirstBlog.Description }}
               </p>
               <a class="font-weight-bold ml-3 text-orange">
                 Read More
@@ -212,8 +217,13 @@
         </div>
         <div
           class="col-8 img-fluid"
-          style="padding-left: 18px; padding-right: 0px"
-          [ngStyle]="featuredMortgageImage1"
+          style="
+            padding-left: 18px;
+            padding-right: 0px;
+            background-size: 100% 100% !important;
+            background-repeat: no-repeat !important;
+          "
+          [style.background]="[data.SecondBlog.background]"
         >
           <div
             class="img-fluid"
@@ -228,10 +238,10 @@
             <div class="row">
               <div class="col-6" style="padding: 20px">
                 <h5 class="font-weight-bold ml-3 text-white">
-                  {{ conventionalJomboRate }}
+                  {{ data.SecondBlog.Header }}
                 </h5>
                 <p class="text-white ml-3">
-                  {{ saveCash }}
+                  {{ data.SecondBlog.SubHeader }}
                 </p>
                 <a class="font-weight-bold ml-3 text-dark-blue-3">
                   Read More
@@ -243,26 +253,32 @@
                   class="font-weight-bold text-white"
                   style="margin-top: 63px"
                 >
-                  {{ getANoHassleLoan1 }}
+                  {{ data.SecondBlog.Description }}
                 </h5>
               </div>
             </div>
           </div>
           <div class="row" style="margin-top: 1rem !important">
-            <div
-              class="col-6"
-              *ngFor="let featuredMortgageImage of featuredMortgageImages"
-            >
-              <img
-                class="img-fluid"
-                [src]="featuredMortgageImage.image"
-                alt=""
-              />
+            <div class="col-6">
+              <img class="img-fluid" [src]="data.ThirdBlog.FilePath" alt="" />
               <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
-                {{ featuredMortgageImage.caption }}
+                {{ data.ThirdBlog.Header }}
               </h5>
               <p class="font-weight-bold ml-3 text-grey">
-                {{ featuredMortgageImage.para }}
+                {{ data.ThirdBlog.Description }}
+              </p>
+              <p class="font-weight-bold ml-3 text-orange">
+                Read More
+                <i class="text-orange fas fa-long-arrow-alt-right"></i>
+              </p>
+            </div>
+            <div class="col-6">
+              <img class="img-fluid" [src]="data.ForthBlog.FilePath" alt="" />
+              <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
+                {{ data.ForthBlog.Header }}
+              </h5>
+              <p class="font-weight-bold ml-3 text-grey">
+                {{ data.ForthBlog.Description }}
               </p>
               <p class="font-weight-bold ml-3 text-orange">
                 Read More
@@ -318,7 +334,7 @@
         </p>
         <div class="col-4 pl-4 img-fluid" style="z-index: 3; top: -4rem">
           <img
-            [src]="youIndenentVideo"
+            [src]="data.VideoSection.FilePath"
             alt=""
             style="
               background: #091a52 0% 0% no-repeat padding-box;
@@ -339,16 +355,17 @@
             <div class="col-6 bg-dark-blue"></div>
 
             <div class="col-6 bg-dark-blue">
-              <p class="text-orange font-weight-bold mt-5">Know About</p>
+              <p class="text-orange font-weight-bold mt-5">
+                {{ data.VideoSection.Header }}
+              </p>
               <h3
                 class="text-white font-weight-bold mt-4"
                 style="line-height: 1.7; letter-spacing: 1px"
               >
-                YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA
+                {{ data.VideoSection.SubHeader }}
               </h3>
               <p class="text-white mt-4">
-                To make sure all borrowers get the best mortgage rate and loan
-                program with excellent customer service and satisfaction.
+                {{ data.VideoSection.Description }}
               </p>
             </div>
           </div>
@@ -370,7 +387,7 @@
             class="text-dark-blue font-weight-bold text-wrap mt-4 mb-5"
             style="letter-spacing: 1.5px; word-spacing: 1px; width: 83rem"
           >
-            {{ tips }}
+            {{ data.KnowAboutHeader }}
           </h4>
         </div>
       </div>
@@ -381,25 +398,52 @@
           <div class="text-white bg-dark-blue content">
             <img class="img-fluid pic1" src="assets/img/mortgage.svg" alt="" />
             <h5 class="font-weight-bold d-inline">
-              {{ howToApplyLoan }}
+              {{ data.ChecklistMainHeader }}
             </h5>
           </div>
-          <div
-            class="mt-6 ml-5"
-            *ngFor="let calculateLoanRate of calculateLoanRates"
-          >
+          <div class="mt-6 ml-5">
             <span class="d-inline-block bg-orange" style="width: 7%">
-              <img [src]="calculateLoanRate.image" />
+              <img src="assets/img/calculator.svg" />
             </span>
 
             <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
-              {{ calculateLoanRate.name }}
+              {{ data.Checklist.Checklist1 }}
+            </h5>
+          </div>
+
+          <div class="mt-6 ml-5">
+            <span class="d-inline-block bg-orange" style="width: 7%">
+              <img src="assets/img/support.svg" />
+            </span>
+
+            <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
+              {{ data.Checklist.Checklist2 }}
+            </h5>
+          </div>
+
+          <div class="mt-6 ml-5">
+            <span class="d-inline-block bg-orange" style="width: 7%">
+              <img src="assets/img/agenda.svg" />
+            </span>
+
+            <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
+              {{ data.Checklist.Checklist3 }}
+            </h5>
+          </div>
+
+          <div class="mt-6 ml-5">
+            <span class="d-inline-block bg-orange" style="width: 7%">
+              <img src="assets/img/mortgage.svg" />
+            </span>
+
+            <h5 class="font-weight-bold d-inline ml-3 text-dark-blue">
+              {{ data.Checklist.Checklist4 }}
             </h5>
           </div>
         </div>
         <div class="col-6 pl-4">
           <div>
-            <img [src]="tipsSectionImage" alt="finance" />
+            <img [src]="data.SloganImage" alt="finance" />
           </div>
           <div
             class="card"
@@ -419,20 +463,20 @@
                 class="text-dark-blue font-weight-bold mt-3"
                 style="padding-left: 18px"
               >
-                Work With A High-Tech Mortgage Loan Broker
+                {{ data.Slogan }}
               </h5>
             </div>
             <div class="card-body">
               <div
                 class="row p-0 m-0"
-                *ngFor="let workWithLoanBroker of workWithLoanBrokers"
+                *ngFor="let sloganChecklist of this.sloganChecklist"
               >
                 <div class="col-1">
                   <img src="assets/img/foursquare-check-in.svg" alt="" />
                 </div>
                 <div class="col-11">
                   <p>
-                    {{ workWithLoanBroker }}
+                    {{ sloganChecklist }}
                   </p>
                 </div>
               </div>
@@ -456,7 +500,7 @@
 
   <!-- TESTIMONIALS SECTION START -->
 
-  <home-testmionals> </home-testmionals>
+  <home-testmionals [data]="data.Testimonials"> </home-testmionals>
 
   <!-- TESTIMONIALS SECTION END -->
 
