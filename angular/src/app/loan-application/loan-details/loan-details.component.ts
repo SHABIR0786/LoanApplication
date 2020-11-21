@@ -233,12 +233,17 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     this.form
       .get("downPaymentAmount")
       .valueChanges.subscribe((downPaymentAmount) => {
-        const currentDownPaymentPercentage = this.form.get(
+        let currentDownPaymentPercentage = this.form.get(
           "downPaymentPercentage"
         ).value;
         if (downPaymentAmount) {
-          const estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
+          if (typeof downPaymentAmount === "number")
+            downPaymentAmount = downPaymentAmount.toString();
+
+          downPaymentAmount = downPaymentAmount.replace("/,/g", "");
+          let estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
             .value;
+          estimatedPurchasePrice = estimatedPurchasePrice?.replace("/,/g", "");
           const percentage = (downPaymentAmount / estimatedPurchasePrice) * 100;
 
           if (currentDownPaymentPercentage !== percentage)
@@ -255,8 +260,10 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         const currentDownPaymentAmount = this.form.get("downPaymentAmount")
           .value;
         if (downPaymentPercentage) {
-          const estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
+          let estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
             .value;
+
+          estimatedPurchasePrice = estimatedPurchasePrice?.replace("/,/g", "");
           const downPaymentAmount =
             (downPaymentPercentage / 100) * estimatedPurchasePrice;
 
