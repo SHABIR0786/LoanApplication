@@ -1,11 +1,5 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import {
-  IFeaturedMortgage,
-  IMainCarousel,
-  ITestimonial,
-  ITipsForGettingAHomeMortgage,
-} from "./types";
+import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { SiteSettingService } from "../services/siteSetting.service";
 import {
   CommonHomeCard,
@@ -24,6 +18,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
   pages: SiteSettings[] = [];
   currentPage?: number = null;
   HomePageForm: FormGroup;
+  HomePage: HomeSettings;
 
   get MainCarousels(): FormArray {
     return this.HomePageForm.get("MainCarousels") as FormArray;
@@ -218,6 +213,13 @@ export class AdminPanelComponent implements OnInit, DoCheck {
             data.Testimonials.map((i) => this.initTestimonials(i))
           ),
         });
+
+        this.HomePageForm.get("MainCarousels").valueChanges.subscribe(
+          (value: CommonHomeCard[]) => {
+            debugger;
+            console.log(value);
+          }
+        );
         break;
 
       default:
@@ -227,9 +229,40 @@ export class AdminPanelComponent implements OnInit, DoCheck {
 
   onSubmit() {}
 
-  ngDoCheck() {}
+  ngDoCheck() {
+    this.HomePage = this.HomePageForm.value;
+  }
 
   ConvertToInt(val: any) {
     return parseInt(val);
+  }
+
+  showPreview(event: { target: HTMLInputElement }, id: string, index: number) {
+    const file = (event.target as HTMLInputElement).files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      switch (id) {
+        case "MainCarousels":
+          this.HomePage.MainCarousels[index].FilePath = result;
+          break;
+        case "FirstBlog":
+          this.HomePage.FirstBlog.FilePath = result;
+          break;
+        case "SecondBlog":
+          this.HomePage.SecondBlog.FilePath = result;
+          break;
+        case "ThirdBlog":
+          this.HomePage.ThirdBlog.FilePath = result;
+          break;
+        case "ForthBlog":
+          this.HomePage.ForthBlog.FilePath = result;
+          break;
+        default:
+          break;
+      }
+    };
+    reader.readAsDataURL(file);
   }
 }
