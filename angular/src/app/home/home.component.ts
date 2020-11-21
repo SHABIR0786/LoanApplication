@@ -7,6 +7,8 @@ import {
 } from "@angular/core";
 import { AppComponentBase } from "@shared/app-component-base";
 import { appModuleAnimation } from "@shared/animations/routerTransition";
+import { HomeSettings, Result, SiteSettings } from "common";
+import { SiteSettingService } from "@app/services/siteSetting.service";
 
 @Component({
   templateUrl: "./home.component.html",
@@ -15,43 +17,16 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
-  constructor(injector: Injector) {
+  constructor(
+    injector: Injector,
+    private siteSettingService: SiteSettingService
+  ) {
     super(injector);
   }
 
-  // FEATURED MORTGAGE COL-4 SECTION
-
-  featuredMortgageImage: Object = {
-    background: "url('assets/img/house-1.png') 0% 0% no-repeat",
-    "background-size": "100% 100%",
-  };
-  getANoHassleLoan: string = "GET A NO-HASSLE LOAN FOR UP TO $697,650";
-  fastClosing: string = "Fast Closing FHA Loans";
-  takeAdvantage: string = "Take Advantage of our FHA Elite Rates starting at…";
-
-  // FEATURED MORTGAGE COL-8 SECTION
-
-  featuredMortgageImage1: object = {
-    background: "url('assets/img/living-room.png') 0% 0% no-repeat",
-    "background-size": "100% 48.2%",
-    "background-origin": "content-box",
-  };
-  conventionalJomboRate: string = "Conventional Jombo Rate";
-  saveCash: string = "Save cash with a low-rate conventional loan up to…";
-  getANoHassleLoan1: string = "GET A NO-HASSLE LOAN FOR UP TO $697,650";
-
-  featuredMortgageImages = [];
-
-  // TIPS SECTION
-  tips: string = "Tips For Getting A Home Mortgage In California";
-  howToApplyLoan: string = "How To Apply For Your Loan";
-  tipsSectionImage: string = "assets/img/finance.png";
-  workWithLoanBrokers: string[] = [];
-  calculateLoanRates = [];
-
-  // YOUR INDEPENDENT SECTION
-  youIndenentVideo: string = "assets/img/Image 16.png";
-
+  isDataLoaded: boolean = false;
+  data: HomeSettings;
+  sloganChecklist: string[];
   // FORM SECTION
   firstName: string = "";
   lastName: string = "";
@@ -59,41 +34,6 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
   phoneNumber?: number = null;
   mortgagePurposes = [];
   howDoYouWantToBorrows = [];
-
-  // FEATURED MORTGAGE COL-8 SECTION
-  loadFeaturedMortgageImages() {
-    this.featuredMortgageImages = [
-      {
-        image: "assets/img/money.png",
-        caption: "Tap Into Your Equity",
-        para: "We offer unique programs that let you refinance up…",
-      },
-      {
-        image: "assets/img/new-home.png",
-        caption: "Purchase Your Dream Home",
-        para: "Your dream home may no longer be a dream…",
-      },
-    ];
-  }
-
-  // TIPS SECTION
-  loadCalculateLoanRates() {
-    this.calculateLoanRates = [
-      { image: "assets/img/calculator.svg", name: "Calculate Loan Rate" },
-      { image: "assets/img/support.svg", name: "Speak With An Expert" },
-      { image: "assets/img/agenda.svg", name: "Benefit Of Preapproval" },
-      { image: "assets/img/mortgage.svg", name: " " },
-    ];
-  }
-
-  loadWorkWithLoanBrokers() {
-    this.workWithLoanBrokers = [
-      "Our easy-to-use online tools streamline the mortgage process.",
-      "Get mortgage estimates, instant rate quotes, and access to our online calculators.",
-      "Loan applications can be done entirely online (or via fax) on our secure portal.",
-      "Receive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop",
-    ];
-  }
 
   // FORM SECTION
   loadMortgagePurposes() {
@@ -117,10 +57,22 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
   ngDoCheck() {}
 
   ngOnInit() {
-    this.loadMortgagePurposes();
+    this.siteSettingService
+      .get("Index/id/1")
+      .subscribe((response: Result<SiteSettings>) => {
+        const homeSettings: HomeSettings = JSON.parse(
+          response.result.pageSetting
+        );
+        this.data = homeSettings;
+        this.data.FirstBlog.background = `url('${this.data.FirstBlog.FilePath}')`;
+        this.data.SecondBlog.background = `url('${this.data.SecondBlog.FilePath}')`;
+        this.sloganChecklist = this.data.SloganChecklist.split("\n");
+        console.clear();
+        console.log(this.data);
+
+        this.isDataLoaded = true;
+      });
+
     this.loadHowDoYouWantToBorrows();
-    this.loadWorkWithLoanBrokers();
-    this.loadCalculateLoanRates();
-    this.loadFeaturedMortgageImages();
   }
 }

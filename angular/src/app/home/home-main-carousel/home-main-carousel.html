@@ -1,13 +1,13 @@
 <carousel>
-  <slide>
+  <slide *ngFor="let item of data">
     <div
       class="carousel-slider-img"
       style="
-        background: url('assets/img/house.png') no-repeat;
-        background-size: 100% 100%;
-        height: 500px;
+        height: 500px !important;
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
       "
-      [ngStyle]="mainImage"
+      [style.background]="[item.background]"
     >
       <div class="row p-0 m-0">
         <div class="col-1 mt-3">
@@ -61,7 +61,7 @@
               line-height: 1.5;
             "
           >
-            {{caption}}
+            {{item.Header}}
           </h1>
           <h5
             class="text-white mb-5 mt-4"
@@ -71,93 +71,7 @@
               font: normal normal medium 26px/35px Avenir;
             "
           >
-            Better Rate then banks, Better customer services
-          </h5>
-          <div class="mt-5" style="text-transform: uppercase">
-            <button type="button" class="btn btn-light-blue text-white">
-              BUYING A HOME
-            </button>
-            <button
-              type="button"
-              class="btn btn-orange text-white d-inline ml-4"
-            >
-              REFINANCE <i class="fas fa-long-arrow-alt-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </slide>
-
-  <slide>
-    <div
-      class="carousel-slider-img"
-      style="background-size: 100% 100%; height: 500px"
-      [ngStyle]="mainImage1"
-    >
-      <div class="row p-0 m-0">
-        <div class="col-1 mt-3">
-          <div class="mt-5">
-            <img
-              class="img-fluid ml-3 mb-3 i-circle"
-              src="assets/img/facebook.svg"
-              alt="facebook"
-            />
-            <img
-              class="img-fluid ml-3 mb-3 i-circle"
-              src="assets/img/twitter-2.svg"
-              alt="twitter"
-            />
-            <i
-              class="fab fa-instagram img-fluid ml-3 mb-3 i-circle text-white"
-            ></i>
-            <img
-              class="img-fluid ml-3 mb-3 i-circle"
-              src="assets/img/pinterest.svg"
-              alt="pinterest"
-            />
-            <img
-              class="img-fluid ml-3 mb-3 i-circle"
-              src="assets/img/youtube-2.svg"
-              alt="youtube"
-            />
-          </div>
-          <p
-            style="
-              writing-mode: vertical-rl;
-              color: #ffffff;
-              font-size: 13px;
-              text-transform: uppercase;
-              opacity: 1;
-              margin-left: 22px;
-              margin-top: 10px;
-              letter-spacing: 2px;
-            "
-          >
-            SCROLL DOWN <i class="fas fa-long-arrow-alt-down"></i>
-          </p>
-        </div>
-        <div class="col-11 mt-5">
-          <h1
-            class="font-weight-bold text-white"
-            style="
-              letter-spacing: 1.51px;
-              text-shadow: 0px 3px 6px #00000029;
-              font-size: 55px;
-              line-height: 1.5;
-            "
-          >
-            {{caption1}}
-          </h1>
-          <h5
-            class="text-white mb-5 mt-4"
-            style="
-              letter-spacing: 0px;
-              text-shadow: 0px 3px 6px #00000029;
-              font: normal normal medium 26px/35px Avenir;
-            "
-          >
-            Better Rate then banks, Better customer services
+            {{item.SubHeader}}
           </h5>
           <div class="mt-5" style="text-transform: uppercase">
             <button type="button" class="btn btn-light-blue text-white">
