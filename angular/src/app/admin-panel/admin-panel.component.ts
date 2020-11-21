@@ -43,40 +43,46 @@ export class AdminPanelComponent implements OnInit, DoCheck {
           this.initMainCarousel({
             Description: "",
             FilePath: "",
+            File: null,
             Header: "",
             SubHeader: "",
           })
         )
       ),
       FirstBlog: this.fb.group({
+        Description: [""],
         FilePath: [""],
+        File: null,
         Header: [""],
         SubHeader: [""],
-        Description: [""],
       }),
       SecondBlog: this.fb.group({
+        Description: [""],
         FilePath: [""],
+        File: null,
         Header: [""],
         SubHeader: [""],
-        Description: [""],
       }),
       ThirdBlog: this.fb.group({
+        Description: [""],
         FilePath: [""],
+        File: null,
         Header: [""],
         SubHeader: [""],
-        Description: [""],
       }),
       ForthBlog: this.fb.group({
+        Description: [""],
         FilePath: [""],
+        File: null,
         Header: [""],
         SubHeader: [""],
-        Description: [""],
       }),
       VideoSection: this.fb.group({
+        Description: [""],
         FilePath: [""],
+        File: null,
         Header: [""],
         SubHeader: [""],
-        Description: [""],
       }),
       KnowAboutHeader: this.fb.control(""),
       Checklist: this.fb.group({
@@ -123,6 +129,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
   initMainCarousel(data: CommonHomeCard) {
     const form = this.fb.group({
       FilePath: [data.FilePath],
+      File: null,
       Header: [data.Header],
       SubHeader: [data.SubHeader],
     });
@@ -135,6 +142,7 @@ export class AdminPanelComponent implements OnInit, DoCheck {
       this.initMainCarousel({
         Description: "",
         FilePath: "",
+        File: null,
         Header: "",
         SubHeader: "",
       })
@@ -162,36 +170,36 @@ export class AdminPanelComponent implements OnInit, DoCheck {
             data.MainCarousels.map((i) => this.initMainCarousel(i))
           ),
           FirstBlog: this.fb.group({
-            // FilePath: [data.FirstBlog.FilePath],
-            FilePath: [""],
+            FilePath: [data.FirstBlog.FilePath],
+            File: null,
             Header: [data.FirstBlog.Header],
             SubHeader: [data.FirstBlog.SubHeader],
             Description: [data.FirstBlog.Description],
           }),
           SecondBlog: this.fb.group({
-            //FilePath: [data.FirstBlog.FilePath],
-            FilePath: [""],
+            FilePath: [data.FirstBlog.FilePath],
+            File: null,
             Header: [data.FirstBlog.Header],
             SubHeader: [data.FirstBlog.SubHeader],
             Description: [data.FirstBlog.Description],
           }),
           ThirdBlog: this.fb.group({
-            //FilePath: [data.FirstBlog.FilePath],
             FilePath: [data.FirstBlog.FilePath],
+            File: null,
             Header: [data.FirstBlog.Header],
             SubHeader: [data.FirstBlog.SubHeader],
             Description: [data.FirstBlog.Description],
           }),
           ForthBlog: this.fb.group({
-            //FilePath: [data.ForthBlog.FilePath],
-            FilePath: [data.FirstBlog.FilePath],
+            FilePath: [data.ForthBlog.FilePath],
+            File: null,
             Header: [data.ForthBlog.Header],
             SubHeader: [data.ForthBlog.SubHeader],
             Description: [data.ForthBlog.Description],
           }),
           VideoSection: this.fb.group({
-            //FilePath: [data.VideoSection.FilePath],
-            FilePath: [data.FirstBlog.FilePath],
+            FilePath: [data.VideoSection.FilePath],
+            File: null,
             Header: [data.VideoSection.Header],
             SubHeader: [data.VideoSection.SubHeader],
             Description: [data.VideoSection.Description],
