@@ -217,13 +217,6 @@ export class AdminPanelComponent implements OnInit, DoCheck {
             data.Testimonials.map((i) => this.initTestimonials(i))
           ),
         });
-
-        this.HomePageForm.get("MainCarousels").valueChanges.subscribe(
-          (value: CommonHomeCard[]) => {
-            debugger;
-            console.log(value);
-          }
-        );
         break;
 
       default:
