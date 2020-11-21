@@ -1,4 +1,5 @@
-﻿using LoanManagement.DatabaseServices.Interfaces;
+﻿using Abp.Application.Services.Dto;
+using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -22,6 +23,15 @@ namespace LoanManagement.Controllers
                 return BadRequest();
 
             return Json(await _siteSettingServices.GetAllAsync(dto));
+        }
+
+        [HttpGet("id/{id}")]
+        public async Task<IActionResult> Index([FromRoute] int id)
+        {
+            return Json(await _siteSettingServices.GetAsync(new EntityDto<int>
+            {
+                Id = id
+            }));
         }
     }
 }

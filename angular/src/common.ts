@@ -4,7 +4,7 @@ export interface PageResult<T> {
 }
 
 export interface Result<T> {
-  result: PageResult<T>;
+  result: T;
   targetUrl: string;
   success: boolean;
   urror: string;
@@ -20,13 +20,13 @@ export interface SiteSettings {
 
 export interface CommonHomeCard {
   FilePath: string;
+  background?: string;
   Header: string;
   SubHeader: string;
   Description: string;
 }
 
 export interface Checklist {
-  MainHeader: string;
   Checklist1: string;
   Checklist2: string;
   Checklist3: string;
@@ -40,14 +40,22 @@ export interface Testimonial {
 
 export interface HomeSettings {
   MainCarousels: CommonHomeCard[];
+
   FirstBlog: CommonHomeCard;
   SecondBlog: CommonHomeCard;
   ThirdBlog: CommonHomeCard;
   ForthBlog: CommonHomeCard;
+
   VideoSection: CommonHomeCard;
+
   KnowAboutHeader: string;
+  ChecklistMainHeader: string;
   Checklist: Checklist;
+
   Slogan: string;
+  SloganImage: string;
+  SloganFile?: FileList;
   SloganChecklist: string;
+
   Testimonials: Testimonial[];
 }
