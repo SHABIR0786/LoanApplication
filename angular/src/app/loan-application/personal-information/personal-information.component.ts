@@ -7,7 +7,6 @@ import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
-import { remove } from "lodash";
 
 @Component({
   selector: "app-personal-information",
@@ -235,7 +234,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       coBorrowerResidentialAddress: this.initAddressForm(
         this.data.coBorrowerResidentialAddress || {},
         1,
-        true
+        false
       ),
       coBorrowerMailingAddress: this.initAddressForm(
         this.data.coBorrowerMailingAddress || {},
@@ -268,7 +267,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             this.initAddressForm(
               this.data.coBorrowerResidentialAddress,
               1,
-              true
+              false
             )
           );
           this.form.addControl(
@@ -298,7 +297,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     this.form
       .get("residentialAddress")
       .valueChanges.subscribe((residentialAddress) => {
-        debugger;
         if (
           residentialAddress.totalYears &&
           residentialAddress.totalYears == 1
@@ -313,7 +311,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     this.form
       .get("coBorrowerResidentialAddress")
       .valueChanges.subscribe((coBorrowerResidentialAddress) => {
-        debugger;
         if (
           coBorrowerResidentialAddress.totalYears &&
           coBorrowerResidentialAddress.totalYears == 1
@@ -343,13 +340,30 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       .get("coBorrowerResidentialAddressSameAsBorrowerResidential")
       .valueChanges.subscribe(
         (coBorrowerResidentialAddressSameAsBorrowerResidential) => {
+          debugger;
           if (coBorrowerResidentialAddressSameAsBorrowerResidential) {
-          } else {
             this.data.coBorrowerResidentialAddress.addressLine1 = null;
             this.data.coBorrowerResidentialAddress.addressLine2 = null;
             this.data.coBorrowerResidentialAddress.city = null;
             this.data.coBorrowerResidentialAddress.stateId = null;
             this.data.coBorrowerResidentialAddress.zipCode = null;
+          } else {
+            if (
+              coBorrowerResidentialAddressSameAsBorrowerResidential === false
+            ) {
+              this.form
+                .get("coBorrowerResidentialAddress.addressLine1")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.city")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.stateId")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.zipCode")
+                .setValidators([Validators.required]);
+            }
             // this.data.coBorrowerResidentialAddress =
             //   this.data.coBorrowerResidentialAddress || {};
             // this.form.addControl(
