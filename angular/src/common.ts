@@ -20,6 +20,7 @@ export interface SiteSettings {
 
 export interface CommonHomeCard {
   FilePath: string;
+  File?: string;
   background?: string;
   Header: string;
   SubHeader: string;

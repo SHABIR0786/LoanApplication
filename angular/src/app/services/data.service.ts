@@ -78,5 +78,6 @@ export class DataService {
 
   updateData(data, key) {
     this.loanApplication[key] = data;
+    console.log(this.loanApplication);
   }
 }

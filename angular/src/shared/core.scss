@@ -79,3 +79,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   border: none;
   height: 1px;
 }
+
+.ng-wizard-theme-default.ng-wizard-toolbar {
+  display: none;
+}
