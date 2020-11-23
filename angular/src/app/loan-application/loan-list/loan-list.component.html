@@ -1,50 +1,42 @@
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Borrower</th>
-      <th scope="col">File Name</th>
-      <th scope="col">Loan Status</th>
-      <th scope="col">Status Date</th>
-      <th scope="col">Est.Close</th>
-      <th scope="col">Rate Loc...</th>
-      <th scope="col">Processor</th>
-      <th scope="col">Originator</th>
-      <th scope="col">Contact</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Larry</td>
-      <td>the Bird</td>
-    </tr>
-  </tbody>
-</table>
+<section class="content px-2">
+  <div class="container-fluid">
+    <div class="card my-5">
+      <div class="card-body table-responsive">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Borrower</th>
+              <th scope="col">File Name</th>
+              <th scope="col">Loan Status</th>
+              <th scope="col">Status Date</th>
+              <th scope="col">Est.Close</th>
+              <th scope="col">Rate Loc...</th>
+              <th scope="col">Processor</th>
+              <th scope="col">Originator</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let table of data">
+              <td>{{ table.borrower }}</td>
+              <td>{{ table.fileName }}</td>
+              <td>{{ table.loanStatus }}</td>
+              <td>{{ table.statusDate }}</td>
+              <td>{{ table.estClose }}</td>
+              <td>{{ table.rateLoc }}</td>
+              <td>{{ table.processor }}</td>
+              <td>{{ table.originator }}</td>
+              <td>{{ table.contact }}</td>
+              <td>
+                <button type="button" class="btn-orange text-white">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
