@@ -1,6 +1,6 @@
 <div class="wrapper">
   <app-header></app-header>
-  <ng-container *ngIf="router.url === '/app/loan-detail'; else other_content">
+  <ng-container *ngIf="IsLoanForm; else other_content">
     <loan-side-bar></loan-side-bar>
   </ng-container>
   <!-- <sidebar></sidebar>
