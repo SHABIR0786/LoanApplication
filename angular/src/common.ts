@@ -3,6 +3,12 @@ export interface PageResult<T> {
   items: T[];
 }
 
+export interface IPaginationOptions {
+  skipCount: number;
+  maxResultCount: number;
+  keyword?: string;
+}
+
 export interface Result<T> {
   result: T;
   targetUrl: string;

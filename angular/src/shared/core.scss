@@ -80,6 +80,46 @@ label:not(.form-check-label):not(.custom-file-label) {
   height: 1px;
 }
 
-.ng-wizard-theme-default.ng-wizard-toolbar {
+.ng-wizard-theme-default.ng-wizard-toolbar,
+.btn-toolbar.ng-wizard-toolbar {
   display: none;
+}
+
+app-loan-details > div > div > aside > nav > div > ul > li > a {
+  font-size: 1.2rem;
+}
+
+body
+  > app-root
+  > ng-component
+  > div
+  > app-loan-details
+  > div
+  > div
+  > aside
+  > nav
+  > div
+  > ul
+  > li.nav-item.active {
+  background-color: #0cc4d4;
+  border-left: thick solid #f47741;
+}
+
+label {
+  color: #091a52 !important;
+  font-size: small !important;
+}
+
+input,
+select {
+  border: 1px solid #545454 !important;
+  border-radius: 6px !important;
+}
+
+.ng-wizard-theme-default > ul.step-anchor > li > a::after {
+  background: #f47741 !important;
+}
+
+.form-group {
+  margin-bottom: 2rem !important;
 }
