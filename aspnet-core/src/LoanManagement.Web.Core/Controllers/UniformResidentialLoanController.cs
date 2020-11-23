@@ -12,6 +12,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
+using LoanManagement.Enums.Ethnic;
+using LoanManagement.Enums;
+
 namespace LoanManagement.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -240,19 +243,19 @@ namespace LoanManagement.Controllers
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 1");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 1", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 1", CoBorrowerSelfEmployed1[0]);
                     }
                     else if (i == 1)
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 2");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[0]);
                     }
                     else if (i == 2)
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 3");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[0]);
                     }
 
                 }
@@ -262,21 +265,53 @@ namespace LoanManagement.Controllers
                     {
                         String[] BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
                     }
                     else if (i == 1)
                     {
                         String[] BorrowerSelfEmployed2 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 2");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[0]);
                     }
                     else if (i == 2)
                     {
                         String[] BorrowerSelfEmployed3 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 3");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[0]);
                     }
                 }
+                //Demographic Information
+                foreach (var ethnic in data.Declaration.BorrowerDemographic.Ethnicity)
+                    switch ((Ethnic)ethnic.Id)
+                    {
+                        case Ethnic.HispanicOrLatino:
+                            
+                            break;
+                        case Ethnic.Mexican:
+                            borrowerDemographic.IsMexican = true;
+                            break;
+                        case Ethnic.PuertoRican:
+                            borrowerDemographic.IsPuertoRican = true;
+                            break;
+                        case Ethnic.Cuban:
+                            borrowerDemographic.IsCuban = true;
+                            break;
+                        case Ethnic.OtherHispanicOrLatino:
+                            borrowerDemographic.IsOtherHispanicOrLatino = true;
+                            borrowerDemographic.Origin = ethnic.OtherValue;
+                            break;
+                        case Ethnic.NotHispanicOrLatino:
+                            borrowerDemographic.IsNotHispanicOrLatino = true;
+                            break;
+                        case Ethnic.CanNotProvideEthnic:
+                            borrowerDemographic.CanNotProvideEthnic = true;
+                            break;
+                        default:
+                            break;
+                    }
+
+                // if (data.Declaration.BorrowerDemographic.Ethnicity == true)
+                //     pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2);
 
                 pdfStamper.Close();
             }
@@ -726,6 +761,30 @@ namespace LoanManagement.Controllers
             if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).Count() >= 3)
             {
                 PdfTextField AddtionalIcomenumber1 = (PdfTextField)(form.Fields["Owned Real Estate Address 3a"]);
+                AddtionalIcomenumber1.Value = new PdfString(
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].City + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].StateId
+                    );
+                PdfTextField TypeOfProperty1 = (PdfTextField)(form.Fields["Type of Propertya"]);
+                TypeOfProperty1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.Value.ToString() : "");
+
+                PdfTextField PresentMarketValue3 = (PdfTextField)(form.Fields["Owned Real Estate Address 3 Market Value"]);
+                PresentMarketValue3.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.Value.ToString() : "");
+                PdfTextField OutstandingMortgageBalance3 = (PdfTextField)(form.Fields["Owned Real Estate Address 3 Amount of Mortgages Liens"]);
+                OutstandingMortgageBalance3.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].OutstandingMortgageBalance.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].OutstandingMortgageBalance.Value.ToString() : "");
+                PdfTextField GrossRentalIncome3 = (PdfTextField)(form.Fields["Owned Real Estate Address 3 Gross Rental Income"]);
+                GrossRentalIncome3.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].GrossRentalIncome.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].GrossRentalIncome.Value.ToString() : "");
+                PdfTextField MonthlyMortgagePayment3 = (PdfTextField)(form.Fields["Owned Real Estate Address 3 Mortage Payments"]);
+                MonthlyMortgagePayment3.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].MonthlyMortgagePayment.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].MonthlyMortgagePayment.Value.ToString() : "");
+                PdfTextField TaxesInsuranceAndOther3 = (PdfTextField)(form.Fields["Owned Real Estate Address 3 Insurance Maintenance Taxes"]);
+                TaxesInsuranceAndOther3.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].TaxesInsuranceAndOther.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].TaxesInsuranceAndOther.Value.ToString() : "");
+                //PdfTextField GrossRentalIncome1 = (PdfTextField)(form.Fields["Owned Real Estate Address 1 Net Rental Income a"]);
+                //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0]..ToString());
+            }
+            if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 1).Count() >= 1)
+            {
+                PdfTextField AddtionalIcomenumber1 = (PdfTextField)(form.Fields["Assets Name and Adress of Bank, S&L, Or Credit Union"]);
                 AddtionalIcomenumber1.Value = new PdfString(
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].City + " " +
