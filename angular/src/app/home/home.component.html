@@ -134,7 +134,12 @@
       <div class="row p-0 m-0">
         <div class="col p-0">
           <div class="text-left mt-5 mb-3">
-            <p class="text-orange font-weight-bold know">Know About</p>
+            <p
+              class="text-orange font-weight-bold"
+              style="text-transform: uppercase; letter-spacing: 3.2px"
+            >
+              Know About
+            </p>
             <h4
               class="text-dark-blue font-weight-bold"
               style="letter-spacing: 1.5px; word-spacing: 1px"
@@ -143,7 +148,7 @@
             </h4>
             <div class="text-right">
               <button
-                type="submit"
+                type="button"
                 class="btn text-center text-white btn p-0"
                 style="
                   width: 34px;
@@ -157,7 +162,7 @@
                 &lt;
               </button>
               <button
-                type="submit"
+                type="button"
                 class="btn text-center text-white btn ml-3 p-0"
                 style="
                   width: 34px;
@@ -176,13 +181,7 @@
       </div>
       <div class="row p-0 m-0">
         <div
-          class="col-4 img-fluid"
-          style="
-            padding: unset;
-            background-size: 100% 48.2% !important;
-            background-repeat: no-repeat !important;
-            background-origin: content-box !important;
-          "
+          class="col-4 img-fluid image-spacer2"
           [style.background]="[data.FirstBlog.background]"
         >
           <div
@@ -216,13 +215,8 @@
           </div>
         </div>
         <div
-          class="col-8 img-fluid"
-          style="
-            padding-left: 18px;
-            padding-right: 0px;
-            background-size: 100% 100% !important;
-            background-repeat: no-repeat !important;
-          "
+          class="col-8 img-fluid image-spacer"
+          style="padding-left: 18px; padding-right: 0px"
           [style.background]="[data.SecondBlog.background]"
         >
           <div
@@ -264,7 +258,10 @@
               <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
                 {{ data.ThirdBlog.Header }}
               </h5>
-              <p class="font-weight-bold ml-3 text-grey">
+              <p
+                class="font-weight-bold ml-3 text-grey"
+                style="font-size: 14px"
+              >
                 {{ data.ThirdBlog.Description }}
               </p>
               <p class="font-weight-bold ml-3 text-orange">
@@ -273,11 +270,19 @@
               </p>
             </div>
             <div class="col-6">
-              <img class="img-fluid" [src]="data.ForthBlog.FilePath" alt="" />
+              <img
+                class="img-fluid"
+                [src]="data.ForthBlog.FilePath"
+                alt=""
+                style="height: 160px"
+              />
               <h5 class="font-weight-bold ml-3 text-dark-blue mt-3">
                 {{ data.ForthBlog.Header }}
               </h5>
-              <p class="font-weight-bold ml-3 text-grey">
+              <p
+                class="font-weight-bold ml-3 text-grey"
+                style="font-size: 14px"
+              >
                 {{ data.ForthBlog.Description }}
               </p>
               <p class="font-weight-bold ml-3 text-orange">
@@ -294,6 +299,7 @@
   <!-- KNOW ABOUT FEATURED MORTGAGE OPTION SECTION END -->
 
   <!-- KNOW ABOUT YOUR INDEPENDENT SECTION START -->
+
   <div class="bg-white">
     <div
       class="container-fluid bg-white text-right"
@@ -317,7 +323,28 @@
       class="container"
       style="position: relative; top: -6rem; margin-top: 6rem"
     >
-      <div class="row p-0">
+      <div class="row">
+        <div
+          class="col-7 pl-4 img-fluid"
+          style="z-index: 3; top: -4rem; left: 26px"
+        >
+          <div
+            class="embed-responsive embed-responsive-16by9"
+            style="position: static"
+          >
+            <iframe
+              class="embed-responsive-item"
+              src="assets/img/video.mp4"
+              allowfullscreen
+              style="
+                background: #091a52 0% 0% no-repeat padding-box;
+                border-radius: 4px;
+              "
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="row p-0" style="margin-bottom: -19rem">
         <p
           style="
             writing-mode: vertical-rl;
@@ -325,46 +352,39 @@
             font-size: 13px;
             opacity: 1;
             margin-left: -33px;
-            margin-top: 155px;
+            margin-top: -14rem;
             text-transform: uppercase;
             letter-spacing: 2px;
           "
         >
           get to know us <i class="fas fa-long-arrow-alt-down"></i>
         </p>
-        <div class="col-4 pl-4 img-fluid" style="z-index: 3; top: -4rem">
-          <img
-            [src]="data.VideoSection.FilePath"
-            alt=""
-            style="
-              background: #091a52 0% 0% no-repeat padding-box;
-              border-radius: 4px;
-            "
-          />
-        </div>
         <div
-          class="col-8 bg-dark-blue"
+          class="col-9 bg-dark-blue"
           style="
             border: 1px solid #707070;
             border-radius: 4px;
-            left: -6px;
+            left: 22rem;
             z-index: 2;
+            bottom: 21rem;
           "
         >
           <div class="row bg-dark-blue">
-            <div class="col-6 bg-dark-blue"></div>
-
-            <div class="col-6 bg-dark-blue">
-              <p class="text-orange font-weight-bold mt-5">
+            <div class="col-5 bg-dark-blue"></div>
+            <div class="col-7 bg-dark-blue">
+              <p
+                class="text-orange font-weight-bold mt-5"
+                style="letter-spacing: 0.2rem; text-transform: uppercase"
+              >
                 {{ data.VideoSection.Header }}
               </p>
               <h3
-                class="text-white font-weight-bold mt-4"
+                class="text-white font-weight-bold mt-3"
                 style="line-height: 1.7; letter-spacing: 1px"
               >
                 {{ data.VideoSection.SubHeader }}
               </h3>
-              <p class="text-white mt-4">
+              <p class="text-white mt-3 mb-5">
                 {{ data.VideoSection.Description }}
               </p>
             </div>
@@ -374,7 +394,7 @@
     </div>
   </div>
 
-  <!-- KNOW ABOUT YOUR INDEPENDENT SECTION START -->
+  <!-- KNOW ABOUT YOUR INDEPENDENT SECTION END -->
 
   <!-- KNOW ABOUT TIPS SECTION START -->
 
@@ -622,7 +642,13 @@
                     </select>
                   </div>
                 </div>
-                <p class="para">
+                <p
+                  style="
+                    text-align: center;
+                    font: normal normal medium 13px/25px Avenir;
+                    color: #828282;
+                  "
+                >
                   By completing this form, I agree that EZ Online Mortgage may
                   contact me at the phone number provided via telephone, maybe
                   prerecoreded message, artifical voice, and/or text message. I
@@ -634,6 +660,7 @@
                   <button
                     type="submit"
                     class="btn btn-orange text-center text-white btn"
+                    style="width: 174px; height: 42px"
                   >
                     SUBMIT
                   </button>

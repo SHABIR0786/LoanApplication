@@ -1,11 +1,3 @@
-.know {
-  /* text-align: center; */
-  /* font: normal normal 900 16px/60px Avenir; */
-  letter-spacing: 3.2px;
-  /* color: #f47741; */
-  text-transform: uppercase;
-}
-
 .label {
   text-align: left !important;
   font: normal normal medium 13px/18px Avenir !important;
@@ -21,25 +13,7 @@ input {
   opacity: 1;
 }
 
-.para {
-  text-align: center;
-  font: normal normal medium 13px/25px Avenir;
-  letter-spacing: 0px;
-  color: #828282;
-  opacity: 1;
-  /* font-size: x-small; */
-}
-
-.btn {
-  border-radius: 4px;
-  opacity: 1;
-  width: 174px;
-  height: 42px;
-}
-
 .content {
-  /* width: 554px;
-  height: 100px; */
   background: #091a52 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #091a5214;
   border-radius: 4px;
@@ -52,51 +26,20 @@ input {
   margin: 10px 40px;
 }
 
-/* .orangediv {
-  width: 70px;
-  height: 70px;
-} */
-
-.calpic {
-  margin: 10px 14px;
-}
-
-.caldiv {
-  width: 287px;
-  height: 34px;
-  text-align: left;
-  font: normal normal 900 26px/30px Avenir;
-  letter-spacing: 0px;
-  color: #091a52;
-  opacity: 1;
-}
-
-.start {
-  background-image: url("assets/img/house.png");
-  background-repeat: no-repeat;
-
-  background: #091a52 0% 0% no-repeat padding-box;
-  opacity: 0.8;
-}
-
-.i-circle {
-  background: #091a52 0% 0% no-repeat padding-box;
-  border-radius: 50%;
-  border: 1px solid #ffffff;
-  padding: 9px;
-  width: 34px;
-  height: 34px;
-  opacity: 0.3;
-}
-
-.bg {
-  background: url("assets/img/house-1.png") 0% 0% no-repeat;
-  width: 358px;
-  height: 662px;
-}
-
 option {
   text-decoration: none;
   color: #091a52 !important;
   background-color: #ffffff !important  ;
+}
+
+.image-spacer {
+  background-repeat: no-repeat !important;
+  background-origin: content-box !important;
+  background-size: 100% 48.2% !important;
+}
+
+.image-spacer2 {
+  padding: unset;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
 }
