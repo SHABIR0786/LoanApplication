@@ -1,9 +1,10 @@
 using Abp.Runtime.Validation;
 using LoanManagement.DatabaseServices.Interfaces;
-using LoanManagement.PdfServices;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Pdf.AcroForms;
 using PdfSharpCore.Pdf.IO;
@@ -18,12 +19,7 @@ namespace LoanManagement.Controllers
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
         private readonly ILoanAppService _loanAppService;
-        public UniformResidentialLoanController(IPersonalDetailService _personalDetailService)
-        {
-            this._personalDetailService = _personalDetailService;
-
-        }
-        public IPersonalDetailService _personalDetailService { get; }
+        private readonly IPersonalDetailService _personalDetailService;
         private readonly IWebHostEnvironment _env;
 
         public UniformResidentialLoanController(
@@ -63,6 +59,15 @@ namespace LoanManagement.Controllers
                 return BadRequest(ModelState);
 
             return Json(await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long?>(id.Value)));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetAll([FromBody] PagedLoanApplicationResultRequestDto input)
+        {
+            if (input == null || !ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Json(await _loanAppService.GetAllCustomAsync(input));
         }
 
         private void FillData(LoanApplicationDto data)
