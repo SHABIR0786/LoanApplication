@@ -285,10 +285,13 @@ namespace LoanManagement.Controllers
                     switch ((Ethnic)ethnic.Id)
                     {
                         case Ethnic.HispanicOrLatino:
-                            
+                            {
+                                String[] BorrowerHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", BorrowerHispanicOrLatino[0]);
+                            }
+
                             break;
                         case Ethnic.Mexican:
-                            borrowerDemographic.IsMexican = true;
                             break;
                         case Ethnic.PuertoRican:
                             borrowerDemographic.IsPuertoRican = true;
