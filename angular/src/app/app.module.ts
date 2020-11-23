@@ -62,6 +62,7 @@ import { OrderCreditComponent } from "./loan-application/order-credit/order-cred
 import { AdditionalDetailsComponent } from "./loan-application/additional-details/additional-details.component";
 import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
 import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
+import { LoanSideBar } from "./loan-application/side-bar/side-bar";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -114,6 +115,7 @@ const ngWizardConfig: NgWizardConfig = {
     SummaryExpandDataComponent,
     LoanListComponent,
     AdminPanelComponent,
+    LoanSideBar,
   ],
   imports: [
     CommonModule,
