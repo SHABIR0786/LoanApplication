@@ -3,10 +3,6 @@
   <ng-container *ngIf="IsLoanForm; else other_content">
     <loan-side-bar></loan-side-bar>
   </ng-container>
-  <!-- <sidebar></sidebar>
-  <div class="content-wrapper">
-  </div>
-   -->
   <ng-template #other_content>
     <router-outlet></router-outlet>
   </ng-template>
