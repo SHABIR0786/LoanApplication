@@ -67,7 +67,220 @@ namespace LoanManagement.Controllers
 
         private void FillData(LoanApplicationDto data)
         {
-            string templateDocPath = Path.Combine(_env.ContentRootPath, "1003irev-unlocked.pdf");
+            string pdfTemplate = @"1003irev-unlocked.pdf";
+            var pdfReader = new iTextSharp.text.pdf.PdfReader(pdfTemplate);
+            using (var fileStream = new FileStream(
+                "1003irev-unlocked-2.pdf", FileMode.Create))
+            {
+                var pdfStamper = new Pdf.PdfStamper(pdfReader, fileStream);
+                var pdfFormFields = pdfStamper.AcroFields;
+
+                String[] BorrowerJudgementsAgainst = pdfFormFields.GetAppearanceStates("Borrower Judgements against");
+                if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
+                    pdfFormFields.SetField("Borrower Judgements against", "2");
+                else if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
+                    pdfFormFields.SetField("Borrower Judgements against", "5");
+
+                String[] CoBorrowerJudgementsAgainst = pdfFormFields.GetAppearanceStates("Co-Borrower Judgements against");
+                if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
+                    pdfFormFields.SetField("Co-Borrower Judgements against", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
+                    pdfFormFields.SetField("Co-Borrower Judgements against", "5");
+
+                String[] BorrowerIsDeclaredBankrupt = pdfFormFields.GetAppearanceStates("Borrower Bankrupt");
+                if (data.Declaration.BorrowerDeclaration.IsDeclaredBankrupt == true)
+                    pdfFormFields.SetField("Borrower Bankrupt", "2");
+                else if (data.Declaration.BorrowerDeclaration.IsDeclaredBankrupt == false)
+                    pdfFormFields.SetField("Borrower Bankrupt", "5");
+
+                String[] CoBorrowerIsDeclaredBankrupt = pdfFormFields.GetAppearanceStates("Co-Borrower Bankrupt y");
+                if (data.Declaration.CoBorrowerDeclaration.IsDeclaredBankrupt == true)
+                    pdfFormFields.SetField("Co-Borrower Bankrupt y", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsDeclaredBankrupt == false)
+                    pdfFormFields.SetField("Co-Borrower Bankrupt y", "5");
+
+                String[] BorrowerLawsuit = pdfFormFields.GetAppearanceStates("Borrower Lawsuit");
+                if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
+                    pdfFormFields.SetField("Borrower Lawsuit", "Two");
+                else if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
+                    pdfFormFields.SetField("Borrower Lawsuit", "Five");
+
+                String[] CoBorrowerLawsuit = pdfFormFields.GetAppearanceStates("Co-Borrower Lawsuit y");
+                if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
+                    pdfFormFields.SetField("Co-Borrower Lawsuit y", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
+                    pdfFormFields.SetField("Co-Borrower Lawsuit y", "5");
+
+
+                String[] BorrowerForclose = pdfFormFields.GetAppearanceStates("Check Box");
+                if (data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
+                    pdfFormFields.SetField("Check Box", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == false)
+                    pdfFormFields.SetField("Check Box", "5");
+
+                String[] CoBorrowerForclose = pdfFormFields.GetAppearanceStates("Co-Borrower Forclose y");
+                if (data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
+                    pdfFormFields.SetField("Co-Borrower Forclose y", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == false)
+                    pdfFormFields.SetField("Co-Borrower Forclose y", "5");
+
+                String[] BorrowerLiability = pdfFormFields.GetAppearanceStates("Borrower Liability");
+                if (data.Declaration.BorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == true)
+                    pdfFormFields.SetField("Borrower Liability", "2");
+                else if (data.Declaration.BorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == false)
+                    pdfFormFields.SetField("Borrower Liability", "5");
+
+                String[] CoBorrowerLiability = pdfFormFields.GetAppearanceStates("Co-Borrower Liability y");
+                if (data.Declaration.CoBorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == true)
+                    pdfFormFields.SetField("Co-Borrower Liability y", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == false)
+                    pdfFormFields.SetField("Co-Borrower Liability y", "5");
+
+                String[] BorrowerIsAnyPartOfTheDownPayment = pdfFormFields.GetAppearanceStates("h borrower");
+                if (data.Declaration.BorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
+                    pdfFormFields.SetField("h borrower", "2");
+                else if (data.Declaration.BorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
+                    pdfFormFields.SetField("h borrower", "1");
+
+                String[] CoBorrowerIsAnyPartOfTheDownPayment = pdfFormFields.GetAppearanceStates("h coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
+                    pdfFormFields.SetField("h coborrower", "Yes");
+                else if (data.Declaration.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
+                    pdfFormFields.SetField("h coborrower", "2");
+
+                String[] BorrowerIsCoMakerOrEndorser = pdfFormFields.GetAppearanceStates("i borrower");
+                if (data.Declaration.BorrowerDeclaration.IsCoMakerOrEndorser == true)
+                    pdfFormFields.SetField("i borrower", "Yes");
+                else if (data.Declaration.BorrowerDeclaration.IsCoMakerOrEndorser == true)
+                    pdfFormFields.SetField("i borrower", "2");
+
+                String[] CoBorrowerIsCoMakerOrEndorser = pdfFormFields.GetAppearanceStates("i coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == true)
+                    pdfFormFields.SetField("i coborrower", "Yes");
+                else if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == true)
+                    pdfFormFields.SetField("i coborrower", "2");
+
+                String[] BorrowerisPresentlyDelinquent = pdfFormFields.GetAppearanceStates("f borrower");
+                if (data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == true)
+                    pdfFormFields.SetField("f borrower", "1");
+                else if (data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == true)
+                    pdfFormFields.SetField("f borrower", "No");
+
+                String[] CoBorrowerisPresentlyDelinquent = pdfFormFields.GetAppearanceStates("f coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsPresentlyDelinquent == true)
+                    pdfFormFields.SetField("f coborrower", "1");
+                else if (data.Declaration.CoBorrowerDeclaration.IsPresentlyDelinquent == true)
+                    pdfFormFields.SetField("f coborrower", "No");
+
+                String[] BorrowerIsObligatedToPayAlimonyChildSupport = pdfFormFields.GetAppearanceStates("g borrower");
+                if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
+                    pdfFormFields.SetField("g borrower", "1");
+                else if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
+                    pdfFormFields.SetField("g borrower", "No");
+
+                String[] CoBorrowerIsObligatedToPayAlimonyChildSupport = pdfFormFields.GetAppearanceStates("g coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
+                    pdfFormFields.SetField("g coborrower", "1");
+                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
+                    pdfFormFields.SetField("g coborrower", "No");
+
+                String[] BorrowerIsUSCitizen = pdfFormFields.GetAppearanceStates("j borrower");
+                if (data.Declaration.BorrowerDeclaration.IsUSCitizen == true)
+                    pdfFormFields.SetField("j borrower", "2");
+                else if (data.Declaration.BorrowerDeclaration.IsUSCitizen == false)
+                    pdfFormFields.SetField("j borrower", "1");
+
+                String[] CoBorrowerIsUSCitizen = pdfFormFields.GetAppearanceStates("j coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsUSCitizen == true)
+                    pdfFormFields.SetField("j borrower", "yes");
+                else if (data.Declaration.CoBorrowerDeclaration.IsUSCitizen == false)
+                    pdfFormFields.SetField("j borrower", "2");
+
+                String[] BorrowerIsPermanentResidentSlien = pdfFormFields.GetAppearanceStates("k borrower");
+                if (data.Declaration.BorrowerDeclaration.IsPermanentResidentSlien == true)
+                    pdfFormFields.SetField("k borrower", "Yes");
+                else if (data.Declaration.BorrowerDeclaration.IsPermanentResidentSlien == false)
+                    pdfFormFields.SetField("k borrower", "2");
+
+                String[] CoBorrowerIsPermanentResidentSlien = pdfFormFields.GetAppearanceStates("k coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsPermanentResidentSlien == true)
+                    pdfFormFields.SetField("k borrower", "yes");
+                else if (data.Declaration.CoBorrowerDeclaration.IsPermanentResidentSlien == false)
+                    pdfFormFields.SetField("k borrower", "2");
+
+                String[] BorrowerIsIntendToOccupyThePropertyAsYourPrimary = pdfFormFields.GetAppearanceStates("l borrower");
+                if (data.Declaration.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == true)
+                    pdfFormFields.SetField("l borrower", "yes");
+                else if (data.Declaration.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == false)
+                    pdfFormFields.SetField("l borrower", "no");
+
+                String[] CoBorrowerIsIntendToOccupyThePropertyAsYourPrimary = pdfFormFields.GetAppearanceStates("l coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == true)
+                    pdfFormFields.SetField("l borrower", "2");
+                else if (data.Declaration.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == false)
+                    pdfFormFields.SetField("l borrower", "No");
+
+                String[] BorrowerIsOwnershipInterestInPropertyInTheLastThreeYears = pdfFormFields.GetAppearanceStates("m borrower");
+                if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
+                    pdfFormFields.SetField("m borrower", "yes");
+                else if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
+                    pdfFormFields.SetField("m borrower", "No");
+
+                String[] CoBorrowerIsOwnershipInterestInPropertyInTheLastThreeYears = pdfFormFields.GetAppearanceStates("m coborrower");
+                if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
+                    pdfFormFields.SetField("m borrower", "Yes");
+                else if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
+                    pdfFormFields.SetField("m borrower", "2");
+
+                for (int i = 0; i < data.EmploymentIncome.CoBorrowerEmploymentInfo.Count(); i++)
+                {
+
+
+                    if (i == 0)
+                    {
+                        String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 1");
+                        if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Co-Borrower Self Employed 1", CoBorrowerSelfEmployed1[i]);
+                    }
+                    else if (i == 1)
+                    {
+                        String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 2");
+                        if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                    }
+                    else if (i == 2)
+                    {
+                        String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 3");
+                        if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                    }
+
+                }
+                for (int i = 0; i < data.EmploymentIncome.BorrowerEmploymentInfo.Count(); i++)
+                {
+                    if (i == 0)
+                    {
+                        String[] BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
+                        if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[i]);
+                    }
+                    else if (i == 1)
+                    {
+                        String[] BorrowerSelfEmployed2 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 2");
+                        if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[i]);
+                    }
+                    else if (i == 2)
+                    {
+                        String[] BorrowerSelfEmployed3 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 3");
+                        if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[i]);
+                    }
+                }
+
+                pdfStamper.Close();
+            }
+            string templateDocPath = Path.Combine(_env.ContentRootPath, "1003irev-unlocked-2.pdf");
             var myTemplate = PdfReader.Open(templateDocPath, PdfDocumentOpenMode.Modify);
             var form = myTemplate.AcroForm;
 
@@ -117,6 +330,24 @@ namespace LoanManagement.Controllers
                 + data.PersonalInformation.ResidentialAddress.City + " "
                    + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
                  + (data.PersonalInformation.ResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.ResidentialAddress.ZipCode.Value.ToString() : ""));
+            if (data.PersonalInformation.IsMailingAddressSameAsResidential == false && data.PersonalInformation.MailingAddress != null)
+            {
+                PdfTextField BorrowerMailingAddress = (PdfTextField)(form.Fields["Borrower Mailing Address if different from Present"]);
+                BorrowerMailingAddress.Value = new PdfString(
+              data.PersonalInformation.MailingAddress.AddressLine1 + " "
+              + data.PersonalInformation.MailingAddress.City + " "
+                 + (data.PersonalInformation.MailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.MailingAddress.StateId.Value) : "") + " "
+               + (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : ""));
+            }
+            if (data.PersonalInformation.PreviousAddresses != null && data.PersonalInformation.PreviousAddresses.Count() != 0)
+            {
+                PdfTextField CoBorrowerMailingAddress = (PdfTextField)(form.Fields["Borrower Former Address if different from Present"]);
+                CoBorrowerMailingAddress.Value = new PdfString(
+              data.PersonalInformation.PreviousAddresses[0].AddressLine1 + " "
+              + data.PersonalInformation.PreviousAddresses[0].City + " "
+                 + (data.PersonalInformation.PreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.PreviousAddresses[0].StateId.Value) : "") + " "
+               + (data.PersonalInformation.PreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.PreviousAddresses[0].ZipCode.Value.ToString() : ""));
+            }
             // PdfTextField BorrowerOwnOrRent = (PdfTextField)(form.Fields["Borrower Own or Rent"]);
             // BorrowerOwnOrRent.Value = new PdfString((data.Expenses.IsLiveWithFamilySelectRent == true).ToString());
             PdfTextField BorrowerNoOfYears = (PdfTextField)(form.Fields["Borrower No of Years"]);
@@ -130,8 +361,6 @@ namespace LoanManagement.Controllers
                 (data.PersonalInformation.MailingAddress.StateId.HasValue ? data.PersonalInformation.MailingAddress.StateId.Value.ToString() : "") + " " +
                 (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : "") : "");
 
-            // PdfTextField BorrowerSelfEmployed = (PdfTextField)(form.Fields["Borrower Self Employed"]);
-            // BorrowerSelfEmployed.Value = new PdfString(data.EmploymentIncome.BorrowerEmploymentInfo[0].IsSelfEmployed.ToString());
             if (data.EmploymentIncome.BorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.HasValue)
             {
                 DateTime now = DateTime.Today;
@@ -188,20 +417,27 @@ namespace LoanManagement.Controllers
                 //CoBorrowerOwnOrRent.Value = new PdfString(data.Expenses.IsLiveWithFamilySelectRent.ToString());
                 PdfTextField CoBorrowerNoOfYears = (PdfTextField)(form.Fields["Co-Borrower No of Years"]);
                 CoBorrowerNoOfYears.Value = new PdfString(data.PersonalInformation.CoBorrowerResidentialAddress.Years.ToString());
-                if (data.PersonalInformation.CoBorrowerMailingAddress != null)
+
+                if (data.PersonalInformation.MailingAddress != null)
                 {
-                    PdfTextField CoBorrowerNoOfYearsFormerAddress = (PdfTextField)(form.Fields["Co-Borrower No of Years Former Address"]);
-                    CoBorrowerNoOfYearsFormerAddress.Value = new PdfString(
-                        data.PersonalInformation.CoBorrowerIsMailingAddressSameAsResidential == false ?
-                        data.PersonalInformation.CoBorrowerMailingAddress.AddressLine1 + " " +
-                        data.PersonalInformation.CoBorrowerMailingAddress.City + " " +
-                           (data.PersonalInformation.CoBorrowerMailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerMailingAddress.StateId.Value) : "") + " " +
-                        (data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.HasValue ?
-                        data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.Value.ToString() : "") : "");
+                    PdfTextField CoBorrowerMailingAddress = (PdfTextField)(form.Fields["Co-Borrower Mailing Address if different from Present"]);
+                    CoBorrowerMailingAddress.Value = new PdfString(
+                  data.PersonalInformation.CoBorrowerMailingAddress.AddressLine1 + " "
+                  + data.PersonalInformation.CoBorrowerMailingAddress.City + " "
+                     + (data.PersonalInformation.CoBorrowerMailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerMailingAddress.StateId.Value) : "") + " "
+                   + (data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.HasValue ? data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.Value.ToString() : ""));
                 }
+                if (data.PersonalInformation.CoBorrowerPreviousAddresses != null && data.PersonalInformation.CoBorrowerPreviousAddresses.Count() != 0)
+                {
+                    PdfTextField CoBorrowerMailingAddress = (PdfTextField)(form.Fields["Co-Borrower Former Address if different from Present"]);
+                    CoBorrowerMailingAddress.Value = new PdfString(
+                  data.PersonalInformation.CoBorrowerPreviousAddresses[0].AddressLine1 + " "
+                  + data.PersonalInformation.CoBorrowerPreviousAddresses[0].City + " "
+                     + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.Value) : "") + " "
+                   + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.Value.ToString() : ""));
+                }
+
             }
-            var CoBorrowerSelfEmployed = (PdfCheckBoxField)(form.Fields["Co-Borrower Self Employed"]);
-            CoBorrowerSelfEmployed.Checked = data.EmploymentIncome.CoBorrowerEmploymentInfo[0].IsSelfEmployed == true;
             if (data.EmploymentIncome.CoBorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.HasValue)
             {
                 DateTime now = DateTime.Today;
@@ -330,9 +566,9 @@ namespace LoanManagement.Controllers
                 (data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value : 0))).ToString());
             PdfTextField CoBorrowerMonthlyIncomeTotal = (PdfTextField)(form.Fields["Monthly income Borrower Total c"]);
             CoBorrowerMonthlyIncomeTotal.Value = new PdfString(
-                 (((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.Value : 0)
+                 (((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.Value : 0)
                 +
-                (data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value : 0))).ToString());
+                (data.EmploymentIncome.BorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Base.Value : 0))).ToString());
 
             PdfTextField CoBorrowerMonthlyCommissionsTotal = (PdfTextField)(form.Fields["Monthly income Borrower Commissions Total a7"]);
             CoBorrowerMonthlyCommissionsTotal.Value = new PdfString(
@@ -341,14 +577,14 @@ namespace LoanManagement.Controllers
                 data.EmploymentIncome.BorrowerMonthlyIncome.Commissions).ToString());
             PdfTextField CoBorrowerMonthlyDividendsTotal = (PdfTextField)(form.Fields["Monthly income Borrower Dividens/Interest Total a13"]);
             CoBorrowerMonthlyDividendsTotal.Value = new PdfString((
-                ((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.Value : 0)
+                ((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.Value : 0)
                 +
-                (data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value : 0))).ToString());
+                (data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.Value : 0))).ToString());
             PdfTextField CoBorrowerMonthlyOvertimeTotal = (PdfTextField)(form.Fields["Monthly income Borrower Overtime Total 1"]);
             CoBorrowerMonthlyOvertimeTotal.Value = new PdfString(
-                (((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.Value : 0)
+                (((data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.Value : 0)
                 +
-                (data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value : 0))).ToString());
+                (data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.Value : 0))).ToString());
             //PdfTextField BorrowerMonthlyOtherIncome = (PdfTextField)(form.Fields["Monthly income Borrower Other Total a24"]);
             //BorrowerMonthlyOtherIncome.Value = new PdfString(data.EmploymentIncome.CoBorrowerEmploymentInfo.other.ToString());
             //PdfTextField BorrowerMonthlyRental = (PdfTextField)(form.Fields["Monthly income Borrower Net Rental Income Total a18"]);
@@ -513,7 +749,7 @@ namespace LoanManagement.Controllers
             }
 
 
-            myTemplate.Save(Path.Combine(_env.ContentRootPath, "1003irev-unlocked-2.pdf"));
+            myTemplate.Save(Path.Combine(_env.ContentRootPath, "1003irev-unlocked-3.pdf"));
             //Console.WriteLine("Hello World!");
             //System.IO.File.WriteAllText(@"names.json", JsonSerializer.Serialize(names));
             myTemplate.Close();
@@ -550,161 +786,7 @@ namespace LoanManagement.Controllers
             // BorrowerIsPresentlyDelinquent.Checked = data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true;
             // var CoBorrowerIsObligatedToPayAlimonyChildSupport = (PdfCheckBoxField)(form.Fields["i coborrower"]);
             // CoBorrowerIsPresentlyDelinquent.Checked = data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true;
-            string pdfTemplate = @"1003irev-unlocked-2.pdf";
-            var pdfReader = new iTextSharp.text.pdf.PdfReader(pdfTemplate);
-            using (var fileStream = new FileStream(
-                "1003irev-unlocked-2.pdf", FileMode.Create))
-            {
-                var pdfStamper = new Pdf.PdfStamper(pdfReader, fileStream);
-                var pdfFormFields = pdfStamper.AcroFields;
 
-                String[] BorrowerLawsuit = pdfFormFields.GetAppearanceStates("Borrower Lawsuit");
-                if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
-                    pdfFormFields.SetField("Borrower Lawsuit", "Two");
-                else if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
-                    pdfFormFields.SetField("Borrower Lawsuit", "Five");
-
-                String[] CoBorrowerLawsuit = pdfFormFields.GetAppearanceStates("Co-Borrower Lawsuit y");
-                if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
-                    pdfFormFields.SetField("Co-Borrower Lawsuit y", "2");
-                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
-                    pdfFormFields.SetField("Co-Borrower Lawsuit y", "5");
-
-                String[] BorrowerJudgementsAgainst = pdfFormFields.GetAppearanceStates("Borrower Judgements against");
-                if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
-                    pdfFormFields.SetField("Borrower Judgements against", "2");
-                else if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
-                    pdfFormFields.SetField("Borrower Judgements against", "5");
-
-                String[] CoBorrowerJudgementsAgainst = pdfFormFields.GetAppearanceStates("Co-Borrower Judgements against");
-                if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
-                    pdfFormFields.SetField("Co-Borrower Judgements against", "2");
-                else if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
-                    pdfFormFields.SetField("Co-Borrower Judgements against", "5");
-
-                String[] BorrowerForclose = pdfFormFields.GetAppearanceStates("Check Box");
-                if (data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == false)
-                    pdfFormFields.SetField("Check Box", "2");
-                else if (data.Declaration.CoBorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
-                    pdfFormFields.SetField("Check Box", "5");
-
-                String[] CoBorrowerForclose = pdfFormFields.GetAppearanceStates("Co-Borrower Forclose y");
-                if (data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == false)
-                    pdfFormFields.SetField("Co-Borrower Forclose y", "2");
-                else if (data.Declaration.CoBorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
-                    pdfFormFields.SetField("Co-Borrower Forclose y", "5");
-
-                String[] BorrowerLiability = pdfFormFields.GetAppearanceStates("Borrower Liability");
-                if (data.Declaration.BorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == false)
-                    pdfFormFields.SetField("Borrower Liability", "2");
-                else if (data.Declaration.BorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == true)
-                    pdfFormFields.SetField("Borrower Liability", "5");
-
-                String[] CoBorrowerLiability = pdfFormFields.GetAppearanceStates("Co-Borrower Liability y");
-                if (data.Declaration.CoBorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == false)
-                    pdfFormFields.SetField("Co-Borrower Liability y", "2");
-                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == true)
-                    pdfFormFields.SetField("Co-Borrower Liability y", "5");
-
-                String[] BorrowerIsAnyPartOfTheDownPayment = pdfFormFields.GetAppearanceStates("h borrower");
-                if (data.Declaration.BorrowerDeclaration.IsAnyPartOfTheDownPayment == false)
-                    pdfFormFields.SetField("h borrower", "2");
-                else if (data.Declaration.BorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
-                    pdfFormFields.SetField("h borrower", "5");
-
-                String[] CoBorrowerIsAnyPartOfTheDownPayment = pdfFormFields.GetAppearanceStates("h coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment == false)
-                    pdfFormFields.SetField("h coborrower", "Yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
-                    pdfFormFields.SetField("h coborrower", "5");
-
-                String[] BorrowerIsCoMakerOrEndorser = pdfFormFields.GetAppearanceStates("i borrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == false)
-                    pdfFormFields.SetField("i borrower", "Yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == true)
-                    pdfFormFields.SetField("i borrower", "5");
-
-                String[] CoBorrowerIsCoMakerOrEndorser = pdfFormFields.GetAppearanceStates("i coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == false)
-                    pdfFormFields.SetField("i coborrower", "Yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsCoMakerOrEndorser == true)
-                    pdfFormFields.SetField("i coborrower", "5");
-
-                String[] BorrowerisPresentlyDelinquent = pdfFormFields.GetAppearanceStates("f borrower");
-                if (data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == false)
-                    pdfFormFields.SetField("f borrower", "Yes");
-                else if (data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == true)
-                    pdfFormFields.SetField("f borrower", "No");
-
-                String[] CoBorrowerisPresentlyDelinquent = pdfFormFields.GetAppearanceStates("f coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsPresentlyDelinquent == false)
-                    pdfFormFields.SetField("f coborrower", "Yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsPresentlyDelinquent == true)
-                    pdfFormFields.SetField("f coborrower", "No");
-
-                String[] BorrowerIsObligatedToPayAlimonyChildSupport = pdfFormFields.GetAppearanceStates("g borrower");
-                if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
-                    pdfFormFields.SetField("ResidentSlien", "Yes");
-                else if (data.Declaration.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
-                    pdfFormFields.SetField("ResidentSlien", "No");
-
-                String[] CoBorrowerIsObligatedToPayAlimonyChildSupport = pdfFormFields.GetAppearanceStates("g coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == false)
-                    pdfFormFields.SetField("ResidentSlien", "Yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport == true)
-                    pdfFormFields.SetField("ResidentSlien", "No");
-
-                String[] BorrowerIsUSCitizen = pdfFormFields.GetAppearanceStates("j borrower");
-                if (data.Declaration.BorrowerDeclaration.IsUSCitizen == false)
-                    pdfFormFields.SetField("j borrower", "yes");
-                else if (data.Declaration.BorrowerDeclaration.IsUSCitizen == true)
-                    pdfFormFields.SetField("j borrower", "2");
-
-                String[] CoBorrowerIsUSCitizen = pdfFormFields.GetAppearanceStates("j coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsUSCitizen == false)
-                    pdfFormFields.SetField("j borrower", "yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsUSCitizen == true)
-                    pdfFormFields.SetField("j borrower", "2");
-
-                String[] BorrowerIsPermanentResidentSlien = pdfFormFields.GetAppearanceStates("k borrower");
-                if (data.Declaration.BorrowerDeclaration.IsPermanentResidentSlien == false)
-                    pdfFormFields.SetField("k borrower", "yes");
-                else if (data.Declaration.BorrowerDeclaration.IsPermanentResidentSlien == true)
-                    pdfFormFields.SetField("k borrower", "2");
-
-                String[] CoBorrowerIsPermanentResidentSlien = pdfFormFields.GetAppearanceStates("k coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsPermanentResidentSlien == false)
-                    pdfFormFields.SetField("k borrower", "yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsPermanentResidentSlien == true)
-                    pdfFormFields.SetField("k borrower", "2");
-
-                String[] BorrowerIsIntendToOccupyThePropertyAsYourPrimary = pdfFormFields.GetAppearanceStates("l borrower");
-                if (data.Declaration.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == false)
-                    pdfFormFields.SetField("l borrower", "yes");
-                else if (data.Declaration.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == true)
-                    pdfFormFields.SetField("l borrower", "no");
-
-                String[] CoBorrowerIsIntendToOccupyThePropertyAsYourPrimary = pdfFormFields.GetAppearanceStates("l coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == false)
-                    pdfFormFields.SetField("l borrower", "yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary == true)
-                    pdfFormFields.SetField("l borrower", "no");
-
-                String[] BorrowerIsOwnershipInterestInPropertyInTheLastThreeYears = pdfFormFields.GetAppearanceStates("m borrower");
-                if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
-                    pdfFormFields.SetField("m borrower", "yes");
-                else if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
-                    pdfFormFields.SetField("m borrower", "no");
-
-                String[] CoBorrowerIsOwnershipInterestInPropertyInTheLastThreeYears = pdfFormFields.GetAppearanceStates("m coborrower");
-                if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == false)
-                    pdfFormFields.SetField("m borrower", "yes");
-                else if (data.Declaration.CoBorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true)
-                    pdfFormFields.SetField("m borrower", "no");
-
-
-                pdfStamper.Close();
-            }
         }
 
 
