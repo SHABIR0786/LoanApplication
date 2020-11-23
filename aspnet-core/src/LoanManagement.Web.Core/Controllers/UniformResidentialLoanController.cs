@@ -13,6 +13,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
+using LoanManagement.Enums;
+
 namespace LoanManagement.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -245,19 +247,19 @@ namespace LoanManagement.Controllers
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 1");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 1", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 1", CoBorrowerSelfEmployed1[0]);
                     }
                     else if (i == 1)
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 2");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[0]);
                     }
                     else if (i == 2)
                     {
                         String[] CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Co-Borrower Self Employed 3");
                         if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Co-Borrower Self Employed 2", CoBorrowerSelfEmployed1[0]);
                     }
 
                 }
@@ -267,21 +269,257 @@ namespace LoanManagement.Controllers
                     {
                         String[] BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
                     }
                     else if (i == 1)
                     {
                         String[] BorrowerSelfEmployed2 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 2");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[0]);
                     }
                     else if (i == 2)
                     {
                         String[] BorrowerSelfEmployed3 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 3");
                         if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                            pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[i]);
+                            pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[0]);
                     }
                 }
+                //Demographic Information
+                foreach (var ethnic in data.Declaration.BorrowerDemographic.Ethnicity)
+                    switch ((Ethnic)ethnic.Id)
+                    {
+                        case Ethnic.HispanicOrLatino:
+                            {
+                                String[] BorrowerHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "2");
+                            }
+
+                            break;
+                        case Ethnic.NotHispanicOrLatino:
+                            {
+                                String[] BorrowerNotHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "Not");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var race in data.Declaration.BorrowerDemographic.Race)
+                    switch ((Race)race.Id)
+                    {
+                        case Race.AmericanIndianOrAlaskaNative:
+                            {
+                                String[] BorrowerAmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("race 1");
+                                pdfFormFields.SetField("race 1", BorrowerAmericanIndianOrAlaskaNative[0]);
+                            }
+
+                            break;
+                        case Race.Asian:
+                            {
+                                String[] BorrowerAsian = pdfFormFields.GetAppearanceStates("race 2");
+                                pdfFormFields.SetField("race 2", BorrowerAsian[0]);
+                            }
+                            break;
+                        case Race.BlackOrAfricanAmerican:
+                            {
+                                String[] BorrowerBlackOrAfricanAmerican = pdfFormFields.GetAppearanceStates("race 3");
+                                pdfFormFields.SetField("race 3", BorrowerBlackOrAfricanAmerican[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiianOrOtherPacificIslander:
+                            {
+                                String[] BorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race 4");
+                                pdfFormFields.SetField("race 4", BorrowerNativeHawaiianOrOtherPacificIslander[0]);
+                            }
+                            break;
+                        case Race.White:
+                            {
+                                String[] BorrowerWhite = pdfFormFields.GetAppearanceStates("race 5");
+                                pdfFormFields.SetField("race 5", BorrowerWhite[0]);
+                            }
+                            break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var sex in data.Declaration.BorrowerDemographic.Sex)
+                    switch ((Sex)sex.Id)
+                    {
+                        case Sex.Female:
+                            {
+                                String[] BorrowerFemale = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "2");
+                            }
+
+                            break;
+                        case Sex.Male:
+                            {
+                                String[] BorrowerMale = pdfFormFields.GetAppearanceStates(" Sex borrower");
+                                pdfFormFields.SetField("Sex borrower", "1");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                //Demographic Information CoBorrower
+                foreach (var ethnic in data.Declaration.CoBorrowerDemographic.Ethnicity)
+                    switch ((Ethnic)ethnic.Id)
+                    {
+                        case Ethnic.HispanicOrLatino:
+                            {
+                                String[] CoBorrowerHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 2");
+                                pdfFormFields.SetField("Ethnicity 2", "2");
+                            }
+
+                            break;
+                        case Ethnic.NotHispanicOrLatino:
+                            {
+                                String[] CoBorrowerNotHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 2");
+                                pdfFormFields.SetField("Ethnicity 2", "Yes");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var race in data.Declaration.CoBorrowerDemographic.Race)
+                    switch ((Race)race.Id)
+                    {
+                        case Race.AmericanIndianOrAlaskaNative:
+                            {
+                                String[] CoBorrowerAmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("race c1");
+                                pdfFormFields.SetField("race c1", CoBorrowerAmericanIndianOrAlaskaNative[0]);
+                            }
+
+                            break;
+                        case Race.Asian:
+                            {
+                                String[] CoBorrowerAsian = pdfFormFields.GetAppearanceStates("race c4");
+                                pdfFormFields.SetField("race c4", CoBorrowerAsian[0]);
+                            }
+                            break;
+                        case Race.BlackOrAfricanAmerican:
+                            {
+                                String[] CoBorrowerBlackOrAfricanAmerican = pdfFormFields.GetAppearanceStates("race c6");
+                                pdfFormFields.SetField("race c6", CoBorrowerBlackOrAfricanAmerican[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiianOrOtherPacificIslander:
+                            {
+                                String[] CoBorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race c2");
+                                pdfFormFields.SetField("race c2", CoBorrowerNativeHawaiianOrOtherPacificIslander[0]);
+                            }
+                            break;
+                        case Race.White:
+                            {
+                                String[] CoBorrowerWhite = pdfFormFields.GetAppearanceStates("race c5");
+                                pdfFormFields.SetField("race c5", CoBorrowerWhite[0]);
+                            }
+                            break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var sex in data.Declaration.CoBorrowerDemographic.Sex)
+                    switch ((Sex)sex.Id)
+                    {
+                        case Sex.Female:
+                            {
+                                String[] CoBorrowerFemale = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "2");
+                            }
+
+                            break;
+                        case Sex.Male:
+                            {
+                                String[] CoBorrowerMale = pdfFormFields.GetAppearanceStates(" Sex borrower");
+                                pdfFormFields.SetField("Sex borrower", "1");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                // if (data.Declaration.BorrowerDemographic.Ethnicity == true)
+                //     pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2);
 
                 pdfStamper.Close();
             }
@@ -753,6 +991,71 @@ namespace LoanManagement.Controllers
                 //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0]..ToString());
             }
 
+
+            if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 1)
+            {
+                PdfTextField SavingAccountAddress1 = (PdfTextField)(form.Fields["Assets Name and Adress of Bank, S&L, Or Credit Union"]);
+                SavingAccountAddress1.Value = new PdfString(
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 1).ToList()[0].StateId)
+                    );
+                PdfTextField SavingAccountNumber1 = (PdfTextField)(form.Fields["Assets Acct no 1"]);
+                SavingAccountNumber1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].AccountNumber);
+
+                PdfTextField SavingAccountBalance1 = (PdfTextField)(form.Fields["Assets Acct no 1 Balance a"]);
+                SavingAccountNumber1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 1).ToList()[0].CashValue.Value.ToString() : "");
+            }
+
+
+            if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 2)
+            {
+                PdfTextField SavingAccountAddress2 = (PdfTextField)(form.Fields["Assets Name and Adress of Bank, S&L, Or Credit Union 2"]);
+                SavingAccountAddress2.Value = new PdfString(
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId)
+                    );
+                PdfTextField SavingAccountNumber2 = (PdfTextField)(form.Fields["Assets Acct no 2"]);
+                SavingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].AccountNumber);
+
+                PdfTextField SavingAccountBalance2 = (PdfTextField)(form.Fields["Assets Acct no 1 Balance b"]);
+                SavingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 1).ToList()[0].CashValue.Value.ToString() : "");
+            }
+
+
+            if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 1)
+            {
+                PdfTextField CheckingAccountAddress2 = (PdfTextField)(form.Fields["Assets Name and Adress of Bank, S&L, Or Credit Union 3"]);
+
+                CheckingAccountAddress2.Value = new PdfString(
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    );
+
+                PdfTextField CheckingAccountNumber2 = (PdfTextField)(form.Fields["Assets Acct no 3"]);
+                CheckingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber);
+
+                PdfTextField CheckingAccountBalance2 = (PdfTextField)(form.Fields["Assets Acct no 3 Balance 4"]);
+                CheckingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : "");
+            }
+
+
+            if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 2)
+            {
+                PdfTextField CheckingAccountAddress2 = (PdfTextField)(form.Fields["Assets Name and Adress of Bank, S&L, Or Credit Union 4"]);
+                CheckingAccountAddress2.Value = new PdfString(
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    );
+                PdfTextField CheckingAccountNumber2 = (PdfTextField)(form.Fields["Assets Acct no 4"]);
+                CheckingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber);
+
+                PdfTextField CheckingAccountBalance2 = (PdfTextField)(form.Fields["Assets Acct no 4 Balance 5"]);
+                CheckingAccountNumber2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : "");
+            }
 
             myTemplate.Save(Path.Combine(_env.ContentRootPath, "1003irev-unlocked-3.pdf"));
             //Console.WriteLine("Hello World!");
