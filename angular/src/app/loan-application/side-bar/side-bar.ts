@@ -1,22 +1,10 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Injector,
-  OnInit,
-  Output,
-} from "@angular/core";
-import { NgWizardService } from "ng-wizard";
-import { DataService } from "../../services/data.service";
-import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
-import { LoanApplicationService } from "../../services/loan-application.service";
+import { ChangeDetectorRef, Component, Injector, OnInit } from "@angular/core";
 import {
   NavigationEnd,
   PRIMARY_OUTLET,
   Router,
   RouterEvent,
 } from "@angular/router";
-import { AppConsts } from "@shared/AppConsts";
 import { MenuItem } from "@shared/layout/menu-item";
 import { BehaviorSubject } from "rxjs";
 import { filter } from "rxjs/operators";
@@ -58,7 +46,7 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = this.getMenuItems();
-    this.patchMenuItems(this.menuItems);
+    console.log(this.menuItems);
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
@@ -73,66 +61,38 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
 
   getMenuItems(): MenuItem[] {
     return [
-      new MenuItem(this.l("Loan List"), "/app/loan-list", this.loanList, ""),
-      new MenuItem(this.l("Apply Loan"), "", this.applyLoan, "", [
-        new MenuItem(
-          this.l("Loan Detail"),
-          "/app/loan-detail",
-          this.dollar,
-          ""
-        ),
-        new MenuItem(
-          this.l("Personal Information"),
-          "/app/personal-information",
-          this.user,
-          ""
-        ),
-        new MenuItem(this.l("Expense"), "/app/expense", this.dollar2, ""),
+      new MenuItem(this.l("Loan Detail"), "/app/loan-detail", this.dollar, ""),
+      new MenuItem(
+        this.l("Personal Information"),
+        "/app/personal-information",
+        this.user,
+        ""
+      ),
+      new MenuItem(this.l("Expense"), "/app/expense", this.dollar2, ""),
 
-        new MenuItem(this.l("Asset"), "/app/asset", this.coins, ""),
-        new MenuItem(
-          this.l("Employment Income"),
-          "/app/employment-income",
-          this.briefCase,
-          ""
-        ),
-        new MenuItem(
-          this.l("Order Credit"),
-          "/app/order-credit",
-          this.meter,
-          ""
-        ),
-        new MenuItem(
-          this.l("Additional Detail"),
-          "/app/additional-detail",
-          this.file,
-          ""
-        ),
-        new MenuItem(this.l("EConsent"), "/app/econsent", this.contract, ""),
-        new MenuItem(
-          this.l("Declaration"),
-          "/app/declaration",
-          this.signature,
-          ""
-        ),
-        new MenuItem(this.l("Summary"), "/app/summary", this.summary, ""),
-      ]),
+      new MenuItem(this.l("Asset"), "/app/asset", this.coins, ""),
+      new MenuItem(
+        this.l("Employment Income"),
+        "/app/employment-income",
+        this.briefCase,
+        ""
+      ),
+      new MenuItem(this.l("Order Credit"), "/app/order-credit", this.meter, ""),
+      new MenuItem(
+        this.l("Additional Detail"),
+        "/app/additional-detail",
+        this.file,
+        ""
+      ),
+      new MenuItem(this.l("EConsent"), "/app/econsent", this.contract, ""),
+      new MenuItem(
+        this.l("Declaration"),
+        "/app/declaration",
+        this.signature,
+        ""
+      ),
+      new MenuItem(this.l("Summary"), "/app/summary", this.summary, ""),
     ];
-  }
-
-  patchMenuItems(items: MenuItem[], parentId?: number): void {
-    items.forEach((item: MenuItem, index: number) => {
-      item.id = parentId ? Number(parentId + "" + (index + 1)) : index + 1;
-      if (parentId) {
-        item.parentId = parentId;
-      }
-      if (parentId || item.children) {
-        this.menuItemsMap[item.id] = item;
-      }
-      if (item.children) {
-        this.patchMenuItems(item.children, item.id);
-      }
-    });
   }
 
   activateMenuItems(url: string): void {
@@ -180,12 +140,5 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
     }
 
     this._changeDetectorRef.markForCheck();
-  }
-
-  isMenuItemVisible(item: MenuItem): boolean {
-    if (!item.permissionName) {
-      return true;
-    }
-    return this.permission.isGranted(item.permissionName);
   }
 }

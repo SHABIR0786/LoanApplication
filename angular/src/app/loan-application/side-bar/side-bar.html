@@ -4,132 +4,28 @@
       <nav
         class="navbar navbar-expand navbar-dark bg-dark-blue flex-md-column flex-row align-items-start px-0"
       >
-        <div class="collapse navbar-collapse">
-          <ul
-            class="flex-md-column flex-row navbar-nav w-100 justify-content-between mt-5"
-          >
-            <li class="nav-item px-3 active">
-              <a class="nav-link text-nowrap" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-dollar-sign"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white">Loan Detail</span>
-                  </div>
+        <ul
+          class="flex-md-column flex-row navbar-nav w-100 justify-content-between mt-5"
+        >
+          <li class="nav-item px-3 active" *ngFor="let item of menuItems">
+            <a
+              class="nav-link text-nowrap"
+              href="#"
+              *ngIf="item.route && item.route.indexOf('http') != 0"
+              [routerLink]="item.route"
+              [class.active]="item.isActive"
+            >
+              <div class="row pr-3">
+                <div class="col-1">
+                  <i class="{{ item.icon }}"></i>
                 </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-user"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white">Personal Information</span>
-                  </div>
+                <div class="col-8">
+                  <span class="text-white">{{ item.label }}</span>
                 </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-comments-dollar"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white">Expense</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-coins"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Asset</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-briefcase"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Employment Income</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-tachometer-alt"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Order Credit</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-file-alt"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Additional Detail</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-file-contract"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">EConsent</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-file-signature"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Declaration</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link" href="#">
-                <div class="row pr-3">
-                  <div class="col-2">
-                    <i class="fas fa-tasks"></i>
-                  </div>
-                  <div class="col-10">
-                    <span class="text-white pr-3">Summary</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
+              </div>
+            </a>
+          </li>
+        </ul>
       </nav>
     </aside>
     <main class="col bg-faded flex-grow-1">

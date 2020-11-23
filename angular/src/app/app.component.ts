@@ -15,9 +15,24 @@ export class AppComponent extends AppComponentBase implements OnInit {
     injector: Injector,
     private renderer: Renderer2,
     private _layoutStore: LayoutStoreService,
-    private router: Router
+    public router: Router
   ) {
     super(injector);
+  }
+
+  get IsLoanForm(): boolean {
+    return (
+      this.router.url === "/app/loan-detail" ||
+      this.router.url === "/app/personal-information" ||
+      this.router.url === "/app/expense" ||
+      this.router.url === "/app/asset" ||
+      this.router.url === "/app/employment-income" ||
+      this.router.url === "/app/order-credit" ||
+      this.router.url === "/app/additional-detail" ||
+      this.router.url === "/app/declaration" ||
+      this.router.url === "/app/summary" ||
+      this.router.url === "/app/econsent"
+    );
   }
 
   ngOnInit(): void {
