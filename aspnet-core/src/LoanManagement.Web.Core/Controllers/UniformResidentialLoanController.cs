@@ -12,7 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
-using LoanManagement.Enums.Ethnic;
 using LoanManagement.Enums;
 
 namespace LoanManagement.Controllers
@@ -287,28 +286,229 @@ namespace LoanManagement.Controllers
                         case Ethnic.HispanicOrLatino:
                             {
                                 String[] BorrowerHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 1");
-                                pdfFormFields.SetField("Ethnicity 1", BorrowerHispanicOrLatino[0]);
+                                pdfFormFields.SetField("Ethnicity 1", "2");
                             }
 
                             break;
-                        case Ethnic.Mexican:
+                        case Ethnic.NotHispanicOrLatino:
+                            {
+                                String[] BorrowerNotHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "Not");
+                            }
                             break;
-                        case Ethnic.PuertoRican:
-                            borrowerDemographic.IsPuertoRican = true;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
                             break;
-                        case Ethnic.Cuban:
-                            borrowerDemographic.IsCuban = true;
+                    }
+
+                foreach (var race in data.Declaration.BorrowerDemographic.Race)
+                    switch ((Race)race.Id)
+                    {
+                        case Race.AmericanIndianOrAlaskaNative:
+                            {
+                                String[] BorrowerAmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("race 1");
+                                pdfFormFields.SetField("race 1", BorrowerAmericanIndianOrAlaskaNative[0]);
+                            }
+
                             break;
-                        case Ethnic.OtherHispanicOrLatino:
-                            borrowerDemographic.IsOtherHispanicOrLatino = true;
-                            borrowerDemographic.Origin = ethnic.OtherValue;
+                        case Race.Asian:
+                            {
+                                String[] BorrowerAsian = pdfFormFields.GetAppearanceStates("race 2");
+                                pdfFormFields.SetField("race 2", BorrowerAsian[0]);
+                            }
+                            break;
+                        case Race.BlackOrAfricanAmerican:
+                            {
+                                String[] BorrowerBlackOrAfricanAmerican = pdfFormFields.GetAppearanceStates("race 3");
+                                pdfFormFields.SetField("race 3", BorrowerBlackOrAfricanAmerican[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiianOrOtherPacificIslander:
+                            {
+                                String[] BorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race 4");
+                                pdfFormFields.SetField("race 4", BorrowerNativeHawaiianOrOtherPacificIslander[0]);
+                            }
+                            break;
+                        case Race.White:
+                            {
+                                String[] BorrowerWhite = pdfFormFields.GetAppearanceStates("race 5");
+                                pdfFormFields.SetField("race 5", BorrowerWhite[0]);
+                            }
+                            break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var sex in data.Declaration.BorrowerDemographic.Sex)
+                    switch ((Sex)sex.Id)
+                    {
+                        case Sex.Female:
+                            {
+                                String[] BorrowerFemale = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "2");
+                            }
+
+                            break;
+                        case Sex.Male:
+                            {
+                                String[] BorrowerMale = pdfFormFields.GetAppearanceStates(" Sex borrower");
+                                pdfFormFields.SetField("Sex borrower", "1");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                //Demographic Information CoBorrower
+                foreach (var ethnic in data.Declaration.CoBorrowerDemographic.Ethnicity)
+                    switch ((Ethnic)ethnic.Id)
+                    {
+                        case Ethnic.HispanicOrLatino:
+                            {
+                                String[] CoBorrowerHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 2");
+                                pdfFormFields.SetField("Ethnicity 2", "2");
+                            }
+
                             break;
                         case Ethnic.NotHispanicOrLatino:
-                            borrowerDemographic.IsNotHispanicOrLatino = true;
+                            {
+                                String[] CoBorrowerNotHispanicOrLatino = pdfFormFields.GetAppearanceStates("Ethnicity 2");
+                                pdfFormFields.SetField("Ethnicity 2", "Yes");
+                            }
                             break;
-                        case Ethnic.CanNotProvideEthnic:
-                            borrowerDemographic.CanNotProvideEthnic = true;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
                             break;
+                    }
+
+                foreach (var race in data.Declaration.CoBorrowerDemographic.Race)
+                    switch ((Race)race.Id)
+                    {
+                        case Race.AmericanIndianOrAlaskaNative:
+                            {
+                                String[] CoBorrowerAmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("race c1");
+                                pdfFormFields.SetField("race c1", CoBorrowerAmericanIndianOrAlaskaNative[0]);
+                            }
+
+                            break;
+                        case Race.Asian:
+                            {
+                                String[] CoBorrowerAsian = pdfFormFields.GetAppearanceStates("race c4");
+                                pdfFormFields.SetField("race c4", CoBorrowerAsian[0]);
+                            }
+                            break;
+                        case Race.BlackOrAfricanAmerican:
+                            {
+                                String[] CoBorrowerBlackOrAfricanAmerican = pdfFormFields.GetAppearanceStates("race c6");
+                                pdfFormFields.SetField("race c6", CoBorrowerBlackOrAfricanAmerican[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiianOrOtherPacificIslander:
+                            {
+                                String[] CoBorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race c2");
+                                pdfFormFields.SetField("race c2", CoBorrowerNativeHawaiianOrOtherPacificIslander[0]);
+                            }
+                            break;
+                        case Race.White:
+                            {
+                                String[] CoBorrowerWhite = pdfFormFields.GetAppearanceStates("race c5");
+                                pdfFormFields.SetField("race c5", CoBorrowerWhite[0]);
+                            }
+                            break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
+                        default:
+                            break;
+                    }
+
+                foreach (var sex in data.Declaration.CoBorrowerDemographic.Sex)
+                    switch ((Sex)sex.Id)
+                    {
+                        case Sex.Female:
+                            {
+                                String[] CoBorrowerFemale = pdfFormFields.GetAppearanceStates("Ethnicity 1");
+                                pdfFormFields.SetField("Ethnicity 1", "2");
+                            }
+
+                            break;
+                        case Sex.Male:
+                            {
+                                String[] CoBorrowerMale = pdfFormFields.GetAppearanceStates(" Sex borrower");
+                                pdfFormFields.SetField("Sex borrower", "1");
+                            }
+                            break;
+                        // case Ethnic.PuertoRican:
+                        //     borrowerDemographic.IsPuertoRican = true;
+                        //     break;
+                        // case Ethnic.Cuban:
+                        //     borrowerDemographic.IsCuban = true;
+                        //     break;
+                        // case Ethnic.OtherHispanicOrLatino:
+                        //     borrowerDemographic.IsOtherHispanicOrLatino = true;
+                        //     borrowerDemographic.Origin = ethnic.OtherValue;
+                        //     break;
+                        // case Ethnic.NotHispanicOrLatino:
+                        //     borrowerDemographic.IsNotHispanicOrLatino = true;
+                        //     break;
+                        // case Ethnic.CanNotProvideEthnic:
+                        //     borrowerDemographic.CanNotProvideEthnic = true;
+                        //     break;
                         default:
                             break;
                     }
