@@ -41,32 +41,35 @@ export class SummaryComponent implements OnInit {
       }
     } else {
       if (
-        this.formData.employmentIncome &&
-        this.formData.employmentIncome.coBorrowerEmploymentInfo
+        this.formData.employmentIncome == null &&
+        this.formData.employmentIncome.coBorrowerEmploymentInfo == null
       ) {
+        debugger;
         this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
       if (
-        this.formData.additionalDetails &&
-        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle
+        this.formData.additionalDetails == null &&
+        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle ==
+          null
       ) {
         this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle = "";
       }
       if (
-        this.formData.employmentIncome &&
-        this.formData.employmentIncome.coBorrowerMonthlyIncome
+        this.formData.employmentIncome == null &&
+        this.formData.employmentIncome.coBorrowerMonthlyIncome == null
       ) {
+        debugger;
         this.formData.employmentIncome.coBorrowerMonthlyIncome = {};
       }
       if (
-        this.formData.declaration &&
-        this.formData.declaration.coBorrowerDeclaration
+        this.formData.declaration == null &&
+        this.formData.declaration.coBorrowerDeclaration == null
       ) {
         this.formData.declaration.coBorrowerDeclaration = {};
       }
       if (
-        this.formData.declaration &&
-        this.formData.declaration.coBorrowerDemographic
+        this.formData.declaration == null &&
+        this.formData.declaration.coBorrowerDemographic == null
       ) {
         this.formData.declaration.coBorrowerDemographic = {};
       }
