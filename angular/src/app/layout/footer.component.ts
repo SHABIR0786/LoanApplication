@@ -5,6 +5,7 @@ import { AppComponentBase } from "@shared/app-component-base";
   selector: "app-footer",
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ["./footer.component.css"],
 })
 export class FooterComponent extends AppComponentBase {
   currentYear: number;

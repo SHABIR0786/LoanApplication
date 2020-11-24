@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using AutoMapper.QueryableExtensions;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -1013,6 +1014,25 @@ namespace LoanManagement.DatabaseServices.Implementations
         public Task<PagedResultDto<LoanApplicationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<PagedResultDto<LoanListDto>> GetAllCustomAsync(PagedLoanApplicationResultRequestDto input)
+        {
+            var data = await _repository.GetAll()
+                .AsNoTracking()
+                .OrderBy(i => i.LoanDetail.LastModificationTime)
+                .Select(i => new LoanListDto
+                {
+                    Borrower = i.PersonalDetail.Borrower.FirstName + " " + i.PersonalDetail.Borrower.LastName,
+                    Contact = i.PersonalDetail.Borrower.CellPhone,
+                })
+                .Skip(input.SkipCount)
+                .Take(input.MaxResultCount)
+                .ToListAsync();
+
+            var count = await _repository.CountAsync();
+
+            return new PagedResultDto<LoanListDto>(count, data);
         }
 
         public async Task<LoanApplicationDto> CreateAsync(LoanApplicationDto input)
