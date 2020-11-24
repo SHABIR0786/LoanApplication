@@ -522,7 +522,155 @@ namespace LoanManagement.Controllers
                         }
                 pdfFormFields.SetField("Purpose of Loan", data.LoanDetails.PurposeOfLoan.HasValue ? data.LoanDetails.PurposeOfLoan.Value.ToString() : "");
                 pdfFormFields.SetField("Amount", data.LoanDetails.CurrentLoanAmount.HasValue ? data.LoanDetails.CurrentLoanAmount.Value.ToString() : "");
-                pdfFormFields.SetField("Purpose of Loan", data.LoanDetails.PurposeOfLoan.HasValue ? data.LoanDetails.PurposeOfLoan.Value.ToString() : "");
+                pdfFormFields.SetField("Borrower Name", data.PersonalInformation.Borrower.FirstName + " " + data.PersonalInformation.Borrower.LastName);
+                pdfFormFields.SetField("Borrower SSN", data.PersonalInformation.Borrower.SocialSecurityNumber);
+                pdfFormFields.SetField("Borrower Home Phone", data.PersonalInformation.Borrower.HomePhone);
+                pdfFormFields.SetField("Borrower DOB", data.PersonalInformation.Borrower.DateOfBirth);
+                pdfFormFields.SetField("Dependents not listed by Co-Borrower no", data.PersonalInformation.Borrower.NumberOfDependents.HasValue ? data.PersonalInformation.Borrower.NumberOfDependents.Value.ToString() : "");
+                pdfFormFields.SetField("Borrower Present Address", data.PersonalInformation.ResidentialAddress.AddressLine1 + " "
+                  + data.PersonalInformation.ResidentialAddress.City + " "
+                     + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
+                   + (data.PersonalInformation.ResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.ResidentialAddress.ZipCode.Value.ToString() : ""));
+
+                if (data.PersonalInformation.IsMailingAddressSameAsResidential == false && data.PersonalInformation.MailingAddress != null)
+                {
+                    pdfFormFields.SetField("Borrower Mailing Address if different from Present", data.PersonalInformation.MailingAddress.AddressLine1 + " "
+                  + data.PersonalInformation.MailingAddress.City + " "
+                     + (data.PersonalInformation.MailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.MailingAddress.StateId.Value) : "") + " "
+                   + (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : ""));
+                }
+
+                if (data.PersonalInformation.PreviousAddresses != null && data.PersonalInformation.PreviousAddresses.Count() != 0)
+                {
+                    pdfFormFields.SetField("Borrower Former Address if different from Present", data.PersonalInformation.PreviousAddresses[0].AddressLine1 + " "
+                  + data.PersonalInformation.PreviousAddresses[0].City + " "
+                     + (data.PersonalInformation.PreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.PreviousAddresses[0].StateId.Value) : "") + " "
+                   + (data.PersonalInformation.PreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.PreviousAddresses[0].ZipCode.Value.ToString() : ""));
+
+                }
+
+
+                pdfFormFields.SetField("Borrower No of Years", data.PersonalInformation.ResidentialAddress.Years.HasValue ? data.PersonalInformation.ResidentialAddress.Years.Value.ToString() : "");
+                pdfFormFields.SetField("Borrower No of Years Former Address", data.PersonalInformation.IsMailingAddressSameAsResidential == false ?
+                    data.PersonalInformation.MailingAddress.AddressLine1 + " " +
+                    data.PersonalInformation.MailingAddress.City + " " +
+                    (data.PersonalInformation.MailingAddress.StateId.HasValue ? data.PersonalInformation.MailingAddress.StateId.Value.ToString() : "") + " " +
+                    (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : "") : "");
+                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.HasValue)
+                {
+                    DateTime now = DateTime.Today;
+                    int Years = now.Year - data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.Value.Year;
+                    if (data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.Value > now.AddYears(-Years)) Years--;
+                    pdfFormFields.SetField("Borrower Years on the job", Years.ToString());
+
+                }
+
+                pdfFormFields.SetField("Borrower Name and Address of Employer", data.PersonalInformation.ResidentialAddress.AddressLine1 + " "
+                    + data.PersonalInformation.ResidentialAddress.City + " "
+                       + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
+                     + (data.PersonalInformation.ResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.ResidentialAddress.ZipCode.Value.ToString() : ""));
+                pdfFormFields.SetField("Borrower Business phone", data.PersonalInformation.Borrower.CellPhone);
+
+                if (data.PersonalInformation.CoBorrower != null)
+                {
+                    pdfFormFields.SetField("Co-Borrower SSN", data.PersonalInformation.CoBorrower.SocialSecurityNumber);
+                    pdfFormFields.SetField("Co-Borrower Name", data.PersonalInformation.CoBorrower.FirstName + " " + data.PersonalInformation.CoBorrower.LastName);
+                    pdfFormFields.SetField("Co-Borrower Home Phone", data.PersonalInformation.CoBorrower.HomePhone);
+                    pdfFormFields.SetField("Co-Borrower DOB", data.PersonalInformation.CoBorrower.DateOfBirth);
+                    pdfFormFields.SetField("Dependents not listed by Borrower no", data.PersonalInformation.CoBorrower.NumberOfDependents.HasValue ? data.PersonalInformation.CoBorrower.NumberOfDependents.Value.ToString() : "");
+                    pdfFormFields.SetField("Co-Borrower Present Address", data.PersonalInformation.CoBorrowerResidentialAddress.AddressLine1 + " "
+                            + data.PersonalInformation.CoBorrowerResidentialAddress.City + " "
+                               + (data.PersonalInformation.CoBorrowerResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerResidentialAddress.StateId.Value) : "") + " "
+                            + (data.PersonalInformation.CoBorrowerResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.CoBorrowerResidentialAddress.ZipCode.Value.ToString() : ""));
+                    pdfFormFields.SetField("Co-Borrower No of Years", data.PersonalInformation.CoBorrowerResidentialAddress.Years.ToString());
+                    if (data.PersonalInformation.MailingAddress != null)
+                    {
+                        pdfFormFields.SetField("Co-Borrower Mailing Address if different from Present", data.PersonalInformation.CoBorrowerMailingAddress.AddressLine1 + " "
+                        + data.PersonalInformation.CoBorrowerMailingAddress.City + " "
+                           + (data.PersonalInformation.CoBorrowerMailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerMailingAddress.StateId.Value) : "") + " "
+                         + (data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.HasValue ? data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.Value.ToString() : ""));
+                    }
+
+                    if (data.PersonalInformation.CoBorrowerPreviousAddresses != null && data.PersonalInformation.CoBorrowerPreviousAddresses.Count() != 0)
+                    {
+                        pdfFormFields.SetField("Co-Borrower Former Address if different from Present", data.PersonalInformation.CoBorrowerPreviousAddresses[0].AddressLine1 + " "
+                        + data.PersonalInformation.CoBorrowerPreviousAddresses[0].City + " "
+                           + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.Value) : "") + " "
+                         + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.Value.ToString() : ""));
+                    }
+                }
+                if (data.EmploymentIncome.CoBorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.HasValue)
+                {
+                    DateTime now = DateTime.Today;
+                    int Years = now.Year - data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.Value.Year;
+                    if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.Value > now.AddYears(-Years)) Years--;
+                    pdfFormFields.SetField("Co-Borrower Years on the job", Years.ToString());
+
+                    pdfFormFields.SetField("Co-Borrower Name and Address of Employer", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EmployerName + " " +
+                         data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Address1 + " " +
+                        data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City + " "
+                            + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
+                          + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.HasValue ? data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.Value.ToString() : "")
+                          );
+                }
+                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count >= 2)
+                {
+                    pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].Position);
+                    pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate.Value.ToString() + " " +
+                      data.EmploymentIncome.BorrowerEmploymentInfo[1].EndDate.Value.ToString()
+                      );
+                    pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].EmployerName + " " +
+                            data.EmploymentIncome.BorrowerEmploymentInfo[1].Address1 + " "
+                            + data.EmploymentIncome.BorrowerEmploymentInfo[1].City + " "
+                           + (data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.Value) : "") + " "
+                            + (data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.Value.ToString() : "")
+                            );
+                }
+
+                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count >= 3)
+                {
+                    pdfFormFields.SetField("Borrower Employment info Cont position title2", data.EmploymentIncome.BorrowerEmploymentInfo[2].Position
+                       );
+                    pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ 2", data.EmploymentIncome.BorrowerEmploymentInfo[2].StartDate.Value.ToString() + " " +
+                            data.EmploymentIncome.BorrowerEmploymentInfo[2].EndDate.Value.ToString()
+                            );
+                    pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ 2", data.EmploymentIncome.BorrowerEmploymentInfo[2].EmployerName + " " +
+                   data.EmploymentIncome.BorrowerEmploymentInfo[2].Address1 + " "
+                   + data.EmploymentIncome.BorrowerEmploymentInfo[2].City + " "
+                  + (data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.Value) : "") + " "
+                   + (data.EmploymentIncome.BorrowerEmploymentInfo[2].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[2].ZipCode.Value.ToString() : "")
+                   );
+
+                }
+                pdfFormFields.SetField("Monthly income Borrower Bonuses a1", data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value.ToString() : "");
+                pdfFormFields.SetField("Monthly income Borrower Base a", data.EmploymentIncome.BorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Base.Value.ToString() : "");
+                pdfFormFields.SetField("Monthly income Borrower Commissions a5", data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.Value.ToString() : "");
+                pdfFormFields.SetField("Monthly income Borrower Dividends a10", data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.Value.ToString() : "");
+                pdfFormFields.SetField("Monthly income Borrower Overtime 1", data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.Value.ToString() : "");
+                pdfFormFields.SetField("Monthly income Borrower Total a29", (
+                    (data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.Value : 0) +
+                    (data.EmploymentIncome.BorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Base.Value : 0) +
+                    (data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.Value : 0) +
+                    (data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.Value : 0) +
+                    (data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.Value : 0)).ToString()
+                    );
+
+                if (data.EmploymentIncome.CoBorrowerMonthlyIncome != null)
+                {
+                    pdfFormFields.SetField("Monthly income Co-Borrower Bonuses a2", data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.Value.ToString() : "");
+                    pdfFormFields.SetField("Monthly income Co-Borrower Base c", data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.Value.ToString() : "");
+                    pdfFormFields.SetField("Monthly income Co-Borrower Commissions a6", data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Commissions.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Commissions.Value.ToString() : "");
+                    pdfFormFields.SetField("Monthly income Co-Borrower Dividends/Interest a11", data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.Value.ToString() : "");
+                    pdfFormFields.SetField("Monthly income Co-Borrower Overtime 2", data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.Value.ToString() : "");
+                    pdfFormFields.SetField("Monthly income Co-Borrower Total a30", (
+                            (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses.Value : 0) +
+                            (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Base.Value : 0) +
+                            (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Commissions.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Commissions.Value : 0) +
+                            (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.Value : 0) +
+                            (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.Value : 0)).ToString());
+                }
+               
+
 
                 if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 2)
                 {
