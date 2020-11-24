@@ -406,10 +406,18 @@ export class DeclarationComponent implements OnInit, DoCheck {
         });
       }
     }
-
+    debugger;
     if (this.isApplyingWithCoBorrower) {
-      this.data.coBorrowerDeclaration = {};
-      this.data.coBorrowerDemographic = {};
+      if (
+        this.data.coBorrowerDeclaration == undefined ||
+        this.data.coBorrowerDeclaration == null
+      )
+        this.data.coBorrowerDeclaration = {};
+      if (
+        this.data.coBorrowerDemographic == undefined ||
+        this.data.coBorrowerDemographic == null
+      )
+        this.data.coBorrowerDemographic = {};
       this.form.addControl(
         "coBorrowerDeclaration",
         this.initDeclarationForm(this.data.coBorrowerDeclaration)
@@ -418,7 +426,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
         "coBorrowerDemographic",
         this.initDemographicForm(this.data.coBorrowerDemographic)
       );
-    } else {
+    }
+    if (!this.isApplyingWithCoBorrower) {
       this.form.removeControl("coBorrowerDeclaration");
       this.form.removeControl("coBorrowerDemographic");
     }
