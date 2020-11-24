@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LoanManagement.Application\LoanManagement.Application.csproj" />
     <ProjectReference Include="..\LoanManagement.EntityFrameworkCore\LoanManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\LoanManagement.Core\LoanManagement.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.0" />
