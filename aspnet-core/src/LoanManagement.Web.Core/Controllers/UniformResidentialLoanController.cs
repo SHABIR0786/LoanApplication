@@ -524,6 +524,140 @@ namespace LoanManagement.Controllers
                 pdfFormFields.SetField("Amount", data.LoanDetails.CurrentLoanAmount.HasValue ? data.LoanDetails.CurrentLoanAmount.Value.ToString() : "");
                 pdfFormFields.SetField("Purpose of Loan", data.LoanDetails.PurposeOfLoan.HasValue ? data.LoanDetails.PurposeOfLoan.Value.ToString() : "");
 
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 2)
+                {
+                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 4",
+                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    );
+
+                    pdfFormFields.SetField("Assets Acct no 4",
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber
+                    );
+
+                    pdfFormFields.SetField("Assets Acct no 4 Balance 5",
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : ""
+                    );
+                }
+
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 1)
+                {
+
+                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 3", data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    );
+
+                    pdfFormFields.SetField("Assets Acct no 3",
+                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber
+                                        );
+
+                    pdfFormFields.SetField("Assets Acct no 3 Balance 4",
+                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : ""
+                    );
+                }
+
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 2)
+                {
+                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 2", data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].Address + " " +
+                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].City + " " +
+                       _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId)
+                       );
+
+                    pdfFormFields.SetField("Assets Acct no 2",
+                                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].AccountNumber
+                                       );
+
+                    pdfFormFields.SetField("Assets Acct no 1 Balance b",
+                                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].CashValue.Value.ToString() : ""
+                                       );
+                }
+
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 1)
+                {
+                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union",
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].Address + " " +
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].City + " " +
+                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].StateId)
+                    );
+
+                    pdfFormFields.SetField("Assets Acct no 1",
+                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].AccountNumber
+                                   );
+
+                    pdfFormFields.SetField("Assets Acct no 1 Balance a",
+                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].CashValue.Value.ToString() : ""
+                                       );
+                }
+
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).Count() >= 3)
+                {
+                    pdfFormFields.SetField("Owned Real Estate Address 3a",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].Address + " " +
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].City + " " +
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].StateId
+                        );
+
+                    pdfFormFields.SetField("Type of Propertya",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.Value.ToString() : ""
+                                   );
+
+                    pdfFormFields.SetField("Owned Real Estate Address 3 Market Value",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].PresentMarketValue.Value.ToString() : ""
+                                  );
+
+                    pdfFormFields.SetField("Owned Real Estate Address 3 Amount of Mortgages Liens",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].OutstandingMortgageBalance.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].OutstandingMortgageBalance.Value.ToString() : ""
+                                   );
+
+                    pdfFormFields.SetField("Owned Real Estate Address 3 Gross Rental Income",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].GrossRentalIncome.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].GrossRentalIncome.Value.ToString() : ""
+                                  );
+
+                    pdfFormFields.SetField("Owned Real Estate Address 3 Mortage Payments",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].MonthlyMortgagePayment.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].MonthlyMortgagePayment.Value.ToString() : ""
+                                   );
+
+                    pdfFormFields.SetField("Owned Real Estate Address 3 Insurance Maintenance Taxes",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].TaxesInsuranceAndOther.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[2].TaxesInsuranceAndOther.Value.ToString() : ""
+                                   );
+                    //PdfTextField GrossRentalIncome1 = (PdfTextField)(form.Fields["Owned Real Estate Address 1 Net Rental Income a"]);
+                    //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0]..ToString());
+                }
+
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).Count() >= 2)
+                {
+                    pdfFormFields.SetField("Owned Real Estate Address 1a",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].Address + " " +
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].City + " " +
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].StateId
+                        );
+
+                    pdfFormFields.SetField("Type of Property 2",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].PropertyType);
+
+                    pdfFormFields.SetField("Type of Propertya",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].PropertyType);
+
+                    pdfFormFields.SetField("Owned Real Estate Address 2  Market Value",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].PresentMarketValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].PresentMarketValue.Value.ToString() : "");
+
+                    pdfFormFields.SetField("Owned Real Estate Address 2  Amount of Mortgages Liens",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].OutstandingMortgageBalance.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[1].OutstandingMortgageBalance.Value.ToString() : "");
+
+                    pdfFormFields.SetField("Owned Real Estate Address 2 Gross Rental Income",
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].GrossRentalIncome.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].GrossRentalIncome.Value.ToString() : "");
+
+                    pdfFormFields.SetField("Owned Real Estate Address 2 Mortage Payments",
+                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].MonthlyMortgagePayment.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].MonthlyMortgagePayment.Value.ToString() : "");
+
+                    pdfFormFields.SetField("Owned Real Estate Address 2 Insurance Maintenance Taxes",
+                       data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].TaxesInsuranceAndOther.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0].TaxesInsuranceAndOther.Value.ToString() : "");
+
+                    //PdfTextField GrossRentalIncome1 = (PdfTextField)(form.Fields["Owned Real Estate Address 1 Net Rental Income a"]);
+                    //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0]..ToString());
+                }
                 pdfStamper.Close();
             }
         }
