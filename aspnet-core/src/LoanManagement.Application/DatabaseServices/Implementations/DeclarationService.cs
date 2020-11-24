@@ -177,7 +177,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 if (input.CoBorrowerDemographic != null)
                 {
-                    if (!input.BorrowerDemographic.Id.HasValue || input.BorrowerDemographic.Id == default)
+                    if (!input.CoBorrowerDemographic.Id.HasValue || input.BorrowerDemographic.Id == default)
                     {
                         coBorrowerDemographic = new DeclarationBorrowereDemographicsInformation
                         {

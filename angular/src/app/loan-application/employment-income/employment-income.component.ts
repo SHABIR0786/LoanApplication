@@ -232,6 +232,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
       this.form.removeControl("coBorrowerMonthlyIncome");
       this.form.removeControl("coBorrowerEmploymentInfo");
     }
+
     var startDate;
     this.form
       .get("borrowerEmploymentInfo")

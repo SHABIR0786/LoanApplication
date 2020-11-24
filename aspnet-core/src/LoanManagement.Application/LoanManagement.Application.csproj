@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LoanManagement.Core\LoanManagement.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PdfSharpCore" Version="1.2.8" />
+  </ItemGroup>
 </Project>
