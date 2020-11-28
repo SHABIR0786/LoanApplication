@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="card my-5">
       <div class="card-body table-responsive">
-        <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm text-center">
           <thead>
             <tr>
               <th>Borrower</th>
@@ -10,11 +10,11 @@
               <th>Loan Status</th>
               <th>Status Date</th>
               <th>Est.Close</th>
-              <th>Rate Loc...</th>
+              <th>Rate Lock Exp.</th>
               <th>Processor</th>
               <th>Originator</th>
               <th>Contact</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -29,8 +29,26 @@
               <td>{{ table.originator }}</td>
               <td>{{ table.contact }}</td>
               <td>
-                <button type="button" class="btn btn-orange text-white">
+                <button
+                  type="button"
+                  class="btn btn-orange text-white"
+                  (click)="handleEdit(table.id)"
+                >
                   Edit
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-orange text-white ml-3"
+                  (click)="handleEdit(table.id)"
+                >
+                  Export
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-orange text-white ml-3"
+                  (click)="handleEdit(table.id)"
+                >
+                  <b>E-Sign</b>
                 </button>
               </td>
             </tr>

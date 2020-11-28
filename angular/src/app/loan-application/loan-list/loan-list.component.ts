@@ -15,7 +15,10 @@ export class LoanListComponent implements OnInit {
   pageNumber = 1;
   pageSize = 10;
 
-  constructor(private _loanApplicationService: LoanApplicationService) {}
+  constructor(
+    private _loanApplicationService: LoanApplicationService,
+    private _route: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadData({
@@ -34,5 +37,13 @@ export class LoanListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  handleEdit(id: number) {
+    this._route.navigate(["app/loan-detail"], {
+      queryParams: {
+        id: id,
+      },
+    });
   }
 }
