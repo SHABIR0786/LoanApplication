@@ -46,8 +46,8 @@ namespace LoanManagement.Controllers
             {
                 await _loanAppService.CreateAsync(input);
             }
-            else
-                await _loanAppService.UpdateAsync(input);
+
+            await _loanAppService.UpdateAsync(input);
 
             FillData(input);
 
