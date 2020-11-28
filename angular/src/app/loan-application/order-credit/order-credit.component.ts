@@ -17,6 +17,7 @@ export class OrderCreditComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    console.log(this._dataService.loanApplication);
     this.data = this._dataService.loanApplication.orderCredit;
   }
 
