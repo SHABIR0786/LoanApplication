@@ -67,6 +67,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+    debugger;
     this.data = this.form.value;
     this._dataService.updateValidationsFormArr(
       this.form.get("borrowerEmploymentInfo") as FormArray,
@@ -180,6 +181,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   initForm() {
+    debugger;
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       borrowerMonthlyIncome: this.initBorrowerMonthlyIncome(
@@ -237,7 +239,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     this.form
       .get("borrowerEmploymentInfo")
       .valueChanges.subscribe((borrowerEmploymentInfo) => {
-        debugger;
         if (
           borrowerEmploymentInfo &&
           borrowerEmploymentInfo[0].startDate &&
@@ -268,7 +269,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
       this.form
         .get("coBorrowerEmploymentInfo")
         .valueChanges.subscribe((coBorrowerEmploymentInfo) => {
-          debugger;
           if (
             coBorrowerEmploymentInfo &&
             coBorrowerEmploymentInfo[0].startDate &&
