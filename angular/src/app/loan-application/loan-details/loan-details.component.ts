@@ -62,6 +62,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+    debugger;
     this.data = this.form.value;
 
     this.data.loanOfficerName = this.getDataById(

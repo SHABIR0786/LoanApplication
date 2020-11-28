@@ -22,16 +22,16 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
   get IsLoanForm(): boolean {
     return (
-      this.router.url === "/app/loan-detail" ||
-      this.router.url === "/app/personal-information" ||
-      this.router.url === "/app/expense" ||
-      this.router.url === "/app/asset" ||
-      this.router.url === "/app/employment-income" ||
-      this.router.url === "/app/order-credit" ||
-      this.router.url === "/app/additional-detail" ||
-      this.router.url === "/app/declaration" ||
-      this.router.url === "/app/summary" ||
-      this.router.url === "/app/econsent"
+      this.router.url.includes("/app/loan-detail") ||
+      this.router.url.includes("/app/personal-information") ||
+      this.router.url.includes("/app/expense") ||
+      this.router.url.includes("/app/asset") ||
+      this.router.url.includes("/app/employment-income") ||
+      this.router.url.includes("/app/order-credit") ||
+      this.router.url.includes("/app/additional-detail") ||
+      this.router.url.includes("/app/declaration") ||
+      this.router.url.includes("/app/summary") ||
+      this.router.url.includes("/app/econsent")
     );
   }
 

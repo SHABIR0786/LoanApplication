@@ -46,7 +46,6 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = this.getMenuItems();
-    console.log(this.menuItems);
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
