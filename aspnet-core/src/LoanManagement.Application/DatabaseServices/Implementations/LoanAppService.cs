@@ -75,79 +75,74 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     AdditionalDetails = new AdditionalDetailsDto
                     {
-                        Id = result.AdditionalDetail.Id,
-                        NameOfIndividualsOnTitle = result.AdditionalDetail.NameOfIndividualsOnTitle,
+                        Id = result.AdditionalDetail?.Id,
+                        NameOfIndividualsOnTitle = result.AdditionalDetail?.NameOfIndividualsOnTitle,
                     },
                     LoanDetails = new LoanDetailDto
                     {
-                        IsWorkingWithOfficer = result.LoanDetail.IsWorkingWithOfficer,
-                        LoanOfficerId = result.LoanDetail.LoanOfficerId,
-                        ReferredBy = result.LoanDetail.ReferredBy,
-                        PurposeOfLoan = result.LoanDetail.PurposeOfLoan,
-                        EstimatedValue = result.LoanDetail.EstimatedValue,
-                        CurrentLoanAmount = result.LoanDetail.CurrentLoanAmount,
-                        RequestedLoanAmount = result.LoanDetail.RequestedLoanAmount,
-                        EstimatedPurchasePrice = result.LoanDetail.EstimatedPurchasePrice,
-                        DownPaymentAmount = result.LoanDetail.DownPaymentAmount,
-                        DownPaymentPercentage = result.LoanDetail.DownPaymentPercentage,
+                        IsWorkingWithOfficer = result.LoanDetail?.IsWorkingWithOfficer,
+                        LoanOfficerId = result.LoanDetail?.LoanOfficerId,
+                        ReferredBy = result.LoanDetail?.ReferredBy,
+                        PurposeOfLoan = result.LoanDetail?.PurposeOfLoan,
+                        EstimatedValue = result.LoanDetail?.EstimatedValue,
+                        CurrentLoanAmount = result.LoanDetail?.CurrentLoanAmount,
+                        RequestedLoanAmount = result.LoanDetail?.RequestedLoanAmount,
+                        EstimatedPurchasePrice = result.LoanDetail?.EstimatedPurchasePrice,
+                        DownPaymentAmount = result.LoanDetail?.DownPaymentAmount,
+                        DownPaymentPercentage = result.LoanDetail?.DownPaymentPercentage,
                         SourceOfDownPayment = result.LoanDetail.SourceOfDownPayment,
-                        GiftAmount = result.LoanDetail.GiftAmount,
-                        GiftExplanation = result.LoanDetail.GiftExplanation,
-                        HaveSecondMortgage = result.LoanDetail.HaveSecondMortgage,
-                        SecondMortgageAmount = result.LoanDetail.SecondMortgageAmount,
-                        PayLoanWithNewLoan = result.LoanDetail.PayLoanWithNewLoan,
-                        RefinancingCurrentHome = result.LoanDetail.RefinancingCurrentHome,
-                        YearAcquired = result.LoanDetail.YearAcquired,
-                        OriginalPrice = result.LoanDetail.OriginalPrice,
-                        City = result.LoanDetail.City,
-                        StateId = result.LoanDetail.StateId,
-                        PropertyTypeId = result.LoanDetail.PropertyTypeId,
-                        PropertyUseId = result.LoanDetail.PropertyUseId
+                        GiftAmount = result.LoanDetail?.GiftAmount,
+                        GiftExplanation = result.LoanDetail?.GiftExplanation,
+                        HaveSecondMortgage = result.LoanDetail?.HaveSecondMortgage,
+                        SecondMortgageAmount = result.LoanDetail?.SecondMortgageAmount,
+                        PayLoanWithNewLoan = result.LoanDetail?.PayLoanWithNewLoan,
+                        RefinancingCurrentHome = result.LoanDetail?.RefinancingCurrentHome,
+                        YearAcquired = result.LoanDetail?.YearAcquired,
+                        OriginalPrice = result.LoanDetail?.OriginalPrice,
+                        City = result.LoanDetail?.City,
+                        StateId = result.LoanDetail?.StateId,
+                        PropertyTypeId = result.LoanDetail?.PropertyTypeId,
+                        PropertyUseId = result.LoanDetail?.PropertyUseId
                     },
-
                     Expenses = new ExpensesDto
                     {
-                        IsLiveWithFamilySelectRent = result.Expense.IsLiveWithFamilySelectRent,
-                        Rent = result.Expense.Rent,
-                        OtherHousingExpenses = result.Expense.OtherHousingExpenses,
-                        FirstMortgage = result.Expense.FirstMortgage,
-                        SecondMortgage = result.Expense.SecondMortgage,
-                        HazardInsurance = result.Expense.HazardInsurance,
-                        RealEstateTaxes = result.Expense.RealEstateTaxes,
-                        MortgageInsurance = result.Expense.MortgageInsurance,
-                        HomeOwnersAssociation = result.Expense.HomeOwnersAssociation
+                        IsLiveWithFamilySelectRent = result.Expense?.IsLiveWithFamilySelectRent,
+                        Rent = result.Expense?.Rent,
+                        OtherHousingExpenses = result.Expense?.OtherHousingExpenses,
+                        FirstMortgage = result.Expense?.FirstMortgage,
+                        SecondMortgage = result.Expense?.SecondMortgage,
+                        HazardInsurance = result.Expense?.HazardInsurance,
+                        RealEstateTaxes = result.Expense?.RealEstateTaxes,
+                        MortgageInsurance = result.Expense?.MortgageInsurance,
+                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation
                     },
-
                     OrderCredit = new CreditAuthAgreementDto
                     {
-                        AgreeCreditAuthAgreement = result.CreditAuthAgreement.AgreeCreditAuthAgreement,
+                        AgreeCreditAuthAgreement = result.CreditAuthAgreement?.AgreeCreditAuthAgreement,
                     },
-
                     EConsent = new EConsentDto
                     {
-                        AgreeEConsent = result.ConsentDetail.AgreeEConsent,
-                        FirstName = result.ConsentDetail.FirstName,
-                        LastName = result.ConsentDetail.LastName,
-                        Email = result.ConsentDetail.Email,
-                        CoborrowerEmail = result.ConsentDetail.CoborrowerEmail,
-                        CoborrowerFirstName = result.ConsentDetail.CoborrowerFirstName,
-                        CoborrowerLastName = result.ConsentDetail.CoborrowerLastName,
-                        CoborrowerAgreeEConsent = result.ConsentDetail.CoborrowerAgreeEConsent,
+                        AgreeEConsent = result.ConsentDetail?.AgreeEConsent,
+                        FirstName = result.ConsentDetail?.FirstName,
+                        LastName = result.ConsentDetail?.LastName,
+                        Email = result.ConsentDetail?.Email,
+                        CoborrowerEmail = result.ConsentDetail?.CoborrowerEmail,
+                        CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
+                        CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
+                        CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
                     },
-
                     PersonalInformation = new PersonalInformationDto
                     {
-                        IsApplyingWithCoBorrower = result.PersonalDetail.IsApplyingWithCoBorrower,
-                        AgreePrivacyPolicy = result.PersonalDetail.AgreePrivacyPolicy,
-                        IsMailingAddressSameAsResidential = result.PersonalDetail.IsMailingAddressSameAsResidential,
-
+                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
+                        AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
+                        IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
                     },
 
                 };
 
 
                 viewModel.PersonalInformation = new PersonalInformationDto();
-                if (result.PersonalDetail.Addresses != null && result.PersonalDetail.Addresses.Any())
+                if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
                     foreach (var address in result.PersonalDetail.Addresses)
                     {
@@ -214,7 +209,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
 
                 }
-                if (result.PersonalDetail.Addresses != null && result.PersonalDetail.Addresses.Any())
+                if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
                     viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
                     viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
@@ -996,11 +991,8 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                                 });
                             }
-
                         }
-
                     }
-
                 }
 
                 return viewModel;
@@ -1023,6 +1015,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 .OrderBy(i => i.LoanDetail.LastModificationTime)
                 .Select(i => new LoanListDto
                 {
+                    Id = i.Id,
                     Borrower = i.PersonalDetail.Borrower.FirstName + " " + i.PersonalDetail.Borrower.LastName,
                     Contact = i.PersonalDetail.Borrower.CellPhone,
                 })
