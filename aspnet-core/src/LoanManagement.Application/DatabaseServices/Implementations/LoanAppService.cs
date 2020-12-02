@@ -1,7 +1,6 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using AutoMapper.QueryableExtensions;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;

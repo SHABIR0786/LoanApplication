@@ -10,6 +10,9 @@ namespace LoanManagement.CoreLogicModels.JointResponse{
 		public string BorrowerID { get; set; }
 		[XmlAttribute(AttributeName="CreditReportIdentifier")]
 		public string CreditReportIdentifier { get; set; }
+		/// <summary>
+        ///  Set the CreditRequestType attribute to “Individual” for one applicant or “Joint” for two.
+        /// </summary>
 		[XmlAttribute(AttributeName="CreditRequestType")]
 		public string CreditRequestType { get; set; }
 	}

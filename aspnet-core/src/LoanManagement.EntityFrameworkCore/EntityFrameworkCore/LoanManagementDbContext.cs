@@ -5,7 +5,6 @@ using LoanManagement.Models;
 using LoanManagement.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace LoanManagement.EntityFrameworkCore
 {

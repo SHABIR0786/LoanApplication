@@ -7,7 +7,42 @@ import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
+import { async } from "@angular/core/testing";
 
+import { createStore } from "redux";
+function todos(state = [], action) {
+  switch (action.type) {
+    case "ADD_TODO":
+      return state.concat([action.text]);
+    default:
+      return state;
+  }
+}
+const store = createStore(todos, ["Use Redux"]);
+
+function select(state) {
+  return state.some.deep.property;
+}
+
+let currentValue;
+function handleChange() {
+  let previousValue = currentValue;
+  currentValue = select(store.getState());
+
+  if (previousValue !== currentValue) {
+    console.log(
+      "Some deep nested property changed from",
+      previousValue,
+      "to",
+      currentValue
+    );
+  }
+}
+
+const unsubscribe = store.subscribe(handleChange);
 @Component({
   selector: "app-personal-information",
   templateUrl: "./personal-information.component.html",
@@ -26,6 +61,36 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     coBorrowerPreviousAddresses: [],
   };
 
+  loanApplication: ILoanApplicationModel = {
+    loanDetails: {
+      purposeOfLoan: 1,
+    },
+    personalInformation: {
+      borrower: {},
+      coBorrower: {},
+      residentialAddress: {},
+      mailingAddress: {},
+      previousAddresses: [],
+    },
+    expenses: {},
+    manualAssetEntries: [],
+    employmentIncome: {
+      borrowerMonthlyIncome: {},
+      borrowerEmploymentInfo: [{}],
+      coBorrowerMonthlyIncome: {},
+      coBorrowerEmploymentInfo: [{}],
+      additionalIncomes: [{}],
+    },
+    orderCredit: {},
+    additionalDetails: {},
+    eConsent: {},
+    declaration: {
+      borrowerDeclaration: {},
+      coBorrowerDeclaration: {},
+      borrowerDemographic: {},
+      coBorrowerDemographic: {},
+    },
+  };
   form: FormGroup;
   states = [];
 
@@ -46,7 +111,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   get residentialAddressForm(): FormGroup {
@@ -98,7 +165,27 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.personalInformation;
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        debugger;
+        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+          (response: Result<ILoanApplicationModel>) => {
+            debugger;
+            if (response.success) {
+              debugger;
+              this.data = response.result.personalInformation;
+              console.log(this.loanApplication);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        this.data = this._dataService.loanApplication.personalInformation;
+      }
+    });
 
     this.initForm();
     this.loadStates();
@@ -243,7 +330,26 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       ),
       coBorrowerPreviousAddresses: new FormArray([]),
     });
-
+    debugger;
+    this.form.value;
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+          (response: Result<ILoanApplicationModel>) => {
+            if (response.success) {
+              debugger;
+              this.data = response.result.personalInformation;
+              this.form.value = response.result.personalInformation;
+              console.log(this.loanApplication);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    });
     this.form
       .get("isApplyingWithCoBorrower")
       .valueChanges.subscribe((isApplyingWithCoBorrower) => {

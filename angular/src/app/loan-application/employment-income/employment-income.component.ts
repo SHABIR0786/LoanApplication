@@ -9,6 +9,37 @@ import { IBorrowerMonthlyIncomeModel } from "../../interfaces/IBorrowerMonthlyIn
 import { IBorrowerEmploymentInfoModel } from "../../interfaces/IBorrowerEmploymentInfoModel";
 import { IAdditionalIncomeModel } from "../../interfaces/IAdditionalIncomeModel";
 
+import { createStore } from "redux";
+function todos(state = [], action) {
+  switch (action.type) {
+    case "ADD_TODO":
+      return state.concat([action.text]);
+    default:
+      return state;
+  }
+}
+const store = createStore(todos, ["Use Redux"]);
+
+function select(state) {
+  return state.some.deep.property;
+}
+
+let currentValue;
+function handleChange() {
+  let previousValue = currentValue;
+  currentValue = select(store.getState());
+
+  if (previousValue !== currentValue) {
+    console.log(
+      "Some deep nested property changed from",
+      previousValue,
+      "to",
+      currentValue
+    );
+  }
+}
+
+const unsubscribe = store.subscribe(handleChange);
 @Component({
   selector: "app-employment-income",
   templateUrl: "./employment-income.component.html",

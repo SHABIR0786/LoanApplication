@@ -1,19 +1,16 @@
 using Abp.Runtime.Validation;
+using LoanManagement.CredcoServices;
+using LoanManagement.Data;
 using LoanManagement.DatabaseServices.Interfaces;
-using LoanManagement.EntityFrameworkCore;
+using LoanManagement.Enums;
 using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PdfSharpCore.Pdf;
-using PdfSharpCore.Pdf.AcroForms;
-using PdfSharpCore.Pdf.IO;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
-using LoanManagement.Enums;
 
 namespace LoanManagement.Controllers
 {
@@ -21,18 +18,15 @@ namespace LoanManagement.Controllers
     public class UniformResidentialLoanController : LoanManagementControllerBase
     {
         private readonly ILoanAppService _loanAppService;
-        private readonly IPersonalDetailService _personalDetailService;
-        private readonly IWebHostEnvironment _env;
+        private readonly ICredcoApi _credcoApi;
 
         public UniformResidentialLoanController(
             ILoanAppService loanAppService,
-            IPersonalDetailService personalDetailService,
-            IWebHostEnvironment env
+            ICredcoApi credcoApi
         )
         {
             _loanAppService = loanAppService;
-            _personalDetailService = personalDetailService;
-            _env = env;
+            _credcoApi = credcoApi;
         }
 
         [DisableValidation]
@@ -533,14 +527,14 @@ namespace LoanManagement.Controllers
                 pdfFormFields.SetField("Dependents not listed by Co-Borrower no", data.PersonalInformation.Borrower.NumberOfDependents.HasValue ? data.PersonalInformation.Borrower.NumberOfDependents.Value.ToString() : "");
                 pdfFormFields.SetField("Borrower Present Address", data.PersonalInformation.ResidentialAddress.AddressLine1 + " "
                   + data.PersonalInformation.ResidentialAddress.City + " "
-                     + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
+                     + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
                    + (data.PersonalInformation.ResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.ResidentialAddress.ZipCode.Value.ToString() : ""));
 
                 if (data.PersonalInformation.IsMailingAddressSameAsResidential == false && data.PersonalInformation.MailingAddress != null)
                 {
                     pdfFormFields.SetField("Borrower Mailing Address if different from Present", data.PersonalInformation.MailingAddress.AddressLine1 + " "
                   + data.PersonalInformation.MailingAddress.City + " "
-                     + (data.PersonalInformation.MailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.MailingAddress.StateId.Value) : "") + " "
+                     + (data.PersonalInformation.MailingAddress.StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.MailingAddress.StateId.Value) : "") + " "
                    + (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : ""));
                 }
 
@@ -548,7 +542,7 @@ namespace LoanManagement.Controllers
                 {
                     pdfFormFields.SetField("Borrower Former Address if different from Present", data.PersonalInformation.PreviousAddresses[0].AddressLine1 + " "
                   + data.PersonalInformation.PreviousAddresses[0].City + " "
-                     + (data.PersonalInformation.PreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.PreviousAddresses[0].StateId.Value) : "") + " "
+                     + (data.PersonalInformation.PreviousAddresses[0].StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.PreviousAddresses[0].StateId.Value) : "") + " "
                    + (data.PersonalInformation.PreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.PreviousAddresses[0].ZipCode.Value.ToString() : ""));
 
                 }
@@ -571,7 +565,7 @@ namespace LoanManagement.Controllers
 
                 pdfFormFields.SetField("Borrower Name and Address of Employer", data.PersonalInformation.ResidentialAddress.AddressLine1 + " "
                     + data.PersonalInformation.ResidentialAddress.City + " "
-                       + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
+                       + (data.PersonalInformation.ResidentialAddress.StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.ResidentialAddress.StateId.Value) : "") + " "
                      + (data.PersonalInformation.ResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.ResidentialAddress.ZipCode.Value.ToString() : ""));
                 pdfFormFields.SetField("Borrower Business phone", data.PersonalInformation.Borrower.CellPhone);
 
@@ -584,14 +578,14 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Dependents not listed by Borrower no", data.PersonalInformation.CoBorrower.NumberOfDependents.HasValue ? data.PersonalInformation.CoBorrower.NumberOfDependents.Value.ToString() : "");
                     pdfFormFields.SetField("Co-Borrower Present Address", data.PersonalInformation.CoBorrowerResidentialAddress.AddressLine1 + " "
                             + data.PersonalInformation.CoBorrowerResidentialAddress.City + " "
-                               + (data.PersonalInformation.CoBorrowerResidentialAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerResidentialAddress.StateId.Value) : "") + " "
+                               + (data.PersonalInformation.CoBorrowerResidentialAddress.StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.CoBorrowerResidentialAddress.StateId.Value) : "") + " "
                             + (data.PersonalInformation.CoBorrowerResidentialAddress.ZipCode.HasValue ? data.PersonalInformation.CoBorrowerResidentialAddress.ZipCode.Value.ToString() : ""));
                     pdfFormFields.SetField("Co-Borrower No of Years", data.PersonalInformation.CoBorrowerResidentialAddress.Years.ToString());
                     if (data.PersonalInformation.MailingAddress != null)
                     {
                         pdfFormFields.SetField("Co-Borrower Mailing Address if different from Present", data.PersonalInformation.CoBorrowerMailingAddress.AddressLine1 + " "
                         + data.PersonalInformation.CoBorrowerMailingAddress.City + " "
-                           + (data.PersonalInformation.CoBorrowerMailingAddress.StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerMailingAddress.StateId.Value) : "") + " "
+                           + (data.PersonalInformation.CoBorrowerMailingAddress.StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.CoBorrowerMailingAddress.StateId.Value) : "") + " "
                          + (data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.HasValue ? data.PersonalInformation.CoBorrowerMailingAddress.ZipCode.Value.ToString() : ""));
                     }
 
@@ -599,7 +593,7 @@ namespace LoanManagement.Controllers
                     {
                         pdfFormFields.SetField("Co-Borrower Former Address if different from Present", data.PersonalInformation.CoBorrowerPreviousAddresses[0].AddressLine1 + " "
                         + data.PersonalInformation.CoBorrowerPreviousAddresses[0].City + " "
-                           + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.HasValue ? _personalDetailService.GetStateId(data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.Value) : "") + " "
+                           + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.HasValue ? StateData.GetStateById(data.PersonalInformation.CoBorrowerPreviousAddresses[0].StateId.Value) : "") + " "
                          + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.Value.ToString() : ""));
                     }
                 }
@@ -613,7 +607,7 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Co-Borrower Name and Address of Employer", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EmployerName + " " +
                          data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Address1 + " " +
                         data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City + " "
-                            + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
+                            + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
                           + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.HasValue ? data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.Value.ToString() : "")
                           );
                 }
@@ -626,7 +620,7 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].EmployerName + " " +
                             data.EmploymentIncome.BorrowerEmploymentInfo[1].Address1 + " "
                             + data.EmploymentIncome.BorrowerEmploymentInfo[1].City + " "
-                           + (data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.Value) : "") + " "
+                           + (data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.Value) : "") + " "
                             + (data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.Value.ToString() : "")
                             );
                 }
@@ -641,7 +635,7 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ 2", data.EmploymentIncome.BorrowerEmploymentInfo[2].EmployerName + " " +
                    data.EmploymentIncome.BorrowerEmploymentInfo[2].Address1 + " "
                    + data.EmploymentIncome.BorrowerEmploymentInfo[2].City + " "
-                  + (data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.HasValue ? _personalDetailService.GetStateId(data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.Value) : "") + " "
+                  + (data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[2].StateId.Value) : "") + " "
                    + (data.EmploymentIncome.BorrowerEmploymentInfo[2].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[2].ZipCode.Value.ToString() : "")
                    );
 
@@ -673,7 +667,7 @@ namespace LoanManagement.Controllers
                             (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends.Value : 0) +
                             (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.Value : 0)).ToString());
                 }
-               
+
 
 
                 if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 2)
@@ -681,7 +675,7 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 4",
                      data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
-                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
                     );
 
                     pdfFormFields.SetField("Assets Acct no 4",
@@ -698,7 +692,7 @@ namespace LoanManagement.Controllers
 
                     pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 3", data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
-                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
                     );
 
                     pdfFormFields.SetField("Assets Acct no 3",
@@ -714,7 +708,7 @@ namespace LoanManagement.Controllers
                 {
                     pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 2", data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].Address + " " +
                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].City + " " +
-                       _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId)
+                       StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId)
                        );
 
                     pdfFormFields.SetField("Assets Acct no 2",
@@ -731,7 +725,7 @@ namespace LoanManagement.Controllers
                     pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union",
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].City + " " +
-                    _personalDetailService.GetStateId(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].StateId)
+                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].StateId)
                     );
 
                     pdfFormFields.SetField("Assets Acct no 1",
