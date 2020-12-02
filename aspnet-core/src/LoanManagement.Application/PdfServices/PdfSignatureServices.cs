@@ -1,9 +1,8 @@
-using System.Linq;
-using System.Text.Json;
 using LoanManagement.ViewModels;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Pdf.AcroForms;
 using PdfSharpCore.Pdf.IO;
+using System.Linq;
 
 namespace LoanManagement.PdfServices
 {
@@ -349,8 +348,8 @@ namespace LoanManagement.PdfServices
                     data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[1].Address + " " +
                     data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[1].City + " " +
                     data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[1].StateId
-                    ); 
-                 PdfTextField TypeOfProperty2 = (PdfTextField)(form.Fields["Type of Property 2"]);
+                    );
+                PdfTextField TypeOfProperty2 = (PdfTextField)(form.Fields["Type of Property 2"]);
                 TypeOfProperty2.Value = new PdfString(data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[1].PropertyType);
                 PdfTextField TypeOfProperty1 = (PdfTextField)(form.Fields["Type of Propertya"]);
                 TypeOfProperty1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[1].PropertyType);
@@ -392,7 +391,7 @@ namespace LoanManagement.PdfServices
                 //PdfTextField GrossRentalIncome1 = (PdfTextField)(form.Fields["Owned Real Estate Address 1 Net Rental Income a"]);
                 //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.PropertyType == "").ToList()[0]..ToString());
             }
-            
+
 
             //PdfTextField BorrowerJudgementsAgainst = (PdfTextField)(form.Fields["Borrower Judgements against"]);
             //BorrowerJudgementsAgainst.Value = new PdfString(data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou);
@@ -415,15 +414,15 @@ namespace LoanManagement.PdfServices
             //PdfTextField CoBorrowerIsObligatedOnAnyLoanWhichResultedForeclosure = (PdfTextField)(form.Fields["Co-Borrower Liability y"]);
             //CoBorrowerIsObligatedOnAnyLoanWhichResultedForeclosure.Value = new PdfString(data.Declaration.CoBorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure);
 
-    
 
 
-            
+
+
             myTemplate.Save("1003irev-unlocked-2.pdf");
             //Console.WriteLine("Hello World!");
             //System.IO.File.WriteAllText(@"names.json", JsonSerializer.Serialize(names));
             myTemplate.Close();
         }
-       
+
     }
 }

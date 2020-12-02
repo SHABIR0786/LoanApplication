@@ -1,4 +1,3 @@
-using Abp.Runtime.Validation;
 using LoanManagement.CoreLogicModels.JointRequest;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
@@ -110,10 +109,11 @@ namespace LoanManagement.Controllers
                                     _MiddleName = i._MiddleName,
                                     _NameSuffix = i._NameSuffix,
                                     _PrintPositionType = i._PrintPositionType,
-                                    _RESIDENCE =new Residence{
+                                    _RESIDENCE = new Residence
+                                    {
                                         _City = i._RESIDENCE._City,
                                         _PostalCode = i._RESIDENCE._PostalCode,
-                                        _State =i._RESIDENCE._State,
+                                        _State = i._RESIDENCE._State,
                                         _StreetAddress = i._RESIDENCE._StreetAddress,
                                         BorrowerResidencyType = i._RESIDENCE.BorrowerResidencyType,
                                     }

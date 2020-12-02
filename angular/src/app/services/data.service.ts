@@ -58,6 +58,10 @@ export class DataService {
             if (response.success) {
               debugger;
               this.loanApplication = response.result;
+              if (!this.loanApplication.declaration) {
+                if (!this.loanApplication.declaration.borrowerDeclaration)
+                  this.loanApplication.declaration.borrowerDeclaration = {};
+              }
               console.log(this.loanApplication);
             }
           },

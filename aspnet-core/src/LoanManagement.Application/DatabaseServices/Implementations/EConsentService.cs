@@ -42,7 +42,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     CoborrowerFirstName = input.CoborrowerFirstName,
                     CoborrowerLastName = input.CoborrowerLastName,
                     CoborrowerEmail = input.CoborrowerEmail,
-                    
+
                 };
                 await _repository.InsertAsync(consentDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();

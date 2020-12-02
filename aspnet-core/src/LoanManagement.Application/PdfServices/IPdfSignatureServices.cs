@@ -5,6 +5,6 @@ namespace LoanManagement.PdfServices
 {
     public interface IPdfSignatureServices : ISingletonDependency
     {
-         void FillData(LoanApplicationDto data);
+        void FillData(LoanApplicationDto data);
     }
 }

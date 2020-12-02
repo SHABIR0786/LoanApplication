@@ -9,7 +9,6 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { filter } from "rxjs/operators";
 import { MenuItem } from "@shared/layout/menu-item";
-
 @Component({
   selector: "sidebar-menu",
   templateUrl: "./sidebar-menu.component.html",

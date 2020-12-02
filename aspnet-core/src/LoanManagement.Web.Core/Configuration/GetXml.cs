@@ -1,10 +1,9 @@
-using System;
+using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using System.IO;
 namespace LoanManagement.Configuration
 {
-    public static class GetXml 
+    public static class GetXml
     {
         static string getXml<T>(T obj) where T : class
         {
