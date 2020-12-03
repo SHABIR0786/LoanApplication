@@ -7,15 +7,6 @@ import { IAdditionalDetailModel } from "../../interfaces/IAdditionalDetailModel"
 import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 
-import { createStore } from "redux";
-function todos(state = [], action) {
-  switch (action.type) {
-    case "ADD_TODO":
-      return state.concat([action.text]);
-    default:
-      return state;
-  }
-}
 @Component({
   selector: "app-additional-details",
   templateUrl: "./additional-details.component.html",
