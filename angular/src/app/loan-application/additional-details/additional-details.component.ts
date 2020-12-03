@@ -16,28 +16,6 @@ function todos(state = [], action) {
       return state;
   }
 }
-const store = createStore(todos, ["Use Redux"]);
-
-function select(state) {
-  return state.some.deep.property;
-}
-
-let currentValue;
-function handleChange() {
-  let previousValue = currentValue;
-  currentValue = select(store.getState());
-
-  if (previousValue !== currentValue) {
-    console.log(
-      "Some deep nested property changed from",
-      previousValue,
-      "to",
-      currentValue
-    );
-  }
-}
-
-const unsubscribe = store.subscribe(handleChange);
 @Component({
   selector: "app-additional-details",
   templateUrl: "./additional-details.component.html",

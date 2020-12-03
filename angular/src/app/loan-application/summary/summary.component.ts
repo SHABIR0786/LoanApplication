@@ -5,38 +5,6 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
-
-import { createStore } from "redux";
-function todos(state = [], action) {
-  switch (action.type) {
-    case "ADD_TODO":
-      return state.concat([action.text]);
-    default:
-      return state;
-  }
-}
-const store = createStore(todos, ["Use Redux"]);
-
-function select(state) {
-  return state.some.deep.property;
-}
-
-let currentValue;
-function handleChange() {
-  let previousValue = currentValue;
-  currentValue = select(store.getState());
-
-  if (previousValue !== currentValue) {
-    console.log(
-      "Some deep nested property changed from",
-      previousValue,
-      "to",
-      currentValue
-    );
-  }
-}
-
-const unsubscribe = store.subscribe(handleChange);
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
