@@ -6,6 +6,7 @@ import { DataService } from "../../services/data.service";
 import { IAdditionalDetailModel } from "../../interfaces/IAdditionalDetailModel";
 import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-additional-details",
@@ -19,7 +20,11 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
   coBorrower: IBorrowerModel = {};
   personalInformation: IPersonalInformationModel = {};
 
-  constructor(private _dataService: DataService, private _route: Router) {}
+  constructor(
+    private _dataService: DataService,
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.borrower = this._dataService.loanApplication.personalInformation.borrower;
@@ -57,11 +62,32 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
 
   proceedToNext() {
     // this._ngWizardService.next();
-    this._route.navigate(["app/econsent"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/econsent"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/econsent"]);
+      }
+    });
   }
 
   proceedToPrevious() {
-    // this._ngWizardService.previous();
-    this._route.navigate(["app/order-credit"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/order-credit"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/order-credit"]);
+      }
+    });
   }
 }

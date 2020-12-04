@@ -405,7 +405,18 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
       }
     } else {
       if (this.form.valid) {
-        this._route.navigate(["app/personal-information"]);
+        this._activatedRoute.queryParams.subscribe(async (params) => {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/personal-information"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/personal-information"]);
+          }
+        });
       } else {
         this.form.markAllAsTouched();
       }

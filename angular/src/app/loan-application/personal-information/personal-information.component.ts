@@ -10,7 +10,6 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
-import { async } from "@angular/core/testing";
 
 @Component({
   selector: "app-personal-information",
@@ -133,30 +132,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     this.coBorrowerPreviousAddressesFormArray.removeAt(index);
   }
 
-  ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      const id = params["id"];
-      if (id) {
-        debugger;
-        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
-          (response: Result<ILoanApplicationModel>) => {
-            debugger;
-            if (response.success) {
-              debugger;
-              this.data = response.result.personalInformation;
-              console.log(this.loanApplication);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        this.data = this._dataService.loanApplication.personalInformation;
-      }
-    });
+  async ngOnInit(): Promise<void> {
+    this.data = this._dataService.loanApplication.personalInformation;
 
-    this.initForm();
+    await this.initForm();
     this.loadStates();
 
     this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -250,7 +229,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     ];
   }
 
-  initForm() {
+  async initForm() {
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       isApplyingWithCoBorrower: new FormControl(
@@ -565,7 +544,19 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       }
     } else {
       if (this.form.valid) {
-        this._route.navigate(["app/expense"]);
+        debugger;
+        this._activatedRoute.queryParams.subscribe(async (params) => {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/expense"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/expense"]);
+          }
+        });
       } else {
         this.form.markAllAsTouched();
       }
@@ -576,7 +567,18 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {
-      this._route.navigate(["app/loan-detail"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/loan-detail"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/loan-detail"]);
+        }
+      });
     }
   }
 }

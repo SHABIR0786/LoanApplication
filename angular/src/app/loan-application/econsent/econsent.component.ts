@@ -9,6 +9,7 @@ import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-econsent",
@@ -40,7 +41,8 @@ export class EconsentComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -112,7 +114,18 @@ export class EconsentComponent implements OnInit, DoCheck {
       this._ngWizardService.next();
     } else {
       if (this.form.valid) {
-        this._route.navigate(["app/declaration"]);
+        this._activatedRoute.queryParams.subscribe(async (params) => {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/declaration"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/declaration"]);
+          }
+        });
       } else {
         this.form.markAllAsTouched();
       }
@@ -129,7 +142,18 @@ export class EconsentComponent implements OnInit, DoCheck {
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {
-      this._route.navigate(["app/additional-detail"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/additional-detail"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/additional-detail"]);
+        }
+      });
     }
   }
 }

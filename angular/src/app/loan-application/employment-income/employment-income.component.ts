@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { IBorrowerMonthlyIncomeModel } from "../../interfaces/IBorrowerMonthlyIncomeModel";
 import { IBorrowerEmploymentInfoModel } from "../../interfaces/IBorrowerEmploymentInfoModel";
 import { IAdditionalIncomeModel } from "../../interfaces/IAdditionalIncomeModel";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-employment-income",
@@ -25,7 +26,8 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   get borrowerEmploymentInfo(): FormArray {
@@ -405,7 +407,18 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   proceedToNext() {
     if (this.form.valid) {
       // this._ngWizardService.next();
-      this._route.navigate(["app/order-credit"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/order-credit"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/order-credit"]);
+        }
+      });
     } else {
       this.form.markAllAsTouched();
     }
@@ -413,7 +426,18 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
   proceedToPrevious() {
     // this._ngWizardService.previous();
-    this._route.navigate(["app/asset"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/asset"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/asset"]);
+      }
+    });
   }
 
   ConvertToInt(val: any) {

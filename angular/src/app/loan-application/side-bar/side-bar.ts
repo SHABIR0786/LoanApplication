@@ -9,6 +9,7 @@ import { MenuItem } from "@shared/layout/menu-item";
 import { BehaviorSubject } from "rxjs";
 import { filter } from "rxjs/operators";
 import { AppComponentBase } from "@shared/app-component-base";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "loan-side-bar",
@@ -34,17 +35,22 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
   summary = " fas fa-tasks";
   applyLoan = " fas fa-funnel-dollar";
   loanList = " fas fa-clipboard-list";
+  Id = 8;
 
   constructor(
     injector: Injector,
     private router: Router,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _activatedRoute: ActivatedRoute
   ) {
     super(injector);
     this.router.events.subscribe(this.routerEvents);
   }
 
   ngOnInit(): void {
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      this.Id = params["id"];
+    });
     this.menuItems = this.getMenuItems();
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))

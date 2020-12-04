@@ -5,6 +5,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
@@ -21,7 +22,8 @@ export class SummaryComponent implements OnInit {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -115,8 +117,14 @@ export class SummaryComponent implements OnInit {
   }
 
   proceedToPrevious() {
-    //  this._ngWizardService.previous();
-    this._route.navigate(["app/declaration"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/declaration?" + id]);
+      } else {
+        this._route.navigate(["app/declaration"]);
+      }
+    });
   }
 
   showGroupError(groupName) {

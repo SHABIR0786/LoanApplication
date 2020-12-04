@@ -7,6 +7,8 @@ import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { DataService } from "../../services/data.service";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+
 @Component({
   selector: "app-declaration",
   templateUrl: "./declaration.component.html",
@@ -306,7 +308,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -536,19 +539,40 @@ export class DeclarationComponent implements OnInit, DoCheck {
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {
-      if (this.form.valid) {
-        this._route.navigate(["app/summary"]);
-      } else {
-        this.form.markAllAsTouched();
-      }
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        if (this.form.valid) {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/summary"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/summary"]);
+          }
+        } else {
+          this.form.markAllAsTouched();
+        }
+      });
     }
   }
-
   proceedToPrevious(event?: string) {
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {
-      this._route.navigate(["app/econsent"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/econsent"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/econsent"]);
+        }
+      });
     }
   }
 }

@@ -12,6 +12,7 @@ import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-expenses",
@@ -26,7 +27,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -113,14 +115,36 @@ export class ExpensesComponent implements OnInit, DoCheck {
   proceedToNext() {
     if (this.form.valid) {
       //this._ngWizardService.next();
-      this._route.navigate(["app/asset"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/asset"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/asset"]);
+        }
+      });
     } else {
       this.form.markAllAsTouched();
     }
   }
 
   proceedToPrevious() {
-    this._route.navigate(["app/personal-information"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/personal-information"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/personal-information"]);
+      }
+    });
     // this._ngWizardService.previous();
   }
 }
