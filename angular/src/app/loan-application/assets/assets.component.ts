@@ -6,6 +6,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { IAssetModel } from "../../interfaces/IAssetModel";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-assets",
@@ -28,7 +29,8 @@ export class AssetsComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   get manualAssetEntries(): FormArray {
@@ -335,14 +337,40 @@ export class AssetsComponent implements OnInit, DoCheck {
   }
 
   proceedToNext() {
-    if (this.form.valid) {
-      this._route.navigate(["app/employment-income"]);
-    } else {
-      this.form.markAllAsTouched();
-    }
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      if (this.form.valid) {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/employment-income"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/employment-income"]);
+        }
+      } else {
+        this.form.markAllAsTouched();
+      }
+    });
   }
 
   proceedToPrevious() {
-    this._route.navigate(["app/expense"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      if (this.form.valid) {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/expense"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/expense"]);
+        }
+      } else {
+        this.form.markAllAsTouched();
+      }
+    });
   }
 }

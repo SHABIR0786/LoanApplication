@@ -12,7 +12,8 @@
               class="nav-link text-nowrap"
               href="#"
               *ngIf="item.route && item.route.indexOf('http') != 0"
-              [routerLink]="item.route"
+              [routerLink]="[item.route]"
+              [queryParams]="{ id : Id }"
               [class.active]="item.isActive"
             >
               <div class="row pr-3">
