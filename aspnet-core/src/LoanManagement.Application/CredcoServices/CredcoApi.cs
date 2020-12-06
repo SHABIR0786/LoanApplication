@@ -24,7 +24,7 @@ namespace LoanManagement.CredcoServices
             _logger = logger;
         }
 
-        public async Task GetCreditDataAsync(LoanApplicationDto input)
+        public async Task<LoanManagement.CoreLogicModels.JointResponse.ResponseGroup> GetCreditDataAsync(LoanApplicationDto input)
         {
             try
             {
@@ -43,9 +43,10 @@ namespace LoanManagement.CredcoServices
 
                 var response = await client.PostAsync("https://beta.credcoconnect.com/cc/listener", httpContent);
 
-                var responseContent = await response.Content.ReadAsStringAsync();
 
-                File.WriteAllText("response.xml", responseContent);
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(LoanManagement.CoreLogicModels.JointResponse.ResponseGroup));
+                var data = (LoanManagement.CoreLogicModels.JointResponse.ResponseGroup)serializer.Deserialize(await response.Content.ReadAsStreamAsync());
+                return data;
             }
             catch (Exception ex)
             {
@@ -170,7 +171,7 @@ namespace LoanManagement.CredcoServices
                 }
             });
 
-            if(input.PersonalInformation.IsApplyingWithCoBorrower.HasValue &&
+            if (input.PersonalInformation.IsApplyingWithCoBorrower.HasValue &&
                 input.PersonalInformation.IsApplyingWithCoBorrower.Value)
             {
                 var cwBorrower = input.PersonalInformation.CoBorrower;
