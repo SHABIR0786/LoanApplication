@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
 using System.Text;
-
+using LoanManagement.CoreLogicModels.JointResponse;
 
 namespace LoanManagement.Controllers
 {
@@ -831,6 +831,87 @@ namespace LoanManagement.Controllers
                     //PdfTextField GrossRentalIncome1 = (PdfTextField)(form.Fields["Owned Real Estate Address 1 Net Rental Income a"]);
                     //GrossRentalIncome1.Value = new PdfString(data.ManualAssetEntries.Where(i => i.AssetTypeId == 9).ToList()[0]..ToString());
 
+                    #region Credco
+
+                    var liabilities = new ResponseGroup().RESPONSE.RESPONSE_DATA.CREDIT_RESPONSE.CREDIT_LIABILITY;
+
+                    for (int i = 0; i < liabilities.Count; i++)
+                    {
+                        var liability = liabilities[i];
+                        switch (i)
+                        {
+                            case 0:
+                                pdfFormFields.SetField("Liabilities Name and Adress 1", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Monthly Payment & Months to Pay 1", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Unpaid Balance 1", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Liabilities Acct no 1a", liability._AccountIdentifier);
+                                break;
+
+                            case 1:
+                                 pdfFormFields.SetField("Liabilities Name and Adress 2", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Monthly Payment & Months to Pay 2", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Unpaid Balance 2", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Liabilities Acct no 2a", liability._AccountIdentifier);
+                                break;
+
+                                   case 2:
+                                 pdfFormFields.SetField("Liabilities Name and Adress 3", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Monthly Payment & Months to Pay 3", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Unpaid Balance 3a", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Liabilities Acct no 3a", liability._AccountIdentifier);
+                                break;
+
+                                 case 3:
+                                 pdfFormFields.SetField("Liabilities Name and Adress 4", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Monthly Payment & Months to Pay 4", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Unpaid Balance 3", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Liabilities Acct no 4 a", liability._AccountIdentifier);
+                                break;
+
+                                 case 4:
+                                 pdfFormFields.SetField("Asset/Liabilities Stocks and Bonds Name and Address", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Asset/Liabilities Stocks and Bonds Monthly Payments", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Text33", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Asset/Liabilities Stocks and Bonds Acct no", liability._AccountIdentifier);
+                                break;
+
+                                case 5:
+                                 pdfFormFields.SetField("Life insurance Name and Address", liability._OriginalCreditorName);
+                                pdfFormFields.SetField("Life Insurance Monthly Payments", liability._MonthlyPaymentAmount);
+                                pdfFormFields.SetField("Life Insurance Monthly Payments Totals", liability._UnpaidBalanceAmount);
+                                pdfFormFields.SetField("Text42", liability._AccountIdentifier);
+                                break;
+
+                            //     case 6:
+                            //      //Not Found
+                            //    pdfFormFields.SetField("Monthly Child Support Payments", liability._MonthlyPaymentAmount);
+                            //     pdfFormFields.SetField("Auto Payments", liability._MonthlyPaymentAmount);
+                                  
+                            
+                            //     break;
+                            //     //Not Found
+                            //      case 7:
+                            //      pdfFormFields.SetField("Job Related Expenses", liability._MonthlyPaymentAmount);
+                            //     pdfFormFields.SetField("Other Payments", liability._MonthlyPaymentAmount);
+                              
+                            //     break;
+                            //      case 8:
+                            //      pdfFormFields.SetField("Total Monthly Payments 2", liability._MonthlyPaymentAmount);
+                             
+                            //     break;
+
+                            //      case 9:
+                            //      pdfFormFields.SetField("net_worth_aminusb", liability._HighBalanceAmount);
+                            //      pdfFormFields.SetField("liab_total", liability._HighBalanceAmount);
+
+                             
+                            //     break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    #endregion
                     return Ok();
                 }
 
