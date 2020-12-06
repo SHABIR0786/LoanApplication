@@ -1,11 +1,11 @@
-<section class="content px-2">
+<section class="content">
   <div class="container-fluid">
-    <div class="card">
+    <div class="card my-5">
       <div class="card-body">
         <form [formGroup]="form">
           <ng-wizard [config]="config">
             <ng-wizard-step title="Loan Details" [state]="">
-              <div class="row">
+              <div class="row" style="margin-top: 2rem">
                 <div class="col-12">
                   <div class="form-group">
                     <label for="referredBy">
@@ -25,53 +25,55 @@
                   </div>
                 </div>
 
-                <div class="col-12 row">
-                  <div class="col-12">
+                <div class="col-12">
+                  <div class="form-group">
                     <label>
                       Are you currently working with a EZ Online Mortgage loan
                       officer?
                       <span class="text-danger">*</span>
                     </label>
-                  </div>
-                  <div class="col-12 mb-2">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="isWorkingWithOfficer"
-                        id="isWorkingWithOfficerYes"
-                        formControlName="isWorkingWithOfficer"
-                        [value]="true"
-                        [(ngModel)]="data.isWorkingWithOfficer"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="isWorkingWithOfficerYes"
-                        >Yes</label
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="isWorkingWithOfficer"
+                            id="isWorkingWithOfficerYes"
+                            formControlName="isWorkingWithOfficer"
+                            [value]="true"
+                            [(ngModel)]="data.isWorkingWithOfficer"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="isWorkingWithOfficerYes"
+                            >Yes</label
+                          >
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="isWorkingWithOfficer"
+                            id="isWorkingWithOfficerNo"
+                            formControlName="isWorkingWithOfficer"
+                            [value]="false"
+                            [(ngModel)]="data.isWorkingWithOfficer"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="isWorkingWithOfficerNo"
+                            >No</label
+                          >
+                        </div>
+                      </div>
+                      <validation-summary
+                        class="col-12"
+                        [control]="form.controls.isWorkingWithOfficer"
                       >
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="isWorkingWithOfficer"
-                        id="isWorkingWithOfficerNo"
-                        formControlName="isWorkingWithOfficer"
-                        [value]="false"
-                        [(ngModel)]="data.isWorkingWithOfficer"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="isWorkingWithOfficerNo"
-                        >No</label
-                      >
+                      </validation-summary>
                     </div>
                   </div>
-                  <validation-summary
-                    class="col-12"
-                    [control]="form.controls.isWorkingWithOfficer"
-                  >
-                  </validation-summary>
                 </div>
 
                 <div class="col-12" *ngIf="data.isWorkingWithOfficer">
@@ -101,8 +103,8 @@
                   </div>
                 </div>
 
-                <div class="col-12 mt-3 mb-1">
-                  <h5>Purpose of your Loan</h5>
+                <div class="col-12 mt-3" style="margin-bottom: 2rem">
+                  <h5 class="card-subtitle text-muted">Purpose of your Loan</h5>
                 </div>
 
                 <div class="col-12">
@@ -248,23 +250,6 @@
                       mask="separator.2"
                       thousandSeparator=","
                     />
-                    <!-- <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <div class="input-group-text">$</div>
-                                              </div>
-                                              <input
-                                                type="number"
-                                                class="form-control"
-                                                name="giftAmount"
-                                                id="giftAmount"
-                                                formControlName="giftAmount"
-                                                [(ngModel)]="data.giftAmount"
-                                                placeholder="$"
-                                              prefix="$ "
-                                              mask="separator.2"
-                                              thousandSeparator=","
-                                              />
-                                            </div> -->
                   </div>
                 </div>
 
@@ -411,16 +396,17 @@
                       {{ "Second Mortgage Amount" | localize }}
                     </label>
                     <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">$</div>
-                      </div>
                       <input
-                        type="number"
+                        type="text"
                         class="form-control"
                         name="secondMortgageAmount"
                         id="secondMortgageAmount"
                         formControlName="secondMortgageAmount"
                         [(ngModel)]="data.secondMortgageAmount"
+                        placeholder="$"
+                        prefix="$ "
+                        mask="separator.2"
+                        thousandSeparator=","
                       />
                     </div>
                   </div>
@@ -477,126 +463,121 @@
               </div>
             </ng-wizard-step>
             <ng-wizard-step title="Property Details">
-              <div class="row">
-                <!-- <div class="col-12 mt-3 mb-1">
-                                  <h5></h5>
-                                </div> -->
-
-                <div class="col-12 row" *ngIf="data.purposeOfLoan === 1">
-                  <div class="col-12">
+              <div
+                class="row"
+                style="margin-top: 2rem"
+                *ngIf="data.purposeOfLoan === 1"
+              >
+                <div class="col-12">
+                  <label
+                    >Have you started looking for a home?
+                    <span class="text-danger">*</span>
+                  </label>
+                </div>
+                <div class="col-6 mb-2">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="startedLookingForNewHome"
+                      id="startedLookingForNewHomeYes"
+                      formControlName="startedLookingForNewHome"
+                      [value]="true"
+                    />
                     <label
-                      >Have you started looking for a home?
-                      <span class="text-danger">*</span>
-                    </label>
+                      class="form-check-label"
+                      for="startedLookingForNewHomeYes"
+                      >Yes</label
+                    >
                   </div>
-                  <div class="col-12 mb-2">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="startedLookingForNewHome"
-                        id="startedLookingForNewHomeYes"
-                        formControlName="startedLookingForNewHome"
-                        [value]="true"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="startedLookingForNewHomeYes"
-                        >Yes</label
-                      >
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="startedLookingForNewHome"
-                        id="startedLookingForNewHomeNo"
-                        formControlName="startedLookingForNewHome"
-                        [value]="false"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="startedLookingForNewHomeNo"
-                        >No</label
-                      >
-                    </div>
-                    <validation-summary
-                      [control]="form.controls.startedLookingForNewHome"
-                    ></validation-summary>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="startedLookingForNewHome"
+                      id="startedLookingForNewHomeNo"
+                      formControlName="startedLookingForNewHome"
+                      [value]="false"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="startedLookingForNewHomeNo"
+                      >No</label
+                    >
+                  </div>
+                  <validation-summary
+                    [control]="form.controls.startedLookingForNewHome"
+                  ></validation-summary>
+                </div>
+              </div>
+
+              <div
+                class="row"
+                style="margin-top: 2rem"
+                *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3"
+              >
+                <div class="col-12">
+                  <label>Are you refinancing your current home?</label>
+                </div>
+                <div class="col-12 mb-2">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="refinancingCurrentHome"
+                      id="refinancingCurrentHomeYes"
+                      formControlName="refinancingCurrentHome"
+                      [value]="true"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="refinancingCurrentHomeYes"
+                      >Yes</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="refinancingCurrentHome"
+                      id="refinancingCurrentHomeNo"
+                      formControlName="refinancingCurrentHome"
+                      [value]="false"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="refinancingCurrentHomeNo"
+                      >No</label
+                    >
                   </div>
                 </div>
+              </div>
 
-                <div
-                  class="col-12 row"
-                  *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3"
-                >
-                  <div class="col-12">
-                    <label>Are you refinancing your current home?</label>
-                  </div>
-                  <div class="col-12 mb-2">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="refinancingCurrentHome"
-                        id="refinancingCurrentHomeYes"
-                        formControlName="refinancingCurrentHome"
-                        [value]="true"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="refinancingCurrentHomeYes"
-                        >Yes</label
-                      >
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="refinancingCurrentHome"
-                        id="refinancingCurrentHomeNo"
-                        formControlName="refinancingCurrentHome"
-                        [value]="false"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="refinancingCurrentHomeNo"
-                        >No</label
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="col-6"
-                  *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3"
-                >
-                  <div class="form-group row">
-                    <label for="yearAcquired" class="col-12">
+              <div
+                class="row"
+                *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3"
+              >
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="yearAcquired">
                       {{ "When did you acquire this property?" | localize }}
                       <span class="text-danger">*</span>
                       <span class="float-right">YYYY</span>
                     </label>
-                    <div class="col-12">
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="yearAcquired"
-                        id="yearAcquired"
-                        formControlName="yearAcquired"
-                        [(ngModel)]="data.yearAcquired"
-                      />
-                      <validation-summary
-                        [control]="form.controls.yearAcquired"
-                      ></validation-summary>
-                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="yearAcquired"
+                      id="yearAcquired"
+                      formControlName="yearAcquired"
+                      [(ngModel)]="data.yearAcquired"
+                    />
+                    <validation-summary
+                      [control]="form.controls.yearAcquired"
+                    ></validation-summary>
                   </div>
                 </div>
-
-                <div
-                  class="col-6"
-                  *ngIf="data.purposeOfLoan === 2 || data.purposeOfLoan === 3"
-                >
+                <div class="col-6">
                   <div class="form-group">
                     <label for="originalPrice">
                       {{
@@ -610,10 +591,16 @@
                       id="originalPrice"
                       formControlName="originalPrice"
                       [(ngModel)]="data.originalPrice"
+                      placeholder="$"
+                      prefix="$ "
+                      mask="separator.2"
+                      thousandSeparator=","
                     />
                   </div>
                 </div>
+              </div>
 
+              <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="city">
@@ -629,7 +616,6 @@
                     />
                   </div>
                 </div>
-
                 <div class="col-6">
                   <div class="form-group">
                     <label for="stateId">
@@ -658,7 +644,9 @@
                     ></validation-summary>
                   </div>
                 </div>
+              </div>
 
+              <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="propertyTypeId">
@@ -684,7 +672,6 @@
                     ></validation-summary>
                   </div>
                 </div>
-
                 <div class="col-6">
                   <div class="form-group">
                     <label for="propertyUseId">
@@ -710,7 +697,9 @@
                     ></validation-summary>
                   </div>
                 </div>
+              </div>
 
+              <div class="row">
                 <div class="col-12">
                   <button
                     class="btn btn-secondary"

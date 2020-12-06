@@ -19,6 +19,8 @@ import { DeclarationComponent } from "./loan-application/declaration/declaration
 import { EconsentComponent } from "./loan-application/econsent/econsent.component";
 import { OrderCreditComponent } from "./loan-application/order-credit/order-credit.component";
 import { AdditionalDetailsComponent } from "./loan-application/additional-details/additional-details.component";
+import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
+import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 
 @NgModule({
   imports: [
@@ -48,6 +50,12 @@ import { AdditionalDetailsComponent } from "./loan-application/additional-detail
             path: "tenants",
             component: TenantsComponent,
             data: { permission: "Pages.Tenants" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "loan-list",
+            component: LoanListComponent,
+            data: { permission: "" },
             canActivate: [AppRouteGuard],
           },
           {
@@ -118,6 +126,10 @@ import { AdditionalDetailsComponent } from "./loan-application/additional-detail
           },
           { path: "about", component: AboutComponent },
           { path: "update-password", component: ChangePasswordComponent },
+          {
+            path: "admin-panel",
+            component: AdminPanelComponent,
+          },
         ],
       },
     ]),

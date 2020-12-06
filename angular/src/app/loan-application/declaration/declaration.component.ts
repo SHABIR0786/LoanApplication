@@ -1,12 +1,13 @@
+import { IDeclarationModel } from "./../../interfaces/IDeclarationModel";
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { IBorrowerDeclarationModel } from "../../interfaces/IBorrowerDeclarationModel";
-import { IDeclarationModel } from "../../interfaces/IDeclarationModel";
 import { IBorrowerDemographicModel } from "../../interfaces/IBorrowerDemographicModel";
 import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { DataService } from "../../services/data.service";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-declaration",
@@ -307,8 +308,9 @@ export class DeclarationComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
-  ) { }
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.data = this._dataService.loanApplication.declaration;
@@ -332,20 +334,32 @@ export class DeclarationComponent implements OnInit, DoCheck {
   }
 
   initForm() {
-    this.form = new FormGroup({
-      id: new FormControl(this.data.id),
-      borrowerDeclaration: this.initDeclarationForm(
-        this.data.borrowerDeclaration
-      ),
-      borrowerDemographic: this.initDemographicForm(
-        this.data.borrowerDemographic
-      ),
-    });
-
+    debugger;
+    if (this.data.borrowerDeclaration != null)
+      this.form = new FormGroup({
+        id: new FormControl(this.data.borrowerDeclaration.id),
+        borrowerDeclaration: this.initDeclarationForm(
+          this.data.borrowerDeclaration
+        ),
+        borrowerDemographic: this.initDemographicForm(
+          this.data.borrowerDemographic
+        ),
+      });
+    else {
+      this.form = new FormGroup({
+        id: new FormControl(0),
+        borrowerDeclaration: this.initDeclarationForm(
+          this.data.borrowerDeclaration
+        ),
+        borrowerDemographic: this.initDemographicForm(
+          this.data.borrowerDemographic
+        ),
+      });
+    }
     if (this.data.borrowerDemographic) {
       if (this.data.borrowerDemographic.ethnicity) {
-        this.data.borrowerDemographic.ethnicity.forEach(element => {
-          this.borrowerEthnics.forEach(item => {
+        this.data.borrowerDemographic.ethnicity.forEach((element) => {
+          this.borrowerEthnics.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -354,8 +368,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
 
       if (this.data.borrowerDemographic.race) {
-        this.data.borrowerDemographic.race.forEach(element => {
-          this.borrowerRaces.forEach(item => {
+        this.data.borrowerDemographic.race.forEach((element) => {
+          this.borrowerRaces.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -364,8 +378,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
 
       if (this.data.borrowerDemographic.sex) {
-        this.data.borrowerDemographic.sex.forEach(element => {
-          this.borrowerSexArr.forEach(item => {
+        this.data.borrowerDemographic.sex.forEach((element) => {
+          this.borrowerSexArr.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -374,11 +388,10 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
     }
 
-
     if (this.data.coBorrowerDemographic) {
       if (this.data.coBorrowerDemographic.ethnicity) {
-        this.data.coBorrowerDemographic.ethnicity.forEach(element => {
-          this.coBorrowerEthnics.forEach(item => {
+        this.data.coBorrowerDemographic.ethnicity.forEach((element) => {
+          this.coBorrowerEthnics.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -387,8 +400,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
 
       if (this.data.coBorrowerDemographic.race) {
-        this.data.coBorrowerDemographic.race.forEach(element => {
-          this.coBorrowerRaces.forEach(item => {
+        this.data.coBorrowerDemographic.race.forEach((element) => {
+          this.coBorrowerRaces.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -397,8 +410,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
 
       if (this.data.coBorrowerDemographic.sex) {
-        this.data.coBorrowerDemographic.sex.forEach(element => {
-          this.coBorrowerSexArr.forEach(item => {
+        this.data.coBorrowerDemographic.sex.forEach((element) => {
+          this.coBorrowerSexArr.forEach((item) => {
             if (element.id == item.id) {
               item.checked = true;
             }
@@ -406,12 +419,18 @@ export class DeclarationComponent implements OnInit, DoCheck {
         });
       }
     }
-
-
-
+    debugger;
     if (this.isApplyingWithCoBorrower) {
-      this.data.coBorrowerDeclaration = {};
-      this.data.coBorrowerDemographic = {};
+      if (
+        this.data.coBorrowerDeclaration == undefined ||
+        this.data.coBorrowerDeclaration == null
+      )
+        this.data.coBorrowerDeclaration = {};
+      if (
+        this.data.coBorrowerDemographic == undefined ||
+        this.data.coBorrowerDemographic == null
+      )
+        this.data.coBorrowerDemographic = {};
       this.form.addControl(
         "coBorrowerDeclaration",
         this.initDeclarationForm(this.data.coBorrowerDeclaration)
@@ -420,7 +439,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
         "coBorrowerDemographic",
         this.initDemographicForm(this.data.coBorrowerDemographic)
       );
-    } else {
+    }
+    if (!this.isApplyingWithCoBorrower) {
       this.form.removeControl("coBorrowerDeclaration");
       this.form.removeControl("coBorrowerDemographic");
     }
@@ -519,19 +539,40 @@ export class DeclarationComponent implements OnInit, DoCheck {
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {
-      if (this.form.valid) {
-        this._route.navigate(["app/summary"]);
-      } else {
-        this.form.markAllAsTouched();
-      }
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        if (this.form.valid) {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/summary"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/summary"]);
+          }
+        } else {
+          this.form.markAllAsTouched();
+        }
+      });
     }
   }
-
   proceedToPrevious(event?: string) {
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {
-      this._route.navigate(["app/econsent"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/econsent"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/econsent"]);
+        }
+      });
     }
   }
 }

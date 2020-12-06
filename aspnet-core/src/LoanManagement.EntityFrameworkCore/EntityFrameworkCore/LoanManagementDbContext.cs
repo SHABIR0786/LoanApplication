@@ -4,6 +4,7 @@ using LoanManagement.Authorization.Users;
 using LoanManagement.Models;
 using LoanManagement.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace LoanManagement.EntityFrameworkCore
 {
@@ -28,6 +29,7 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<StockAndBond> StockAndBonds { get; set; }
         public DbSet<LoanDetail> LoanDetails { get; set; }
         public DbSet<PersonalDetail> PersonalDetails { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
         public DbSet<State> States { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
@@ -133,6 +135,87 @@ namespace LoanManagement.EntityFrameworkCore
                             new State { Id = 57, Name = "WV" },
                             new State { Id = 58, Name = "WI" },
                             new State { Id = 59, Name = "WY" });
+            });
+
+            modelBuilder.Entity<SiteSetting>(siteSetting =>
+            {
+                siteSetting.HasData(new SiteSetting
+                {
+                    Id = 1,
+                    PageIdentifier = "app/home",
+                    PageName = "Home page",
+                    PageSetting = JsonConvert.SerializeObject(
+                    new
+                    {
+                        MainCarousels = new[]
+                        {
+                            new
+                            {
+                                FilePath = "assets/img/house.png",
+                                Header = "Best California Home Loans",
+                                SubHeader = "Better Rate then banks, Better customer services"
+                            }
+                        },
+                        FirstBlog = new
+                        {
+                            FilePath = "assets/img/house.png",
+                            Header = "GET A NO-HASSLE LOAN FOR UP TO $697,650",
+                            SubHeader = "Fast Closing FHA Loans",
+                            Description = "Take Advantage of our FHA Elite Rates starting at",
+                        },
+                        SecondBlog = new
+                        {
+                            FilePath = "assets/img/living-room.png",
+                            Header = "Conventional Jombo Rate",
+                            SubHeader = "GET A NO-HASSLE LOAN FOR UP TO $697,650",
+                            Description = "Save cash with a low-rate conventional loan up to"
+                        },
+                        ThirdBlog = new
+                        {
+                            FilePath = "assets/img/money.png",
+                            Header = "Tap Into Your Equity",
+                            SubHeader = "",
+                            Description = "We offer unique programs that let you refinance up"
+                        },
+                        ForthBlog = new
+                        {
+                            FilePath = "assets/img/new-home.png",
+                            Header = "Purchase Your Dream Home",
+                            SubHeader = "",
+                            Description = "Your dream home may no longer be a dream"
+                        },
+                        VideoSection = new
+                        {
+                            FilePath = "assets/img/Image 16.png",
+                            Header = "Know about",
+                            SubHeader = "YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA",
+                            Description = "To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction."
+                        },
+                        KnowAboutHeader = "Tips For Getting A Home Mortgage In California",
+                        ChecklistMainHeader = "How To Apply For Your Loan",
+                        Checklist = new
+                        {
+                            Checklist1 = "Calculate Loan Rate",
+                            Checklist2 = "Speak With An Expert",
+                            Checklist3 = "Benefit Of Preapproval",
+                            Checklist4 = "Get A Free Quote",
+                        },
+                        SloganImage = "assets/img/finance.png",
+                        Slogan = "Work With A High-Tech Mortgage Loan Broker",
+                        SloganChecklist = "Our easy-to-use online tools streamline the mortgage process.\n" +
+                                           "Get mortgage estimates, instant rate quotes, and access to our online calculators.\n" +
+                                           "Loan applications can be done entirely online(or via fax) on our secure portal.\n" +
+                                           "Receive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop",
+                        Testimonials = new[]
+                        {
+                            new
+                            {
+                                Comment = "Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.",
+                                Author = "Anne Davidson (San Francisco, CA)"
+                            }
+                        }
+                    })
+                });
             });
         }
     }

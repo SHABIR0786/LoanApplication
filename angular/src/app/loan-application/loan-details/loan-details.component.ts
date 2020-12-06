@@ -1,17 +1,27 @@
-import { Component, DoCheck, OnInit } from "@angular/core";
+import {
+  Component,
+  DoCheck,
+  OnInit,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { ILoanDetailModel } from "../../interfaces/ILoanDetailModel";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
+import { async } from "@angular/core/testing";
 
 @Component({
   selector: "app-loan-details",
   templateUrl: "./loan-details.component.html",
   styleUrls: ["./loan-details.component.css"],
 })
-export class LoanDetailsComponent implements OnInit, DoCheck {
+export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
   id = Math.random().toString(36).substring(2);
   data: ILoanDetailModel = {};
 
@@ -37,14 +47,67 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     },
   };
 
+  loanApplication: ILoanApplicationModel = {
+    loanDetails: {
+      purposeOfLoan: 1,
+    },
+    personalInformation: {
+      borrower: {},
+      coBorrower: {},
+      residentialAddress: {},
+      mailingAddress: {},
+      previousAddresses: [],
+    },
+    expenses: {},
+    manualAssetEntries: [],
+    employmentIncome: {
+      borrowerMonthlyIncome: {},
+      borrowerEmploymentInfo: [{}],
+      coBorrowerMonthlyIncome: {},
+      coBorrowerEmploymentInfo: [{}],
+      additionalIncomes: [{}],
+    },
+    orderCredit: {},
+    additionalDetails: {},
+    eConsent: {},
+    declaration: {
+      borrowerDeclaration: {},
+      coBorrowerDeclaration: {},
+      borrowerDemographic: {},
+      coBorrowerDemographic: {},
+    },
+  };
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.loanDetails;
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        debugger;
+        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+          (response: Result<ILoanApplicationModel>) => {
+            debugger;
+            if (response.success) {
+              debugger;
+              this.data = response.result.loanDetails;
+              console.log(this.loanApplication);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        this.data = this._dataService.loanApplication.loanDetails;
+      }
+    });
 
     this.initForm();
     this.loadStates();
@@ -149,7 +212,28 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         Validators.required,
       ]),
     });
-
+    debugger;
+    this.form.value;
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+          (response: Result<ILoanApplicationModel>) => {
+            if (response.success) {
+              debugger;
+              this.data = response.result.loanDetails;
+              this.form.value = response.result.loanDetails;
+              console.log(this.loanApplication);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    });
+  }
+  ngAfterViewInit() {
     const estimatedPurchasePriceControl = this.form.get(
       "estimatedPurchasePrice"
     );
@@ -233,12 +317,22 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     this.form
       .get("downPaymentAmount")
       .valueChanges.subscribe((downPaymentAmount) => {
-        const currentDownPaymentPercentage = this.form.get(
+        let currentDownPaymentPercentage = this.form.get(
           "downPaymentPercentage"
         ).value;
         if (downPaymentAmount) {
-          const estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
+          if (typeof downPaymentAmount === "number")
+            downPaymentAmount = downPaymentAmount.toString();
+
+          downPaymentAmount = downPaymentAmount.replace("/,/g", "");
+          let estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
             .value;
+          debugger;
+          if (typeof estimatedPurchasePrice == "string")
+            estimatedPurchasePrice = estimatedPurchasePrice?.replace(
+              "/,/g",
+              ""
+            );
           const percentage = (downPaymentAmount / estimatedPurchasePrice) * 100;
 
           if (currentDownPaymentPercentage !== percentage)
@@ -255,8 +349,13 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         const currentDownPaymentAmount = this.form.get("downPaymentAmount")
           .value;
         if (downPaymentPercentage) {
-          const estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
+          let estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
             .value;
+          if (typeof estimatedPurchasePrice == "string")
+            estimatedPurchasePrice = estimatedPurchasePrice?.replace(
+              "/,/g",
+              ""
+            );
           const downPaymentAmount =
             (downPaymentPercentage / 100) * estimatedPurchasePrice;
 
@@ -267,6 +366,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
             this.form.get("downPaymentAmount").setValue(null);
         }
       });
+    this.cdr.detectChanges();
   }
 
   proceedToPrevious(event?: string) {
@@ -305,7 +405,18 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       }
     } else {
       if (this.form.valid) {
-        this._route.navigate(["app/personal-information"]);
+        this._activatedRoute.queryParams.subscribe(async (params) => {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/personal-information"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/personal-information"]);
+          }
+        });
       } else {
         this.form.markAllAsTouched();
       }

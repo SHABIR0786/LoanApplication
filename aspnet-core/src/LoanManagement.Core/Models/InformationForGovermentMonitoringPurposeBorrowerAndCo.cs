@@ -12,7 +12,7 @@ namespace LoanManagement.Models
         public DateTime? Date { get; set; }
         public string LoanOriginatorsName { get; set; }
         public string LoanOriginatorIdentifier { get; set; }
-        public string LoanOriginatorsPhoneNumber  { get; set; }
+        public string LoanOriginatorsPhoneNumber { get; set; }
         public string LoanOriginationCompanysName { get; set; }
         public string LoanOriginationCompanyIdentifier { get; set; }
         public string LoanOriginationCompanysAddress { get; set; }

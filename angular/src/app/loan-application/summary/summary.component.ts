@@ -5,7 +5,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
-
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
@@ -22,7 +22,8 @@ export class SummaryComponent implements OnInit {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -39,33 +40,37 @@ export class SummaryComponent implements OnInit {
           element.borrowerTypeId = AppConsts.typeBorrower;
         });
       }
+    } else {
       if (
-        this.formData.employmentIncome &&
-        this.formData.employmentIncome.coBorrowerEmploymentInfo
+        this.formData.employmentIncome == null &&
+        this.formData.employmentIncome.coBorrowerEmploymentInfo == null
       ) {
+        debugger;
         this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
       if (
-        this.formData.additionalDetails &&
-        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle
+        this.formData.additionalDetails == null &&
+        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle ==
+          null
       ) {
         this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle = "";
       }
       if (
-        this.formData.employmentIncome &&
-        this.formData.employmentIncome.coBorrowerMonthlyIncome
+        this.formData.employmentIncome == null &&
+        this.formData.employmentIncome.coBorrowerMonthlyIncome == null
       ) {
+        debugger;
         this.formData.employmentIncome.coBorrowerMonthlyIncome = {};
       }
       if (
-        this.formData.declaration &&
-        this.formData.declaration.coBorrowerDeclaration
+        this.formData.declaration == null &&
+        this.formData.declaration.coBorrowerDeclaration == null
       ) {
         this.formData.declaration.coBorrowerDeclaration = {};
       }
       if (
-        this.formData.declaration &&
-        this.formData.declaration.coBorrowerDemographic
+        this.formData.declaration == null &&
+        this.formData.declaration.coBorrowerDemographic == null
       ) {
         this.formData.declaration.coBorrowerDemographic = {};
       }
@@ -112,8 +117,14 @@ export class SummaryComponent implements OnInit {
   }
 
   proceedToPrevious() {
-    //  this._ngWizardService.previous();
-    this._route.navigate(["app/declaration"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/declaration?" + id]);
+      } else {
+        this._route.navigate(["app/declaration"]);
+      }
+    });
   }
 
   showGroupError(groupName) {

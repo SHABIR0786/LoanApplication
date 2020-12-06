@@ -37,7 +37,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                     AgreeEConsent = input.AgreeEConsent,
                     FirstName = input.FirstName,
                     LastName = input.LastName,
-                    Email = input.Email
+                    Email = input.Email,
+                    CoborrowerAgreeEConsent = input.CoborrowerAgreeEConsent,
+                    CoborrowerFirstName = input.CoborrowerFirstName,
+                    CoborrowerLastName = input.CoborrowerLastName,
+                    CoborrowerEmail = input.CoborrowerEmail,
+
                 };
                 await _repository.InsertAsync(consentDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -59,6 +64,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                 consentDetail.FirstName = input.FirstName;
                 consentDetail.LastName = input.LastName;
                 consentDetail.Email = input.Email;
+                consentDetail.CoborrowerAgreeEConsent = input.CoborrowerAgreeEConsent;
+                consentDetail.CoborrowerEmail = input.CoborrowerEmail;
+                consentDetail.CoborrowerFirstName = input.CoborrowerFirstName;
+                consentDetail.CoborrowerLastName = input.CoborrowerLastName;
                 return Task.CompletedTask;
             });
 

@@ -6,6 +6,7 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { TabsModule } from "ngx-bootstrap/tabs";
+import { CarouselModule } from "ngx-bootstrap/carousel";
 import { NgxPaginationModule } from "ngx-pagination";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -13,6 +14,8 @@ import { ServiceProxyModule } from "@shared/service-proxies/service-proxy.module
 import { SharedModule } from "@shared/shared.module";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 import { HomeComponent } from "@app/home/home.component";
+import { HomeMainCarousel } from "@app/home/home-main-carousel/home-main-carousel";
+import { HomeTestmionals } from "@app/home/home-testmionals/home-testmionals";
 import { AboutComponent } from "@app/about/about.component";
 // tenants
 import { TenantsComponent } from "@app/tenants/tenants.component";
@@ -57,6 +60,9 @@ import { EconsentComponent } from "./loan-application/econsent/econsent.componen
 import { AssetsComponent } from "./loan-application/assets/assets.component";
 import { OrderCreditComponent } from "./loan-application/order-credit/order-credit.component";
 import { AdditionalDetailsComponent } from "./loan-application/additional-details/additional-details.component";
+import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
+import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
+import { LoanSideBar } from "./loan-application/side-bar/side-bar";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -66,6 +72,8 @@ const ngWizardConfig: NgWizardConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
+    HomeTestmionals,
+    HomeMainCarousel,
     AboutComponent,
     // tenants
     TenantsComponent,
@@ -105,6 +113,9 @@ const ngWizardConfig: NgWizardConfig = {
     OrderCreditComponent,
     AdditionalDetailsComponent,
     SummaryExpandDataComponent,
+    LoanListComponent,
+    AdminPanelComponent,
+    LoanSideBar,
   ],
   imports: [
     CommonModule,
@@ -117,6 +128,7 @@ const ngWizardConfig: NgWizardConfig = {
     BsDropdownModule,
     CollapseModule,
     TabsModule,
+    CarouselModule.forRoot(),
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
