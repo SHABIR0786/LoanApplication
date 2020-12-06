@@ -1,6 +1,7 @@
 ﻿using LoanManagement.CoreLogicModels.JointRequest;
 using LoanManagement.Data;
 using LoanManagement.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -18,25 +19,25 @@ namespace LoanManagement.CredcoServices
     public class CredcoApi : ICredcoApi
     {
         private readonly ILogger<CredcoApi> _logger;
+        public IWebHostEnvironment _hostingEnvironment;
 
-        public CredcoApi(ILogger<CredcoApi> logger)
+        public CredcoApi(IWebHostEnvironment hostingEnvironment, ILogger<CredcoApi> logger)
         {
+            _hostingEnvironment = hostingEnvironment;
             _logger = logger;
         }
 
-        public async Task<LoanManagement.CoreLogicModels.JointResponse.ResponseGroup> GetCreditDataAsync(LoanApplicationDto input)
+        public async Task<CoreLogicModels.JointResponse.ResponseGroup> GetCreditDataAsync(PersonalInformationDto input)
         {
             try
             {
                 var xml = CreateJointRequest(input);
-
-                File.WriteAllText("request.xml", xml);
                 var handler = new HttpClientHandler
                 {
                     ClientCertificateOptions = ClientCertificateOption.Manual,
                     SslProtocols = SslProtocols.Tls12
                 };
-                handler.ClientCertificates.Add(new X509Certificate2("file.pfx", "Credco287909"));
+                handler.ClientCertificates.Add(new X509Certificate2(Path.Combine(_hostingEnvironment.ContentRootPath, "Cert.pfx"), "Credco287909"));
                 var client = new HttpClient(handler);
 
                 var httpContent = new StringContent(xml, Encoding.UTF8, "application/xml");
@@ -44,8 +45,8 @@ namespace LoanManagement.CredcoServices
                 var response = await client.PostAsync("https://beta.credcoconnect.com/cc/listener", httpContent);
 
 
-                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(LoanManagement.CoreLogicModels.JointResponse.ResponseGroup));
-                var data = (LoanManagement.CoreLogicModels.JointResponse.ResponseGroup)serializer.Deserialize(await response.Content.ReadAsStreamAsync());
+                var serializer = new XmlSerializer(typeof(CoreLogicModels.JointResponse.ResponseGroup));
+                var data = (CoreLogicModels.JointResponse.ResponseGroup)serializer.Deserialize(await response.Content.ReadAsStreamAsync());
                 return data;
             }
             catch (Exception ex)
@@ -63,7 +64,7 @@ namespace LoanManagement.CredcoServices
             }
         }
 
-        private static string CreateJointRequest(LoanApplicationDto input)
+        private static string CreateJointRequest(PersonalInformationDto input)
         {
             var reqGroup = new RequestGroup
             {
@@ -87,7 +88,6 @@ namespace LoanManagement.CredcoServices
                         {
                             CREDIT_REQUEST_DATA = new CreditRequestData
                             {
-                                BorrowerID = "Borrower",
                                 CreditRequestType = "Individual",
                                 CreditReportIdentifier = "",
                                 CREDIT_REPOSITORY_INCLUDED = new CreditRepositoryIncluded
@@ -100,25 +100,7 @@ namespace LoanManagement.CredcoServices
                             LenderCaseIdentifier = "Optional - LoanNum",
                             LOAN_APPLICATION = new LoanApplication
                             {
-                                BORROWER = new List<Borrower>
-                                {
-                                    new Borrower
-                                    {
-                                        _FirstName = "DAVID",
-                                        _LastName = "DELINQUENT",
-                                        _MiddleName = "",
-                                        _NameSuffix ="",
-                                        _PrintPositionType = "Borrower",
-                                        _SSN ="000965850",
-                                        _RESIDENCE = new Residence {
-                                            _City ="PRESCOTT",
-                                            _PostalCode = "86305",
-                                            _State = "AZ",
-                                            _StreetAddress ="1003 Enred Way",
-                                            BorrowerResidencyType ="Current"
-                                        }
-                                    }
-                                }
+                                BORROWER = new List<Borrower>()
                             },
                             MISMOVersionID = "2.3.1",
                             RequestingPartyRequestedByName = "ezonlinemortgage",
@@ -151,8 +133,8 @@ namespace LoanManagement.CredcoServices
             };
 
             var xmlBorrower = reqGroup.REQUEST.REQUEST_DATA.CREDIT_REQUEST.LOAN_APPLICATION.BORROWER;
-            var borrower = input.PersonalInformation.Borrower;
-            var borrowerAddress = input.PersonalInformation.ResidentialAddress;
+            var borrower = input.Borrower;
+            var borrowerAddress = input.ResidentialAddress;
             xmlBorrower.Add(new Borrower
             {
                 _FirstName = borrower.FirstName,
@@ -171,18 +153,19 @@ namespace LoanManagement.CredcoServices
                 }
             });
 
-            if (input.PersonalInformation.IsApplyingWithCoBorrower.HasValue &&
-                input.PersonalInformation.IsApplyingWithCoBorrower.Value)
+            if (input.IsApplyingWithCoBorrower.HasValue &&
+                input.IsApplyingWithCoBorrower.Value)
             {
-                var cwBorrower = input.PersonalInformation.CoBorrower;
-                var coBorrowerAddress = input.PersonalInformation.CoBorrowerResidentialAddress;
+                reqGroup.REQUEST.REQUEST_DATA.CREDIT_REQUEST.CREDIT_REQUEST_DATA.CreditRequestType = "Joint";
+                var cwBorrower = input.CoBorrower;
+                var coBorrowerAddress = input.CoBorrowerResidentialAddress;
                 xmlBorrower.Add(new Borrower
                 {
                     _FirstName = cwBorrower.FirstName,
                     _LastName = cwBorrower.LastName,
                     _MiddleName = cwBorrower.MiddleInitial,
                     _NameSuffix = cwBorrower.Suffix,
-                    _PrintPositionType = "Borrower",
+                    _PrintPositionType = "CoBorrower",
                     _SSN = cwBorrower.SocialSecurityNumber,
                     _RESIDENCE = new Residence
                     {
