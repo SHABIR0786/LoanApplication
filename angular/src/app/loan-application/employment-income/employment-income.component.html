@@ -1,6 +1,6 @@
 <section class="content px-2">
   <div class="container-fluid">
-    <div class="card">
+    <div class="card my-5">
       <div class="card-body">
         <div class="row" [formGroup]="form">
           <!--Borrower Employment Information Start-->
@@ -38,7 +38,7 @@
                   {{ employmentIncome.employerName || "Employer " + (i + 1) }}
                 </h6>
                 <button
-                  class="btn btn-primary mr-1 float-right pull-right"
+                  class="btn btn-secondary mr-1 float-right pull-right"
                   (click)="clearEmploymentInfoForm($event, i)"
                 >
                   Clear
@@ -253,10 +253,18 @@
                 </div>
               </div>
             </div>
+            <!-- <div class="row"
+            *ngIf="">
+              <div class="col-12">
+                <div>
+                  We recommend entering at least 2 years of employment.
+                </div>
+              </div>
+            </div> -->
           </div>
           <div class="col-12">
             <button
-              class="btn btn-primary"
+              class="btn btn-secondary"
               (click)="addBorrowerEmploymentInfo()"
               [disabled]="
                 data.borrowerEmploymentInfo &&
@@ -295,7 +303,7 @@
                     {{ employmentIncome.employerName || "Employer " + (i + 1) }}
                   </h6>
                   <button
-                    class="btn btn-primary mr-1 float-right pull-right"
+                    class="btn btn-secondary mr-1 float-right pull-right"
                     (click)="clearCoBorrowerEmploymentInfoForm($event, i)"
                   >
                     Clear
@@ -514,7 +522,7 @@
             </div>
             <div class="col-12">
               <button
-                class="btn btn-primary"
+                class="btn btn-secondary"
                 (click)="addCoBorrowerEmploymentInfo()"
                 [disabled]="
                   data.coBorrowerEmploymentInfo &&

@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="LoanManagement.Models.AcknowledgementAndAgreement" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAABAAAAAAAAAAAAAAAAABAAAgAAAAAAE=</HashCode>
+      <FileName>Models\AcknowledgementAndAgreement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoanManagement.Models.AdditionalDetail">
+    <Position X="13.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AdditionalDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.AdditionalIncome">
+    <Position X="21" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAABAAAJAgAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AdditionalIncome.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="LoanApplication" />
+      <Property Name="IncomeSource" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.Address">
+    <Position X="3.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAACAQAAAABAIAAAAAAAAAAAAIAAFAAAABAQQAAA=</HashCode>
+      <FileName>Models\Address.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="PersonalDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.AssetType">
+    <Position X="4.5" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AssetType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.Borrower">
+    <Position X="0.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAIGAAABAAAAAAAAEAIAgQAACAACAAAAAAAAg=</HashCode>
+      <FileName>Models\Borrower.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.BorrowerEmploymentInformation">
+    <Position X="7" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAACAQAAAABAoAIAgAAAkAACAAABBAAAAAEAAAAA=</HashCode>
+      <FileName>Models\BorrowerEmploymentInformation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="LoanApplication" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.BorrowerMonthlyIncome">
+    <Position X="7.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAEAAABAAAAAgAAAECAAAAAAAAgAAAAAAQEA=</HashCode>
+      <FileName>Models\BorrowerMonthlyIncome.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="LoanApplication" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.BorrowerType">
+    <Position X="8.75" Y="13" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BorrowerType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.ConsentDetail">
+    <Position X="19.25" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEBAACAAAAABAAAAEAAAAAAAAAAAAAAQAEAAAAg=</HashCode>
+      <FileName>Models\ConsentDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.CreditAuthAgreement">
+    <Position X="14.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CreditAuthAgreement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.Declaration">
+    <Position X="9.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABACKBAAABABgAAAAgEQgEAACAAAAAAAAIAAAAACA=</HashCode>
+      <FileName>Models\Declaration.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LoanApplication" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.DeclarationBorrowereDemographicsInformation">
+    <Position X="16.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>FAEgAACQIABAgFAAAAAgFgAEAAiAiCguAAAAAggIcIA=</HashCode>
+      <FileName>Models\DeclarationBorrowereDemographicsInformation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="LoanApplication" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.Expense">
+    <Position X="11.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAgAAAABAAAACQACAAAAAQAAAAAEAA=</HashCode>
+      <FileName>Models\Expense.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.IncomeSource">
+    <Position X="13" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IncomeSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.InformationForGovermentMonitoringPurpose" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAEEABABAQAgAAAAABAQAgUAIAAAA=</HashCode>
+      <FileName>Models\InformationForGovermentMonitoringPurpose.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="InformationForGovermentMonitoringPurposeBorrowerAndCo" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoanManagement.Models.InformationForGovermentMonitoringPurposeBorrowerAndCo" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACAAAAAABAAAEABAAQQAAAAAAABAQAgQAIAAAA=</HashCode>
+      <FileName>Models\InformationForGovermentMonitoringPurposeBorrowerAndCo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoanManagement.Models.LoanApplication" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AGAQAAgBSAACAAAgAAAgAABAAwAAAAQAAAEgQAAAAAA=</HashCode>
+      <FileName>Models\LoanApplication.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AdditionalDetail" />
+      <Property Name="ConsentDetail" />
+      <Property Name="CreditAuthAgreement" />
+      <Property Name="Expense" />
+      <Property Name="PersonalDetail" />
+      <Property Name="LoanDetail" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="AdditionalIncomes" />
+      <Property Name="BorrowerMonthlyIncomes" />
+      <Property Name="Declarations" />
+      <Property Name="DemographicsInformations" />
+      <Property Name="ManualAssetEntries" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoanManagement.Models.LoanDetail">
+    <Position X="21.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAQBCAAAAJIABABBAAECAACIhABYQACAEAAAA=</HashCode>
+      <FileName>Models\LoanDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.ManualAssetEntry">
+    <Position X="10.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgACEQAAgQBAIAABgAAQEIAgAAEALAjKiBAAAAAA=</HashCode>
+      <FileName>Models\ManualAssetEntry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BorrowerType" />
+      <Property Name="AssetType" />
+      <Property Name="State" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.PersonalDetail">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <AssociationLine Name="CoBorrower" Type="LoanManagement.Models.Borrower">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.077" Y="0.156" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAgAgAAAACAAAAAAAAAAAAAAAEAAUCAAgAAgAAAAA=</HashCode>
+      <FileName>Models\PersonalDetail.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Borrower" />
+      <Property Name="CoBorrower" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Addresses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.SiteSetting">
+    <Position X="15" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SiteSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoanManagement.Models.State">
+    <Position X="24" Y="10.25" Width="1.5" />
+    <Members>
+      <Property Name="ManualAssetEntries" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\State.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ManualAssetEntries" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoanManagement.Models.StockAndBond">
+    <Position X="18.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAAAAAAAAAAAAAAAAAAAAgAAAAAAACgAAAAAAA=</HashCode>
+      <FileName>Models\StockAndBond.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ManualAssetEntry" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

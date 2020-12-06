@@ -1,6 +1,6 @@
 <section class="content px-2">
   <div class="container-fluid">
-    <div class="card">
+    <div class="card my-5">
       <div class="card-body">
         <div class="row">
           <div class="col-12 mb-1">
@@ -3987,27 +3987,25 @@
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.additionalDetails.nameOfIndividualsOnTitle ===
-                          undefined ||
-                        formData.additionalDetails.nameOfIndividualsOnTitle ===
-                          null
+                        !formData.additionalDetails.nameOfIndividualsOnTitle
                           ? "--"
                           : formData.additionalDetails.nameOfIndividualsOnTitle
                       }}
                     </p>
                   </div>
                 </div>
-                <div class="row">
+                <div
+                  *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
+                  class="row"
+                >
                   <div class="col-8">
                     <h6 class="font-weight-normal text-muted form-text mt-3">
                       Co-borrower name (optional)
                     </h6>
                     <p class="font-weight-bold">
                       {{
-                        formData.additionalDetails
-                          .nameOfIndividualsCoBorrowerOnTitle === undefined ||
-                        formData.additionalDetails
-                          .nameOfIndividualsCoBorrowerOnTitle === null
+                        !formData.additionalDetails
+                          .nameOfIndividualsCoBorrowerOnTitle
                           ? "--"
                           : formData.additionalDetails
                               .nameOfIndividualsCoBorrowerOnTitle
@@ -4067,6 +4065,40 @@
                         formData.eConsent.agreeEConsent === null
                           ? "Skipped"
                           : formData.eConsent.agreeEConsent
+                          ? "Agreed"
+                          : "Disagreed"
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="row"
+              *ngIf="
+                (!!formData.eConsent.CoborrowerFirstName ||
+                  !!formData.eConsent.CoborrowerLastName) &&
+                formData.personalInformation.isApplyingWithCoBorrower
+              "
+            >
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <p class="font-weight-normal text-muted">
+                      {{
+                        formData.eConsent.CoborrowerFirstName +
+                          " " +
+                          formData.eConsent.CoborrowerLastName
+                      }}
+                    </p>
+                    <p class="font-weight-bold">
+                      {{
+                        formData.eConsent.CoborrowerAgreeEConsent ===
+                          undefined ||
+                        formData.eConsent.CoborrowerAgreeEConsent === null
+                          ? "Skipped"
+                          : formData.eConsent.CoborrowerAgreeEConsent
                           ? "Agreed"
                           : "Disagreed"
                       }}
@@ -4413,9 +4445,7 @@
 
               <div
                 class="col-6"
-                *ngIf="
-                  formData.personalInformation.isApplyingWithCoBorrower === true
-                "
+                *ngIf="formData.personalInformation.isApplyingWithCoBorrower"
               >
                 <div class="row">
                   <div class="col-8">

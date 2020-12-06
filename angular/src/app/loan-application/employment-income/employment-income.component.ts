@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { IBorrowerMonthlyIncomeModel } from "../../interfaces/IBorrowerMonthlyIncomeModel";
 import { IBorrowerEmploymentInfoModel } from "../../interfaces/IBorrowerEmploymentInfoModel";
 import { IAdditionalIncomeModel } from "../../interfaces/IAdditionalIncomeModel";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-employment-income",
@@ -25,7 +26,8 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   get borrowerEmploymentInfo(): FormArray {
@@ -67,6 +69,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+    debugger;
     this.data = this.form.value;
     this._dataService.updateValidationsFormArr(
       this.form.get("borrowerEmploymentInfo") as FormArray,
@@ -180,6 +183,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   initForm() {
+    debugger;
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       borrowerMonthlyIncome: this.initBorrowerMonthlyIncome(
@@ -187,6 +191,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
       ),
       borrowerEmploymentInfo: new FormArray([]),
       additionalIncomes: new FormArray([]),
+      coBorrowerEmploymentInfo: new FormArray([]),
     });
 
     if (
@@ -230,6 +235,67 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     } else {
       this.form.removeControl("coBorrowerMonthlyIncome");
       this.form.removeControl("coBorrowerEmploymentInfo");
+    }
+
+    var startDate;
+    this.form
+      .get("borrowerEmploymentInfo")
+      .valueChanges.subscribe((borrowerEmploymentInfo) => {
+        if (
+          borrowerEmploymentInfo &&
+          borrowerEmploymentInfo[0].startDate &&
+          borrowerEmploymentInfo &&
+          borrowerEmploymentInfo.length == 1 &&
+          (!startDate ||
+            startDate.getFullYear() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getFullYear() ||
+            startDate.getDate() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getDate() ||
+            startDate.getMonth() !=
+              new Date(borrowerEmploymentInfo[0].startDate).getMonth())
+        ) {
+          startDate = new Date(borrowerEmploymentInfo[0].startDate);
+          var Dateafter2Years;
+          var TodaysDate = new Date();
+          var year = TodaysDate.getFullYear();
+          var month = TodaysDate.getMonth();
+          var day = TodaysDate.getDate();
+          Dateafter2Years = new Date(year - 2, month, day);
+          if (startDate > Dateafter2Years) {
+            this.addBorrowerEmploymentInfo();
+          }
+        }
+      });
+    if (this.coBorrowerEmploymentInfo) {
+      var startDate;
+      this.form
+        .get("coBorrowerEmploymentInfo")
+        .valueChanges.subscribe((coBorrowerEmploymentInfo) => {
+          if (
+            coBorrowerEmploymentInfo &&
+            coBorrowerEmploymentInfo[0].startDate &&
+            coBorrowerEmploymentInfo &&
+            coBorrowerEmploymentInfo.length == 1 &&
+            (!startDate ||
+              startDate.getFullYear() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getFullYear() ||
+              startDate.getDate() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getDate() ||
+              startDate.getMonth() !=
+                new Date(coBorrowerEmploymentInfo[0].startDate).getMonth())
+          ) {
+            startDate = new Date(coBorrowerEmploymentInfo[0].startDate);
+            var Dateafter2Years;
+            var TodaysDate = new Date();
+            var year = TodaysDate.getFullYear();
+            var month = TodaysDate.getMonth();
+            var day = TodaysDate.getDate();
+            Dateafter2Years = new Date(year - 2, month, day);
+            if (startDate > Dateafter2Years) {
+              this.addCoBorrowerEmploymentInfo();
+            }
+          }
+        });
     }
   }
 
@@ -341,7 +407,18 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   proceedToNext() {
     if (this.form.valid) {
       // this._ngWizardService.next();
-      this._route.navigate(["app/order-credit"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/order-credit"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/order-credit"]);
+        }
+      });
     } else {
       this.form.markAllAsTouched();
     }
@@ -349,7 +426,18 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
 
   proceedToPrevious() {
     // this._ngWizardService.previous();
-    this._route.navigate(["app/asset"]);
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/asset"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/asset"]);
+      }
+    });
   }
 
   ConvertToInt(val: any) {
