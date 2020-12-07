@@ -5,6 +5,7 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -18,7 +19,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long?> input)
+        public Task<AdditionalDetailsDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }

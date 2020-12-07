@@ -24,6 +24,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         private readonly IPersonalDetailService _personalDetailService;
         private readonly IDeclarationService _declarationService;
         private readonly IManualAssetEntryService _manualAssetEntryService;
+        private readonly IBorrowerMonthlyIncomeServices _borrowerMonthlyIncomeRepository;
+
+        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationRepository;
+
+        public IAdditionalIncomeService _additionalIncomeService { get; }
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
@@ -35,7 +40,10 @@ namespace LoanManagement.DatabaseServices.Implementations
             IEmploymentIncomeService employmentIncomeService,
             IPersonalDetailService personalDetailService,
             IDeclarationService declarationService,
-            IManualAssetEntryService manualAssetEntryService
+            IManualAssetEntryService manualAssetEntryService,
+            IBorrowerEmploymentInformationAppService borrowerEmploymentInformationRepository,
+            IBorrowerMonthlyIncomeServices borrowerMonthlyIncomeRepository,
+            IAdditionalIncomeService additionalIncomeService
             )
         {
             _repository = repository;
@@ -48,6 +56,9 @@ namespace LoanManagement.DatabaseServices.Implementations
             _personalDetailService = personalDetailService;
             _declarationService = declarationService;
             _manualAssetEntryService = manualAssetEntryService;
+            _borrowerEmploymentInformationRepository = borrowerEmploymentInformationRepository;
+            _borrowerMonthlyIncomeRepository = borrowerMonthlyIncomeRepository;
+            _additionalIncomeService = additionalIncomeService;
         }
 
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
@@ -58,17 +69,22 @@ namespace LoanManagement.DatabaseServices.Implementations
                     i.LoanDetail,
                     i => i.AdditionalDetail,
                     i => i.PersonalDetail,
-                    i => i.AdditionalIncomes,
                     i => i.CreditAuthAgreement,
                     i => i.ConsentDetail,
-                    i => i.Expense,
-                    i => i.ManualAssetEntries,
-                    i => i.Declarations,
-                    i => i.BorrowerEmploymentInformations,
-                    i => i.BorrowerMonthlyIncomes,
-                    i => i.DemographicsInformations
+                    i => i.Expense
                      )
                    .SingleAsync(i => i.Id == input.Id);
+
+                // var additionalIncomesTask = _additionalIncomeService.GetAllAsync(input.Id.Value);
+                // var EmploymentInformation = _borrowerEmploymentInformationRepository.GetAllAsync(input.Id.Value);
+                // var MonthlyIncome = _borrowerMonthlyIncomeRepository.GetAllAsync(input.Id.Value);
+                // await Task.WhenAll(additionalIncomesTask);
+                result.AdditionalIncomes = await _additionalIncomeService.GetAllAsync(input.Id.Value); ;
+                result.BorrowerEmploymentInformations = await _borrowerEmploymentInformationRepository.GetAllAsync(input.Id.Value);
+                result.BorrowerMonthlyIncomes = await _borrowerMonthlyIncomeRepository.GetAllAsync(input.Id.Value);
+                result.ManualAssetEntries = await _manualAssetEntryService.GetAllAsync(input.Id.Value);
+                result.Declarations = await _declarationService.GetAllDeclarationAsync(input.Id.Value);
+                result.DemographicsInformations = await _declarationService.GetAllDeclarationBorrowereDemographicsInformationAsync(input.Id.Value);
 
                 var viewModel = new LoanApplicationDto
                 {
@@ -366,6 +382,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             Address = manualAssetEntries.Address,
                             Address2 = manualAssetEntries.Address2,
                             BankName = manualAssetEntries.BankName,
+                            BorrowerTypeId = manualAssetEntries.BorrowerTypeId,
                             CashValue = manualAssetEntries.CashValue,
                             City = manualAssetEntries.City,
                             Description = manualAssetEntries.Description,
@@ -392,8 +409,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 AccountNumber = i.AccountNumber,
                                 CompanyName = i.CompanyName,
                                 ManualAssetEntryId = i.ManualAssetEntryId,
-                                Value = i.Value,
-
+                                Value = i.Value
 
                             })
                             .ToList();

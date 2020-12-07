@@ -9,6 +9,7 @@ import { IBorrowerMonthlyIncomeModel } from "../../interfaces/IBorrowerMonthlyIn
 import { IBorrowerEmploymentInfoModel } from "../../interfaces/IBorrowerEmploymentInfoModel";
 import { IAdditionalIncomeModel } from "../../interfaces/IAdditionalIncomeModel";
 import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
 
 @Component({
   selector: "app-employment-income",
@@ -27,7 +28,8 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   get borrowerEmploymentInfo(): FormArray {
@@ -404,7 +406,48 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
     return index;
   }
 
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      formData.id = params["id"];
+    });
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService.post("Add", formData).subscribe(
+      (response: any) => {
+        this._dataService.loanApplication = this.prepareFormData(
+          response.result
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   proceedToNext() {
+    this.submitForm();
     if (this.form.valid) {
       // this._ngWizardService.next();
       this._activatedRoute.queryParams.subscribe(async (params) => {
@@ -425,6 +468,7 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   proceedToPrevious() {
+    this.submitForm();
     // this._ngWizardService.previous();
     this._activatedRoute.queryParams.subscribe(async (params) => {
       const id = params["id"];
