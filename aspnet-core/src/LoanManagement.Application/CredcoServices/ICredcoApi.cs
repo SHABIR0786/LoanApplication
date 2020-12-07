@@ -6,6 +6,6 @@ namespace LoanManagement.CredcoServices
 {
     public interface ICredcoApi : ISingletonDependency
     {
-        Task GetCreditDataAsync(LoanApplicationDto input);
+        Task<CoreLogicModels.JointResponse.ResponseGroup> GetCreditDataAsync(PersonalInformationDto input);
     }
 }
