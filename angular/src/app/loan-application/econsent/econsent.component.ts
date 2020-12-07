@@ -10,6 +10,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
 
 @Component({
   selector: "app-econsent",
@@ -42,7 +43,8 @@ export class EconsentComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   ngOnInit(): void {
@@ -108,7 +110,55 @@ export class EconsentComponent implements OnInit, DoCheck {
     });
   }
 
+  onChange(event, key) {
+    this.coBorrower.lastName = this.data.CoborrowerLastName;
+    this.coBorrower.firstName = this.data.CoborrowerFirstName;
+    this.borrower.lastName = this.data.lastName;
+    this.borrower.firstName = this.data.firstName;
+  }
+
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      formData.id = params["id"];
+    });
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService.post("Add", formData).subscribe(
+      (response: any) => {
+        this._dataService.loanApplication = this.prepareFormData(
+          response.result
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   proceedToNext(event?: string, stepIndex?: number) {
+    this.submitForm();
     debugger;
     if (event === "wizardStep") {
       this._ngWizardService.next();
@@ -132,13 +182,8 @@ export class EconsentComponent implements OnInit, DoCheck {
     }
   }
 
-  onChange(event, key) {
-    this.coBorrower.lastName = this.data.CoborrowerLastName;
-    this.coBorrower.firstName = this.data.CoborrowerFirstName;
-    this.borrower.lastName = this.data.lastName;
-    this.borrower.firstName = this.data.firstName;
-  }
   proceedToPrevious(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {

@@ -87,27 +87,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      const id = params["id"];
-      if (id) {
-        debugger;
-        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
-          (response: Result<ILoanApplicationModel>) => {
-            debugger;
-            if (response.success) {
-              debugger;
-              this.data = response.result.loanDetails;
-              console.log(this.loanApplication);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        this.data = this._dataService.loanApplication.loanDetails;
-      }
-    });
+    this.data = this._dataService.loanApplication.loanDetails;
 
     this.initForm();
     this.loadStates();
@@ -212,7 +192,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
         Validators.required,
       ]),
     });
-    debugger;
+
     this.form.value;
     this._activatedRoute.queryParams.subscribe(async (params) => {
       const id = params["id"];
@@ -220,7 +200,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
         await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
           (response: Result<ILoanApplicationModel>) => {
             if (response.success) {
-              debugger;
               this.data = response.result.loanDetails;
               this.form.value = response.result.loanDetails;
               console.log(this.loanApplication);
@@ -327,7 +306,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
           downPaymentAmount = downPaymentAmount.replace("/,/g", "");
           let estimatedPurchasePrice = this.form.get("estimatedPurchasePrice")
             .value;
-          debugger;
+
           if (typeof estimatedPurchasePrice == "string")
             estimatedPurchasePrice = estimatedPurchasePrice?.replace(
               "/,/g",
@@ -369,13 +348,67 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
     this.cdr.detectChanges();
   }
 
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      formData.id = params["id"];
+    });
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService.post("Add", formData).subscribe(
+      (response: any) => {
+        this._dataService.loanApplication = this.prepareFormData(
+          response.result
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   proceedToPrevious(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     }
   }
 
+  findInvalidControls() {
+    const invalid = [];
+    const controls = this.form.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
+
   proceedToNext(event?: string, stepIndex?: number) {
+    debugger;
+    this.submitForm();
     if (event === "wizardStep") {
       let fields = [];
       switch (stepIndex) {
@@ -394,6 +427,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
           );
 
           if (hasError) {
+            console.log(this.findInvalidControls());
             fields.forEach(
               (field) =>
                 this.form.get(field) && this.form.get(field).markAsTouched()

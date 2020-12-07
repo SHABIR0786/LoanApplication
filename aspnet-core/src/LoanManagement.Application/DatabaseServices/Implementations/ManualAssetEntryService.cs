@@ -4,6 +4,7 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,7 +88,44 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-
+        public async Task<List<ManualAssetEntry>> GetAllAsync(long loanApplicationId)
+        {
+            return await _repository.GetAll()
+                .Where(i => i.LoanApplicationId == loanApplicationId)
+                .Select(i => new ManualAssetEntry
+                {
+                    AccountNumber = i.AccountNumber,
+                    Address = i.Address,
+                    Address2 = i.Address2,
+                    AssetTypeId = i.AssetTypeId,
+                    BankName = i.BankName,
+                    BorrowerTypeId = i.BorrowerTypeId,
+                    CashValue = i.CashValue,
+                    City = i.City,
+                    Description = i.Description,
+                    GrossRentalIncome = i.GrossRentalIncome,
+                    MonthlyMortgagePayment = i.MonthlyMortgagePayment,
+                    LoanApplicationId = i.LoanApplicationId,
+                    Name = i.Name,
+                    OutstandingMortgageBalance = i.OutstandingMortgageBalance,
+                    PresentMarketValue = i.PresentMarketValue,
+                    PropertyIsUsedAs = i.PropertyIsUsedAs,
+                    PropertyStatus = i.PropertyStatus,
+                    PropertyType = i.PropertyType,
+                    PurchasePrice = i.PurchasePrice,
+                    StateId = i.StateId,
+                    TaxesInsuranceAndOther = i.TaxesInsuranceAndOther,
+                    ZipCode = i.ZipCode,
+                    Id = i.Id,
+                    StockAndBonds = i.StockAndBonds.Select(o => new StockAndBond
+                    {
+                        AccountNumber = o.AccountNumber,
+                        CompanyName = o.CompanyName,
+                        Value = o.Value
+                    }).ToList()
+                })
+                .ToListAsync();
+        }
         public async Task<ManualAssetEntryDto> UpdateAsync(ManualAssetEntryDto input)
         {
             var stockAndBonds = new List<StockAndBond>();
