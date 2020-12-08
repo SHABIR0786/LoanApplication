@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Abp.Zero.EntityFrameworkCore;
 using LoanManagement.Authorization.Roles;
 using LoanManagement.Authorization.Users;
@@ -12,6 +14,7 @@ namespace LoanManagement.EntityFrameworkCore
     public class LoanManagementDbContext : AbpZeroDbContext<Tenant, Role, User, LoanManagementDbContext>
     {
         /* Define a DbSet for each entity of the application */
+
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformations { get; set; }

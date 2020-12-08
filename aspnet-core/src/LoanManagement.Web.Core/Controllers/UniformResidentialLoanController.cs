@@ -4,6 +4,7 @@ using LoanManagement.Data;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Enums;
 using LoanManagement.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -61,33 +62,54 @@ namespace LoanManagement.DatabaseServices.Implementations
             _additionalIncomeService = additionalIncomeService;
         }
 
+        //[UnitOfWork(isTransactional: false)]
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
         {
             try
             {
-                var result = await _repository.GetAllIncluding(i =>
-                    i.LoanDetail,
+                var query = _repository.GetAllIncluding(
+                    i => i.LoanDetail,
                     i => i.AdditionalDetail,
-                    i => i.PersonalDetail,
+                    i => i.AdditionalIncomes,
+                    i => i.BorrowerEmploymentInformations,
+                    i => i.BorrowerMonthlyIncomes,
                     i => i.CreditAuthAgreement,
                     i => i.ConsentDetail,
-                    i => i.Expense
-                     )
-                   .SingleAsync(i => i.Id == input.Id);
+                    i => i.Declarations,
+                    i => i.DemographicsInformations,
+                    i => i.Expense,
+                    i => i.ManualAssetEntries);
+
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.CoBorrower);
+
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.Borrower);
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.Addresses);
+
+                var result = await query
+                    .Where(i => i.Id == input.Id.Value)
+                   .SingleAsync();
 
                 // var additionalIncomesTask = _additionalIncomeService.GetAllAsync(input.Id.Value);
                 // var EmploymentInformation = _borrowerEmploymentInformationRepository.GetAllAsync(input.Id.Value);
                 // var MonthlyIncome = _borrowerMonthlyIncomeRepository.GetAllAsync(input.Id.Value);
-                // await Task.WhenAll(additionalIncomesTask);
-                result.AdditionalIncomes = await _additionalIncomeService.GetAllAsync(input.Id.Value); ;
-                result.BorrowerEmploymentInformations = await _borrowerEmploymentInformationRepository.GetAllAsync(input.Id.Value);
-                result.BorrowerMonthlyIncomes = await _borrowerMonthlyIncomeRepository.GetAllAsync(input.Id.Value);
-                result.ManualAssetEntries = await _manualAssetEntryService.GetAllAsync(input.Id.Value);
-                result.Declarations = await _declarationService.GetAllDeclarationAsync(input.Id.Value);
-                result.DemographicsInformations = await _declarationService.GetAllDeclarationBorrowereDemographicsInformationAsync(input.Id.Value);
-
+                // var ManualAssetEntries = _manualAssetEntryService.GetAllAsync(input.Id.Value);
+                // var Declarations = _declarationService.GetAllDeclarationAsync(input.Id.Value);
+                // var DemographicsInformations = _declarationService.GetAllDeclarationBorrowereDemographicsInformationAsync(input.Id.Value);
+                // var PersonalDetail = _personalDetailService.GetAllAsync(input.Id.Value);
+                // await Task.WhenAll(additionalIncomesTask, EmploymentInformation, MonthlyIncome, ManualAssetEntries, Declarations, PersonalDetail);
+                // result.AdditionalIncomes = await _additionalIncomeService.GetAllByLoanApplicationIdAsync(input.Id.Value);
+                // result.BorrowerEmploymentInformations = await _borrowerEmploymentInformationRepository.GetAllByLoanApplicationIdAsync(input.Id.Value);
+                // result.BorrowerMonthlyIncomes = await _borrowerMonthlyIncomeRepository.GetAllByLoanApplicationIdAsync(input.Id.Value);
+                // result.ManualAssetEntries = await _manualAssetEntryService.GetAllByLoanApplicationIdAsync(input.Id.Value);
+                // result.Declarations = await _declarationService.GetAllDeclrationByLoanApplicationIdAsync(input.Id.Value);
+                // result.DemographicsInformations = await _declarationService.GetAllDemographicInformationByLoanApplicationIdAsync(input.Id.Value);
+                //result.PersonalDetail = await _personalDetailService.GetAllByLoanApplicationIdAsync(input.Id.Value);
                 var viewModel = new LoanApplicationDto
                 {
+                    Id = input.Id.Value,
                     AdditionalDetails = new AdditionalDetailsDto
                     {
                         Id = result.AdditionalDetail?.Id,
@@ -117,7 +139,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                         City = result.LoanDetail?.City,
                         StateId = result.LoanDetail?.StateId,
                         PropertyTypeId = result.LoanDetail?.PropertyTypeId,
-                        PropertyUseId = result.LoanDetail?.PropertyUseId
+                        PropertyUseId = result.LoanDetail?.PropertyUseId,
+                        StartedLookingForNewHome = result.LoanDetail?.StartedLookingForNewHome,
+                        Id = result.LoanDetailId
                     },
                     Expenses = new ExpensesDto
                     {
@@ -129,11 +153,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                         HazardInsurance = result.Expense?.HazardInsurance,
                         RealEstateTaxes = result.Expense?.RealEstateTaxes,
                         MortgageInsurance = result.Expense?.MortgageInsurance,
-                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation
+                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation,
+                        Id = result.ExpenseId,
                     },
                     OrderCredit = new CreditAuthAgreementDto
                     {
                         AgreeCreditAuthAgreement = result.CreditAuthAgreement?.AgreeCreditAuthAgreement,
+                        Id = result.CreditAuthAgreementId,
                     },
                     EConsent = new EConsentDto
                     {
@@ -145,21 +171,44 @@ namespace LoanManagement.DatabaseServices.Implementations
                         CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
                         CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
                         CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
+                        Id = result.ConsentDetailId,
                     },
                     PersonalInformation = new PersonalInformationDto
                     {
-                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
                         AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
+                        CoBorrowerIsMailingAddressSameAsResidential = result.PersonalDetail?.CoBorrowerIsMailingAddressSameAsResidential,
+                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
                         IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
+                        LoanApplicationId = result.Id,
+                        UseIncomeOfPersonOtherThanBorrower = result.PersonalDetail?.UseIncomeOfPersonOtherThanBorrower,
+                        Id = result?.PersonalDetailId
                     },
 
                 };
 
+                if (result.PersonalDetail != null && result.PersonalDetail.Borrower != null)
+                {
+                    viewModel.PersonalInformation.Borrower = new BorrowerDto
+                    {
+                        BorrowerTypeId = result.PersonalDetail.Borrower.BorrowerTypeId,
+                        CellPhone = result.PersonalDetail.Borrower.CellPhone,
+                        DateOfBirth = result.PersonalDetail.Borrower.DateOfBirth,
+                        Email = result.PersonalDetail.Borrower.Email,
+                        FirstName = result.PersonalDetail.Borrower.FirstName,
+                        HomePhone = result.PersonalDetail.Borrower.HomePhone,
+                        Id = result.PersonalDetail.Borrower.Id,
+                        LastName = result.PersonalDetail.Borrower.LastName,
+                        MaritalStatusId = result.PersonalDetail.Borrower.MaritalStatusId,
+                        MiddleInitial = result.PersonalDetail.Borrower.MiddleInitial,
+                        NumberOfDependents = result.PersonalDetail.Borrower.NumberOfDependents,
+                        SocialSecurityNumber = result.PersonalDetail.Borrower.SocialSecurityNumber,
+                        Suffix = result.PersonalDetail.Borrower.Suffix
+                    };
 
-                viewModel.PersonalInformation = new PersonalInformationDto();
+                }
                 if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
-                    foreach (var address in result.PersonalDetail.Addresses)
+                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType != Enums.AddressType.Previous.ToString()))
                     {
                         if (address.AddressType == Enums.AddressType.Mailing.ToString())
                         {
@@ -229,7 +278,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
                     viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
 
-                    foreach (var address in result.PersonalDetail.Addresses)
+                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType == Enums.AddressType.Previous.ToString()))
                     {
                         if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
@@ -264,7 +313,11 @@ namespace LoanManagement.DatabaseServices.Implementations
 
 
 
-                viewModel.EmploymentIncome = new EmploymentIncomeDto();
+                viewModel.EmploymentIncome = new EmploymentIncomeDto
+                {
+                    LoanApplicationId = result.Id
+                };
+
                 if (result.AdditionalIncomes != null && result.AdditionalIncomes.Any())
                 {
                     viewModel.EmploymentIncome.AdditionalIncomes = new List<AdditionalIncomeDto>();
@@ -361,11 +414,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Id = borrowerMonthlyIncome.BorrowerTypeId,
                                 LoanApplicationId = borrowerMonthlyIncome.LoanApplicationId,
                                 Overtime = borrowerMonthlyIncome.Overtime,
-
                             };
                         }
                     }
-
                 }
 
 
@@ -410,15 +461,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 CompanyName = i.CompanyName,
                                 ManualAssetEntryId = i.ManualAssetEntryId,
                                 Value = i.Value
-
                             })
                             .ToList();
                         }
-
                     }
-
-
-
                 }
 
                 if (result.Declarations != null && result.Declarations.Any())
@@ -465,7 +511,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
                                 IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears
-
                             };
                         }
                     }
@@ -475,11 +520,13 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
                 {
+                    viewModel.Declaration = new DeclarationDto
+                    {
+                        LoanApplicationId = result.Id,
+                    };
 
-                    viewModel.Declaration = new DeclarationDto();
                     foreach (var demographicsInformation in result.DemographicsInformations)
                     {
-
                         if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
                             viewModel.Declaration.BorrowerDemographic = new DemographicDto();
@@ -1027,7 +1074,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             var data = await _repository.GetAll()
                 .AsNoTracking()
-                .OrderBy(i => i.LoanDetail.LastModificationTime)
+                .OrderBy(i => i.UpdatedOn)
                 .Select(i => new LoanListDto
                 {
                     Id = i.Id,
@@ -1047,7 +1094,10 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanApplication = new LoanApplication();
+                var loanApplication = new LoanApplication
+                {
+                    UpdatedOn = DateTime.UtcNow
+                };
                 await _repository.InsertAsync(loanApplication);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
                 input.Id = loanApplication.Id;
@@ -1063,6 +1113,8 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id.Value, async loanApplication =>
             {
+                loanApplication.UpdatedOn = DateTime.UtcNow;
+
                 #region Loadn App
                 if (input.Id == 0)
                 {

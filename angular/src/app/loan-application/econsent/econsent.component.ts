@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-econsent",
@@ -48,10 +49,16 @@ export class EconsentComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.eConsent;
-    this.borrower = this._dataService.loanApplication.personalInformation.borrower;
-    this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
-    this.personalInformation = this._dataService.loanApplication.personalInformation;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = this._dataService.loanApplication.eConsent;
+      this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+      this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+      this.personalInformation = this._dataService.loanApplication.personalInformation;
+    }
 
     this.data.firstName = this.borrower.firstName;
     this.data.lastName = this.borrower.lastName;

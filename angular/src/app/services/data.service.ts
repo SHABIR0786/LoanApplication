@@ -1,10 +1,7 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { FormArray, FormGroup } from "@angular/forms";
 import { ILoanApplicationModel } from "../interfaces/ILoanApplicationModel";
-import { ActivatedRoute } from "@angular/router";
-import { LoanApplicationService } from "./loan-application.service";
-import { Result } from "common";
 
 @Injectable()
 export class DataService {
@@ -45,33 +42,6 @@ export class DataService {
       coBorrowerDemographic: {},
     },
   };
-
-  constructor(
-    private _activatedRoute: ActivatedRoute,
-    private _loanApplicationService: LoanApplicationService
-  ) {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      const id = params["id"];
-      if (id) {
-        this._loanApplicationService.get(`Get?id=${id}`).subscribe(
-          (response: Result<ILoanApplicationModel>) => {
-            if (response.success) {
-              debugger;
-              this.loanApplication = response.result;
-              if (!this.loanApplication.declaration) {
-                if (!this.loanApplication.declaration.borrowerDeclaration)
-                  this.loanApplication.declaration.borrowerDeclaration = {};
-              }
-              console.log(this.loanApplication);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      }
-    });
-  }
 
   updateValidations(formGroup: FormGroup, formName: string) {
     if (formGroup) {

@@ -8,6 +8,6 @@ namespace LoanManagement.DatabaseServices.Interfaces
 {
     public interface IBorrowerEmploymentInformationAppService : IAsyncCrudAppService<BorrowerEmploymentInformationDto, long?, PagedLoanApplicationResultRequestDto, BorrowerEmploymentInformationDto, BorrowerEmploymentInformationDto>
     {
-        Task<List<BorrowerEmploymentInformation>> GetAllAsync(long loanApplicationId);
+        Task<List<BorrowerEmploymentInformation>> GetAllByLoanApplicationIdAsync(long loanApplicationId);
     }
 }

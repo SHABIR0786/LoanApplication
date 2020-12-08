@@ -23,5 +23,6 @@ namespace LoanManagement.ViewModels
         public List<AddressDto> CoBorrowerPreviousAddresses { get; set; }
         public AddressDto CoBorrowerMailingAddress { get; set; }
         public bool? CoBorrowerIsMailingAddressSameAsResidential { get; set; }
+        public long LoanApplicationId { get; set; }
     }
 }

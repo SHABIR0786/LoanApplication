@@ -1,10 +1,10 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace LoanManagement.Models
 {
-    public class BorrowerEmploymentInformation : FullAuditedEntity<long>
+    public class BorrowerEmploymentInformation : Entity<long>
     {
         [StringLength(100)]
         public string EmployersName { get; set; }

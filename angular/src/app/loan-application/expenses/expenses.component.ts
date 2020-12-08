@@ -14,6 +14,7 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-expenses",
@@ -34,7 +35,12 @@ export class ExpensesComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.expenses;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this.data = this._dataService.loanApplication.expenses;
+    }
 
     this.initForm();
 

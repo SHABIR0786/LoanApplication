@@ -49,5 +49,6 @@ namespace LoanManagement.ViewModels
         public int? PropertyTypeId { get; set; }
 
         public int? PropertyUseId { get; set; }
+        public bool? StartedLookingForNewHome { get; set; }
     }
 }

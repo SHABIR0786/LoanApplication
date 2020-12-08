@@ -48,7 +48,12 @@ namespace LoanManagement
                  );
 
             ConfigureTokenAuth();
+
+            Configuration.Auditing.IsEnabled = false;
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+            Configuration.MultiTenancy.IsEnabled = false;
         }
+
 
         private void ConfigureTokenAuth()
         {
