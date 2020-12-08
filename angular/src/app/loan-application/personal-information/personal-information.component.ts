@@ -508,6 +508,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     this._loanApplicationService.post("Add", formData).subscribe(
       (response: any) => {
+        debugger;
         this._dataService.loanApplication = this.prepareFormData(
           response.result
         );
