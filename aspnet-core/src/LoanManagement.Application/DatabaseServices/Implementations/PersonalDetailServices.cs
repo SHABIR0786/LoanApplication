@@ -4,7 +4,6 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,65 +36,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-        public async Task<PersonalDetail> GetAllByLoanApplicationIdAsync(long loanApplicationId)
-        {
-            var data = await _repository.GetAll()
-                .Where(i => i.LoanApplication.Id == loanApplicationId)
-                .Select(i => new PersonalDetail
-                {
-                    BorrowerId = i.BorrowerId,
-                    CoBorrowerId = i.CoBorrowerId,
-                    AgreePrivacyPolicy = i.AgreePrivacyPolicy,
-                    CoBorrowerIsMailingAddressSameAsResidential = i.CoBorrowerIsMailingAddressSameAsResidential,
 
-                    Id = i.Id,
-                    CoBorrower = new Borrower
-                    {
-                        FirstName = i.CoBorrower.FirstName,
-                        LastName = i.CoBorrower.LastName,
-                        Suffix = i.CoBorrower.Suffix,
-                        Email = i.CoBorrower.Email,
-                        //DateOfBirth = i.CoBorrower.DateOfBirth,
-                        SocialSecurityNumber = i.CoBorrower.SocialSecurityNumber,
-                        MaritalStatusId = i.CoBorrower.MaritalStatusId,
-                        NumberOfDependents = i.CoBorrower.NumberOfDependents,
-                        CellPhone = i.CoBorrower.CellPhone,
-                        HomePhone = i.CoBorrower.HomePhone,
-                        BorrowerTypeId = i.CoBorrower.BorrowerTypeId,
-                        MiddleInitial = i.CoBorrower.MiddleInitial
-                    },
-                    Borrower = new Borrower
-                    {
-                        FirstName = i.Borrower.FirstName,
-                        LastName = i.Borrower.LastName,
-                        Suffix = i.Borrower.Suffix,
-                        Email = i.Borrower.Email,
-                        //DateOfBirth = i.Borrower.DateOfBirth,
-                        SocialSecurityNumber = i.Borrower.SocialSecurityNumber,
-                        MaritalStatusId = i.Borrower.MaritalStatusId,
-                        NumberOfDependents = i.Borrower.NumberOfDependents,
-                        CellPhone = i.Borrower.CellPhone,
-                        HomePhone = i.Borrower.HomePhone,
-                        BorrowerTypeId = i.Borrower.BorrowerTypeId,
-                        MiddleInitial = i.Borrower.MiddleInitial
-                    },
-                    Addresses = i.Addresses.Select(o => new Address
-                    {
-                        AddressLine1 = o.AddressLine1,
-                        AddressLine2 = o.AddressLine2,
-                        AddressType = o.AddressType,
-                        City = o.City,
-                        Months = o.Months,
-                        StateId = o.StateId,
-                        Years = o.Years,
-                        ZipCode = o.ZipCode,
-                        BorrowerTypeId = o.BorrowerTypeId,
-                    }).ToList()
-                })
-                .SingleOrDefaultAsync();
-
-            return data;
-        }
         public async Task<PersonalInformationDto> CreateAsync(PersonalInformationDto input)
         {
             try
@@ -163,7 +104,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     CoBorrowerId = input.CoBorrower?.Id,
                     IsMailingAddressSameAsResidential = input.IsMailingAddressSameAsResidential,
                     CoBorrowerIsMailingAddressSameAsResidential = input.CoBorrowerIsMailingAddressSameAsResidential,
-
+                    CoBorrowerResidentialAddressSameAsBorrowerResidential = input.CoBorrowerResidentialAddressSameAsBorrowerResidential
                 };
                 if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
                     foreach (var address in input.PreviousAddresses)
@@ -376,6 +317,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 personalDetail.IsMailingAddressSameAsResidential = input.IsMailingAddressSameAsResidential;
                 personalDetail.IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower;
                 personalDetail.CoBorrowerId = input.CoBorrower?.Id;
+                personalDetail.CoBorrowerIsMailingAddressSameAsResidential = input.CoBorrowerIsMailingAddressSameAsResidential;
+                personalDetail.CoBorrowerResidentialAddressSameAsBorrowerResidential = input.CoBorrowerResidentialAddressSameAsBorrowerResidential;
 
                 if (input.PreviousAddresses != null && input.PreviousAddresses.Any())
                     foreach (var address in input.PreviousAddresses)
@@ -640,7 +583,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         case Enums.AddressType.Residential:
                             if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                                 input.ResidentialAddress.Id = address.Id;
-                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                                 input.CoBorrowerResidentialAddress.Id = address.Id;
                             break;
                         case Enums.AddressType.Previous:
@@ -648,7 +591,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         case Enums.AddressType.Mailing:
                             if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                                 input.MailingAddress.Id = address.Id;
-                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                                 input.CoBorrowerMailingAddress.Id = address.Id;
                             break;
                         default:
