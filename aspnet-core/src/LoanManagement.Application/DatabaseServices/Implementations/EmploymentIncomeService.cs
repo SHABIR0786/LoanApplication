@@ -66,7 +66,15 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Employment Information
 
                 if (input.BorrowerEmploymentInfo != null && input.BorrowerEmploymentInfo.Any())
-                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
+                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
                         if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
@@ -76,7 +84,15 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
 
                 if (input.CoBorrowerEmploymentInfo != null && input.CoBorrowerEmploymentInfo.Any())
-                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo)
+                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
                         if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
@@ -89,7 +105,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 if (input.AdditionalIncomes != null && input.AdditionalIncomes.Any())
                 {
-                    foreach (var additionalIncome in input.AdditionalIncomes)
+                    foreach (var additionalIncome in input.AdditionalIncomes.Where(i => i.Amount.HasValue || (i.IncomeSourceId.HasValue && i.IncomeSourceId.Value != 0)))
                     {
                         additionalIncome.LoanApplicationId = input.LoanApplicationId.Value;
                         if (!additionalIncome.Id.HasValue || additionalIncome.Id.Value == default)
@@ -103,7 +119,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
