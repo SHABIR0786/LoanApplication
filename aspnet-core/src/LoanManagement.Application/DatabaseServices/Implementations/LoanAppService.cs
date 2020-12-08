@@ -224,6 +224,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                             else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
@@ -237,7 +238,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
-
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                         }
@@ -255,6 +256,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                             else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
@@ -268,6 +270,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                         }
@@ -293,13 +296,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Months = address.Months,
                                 StateId = address.StateId,
                                 Years = address.Years,
+                                ZipCode = address.ZipCode,
                             });
                         }
                         else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
                             viewModel.PersonalInformation.CoBorrowerPreviousAddresses.Add(new AddressDto
                             {
-
                                 AddressLine1 = address.AddressLine1,
                                 AddressLine2 = address.AddressLine2,
                                 City = address.City,
@@ -307,6 +310,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Months = address.Months,
                                 StateId = address.StateId,
                                 Years = address.Years,
+                                ZipCode = address.ZipCode,
                             });
                         }
                     }
