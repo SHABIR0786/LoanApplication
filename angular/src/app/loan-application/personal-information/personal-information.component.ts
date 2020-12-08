@@ -327,10 +327,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     this.form
       .get("residentialAddress")
       .valueChanges.subscribe((residentialAddress) => {
-        if (
-          residentialAddress.totalYears &&
-          residentialAddress.totalYears == 1
-        ) {
+        if (residentialAddress.years && residentialAddress.years == 1) {
           if (this.previousAddressesFormArray.length === 0)
             this.addPreviousAddress();
         } else {
@@ -342,8 +339,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       .get("coBorrowerResidentialAddress")
       .valueChanges.subscribe((coBorrowerResidentialAddress) => {
         if (
-          coBorrowerResidentialAddress.totalYears &&
-          coBorrowerResidentialAddress.totalYears == 1
+          coBorrowerResidentialAddress.years &&
+          coBorrowerResidentialAddress.years == 1
         ) {
           if (this.coBorrowerPreviousAddressesFormArray.length === 0)
             this.addCoBorrowerPreviousAddress();
@@ -466,11 +463,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         data.zipCode,
         required ? [Validators.required] : []
       ),
-      totalYears: new FormControl(
-        data.totalYears,
-        required ? [Validators.required] : []
-      ),
-      totalMonths: new FormControl(data.totalMonths),
+      years: new FormControl(data.years, required ? [Validators.required] : []),
+      months: new FormControl(data.months),
     });
   }
 

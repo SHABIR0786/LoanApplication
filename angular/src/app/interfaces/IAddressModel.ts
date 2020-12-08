@@ -6,6 +6,6 @@ export interface IAddressModel {
   city?: string;
   stateId?: number;
   zipCode?: string;
-  totalYears?: string;
-  totalMonths?: string;
+  years?: string;
+  months?: string;
 }
