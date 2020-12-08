@@ -13,6 +13,7 @@ export class DataService {
   formData = this.formDataSource.asObservable();
 
   loanApplication: ILoanApplicationModel = {
+    id: 0,
     loanDetails: {
       purposeOfLoan: 1,
     },
