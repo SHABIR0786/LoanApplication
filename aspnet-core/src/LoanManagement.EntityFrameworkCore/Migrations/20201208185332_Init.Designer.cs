@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20201208153604_init")]
-    partial class init
+    [Migration("20201208185332_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1709,7 +1709,7 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("BorrowerTypeId")
+                    b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -1767,7 +1767,7 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("Bonuses")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("BorrowerTypeId")
+                    b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Commissions")
@@ -3044,7 +3044,9 @@ namespace LoanManagement.Migrations
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("BorrowerEmploymentInformations")
@@ -3057,7 +3059,9 @@ namespace LoanManagement.Migrations
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("BorrowerMonthlyIncomes")
