@@ -11,7 +11,7 @@ import { IDeclarationBorrowereDemographicsInformationModel } from "./IDeclaratio
 import { IAssetModel } from "./IAssetModel";
 
 export interface ILoanApplicationModel {
-  id: number;
+  id?: number;
   loanDetails?: ILoanDetailModel;
   personalInformation?: IPersonalInformationModel;
   expenses?: IExpenseModel;
