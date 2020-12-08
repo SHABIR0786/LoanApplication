@@ -499,22 +499,23 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     }
     return formData;
   }
+
   submitForm() {
-    debugger;
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        debugger;
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.personalInformation;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+
   proceedToNext(event?: string, stepIndex?: number) {
     this.submitForm();
     if (event === "wizardStep") {

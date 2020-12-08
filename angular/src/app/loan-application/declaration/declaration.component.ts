@@ -571,16 +571,21 @@ export class DeclarationComponent implements OnInit, DoCheck {
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.declaration;
+          const loanApplication = this._dataService.loanApplication;
+          this.isApplyingWithCoBorrower =
+            loanApplication.personalInformation &&
+            loanApplication.personalInformation.isApplyingWithCoBorrower;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   proceedToNext(event?: string) {

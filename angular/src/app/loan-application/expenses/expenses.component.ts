@@ -140,16 +140,19 @@ export class ExpensesComponent implements OnInit, DoCheck {
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.expenses;
+          this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
+          this.form.patchValue(this.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   proceedToNext() {

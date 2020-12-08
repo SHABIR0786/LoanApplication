@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
@@ -20,7 +19,6 @@ export class SummaryComponent implements OnInit {
   isApplyingWithCoBorrower: boolean = false;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
     private _route: Router,
@@ -112,16 +110,17 @@ export class SummaryComponent implements OnInit {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.formData = response.result;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   proceedToPrevious() {
