@@ -11,5 +11,12 @@ namespace LoanManagement.Models
         public decimal? Dividends { get; set; }
         public int BorrowerTypeId { get; set; }
         public long? LoanApplicationId { get; set; }
+
+        public bool IsNull()
+        {
+            return !Base.HasValue && !Overtime.HasValue &&
+                   !Bonuses.HasValue && !Commissions.HasValue &&
+                   !Dividends.HasValue;
+        }
     }
 }

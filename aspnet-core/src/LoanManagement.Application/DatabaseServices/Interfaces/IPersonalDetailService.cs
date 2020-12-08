@@ -7,6 +7,5 @@ namespace LoanManagement.DatabaseServices.Interfaces
 {
     public interface IPersonalDetailService : IAsyncCrudAppService<PersonalInformationDto, long?, PagedLoanApplicationResultRequestDto, PersonalInformationDto, PersonalInformationDto>
     {
-        Task<PersonalDetail> GetAllByLoanApplicationIdAsync(long loanApplicationId);
     }
 }
