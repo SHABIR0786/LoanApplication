@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace LoanManagement.Migrations
 {
@@ -449,13 +449,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     NameOfIndividualsOnTitle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -469,13 +462,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -502,13 +488,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     AgreeEConsent = table.Column<bool>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -529,13 +508,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     AgreeCreditAuthAgreement = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
@@ -549,13 +521,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     IsLiveWithFamilySelectRent = table.Column<bool>(nullable: true),
                     Rent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     OtherHousingExpenses = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -590,13 +555,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     IsWorkingWithOfficer = table.Column<bool>(nullable: true),
                     LoanOfficerId = table.Column<int>(nullable: true),
                     ReferredBy = table.Column<string>(nullable: true),
@@ -633,13 +591,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     PageIdentifier = table.Column<string>(nullable: true),
                     PageName = table.Column<string>(nullable: true),
                     PageSetting = table.Column<string>(nullable: true)
@@ -655,13 +606,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1002,13 +946,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     MiddleInitial = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -1141,13 +1078,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     IsApplyingWithCoBorrower = table.Column<bool>(nullable: true),
                     UseIncomeOfPersonOtherThanBorrower = table.Column<bool>(nullable: true),
                     AgreePrivacyPolicy = table.Column<bool>(nullable: true),
@@ -1179,13 +1109,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     AddressType = table.Column<string>(nullable: true),
                     AddressLine1 = table.Column<string>(nullable: true),
                     AddressLine2 = table.Column<string>(nullable: true),
@@ -1226,13 +1149,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     LoanDetailId = table.Column<long>(nullable: true),
                     AdditionalDetailsId = table.Column<long>(nullable: true),
                     AdditionalDetailId = table.Column<long>(nullable: true),
@@ -1240,7 +1156,7 @@ namespace LoanManagement.Migrations
                     CreditAuthAgreementId = table.Column<long>(nullable: true),
                     ConsentDetailId = table.Column<long>(nullable: true),
                     ExpenseId = table.Column<long>(nullable: true),
-                    TenantId = table.Column<int>(nullable: true)
+                    UpdatedOn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1289,13 +1205,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     IncomeSourceId = table.Column<int>(nullable: true),
                     BorrowerTypeId = table.Column<int>(nullable: true),
@@ -1330,13 +1239,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     EmployersName = table.Column<string>(maxLength: 100, nullable: true),
                     EmployersAddress1 = table.Column<string>(nullable: true),
                     EmployersAddress2 = table.Column<string>(nullable: true),
@@ -1373,13 +1275,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     Base = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Overtime = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Bonuses = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -1411,13 +1306,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     IsHispanicOrLatino = table.Column<bool>(nullable: true),
                     IsMexican = table.Column<bool>(nullable: true),
                     IsPuertoRican = table.Column<bool>(nullable: true),
@@ -1474,13 +1362,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     IsOutstandingJudgmentsAgainstYou = table.Column<bool>(nullable: true),
                     IsDeclaredBankrupt = table.Column<bool>(nullable: true),
                     IsPropertyForeClosedUponOrGivenTitle = table.Column<bool>(nullable: true),
@@ -1521,13 +1402,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     AssetTypeId = table.Column<long>(nullable: false),
                     AccountNumber = table.Column<string>(nullable: true),
                     CashValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -1586,13 +1460,6 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorUserId = table.Column<long>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierUserId = table.Column<long>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeleterUserId = table.Column<long>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
                     AccountNumber = table.Column<string>(nullable: true),
                     Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -1611,22 +1478,22 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.InsertData(
                 table: "AssetType",
-                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2020, 11, 21, 22, 23, 50, 304, DateTimeKind.Local).AddTicks(6194), null, null, null, false, null, null, "Cash deposit on sales contract" },
-                    { 13L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7826), null, null, null, false, null, null, "Trust Account" },
-                    { 12L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7824), null, null, null, false, null, null, "Stocks & Bonds" },
-                    { 11L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7822), null, null, null, false, null, null, "Savings Account" },
-                    { 10L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7820), null, null, null, false, null, null, "Retirement Funds" },
-                    { 8L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7816), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
-                    { 9L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7818), null, null, null, false, null, null, "Real Estate Owned" },
-                    { 6L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7812), null, null, null, false, null, null, "Money Market Fund" },
-                    { 5L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7810), null, null, null, false, null, null, "Gift of equity" },
-                    { 4L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7808), null, null, null, false, null, null, "Gifts" },
-                    { 3L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7805), null, null, null, false, null, null, "Checking Account" },
-                    { 2L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7760), null, null, null, false, null, null, "Certificate of Deposit" },
-                    { 7L, new DateTime(2020, 11, 21, 22, 23, 50, 305, DateTimeKind.Local).AddTicks(7814), null, null, null, false, null, null, "Mutual Funds" }
+                    { 1L, "Cash deposit on sales contract" },
+                    { 13L, "Trust Account" },
+                    { 12L, "Stocks & Bonds" },
+                    { 11L, "Savings Account" },
+                    { 10L, "Retirement Funds" },
+                    { 8L, "Net Proceeds from Real Estate Funds" },
+                    { 9L, "Real Estate Owned" },
+                    { 6L, "Money Market Fund" },
+                    { 5L, "Gift of equity" },
+                    { 4L, "Gifts" },
+                    { 3L, "Checking Account" },
+                    { 2L, "Certificate of Deposit" },
+                    { 7L, "Mutual Funds" }
                 });
 
             migrationBuilder.InsertData(
@@ -1652,73 +1519,73 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.InsertData(
                 table: "SiteSettings",
-                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "PageIdentifier", "PageName", "PageSetting" },
-                values: new object[] { 1, new DateTime(2020, 11, 21, 22, 23, 50, 315, DateTimeKind.Local).AddTicks(5669), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
+                columns: new[] { "Id", "PageIdentifier", "PageName", "PageSetting" },
+                values: new object[] { 1, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
 
             migrationBuilder.InsertData(
                 table: "States",
-                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 43, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4688), null, null, null, false, null, null, "OR" },
-                    { 32, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4668), null, null, null, false, null, null, "NE" },
-                    { 33, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4670), null, null, null, false, null, null, "NV" },
-                    { 34, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4672), null, null, null, false, null, null, "NH" },
-                    { 35, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4674), null, null, null, false, null, null, "NJ" },
-                    { 36, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4675), null, null, null, false, null, null, "NM" },
-                    { 37, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4677), null, null, null, false, null, null, "NY" },
-                    { 38, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4679), null, null, null, false, null, null, "NC" },
-                    { 39, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4681), null, null, null, false, null, null, "ND" },
-                    { 40, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4683), null, null, null, false, null, null, "MP" },
-                    { 41, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4684), null, null, null, false, null, null, "OH" },
-                    { 42, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4686), null, null, null, false, null, null, "OK" },
-                    { 44, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4690), null, null, null, false, null, null, "PW" },
-                    { 54, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4709), null, null, null, false, null, null, "VI" },
-                    { 46, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4694), null, null, null, false, null, null, "PR" },
-                    { 47, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4695), null, null, null, false, null, null, "RI" },
-                    { 48, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4697), null, null, null, false, null, null, "SC" },
-                    { 49, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4699), null, null, null, false, null, null, "SD" },
-                    { 50, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4701), null, null, null, false, null, null, "TN" },
-                    { 51, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4703), null, null, null, false, null, null, "TX" },
-                    { 52, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4705), null, null, null, false, null, null, "UT" },
-                    { 53, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4707), null, null, null, false, null, null, "VT" },
-                    { 31, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4666), null, null, null, false, null, null, "MT" },
-                    { 55, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4711), null, null, null, false, null, null, "VA" },
-                    { 56, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4713), null, null, null, false, null, null, "WA" },
-                    { 57, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4715), null, null, null, false, null, null, "WV" },
-                    { 45, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4692), null, null, null, false, null, null, "PA" },
-                    { 30, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4664), null, null, null, false, null, null, "MO" },
-                    { 19, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4642), null, null, null, false, null, null, "IA" },
-                    { 28, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4660), null, null, null, false, null, null, "MN" },
-                    { 1, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(3436), null, null, null, false, null, null, "AL" },
-                    { 2, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4564), null, null, null, false, null, null, "AK" },
-                    { 3, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4595), null, null, null, false, null, null, "AS" },
-                    { 4, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4597), null, null, null, false, null, null, "AZ" },
-                    { 5, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4599), null, null, null, false, null, null, "AR" },
-                    { 6, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4601), null, null, null, false, null, null, "CA" },
-                    { 7, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4603), null, null, null, false, null, null, "CO" },
-                    { 8, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4605), null, null, null, false, null, null, "CT" },
-                    { 9, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4607), null, null, null, false, null, null, "DE" },
-                    { 10, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4609), null, null, null, false, null, null, "DC" },
-                    { 11, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4610), null, null, null, false, null, null, "FM" },
-                    { 12, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4612), null, null, null, false, null, null, "FL" },
-                    { 13, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4631), null, null, null, false, null, null, "GA" },
-                    { 14, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4633), null, null, null, false, null, null, "GU" },
-                    { 15, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4635), null, null, null, false, null, null, "HI" },
-                    { 16, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4636), null, null, null, false, null, null, "ID" },
-                    { 17, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4638), null, null, null, false, null, null, "IL" },
-                    { 18, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4640), null, null, null, false, null, null, "IN" },
-                    { 58, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4716), null, null, null, false, null, null, "WI" },
-                    { 20, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4645), null, null, null, false, null, null, "KS" },
-                    { 21, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4646), null, null, null, false, null, null, "KY" },
-                    { 22, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4648), null, null, null, false, null, null, "LA" },
-                    { 23, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4650), null, null, null, false, null, null, "ME" },
-                    { 24, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4652), null, null, null, false, null, null, "MH" },
-                    { 25, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4654), null, null, null, false, null, null, "MD" },
-                    { 26, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4656), null, null, null, false, null, null, "MA" },
-                    { 27, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4658), null, null, null, false, null, null, "MI" },
-                    { 29, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4662), null, null, null, false, null, null, "MS" },
-                    { 59, new DateTime(2020, 11, 21, 22, 23, 50, 309, DateTimeKind.Local).AddTicks(4718), null, null, null, false, null, null, "WY" }
+                    { 43, "OR" },
+                    { 32, "NE" },
+                    { 33, "NV" },
+                    { 34, "NH" },
+                    { 35, "NJ" },
+                    { 36, "NM" },
+                    { 37, "NY" },
+                    { 38, "NC" },
+                    { 39, "ND" },
+                    { 40, "MP" },
+                    { 41, "OH" },
+                    { 42, "OK" },
+                    { 44, "PW" },
+                    { 54, "VI" },
+                    { 46, "PR" },
+                    { 47, "RI" },
+                    { 48, "SC" },
+                    { 49, "SD" },
+                    { 50, "TN" },
+                    { 51, "TX" },
+                    { 52, "UT" },
+                    { 53, "VT" },
+                    { 31, "MT" },
+                    { 55, "VA" },
+                    { 56, "WA" },
+                    { 57, "WV" },
+                    { 45, "PA" },
+                    { 30, "MO" },
+                    { 19, "IA" },
+                    { 28, "MN" },
+                    { 1, "AL" },
+                    { 2, "AK" },
+                    { 3, "AS" },
+                    { 4, "AZ" },
+                    { 5, "AR" },
+                    { 6, "CA" },
+                    { 7, "CO" },
+                    { 8, "CT" },
+                    { 9, "DE" },
+                    { 10, "DC" },
+                    { 11, "FM" },
+                    { 12, "FL" },
+                    { 13, "GA" },
+                    { 14, "GU" },
+                    { 15, "HI" },
+                    { 16, "ID" },
+                    { 17, "IL" },
+                    { 18, "IN" },
+                    { 58, "WI" },
+                    { 20, "KS" },
+                    { 21, "KY" },
+                    { 22, "LA" },
+                    { 23, "ME" },
+                    { 24, "MH" },
+                    { 25, "MD" },
+                    { 26, "MA" },
+                    { 27, "MI" },
+                    { 29, "MS" },
+                    { 59, "WY" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -2167,7 +2034,8 @@ namespace LoanManagement.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_LoanApplications_PersonalDetailId",
                 table: "LoanApplications",
-                column: "PersonalDetailId");
+                column: "PersonalDetailId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ManualAssetEntries_AssetTypeId",

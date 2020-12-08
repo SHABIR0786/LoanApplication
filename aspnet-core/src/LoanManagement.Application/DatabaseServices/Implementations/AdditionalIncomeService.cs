@@ -47,7 +47,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<AdditionalIncome>> GetAllAsync(long loanApplicationId)
+        public async Task<List<AdditionalIncome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)

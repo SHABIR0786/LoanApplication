@@ -1,10 +1,10 @@
 ﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
-    public class LoanApplication : FullAuditedEntity<long>, IMayHaveTenant
+    public class LoanApplication : Entity<long>
     {
         public long? LoanDetailId { get; set; }
         public virtual LoanDetail LoanDetail { get; set; }
@@ -32,6 +32,6 @@ namespace LoanManagement.Models
         public List<Declaration> Declarations { get; set; }
         public List<AdditionalIncome> AdditionalIncomes { get; set; }
 
-        public int? TenantId { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }

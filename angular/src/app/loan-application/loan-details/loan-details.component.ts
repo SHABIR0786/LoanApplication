@@ -14,14 +14,13 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
-import { async } from "@angular/core/testing";
 
 @Component({
   selector: "app-loan-details",
   templateUrl: "./loan-details.component.html",
   styleUrls: ["./loan-details.component.css"],
 })
-export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
+export class LoanDetailsComponent implements OnInit, DoCheck {
   id = Math.random().toString(36).substring(2);
   data: ILoanDetailModel = {};
 
@@ -47,47 +46,24 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
     },
   };
 
-  loanApplication: ILoanApplicationModel = {
-    loanDetails: {
-      purposeOfLoan: 1,
-    },
-    personalInformation: {
-      borrower: {},
-      coBorrower: {},
-      residentialAddress: {},
-      mailingAddress: {},
-      previousAddresses: [],
-    },
-    expenses: {},
-    manualAssetEntries: [],
-    employmentIncome: {
-      borrowerMonthlyIncome: {},
-      borrowerEmploymentInfo: [{}],
-      coBorrowerMonthlyIncome: {},
-      coBorrowerEmploymentInfo: [{}],
-      additionalIncomes: [{}],
-    },
-    orderCredit: {},
-    additionalDetails: {},
-    eConsent: {},
-    declaration: {
-      borrowerDeclaration: {},
-      coBorrowerDeclaration: {},
-      borrowerDemographic: {},
-      coBorrowerDemographic: {},
-    },
-  };
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
     private _activatedRoute: ActivatedRoute,
-    private _loanApplicationService: LoanApplicationService,
-    private cdr: ChangeDetectorRef
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.loanDetails;
+    debugger;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = response.result.loanDetails;
+      if (this.form) this.form.patchValue(response.result.loanDetails);
+    }
 
     this.initForm();
     this.loadStates();
@@ -139,6 +115,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   initForm() {
+    debugger;
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       referredBy: new FormControl(this.data.referredBy),
@@ -193,69 +170,82 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
       ]),
     });
 
-    this.form.value;
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      const id = params["id"];
-      if (id) {
-        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
-          (response: Result<ILoanApplicationModel>) => {
-            if (response.success) {
-              this.data = response.result.loanDetails;
-              this.form.value = response.result.loanDetails;
-              console.log(this.loanApplication);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      }
-    });
-  }
-  ngAfterViewInit() {
-    const estimatedPurchasePriceControl = this.form.get(
-      "estimatedPurchasePrice"
-    );
-    const downPaymentAmountControl = this.form.get("downPaymentAmount");
-    const sourceOfDownPaymentControl = this.form.get("sourceOfDownPayment");
-    const downPaymentPercentage = this.form.get("downPaymentPercentage");
-
-    const requestedLoanAmount = this.form.get("requestedLoanAmount");
-
-    const startedLookingForNewHome = this.form.get("startedLookingForNewHome");
-
     this.form.get("purposeOfLoan").valueChanges.subscribe((purposeOfLoan) => {
-      if (purposeOfLoan === 1) {
-        estimatedPurchasePriceControl.setValidators([Validators.required]);
-        downPaymentAmountControl.setValidators([Validators.required]);
-        sourceOfDownPaymentControl.setValidators([Validators.required]);
-        startedLookingForNewHome.setValidators([Validators.required]);
-
-        requestedLoanAmount.setValue(null);
-        requestedLoanAmount.setValidators(null);
+      if (purposeOfLoan == 1) {
+        this.form.addControl(
+          "estimatedPurchasePrice",
+          new FormControl(
+            this.form.value.estimatedPurchasePrice ||
+              this.data.estimatedPurchasePrice,
+            Validators.required
+          )
+        );
+        this.form.addControl(
+          "downPaymentAmount",
+          new FormControl(
+            this.form.value.downPaymentAmount || this.data.downPaymentAmount,
+            Validators.required
+          )
+        );
+        this.form.addControl(
+          "sourceOfDownPayment",
+          new FormControl(
+            this.form.value.sourceOfDownPayment ||
+              this.data.sourceOfDownPayment,
+            Validators.required
+          )
+        );
+        this.form.removeControl("estimatedValue");
+        this.form.removeControl("currentLoanAmount");
+        this.form.removeControl("requestedLoanAmount");
+      } else if (purposeOfLoan == 2) {
+        debugger;
+        this.form.addControl(
+          "estimatedValue",
+          new FormControl(this.form.value.estimatedValue, Validators.required)
+        );
+        this.form.addControl(
+          "currentLoanAmount",
+          new FormControl(
+            this.form.value.currentLoanAmount,
+            Validators.required
+          )
+        );
+        this.form.addControl(
+          "requestedLoanAmount",
+          new FormControl(
+            this.form.value.requestedLoanAmount,
+            Validators.required
+          )
+        );
+        this.form.removeControl("estimatedPurchasePrice");
+        this.form.removeControl("downPaymentAmount");
+        this.form.removeControl("sourceOfDownPayment");
+      } else if (purposeOfLoan == 3) {
+        debugger;
+        this.form.addControl(
+          "estimatedValue",
+          new FormControl(this.form.value.estimatedValue, Validators.required)
+        );
+        this.form.addControl(
+          "currentLoanAmount",
+          new FormControl(
+            this.form.value.currentLoanAmount,
+            Validators.required
+          )
+        );
+        this.form.addControl(
+          "requestedLoanAmount",
+          new FormControl(
+            this.form.value.requestedLoanAmount,
+            Validators.required
+          )
+        );
+        this.form.removeControl("estimatedPurchasePrice");
+        this.form.removeControl("downPaymentAmount");
+        this.form.removeControl("sourceOfDownPayment");
       }
-
-      if (purposeOfLoan === 2 || purposeOfLoan === 3) {
-        estimatedPurchasePriceControl.setValue(null);
-        estimatedPurchasePriceControl.setValidators(null);
-        downPaymentAmountControl.setValue(null);
-        downPaymentAmountControl.setValidators(null);
-        sourceOfDownPaymentControl.setValue(null);
-        sourceOfDownPaymentControl.setValidators(null);
-        downPaymentPercentage.setValue(null);
-        startedLookingForNewHome.setValidators(null);
-        startedLookingForNewHome.setValue(null);
-
-        requestedLoanAmount.setValidators([Validators.required]);
-      }
-
-      estimatedPurchasePriceControl.updateValueAndValidity();
-      downPaymentAmountControl.updateValueAndValidity();
-      sourceOfDownPaymentControl.updateValueAndValidity();
-      requestedLoanAmount.updateValueAndValidity();
-      startedLookingForNewHome.updateValueAndValidity();
     });
-
     this.form
       .get("haveSecondMortgage")
       .valueChanges.subscribe((haveSecondMortgage) => {
@@ -345,7 +335,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
             this.form.get("downPaymentAmount").setValue(null);
         }
       });
-    this.cdr.detectChanges();
   }
 
   prepareFormData(response) {
@@ -374,6 +363,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
     }
     return formData;
   }
+
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 

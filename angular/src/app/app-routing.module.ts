@@ -1,3 +1,4 @@
+import { GetLoanAppResolve } from "./resolver/loan-app-get-resolve";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
@@ -69,60 +70,90 @@ import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
             component: LoanDetailsComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "personal-information",
             component: PersonalInformationComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "expense",
             component: ExpensesComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "asset",
             component: AssetsComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "employment-income",
             component: EmploymentIncomeComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "order-credit",
             component: OrderCreditComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "additional-detail",
             component: AdditionalDetailsComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "econsent",
             component: EconsentComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "declaration",
             component: DeclarationComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "summary",
             component: SummaryComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           { path: "about", component: AboutComponent },
           { path: "update-password", component: ChangePasswordComponent },

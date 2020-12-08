@@ -21,6 +21,7 @@ export class LoanListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
     this.loadData({
       maxResultCount: this.pageSize,
       skipCount: (this.pageNumber - 1) * this.pageSize,

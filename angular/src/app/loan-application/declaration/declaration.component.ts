@@ -9,6 +9,7 @@ import { DataService } from "../../services/data.service";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-declaration",
@@ -315,11 +316,17 @@ export class DeclarationComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.declaration;
-    const loanApplication = this._dataService.loanApplication;
-    this.isApplyingWithCoBorrower =
-      loanApplication.personalInformation &&
-      loanApplication.personalInformation.isApplyingWithCoBorrower;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = this._dataService.loanApplication.declaration;
+      const loanApplication = this._dataService.loanApplication;
+      this.isApplyingWithCoBorrower =
+        loanApplication.personalInformation &&
+        loanApplication.personalInformation.isApplyingWithCoBorrower;
+    }
 
     this.initForm();
 
@@ -421,7 +428,6 @@ export class DeclarationComponent implements OnInit, DoCheck {
         });
       }
     }
-    debugger;
     if (this.isApplyingWithCoBorrower) {
       if (
         this.data.coBorrowerDeclaration == undefined ||
@@ -545,6 +551,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
     }
     return response;
   }
+
   sanitizeFormData(formData) {
     formData = Object.assign({}, formData);
 
@@ -563,6 +570,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
     }
     return formData;
   }
+
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
@@ -577,6 +585,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
       }
     );
   }
+
   proceedToNext(event?: string) {
     this.submitForm();
     if (event === "wizardStep") {
@@ -600,6 +609,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
       });
     }
   }
+
   proceedToPrevious(event?: string) {
     this.submitForm();
     if (event === "wizardStep") {

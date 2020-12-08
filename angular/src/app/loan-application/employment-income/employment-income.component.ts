@@ -10,6 +10,7 @@ import { IBorrowerEmploymentInfoModel } from "../../interfaces/IBorrowerEmployme
 import { IAdditionalIncomeModel } from "../../interfaces/IAdditionalIncomeModel";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-employment-income",
@@ -53,11 +54,17 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.employmentIncome;
-    const loanApplication = this._dataService.loanApplication;
-    this.isApplyingWithCoBorrower =
-      loanApplication.personalInformation &&
-      loanApplication.personalInformation.isApplyingWithCoBorrower;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = this._dataService.loanApplication.employmentIncome;
+      const loanApplication = this._dataService.loanApplication;
+      this.isApplyingWithCoBorrower =
+        loanApplication.personalInformation &&
+        loanApplication.personalInformation.isApplyingWithCoBorrower;
+    }
 
     this.initForm();
     this.loadStates();

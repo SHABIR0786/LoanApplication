@@ -13,6 +13,10 @@ namespace LoanManagement
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<LoanManagementAuthorizationProvider>();
+
+            Configuration.Auditing.IsEnabled = false;
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+            Configuration.MultiTenancy.IsEnabled = false;
         }
 
         public override void Initialize()

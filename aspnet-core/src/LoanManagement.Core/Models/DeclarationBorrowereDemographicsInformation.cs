@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class DeclarationBorrowereDemographicsInformation : FullAuditedEntity<long>
+    public class DeclarationBorrowereDemographicsInformation : Entity<long>
     {
         public bool? IsHispanicOrLatino { get; set; }
         public bool? IsMexican { get; set; }

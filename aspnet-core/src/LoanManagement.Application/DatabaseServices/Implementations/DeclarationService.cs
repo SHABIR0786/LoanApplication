@@ -40,7 +40,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-        public async Task<List<Declaration>> GetAllDeclarationAsync(long loanApplicationId)
+        public async Task<List<Declaration>> GetAllDeclrationByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
@@ -66,7 +66,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 })
                 .ToListAsync();
         }
-        public async Task<List<DeclarationBorrowereDemographicsInformation>> GetAllDeclarationBorrowereDemographicsInformationAsync(long loanApplicationId)
+        public async Task<List<DeclarationBorrowereDemographicsInformation>> GetAllDemographicInformationByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)

@@ -8,6 +8,8 @@ import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
+import { ILoanApplicationModel } from "@app/interfaces/ILoanApplicationModel";
 
 @Component({
   selector: "app-additional-details",
@@ -29,10 +31,16 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
-    this.borrower = this._dataService.loanApplication.personalInformation.borrower;
-    this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
-    this.personalInformation = this._dataService.loanApplication.personalInformation;
-    this.data = this._dataService.loanApplication.additionalDetails;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+      this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+      this.personalInformation = this._dataService.loanApplication.personalInformation;
+      this.data = this._dataService.loanApplication.additionalDetails;
+    }
 
     if (!this.data.nameOfIndividualsOnTitle) {
       this.data.nameOfIndividualsOnTitle = this.borrower.firstName ?? "";

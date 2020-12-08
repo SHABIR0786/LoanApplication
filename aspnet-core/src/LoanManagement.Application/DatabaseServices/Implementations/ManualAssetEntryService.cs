@@ -88,7 +88,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-        public async Task<List<ManualAssetEntry>> GetAllAsync(long loanApplicationId)
+        public async Task<List<ManualAssetEntry>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)

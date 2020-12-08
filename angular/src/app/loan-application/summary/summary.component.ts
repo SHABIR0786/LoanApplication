@@ -6,6 +6,7 @@ import { LoanApplicationService } from "../../services/loan-application.service"
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
 import { ActivatedRoute } from "@angular/router";
+import { Result } from "common";
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
@@ -27,6 +28,13 @@ export class SummaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+    }
+
     this._dataService.validations.subscribe((errors) => {
       this.errors = errors;
     });
