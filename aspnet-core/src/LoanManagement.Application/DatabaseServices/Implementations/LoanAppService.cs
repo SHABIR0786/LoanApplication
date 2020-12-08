@@ -1241,7 +1241,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
                 #endregion
             });
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }
