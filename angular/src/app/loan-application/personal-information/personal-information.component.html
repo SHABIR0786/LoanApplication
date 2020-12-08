@@ -302,36 +302,36 @@
                   <p class="col-12">How long have you been at this address?</p>
                   <div class="col-4">
                     <div class="form-group">
-                      <label for="totalYears-residential">
+                      <label for="years-residential">
                         {{ "Years" | localize }}
                         <span class="text-danger">*</span>
                       </label>
                       <input
                         type="text"
                         class="form-control"
-                        name="totalYears-residential"
-                        id="totalYears-residential"
-                        formControlName="totalYears"
-                        [(ngModel)]="data.residentialAddress.totalYears"
+                        name="years-residential"
+                        id="years-residential"
+                        formControlName="years"
+                        [(ngModel)]="data.residentialAddress.years"
                         maxlength="2"
                       />
                       <validation-summary
-                        [control]="residentialAddressForm.controls.totalYears"
+                        [control]="residentialAddressForm.controls.years"
                       ></validation-summary>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
-                      <label for="totalMonths-residential">
+                      <label for="months-residential">
                         {{ "Months" | localize }}
                       </label>
                       <input
                         type="text"
                         class="form-control"
-                        name="totalMonths-residential"
-                        id="totalMonths-residential"
-                        formControlName="totalMonths"
-                        [(ngModel)]="data.residentialAddress.totalMonths"
+                        name="months-residential"
+                        id="months-residential"
+                        formControlName="months"
+                        [(ngModel)]="data.residentialAddress.months"
                         maxlength="2"
                         max="11"
                       />
@@ -473,39 +473,37 @@
                       </p>
                       <div class="col-4">
                         <div class="form-group">
-                          <label for="totalYears-{{ i }}">
+                          <label for="years-{{ i }}">
                             {{ "Years" | localize }}
                             <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
                             class="form-control"
-                            name="totalYears-{{ i }}"
-                            id="totalYears-{{ i }}"
-                            formControlName="totalYears"
-                            [(ngModel)]="previousAddress.totalYears"
+                            name="years-{{ i }}"
+                            id="years-{{ i }}"
+                            formControlName="years"
+                            [(ngModel)]="previousAddress.years"
                             maxlength="2"
                           />
                           <validation-summary
-                            [control]="
-                              getPreviousAddressForm(i).controls.totalYears
-                            "
+                            [control]="getPreviousAddressForm(i).controls.years"
                           >
                           </validation-summary>
                         </div>
                       </div>
                       <div class="col-4">
                         <div class="form-group">
-                          <label for="totalMonths-{{ i }}">
+                          <label for="months-{{ i }}">
                             {{ "Months" | localize }}
                           </label>
                           <input
                             type="text"
                             class="form-control"
-                            name="totalMonths-{{ i }}"
-                            id="totalMonths-{{ i }}"
-                            formControlName="totalMonths"
-                            [(ngModel)]="previousAddress.totalMonths"
+                            name="months-{{ i }}"
+                            id="months-{{ i }}"
+                            formControlName="months"
+                            [(ngModel)]="previousAddress.months"
                             maxlength="2"
                             max="11"
                           />
@@ -838,41 +836,39 @@
                       </p>
                       <div class="col-4">
                         <div class="form-group">
-                          <label for="totalYears-residential-coBorrower">
+                          <label for="years-residential-coBorrower">
                             {{ "Years" | localize }}
                             <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
                             class="form-control"
-                            name="totalYears-residential-coBorrower"
-                            id="totalYears-residential-coBorrower"
-                            formControlName="totalYears"
+                            name="years-residential-coBorrower"
+                            id="years-residential-coBorrower"
+                            formControlName="years"
                             [(ngModel)]="
-                              data.coBorrowerResidentialAddress.totalYears
+                              data.coBorrowerResidentialAddress.years
                             "
                             maxlength="2"
                           />
                           <validation-summary
-                            [control]="
-                              residentialAddressForm.controls.totalYears
-                            "
+                            [control]="residentialAddressForm.controls.years"
                           ></validation-summary>
                         </div>
                       </div>
                       <div class="col-4">
                         <div class="form-group">
-                          <label for="totalMonths-residential-coBorrower">
+                          <label for="months-residential-coBorrower">
                             {{ "Months" | localize }}
                           </label>
                           <input
                             type="text"
                             class="form-control"
-                            name="totalMonths-residential-coBorrower"
-                            id="totalMonths-residential-coBorrower"
-                            formControlName="totalMonths"
+                            name="months-residential-coBorrower"
+                            id="months-residential-coBorrower"
+                            formControlName="months"
                             [(ngModel)]="
-                              data.coBorrowerResidentialAddress.totalMonths
+                              data.coBorrowerResidentialAddress.months
                             "
                             maxlength="2"
                             max="11"
@@ -1027,23 +1023,23 @@
                         </p>
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="totalYears-coBorrower-{{ i }}">
+                            <label for="years-coBorrower-{{ i }}">
                               {{ "Years" | localize }}
                               <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
                               class="form-control"
-                              name="totalYears-coBorrower-{{ i }}"
-                              id="totalYears-coBorrower-{{ i }}"
-                              formControlName="totalYears"
-                              [(ngModel)]="cBPreviousAddress.totalYears"
+                              name="years-coBorrower-{{ i }}"
+                              id="years-coBorrower-{{ i }}"
+                              formControlName="years"
+                              [(ngModel)]="cBPreviousAddress.years"
                               maxlength="2"
                             />
                             <validation-summary
                               [control]="
                                 getCoBorrowerPreviousAddressForm(i).controls
-                                  .totalYears
+                                  .years
                               "
                             >
                             </validation-summary>
@@ -1051,16 +1047,16 @@
                         </div>
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="totalMonths-coBorrower-{{ i }}">
+                            <label for="months-coBorrower-{{ i }}">
                               {{ "Months" | localize }}
                             </label>
                             <input
                               type="text"
                               class="form-control"
-                              name="totalMonths-coBorrower-{{ i }}"
-                              id="totalMonths-coBorrower-{{ i }}"
-                              formControlName="totalMonths"
-                              [(ngModel)]="cBPreviousAddress.totalMonths"
+                              name="months-coBorrower-{{ i }}"
+                              id="months-coBorrower-{{ i }}"
+                              formControlName="months"
+                              [(ngModel)]="cBPreviousAddress.months"
                               maxlength="2"
                               max="11"
                             />
