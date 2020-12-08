@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { DataService } from "../../services/data.service";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
+import { ILoanApplicationModel } from "@app/interfaces/ILoanApplicationModel";
 
 @Component({
   selector: "app-order-credit",
@@ -52,20 +54,23 @@ export class OrderCreditComponent implements OnInit, DoCheck {
     }
     return formData;
   }
+
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.orderCredit;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+
   proceedToNext() {
     this.submitForm();
     // this._ngWizardService.next();

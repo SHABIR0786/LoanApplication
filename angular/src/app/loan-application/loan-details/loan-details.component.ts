@@ -364,13 +364,11 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-    debugger;
 
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(
         (response) => {
-          debugger;
           this._dataService.loanApplication = response.result;
           this.form.patchValue(this._dataService.loanApplication.loanDetails);
         },

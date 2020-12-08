@@ -377,16 +377,16 @@ export class AssetsComponent implements OnInit, DoCheck {
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   proceedToNext() {

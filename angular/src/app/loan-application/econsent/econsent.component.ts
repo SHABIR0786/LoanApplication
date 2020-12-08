@@ -150,16 +150,20 @@ export class EconsentComponent implements OnInit, DoCheck {
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.eConsent;
+          this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+          this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+          this.personalInformation = this._dataService.loanApplication.personalInformation;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
   proceedToNext(event?: string, stepIndex?: number) {
     this.submitForm();
