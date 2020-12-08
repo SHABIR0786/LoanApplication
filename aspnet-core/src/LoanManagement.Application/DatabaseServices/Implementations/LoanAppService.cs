@@ -92,21 +92,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     .Where(i => i.Id == input.Id.Value)
                    .SingleAsync();
 
-                // var additionalIncomesTask = _additionalIncomeService.GetAllAsync(input.Id.Value);
-                // var EmploymentInformation = _borrowerEmploymentInformationRepository.GetAllAsync(input.Id.Value);
-                // var MonthlyIncome = _borrowerMonthlyIncomeRepository.GetAllAsync(input.Id.Value);
-                // var ManualAssetEntries = _manualAssetEntryService.GetAllAsync(input.Id.Value);
-                // var Declarations = _declarationService.GetAllDeclarationAsync(input.Id.Value);
-                // var DemographicsInformations = _declarationService.GetAllDeclarationBorrowereDemographicsInformationAsync(input.Id.Value);
-                // var PersonalDetail = _personalDetailService.GetAllAsync(input.Id.Value);
-                // await Task.WhenAll(additionalIncomesTask, EmploymentInformation, MonthlyIncome, ManualAssetEntries, Declarations, PersonalDetail);
-                // result.AdditionalIncomes = await _additionalIncomeService.GetAllByLoanApplicationIdAsync(input.Id.Value);
-                // result.BorrowerEmploymentInformations = await _borrowerEmploymentInformationRepository.GetAllByLoanApplicationIdAsync(input.Id.Value);
-                // result.BorrowerMonthlyIncomes = await _borrowerMonthlyIncomeRepository.GetAllByLoanApplicationIdAsync(input.Id.Value);
-                // result.ManualAssetEntries = await _manualAssetEntryService.GetAllByLoanApplicationIdAsync(input.Id.Value);
-                // result.Declarations = await _declarationService.GetAllDeclrationByLoanApplicationIdAsync(input.Id.Value);
-                // result.DemographicsInformations = await _declarationService.GetAllDemographicInformationByLoanApplicationIdAsync(input.Id.Value);
-                //result.PersonalDetail = await _personalDetailService.GetAllByLoanApplicationIdAsync(input.Id.Value);
                 var viewModel = new LoanApplicationDto
                 {
                     Id = input.Id.Value,
@@ -177,17 +162,16 @@ namespace LoanManagement.DatabaseServices.Implementations
                     {
                         AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
                         CoBorrowerIsMailingAddressSameAsResidential = result.PersonalDetail?.CoBorrowerIsMailingAddressSameAsResidential,
+                        CoBorrowerResidentialAddressSameAsBorrowerResidential = result.PersonalDetail?.CoBorrowerResidentialAddressSameAsBorrowerResidential,
                         IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
                         IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
                         LoanApplicationId = result.Id,
                         UseIncomeOfPersonOtherThanBorrower = result.PersonalDetail?.UseIncomeOfPersonOtherThanBorrower,
-                        Id = result?.PersonalDetailId
+                        Id = result?.PersonalDetailId,
                     },
-
                 };
 
                 if (result.PersonalDetail != null && result.PersonalDetail.Borrower != null)
-                {
                     viewModel.PersonalInformation.Borrower = new BorrowerDto
                     {
                         BorrowerTypeId = result.PersonalDetail.Borrower.BorrowerTypeId,
@@ -205,7 +189,24 @@ namespace LoanManagement.DatabaseServices.Implementations
                         Suffix = result.PersonalDetail.Borrower.Suffix
                     };
 
-                }
+                if (result.PersonalDetail != null && result.PersonalDetail.CoBorrower != null)
+                    viewModel.PersonalInformation.CoBorrower = new BorrowerDto
+                    {
+                        BorrowerTypeId = result.PersonalDetail.CoBorrower.BorrowerTypeId,
+                        CellPhone = result.PersonalDetail.CoBorrower.CellPhone,
+                        DateOfBirth = result.PersonalDetail.CoBorrower.DateOfBirth,
+                        Email = result.PersonalDetail.CoBorrower.Email,
+                        FirstName = result.PersonalDetail.CoBorrower.FirstName,
+                        HomePhone = result.PersonalDetail.CoBorrower.HomePhone,
+                        Id = result.PersonalDetail.CoBorrower.Id,
+                        LastName = result.PersonalDetail.CoBorrower.LastName,
+                        MaritalStatusId = result.PersonalDetail.CoBorrower.MaritalStatusId,
+                        MiddleInitial = result.PersonalDetail.CoBorrower.MiddleInitial,
+                        NumberOfDependents = result.PersonalDetail.CoBorrower.NumberOfDependents,
+                        SocialSecurityNumber = result.PersonalDetail.CoBorrower.SocialSecurityNumber,
+                        Suffix = result.PersonalDetail.CoBorrower.Suffix
+                    };
+
                 if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
                     foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType != Enums.AddressType.Previous.ToString()))
@@ -413,8 +414,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
                 }
 
-                viewModel.ManualAssetEntries = new List<ManualAssetEntryDto>();
+
                 if (result.ManualAssetEntries != null && result.ManualAssetEntries.Any())
+                {
+                    viewModel.ManualAssetEntries = new List<ManualAssetEntryDto>();
                     foreach (var manualAssetEntries in result.ManualAssetEntries)
                     {
                         viewModel.ManualAssetEntries.Add(new ManualAssetEntryDto
@@ -457,9 +460,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             .ToList();
                         }
                     }
-
-                if (viewModel.ManualAssetEntries.Count == 0)
-                    viewModel.ManualAssetEntries.Add(new ManualAssetEntryDto());
+                }
 
                 if (result.Declarations != null && result.Declarations.Any())
                 {
