@@ -304,7 +304,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     input.Borrower.Id = borrower.Id;
                 }
                 else
-                
+
                     await _borrowerRepository.UpdateAsync(input.Borrower.Id.Value, borrower =>
                     {
                         borrower.FirstName = input.Borrower.FirstName;
@@ -435,7 +435,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                         BorrowerTypeId = (int)Enums.BorrowerType.Borrower
                     };
                     personalDetail.Addresses.Add(address);
-                    
+
                     newAddresses.Add(address);
                 }
 
