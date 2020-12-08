@@ -369,7 +369,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
     this._loanApplicationService.post("Add", formData).subscribe(
       (response: any) => {
-        this._dataService.loanApplication.id = response.result.id;
         this._dataService.loanApplication = this.prepareFormData(
           response.result
         );
