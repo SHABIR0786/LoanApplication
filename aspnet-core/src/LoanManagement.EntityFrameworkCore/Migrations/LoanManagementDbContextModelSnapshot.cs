@@ -1707,7 +1707,7 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("BorrowerTypeId")
+                    b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -1765,7 +1765,7 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("Bonuses")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("BorrowerTypeId")
+                    b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Commissions")
@@ -3042,7 +3042,9 @@ namespace LoanManagement.Migrations
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("BorrowerEmploymentInformations")
@@ -3055,7 +3057,9 @@ namespace LoanManagement.Migrations
                 {
                     b.HasOne("LoanManagement.Models.BorrowerType", "BorrowerType")
                         .WithMany()
-                        .HasForeignKey("BorrowerTypeId");
+                        .HasForeignKey("BorrowerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LoanManagement.Models.LoanApplication", "LoanApplication")
                         .WithMany("BorrowerMonthlyIncomes")

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -1249,7 +1249,7 @@ namespace LoanManagement.Migrations
                     ZipCode = table.Column<int>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: true),
                     EndDate = table.Column<DateTime>(nullable: true),
-                    BorrowerTypeId = table.Column<int>(nullable: true),
+                    BorrowerTypeId = table.Column<int>(nullable: false),
                     LoanApplicationId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -1260,7 +1260,7 @@ namespace LoanManagement.Migrations
                         column: x => x.BorrowerTypeId,
                         principalTable: "BorrowerTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_BorrowerEmploymentInformations_LoanApplications_LoanApplicat~",
                         column: x => x.LoanApplicationId,
@@ -1280,7 +1280,7 @@ namespace LoanManagement.Migrations
                     Bonuses = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Commissions = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Dividends = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    BorrowerTypeId = table.Column<int>(nullable: true),
+                    BorrowerTypeId = table.Column<int>(nullable: false),
                     LoanApplicationId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -1291,7 +1291,7 @@ namespace LoanManagement.Migrations
                         column: x => x.BorrowerTypeId,
                         principalTable: "BorrowerTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_BorrowerMonthlyIncomes_LoanApplications_LoanApplicationId",
                         column: x => x.LoanApplicationId,

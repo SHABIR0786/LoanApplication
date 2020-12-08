@@ -1,14 +1,6 @@
-import {
-  Component,
-  DoCheck,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from "@angular/core";
+import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { IExpenseModel } from "@app/interfaces/IExpenseModel";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
@@ -27,7 +19,6 @@ export class ExpensesComponent implements OnInit, DoCheck {
   form: FormGroup;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
     private _activatedRoute: ActivatedRoute,
@@ -39,10 +30,12 @@ export class ExpensesComponent implements OnInit, DoCheck {
       .snapshot.data.loanApp;
 
     if (response && response.success) {
+      this._dataService.loanApplication = response.result;
       this.data = this._dataService.loanApplication.expenses;
+      this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
+      this.initForm();
+      this.form.patchValue(this.data);
     }
-
-    this.initForm();
 
     this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
       if (formData && formData.expenses) {
@@ -131,9 +124,6 @@ export class ExpensesComponent implements OnInit, DoCheck {
   sanitizeFormData(formData) {
     formData = Object.assign({}, formData);
 
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      formData.id = params["id"];
-    });
     for (const key in formData) {
       if (key && formData.hasOwnProperty(key) && formData[key]) {
         if (
@@ -146,6 +136,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
     }
     return formData;
   }
+
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
 
@@ -160,7 +151,9 @@ export class ExpensesComponent implements OnInit, DoCheck {
       }
     );
   }
+
   proceedToNext() {
+    this.submitForm();
     if (this.form.valid) {
       //this._ngWizardService.next();
       this._activatedRoute.queryParams.subscribe(async (params) => {
@@ -181,6 +174,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
   }
 
   proceedToPrevious() {
+    this.submitForm();
     this._activatedRoute.queryParams.subscribe(async (params) => {
       const id = params["id"];
       if (id) {
