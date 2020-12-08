@@ -9,7 +9,7 @@ namespace LoanManagement.Models
         public decimal? Bonuses { get; set; }
         public decimal? Commissions { get; set; }
         public decimal? Dividends { get; set; }
-        public int? BorrowerTypeId { get; set; }
+        public int BorrowerTypeId { get; set; }
         public long? LoanApplicationId { get; set; }
     }
 }

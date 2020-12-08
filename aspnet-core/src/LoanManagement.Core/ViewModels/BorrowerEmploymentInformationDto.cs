@@ -19,7 +19,7 @@ namespace LoanManagement.ViewModels
         public DateTime? EndDate { get; set; }
         // public decimal? MonthlyIncome { get; set; }
         // public DateTime? DateFromTo { get; set; }
-        public int? BorrowerTypeId { get; set; }
+        public int BorrowerTypeId { get; set; }
         public long? LoanApplicationId { get; set; }
     }
 }

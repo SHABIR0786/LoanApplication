@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { IPaginationOptions, PageResult, Result } from "common";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { LoanListDto } from "./loan-list.component-types";
-import $ from "jquery";
+
 @Component({
   selector: "app-loan-list",
   templateUrl: "./loan-list.component.html",

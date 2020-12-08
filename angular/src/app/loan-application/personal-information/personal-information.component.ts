@@ -487,9 +487,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   sanitizeFormData(formData) {
     formData = Object.assign({}, formData);
 
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      formData.id = params["id"];
-    });
     for (const key in formData) {
       if (key && formData.hasOwnProperty(key) && formData[key]) {
         if (
