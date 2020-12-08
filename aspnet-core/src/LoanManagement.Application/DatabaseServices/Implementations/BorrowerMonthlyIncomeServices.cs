@@ -51,6 +51,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
+
                 var additionalDetail = new BorrowerMonthlyIncome
                 {
                     Base = input.Base,
@@ -61,11 +62,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                     BorrowerTypeId = input.BorrowerTypeId,
                     LoanApplicationId = input.LoanApplicationId.Value,
                 };
-                await _repository.InsertAsync(additionalDetail);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
-
+                if (input.BorrowerTypeId != 0)
+                {
+                    await _repository.InsertAsync(additionalDetail);
+                    await UnitOfWorkManager.Current.SaveChangesAsync();
+                }
                 input.Id = additionalDetail.Id;
                 return input;
+
             }
             catch (Exception e)
             {
