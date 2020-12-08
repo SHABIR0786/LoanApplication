@@ -14,6 +14,7 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
+import { ILoanApplicationDto } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-loan-details",
@@ -345,12 +346,9 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     }
     return response;
   }
+
   sanitizeFormData(formData) {
     formData = Object.assign({}, formData);
-
-    this._activatedRoute.queryParams.subscribe(async (params) => {
-      formData.id = params["id"];
-    });
     for (const key in formData) {
       if (key && formData.hasOwnProperty(key) && formData[key]) {
         if (
@@ -366,19 +364,22 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
+    debugger;
 
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication.id = response.result.id;
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          debugger;
+          this._dataService.loanApplication = response.result;
+          this.form.patchValue(this._dataService.loanApplication.loanDetails);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+
   proceedToPrevious(event?: string) {
     this.submitForm();
     if (event === "wizardStep") {
