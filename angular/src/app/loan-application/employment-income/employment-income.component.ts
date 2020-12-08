@@ -1,7 +1,6 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { IEmploymentIncomeModel } from "../../interfaces/IEmploymentIncomeModel";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
@@ -26,7 +25,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   isApplyingWithCoBorrower = false;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
     private _activatedRoute: ActivatedRoute,
@@ -78,7 +76,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    debugger;
     this.data = this.form.value;
     this._dataService.updateValidationsFormArr(
       this.form.get("borrowerEmploymentInfo") as FormArray,
