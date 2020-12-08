@@ -32,7 +32,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
       this.data = this._dataService.loanApplication.expenses;
-      this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
+      if (this.data.isLiveWithFamilySelectRent)
+        this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
       this.initForm();
       this.form.patchValue(this.data);
     }
@@ -146,7 +147,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
         (response) => {
           this._dataService.loanApplication = response.result;
           this.data = this._dataService.loanApplication.expenses;
-          this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
+          if (this.data.isLiveWithFamilySelectRent)
+            this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
           this.form.patchValue(this.data);
         },
         (error) => {
