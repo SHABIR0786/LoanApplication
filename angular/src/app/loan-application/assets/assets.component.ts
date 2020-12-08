@@ -1,6 +1,5 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { IAssetModel } from "../../interfaces/IAssetModel";
@@ -29,7 +28,6 @@ export class AssetsComponent implements OnInit, DoCheck {
   isApplyingWithCoBorrower: boolean = false;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
     private _activatedRoute: ActivatedRoute,
@@ -93,7 +91,9 @@ export class AssetsComponent implements OnInit, DoCheck {
   initForm() {
     this.form = new FormGroup({
       manualAssetEntries: new FormArray(
-        this.data.map((d) => this.initAssetForm(d || {}))
+        this.data && this.data.length > 0
+          ? this.data.map((d) => this.initAssetForm(d || {}))
+          : []
       ),
     });
   }
