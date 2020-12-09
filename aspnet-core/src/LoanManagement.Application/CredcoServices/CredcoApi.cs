@@ -69,7 +69,7 @@ namespace LoanManagement.CredcoServices
 
                 }
 
-                throw;
+                return null;
             }
         }
 
