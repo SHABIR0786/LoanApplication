@@ -72,7 +72,7 @@ namespace LoanManagement.Controllers
         {
             var data = await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long?>(Id));
             string pdfTemplate = @"1003irev-unlocked.pdf";
-            var pdfReader = new iTextSharp.text.pdf.PdfReader(pdfTemplate);
+            var pdfReader = new Pdf.PdfReader(pdfTemplate);
             var (fileName, path) = CreateFileName(Id);
 
             var fileStream = new FileStream(path, FileMode.Create);
@@ -306,28 +306,7 @@ namespace LoanManagement.Controllers
                         }
 
                     }
-                if (data.EmploymentIncome.BorrowerEmploymentInfo != null)
-                    for (int i = 0; i < data.EmploymentIncome.BorrowerEmploymentInfo.Count(); i++)
-                    {
-                        if (i == 0)
-                        {
-                            var BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
-                            if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                                pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
-                        }
-                        else if (i == 1)
-                        {
-                            var BorrowerSelfEmployed2 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 2");
-                            if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                                pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[0]);
-                        }
-                        else if (i == 2)
-                        {
-                            var BorrowerSelfEmployed3 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 3");
-                            if (data.EmploymentIncome.BorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                                pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[0]);
-                        }
-                    }
+
                 //Demographic Information
                 if (data.Declaration.BorrowerDemographic.Ethnicity != null)
                     foreach (var ethnic in data.Declaration.BorrowerDemographic.Ethnicity)
@@ -606,13 +585,47 @@ namespace LoanManagement.Controllers
                         data.PersonalInformation.MailingAddress.City + " " +
                         (data.PersonalInformation.MailingAddress.StateId.HasValue ? data.PersonalInformation.MailingAddress.StateId.Value.ToString() : "") + " " +
                         (data.PersonalInformation.MailingAddress.ZipCode.HasValue ? data.PersonalInformation.MailingAddress.ZipCode.Value.ToString() : "") : "");
-                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.HasValue)
-                {
-                    DateTime now = DateTime.Today;
-                    int Years = now.Year - data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.Value.Year;
-                    if (data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.Value > now.AddYears(-Years)) Years--;
-                    pdfFormFields.SetField("Borrower Years on the job", Years.ToString());
 
+                for (var index = 0; index < data.EmploymentIncome.BorrowerEmploymentInfo.Count; index++)
+                {
+                    var borrowerEmploymentInfo = data.EmploymentIncome.BorrowerEmploymentInfo[index];
+                    switch (index)
+                    {
+                        case 0:
+                            DateTime now = DateTime.Today;
+                            int Years = now.Year - borrowerEmploymentInfo.StartDate.Value.Year;
+                            if (borrowerEmploymentInfo.StartDate.Value > now.AddYears(-Years)) Years--;
+                            pdfFormFields.SetField("Borrower Years on the job", Years.ToString());
+                            pdfFormFields.SetField("Borrower Position/Title/Type of Business", borrowerEmploymentInfo.Position);
+
+                            var BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
+                            if (borrowerEmploymentInfo.IsSelfEmployed == true)
+                                pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
+                            break;
+                        case 1:
+                            //pdfFormFields.SetField("Borrower Employment info Cont position title", borrowerEmploymentInfo.Position);
+                            //pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ", $"{borrowerEmploymentInfo.StartDate.Value} {borrowerEmploymentInfo.EndDate.Value}");
+                            //pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ", borrowerEmploymentInfo.EmployerName + " " +
+                            //        data.EmploymentIncome.BorrowerEmploymentInfo[1].Address1 + " "
+                            //        + data.EmploymentIncome.BorrowerEmploymentInfo[1].City + " "
+                            //       + (data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.Value) : "") + " "
+                            //        + (data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.Value.ToString() : "")
+                            //        );
+                            //pdfFormFields.SetField("Borrower Employment info Cont position title2", borrowerEmploymentInfo.Position);
+                            //var BorrowerSelfEmployed2 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 2");
+                            //if (borrowerEmploymentInfo.IsSelfEmployed == true)
+                            //    pdfFormFields.SetField("Borrower Self Employed 2", BorrowerSelfEmployed2[0]);
+                            break;
+                        case 2:
+                            var BorrowerSelfEmployed3 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 3");
+                            if (borrowerEmploymentInfo.IsSelfEmployed == true)
+                                pdfFormFields.SetField("Borrower Self Employed 3", BorrowerSelfEmployed3[0]);
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 if (data.PersonalInformation.ResidentialAddress != null)
@@ -655,6 +668,7 @@ namespace LoanManagement.Controllers
                          + (data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.HasValue ? data.PersonalInformation.CoBorrowerPreviousAddresses[0].ZipCode.Value.ToString() : ""));
                     }
                 }
+
                 if (data.EmploymentIncome.CoBorrowerEmploymentInfo.Count() >= 1 && data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.HasValue)
                 {
                     DateTime now = DateTime.Today;
@@ -668,19 +682,6 @@ namespace LoanManagement.Controllers
                             + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
                           + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.HasValue ? data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.Value.ToString() : "")
                           );
-                }
-                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count >= 2)
-                {
-                    pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].Position);
-                    pdfFormFields.SetField("Borrower Employment info Cont Dates of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate.Value.ToString() + " " +
-                      data.EmploymentIncome.BorrowerEmploymentInfo[1].EndDate.Value.ToString()
-                      );
-                    pdfFormFields.SetField("Borrower Employment info Cont Name and adress of Employ", data.EmploymentIncome.BorrowerEmploymentInfo[1].EmployerName + " " +
-                            data.EmploymentIncome.BorrowerEmploymentInfo[1].Address1 + " "
-                            + data.EmploymentIncome.BorrowerEmploymentInfo[1].City + " "
-                           + (data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId.Value) : "") + " "
-                            + (data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.HasValue ? data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.Value.ToString() : "")
-                            );
                 }
 
                 if (data.EmploymentIncome.BorrowerEmploymentInfo.Count >= 3)
@@ -954,6 +955,10 @@ namespace LoanManagement.Controllers
 
                 return Ok();
 
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
             }
             finally
             {
