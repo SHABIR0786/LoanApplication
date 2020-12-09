@@ -349,7 +349,6 @@ export class DeclarationComponent implements OnInit, DoCheck {
   }
 
   initForm() {
-    debugger;
     if (this.data.borrowerDeclaration != null)
       this.form = new FormGroup({
         id: new FormControl(this.data.borrowerDeclaration.id),
@@ -498,8 +497,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       isIntendToOccupyThePropertyAsYourPrimary: new FormControl(
         borrowerDeclaration.isIntendToOccupyThePropertyAsYourPrimary
       ),
-      isOwnershipInterestInPropertyLastThreeYears: new FormControl(
-        borrowerDeclaration.isOwnershipInterestInPropertyLastThreeYears
+      isOwnershipInterestInPropertyInTheLastThreeYears: new FormControl(
+        borrowerDeclaration.isOwnershipInterestInPropertyInTheLastThreeYears
       ),
       declarationsSection: new FormControl(
         borrowerDeclaration.declarationsSection

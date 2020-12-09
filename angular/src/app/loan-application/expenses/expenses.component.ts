@@ -34,6 +34,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
       this.data = this._dataService.loanApplication.expenses;
       if (this.data.isLiveWithFamilySelectRent)
         this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
+      else this.data.isLiveWithFamilySelectRent = "";
       this.initForm();
       this.form.patchValue(this.data);
     }
