@@ -4,6 +4,7 @@ using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
 using LoanManagement.EntityFrameworkCore.Seed;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace LoanManagement.EntityFrameworkCore
 {
@@ -13,10 +14,12 @@ namespace LoanManagement.EntityFrameworkCore
     public class LoanManagementEntityFrameworkModule : AbpModule
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ILoggerFactory _loggerFactory;
 
-        public LoanManagementEntityFrameworkModule(IWebHostEnvironment webHostEnvironment)
+        public LoanManagementEntityFrameworkModule(IWebHostEnvironment webHostEnvironment, ILoggerFactory loggerFactory)
         {
             _webHostEnvironment = webHostEnvironment;
+            _loggerFactory = loggerFactory;
         }
 
         /* Used it tests to skip dbcontext registration, in order to use in-memory database of EF Core */
@@ -32,11 +35,11 @@ namespace LoanManagement.EntityFrameworkCore
                 {
                     if (options.ExistingConnection != null)
                     {
-                        LoanManagementDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection, _webHostEnvironment);
+                        LoanManagementDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection, _loggerFactory, _webHostEnvironment);
                     }
                     else
                     {
-                        LoanManagementDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString, _webHostEnvironment);
+                        LoanManagementDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString, _loggerFactory, _webHostEnvironment);
                     }
                 });
             }

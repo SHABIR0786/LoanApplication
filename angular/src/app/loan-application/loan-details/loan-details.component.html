@@ -173,7 +173,6 @@
                       id="downPaymentAmount"
                       formControlName="downPaymentAmount"
                       required
-                      [(ngModel)]="data.downPaymentAmount"
                       placeholder="$"
                       prefix="$ "
                       mask="separator.2"
@@ -350,7 +349,7 @@
                 </div>
 
                 <div
-                  class="col-12 row"
+                  class="row"
                   *ngIf="data.purposeOfLoan && data.purposeOfLoan !== 1"
                 >
                   <div class="col-12">

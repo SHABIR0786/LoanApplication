@@ -4,7 +4,10 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -27,11 +30,28 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-
+        public async Task<List<BorrowerMonthlyIncome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        {
+            return await _repository.GetAll()
+                .Where(i => i.LoanApplicationId == loanApplicationId)
+                .Select(i => new BorrowerMonthlyIncome
+                {
+                    Id = i.Id,
+                    Base = i.Base,
+                    Overtime = i.Overtime,
+                    Bonuses = i.Bonuses,
+                    Commissions = i.Commissions,
+                    Dividends = i.Dividends,
+                    BorrowerTypeId = i.BorrowerTypeId,
+                    LoanApplicationId = i.LoanApplicationId
+                })
+                .ToListAsync();
+        }
         public async Task<BorrowerMonthlyIncomeDto> CreateAsync(BorrowerMonthlyIncomeDto input)
         {
             try
             {
+
                 var additionalDetail = new BorrowerMonthlyIncome
                 {
                     Base = input.Base,
@@ -42,11 +62,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                     BorrowerTypeId = input.BorrowerTypeId,
                     LoanApplicationId = input.LoanApplicationId.Value,
                 };
-                await _repository.InsertAsync(additionalDetail);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
-
+                if (input.BorrowerTypeId != 0)
+                {
+                    await _repository.InsertAsync(additionalDetail);
+                    await UnitOfWorkManager.Current.SaveChangesAsync();
+                }
                 input.Id = additionalDetail.Id;
                 return input;
+
             }
             catch (Exception e)
             {

@@ -63,6 +63,7 @@ import { AdditionalDetailsComponent } from "./loan-application/additional-detail
 import { LoanListComponent } from "./loan-application/loan-list/loan-list.component";
 import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { LoanSideBar } from "./loan-application/side-bar/side-bar";
+import { GetLoanAppResolve } from "./resolver/loan-app-get-resolve";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -137,7 +138,7 @@ const ngWizardConfig: NgWizardConfig = {
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
   ],
-  providers: [DataService],
+  providers: [DataService, GetLoanAppResolve],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

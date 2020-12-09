@@ -1,12 +1,12 @@
-using Abp.Domain.Entities.Auditing;
+using System;
+using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class Borrower : FullAuditedEntity<long>
+    public class Borrower : Entity<long>
     {
         public string FirstName { get; set; }
         public string MiddleInitial { get; set; }
-
         public string LastName { get; set; }
         public string Suffix { get; set; }
 
@@ -26,6 +26,6 @@ namespace LoanManagement.Models
 
 
         public BorrowerType BorrowerType { get; set; }
-        public int BorrowerTypeId { get; set; }
+        public int BorrowerTypeId { get; set; } = 1;
     }
 }

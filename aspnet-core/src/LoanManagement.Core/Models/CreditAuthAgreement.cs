@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class CreditAuthAgreement : FullAuditedEntity<long>
+    public class CreditAuthAgreement : Entity<long>
     {
         public bool? AgreeCreditAuthAgreement { get; set; }
     }

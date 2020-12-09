@@ -19,7 +19,16 @@ namespace LoanManagement.ViewModels
         public DateTime? EndDate { get; set; }
         // public decimal? MonthlyIncome { get; set; }
         // public DateTime? DateFromTo { get; set; }
-        public int? BorrowerTypeId { get; set; }
+        public int BorrowerTypeId { get; set; }
         public long? LoanApplicationId { get; set; }
+
+        public bool IsNull()
+        {
+            return string.IsNullOrWhiteSpace(EmployerName) && string.IsNullOrWhiteSpace(Address1) &&
+                   string.IsNullOrWhiteSpace(Address2) && !IsSelfEmployed.HasValue &&
+                   string.IsNullOrWhiteSpace(Position) && string.IsNullOrWhiteSpace(City) &&
+                   !StateId.HasValue && !ZipCode.HasValue &&
+                   !StartDate.HasValue && !EndDate.HasValue;
+        }
     }
 }

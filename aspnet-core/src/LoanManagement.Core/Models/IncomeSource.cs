@@ -1,8 +1,9 @@
+using Abp.Domain.Entities;
+
 namespace LoanManagement.Models
 {
-    public class IncomeSource
+    public class IncomeSource : Entity<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
