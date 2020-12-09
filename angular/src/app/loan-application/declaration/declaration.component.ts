@@ -321,6 +321,12 @@ export class DeclarationComponent implements OnInit, DoCheck {
 
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
+      const borrowerDeclaration = this._dataService.loanApplication.declaration
+        .borrowerDeclaration;
+      if (borrowerDeclaration) {
+        if (borrowerDeclaration.declarationsSection)
+          borrowerDeclaration.declarationsSection = borrowerDeclaration.declarationsSection.toString();
+      }
       this.data = this._dataService.loanApplication.declaration;
       const loanApplication = this._dataService.loanApplication;
       this.isApplyingWithCoBorrower =
@@ -457,6 +463,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
   initDeclarationForm(
     borrowerDeclaration: IBorrowerDeclarationModel
   ): FormGroup {
+    if (!borrowerDeclaration) borrowerDeclaration = {};
     return new FormGroup({
       id: new FormControl(borrowerDeclaration.id),
       isOutstandingJudgmentsAgainstYou: new FormControl(

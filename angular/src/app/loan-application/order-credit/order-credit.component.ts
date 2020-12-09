@@ -26,7 +26,12 @@ export class OrderCreditComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    console.log(this._dataService.loanApplication);
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success)
+      this._dataService.loanApplication = response.result;
+
     this.data = this._dataService.loanApplication.orderCredit;
   }
 

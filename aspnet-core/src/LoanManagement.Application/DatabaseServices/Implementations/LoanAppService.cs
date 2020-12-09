@@ -99,6 +99,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     {
                         Id = result.AdditionalDetail?.Id,
                         NameOfIndividualsOnTitle = result.AdditionalDetail?.NameOfIndividualsOnTitle,
+                        NameOfIndividualsCoBorrowerOnTitle = result.AdditionalDetail?.NameOfIndividualsCoBorrowerOnTitle,
                     },
                     LoanDetails = new LoanDetailDto
                     {
@@ -363,7 +364,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Id = employmentInfo.Id
                             });
                         else if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
+                            viewModel.EmploymentIncome.CoBorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
                             {
                                 EmployerName = employmentInfo.EmployersName,
                                 Address1 = employmentInfo.EmployersAddress1,
@@ -1155,7 +1156,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     if (!input.AdditionalDetails.Id.HasValue || input.AdditionalDetails.Id.Value == default)
                     {
                         input.AdditionalDetails = await _additionalDetailsService.CreateAsync(input.AdditionalDetails);
-                        loanApplication.AdditionalDetailsId = input.AdditionalDetails.Id;
+                        loanApplication.AdditionalDetailId = input.AdditionalDetails.Id;
                     }
                     else
                         await _additionalDetailsService.UpdateAsync(input.AdditionalDetails);

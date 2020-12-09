@@ -1487,6 +1487,9 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<string>("NameOfIndividualsCoBorrowerOnTitle")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("NameOfIndividualsOnTitle")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -2124,9 +2127,6 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<long?>("AdditionalDetailId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("AdditionalDetailsId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("ConsentDetailId")

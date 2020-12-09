@@ -449,7 +449,8 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NameOfIndividualsOnTitle = table.Column<string>(nullable: true)
+                    NameOfIndividualsOnTitle = table.Column<string>(nullable: true),
+                    NameOfIndividualsCoBorrowerOnTitle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1084,7 +1085,8 @@ namespace LoanManagement.Migrations
                     BorrowerId = table.Column<long>(nullable: true),
                     CoBorrowerId = table.Column<long>(nullable: true),
                     IsMailingAddressSameAsResidential = table.Column<bool>(nullable: true),
-                    CoBorrowerIsMailingAddressSameAsResidential = table.Column<bool>(nullable: true)
+                    CoBorrowerIsMailingAddressSameAsResidential = table.Column<bool>(nullable: true),
+                    CoBorrowerResidentialAddressSameAsBorrowerResidential = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1150,7 +1152,6 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanDetailId = table.Column<long>(nullable: true),
-                    AdditionalDetailsId = table.Column<long>(nullable: true),
                     AdditionalDetailId = table.Column<long>(nullable: true),
                     PersonalDetailId = table.Column<long>(nullable: true),
                     CreditAuthAgreementId = table.Column<long>(nullable: true),
