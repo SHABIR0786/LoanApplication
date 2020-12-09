@@ -488,7 +488,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsUSCitizen = declaration.IsUSCitizen,
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
-                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears
+                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
+                                Id = declaration.Id
                             };
                         else if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                             viewModel.Declaration.CoBorrowerDeclaration = new DeclarationDetailDto
@@ -506,28 +507,25 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsUSCitizen = declaration.IsUSCitizen,
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
-                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears
+                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
+                                Id = declaration.Id
                             };
                         else
                             throw new InvalidOperationException("Invalid borrower type id");
                     }
+                    viewModel.Declaration.LoanApplicationId = result.Id;
                 }
-
-
 
                 if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
                 {
-                    viewModel.Declaration = new DeclarationDto
-                    {
-                        LoanApplicationId = result.Id,
-                    };
-
                     foreach (var demographicsInformation in result.DemographicsInformations)
                     {
                         if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
-                            viewModel.Declaration.BorrowerDemographic = new DemographicDto();
-                            viewModel.Declaration.BorrowerDemographic.Ethnicity = new List<DemographicTypeDto>();
+                            viewModel.Declaration.BorrowerDemographic = new DemographicDto
+                            {
+                                Ethnicity = new List<DemographicTypeDto>()
+                            };
 
                             if (demographicsInformation.IsHispanicOrLatino.HasValue &&
                                 demographicsInformation.IsHispanicOrLatino.Value)
@@ -1222,13 +1220,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Declaration
                 if (input.Declaration != null)
                 {
-                    if (!input.Declaration.Id.HasValue || input.Declaration.Id.Value == default)
-                    {
-                        input.Declaration.LoanApplicationId = input.Id.Value;
-                        input.Declaration = await _declarationService.CreateAsync(input.Declaration);
-                    }
-                    else
-                        await _declarationService.UpdateAsync(input.Declaration);
+                    input.Declaration.LoanApplicationId = input.Id.Value;
+                    input.Declaration = await _declarationService.CreateAsync(input.Declaration);
                 }
                 #endregion
 
