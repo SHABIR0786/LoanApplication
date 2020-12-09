@@ -467,9 +467,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
                 }
 
+                viewModel.Declaration = new DeclarationDto();
                 if (result.Declarations != null && result.Declarations.Any())
                 {
-                    viewModel.Declaration = new DeclarationDto();
                     foreach (var declaration in result.Declarations)
                     {
                         if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
