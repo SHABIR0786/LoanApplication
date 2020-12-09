@@ -5,6 +5,7 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -18,7 +19,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             _repository = repository;
         }
 
-        public async Task<AdditionalDetailsDto> GetAsync(EntityDto<long?> input)
+        public Task<AdditionalDetailsDto> GetAsync(EntityDto<long?> input)
         {
             throw new NotImplementedException();
         }
@@ -33,6 +34,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             var additionalDetail = new AdditionalDetail
             {
                 NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
+                NameOfIndividualsCoBorrowerOnTitle = input.NameOfIndividualsCoBorrowerOnTitle
             };
             await _repository.InsertAsync(additionalDetail);
             await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -46,6 +48,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             await _repository.UpdateAsync(input.Id.Value, additionalDetail =>
             {
                 additionalDetail.NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle;
+                additionalDetail.NameOfIndividualsCoBorrowerOnTitle = input.NameOfIndividualsCoBorrowerOnTitle;
                 return Task.CompletedTask;
             });
 

@@ -1,11 +1,10 @@
 ﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.Models
 {
-    public class InformationForGovermentMonitoringPurpose : FullAuditedEntity<long>, IMayHaveTenant
+    public class InformationForGovermentMonitoringPurpose : Entity<long>
     {
         public string InterviewHeldedThrough { get; set; }
         public string LoanOriginatorsSignature { get; set; }
@@ -19,7 +18,6 @@ namespace LoanManagement.Models
 
         public int? AgencyCaseNumber { get; set; }
         public int? LenderCaseNumber { get; set; }
-        public int? TenantId { get; set; }
 
         public List<InformationForGovermentMonitoringPurposeBorrowerAndCo>
             InformationForGovermentMonitoringPurposeBorrowerAndCo

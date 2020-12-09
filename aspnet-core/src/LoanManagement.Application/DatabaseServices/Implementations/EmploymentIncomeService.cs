@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,13 +35,12 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-
         public async Task<EmploymentIncomeDto> CreateAsync(EmploymentIncomeDto input)
         {
             try
             {
                 #region Borrower Monthly Income
-                if (input.BorrowerMonthlyIncome != null)
+                if (input.BorrowerMonthlyIncome != null && !input.BorrowerMonthlyIncome.IsNull())
                 {
                     input.BorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
                     if (!input.BorrowerMonthlyIncome.Id.HasValue || input.BorrowerMonthlyIncome.Id.Value == default)
@@ -53,7 +53,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #endregion
 
                 #region Co-Borrower Monthly Income
-                if (input.CoBorrowerMonthlyIncome != null)
+                if (input.CoBorrowerMonthlyIncome != null && !input.CoBorrowerMonthlyIncome.IsNull())
                 {
                     input.CoBorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
                     if (!input.CoBorrowerMonthlyIncome.Id.HasValue || input.CoBorrowerMonthlyIncome.Id.Value == default)
@@ -66,21 +66,43 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Employment Information
 
                 if (input.BorrowerEmploymentInfo != null && input.BorrowerEmploymentInfo.Any())
-                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo)
+                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
                         if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
-                            await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        {
+                            if (!borrowerEmploymentInfo.IsNull())
+                                await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        }
                         else
                             await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
                     }
 
                 if (input.CoBorrowerEmploymentInfo != null && input.CoBorrowerEmploymentInfo.Any())
-                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo)
+                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
                     {
                         borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
                         if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
-                            await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        {
+                            if (!borrowerEmploymentInfo.IsNull())
+                                await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        }
                         else
                             await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
                     }
@@ -89,11 +111,14 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 if (input.AdditionalIncomes != null && input.AdditionalIncomes.Any())
                 {
-                    foreach (var additionalIncome in input.AdditionalIncomes)
+                    foreach (var additionalIncome in input.AdditionalIncomes.Where(i => i.Amount.HasValue || (i.IncomeSourceId.HasValue && i.IncomeSourceId.Value != 0)))
                     {
                         additionalIncome.LoanApplicationId = input.LoanApplicationId.Value;
                         if (!additionalIncome.Id.HasValue || additionalIncome.Id.Value == default)
-                            await _additionalIncomeService.CreateAsync(additionalIncome);
+                        {
+                            if (!additionalIncome.IsNull())
+                                await _additionalIncomeService.CreateAsync(additionalIncome);
+                        }
                         else
                             await _additionalIncomeService.UpdateAsync(additionalIncome);
                     }
@@ -103,7 +128,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 

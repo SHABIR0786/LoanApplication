@@ -1,8 +1,8 @@
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class Address : FullAuditedEntity<long>
+    public class Address : Entity<long>
     {
         public string AddressType { get; set; }
         public string AddressLine1 { get; set; }

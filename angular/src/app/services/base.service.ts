@@ -16,6 +16,7 @@ export class BaseService {
     "Content-Type": "application/json",
     "Abp.TenantId": `${abp.multiTenancy.getTenantIdCookie()}`,
     ".AspNetCore.Culture": `c=${this.cookieLangValue}|uic=${this.cookieLangValue}`,
+    Accept: "application/json",
   });
 
   constructor(private http: HttpClient, private baseRoute: string) {}
@@ -29,6 +30,7 @@ export class BaseService {
     return this.http.get<T>(url, {
       headers: headers,
       params: queryParams,
+      withCredentials: true,
     });
   }
 

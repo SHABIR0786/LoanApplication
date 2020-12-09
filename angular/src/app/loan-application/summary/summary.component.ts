@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
 import { ActivatedRoute } from "@angular/router";
+import { Result } from "common";
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
@@ -19,7 +19,6 @@ export class SummaryComponent implements OnInit {
   isApplyingWithCoBorrower: boolean = false;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
     private _route: Router,
@@ -27,6 +26,13 @@ export class SummaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+    }
+
     this._dataService.validations.subscribe((errors) => {
       this.errors = errors;
     });
@@ -104,16 +110,17 @@ export class SummaryComponent implements OnInit {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-    this._loanApplicationService.post("Add", formData).subscribe(
-      (response: any) => {
-        this._dataService.loanApplication = this.prepareFormData(
-          response.result
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.formData = response.result;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   proceedToPrevious() {

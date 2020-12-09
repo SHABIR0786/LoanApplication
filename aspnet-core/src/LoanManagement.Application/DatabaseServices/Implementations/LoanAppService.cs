@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -24,6 +25,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         private readonly IPersonalDetailService _personalDetailService;
         private readonly IDeclarationService _declarationService;
         private readonly IManualAssetEntryService _manualAssetEntryService;
+        private readonly IBorrowerMonthlyIncomeServices _borrowerMonthlyIncomeRepository;
+
+        private readonly IBorrowerEmploymentInformationAppService _borrowerEmploymentInformationRepository;
+
+        public IAdditionalIncomeService _additionalIncomeService { get; }
 
         public LoanAppService(
             IRepository<LoanApplication, long> repository,
@@ -35,7 +41,10 @@ namespace LoanManagement.DatabaseServices.Implementations
             IEmploymentIncomeService employmentIncomeService,
             IPersonalDetailService personalDetailService,
             IDeclarationService declarationService,
-            IManualAssetEntryService manualAssetEntryService
+            IManualAssetEntryService manualAssetEntryService,
+            IBorrowerEmploymentInformationAppService borrowerEmploymentInformationRepository,
+            IBorrowerMonthlyIncomeServices borrowerMonthlyIncomeRepository,
+            IAdditionalIncomeService additionalIncomeService
             )
         {
             _repository = repository;
@@ -48,34 +57,49 @@ namespace LoanManagement.DatabaseServices.Implementations
             _personalDetailService = personalDetailService;
             _declarationService = declarationService;
             _manualAssetEntryService = manualAssetEntryService;
+            _borrowerEmploymentInformationRepository = borrowerEmploymentInformationRepository;
+            _borrowerMonthlyIncomeRepository = borrowerMonthlyIncomeRepository;
+            _additionalIncomeService = additionalIncomeService;
         }
 
+        //[UnitOfWork(isTransactional: false)]
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
         {
             try
             {
-                var result = await _repository.GetAllIncluding(i =>
-                    i.LoanDetail,
+                var query = _repository.GetAllIncluding(
+                    i => i.LoanDetail,
                     i => i.AdditionalDetail,
-                    i => i.PersonalDetail,
                     i => i.AdditionalIncomes,
-                    i => i.CreditAuthAgreement,
-                    i => i.ConsentDetail,
-                    i => i.Expense,
-                    i => i.ManualAssetEntries,
-                    i => i.Declarations,
                     i => i.BorrowerEmploymentInformations,
                     i => i.BorrowerMonthlyIncomes,
-                    i => i.DemographicsInformations
-                     )
-                   .SingleAsync(i => i.Id == input.Id);
+                    i => i.CreditAuthAgreement,
+                    i => i.ConsentDetail,
+                    i => i.Declarations,
+                    i => i.DemographicsInformations,
+                    i => i.Expense,
+                    i => i.ManualAssetEntries);
+
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.CoBorrower);
+
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.Borrower);
+                query = query.Include(i => i.PersonalDetail)
+                    .ThenInclude(i => i.Addresses);
+
+                var result = await query
+                    .Where(i => i.Id == input.Id.Value)
+                   .SingleAsync();
 
                 var viewModel = new LoanApplicationDto
                 {
+                    Id = input.Id.Value,
                     AdditionalDetails = new AdditionalDetailsDto
                     {
                         Id = result.AdditionalDetail?.Id,
                         NameOfIndividualsOnTitle = result.AdditionalDetail?.NameOfIndividualsOnTitle,
+                        NameOfIndividualsCoBorrowerOnTitle = result.AdditionalDetail?.NameOfIndividualsCoBorrowerOnTitle,
                     },
                     LoanDetails = new LoanDetailDto
                     {
@@ -101,7 +125,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                         City = result.LoanDetail?.City,
                         StateId = result.LoanDetail?.StateId,
                         PropertyTypeId = result.LoanDetail?.PropertyTypeId,
-                        PropertyUseId = result.LoanDetail?.PropertyUseId
+                        PropertyUseId = result.LoanDetail?.PropertyUseId,
+                        StartedLookingForNewHome = result.LoanDetail?.StartedLookingForNewHome,
+                        Id = result.LoanDetailId
                     },
                     Expenses = new ExpensesDto
                     {
@@ -113,11 +139,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                         HazardInsurance = result.Expense?.HazardInsurance,
                         RealEstateTaxes = result.Expense?.RealEstateTaxes,
                         MortgageInsurance = result.Expense?.MortgageInsurance,
-                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation
+                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation,
+                        Id = result.ExpenseId,
                     },
                     OrderCredit = new CreditAuthAgreementDto
                     {
                         AgreeCreditAuthAgreement = result.CreditAuthAgreement?.AgreeCreditAuthAgreement,
+                        Id = result.CreditAuthAgreementId,
                     },
                     EConsent = new EConsentDto
                     {
@@ -129,21 +157,60 @@ namespace LoanManagement.DatabaseServices.Implementations
                         CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
                         CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
                         CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
+                        Id = result.ConsentDetailId,
                     },
                     PersonalInformation = new PersonalInformationDto
                     {
-                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
                         AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
+                        CoBorrowerIsMailingAddressSameAsResidential = result.PersonalDetail?.CoBorrowerIsMailingAddressSameAsResidential,
+                        CoBorrowerResidentialAddressSameAsBorrowerResidential = result.PersonalDetail?.CoBorrowerResidentialAddressSameAsBorrowerResidential,
+                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
                         IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
+                        LoanApplicationId = result.Id,
+                        UseIncomeOfPersonOtherThanBorrower = result.PersonalDetail?.UseIncomeOfPersonOtherThanBorrower,
+                        Id = result?.PersonalDetailId,
                     },
-
                 };
 
+                if (result.PersonalDetail != null && result.PersonalDetail.Borrower != null)
+                    viewModel.PersonalInformation.Borrower = new BorrowerDto
+                    {
+                        BorrowerTypeId = result.PersonalDetail.Borrower.BorrowerTypeId,
+                        CellPhone = result.PersonalDetail.Borrower.CellPhone,
+                        DateOfBirth = result.PersonalDetail.Borrower.DateOfBirth,
+                        Email = result.PersonalDetail.Borrower.Email,
+                        FirstName = result.PersonalDetail.Borrower.FirstName,
+                        HomePhone = result.PersonalDetail.Borrower.HomePhone,
+                        Id = result.PersonalDetail.Borrower.Id,
+                        LastName = result.PersonalDetail.Borrower.LastName,
+                        MaritalStatusId = result.PersonalDetail.Borrower.MaritalStatusId,
+                        MiddleInitial = result.PersonalDetail.Borrower.MiddleInitial,
+                        NumberOfDependents = result.PersonalDetail.Borrower.NumberOfDependents,
+                        SocialSecurityNumber = result.PersonalDetail.Borrower.SocialSecurityNumber,
+                        Suffix = result.PersonalDetail.Borrower.Suffix
+                    };
 
-                viewModel.PersonalInformation = new PersonalInformationDto();
+                if (result.PersonalDetail != null && result.PersonalDetail.CoBorrower != null)
+                    viewModel.PersonalInformation.CoBorrower = new BorrowerDto
+                    {
+                        BorrowerTypeId = result.PersonalDetail.CoBorrower.BorrowerTypeId,
+                        CellPhone = result.PersonalDetail.CoBorrower.CellPhone,
+                        DateOfBirth = result.PersonalDetail.CoBorrower.DateOfBirth,
+                        Email = result.PersonalDetail.CoBorrower.Email,
+                        FirstName = result.PersonalDetail.CoBorrower.FirstName,
+                        HomePhone = result.PersonalDetail.CoBorrower.HomePhone,
+                        Id = result.PersonalDetail.CoBorrower.Id,
+                        LastName = result.PersonalDetail.CoBorrower.LastName,
+                        MaritalStatusId = result.PersonalDetail.CoBorrower.MaritalStatusId,
+                        MiddleInitial = result.PersonalDetail.CoBorrower.MiddleInitial,
+                        NumberOfDependents = result.PersonalDetail.CoBorrower.NumberOfDependents,
+                        SocialSecurityNumber = result.PersonalDetail.CoBorrower.SocialSecurityNumber,
+                        Suffix = result.PersonalDetail.CoBorrower.Suffix
+                    };
+
                 if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
                 {
-                    foreach (var address in result.PersonalDetail.Addresses)
+                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType != Enums.AddressType.Previous.ToString()))
                     {
                         if (address.AddressType == Enums.AddressType.Mailing.ToString())
                         {
@@ -158,6 +225,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                             else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
@@ -171,7 +239,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
-
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                         }
@@ -189,6 +257,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                             else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
@@ -202,6 +271,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                     Months = address.Months,
                                     StateId = address.StateId,
                                     Years = address.Years,
+                                    ZipCode = address.ZipCode,
                                 };
                             }
                         }
@@ -213,7 +283,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
                     viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
 
-                    foreach (var address in result.PersonalDetail.Addresses)
+                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType == Enums.AddressType.Previous.ToString()))
                     {
                         if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
@@ -227,13 +297,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Months = address.Months,
                                 StateId = address.StateId,
                                 Years = address.Years,
+                                ZipCode = address.ZipCode,
                             });
                         }
                         else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
                             viewModel.PersonalInformation.CoBorrowerPreviousAddresses.Add(new AddressDto
                             {
-
                                 AddressLine1 = address.AddressLine1,
                                 AddressLine2 = address.AddressLine2,
                                 City = address.City,
@@ -241,6 +311,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 Months = address.Months,
                                 StateId = address.StateId,
                                 Years = address.Years,
+                                ZipCode = address.ZipCode,
                             });
                         }
                     }
@@ -248,7 +319,11 @@ namespace LoanManagement.DatabaseServices.Implementations
 
 
 
-                viewModel.EmploymentIncome = new EmploymentIncomeDto();
+                viewModel.EmploymentIncome = new EmploymentIncomeDto
+                {
+                    LoanApplicationId = result.Id
+                };
+
                 if (result.AdditionalIncomes != null && result.AdditionalIncomes.Any())
                 {
                     viewModel.EmploymentIncome.AdditionalIncomes = new List<AdditionalIncomeDto>();
@@ -267,89 +342,81 @@ namespace LoanManagement.DatabaseServices.Implementations
                 if (result.BorrowerEmploymentInformations != null && result.BorrowerEmploymentInformations.Any())
                 {
                     viewModel.EmploymentIncome.BorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
-                    foreach (var borrowerEmploymentInfo in result.BorrowerEmploymentInformations)
-                    {
-                        viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
-                        {
-                            EmployerName = borrowerEmploymentInfo.EmployersName,
-                            Address1 = borrowerEmploymentInfo.EmployersAddress1,
-                            Address2 = borrowerEmploymentInfo.EmployersAddress2,
-                            IsSelfEmployed = borrowerEmploymentInfo.IsSelfEmployed,
-                            BorrowerTypeId = borrowerEmploymentInfo.BorrowerTypeId,
-                            City = borrowerEmploymentInfo.City,
-                            StartDate = borrowerEmploymentInfo.StartDate,
-                            EndDate = borrowerEmploymentInfo.EndDate,
-                            LoanApplicationId = borrowerEmploymentInfo.LoanApplicationId,
-                            Position = borrowerEmploymentInfo.Position,
-                            StateId = borrowerEmploymentInfo.StateId,
-                            ZipCode = borrowerEmploymentInfo.ZipCode,
-
-                        });
-                    }
-
-                }
-                if (result.BorrowerEmploymentInformations != null && result.BorrowerEmploymentInformations.Any())
-                {
                     viewModel.EmploymentIncome.CoBorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
-                    foreach (var CoBorrowerEmploymentInfo in result.BorrowerEmploymentInformations)
+
+                    foreach (var employmentInfo in result.BorrowerEmploymentInformations)
                     {
-                        viewModel.EmploymentIncome.CoBorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
-                        {
-                            EmployerName = CoBorrowerEmploymentInfo.EmployersName,
-                            Address1 = CoBorrowerEmploymentInfo.EmployersAddress1,
-                            Address2 = CoBorrowerEmploymentInfo.EmployersAddress2,
-                            IsSelfEmployed = CoBorrowerEmploymentInfo.IsSelfEmployed,
-                            BorrowerTypeId = CoBorrowerEmploymentInfo.BorrowerTypeId,
-                            City = CoBorrowerEmploymentInfo.City,
-                            StartDate = CoBorrowerEmploymentInfo.StartDate,
-                            EndDate = CoBorrowerEmploymentInfo.EndDate,
-                            LoanApplicationId = CoBorrowerEmploymentInfo.LoanApplicationId,
-                            Position = CoBorrowerEmploymentInfo.Position,
-                            StateId = CoBorrowerEmploymentInfo.StateId,
-                            ZipCode = CoBorrowerEmploymentInfo.ZipCode,
-
-                        });
+                        if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+                            viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
+                            {
+                                EmployerName = employmentInfo.EmployersName,
+                                Address1 = employmentInfo.EmployersAddress1,
+                                Address2 = employmentInfo.EmployersAddress2,
+                                IsSelfEmployed = employmentInfo.IsSelfEmployed,
+                                BorrowerTypeId = employmentInfo.BorrowerTypeId,
+                                City = employmentInfo.City,
+                                StartDate = employmentInfo.StartDate,
+                                EndDate = employmentInfo.EndDate,
+                                LoanApplicationId = employmentInfo.LoanApplicationId,
+                                Position = employmentInfo.Position,
+                                StateId = employmentInfo.StateId,
+                                ZipCode = employmentInfo.ZipCode,
+                                Id = employmentInfo.Id
+                            });
+                        else if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+                            viewModel.EmploymentIncome.CoBorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
+                            {
+                                EmployerName = employmentInfo.EmployersName,
+                                Address1 = employmentInfo.EmployersAddress1,
+                                Address2 = employmentInfo.EmployersAddress2,
+                                IsSelfEmployed = employmentInfo.IsSelfEmployed,
+                                BorrowerTypeId = employmentInfo.BorrowerTypeId,
+                                City = employmentInfo.City,
+                                StartDate = employmentInfo.StartDate,
+                                EndDate = employmentInfo.EndDate,
+                                LoanApplicationId = employmentInfo.LoanApplicationId,
+                                Position = employmentInfo.Position,
+                                StateId = employmentInfo.StateId,
+                                ZipCode = employmentInfo.ZipCode,
+                                Id = employmentInfo.Id
+                            });
+                        else
+                            throw new InvalidOperationException("Invalid borrower type id");
                     }
-
                 }
+
                 if (result.BorrowerMonthlyIncomes != null && result.BorrowerMonthlyIncomes.Any())
                 {
-                    foreach (var borrowerMonthlyIncome in result.BorrowerMonthlyIncomes)
+                    foreach (var monthlyIncome in result.BorrowerMonthlyIncomes)
                     {
-                        if (borrowerMonthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                        {
+                        if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                             viewModel.EmploymentIncome.BorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
                             {
-                                Base = borrowerMonthlyIncome.Base,
-                                Bonuses = borrowerMonthlyIncome.Bonuses,
-                                BorrowerTypeId = borrowerMonthlyIncome.BorrowerTypeId,
-                                Commissions = borrowerMonthlyIncome.Commissions,
-                                Dividends = borrowerMonthlyIncome.Dividends,
-                                Id = borrowerMonthlyIncome.BorrowerTypeId,
-                                LoanApplicationId = borrowerMonthlyIncome.LoanApplicationId,
-                                Overtime = borrowerMonthlyIncome.Overtime,
-
+                                Base = monthlyIncome.Base,
+                                Bonuses = monthlyIncome.Bonuses,
+                                BorrowerTypeId = monthlyIncome.BorrowerTypeId,
+                                Commissions = monthlyIncome.Commissions,
+                                Dividends = monthlyIncome.Dividends,
+                                Id = monthlyIncome.Id,
+                                LoanApplicationId = monthlyIncome.LoanApplicationId,
+                                Overtime = monthlyIncome.Overtime,
                             };
-                        }
-
-                        if (borrowerMonthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                        {
+                        else if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                             viewModel.EmploymentIncome.CoBorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
                             {
 
-                                Base = borrowerMonthlyIncome.Base,
-                                Bonuses = borrowerMonthlyIncome.Bonuses,
-                                BorrowerTypeId = borrowerMonthlyIncome.BorrowerTypeId,
-                                Commissions = borrowerMonthlyIncome.Commissions,
-                                Dividends = borrowerMonthlyIncome.Dividends,
-                                Id = borrowerMonthlyIncome.BorrowerTypeId,
-                                LoanApplicationId = borrowerMonthlyIncome.LoanApplicationId,
-                                Overtime = borrowerMonthlyIncome.Overtime,
-
+                                Base = monthlyIncome.Base,
+                                Bonuses = monthlyIncome.Bonuses,
+                                BorrowerTypeId = monthlyIncome.BorrowerTypeId,
+                                Commissions = monthlyIncome.Commissions,
+                                Dividends = monthlyIncome.Dividends,
+                                Id = monthlyIncome.BorrowerTypeId,
+                                LoanApplicationId = monthlyIncome.LoanApplicationId,
+                                Overtime = monthlyIncome.Overtime,
                             };
-                        }
+                        else
+                            throw new InvalidOperationException("Invalid borrower type id");
                     }
-
                 }
 
 
@@ -366,6 +433,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             Address = manualAssetEntries.Address,
                             Address2 = manualAssetEntries.Address2,
                             BankName = manualAssetEntries.BankName,
+                            BorrowerTypeId = manualAssetEntries.BorrowerTypeId,
                             CashValue = manualAssetEntries.CashValue,
                             City = manualAssetEntries.City,
                             Description = manualAssetEntries.Description,
@@ -382,7 +450,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             PurchasePrice = manualAssetEntries.PurchasePrice,
                             StateId = manualAssetEntries.StateId,
                             TaxesInsuranceAndOther = manualAssetEntries.TaxesInsuranceAndOther,
-
+                            ZipCode = manualAssetEntries.ZipCode
                         });
                         if (result.ManualAssetEntries != null && manualAssetEntries.StockAndBonds.Any())
                         {
@@ -392,17 +460,11 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 AccountNumber = i.AccountNumber,
                                 CompanyName = i.CompanyName,
                                 ManualAssetEntryId = i.ManualAssetEntryId,
-                                Value = i.Value,
-
-
+                                Value = i.Value
                             })
                             .ToList();
                         }
-
                     }
-
-
-
                 }
 
                 if (result.Declarations != null && result.Declarations.Any())
@@ -411,7 +473,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                     foreach (var declaration in result.Declarations)
                     {
                         if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                        {
                             viewModel.Declaration.BorrowerDeclaration = new DeclarationDetailDto
                             {
                                 DeclarationsSection = declaration.DeclarationsSection,
@@ -429,10 +490,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
                                 IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears
                             };
-                        }
-
-                        if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                        {
+                        else if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                             viewModel.Declaration.CoBorrowerDeclaration = new DeclarationDetailDto
                             {
                                 DeclarationsSection = declaration.DeclarationsSection,
@@ -449,9 +507,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
                                 IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears
-
                             };
-                        }
+                        else
+                            throw new InvalidOperationException("Invalid borrower type id");
                     }
                 }
 
@@ -459,11 +517,13 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
                 {
+                    viewModel.Declaration = new DeclarationDto
+                    {
+                        LoanApplicationId = result.Id,
+                    };
 
-                    viewModel.Declaration = new DeclarationDto();
                     foreach (var demographicsInformation in result.DemographicsInformations)
                     {
-
                         if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
                             viewModel.Declaration.BorrowerDemographic = new DemographicDto();
@@ -728,7 +788,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             }
 
                         }
-                        if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+                        else if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
                         {
                             viewModel.Declaration.BorrowerDemographic = new DemographicDto();
                             viewModel.Declaration.BorrowerDemographic.Ethnicity = new List<DemographicTypeDto>();
@@ -991,6 +1051,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 });
                             }
                         }
+                        else
+                            throw new InvalidOperationException("Invalid borrower type id");
                     }
                 }
 
@@ -998,7 +1060,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
@@ -1011,7 +1073,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             var data = await _repository.GetAll()
                 .AsNoTracking()
-                .OrderBy(i => i.LoanDetail.LastModificationTime)
+                .OrderBy(i => i.UpdatedOn)
                 .Select(i => new LoanListDto
                 {
                     Id = i.Id,
@@ -1031,7 +1093,10 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanApplication = new LoanApplication();
+                var loanApplication = new LoanApplication
+                {
+                    UpdatedOn = DateTime.UtcNow
+                };
                 await _repository.InsertAsync(loanApplication);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
                 input.Id = loanApplication.Id;
@@ -1047,6 +1112,8 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id.Value, async loanApplication =>
             {
+                loanApplication.UpdatedOn = DateTime.UtcNow;
+
                 #region Loadn App
                 if (input.Id == 0)
                 {
@@ -1089,7 +1156,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     if (!input.AdditionalDetails.Id.HasValue || input.AdditionalDetails.Id.Value == default)
                     {
                         input.AdditionalDetails = await _additionalDetailsService.CreateAsync(input.AdditionalDetails);
-                        loanApplication.AdditionalDetailsId = input.AdditionalDetails.Id;
+                        loanApplication.AdditionalDetailId = input.AdditionalDetails.Id;
                     }
                     else
                         await _additionalDetailsService.UpdateAsync(input.AdditionalDetails);
@@ -1173,7 +1240,6 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
                 #endregion
             });
-
             await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;
         }

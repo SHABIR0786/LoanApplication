@@ -4,6 +4,7 @@ using LoanManagement.Data;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Enums;
 using LoanManagement.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -41,7 +42,7 @@ namespace LoanManagement.Controllers
 
             if (!input.Id.HasValue || input.Id.Value == default)
             {
-                await _loanAppService.CreateAsync(input);
+                input = await _loanAppService.CreateAsync(input);
             }
 
             await _loanAppService.UpdateAsync(input);

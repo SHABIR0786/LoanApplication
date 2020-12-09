@@ -1,9 +1,9 @@
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
-    public class Expense : FullAuditedEntity<long>
+    public class Expense : Entity<long>
     {
         public bool? IsLiveWithFamilySelectRent { get; set; }
         [Column(TypeName = "decimal(18,2)")]

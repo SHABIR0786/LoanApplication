@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class ConsentDetail : FullAuditedEntity<long>
+    public class ConsentDetail : Entity<long>
     {
         public bool? AgreeEConsent { get; set; }
         public string FirstName { get; set; }
