@@ -334,7 +334,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                             Amount = additionalIncome.Amount,
                             IncomeSourceId = additionalIncome.IncomeSourceId,
                             LoanApplicationId = additionalIncome.LoanApplicationId,
-                            BorrowerTypeId = additionalIncome.BorrowerTypeId
+                            BorrowerTypeId = additionalIncome.BorrowerTypeId,
+                            Id = additionalIncome.Id,
                         });
                     }
                 }
