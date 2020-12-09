@@ -12,6 +12,6 @@ export interface IBorrowerDeclarationModel {
   isUSCitizen?: boolean;
   isPermanentResidentSlien?: boolean;
   isIntendToOccupyThePropertyAsYourPrimary?: boolean;
-  isOwnershipInterestInPropertyLastThreeYears?: boolean;
+  isOwnershipInterestInPropertyInTheLastThreeYears?: boolean;
   declarationsSection?: string;
 }
