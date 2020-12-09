@@ -525,7 +525,8 @@ namespace LoanManagement.DatabaseServices.Implementations
                         {
                             viewModel.Declaration.BorrowerDemographic = new DemographicDto
                             {
-                                Ethnicity = new List<DemographicTypeDto>()
+                                Ethnicity = new List<DemographicTypeDto>(),
+                                Id = demographicsInformation.Id,
                             };
 
                             if (demographicsInformation.IsHispanicOrLatino.HasValue &&
