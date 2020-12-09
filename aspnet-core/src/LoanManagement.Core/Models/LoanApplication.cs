@@ -9,7 +9,7 @@ namespace LoanManagement.Models
         public long? LoanDetailId { get; set; }
         public virtual LoanDetail LoanDetail { get; set; }
 
-        public long? AdditionalDetailsId { get; set; }
+        public long? AdditionalDetailId { get; set; }
         public virtual AdditionalDetail AdditionalDetail { get; set; }
 
         public long? PersonalDetailId { get; set; }

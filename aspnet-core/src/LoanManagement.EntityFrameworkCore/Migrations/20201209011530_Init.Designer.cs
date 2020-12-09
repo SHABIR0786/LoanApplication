@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20201208221333_AddCoBorrowerIsMailingAddressSameAsResidential")]
-    partial class AddCoBorrowerIsMailingAddressSameAsResidential
+    [Migration("20201209011530_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1489,6 +1489,9 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<string>("NameOfIndividualsCoBorrowerOnTitle")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("NameOfIndividualsOnTitle")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -2126,9 +2129,6 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<long?>("AdditionalDetailId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("AdditionalDetailsId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("ConsentDetailId")
