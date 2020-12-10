@@ -217,12 +217,10 @@ export class LoanDetailsComponent implements OnInit, DoCheck, AfterViewInit {
     this._activatedRoute.queryParams.subscribe(async (params) => {
       const id = params["id"];
       if (id) {
-        await this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+        this._loanApplicationService.get(`Get?id=${id}`).subscribe(
           (response: Result<ILoanApplicationModel>) => {
             if (response.success) {
-              debugger;
               this.data = response.result.loanDetails;
-              this.form.value = response.result.loanDetails;
               console.log(this.loanApplication);
             }
           },
