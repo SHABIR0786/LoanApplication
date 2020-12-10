@@ -19,7 +19,7 @@ namespace LoanManagement.Models
         public string Address { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }
-        public int StateId { get; set; }
+        public int? StateId { get; set; }
         [StringLength(9)]
         public string ZipCode { get; set; }
 

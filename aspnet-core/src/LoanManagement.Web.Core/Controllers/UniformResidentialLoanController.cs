@@ -730,16 +730,35 @@ namespace LoanManagement.Controllers
                             (data.EmploymentIncome.CoBorrowerMonthlyIncome != null && data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.HasValue ? data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime.Value : 0)).ToString());
                 }
 
+                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 1)
+                {
+                    if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].StateId.HasValue)
+                    {
+                        pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 3", data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].Address + " " +
+                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].City + " " +
+                        StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].StateId.Value)
+                        );
 
+                    }
+                    pdfFormFields.SetField("Assets Acct no 3",
+                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].AccountNumber
+                                        );
+
+                    pdfFormFields.SetField("Assets Acct no 3 Balance 4",
+                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : ""
+                    );
+                }
 
                 if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 2)
                 {
-                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 4",
+                    if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId.HasValue)
+                    {
+                        pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 4",
                      data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
-                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
+                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId.Value)
                     );
-
+                    }
                     pdfFormFields.SetField("Assets Acct no 4",
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber
                     );
@@ -749,30 +768,15 @@ namespace LoanManagement.Controllers
                     );
                 }
 
-                if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).Count() >= 1)
-                {
-
-                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 3", data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].Address + " " +
-                    data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].City + " " +
-                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId)
-                    );
-
-                    pdfFormFields.SetField("Assets Acct no 3",
-                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].AccountNumber
-                                        );
-
-                    pdfFormFields.SetField("Assets Acct no 3 Balance 4",
-                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].CashValue.HasValue ? data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].CashValue.Value.ToString() : ""
-                    );
-                }
-
                 if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 2)
                 {
-                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 2", data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].Address + " " +
+                    if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[1].StateId.HasValue)
+                    {
+                        pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union 2", data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].Address + " " +
                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].City + " " +
-                       StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId)
+                       StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].StateId.Value)
                        );
-
+                    }
                     pdfFormFields.SetField("Assets Acct no 2",
                                        data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[1].AccountNumber
                                        );
@@ -784,11 +788,14 @@ namespace LoanManagement.Controllers
 
                 if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).Count() >= 1)
                 {
-                    pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union",
+                    if (data.ManualAssetEntries.Where(i => i.AssetTypeId == 3).ToList()[0].StateId.HasValue)
+                    {
+                        pdfFormFields.SetField("Assets Name and Adress of Bank, S&L, Or Credit Union",
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].Address + " " +
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].City + " " +
-                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].StateId)
+                    StateData.GetStateById(data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].StateId.Value)
                     );
+                    }
 
                     pdfFormFields.SetField("Assets Acct no 1",
                     data.ManualAssetEntries.Where(i => i.AssetTypeId == 11).ToList()[0].AccountNumber
