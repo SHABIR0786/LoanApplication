@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class Declaration : FullAuditedEntity<long>
+    public class Declaration : Entity<long>
     {
         public bool? IsOutstandingJudgmentsAgainstYou { get; set; }
         public bool? IsDeclaredBankrupt { get; set; }

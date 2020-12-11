@@ -5,7 +5,9 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Enums;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,7 +40,44 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-
+        public async Task<List<Declaration>> GetAllDeclrationByLoanApplicationIdAsync(long loanApplicationId)
+        {
+            return await _repository.GetAll()
+                .Where(i => i.LoanApplicationId == loanApplicationId)
+                .Select(i => new Declaration
+                {
+                    IsOutstandingJudgmentsAgainstYou = i.IsOutstandingJudgmentsAgainstYou,
+                    IsDeclaredBankrupt = i.IsDeclaredBankrupt,
+                    IsPropertyForeClosedUponOrGivenTitle = i.IsPropertyForeClosedUponOrGivenTitle,
+                    IsPartyToLawsuit = i.IsPartyToLawsuit,
+                    IsObligatedOnAnyLoanWhichResultedForeclosure = i.IsObligatedOnAnyLoanWhichResultedForeclosure,
+                    IsPresentlyDelinquent = i.IsPresentlyDelinquent,
+                    IsObligatedToPayAlimonyChildSupport = i.IsObligatedToPayAlimonyChildSupport,
+                    IsAnyPartOfTheDownPayment = i.IsAnyPartOfTheDownPayment,
+                    IsCoMakerOrEndorser = i.IsCoMakerOrEndorser,
+                    IsUSCitizen = i.IsUSCitizen,
+                    IsPermanentResidentSlien = i.IsPermanentResidentSlien,
+                    IsIntendToOccupyThePropertyAsYourPrimary = i.IsIntendToOccupyThePropertyAsYourPrimary,
+                    IsOwnershipInterestInPropertyInTheLastThreeYears = i.IsOwnershipInterestInPropertyInTheLastThreeYears,
+                    DeclarationsSection = i.DeclarationsSection,
+                    LoanApplicationId = i.LoanApplicationId,
+                    BorrowerTypeId = i.BorrowerTypeId,
+                    Id = i.Id
+                })
+                .ToListAsync();
+        }
+        public async Task<List<DeclarationBorrowereDemographicsInformation>> GetAllDemographicInformationByLoanApplicationIdAsync(long loanApplicationId)
+        {
+            return await _repository.GetAll()
+                .Where(i => i.LoanApplicationId == loanApplicationId)
+                .Select(i => new DeclarationBorrowereDemographicsInformation
+                {
+                    BorrowerTypeId = i.BorrowerTypeId,
+                    LoanApplicationId = i.LoanApplicationId,
+                    Id = i.Id
+                })
+                .ToListAsync();
+        }
         public async Task<DeclarationDto> CreateAsync(DeclarationDto input)
         {
             try

@@ -7,6 +7,9 @@ import { NgWizardConfig, NgWizardService, THEME } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-personal-information",
@@ -23,7 +26,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
     coBorrowerResidentialAddress: {},
     coBorrowerMailingAddress: {},
-
     coBorrowerPreviousAddresses: [],
   };
 
@@ -47,7 +49,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   constructor(
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
-    private _route: Router
+    private _route: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   get residentialAddressForm(): FormGroup {
@@ -63,6 +67,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   }
 
   addPreviousAddress() {
+    debugger;
     this.previousAddressesFormArray.push(this.initAddressForm({}, 3, true));
   }
 
@@ -82,10 +87,32 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     ] as FormGroup;
   }
 
-  ngOnInit(): void {
-    this.data = this._dataService.loanApplication.personalInformation;
+  removeaddPreviousAddressForm($event, index) {
+    if ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+    }
+    this.previousAddressesFormArray.removeAt(index);
+  }
 
-    this.initForm();
+  removeCoBorrowerPreviousAddressForm($event, index) {
+    if ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+    }
+    this.coBorrowerPreviousAddressesFormArray.removeAt(index);
+  }
+
+  async ngOnInit(): Promise<void> {
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = this._dataService.loanApplication.personalInformation;
+    }
+
+    await this.initForm();
     this.loadStates();
 
     this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
@@ -179,7 +206,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     ];
   }
 
-  initForm() {
+  async initForm() {
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       isApplyingWithCoBorrower: new FormControl(
@@ -197,6 +224,9 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       coBorrower: this.initBorrowerForm(this.data.coBorrower || {}),
       isMailingAddressSameAsResidential: new FormControl(
         this.data.isMailingAddressSameAsResidential
+      ),
+      coBorrowerResidentialAddressSameAsBorrowerResidential: new FormControl(
+        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential
       ),
       residentialAddress: this.initAddressForm(
         this.data.residentialAddress || {},
@@ -216,7 +246,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       coBorrowerResidentialAddress: this.initAddressForm(
         this.data.coBorrowerResidentialAddress || {},
         1,
-        true
+        false
       ),
       coBorrowerMailingAddress: this.initAddressForm(
         this.data.coBorrowerMailingAddress || {},
@@ -226,6 +256,24 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       coBorrowerPreviousAddresses: new FormArray([]),
     });
 
+    // this._activatedRoute.queryParams.subscribe(async (params) => {
+    //   const id = params["id"];
+    //   if (id) {
+    //     this._loanApplicationService.get(`Get?id=${id}`).subscribe(
+    //       (response: Result<ILoanApplicationModel>) => {
+    //         if (response.success) {
+    //           this._dataService.loanApplication = response.result;
+    //           this.data = response.result.personalInformation;
+    //           this.form.value = response.result.personalInformation;
+    //           this.form.patchValue(this.data);
+    //         }
+    //       },
+    //       (error) => {
+    //         console.log(error);
+    //       }
+    //     );
+    //   }
+    // });
     this.form
       .get("isApplyingWithCoBorrower")
       .valueChanges.subscribe((isApplyingWithCoBorrower) => {
@@ -249,7 +297,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             this.initAddressForm(
               this.data.coBorrowerResidentialAddress,
               1,
-              true
+              false
             )
           );
           this.form.addControl(
@@ -277,6 +325,31 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       });
 
     this.form
+      .get("residentialAddress")
+      .valueChanges.subscribe((residentialAddress) => {
+        if (residentialAddress.years && residentialAddress.years == 1) {
+          if (this.previousAddressesFormArray.length === 0)
+            this.addPreviousAddress();
+        } else {
+          this.removeaddPreviousAddressForm(null, 0);
+        }
+      });
+
+    this.form
+      .get("coBorrowerResidentialAddress")
+      .valueChanges.subscribe((coBorrowerResidentialAddress) => {
+        if (
+          coBorrowerResidentialAddress.years &&
+          coBorrowerResidentialAddress.years == 1
+        ) {
+          if (this.coBorrowerPreviousAddressesFormArray.length === 0)
+            this.addCoBorrowerPreviousAddress();
+        } else {
+          this.removeCoBorrowerPreviousAddressForm(null, 0);
+        }
+      });
+
+    this.form
       .get("isMailingAddressSameAsResidential")
       .valueChanges.subscribe((isMailingAddressSameAsResidential) => {
         if (isMailingAddressSameAsResidential) {
@@ -289,6 +362,48 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
           );
         }
       });
+
+    this.form
+      .get("coBorrowerResidentialAddressSameAsBorrowerResidential")
+      .valueChanges.subscribe(
+        (coBorrowerResidentialAddressSameAsBorrowerResidential) => {
+          debugger;
+          if (coBorrowerResidentialAddressSameAsBorrowerResidential) {
+            this.data.coBorrowerResidentialAddress.addressLine1 = null;
+            this.data.coBorrowerResidentialAddress.addressLine2 = null;
+            this.data.coBorrowerResidentialAddress.city = null;
+            this.data.coBorrowerResidentialAddress.stateId = null;
+            this.data.coBorrowerResidentialAddress.zipCode = null;
+          } else {
+            if (
+              coBorrowerResidentialAddressSameAsBorrowerResidential === false
+            ) {
+              this.form
+                .get("coBorrowerResidentialAddress.addressLine1")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.city")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.stateId")
+                .setValidators([Validators.required]);
+              this.form
+                .get("coBorrowerResidentialAddress.zipCode")
+                .setValidators([Validators.required]);
+            }
+            // this.data.coBorrowerResidentialAddress =
+            //   this.data.coBorrowerResidentialAddress || {};
+            // this.form.addControl(
+            //   "coBorrowerResidentialAddress",
+            //   this.initAddressForm(
+            //     this.data.coBorrowerResidentialAddress,
+            //     2,
+            //     false
+            //   )
+            // );
+          }
+        }
+      );
 
     this.form
       .get("coBorrowerIsMailingAddressSameAsResidential")
@@ -308,7 +423,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
   initBorrowerForm(data: IBorrowerModel = {}) {
     return new FormGroup({
-      //id: new FormControl(data.id),
+      id: new FormControl(data.id),
       firstName: new FormControl(data.firstName, [Validators.required]),
       middleInitial: new FormControl(data.middleInitial),
       lastName: new FormControl(data.lastName, [Validators.required]),
@@ -348,11 +463,8 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         data.zipCode,
         required ? [Validators.required] : []
       ),
-      totalYears: new FormControl(
-        data.totalYears,
-        required ? [Validators.required] : []
-      ),
-      totalMonths: new FormControl(data.totalMonths),
+      years: new FormControl(data.years, required ? [Validators.required] : []),
+      months: new FormControl(data.months),
     });
   }
 
@@ -364,29 +476,98 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
     return index;
   }
 
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.personalInformation;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   proceedToNext(event?: string, stepIndex?: number) {
+    this.submitForm();
     if (event === "wizardStep") {
       let fields = [];
       switch (stepIndex) {
         case 1:
-          fields = ["isApplyingWithCoBorrower"];
-          const hasError = fields.some(
-            (field) => this.form.get(field) && !this.form.get(field).valid
-          );
-
-          if (hasError) {
-            fields.forEach(
-              (field) =>
-                this.form.get(field) && this.form.get(field).markAsTouched()
+          {
+            fields = ["isApplyingWithCoBorrower"];
+            const hasError = fields.some(
+              (field) => this.form.get(field) && !this.form.get(field).valid
             );
-          } else {
-            this._ngWizardService.next();
+
+            if (hasError) {
+              fields.forEach(
+                (field) =>
+                  this.form.get(field) && this.form.get(field).markAsTouched()
+              );
+            } else {
+              this._ngWizardService.next();
+            }
           }
+          break;
+        // fields = ["isApplyingWithCoBorrower"];
+        // const hasError = fields.some(
+        //   (field) => this.form.get(field) && !this.form.get(field).valid
+        // );
+
+        // if (hasError) {
+        //   fields.forEach(
+        //     (field) =>
+        //       this.form.get(field) && this.form.get(field).markAsTouched()
+        //   );
+        // }
+        case 2:
+          this._ngWizardService.next();
           break;
       }
     } else {
       if (this.form.valid) {
-        this._route.navigate(["app/expense"]);
+        debugger;
+        this._activatedRoute.queryParams.subscribe(async (params) => {
+          const id = params["id"];
+          if (id) {
+            this._route.navigate(["app/expense"], {
+              queryParams: {
+                id: id,
+              },
+            });
+          } else {
+            this._route.navigate(["app/expense"]);
+          }
+        });
       } else {
         this.form.markAllAsTouched();
       }
@@ -394,10 +575,22 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   }
 
   proceedToPrevious(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {
-      this._route.navigate(["app/loan-detail"]);
+      this._activatedRoute.queryParams.subscribe(async (params) => {
+        const id = params["id"];
+        if (id) {
+          this._route.navigate(["app/loan-detail"], {
+            queryParams: {
+              id: id,
+            },
+          });
+        } else {
+          this._route.navigate(["app/loan-detail"]);
+        }
+      });
     }
   }
 }

@@ -1,10 +1,10 @@
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class AdditionalDetail : FullAuditedEntity<long>
+    public class AdditionalDetail : Entity<long>
     {
         public string NameOfIndividualsOnTitle { get; set; }
-
+        public string NameOfIndividualsCoBorrowerOnTitle { get; set; }
     }
 }

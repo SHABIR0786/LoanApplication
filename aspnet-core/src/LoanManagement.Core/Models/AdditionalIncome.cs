@@ -1,9 +1,9 @@
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
-    public class AdditionalIncome : FullAuditedEntity<long>
+    public class AdditionalIncome : Entity<long>
     {
         [Column(TypeName = "decimal(18,2)")]
         public decimal? Amount { get; set; }

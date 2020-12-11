@@ -33,6 +33,9 @@ namespace LoanManagement
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
             Configuration.Settings.Providers.Add<AppSettingProvider>();
+            Configuration.Auditing.IsEnabled = false;
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+            Configuration.MultiTenancy.IsEnabled = false;
         }
 
         public override void Initialize()

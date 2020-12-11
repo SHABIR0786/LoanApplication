@@ -4,6 +4,9 @@ using Abp.Domain.Repositories;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations
@@ -42,6 +45,21 @@ namespace LoanManagement.DatabaseServices.Implementations
         public Task<PagedResultDto<AdditionalIncomeDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<List<AdditionalIncome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        {
+            return await _repository.GetAll()
+                .Where(i => i.LoanApplicationId == loanApplicationId)
+                .Select(i => new AdditionalIncome
+                {
+                    Amount = i.Amount,
+                    BorrowerTypeId = i.BorrowerTypeId,
+                    IncomeSourceId = i.IncomeSourceId,
+                    LoanApplicationId = i.LoanApplicationId,
+                    Id = i.Id
+                })
+                .ToListAsync();
         }
 
         public Task<AdditionalIncomeDto> GetAsync(EntityDto<long?> input)

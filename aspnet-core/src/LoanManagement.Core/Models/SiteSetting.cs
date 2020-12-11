@@ -1,8 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class SiteSetting : FullAuditedEntity<int>
+    public class SiteSetting : Entity<int>
     {
         public string PageIdentifier { get; set; }
         public string PageName { get; set; }

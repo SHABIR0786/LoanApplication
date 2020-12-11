@@ -1,9 +1,13 @@
-﻿using Abp.Application.Services;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Abp.Application.Services;
+using LoanManagement.Models;
 using LoanManagement.ViewModels;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
     public interface IBorrowerEmploymentInformationAppService : IAsyncCrudAppService<BorrowerEmploymentInformationDto, long?, PagedLoanApplicationResultRequestDto, BorrowerEmploymentInformationDto, BorrowerEmploymentInformationDto>
     {
+        Task<List<BorrowerEmploymentInformation>> GetAllByLoanApplicationIdAsync(long loanApplicationId);
     }
 }

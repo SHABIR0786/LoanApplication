@@ -10,6 +10,8 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { Router } from "@angular/router";
 import { IPersonalInformationModel } from "@app/interfaces/IPersonalInformationModel";
 import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-econsent",
@@ -42,14 +44,21 @@ export class EconsentComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.eConsent;
-    this.borrower = this._dataService.loanApplication.personalInformation.borrower;
-    this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
-    this.personalInformation = this._dataService.loanApplication.personalInformation;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      this.data = this._dataService.loanApplication.eConsent;
+      this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+      this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+      this.personalInformation = this._dataService.loanApplication.personalInformation;
+    }
 
     this.data.firstName = this.borrower.firstName;
     this.data.lastName = this.borrower.lastName;
@@ -108,7 +117,56 @@ export class EconsentComponent implements OnInit, DoCheck {
     });
   }
 
+  onChange(event, key) {
+    this.coBorrower.lastName = this.data.CoborrowerLastName;
+    this.coBorrower.firstName = this.data.CoborrowerFirstName;
+    this.borrower.lastName = this.data.lastName;
+    this.borrower.firstName = this.data.firstName;
+  }
+
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.eConsent;
+          this.borrower = this._dataService.loanApplication.personalInformation.borrower;
+          this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
+          this.personalInformation = this._dataService.loanApplication.personalInformation;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
   proceedToNext(event?: string, stepIndex?: number) {
+    this.submitForm();
     debugger;
     if (event === "wizardStep") {
       this._ngWizardService.next();
@@ -132,13 +190,8 @@ export class EconsentComponent implements OnInit, DoCheck {
     }
   }
 
-  onChange(event, key) {
-    this.coBorrower.lastName = this.data.CoborrowerLastName;
-    this.coBorrower.firstName = this.data.CoborrowerFirstName;
-    this.borrower.lastName = this.data.lastName;
-    this.borrower.firstName = this.data.firstName;
-  }
   proceedToPrevious(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {

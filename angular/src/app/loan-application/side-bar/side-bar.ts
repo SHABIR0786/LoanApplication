@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, Injector, OnInit } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Injector,
+  OnInit,
+} from "@angular/core";
 import {
   NavigationEnd,
   PRIMARY_OUTLET,
@@ -15,6 +21,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "loan-side-bar",
   templateUrl: "./side-bar.html",
   styleUrls: ["./side-bar.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoanSideBar extends AppComponentBase implements OnInit {
   menuItems: MenuItem[];
