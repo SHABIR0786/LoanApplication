@@ -1,12 +1,13 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
-import { NgWizardService } from "ng-wizard";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { IAssetModel } from "../../interfaces/IAssetModel";
 import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
 import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-assets",
@@ -27,10 +28,10 @@ export class AssetsComponent implements OnInit, DoCheck {
   isApplyingWithCoBorrower: boolean = false;
 
   constructor(
-    private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   get manualAssetEntries(): FormArray {
@@ -38,19 +39,37 @@ export class AssetsComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.manualAssetEntries;
-    const loanApplication = this._dataService.loanApplication;
-    this.isApplyingWithCoBorrower =
-      loanApplication.personalInformation &&
-      loanApplication.personalInformation.isApplyingWithCoBorrower;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
 
-    if (loanApplication.manualAssetEntries) {
-      if (!this.isApplyingWithCoBorrower) {
-        loanApplication.manualAssetEntries.forEach((element) => {
-          element.borrowerTypeId = AppConsts.typeBorrower;
-        });
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+
+      this.data = this._dataService.loanApplication.manualAssetEntries;
+      const loanApplication = this._dataService.loanApplication;
+      this.isApplyingWithCoBorrower =
+        loanApplication.personalInformation &&
+        loanApplication.personalInformation.isApplyingWithCoBorrower;
+
+      if (loanApplication.manualAssetEntries) {
+        if (!this.isApplyingWithCoBorrower) {
+          loanApplication.manualAssetEntries.forEach((element) => {
+            element.borrowerTypeId = AppConsts.typeBorrower;
+          });
+        }
       }
+
+      this._dataService.formData.subscribe(
+        (formData: ILoanApplicationModel) => {
+          if (formData && formData.manualAssetEntries) {
+            this.form.patchValue({
+              manualAssetEntries: formData.manualAssetEntries,
+            });
+          }
+        }
+      );
     }
+
     this.initForm();
     this.loadStates();
     this.loadAssetTypes();
@@ -58,14 +77,6 @@ export class AssetsComponent implements OnInit, DoCheck {
     this.loadPropertyStatuses();
     this.loadPropertyIsUsedAs();
     this.loadPropertyTypes();
-
-    this._dataService.formData.subscribe((formData: ILoanApplicationModel) => {
-      if (formData && formData.manualAssetEntries) {
-        this.form.patchValue({
-          manualAssetEntries: formData.manualAssetEntries,
-        });
-      }
-    });
   }
 
   ngDoCheck() {
@@ -80,7 +91,9 @@ export class AssetsComponent implements OnInit, DoCheck {
   initForm() {
     this.form = new FormGroup({
       manualAssetEntries: new FormArray(
-        this.data.map((d) => this.initAssetForm(d || {}))
+        this.data && this.data.length > 0
+          ? this.data.map((d) => this.initAssetForm(d || {}))
+          : []
       ),
     });
   }
@@ -336,7 +349,48 @@ export class AssetsComponent implements OnInit, DoCheck {
     return index;
   }
 
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   proceedToNext() {
+    this.submitForm();
     this._activatedRoute.queryParams.subscribe(async (params) => {
       if (this.form.valid) {
         const id = params["id"];
@@ -356,6 +410,7 @@ export class AssetsComponent implements OnInit, DoCheck {
   }
 
   proceedToPrevious() {
+    this.submitForm();
     this._activatedRoute.queryParams.subscribe(async (params) => {
       if (this.form.valid) {
         const id = params["id"];

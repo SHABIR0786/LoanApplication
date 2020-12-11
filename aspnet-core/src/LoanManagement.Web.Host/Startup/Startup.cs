@@ -23,7 +23,7 @@ namespace LoanManagement.Web.Host.Startup
 {
     public class Startup
     {
-        private const string _defaultCorsPolicyName = "localhost";
+        public const string _defaultCorsPolicyName = "localhost";
 
         private const string _apiVersion = "v1";
 
@@ -49,7 +49,6 @@ namespace LoanManagement.Web.Host.Startup
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
             });
-
 
 
             IdentityRegistrar.Register(services);
@@ -111,9 +110,14 @@ namespace LoanManagement.Web.Host.Startup
             // Configure Abp and Dependency Injection
             return services.AddAbp<LoanManagementWebHostModule>(
                 // Configure Log4Net logging
-                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
-                )
+                options =>
+                {
+                    options.IocManager.IocContainer
+                        .AddFacility<LoggingFacility>(loggingFacility =>
+                            loggingFacility
+                                .UseAbpLog4Net()
+                                .WithConfig("log4net.config"));
+                }
             );
         }
 
@@ -121,16 +125,15 @@ namespace LoanManagement.Web.Host.Startup
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
-            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
-
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
+
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
-
 
             app.UseEndpoints(endpoints =>
             {

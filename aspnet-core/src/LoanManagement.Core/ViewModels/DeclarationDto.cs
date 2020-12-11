@@ -5,7 +5,6 @@ namespace LoanManagement.ViewModels
 {
     public class DeclarationDto : EntityDto<long?>
     {
-        [JsonIgnore]
         public new long? Id { get; set; }
         public long LoanApplicationId { get; set; }
         public DeclarationDetailDto BorrowerDeclaration { get; set; }

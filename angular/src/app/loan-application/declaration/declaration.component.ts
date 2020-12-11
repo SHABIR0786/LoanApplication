@@ -8,6 +8,8 @@ import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { DataService } from "../../services/data.service";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
+import { LoanApplicationService } from "../../services/loan-application.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-declaration",
@@ -309,15 +311,28 @@ export class DeclarationComponent implements OnInit, DoCheck {
     private _ngWizardService: NgWizardService,
     private _dataService: DataService,
     private _route: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loanApplicationService: LoanApplicationService
   ) {}
 
   ngOnInit(): void {
-    this.data = this._dataService.loanApplication.declaration;
-    const loanApplication = this._dataService.loanApplication;
-    this.isApplyingWithCoBorrower =
-      loanApplication.personalInformation &&
-      loanApplication.personalInformation.isApplyingWithCoBorrower;
+    const response: Result<ILoanApplicationModel> = this._activatedRoute
+      .snapshot.data.loanApp;
+
+    if (response && response.success) {
+      this._dataService.loanApplication = response.result;
+      const borrowerDeclaration = this._dataService.loanApplication.declaration
+        .borrowerDeclaration;
+      if (borrowerDeclaration) {
+        if (borrowerDeclaration.declarationsSection)
+          borrowerDeclaration.declarationsSection = borrowerDeclaration.declarationsSection.toString();
+      }
+      this.data = this._dataService.loanApplication.declaration;
+      const loanApplication = this._dataService.loanApplication;
+      this.isApplyingWithCoBorrower =
+        loanApplication.personalInformation &&
+        loanApplication.personalInformation.isApplyingWithCoBorrower;
+    }
 
     this.initForm();
 
@@ -334,7 +349,6 @@ export class DeclarationComponent implements OnInit, DoCheck {
   }
 
   initForm() {
-    debugger;
     if (this.data.borrowerDeclaration != null)
       this.form = new FormGroup({
         id: new FormControl(this.data.borrowerDeclaration.id),
@@ -419,7 +433,6 @@ export class DeclarationComponent implements OnInit, DoCheck {
         });
       }
     }
-    debugger;
     if (this.isApplyingWithCoBorrower) {
       if (
         this.data.coBorrowerDeclaration == undefined ||
@@ -449,6 +462,7 @@ export class DeclarationComponent implements OnInit, DoCheck {
   initDeclarationForm(
     borrowerDeclaration: IBorrowerDeclarationModel
   ): FormGroup {
+    if (!borrowerDeclaration) borrowerDeclaration = {};
     return new FormGroup({
       id: new FormControl(borrowerDeclaration.id),
       isOutstandingJudgmentsAgainstYou: new FormControl(
@@ -483,8 +497,8 @@ export class DeclarationComponent implements OnInit, DoCheck {
       isIntendToOccupyThePropertyAsYourPrimary: new FormControl(
         borrowerDeclaration.isIntendToOccupyThePropertyAsYourPrimary
       ),
-      isOwnershipInterestInPropertyLastThreeYears: new FormControl(
-        borrowerDeclaration.isOwnershipInterestInPropertyLastThreeYears
+      isOwnershipInterestInPropertyInTheLastThreeYears: new FormControl(
+        borrowerDeclaration.isOwnershipInterestInPropertyInTheLastThreeYears
       ),
       declarationsSection: new FormControl(
         borrowerDeclaration.declarationsSection
@@ -535,7 +549,53 @@ export class DeclarationComponent implements OnInit, DoCheck {
     this.form.get(`${borrowerType}Demographic`).get("sex").setValue(values);
   }
 
+  prepareFormData(response) {
+    for (const key in response) {
+      if (response.hasOwnProperty(key)) {
+        response[key] = response[key] || {};
+      }
+    }
+    return response;
+  }
+
+  sanitizeFormData(formData) {
+    formData = Object.assign({}, formData);
+
+    for (const key in formData) {
+      if (key && formData.hasOwnProperty(key) && formData[key]) {
+        if (
+          typeof formData[key] === "object" &&
+          Object.keys(formData[key]).length === 0
+        ) {
+          formData[key] = undefined;
+        }
+      }
+    }
+    return formData;
+  }
+
+  submitForm() {
+    const formData = this.sanitizeFormData(this._dataService.loanApplication);
+
+    this._loanApplicationService
+      .post<Result<ILoanApplicationModel>>("Add", formData)
+      .subscribe(
+        (response) => {
+          this._dataService.loanApplication = response.result;
+          this.data = this._dataService.loanApplication.declaration;
+          const loanApplication = this._dataService.loanApplication;
+          this.isApplyingWithCoBorrower =
+            loanApplication.personalInformation &&
+            loanApplication.personalInformation.isApplyingWithCoBorrower;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   proceedToNext(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {
@@ -557,7 +617,9 @@ export class DeclarationComponent implements OnInit, DoCheck {
       });
     }
   }
+
   proceedToPrevious(event?: string) {
+    this.submitForm();
     if (event === "wizardStep") {
       this._ngWizardService.previous();
     } else {

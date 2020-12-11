@@ -1,11 +1,11 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LoanManagement.Models
 {
-    public class ManualAssetEntry : FullAuditedEntity<long>
+    public class ManualAssetEntry : Entity<long>
     {
         public ManualAssetEntry()
         {
