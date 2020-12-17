@@ -8,8 +8,8 @@
 
   <!-- FOUR CARD SECTION START -->
 
-  <div class="container content-row pr-0 pl-4">
-    <div class="row">
+  <div class="pr-0 pl-4" style="margin-left: 7.2rem; margin-right: 7.2rem">
+    <div class="row h-100">
       <div class="col" style="top: -64px">
         <div
           class="card m-o h-100"
@@ -194,6 +194,7 @@
       <div class="row p-0 m-0">
         <div
           class="col-4 img-fluid image-spacer2"
+          style="margin-bottom: 0%"
           [style.background]="[data.FirstBlog.background]"
         >
           <div
@@ -201,15 +202,19 @@
             style="
               background: #091a52 0% 0% no-repeat padding-box;
               opacity: 0.8;
-              margin-top: 27rem;
-              margin-right: 30px;
               background-size: 100%;
+              margin-top: 600px;
               padding: unset;
             "
           >
             <div
-              class="col-11"
-              style="margin: 0px 0px 0px 5px; padding: 30px; display: block"
+              class="col-12 container"
+              style="
+                margin: 0px 0px 0px 0px;
+                padding: 70px;
+                padding-right: 50px;
+                display: block;
+              "
             >
               <p class="font-weight-bold ml-3 text-white Avenir-black">
                 {{ data.FirstBlog.Header }}
@@ -238,9 +243,10 @@
               background: #f47741 0% 0% no-repeat padding-box;
               opacity: 0.8;
               background-size: 100%;
-              margin-top: 10.4rem;
+              margin-top: 200px;
+              margin-bottom: 0px;
 
-              padding: unset;
+              padding: 35px;
             "
           >
             <div class="row">
@@ -272,7 +278,7 @@
                 class="img-fluid"
                 [src]="data.ThirdBlog.FilePath"
                 alt=""
-                style="height: 220px; width: auto; margin-top: 30px"
+                style="height: 260px; width: auto; margin-top: 30px"
               />
               <h5
                 class="font-weight-bold ml-3 text-dark-blue mt-3 Avenir-black"
@@ -295,7 +301,7 @@
                 class="img-fluid"
                 [src]="data.ForthBlog.FilePath"
                 alt=""
-                style="height: 220px; width: auto; margin-top: 30px"
+                style="height: 260px; width: auto; margin-top: 30px"
               />
               <h5
                 class="font-weight-bold ml-3 text-dark-blue mt-3 Avenir-black"
@@ -395,7 +401,10 @@
         >
           <div class="row bg-dark-blue">
             <div class="col-5 bg-dark-blue"></div>
-            <div class="col-5 bg-dark-blue container float-left">
+            <div
+              class="col-5 bg-dark-blue container float-left"
+              style="margin-left: 200px"
+            >
               <p
                 class="text-orange font-weight-bold mt-5 Avenir-black"
                 style="letter-spacing: 3.2px; text-transform: uppercase"
@@ -467,9 +476,12 @@
             </h5>
           </div>
           <div class="mt-6 ml-5">
-            <span class="d-inline-block bg-orange" style="width: 7%">
-              <img src="assets/img/img1.jpg" /> </span
-            >&nbsp;
+            <span
+              class="d-inline-block bg-orange"
+              style="width: 7%; height: 2.125rem"
+            >
+              <img src="assets/img/img1.jpg" />
+            </span>
 
             <h5
               class="font-weight-bold d-inline ml-3 text-dark-blue Avenir-black"
@@ -479,7 +491,10 @@
           </div>
 
           <div class="mt-6 ml-5">
-            <span class="d-inline-block bg-orange" style="width: 7%">
+            <span
+              class="d-inline-block bg-orange"
+              style="width: 7%; height: 2.125rem"
+            >
               <img src="assets/img/img2.jpg" /> </span
             >&nbsp;
 
@@ -491,7 +506,10 @@
           </div>
 
           <div class="mt-6 ml-5">
-            <span class="d-inline-block bg-orange" style="width: 7%">
+            <span
+              class="d-inline-block bg-orange"
+              style="width: 7%; height: 2.125rem"
+            >
               <img src="assets/img/img3.jpg" /> </span
             >&nbsp;
 
@@ -503,7 +521,10 @@
           </div>
 
           <div class="mt-6 ml-5">
-            <span class="d-inline-block bg-orange" style="width: 7%">
+            <span
+              class="d-inline-block bg-orange"
+              style="width: 7%; height: 2.125rem"
+            >
               <img src="assets/img/img4.jpg" /> </span
             >&nbsp;
 
