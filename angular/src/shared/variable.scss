@@ -61,3 +61,7 @@ $spacers: map-merge(
     url("/assets/fonts/Avenir-Font/fonts/AEH.ttf") format("truetype");
 }
 $font-family-base: "Avenir-Medium", sans-serif;
+
+app-header {
+  height: 10.4px;
+}

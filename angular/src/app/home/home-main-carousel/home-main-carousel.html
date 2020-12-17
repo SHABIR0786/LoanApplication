@@ -16,22 +16,20 @@
               class="img-fluid ml-3 mb-3 i-circle d-block"
               src="assets/img/facebook.svg"
               alt="facebook"
-            /><br />
+            />
             <img
               class="img-fluid ml-3 mb-3 i-circle d-block"
               src="assets/img/twitter-2.svg"
               alt="twitter"
-            /><br />
+            />
             <i
               class="fab fa-instagram img-fluid ml-3 mb-3 i-circle text-white d-block"
-            ></i
-            ><br />
+            ></i>
             <img
               class="img-fluid ml-3 mb-3 i-circle d-block"
               src="assets/img/pinterest.svg"
               alt="pinterest"
             />
-            <br />
             <img
               class="img-fluid ml-3 mb-3 i-circle d-block"
               src="assets/img/youtube-2.svg"
@@ -55,23 +53,33 @@
           </p>
         </div>
         <div class="col-11 mt-5">
-          <h1
-            class="font-weight-bold text-white Avenir-black"
-            style="
-              letter-spacing: 1.51px;
-              text-shadow: 0px 3px 6px #00000029;
-              font-size: 70px;
-              line-height: 1.5;
-            "
-          >
-            {{item.Header}}
-          </h1>
+          <div class="border-left border-orange">
+            <h1
+              class="font-weight-bold text-white Avenir-black"
+              style="
+                letter-spacing: 1.51px;
+                text-shadow: 0px 3px 6px #00000029;
+                font-size: 70px;
+                line-height: 1.5;
+                box-sizing: border-box;
+                margin-left: 0.5rem;
+                overflow-wrap: break-word;
+                width: 46rem;
+              "
+            >
+              {{item.Header}}
+            </h1>
+          </div>
           <h5
             class="text-white mb-5 mt-4 Avenir-medium"
             style="
               letter-spacing: 0px;
               text-shadow: 0px 3px 6px #00000029;
               font: normal normal medium 26px/35px;
+              overflow-wrap: break-word;
+              width: 46rem;
+              box-sizing: border-box;
+              margin-left: 0.5rem;
             "
           >
             {{item.SubHeader}}
@@ -79,13 +87,13 @@
           <div class="mt-5" style="text-transform: uppercase">
             <button
               type="button"
-              class="btn btn-light-blue text-white Avenir-heavy"
+              class="btn btn-light-blue text-white Avenir-heavy px-3 py-2"
             >
               BUYING A HOME
             </button>
             <button
               type="button"
-              class="btn btn-orange text-white d-inline ml-4 Avenir-heavy"
+              class="btn btn-orange text-white d-inline ml-4 Avenir-heavy px-3 py-2"
             >
               REFINANCE <i class="fas fa-long-arrow-alt-right"></i>
             </button>
