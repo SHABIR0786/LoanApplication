@@ -676,12 +676,12 @@ namespace LoanManagement.Controllers
                     if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.Value > now.AddYears(-Years)) Years--;
                     pdfFormFields.SetField("Co-Borrower Years on the job", Years.ToString());
 
-                    pdfFormFields.SetField("Co-Borrower Name and Address of Employer", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EmployerName + " " +
-                         data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Address1 + " " +
-                        data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City + " "
-                            + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
-                          + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.HasValue ? data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.Value.ToString() : "")
-                          );
+                    //pdfFormFields.SetField("Co-Borrower Name and Address of Employer", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EmployerName + " " +
+                    //     data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Address1 + " " +
+                    //    data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City + " "
+                    //        + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.HasValue ? StateData.GetStateById(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId.Value) : "") + " "
+                    //      + (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.HasValue ? data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.Value.ToString() : "")
+                    //      );
                 }
 
                 if (data.EmploymentIncome.BorrowerEmploymentInfo.Count >= 3)
