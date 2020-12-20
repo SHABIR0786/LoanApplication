@@ -1,3 +1,8 @@
+html,
+body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
 .label {
   text-align: left !important;
   font: normal normal medium 13px/18px Avenir !important;
@@ -6,7 +11,6 @@
   opacity: 1 !important;
   font-size: small !important;
 }
-
 input {
   border: 1px solid #545454;
   border-radius: 6px;
