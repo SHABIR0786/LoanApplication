@@ -74,5 +74,6 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
       });
 
     this.loadHowDoYouWantToBorrows();
+    this.loadMortgagePurposes();
   }
 }
