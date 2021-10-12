@@ -64,6 +64,22 @@ import { LoanListComponent } from "./loan-application/loan-list/loan-list.compon
 import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { LoanSideBar } from "./loan-application/side-bar/side-bar";
 import { GetLoanAppResolve } from "./resolver/loan-app-get-resolve";
+import { MortgageCalculatorComponent } from "./calculators/mortgage-calculator/mortgage-calculator.component";
+import { HomeAffordabilityCalculatorComponent } from "./calculators/home-affordability-calculator/home-affordability-calculator.component";
+import { RefinanceCalculatorComponent } from "./calculators/refinance-calculator/refinance-calculator.component";
+import { AffordabilityComponent } from "./calculators/affordability/affordability.component";
+import { AmortisationComponent } from "./calculators/amortisation/amortisation.component";
+import { ViewAllCalculatorsComponent } from "./calculators/view-all-calculators/view-all-calculators.component";
+import { BuyingHomeGuideComponent } from "./buying-home-guide/buying-home-guide.component";
+import { FirstTimeHomeBuyerComponent } from "./first-time-home-buyer/first-time-home-buyer.component";
+import { BuyingSecondHomeComponent } from "./buying-second-home/buying-second-home.component";
+import { PreApprovalComponent } from "./pre-approval/pre-approval.component";
+import { BuyingVacationHomeComponent } from "./buying-vacation-home/buying-vacation-home.component";
+import { RealStateInvestorComponent } from "./real-state-investor/real-state-investor.component";
+import { MovingAndBuyingHomeComponent } from "./moving-and-buying-home/moving-and-buying-home.component";
+import { HomeBuyingFreeConsultationComponent } from "./home-buying-free-consultation/home-buying-free-consultation.component";
+import { LowerYourPaymentComponent } from "./lower-your-payment/lower-your-payment.component";
+import { GetCashFromYourHomeComponent } from "./get-cash-from-your-home/get-cash-from-your-home.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -117,6 +133,22 @@ const ngWizardConfig: NgWizardConfig = {
     LoanListComponent,
     AdminPanelComponent,
     LoanSideBar,
+    MortgageCalculatorComponent,
+    HomeAffordabilityCalculatorComponent,
+    RefinanceCalculatorComponent,
+    AffordabilityComponent,
+    AmortisationComponent,
+    ViewAllCalculatorsComponent,
+    BuyingHomeGuideComponent,
+    FirstTimeHomeBuyerComponent,
+    BuyingSecondHomeComponent,
+    PreApprovalComponent,
+    BuyingVacationHomeComponent,
+    RealStateInvestorComponent,
+    MovingAndBuyingHomeComponent,
+    HomeBuyingFreeConsultationComponent,
+    LowerYourPaymentComponent,
+    GetCashFromYourHomeComponent,
   ],
   imports: [
     CommonModule,

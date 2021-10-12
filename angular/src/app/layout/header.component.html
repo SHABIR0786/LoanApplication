@@ -1,274 +1,539 @@
-<div class="container-fluid p-0">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue">
-    <!-- <div class="row w-100 pt-2"> -->
-    <!-- <div class="col offset-1 col-md-1">
-        <a href="#" class="navbar-brand">
-          <img
-            src="assets/img/Image 12.png"
-            class="img-fluid"
-            style="width: 100%; height: 120px; margin-left: 5rem"
-          />
+<header>
+  <nav class="navbar navbar-dark bg-primary navbar-expand-lg p-0">
+    <div class="container px-0">
+      <div class="d-flex mx-3 mx-sm-0 px-lg-0 w-100">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/headLogo.svg" alt="" />
         </a>
-      </div> -->
-    <div class="row w-100 pt-2">
-      <div class="col-1"></div>
-      <a href="#" class="navbar-brand col-2">
-        <img
-          src="assets/img/Image 12.png"
-          class="img-fluid"
-          style="height: 8.125rem; width: 8.0625rem"
-        />
-      </a>
-      <div class="w-100 mb-4 px-0 col-8" style="overflow: auto">
-        <form class="form-inline float-right">
-          <button
-            class="btn btn-dark-blue-2 btn-lg text-uppercase mr-4"
-            type="button"
-            style="height: 2.625rem"
-          >
-            <img src="assets/img/search-4.png" />
-          </button>
-
-          <h3
-            class="display-inline mr-4 text-white text-uppercase Avenir-black"
-            style="top: 21px"
-          >
-            (800) 930-8195
-          </h3>
-
-          <button
-            class="btn btn-outline-light-blue text-white text-uppercase btn-lg mr-4 Avenir-heavy"
-            type="button"
-          >
-            Check loan status
-          </button>
-
-          <button
-            class="btn btn-light-blue btn-lg text-uppercase Avenir-heavy"
-            type="button"
-          >
-            Apply Now
-          </button>
-        </form>
-      </div>
-      <div class="row w-100 navbar navbar-expand-lg px-0 float-right">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown has-megamenu" dropdown>
+        <div
+          class="w-100 text-right d-flex flex-column responsive-menu d-lg-none mt-1"
+        >
+          <div class="d-none mobileSearch">
+            <strong class="text-white mx-2">(800) 930-8195</strong>
+          </div>
+          <div class="mb-2 mt-3">
             <a
-              class="nav-link dropdown-toggle text-white Avenir-heavy text-uppercase"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
+              href=""
+              class="btn btn-outline-info text-white text-uppercase mx-1 d-none d-md-inline-block"
+              >Check loan status</a
             >
-              Buying a home
-            </a>
-            <div
-              class="dropdown-menu megamenu ml-4"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
+            <a href="" class="btn btn-info text-uppercase">Apply Now</a>
+          </div>
+
+          <!-- Toggler/collapsibe Button -->
+          <div
+            class="align-items-end col d-flex justify-content-end ml-auto px-0 mb-2 mobileMenu"
+          >
+            <a href="tel:8009308195"
+              ><strong class="text-white toptext mr-2"
+                ><i class="fa fa-phone mr-1"></i>(800) 930-8195</strong
+              ></a
             >
-              <div class="row">
-                <div class="col-2">
-                  <h4 class="text-orange">Buying a home</h4>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Exceptional Service Comes With Every Loan For Buying A House
-                  </p>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-2">
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    <img src="assets/img/Checkbox.png" />
-                    Buying a Home Guide
-                  </p>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    <img src="assets/img/Checkbox.png" />
-                    Preapproval
-                  </p>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    <img src="assets/img/Checkbox.png" />
-                    First-Time Home Buyer
-                  </p>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-2">
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Buying Second Home
-                  </p>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Buying A Vacation Home
-                  </p>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Real State Investor
-                  </p>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-2">
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Moving And Buying a Home
-                  </p>
-                  <p
-                    class="text-black"
-                    style="overflow-wrap: break-word; width: 15.938rem"
-                  >
-                    Home Buying Free Consultation
-                  </p>
-                </div>
-                <div class="col-1"></div>
+            <button
+              class="navbar-toggler p-0"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapsibleNavbar"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="align-self-stretch d-flex flex-column ml-auto overflow-auto"
+        >
+          <div
+            class="align-items-center d-lg-flex d-none justify-content-end mt-3 text-right w-100"
+          >
+            <div class="searchtop dsktopsearch">
+              <span class="p-1 btn btn-search btn-primary"
+                ><img src="assets/images/search.svg" alt=""
+              /></span>
+              <div class="inpSearch">
+                <input
+                  type="text"
+                  name="search"
+                  class="form-control"
+                  placeholder="Search.."
+                />
+                <i class="fa fa-times searchcross"></i>
               </div>
             </div>
-          </li>
-          <li class="nav-item dropdown text-uppercase" dropdown>
-            <a
-              class="nav-link dropdown-toggle text-black Avenir-heavy"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
-            >
-              Refinance
-            </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
-            >
-              <a class="dropdown-item text-black" href="#">Action</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown text-uppercase" dropdown>
-            <a
-              class="nav-link dropdown-toggle text-white Avenir-heavy"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
-            >
-              Loan Options
-            </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
-            >
-              <a class="dropdown-item text-white" href="#">Action</a>
-            </div>
-          </li>
 
-          <li class="nav-item dropdown text-uppercase" dropdown>
+            <strong class="text-white toptext">(800) 930-8195</strong>
             <a
-              class="nav-link dropdown-toggle text-white Avenir-heavy"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
+              href=""
+              class="btn btn-outline-info text-white text-uppercase cls"
+              >Check loan status</a
             >
-              Mortgage Rates
-            </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
+            <a href="" class="btn btn-info text-uppercase aplbtn">Apply Now</a>
+          </div>
+          <div
+            class="collapse navbar-collapse flex-column ml-auto align-items-end ml-auto justify-content-end mb-0"
+            id="collapsibleNavbar"
+          >
+            <!-- Links -->
+
+            <ul class="navbar-nav ml-auto">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >Buying a home</a
+                >
+                <div class="dropdown-menu w-100" id="buyinghome">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">Buying a home</h5>
+                        <p class="pt-3">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a [routerLink]="['/app/buying-home-guide']">
+                              <i class="fa fa-check-circle"></i>
+                              Buying a Home Guide
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/pre-approval']">
+                              <i class="fa fa-check-circle"></i>
+                              Pre Approval
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/first-time-home-buyer']">
+                              <i class="fa fa-check-circle"></i>
+                              First-time home buyer
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a [routerLink]="['/app/buying-second-home']">
+                              <i class="fa fa-check-circle"></i>
+                              Buying a Second Home
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/buying-vacation-home']">
+                              <i class="fa fa-check-circle"></i>
+                              Buying a Vacation Home
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/real-state-investor']">
+                              <i class="fa fa-check-circle"></i>
+                              Real Estate Investor
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a [routerLink]="['/app/moving-and-buying-home']">
+                              <i class="fa fa-check-circle"></i>
+                              Moving and Buying a Home
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              [routerLink]="[
+                                '/app/home-buying-free-consultation'
+                              ]"
+                            >
+                              <i class="fa fa-check-circle"></i>
+                              Home Buying Free Consultation
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >Refinance</a
+                >
+                <div class="dropdown-menu w-100">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">Refinance</h5>
+                        <p class="pt-2">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Refinance Guide
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Lower-your-Mortgage-Payment.html">
+                              <i class="fa fa-check-circle"></i>
+                              Lower Your Payment
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Get-Cash-From-Your-Home.html">
+                              <i class="fa fa-check-circle"></i>
+                              Get Cash From Your Home
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Consolidate-Your-Debt.html">
+                              <i class="fa fa-check-circle"></i>
+                              Consolidate Your Debt
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="Pay-of-your-mortgage-faster.html">
+                              <i class="fa fa-check-circle"></i>
+                              Pay Off Your Mortgage Faster
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Refinance with HARP 2.0
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Keep-payment-stable.html">
+                              <i class="fa fa-check-circle"></i>
+                              Keep Your Payment From Rising
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="Investment-property.html">
+                              <i class="fa fa-check-circle"></i>
+                              Refinance Investment Property
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Free-consultation-about-refinancing.html">
+                              <i class="fa fa-check-circle"></i>
+                              Refinance free consultation
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >Loan Options</a
+                >
+                <div class="dropdown-menu w-100">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">Loan Options</h5>
+                        <p class="pt-3">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="loan-options.html">
+                              <i class="fa fa-check-circle"></i>
+                              Loan Options
+                            </a>
+                          </li>
+                          <li>
+                            <a href="30-years.html">
+                              <i class="fa fa-check-circle"></i>
+                              30-Year Fixed Mortgage
+                            </a>
+                          </li>
+                          <li>
+                            <a href="15-years.html">
+                              <i class="fa fa-check-circle"></i>
+                              15-Year Fixed Mortgage
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="Adjustable-Rate-Mortgage.html">
+                              <i class="fa fa-check-circle"></i>
+                              Adjustable Rate Mortgage
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              HARP Refinance
+                            </a>
+                          </li>
+                          <li>
+                            <a href="FHA-Loans.html">
+                              <i class="fa fa-check-circle"></i>
+                              FHA Loans
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="Jumbo-Loans.html">
+                              <i class="fa fa-check-circle"></i>
+                              Jumbo Loan
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >Mortgage Rates</a
+                >
+                <div class="dropdown-menu w-100">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">Mortgage Rates</h5>
+                        <p class="pt-3">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="30-years.html">
+                              <i class="fa fa-check-circle"></i>
+                              Mortgage Rates
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Email and Text Updates
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Current Home Loan Rates
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >Calculators</a
+                >
+                <div class="dropdown-menu w-100">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">Calculators</h5>
+                        <p class="pt-3">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a [routerLink]="['/app/mortgage-calculator']">
+                              <i class="fa fa-check-circle"></i>
+                              Mortgage Calculator
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              [routerLink]="[
+                                '/app/home-affordability-calculator'
+                              ]"
+                            >
+                              <i class="fa fa-check-circle"></i>
+                              Home Affordability Calculator
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/refinance-calculator']">
+                              <i class="fa fa-check-circle"></i>
+                              Refinance Calculator
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a [routerLink]="['/app/affordability']">
+                              <i class="fa fa-check-circle"></i>
+                              Affordability
+                            </a>
+                          </li>
+                          <li>
+                            <a [routerLink]="['/app/amortisation']">
+                              <i class="fa fa-check-circle"></i>
+                              Amortisation
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  >About us</a
+                >
+                <div class="dropdown-menu w-100">
+                  <div class="container">
+                    <div class="row p-3 w-100">
+                      <div class="col-lg-3">
+                        <h5 class="navHead">About us</h5>
+                        <p class="pt-3">
+                          Exceptional Service Comes <br />
+                          With Every Loan For <br />
+                          Buying A House
+                        </p>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              About Us
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Licensing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Request a Mortgage
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-3">
+                        <ul class="list-unstyled dropList">
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Contact Us
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-check-circle"></i>
+                              Mortgage Glossary
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="blogs-calculator.html">Blog</a>
+              </li>
+            </ul>
+            <a
+              href=""
+              class="btn btn-outline-info d-md-none mb-2 mr-2 text-uppercase text-white"
+              >Check loan status</a
             >
-              <a class="dropdown-item text-white" href="#">Action</a>
+            <div class="searchtop dsktopsearch d-lg-none">
+              <span class="p-1 btn btn-search btn-primary"
+                ><img src="assets/images/search.svg" alt=""
+              /></span>
+              <div class="inpSearch">
+                <input
+                  type="text"
+                  name="search"
+                  class="form-control"
+                  placeholder="Search.."
+                />
+                <i class="fa fa-times searchcross"></i>
+              </div>
             </div>
-          </li>
-          <li class="nav-item dropdown text-uppercase" dropdown>
-            <a
-              class="nav-link dropdown-toggle text-white Avenir-heavy"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
-            >
-              Calculators
-            </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
-            >
-              <a class="dropdown-item text-white" href="#">Action</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown text-uppercase" dropdown>
-            <a
-              class="nav-link dropdown-toggle text-white Avenir-heavy"
-              id="navbarDropdown"
-              role="button"
-              dropdownToggle
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="font-size: 16px"
-            >
-              About Us
-            </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-              *dropdownMenu
-            >
-              <a class="dropdown-item text-white" href="#">Action</a>
-              <a class="dropdown-item text-white" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item text-white" href="#"
-                >Something else here</a
-              >
-            </div>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link text-white text-uppercase Avenir-heavy"
-              href="#"
-              aria-disabled="true"
-              style="font-size: 16px"
-              >Blog</a
-            >
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-md-1"></div>
+      <!-- Brand -->
     </div>
-    <!-- </div> -->
   </nav>
-</div>
+</header>

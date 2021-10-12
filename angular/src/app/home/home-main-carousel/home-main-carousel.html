@@ -1,105 +1,102 @@
-<carousel>
-  <slide *ngFor="let item of data">
-    <div
-      class="carousel-slider-img"
-      style="
-        height: 500px !important;
-        background-size: 100% 100% !important;
-        background-repeat: no-repeat !important;
-      "
-      [style.background]="[item.background]"
-    >
-      <div class="row p-0 m-0">
-        <div class="col-1 mt-3">
-          <div class="mt-5">
-            <img
-              class="img-fluid ml-3 mb-3 i-circle d-block"
-              src="assets/img/facebook.svg"
-              alt="facebook"
-            />
-            <img
-              class="img-fluid ml-3 mb-3 i-circle d-block"
-              src="assets/img/twitter-2.svg"
-              alt="twitter"
-            />
-            <i
-              class="fab fa-instagram img-fluid ml-3 mb-3 i-circle text-white d-block"
-            ></i>
-            <img
-              class="img-fluid ml-3 mb-3 i-circle d-block"
-              src="assets/img/pinterest.svg"
-              alt="pinterest"
-            />
-            <img
-              class="img-fluid ml-3 mb-3 i-circle d-block"
-              src="assets/img/youtube-2.svg"
-              alt="youtube"
-            />
-          </div>
-          <p
-            class="Avenir-medium"
-            style="
-              writing-mode: vertical-rl;
-              color: #ffffff;
-              font-size: 13px;
-              text-transform: uppercase;
-              opacity: 1;
-              margin-left: 22px;
-              margin-top: 10px;
-              letter-spacing: 2px;
-            "
+<div
+  class="jumbotron jumbotron-fluid banner-jumbotron"
+  id="topimg"
+  style="background: url('assets/images/California.jpg')"
+>
+  <!-- <img src="assets/images/California.jpg" id="topimg" alt=""> -->
+  <div class="container jumb-inner px-0">
+    <div class="d-flex jumb-desc-area">
+      <div class="d-flex flex-column position-relative socicns">
+        <ul class="banner-social">
+          <li>
+            <a href=""><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-pinterest-p"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-youtube-play"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-share-alt"></i></a>
+          </li>
+        </ul>
+        <span class="text-white text-muted text-uppercase banner-scroll">
+          <a href="#section-featured">
+            <i class="fa fa-long-arrow-left mr-4"></i>scroll down</a
           >
-            SCROLL DOWN <i class="fas fa-long-arrow-alt-down"></i>
+        </span>
+      </div>
+      <div class="ml-0">
+        <div id="textMessage"></div>
+        <div class="textContent">
+          <h1 class="banner-heading">
+            California’s Most Trusted <br class="d-none d-sm-block" />
+            Online Mortgage
+          </h1>
+        </div>
+        <div class="textContent">
+          <h1 class="banner-heading">
+            Flexible, Accessible FHA <br class="d-none d-sm-block" />
+            Financing
+          </h1>
+        </div>
+        <div class="textContent">
+          <h1 class="banner-heading">
+            Jumbo Loan Buys <br class="d-none d-sm-block" />
+            More
+          </h1>
+        </div>
+        <div class="textContent">
+          <h1 class="banner-heading">
+            Refinance Your <br class="d-none d-sm-block" />
+            Future
+          </h1>
+        </div>
+
+        <div id="textDetail"></div>
+        <div class="bannerdesc">
+          <p>
+            As your mortgage broker, we work harder to get you the most
+            affordable mortgage.
           </p>
         </div>
-        <div class="col-11 mt-5">
-          <div class="border-left border-orange">
-            <h1
-              class="font-weight-bold text-white Avenir-black"
-              style="
-                letter-spacing: 1.51px;
-                text-shadow: 0px 3px 6px #00000029;
-                font-size: 70px;
-                line-height: 1.5;
-                box-sizing: border-box;
-                margin-left: 0.5rem;
-                overflow-wrap: break-word;
-                width: 46rem;
-              "
-            >
-              {{item.Header}}
-            </h1>
-          </div>
-          <h5
-            class="text-white mb-5 mt-4 Avenir-medium"
-            style="
-              letter-spacing: 0px;
-              text-shadow: 0px 3px 6px #00000029;
-              font: normal normal medium 26px/35px;
-              overflow-wrap: break-word;
-              width: 46rem;
-              box-sizing: border-box;
-              margin-left: 0.5rem;
-            "
-          >
-            {{item.SubHeader}}
-          </h5>
-          <div class="mt-5" style="text-transform: uppercase">
-            <button
-              type="button"
-              class="btn btn-light-blue text-white Avenir-heavy px-3 py-2"
-            >
-              BUYING A HOME
-            </button>
-            <button
-              type="button"
-              class="btn btn-orange text-white d-inline ml-4 Avenir-heavy px-3 py-2"
-            >
-              REFINANCE <i class="fas fa-long-arrow-alt-right"></i>
-            </button>
-          </div>
+        <div class="bannerdesc">
+          <p>
+            Owning a home is possible with an FHA loan that suits your family’s
+            needs and budget.
+          </p>
         </div>
+        <div class="bannerdesc">
+          <p>
+            Get more home and a better real estate investment with our Jumbo
+            mortgage loan.
+          </p>
+        </div>
+        <div class="bannerdesc">
+          <p>
+            Provide more for your family by renovating or restructuring your
+            assets with a refinance.
+          </p>
+        </div>
+        <p class="lead jumb-button mb-0">
+          <a
+            class="btn btn-info btn-lg bah-btn"
+            href="Jumbo action link"
+            role="button"
+            >Buying a home</a
+          >
+          <a
+            class="btn btn-secondary btn-lg ref-btn animbtn"
+            href="Jumbo action link"
+            role="button"
+            >Refinance <i class="fa fa-long-arrow-right"></i
+          ></a>
+        </p>
       </div>
     </div>
-  </slide>
-</carousel>
+  </div>
+</div>
