@@ -190,19 +190,19 @@
                             </a>
                           </li>
                           <li>
-                            <a href="Lower-your-Mortgage-Payment.html">
+                            <a [routerLink]="['/app/lower-your-payment']">
                               <i class="fa fa-check-circle"></i>
                               Lower Your Payment
                             </a>
                           </li>
                           <li>
-                            <a href="Get-Cash-From-Your-Home.html">
+                            <a [routerLink]="['/app/get-cash-from-home']">
                               <i class="fa fa-check-circle"></i>
                               Get Cash From Your Home
                             </a>
                           </li>
                           <li>
-                            <a href="Consolidate-Your-Debt.html">
+                            <a [routerLink]="['/app/consolidate-your-debt']">
                               <i class="fa fa-check-circle"></i>
                               Consolidate Your Debt
                             </a>
@@ -212,19 +212,25 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a href="Pay-of-your-mortgage-faster.html">
+                            <a
+                              [routerLink]="[
+                                '/app/pay-off-your-mortgage-faster'
+                              ]"
+                            >
                               <i class="fa fa-check-circle"></i>
                               Pay Off Your Mortgage Faster
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a [routerLink]="['/app/refinance-with-harp']">
                               <i class="fa fa-check-circle"></i>
                               Refinance with HARP 2.0
                             </a>
                           </li>
                           <li>
-                            <a href="Keep-payment-stable.html">
+                            <a
+                              [routerLink]="['/app/keep-your-payment-raising']"
+                            >
                               <i class="fa fa-check-circle"></i>
                               Keep Your Payment From Rising
                             </a>
@@ -234,13 +240,21 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a href="Investment-property.html">
+                            <a
+                              [routerLink]="[
+                                '/app/refinance-investment-property'
+                              ]"
+                            >
                               <i class="fa fa-check-circle"></i>
                               Refinance Investment Property
                             </a>
                           </li>
                           <li>
-                            <a href="Free-consultation-about-refinancing.html">
+                            <a
+                              [routerLink]="[
+                                '/app/refinance-free-consultation'
+                              ]"
+                            >
                               <i class="fa fa-check-circle"></i>
                               Refinance free consultation
                             </a>
@@ -273,19 +287,25 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a href="loan-options.html">
+                            <a [routerLink]="['/app/loan-options']">
                               <i class="fa fa-check-circle"></i>
                               Loan Options
                             </a>
                           </li>
                           <li>
-                            <a href="30-years.html">
+                            <a
+                              [routerLink]="['/app/thirty-year-fixed-mortgage']"
+                            >
                               <i class="fa fa-check-circle"></i>
                               30-Year Fixed Mortgage
                             </a>
                           </li>
                           <li>
-                            <a href="15-years.html">
+                            <a
+                              [routerLink]="[
+                                '/app/fifteen-year-fixed-mortgage'
+                              ]"
+                            >
                               <i class="fa fa-check-circle"></i>
                               15-Year Fixed Mortgage
                             </a>
@@ -295,19 +315,19 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a href="Adjustable-Rate-Mortgage.html">
+                            <a [routerLink]="['/app/adjustable-rate-mortgage']">
                               <i class="fa fa-check-circle"></i>
                               Adjustable Rate Mortgage
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a [routerLink]="['/app/harp-refinance']">
                               <i class="fa fa-check-circle"></i>
                               HARP Refinance
                             </a>
                           </li>
                           <li>
-                            <a href="FHA-Loans.html">
+                            <a [routerLink]="['/app/fha-loans']">
                               <i class="fa fa-check-circle"></i>
                               FHA Loans
                             </a>
@@ -317,7 +337,7 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a href="Jumbo-Loans.html">
+                            <a [routerLink]="['/app/jumbo-loan']">
                               <i class="fa fa-check-circle"></i>
                               Jumbo Loan
                             </a>
@@ -508,7 +528,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="blogs-calculator.html">Blog</a>
+                <a class="nav-link" [routerLink]="['/app/blog']">Blog</a>
               </li>
             </ul>
             <a
