@@ -37,6 +37,23 @@ import { HomeBuyingFreeConsultationComponent } from "./home-buying-free-consulta
 import { MovingAndBuyingHomeComponent } from "./moving-and-buying-home/moving-and-buying-home.component";
 import { PreApprovalComponent } from "./pre-approval/pre-approval.component";
 import { RealStateInvestorComponent } from "./real-state-investor/real-state-investor.component";
+import { LowerYourPaymentComponent } from "./refinance/lower-your-payment/lower-your-payment.component";
+import { GetCashFromYourHomeComponent } from "./refinance/get-cash-from-your-home/get-cash-from-your-home.component";
+import { ConsolidateYourDebitComponent } from "./refinance/consolidate-your-debit/consolidate-your-debit.component";
+import { KeepYourPaymentFromRaisingComponent } from "./refinance/keep-your-payment-from-raising/keep-your-payment-from-raising.component";
+import { PayOffYourMortgageFasterComponent } from "./refinance/pay-off-your-mortgage-faster/pay-off-your-mortgage-faster.component";
+import { RefinanceFreeConsultationComponent } from "./refinance/refinance-free-consultation/refinance-free-consultation.component";
+import { RefinanceInvestmentPropertyComponent } from "./refinance/refinance-investment-property/refinance-investment-property.component";
+import { RefinanceWithHARPComponent } from "./refinance/refinance-with-harp/refinance-with-harp.component";
+// Loan Options
+import { LoanOptionsComponent } from "./loan-options/loan-options.component";
+import { AdjustableRateMortgageComponent } from "./loan-options/adjustable-rate-mortgage/adjustable-rate-mortgage.component";
+import { FhaLoansComponent } from "./loan-options/fha-loans/fha-loans.component";
+import { FifteenYearFixedMortgageComponent } from "./loan-options/fifteen-year-fixed-mortgage/fifteen-year-fixed-mortgage.component";
+import { HarpRefinanceComponent } from "./loan-options/harp-refinance/harp-refinance.component";
+import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
+import { ThirtyYearFixedMortgageComponent } from "./loan-options/thirty-year-fixed-mortgage/thirty-year-fixed-mortgage.component";
+import { BlogComponent } from "./blog/blog.component";
 
 @NgModule({
   imports: [
@@ -244,6 +261,81 @@ import { RealStateInvestorComponent } from "./real-state-investor/real-state-inv
           {
             path: "real-state-investor",
             component: RealStateInvestorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "consolidate-your-debt",
+            component: ConsolidateYourDebitComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "get-cash-from-home",
+            component: GetCashFromYourHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "keep-your-payment-raising",
+            component: KeepYourPaymentFromRaisingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "lower-your-payment",
+            component: LowerYourPaymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "pay-off-your-mortgage-faster",
+            component: PayOffYourMortgageFasterComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-free-consultation",
+            component: RefinanceFreeConsultationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-investment-property",
+            component: RefinanceInvestmentPropertyComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-with-harp",
+            component: RefinanceWithHARPComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "adjustable-rate-mortgage",
+            component: AdjustableRateMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "fha-loans",
+            component: FhaLoansComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "fifteen-year-fixed-mortgage",
+            component: FifteenYearFixedMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "jumbo-loan",
+            component: JumboLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "thirty-year-fixed-mortgage",
+            component: ThirtyYearFixedMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "loan-options",
+            component: LoanOptionsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "blog",
+            component: BlogComponent,
             canActivate: [AppRouteGuard],
           },
         ],

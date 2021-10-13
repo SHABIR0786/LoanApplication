@@ -78,8 +78,22 @@ import { BuyingVacationHomeComponent } from "./buying-vacation-home/buying-vacat
 import { RealStateInvestorComponent } from "./real-state-investor/real-state-investor.component";
 import { MovingAndBuyingHomeComponent } from "./moving-and-buying-home/moving-and-buying-home.component";
 import { HomeBuyingFreeConsultationComponent } from "./home-buying-free-consultation/home-buying-free-consultation.component";
-import { LowerYourPaymentComponent } from "./lower-your-payment/lower-your-payment.component";
-import { GetCashFromYourHomeComponent } from "./get-cash-from-your-home/get-cash-from-your-home.component";
+import { LowerYourPaymentComponent } from "./refinance/lower-your-payment/lower-your-payment.component";
+import { GetCashFromYourHomeComponent } from "./refinance/get-cash-from-your-home/get-cash-from-your-home.component";
+import { ConsolidateYourDebitComponent } from "./refinance/consolidate-your-debit/consolidate-your-debit.component";
+import { PayOffYourMortgageFasterComponent } from "./refinance/pay-off-your-mortgage-faster/pay-off-your-mortgage-faster.component";
+import { RefinanceWithHARPComponent } from "./refinance/refinance-with-harp/refinance-with-harp.component";
+import { KeepYourPaymentFromRaisingComponent } from "./refinance/keep-your-payment-from-raising/keep-your-payment-from-raising.component";
+import { RefinanceInvestmentPropertyComponent } from "./refinance/refinance-investment-property/refinance-investment-property.component";
+import { RefinanceFreeConsultationComponent } from "./refinance/refinance-free-consultation/refinance-free-consultation.component";
+import { LoanOptionsComponent } from "./loan-options/loan-options.component";
+import { ThirtyYearFixedMortgageComponent } from "./loan-options/thirty-year-fixed-mortgage/thirty-year-fixed-mortgage.component";
+import { FifteenYearFixedMortgageComponent } from "./loan-options/fifteen-year-fixed-mortgage/fifteen-year-fixed-mortgage.component";
+import { AdjustableRateMortgageComponent } from "./loan-options/adjustable-rate-mortgage/adjustable-rate-mortgage.component";
+import { HarpRefinanceComponent } from "./loan-options/harp-refinance/harp-refinance.component";
+import { FhaLoansComponent } from "./loan-options/fha-loans/fha-loans.component";
+import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
+import { BlogComponent } from "./blog/blog.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -149,6 +163,20 @@ const ngWizardConfig: NgWizardConfig = {
     HomeBuyingFreeConsultationComponent,
     LowerYourPaymentComponent,
     GetCashFromYourHomeComponent,
+    ConsolidateYourDebitComponent,
+    PayOffYourMortgageFasterComponent,
+    RefinanceWithHARPComponent,
+    KeepYourPaymentFromRaisingComponent,
+    RefinanceInvestmentPropertyComponent,
+    RefinanceFreeConsultationComponent,
+    LoanOptionsComponent,
+    ThirtyYearFixedMortgageComponent,
+    FifteenYearFixedMortgageComponent,
+    AdjustableRateMortgageComponent,
+    HarpRefinanceComponent,
+    FhaLoansComponent,
+    JumboLoanComponent,
+    BlogComponent,
   ],
   imports: [
     CommonModule,
