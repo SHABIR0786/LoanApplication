@@ -1,0 +1,17 @@
+.slide-value-percent {
+  margin-top: -31px;
+  float: right;
+  margin-right: 12px;
+}
+.slider-value-form-group {
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+.slide-value-usd {
+  margin-top: -33px;
+  float: left;
+  margin-left: 12px;
+}
+#slidervalue {
+  padding-left: 21px;
+}
