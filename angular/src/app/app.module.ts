@@ -94,6 +94,13 @@ import { HarpRefinanceComponent } from "./loan-options/harp-refinance/harp-refin
 import { FhaLoansComponent } from "./loan-options/fha-loans/fha-loans.component";
 import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
 import { BlogComponent } from "./blog/blog.component";
+import { AboutUsComponent } from "./about-us/about-us.component";
+import { RequestAMortgageComponent } from "./request-a-mortgage/request-a-mortgage.component";
+import { ContactUsComponent } from "./contact-us/contact-us.component";
+import { LicenseInfoComponent } from "./license-info/license-info.component";
+import { MortgageGlossaryComponent } from "./mortgage-glossary/mortgage-glossary.component";
+import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
+import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -177,6 +184,13 @@ const ngWizardConfig: NgWizardConfig = {
     FhaLoansComponent,
     JumboLoanComponent,
     BlogComponent,
+    AboutUsComponent,
+    RequestAMortgageComponent,
+    ContactUsComponent,
+    LicenseInfoComponent,
+    MortgageGlossaryComponent,
+    CurrentHomeLoanRatesComponent,
+    EmailAndTextUpdatesComponent,
   ],
   imports: [
     CommonModule,
