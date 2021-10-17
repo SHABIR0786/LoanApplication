@@ -635,6 +635,13 @@ label {
   padding-bottom: 100px;
   position: relative;
 }
+.about-us-career {
+  background: url(../images/testimonialbg.jpg);
+  background-size: cover;
+  padding-top: 98.5px;
+  padding-bottom: 100px;
+  position: relative;
+}
 .long-term .banner-scroll {
   position: absolute;
   left: 68px;
@@ -911,4 +918,33 @@ ul.list-refinace li {
 .personal-data input {
   width: 100% !important;
   background-color: #fff !important;
+}
+.exceptional_customer {
+  background-color: #fafafa;
+}
+.table-primary_custom {
+  background-color: #091a52;
+}
+.border-muted_custom {
+  border-top: 2px solid #dee2e6 !important;
+}
+.has-search .form-control_custom {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback_custom {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+}
+.overflow-x-scroll {
+  overflow-x: auto;
+}
+.bg-color-lightgray {
+  background-color: #e5edf433;
 }
