@@ -54,6 +54,13 @@ import { HarpRefinanceComponent } from "./loan-options/harp-refinance/harp-refin
 import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
 import { ThirtyYearFixedMortgageComponent } from "./loan-options/thirty-year-fixed-mortgage/thirty-year-fixed-mortgage.component";
 import { BlogComponent } from "./blog/blog.component";
+import { AboutUsComponent } from "./about-us/about-us.component";
+import { RequestAMortgageComponent } from "./request-a-mortgage/request-a-mortgage.component";
+import { ContactUsComponent } from "./contact-us/contact-us.component";
+import { LicenseInfoComponent } from "./license-info/license-info.component";
+import { MortgageGlossaryComponent } from "./mortgage-glossary/mortgage-glossary.component";
+import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
+import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
 
 @NgModule({
   imports: [
@@ -336,6 +343,41 @@ import { BlogComponent } from "./blog/blog.component";
           {
             path: "blog",
             component: BlogComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "about-us",
+            component: AboutUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "request-a-mortgage",
+            component: RequestAMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "contact-us",
+            component: ContactUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "license-info",
+            component: LicenseInfoComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "mortgage-glossary",
+            component: MortgageGlossaryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "current-home-loan-rates",
+            component: CurrentHomeLoanRatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "email-and-text-updates",
+            component: EmailAndTextUpdatesComponent,
             canActivate: [AppRouteGuard],
           },
         ],
