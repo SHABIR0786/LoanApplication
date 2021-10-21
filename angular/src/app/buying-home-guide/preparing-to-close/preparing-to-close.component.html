@@ -1,12 +1,12 @@
 <main>
   <section class="home-guides-sec py-5 text-center">
     <div class="container">
-      <h3 class="font-weight-bold text-white">Home Buyer’s Guide</h3>
+      <h3 class="font-weight-bold text-white">Home Guides</h3>
     </div>
   </section>
-  <div class="count">1</div>
+  <div class="count">8</div>
   <h1 class="font-weight-bold text-primary text-center py-4 border-bottom">
-    Preparing For Mortgage Pre-
+    Preparing to Close
   </h1>
   <div class="container">
     <section class="page-order-sec py-2">
@@ -27,9 +27,7 @@
 
     <section class="py-2">
       <div class="d-flex justify-content-between">
-        <h5 class="font-weight-bold text-primary py-4">
-          Step-by-Step Buyer’s Guide
-        </h5>
+        <h5 class="font-weight-bold text-primary py-4">Step-by-Step Buyer’s</h5>
         <div class="text-center">
           <img height="40" src="assets/images/guides.svg" />
           <p class="small">View All Guides</p>
@@ -45,7 +43,7 @@
             aria-orientation="vertical"
           >
             <a
-              class="nav-link active"
+              class="nav-link"
               [routerLink]="['/app/buying-home-guide']"
               role="tab"
               aria-controls="v-pills-home"
@@ -103,7 +101,7 @@
               >7. The Underwriting Process
             </a>
             <a
-              class="nav-link"
+              class="nav-link active"
               [routerLink]="['/app/preparing-to-close']"
               role="tab"
               aria-controls="v-pills-settings"
@@ -163,7 +161,7 @@
         <div class="col-lg-9">
           <div class="tab-content" id="v-pills-tabContent">
             <div
-              class="tab-pane fade show active"
+              class="tab-pane"
               id="v-pills-home"
               role="tabpanel"
               aria-labelledby="v-pills-home-tab"
@@ -295,7 +293,7 @@
             </div>
 
             <div
-              class="tab-pane fade"
+              class="tab-pane fade show active"
               id="v-pills-profile"
               role="tabpanel"
               aria-labelledby="v-pills-profile-tab"
