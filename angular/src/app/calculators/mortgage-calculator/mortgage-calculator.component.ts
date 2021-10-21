@@ -50,14 +50,8 @@ export class MortgageCalculatorComponent implements OnInit {
       this.form.LoanTerm
     );
     result = Math.round(result * 100) / 100;
-    this.Taxes =
-      Math.ceil(this.YearlyPropertyTaxes * 0.083333333333 * 100) / 100;
-    this.Insurance =
-      Math.ceil(this.YearlyHomeInsurance * 0.083333333333 * 100) / 100;
-    console.log(this.Taxes);
-    console.log(this.Insurance);
-    console.log(this.MonthlyHOAFee);
-    console.log(result);
+    this.Taxes = Math.ceil((this.YearlyPropertyTaxes / 12) * 100) / 100;
+    this.Insurance = Math.ceil((this.YearlyHomeInsurance / 12) * 100) / 100;
     this.EstimatedMonthlyPayment =
       Math.round(
         (result + this.Taxes + this.Insurance + this.MonthlyHOAFee) * 100

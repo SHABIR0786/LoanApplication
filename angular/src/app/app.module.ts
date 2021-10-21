@@ -68,7 +68,6 @@ import { MortgageCalculatorComponent } from "./calculators/mortgage-calculator/m
 import { HomeAffordabilityCalculatorComponent } from "./calculators/home-affordability-calculator/home-affordability-calculator.component";
 import { RefinanceCalculatorComponent } from "./calculators/refinance-calculator/refinance-calculator.component";
 import { AffordabilityComponent } from "./calculators/affordability/affordability.component";
-import { AmortisationComponent } from "./calculators/amortisation/amortisation.component";
 import { ViewAllCalculatorsComponent } from "./calculators/view-all-calculators/view-all-calculators.component";
 import { BuyingHomeGuideComponent } from "./buying-home-guide/buying-home-guide.component";
 import { FirstTimeHomeBuyerComponent } from "./first-time-home-buyer/first-time-home-buyer.component";
@@ -101,6 +100,7 @@ import { LicenseInfoComponent } from "./license-info/license-info.component";
 import { MortgageGlossaryComponent } from "./mortgage-glossary/mortgage-glossary.component";
 import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
 import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
+import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -158,7 +158,6 @@ const ngWizardConfig: NgWizardConfig = {
     HomeAffordabilityCalculatorComponent,
     RefinanceCalculatorComponent,
     AffordabilityComponent,
-    AmortisationComponent,
     ViewAllCalculatorsComponent,
     BuyingHomeGuideComponent,
     FirstTimeHomeBuyerComponent,
@@ -191,6 +190,7 @@ const ngWizardConfig: NgWizardConfig = {
     MortgageGlossaryComponent,
     CurrentHomeLoanRatesComponent,
     EmailAndTextUpdatesComponent,
+    AmortizationComponent,
   ],
   imports: [
     CommonModule,

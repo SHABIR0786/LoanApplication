@@ -26,7 +26,6 @@ import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { HomeAffordabilityCalculatorComponent } from "./calculators/home-affordability-calculator/home-affordability-calculator.component";
 import { MortgageCalculatorComponent } from "./calculators/mortgage-calculator/mortgage-calculator.component";
 import { RefinanceCalculatorComponent } from "./calculators/refinance-calculator/refinance-calculator.component";
-import { AmortisationComponent } from "./calculators/amortisation/amortisation.component";
 import { AffordabilityComponent } from "./calculators/affordability/affordability.component";
 import { ViewAllCalculatorsComponent } from "./calculators/view-all-calculators/view-all-calculators.component";
 import { BuyingHomeGuideComponent } from "./buying-home-guide/buying-home-guide.component";
@@ -61,6 +60,7 @@ import { LicenseInfoComponent } from "./license-info/license-info.component";
 import { MortgageGlossaryComponent } from "./mortgage-glossary/mortgage-glossary.component";
 import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
 import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
+import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 
 @NgModule({
   imports: [
@@ -216,8 +216,8 @@ import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and
             canActivate: [AppRouteGuard],
           },
           {
-            path: "amortisation",
-            component: AmortisationComponent,
+            path: "amortization",
+            component: AmortizationComponent,
             canActivate: [AppRouteGuard],
           },
           {
