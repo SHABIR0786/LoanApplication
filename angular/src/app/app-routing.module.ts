@@ -26,6 +26,7 @@ import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { HomeAffordabilityCalculatorComponent } from "./calculators/home-affordability-calculator/home-affordability-calculator.component";
 import { MortgageCalculatorComponent } from "./calculators/mortgage-calculator/mortgage-calculator.component";
 import { RefinanceCalculatorComponent } from "./calculators/refinance-calculator/refinance-calculator.component";
+import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 import { AffordabilityComponent } from "./calculators/affordability/affordability.component";
 import { ViewAllCalculatorsComponent } from "./calculators/view-all-calculators/view-all-calculators.component";
 import { BuyingHomeGuideComponent } from "./buying-home-guide/buying-home-guide.component";
@@ -54,13 +55,23 @@ import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.compone
 import { ThirtyYearFixedMortgageComponent } from "./loan-options/thirty-year-fixed-mortgage/thirty-year-fixed-mortgage.component";
 import { BlogComponent } from "./blog/blog.component";
 import { AboutUsComponent } from "./about-us/about-us.component";
-import { RequestAMortgageComponent } from "./request-a-mortgage/request-a-mortgage.component";
-import { ContactUsComponent } from "./contact-us/contact-us.component";
-import { LicenseInfoComponent } from "./license-info/license-info.component";
-import { MortgageGlossaryComponent } from "./mortgage-glossary/mortgage-glossary.component";
+import { RequestAMortgageComponent } from "./about-us/request-a-mortgage/request-a-mortgage.component";
+import { ContactUsComponent } from "./about-us/contact-us/contact-us.component";
+import { LicenseInfoComponent } from "./about-us/license-info/license-info.component";
+import { MortgageGlossaryComponent } from "./about-us/mortgage-glossary/mortgage-glossary.component";
 import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
 import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
-import { AmortizationComponent } from "./calculators/amortization/amortization.component";
+import { FinalizingMortgagePreApprovalComponent } from "./buying-home-guide/finalizing-mortgage-pre-approval/finalizing-mortgage-pre-approval.component";
+import { DecidingMortgageComponent } from "./buying-home-guide/deciding-mortgage/deciding-mortgage.component";
+import { SelectionRealEstateAgentComponent } from "./buying-home-guide/selection-real-estate-agent/selection-real-estate-agent.component";
+import { HouseHuntingComponent } from "./buying-home-guide/house-hunting/house-hunting.component";
+import { MakingACompetitiveOfferComponent } from "./buying-home-guide/making-a-competitive-offer/making-a-competitive-offer.component";
+import { UnderwritingProcessComponent } from "./buying-home-guide/underwriting-process/underwriting-process.component";
+import { PreparingToCloseComponent } from "./buying-home-guide/preparing-to-close/preparing-to-close.component";
+import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-through-and-closing-day/walk-through-and-closing-day.component";
+import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
+import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
+import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
 
 @NgModule({
   imports: [
@@ -378,6 +389,61 @@ import { AmortizationComponent } from "./calculators/amortization/amortization.c
           {
             path: "email-and-text-updates",
             component: EmailAndTextUpdatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "finalizing-mortgage-pre-approval",
+            component: FinalizingMortgagePreApprovalComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "deciding-mortgage",
+            component: DecidingMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "selection-real-estate-agent",
+            component: SelectionRealEstateAgentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "house-hunting",
+            component: HouseHuntingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-a-competitive-offer",
+            component: MakingACompetitiveOfferComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "underwriting-process",
+            component: UnderwritingProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "preparing-to-close",
+            component: PreparingToCloseComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "walk-through-and-closing-day",
+            component: WalkThroughAndClosingDayComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-your-first-mortgage-payment",
+            component: MakingYourFirstMortgagePaymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "managing-your-mortgage",
+            component: ManagingYourMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "amortization-result",
+            component: AmortizationResultComponent,
             canActivate: [AppRouteGuard],
           },
         ],

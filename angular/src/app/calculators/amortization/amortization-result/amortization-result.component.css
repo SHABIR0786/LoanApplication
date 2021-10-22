@@ -1,0 +1,7 @@
+.section-left p,
+.section-right p {
+  margin: 0px;
+}
+.graph {
+  border: 1px solid red;
+}
