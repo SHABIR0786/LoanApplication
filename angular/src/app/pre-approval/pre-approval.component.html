@@ -30,18 +30,18 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <p class="m-0 text-primary">
-        Home <span class="mx-3 d-inline-block">Buying a Home</span>
-        <span class="text-muted mx-3 d-inline-block">Pre Approval</span>
-      </p>
+      
+      <a [routerLink]="['/app/home']"class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/loan-options']"  class="text-decoration-none"> Loan </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/pre-approval']" class="text-decoration-none"> Pre Approval </a> 
     </section>
   </div>
 
-  <section class="">
+  
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
-      <h2 class="font-weight-bold text-primary mb-5">Home Loan Pre Approval</h2>
-      <p class="text-muted">
+      <h2 class="font-weight-bold text-primary ">Home Loan Pre Approval</h2>
+      <p >
         Shopping for a new home involves a lot of important things. You’ve got
         to line up a realtor, sift through listings, narrow down your choices
         and set up viewings.Perhaps the most important step in purchasing a new
@@ -52,7 +52,7 @@
         You’ve got to line up a realtor, sift through listings, narrow down your
         choices and set up viewings.
       </p>
-      <p class="text-muted">
+      <p>
         Shopping for a new home involves a lot of important things. You’ve got
         to line up a realtor, sift through listings, narrow down your choices
         and set up viewings.Perhaps the most important step in purchasing a new
@@ -66,49 +66,89 @@
         of important things. You’ve got to line up a realtor, sift through
         listings, narrow down your choices and set up viewings.
       </p>
-      <a href="" class="text-uppercase text-secondary featanimbtn"
-        >Read more <i class="fa fa-long-arrow-right ml-2"></i
-      ></a>
+      
+        <ng-container *ngIf="visible">
+      <div>
+        <p>Without this type of approval, you could be looking at houses that you would not be able to afford, wasting both your time as well as that of the seller. While it’s not a loan commitment, it does speed up the process of getting the actual loan since much of the documentation has already been gathered and completed.</p>
+        <p>Home mortgage pre approval used to take much longer because it involved physically applying either through a realtor or directly at a bank. Now, with EZ Online Mortgage, all you have to do is share a bit of information with us and you can get your home mortgage pre approval online without all the hassle. Once preapproved, you can then focus your search on homes that are within your price range, saving time and aggravation and improving the chances of landing the house of your dreams!</p>
+        <p>Ready to get started?Apply now! You can even get a free instant rate quote to find out what your monthly payments might be. With our instant online mortgage pre approval option, the home buying experience has never been easier!</p>
+        <p><strong>Why Get Home Mortgage Pre Approval?</strong></p>
+        <p>While pre approval for a home loan is not a requirement, there are many benefits to completing this step. For instance, you can…</p>
+        <p>    Save Time – Why waste precious time looking at houses that you can’t afford when you could be focusing your efforts where you’ll be more successful?</p>
+        <p>    Avoid Unexpected Surprises – By knowing ahead of time how much a lender will let you borrow, you can avoid unpleasant surprises and disappointment down the road.</p>
+        <p> Correct Credit Report Problems – A home mortgage pre approval can reveal potential issues with your credit report early, giving you time to fix any errors before actually applying for your home loan.</p>
+        <p>    Negotiate Better – Being armed with the knowledge of what you’re able to spend can help you compete with other potential buyers more effectively.</p>
+        <p>    Close Faster – The entire process moves quicker, especially with an online mortgage pre approval. California residents who choose EZ Online Mortgage to get home mortgage pre approval online can often close on their new home in just weeks, not months</p>
+        <p>What are you waiting for? Apply now to get instant online mortgage pre approval and start looking for your dream home today! <br>
+          Pre Approval for a House Loan Makes Home Buying Easy
+          </p>
+        <p>What are you waiting for? Apply now to get instant online mortgage pre approval and start looking for your dream home today!
+          Pre Approval for a House Loan Makes Home Buying Easy
+          </p>
+        <p> <strong>Step 1:</strong>  Complete the application. Our mortgage experts just need a little bit of information from you to get started on your online mortgage pre approval California</p>
+        <p><strong>Step 2:</strong> Find an agent and start looking at homes. Once you’ve been pre approved, you’ll already know what price range to shop within. If you’re going to work with a realtor, choosing one as soon as you’ve received your pre approval can move things along faster.</p>
+        <p><strong>Step 3:</strong> Get your mortgage. When you’ve found your dream home, it’s time to apply for your home loan. The pros at EZ Online Mortgage have made this process extremely simple and hassle-free. In fact, with your pre approval, most of the work has already been done!</p>
+        <p><strong>Step 4:</strong> Move into your new home! While the closing is typically referred to as the last step in the home buying process, in reality it marks the beginning of your life in your new home. Our consultants would relish the opportunity to help get you to this exciting moment!</p>
+        <p>Purchasing a new home has never been easier. It all begins with a simple home mortgage pre approval. California rates have also never been better, so now’s the time to act.</p>
+        <p>Get a free instant rate quote today! <br>
+          Get Instant Online Mortgage Pre approval
+          </p>
+        <p>There are plenty of mortgage professionals who promise the world to their clients. Sadly, not very many actually follow through with their promises. Still others lack in the area of consumer protection, leaving their clients feeling vulnerable and unhappy.</p>
+        <p>At EZ Online Mortgage, we’re trying to change the home lending industry, one transaction at a time. Our team of highly skilled home loan experts possess years of experience in the industry. More importantly, our services are backed by our unwavering commitment to exceptional service and our impeccable integrity.</p>
+        <p>We work hard to make the mortgage process as easy as possible. We know you’re busy. We also know that buying a new home can be complicated. With the right team in your corner, it doesn’t have to be. We’ll be there to walk you through, step by step, providing the guidance and support you need to ensure that you end up with the ideal mortgage product at a great rate, affordable price and terms you can feel good about.</p>
+        <p>When you work with us, you can expect to receive personal attention, individual service and outstanding support, from the first click to the moment you’re given the keys to your new home.</p>
+        <p>Why wait? Get your online mortgage pre approval in just a few simple steps. Apply today.</p>
+        
+      </div>
+        
+    </ng-container>
+    <a (click) ="readmore()" class="text-uppercase text-secondary featanimbtn" role="button"> {{ReadMore?"Read More":"Read Less"}}
+      <i class="fa fa-long-arrow-right "></i>
+      
+    </a>
+      <div class="py-3">
+      <h3 class="font-weight-bold text-primary ">What is Mortgage Loan Pre approval?</h3>
+      <p>Having pre approval for a house loan means that a lender has verified your information and determined a dollar amount for how much they would be willing to lend you. </p>
+     </div>
     </div>
-  </section>
+  
 
-  <section>
-    <div class="container">
-      <h5 class="text-secondary text-center">Know About</h5>
-      <h3 class="font-weight-bold text-primary text-center mb-5">
+  
+    <div class="container bg-section-light mb-4" >
+      <h5 class="text-secondary text-center pt-5">Know About</h5>
+      <h3 class="font-weight-bold text-primary text-center ">
         Want To Explore Your Options?
       </h3>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="mb-4 mb-md-0 pre-box">
+      <div class="row px-5 py-5">
+        <div class="col-sm-6 mb-3">
+          <div class=" pre-box ">
             <p class="text-white">
-              With ast, powerful and completely online way to get a mortgage,
-              you can adjust your mortgage options to find the lowest payment
-              possible.With ast, powerful and completely online way to get a
-              mortgage, you can adjust your mortgage options to find the
+              At EZ Online, you can apply for a mortgage right from your laptop. Our simple
+              online application lets you start and finish the process at your convenience, whenever
+              you are ready.You don't have to talk to a loan officer--you can get our preliminary
+              assessment of your eligibility right away using our high-speed technology.
             </p>
-            <button class="btn btn-primary text-white mt-3 text-uppercase">
+            <button class="btn btn-primary text-white  text-uppercase">
               Apply Now
             </button>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="pre-box">
-            <p class="text-white text-white">
-              Not comfortable starting online? Answer a few questions, and we’ll
-              have a Home Loan Expert call you. With ast, powerful and
-              completely online way to get a mortgage, you can adjust your
-              mortgage options to <br class="d-none d-sm-block" />
-              find the
+          <div class="pre-box ">
+            <p class=" text-white">
+              If you would rather talk to a human than a computer,we understand.While we use the fatest
+              and most up-to-date technology available,we also appreciate that a personal touch can
+              sometime make a difference. You can talk to our friendly loan officers to ask about loan
+              products and qualifications and ask all the question you want.
             </p>
-            <button class="btn btn-primary mt-3 text-white text-uppercase">
-              pre - qualify now <i class="fa fa-long-arrow-right"></i>
+            <button class="btn btn-primary  text-white text-uppercase">
+              Request a call <i class="fa fa-long-arrow-right"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  
 
   <section class="long-term text-center">
     <span
@@ -336,8 +376,7 @@
                 30 or 60 days. Sometimes you can lock in the rate just by asking
                 while you navigate through the approval process. Depending on
                 the loan program, you might have to pay a fee to guarantee the
-                rate. It's at the footer of the word doc, I sent you called EZ
-                Pre Approval doc Rev
+                rate.
               </p>
             </div>
           </div>

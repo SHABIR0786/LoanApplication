@@ -11,9 +11,7 @@
             Property
           </h1>
           <h4 class="text-muted font-weight-normal pb-4">
-            Not every lender can handle your investment property mortgage or
-            provide the lowest rates available. Check EZ Online for the best
-            mortgage rates in California.
+            Not every lender can handle your investment property mortgage or provide the lowest rates available. Check EZ Online Mortgage for the best mortgage rates in California.
           </h4>
           <a
             class="btn btn-secondary btn-lg ref-btn animbtn btn-animate"
@@ -34,85 +32,84 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <p class="m-0 text-primary">
-        Home <span class="mx-3 d-inline-block">Buying a Home</span>
-        <span class="text-muted mx-3 d-inline-block">Pre Approval</span>
-      </p>
+      <a [routerLink]="['/app/home']" class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none"> Buying a Home </a><i
+        class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/real-state-investor']" class="text-decoration-none"> Real-estate Investor </a>
     </section>
   </div>
 
-  <section class="">
+  
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
-      <h2 class="font-weight-bold text-primary mb-5">Home Loan Pre Approval</h2>
-      <p class="text-muted">
-        Shopping for a new home involves a lot of important things. You’ve got
-        to line up a realtor, sift through listings, narrow down your choices
-        and set up viewings.Perhaps the most important step in purchasing a new
-        home is getting mortgage loan preapproval. Doing so provides insight
-        into the price range of homes you might qualify for. It also
-        demonstrates to sellers that you’re serious about making a
-        purchase.Shopping for a new home involves a lot of important things.
-        You’ve got to line up a realtor, sift through listings, narrow down your
-        choices and set up viewings.
+      <h2 class="font-weight-bold text-primary mb-2">Your Real Estate Investment Mortgage Experts</h2>
+      <p class="">
+        For investors, real estate investment in California offers some of the most lucrative deals available in the US. Whether you’re thinking about purchasing your very first rental property, or you’re an old pro, EZ Online Mortgage has the perfect solution to suit all your real estate investment mortgage needs. In just a few simple steps, you can be realizing the return on your well-placed investment before you know it! All you have to do is contact us today to get started.
+  
       </p>
-      <p class="text-muted">
-        Shopping for a new home involves a lot of important things. You’ve got
-        to line up a realtor, sift through listings, narrow down your choices
-        and set up viewings.Perhaps the most important step in purchasing a new
-        home is getting mortgage loan preapproval. Doing so provides insight
-        into the price range of homes you might qualify for. It also
-        demonstrates to sellers that you’re serious about making a
-        purchase.Shopping for a new home involves a lot of important things.
-        You’ve got to line up a realtor, sift through listings, narrow down your
-        choices and set up viewings. It also demonstrates to sellers that you’re
-        serious about making a purchase.Shopping for a new home involves a lot
-        of important things. You’ve got to line up a realtor, sift through
-        listings, narrow down your choices and set up viewings.
-      </p>
-      <a href="" class="text-uppercase text-secondary featanimbtn"
-        >Read more <i class="fa fa-long-arrow-right ml-2"></i
-      ></a>
-    </div>
-  </section>
 
-  <section>
-    <div class="container">
-      <h5 class="text-secondary text-center">Know About</h5>
-      <h3 class="font-weight-bold text-primary text-center mb-5">
-        Want To Explore Your Options?
-      </h3>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="mb-4 mb-md-0 pre-box">
-            <p class="text-white">
-              With ast, powerful and completely online way to get a mortgage,
-              you can adjust your mortgage options to find the lowest payment
-              possible.With ast, powerful and completely online way to get a
-              mortgage, you can adjust your mortgage options to find the
-            </p>
-            <button class="btn btn-primary text-white mt-3 text-uppercase">
-              Apply Now
-            </button>
-          </div>
+      <h2 class="font-weight-bold text-primary mb-2">Benefits of Investment Property</h2>
+      <p class="">
+        When it comes to real estate investment, California provides a number of added benefits, particularly in terms of geographic location. Attracting residents and vacation seekers is easy given the lush landscapes, beautiful weather and endless local activities. This can create a steady flow of income, producing returns almost immediately. What’s more, EZ Online Mortgage can match you with a real estate investment mortgage that offers attractive rates and affordable payments.
+  
+      </p>
+
+      <h2 class="font-weight-bold text-primary mb-2">Professional Guidance On Real Estate Investment Loans</h2>
+      <p class="">
+        The real estate investment process can be challenging. You want to be sure you end up with properties and real estate investor loans that will allow for maximum return on your investment.
+  
+      </p>
+      <ng-container *ngIf="visible">
+        <div>
+          <p>The real estate investment lenders at EZ Online Mortgage are experts in assessing the market and can make the entire process a breeze. From landing a great interest rate to locating the ideal property to signing the paperwork and getting the keys, we’ll be there every step of the way.</p>
+          <h2 class="font-weight-bold text-primary mb-2">Are You Ready?</h2>
+          <p>If you’re thinking about a real estate investment in California, there’s never been a better time! The first step is determining how much you can afford. Our convenient online mortgage calculators can show you exactly how much your payments could be. Then, simply reach out and contact us today! We can help you find the perfect real estate investment mortgage to suit all your needs!</p>
+
+          <p>Start earning a return on your investment sooner by choosing EZ Online Mortgage as your mortgage partner! Contact us today for a free, expert consultation on real estate investment loans. You can also apply online for a free instant rate quote.</p>
         </div>
-        <div class="col-sm-6">
-          <div class="pre-box">
-            <p class="text-white text-white">
-              Not comfortable starting online? Answer a few questions, and we’ll
-              have a Home Loan Expert call you. With ast, powerful and
-              completely online way to get a mortgage, you can adjust your
-              mortgage options to <br class="d-none d-sm-block" />
-              find the
-            </p>
-            <button class="btn btn-primary mt-3 text-white text-uppercase">
-              pre - qualify now <i class="fa fa-long-arrow-right"></i>
-            </button>
-          </div>
+      </ng-container>
+      <a (click)="readmore()" class="text-uppercase text-secondary featanimbtn" role="button"> {{ReadMore?"Read More":"Read
+        Less"}}
+        <i class="fa fa-long-arrow-right "></i>
+      </a>  
+    </div>
+  
+
+  <div class="container bg-section-light mb-4 mt-5">
+    <h5 class="text-secondary text-center pt-5">Know About</h5>
+    <h3 class="font-weight-bold text-primary text-center ">
+      Want To Explore Your Options?
+    </h3>
+    <div class="row px-5 py-5">
+      <div class="col-sm-6 mb-3">
+        <div class=" pre-box  ">
+          <p class="text-white">
+            With ast, powerful and completely online way to get a mortgage,
+            you can adjust your mortgage options to find the lowest payment
+            possible.With ast, powerful and completely online way to get a
+            mortgage, you can adjust your mortgage options to find the
+          </p>
+          <button class="btn btn-primary text-white  text-uppercase">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="pre-box ">
+          <p class=" text-white">
+            Not comfortable starting online? Answer a few questions, and we’ll
+            have a Home Loan Expert call you. With ast, powerful and
+            completely online way to get a mortgage, you can adjust your
+            mortgage options to <br class="d-none d-sm-block" />
+            find the
+          </p>
+          <button class="btn btn-primary  text-white text-uppercase">
+            pre - qualify now <i class="fa fa-long-arrow-right"></i>
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <section class="long-term text-center">
     <span
@@ -340,8 +337,7 @@
                 30 or 60 days. Sometimes you can lock in the rate just by asking
                 while you navigate through the approval process. Depending on
                 the loan program, you might have to pay a fee to guarantee the
-                rate. It's at the footer of the word doc, I sent you called EZ
-                Pre Approval doc Rev
+                rate.
               </p>
             </div>
           </div>
