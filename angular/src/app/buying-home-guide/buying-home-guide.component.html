@@ -9,12 +9,19 @@
     Preparing For Mortgage Pre-
   </h1>
   <div class="container">
-    <section class="page-order-sec py-3 mb-3">
-      <p class="m-0 text-primary">
-        Home <i class="fa fa-chevron-right f11"></i> Buying a home
-        <span class="text-muted">
-          <i class="fa fa-chevron-right f11"></i> First time home buyer
-        </span>
+    <section class="page-order-sec py-2">
+      <p class="m-0 text-muted">
+        <a
+          [routerLink]="['/app/home']"
+          class="text-decoration-none text-primary"
+          >Home </a
+        ><i class="fa fa-angle-right"></i>
+        <a
+          [routerLink]="['/app/buying-home-guide']"
+          class="text-decoration-none text-muted"
+        >
+          Buying a home Guide
+        </a>
       </p>
     </section>
 
@@ -39,20 +46,22 @@
           >
             <a
               class="nav-link active"
-              href="Home-guides.html"
+              [routerLink]="['/app/buying-home-guide']"
               role="tab"
               aria-controls="v-pills-home"
               aria-selected="true"
               >1. Preparing for Mortgage
               <span class="ml-3 d-block">Pre-Approal</span></a
             >
-            <a class="nav-link" href="Finalizing-Mortgage.html" role="tab"
+            <a
+              class="nav-link"
+              [routerLink]="['/app/finalizing-mortgage-pre-approval']"
               >2. Finalizing Mortgage
               <span class="ml-3 d-block">Pre-Approal</span>
             </a>
             <a
               class="nav-link"
-              href="Deciding-on-the-Right.html"
+              [routerLink]="['/app/deciding-mortgage']"
               role="tab"
               aria-controls="v-pills-messages"
               aria-selected="false"
@@ -61,7 +70,7 @@
             >
             <a
               class="nav-link"
-              href="Selection-Real-Estate.html"
+              [routerLink]="['/app/selection-real-estate-agent']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -70,7 +79,7 @@
             </a>
             <a
               class="nav-link"
-              href="House-Hunting.html"
+              [routerLink]="['/app/house-hunting']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -78,7 +87,7 @@
             </a>
             <a
               class="nav-link"
-              href="Making-Competitive.html"
+              [routerLink]="['/app/making-a-competitive-offer']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -87,7 +96,7 @@
             </a>
             <a
               class="nav-link"
-              href="Underwriting-Process.html"
+              [routerLink]="['/app/underwriting-process']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -95,7 +104,7 @@
             </a>
             <a
               class="nav-link"
-              href="Preparing-to-Close.html"
+              [routerLink]="['/app/preparing-to-close']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -103,7 +112,7 @@
             </a>
             <a
               class="nav-link"
-              href="Walk-Through-Closing.html"
+              [routerLink]="['/app/walk-through-and-closing-day']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -112,7 +121,7 @@
             </a>
             <a
               class="nav-link"
-              href="Making-Your-First.html"
+              [routerLink]="['/app/making-your-first-mortgage-payment']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"
@@ -121,7 +130,7 @@
             </a>
             <a
               class="nav-link"
-              href="Managing-Your-Mortgage.html"
+              [routerLink]="['/app/managing-your-mortgage']"
               role="tab"
               aria-controls="v-pills-settings"
               aria-selected="false"

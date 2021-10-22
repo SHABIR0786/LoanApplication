@@ -3,9 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-          <h1
-            class="display-3 heading-border font-weight-bold text-primary mb-2 mt-2"
-          >
+          <h1 class="display-3 heading-border font-weight-bold text-primary mb-2 mt-2">
             Buying a Vacation
             <br class="d-none d-sm-block" />
             Home
@@ -16,136 +14,126 @@
             utopia. Don’t let these great rates on vacation home loans slip
             away!
           </h4>
-          <a
-            class="btn btn-secondary btn-lg ref-btn animbtn btn-animate"
-            href="Jumbo action link"
-            role="button"
-            >pre - qualify now <i class="fa fa-long-arrow-right"></i
-          ></a>
+          <a class="btn btn-secondary btn-lg ref-btn animbtn btn-animate" href="Jumbo action link" role="button">pre -
+            qualify now <i class="fa fa-long-arrow-right"></i></a>
         </div>
         <div class="col-lg-4"></div>
       </div>
     </div>
-    <img
-      style="width: 40%"
-      class="special-img d-lg-block d-none"
-      src="assets/images/loan-img-4.png"
-      alt=""
-    />
+    <img style="width: 40%" class="special-img d-lg-block d-none" src="assets/images/loan-img-4.png" alt="" />
   </section>
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <p class="m-0 text-primary">
-        Home <span class="mx-3 d-inline-block">Buying a Home</span>
-        <span class="text-muted mx-3 d-inline-block">Pre Approval</span>
-      </p>
+      <a [routerLink]="['/app/home']" class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none"> Buying a Home </a><i
+        class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/buying-vacation-home']" class="text-decoration-none"> Buying a Vacation Home </a>
     </section>
   </div>
 
-  <section class="">
+  
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
-      <h2 class="font-weight-bold text-primary mb-5">Home Loan Pre Approval</h2>
-      <p class="text-muted">
-        Shopping for a new home involves a lot of important things. You’ve got
-        to line up a realtor, sift through listings, narrow down your choices
-        and set up viewings.Perhaps the most important step in purchasing a new
-        home is getting mortgage loan preapproval. Doing so provides insight
-        into the price range of homes you might qualify for. It also
-        demonstrates to sellers that you’re serious about making a
-        purchase.Shopping for a new home involves a lot of important things.
-        You’ve got to line up a realtor, sift through listings, narrow down your
-        choices and set up viewings.
-      </p>
-      <p class="text-muted">
-        Shopping for a new home involves a lot of important things. You’ve got
-        to line up a realtor, sift through listings, narrow down your choices
-        and set up viewings.Perhaps the most important step in purchasing a new
-        home is getting mortgage loan preapproval. Doing so provides insight
-        into the price range of homes you might qualify for. It also
-        demonstrates to sellers that you’re serious about making a
-        purchase.Shopping for a new home involves a lot of important things.
-        You’ve got to line up a realtor, sift through listings, narrow down your
-        choices and set up viewings. It also demonstrates to sellers that you’re
-        serious about making a purchase.Shopping for a new home involves a lot
-        of important things. You’ve got to line up a realtor, sift through
-        listings, narrow down your choices and set up viewings.
-      </p>
-      <a href="" class="text-uppercase text-secondary featanimbtn"
-        >Read more <i class="fa fa-long-arrow-right ml-2"></i
-      ></a>
-    </div>
-  </section>
+      <h2 class="font-weight-bold text-primary ">Buying a Vacation Home</h2>
+      <p>
+        Reaching the point in your life when you can finally buy the vacation home of your dreams can be an amazing
+        accomplishment. At EZ Online Mortgage, we can help you make this momentous experience as simple and
+        straightforward as possible! We specialize in helping hard-working people get the California vacation homes
+        they’ve always dreamed of owning, and we’d love to do the same for you! Our experts have access to the lowest
+        vacation home mortgage rates and the most attractive terms available. <br>
+        When it comes to buying a vacation home and getting the right mortgage, California residents can count on EZ
+        Online Mortgage to handle it all!
 
-  <section>
-    <div class="container">
-      <h5 class="text-secondary text-center">Know About</h5>
-      <h3 class="font-weight-bold text-primary text-center mb-5">
-        Want To Explore Your Options?
-      </h3>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="mb-4 mb-md-0 pre-box">
-            <p class="text-white">
-              With ast, powerful and completely online way to get a mortgage,
-              you can adjust your mortgage options to find the lowest payment
-              possible.With ast, powerful and completely online way to get a
-              mortgage, you can adjust your mortgage options to find the
-            </p>
-            <button class="btn btn-primary text-white mt-3 text-uppercase">
-              Apply Now
-            </button>
-          </div>
+      </p>
+      <h2 class="font-weight-bold text-primary ">Second Home or Rental – We Make Vacation Home Loans Happen</h2>
+      <p>
+        Whatever your reason for buying a vacation home, California is a great place to do so! Whether you’re planning
+        on using the property as a family getaway or renting it out for additional income, our vacation home loans are
+        the ideal solution. <br>
+        All you need to do is contact us at EZ Online Mortgage and we’ll do the rest!
+      </p>
+
+      <ng-container *ngIf="visible">
+        <div>
+          <p>While you focus on checking out all the amazing vacation homes California has to offer, our experts will be
+            hard at work locating and matching you with a mortgage for a vacation home that suits your needs perfectly.
+          </p>
+
+          <p>We’ll even act as your trusted liaison, handling all the details from working with the realtor to setting
+            up appraisals, to communicating with potential lenders and whatever else it takes to get you into the
+            vacation home of your dreams! It’s that easy! Get a free rate quote today to learn more.</p>
+          <h2 class="font-weight-bold text-primary ">The Time to Act on Vacation Home Loans is Now</h2>
+          <p>At EZ Online Mortgage, we’re experts at understanding the housing market. We know how to get you the best
+            available vacation home mortgage rates and negotiate loan terms that you can feel confident about. If you’ve
+            been thinking about buying a vacation home in California, the time to do so is now.
+          </p>
+          <p> Give us a call today and let us make owning your own vacation home a reality for you!</p>
+          <p> Apply today or contact EZ Online Mortgage for a free, expert consultation.
+          <p>
+
         </div>
-        <div class="col-sm-6">
-          <div class="pre-box">
-            <p class="text-white text-white">
-              Not comfortable starting online? Answer a few questions, and we’ll
-              have a Home Loan Expert call you. With ast, powerful and
-              completely online way to get a mortgage, you can adjust your
-              mortgage options to <br class="d-none d-sm-block" />
-              find the
-            </p>
-            <button class="btn btn-primary mt-3 text-white text-uppercase">
-              pre - qualify now <i class="fa fa-long-arrow-right"></i>
-            </button>
-          </div>
+
+      </ng-container>
+      <a (click)="readmore()" class="text-uppercase text-secondary featanimbtn" role="button"> {{ReadMore?"Read
+        More":"Read
+        Less"}}
+        <i class="fa fa-long-arrow-right "></i>
+      </a>
+    </div>
+  
+
+  <div class="container bg-section-light mb-4 mt-5">
+    <h5 class="text-secondary text-center pt-5">Know About</h5>
+    <h3 class="font-weight-bold text-primary text-center ">
+      Want To Explore Your Options?
+    </h3>
+    <div class="row px-5 py-5">
+      <div class="col-sm-6 mb-3">
+        <div class=" pre-box  ">
+          <p class="text-white">
+            With ast, powerful and completely online way to get a mortgage,
+            you can adjust your mortgage options to find the lowest payment
+            possible.With ast, powerful and completely online way to get a
+            mortgage, you can adjust your mortgage options to find the
+          </p>
+          <button class="btn btn-primary text-white  text-uppercase">
+            Apply Now
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="pre-box ">
+          <p class=" text-white">
+            Not comfortable starting online? Answer a few questions, and we’ll
+            have a Home Loan Expert call you. With ast, powerful and
+            completely online way to get a mortgage, you can adjust your
+            mortgage options to <br class="d-none d-sm-block" />
+            find the
+          </p>
+          <button class="btn btn-primary  text-white text-uppercase">
+            pre - qualify now <i class="fa fa-long-arrow-right"></i>
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
 
   <section class="long-term text-center">
-    <span
-      class="text-white text-muted text-uppercase banner-scroll d-none d-lg-block position-absolute"
-    >
+    <span class="text-white text-muted text-uppercase banner-scroll d-none d-lg-block position-absolute">
       <a href="#section-submit">
-        <i class="fa fa-long-arrow-left mr-4"></i>Get to Know Us</a
-      >
+        <i class="fa fa-long-arrow-left mr-4"></i>Get to Know Us</a>
     </span>
 
     <div class="container mx-auto px-2 px-md-4">
       <div class="d-flex align-items-center justify-content-center">
         <div class="col-lg-8">
-          <video
-            id="my_video_1"
-            class="yimVideo video-js vjs-default-skin"
-            style="width: 100%; height: 368px"
-            height="368px"
-            controls
-            preload="none"
-            poster="assets/images/videoThumbnail.png"
-            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'
-          >
-            <source
-              src="https://vjs.zencdn.net/v/oceans.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="https://vjs.zencdn.net/v/oceans.webm"
-              type="video/webm"
-            />
+          <video id="my_video_1" class="yimVideo video-js vjs-default-skin" style="width: 100%; height: 368px"
+            height="368px" controls preload="none" poster="assets/images/videoThumbnail.png"
+            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'>
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <source src="https://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
           </video>
         </div>
 
@@ -158,35 +146,18 @@
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
       <h2 class="text-primary">FAQ’s</h2>
-      <div
-        class="panel-group faq-panel"
-        id="accordion"
-        role="tablist"
-        aria-multiselectable="true"
-      >
+      <div class="panel-group faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading border-0" role="tab" id="headingOne">
             <h4 class="panel-title">
-              <a
-                class="text-primary"
-                role="button"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
+              <a class="text-primary" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
                 <i class="more-less fa fa-plus"></i>
                 Does Pre-approval mean I am guaranteed to get a loan?
               </a>
             </h4>
           </div>
-          <div
-            id="collapseOne"
-            class="panel-collapse collapse"
-            role="tabpanel"
-            aria-labelledby="headingOne"
-          >
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <p class="text-muted">
                 Not necessarily. Pre-approval is a thorough investigation of
@@ -205,26 +176,14 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">
-              <a
-                class="collapsed text-primary"
-                role="button"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
+              <a class="collapsed text-primary" role="button" data-toggle="collapse" data-parent="#accordion"
+                href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <i class="more-less fa fa-plus"></i>
                 How can I improve my chances of getting approved?
               </a>
             </h4>
           </div>
-          <div
-            id="collapseTwo"
-            class="panel-collapse collapse"
-            role="tabpanel"
-            aria-labelledby="headingTwo"
-          >
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <p class="text-muted">
                 Great question. One smart move is to check your credit reports
@@ -242,26 +201,14 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingThree">
             <h4 class="panel-title">
-              <a
-                class="collapsed text-primary"
-                role="button"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
+              <a class="collapsed text-primary" role="button" data-toggle="collapse" data-parent="#accordion"
+                href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <i class="more-less fa fa-plus"></i>
                 What are points on a loan?
               </a>
             </h4>
           </div>
-          <div
-            id="collapseThree"
-            class="panel-collapse collapse"
-            role="tabpanel"
-            aria-labelledby="headingThree"
-          >
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
               <p class="text-muted">
                 A point on a loan is a price the borrower pays to lower the
@@ -278,27 +225,15 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingFour">
             <h4 class="panel-title">
-              <a
-                class="collapsed text-primary"
-                role="button"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseFour"
-                aria-expanded="false"
-                aria-controls="collapseFour"
-              >
+              <a class="collapsed text-primary" role="button" data-toggle="collapse" data-parent="#accordion"
+                href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 <i class="more-less fa fa-plus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?
               </a>
             </h4>
           </div>
-          <div
-            id="collapseFour"
-            class="panel-collapse collapse"
-            role="tabpanel"
-            aria-labelledby="headingFour"
-          >
+          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
             <div class="panel-body">
               <p class="text-muted">
                 No. There are numerous factors to evaluate when choosing your
@@ -314,26 +249,14 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingFive">
             <h4 class="panel-title">
-              <a
-                class="collapsed text-primary"
-                role="button"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseFive"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
+              <a class="collapsed text-primary" role="button" data-toggle="collapse" data-parent="#accordion"
+                href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
                 <i class="more-less fa fa-plus"></i>
                 How do I get a rate lock?
               </a>
             </h4>
           </div>
-          <div
-            id="collapseFive"
-            class="panel-collapse collapse"
-            role="tabpanel"
-            aria-labelledby="headingFive"
-          >
+          <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
             <div class="panel-body">
               <p class="text-muted">
                 A rate lock promises that the lender can complete the processing
@@ -342,8 +265,7 @@
                 30 or 60 days. Sometimes you can lock in the rate just by asking
                 while you navigate through the approval process. Depending on
                 the loan program, you might have to pay a fee to guarantee the
-                rate. It's at the footer of the word doc, I sent you called EZ
-                Pre Approval doc Rev
+                rate.
               </p>
             </div>
           </div>
