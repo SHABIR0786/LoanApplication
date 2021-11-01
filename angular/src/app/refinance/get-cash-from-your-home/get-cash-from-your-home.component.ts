@@ -6,6 +6,14 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./get-cash-from-your-home.component.css"],
 })
 export class GetCashFromYourHomeComponent implements OnInit {
+  ReadMore: boolean = true;
+
+  visible: boolean = false;
+
+  onclick() {
+    this.ReadMore = !this.ReadMore;
+    this.visible = !this.visible;
+  }
   constructor() {}
 
   ngOnInit(): void {}
