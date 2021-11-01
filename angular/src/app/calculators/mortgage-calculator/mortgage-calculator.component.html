@@ -44,9 +44,8 @@
             <input
               type="text"
               [(ngModel)]="form.principal"
-              (change)="HomePriceChanged($event.target.value)"
+              (change)="HomePriceChanged()"
               class="form-control homeprice-input"
-              name=""
             />
             <span class="slide-value-usd">$</span>
           </div>
