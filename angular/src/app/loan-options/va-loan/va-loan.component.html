@@ -6,13 +6,12 @@
           <h1
             class="border-left-2px text-primary font-weight-bold display-3 mb-4"
           >
-            15 Year Fixed <br class="d-none d-sm-block" />
-            Mortgage Rate
+            VA Loan
           </h1>
           <h4 class="text-muted font-weight-normal pb-4">
-            A 15 year loan is the right choice if you want to pay off the loan,
-            and you can afford a higher payment. Take advantage of low interest
-            rates to make a big difference in your principal.
+            If u are in the milita ry, or were in the armed forces previousli,
+            thanks for your service. you may qualify for a VA Loan, which has a
+            guarantee from the Veteran’s Administration.
           </h4>
         </div>
         <div class="col-lg-4"></div>
@@ -20,7 +19,7 @@
     </div>
     <img
       class="special-img d-lg-block d-none"
-      src="assets/images/15-years-img.png"
+      src="assets/images/VP-Loans.png"
       alt=""
     />
   </div>
@@ -34,9 +33,7 @@
       </a>
       <span class="text-muted mr-3 d-inline-block text-dark">
         <i class="fa fa-angle-right"></i>
-        <a href="#" class="text-decoration-none text-dark"
-          >15 year Fixed Mortgage
-        </a>
+        <a href="#" class="text-decoration-none text-dark">VA Loan </a>
       </span>
     </section>
   </div>
@@ -51,36 +48,32 @@
                 <img src="assets/images/cash-payment.png" />
               </div>
               <h5 class="text-primary mb-3 font-weight-bold">
-                Is a 15 year fixed rate loan <br />right for me
+                Is a VA loan <br />right for me
               </h5>
               <p class="text-muted mb-3">
-                A 15-year fixed rate mortgage loan might be the best choice for
-                you if you prefer the security of a stable interest rate, but
-                you would like to make progress toward paying off your loan more
-                quickly than with a 30-year mortgage.
+                If you qualify for a VA loan, you may want to take advantage of
+                the opportunity to use it. The VA loans are partially guaranteed
+                by the federal government for qualifying service members and
+                veterans, spouses and dependents.
               </p>
-              <ng-container *ngIf="visible">
-                <div>
-                  <p class="text-muted">
-                    The monthly payments will be higher than the payments for
-                    the same loan amount on a 30-year schedule, but the total
-                    you pay to interest will be much less over the life of the
-                    loan. 15-year fixed rate loans are conventional mortgages,
-                    just like 30-year loans, so the loan amount limits are the
-                    same. Conventional loans have these limits because the
-                    lender you get the loan from usually sells it to a GSE
-                    (government sponsored enterprise like Freddie Mac or Fannie
-                    Mae) which in turn sells it to investors. This lets the bank
-                    or other lender offer mortgages to more borrowers
-                  </p>
-                </div>
-              </ng-container>
+              <!-- <ng-container *ngIf="visible">
+                                <div>
+                                    <p class="text-muted">
+                                        The Federal Housing Finance Agency sets the ceiling for conventional conforming
+                                        loans (in most
+                                        areas, the limit is $548,250, but in high cost counties the maximum is as high
+                                        as $822, 375.) For a
+                                        mortgage higher than that amount, you need a Jumbo, which will require a higher
+                                        interest rate.
+                                    </p>
+                                </div>
+                            </ng-container> -->
               <a
-                (click)="onclick()"
+                (click)="onclickOne()"
                 class="text-uppercase text-secondary featanimbtn"
                 role="button"
               >
-                {{ ReadMore ? "More" : "Less" }}
+                More
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
@@ -91,32 +84,30 @@
                 <img src="assets/images/loan.png" />
               </div>
               <h5 class="text-primary mb-3 font-weight-bold">
-                What are the advantages of <br />a 15 year fixed loan
+                What are the advantages <br />of a VA loan
               </h5>
               <p class="text-muted mb-3">
-                The biggest advantage for you is paying less interest while you
-                pay the loan. By limiting your loan term to 15 years, <br />you
-                dramatically reduce the amount of interest you pay.
+                A VA loan may allow you to purchase a home with no down payment
+                or private mortgage insurance, often at very competitive
+                interest rates. Refinancing options are also attractive.
               </p>
-              <ng-container *ngIf="visibleOne">
-                <div>
-                  <p class="text-muted">
-                    The 15-year loan will almost always have a slightly lower
-                    interest rate than a 30-year loan, and with the shorter
-                    term, you would pay less than half the amount of interest
-                    over the course of the loan. You will also increase your
-                    equity in the home faster, because you are paying more
-                    toward the principal balance each month. This is helpful in
-                    case you need to refinance.
-                  </p>
-                </div>
-              </ng-container>
+              <!-- <ng-container *ngIf="visibleOne">
+                  <div>
+                    <p class="text-muted">
+                      The 15-year loan will almost always have a slightly lower interest rate than a 30-year loan, and
+                      with the shorter term, you would pay less than half the amount of interest over the course of the
+                      loan.
+                      You will also increase your equity in the home faster, because you are paying more toward the
+                      principal balance each month. This is helpful in case you need to refinance.
+                    </p>
+                  </div>
+                </ng-container> -->
               <a
                 (click)="onclickOne()"
                 class="text-uppercase text-secondary featanimbtn"
                 role="button"
               >
-                {{ ReadMoreOne ? "More" : "Less" }}
+                More
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
@@ -127,31 +118,32 @@
                 <img src="assets/images/mortgage4.png" />
               </div>
               <h5 class="text-primary mb-3 font-weight-bold">
-                How do I qualify for <br />A 15-Year Fixed Loan
+                How do I qualify for <br />a VA loan
               </h5>
               <p class="text-muted mb-3">
-                For the conventional loan, whether 15-year or 30-year fixed
-                rate, the key factors in qualifying are your credit score and
-                debt-to-income ratio. There are two versions of the ratio that
-                lenders may use: front-end and back-end.
+                The service member’s length of service, duty status and service
+                type are included in the determining factors for eligibility of
+                the member (or veteran), spouse or dependent where applicable.
+                Applicants must also meet credit and other requirements
+                established by the lender.
               </p>
-              <ng-container *ngIf="visibletwo">
-                <div>
-                  <p class="text-muted">
-                    Either type compares the percentage of your monthly income
-                    that is committed. A front-end ratio considers just your
-                    housing costs, while the back-end ratio (more common in
-                    evaluating you for a mortgage approval) includes other debt
-                    payments as well, and usually needs to be under 43 %.
-                  </p>
-                </div>
-              </ng-container>
+              <!-- <ng-container *ngIf="visibletwo">
+                                <div>
+                                    <p class="text-muted">
+                                        The appraisal for the home will be crucial to obtaining a Jumbo loan, so the
+                                        lender can be sure the
+                                        home’s value can support the loan amount. You may also pay higher closing costs
+                                        for a Jumbo loan
+                                        than for other loan types.
+                                    </p>
+                                </div>
+                            </ng-container> -->
               <a
-                (click)="onclicktwo()"
+                (click)="onclickOne()"
                 class="text-uppercase text-secondary featanimbtn"
                 role="button"
               >
-                {{ ReadMoretwo ? "More" : "Less" }}
+                More
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
@@ -239,32 +231,29 @@
           <div class="col-md-6">
             <div class="loan-left">
               <h3 class="text-primary font-weight-bold mb-4">
-                15-Year Fixed Loan Benefits
+                VA loan Benefits
               </h3>
               <ul class="text-muted arrow-list">
                 <li>
-                  Choose a 15-year loan if you want to pay your mortgage off
-                  more quickly.
+                  Choose a VA loan to take advantage of one of the benefits of
+                  serving your country.
                 </li>
                 <li>
-                  Choose a 15-year loan if you prefer to pay higher monthly
-                  amounts but less interest overall.
+                  Choose a VA loan to get up to 100% financing with no down
+                  payment.
                 </li>
                 <li>
-                  Choose a 15-year loan if you plan to pay the mortgage off to
-                  retire.
+                  Choose a VA loan to get up to 100% financing with no mortgage
+                  insurance.
                 </li>
                 <li>
-                  Choose a 15-year loan if you want protection from changes in
-                  rates but a lower interest rate.
-                </li>
-                <!-- <li>
-                  You can buy your primary home with as little as 3% down.
+                  Choose a VA loan to eliminate the chance of a prepayment
+                  penalty.
                 </li>
                 <li>
-                  You can refinance your primary home for up to 97% of its
-                  value.
-                </li> -->
+                  Choose a VA loan for lower closing costs than some other loan
+                  types.
+                </li>
               </ul>
             </div>
           </div>
@@ -294,23 +283,27 @@
                   In some cases with a conventional loan, you can request to
                   have the mortgage insurance dropped when your equity in the
                   loan reaches twenty percent, but in other cases you may need
-                  to refinance the loan.
+                  to refinance the loan. loan.
                 </li>
+
                 <li>
                   FHA loans have mortgage insurance that you pay to the Federal
                   Housing Administration. For these loans there is a fee at the
                   loan closing plus a monthly charge.
                 </li>
+
                 <li>
                   FHA loans must maintain the mortgage insurance, so to stop
                   paying the MI, you need to refinance into a conventional loan
                   type.
                 </li>
+
                 <li>
                   VA (Veteran’s Administration) loans don’t need mortgage
-                  insurance, because the VA guarantees the loan for you. But
-                  there is an upfront funding fee that varies depending on
-                  several factors, including:
+                  insurance, because the VA VA (Veteran’s Administration) loans
+                  don’t need mortgage insurance, because the VA guarantees the
+                  loan for you. But there is an upfront funding fee that varies
+                  depending on several factors, including:
                 </li>
               </ul>
             </div>

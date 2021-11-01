@@ -111,6 +111,7 @@ import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-thro
 import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
 import { AmortizationComponent } from "./calculators/amortization/amortization.component";
+import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -211,6 +212,7 @@ const ngWizardConfig: NgWizardConfig = {
     MakingYourFirstMortgagePaymentComponent,
     ManagingYourMortgageComponent,
     AmortizationComponent,
+    VaLoanComponent,
   ],
   imports: [
     CommonModule,
