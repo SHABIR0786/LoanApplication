@@ -20,48 +20,199 @@
         <div class="col-lg-10">
           <label class="mb-3 text-primary">I want to</label>
           <div class="row">
-            <div class="col-sm-4 form-group">
-              <div class="box-outline">
+            <div
+              (click)="changeSelectedOption('lower')"
+              class="col-sm-4 form-group"
+            >
+              <div
+                [ngClass]="
+                  SelectedOption == 'lower' ? 'box-fill' : 'box-outline'
+                "
+              >
                 <p class="m-0">Lower my monthly payment</p>
               </div>
             </div>
-            <div class="col-sm-4 form-group">
-              <div class="box-fill">
+            <div
+              (click)="changeSelectedOption('faster')"
+              class="col-sm-4 form-group"
+            >
+              <div
+                [ngClass]="
+                  SelectedOption == 'faster' ? 'box-fill' : 'box-outline'
+                "
+              >
                 <p class="m-0">Pay of my mortgage faster</p>
               </div>
             </div>
-            <div class="col-sm-4 form-group">
-              <div class="box-outline">
+            <div
+              (click)="changeSelectedOption('cashout')"
+              class="col-sm-4 form-group"
+            >
+              <div
+                [ngClass]="
+                  SelectedOption == 'cashout' ? 'box-fill' : 'box-outline'
+                "
+              >
                 <p class="m-0">Take cash out of my home</p>
               </div>
             </div>
             <div class="col-sm-12 form-group">
               <label class="text-primary">What is your mortgage balance?</label>
-              <input type="text" class="form-control" name="" />
+              <input
+                type="number"
+                [(ngModel)]="MortgageBalance"
+                class="form-control"
+                name=""
+              />
             </div>
-            <div class="col-sm-12 form-group">
+            <div *ngIf="SelectedOption == 'lower'" class="col-sm-12 form-group">
+              <label class="text-primary"
+                >What is your current monthly payment?</label
+              >
+              <input
+                type="number"
+                [(ngModel)]="CurrentMonthlyPayment"
+                class="form-control"
+                name=""
+              />
+            </div>
+            <div *ngIf="SelectedOption == 'lower'" class="col-sm-12 form-group">
+              <label
+                >Does your monthly payment include taxes and insurance?</label
+              >
+              <div class="d-flex">
+                <div
+                  (click)="MonthlyPaymentTaxandInschanged(true)"
+                  [ngClass]="
+                    MonthlyPaymentIncludeTaxesandInsurance == true
+                      ? 'box-fill'
+                      : 'box-outline'
+                  "
+                  class="flex-grow-1"
+                >
+                  Yes
+                </div>
+                <div
+                  (click)="MonthlyPaymentTaxandInschanged(false)"
+                  [ngClass]="
+                    MonthlyPaymentIncludeTaxesandInsurance == false
+                      ? 'box-fill'
+                      : 'box-outline'
+                  "
+                  class="ml-2 flex-grow-1"
+                >
+                  No
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf="
+                MonthlyPaymentIncludeTaxesandInsurance == true &&
+                SelectedOption == 'lower'
+              "
+              class="col-sm-12 form-group"
+            >
+              <label>Yearly property taxes</label>
+              <input
+                type="number"
+                [(ngModel)]="YearlyPropertyTaxes"
+                (change)="YearlyPropertyTaxesChanged()"
+                class="form-control"
+                name=""
+              />
+            </div>
+            <div
+              *ngIf="
+                MonthlyPaymentIncludeTaxesandInsurance == true &&
+                SelectedOption == 'lower'
+              "
+              class="col-sm-12 form-group"
+            >
+              <label>Yearly homeowners insurance</label>
+              <input
+                type="number"
+                [(ngModel)]="YearlyHomeInsurance"
+                (change)="YearlyHomeOwnerInsuranceChanged()"
+                class="form-control"
+                name=""
+              />
+            </div>
+
+            <!-- This section is for faster  -->
+            <div
+              *ngIf="SelectedOption == 'faster'"
+              class="col-sm-12 form-group"
+            >
+              <label class="text-primary"
+                >What's the remaining term on your loan in years?</label
+              >
+              <input
+                type="number"
+                [(ngModel)]="RemainingLoanTermsInYears"
+                class="form-control"
+                name=""
+              />
+            </div>
+            <!-- End of faster section  -->
+
+            <!-- This sectioni s for cashout  -->
+            <div
+              *ngIf="SelectedOption == 'cashout'"
+              class="col-sm-12 form-group"
+            >
               <label class="text-primary"
                 >How much cash do you want to take out?</label
               >
-              <input type="text" class="form-control" name="" />
+              <input
+                type="number"
+                [(ngModel)]="TakeCashOut"
+                class="form-control"
+                name=""
+              />
             </div>
             <div class="col-sm-12 form-group">
               <label class="text-primary"
                 >Approximately what is your home worth today?</label
               >
-              <input type="text" class="form-control" name="" />
+              <input
+                type="number"
+                [(ngModel)]="HomeWorthToday"
+                class="form-control"
+                name=""
+              />
             </div>
+            <!-- End of cashout section  -->
             <div class="col-sm-6 form-group">
               <label class="text-primary">What is your home's ZIP code?</label>
-              <input type="text" class="form-control" name="" />
+              <input type="number" class="form-control" name="" />
             </div>
             <div class="col-sm-6 form-group">
               <label
                 >Are you a veteran or currently serving in the military?</label
               >
               <div class="d-flex">
-                <div class="box-outline flex-grow-1">Yes</div>
-                <div class="box-fill ml-2 flex-grow-1">No</div>
+                <div
+                  (click)="changeveteran(true)"
+                  [ngClass]="
+                    VenetryorCurrentlyServing == true
+                      ? 'box-fill'
+                      : 'box-outline'
+                  "
+                  class="flex-grow-1"
+                >
+                  Yes
+                </div>
+                <div
+                  (click)="changeveteran(false)"
+                  [ngClass]="
+                    VenetryorCurrentlyServing == false
+                      ? 'box-fill'
+                      : 'box-outline'
+                  "
+                  class="ml-2 flex-grow-1"
+                >
+                  No
+                </div>
               </div>
             </div>
             <div class="col-sm-12 form-group">
@@ -69,17 +220,119 @@
                 >How would you rate your credit?</label
               >
               <select class="form-control">
-                <option>Select one</option>
-                <option>Select one</option>
+                <option
+                  *ngFor="let option of RateYourCreditOptions; let i = index"
+                  [attr.data-index]="i"
+                >
+                  {{ option.value }}
+                </option>
               </select>
             </div>
 
             <div class="col-sm-12 form-group">
-              <button class="btn btn-secondary text-white text-uppercase w-100">
+              <button
+                (click)="caculatormortgage()"
+                class="btn btn-secondary text-white text-uppercase w-100"
+              >
                 CALCULATE
               </button>
             </div>
           </div>
+          <!-- Recommended Options Section  -->
+          <!-- If selected option is lower -->
+          <div class="row" *ngIf="SelectedOption == 'lower'">
+            <div
+              class="col-sm-4"
+              *ngFor="let option of RecommendedOptions; let i = index"
+              [attr.data-index]="i"
+            >
+              <div class="card">
+                <div class="card-body">
+                  <div class="recommendedoption-title">
+                    <h4>You will save</h4>
+                    <h3>${{ option.Save | number }}</h3>
+                    <p>per month</p>
+                  </div>
+                  <div class="option-details">
+                    <p>Monthly Payment</p>
+                    <h6>${{ option.MonthlyPayment | number }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Term</p>
+                    <h6>{{ option.Term }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Rate</p>
+                    <h6>{{ option.Rate }}%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of selection option for lower  -->
+
+          <!-- If selected option is faster -->
+          <div class="row" *ngIf="SelectedOption == 'faster'">
+            <div
+              class="col-sm-4"
+              *ngFor="let option of RecommendedOptions; let i = index"
+              [attr.data-index]="i"
+            >
+              <div class="card">
+                <div class="card-body">
+                  <div class="recommendedoption-title">
+                    <h4>You'll shorten your term by</h4>
+                    <h3>{{ option.Save | number }} Years</h3>
+                  </div>
+                  <div class="option-details">
+                    <p>Monthly Payment</p>
+                    <h6>{{ option.MonthlyPayment | number }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Term</p>
+                    <h6>{{ option.Term }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Rate</p>
+                    <h6>{{ option.Rate }}%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of selection option for faster  -->
+
+          <!-- If selected option is faster -->
+          <div class="row" *ngIf="SelectedOption == 'cashout'">
+            <div
+              class="col-sm-4"
+              *ngFor="let option of RecommendedOptions; let i = index"
+              [attr.data-index]="i"
+            >
+              <div class="card">
+                <div class="card-body">
+                  <div class="recommendedoption-title">
+                    <h4>You'll get</h4>
+                    <h3>${{ option.Save | number }}</h3>
+                  </div>
+                  <div class="option-details">
+                    <p>Monthly Payment</p>
+                    <h6>{{ option.MonthlyPayment | number }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Term</p>
+                    <h6>{{ option.Term }}</h6>
+                  </div>
+                  <div class="option-details">
+                    <p>Rate</p>
+                    <h6>{{ option.Rate }}%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of selection option for faster  -->
+          <!-- End of Recommended Options section  -->
         </div>
       </div>
     </div>

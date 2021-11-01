@@ -50,8 +50,8 @@
                 <span class="position-absolute pl-3 h5 pt-2">$</span>
                 <input
                   required
-                  value=""
-                  type="text"
+                  [(ngModel)]="currentLoanAmount"
+                  type="number"
                   class="form-control pl-5"
                   name="CurrentLoanAmount"
                   id="CurrentLoanAmount"
@@ -59,38 +59,20 @@
               </div>
               <div class="col-sm-6 form-group">
                 <label class="text-primary" for="Term">Term (in years):</label>
-                <select required class="form-control" id="Term" name="Term">
-                  <option value="">Select One</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
+                <select
+                  required
+                  class="form-control"
+                  [(ngModel)]="termInYears"
+                  id="Term"
+                  name="Term"
+                >
+                  <option value="select">Select One</option>
+                  <option
+                    *ngFor="let in of counter(30); let i = index"
+                    [attr.value]="in"
+                  >
+                    {{ in }}
+                  </option>
                 </select>
               </div>
               <div class="col-sm-6 form-group">
@@ -101,6 +83,7 @@
                 <input
                   required
                   value=""
+                  [(ngModel)]="interestRate"
                   type="text"
                   class="form-control pl-5"
                   name="InterestRate"
@@ -109,8 +92,14 @@
               </div>
               <div class="col-sm-6 form-group">
                 <label class="text-primary" for="State">State:</label>
-                <select required class="form-control" id="State" name="State">
-                  <option value="">Select State</option>
+                <select
+                  required
+                  class="form-control"
+                  [(ngModel)]="state"
+                  id="State"
+                  name="State"
+                >
+                  <option value="select">Select state</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -178,11 +167,11 @@
                 <select
                   class="form-control"
                   id="PaymentType"
+                  [(ngModel)]="additionalPaymentType"
                   name="PaymentType"
                 >
-                  <option value="">Select One</option>
-                  <option value="Select One">Select One</option>
-                  <option value="One-Time">One Time</option>
+                  <option value="select">Select One</option>
+                  <option value="OneTime">One Time</option>
                   <option value="Monthly">Monthly</option>
                   <option value="Annual">Annual</option>
                 </select>
@@ -193,9 +182,9 @@
                 >
                 <span class="position-absolute pl-3 h5 pt-2">$</span>
                 <input
-                  value=""
                   type="text"
                   class="form-control pl-5"
+                  [(ngModel)]="AdditionalPaymentAmount"
                   name="AdditionalPaymentAmount"
                   id="AdditionalPaymentAmount"
                 />
@@ -208,8 +197,9 @@
                   class="form-control"
                   id="PaymentMonth"
                   name="PaymentMonth"
+                  [(ngModel)]="startMonth"
                 >
-                  <option value="">Select Month</option>
+                  <option value="select">Select Month</option>
                   <option value="Jan">Jan</option>
                   <option value="Feb">Feb</option>
                   <option value="Mar">Mar</option>
@@ -233,7 +223,7 @@
                   id="PaymentYear"
                   name="PaymentYear"
                 >
-                  <option value="">Select Year</option>
+                  <option value="select">Select Year</option>
                   <option value="2021">2021</option>
                   <option value="2022">2022</option>
                   <option value="2023">2023</option>
@@ -269,6 +259,7 @@
               </div>
               <div class="col-sm-3 form-group m-0">
                 <button
+                  (click)="calculateEstimatedMonthlyPayment()"
                   class="btn btn-secondary text-white text-uppercase w-100"
                   type="submit"
                 >
