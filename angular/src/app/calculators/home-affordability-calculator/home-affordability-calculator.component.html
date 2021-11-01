@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <label class="text-primary">What is your annual income?</label>
-        <input type="text" class="form-control" name="" />
+        <input type="number" class="form-control" [(ngModel)]="annualIncome" />
         <p>
           This is your income before taxes. Include income from any
           co-borrowers.
@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <label class="text-primary">How much monthly debt do you have?</label>
-        <input type="text" class="form-control" name="" />
+        <input type="number" class="form-control" [(ngModel)]="monthlyDebt" />
         <p>Include all required minimum monthly debt payments..</p>
       </div>
 
@@ -35,25 +35,37 @@
           >How much money do you have for your down payment and closing
           costs?</label
         >
-        <input type="text" class="form-control" name="" />
+        <input type="number" class="form-control" [(ngModel)]="downPayment" />
         <p>Include only the amount of cash you're willing to use.</p>
       </div>
       <div class="form-group">
         <label class="text-primary"
           >What is the ZIP code of the home you want to buy?</label
         >
-        <input type="text" class="form-control" name="" />
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="zipCode"
+          name=""
+        />
         <p>If you don't have a home picked out yet, your best guess is fine.</p>
       </div>
       <div class="form-group">
         <label class="text-primary">How would you rate your credit?</label>
         <select class="form-control">
-          <option>1</option>
-          <option>2</option>
+          <option
+            *ngFor="let option of RateYourCreditOptions; let i = index"
+            [attr.data-index]="i"
+          >
+            {{ option.value }}
+          </option>
         </select>
       </div>
       <div class="form-group mb-5">
-        <button class="btn btn-secondary text-uppercase w-100 text-white px-5">
+        <button
+          (click)="calculate()"
+          class="btn btn-secondary text-uppercase w-100 text-white px-5"
+        >
           CALCULATE
         </button>
       </div>

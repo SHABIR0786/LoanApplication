@@ -71,7 +71,12 @@ import { PreparingToCloseComponent } from "./buying-home-guide/preparing-to-clos
 import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-through-and-closing-day/walk-through-and-closing-day.component";
 import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
+<<<<<<< HEAD
 import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
+=======
+import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+
+>>>>>>> a07df4eb5f313f6bf5aa3928294dc2350739aa94
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -443,6 +448,11 @@ import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
           {
             path: "managing-your-mortgage",
             component: ManagingYourMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "amortization-result",
+            component: AmortizationResultComponent,
             canActivate: [AppRouteGuard],
           },
         ],

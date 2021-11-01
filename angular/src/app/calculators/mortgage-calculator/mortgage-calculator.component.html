@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-sm-6">
           <p class="mb-0 text-muted mt-5">Estimated Monthly Payment</p>
-          <h3 class="mb-4">${{ EstimatedMonthlyPayment }}</h3>
+          <h3 class="mb-4">${{ EstimatedMonthlyPayment | number }}</h3>
           <figure class="highcharts-figure">
             <div id="container"></div>
           </figure>
@@ -45,9 +45,10 @@
               type="text"
               [(ngModel)]="form.principal"
               (change)="HomePriceChanged($event.target.value)"
-              class="form-control"
+              class="form-control homeprice-input"
               name=""
             />
+            <span class="slide-value-usd">$</span>
           </div>
 
           <div class="form-group">
