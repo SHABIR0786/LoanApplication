@@ -72,6 +72,7 @@ import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-thro
 import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+import { RentVsBuyCalculatorComponent } from "./calculators/rent-vs-buy-calculator/rent-vs-buy-calculator.component";
 
 @NgModule({
   imports: [
@@ -444,6 +445,11 @@ import { AmortizationResultComponent } from "./calculators/amortization/amortiza
           {
             path: "amortization-result",
             component: AmortizationResultComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "rent-vs-buy-calculator",
+            component: RentVsBuyCalculatorComponent,
             canActivate: [AppRouteGuard],
           },
         ],

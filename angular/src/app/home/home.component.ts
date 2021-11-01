@@ -125,7 +125,8 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
     });
 
     $(".b-search").click(function () {
-      $(".blog-search").toggle("search-width");
+      // console.log('search');
+      // $(".blog-search").toggle("search-width");
       /* $('.searchtop input').focus();*/
     });
 
@@ -136,11 +137,11 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
 
     $(document).mouseup(function (e) {
       var container = $(".inpSearch");
-
+      console.log(e);
       // if the target of the click isn't the container nor a descendant of the container
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        container.removeClass("inpwidth");
-      }
+      // if (!container.is(e.target) && container.has(e.target).length === 0) {
+      //   container.removeClass("inpwidth");
+      // }
     });
 
     $(".searchcross").click(function () {

@@ -12,6 +12,7 @@ export class HomeAffordabilityCalculatorComponent implements OnInit {
   annualIncome = 0;
   monthlyDebt = 0;
   downPayment = 0;
+  zipCode = 0;
   RateYourCreditOptions = [
     { value: "Excellent (720 or above)", key: 0 },
     { value: "Good (660 - 719)", key: 1 },

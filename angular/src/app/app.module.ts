@@ -112,6 +112,7 @@ import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/mak
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
 import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+import { RentVsBuyCalculatorComponent } from "./calculators/rent-vs-buy-calculator/rent-vs-buy-calculator.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -213,6 +214,7 @@ const ngWizardConfig: NgWizardConfig = {
     ManagingYourMortgageComponent,
     AmortizationComponent,
     AmortizationResultComponent,
+    RentVsBuyCalculatorComponent,
   ],
   imports: [
     CommonModule,
