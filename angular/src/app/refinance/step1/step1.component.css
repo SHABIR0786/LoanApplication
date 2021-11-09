@@ -1,0 +1,27 @@
+.btn {
+  width: 100%;
+}
+.fa {
+  margin-right: 10px;
+}
+
+#Family {
+  background-color: #f47741;
+  text-align: left;
+}
+.form-control {
+  height: 65px;
+  margin-top: 30px;
+  width: 100%;
+}
+#num {
+  color: #0cc4d4 !important;
+}
+#Email {
+  color: #0cc4d4 !important;
+}
+#Back {
+  margin-top: 186px;
+  margin-right: 300px;
+  font-size: 20px;
+}
