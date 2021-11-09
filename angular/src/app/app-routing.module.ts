@@ -71,12 +71,27 @@ import { PreparingToCloseComponent } from "./buying-home-guide/preparing-to-clos
 import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-through-and-closing-day/walk-through-and-closing-day.component";
 import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
-<<<<<<< HEAD
 import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
-=======
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
-
->>>>>>> a07df4eb5f313f6bf5aa3928294dc2350739aa94
+import { Step1Component } from "./Refinance_loan_option_animated/step1/step1.component";
+import { Step2Component } from "./Refinance_loan_option_animated/step2/step2.component";
+import { Step3Component } from "./Refinance_loan_option_animated/step3/step3.component";
+import { Step4Component } from "./Refinance_loan_option_animated/step4/step4.component";
+import { Step5Component } from "./Refinance_loan_option_animated/step5/step5.component";
+import { AnimatedComponent } from "./Refinance_loan_option_animated/animated/animated.component";
+import { Step6Component } from "./Refinance_loan_option_animated/step6/step6.component";
+import { Step7Component } from "./Refinance_loan_option_animated/step7/step7.component";
+import { Step8Component } from "./Refinance_loan_option_animated/step8/step8.component";
+import { Step9Component } from "./Refinance_loan_option_animated/step9/step9.component";
+import { Step10Component } from "./Refinance_loan_option_animated/step10/step10.component";
+import { Step11Component } from "./Refinance_loan_option_animated/step11/step11.component";
+import { Step12Component } from "./Refinance_loan_option_animated/step12/step12.component";
+import { Step13Component } from "./Refinance_loan_option_animated/step13/step13.component";
+import { Step14Component } from "./Refinance_loan_option_animated/step14/step14.component";
+import { Step15Component } from "./Refinance_loan_option_animated/step15/step15.component";
+import { Step16Component } from "./Refinance_loan_option_animated/step16/step16.component";
+import { Step17Component } from "./Refinance_loan_option_animated/step17/step17.component";
+import { Step18Component } from "./Refinance_loan_option_animated/step18/step18.component";
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -453,6 +468,101 @@ import { AmortizationResultComponent } from "./calculators/amortization/amortiza
           {
             path: "amortization-result",
             component: AmortizationResultComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "animated",
+            component: AnimatedComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step1",
+            component: Step1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step2",
+            component: Step2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step3",
+            component: Step3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step4",
+            component: Step4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step5",
+            component: Step5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step6",
+            component: Step6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step7",
+            component: Step7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step8",
+            component: Step8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step9",
+            component: Step9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step10",
+            component: Step10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step11",
+            component: Step11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step12",
+            component: Step12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step13",
+            component: Step13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step14",
+            component: Step14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step15",
+            component: Step15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step16",
+            component: Step16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step17",
+            component: Step17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step18",
+            component: Step18Component,
             canActivate: [AppRouteGuard],
           },
         ],
