@@ -95,6 +95,27 @@ import { FhaLoansComponent } from "./loan-options/fha-loans/fha-loans.component"
 import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
 import { BlogComponent } from "./blog/blog.component";
 
+import { AnimatedComponent } from "./refinance/animated/animated.component";
+import { Step1Component } from "./refinance/step1/step1.component";
+import { Step2Component } from "./refinance/step2/step2.component";
+import { Step3Component } from "./refinance/step3/step3.component";
+import { Step4Component } from "./refinance/step4/step4.component";
+import { Step5Component } from "./refinance/step5/step5.component";
+import { Step6Component } from "./refinance/step6/step6.component";
+import { Step7Component } from "./refinance/step7/step7.component";
+import { Step8Component } from "./refinance/step8/step8.component";
+import { Step9Component } from "./refinance/step9/step9.component";
+import { Step10Component } from "./refinance/step10/step10.component";
+import { Step11Component } from "./refinance/step11/step11.component";
+import { Step12Component } from "./refinance/step12/step12.component";
+import { Step13Component } from "./refinance/step13/step13.component";
+import { Step14Component } from "./refinance/step14/step14.component";
+import { Step15Component } from "./refinance/step15/step15.component";
+import { Step16Component } from "./refinance/step16/step16.component";
+import { Step17Component } from "./refinance/step17/step17.component";
+import { Step18Component } from "./refinance/step18/step18.component";
+import { Step19Component } from "./refinance/step19/step19.component";
+
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
 };
@@ -177,6 +198,46 @@ const ngWizardConfig: NgWizardConfig = {
     FhaLoansComponent,
     JumboLoanComponent,
     BlogComponent,
+
+    Step2Component,
+
+    AnimatedComponent,
+
+    Step1Component,
+
+    Step3Component,
+
+    Step4Component,
+
+    Step5Component,
+
+    Step6Component,
+
+    Step7Component,
+
+    Step8Component,
+
+    Step9Component,
+
+    Step10Component,
+
+    Step11Component,
+
+    Step12Component,
+
+    Step13Component,
+
+    Step14Component,
+
+    Step15Component,
+
+    Step16Component,
+
+    Step17Component,
+
+    Step18Component,
+
+    Step19Component,
   ],
   imports: [
     CommonModule,

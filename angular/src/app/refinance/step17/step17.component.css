@@ -1,0 +1,51 @@
+.btn {
+  padding: 28px;
+  width: 100%;
+}
+.fa {
+  margin-right: 10px;
+}
+
+#Family {
+  background-color: #f47741;
+}
+#Back {
+  margin-top: 270px;
+  margin-right: 300px;
+  font-size: 20px;
+}
+#num {
+  color: #0cc4d4 !important;
+}
+#Email {
+  color: #0cc4d4 !important;
+}
+#Fn {
+  padding: 28px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #f47741 !important;
+}
+#Ln {
+  padding: 28px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #f47741 !important;
+}
+::placeholder {
+  color: #f47741;
+  opacity: 1;
+}
+#first_name {
+  margin-top: 100px;
+}
+#last_name {
+  margin-top: 30px;
+}
+.co-borrower {
+  margin-top: -44px;
+  font-size: 25px;
+}
+.pb-5 {
+  font-size: 50px;
+}

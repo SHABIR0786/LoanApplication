@@ -54,7 +54,26 @@ import { HarpRefinanceComponent } from "./loan-options/harp-refinance/harp-refin
 import { JumboLoanComponent } from "./loan-options/jumbo-loan/jumbo-loan.component";
 import { ThirtyYearFixedMortgageComponent } from "./loan-options/thirty-year-fixed-mortgage/thirty-year-fixed-mortgage.component";
 import { BlogComponent } from "./blog/blog.component";
-
+import { AnimatedComponent } from "./refinance/animated/animated.component";
+import { Step1Component } from "./refinance/step1/step1.component";
+import { Step2Component } from "./refinance/step2/step2.component";
+import { Step3Component } from "./refinance/step3/step3.component";
+import { Step4Component } from "./refinance/step4/step4.component";
+import { Step5Component } from "./refinance/step5/step5.component";
+import { Step6Component } from "./refinance/step6/step6.component";
+import { Step7Component } from "./refinance/step7/step7.component";
+import { Step8Component } from "./refinance/step8/step8.component";
+import { Step9Component } from "./refinance/step9/step9.component";
+import { Step10Component } from "./refinance/step10/step10.component";
+import { Step11Component } from "./refinance/step11/step11.component";
+import { Step12Component } from "./refinance/step12/step12.component";
+import { Step13Component } from "./refinance/step13/step13.component";
+import { Step14Component } from "./refinance/step14/step14.component";
+import { Step15Component } from "./refinance/step15/step15.component";
+import { Step16Component } from "./refinance/step16/step16.component";
+import { Step17Component } from "./refinance/step17/step17.component";
+import { Step18Component } from "./refinance/step18/step18.component";
+import { Step19Component } from "./refinance/step19/step19.component";
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -336,6 +355,107 @@ import { BlogComponent } from "./blog/blog.component";
           {
             path: "blog",
             component: BlogComponent,
+            canActivate: [AppRouteGuard],
+          },
+
+          {
+            path: "animated",
+            component: AnimatedComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step1",
+            component: Step1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step2",
+            component: Step2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step3",
+            component: Step3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step4",
+            component: Step4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step5",
+            component: Step5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step6",
+            component: Step6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step7",
+            component: Step7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step8",
+            component: Step8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step9",
+            component: Step9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step10",
+            component: Step10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step11",
+            component: Step11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step12",
+            component: Step12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step13",
+            component: Step13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step14",
+            component: Step14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step15",
+            component: Step15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step16",
+            component: Step16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step17",
+            component: Step17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step18",
+            component: Step18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "Step19",
+            component: Step19Component,
             canActivate: [AppRouteGuard],
           },
         ],

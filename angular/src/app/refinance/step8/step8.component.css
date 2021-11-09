@@ -1,0 +1,21 @@
+.btn {
+  width: 100%;
+}
+.fa {
+  margin-right: 10px;
+}
+
+#Family {
+  background-color: #f47741;
+}
+#Back {
+  margin-top: 280px;
+  margin-right: 300px;
+  font-size: 20px;
+}
+#num {
+  color: #0cc4d4 !important;
+}
+#Email {
+  color: #0cc4d4 !important;
+}
