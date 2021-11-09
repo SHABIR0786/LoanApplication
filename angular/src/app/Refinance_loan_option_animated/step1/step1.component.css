@@ -1,0 +1,22 @@
+#Back {
+  position: relative;
+  top: 188px;
+  right: 270px;
+}
+#icon {
+  font-size: 26px;
+  position: relative;
+  top: 215px;
+  right: 300px;
+}
+
+#button {
+  border: 1px solid orange !important;
+  width: 260px;
+  height: 43px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #091a52;
+  margin-left: 494px;
+  margin-top: 33px;
+}
