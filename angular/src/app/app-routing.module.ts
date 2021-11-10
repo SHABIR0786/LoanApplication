@@ -26,7 +26,7 @@ import { AdminPanelComponent } from "./admin-panel/admin-panel.component";
 import { HomeAffordabilityCalculatorComponent } from "./calculators/home-affordability-calculator/home-affordability-calculator.component";
 import { MortgageCalculatorComponent } from "./calculators/mortgage-calculator/mortgage-calculator.component";
 import { RefinanceCalculatorComponent } from "./calculators/refinance-calculator/refinance-calculator.component";
-import { AmortisationComponent } from "./calculators/amortisation/amortisation.component";
+import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 import { AffordabilityComponent } from "./calculators/affordability/affordability.component";
 import { ViewAllCalculatorsComponent } from "./calculators/view-all-calculators/view-all-calculators.component";
 import { BuyingHomeGuideComponent } from "./buying-home-guide/buying-home-guide.component";
@@ -74,6 +74,44 @@ import { Step16Component } from "./refinance/step16/step16.component";
 import { Step17Component } from "./refinance/step17/step17.component";
 import { Step18Component } from "./refinance/step18/step18.component";
 import { Step19Component } from "./refinance/step19/step19.component";
+import { AboutUsComponent } from "./about-us/about-us.component";
+import { RequestAMortgageComponent } from "./about-us/request-a-mortgage/request-a-mortgage.component";
+import { ContactUsComponent } from "./about-us/contact-us/contact-us.component";
+import { LicenseInfoComponent } from "./about-us/license-info/license-info.component";
+import { MortgageGlossaryComponent } from "./about-us/mortgage-glossary/mortgage-glossary.component";
+import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current-home-loan-rates.component";
+import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
+import { FinalizingMortgagePreApprovalComponent } from "./buying-home-guide/finalizing-mortgage-pre-approval/finalizing-mortgage-pre-approval.component";
+import { DecidingMortgageComponent } from "./buying-home-guide/deciding-mortgage/deciding-mortgage.component";
+import { SelectionRealEstateAgentComponent } from "./buying-home-guide/selection-real-estate-agent/selection-real-estate-agent.component";
+import { HouseHuntingComponent } from "./buying-home-guide/house-hunting/house-hunting.component";
+import { MakingACompetitiveOfferComponent } from "./buying-home-guide/making-a-competitive-offer/making-a-competitive-offer.component";
+import { UnderwritingProcessComponent } from "./buying-home-guide/underwriting-process/underwriting-process.component";
+import { PreparingToCloseComponent } from "./buying-home-guide/preparing-to-close/preparing-to-close.component";
+import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-through-and-closing-day/walk-through-and-closing-day.component";
+import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
+import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
+import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
+import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+import { RefinanceLoanOptionsStep1Component } from "./Refinance_loan_option_animated/step1/step1.component";
+import { RefinanceLoanOptionsStep2Component } from "./Refinance_loan_option_animated/step2/step2.component";
+import { RefinanceLoanOptionsStep3Component } from "./Refinance_loan_option_animated/step3/step3.component";
+import { RefinanceLoanOptionsStep4Component } from "./Refinance_loan_option_animated/step4/step4.component";
+import { RefinanceLoanOptionsStep5Component } from "./Refinance_loan_option_animated/step5/step5.component";
+import { AnimatedOneComponent } from "./Refinance_loan_option_animated/animated/animated.component";
+import { RefinanceLoanOptionsStep6Component } from "./Refinance_loan_option_animated/step6/step6.component";
+import { RefinanceLoanOptionsStep7Component } from "./Refinance_loan_option_animated/step7/step7.component";
+import { RefinanceLoanOptionsStep8Component } from "./Refinance_loan_option_animated/step8/step8.component";
+import { RefinanceLoanOptionsStep9Component } from "./Refinance_loan_option_animated/step9/step9.component";
+import { RefinanceLoanOptionsStep10Component } from "./Refinance_loan_option_animated/step10/step10.component";
+import { RefinanceLoanOptionsStep11Component } from "./Refinance_loan_option_animated/step11/step11.component";
+import { RefinanceLoanOptionsStep12Component } from "./Refinance_loan_option_animated/step12/step12.component";
+import { RefinanceLoanOptionsStep13Component } from "./Refinance_loan_option_animated/step13/step13.component";
+import { RefinanceLoanOptionsStep14Component } from "./Refinance_loan_option_animated/step14/step14.component";
+import { RefinanceLoanOptionsStep15Component } from "./Refinance_loan_option_animated/step15/step15.component";
+import { RefinanceLoanOptionsStep16Component } from "./Refinance_loan_option_animated/step16/step16.component";
+import { RefinanceLoanOptionsStep17Component } from "./Refinance_loan_option_animated/step17/step17.component";
+import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_animated/step18/step18.component";
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -228,8 +266,8 @@ import { Step19Component } from "./refinance/step19/step19.component";
             canActivate: [AppRouteGuard],
           },
           {
-            path: "amortisation",
-            component: AmortisationComponent,
+            path: "amortization",
+            component: AmortizationComponent,
             canActivate: [AppRouteGuard],
           },
           {
@@ -353,11 +391,106 @@ import { Step19Component } from "./refinance/step19/step19.component";
             canActivate: [AppRouteGuard],
           },
           {
+            path: "va-loan",
+            component: VaLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
             path: "blog",
             component: BlogComponent,
             canActivate: [AppRouteGuard],
           },
 
+          {
+            path: "about-us",
+            component: AboutUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "request-a-mortgage",
+            component: RequestAMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "contact-us",
+            component: ContactUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "license-info",
+            component: LicenseInfoComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "mortgage-glossary",
+            component: MortgageGlossaryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "current-home-loan-rates",
+            component: CurrentHomeLoanRatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "email-and-text-updates",
+            component: EmailAndTextUpdatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "finalizing-mortgage-pre-approval",
+            component: FinalizingMortgagePreApprovalComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "deciding-mortgage",
+            component: DecidingMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "selection-real-estate-agent",
+            component: SelectionRealEstateAgentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "house-hunting",
+            component: HouseHuntingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-a-competitive-offer",
+            component: MakingACompetitiveOfferComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "underwriting-process",
+            component: UnderwritingProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "preparing-to-close",
+            component: PreparingToCloseComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "walk-through-and-closing-day",
+            component: WalkThroughAndClosingDayComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-your-first-mortgage-payment",
+            component: MakingYourFirstMortgagePaymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "managing-your-mortgage",
+            component: ManagingYourMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "amortization-result",
+            component: AmortizationResultComponent,
+            canActivate: [AppRouteGuard],
+          },
           {
             path: "animated",
             component: AnimatedComponent,
@@ -455,6 +588,107 @@ import { Step19Component } from "./refinance/step19/step19.component";
           },
           {
             path: "Step19",
+            component: Step19Component,
+            canActivate: [AppRouteGuard],
+          },
+          // Refinance Loan Options Steps
+          {
+            path: "refinance-animated",
+            component: AnimatedOneComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step1",
+            component: RefinanceLoanOptionsStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step2",
+            component: RefinanceLoanOptionsStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step3",
+            component: Step3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step4",
+            component: Step4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step5",
+            component: Step5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step6",
+            component: Step6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step7",
+            component: Step7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step8",
+            component: Step8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step9",
+            component: Step9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step10",
+            component: Step10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step11",
+            component: Step11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step12",
+            component: Step12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step13",
+            component: Step13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step14",
+            component: Step14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step15",
+            component: Step15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step16",
+            component: Step16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step17",
+            component: Step17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step18",
+            component: Step18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step19",
             component: Step19Component,
             canActivate: [AppRouteGuard],
           },

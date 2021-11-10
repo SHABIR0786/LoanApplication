@@ -9,4 +9,13 @@ export class BuyingSecondHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ReadMore:boolean = true
+
+  visible:boolean = false
+
+  readmore(){
+    this.ReadMore = !this.ReadMore
+    this.visible = !this.visible
+  }
 }
