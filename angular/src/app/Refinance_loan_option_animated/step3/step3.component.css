@@ -1,0 +1,108 @@
+#but {
+  border: 1px solid orange;
+  width: 260px;
+  height: 43px;
+  text-align: center;
+}
+
+#but:hover {
+  border: 1px solid blue;
+}
+
+#Back {
+  position: relative;
+  top: 114px;
+  right: 270px;
+}
+#icon {
+  font-size: 26px;
+  position: relative;
+  top: 141px;
+  right: 300px;
+}
+.hrline {
+  width: 100%;
+}
+.hrline hr {
+  border-top: 1px solid white;
+  width: 100%;
+}
+.firsticon {
+  /* border-radius: 100%; */
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  /* background-color: white; */
+}
+.stepcircle {
+  border-radius: 100%;
+  border: 1px solid white;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin-left: 19.1%;
+  margin-top: -5px;
+  background-color: white;
+}
+
+#one {
+  position: relative;
+  top: 11px;
+  right: 15px;
+}
+#two {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#three {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#four {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#five {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#six {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#seven {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#eight {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#nine {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}
+
+#ten {
+  position: relative;
+  top: 11px;
+  right: 61px;
+}

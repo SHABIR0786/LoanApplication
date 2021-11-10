@@ -6,6 +6,14 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./pay-off-your-mortgage-faster.component.css"],
 })
 export class PayOffYourMortgageFasterComponent implements OnInit {
+  ReadMore: boolean = true;
+
+  visible: boolean = false;
+
+  onclick() {
+    this.ReadMore = !this.ReadMore;
+    this.visible = !this.visible;
+  }
   constructor() {}
 
   ngOnInit(): void {}
