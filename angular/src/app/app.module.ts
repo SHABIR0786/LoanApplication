@@ -111,8 +111,48 @@ import { WalkThroughAndClosingDayComponent } from "./buying-home-guide/walk-thro
 import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/making-your-first-mortgage-payment/making-your-first-mortgage-payment.component";
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
 import { AmortizationComponent } from "./calculators/amortization/amortization.component";
+import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
 import { RentVsBuyCalculatorComponent } from "./calculators/rent-vs-buy-calculator/rent-vs-buy-calculator.component";
+import { RefinanceLoanOptionsStep1Component } from "./Refinance_loan_option_animated/step1/step1.component";
+import { RefinanceLoanOptionsStep2Component } from "./Refinance_loan_option_animated/step2/step2.component";
+import { RefinanceLoanOptionsStep3Component } from "./Refinance_loan_option_animated/step3/step3.component";
+import { RefinanceLoanOptionsStep4Component } from "./Refinance_loan_option_animated/step4/step4.component";
+import { RefinanceLoanOptionsStep5Component } from "./Refinance_loan_option_animated/step5/step5.component";
+import { AnimatedOneComponent } from "./Refinance_loan_option_animated/animated/animated.component";
+import { RefinanceLoanOptionsStep6Component } from "./Refinance_loan_option_animated/step6/step6.component";
+import { RefinanceLoanOptionsStep7Component } from "./Refinance_loan_option_animated/step7/step7.component";
+import { RefinanceLoanOptionsStep8Component } from "./Refinance_loan_option_animated/step8/step8.component";
+import { RefinanceLoanOptionsStep9Component } from "./Refinance_loan_option_animated/step9/step9.component";
+import { RefinanceLoanOptionsStep10Component } from "./Refinance_loan_option_animated/step10/step10.component";
+import { RefinanceLoanOptionsStep11Component } from "./Refinance_loan_option_animated/step11/step11.component";
+import { RefinanceLoanOptionsStep12Component } from "./Refinance_loan_option_animated/step12/step12.component";
+import { RefinanceLoanOptionsStep13Component } from "./Refinance_loan_option_animated/step13/step13.component";
+import { RefinanceLoanOptionsStep14Component } from "./Refinance_loan_option_animated/step14/step14.component";
+import { RefinanceLoanOptionsStep15Component } from "./Refinance_loan_option_animated/step15/step15.component";
+import { RefinanceLoanOptionsStep16Component } from "./Refinance_loan_option_animated/step16/step16.component";
+import { RefinanceLoanOptionsStep17Component } from "./Refinance_loan_option_animated/step17/step17.component";
+import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_animated/step18/step18.component";
+import { AnimatedComponent } from "./refinance/animated/animated.component";
+import { Step1Component } from "./refinance/step1/step1.component";
+import { Step2Component } from "./refinance/step2/step2.component";
+import { Step3Component } from "./refinance/step3/step3.component";
+import { Step4Component } from "./refinance/step4/step4.component";
+import { Step5Component } from "./refinance/step5/step5.component";
+import { Step6Component } from "./refinance/step6/step6.component";
+import { Step7Component } from "./refinance/step7/step7.component";
+import { Step8Component } from "./refinance/step8/step8.component";
+import { Step9Component } from "./refinance/step9/step9.component";
+import { Step10Component } from "./refinance/step10/step10.component";
+import { Step11Component } from "./refinance/step11/step11.component";
+import { Step12Component } from "./refinance/step12/step12.component";
+import { Step13Component } from "./refinance/step13/step13.component";
+import { Step14Component } from "./refinance/step14/step14.component";
+import { Step15Component } from "./refinance/step15/step15.component";
+import { Step16Component } from "./refinance/step16/step16.component";
+import { Step17Component } from "./refinance/step17/step17.component";
+import { Step18Component } from "./refinance/step18/step18.component";
+import { Step19Component } from "./refinance/step19/step19.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -195,6 +235,46 @@ const ngWizardConfig: NgWizardConfig = {
     FhaLoansComponent,
     JumboLoanComponent,
     BlogComponent,
+
+    Step2Component,
+
+    AnimatedComponent,
+
+    Step1Component,
+
+    Step3Component,
+
+    Step4Component,
+
+    Step5Component,
+
+    Step6Component,
+
+    Step7Component,
+
+    Step8Component,
+
+    Step9Component,
+
+    Step10Component,
+
+    Step11Component,
+
+    Step12Component,
+
+    Step13Component,
+
+    Step14Component,
+
+    Step15Component,
+
+    Step16Component,
+
+    Step17Component,
+
+    Step18Component,
+
+    Step19Component,
     AboutUsComponent,
     RequestAMortgageComponent,
     ContactUsComponent,
@@ -213,8 +293,28 @@ const ngWizardConfig: NgWizardConfig = {
     MakingYourFirstMortgagePaymentComponent,
     ManagingYourMortgageComponent,
     AmortizationComponent,
+    VaLoanComponent,
     AmortizationResultComponent,
     RentVsBuyCalculatorComponent,
+    AnimatedOneComponent,
+    RefinanceLoanOptionsStep1Component,
+    RefinanceLoanOptionsStep2Component,
+    RefinanceLoanOptionsStep3Component,
+    RefinanceLoanOptionsStep4Component,
+    RefinanceLoanOptionsStep5Component,
+    RefinanceLoanOptionsStep6Component,
+    RefinanceLoanOptionsStep7Component,
+    RefinanceLoanOptionsStep8Component,
+    RefinanceLoanOptionsStep9Component,
+    RefinanceLoanOptionsStep10Component,
+    RefinanceLoanOptionsStep12Component,
+    RefinanceLoanOptionsStep13Component,
+    RefinanceLoanOptionsStep14Component,
+    RefinanceLoanOptionsStep15Component,
+    RefinanceLoanOptionsStep16Component,
+    RefinanceLoanOptionsStep17Component,
+    RefinanceLoanOptionsStep18Component
+   
   ],
   imports: [
     CommonModule,
