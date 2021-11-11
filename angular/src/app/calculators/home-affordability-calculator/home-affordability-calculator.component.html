@@ -14,20 +14,42 @@
       <h5 class="text-secondary">Know About</h5>
       <h2 class="text-primary mb-1">Home Affordability Calculator</h2>
       <p>Calculate the maximum home price you can afford.</p>
-
+      <form
+      class="form"
+      [formGroup]="homeAffordAbility"
+      (ngSubmit)="calculate()"
+    >
       <div class="form-group">
         <label class="text-primary">What is your annual income?</label>
-        <input type="number" class="form-control" [(ngModel)]="annualIncome" />
+        <input type="number" class="form-control" formControlName="annualIncome" />
         <p>
           This is your income before taxes. Include income from any
           co-borrowers.
         </p>
+        <span
+        class="text-danger"
+        *ngIf="
+          (homeAffordAbilityControl.annualIncome.touched || submitted) &&
+          homeAffordAbilityControl.annualIncome.errors?.required
+        "
+      >
+      annual Income is required
+      </span>
       </div>
 
       <div class="form-group">
         <label class="text-primary">How much monthly debt do you have?</label>
-        <input type="number" class="form-control" [(ngModel)]="monthlyDebt" />
+        <input type="number" class="form-control" formControlName="monthlyDebt" />
         <p>Include all required minimum monthly debt payments..</p>
+        <span
+        class="text-danger"
+        *ngIf="
+          (homeAffordAbilityControl.monthlyDebt.touched || submitted) &&
+          homeAffordAbilityControl.monthlyDebt.errors?.required
+        "
+      >
+      monthly debit is required
+      </span>
       </div>
 
       <div class="form-group">
@@ -35,36 +57,65 @@
           >How much money do you have for your down payment and closing
           costs?</label
         >
-        <input type="number" class="form-control" [(ngModel)]="downPayment" />
+        <input type="number" class="form-control" formControlName="downPayment" />
         <p>Include only the amount of cash you're willing to use.</p>
+        <span
+        class="text-danger"
+        *ngIf="
+          (homeAffordAbilityControl.downPayment.touched || submitted) &&
+          homeAffordAbilityControl.downPayment.errors?.required
+        "
+      >
+      down Payment is required
+      </span>
       </div>
       <div class="form-group">
         <label class="text-primary"
           >What is the ZIP code of the home you want to buy?</label
         >
-        <input type="number" class="form-control" [(ngModel)]="zipCode" />
+        <input type="number" class="form-control" formControlName="zipCode" />
         <p>If you don't have a home picked out yet, your best guess is fine.</p>
+        <span
+        class="text-danger"
+        *ngIf="
+          (homeAffordAbilityControl.zipCode.touched || submitted) &&
+          homeAffordAbilityControl.zipCode.errors?.required
+        "
+      >
+      zip Code is required
+      </span>
       </div>
       <div class="form-group">
         <label class="text-primary">How would you rate your credit?</label>
-        <select class="form-control">
+        <select formControlName="creditScore" class="form-control">
           <option
             *ngFor="let option of RateYourCreditOptions; let i = index"
             [attr.data-index]="i"
+            [value]="option.key"
           >
             {{ option.value }}
           </option>
         </select>
+        <span
+        class="text-danger"
+        *ngIf="
+          (homeAffordAbilityControl.creditScore.touched || submitted) &&
+          homeAffordAbilityControl.creditScore.errors?.required
+        "
+      >
+      credit Score is required
+      </span>
       </div>
       <div class="form-group mb-5">
         <button
-          (click)="calculate()"
+        type="submit"
           class="btn btn-secondary text-uppercase w-100 text-white px-5"
         >
           CALCULATE
         </button>
       </div>
 
+      </form>
       <h5 class="text-secondary">Know About</h5>
       <h2 class="text-primary">FAQ’s</h2>
 

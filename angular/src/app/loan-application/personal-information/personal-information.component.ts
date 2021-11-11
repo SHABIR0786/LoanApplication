@@ -67,7 +67,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   }
 
   addPreviousAddress() {
-    debugger;
     this.previousAddressesFormArray.push(this.initAddressForm({}, 3, true));
   }
 
@@ -367,13 +366,12 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       .get("coBorrowerResidentialAddressSameAsBorrowerResidential")
       .valueChanges.subscribe(
         (coBorrowerResidentialAddressSameAsBorrowerResidential) => {
-          debugger;
           if (coBorrowerResidentialAddressSameAsBorrowerResidential) {
-            this.data.coBorrowerResidentialAddress.addressLine1 = null;
-            this.data.coBorrowerResidentialAddress.addressLine2 = null;
-            this.data.coBorrowerResidentialAddress.city = null;
-            this.data.coBorrowerResidentialAddress.stateId = null;
-            this.data.coBorrowerResidentialAddress.zipCode = null;
+            this.data.coBorrowerResidentialAddress.addressLine1 = this.data.residentialAddress.addressLine1;
+            this.data.coBorrowerResidentialAddress.addressLine2 = this.data.residentialAddress.addressLine2;
+            this.data.coBorrowerResidentialAddress.city = this.data.residentialAddress.city;
+            this.data.coBorrowerResidentialAddress.stateId = this.data.residentialAddress.stateId;
+            this.data.coBorrowerResidentialAddress.zipCode = this.data.residentialAddress.zipCode;
           } else {
             if (
               coBorrowerResidentialAddressSameAsBorrowerResidential === false
@@ -502,7 +500,13 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-
+    if(formData.personalInformation.coBorrowerResidentialAddressSameAsBorrowerResidential){
+      formData.personalInformation.coBorrowerResidentialAddress.addressLine1 = formData.personalInformation.residentialAddress.addressLine1;
+      formData.personalInformation.coBorrowerResidentialAddress.addressLine2 = formData.personalInformation.residentialAddress.addressLine2;
+      formData.personalInformation.coBorrowerResidentialAddress.city = formData.personalInformation.residentialAddress.city;
+      formData.personalInformation.coBorrowerResidentialAddress.stateId = formData.personalInformation.residentialAddress.stateId;
+      formData.personalInformation.coBorrowerResidentialAddress.zipCode = formData.personalInformation.residentialAddress.zipCode;
+    }
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(
@@ -537,25 +541,24 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
               this._ngWizardService.next();
             }
           }
-          break;
-        // fields = ["isApplyingWithCoBorrower"];
-        // const hasError = fields.some(
-        //   (field) => this.form.get(field) && !this.form.get(field).valid
-        // );
+          fields = ["isApplyingWithCoBorrower"];
+          const hasError = fields.some(
+          (field) => this.form.get(field) && !this.form.get(field).valid
+          );
 
-        // if (hasError) {
-        //   fields.forEach(
-        //     (field) =>
-        //       this.form.get(field) && this.form.get(field).markAsTouched()
-        //   );
-        // }
+          if (hasError) {
+            fields.forEach(
+            (field) =>
+              this.form.get(field) && this.form.get(field).markAsTouched()
+            );
+          }
+          break;
         case 2:
           this._ngWizardService.next();
           break;
       }
     } else {
       if (this.form.valid) {
-        debugger;
         this._activatedRoute.queryParams.subscribe(async (params) => {
           const id = params["id"];
           if (id) {

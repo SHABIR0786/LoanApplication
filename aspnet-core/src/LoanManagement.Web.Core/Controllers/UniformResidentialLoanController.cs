@@ -37,17 +37,23 @@ namespace LoanManagement.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] LoanApplicationDto input)
         {
-            if (input == null || !ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            if (!input.Id.HasValue || input.Id.Value == default)
+            try
             {
-                input = await _loanAppService.CreateAsync(input);
+                if (input == null || !ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                if (!input.Id.HasValue || input.Id.Value == default)
+                {
+                    input = await _loanAppService.CreateAsync(input);
+                }
+
+                await _loanAppService.UpdateAsync(input);
+
+                return Json(input);
+            }catch(Exception ex)
+            {
+                return Json(ex.Message);
             }
-
-            await _loanAppService.UpdateAsync(input);
-
-            return Json(input);
         }
 
         [HttpGet]

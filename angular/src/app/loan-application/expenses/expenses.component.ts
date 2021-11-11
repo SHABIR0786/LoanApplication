@@ -31,10 +31,16 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
+      console.log(this.data);
       this.data = this._dataService.loanApplication.expenses;
-      if (this.data.isLiveWithFamilySelectRent)
+      if(!this.data){
+        this.data = {};
+      }
+      if (this.data && this.data.isLiveWithFamilySelectRent){
         this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
-      else this.data.isLiveWithFamilySelectRent = "";
+      } else{
+         this.data.isLiveWithFamilySelectRent = "";
+    }
       this.initForm();
       this.form.patchValue(this.data);
     }
@@ -160,7 +166,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
   proceedToNext() {
     this.submitForm();
-    if (this.form.valid) {
+    if (this.form && this.form.valid) {
       //this._ngWizardService.next();
       this._activatedRoute.queryParams.subscribe(async (params) => {
         const id = params["id"];
