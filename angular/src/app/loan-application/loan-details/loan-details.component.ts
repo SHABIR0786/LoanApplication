@@ -56,7 +56,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     const response: Result<ILoanApplicationModel> = this._activatedRoute
       .snapshot.data.loanApp;
 
@@ -116,7 +115,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   }
 
   initForm() {
-    debugger;
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       referredBy: new FormControl(this.data.referredBy),
@@ -200,7 +198,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.form.removeControl("currentLoanAmount");
         this.form.removeControl("requestedLoanAmount");
       } else if (purposeOfLoan == 2) {
-        debugger;
         this.form.addControl(
           "estimatedValue",
           new FormControl(this.form.value.estimatedValue, Validators.required)
@@ -223,7 +220,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.form.removeControl("downPaymentAmount");
         this.form.removeControl("sourceOfDownPayment");
       } else if (purposeOfLoan == 3) {
-        debugger;
         this.form.addControl(
           "estimatedValue",
           new FormControl(this.form.value.estimatedValue, Validators.required)
@@ -316,6 +312,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
     this.form
       .get("downPaymentPercentage")
       .valueChanges.subscribe((downPaymentPercentage) => {
+        if(this.form.get("downPaymentAmount")){
         const currentDownPaymentAmount = this.form.get("downPaymentAmount")
           .value;
         if (downPaymentPercentage) {
@@ -335,6 +332,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
           if (currentDownPaymentAmount !== null)
             this.form.get("downPaymentAmount").setValue(null);
         }
+      }
       });
   }
 
@@ -364,7 +362,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(
@@ -397,7 +394,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   }
 
   proceedToNext(event?: string, stepIndex?: number) {
-    debugger;
     this.submitForm();
     if (event === "wizardStep") {
       let fields = [];
@@ -417,7 +413,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
           );
 
           if (hasError) {
-            console.log(this.findInvalidControls());
             fields.forEach(
               (field) =>
                 this.form.get(field) && this.form.get(field).markAsTouched()

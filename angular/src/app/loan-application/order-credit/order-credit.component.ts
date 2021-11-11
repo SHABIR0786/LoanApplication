@@ -31,8 +31,12 @@ export class OrderCreditComponent implements OnInit, DoCheck {
 
     if (response && response.success)
       this._dataService.loanApplication = response.result;
-
+    if(this._dataService.loanApplication.orderCredit){
     this.data = this._dataService.loanApplication.orderCredit;
+    }
+    if(!this.data){
+      this.data = {};
+    }
   }
 
   prepareFormData(response) {

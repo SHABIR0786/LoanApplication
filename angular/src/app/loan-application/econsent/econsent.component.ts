@@ -55,6 +55,10 @@ export class EconsentComponent implements OnInit, DoCheck {
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
       this.data = this._dataService.loanApplication.eConsent;
+      if(!this.data){
+      this.data = {};
+
+      }
       this.borrower = this._dataService.loanApplication.personalInformation.borrower;
       this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
       this.personalInformation = this._dataService.loanApplication.personalInformation;
@@ -84,6 +88,7 @@ export class EconsentComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+    console.log(this.form);
     this.data = this.form.value;
     this._dataService.updateData(this.form.value, "eConsent");
     this.personalInformation.borrower.firstName = this.data.firstName;
@@ -167,7 +172,6 @@ export class EconsentComponent implements OnInit, DoCheck {
   }
   proceedToNext(event?: string, stepIndex?: number) {
     this.submitForm();
-    debugger;
     if (event === "wizardStep") {
       this._ngWizardService.next();
     } else {

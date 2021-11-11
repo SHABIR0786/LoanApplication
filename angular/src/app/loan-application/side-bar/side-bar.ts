@@ -59,6 +59,12 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
       this.Id = params["id"];
     });
     this.menuItems = this.getMenuItems();
+    var currentUrl = this.router.url !== "/" ? this.router.url : this.homeRoute;
+    const primaryUrlSegmentGroup = this.router.parseUrl(currentUrl).root
+      .children[PRIMARY_OUTLET];
+    if (primaryUrlSegmentGroup) {
+      this.activateMenuItems("/" + primaryUrlSegmentGroup.toString());
+    }
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {

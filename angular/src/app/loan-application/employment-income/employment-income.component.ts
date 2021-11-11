@@ -189,7 +189,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
 
   initForm() {
-    debugger;
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       borrowerMonthlyIncome: this.initBorrowerMonthlyIncome(
@@ -435,7 +434,38 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
   }
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
+    if(formData.employmentIncome){
+      if(formData.employmentIncome.additionalIncomes){
+      formData.employmentIncome.additionalIncomes.forEach(function(item){
+        if(item.borrowerTypeId == null || item.borrowerTypeId == 0){
+          item.borrowerTypeId = 1;
+        }
+      });
+    }
+    if(formData.employmentIncome.borrowerEmploymentInfo){
+      formData.employmentIncome.borrowerEmploymentInfo.forEach(function(item){
+        if(item.borrowerTypeId == null || item.borrowerTypeId == 0){
+          item.borrowerTypeId = 1;
+        }
+      });
+    }
+    if(formData.employmentIncome.coBorrowerEmploymentInfo){
+      formData.employmentIncome.coBorrowerEmploymentInfo.forEach(function(item){
+        if(item.borrowerTypeId == null || item.borrowerTypeId == 0){
+          item.borrowerTypeId = 1;
+        }
+      });
+    }
+      if(formData.employmentIncome.borrowerMonthlyIncome && (formData.employmentIncome.borrowerMonthlyIncome.borrowerTypeId == null || formData.employmentIncome.borrowerMonthlyIncome.borrowerTypeId == 0)){
+        formData.employmentIncome.borrowerMonthlyIncome.borrowerTypeId = 1;
+      }
 
+      
+      if(formData.employmentIncome.coBorrowerMonthlyIncome && (formData.employmentIncome.coBorrowerMonthlyIncome.borrowerTypeId == null || formData.employmentIncome.coBorrowerMonthlyIncome.borrowerTypeId == 0)) {
+        formData.employmentIncome.coBorrowerMonthlyIncome.borrowerTypeId = 1;
+      }
+    }
+    console.log(formData);
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(
