@@ -1,0 +1,170 @@
+#button {
+  border: 1px solid orange !important;
+  width: 260px;
+  height: 43px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #091a52;
+  margin-left: 494px;
+  margin-top: 33px;
+}
+.card-title {
+  font-size: 48px;
+}
+
+.card-subtitle {
+  position: absolute;
+  left: 89px;
+  top: 44px;
+  font-size: 20px;
+}
+
+#subtitle {
+  position: absolute;
+  left: 90px;
+  top: 54px;
+  color: gray;
+  font-size: 14px;
+}
+
+.subtitle-two {
+  position: relative;
+  top: 67px;
+  right: 56px;
+  font-size: 11px;
+  color: gray;
+}
+.subtitle-three {
+  font-size: 11px;
+  color: gray;
+  position: absolute;
+  top: 106px;
+  left: 31px;
+}
+
+.subtitle-four {
+  font-size: 11px;
+  color: gray;
+  position: absolute;
+  top: 120px;
+  left: 33px;
+}
+
+#text-one {
+  position: relative;
+  top: 44px;
+  right: 81px;
+  color: orange;
+  font-size: 26px;
+}
+
+#text-two {
+  color: gray;
+  position: relative;
+  top: 25px;
+  right: 81px;
+}
+
+.line {
+  margin-top: 41px;
+}
+.float-left {
+  margin-left: 16px;
+  color: gray;
+}
+
+#img-one {
+  position: absolute;
+  left: 15px;
+  top: 230px;
+}
+
+#img-two {
+  position: absolute;
+  left: 14px;
+  top: 271px;
+}
+#img-three {
+  position: absolute;
+  left: 14px;
+  top: 312px;
+}
+
+#doller-one {
+  position: relative;
+  top: 1px;
+  left: 39px;
+  color: gray;
+}
+
+#doller-two {
+  position: relative;
+  top: 40px;
+  left: 4px;
+  color: gray;
+}
+
+#doller-three {
+  position: relative;
+  top: 56px;
+  left: 10px;
+  color: gray;
+}
+
+.line-one {
+  position: relative;
+  left: 0px;
+  top: 60px;
+}
+
+#rate {
+  position: relative;
+  top: 55px;
+  right: 182px;
+}
+
+#rate-num {
+  position: relative;
+  top: 14px;
+  right: 93px;
+  color: orange;
+}
+
+#apr {
+  position: relative;
+  top: 13px;
+  left: 110px;
+}
+
+#apr-num {
+  position: relative;
+  left: 91px;
+  bottom: 28px;
+  color: orange;
+}
+
+#fee {
+  position: relative;
+  top: 1px;
+  right: 16px;
+}
+#lender {
+  position: relative;
+  top: 1px;
+  right: 16px;
+}
+#d-one {
+  margin-left: 52px;
+  color: gray;
+}
+#d-two {
+  margin-left: 71px;
+  color: gray;
+}
+.box-fill {
+  border-radius: 10px;
+  height: 54px;
+  width: 247px;
+  margin-left: 18px;
+  margin-bottom: 21px;
+}
