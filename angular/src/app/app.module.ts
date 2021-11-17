@@ -152,6 +152,26 @@ import { Step16Component } from "./refinance/step16/step16.component";
 import { Step17Component } from "./refinance/step17/step17.component";
 import { Step18Component } from "./refinance/step18/step18.component";
 import { Step19Component } from "./refinance/step19/step19.component";
+import { BuyAHomeComponent } from './buy-a-home/buy-a-home.component';
+import { AnimatedStep1Component } from './buy-a-home/animated-step1/animated-step1.component';
+import { AnimatedStep2Component } from './buy-a-home/animated-step2/animated-step2.component';
+import { AnimatedStep3Component } from './buy-a-home/animated-step3/animated-step3.component';
+import { AnimatedStep4Component } from './buy-a-home/animated-step4/animated-step4.component';
+import { AnimatedStep5Component } from './buy-a-home/animated-step5/animated-step5.component';
+import { AnimatedStep6Component } from './buy-a-home/animated-step6/animated-step6.component';
+import { AnimatedStep7Component } from './buy-a-home/animated-step7/animated-step7.component';
+import { AnimatedStep8Component } from './buy-a-home/animated-step8/animated-step8.component';
+import { AnimatedStep9Component } from './buy-a-home/animated-step9/animated-step9.component';
+import { AnimatedStep10Component } from './buy-a-home/animated-step10/animated-step10.component';
+import { AnimatedStep11Component } from './buy-a-home/animated-step11/animated-step11.component';
+import { AnimatedStep12Component } from './buy-a-home/animated-step12/animated-step12.component';
+import { AnimatedStep13Component } from './buy-a-home/animated-step13/animated-step13.component';
+import { AnimatedStep14Component } from './buy-a-home/animated-step14/animated-step14.component';
+import { AnimatedStep15Component } from './buy-a-home/animated-step15/animated-step15.component';
+import { AnimatedStep16Component } from './buy-a-home/animated-step16/animated-step16.component';
+import { AnimatedStep17Component } from './buy-a-home/animated-step17/animated-step17.component';
+import { AnimatedStep18Component } from './buy-a-home/animated-step18/animated-step18.component';
+import { AnimatedStep19Component } from './buy-a-home/animated-step19/animated-step19.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -311,7 +331,27 @@ const ngWizardConfig: NgWizardConfig = {
     RefinanceLoanOptionsStep15Component,
     RefinanceLoanOptionsStep16Component,
     RefinanceLoanOptionsStep17Component,
-    RefinanceLoanOptionsStep18Component
+    RefinanceLoanOptionsStep18Component,
+    BuyAHomeComponent,
+    AnimatedStep1Component,
+    AnimatedStep2Component,
+    AnimatedStep3Component,
+    AnimatedStep4Component,
+    AnimatedStep5Component,
+    AnimatedStep6Component,
+    AnimatedStep7Component,
+    AnimatedStep8Component,
+    AnimatedStep9Component,
+    AnimatedStep10Component,
+    AnimatedStep11Component,
+    AnimatedStep12Component,
+    AnimatedStep13Component,
+    AnimatedStep14Component,
+    AnimatedStep15Component,
+    AnimatedStep16Component,
+    AnimatedStep17Component,
+    AnimatedStep18Component,
+    AnimatedStep19Component
    
   ],
   imports: [
