@@ -88,7 +88,6 @@ export class EconsentComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log(this.form);
     this.data = this.form.value;
     this._dataService.updateData(this.form.value, "eConsent");
     this.personalInformation.borrower.firstName = this.data.firstName;

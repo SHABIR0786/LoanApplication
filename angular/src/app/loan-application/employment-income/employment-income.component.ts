@@ -465,7 +465,6 @@ export class EmploymentIncomeComponent implements OnInit, DoCheck {
         formData.employmentIncome.coBorrowerMonthlyIncome.borrowerTypeId = 1;
       }
     }
-    console.log(formData);
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(

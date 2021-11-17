@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-personal-information",
@@ -222,10 +223,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       borrower: this.initBorrowerForm(this.data.borrower || {}),
       coBorrower: this.initBorrowerForm(this.data.coBorrower || {}),
       isMailingAddressSameAsResidential: new FormControl(
-        this.data.isMailingAddressSameAsResidential
+        this.data.isMailingAddressSameAsResidential,[Validators.required]
       ),
       coBorrowerResidentialAddressSameAsBorrowerResidential: new FormControl(
-        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential
+        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential,[Validators.required]
       ),
       residentialAddress: this.initAddressForm(
         this.data.residentialAddress || {},
@@ -418,7 +419,17 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         }
       });
   }
-
+  dateofBirthValidator(control: FormControl): { [s: string]: boolean } {
+    if (control.value) {
+      const date = moment(control.value);
+      const today = moment();
+      var duration = moment.duration(today.diff(date));
+      if (duration.asYears() < 18) {
+        return { 'invaliddateofBirth': true }
+      }
+    }
+    return null;
+  }
   initBorrowerForm(data: IBorrowerModel = {}) {
     return new FormGroup({
       id: new FormControl(data.id),
@@ -426,15 +437,15 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       middleInitial: new FormControl(data.middleInitial),
       lastName: new FormControl(data.lastName, [Validators.required]),
       suffix: new FormControl(data.suffix),
-      email: new FormControl(data.email, [Validators.required]),
-      dateOfBirth: new FormControl(data.dateOfBirth, [Validators.required]),
+      email: new FormControl(data.email, [Validators.required,Validators.email]),
+      dateOfBirth: new FormControl(data.dateOfBirth, [Validators.required,this.dateofBirthValidator]),
       socialSecurityNumber: new FormControl(data.socialSecurityNumber, [
         Validators.required,
       ]),
       maritalStatusId: new FormControl(data.maritalStatusId, [
         Validators.required,
       ]),
-      numberOfDependents: new FormControl(data.numberOfDependents),
+      numberOfDependents: new FormControl(data.numberOfDependents,[Validators.min(0),Validators.max(10)]),
       cellPhone: new FormControl(data.cellPhone, [Validators.required]),
       homePhone: new FormControl(data.homePhone),
     });
@@ -527,7 +538,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       switch (stepIndex) {
         case 1:
           {
-            fields = ["isApplyingWithCoBorrower"];
+            fields = ["isApplyingWithCoBorrower","useIncomeOfPersonOtherThanBorrower"];
             const hasError = fields.some(
               (field) => this.form.get(field) && !this.form.get(field).valid
             );
@@ -541,21 +552,23 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
               this._ngWizardService.next();
             }
           }
-          fields = ["isApplyingWithCoBorrower"];
-          const hasError = fields.some(
-          (field) => this.form.get(field) && !this.form.get(field).valid
-          );
-
-          if (hasError) {
-            fields.forEach(
-            (field) =>
-              this.form.get(field) && this.form.get(field).markAsTouched()
-            );
-          }
           break;
         case 2:
-          this._ngWizardService.next();
-          break;
+          {
+            fields = ["agreePrivacyPolicy","borrower.firstName","borrower.lastName","borrower.email","borrower.dateOfBirth","borrower.socialSecurityNumber","borrower.maritalStatusId","borrower.cellPhone","coBorrower.firstName","coBorrower.lastName","coBorrower.email","coBorrower.dateOfBirth","coBorrower.socialSecurityNumber","coBorrower.maritalStatusId","coBorrower.cellPhone"];
+            const hasError = fields.some(
+              (field) => this.form.get(field) && !this.form.get(field).valid
+            );
+
+            if (hasError) {
+              fields.forEach(
+                (field) =>
+                  this.form.get(field) && this.form.get(field).markAsTouched()
+              );
+            } else {
+              this._ngWizardService.next();
+            }
+          }
       }
     } else {
       if (this.form.valid) {
