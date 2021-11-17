@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit } from "@angular/core";
-import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { DataService } from "../../services/data.service";
 import { ILoanApplicationModel } from "../../interfaces/ILoanApplicationModel";
 import { IAssetModel } from "../../interfaces/IAssetModel";
@@ -77,6 +77,7 @@ export class AssetsComponent implements OnInit, DoCheck {
     this.loadPropertyStatuses();
     this.loadPropertyIsUsedAs();
     this.loadPropertyTypes();
+
   }
 
   ngDoCheck() {
@@ -94,7 +95,7 @@ export class AssetsComponent implements OnInit, DoCheck {
         this.data && this.data.length > 0
           ? this.data.map((d) => this.initAssetForm(d || {}))
           : []
-      ),
+      )
     });
   }
 
@@ -116,36 +117,35 @@ export class AssetsComponent implements OnInit, DoCheck {
   }
 
   initAssetForm(data: IAssetModel = {}) {
-    const form = new FormGroup({
+      const form = new FormGroup({
       id: new FormControl(data.id),
       assetTypeId: new FormControl(data.assetTypeId),
-      borrowerTypeId: new FormControl(data.borrowerTypeId),
-      name: new FormControl(data.name),
-      bankName: new FormControl(data.bankName),
-      description: new FormControl(data.description),
-      accountNumber: new FormControl(data.accountNumber),
-      cashValue: new FormControl(data.cashValue),
-      address: new FormControl(data.address),
+      borrowerTypeId: new FormControl(data.borrowerTypeId,[Validators.required]),
+      name: new FormControl(data.name,[Validators.required]),
+      bankName: new FormControl(data.bankName,[Validators.required]),
+      description: new FormControl(data.description,[Validators.required]),
+      accountNumber: new FormControl(data.accountNumber,[Validators.required]),
+      cashValue: new FormControl(data.cashValue,[Validators.required]),
+      address: new FormControl(data.address,[Validators.required]),
       address2: new FormControl(data.address2),
-      city: new FormControl(data.city),
-      stateId: new FormControl(data.stateId),
-      zipCode: new FormControl(data.zipCode),
-      propertyStatus: new FormControl(data.propertyStatus),
-      propertyIsUsedAs: new FormControl(data.propertyIsUsedAs),
-      propertyType: new FormControl(data.propertyType),
+      city: new FormControl(data.city,[Validators.required]),
+      stateId: new FormControl(data.stateId,[Validators.required]),
+      zipCode: new FormControl(data.zipCode,[Validators.required]),
+      propertyStatus: new FormControl(data.propertyStatus,[Validators.required]),
+      propertyIsUsedAs: new FormControl(data.propertyIsUsedAs,[Validators.required]),
+      propertyType: new FormControl(data.propertyType,[Validators.required]),
       presentMarketValue: new FormControl(data.presentMarketValue),
       outstandingMortgageBalance: new FormControl(
         data.outstandingMortgageBalance
       ),
-      monthlyMortgagePayment: new FormControl(data.monthlyMortgagePayment),
-      purchasePrice: new FormControl(data.purchasePrice),
-      grossRentalIncome: new FormControl(data.grossRentalIncome),
-      taxesInsuranceAndOther: new FormControl(data.taxesInsuranceAndOther),
+      monthlyMortgagePayment: new FormControl(data.monthlyMortgagePayment,[Validators.required]),
+      purchasePrice: new FormControl(data.purchasePrice,[Validators.required]),
+      grossRentalIncome: new FormControl(data.grossRentalIncome,[Validators.required]),
+      taxesInsuranceAndOther: new FormControl(data.taxesInsuranceAndOther,),
       stockAndBonds: new FormArray(
         (data.stockAndBonds || []).map((d) => this.initStockAndBond(d || {}))
       ),
     });
-
     form.get("assetTypeId").valueChanges.subscribe((id) => {
       if (id === 12) {
         const control = form.get("stockAndBonds") as FormArray;
@@ -177,7 +177,6 @@ export class AssetsComponent implements OnInit, DoCheck {
         form.get("taxesInsuranceAndOther").setValue(null);
       }
     });
-
     return form;
   }
 

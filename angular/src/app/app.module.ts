@@ -153,6 +153,8 @@ import { Step16Component } from "./refinance/step16/step16.component";
 import { Step17Component } from "./refinance/step17/step17.component";
 import { Step18Component } from "./refinance/step18/step18.component";
 import { Step19Component } from "./refinance/step19/step19.component";
+import { AnimatedFormHeaderComponent } from './layout/animated-form-header.component';
+import { AnimatedFormFooterComponent } from './layout/animated-form-footer.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -313,7 +315,9 @@ const ngWizardConfig: NgWizardConfig = {
     RefinanceLoanOptionsStep15Component,
     RefinanceLoanOptionsStep16Component,
     RefinanceLoanOptionsStep17Component,
-    RefinanceLoanOptionsStep18Component
+    RefinanceLoanOptionsStep18Component,
+    AnimatedFormHeaderComponent,
+    AnimatedFormFooterComponent
    
   ],
   imports: [

@@ -150,7 +150,9 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       payLoanWithNewLoan: new FormControl(this.data.payLoanWithNewLoan),
 
       startedLookingForNewHome: new FormControl(
-        this.data.startedLookingForNewHome
+        this.data.startedLookingForNewHome,[
+          Validators.required,
+        ]
       ),
       refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
       yearAcquired: new FormControl(this.data.yearAcquired, [

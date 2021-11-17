@@ -31,14 +31,13 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
-      console.log(this.data);
       this.data = this._dataService.loanApplication.expenses;
       if(!this.data){
         this.data = {};
       }
-      if (this.data && this.data.isLiveWithFamilySelectRent){
+      if (this.data && this.data.isLiveWithFamilySelectRent) {
         this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
-      } else{
+      } else {
          this.data.isLiveWithFamilySelectRent = "";
     }
       this.initForm();
@@ -62,7 +61,7 @@ export class ExpensesComponent implements OnInit, DoCheck {
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       isLiveWithFamilySelectRent: new FormControl(
-        this.data.isLiveWithFamilySelectRent
+        this.data.isLiveWithFamilySelectRent,[Validators.required]
       ),
       rent: new FormControl(this.data.rent),
       otherHousingExpenses: new FormControl(this.data.otherHousingExpenses, [
