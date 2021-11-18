@@ -155,6 +155,21 @@ import { Step18Component } from "./refinance/step18/step18.component";
 import { Step19Component } from "./refinance/step19/step19.component";
 import { AnimatedFormHeaderComponent } from './layout/animated-form-header.component';
 import { AnimatedFormFooterComponent } from './layout/animated-form-footer.component';
+import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
+import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
+import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
+import { LoneOptionStep3Component } from "./Buy_a_Home_Loan _Options/lone-option-step3/lone-option-step3.component";
+import { LoneOptionStep4Component } from "./Buy_a_Home_Loan _Options/lone-option-step4/lone-option-step4.component";
+import { LoneOptionStep5Component } from "./Buy_a_Home_Loan _Options/lone-option-step5/lone-option-step5.component";
+import { LoneOptionStep6Component } from "./Buy_a_Home_Loan _Options/lone-option-step6/lone-option-step6.component";
+import { LoneOptionStep7Component } from "./Buy_a_Home_Loan _Options/lone-option-step7/lone-option-step7.component";
+import { LoneOptionStep8Component } from "./Buy_a_Home_Loan _Options/lone-option-step8/lone-option-step8.component";
+import { LoneOptionStep9Component } from "./Buy_a_Home_Loan _Options/lone-option-step9/lone-option-step9.component";
+import { LoneOptionStep10Component } from "./Buy_a_Home_Loan _Options/lone-option-step10/lone-option-step10.component";
+import { LoneOptionStep11Component } from "./Buy_a_Home_Loan _Options/lone-option-step11/lone-option-step11.component";
+import { LoneOptionStep12Component } from "./Buy_a_Home_Loan _Options/lone-option-step12/lone-option-step12.component";
+import { LoneOptionStep13Component } from "./Buy_a_Home_Loan _Options/lone-option-step13/lone-option-step13.component";
+import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-option-step14/lone-option-step14.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -317,8 +332,22 @@ const ngWizardConfig: NgWizardConfig = {
     RefinanceLoanOptionsStep17Component,
     RefinanceLoanOptionsStep18Component,
     AnimatedFormHeaderComponent,
-    AnimatedFormFooterComponent
-   
+    AnimatedFormFooterComponent,
+    LoneOptionAnimatedComponent,
+    LoneOptionStep1Component,
+    LoneOptionStep2Component,
+    LoneOptionStep3Component,
+    LoneOptionStep4Component,
+    LoneOptionStep5Component,
+    LoneOptionStep6Component,
+    LoneOptionStep7Component,
+    LoneOptionStep8Component,
+    LoneOptionStep9Component,
+    LoneOptionStep10Component,
+    LoneOptionStep11Component,
+    LoneOptionStep12Component,
+    LoneOptionStep13Component,
+    LoneOptionStep14Component,
   ],
   imports: [
     CommonModule,

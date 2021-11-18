@@ -28,13 +28,13 @@
   width: 100%;
 }
 .firsticon {
-  border-radius: 100%;
+  /* border-radius: 100%; */
   float: left;
   width: 10px;
   height: 10px;
   margin-left: -5px;
   margin-top: -5px;
-  background-color: white;
+  /* background-color: white; */
 }
 .stepcircle {
   border-radius: 100%;
@@ -79,8 +79,8 @@
 
 #six {
   position: relative;
-  top: 32px;
-  right: 102px;
+  top: 9px;
+  right: 47px;
 }
 
 #seven {
