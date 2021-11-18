@@ -24,14 +24,14 @@ export class ThirtyYearFixedMortgageComponent implements OnInit {
     this.visibleOne = !this.visibleOne;
   }
 
-  // ReadMoretwo: boolean = true;
+  ReadMoretwo: boolean = true;
 
-  // visibletwo: boolean = false;
+  visibletwo: boolean = false;
 
-  // onclicktwo() {
-  //   this.ReadMoretwo = !this.ReadMoretwo;
-  //   this.visibletwo = !this.visibletwo;
-  // }
+  onclicktwo() {
+    this.ReadMoretwo = !this.ReadMoretwo;
+    this.visibletwo = !this.visibletwo;
+  }
 
   constructor() {}
 

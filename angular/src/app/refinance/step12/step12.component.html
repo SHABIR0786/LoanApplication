@@ -8,7 +8,7 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="Back">
+        <p id="Back" (click)="proceedToPrevious()">
           <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
         </p>
       </div>
@@ -18,18 +18,21 @@
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-4"
             id="Family"
+            (click)="proceedToNext()"
           >
             None
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            (click)="proceedToNext()"
           >
             One Late Payment
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            (click)="proceedToNext()"
           >
             More Than One
           </button>

@@ -16,7 +16,8 @@
         <path
           fill-rule="evenodd"
           d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"
-        /></svg></span>
+        /></svg
+    ></span>
     <select class="form-control input-special mb-3" name="" id="">
       <option>$0</option>
       <option>$3,300,000</option>
@@ -31,13 +32,14 @@
         id="myRange"
       />
     </div>
-    <p id="Back">
+    <p id="Back" (click)="proceedToPrevious()">
       <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
     </p>
     <button
       type="button"
       class="btn btn-outline-primary btn-lg btn-block mb-3"
       style="margin-top: 20px"
+      (click)="proceedToNext()"
     >
       Next
     </button>
