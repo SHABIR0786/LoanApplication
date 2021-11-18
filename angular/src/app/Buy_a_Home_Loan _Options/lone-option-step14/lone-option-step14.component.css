@@ -1,0 +1,27 @@
+#next {
+  width: 184px;
+}
+
+#step {
+  width: 309px;
+  height: 39;
+}
+
+#Back {
+  position: relative;
+  top: 182px;
+  right: 196px;
+}
+#icon {
+  font-size: 26px;
+  position: relative;
+  top: 209px;
+  right: 230px;
+}
+
+#paragraph {
+  margin-top: 26px;
+  margin-left: -233px;
+  width: 212%;
+  font-size: 12px;
+}
