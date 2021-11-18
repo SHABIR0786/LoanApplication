@@ -1,0 +1,27 @@
+.MORTGAGE { 
+     font-size: 90px; 
+   } 
+   .Homebuying { 
+     font-size: 20px; 
+   } 
+   .purchasing { 
+     font-size: 38px;
+     } 
+  
+  .btn {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .fa {
+    margin-right: 10px;
+  }
+  #Family {
+    background-color: #f47741;
+  }
+  #num {
+    color: #0cc4d4 !important;
+  }
+  #Email {
+    color: #0cc4d4 !important;
+  }
+  
