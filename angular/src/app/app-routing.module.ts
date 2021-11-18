@@ -113,6 +113,28 @@ import { RefinanceLoanOptionsStep15Component } from "./Refinance_loan_option_ani
 import { RefinanceLoanOptionsStep16Component } from "./Refinance_loan_option_animated/step16/step16.component";
 import { RefinanceLoanOptionsStep17Component } from "./Refinance_loan_option_animated/step17/step17.component";
 import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_animated/step18/step18.component";
+import { BuyAHomeComponent } from './buy-a-home/buy-a-home.component';
+import { AnimatedStep1Component } from './buy-a-home/animated-step1/animated-step1.component';
+import { AnimatedStep2Component } from './buy-a-home/animated-step2/animated-step2.component';
+import { AnimatedStep3Component } from './buy-a-home/animated-step3/animated-step3.component';
+import { AnimatedStep4Component } from './buy-a-home/animated-step4/animated-step4.component';
+import { AnimatedStep5Component } from './buy-a-home/animated-step5/animated-step5.component';
+import { AnimatedStep6Component } from './buy-a-home/animated-step6/animated-step6.component';
+import { AnimatedStep7Component } from './buy-a-home/animated-step7/animated-step7.component';
+import { AnimatedStep8Component } from './buy-a-home/animated-step8/animated-step8.component';
+import { AnimatedStep9Component } from './buy-a-home/animated-step9/animated-step9.component';
+import { AnimatedStep10Component } from './buy-a-home/animated-step10/animated-step10.component';
+import { AnimatedStep11Component } from './buy-a-home/animated-step11/animated-step11.component';
+import { AnimatedStep12Component } from './buy-a-home/animated-step12/animated-step12.component';
+import { AnimatedStep13Component } from './buy-a-home/animated-step13/animated-step13.component';
+import { AnimatedStep14Component } from './buy-a-home/animated-step14/animated-step14.component';
+import { AnimatedStep15Component } from './buy-a-home/animated-step15/animated-step15.component';
+import { AnimatedStep16Component } from './buy-a-home/animated-step16/animated-step16.component';
+import { AnimatedStep17Component } from './buy-a-home/animated-step17/animated-step17.component';
+import { AnimatedStep18Component } from './buy-a-home/animated-step18/animated-step18.component';
+import { AnimatedStep19Component } from './buy-a-home/animated-step19/animated-step19.component';
+
+
 import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
 import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
 import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
@@ -710,7 +732,106 @@ import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-optio
             canActivate: [AppRouteGuard],
           },
           {
-            path: "buy-a-home-loan-options-animated",
+            path: "buy-a-home-animated",
+            component: BuyAHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step1",
+            component: AnimatedStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step2",
+            component: AnimatedStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step3",
+            component: AnimatedStep3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step4",
+            component: AnimatedStep4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step5",
+            component: AnimatedStep5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step6",
+            component: AnimatedStep6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step7",
+            component: AnimatedStep7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step8",
+            component: AnimatedStep8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step9",
+            component: AnimatedStep9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step10",
+            component: AnimatedStep10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step11",
+            component: AnimatedStep11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step12",
+            component: AnimatedStep12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step13",
+            component: AnimatedStep13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step14",
+            component: AnimatedStep14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step15",
+            component: AnimatedStep15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step16",
+            component: AnimatedStep16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step17",
+            component: AnimatedStep17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step18",
+            component: AnimatedStep18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step19",
+            component: AnimatedStep19Component,
+            canActivate: [AppRouteGuard],
+          },
+          {  path: "buy-a-home-loan-options-animated",
             component: LoneOptionAnimatedComponent,
             canActivate: [AppRouteGuard],
           },
