@@ -16,7 +16,7 @@ export class AppComponent extends AppComponentBase implements OnInit {
     private renderer: Renderer2,
     private _layoutStore: LayoutStoreService,
     public router: Router
-    ) {
+  ) {
     super(injector);
   }
 
@@ -34,7 +34,7 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/econsent")
     );
   }
-  
+
   get IsRefinanceLoanOptions(): boolean {
     return (
       this.router.url.includes("/app/refinance-animated") ||
@@ -56,6 +56,7 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/refinance-loan-option-step16") ||
       this.router.url.includes("/app/refinance-loan-option-step17") ||
       this.router.url.includes("/app/refinance-loan-option-step18") ||
+      this.router.url.includes("/app/animated") ||
       this.router.url.includes("/app/refinance-step1") ||
       this.router.url.includes("/app/refinance-step2") ||
       this.router.url.includes("/app/refinance-step3") ||
@@ -75,7 +76,7 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/refinance-step17") ||
       this.router.url.includes("/app/refinance-step18") ||
       this.router.url.includes("/app/refinance-step19")
-    )
+    );
   }
 
   ngOnInit(): void {

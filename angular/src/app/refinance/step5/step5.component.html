@@ -4,22 +4,43 @@
     <h4 class="estimate">
       Just an estimate is fine. You can update the amount later in the process.
     </h4>
-    <span style="position: absolute; margin-top: 58px; margin-left: 157px"><svg xmlns="http://www.w3.org/2000/svg"
-        width="16" height="16" fill="currentColor" class="bi bi-chevron-expand" viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-          d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z" />
-      </svg></span>
+    <span style="position: absolute; margin-top: 58px; margin-left: 157px"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-chevron-expand"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"
+        /></svg
+    ></span>
     <select class="form-control input-special mb-3" name="" id="">
       <option>$2,000,000</option>
       <option>$2,000,000</option>
     </select>
     <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="45" class="slider" id="myRange" />
+      <input
+        type="range"
+        min="1"
+        max="100"
+        value="45"
+        class="slider"
+        id="myRange"
+      />
     </div>
-    <p id="Back">
+    <p id="Back" (click)="proceedToPrevious()">
       <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
     </p>
-    <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" style="margin-top: 20px">
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-lg btn-block mb-3"
+      style="margin-top: 20px"
+      (click)="proceedToNext()"
+    >
       Next
     </button>
 

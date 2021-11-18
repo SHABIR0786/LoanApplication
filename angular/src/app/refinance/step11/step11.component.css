@@ -12,6 +12,7 @@
   margin-top: 190px;
   margin-right: 300px;
   font-size: 20px;
+  cursor: pointer;
 }
 #num {
   color: #0cc4d4 !important;
