@@ -1,0 +1,199 @@
+<main>
+  <div class="container">
+    <section class="page-order-sec py-3 border-bottom-0">
+      <p class="border-bottom m-0 pb-3 text-primary">
+        Home<span class="text-muted ml-3 d-inline-block"
+          >Rent vs Buy Calculator</span
+        >
+      </p>
+    </section>
+  </div>
+  <div class="container">
+    <section class="pb-2">
+      <h5 class="text-secondary">Know About</h5>
+      <h2 class="text-primary mb-2">Rent vs Buy Calculator</h2>
+      <p>Calculate your monthly payment and review your loan options.</p>
+    </section>
+    <section class="pt-0">
+      <div class="row">
+        <div class="col-sm-6">
+          <form
+            class="form"
+            [formGroup]="RentvsBuyForm"
+            (ngSubmit)="calculateEstimatedMonthlyPayment()"
+          >
+            <h5>Your Detail</h5>
+            <div class="form-group usd">
+              <label>Zip Code</label>
+              <input
+                type="number"
+                formControlName="zipCode"
+                class="form-control homeprice-input"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.zipCode.touched || submitted) &&
+                  RentvsBuyFormControl.zipCode.errors?.required
+                "
+              >
+                Zip Code is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label class="text-primary"
+                >How would you rate your credit?</label
+              >
+              <select formControlName="creditScore" class="form-control">
+                <option
+                  *ngFor="let option of RateYourCreditOptions; let i = index"
+                  [attr.data-index]="i"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.creditScore.touched || submitted) &&
+                  RentvsBuyFormControl.creditScore.errors?.required
+                "
+              >
+                credit Score is required
+              </span>
+            </div>
+            <h5>Buy Details</h5>
+            <div class="form-group">
+              <label>Purchase Price</label>
+              <input
+                type="number"
+                formControlName="purchasePrice"
+                class="form-control homeprice-input"
+              />
+              <span class="left-value-usd">$</span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.purchasePrice.touched || submitted) &&
+                  RentvsBuyFormControl.purchasePrice.errors?.required
+                "
+              >
+                purchase Pirce is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Down payment mode</label>
+              <div class="checkbox-inline mr-2">
+                <label class="containercheck"
+                  >Percentage
+                  <input
+                    type="radio"
+                    [(ngModel)]="DownPaymentType"
+                    (input)="downPaymentTypeChanged($event.target.value)"
+                    value="percentage"
+                    name="downpayment"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="checkbox-inline">
+                <label class="containercheck"
+                  >USD
+                  <input
+                    type="radio"
+                    [(ngModel)]="DownPaymentType"
+                    (input)="downPaymentTypeChanged($event.target.value)"
+                    value="usd"
+                    name="downpayment"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div>
+                <span class="float-right text-muted"
+                  ><i class="fa fa-edit"></i> Edit</span
+                >
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  [value]="DownPaymentPercent"
+                  value="50"
+                  class="slider"
+                  id="myRange"
+                />
+                <span class="text-secondary"
+                  >{{ DownPaymentPercent }}% (${{ DownPaymentUSD }})</span
+                >
+              </div>
+              <div class="form-group slider-value-form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="DownPayment"
+                  id="slidervalue"
+                  name=""
+                />
+                <span
+                  *ngIf="DownPaymentType == 'percentage'"
+                  class="slide-value-percent"
+                  >%</span
+                >
+                <span *ngIf="DownPaymentType == 'usd'" class="slide-value-usd"
+                  >$</span
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Interest Rate</label>
+              <input
+                type="text"
+                formControlName="interestRate"
+                class="form-control homeprice-input"
+              />
+              <span class="right-value-percentage">%</span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.interestRate.touched || submitted) &&
+                  RentvsBuyFormControl.interestRate.errors?.required
+                "
+              >
+                interest Rate is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Rent Details</label>
+              <input
+                type="number"
+                formControlName="monthlyPayment"
+                class="form-control homeprice-input"
+              />
+              <span class="right-value-percentage">%</span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.monthlyPayment.touched || submitted) &&
+                  RentvsBuyFormControl.monthlyPayment.errors?.required
+                "
+              >
+                monthly Payment is required
+              </span>
+            </div>
+            <div class="col-sm-12" style="margin-top: 15px">
+              <button
+                class="btn btn-secondary text-white text-uppercase w-100"
+                type="submit"
+              >
+                Calculate
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-6"></div>
+      </div>
+    </section>
+  </div>
+</main>

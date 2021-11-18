@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-personal-information",
@@ -67,7 +68,6 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
   }
 
   addPreviousAddress() {
-    debugger;
     this.previousAddressesFormArray.push(this.initAddressForm({}, 3, true));
   }
 
@@ -223,10 +223,10 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       borrower: this.initBorrowerForm(this.data.borrower || {}),
       coBorrower: this.initBorrowerForm(this.data.coBorrower || {}),
       isMailingAddressSameAsResidential: new FormControl(
-        this.data.isMailingAddressSameAsResidential
+        this.data.isMailingAddressSameAsResidential,[Validators.required]
       ),
       coBorrowerResidentialAddressSameAsBorrowerResidential: new FormControl(
-        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential
+        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential,[Validators.required]
       ),
       residentialAddress: this.initAddressForm(
         this.data.residentialAddress || {},
@@ -367,13 +367,12 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       .get("coBorrowerResidentialAddressSameAsBorrowerResidential")
       .valueChanges.subscribe(
         (coBorrowerResidentialAddressSameAsBorrowerResidential) => {
-          debugger;
           if (coBorrowerResidentialAddressSameAsBorrowerResidential) {
-            this.data.coBorrowerResidentialAddress.addressLine1 = null;
-            this.data.coBorrowerResidentialAddress.addressLine2 = null;
-            this.data.coBorrowerResidentialAddress.city = null;
-            this.data.coBorrowerResidentialAddress.stateId = null;
-            this.data.coBorrowerResidentialAddress.zipCode = null;
+            this.data.coBorrowerResidentialAddress.addressLine1 = this.data.residentialAddress.addressLine1;
+            this.data.coBorrowerResidentialAddress.addressLine2 = this.data.residentialAddress.addressLine2;
+            this.data.coBorrowerResidentialAddress.city = this.data.residentialAddress.city;
+            this.data.coBorrowerResidentialAddress.stateId = this.data.residentialAddress.stateId;
+            this.data.coBorrowerResidentialAddress.zipCode = this.data.residentialAddress.zipCode;
           } else {
             if (
               coBorrowerResidentialAddressSameAsBorrowerResidential === false
@@ -420,7 +419,17 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         }
       });
   }
-
+  dateofBirthValidator(control: FormControl): { [s: string]: boolean } {
+    if (control.value) {
+      const date = moment(control.value);
+      const today = moment();
+      var duration = moment.duration(today.diff(date));
+      if (duration.asYears() < 18) {
+        return { 'invaliddateofBirth': true }
+      }
+    }
+    return null;
+  }
   initBorrowerForm(data: IBorrowerModel = {}) {
     return new FormGroup({
       id: new FormControl(data.id),
@@ -428,15 +437,15 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       middleInitial: new FormControl(data.middleInitial),
       lastName: new FormControl(data.lastName, [Validators.required]),
       suffix: new FormControl(data.suffix),
-      email: new FormControl(data.email, [Validators.required]),
-      dateOfBirth: new FormControl(data.dateOfBirth, [Validators.required]),
+      email: new FormControl(data.email, [Validators.required,Validators.email]),
+      dateOfBirth: new FormControl(data.dateOfBirth, [Validators.required,this.dateofBirthValidator]),
       socialSecurityNumber: new FormControl(data.socialSecurityNumber, [
         Validators.required,
       ]),
       maritalStatusId: new FormControl(data.maritalStatusId, [
         Validators.required,
       ]),
-      numberOfDependents: new FormControl(data.numberOfDependents),
+      numberOfDependents: new FormControl(data.numberOfDependents,[Validators.min(0),Validators.max(10)]),
       cellPhone: new FormControl(data.cellPhone, [Validators.required]),
       homePhone: new FormControl(data.homePhone),
     });
@@ -502,7 +511,13 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
 
   submitForm() {
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
-
+    if(formData.personalInformation.coBorrowerResidentialAddressSameAsBorrowerResidential){
+      formData.personalInformation.coBorrowerResidentialAddress.addressLine1 = formData.personalInformation.residentialAddress.addressLine1;
+      formData.personalInformation.coBorrowerResidentialAddress.addressLine2 = formData.personalInformation.residentialAddress.addressLine2;
+      formData.personalInformation.coBorrowerResidentialAddress.city = formData.personalInformation.residentialAddress.city;
+      formData.personalInformation.coBorrowerResidentialAddress.stateId = formData.personalInformation.residentialAddress.stateId;
+      formData.personalInformation.coBorrowerResidentialAddress.zipCode = formData.personalInformation.residentialAddress.zipCode;
+    }
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
       .subscribe(
@@ -523,7 +538,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       switch (stepIndex) {
         case 1:
           {
-            fields = ["isApplyingWithCoBorrower"];
+            fields = ["isApplyingWithCoBorrower","useIncomeOfPersonOtherThanBorrower"];
             const hasError = fields.some(
               (field) => this.form.get(field) && !this.form.get(field).valid
             );
@@ -538,24 +553,25 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
             }
           }
           break;
-        // fields = ["isApplyingWithCoBorrower"];
-        // const hasError = fields.some(
-        //   (field) => this.form.get(field) && !this.form.get(field).valid
-        // );
-
-        // if (hasError) {
-        //   fields.forEach(
-        //     (field) =>
-        //       this.form.get(field) && this.form.get(field).markAsTouched()
-        //   );
-        // }
         case 2:
-          this._ngWizardService.next();
-          break;
+          {
+            fields = ["agreePrivacyPolicy","borrower.firstName","borrower.lastName","borrower.email","borrower.dateOfBirth","borrower.socialSecurityNumber","borrower.maritalStatusId","borrower.cellPhone","coBorrower.firstName","coBorrower.lastName","coBorrower.email","coBorrower.dateOfBirth","coBorrower.socialSecurityNumber","coBorrower.maritalStatusId","coBorrower.cellPhone"];
+            const hasError = fields.some(
+              (field) => this.form.get(field) && !this.form.get(field).valid
+            );
+
+            if (hasError) {
+              fields.forEach(
+                (field) =>
+                  this.form.get(field) && this.form.get(field).markAsTouched()
+              );
+            } else {
+              this._ngWizardService.next();
+            }
+          }
       }
     } else {
       if (this.form.valid) {
-        debugger;
         this._activatedRoute.queryParams.subscribe(async (params) => {
           const id = params["id"];
           if (id) {

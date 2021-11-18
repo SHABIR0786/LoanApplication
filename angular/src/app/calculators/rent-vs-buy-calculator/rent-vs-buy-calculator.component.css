@@ -1,0 +1,16 @@
+.form-group {
+  margin-bottom: 5px !important;
+}
+.left-value-usd {
+  margin-top: -32px;
+  position: absolute;
+  margin-left: 10px;
+}
+.form-group.usd input {
+  padding-left: 20px;
+}
+.right-value-percentage {
+  margin-top: -32px;
+  position: absolute;
+  right: 22px;
+}

@@ -113,6 +113,7 @@ import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your
 import { AmortizationComponent } from "./calculators/amortization/amortization.component";
 import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+import { RentVsBuyCalculatorComponent } from "./calculators/rent-vs-buy-calculator/rent-vs-buy-calculator.component";
 import { RefinanceLoanOptionsStep1Component } from "./Refinance_loan_option_animated/step1/step1.component";
 import { RefinanceLoanOptionsStep2Component } from "./Refinance_loan_option_animated/step2/step2.component";
 import { RefinanceLoanOptionsStep3Component } from "./Refinance_loan_option_animated/step3/step3.component";
@@ -152,6 +153,8 @@ import { Step16Component } from "./refinance/step16/step16.component";
 import { Step17Component } from "./refinance/step17/step17.component";
 import { Step18Component } from "./refinance/step18/step18.component";
 import { Step19Component } from "./refinance/step19/step19.component";
+import { AnimatedFormHeaderComponent } from './layout/animated-form-header.component';
+import { AnimatedFormFooterComponent } from './layout/animated-form-footer.component';
 import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
 import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
 import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
@@ -309,6 +312,7 @@ const ngWizardConfig: NgWizardConfig = {
     AmortizationComponent,
     VaLoanComponent,
     AmortizationResultComponent,
+    RentVsBuyCalculatorComponent,
     AnimatedOneComponent,
     RefinanceLoanOptionsStep1Component,
     RefinanceLoanOptionsStep2Component,
@@ -327,6 +331,8 @@ const ngWizardConfig: NgWizardConfig = {
     RefinanceLoanOptionsStep16Component,
     RefinanceLoanOptionsStep17Component,
     RefinanceLoanOptionsStep18Component,
+    AnimatedFormHeaderComponent,
+    AnimatedFormFooterComponent,
     LoneOptionAnimatedComponent,
     LoneOptionStep1Component,
     LoneOptionStep2Component,

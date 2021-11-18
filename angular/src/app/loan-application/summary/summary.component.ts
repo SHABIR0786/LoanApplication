@@ -51,21 +51,17 @@ export class SummaryComponent implements OnInit {
         this.formData.employmentIncome == null &&
         this.formData.employmentIncome.coBorrowerEmploymentInfo == null
       ) {
-        debugger;
         this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
-      if (
-        this.formData.additionalDetails == null &&
-        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle ==
-          null
-      ) {
+      if (this.formData.additionalDetails == null) {
+        this.formData.additionalDetails = {nameOfIndividualsCoBorrowerOnTitle:""};
+      } else if(this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle == null) {
         this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle = "";
       }
       if (
         this.formData.employmentIncome == null &&
         this.formData.employmentIncome.coBorrowerMonthlyIncome == null
       ) {
-        debugger;
         this.formData.employmentIncome.coBorrowerMonthlyIncome = {};
       }
       if (
@@ -81,7 +77,6 @@ export class SummaryComponent implements OnInit {
         this.formData.declaration.coBorrowerDemographic = {};
       }
     }
-    console.log(this.formData);
   }
 
   sanitizeFormData(formData) {
@@ -89,7 +84,7 @@ export class SummaryComponent implements OnInit {
     for (const key in formData) {
       if (formData.hasOwnProperty(key)) {
         if (
-          typeof formData[key] === "object" &&
+          typeof formData[key] === "object" && formData[key] != null && formData[key] != undefined &&
           Object.keys(formData[key]).length === 0
         ) {
           formData[key] = undefined;
