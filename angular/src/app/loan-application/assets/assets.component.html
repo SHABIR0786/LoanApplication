@@ -15,8 +15,7 @@
                 <div class="col-3">
                   <button
                     class="btn btn-secondary float-right"
-                    (click)="addAsset()"
-                  >
+                    (click)="addAsset()">
                     Add Asset
                   </button>
                 </div>
@@ -31,14 +30,13 @@
                 <div
                   class="row"
                   *ngFor="let asset of data; let i = index; trackBy: trackByFn"
-                  [formGroupName]="i"
-                >
+                  [formGroupName]="i">
                   <div class="col-12">
                     <h6 class="pull-left float-left">
                       {{ getAssetTypeById(asset.assetTypeId) }}
                     </h6>
                     <button
-                      [disabled]="!isApplyingWithCoBorrower"
+
                       class="btn btn-danger mr-1 float-right pull-right"
                       (click)="removeAsset(i)"
                     >
@@ -56,12 +54,10 @@
                             class="form-control"
                             name="assetTypeId"
                             id="assetTypeId-{{ i }}"
-                            formControlName="assetTypeId"
-                          >
+                            formControlName="assetTypeId">
                             <option
                               [ngValue]="assetType.id"
-                              *ngFor="let assetType of assetTypes"
-                            >
+                              *ngFor="let assetType of assetTypes">
                               {{ assetType.name }}
                             </option>
                           </select>
@@ -76,19 +72,16 @@
                             class="fa fa-info-circle ml-2"
                             aria-hidden="true"
                             tooltipPlacement="right"
-                            tooltip="This Statement and any applicable supporting schedules may be completed jointly by both married and unmarried Co-Borrowers if their assets and liabilities are sufficiently joined so that the Statement can be meaningfully and fairly presented on a combined basis; otherwise, separate Statements and Schedules are required. If the Co-Borrower section was completed about a non-applicant spouse or other person, this Statement and supporting schedules must be completed about that spouse or other person also."
-                          >
+                            tooltip="This Statement and any applicable supporting schedules may be completed jointly by both married and unmarried Co-Borrowers if their assets and liabilities are sufficiently joined so that the Statement can be meaningfully and fairly presented on a combined basis; otherwise, separate Statements and Schedules are required. If the Co-Borrower section was completed about a non-applicant spouse or other person, this Statement and supporting schedules must be completed about that spouse or other person also.">
                           </i>
                           <select
                             class="form-control"
                             name="borrowerTypeId"
                             id="borrowerTypeId-{{ i }}"
-                            formControlName="borrowerTypeId"
-                          >
+                            formControlName="borrowerTypeId">
                             <option
                               [ngValue]="borrowerTypeId.id"
-                              *ngFor="let borrowerTypeId of borrowerTypeIds"
-                            >
+                              *ngFor="let borrowerTypeId of borrowerTypeIds">
                               {{ borrowerTypeId.name }}
                             </option>
                           </select>
@@ -102,7 +95,7 @@
                       >
                         <div class="form-group">
                           <label for="description-{{ i }}">
-                            {{ "Description" | localize }}
+                            {{ "Description" | localize }} <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -111,6 +104,10 @@
                             id="description-{{ i }}"
                             formControlName="description"
                           />
+                          <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.description"
+                          ></validation-summary>
                         </div>
                       </div>
 
@@ -120,7 +117,7 @@
                       >
                         <div class="form-group">
                           <label for="bankName-{{ i }}">
-                            {{ "Bank Name" | localize }}
+                            {{ "Bank Name" | localize }} <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -129,6 +126,10 @@
                             id="bankName-{{ i }}"
                             formControlName="bankName"
                           />
+                          <validation-summary
+                          [control]="
+                          manualAssetEntries.controls[i].controls.bankName"
+                        ></validation-summary>
                         </div>
                       </div>
 
@@ -140,7 +141,7 @@
                       >
                         <div class="form-group">
                           <label for="name-{{ i }}">
-                            {{ "Name" | localize }}
+                            {{ "Name" | localize }} <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -149,6 +150,10 @@
                             id="name-{{ i }}"
                             formControlName="name"
                           />
+                          <validation-summary
+                          [control]="
+                          manualAssetEntries.controls[i].controls.name"
+                        ></validation-summary>
                         </div>
                       </div>
 
@@ -158,7 +163,7 @@
                       >
                         <div class="form-group">
                           <label for="accountNumber-{{ i }}">
-                            {{ "Account Number" | localize }}
+                            {{ "Account Number" | localize }} <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -167,6 +172,10 @@
                             id="accountNumber-{{ i }}"
                             formControlName="accountNumber"
                           />
+                          <validation-summary
+                          [control]="
+                          manualAssetEntries.controls[i].controls.accountNumber"
+                        ></validation-summary>
                         </div>
                       </div>
 
@@ -176,7 +185,7 @@
                       >
                         <div class="form-group">
                           <label for="cashValue-{{ i }}">
-                            {{ "Cash Value" | localize }}
+                            {{ "Cash Value" | localize }} <span class="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -189,6 +198,10 @@
                             mask="separator.2"
                             thousandSeparator=","
                           />
+                          <validation-summary
+                          [control]="
+                          manualAssetEntries.controls[i].controls.cashValue"
+                        ></validation-summary>
                         </div>
                       </div>
 
@@ -196,7 +209,7 @@
                         <div class="col-6">
                           <div class="form-group">
                             <label for="address-{{ i }}">
-                              {{ "Address" | localize }}
+                              {{ "Address" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -205,6 +218,10 @@
                               id="address-{{ i }}"
                               formControlName="address"
                             />
+                            <validation-summary
+                          [control]="
+                          manualAssetEntries.controls[i].controls.address"
+                        ></validation-summary>
                           </div>
                         </div>
 
@@ -226,7 +243,7 @@
                         <div class="col-4">
                           <div class="form-group">
                             <label for="city-{{ i }}">
-                              {{ "City" | localize }}
+                              {{ "City" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -235,13 +252,17 @@
                               id="city-{{ i }}"
                               formControlName="city"
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.city"
+                          ></validation-summary>
                           </div>
                         </div>
 
                         <div class="col-4">
                           <div class="form-group">
                             <label for="stateId-{{ i }}">
-                              {{ "State" | localize }}
+                              {{ "State" | localize }} <span class="text-danger">*</span>
                             </label>
                             <select
                               class="form-control"
@@ -256,13 +277,17 @@
                                 {{ state.name }}
                               </option>
                             </select>
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.stateId"
+                          ></validation-summary>
                           </div>
                         </div>
 
                         <div class="col-4">
                           <div class="form-group">
                             <label for="zipCode-{{ i }}">
-                              {{ "Zip Code" | localize }}
+                              {{ "Zip Code" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -271,6 +296,10 @@
                               id="zipCode-{{ i }}"
                               formControlName="zipCode"
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.zipCode"
+                          ></validation-summary>
                           </div>
                         </div>
                       </div>
@@ -279,7 +308,7 @@
                         <div class="col-4">
                           <div class="form-group">
                             <label for="propertyStatus-{{ i }}">
-                              {{ "Property Status" | localize }}
+                              {{ "Property Status" | localize }} <span class="text-danger">*</span>
                             </label>
                             <select
                               class="form-control"
@@ -294,12 +323,16 @@
                                 {{ propertyStatus.name }}
                               </option>
                             </select>
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.propertyStatus"
+                          ></validation-summary>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="form-group">
                             <label for="propertyIsUsedAs-{{ i }}">
-                              {{ "Property is used as" | localize }}
+                              {{ "Property is used as" | localize }} <span class="text-danger">*</span>
                             </label>
                             <select
                               class="form-control"
@@ -316,12 +349,16 @@
                                 {{ propertyIsUsedAs.name }}
                               </option>
                             </select>
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.propertyIsUsedAs"
+                          ></validation-summary>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="form-group">
                             <label for="propertyType-{{ i }}">
-                              {{ "Property Type" | localize }}
+                              {{ "Property Type" | localize }} <span class="text-danger">*</span>
                             </label>
                             <select
                               class="form-control"
@@ -336,12 +373,16 @@
                                 {{ propertyType.name }}
                               </option>
                             </select>
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.propertyType"
+                          ></validation-summary>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="form-group">
                             <label for="presentMarketValue-{{ i }}">
-                              {{ "Present Market Value" | localize }}
+                              {{ "Present Market Value" | localize }} 
                             </label>
                             <input
                               type="text"
@@ -354,6 +395,7 @@
                               mask="separator.2"
                               thousandSeparator=","
                             />
+                            
                           </div>
                         </div>
                         <div class="col-4">
@@ -377,7 +419,7 @@
                         <div class="col-4">
                           <div class="form-group">
                             <label for="monthlyMortgagePayment-{{ i }}">
-                              {{ "Monthly Mortgage Payment" | localize }}
+                              {{ "Monthly Mortgage Payment" | localize }} 
                             </label>
                             <input
                               type="text"
@@ -395,7 +437,7 @@
                         <div class="col-4">
                           <div class="form-group">
                             <label for="purchasePrice-{{ i }}">
-                              {{ "Purchase Price" | localize }}
+                              {{ "Purchase Price" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -408,12 +450,16 @@
                               mask="separator.2"
                               thousandSeparator=","
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.purchasePrice"
+                          ></validation-summary>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="form-group">
                             <label for="grossRentalIncome-{{ i }}">
-                              {{ "Gross Rental Income" | localize }}
+                              {{ "Gross Rental Income" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -426,12 +472,16 @@
                               mask="separator.2"
                               thousandSeparator=","
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.grossRentalIncome"
+                          ></validation-summary>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="form-group">
                             <label for="taxesInsuranceAndOther-{{ i }}">
-                              {{ "Taxes, Insurance, and Other" | localize }}
+                              {{ "Taxes, Insurance, and Other" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -444,6 +494,10 @@
                               mask="separator.2"
                               thousandSeparator=","
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.taxesInsuranceAndOther"
+                          ></validation-summary>
                           </div>
                         </div>
                       </div>
@@ -466,7 +520,7 @@
                         <div class="col-4">
                           <div class="form-group">
                             <label for="companyName-{{ i }}-{{ j }}">
-                              {{ "Company Name" | localize }}
+                              {{ "Company Name" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -475,13 +529,17 @@
                               id="companyName-{{ i }}-{{ j }}"
                               formControlName="companyName"
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.companyName"
+                          ></validation-summary>
                           </div>
                         </div>
 
                         <div class="col-4">
                           <div class="form-group">
                             <label for="accountNumber-{{ i }}-{{ j }}">
-                              {{ "Account Number" | localize }}
+                              {{ "Account Number" | localize }} <span class="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -490,6 +548,10 @@
                               id="accountNumber-{{ i }}-{{ j }}"
                               formControlName="accountNumber"
                             />
+                            <validation-summary
+                            [control]="
+                            manualAssetEntries.controls[i].controls.accountNumber"
+                          ></validation-summary>
                           </div>
                         </div>
 

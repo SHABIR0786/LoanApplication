@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="card my-5">
       <div class="card-body">
-        <div class="row" [formGroup]="form">
+        <form class="row" [formGroup]="form">
           <div class="col-12 mb-1">
             <h4>Current Monthly Housing Expenses</h4>
           </div>
@@ -17,7 +17,8 @@
               <br />
               <label
                 >Do you currently rent or own? If you currently live with family
-                please select Rent. *</label
+                <span class="text-danger">*</span>
+                please select Rent. </label
               >
             </div>
             <div class="col-12 mb-2">
@@ -49,6 +50,9 @@
                   >Own</label
                 >
               </div>
+              <validation-summary
+                [control]="form.controls.isLiveWithFamilySelectRent"
+              ></validation-summary>
             </div>
           </div>
 
@@ -305,7 +309,7 @@
               Next
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

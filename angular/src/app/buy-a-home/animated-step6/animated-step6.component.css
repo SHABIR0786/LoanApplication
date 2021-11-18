@@ -1,50 +1,35 @@
-/* .btn{
-    margin-bottom: 20px;
-    } */
-    .slidecontainer {
-        font-size: 20px;
-        width: 50%;
-        justify-content: center;
-        margin-left: 25%;
-      }
-      .form-control {
-        height: 65px;
-        margin-top: 50px;
-      }
-      #myRange {
-        background: linear-gradient(
-          to right,
-          #f47741 0%,
-          #f47741 50%,
-          #000000 50%,
-          #000000 100%
-        );
-        border: solid 1px #f47741;
-        border-radius: 8px;
-        height: 10px;
-        width: 100%;
-        outline: none;
-        transition: background 450ms ease-in;
-        -webkit-appearance: none;
-      }
-      .fa {
-        margin-right: 10px;
-      }
-      .mb-4 {
-        font-size: 50px;
-      }
-      .estimate {
-        font-size: 25px;
-      }
-      #Back {
-        margin-right: 300px;
-        font-size: 20px;
-        max-width: fit-content;
-      }
-      #num {
-        color: #0cc4d4 !important;
-      }
-      #Email {
-        color: #0cc4d4 !important;
-      }
-      
+.form-control {
+    height: 65px;
+    margin-top: 30px;
+    width: 100%;
+    font-size: 20px;
+    height: 83px;
+  }
+  .btn {
+    width: 100%;
+    
+  }
+  
+   
+  #Family {
+    background-color: #f47741;
+    text-decoration-color: white;
+  }
+  #back {
+    margin-top: 175px;
+    margin-right: 150px;
+    margin-left: 10px;
+    font-size: 20px;
+    
+  }
+
+  #num {
+    color: #0cc4d4 !important;
+  }
+  #Email {
+    color: #0cc4d4 !important;
+  }
+  .gage-chart{
+    margin-top: 50px !important;
+  }
+  
