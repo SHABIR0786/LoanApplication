@@ -1,25 +1,26 @@
-#but {
-  border: 1px solid orange;
-  width: 260px;
-  height: 43px;
-  text-align: center;
-}
-
-#but:hover {
-  border: 1px solid blue;
-}
-
 #Back {
   position: relative;
-  top: 114px;
+  top: 188px;
   right: 270px;
 }
 #icon {
   font-size: 26px;
   position: relative;
-  top: 141px;
+  top: 215px;
   right: 300px;
 }
+
+#button {
+  border: 1px solid orange !important;
+  width: 260px;
+  height: 43px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #091a52;
+  margin-left: 494px;
+  margin-top: 33px;
+}
+
 .hrline {
   width: 100%;
 }
@@ -28,13 +29,13 @@
   width: 100%;
 }
 .firsticon {
-  border-radius: 100%;
+  /* border-radius: 100%; */
   float: left;
   width: 10px;
   height: 10px;
   margin-left: -5px;
   margin-top: -5px;
-  background-color: white;
+  /* background-color: white; */
 }
 .stepcircle {
   border-radius: 100%;
@@ -79,8 +80,8 @@
 
 #six {
   position: relative;
-  top: 32px;
-  right: 102px;
+  top: 9px;
+  right: 47px;
 }
 
 #seven {

@@ -113,6 +113,22 @@ import { RefinanceLoanOptionsStep15Component } from "./Refinance_loan_option_ani
 import { RefinanceLoanOptionsStep16Component } from "./Refinance_loan_option_animated/step16/step16.component";
 import { RefinanceLoanOptionsStep17Component } from "./Refinance_loan_option_animated/step17/step17.component";
 import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_animated/step18/step18.component";
+import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
+import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
+import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
+import { LoneOptionStep3Component } from "./Buy_a_Home_Loan _Options/lone-option-step3/lone-option-step3.component";
+import { LoneOptionStep4Component } from "./Buy_a_Home_Loan _Options/lone-option-step4/lone-option-step4.component";
+import { LoneOptionStep5Component } from "./Buy_a_Home_Loan _Options/lone-option-step5/lone-option-step5.component";
+import { LoneOptionStep6Component } from "./Buy_a_Home_Loan _Options/lone-option-step6/lone-option-step6.component";
+import { LoneOptionStep7Component } from "./Buy_a_Home_Loan _Options/lone-option-step7/lone-option-step7.component";
+import { LoneOptionStep8Component } from "./Buy_a_Home_Loan _Options/lone-option-step8/lone-option-step8.component";
+import { LoneOptionStep9Component } from "./Buy_a_Home_Loan _Options/lone-option-step9/lone-option-step9.component";
+import { LoneOptionStep10Component } from "./Buy_a_Home_Loan _Options/lone-option-step10/lone-option-step10.component";
+import { LoneOptionStep11Component } from "./Buy_a_Home_Loan _Options/lone-option-step11/lone-option-step11.component";
+import { LoneOptionStep12Component } from "./Buy_a_Home_Loan _Options/lone-option-step12/lone-option-step12.component";
+import { LoneOptionStep13Component } from "./Buy_a_Home_Loan _Options/lone-option-step13/lone-option-step13.component";
+import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-option-step14/lone-option-step14.component";
+
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -693,11 +709,81 @@ import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_ani
             component: RefinanceLoanOptionsStep18Component,
             canActivate: [AppRouteGuard],
           },
-          // {
-          //   path: "refinance-loan-option-step19",
-          //   component: Step19Component,
-          //   canActivate: [AppRouteGuard],
-          // },
+          {
+            path: "buy-a-home-loan-options-animated",
+            component: LoneOptionAnimatedComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step1",
+            component: LoneOptionStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step2",
+            component: LoneOptionStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step3",
+            component: LoneOptionStep3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step4",
+            component: LoneOptionStep4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step5",
+            component: LoneOptionStep5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step6",
+            component: LoneOptionStep6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step7",
+            component: LoneOptionStep7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step8",
+            component: LoneOptionStep8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step9",
+            component: LoneOptionStep9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step10",
+            component: LoneOptionStep10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step11",
+            component: LoneOptionStep11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step12",
+            component: LoneOptionStep12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step13",
+            component: LoneOptionStep13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step14",
+            component: LoneOptionStep14Component,
+            canActivate: [AppRouteGuard],
+          },
         ],
       },
     ]),

@@ -69,6 +69,7 @@ export class HomeAffordabilityCalculatorComponent implements OnInit {
     }else if(this.homeAffordAbility.value.creditScore == 4){
       interestRate = 5.339;
     }
+    console.log(monthlyPaymentwithoutDebit);
     var principal = this.calculatePrincipleAmount(monthlyPaymentwithoutDebit,interestRate,30);
     var totalPrincipal =  principal + this.homeAffordAbility.value.downPayment;
     console.log(totalPrincipal);
