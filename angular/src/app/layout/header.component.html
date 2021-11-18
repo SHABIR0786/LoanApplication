@@ -2,7 +2,7 @@
   <nav class="navbar navbar-dark bg-primary navbar-expand-lg p-0">
     <div class="container px-0">
       <div class="d-flex mx-3 mx-sm-0 px-lg-0 w-100">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" [routerLink]="['/app/home']">
           <img src="assets/images/headLogo.svg" alt="" />
         </a>
         <div
@@ -17,7 +17,7 @@
               class="btn btn-outline-info text-white text-uppercase mx-1 d-none d-md-inline-block"
               >Check loan status</a
             >
-            <a href="" class="btn btn-info text-uppercase">Apply Now</a>
+            <a [routerLink]="['/app/loan-detail']" class="btn btn-info text-uppercase">Apply Now</a>
           </div>
 
           <!-- Toggler/collapsibe Button -->
@@ -66,7 +66,7 @@
               class="btn btn-outline-info text-white text-uppercase cls"
               >Check loan status</a
             >
-            <a href="" class="btn btn-info text-uppercase aplbtn">Apply Now</a>
+            <a [routerLink]="['/app/loan-detail']" class="btn btn-info text-uppercase aplbtn">Apply Now</a>
           </div>
           <div
             class="collapse navbar-collapse flex-column ml-auto align-items-end ml-auto justify-content-end mb-0"
@@ -357,44 +357,6 @@
                               Consolidate Your Debt
                             </a>
                           </li>
-                          <li>
-                            <a [routerLink]="['/app/Step3']">
-                              <i class="fa fa-check-circle"></i>
-                              step3
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step6']">
-                              <i class="fa fa-check-circle"></i>
-                              step6
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step9']">
-                              <i class="fa fa-check-circle"></i>
-                              step9
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step12']">
-                              <i class="fa fa-check-circle"></i>
-                              step12
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step15']">
-                              <i class="fa fa-check-circle"></i>
-                              step15
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step18']">
-                              <i class="fa fa-check-circle"></i>
-                              step18
-                            </a>
-                          </li>
                         </ul>
                       </div>
                       <div class="col-lg-3">
@@ -421,49 +383,6 @@
                             >
                               <i class="fa fa-check-circle"></i>
                               Keep Your Payment From Rising
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step1']">
-                              <i class="fa fa-check-circle"></i>
-                              step1
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step4']">
-                              <i class="fa fa-check-circle"></i>
-                              step4
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step7']">
-                              <i class="fa fa-check-circle"></i>
-                              step7
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step10']">
-                              <i class="fa fa-check-circle"></i>
-                              step10
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step13']">
-                              <i class="fa fa-check-circle"></i>
-                              step13
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step16']">
-                              <i class="fa fa-check-circle"></i>
-                              step16
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/step19']">
-                              <i class="fa fa-check-circle"></i>
-                              step19
                             </a>
                           </li>
                         </ul>
@@ -495,45 +414,6 @@
                             <a [routerLink]="['/app/animated']">
                               <i class="fa fa-check-circle"></i>
                               animated
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step2']">
-                              <i class="fa fa-check-circle"></i>
-                              step2
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step5']">
-                              <i class="fa fa-check-circle"></i>
-                              step5
-                            </a>
-                          </li>
-
-                          <li>
-                            <a [routerLink]="['/app/Step8']">
-                              <i class="fa fa-check-circle"></i>
-                              step8
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step11']">
-                              <i class="fa fa-check-circle"></i>
-                              step11
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step14']">
-                              <i class="fa fa-check-circle"></i>
-                              step14
-                            </a>
-                          </li>
-                          <li>
-                            <a [routerLink]="['/app/Step17']">
-                              <i class="fa fa-check-circle"></i>
-                              step17
                             </a>
                           </li>
                         </ul>
@@ -587,66 +467,6 @@
                               15-Year Fixed Mortgage
                             </a>
                           </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step1'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step4'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 4
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step7'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 7
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step10'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 10
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step13'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 13
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step16'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 16
-                            </a>
-                          </li>
                         </ul>
                       </div>
                       <div class="col-lg-3">
@@ -669,66 +489,6 @@
                               FHA Loans
                             </a>
                           </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step2'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step 2
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step5'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step5
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step8'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step8
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step11'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step11
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step14'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step14
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step17'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step17
-                            </a>
-                          </li>
                         </ul>
                       </div>
                       <div class="col-lg-3">
@@ -749,66 +509,6 @@
                             <a [routerLink]="['/app/refinance-animated']">
                               <i class="fa fa-check-circle"></i>
                               animated
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step3'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step3
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step6'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step6
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step9'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step9
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step12'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step12
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step15'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step15
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              [routerLink]="[
-                                '/app/refinance-loan-option-step18'
-                              ]"
-                            >
-                              <i class="fa fa-check-circle"></i>
-                              step18
                             </a>
                           </li>
                         </ul>
@@ -918,9 +618,9 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a [routerLink]="['/app/affordability']">
+                            <a [routerLink]="['/app/rent-vs-buy-calculator']">
                               <i class="fa fa-check-circle"></i>
-                              Affordability
+                              Rent vs Buy Calculator
                             </a>
                           </li>
                           <li>

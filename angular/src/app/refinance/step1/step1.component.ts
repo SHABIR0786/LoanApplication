@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-step1",
@@ -6,7 +7,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./step1.component.css"],
 })
 export class Step1Component implements OnInit {
-  constructor() {}
+    constructor(private _route: Router) {}
 
   ngOnInit(): void {}
+  proceedToNext(){
+    this._route.navigate(["app/refinance-step2"]);
+  }
 }

@@ -88,6 +88,9 @@
         formControlName="email"
         [(ngModel)]="data.email"
       />
+      <div *ngIf="form.controls.email.errors?.email">
+        <span class="text-danger">Email address is invalid.</span>
+      </div>
       <validation-summary [control]="form.controls.email"></validation-summary>
     </div>
   </div>
@@ -105,6 +108,9 @@
         formControlName="dateOfBirth"
         [(ngModel)]="data.dateOfBirth"
       />
+      <div *ngIf="form.controls.dateOfBirth.errors?.invaliddateofBirth">
+        <span class="text-danger">You must 18 years old to get loan.</span>
+      </div>
       <validation-summary
         [control]="form.controls.dateOfBirth"
       ></validation-summary>
@@ -177,7 +183,11 @@
         min="0"
         max="10"
       />
+      <div *ngIf="form.controls.numberOfDependents.errors?.numberOfDependents">
+        <span class="text-danger">Minimum 0 and maximum 10 is required.</span>
+      </div>
     </div>
+    
   </div>
   <div class="col-6">
     <div class="form-group">
