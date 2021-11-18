@@ -132,9 +132,95 @@ namespace LoanManagement.DatabaseServices.Implementations
             }
         }
 
-        public Task<EmploymentIncomeDto> UpdateAsync(EmploymentIncomeDto input)
+        public async Task<EmploymentIncomeDto> UpdateAsync(EmploymentIncomeDto input)
         {
-            return null;
+            try
+            {
+                #region Borrower Monthly Income
+                if (input.BorrowerMonthlyIncome != null && !input.BorrowerMonthlyIncome.IsNull())
+                {
+                    input.BorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
+                    if (input.BorrowerMonthlyIncome.Id.HasValue)
+                    {
+                        await _borrowerMonthlyIncomeRepository.UpdateAsync(input.BorrowerMonthlyIncome);
+                    }
+                        
+                }
+                #endregion
+
+                #region Co-Borrower Monthly Income
+                if (input.CoBorrowerMonthlyIncome != null && !input.CoBorrowerMonthlyIncome.IsNull())
+                {
+                    input.CoBorrowerMonthlyIncome.LoanApplicationId = input.LoanApplicationId;
+                    if (input.CoBorrowerMonthlyIncome.Id.HasValue)
+                    {
+                        await _borrowerMonthlyIncomeRepository.UpdateAsync(input.CoBorrowerMonthlyIncome);
+                    }
+             
+                }
+                #endregion
+
+                #region Employment Information
+
+                if (input.BorrowerEmploymentInfo != null && input.BorrowerEmploymentInfo.Any())
+                    foreach (var borrowerEmploymentInfo in input.BorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
+                    {
+                        borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
+                        if (!borrowerEmploymentInfo.Id.HasValue || borrowerEmploymentInfo.Id.Value == default)
+                        {
+                            if (!borrowerEmploymentInfo.IsNull())
+                                await _borrowerEmploymentInformationRepository.CreateAsync(borrowerEmploymentInfo);
+                        }
+                        else
+                            await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
+                    }
+
+                if (input.CoBorrowerEmploymentInfo != null && input.CoBorrowerEmploymentInfo.Any())
+                    foreach (var borrowerEmploymentInfo in input.CoBorrowerEmploymentInfo.Where(i =>
+                    !string.IsNullOrEmpty(i.Address1) ||
+                    !string.IsNullOrEmpty(i.Address2) ||
+                    !string.IsNullOrEmpty(i.EmployerName) ||
+                    i.EndDate.HasValue ||
+                    i.IsSelfEmployed.HasValue ||
+                    !string.IsNullOrEmpty(i.Position) ||
+                    i.StartDate.HasValue ||
+                    i.ZipCode.HasValue))
+                    {
+                        borrowerEmploymentInfo.LoanApplicationId = input.LoanApplicationId;
+                        if (borrowerEmploymentInfo.Id.HasValue)
+                        {
+                            await _borrowerEmploymentInformationRepository.UpdateAsync(borrowerEmploymentInfo);
+                        }
+                    }
+
+                #endregion
+
+                if (input.AdditionalIncomes != null && input.AdditionalIncomes.Any())
+                {
+                    foreach (var additionalIncome in input.AdditionalIncomes.Where(i => i.Amount.HasValue || (i.IncomeSourceId.HasValue && i.IncomeSourceId.Value != 0)))
+                    {
+                        additionalIncome.LoanApplicationId = input.LoanApplicationId.Value;
+                        if (additionalIncome.Id.HasValue)
+                        {
+                            await _additionalIncomeService.UpdateAsync(additionalIncome);
+                        }
+                    }
+                }
+
+                return input;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public Task DeleteAsync(EntityDto<long?> input)

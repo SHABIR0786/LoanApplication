@@ -1301,7 +1301,7 @@
                           !formData.personalInformation.residentialAddress
                             .zipCode ||
                           !formData.personalInformation.residentialAddress
-                            .totalYears
+                            .years
                         "
                       >
                         <i class="fa fa-info-circle ml-2"></i>
@@ -1427,9 +1427,9 @@
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
                           formData.personalInformation.residentialAddress
-                            .totalYears === undefined ||
+                            .years === undefined ||
                           formData.personalInformation.residentialAddress
-                            .totalYears === null
+                            .years === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1439,12 +1439,12 @@
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation.residentialAddress
-                            .totalYears === undefined ||
+                            .years === undefined ||
                           formData.personalInformation.residentialAddress
-                            .totalYears === null
+                            .years === null
                             ? "--"
                             : formData.personalInformation.residentialAddress
-                                .totalYears
+                                .years
                         }}
                       </p>
 
@@ -1618,7 +1618,7 @@
                               !formData.personalInformation
                                 .coBorrowerResidentialAddress.zipCode ||
                               !formData.personalInformation
-                                .coBorrowerResidentialAddress.totalYears
+                                .coBorrowerResidentialAddress.years
                             : false
                         "
                       >
@@ -1794,10 +1794,10 @@
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.totalYears ===
+                            .coBorrowerResidentialAddress.years ===
                             undefined ||
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.totalYears === null
+                            .coBorrowerResidentialAddress.years === null
                             ? 'text-danger'
                             : 'text-muted'
                         "
@@ -1807,13 +1807,13 @@
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.totalYears ===
+                            .coBorrowerResidentialAddress.years ===
                             undefined ||
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.totalYears === null
+                            .coBorrowerResidentialAddress.years === null
                             ? "--"
                             : formData.personalInformation
-                                .coBorrowerResidentialAddress.totalYears
+                                .coBorrowerResidentialAddress.years
                         }}
                       </p>
 
@@ -5537,11 +5537,11 @@
                     class="text-danger"
                     *ngIf="
                       !formData.loanDetails ||
-                      (formData.loanDetails.loanPurpose ===
-                        'No Cash-Out Refinance' ||
-                      formData.loanDetails.loanPurpose === 'Cash-Out Refinance'
+                      (formData.loanDetails.purposeOfLoan ===
+                        2 ||
+                      formData.loanDetails.purposeOfLoan === 3
                         ? !formData.loanDetails.requestedLoanAmount
-                        : formData.loanDetails.loanPurpose === 'Purchase a Home'
+                        : formData.loanDetails.purposeOfLoan === 1
                         ? !formData.loanDetails.estimatedPurchasePrice ||
                           !formData.loanDetails.downPaymentAmount ||
                           !formData.loanDetails.sourceOfDownPayment
@@ -5669,6 +5669,7 @@
                     class="text-danger"
                     *ngIf="
                       !formData.personalInformation ||
+                      !formData.personalInformation.residentialAddress ||
                       !formData.personalInformation.residentialAddress
                         .addressLine1 ||
                       !formData.personalInformation.residentialAddress.city ||
@@ -5677,7 +5678,7 @@
                       !formData.personalInformation.residentialAddress
                         .zipCode ||
                       !formData.personalInformation.residentialAddress
-                        .totalYears
+                        .years
                     "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
@@ -5708,7 +5709,7 @@
                       !formData.personalInformation.coBorrowerResidentialAddress
                         .zipCode ||
                       !formData.personalInformation.coBorrowerResidentialAddress
-                        .totalYears
+                        .years
                     "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
@@ -5752,11 +5753,11 @@
                     class="text-danger"
                     *ngIf="
                       !formData.expenses ||
-                      (formData.expenses.isLiveWithFamilySelectRent === 'true'
+                      (formData.expenses.isLiveWithFamilySelectRent === true
                         ? !formData.expenses.rent ||
                           !formData.expenses.otherHousingExpenses
                         : formData.expenses.isLiveWithFamilySelectRent ===
-                          'false'
+                          false
                         ? !formData.expenses.firstMortgage ||
                           !formData.expenses.realEstateTaxes ||
                           !formData.expenses.mortgageInsurance ||

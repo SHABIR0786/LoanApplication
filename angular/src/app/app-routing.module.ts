@@ -93,6 +93,7 @@ import { MakingYourFirstMortgagePaymentComponent } from "./buying-home-guide/mak
 import { ManagingYourMortgageComponent } from "./buying-home-guide/managing-your-mortgage/managing-your-mortgage.component";
 import { VaLoanComponent } from "./loan-options/va-loan/va-loan.component";
 import { AmortizationResultComponent } from "./calculators/amortization/amortization-result/amortization-result.component";
+import { RentVsBuyCalculatorComponent } from "./calculators/rent-vs-buy-calculator/rent-vs-buy-calculator.component";
 import { RefinanceLoanOptionsStep1Component } from "./Refinance_loan_option_animated/step1/step1.component";
 import { RefinanceLoanOptionsStep2Component } from "./Refinance_loan_option_animated/step2/step2.component";
 import { RefinanceLoanOptionsStep3Component } from "./Refinance_loan_option_animated/step3/step3.component";
@@ -530,102 +531,107 @@ import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-optio
             canActivate: [AppRouteGuard],
           },
           {
+            path: "rent-vs-buy-calculator",
+            component: RentVsBuyCalculatorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
             path: "animated",
             component: AnimatedComponent,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step1",
+            path: "refinance-step1",
             component: Step1Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step2",
+            path: "refinance-step2",
             component: Step2Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step3",
+            path: "refinance-step3",
             component: Step3Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step4",
+            path: "refinance-step4",
             component: Step4Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step5",
+            path: "refinance-step5",
             component: Step5Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step6",
+            path: "refinance-step6",
             component: Step6Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step7",
+            path: "refinance-step7",
             component: Step7Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step8",
+            path: "refinance-step8",
             component: Step8Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step9",
+            path: "refinance-step9",
             component: Step9Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step10",
+            path: "refinance-step10",
             component: Step10Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step11",
+            path: "refinance-step11",
             component: Step11Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step12",
+            path: "refinance-step12",
             component: Step12Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step13",
+            path: "refinance-step13",
             component: Step13Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step14",
+            path: "refinance-step14",
             component: Step14Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step15",
+            path: "refinance-step15",
             component: Step15Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step16",
+            path: "refinance-step16",
             component: Step16Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step17",
+            path: "refinance-step17",
             component: Step17Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step18",
+            path: "refinance-step18",
             component: Step18Component,
             canActivate: [AppRouteGuard],
           },
           {
-            path: "Step19",
+            path: "refinance-step19",
             component: Step19Component,
             canActivate: [AppRouteGuard],
           },

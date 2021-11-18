@@ -72,7 +72,6 @@ export class DataService {
   }
 
   updateFormData(formData: ILoanApplicationModel) {
-    debugger;
     this.formDataSource.next(formData);
   }
 

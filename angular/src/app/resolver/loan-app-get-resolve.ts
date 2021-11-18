@@ -36,7 +36,6 @@ export class GetLoanAppResolve
       unAuthorizedRequest: true,
       urror: "",
     };
-
     return result;
   }
 }

@@ -39,10 +39,12 @@ export class AdditionalDetailsComponent implements OnInit, DoCheck {
       this.borrower = this._dataService.loanApplication.personalInformation.borrower;
       this.coBorrower = this._dataService.loanApplication.personalInformation.coBorrower;
       this.personalInformation = this._dataService.loanApplication.personalInformation;
+      if(this._dataService.loanApplication.additionalDetails){
       this.data = this._dataService.loanApplication.additionalDetails;
+      }
     }
 
-    if (!this.data.nameOfIndividualsOnTitle) {
+    if (this.data && !this.data.nameOfIndividualsOnTitle) {
       this.data.nameOfIndividualsOnTitle = this.borrower.firstName ?? "";
       this.data.nameOfIndividualsOnTitle +=
         (this.data.nameOfIndividualsOnTitle ? " " : "") +

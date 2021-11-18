@@ -31,17 +31,17 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
   homeRoute = "/app/home";
   building = "fas fa-building";
   dollar = " fas fa-dollar-sign";
-  user = " fas fa-user";
-  dollar2 = " fas fa-comments-dollar";
-  coins = " fas fa-coins";
-  briefCase = " fas fa-briefcase";
-  meter = " fas fa-tachometer-alt";
-  file = " fas fa-file-alt";
-  contract = " fas fa-file-contract";
-  signature = " fas fa-file-signature";
-  summary = " fas fa-tasks";
-  applyLoan = " fas fa-funnel-dollar";
-  loanList = " fas fa-clipboard-list";
+  user = "fas fa-user";
+  dollar2 = "fas fa-comments-dollar";
+  coins = "fas fa-coins";
+  briefCase = "fas fa-briefcase";
+  meter = "fas fa-tachometer-alt";
+  file = "fas fa-file-alt";
+  contract = "fas fa-file-contract";
+  signature = "fas fa-file-signature";
+  summary = "fas fa-tasks";
+  applyLoan = "fas fa-funnel-dollar";
+  loanList = "fas fa-clipboard-list";
   Id = 8;
 
   constructor(
@@ -59,6 +59,12 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
       this.Id = params["id"];
     });
     this.menuItems = this.getMenuItems();
+    var currentUrl = this.router.url !== "/" ? this.router.url : this.homeRoute;
+    const primaryUrlSegmentGroup = this.router.parseUrl(currentUrl).root
+      .children[PRIMARY_OUTLET];
+    if (primaryUrlSegmentGroup) {
+      this.activateMenuItems("/" + primaryUrlSegmentGroup.toString());
+    }
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
