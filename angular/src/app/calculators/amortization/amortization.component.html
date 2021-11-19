@@ -270,7 +270,7 @@
           </div>
         </div>
       </form>
-      <div id="amorization-result">
+      <div id="amorization-result" *ngIf="isSubmited == true">
       <app-amortization-result [data]="amorizationResult"></app-amortization-result>
     </div>
     </div>
