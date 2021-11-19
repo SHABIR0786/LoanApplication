@@ -12,17 +12,17 @@
       <div class="row">
         <div class="col-sm-3">
           <p>Your Loan Amount</p>
-          <h4>$250000</h4>
+          <h4>{{data.LoanAmount}}</h4>
           <br />
           <p>Rate</p>
-          <h4>10%</h4>
+          <h4>{{data.interestRate}}</h4>
           <br />
           <p>Monthly Payment</p>
           <p>(Not including taxes and insurance)</p>
-          <h4>$3,303.77</h4>
+          <h4>${{data.monthlyPaymentNotIncludingTaxes}}</h4>
           <br />
           <p>Total Interest Paid</p>
-          <h4>$146,452.18</h4>
+          <h4>${{data.totalInterestPaid}}</h4>
         </div>
         <div class="col-sm-6">
           <div class="graph">

@@ -19,6 +19,7 @@ export class HomeAffordabilityCalculatorComponent implements OnInit {
   monthlyDebt = 0;
   downPayment = 0;
   zipCode = 0;
+  HomeAfford = 0;
   RateYourCreditOptions = [
     { value: "Excellent (760+)", key: 1 },
     { value: "Very Good (720 - 759)", key: 2 },
@@ -71,8 +72,9 @@ export class HomeAffordabilityCalculatorComponent implements OnInit {
     }
     console.log(monthlyPaymentwithoutDebit);
     var principal = this.calculatePrincipleAmount(monthlyPaymentwithoutDebit,interestRate,30);
-    var totalPrincipal =  principal + this.homeAffordAbility.value.downPayment;
-    console.log(totalPrincipal);
+    var totalPrincipal =  Math.ceil((principal + this.homeAffordAbility.value.downPayment)* 100)/100;
+    this.HomeAfford = totalPrincipal;
+    // console.log(totalPrincipal);
     // var YearlyPropertyTaxes = totalPrincipal * (1.20/100) 
     // var YearlyHomeInsuranceinPercent = 15.13023659084891 * 0.42;
     // // var Taxes = Math.ceil((YearlyPropertyTaxes / 12) * 100) / 100;
