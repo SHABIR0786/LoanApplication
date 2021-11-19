@@ -1,34 +1,34 @@
-  <div class="Content-Step-Body text-white">
-    <div class="container">
-  
-      <h2 class="">When do you plan to purchase?</h2>
-      <p>We'll get local information for you.</p>
-  
-      <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <p id="back" class="fa fa-angle-left">
-  
-            <span style="margin-left: 10px;">Back</span>
-  
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="btn">
-            <br ><br>
-            <select class="form-control input-special mb-3" name="" id="">
-                <option>Alabama</option>
-              </select>
-              
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
-              Next
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-4"></div>
+<div class="Content-Step-Body text-white">
+  <div class="container">
+    <h2 class="">When do you plan to purchase?</h2>
+    <p>We'll get local information for you.</p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
       </div>
-      <div class="gage-chart">
-          
-        <span>26%</span>
+      <div class="col-lg-4">
+        <div class="btn">
+          <br /><br />
+          <select class="form-control input-special mb-3" name="" id="">
+            <option>Alabama</option>
+          </select>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
+            Next
+          </button>
+        </div>
       </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="gage-chart">
+      <span>26%</span>
     </div>
   </div>
+</div>

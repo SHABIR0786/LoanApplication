@@ -1,37 +1,40 @@
-
-  <div class="Content-Step-Body text-white">
-    <div class="container">
-      <h2 class="pb-5">What is your phone number?</h2>
-      <p class="co-borrower">
-        You adhere to a strict privacy policy and will never sell your
-        information.
-      </p>
-      <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <p id="back">
-            <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="BTN">
-            <div id="first_name">
-              <h3 style="width: 212px; font-size: 20px">Your Mobile  Number*</h3>
-              <input type="text" id="Fn" placeholder="Enter Your Mobile  Number " />
-            </div>
-            
-            <button
-              type="button"
-              class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            >
-              Next
-            </button>
+<div class="Content-Step-Body text-white">
+  <div class="container">
+    <h2 class="pb-5">What is your phone number?</h2>
+    <p class="co-borrower">
+      You adhere to a strict privacy policy and will never sell your
+      information.
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <p id="back" (click)="proceedToPrevious()">
+          <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="BTN">
+          <div id="first_name">
+            <h3 style="width: 212px; font-size: 20px">Your Mobile Number*</h3>
+            <input
+              type="text"
+              id="Fn"
+              placeholder="Enter Your Mobile  Number "
+            />
           </div>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            (click)="proceedToNext()"
+          >
+            Next
+          </button>
         </div>
-        <div class="col-lg-4"></div>
       </div>
-      <div class="gage-chart p89 mt-5">
-        <span>95%</span>
-      </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="gage-chart p89 mt-5">
+      <span>95%</span>
     </div>
   </div>
-  
+</div>

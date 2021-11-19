@@ -1,39 +1,38 @@
-
-  <div class="Content-Step-Body text-white">
-    <div class="container">
-      <h2 class="pb-5">Please enter your name below</h2>
-      <p class="co-borrower">
-        You can always add a co-borrower or edit this entry later.
-      </p>
-      <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <p id="back">
-            <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="BTN">
-            <div id="first_name">
-              <h3 style="width: 112px; font-size: 20px">First Name*</h3>
-              <input type="text" id="Fn" placeholder="Enter Your Name " />
-            </div>
-            <div id="last_name">
-              <h3 style="width: 109px; font-size: 20px">Last Name*</h3>
-              <input type="text" id="Ln" placeholder="Enter Your Name " />
-            </div>
-            <button
-              type="button"
-              class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            >
-              Next
-            </button>
+<div class="Content-Step-Body text-white">
+  <div class="container">
+    <h2 class="pb-5">Please enter your name below</h2>
+    <p class="co-borrower">
+      You can always add a co-borrower or edit this entry later.
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <p id="back" (click)="proceedToPrevious()">
+          <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="BTN">
+          <div id="first_name">
+            <h3 style="width: 112px; font-size: 20px">First Name*</h3>
+            <input type="text" id="Fn" placeholder="Enter Your Name " />
           </div>
+          <div id="last_name">
+            <h3 style="width: 109px; font-size: 20px">Last Name*</h3>
+            <input type="text" id="Ln" placeholder="Enter Your Name " />
+          </div>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            (click)="proceedToNext()"
+          >
+            Next
+          </button>
         </div>
-        <div class="col-lg-4"></div>
       </div>
-      <div class="gage-chart p89 mt-5">
-        <span>84%</span>
-      </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="gage-chart p89 mt-5">
+      <span>84%</span>
     </div>
   </div>
-  
+</div>

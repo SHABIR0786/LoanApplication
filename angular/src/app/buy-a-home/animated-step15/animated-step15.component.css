@@ -1,28 +1,25 @@
 .btn {
-    width: 100%;
-    
-  }
-  
-   
-  #Family {
-    background-color: #f47741;
-    text-decoration-color: white;
-  }
-  #back {
-    margin-top: 280px;
-    margin-right: 150px;
-    margin-left: 10px;
-    font-size: 20px;
-    
-  }
+  width: 100%;
+}
 
-  #num {
-    color: #0cc4d4 !important;
-  }
-  #Email {
-    color: #0cc4d4 !important;
-  }
-  .gage-chart{
-    margin-top: 45px !important;
-  }
-  
+#Family {
+  background-color: #f47741;
+  text-decoration-color: white;
+}
+#back {
+  margin-top: 280px;
+  margin-right: 150px;
+  margin-left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#num {
+  color: #0cc4d4 !important;
+}
+#Email {
+  color: #0cc4d4 !important;
+}
+.gage-chart {
+  margin-top: 45px !important;
+}
