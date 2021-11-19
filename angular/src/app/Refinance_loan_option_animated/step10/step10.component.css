@@ -1,5 +1,5 @@
 #Remaining {
-  width: 245px;
+  width: 291px;
 
   height: 58px;
 
@@ -7,13 +7,14 @@
 }
 
 #next {
-  width: 129px;
+  width: 167px;
 }
 
 #Back {
   position: relative;
   top: 182px;
   right: 196px;
+  cursor: pointer;
 }
 #icon {
   font-size: 26px;
