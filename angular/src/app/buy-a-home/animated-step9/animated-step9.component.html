@@ -1,43 +1,58 @@
+<div class="Content-Step-Body text-white">
+  <div class="container">
+    <h2 class="">What is your gross annual household income?</h2>
 
-  <div class="Content-Step-Body text-white">
-    <div class="container">
-  
-      <h2 class="">What is your gross annual household income?</h2>
-  
-      <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <p id="back" class="fa fa-angle-left">
-  
-            <span style="margin-left: 10px;">Back</span>
-  
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="btn">
-            <br /><br />
-            <button type="button" class="btn  btn-lg btn-block mb-3" id="Family">
-              Less Then $20,000
-            </button>
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
-                $20,000 - $50,000
-            </button>
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
-                $50,000 - $100,000
-            </button>
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
-                $100,000 - $200,000
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
-                $200,000+
-              </button>
-            
-          </div>
-        </div>
-        <div class="col-lg-4"></div>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
       </div>
-      <div class="gage-chart">
-          
-        <span>47%</span>
+      <div class="col-lg-4">
+        <div class="btn">
+          <br /><br />
+          <button
+            type="button"
+            class="btn btn-lg btn-block mb-3"
+            id="Family"
+            (click)="proceedToNext()"
+          >
+            Less Then $20,000
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
+            $20,000 - $50,000
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
+            $50,000 - $100,000
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
+            $100,000 - $200,000
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
+            $200,000+
+          </button>
+        </div>
       </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="gage-chart">
+      <span>47%</span>
     </div>
   </div>
+</div>

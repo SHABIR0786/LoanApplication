@@ -1,33 +1,31 @@
-
-  <div class="Content-Step-Body text-white">
-    <div class="container">
-      <h1 class="pb-5">How did you hear about us?</h1>
-      <h4 class="co-borrower">Tell us how you found New American Funding.</h4>
-      <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <p id="back">
-            <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
-          </p>
-        </div>
-        <div class="col-lg-4">
-          <div class="BTN">
-            <select class="form-control input-special mb-3 mt-8" name="" id="">
-              <option>Referred by Someone</option>
-              <option>Referred by Someone</option>
-            </select>
-            <button
-              type="button"
-              class="btn btn-outline-primary btn-lg btn-block mb-3"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-4"></div>
+<div class="Content-Step-Body text-white">
+  <div class="container">
+    <h1 class="pb-5">How did you hear about us?</h1>
+    <h4 class="co-borrower">Tell us how you found New American Funding.</h4>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <p id="back" (click)="proceedToPrevious()">
+          <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+        </p>
       </div>
-      <div class="gage-chart p100 mt-5">
-        <span>100%</span>
+      <div class="col-lg-4">
+        <div class="BTN">
+          <select class="form-control input-special mb-3 mt-8" name="" id="">
+            <option>Referred by Someone</option>
+            <option>Referred by Someone</option>
+          </select>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+          >
+            Submit
+          </button>
+        </div>
       </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="gage-chart p100 mt-5">
+      <span>100%</span>
     </div>
   </div>
-  
+</div>

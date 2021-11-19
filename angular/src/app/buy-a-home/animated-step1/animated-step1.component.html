@@ -1,30 +1,43 @@
-
 <div class="Content-Step-Body text-white">
   <div class="container">
-
     <h2 class="">What type of property are you purchasing?</h2>
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="back" class="fa fa-angle-left">
-
-          <span style="margin-left: 10px;">Back</span>
-
+        <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
         </p>
       </div>
       <div class="col-lg-4">
         <div class="btn">
           <br /><br />
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3" id="Family">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            id="Family"
+            (click)="proceedToNext()"
+          >
             Single Family Home
           </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
             Multi-Family Home
           </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block mb-3">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext()"
+          >
             Townhouse / Condo
           </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block ">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block"
+            (click)="proceedToNext()"
+          >
             Other
           </button>
         </div>
@@ -34,6 +47,5 @@
     <div class="gage-chart">
       <span>5%</span>
     </div>
-    
   </div>
 </div>
