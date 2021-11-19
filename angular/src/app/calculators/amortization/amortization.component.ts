@@ -30,6 +30,7 @@ export class AmortizationComponent implements OnInit {
     principalDue:[],
     principlebalance:[]
   };
+  isSubmited=false;
   counter(length: number) {
     return Array.from({ length: length }, (_, i) => i + 1);
   }
@@ -59,7 +60,7 @@ export class AmortizationComponent implements OnInit {
     var computedInterestRate = 0;
     var principleDue = 0;
     var totalMonths = this.termInYears * 12;
-    this.amorizationResult.totalInterestPaid = (result * totalMonths) - this.currentLoanAmount;
+    this.amorizationResult.totalInterestPaid = Math.ceil(((result * totalMonths) - this.currentLoanAmount) * 100)/100;
     this.amorizationResult.interestRate = this.interestRate;
     for (var i = 0; i < totalMonths; i++) {
       computedInterestRate = (loanAmount * interestRate) / 12;
@@ -76,7 +77,7 @@ export class AmortizationComponent implements OnInit {
     this.amorizationResult.principalDue = this.principalDue;
     this.amorizationResult.principlebalance = this.principlebalance;
     this.amorizationResult = cloneDeep(this.amorizationResult);
-    
+    this.isSubmited = true;
   }
   formatResult = (result: number) => {
     return isNaN(parseFloat(result.toFixed(2)))
