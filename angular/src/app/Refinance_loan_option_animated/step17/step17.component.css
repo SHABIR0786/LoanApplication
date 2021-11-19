@@ -1,19 +1,28 @@
 #Brine {
-  width: 245px;
+  width: 291px;
 
   height: 69px;
 
   font-size: 23px;
 }
 
-#next {
-  width: 131px;
+#button {
+  border: 1px solid orange !important;
+  width: 260px;
+  height: 43px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #091a52;
+  margin-left: 494px;
+  margin-top: 33px;
+  cursor: pointer;
 }
 
 #Back {
   position: relative;
   top: 182px;
   right: 196px;
+  cursor: pointer;
 }
 #icon {
   font-size: 26px;
