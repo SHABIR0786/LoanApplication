@@ -11769,6 +11769,10 @@ nav .dropList li a i {
   margin-right: 0.5rem;
   color: #f47741;
 }
+nav .dropList li a p {
+display: inline-block;
+position: absolute;
+}
 nav .nav-link {
   text-transform: uppercase;
   color: #fff !important;
@@ -12821,6 +12825,7 @@ footer .footer-links a:hover {
 }
 .searchtop .inpSearch {
   position: absolute;
+  margin-left:40px;
   top: 0px;
 }
 @media (max-width: 767.98px) {
@@ -12850,6 +12855,7 @@ footer .footer-links a:hover {
 .searchtop .inpSearch.inpwidth input {
   padding: 0px 10px;
   width: 230px;
+  margin-left: -230px;
   opacity: 1;
   transition: 0.5s all ease-in-out;
 }
@@ -13212,6 +13218,11 @@ ul.arrow-list li {
   padding-left: 0.8rem;
   text-decoration: underline;
   line-height: 1.8;
+}
+ul.arrow-list li a{
+  position: absolute;
+  text-decoration: underline;
+  margin-top: -4px;
 }
 #rate-updates h3 {
   line-height: 50px;
@@ -13727,4 +13738,17 @@ ul.list-refinace li {
 }
 .link-unstyled:hover {
   text-decoration: none;
+}
+
+.text-primary.collapsed .fa-plus{
+  display: inline-block !important;
+}
+.text-primary.collapsed .fa-minus{
+  display: none !important;
+}
+.text-primary .fa-minus{
+  display: inline-block;
+}
+.text-primary .fa-plus{
+  display: none;
 }
