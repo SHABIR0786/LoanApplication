@@ -16,6 +16,12 @@ export class ConsolidateYourDebitComponent implements OnInit {
     this.ReadMore = !this.ReadMore;
     this.visible = !this.visible;
   }
+  playVideo(){
+    var ImagePoster = document.querySelector('.img-poster') as HTMLElement;
+    ImagePoster.style.display = "none";
+     var video = document.getElementById('my_video_1') as HTMLVideoElement;
+     video.play();
+   }
 
   constructor() {}
 
