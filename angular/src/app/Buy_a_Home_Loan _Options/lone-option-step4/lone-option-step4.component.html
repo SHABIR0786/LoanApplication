@@ -8,7 +8,7 @@
         </h2>
         <div class="col-lg-4">
           <i class="fa fa-angle-left" id="icon"></i>
-          <p id="Back">Back</p>
+          <p id="Back" (click)="proceedToPrevious()">Back</p>
         </div>
       </div>
     </div>
@@ -16,7 +16,11 @@
     <div class="row justify-content-center pt-4">
       <div class="col-md-4 col-lg-3">
         <div class="card mb-3 mb-md-0 text-center">
-          <div class="card-body">
+          <div
+            class="card-body"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <h1 class="pb-3 pt-4 text-white">3-5</h1>
             <p>Years</p>
           </div>
@@ -24,7 +28,11 @@
       </div>
       <div class="col-md-4 col-lg-3">
         <div class="card mb-3 mb-md-0 text-center">
-          <div class="card-body">
+          <div
+            class="card-body"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <h1 class="pb-3 pt-4">5-10</h1>
             <p>Years</p>
           </div>
@@ -34,7 +42,11 @@
     <div class="row justify-content-center pt-4">
       <div class="col-md-4 col-lg-3">
         <div class="card mb-3 mb-md-0 text-center">
-          <div class="card-body">
+          <div
+            class="card-body"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <h1 class="pb-3 pt-4">10-20</h1>
             <p>Years</p>
           </div>
@@ -43,7 +55,11 @@
 
       <div class="col-md-4 col-lg-3">
         <div class="card mb-3 mb-md-0 text-center">
-          <div class="card-body">
+          <div
+            class="card-body"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <h1 class="pb-3 pt-4">20+</h1>
             <p>Years</p>
           </div>

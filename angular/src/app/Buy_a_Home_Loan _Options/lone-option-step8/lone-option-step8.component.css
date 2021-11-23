@@ -2,6 +2,7 @@
   position: relative;
   top: 188px;
   right: 270px;
+  cursor: pointer;
 }
 #icon {
   font-size: 26px;
