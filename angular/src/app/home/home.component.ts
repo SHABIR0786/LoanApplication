@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   DoCheck,
+  EventEmitter
 } from "@angular/core";
+import {FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
 import { AppComponentBase } from "@shared/app-component-base";
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { HomeSettings, Result, SiteSettings } from "common";
@@ -23,6 +25,13 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
   ) {
     super(injector);
   }
+
+  playVideo(){
+    var ImagePoster = document.querySelector('.img-poster') as HTMLElement;
+    ImagePoster.style.display = "none";
+     var video = document.getElementById('my_video_1') as HTMLVideoElement;
+     video.play();
+   }
 
   isDataLoaded: boolean = false;
   data: HomeSettings;

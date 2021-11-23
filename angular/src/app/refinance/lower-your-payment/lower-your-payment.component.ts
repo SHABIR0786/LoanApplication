@@ -9,6 +9,13 @@ export class LowerYourPaymentComponent implements OnInit {
   ReadMore: boolean = true;
 
   visible: boolean = false;
+  
+  playVideo(){
+    var ImagePoster = document.querySelector('.img-poster') as HTMLElement;
+    ImagePoster.style.display = "none";
+     var video = document.getElementById('my_video_1') as HTMLVideoElement;
+     video.play();
+   }
 
   onclick() {
     this.ReadMore = !this.ReadMore;
