@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, SimpleChange, ViewChild } from "@angular/core";
 import { Chart } from "chart.js";
 
 @Component({
@@ -6,38 +6,71 @@ import { Chart } from "chart.js";
   templateUrl: "./amortization-result.component.html",
   styleUrls: ["./amortization-result.component.css"],
 })
-export class AmortizationResultComponent implements OnInit {
+export class AmortizationResultComponent implements OnInit,OnChanges {
   constructor() {}
 
   ngOnInit(): void {}
   canvas: any;
   ctx: any;
   @ViewChild("mychart") mychart: any;
-
+  @Input() data: any;
   ngAfterViewInit() {
     this.canvas = this.mychart.nativeElement;
     this.ctx = this.canvas.getContext("2d");
 
+    // new Chart(this.ctx, {
+    //   type: "line",
+    //   data: {
+    //     datasets: [
+    //       {
+    //         label: "Interest",
+    //         data: this.data.computedInterestDue,
+    //         backgroundColor: "rgb(115 185 243 / 65%)",
+    //         borderColor: "#007ee7",
+    //         fill: true,
+    //       },
+    //       {
+    //         label: "Payment",
+    //         data: this.data.principalDue,
+    //         backgroundColor: "#47a0e8",
+    //         borderColor: "#007ee7",
+    //         fill: true,
+    //       }
+    //     ],
+    //     labels: Array.from({length: 30}, (v, k) => k+2021),
+    //   },
+    // });
+  }
+  ngOnChanges(changes){
+    console.log(this.ctx);
+    console.log(this.data);
     new Chart(this.ctx, {
       type: "line",
       data: {
         datasets: [
           {
-            label: "Current Vallue",
-            data: [0, 20, 40, 50],
-            backgroundColor: "rgb(115 185 243 / 65%)",
-            borderColor: "#007ee7",
+            label: "Interest",
+            data: this.data.computedInterestDue,
+            backgroundColor: "#f9ee63",
+            borderColor: "#f9ee63",
             fill: true,
           },
           {
-            label: "Invested Amount",
-            data: [0, 20, 40, 60, 80],
-            backgroundColor: "#47a0e8",
-            borderColor: "#007ee7",
+            label: "Payment",
+            data: this.data.principalDue,
+            backgroundColor: "#caecf9",
+            borderColor: "#caecf9",
             fill: true,
           },
+          {
+            label: "balance",
+            data: this.data.principlebalance,
+            backgroundColor: "#b5121b",
+            borderColor: "#b5121b",
+            fill: true,
+          }
         ],
-        labels: ["January 2019", "February 2019", "March 2019", "April 2019"],
+        labels: Array.from({length: 360}, (v, k) => k+2021),
       },
     });
   }

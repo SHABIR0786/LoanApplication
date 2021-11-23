@@ -78,6 +78,18 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
         this.form.patchValue(formData.loanDetails);
       }
     });
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/loan-detail"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/loan-detail"]);
+      }
+    });
   }
 
   ngDoCheck() {
@@ -168,7 +180,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       ]),
       propertyUseId: new FormControl(this.data.propertyUseId, [
         Validators.required,
-      ]),
+      ])
     });
 
     this.form.get("purposeOfLoan").valueChanges.subscribe((purposeOfLoan) => {

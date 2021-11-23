@@ -75,7 +75,26 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/refinance-step16") ||
       this.router.url.includes("/app/refinance-step17") ||
       this.router.url.includes("/app/refinance-step18") ||
-      this.router.url.includes("/app/refinance-step19")
+      this.router.url.includes("/app/refinance-step19") ||
+      this.router.url.includes("/app/buy-a-home-animated-step1") ||
+      this.router.url.includes("/app/buy-a-home-animated-step2") ||
+      this.router.url.includes("/app/buy-a-home-animated-step3") ||
+      this.router.url.includes("/app/buy-a-home-animated-step4") ||
+      this.router.url.includes("/app/buy-a-home-animated-step5") ||
+      this.router.url.includes("/app/buy-a-home-animated-step6") ||
+      this.router.url.includes("/app/buy-a-home-animated-step7") ||
+      this.router.url.includes("/app/buy-a-home-animated-step8") ||
+      this.router.url.includes("/app/buy-a-home-animated-step9") ||
+      this.router.url.includes("/app/buy-a-home-animated-step10") ||
+      this.router.url.includes("/app/buy-a-home-animated-step11") ||
+      this.router.url.includes("/app/buy-a-home-animated-step12") ||
+      this.router.url.includes("/app/buy-a-home-animated-step13") ||
+      this.router.url.includes("/app/buy-a-home-animated-step14") ||
+      this.router.url.includes("/app/buy-a-home-animated-step15") ||
+      this.router.url.includes("/app/buy-a-home-animated-step16") ||
+      this.router.url.includes("/app/buy-a-home-animated-step17") ||
+      this.router.url.includes("/app/buy-a-home-animated-step18") ||
+      this.router.url.includes("/app/buy-a-home-animated-step19")
     );
   }
 

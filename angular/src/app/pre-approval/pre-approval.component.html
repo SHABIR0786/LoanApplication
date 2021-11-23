@@ -38,7 +38,7 @@
   </div>
 
   
-    <div class="container">
+    <div class="container text-justify">
       <h5 class="text-secondary">Know About</h5>
       <h2 class="font-weight-bold text-primary ">Home Loan Pre Approval</h2>
       <p >
@@ -162,28 +162,15 @@
     <div class="container mx-auto px-2 px-md-4">
       <div class="d-flex align-items-center justify-content-center">
         <div class="col-lg-8">
-          <video
-            id="my_video_1"
-            class="yimVideo video-js vjs-default-skin"
-            style="width: 100%; height: 368px"
-            height="368px"
-            controls
-            preload="none"
-            poster="assets/images/videoThumbnail.png"
-            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'
-          >
-            <source
-              src="https://vjs.zencdn.net/v/oceans.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="https://vjs.zencdn.net/v/oceans.webm"
-              type="video/webm"
-            />
+          <video id="my_video_1" class="yimVideo video-js vjs-default-skin" style="width: 100%; height: 368px;"
+            height="368px" controls preload="none"
+            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'>
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <source src="https://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
           </video>
         </div>
 
-        <!-- <img class="img-fluid" width="690" src="assets/images/videoThumbnail.png"> -->
+        <img class="img-fluid img-poster" (click)="playVideo()" style="position: absolute;width:794px;height: 368px; cursor: pointer;" src="assets/images/videoThumbnail.png">
       </div>
     </div>
   </section>
@@ -202,7 +189,7 @@
           <div class="panel-heading border-0" role="tab" id="headingOne">
             <h4 class="panel-title">
               <a
-                class="text-primary"
+                class="text-primary collapsed"
                 role="button"
                 data-toggle="collapse"
                 data-parent="#accordion"
@@ -211,6 +198,7 @@
                 aria-controls="collapseOne"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 Does Pre-approval mean I am guaranteed to get a loan?
               </a>
             </h4>
@@ -249,6 +237,7 @@
                 aria-controls="collapseTwo"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How can I improve my chances of getting approved?
               </a>
             </h4>
@@ -286,6 +275,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 What are points on a loan?
               </a>
             </h4>
@@ -322,6 +312,7 @@
                 aria-controls="collapseFour"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?
               </a>
@@ -358,6 +349,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How do I get a rate lock?
               </a>
             </h4>
