@@ -1,5 +1,5 @@
 <section class="content">
-  <div class="container-fluid">
+  <div class="container">
     <div class="card my-5">
       <div class="card-body">
         <form [formGroup]="form">
@@ -202,6 +202,14 @@
                       mask="0*.00"
                       maxlength="99"
                     />
+                    {{ form.controls.downPaymentPercentage.errors?.range }}
+                    <div
+                      *ngIf="form.controls.downPaymentPercentage.errors?.max"
+                    >
+                      <span class="text-danger"
+                        >Value must be less than or equal to 99.99.</span
+                      >
+                    </div>
                   </div>
                 </div>
 
@@ -617,11 +625,12 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="stateId">
+                    <label for="stateId" style="display: inline-block">
                       {{ "State" | localize }}
                       <span class="text-danger">*</span>
                     </label>
                     <i
+                      style="float: right"
                       class="fa fa-info-circle ml-2"
                       aria-hidden="true"
                       tooltip="Only the states in which we're licensed to do business are listed here."

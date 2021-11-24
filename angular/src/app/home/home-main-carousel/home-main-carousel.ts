@@ -15,6 +15,5 @@ export class HomeMainCarousel implements OnInit {
       i.background = `url('${i.FilePath}')`;
       return i;
     });
-    console.log(this.data);
   }
 }

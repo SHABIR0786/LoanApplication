@@ -11770,8 +11770,8 @@ nav .dropList li a i {
   color: #f47741;
 }
 nav .dropList li a p {
-display: inline-block;
-position: absolute;
+  display: inline-block;
+  position: absolute;
 }
 nav .nav-link {
   text-transform: uppercase;
@@ -12825,7 +12825,7 @@ footer .footer-links a:hover {
 }
 .searchtop .inpSearch {
   position: absolute;
-  margin-left:40px;
+  margin-left: 40px;
   top: 0px;
 }
 @media (max-width: 767.98px) {
@@ -12853,7 +12853,7 @@ footer .footer-links a:hover {
   z-index: 1;
 }
 .searchtop .inpSearch.inpwidth input {
-  padding: 0px 10px;
+  padding: 0px 25px;
   width: 230px;
   margin-left: -230px;
   opacity: 1;
@@ -13219,7 +13219,7 @@ ul.arrow-list li {
   text-decoration: underline;
   line-height: 1.8;
 }
-ul.arrow-list li a{
+ul.arrow-list li a {
   position: absolute;
   text-decoration: underline;
   margin-top: -4px;
@@ -13740,15 +13740,24 @@ ul.list-refinace li {
   text-decoration: none;
 }
 
-.text-primary.collapsed .fa-plus{
+.text-primary.collapsed .fa-plus {
   display: inline-block !important;
 }
-.text-primary.collapsed .fa-minus{
+.text-primary.collapsed .fa-minus {
   display: none !important;
 }
-.text-primary .fa-minus{
+.text-primary .fa-minus {
   display: inline-block;
 }
-.text-primary .fa-plus{
+.text-primary .fa-plus {
   display: none;
+}
+.loan-application section {
+  padding: 0px !important;
+}
+.loan-application label {
+  display: inline;
+}
+.loan-application i {
+  display: inline-block;
 }
