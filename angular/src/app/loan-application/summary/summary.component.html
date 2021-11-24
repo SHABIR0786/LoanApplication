@@ -1,5 +1,5 @@
 <section class="content px-2">
-  <div class="container-fluid">
+  <div>
     <div class="card my-5">
       <div class="card-body">
         <div class="row">
@@ -1300,8 +1300,7 @@
                             .stateId ||
                           !formData.personalInformation.residentialAddress
                             .zipCode ||
-                          !formData.personalInformation.residentialAddress
-                            .years
+                          !formData.personalInformation.residentialAddress.years
                         "
                       >
                         <i class="fa fa-info-circle ml-2"></i>
@@ -1794,8 +1793,7 @@
                         class="font-weight-normal form-text mb-3"
                         [ngClass]="
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.years ===
-                            undefined ||
+                            .coBorrowerResidentialAddress.years === undefined ||
                           formData.personalInformation
                             .coBorrowerResidentialAddress.years === null
                             ? 'text-danger'
@@ -1807,8 +1805,7 @@
                       <p class="font-weight-bold">
                         {{
                           formData.personalInformation
-                            .coBorrowerResidentialAddress.years ===
-                            undefined ||
+                            .coBorrowerResidentialAddress.years === undefined ||
                           formData.personalInformation
                             .coBorrowerResidentialAddress.years === null
                             ? "--"
@@ -5537,8 +5534,7 @@
                     class="text-danger"
                     *ngIf="
                       !formData.loanDetails ||
-                      (formData.loanDetails.purposeOfLoan ===
-                        2 ||
+                      (formData.loanDetails.purposeOfLoan === 2 ||
                       formData.loanDetails.purposeOfLoan === 3
                         ? !formData.loanDetails.requestedLoanAmount
                         : formData.loanDetails.purposeOfLoan === 1
@@ -5677,8 +5673,7 @@
                         .stateId ||
                       !formData.personalInformation.residentialAddress
                         .zipCode ||
-                      !formData.personalInformation.residentialAddress
-                        .years
+                      !formData.personalInformation.residentialAddress.years
                     "
                   >
                     <i class="fa fa-info-circle ml-2"></i>
@@ -5756,8 +5751,7 @@
                       (formData.expenses.isLiveWithFamilySelectRent === true
                         ? !formData.expenses.rent ||
                           !formData.expenses.otherHousingExpenses
-                        : formData.expenses.isLiveWithFamilySelectRent ===
-                          false
+                        : formData.expenses.isLiveWithFamilySelectRent === false
                         ? !formData.expenses.firstMortgage ||
                           !formData.expenses.realEstateTaxes ||
                           !formData.expenses.mortgageInsurance ||
