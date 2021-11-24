@@ -420,20 +420,20 @@ export class AssetsComponent implements OnInit, DoCheck {
           ];
           const hasError = fields.some(
             (field) =>
-              Instance.form.controls.manualAssetEntries.controls &&
-              Instance.form.controls.manualAssetEntries.controls[index]
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field] &&
-              !Instance.form.controls.manualAssetEntries.controls[index]
+              !Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field].valid
           );
           if (hasError) {
             isValid = false;
             fields.forEach(
               (field) =>
-                Instance.form.controls.manualAssetEntries.controls[index].get(
-                  field
-                ) &&
-                Instance.form.controls.manualAssetEntries.controls[index]
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
                   .get(field)
                   .markAsTouched()
             );
@@ -456,20 +456,20 @@ export class AssetsComponent implements OnInit, DoCheck {
           ];
           const hasError = fields.some(
             (field) =>
-              Instance.form.controls.manualAssetEntries.controls &&
-              Instance.form.controls.manualAssetEntries.controls[index]
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field] &&
-              !Instance.form.controls.manualAssetEntries.controls[index]
+              !Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field].valid
           );
           if (hasError) {
             isValid = false;
             fields.forEach(
               (field) =>
-                Instance.form.controls.manualAssetEntries.controls[index].get(
-                  field
-                ) &&
-                Instance.form.controls.manualAssetEntries.controls[index]
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
                   .get(field)
                   .markAsTouched()
             );
@@ -486,20 +486,20 @@ export class AssetsComponent implements OnInit, DoCheck {
           ];
           const hasError = fields.some(
             (field) =>
-              Instance.form.controls.manualAssetEntries.controls &&
-              Instance.form.controls.manualAssetEntries.controls[index]
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field] &&
-              !Instance.form.controls.manualAssetEntries.controls[index]
+              !Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field].valid
           );
           if (hasError) {
             isValid = false;
             fields.forEach(
               (field) =>
-                Instance.form.controls.manualAssetEntries.controls[index].get(
-                  field
-                ) &&
-                Instance.form.controls.manualAssetEntries.controls[index]
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
                   .get(field)
                   .markAsTouched()
             );
@@ -522,20 +522,20 @@ export class AssetsComponent implements OnInit, DoCheck {
           ];
           const hasError = fields.some(
             (field) =>
-              Instance.form.controls.manualAssetEntries.controls &&
-              Instance.form.controls.manualAssetEntries.controls[index]
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field] &&
-              !Instance.form.controls.manualAssetEntries.controls[index]
+              !Instance.form.controls.manualAssetEntries["controls"][index]
                 .controls[field].valid
           );
           if (hasError) {
             isValid = false;
             fields.forEach(
               (field) =>
-                Instance.form.controls.manualAssetEntries.controls[index].get(
-                  field
-                ) &&
-                Instance.form.controls.manualAssetEntries.controls[index]
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
                   .get(field)
                   .markAsTouched()
             );
