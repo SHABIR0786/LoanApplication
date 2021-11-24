@@ -3,7 +3,7 @@
     <h2 class="pb-5">And what’s the zip?</h2>
     <div class="col-lg-4">
       <i class="fa fa-angle-left" id="icon"></i>
-      <p id="Back">Back</p>
+      <p id="Back" (click)="proceedToPrevious()">Back</p>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-4">
@@ -15,12 +15,13 @@
             placeholder="ZIP Code"
           />
         </div>
-        <a
-          href=""
+        <button
           id="next"
           class="btn btn-secondary text-uppercase mt-3 text-white btn-next rounded-2"
-          >Next</a
+          (click)="proceedToNext()"
         >
+          Next
+        </button>
       </div>
     </div>
   </div>

@@ -32,15 +32,10 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <a href="#" class="text-decoration-none text-dark">Home </a
-      ><i class="fa fa-angle-right"></i>
-      <a href="#" class="text-decoration-none text-dark"> Refinance </a>
-      <span class="text-muted mr-3 d-inline-block text-dark">
-        <i class="fa fa-angle-right"></i>
-        <a href="#" class="text-decoration-none text-dark"
-          >Get Cash From Your Home
-        </a>
-      </span>
+      
+      <a [routerLink]="['/app/home']"class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/loan-options']"  class="text-decoration-none"> Refinance </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/get-cash-from-home']" class="text-decoration-none"> Get Cash From Your Home </a> 
     </section>
   </div>
 
@@ -49,7 +44,7 @@
     <h2 class="font-weight-bold text-primary">
       Refinance with Cash Out from Your Home
     </h2>
-    <p class="text-muted">
+    <p class="">
       If you’re in need of money, whether it’s for home renovations, college
       tuition, or paying off debt, refinancing your home to capitalize on its
       equity can be a way to get extra cash. Refinancing in order to get cash
@@ -63,7 +58,7 @@
       also help you get the best cash out refinance rates.
     </p>
     <h2 class="font-weight-bold text-primary">What is Home Refinancing?</h2>
-    <p class="text-muted">
+    <p class="">
       Home refinancing is obtaining a second loan, or mortgage, in order to pay
       off your original one. The trick to refinancing is to make sure that the
       second loan has a far lower interest rate, essentially lowering the costs
@@ -72,7 +67,7 @@
 
     <ng-container *ngIf="visible">
       <div>
-        <p class="text-muted">
+        <p class="">
           The monetary difference between the first and second mortgages is the
           equivalent of cash back. You can save hundreds of dollars per month by
           refinancing your home at low refinance cash out rates and obtaining a
@@ -85,7 +80,7 @@
         <h2 class="font-weight-bold text-primary">
           Get an Immediate Payment from Your Home Loan
         </h2>
-        <p class="text-muted">
+        <p class="">
           There are a host of reasons why property holders refinance to get
           money from their homes. Life is loaded with surprises and in the event
           you ever confront a situation or event that you didn’t anticipate—for
@@ -103,7 +98,7 @@
         <h2 class="font-weight-bold text-primary">
           Why Use EZ Online Mortgage to Get Cash From Your Home?
         </h2>
-        <p class="text-muted">
+        <p class="">
           Our home credit specialists are located throughout California, which
           provides you with the added convenience of having your mortgage
           consultant nearby. We’ll work with you to calculate your cash out
@@ -128,36 +123,35 @@
     </a>
   </div>
 
-  <div class="container bg-section-light mt-5">
+  <div class="container bg-section-light mb-4" >
     <h5 class="text-secondary text-center pt-5">Know About</h5>
-    <h3 class="font-weight-bold text-primary text-center">
+    <h3 class="font-weight-bold text-primary text-center ">
       Want To Explore Your Options?
     </h3>
-    <div class="row px-3 px-3">
+    <div class="row px-5 py-5">
       <div class="col-sm-6 mb-3">
-        <div class="pre-box">
+        <div class=" pre-box ">
           <p class="text-white">
-            With ast, powerful and completely online way to get a mortgage, you
-            can adjust your mortgage options to find the lowest payment
-            possible.With ast, powerful and completely online way to get a
-            mortgage, you can adjust your mortgage options to find the
+            At EZ Online, you can apply for a mortgage right from your laptop. Our simple
+            online application lets you start and finish the process at your convenience, whenever
+            you are ready.You don't have to talk to a loan officer--you can get our preliminary
+            assessment of your eligibility right away using our high-speed technology.
           </p>
-          <button class="btn btn-primary text-white text-uppercase">
+          <button class="btn btn-primary text-white  text-uppercase">
             Apply Now
           </button>
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="pre-box">
-          <p class="text-white">
-            Not comfortable starting online? Answer a few questions, and we’ll
-            have a Home Loan Expert call you. With ast, powerful and completely
-            online way to get a mortgage, you can adjust your mortgage options
-            to <br class="d-none d-sm-block" />
-            find the
+        <div class="pre-box ">
+          <p class=" text-white">
+            If you would rather talk to a human than a computer,we understand.While we use the fatest
+            and most up-to-date technology available,we also appreciate that a personal touch can
+            sometime make a difference. You can talk to our friendly loan officers to ask about loan
+            products and qualifications and ask all the question you want.
           </p>
-          <button class="btn btn-primary text-white text-uppercase">
-            pre - qualify now <i class="fa fa-long-arrow-right"></i>
+          <button class="btn btn-primary  text-white text-uppercase">
+            Request a call <i class="fa fa-long-arrow-right"></i>
           </button>
         </div>
       </div>
@@ -176,33 +170,22 @@
     <div class="container mx-auto px-2 px-md-4">
       <div class="d-flex align-items-center justify-content-center">
         <div class="col-lg-8">
-          <video
-            id="my_video_1"
-            class="yimVideo video-js vjs-default-skin"
-            style="width: 100%; height: 368px"
-            height="368px"
-            controls
-            preload="none"
-            poster="assets/images/videoThumbnail.png"
-            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'
-          >
-            <source
-              src="https://vjs.zencdn.net/v/oceans.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="https://vjs.zencdn.net/v/oceans.webm"
-              type="video/webm"
-            />
+          <video id="my_video_1" class="yimVideo video-js vjs-default-skin" style="width: 100%; height: 368px;"
+            height="368px" controls preload="none"
+            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'>
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <source src="https://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
           </video>
         </div>
 
-        <!-- <img class="img-fluid" width="690" src="assets/images/videoThumbnail.png"> -->
+        <img class="img-fluid img-poster" (click)="playVideo()" style="position: absolute;width:794px;height: 368px; cursor: pointer;" src="assets/images/videoThumbnail.png">
       </div>
     </div>
   </section>
 
+
   <section>
+    
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
       <h2 class="text-primary">FAQ’s</h2>
@@ -216,7 +199,7 @@
           <div class="panel-heading border-0" role="tab" id="headingOne">
             <h4 class="panel-title">
               <a
-                class="text-primary"
+                class="text-primary collapsed"
                 role="button"
                 data-toggle="collapse"
                 data-parent="#accordion"
@@ -225,6 +208,7 @@
                 aria-controls="collapseOne"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 Does Pre-approval mean I am guaranteed to get a loan?
               </a>
             </h4>
@@ -263,6 +247,7 @@
                 aria-controls="collapseTwo"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How can I improve my chances of getting approved?
               </a>
             </h4>
@@ -300,6 +285,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 What are points on a loan?
               </a>
             </h4>
@@ -336,6 +322,7 @@
                 aria-controls="collapseFour"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?
               </a>
@@ -372,6 +359,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How do I get a rate lock?
               </a>
             </h4>
