@@ -192,6 +192,12 @@ import { LoneOptionStep13Component } from "./Buy_a_Home_Loan _Options/lone-optio
 import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-option-step14/lone-option-step14.component";
 import { PreparingForMortgageComponent } from "./buying-home-guide/preparing-for-mortgage/preparing-for-mortgage.component";
 import { RefinanceGuideComponent } from "./refinance-guide/refinance-guide.component";
+import { PrepareForYourMortgageRefinanceComponent } from "./refinance-guide/prepare-for-your-mortgage-refinance/prepare-for-your-mortgage-refinance.component";
+import { ExploreYourRefinanceOptionsComponent } from "./refinance-guide/explore-your-refinance-options/explore-your-refinance-options.component";
+import { ApplyForARefinanceLoanComponent } from "./refinance-guide/apply-for-a-refinance-loan/apply-for-a-refinance-loan.component";
+import { TheAppraisalUnderwritingProcessComponent } from "./refinance-guide/the-appraisal-underwriting-process/the-appraisal-underwriting-process.component";
+import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/close-on-the-loan.component";
+import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -393,6 +399,12 @@ const ngWizardConfig: NgWizardConfig = {
     LoneOptionStep14Component,
     PreparingForMortgageComponent,
     RefinanceGuideComponent,
+    PrepareForYourMortgageRefinanceComponent,
+    ExploreYourRefinanceOptionsComponent,
+    ApplyForARefinanceLoanComponent,
+    TheAppraisalUnderwritingProcessComponent,
+    CloseOnTheLoanComponent,
+    ManageYourRefinanceComponent,
   ],
   imports: [
     CommonModule,
