@@ -34,21 +34,17 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <a href="#" class="text-decoration-none text-dark">Home </a
-      ><i class="fa fa-angle-right"></i>
-      <a href="#" class="text-decoration-none text-dark"> Refinance </a>
-      <span class="text-muted mr-3 d-inline-block text-dark">
-        <i class="fa fa-angle-right"></i>
-        <a href="#" class="text-decoration-none text-dark"
-          >Consolidate your Debt
-        </a>
-      </span>
+      
+      <a [routerLink]="['/app/home']"class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/loan-options']"  class="text-decoration-none"> Refinance </a><i class="fa fa-angle-right"></i> 
+      <a [routerLink]="['/app/consolidate-your-debt']" class="text-decoration-none"> Consolidate your Debt </a> 
     </section>
   </div>
+
   <div class="container">
     <h5 class="text-secondary">Know Consolidate</h5>
     <h2 class="font-weight-bold text-primary">Consolidate Your Debt</h2>
-    <p class="text-muted">
+    <p class="">
       Being in debt is not fun—it’s stressful,draining, and can even feel
       dehumanizing. Whether you have student loans to pay off, credit card debt,
       or other high-interest debt, consolidating your debt and taking control of
@@ -61,7 +57,7 @@
     <h2 class="font-weight-bold text-primary">
       Consolidate Your Debt With Refinancing
     </h2>
-    <p class="text-muted">
+    <p class="">
       By refinancing your home, you can get extra cash with which to consolidate
       your debt. What is refinancing? When you refinance, you essentially take
       out a second mortgage (loan)—at a lower interest rate—on your house. This
@@ -73,13 +69,13 @@
     <h2 class="font-weight-bold text-primary">
       EZ Online Mortgage Can Help You Get a Debt Consolidation Loan
     </h2>
-    <p class="text-muted">
+    <p class="">
       Even if you have less than perfect credit, EZ Online Mortgage can help you
       consolidate your debt.
     </p>
     <ng-container *ngIf="visible">
       <div>
-        <p class="text-muted">
+        <p class="">
           Our expert team of seasoned professionals, with over 30 years
           experience in the mortgage industry, will help you refinance to some
           of the lowest debt consolidation loan rates in decades, giving you the
@@ -104,43 +100,41 @@
       <i class="fa fa-long-arrow-right"></i>
     </a>
   </div>
-  <!-- First Page texts: -->
-
-  <div class="container bg-section-light mt-5">
+  <div class="container bg-section-light mb-4" >
     <h5 class="text-secondary text-center pt-5">Know About</h5>
-    <h3 class="font-weight-bold text-primary text-center">
+    <h3 class="font-weight-bold text-primary text-center ">
       Want To Explore Your Options?
     </h3>
-    <div class="row px-3 px-3">
+    <div class="row px-5 py-5">
       <div class="col-sm-6 mb-3">
-        <div class="pre-box">
+        <div class=" pre-box ">
           <p class="text-white">
-            With ast, powerful and completely online way to get a mortgage, you
-            can adjust your mortgage options to find the lowest payment
-            possible.With ast, powerful and completely online way to get a
-            mortgage, you can adjust your mortgage options to find the
+            At EZ Online, you can apply for a mortgage right from your laptop. Our simple
+            online application lets you start and finish the process at your convenience, whenever
+            you are ready.You don't have to talk to a loan officer--you can get our preliminary
+            assessment of your eligibility right away using our high-speed technology.
           </p>
-          <button class="btn btn-primary text-white text-uppercase">
+          <button class="btn btn-primary text-white  text-uppercase">
             Apply Now
           </button>
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="pre-box">
-          <p class="text-white">
-            Not comfortable starting online? Answer a few questions, and we’ll
-            have a Home Loan Expert call you. With ast, powerful and completely
-            online way to get a mortgage, you can adjust your mortgage options
-            to <br class="d-none d-sm-block" />
-            find the
+        <div class="pre-box ">
+          <p class=" text-white">
+            If you would rather talk to a human than a computer,we understand.While we use the fatest
+            and most up-to-date technology available,we also appreciate that a personal touch can
+            sometime make a difference. You can talk to our friendly loan officers to ask about loan
+            products and qualifications and ask all the question you want.
           </p>
-          <button class="btn btn-primary text-white text-uppercase">
-            pre - qualify now <i class="fa fa-long-arrow-right"></i>
+          <button class="btn btn-primary  text-white text-uppercase">
+            Request a call <i class="fa fa-long-arrow-right"></i>
           </button>
         </div>
       </div>
     </div>
   </div>
+
 
   <section class="long-term text-center mt-5">
     <span
@@ -168,6 +162,7 @@
   </section>
 
   <section>
+    
     <div class="container">
       <h5 class="text-secondary">Know About</h5>
       <h2 class="text-primary">FAQ’s</h2>
@@ -181,7 +176,7 @@
           <div class="panel-heading border-0" role="tab" id="headingOne">
             <h4 class="panel-title">
               <a
-                class="collapsed text-primary"
+                class="text-primary collapsed"
                 role="button"
                 data-toggle="collapse"
                 data-parent="#accordion"
@@ -229,6 +224,7 @@
                 aria-controls="collapseTwo"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How can I improve my chances of getting approved?
               </a>
             </h4>
@@ -266,6 +262,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 What are points on a loan?
               </a>
             </h4>
@@ -302,6 +299,7 @@
                 aria-controls="collapseFour"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?
               </a>
@@ -338,6 +336,7 @@
                 aria-controls="collapseThree"
               >
                 <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
                 How do I get a rate lock?
               </a>
             </h4>

@@ -10,11 +10,25 @@
   </h1>
   <div class="container">
     <section class="page-order-sec py-3 mb-3">
-      <p class="m-0 text-primary">
-        Home <i class="fa fa-chevron-right f11"></i> Buying a home
-        <span class="text-muted">
-          <i class="fa fa-chevron-right f11"></i> First time home buyer
-        </span>
+      <p class="m-0 text-muted">
+        <a
+          [routerLink]="['/app/home']"
+          class="text-decoration-none text-primary"
+          >Home </a
+        ><i class="fa fa-angle-right"></i>
+        <a
+          [routerLink]="['/app/buying-home-guide']"
+          class="text-decoration-none text-muted"
+        >
+          Buying a Home
+        </a>
+        <i class="fa fa-angle-right"></i>
+        <a
+          [routerLink]="['/app/buying-home-guide']"
+          class="text-decoration-none text-muted"
+        >
+          Buying a home Guide
+        </a>
       </p>
     </section>
 
@@ -37,7 +51,7 @@
           >
             <a
               class="nav-link"
-              [routerLink]="['/app/buying-home-guide']"
+              [routerLink]="['/app/preparing-for-morgage']"
               role="tab"
               aria-controls="v-pills-home"
               aria-selected="true"
@@ -153,7 +167,7 @@
         </div>
         <div class="col-lg-9">
           <div class="tab-content" id="v-pills-tabContent">
-            <div
+            <!-- <div
               class="tab-pane"
               id="v-pills-home"
               role="tabpanel"
@@ -283,7 +297,7 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
+            </div> -->
 
             <div
               class="tab-pane fade show active"
@@ -292,14 +306,120 @@
               aria-labelledby="v-pills-profile-tab"
             >
               <h3 class="font-weight-bold text-primary pb-4">
-                I’m Wondering How It
+                Evaluate Your Mortgage Annually
               </h3>
               <p class="text-muted">
-                Whether a new home is a few years off or you’re shopping now, we
-                can help you understand your options and get the right mortgage
-                for your situation.
+                The work isn’t done once you close on your mortgage. Each year
+                there are times when you will need to make decisions. You’ll
+                need to evaluate your current mortgage and make sure it’s still
+                the best fit for your financial goals.
               </p>
-              <h6 class="font-weight-bold text-primary pb-2">
+              <table style="width: 100%">
+                <tr>
+                  <th>
+                    Making Extra Payment <br />
+                    Toward Your Principal
+                  </th>
+                  <ul>
+                    <li class="text-muted">
+                      Making extra mortgage payments each year can save you
+                      <br />
+                      thousands on your loan.
+                    </li>
+                    <li class="text-muted">
+                      It can also help you pay off your mortgage sooner.
+                    </li>
+                    <li class="text-muted">
+                      Finally, you’ll pay less interest as a result.
+                    </li>
+                  </ul>
+                </tr>
+                <tr>
+                  <th>Annual Escrow Analysis</th>
+                  <ul>
+                    <li class="text-muted">
+                      Each year your mortgage servicer will review your escrow
+                      <br />
+                      statement – part of your bill from which taxes and
+                      homeowner’s <br />
+                      insurance is paid.
+                    </li>
+                    <li class="text-muted">
+                      If your tax assessment or homeowner’s insurance increases,
+                      your <br />
+                      mortgage payment increased to cover this cost.
+                    </li>
+                    <li class="text-muted">
+                      You will also have the option to pay the difference in
+                      full and avoid <br />
+                      an increase in your payment. <br />
+                    </li>
+                    <li class="text-muted">
+                      The principal and interest portion of your payment is
+                      fixed if you <br />
+                      have a fixed rate mortgage.
+                    </li>
+                  </ul>
+                </tr>
+
+                <tr>
+                  <th>Tax Implications</th>
+                  <ul>
+                    <li class="text-muted">
+                      You will receive a 1098 form in the mail each year from
+                      your <br />
+                      servicer, which includes the interest and mortgage
+                      expenses you <br />
+                      incurred over the year.
+                    </li>
+
+                    <li class="text-muted">
+                      If it is the year in which you closed, you will also want
+                      to use your <br />
+                      settlement statement to account for expenses paid in that
+                      year.
+                    </li>
+
+                    <li class="text-muted">
+                      Depending on your financial situation, these fees may be
+                      used as <br />
+                      deductions to reduce your taxable income.
+                    </li>
+                  </ul>
+                </tr>
+                <tr>
+                  <th>
+                    Annual Review by Your <br />
+                    Mortgage Consultant
+                  </th>
+                  <ul>
+                    <li class="text-muted">
+                      Reach back out to your mortgage consultant annually to
+                      complete <br />
+                      a review of your mortgage.
+                    </li>
+
+                    <li class="text-muted">
+                      If your home value appreciated significantly, and a new
+                      appraisal <br />
+                      and refinance might remove your monthly mortgage insurance
+                      <br />
+                      premium saving you money.
+                    </li>
+                    <li class="text-muted">
+                      Rates may have decreased. Refinancing to lower rate and
+                      term <br />
+                      could benefit you.
+                    </li>
+                    <li class="text-muted">
+                      Be sure to check out our refinance guide for more
+                      information.
+                    </li>
+                  </ul>
+                </tr>
+              </table>
+
+              <!-- <h6 class="font-weight-bold text-primary pb-2">
                 I’m Wondering How It Works
               </h6>
               <p class="text-muted">
@@ -307,9 +427,7 @@
                 first home loan. We break down the process so it’s less
                 overwhelming and easier to understand.
               </p>
-              <a class="text-decoration text-primary text-underline" href="#"
-                >Find Out How Buying a Home Works</a
-              >
+              <a class="text-decoration text-primary text-underline" href="#">Find Out How Buying a Home Works</a>
               <h6 class="font-weight-bold text-primary pt-4 pb-2">
                 I’m Putting Together a Budget
               </h6>
@@ -321,14 +439,10 @@
 
               <ul class="list-unstyled arrow-list pl-3">
                 <li>
-                  <a class="text-primary text-underline" href="#"
-                    >Calculate How Much I Can Afford</a
-                  >
+                  <a class="text-primary text-underline" href="#">Calculate How Much I Can Afford</a>
                 </li>
                 <li>
-                  <a class="text-primary text-underline" href="#"
-                    >Calculate My Mortgage Payments</a
-                  >
+                  <a class="text-primary text-underline" href="#">Calculate My Mortgage Payments</a>
                 </li>
               </ul>
               <h6 class="font-weight-bold text-primary py-4">
@@ -356,12 +470,8 @@
                   It makes the rest of the mortgage process smoother and easier.
                 </li>
               </ul>
-              <a class="text-primary text-underline d-block" href="#"
-                >Apply now with Rocket Mortgage.</a
-              >
-              <a class="text-primary text-underline" href="#"
-                >Learn what happens when you apply.</a
-              >
+              <a class="text-primary text-underline d-block" href="#">Apply now with Rocket Mortgage.</a>
+              <a class="text-primary text-underline" href="#">Learn what happens when you apply.</a>
               <p class="text-muted mt-3">
                 <strong> Next, find a real estate agent.</strong> After you
                 apply and get approved, choose a real estate agent. They’re
@@ -414,9 +524,9 @@
                   Are you a veteran or currently serving? You may qualify for a
                   VA Loan and be able to buy a home with zero down.
                 </li>
-              </ul>
+              </ul> -->
             </div>
-            <div
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-messages"
               role="tabpanel"
@@ -546,8 +656,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-settings"
               role="tabpanel"
@@ -677,8 +787,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-5"
               role="tabpanel"
@@ -808,8 +918,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-6"
               role="tabpanel"
@@ -939,7 +1049,7 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
           <div class="border-bottom py-4 mb-4"></div>

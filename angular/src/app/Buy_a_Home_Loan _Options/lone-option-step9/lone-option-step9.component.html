@@ -5,28 +5,48 @@
     </h2>
     <div class="col-lg-4">
       <i class="fa fa-angle-left" id="icon"></i>
-      <p id="Back">Back</p>
+      <p id="Back" (click)="proceedToPrevious()">Back</p>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="box-fill bg-white">
+          <div
+            class="box-fill bg-white"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <p class="float-left">Excellent</p>
             <p class="number">(740+)</p>
           </div>
-          <div class="box-fill bg-white mt-4">
+          <div
+            class="box-fill bg-white mt-4"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <p class="float-left">Good</p>
             <p class="number">(700-739)</p>
           </div>
-          <div class="box-fill bg-white mt-4">
+          <div
+            class="box-fill bg-white mt-4"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <p class="float-left">Average</p>
             <p class="number">(640-699)</p>
           </div>
-          <div class="box-fill bg-white mt-4">
+          <div
+            class="box-fill bg-white mt-4"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <p class="float-left">Fair</p>
             <p class="number">(580-639)</p>
           </div>
-          <div class="box-fill mt-4">
+          <div
+            class="box-fill mt-4"
+            (click)="proceedToNext()"
+            style="cursor: pointer"
+          >
             <p class="float-left">Needs Improvemnt</p>
             <p class="number">(579 & below)</p>
           </div>

@@ -83,6 +83,7 @@ import { CurrentHomeLoanRatesComponent } from "./current-home-loan-rates/current
 import { EmailAndTextUpdatesComponent } from "./email-and-text-updates/email-and-text-updates.component";
 import { FinalizingMortgagePreApprovalComponent } from "./buying-home-guide/finalizing-mortgage-pre-approval/finalizing-mortgage-pre-approval.component";
 import { DecidingMortgageComponent } from "./buying-home-guide/deciding-mortgage/deciding-mortgage.component";
+import { PreparingForMortgageComponent } from "./buying-home-guide/preparing-for-mortgage/preparing-for-mortgage.component";
 import { SelectionRealEstateAgentComponent } from "./buying-home-guide/selection-real-estate-agent/selection-real-estate-agent.component";
 import { HouseHuntingComponent } from "./buying-home-guide/house-hunting/house-hunting.component";
 import { MakingACompetitiveOfferComponent } from "./buying-home-guide/making-a-competitive-offer/making-a-competitive-offer.component";
@@ -113,27 +114,26 @@ import { RefinanceLoanOptionsStep15Component } from "./Refinance_loan_option_ani
 import { RefinanceLoanOptionsStep16Component } from "./Refinance_loan_option_animated/step16/step16.component";
 import { RefinanceLoanOptionsStep17Component } from "./Refinance_loan_option_animated/step17/step17.component";
 import { RefinanceLoanOptionsStep18Component } from "./Refinance_loan_option_animated/step18/step18.component";
-import { BuyAHomeComponent } from './buy-a-home/buy-a-home.component';
-import { AnimatedStep1Component } from './buy-a-home/animated-step1/animated-step1.component';
-import { AnimatedStep2Component } from './buy-a-home/animated-step2/animated-step2.component';
-import { AnimatedStep3Component } from './buy-a-home/animated-step3/animated-step3.component';
-import { AnimatedStep4Component } from './buy-a-home/animated-step4/animated-step4.component';
-import { AnimatedStep5Component } from './buy-a-home/animated-step5/animated-step5.component';
-import { AnimatedStep6Component } from './buy-a-home/animated-step6/animated-step6.component';
-import { AnimatedStep7Component } from './buy-a-home/animated-step7/animated-step7.component';
-import { AnimatedStep8Component } from './buy-a-home/animated-step8/animated-step8.component';
-import { AnimatedStep9Component } from './buy-a-home/animated-step9/animated-step9.component';
-import { AnimatedStep10Component } from './buy-a-home/animated-step10/animated-step10.component';
-import { AnimatedStep11Component } from './buy-a-home/animated-step11/animated-step11.component';
-import { AnimatedStep12Component } from './buy-a-home/animated-step12/animated-step12.component';
-import { AnimatedStep13Component } from './buy-a-home/animated-step13/animated-step13.component';
-import { AnimatedStep14Component } from './buy-a-home/animated-step14/animated-step14.component';
-import { AnimatedStep15Component } from './buy-a-home/animated-step15/animated-step15.component';
-import { AnimatedStep16Component } from './buy-a-home/animated-step16/animated-step16.component';
-import { AnimatedStep17Component } from './buy-a-home/animated-step17/animated-step17.component';
-import { AnimatedStep18Component } from './buy-a-home/animated-step18/animated-step18.component';
-import { AnimatedStep19Component } from './buy-a-home/animated-step19/animated-step19.component';
-
+import { BuyAHomeComponent } from "./buy-a-home/buy-a-home.component";
+import { AnimatedStep1Component } from "./buy-a-home/animated-step1/animated-step1.component";
+import { AnimatedStep2Component } from "./buy-a-home/animated-step2/animated-step2.component";
+import { AnimatedStep3Component } from "./buy-a-home/animated-step3/animated-step3.component";
+import { AnimatedStep4Component } from "./buy-a-home/animated-step4/animated-step4.component";
+import { AnimatedStep5Component } from "./buy-a-home/animated-step5/animated-step5.component";
+import { AnimatedStep6Component } from "./buy-a-home/animated-step6/animated-step6.component";
+import { AnimatedStep7Component } from "./buy-a-home/animated-step7/animated-step7.component";
+import { AnimatedStep8Component } from "./buy-a-home/animated-step8/animated-step8.component";
+import { AnimatedStep9Component } from "./buy-a-home/animated-step9/animated-step9.component";
+import { AnimatedStep10Component } from "./buy-a-home/animated-step10/animated-step10.component";
+import { AnimatedStep11Component } from "./buy-a-home/animated-step11/animated-step11.component";
+import { AnimatedStep12Component } from "./buy-a-home/animated-step12/animated-step12.component";
+import { AnimatedStep13Component } from "./buy-a-home/animated-step13/animated-step13.component";
+import { AnimatedStep14Component } from "./buy-a-home/animated-step14/animated-step14.component";
+import { AnimatedStep15Component } from "./buy-a-home/animated-step15/animated-step15.component";
+import { AnimatedStep16Component } from "./buy-a-home/animated-step16/animated-step16.component";
+import { AnimatedStep17Component } from "./buy-a-home/animated-step17/animated-step17.component";
+import { AnimatedStep18Component } from "./buy-a-home/animated-step18/animated-step18.component";
+import { AnimatedStep19Component } from "./buy-a-home/animated-step19/animated-step19.component";
 
 import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
 import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
@@ -150,6 +150,7 @@ import { LoneOptionStep11Component } from "./Buy_a_Home_Loan _Options/lone-optio
 import { LoneOptionStep12Component } from "./Buy_a_Home_Loan _Options/lone-option-step12/lone-option-step12.component";
 import { LoneOptionStep13Component } from "./Buy_a_Home_Loan _Options/lone-option-step13/lone-option-step13.component";
 import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-option-step14/lone-option-step14.component";
+import { RefinanceGuideComponent } from "./refinance-guide/refinance-guide.component";
 
 @NgModule({
   imports: [
@@ -478,6 +479,11 @@ import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-optio
           {
             path: "finalizing-mortgage-pre-approval",
             component: FinalizingMortgagePreApprovalComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "preparing-for-morgage",
+            component: PreparingForMortgageComponent,
             canActivate: [AppRouteGuard],
           },
           {
@@ -831,7 +837,8 @@ import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-optio
             component: AnimatedStep19Component,
             canActivate: [AppRouteGuard],
           },
-          {  path: "buy-a-home-loan-options-animated",
+          {
+            path: "buy-a-home-loan-options-animated",
             component: LoneOptionAnimatedComponent,
             canActivate: [AppRouteGuard],
           },
@@ -903,6 +910,11 @@ import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-optio
           {
             path: "buy-a-home-loan-options-animated-step14",
             component: LoneOptionStep14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-guide",
+            component: RefinanceGuideComponent,
             canActivate: [AppRouteGuard],
           },
         ],

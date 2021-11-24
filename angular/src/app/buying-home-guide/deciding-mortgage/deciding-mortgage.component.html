@@ -20,6 +20,13 @@
           [routerLink]="['/app/buying-home-guide']"
           class="text-decoration-none text-muted"
         >
+          Buying a Home
+        </a>
+        <i class="fa fa-angle-right"></i>
+        <a
+          [routerLink]="['/app/buying-home-guide']"
+          class="text-decoration-none text-muted"
+        >
           Buying a home Guide
         </a>
       </p>
@@ -46,7 +53,7 @@
           >
             <a
               class="nav-link"
-              [routerLink]="['/app/buying-home-guide']"
+              [routerLink]="['/app/preparing-for-morgage']"
               role="tab"
               aria-controls="v-pills-home"
               aria-selected="true"
@@ -162,7 +169,7 @@
         </div>
         <div class="col-lg-9">
           <div class="tab-content" id="v-pills-tabContent">
-            <div
+            <!-- <div
               class="tab-pane"
               id="v-pills-home"
               role="tabpanel"
@@ -292,7 +299,7 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
+            </div> -->
 
             <div
               class="tab-pane fade show active"
@@ -301,76 +308,147 @@
               aria-labelledby="v-pills-profile-tab"
             >
               <h3 class="font-weight-bold text-primary pb-4">
-                I’m Wondering How It
+                Determine the Best Mortgage Type
               </h3>
               <p class="text-muted">
-                Whether a new home is a few years off or you’re shopping now, we
-                can help you understand your options and get the right mortgage
-                for your situation.
+                Building the perfect mortgage scenario for your situation
+                involves selecting the appropriate home loan type, rate and
+                term. Knowing more about these three mortgage loan features will
+                help you design your perfect home loan with your mortgage
+                consultant.
               </p>
               <h6 class="font-weight-bold text-primary pb-2">
-                I’m Wondering How It Works
+                Mortgage Loan Type
               </h6>
               <p class="text-muted">
-                Our Home Buyer’s Guide takes the mystery out of getting your
-                first home loan. We break down the process so it’s less
-                overwhelming and easier to understand.
+                There are several different types of mortgage loans including
+                conventional, FHA, VA, and jumbo home loans.
               </p>
-              <a class="text-decoration text-primary text-underline" href="#"
-                >Find Out How Buying a Home Works</a
-              >
-              <h6 class="font-weight-bold text-primary pt-4 pb-2">
+              <!-- <a class="text-decoration text-primary text-underline" href="#">Find Out How Buying a Home Works</a> -->
+              <!-- <h6 class="font-weight-bold text-primary pt-4 pb-2">
                 I’m Putting Together a Budget
               </h6>
               <p class="text-muted">
                 Our calculators help you estimate what you can afford, how much
                 of a down payment you’ll need, what your monthly payment could
                 be, and how much interest you’ll pay over the life of a loan.
-              </p>
+              </p> -->
 
-              <ul class="list-unstyled arrow-list pl-3">
+              <!-- <ul class="list-unstyled arrow-list pl-3">
                 <li>
-                  <a class="text-primary text-underline" href="#"
-                    >Calculate How Much I Can Afford</a
+                  <a class="text-primary text-underline" href="#">Calculate How Much I Can Afford</a>
+                </li>
+                <li>
+                  <a class="text-primary text-underline" href="#">Calculate My Mortgage Payments</a>
+                </li>
+              </ul> -->
+
+              <ul class="list-unstyled">
+                <li>
+                  • FHA loans
+                  <span class="text-muted"
+                    >are great for first-time home buyers as its qualifications
+                    are easier to meet. They are insured by the Federal Housing
+                    Administration which is why they are called FHA loans. They
+                    allow for a lower down payment, lower credit scores, and are
+                    more flexible with your DTI. They can be more costly over
+                    time, though, because the mortgage insurance premium
+                    required is usually more expensive than other loan
+                    types.</span
+                  >
+                </li>
+
+                <li>
+                  • Conventional loans
+                  <span class="text-muted"
+                    >are harder to qualify for as they require higher credit
+                    scores and set your borrowing limit lower than FHA loans. If
+                    you can put down 20% for your down payment, then you can
+                    avoid paying mortgage premium insurance, which will save you
+                    money over the life of your home loan.</span
                   >
                 </li>
                 <li>
-                  <a class="text-primary text-underline" href="#"
-                    >Calculate My Mortgage Payments</a
+                  • VA loans
+                  <span class="text-muted"
+                    >are mortgage loans for veterans, active-duty service
+                    members, and eligible surviving spouses of veterans. They
+                    are a great deal as they do not require a down payment or
+                    mortgage insurance, and VA home loan rates are usually one
+                    of the lowest.</span
+                  >
+                </li>
+                <li>
+                  • Jumbo loans
+                  <span class="text-muted"
+                    >are home loans that are higher than conventional loan
+                    limits. You would require a jumbo mortgage if the amount of
+                    your loan was higher than $484,351. Higher priced areas,
+                    like most of California, often have coinciding increased
+                    loan limits due to higher home values. For example, the
+                    conventional loan limit in San Francisco is $726,525.</span
+                  >
+                </li>
+                <br />
+                <P class="text-muted"
+                  >You will also need to decide which type of interest rate you
+                  want:</P
+                >
+                <li>
+                  • Par rate —
+                  <span class="text-muted">
+                    The par rate is the interest rate you’ll receive if you
+                    decide not to pay points for a lower interest rate. This
+                    rate costs zero points. Points are a percentage of your loan
+                    amount.
+                  </span>
+                </li>
+                <li>
+                  • Pay points for a lower rate —
+                  <span class="text-muted">
+                    If you have additional funds and would like to lower your
+                    interest rate, you can choose to pay points. Each point is
+                    an equivalent percent of your loan amount. So, a point
+                    equals 1 percent of your home loan. For example, if your
+                    loan amount is $250,000, then one point would cost you
+                    $2,500 and 1.5 points would cost you $3,750. You need to
+                    consider how long you will remain in the home before
+                    deciding whether paying points makes sense.
+                  </span>
+                </li>
+                <li>
+                  • Finance closing costs with a higher rate —
+                  <span class="text-muted"
+                    >If you’re short on closing costs, then you can opt to go
+                    with a slightly higher interest rate and receive the points
+                    back as a rebate. This helps fund a portion or all your
+                    closing costs. Your monthly mortgage payment will be
+                    slightly higher, but the cash required at closing will be
+                    less. A one-point rebate on a $400,000 home loan would give
+                    you $4,000 to use toward closing costs.</span
+                  >
+                </li>
+                <li>
+                  • Adjustable-rate mortgage —
+                  <span class="text-muted"
+                    >Mortgages with adjustable rates are another great option to
+                    finance your home purchase. Adjustable-rate mortgages
+                    feature lower rates and payments at the beginning of the
+                    loan term resulting in an initial lower monthly mortgage
+                    payment. They also allow home buyers to take advantage of
+                    falling rates without going through the refinance process. A
+                    lower payment allows you to save and invest more. If you
+                    know you won’t be in your house very long, an ARM loan might
+                    be a great option. However, there are also many
+                    disadvantages to having an ARM loan. If rates increase, so
+                    will your mortgage payment. If that happens, you will always
+                    have the option to refinance into a fixed rate for more
+                    payment security.</span
                   >
                 </li>
               </ul>
-              <h6 class="font-weight-bold text-primary py-4">
-                I’m Actively Shopping for a New Home
-              </h6>
-              <p class="text-muted">
-                If a move is in your near future, these are the two most
-                important things you should do first. They’ll put you in the
-                hands of experts who help people like you become a homeowner for
-                the first time every day.
-              </p>
-              <p class="text-muted">
-                First, get approved for a loan. Doing this before looking at
-                houses helps you a lot. Here are some of the benefits:
-              </p>
-              <ul class="list-unstyled arrow-list pl-3">
-                <li class="text-muted">
-                  You’ll get an approval letter that shows real estate agents
-                  and sellers you’re able to afford a house.
-                </li>
-                <li class="text-muted">
-                  You’ll find out how much house you can afford.
-                </li>
-                <li class="text-muted">
-                  It makes the rest of the mortgage process smoother and easier.
-                </li>
-              </ul>
-              <a class="text-primary text-underline d-block" href="#"
-                >Apply now with Rocket Mortgage.</a
-              >
-              <a class="text-primary text-underline" href="#"
-                >Learn what happens when you apply.</a
-              >
+              <!-- <a class="text-primary text-underline d-block" href="#">Apply now with Rocket Mortgage.</a>
+              <a class="text-primary text-underline" href="#">Learn what happens when you apply.</a>
               <p class="text-muted mt-3">
                 <strong> Next, find a real estate agent.</strong> After you
                 apply and get approved, choose a real estate agent. They’re
@@ -423,9 +501,9 @@
                   Are you a veteran or currently serving? You may qualify for a
                   VA Loan and be able to buy a home with zero down.
                 </li>
-              </ul>
+              </ul> -->
             </div>
-            <div
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-messages"
               role="tabpanel"
@@ -555,8 +633,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-settings"
               role="tabpanel"
@@ -686,8 +764,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-5"
               role="tabpanel"
@@ -817,8 +895,8 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="tab-pane fade"
               id="v-pills-6"
               role="tabpanel"
@@ -948,7 +1026,7 @@
                   VA Loan and be able to buy a home with zero down.
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
           <div class="border-bottom py-4 mb-4"></div>
