@@ -151,6 +151,12 @@ import { LoneOptionStep12Component } from "./Buy_a_Home_Loan _Options/lone-optio
 import { LoneOptionStep13Component } from "./Buy_a_Home_Loan _Options/lone-option-step13/lone-option-step13.component";
 import { LoneOptionStep14Component } from "./Buy_a_Home_Loan _Options/lone-option-step14/lone-option-step14.component";
 import { RefinanceGuideComponent } from "./refinance-guide/refinance-guide.component";
+import { PrepareForYourMortgageRefinanceComponent } from "./refinance-guide/prepare-for-your-mortgage-refinance/prepare-for-your-mortgage-refinance.component";
+import { ExploreYourRefinanceOptionsComponent } from "./refinance-guide/explore-your-refinance-options/explore-your-refinance-options.component";
+import { ApplyForARefinanceLoanComponent } from "./refinance-guide/apply-for-a-refinance-loan/apply-for-a-refinance-loan.component";
+import { TheAppraisalUnderwritingProcessComponent } from "./refinance-guide/the-appraisal-underwriting-process/the-appraisal-underwriting-process.component";
+import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/close-on-the-loan.component";
+import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
 
 @NgModule({
   imports: [
@@ -915,6 +921,36 @@ import { RefinanceGuideComponent } from "./refinance-guide/refinance-guide.compo
           {
             path: "refinance-guide",
             component: RefinanceGuideComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "prepare-for-your-mortgage-refinance",
+            component: PrepareForYourMortgageRefinanceComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "explore-your-refinance-options",
+            component: ExploreYourRefinanceOptionsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "apply-for-a-refinance-loan",
+            component: ApplyForARefinanceLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "the-appraisal-underwriting-process",
+            component: TheAppraisalUnderwritingProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "close-on-the-loan",
+            component: CloseOnTheLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "manage-your-refinance",
+            component: ManageYourRefinanceComponent,
             canActivate: [AppRouteGuard],
           },
         ],
