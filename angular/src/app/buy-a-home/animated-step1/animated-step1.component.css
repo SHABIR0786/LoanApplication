@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-#Family {
+.selected {
   background-color: #f47741;
 }
 #back {
