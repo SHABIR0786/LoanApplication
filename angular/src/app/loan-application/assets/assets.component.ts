@@ -77,7 +77,6 @@ export class AssetsComponent implements OnInit, DoCheck {
     this.loadPropertyStatuses();
     this.loadPropertyIsUsedAs();
     this.loadPropertyTypes();
-
   }
 
   ngDoCheck() {
@@ -95,7 +94,7 @@ export class AssetsComponent implements OnInit, DoCheck {
         this.data && this.data.length > 0
           ? this.data.map((d) => this.initAssetForm(d || {}))
           : []
-      )
+      ),
     });
   }
 
@@ -117,31 +116,41 @@ export class AssetsComponent implements OnInit, DoCheck {
   }
 
   initAssetForm(data: IAssetModel = {}) {
-      const form = new FormGroup({
+    const form = new FormGroup({
       id: new FormControl(data.id),
       assetTypeId: new FormControl(data.assetTypeId),
-      borrowerTypeId: new FormControl(data.borrowerTypeId,[Validators.required]),
-      name: new FormControl(data.name,[Validators.required]),
-      bankName: new FormControl(data.bankName,[Validators.required]),
-      description: new FormControl(data.description,[Validators.required]),
-      accountNumber: new FormControl(data.accountNumber,[Validators.required]),
-      cashValue: new FormControl(data.cashValue,[Validators.required]),
-      address: new FormControl(data.address,[Validators.required]),
+      borrowerTypeId: new FormControl(data.borrowerTypeId, [
+        Validators.required,
+      ]),
+      name: new FormControl(data.name, [Validators.required]),
+      bankName: new FormControl(data.bankName, [Validators.required]),
+      description: new FormControl(data.description, [Validators.required]),
+      accountNumber: new FormControl(data.accountNumber, [Validators.required]),
+      cashValue: new FormControl(data.cashValue, [Validators.required]),
+      address: new FormControl(data.address, [Validators.required]),
       address2: new FormControl(data.address2),
-      city: new FormControl(data.city,[Validators.required]),
-      stateId: new FormControl(data.stateId,[Validators.required]),
-      zipCode: new FormControl(data.zipCode,[Validators.required]),
-      propertyStatus: new FormControl(data.propertyStatus,[Validators.required]),
-      propertyIsUsedAs: new FormControl(data.propertyIsUsedAs,[Validators.required]),
-      propertyType: new FormControl(data.propertyType,[Validators.required]),
+      city: new FormControl(data.city, [Validators.required]),
+      stateId: new FormControl(data.stateId, [Validators.required]),
+      zipCode: new FormControl(data.zipCode, [Validators.required]),
+      propertyStatus: new FormControl(data.propertyStatus, [
+        Validators.required,
+      ]),
+      propertyIsUsedAs: new FormControl(data.propertyIsUsedAs, [
+        Validators.required,
+      ]),
+      propertyType: new FormControl(data.propertyType, [Validators.required]),
       presentMarketValue: new FormControl(data.presentMarketValue),
       outstandingMortgageBalance: new FormControl(
         data.outstandingMortgageBalance
       ),
-      monthlyMortgagePayment: new FormControl(data.monthlyMortgagePayment,[Validators.required]),
-      purchasePrice: new FormControl(data.purchasePrice,[Validators.required]),
-      grossRentalIncome: new FormControl(data.grossRentalIncome,[Validators.required]),
-      taxesInsuranceAndOther: new FormControl(data.taxesInsuranceAndOther,),
+      monthlyMortgagePayment: new FormControl(data.monthlyMortgagePayment, [
+        Validators.required,
+      ]),
+      purchasePrice: new FormControl(data.purchasePrice, [Validators.required]),
+      grossRentalIncome: new FormControl(data.grossRentalIncome, [
+        Validators.required,
+      ]),
+      taxesInsuranceAndOther: new FormControl(data.taxesInsuranceAndOther),
       stockAndBonds: new FormArray(
         (data.stockAndBonds || []).map((d) => this.initStockAndBond(d || {}))
       ),
@@ -389,41 +398,182 @@ export class AssetsComponent implements OnInit, DoCheck {
 
   proceedToNext() {
     this.submitForm();
+    let isValid = true;
+    let isformvalidated = false;
+    const Instance = this;
     this._activatedRoute.queryParams.subscribe(async (params) => {
-      if (this.form.valid) {
-        const id = params["id"];
-        if (id) {
-          this._route.navigate(["app/employment-income"], {
-            queryParams: {
-              id: id,
-            },
-          });
-        } else {
-          this._route.navigate(["app/employment-income"]);
+      this.form.value.manualAssetEntries.forEach(function (item, index) {
+        let fields = [];
+        if (
+          item.assetTypeId == 1 ||
+          item.assetTypeId == 4 ||
+          item.assetTypeId == 5
+        ) {
+          fields = [
+            "description",
+            "accountNumber",
+            "cashValue",
+            "address",
+            "city",
+            "stateId",
+            "zipCode",
+          ];
+          const hasError = fields.some(
+            (field) =>
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field] &&
+              !Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field].valid
+          );
+          if (hasError) {
+            isValid = false;
+            fields.forEach(
+              (field) =>
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
+                  .get(field)
+                  .markAsTouched()
+            );
+          }
+        } else if (
+          item.assetTypeId == 2 ||
+          item.assetTypeId == 6 ||
+          item.assetTypeId == 7 ||
+          item.assetTypeId == 8 ||
+          item.assetTypeId == 10
+        ) {
+          fields = [
+            "name",
+            "accountNumber",
+            "cashValue",
+            "address",
+            "city",
+            "stateId",
+            "zipCode",
+          ];
+          const hasError = fields.some(
+            (field) =>
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field] &&
+              !Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field].valid
+          );
+          if (hasError) {
+            isValid = false;
+            fields.forEach(
+              (field) =>
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
+                  .get(field)
+                  .markAsTouched()
+            );
+          }
+        } else if (item.assetTypeId == 3 || item.assetTypeId == 11) {
+          fields = [
+            "bankName",
+            "accountNumber",
+            "cashValue",
+            "address",
+            "city",
+            "stateId",
+            "zipCode",
+          ];
+          const hasError = fields.some(
+            (field) =>
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field] &&
+              !Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field].valid
+          );
+          if (hasError) {
+            isValid = false;
+            fields.forEach(
+              (field) =>
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
+                  .get(field)
+                  .markAsTouched()
+            );
+          }
+        } else if (item.assetTypeId == 9) {
+          fields = [
+            "address",
+            "city",
+            "stateId",
+            "zipCode",
+            "propertyStatus",
+            "propertyIsUsedAs",
+            "propertyType",
+            "presentMarketValue",
+            "outstandingMortgageBalance",
+            "monthlyMortgagePayment",
+            "purchasePrice",
+            "grossRentalIncome",
+            "taxesInsuranceAndOther",
+          ];
+          const hasError = fields.some(
+            (field) =>
+              Instance.form.controls.manualAssetEntries["controls"] &&
+              Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field] &&
+              !Instance.form.controls.manualAssetEntries["controls"][index]
+                .controls[field].valid
+          );
+          if (hasError) {
+            isValid = false;
+            fields.forEach(
+              (field) =>
+                Instance.form.controls.manualAssetEntries["controls"][
+                  index
+                ].get(field) &&
+                Instance.form.controls.manualAssetEntries["controls"][index]
+                  .get(field)
+                  .markAsTouched()
+            );
+          }
         }
-      } else {
-        this.form.markAllAsTouched();
-      }
+        isformvalidated = true;
+
+        if (isformvalidated && isValid) {
+          const id = params["id"];
+          if (id) {
+            Instance._route.navigate(["app/employment-income"], {
+              queryParams: { id: id },
+            });
+          } else {
+            Instance._route.navigate(["app/employment-income"]);
+          }
+        }
+      });
     });
   }
 
   proceedToPrevious() {
     this.submitForm();
     this._activatedRoute.queryParams.subscribe(async (params) => {
-      if (this.form.valid) {
-        const id = params["id"];
-        if (id) {
-          this._route.navigate(["app/expense"], {
-            queryParams: {
-              id: id,
-            },
-          });
-        } else {
-          this._route.navigate(["app/expense"]);
-        }
+      // if (this.form.valid) {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/expense"], {
+          queryParams: {
+            id: id,
+          },
+        });
       } else {
-        this.form.markAllAsTouched();
+        this._route.navigate(["app/expense"]);
       }
+      // } else {
+      //   this.form.markAllAsTouched();
+      // }
     });
   }
 }
