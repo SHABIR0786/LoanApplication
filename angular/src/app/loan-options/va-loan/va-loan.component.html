@@ -4,7 +4,7 @@
       <div class="row pt-5">
         <div class="col-lg-8">
           <h1
-            class="border-left-2px text-primary font-weight-bold display-3 mb-4"
+            class="display-3 heading-border font-weight-bold text-primary mb-2 mt-2"
           >
             VA Loan
           </h1>
@@ -26,14 +26,16 @@
 
   <div class="container">
     <section class="page-order-sec py-3">
-      <a href="#" class="text-decoration-none text-dark">Home </a
+      <a routerLink="/app/home" class="text-decoration-none text-dark">Home </a
       ><i class="fa fa-angle-right"></i>
       <a routerLink="/app/loan-options" class="text-decoration-none text-dark">
         Loan Options
       </a>
       <span class="text-muted mr-3 d-inline-block text-dark">
         <i class="fa fa-angle-right"></i>
-        <a href="#" class="text-decoration-none text-dark">VA Loan </a>
+        <a routerLink="/app/va-loan" class="text-decoration-none text-dark"
+          >VA Loan
+        </a>
       </span>
     </section>
   </div>
@@ -48,34 +50,26 @@
                 <img src="assets/images/cash-payment.png" />
               </div>
               <h5 class="text-primary mb-3 font-weight-bold">
-                Is a VA loan <br />right for me
+                Is a VA loan right <br />
+                for me
               </h5>
               <p class="text-muted mb-3">
                 If you qualify for a VA loan, you may want to take advantage of
                 the opportunity to use it. The VA loans are partially guaranteed
                 by the federal government for qualifying service members and
-                veterans, spouses and dependents.
               </p>
-              <!-- <ng-container *ngIf="visible">
-                                <div>
-                                    <p class="text-muted">
-                                        The Federal Housing Finance Agency sets the ceiling for conventional conforming
-                                        loans (in most
-                                        areas, the limit is $548,250, but in high cost counties the maximum is as high
-                                        as $822, 375.) For a
-                                        mortgage higher than that amount, you need a Jumbo, which will require a higher
-                                        interest rate.
-                                    </p>
-                                </div>
-                            </ng-container> -->
-              <!-- <a
+              <ng-container *ngIf="visibleOne">
+                <p class="text-muted mb-3">veterans, spouses and dependents.</p>
+              </ng-container>
+              <a
                 (click)="onclickOne()"
                 class="text-uppercase text-secondary featanimbtn"
                 role="button"
               >
-                More
+                {{ ReadMoreOne ? "Read More" : "Read
+              Less" }}
                 <i class="fa fa-long-arrow-right"></i>
-              </a> -->
+              </a>
             </div>
           </div>
           <div class="col-sm-4">
@@ -91,25 +85,6 @@
                 or private mortgage insurance, often at very competitive
                 interest rates. Refinancing options are also attractive.
               </p>
-              <!-- <ng-container *ngIf="visibleOne">
-                  <div>
-                    <p class="text-muted">
-                      The 15-year loan will almost always have a slightly lower interest rate than a 30-year loan, and
-                      with the shorter term, you would pay less than half the amount of interest over the course of the
-                      loan.
-                      You will also increase your equity in the home faster, because you are paying more toward the
-                      principal balance each month. This is helpful in case you need to refinance.
-                    </p>
-                  </div>
-                </ng-container> -->
-              <!-- <a
-                (click)="onclickOne()"
-                class="text-uppercase text-secondary featanimbtn"
-                role="button"
-              >
-                More
-                <i class="fa fa-long-arrow-right"></i>
-              </a> -->
             </div>
           </div>
           <div class="col-sm-4">
@@ -123,29 +98,25 @@
               <p class="text-muted mb-3">
                 The service member’s length of service, duty status and service
                 type are included in the determining factors for eligibility of
-                the member (or veteran), spouse or dependent where applicable.
-                Applicants must also meet credit and other requirements
-                established by the lender.
+                the member (or veteran), spouse or dependent where
               </p>
-              <!-- <ng-container *ngIf="visibletwo">
-                                <div>
-                                    <p class="text-muted">
-                                        The appraisal for the home will be crucial to obtaining a Jumbo loan, so the
-                                        lender can be sure the
-                                        home’s value can support the loan amount. You may also pay higher closing costs
-                                        for a Jumbo loan
-                                        than for other loan types.
-                                    </p>
-                                </div>
-                            </ng-container> -->
-              <!-- <a
-                (click)="onclickOne()"
+              <ng-container *ngIf="visibleTwo">
+                <div>
+                  <p class="text-muted">
+                    applicable. Applicants must also meet credit and other
+                    requirements established by the lender.
+                  </p>
+                </div>
+              </ng-container>
+              <a
+                (click)="onclickTwo()"
                 class="text-uppercase text-secondary featanimbtn"
                 role="button"
               >
-                More
+                {{ ReadMoreTwo ? "Read More" : "Read
+              Less" }}
                 <i class="fa fa-long-arrow-right"></i>
-              </a> -->
+              </a>
             </div>
           </div>
         </div>
@@ -231,7 +202,7 @@
           <div class="col-md-6">
             <div class="loan-left">
               <h3 class="text-primary font-weight-bold mb-4">
-                VA loan Benefits
+                Why choose a VA loan?
               </h3>
               <ul class="text-muted arrow-list">
                 <li>
@@ -260,7 +231,7 @@
           <div class="col-md-6">
             <div class="loan-right">
               <h3 class="text-primary font-weight-bold mb-4">
-                How Does Mortgage Insurance Work
+                How Does Mortgage Insurance Work?
               </h3>
               <p class="text-muted">
                 You’ll have to pay primary mortgage insurance (PMI) if your down

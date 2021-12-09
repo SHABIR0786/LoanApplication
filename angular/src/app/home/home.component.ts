@@ -4,9 +4,17 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   DoCheck,
-  EventEmitter
+  EventEmitter,
 } from "@angular/core";
-import {FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
+
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  FormsModule,
+  NgControl,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { AppComponentBase } from "@shared/app-component-base";
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { HomeSettings, Result, SiteSettings } from "common";
@@ -25,22 +33,23 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
   ) {
     super(injector);
   }
-
-  playVideo(){
-    var ImagePoster = document.querySelector('.img-poster') as HTMLElement;
+  form: FormGroup;
+  playVideo() {
+    var ImagePoster = document.querySelector(".img-poster") as HTMLElement;
     ImagePoster.style.display = "none";
-     var video = document.getElementById('my_video_1') as HTMLVideoElement;
-     video.play();
-   }
+    var video = document.getElementById("my_video_1") as HTMLVideoElement;
+    video.play();
+  }
 
   isDataLoaded: boolean = false;
   data: HomeSettings;
+  contactForm = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: null,
+  };
   sloganChecklist: string[];
-  // FORM SECTION
-  firstName: string = "";
-  lastName: string = "";
-  email: string = "";
-  phoneNumber?: number = null;
   mortgagePurposes = [];
   howDoYouWantToBorrows = [];
 
@@ -81,6 +90,15 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
 
     this.loadHowDoYouWantToBorrows();
     this.loadMortgagePurposes();
+    this.initForm();
+  }
+  initForm() {
+    this.form = new FormGroup({
+      firstName: new FormControl(this.contactForm.firstName),
+      lastName: new FormControl(this.contactForm.lastName),
+      email: new FormControl(this.contactForm.email),
+      phoneNumber: new FormControl(this.contactForm.phoneNumber),
+    });
   }
   ngAfterViewInit() {
     $(document).ready(function () {
@@ -210,9 +228,11 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
           return slide();
         });
     }
+
     $(".bannerdesc").each(function () {
       texts2[cnt1++] = $(this).html();
     });
+
     function slidedesc() {
       if (cnt1 >= texts2.length) cnt1 = 0;
       $("#textDetail").html(texts2[cnt1++]);
@@ -223,6 +243,7 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
           return slidedesc();
         });
     }
+
     slide();
     slidedesc();
     changeImage();

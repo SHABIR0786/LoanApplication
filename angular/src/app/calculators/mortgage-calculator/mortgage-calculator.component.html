@@ -46,6 +46,8 @@
               [(ngModel)]="form.principal"
               (change)="HomePriceChanged()"
               class="form-control homeprice-input"
+              mask="separator.2"
+              thousandSeparator=","
             />
             <span class="slide-value-usd">$</span>
           </div>
@@ -105,6 +107,8 @@
                 (change)="downPaymentInputChanged($event.target.value)"
                 [(ngModel)]="DownPaymentInput"
                 id="slidervalue"
+                mask="separator.2"
+                thousandSeparator=","
                 name=""
               />
               <span
@@ -209,6 +213,8 @@
                 (change)="YearlyPropertyTaxesChanged()"
                 class="form-control"
                 name=""
+                mask="separator.2"
+                thousandSeparator=","
               />
             </div>
             <div class="form-group">
@@ -219,6 +225,8 @@
                 (change)="YearlyHomeOwnerInsuranceChanged()"
                 class="form-control"
                 name=""
+                mask="separator.2"
+                thousandSeparator=","
               />
             </div>
             <div class="form-group">
