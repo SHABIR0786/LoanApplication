@@ -18,14 +18,16 @@
             <input
               type="text"
               id="Fn"
+              #phone
               placeholder="Enter Your Mobile  Number "
+              [(ngModel)]="formData.phoneNumber"
             />
           </div>
 
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext(phone.value)"
           >
             Next
           </button>

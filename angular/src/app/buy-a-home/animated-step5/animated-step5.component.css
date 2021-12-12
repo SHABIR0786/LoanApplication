@@ -30,3 +30,6 @@
 .gage-chart {
   margin-top: 50px !important;
 }
+.selected {
+  background-color: #f47741;
+}
