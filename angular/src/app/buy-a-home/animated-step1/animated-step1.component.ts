@@ -9,7 +9,6 @@ import { Router } from "@angular/router";
 })
 export class AnimatedStep1Component implements OnInit {
   constructor(private _route: Router) {}
-  selected = 1;
   ngOnInit(): void {
     const response: Result<IBuyingHomeModel> = JSON.parse(
       localStorage.getItem("1")
@@ -22,9 +21,7 @@ export class AnimatedStep1Component implements OnInit {
   }
 
   proceedToNext(value) {
-    var Form = localStorage.getItem("1");
     if (Form) {
-      Form = JSON.parse(Form);
       Form.propertyTypeId = value;
       localStorage.setItem("1", JSON.stringify(Form));
     } else {

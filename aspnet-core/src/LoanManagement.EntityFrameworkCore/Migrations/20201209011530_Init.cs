@@ -1454,6 +1454,37 @@ namespace LoanManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            migrationBuilder.CreateTable(
+                name: "HomeBuying",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PropertyType = table.Column<string>(nullable:true),
+                    PropertyUse = table.Column<string>(nullable:true),
+                    FirstTimeHomeBuying = table.Column<bool>(nullable:true),
+                    planToPurchase = table.Column<string>(nullable: true),
+                    propertyLocated = table.Column<string>(nullable:true),
+                    purchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    downPayment = table.Column<decimal>(type: "decimal(18,2)",nullable: true),
+                    currentlyEmployed = table.Column<string>(nullable:true),
+                    houseHoldIncome = table.Column<string>(nullable:true),
+                    proofOfincome = table.Column<bool>(nullable:true),
+                    militarySevice = table.Column<bool>(nullable:true),
+                    bankruptcyPastThreeYears = table.Column<bool>(nullable:true),
+                    foreclosurePastTwoYears = table.Column<bool>(nullable:true),
+                    LateMortgagePayments = table.Column<string>(nullable:true),
+                    rateCredit = table.Column<string>(nullable:true),
+                    firstName = table.Column<string>(nullable:true),
+                    lastName = table.Column<string>(nullable:true),
+                    emailAddress = table.Column<string>(nullable:true),
+                    phoneNumber = table.Column<string>(nullable:true),
+                    refferedBy = table.Column<string>(nullable:true)
+        },
+                   constraints: table =>
+                   {
+                       table.PrimaryKey("PK_HomeBuying", x => x.Id);
+                   });
 
             migrationBuilder.CreateTable(
                 name: "StockAndBonds",

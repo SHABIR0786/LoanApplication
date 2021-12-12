@@ -2311,7 +2311,7 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("PurchasePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("StateId")
+                    b.Property<int?>("StateId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("TaxesInsuranceAndOther")
@@ -2728,7 +2728,7 @@ namespace LoanManagement.Migrations
                     b.Property<long>("ManualAssetEntryId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal>("Value")
+                    b.Property<decimal?>("Value")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -3150,9 +3150,7 @@ namespace LoanManagement.Migrations
 
                     b.HasOne("LoanManagement.Models.State", "State")
                         .WithMany("ManualAssetEntries")
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StateId");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
