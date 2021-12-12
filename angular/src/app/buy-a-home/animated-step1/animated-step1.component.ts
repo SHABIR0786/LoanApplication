@@ -2,18 +2,26 @@ import { Result } from "common";
 import { IBuyingHomeModel } from "@app/interfaces/IBuyingHomeModel";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { HomeBuyingService } from "../../services/home-buying.service";
+import { HomeBuyingDataService } from "../../services/homeBuyingData.service";
+
 @Component({
   selector: "app-animated-step1",
   templateUrl: "./animated-step1.component.html",
   styleUrls: ["./animated-step1.component.css"],
 })
 export class AnimatedStep1Component implements OnInit {
-  constructor(private _route: Router) {}
+  constructor(
+    private _route: Router,
+    private _homeBuyingService: HomeBuyingService,
+    private _homeBuyingDataService: HomeBuyingDataService
+  ) {}
+  formData: IBuyingHomeModel = {};
   ngOnInit(): void {
-    const response: Result<IBuyingHomeModel> = JSON.parse(
-      localStorage.getItem("1")
-    );
-    this.selected = response.result.propertyTypeId;
+    this.formData = this._homeBuyingDataService.data;
+    if (this.formData == null || this.formData == undefined) {
+      this.formData = {};
+    }
   }
 
   proceedToPrevious() {
@@ -21,14 +29,20 @@ export class AnimatedStep1Component implements OnInit {
   }
 
   proceedToNext(value) {
-    if (Form) {
-      Form.propertyTypeId = value;
-      localStorage.setItem("1", JSON.stringify(Form));
-    } else {
-      var newForm: Object = {};
-      newForm.propertyTypeId = value;
-      localStorage.setItem("1", JSON.stringify(newForm));
-    }
+    this.formData.propertyType = value;
+    // this._homeBuyingService
+    // .post<Result<IBuyingHomeModel>>("Add", formData)
+    // .subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     // this._dataService.loanApplication = response.result;
+    //     // this.form.patchValue(this._dataService.loanApplication.loanDetails);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    this._homeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-animated-step2"]);
   }
 }

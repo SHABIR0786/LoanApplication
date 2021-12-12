@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class HomeBuying
+    public class HomeBuying : Entity<long>
     {
-        public int Id { get; set; }
         public string propertyType { get; set; }
         public string propertyUse { get; set; }
         public bool FirstTimeHomeBuying { get; set; }
