@@ -13,16 +13,17 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-lg btn-block mb-3"
-            id="Family"
-            (click)="proceedToNext()"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext(true)"
+            [class.selected]="formData.proofOfincome == true"
           >
             Yes
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext(false)"
+            [class.selected]="formData.proofOfincome == false"
           >
             No
           </button>

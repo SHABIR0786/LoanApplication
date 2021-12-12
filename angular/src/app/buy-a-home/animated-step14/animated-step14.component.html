@@ -13,23 +13,27 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-lg btn-block mb-3"
-            id="Family"
-            (click)="proceedToNext()"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext('None')"
+            [class.selected]="formData.LateMortgagePayments == 'None'"
           >
             None
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('One Late Payment')"
+            [class.selected]="
+              formData.LateMortgagePayments == 'One Late Payment'
+            "
           >
             One Late Payment
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('More Than One')"
+            [class.selected]="formData.LateMortgagePayments == 'More Than One'"
           >
             More Than One
           </button>

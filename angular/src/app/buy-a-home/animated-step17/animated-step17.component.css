@@ -55,3 +55,6 @@
 .gage-chart {
   margin-top: 45px !important;
 }
+.selected {
+  background-color: #f47741;
+}
