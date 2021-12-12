@@ -14,24 +14,24 @@
           <button
             type="button"
             class="btn btn-outline-primary btn btn-lg btn-block mb-3"
-            (click)="proceedToNext(1)"
-            [class.selected]="selected == 1"
+            (click)="proceedToNext('Primary Residence')"
+            [class.selected]="formData.PropertyUse == 'Primary Residence'"
           >
             Primary Residence
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext(2)"
-            [class.selected]="selected == 2"
+            (click)="proceedToNext('Secondary Home')"
+            [class.selected]="formData.PropertyUse == 'Secondary Home'"
           >
             Secondary Home
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext(3)"
-            [class.selected]="selected == 3"
+            (click)="proceedToNext('Investment Property')"
+            [class.selected]="formData.PropertyUse == 'Investment Property'"
           >
             Investment Property
           </button>
