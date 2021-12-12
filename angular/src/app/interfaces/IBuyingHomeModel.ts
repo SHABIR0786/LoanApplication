@@ -1,20 +1,23 @@
 export interface IBuyingHomeModel {
   id?: number;
-  PropertyType?: string;
+  propertyType?: string;
   PropertyUse?: string;
-  FirstTimeHomeBuying?: string;
+  FirstTimeHomeBuying?: boolean;
   planToPurchase?: string;
   propertyLocated?: string;
   purchasePrice?: string;
-  downPayment?: string;
-  currentEmployed?: number;
-  houseHoldIncome?: number;
-  proofOFincome?: string;
-  militarySevice?: string;
-  threeYears?: string;
-  twoYears?: string;
-  lastTowelMonths?: string;
-  rateYourCredit?: string;
+  downPayment?: number;
+  currentEmployed?: string;
+  houseHoldIncome?: string;
+  proofOfincome?: boolean;
+  militarySevice?: boolean;
+  bankruptcyPastThreeYears?: boolean;
+  foreclosurePastTwoYears?: boolean;
+  LateMortgagePayments?: string;
+  rateCredit?: string;
+  firstName?: string;
+  lastName?: string;
   emailAddress?: string;
   phoneNumber?: string;
+  refferedBy?: string;
 }
