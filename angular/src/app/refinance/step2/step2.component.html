@@ -14,29 +14,32 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Single Family Home')"
+            [class.selected]="formData.propertyType == 'Single Family Home'"
           >
             Single Family Home
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Multi-Family Home')"
+            [class.selected]="formData.propertyType == 'Multi-Family Home'"
           >
             Multi-Family Home
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Townhouse / Condo')"
+            [class.selected]="formData.propertyType == 'Townhouse / Condo'"
           >
             Townhouse / Condo
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Other')"
+            [class.selected]="formData.propertyType == 'Other'"
           >
             Other
           </button>

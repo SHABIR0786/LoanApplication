@@ -14,16 +14,30 @@
         <div class="BTN">
           <div id="first_name">
             <h3 style="width: 112px; font-size: 20px">First Name*</h3>
-            <input type="text" id="Fn" placeholder="Enter Your Name " />
+            <input
+              type="text"
+              id="Fn"
+              placeholder="Enter Your Name "
+              #fname
+              [(ngModel)]="formData.firstName"
+            />
           </div>
           <div id="last_name">
             <h3 style="width: 109px; font-size: 20px">Last Name*</h3>
-            <input type="text" id="Ln" placeholder="Enter Your Name " />
+            <input
+              type="text"
+              id="Ln"
+              required
+              placeholder="Enter Your Name "
+              #lname
+              [(ngModel)]="formData.lastName"
+            />
           </div>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            required
+            (click)="proceedToNext(fname.value, lname.value)"
           >
             Next
           </button>
