@@ -34,3 +34,6 @@
   font-size: 20px;
   margin-top: -41px;
 }
+.selected {
+  background-color: #f47741;
+}

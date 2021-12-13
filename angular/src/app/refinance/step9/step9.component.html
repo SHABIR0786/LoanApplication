@@ -13,15 +13,16 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-8"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext(true)"
+            [class.selected]="formData.militarySevice == true"
           >
             Yes
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext(false)"
+            [class.selected]="formData.militarySevice == false"
           >
             No
           </button>

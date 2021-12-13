@@ -13,36 +13,40 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-4"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Excellent (720+)')"
+            [class.selected]="formData.rateCredit == 'Excellent (720+)'"
           >
             Excellent (720+)
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Good (680 – 719)')"
+            [class.selected]="formData.rateCredit == 'Good (680 – 719)'"
           >
             Good (680 – 719)
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Fair (620 – 679)')"
+            [class.selected]="formData.rateCredit == 'Fair (620 – 679)'"
           >
             Fair (620 – 679)
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Poor (580 - 619)')"
+            [class.selected]="formData.rateCredit == 'Poor (580 - 619)'"
           >
             Poor (580 - 619)
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Below < 580')"
+            [class.selected]="formData.rateCredit == 'Below < 580'"
           >
             Below < 580
           </button>

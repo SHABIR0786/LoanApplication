@@ -1,14 +1,24 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { IRefinanceBuyingHomeModel } from "@app/interfaces/IRefinanceBuyingHomeModel";
+import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyingData.service";
 @Component({
   selector: "app-step6",
   templateUrl: "./step6.component.html",
   styleUrls: ["./step6.component.css"],
 })
 export class Step6Component implements OnInit {
-  constructor(private _route: Router) {}
-
-  ngOnInit(): void {}
+  constructor(
+    private _route: Router,
+    private _refinanceHomeBuyingDataService: RefinanceHomeBuyingDataService
+  ) {}
+  formData: IRefinanceBuyingHomeModel = {};
+  ngOnInit(): void {
+    this.formData = this._refinanceHomeBuyingDataService.data;
+    if (this.formData == null || this.formData == undefined) {
+      this._route.navigate(["app/refinance-step1"]);
+    }
+  }
 
   ngAfterViewInit() {
     document.getElementById("myRange").oninput = function (e) {
@@ -34,7 +44,9 @@ export class Step6Component implements OnInit {
   proceedToPrevious() {
     this._route.navigate(["app/refinance-step5"]);
   }
-  proceedToNext() {
+  proceedToNext(value) {
+    this.formData.Owe = value;
+    this._refinanceHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/refinance-step7"]);
   }
 }

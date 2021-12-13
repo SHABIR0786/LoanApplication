@@ -13,22 +13,24 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-8"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Yes')"
+            [class.selected]="formData.FHALoan == 'Yes'"
           >
             Yes
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('No')"
+            [class.selected]="formData.FHALoan == 'No'"
           >
             No
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('I Dont Know')"
+            [class.selected]="formData.FHALoan == 'I Dont Know'"
           >
             I Don't Know
           </button>
