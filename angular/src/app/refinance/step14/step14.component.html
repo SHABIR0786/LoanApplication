@@ -13,36 +13,40 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-4"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Less than $20,000')"
+            [class.selected]="formData.houseHoldIncome == 'Less than $20,000'"
           >
             Less than $20,000
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('$20,000 - $50,000')"
+            [class.selected]="formData.houseHoldIncome == '$20,000 - $50,000'"
           >
             $20,000 - $50,000
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('$50,000 - $100,000')"
+            [class.selected]="formData.houseHoldIncome == '$50,000 - $100,000'"
           >
             $50,000 - $100,000
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('$100,000 - $200,000')"
+            [class.selected]="formData.houseHoldIncome == '$100,000 - $200,000'"
           >
             $100,000 - $200,000
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('$200,000+')"
+            [class.selected]="formData.houseHoldIncome == '$200,000+'"
           >
             $200,000+
           </button>

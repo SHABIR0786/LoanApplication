@@ -2,7 +2,6 @@ import { Result } from "common";
 import { IBuyingHomeModel } from "@app/interfaces/IBuyingHomeModel";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { HomeBuyingService } from "../../services/home-buying.service";
 import { HomeBuyingDataService } from "../../services/homeBuyingData.service";
 
 @Component({
@@ -13,7 +12,6 @@ import { HomeBuyingDataService } from "../../services/homeBuyingData.service";
 export class AnimatedStep1Component implements OnInit {
   constructor(
     private _route: Router,
-    private _homeBuyingService: HomeBuyingService,
     private _homeBuyingDataService: HomeBuyingDataService
   ) {}
   formData: IBuyingHomeModel = {};
@@ -30,18 +28,6 @@ export class AnimatedStep1Component implements OnInit {
 
   proceedToNext(value) {
     this.formData.propertyType = value;
-    // this._homeBuyingService
-    // .post<Result<IBuyingHomeModel>>("Add", formData)
-    // .subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     // this._dataService.loanApplication = response.result;
-    //     // this.form.patchValue(this._dataService.loanApplication.loanDetails);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
     this._homeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-animated-step2"]);
   }

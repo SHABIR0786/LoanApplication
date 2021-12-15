@@ -50,3 +50,6 @@
 .pb-5 {
   font-size: 50px;
 }
+.selected {
+  background-color: #f47741;
+}

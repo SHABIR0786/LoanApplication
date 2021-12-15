@@ -4,6 +4,7 @@
   width: 100%;
   font-size: 20px;
   height: 83px;
+  padding-right: 40px;
 }
 .btn {
   width: 100%;
@@ -29,4 +30,13 @@
 }
 .gage-chart {
   margin-top: 50px !important;
+}
+.selected {
+  background-color: #f47741;
+}
+.percent {
+  position: absolute;
+  margin-top: 58px;
+  margin-left: 147px;
+  color: white;
 }

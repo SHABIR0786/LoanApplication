@@ -15,23 +15,28 @@
           <div id="first_name">
             <h3 style="width: 191px; font-size: 20px">Your Email Address*</h3>
             <input
-              type="text"
+              type="email"
               id="Fn"
+              required
+              #email
               placeholder="Enter Your Email Address "
+              [(ngModel)]="formData.emailAddress"
             />
           </div>
           <div id="last_name">
             <h3 style="width: 206px; font-size: 20px">Your Mobile Number*</h3>
             <input
               type="text"
-              id="Ln"
-              placeholder="Enter Your Mobile Number "
+              id="Fn"
+              #phone
+              placeholder="Enter Your Mobile  Number "
+              [(ngModel)]="formData.phoneNumber"
             />
           </div>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext(email.value, phone.value)"
           >
             Next
           </button>

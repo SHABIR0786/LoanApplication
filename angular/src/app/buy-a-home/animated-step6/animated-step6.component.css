@@ -4,6 +4,7 @@
   width: 100%;
   font-size: 20px;
   height: 83px;
+  padding-left: 45px;
 }
 .btn {
   width: 100%;
@@ -29,4 +30,14 @@
 }
 .gage-chart {
   margin-top: 50px !important;
+}
+.selected {
+  background-color: #f47741;
+}
+.dollar_sign {
+  position: absolute;
+  margin-top: 58px;
+  margin-left: -157px;
+  color: white;
+  font-size: 20px;
 }

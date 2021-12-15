@@ -13,37 +13,49 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-lg btn-block mb-3"
-            id="Family"
-            (click)="proceedToNext()"
+            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            (click)="proceedToNext('Now-I Signed A Contract')"
+            [class.selected]="
+              formData.planToPurchase == 'Now-I Signed A Contract'
+            "
           >
             Now-I Signed A Contract
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Soon - I Found A Home')"
+            [class.selected]="
+              formData.planToPurchase == 'Soon - I Found A Home'
+            "
           >
             Soon - I Found A Home
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Within 30 Days')"
+            [class.selected]="formData.planToPurchase == 'Within 30 Days'"
           >
             Within 30 Days
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('In The Next Few Months')"
+            [class.selected]="
+              formData.planToPurchase == 'In The Next Few Months'
+            "
           >
             In The Next Few Months
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Not Sure - Researching')"
+            [class.selected]="
+              formData.planToPurchase == 'Not Sure - Researching'
+            "
           >
             Not Sure - Researching
           </button>
