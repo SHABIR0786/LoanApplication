@@ -13,10 +13,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
 
 namespace LoanManagement.Web.Host.Startup
@@ -28,10 +31,12 @@ namespace LoanManagement.Web.Host.Startup
         private const string _apiVersion = "v1";
 
         private readonly IConfigurationRoot _appConfiguration;
+        private IConfiguration configuration;
 
-        public Startup(IWebHostEnvironment env)
+        public Startup(IWebHostEnvironment env, IConfiguration _configuration)
         {
             _appConfiguration = env.GetAppConfiguration();
+            configuration = _configuration;
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -73,6 +78,22 @@ namespace LoanManagement.Web.Host.Startup
                         .AllowCredentials()
                 )
             );
+
+            var smtpOptions = configuration.GetSection("Smtp").Get<SMTPOptions>();
+           // services.Configure<SMTPOptions>(smtpConfiguration);
+
+            // SmtpClient is not thread-safe, hence transient
+            services.AddTransient(provider =>
+            {
+               // var smtpOptions = provider.GetService<IOptions<SMTPOptions>>().Value;
+                return new SmtpClient(smtpOptions.Host, smtpOptions.Port)
+                {
+                    UseDefaultCredentials = false,
+                    // Credentials and EnableSsl here when required
+                Credentials = new NetworkCredential(smtpOptions.Username, smtpOptions.Password),
+                EnableSsl = true,
+            };
+            });
 
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
