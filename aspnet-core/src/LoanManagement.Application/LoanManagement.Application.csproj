@@ -11,6 +11,9 @@
     <RootNamespace>LoanManagement</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\LoanManagement.Core\LoanManagement.Core.csproj" />
   </ItemGroup>
 </Project>
