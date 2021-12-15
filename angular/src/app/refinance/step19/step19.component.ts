@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { IRefinanceBuyingHomeModel } from "@app/interfaces/IRefinanceBuyingHomeModel";
 import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyingData.service";
 import { RefinanceHomeBuyingService } from "../../services/refinance-home-buying.service";
+import { Result } from "common";
 
 @Component({
   selector: "app-step19",
@@ -32,19 +33,21 @@ export class Step19Component implements OnInit {
     console.log(this._refinanceHomeBuyingDataService.data);
     console.log(this.formData);
 
-    //     this._refinancehomeBuyingService
-    // .post<Result<IRefinanceBuyingHomeModel>>("Add", this.formData)
-    // .subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     // this._dataService.loanApplication = response.result;
-    //     // this.form.patchValue(this._dataService.loanApplication.loanDetails);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    this._refinancehomeBuyingService
+      .post<Result<IRefinanceBuyingHomeModel>>("AddRefinance", this.formData)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          // this._dataService.loanApplication = response.result;
+          // this.form.patchValue(this._dataService.loanApplication.loanDetails);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
 
-    // this._route.navigate(["app/home"]);
+    this.formData = {};
+
+    this._route.navigate(["app/home"]);
   }
 }

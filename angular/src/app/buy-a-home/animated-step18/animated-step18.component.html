@@ -13,21 +13,29 @@
       </div>
       <div class="col-lg-4">
         <div class="BTN">
-          <div id="first_name">
-            <h3 style="width: 212px; font-size: 20px">Your Mobile Number*</h3>
-            <input
-              type="text"
-              id="Fn"
-              #phone
-              placeholder="Enter Your Mobile  Number "
-              [(ngModel)]="formData.phoneNumber"
-            />
-          </div>
-
+          <form [formGroup]="form">
+            <div id="first_name">
+              <h3 style="width: 212px; font-size: 20px">Your Mobile Number*</h3>
+              <input
+                type="text"
+                id="Fn"
+                #phone
+                placeholder="Enter Your Mobile  Number "
+                [(ngModel)]="formData.phoneNumber"
+                formControlName="phone"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+              />
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">
+                  Enter Valid PhoneNumber.
+                </div>
+              </div>
+            </div>
+          </form>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext(phone.value)"
+            (click)="proceedToNext()"
           >
             Next
           </button>

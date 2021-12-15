@@ -41,3 +41,6 @@
 .selected {
   background-color: #f47741;
 }
+.invalid-feedback {
+  padding: 5px;
+}

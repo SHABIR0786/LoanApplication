@@ -14,21 +14,62 @@
       <div class="col-lg-4">
         <div class="btn">
           <br /><br />
-          <span class="percent"> 20% </span>
-          <!-- <select class="form-control input-special mb-3" name="" id="">
+          <form [formGroup]="form">
+            <!-- <span class="percent"> 20% </span> -->
+            <!-- <select class="form-control input-special mb-3" name="" id="">
             <option>$60,000</option>
           </select> -->
-          <input
+            <!-- <input
             #input
             type="text"
             required
             class="form-control input-special mb-3"
             [(ngModel)]="formData.downPayment"
-          />
+          /> -->
+            <input
+              #input
+              type="text"
+              required
+              class="form-control input-special mb-3"
+              [(ngModel)]="formData.downPayment"
+              formControlName="amount"
+              [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
+              placeholder="Down Payment"
+              prefix="$ "
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
+            />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+              <div *ngIf="f.amount.errors.required">Enter Valid Amount</div>
+            </div>
+            <input
+              #inputPercent
+              type="text"
+              required
+              class="form-control input-special mb-3"
+              placeholder="Down Payment Percentage?"
+              [(ngModel)]="formData.downPaymentPercent"
+              formControlName="downPercent"
+              [ngClass]="{ 'is-invalid': submitted && f.downPercent.errors }"
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
+              suffix="% "
+            />
+            <div
+              *ngIf="submitted && f.downPercent.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.downPercent.errors.required">
+                Enter Valid Percent
+              </div>
+            </div>
+          </form>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext(input.value)"
+            (click)="proceedToNext()"
           >
             Next
           </button>
