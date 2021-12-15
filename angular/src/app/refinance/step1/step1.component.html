@@ -10,14 +10,15 @@
       </div>
       <div class="col-lg-4">
         <div class="BTN">
-          <select class="form-control input-special mb-3 mt-8" name="" id="">
-            <option>Albama</option>
-            <option>Albama</option>
+          <select class="form-control input-special mb-3">
+            <option value="california">California</option>
           </select>
+
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('California')"
+            [class.selected]="formData.propertyLocated == 'California'"
           >
             Next
           </button>

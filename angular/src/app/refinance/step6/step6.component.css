@@ -10,6 +10,7 @@
 .form-control {
   height: 65px;
   margin-top: 50px;
+  padding-left: 45px;
 }
 #myRange {
   background: linear-gradient(
@@ -47,4 +48,14 @@
 }
 #Email {
   color: #0cc4d4 !important;
+}
+.selected {
+  background-color: #f47741;
+}
+.dollar_sign {
+  position: absolute;
+  margin-top: 58px;
+  margin-left: -157px;
+  color: white;
+  font-size: 20px;
 }

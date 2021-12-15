@@ -14,29 +14,24 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            id="Primary"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Primary')"
+            [class.selected]="formData.WantRefinance == 'Primary'"
           >
             Primary
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Secondary Home')"
+            [class.selected]="formData.WantRefinance == 'Secondary Home'"
           >
             Secondary Home
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
-          >
-            Investment Property
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Investment Property')"
+            [class.selected]="formData.WantRefinance == 'Investment Property'"
           >
             Investment Property
           </button>

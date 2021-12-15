@@ -20,3 +20,6 @@
 #Email {
   color: #0cc4d4 !important;
 }
+.selected {
+  background-color: #f47741;
+}

@@ -13,22 +13,24 @@
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mt-6"
-            id="Family"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Employed')"
+            [class.selected]="formData.currentEmployed == 'Employed'"
           >
             Employed
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Self-Employed')"
+            [class.selected]="formData.currentEmployed == 'Self-Employed'"
           >
             Self-Employed
           </button>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext()"
+            (click)="proceedToNext('Other')"
+            [class.selected]="formData.currentEmployed == 'Other'"
           >
             Other
           </button>
