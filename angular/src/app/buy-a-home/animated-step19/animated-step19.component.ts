@@ -27,6 +27,28 @@ export class AnimatedStep19Component implements OnInit {
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step18"]);
   }
+  notify(type, message) {
+    (() => {
+      let n = document.createElement("div");
+      let id = Math.random().toString(36).substr(2, 10);
+      n.setAttribute("id", id);
+      n.classList.add("notification", type);
+      n.innerText = message;
+      document.getElementById("notification-area").appendChild(n);
+      setTimeout(() => {
+        var notifications = document
+          .getElementById("notification-area")
+          .getElementsByClassName("notification");
+        for (let i = 0; i < notifications.length; i++) {
+          if (notifications[i].getAttribute("id") == id) {
+            notifications[i].remove();
+            break;
+          }
+        }
+      }, 5000);
+    })();
+  }
+
   SubmitForm(value) {
     this.formData.refferedBy = value;
     this._homeBuyingDataService.data = this.formData;
@@ -38,16 +60,17 @@ export class AnimatedStep19Component implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
+          console.log("Sbmitted");
+          this.notify("success", "Buying Home Form Submitted successfully");
+          this._homeBuyingDataService.data = {};
           // this._dataService.loanApplication = response.result;
           // this.form.patchValue(this._dataService.loanApplication.loanDetails);
         },
         (error) => {
           console.log(error);
+          this.notify("error", "Buying Home Form Submitting-Error");
         }
       );
-
-    this.formData = {};
-
     this._route.navigate(["app/home"]);
   }
 }
