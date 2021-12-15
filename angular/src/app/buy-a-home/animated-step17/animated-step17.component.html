@@ -13,22 +13,29 @@
       </div>
       <div class="col-lg-4">
         <div class="BTN">
-          <div id="first_name">
-            <h3 style="width: 212px; font-size: 20px">Your email address*</h3>
-            <input
-              type="email"
-              id="Fn"
-              required
-              #email
-              placeholder="Enter Your Email Address "
-              [(ngModel)]="formData.emailAddress"
-            />
-          </div>
-
+          <form [formGroup]="form">
+            <div id="first_name">
+              <h3 style="width: 212px; font-size: 20px">Your email address*</h3>
+              <input
+                type="email"
+                id="Fn"
+                required
+                #email
+                placeholder="Enter Your Email Address "
+                formControlName="email"
+                [(ngModel)]="formData.emailAddress"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+              />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Enter Valid Email.</div>
+                <div *ngIf="f.email.errors.email">Enter Valid Email.</div>
+              </div>
+            </div>
+          </form>
           <button
             type="button"
             class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
-            (click)="proceedToNext(email.value)"
+            (click)="proceedToNext()"
           >
             Next
           </button>

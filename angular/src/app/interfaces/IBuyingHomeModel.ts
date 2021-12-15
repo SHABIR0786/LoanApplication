@@ -5,8 +5,9 @@ export interface IBuyingHomeModel {
   FirstTimeHomeBuying?: boolean;
   planToPurchase?: string;
   propertyLocated?: string;
-  purchasePrice?: string;
+  purchasePrice?: number;
   downPayment?: number;
+  downPaymentPercent?: number;
   currentEmployed?: string;
   houseHoldIncome?: string;
   proofOfincome?: boolean;

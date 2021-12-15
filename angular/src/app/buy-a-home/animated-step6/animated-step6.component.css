@@ -4,7 +4,7 @@
   width: 100%;
   font-size: 20px;
   height: 83px;
-  padding-left: 45px;
+  padding-left: 25px;
 }
 .btn {
   width: 100%;
@@ -36,8 +36,11 @@
 }
 .dollar_sign {
   position: absolute;
-  margin-top: 58px;
+  margin-top: 30px;
   margin-left: -157px;
   color: white;
   font-size: 20px;
+}
+.invalid-feedback {
+  padding: 5px;
 }

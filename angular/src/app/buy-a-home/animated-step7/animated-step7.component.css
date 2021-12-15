@@ -4,7 +4,7 @@
   width: 100%;
   font-size: 20px;
   height: 83px;
-  padding-right: 40px;
+  padding-left: 20px;
 }
 .btn {
   width: 100%;
@@ -39,4 +39,7 @@
   margin-top: 58px;
   margin-left: 147px;
   color: white;
+}
+.invalid-feedback {
+  padding: 5px;
 }

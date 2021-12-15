@@ -2,6 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { IRefinanceBuyingHomeModel } from "@app/interfaces/IRefinanceBuyingHomeModel";
 import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyingData.service";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 @Component({
   selector: "app-step7",
   templateUrl: "./step7.component.html",
@@ -9,11 +15,17 @@ import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyi
 })
 export class Step7Component implements OnInit {
   constructor(
+    private formBuilder: FormBuilder,
     private _route: Router,
     private _refinanceHomeBuyingDataService: RefinanceHomeBuyingDataService
   ) {}
   formData: IRefinanceBuyingHomeModel = {};
+  form: FormGroup;
+  submitted = false;
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      amount: ["", Validators.required],
+    });
     this.formData = this._refinanceHomeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/refinance-step1"]);
@@ -40,11 +52,19 @@ export class Step7Component implements OnInit {
       value +
       "%, black 100%)";
   }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
   proceedToPrevious() {
     this._route.navigate(["app/refinance-step6"]);
   }
-  proceedToNext(value) {
-    this.formData.CashBorrow = value;
+  proceedToNext() {
+    var data = this.form.value;
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+    this.formData.CashBorrow = data.amount;
     this._refinanceHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/refinance-step8"]);
   }

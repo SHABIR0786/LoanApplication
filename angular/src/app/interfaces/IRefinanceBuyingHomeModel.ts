@@ -20,11 +20,5 @@ export interface IRefinanceBuyingHomeModel {
   lastName?: string;
   emailAddress?: string;
   phoneNumber?: string;
-
-  FirstTimeHomeBuying?: boolean;
-  planToPurchase?: string;
-  purchasePrice?: string;
-  downPayment?: number;
-
   refferedBy?: string;
 }
