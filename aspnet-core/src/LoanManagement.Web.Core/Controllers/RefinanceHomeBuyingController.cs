@@ -43,7 +43,7 @@ namespace LoanManagement.Controllers
                 //await _loanAppService.UpdateAsync(input);
 
                 var mailMessage = new MailMessage();
-                mailMessage.To.Add(new MailAddress("aqeel.abdulmajeed786@gmail.com"));
+                mailMessage.To.Add(new MailAddress("shabir.abdulmajeed0786@gmail.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 
