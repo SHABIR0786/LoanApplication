@@ -14,57 +14,39 @@
       <div class="col-lg-4">
         <div class="btn">
           <br /><br />
-          <form [formGroup]="form">
-            <!-- <span class="percent"> 20% </span> -->
-            <!-- <select class="form-control input-special mb-3" name="" id="">
-            <option>$60,000</option>
-          </select> -->
-            <!-- <input
-            #input
-            type="text"
-            required
-            class="form-control input-special mb-3"
-            [(ngModel)]="formData.downPayment"
-          /> -->
+          <form class="form" [formGroup]="form">
+            <span class="percent">%</span>
             <input
-              #input
-              type="text"
-              required
-              class="form-control input-special mb-3"
-              [(ngModel)]="formData.downPayment"
-              formControlName="amount"
-              [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
-              placeholder="Down Payment"
-              prefix="$ "
-              mask="separator.2"
-              thousandSeparator=","
-              maxlength="18"
-            />
-            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
-              <div *ngIf="f.amount.errors.required">Enter Valid Amount</div>
-            </div>
-            <input
-              #inputPercent
-              type="text"
-              required
-              class="form-control input-special mb-3"
-              placeholder="Down Payment Percentage?"
-              [(ngModel)]="formData.downPaymentPercent"
+              min="0"
+              max="100"
+              type="number"
+              class="form-control input-special mb-3 number_percent"
+              (change)="percentChange($event)"
               formControlName="downPercent"
-              [ngClass]="{ 'is-invalid': submitted && f.downPercent.errors }"
+            />
+            <input
+              type="text"
+              class="form-control input-special mb-3"
+              formControlName="amount"
+              [ngClass]="{
+                'is-invalid': submitted && StepSevenControl.amount.errors
+              }"
+              placeholder="Down Payment"
+              prefix="$"
+              (change)="downPaymentChange($event)"
               mask="separator.2"
               thousandSeparator=","
               maxlength="18"
-              suffix="% "
             />
-            <div
-              *ngIf="submitted && f.downPercent.errors"
-              class="invalid-feedback"
+            <span
+              class="text-danger"
+              *ngIf="
+                (StepSevenControl.amount.touched || submitted) &&
+                StepSevenControl.amount.errors?.required
+              "
             >
-              <div *ngIf="f.downPercent.errors.required">
-                Enter Valid Percent
-              </div>
-            </div>
+              DownPayment is required
+            </span>
           </form>
           <button
             type="button"

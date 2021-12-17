@@ -7,7 +7,6 @@ namespace LoanManagement.ViewModels
 {
    public class BuyingHomeDto : EntityDto<long?>
     {
-        public int userId { get; set; }
         public string propertyType { get; set; }
         public string propertyUse { get; set; }
         public bool FirstTimeHomeBuying { get; set; }

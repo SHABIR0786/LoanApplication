@@ -1,4 +1,5 @@
-﻿using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
@@ -8,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Interfaces
 {
-    public interface IHomeBuyingService
+    public interface IHomeBuyingService : IAsyncCrudAppService<BuyingHomeDto, long?, PagedLoanApplicationResultRequestDto, BuyingHomeDto, BuyingHomeDto>
     {
-        Task CreateAsync(HomeBuying input);
     }
 }
