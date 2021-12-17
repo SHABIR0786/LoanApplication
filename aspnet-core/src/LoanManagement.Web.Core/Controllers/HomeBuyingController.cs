@@ -33,7 +33,7 @@ namespace LoanManagement.Controllers
 
         [DisableValidation]
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] HomeBuying input)
+        public async Task<IActionResult> Add([FromBody] BuyingHomeDto input)
         {
             try
             {
@@ -46,7 +46,8 @@ namespace LoanManagement.Controllers
                // }
 
                 var mailMessage = new MailMessage();
-                mailMessage.To.Add(new MailAddress("shabir.abdulmajeed0786@gmail.com"));
+                //mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 

@@ -57,6 +57,7 @@ export class MortgageCalculatorComponent implements OnInit {
         (result + this.Taxes + this.Insurance + this.MonthlyHOAFee) * 100
       ) / 100;
   }
+
   downPaymentTypeUpdated(value) {
     if (value == "usd") {
       this.DownPaymentInput = this.DownPaymentUSD;
@@ -64,17 +65,20 @@ export class MortgageCalculatorComponent implements OnInit {
       this.DownPaymentInput = this.DownPaymentPercent;
     }
   }
+
   valueChanged(e) {
     this.form.InterestRate = e;
     this.InterestRateUSD = (this.form.InterestRate * this.form.principal) / 100;
     this.calculateEstimatedMonthlyPayment();
   }
+
   downPaymentChanged(e) {
     this.DownPaymentPercent = e;
     this.DownPaymentUSD = (this.DownPaymentPercent * this.form.principal) / 100;
     this.downPaymentTypeUpdated(this.DownPaymentType);
     this.calculateEstimatedMonthlyPayment();
   }
+
   ChangeLoanTerm(value) {
     this.form.LoanTerm = value;
     this.calculateEstimatedMonthlyPayment();

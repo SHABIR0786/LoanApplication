@@ -5,7 +5,7 @@ using Abp.Domain.Entities;
 
 namespace LoanManagement.Models
 {
-    public class HomeBuying : Entity<long>
+    public class HomeBuying : Entity<long?>
     {
         public string propertyType { get; set; }
         public string propertyUse { get; set; }

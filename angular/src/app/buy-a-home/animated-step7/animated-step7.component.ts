@@ -14,31 +14,61 @@ import {
   styleUrls: ["./animated-step7.component.css"],
 })
 export class AnimatedStep7Component implements OnInit {
-  formData: IBuyingHomeModel;
-  form: FormGroup;
-  submitted = false;
   constructor(
     private formBuilder: FormBuilder,
     private _route: Router,
     private _homeBuyingDataService: HomeBuyingDataService
   ) {}
+  formData: IBuyingHomeModel;
+  form: FormGroup;
+  submitted = false;
+  get StepSevenControl() {
+    return this.form.controls;
+  }
 
+  amount = 0;
+  downPercent = 0;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      amount: ["", Validators.required],
-      downPercent: ["", Validators.required],
+      amount: [null, Validators.required],
+      downPercent: [null, [Validators.max(100), Validators.min(0)]],
     });
     this.formData = this._homeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/buy-a-home-animated-step1"]);
     }
   }
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
+
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step6"]);
   }
+
+  percentChange(e) {
+    if (e.target.value > 100) {
+      this.form.controls["downPercent"].setValue(100);
+    }
+    if (e.target.value < 0) {
+      this.form.controls["downPercent"].setValue(0);
+    }
+    this.form.controls["amount"].setValue(
+      this._homeBuyingDataService.data.purchasePrice * (e.target.value / 100)
+    );
+  }
+  downPaymentChange(e) {
+    console.log(e.target.value);
+    if (e.target.value > this._homeBuyingDataService.data.purchasePrice) {
+      e.preventDefault();
+      this.form.controls["amount"].setValue(
+        this._homeBuyingDataService.data.purchasePrice
+      );
+    }
+    this.form.controls["downPercent"].setValue(
+      (parseInt(e.target.value.split("$")[1]) /
+        this._homeBuyingDataService.data.purchasePrice) *
+        100
+    );
+  }
+
   proceedToNext() {
     var data = this.form.value;
     this.submitted = true;
