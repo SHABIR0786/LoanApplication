@@ -22,7 +22,7 @@
       </span>
       <hr />
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 cursor_pointer">
       <i class="fa fa-angle-left" id="icon"></i>
       <p id="Back" (click)="proceedToPrevious()">Back</p>
     </div>
@@ -30,7 +30,10 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Home to live in'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Home to live in')"
@@ -46,7 +49,10 @@
 
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Lowest Monthly Payment'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Lowest Monthly Payment')"
@@ -59,7 +65,10 @@
       </div>
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Second home'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Second home')"
