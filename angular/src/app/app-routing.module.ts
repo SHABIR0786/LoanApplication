@@ -160,805 +160,802 @@ import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refi
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      [
-        {
-          path: "",
-          component: AppComponent,
-          children: [
-            {
-              path: "home",
-              component: HomeComponent,
-              canActivate: [AppRouteGuard],
+    RouterModule.forChild([
+      {
+        path: "",
+        component: AppComponent,
+        children: [
+          {
+            path: "home",
+            component: HomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "users",
+            component: UsersComponent,
+            data: { permission: "Pages.Users" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "roles",
+            component: RolesComponent,
+            data: { permission: "Pages.Roles" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "tenants",
+            component: TenantsComponent,
+            data: { permission: "Pages.Tenants" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "loan-list",
+            component: LoanListComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "apply-loan",
+            component: LoanApplicationComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "loan-detail",
+            component: LoanDetailsComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "users",
-              component: UsersComponent,
-              data: { permission: "Pages.Users" },
-              canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-information",
+            component: PersonalInformationComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "roles",
-              component: RolesComponent,
-              data: { permission: "Pages.Roles" },
-              canActivate: [AppRouteGuard],
+          },
+          {
+            path: "expense",
+            component: ExpensesComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "tenants",
-              component: TenantsComponent,
-              data: { permission: "Pages.Tenants" },
-              canActivate: [AppRouteGuard],
+          },
+          {
+            path: "asset",
+            component: AssetsComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "loan-list",
-              component: LoanListComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
+          },
+          {
+            path: "employment-income",
+            component: EmploymentIncomeComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "apply-loan",
-              component: LoanApplicationComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
+          },
+          {
+            path: "order-credit",
+            component: OrderCreditComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "loan-detail",
-              component: LoanDetailsComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
+          },
+          {
+            path: "additional-detail",
+            component: AdditionalDetailsComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "personal-information",
-              component: PersonalInformationComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
+          },
+          {
+            path: "econsent",
+            component: EconsentComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "expense",
-              component: ExpensesComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
+          },
+          {
+            path: "declaration",
+            component: DeclarationComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "asset",
-              component: AssetsComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
+          },
+          {
+            path: "summary",
+            component: SummaryComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
             },
-            {
-              path: "employment-income",
-              component: EmploymentIncomeComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            {
-              path: "order-credit",
-              component: OrderCreditComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            {
-              path: "additional-detail",
-              component: AdditionalDetailsComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            {
-              path: "econsent",
-              component: EconsentComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            {
-              path: "declaration",
-              component: DeclarationComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            {
-              path: "summary",
-              component: SummaryComponent,
-              data: { permission: "" },
-              canActivate: [AppRouteGuard],
-              resolve: {
-                loanApp: GetLoanAppResolve,
-              },
-            },
-            { path: "about", component: AboutComponent },
-            { path: "update-password", component: ChangePasswordComponent },
-            {
-              path: "admin-panel",
-              component: AdminPanelComponent,
-            },
-            {
-              path: "home-affordability-calculator",
-              component: HomeAffordabilityCalculatorComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "mortgage-calculator",
-              component: MortgageCalculatorComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-calculator",
-              component: RefinanceCalculatorComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "amortization",
-              component: AmortizationComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "affordability",
-              component: AffordabilityComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "view-all-calculators",
-              component: ViewAllCalculatorsComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buying-home-guide",
-              component: BuyingHomeGuideComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buying-second-home",
-              component: BuyingSecondHomeComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buying-vacation-home",
-              component: BuyingVacationHomeComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "first-time-home-buyer",
-              component: FirstTimeHomeBuyerComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "home-buying-free-consultation",
-              component: HomeBuyingFreeConsultationComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "moving-and-buying-home",
-              component: MovingAndBuyingHomeComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "pre-approval",
-              component: PreApprovalComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "real-state-investor",
-              component: RealStateInvestorComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "consolidate-your-debt",
-              component: ConsolidateYourDebitComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "get-cash-from-home",
-              component: GetCashFromYourHomeComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "keep-your-payment-raising",
-              component: KeepYourPaymentFromRaisingComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "lower-your-payment",
-              component: LowerYourPaymentComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "pay-off-your-mortgage-faster",
-              component: PayOffYourMortgageFasterComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-free-consultation",
-              component: RefinanceFreeConsultationComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-investment-property",
-              component: RefinanceInvestmentPropertyComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-with-harp",
-              component: RefinanceWithHARPComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "adjustable-rate-mortgage",
-              component: AdjustableRateMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "fha-loans",
-              component: FhaLoansComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "fifteen-year-fixed-mortgage",
-              component: FifteenYearFixedMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "jumbo-loan",
-              component: JumboLoanComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "thirty-year-fixed-mortgage",
-              component: ThirtyYearFixedMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "loan-options",
-              component: LoanOptionsComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "va-loan",
-              component: VaLoanComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "blog",
-              component: BlogComponent,
-              canActivate: [AppRouteGuard],
-            },
+          },
+          { path: "about", component: AboutComponent },
+          { path: "update-password", component: ChangePasswordComponent },
+          {
+            path: "admin-panel",
+            component: AdminPanelComponent,
+          },
+          {
+            path: "home-affordability-calculator",
+            component: HomeAffordabilityCalculatorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "mortgage-calculator",
+            component: MortgageCalculatorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-calculator",
+            component: RefinanceCalculatorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "amortization",
+            component: AmortizationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "affordability",
+            component: AffordabilityComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "view-all-calculators",
+            component: ViewAllCalculatorsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buying-home-guide",
+            component: BuyingHomeGuideComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buying-second-home",
+            component: BuyingSecondHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buying-vacation-home",
+            component: BuyingVacationHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "first-time-home-buyer",
+            component: FirstTimeHomeBuyerComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "home-buying-free-consultation",
+            component: HomeBuyingFreeConsultationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "moving-and-buying-home",
+            component: MovingAndBuyingHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "pre-approval",
+            component: PreApprovalComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "real-state-investor",
+            component: RealStateInvestorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "consolidate-your-debt",
+            component: ConsolidateYourDebitComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "get-cash-from-home",
+            component: GetCashFromYourHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "keep-your-payment-raising",
+            component: KeepYourPaymentFromRaisingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "lower-your-payment",
+            component: LowerYourPaymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "pay-off-your-mortgage-faster",
+            component: PayOffYourMortgageFasterComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-free-consultation",
+            component: RefinanceFreeConsultationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-investment-property",
+            component: RefinanceInvestmentPropertyComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-with-harp",
+            component: RefinanceWithHARPComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "adjustable-rate-mortgage",
+            component: AdjustableRateMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "fha-loans",
+            component: FhaLoansComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "fifteen-year-fixed-mortgage",
+            component: FifteenYearFixedMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "jumbo-loan",
+            component: JumboLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "thirty-year-fixed-mortgage",
+            component: ThirtyYearFixedMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "loan-options",
+            component: LoanOptionsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "va-loan",
+            component: VaLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "blog",
+            component: BlogComponent,
+            canActivate: [AppRouteGuard],
+          },
 
-            {
-              path: "about-us",
-              component: AboutUsComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "request-a-mortgage",
-              component: RequestAMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "contact-us",
-              component: ContactUsComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "license-info",
-              component: LicenseInfoComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "mortgage-glossary",
-              component: MortgageGlossaryComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "current-home-loan-rates",
-              component: CurrentHomeLoanRatesComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "email-and-text-updates",
-              component: EmailAndTextUpdatesComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "finalizing-mortgage-pre-approval",
-              component: FinalizingMortgagePreApprovalComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "preparing-for-morgage",
-              component: PreparingForMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "deciding-mortgage",
-              component: DecidingMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "selection-real-estate-agent",
-              component: SelectionRealEstateAgentComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "house-hunting",
-              component: HouseHuntingComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "making-a-competitive-offer",
-              component: MakingACompetitiveOfferComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "underwriting-process",
-              component: UnderwritingProcessComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "preparing-to-close",
-              component: PreparingToCloseComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "walk-through-and-closing-day",
-              component: WalkThroughAndClosingDayComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "making-your-first-mortgage-payment",
-              component: MakingYourFirstMortgagePaymentComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "managing-your-mortgage",
-              component: ManagingYourMortgageComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "amortization-result",
-              component: AmortizationResultComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "rent-vs-buy-calculator",
-              component: RentVsBuyCalculatorComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "animated",
-              component: AnimatedComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step1",
-              component: Step1Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step2",
-              component: Step2Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step3",
-              component: Step3Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step4",
-              component: Step4Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step5",
-              component: Step5Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step6",
-              component: Step6Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step7",
-              component: Step7Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step8",
-              component: Step8Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step9",
-              component: Step9Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step10",
-              component: Step10Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step11",
-              component: Step11Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step12",
-              component: Step12Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step13",
-              component: Step13Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step14",
-              component: Step14Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step15",
-              component: Step15Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step16",
-              component: Step16Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step17",
-              component: Step17Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step18",
-              component: Step18Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-step19",
-              component: Step19Component,
-              canActivate: [AppRouteGuard],
-            },
-            // Refinance Loan Options Steps
-            {
-              path: "refinance-animated",
-              component: AnimatedOneComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step1",
-              component: RefinanceLoanOptionsStep1Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step2",
-              component: RefinanceLoanOptionsStep2Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step3",
-              component: RefinanceLoanOptionsStep3Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step4",
-              component: RefinanceLoanOptionsStep4Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step5",
-              component: RefinanceLoanOptionsStep5Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step6",
-              component: RefinanceLoanOptionsStep6Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step7",
-              component: RefinanceLoanOptionsStep7Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step8",
-              component: RefinanceLoanOptionsStep8Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step9",
-              component: RefinanceLoanOptionsStep9Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step10",
-              component: RefinanceLoanOptionsStep10Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step11",
-              component: RefinanceLoanOptionsStep11Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step12",
-              component: RefinanceLoanOptionsStep12Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step13",
-              component: RefinanceLoanOptionsStep13Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step14",
-              component: RefinanceLoanOptionsStep14Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step15",
-              component: RefinanceLoanOptionsStep15Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step16",
-              component: RefinanceLoanOptionsStep16Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step17",
-              component: RefinanceLoanOptionsStep17Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-loan-option-step18",
-              component: RefinanceLoanOptionsStep18Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated",
-              component: BuyAHomeComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step1",
-              component: AnimatedStep1Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step2",
-              component: AnimatedStep2Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step3",
-              component: AnimatedStep3Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step4",
-              component: AnimatedStep4Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step5",
-              component: AnimatedStep5Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step6",
-              component: AnimatedStep6Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step7",
-              component: AnimatedStep7Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step8",
-              component: AnimatedStep8Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step9",
-              component: AnimatedStep9Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step10",
-              component: AnimatedStep10Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step11",
-              component: AnimatedStep11Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step12",
-              component: AnimatedStep12Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step13",
-              component: AnimatedStep13Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step14",
-              component: AnimatedStep14Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step15",
-              component: AnimatedStep15Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step16",
-              component: AnimatedStep16Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step17",
-              component: AnimatedStep17Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step18",
-              component: AnimatedStep18Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-animated-step19",
-              component: AnimatedStep19Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated",
-              component: LoneOptionAnimatedComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step1",
-              component: LoneOptionStep1Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step2",
-              component: LoneOptionStep2Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step3",
-              component: LoneOptionStep3Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step4",
-              component: LoneOptionStep4Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step5",
-              component: LoneOptionStep5Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step6",
-              component: LoneOptionStep6Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step7",
-              component: LoneOptionStep7Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step8",
-              component: LoneOptionStep8Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step9",
-              component: LoneOptionStep9Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step10",
-              component: LoneOptionStep10Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step11",
-              component: LoneOptionStep11Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step12",
-              component: LoneOptionStep12Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step13",
-              component: LoneOptionStep13Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "buy-a-home-loan-options-animated-step14",
-              component: LoneOptionStep14Component,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "refinance-guide",
-              component: RefinanceGuideComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "prepare-for-your-mortgage-refinance",
-              component: PrepareForYourMortgageRefinanceComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "explore-your-refinance-options",
-              component: ExploreYourRefinanceOptionsComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "apply-for-a-refinance-loan",
-              component: ApplyForARefinanceLoanComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "the-appraisal-underwriting-process",
-              component: TheAppraisalUnderwritingProcessComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "close-on-the-loan",
-              component: CloseOnTheLoanComponent,
-              canActivate: [AppRouteGuard],
-            },
-            {
-              path: "manage-your-refinance",
-              component: ManageYourRefinanceComponent,
-              canActivate: [AppRouteGuard],
-            },
-          ],
-        },
-      ],
-      { scrollPositionRestoration: "enabled" }
-    ),
+          {
+            path: "about-us",
+            component: AboutUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "request-a-mortgage",
+            component: RequestAMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "contact-us",
+            component: ContactUsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "license-info",
+            component: LicenseInfoComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "mortgage-glossary",
+            component: MortgageGlossaryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "current-home-loan-rates",
+            component: CurrentHomeLoanRatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "email-and-text-updates",
+            component: EmailAndTextUpdatesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "finalizing-mortgage-pre-approval",
+            component: FinalizingMortgagePreApprovalComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "preparing-for-morgage",
+            component: PreparingForMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "deciding-mortgage",
+            component: DecidingMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "selection-real-estate-agent",
+            component: SelectionRealEstateAgentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "house-hunting",
+            component: HouseHuntingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-a-competitive-offer",
+            component: MakingACompetitiveOfferComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "underwriting-process",
+            component: UnderwritingProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "preparing-to-close",
+            component: PreparingToCloseComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "walk-through-and-closing-day",
+            component: WalkThroughAndClosingDayComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "making-your-first-mortgage-payment",
+            component: MakingYourFirstMortgagePaymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "managing-your-mortgage",
+            component: ManagingYourMortgageComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "amortization-result",
+            component: AmortizationResultComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "rent-vs-buy-calculator",
+            component: RentVsBuyCalculatorComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "animated",
+            component: AnimatedComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step1",
+            component: Step1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step2",
+            component: Step2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step3",
+            component: Step3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step4",
+            component: Step4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step5",
+            component: Step5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step6",
+            component: Step6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step7",
+            component: Step7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step8",
+            component: Step8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step9",
+            component: Step9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step10",
+            component: Step10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step11",
+            component: Step11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step12",
+            component: Step12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step13",
+            component: Step13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step14",
+            component: Step14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step15",
+            component: Step15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step16",
+            component: Step16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step17",
+            component: Step17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step18",
+            component: Step18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-step19",
+            component: Step19Component,
+            canActivate: [AppRouteGuard],
+          },
+          // Refinance Loan Options Steps
+          {
+            path: "refinance-animated",
+            component: AnimatedOneComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step1",
+            component: RefinanceLoanOptionsStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step2",
+            component: RefinanceLoanOptionsStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step3",
+            component: RefinanceLoanOptionsStep3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step4",
+            component: RefinanceLoanOptionsStep4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step5",
+            component: RefinanceLoanOptionsStep5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step6",
+            component: RefinanceLoanOptionsStep6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step7",
+            component: RefinanceLoanOptionsStep7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step8",
+            component: RefinanceLoanOptionsStep8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step9",
+            component: RefinanceLoanOptionsStep9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step10",
+            component: RefinanceLoanOptionsStep10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step11",
+            component: RefinanceLoanOptionsStep11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step12",
+            component: RefinanceLoanOptionsStep12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step13",
+            component: RefinanceLoanOptionsStep13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step14",
+            component: RefinanceLoanOptionsStep14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step15",
+            component: RefinanceLoanOptionsStep15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step16",
+            component: RefinanceLoanOptionsStep16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step17",
+            component: RefinanceLoanOptionsStep17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-loan-option-step18",
+            component: RefinanceLoanOptionsStep18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated",
+            component: BuyAHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step1",
+            component: AnimatedStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step2",
+            component: AnimatedStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step3",
+            component: AnimatedStep3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step4",
+            component: AnimatedStep4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step5",
+            component: AnimatedStep5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step6",
+            component: AnimatedStep6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step7",
+            component: AnimatedStep7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step8",
+            component: AnimatedStep8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step9",
+            component: AnimatedStep9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step10",
+            component: AnimatedStep10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step11",
+            component: AnimatedStep11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step12",
+            component: AnimatedStep12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step13",
+            component: AnimatedStep13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step14",
+            component: AnimatedStep14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step15",
+            component: AnimatedStep15Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step16",
+            component: AnimatedStep16Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step17",
+            component: AnimatedStep17Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step18",
+            component: AnimatedStep18Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-animated-step19",
+            component: AnimatedStep19Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated",
+            component: LoneOptionAnimatedComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step1",
+            component: LoneOptionStep1Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step2",
+            component: LoneOptionStep2Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step3",
+            component: LoneOptionStep3Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step4",
+            component: LoneOptionStep4Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step5",
+            component: LoneOptionStep5Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step6",
+            component: LoneOptionStep6Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step7",
+            component: LoneOptionStep7Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step8",
+            component: LoneOptionStep8Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step9",
+            component: LoneOptionStep9Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step10",
+            component: LoneOptionStep10Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step11",
+            component: LoneOptionStep11Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step12",
+            component: LoneOptionStep12Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step13",
+            component: LoneOptionStep13Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "buy-a-home-loan-options-animated-step14",
+            component: LoneOptionStep14Component,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "refinance-guide",
+            component: RefinanceGuideComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "prepare-for-your-mortgage-refinance",
+            component: PrepareForYourMortgageRefinanceComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "explore-your-refinance-options",
+            component: ExploreYourRefinanceOptionsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "apply-for-a-refinance-loan",
+            component: ApplyForARefinanceLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "the-appraisal-underwriting-process",
+            component: TheAppraisalUnderwritingProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "close-on-the-loan",
+            component: CloseOnTheLoanComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "manage-your-refinance",
+            component: ManageYourRefinanceComponent,
+            canActivate: [AppRouteGuard],
+          },
+        ],
+      },
+    ]),
   ],
   exports: [RouterModule],
 })
