@@ -11,41 +11,50 @@
       <div class="col-lg-4">
         <div class="form-group mt-5">
           <div
-            class="box-fill bg-white"
-            (click)="proceedToNext()"
-            style="cursor: pointer"
+            class="box-fill bg-white cursor_pointer"
+            (click)="proceedToNext('Excellent (740+)')"
+            [class.selected]="formData.rateCredit == 'Excellent (740+)'"
+            [class.text-white]="formData.rateCredit == 'Excellent (740+)'"
           >
             <p class="float-left">Excellent</p>
             <p class="number">(740+)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4"
-            (click)="proceedToNext()"
-            style="cursor: pointer"
+            class="box-fill bg-white mt-4 cursor_pointer"
+            (click)="proceedToNext('Good (700-739)')"
+            [class.selected]="formData.rateCredit == 'Good (700-739)'"
+            [class.text-white]="formData.rateCredit == 'Good (700-739)'"
           >
             <p class="float-left">Good</p>
             <p class="number">(700-739)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4"
-            (click)="proceedToNext()"
-            style="cursor: pointer"
+            class="box-fill bg-white mt-4 cursor_pointer"
+            (click)="proceedToNext('Average (640-699)')"
+            [class.selected]="formData.rateCredit == 'Average (640-699)'"
+            [class.text-white]="formData.rateCredit == 'Average (640-699)'"
           >
             <p class="float-left">Average</p>
             <p class="number">(640-699)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4"
-            (click)="proceedToNext()"
-            style="cursor: pointer"
+            class="box-fill bg-white mt-4 cursor_pointer"
+            (click)="proceedToNext('Fair (580-639)')"
+            [class.selected]="formData.rateCredit == 'Fair (580-639)'"
+            [class.text-white]="formData.rateCredit == 'Fair (580-639)'"
           >
             <p class="float-left">Fair</p>
             <p class="number">(580-639)</p>
           </div>
           <div
-            class="box-fill mt-4"
-            (click)="proceedToNext()"
-            style="cursor: pointer"
+            class="box-fill bg-white mt-4 cursor_pointer"
+            (click)="proceedToNext('Needs Improvemnt (579 & below)')"
+            [class.selected]="
+              formData.rateCredit == 'Needs Improvemnt (579 & below)'
+            "
+            [class.text-white]="
+              formData.rateCredit == 'Needs Improvemnt (579 & below)'
+            "
           >
             <p class="float-left">Needs Improvemnt</p>
             <p class="number">(579 & below)</p>

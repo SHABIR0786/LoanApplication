@@ -1,5 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { IBuyingHomeLoanOptionModel } from "@app/interfaces/IBuyingHomeLoanOptionModel";
+import { LoanOptionHomeBuyingDataService } from "../../services/loanOptionHomeBuyingData.service";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 @Component({
   selector: "app-lone-option-step5",
   templateUrl: "./lone-option-step5.component.html",

@@ -32,7 +32,11 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card" style="height: 210px">
+          <div
+            class="card bg_transparent"
+            style="height: 210px"
+            [class.selected]="formData.propertyType == 'Home to live in'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Home to live in')"
@@ -48,7 +52,10 @@
 
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.propertyType == 'Condo'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Condo')"
@@ -61,7 +68,10 @@
       </div>
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.propertyType == 'Multi-unit'"
+          >
             <div
               class="card-body cursor_pointer"
               (click)="proceedToNext('Multi-unit')"

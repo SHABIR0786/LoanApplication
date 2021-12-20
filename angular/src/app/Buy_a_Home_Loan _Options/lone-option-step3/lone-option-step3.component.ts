@@ -45,7 +45,7 @@ export class LoneOptionStep3Component implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.formData.zipCode = data.amount;
+    this.formData.zipCode = data.zipCode;
     this._loanOptionHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-loan-options-animated-step4"]);
   }
