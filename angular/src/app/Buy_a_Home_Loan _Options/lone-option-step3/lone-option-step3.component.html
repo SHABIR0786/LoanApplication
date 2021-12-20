@@ -7,14 +7,22 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <div class="form-group mt-5">
-          <input
-            class="text-primary bg-white text-center font-weight-bold rounded-2"
-            id="zip"
-            type="text"
-            placeholder="ZIP Code"
-          />
-        </div>
+        <form [formGroup]="form">
+          <div class="form-group mt-5">
+            <input
+              class="text-primary bg-white text-center font-weight-bold rounded-2"
+              id="zip"
+              type="text"
+              placeholder="ZIP Code"
+              [(ngModel)]="formData.zipCode"
+              formControlName="zipCode"
+              [ngClass]="{ 'is-invalid': submitted && f.zipCode.errors }"
+            />
+            <div *ngIf="submitted && f.zipCode.errors" class="invalid-feedback">
+              <div *ngIf="f.zipCode.errors.required">Enter Valid Zip Code.</div>
+            </div>
+          </div>
+        </form>
         <button
           id="next"
           class="btn btn-secondary text-uppercase mt-3 text-white btn-next rounded-2"
