@@ -4,6 +4,7 @@ import { IBuyingHomeModel } from "@app/interfaces/IBuyingHomeModel";
 import { HomeBuyingService } from "../../services/home-buying.service";
 import { HomeBuyingDataService } from "../../services/homeBuyingData.service";
 import { Result } from "common";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-animated-step19",
@@ -12,18 +13,31 @@ import { Result } from "common";
 })
 export class AnimatedStep19Component implements OnInit {
   formData: IBuyingHomeModel;
+  form: FormGroup;
   constructor(
+    private formBuilder: FormBuilder,
     private _route: Router,
     private _homeBuyingService: HomeBuyingService,
     private _homeBuyingDataService: HomeBuyingDataService
   ) {}
 
+  get refferedByFormControls() {
+    return this.form.controls;
+  }
+
+  refferedBy = "";
+  refferedByList = ["Google", "Facebook", "Instagram", "Twitter", "Youtube"];
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      refferedBy: [null, Validators.required],
+    });
+
     this.formData = this._homeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/buy-a-home-animated-step1"]);
     }
   }
+
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step18"]);
   }
@@ -49,8 +63,8 @@ export class AnimatedStep19Component implements OnInit {
     })();
   }
 
-  SubmitForm(value) {
-    this.formData.refferedBy = value;
+  SubmitForm() {
+    this.formData.refferedBy = this.refferedBy;
     this._homeBuyingDataService.data = this.formData;
     console.log(this._homeBuyingDataService.data);
     console.log(this.formData);

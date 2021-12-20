@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Application.Services.Dto;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Abp.Domain.Entities;
 
-namespace LoanManagement.Models
+namespace LoanManagement.ViewModels
 {
-    public class HomeBuying : Entity<long?>
+   public class BuyingHomeDto : EntityDto<long?>
     {
         public string propertyType { get; set; }
         public string propertyUse { get; set; }
