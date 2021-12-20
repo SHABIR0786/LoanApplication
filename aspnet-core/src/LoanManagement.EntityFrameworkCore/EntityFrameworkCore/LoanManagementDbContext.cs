@@ -15,7 +15,6 @@ namespace LoanManagement.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
 
-
         public DbSet<Address> Addresses { get; set; }
         public DbSet<BorrowerEmploymentInformation> BorrowerEmploymentInformations { get; set; }
         public DbSet<LoanApplication> LoanApplications { get; set; }
@@ -35,6 +34,8 @@ namespace LoanManagement.EntityFrameworkCore
         public DbSet<PersonalDetail> PersonalDetails { get; set; }
         public DbSet<SiteSetting> SiteSettings { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<HomeBuying> HomeBuying { get;set; }
+        public DbSet<RefinanceHomeBuying> RefinanceHomeBuying { get; set; }
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)

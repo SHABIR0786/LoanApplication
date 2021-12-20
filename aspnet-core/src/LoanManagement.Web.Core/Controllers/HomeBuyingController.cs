@@ -15,6 +15,8 @@ using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using LoanManagement.DatabaseServices.Interfaces;
+using LoanManagement.ViewModels;
 
 namespace LoanManagement.Controllers
 {
@@ -22,29 +24,30 @@ namespace LoanManagement.Controllers
     public class HomeBuyingController : LoanManagementControllerBase
     {
         private readonly SmtpClient _smtpClient;
-        public HomeBuyingController(SmtpClient smtpClient)
+        private readonly IHomeBuyingService _homeBuyingService;
+        public HomeBuyingController(SmtpClient smtpClient,IHomeBuyingService homeBuyingService)
         {
             _smtpClient = smtpClient;
+            _homeBuyingService = homeBuyingService;
         }
 
         [DisableValidation]
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] HomeBuying input)
+        public async Task<IActionResult> Add([FromBody] BuyingHomeDto input)
         {
             try
             {
                 if (input == null || !ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                //if (!input.Id.HasValue || input.Id.Value == default)
-                //{
-                //    input = await _loanAppService.CreateAsync(input);
-                //}
-
-                //await _loanAppService.UpdateAsync(input);
+               // if (!input.Id.HasValue || input.Id.Value == default)
+               // {
+                    await _homeBuyingService.CreateAsync(input);
+               // }
 
                 var mailMessage = new MailMessage();
-                mailMessage.To.Add(new MailAddress("aqeel.abdulmajeed4894@gmail.com"));
+                //mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 

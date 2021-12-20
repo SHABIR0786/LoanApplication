@@ -1480,7 +1480,41 @@ namespace LoanManagement.Migrations
                     emailAddress = table.Column<string>(nullable:true),
                     phoneNumber = table.Column<string>(nullable:true),
                     refferedBy = table.Column<string>(nullable:true)
-        },
+                 },
+                   constraints: table =>
+                   {
+                       table.PrimaryKey("PK_HomeBuying", x => x.Id);
+                   });
+
+            migrationBuilder.CreateTable(
+                name: "RefinanceHomeBuying",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    propertyLocated = table.Column<string>(nullable: true),
+                    PropertyType = table.Column<string>(nullable: true),
+                    PropertyUse = table.Column<string>(nullable: true),
+                    WantRefinance = table.Column<string>(nullable:true),
+                    HomePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Owe = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    CashBorrow = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    FHALoan = table.Column<string>(nullable: true),
+                    militarySevice = table.Column<bool>(nullable: true),
+                    proofOfincome = table.Column<bool>(nullable: true),
+                    currentlyEmployed = table.Column<string>(nullable: true),
+                    bankruptcyPastThreeYears = table.Column<bool>(nullable: true),
+                    foreclosurePastTwoYears = table.Column<bool>(nullable: true),
+                    LateMortgagePayments = table.Column<string>(nullable: true),
+                    currentEmployed = table.Column<string>(nullable: true),
+                    houseHoldIncome = table.Column<string>(nullable: true),
+                    rateCredit = table.Column<string>(nullable: true),
+                    firstName = table.Column<string>(nullable: true),
+                    lastName = table.Column<string>(nullable: true),
+                    emailAddress = table.Column<string>(nullable: true),
+                    phoneNumber = table.Column<string>(nullable: true),
+                    refferedBy = table.Column<string>(nullable: true)
+                },
                    constraints: table =>
                    {
                        table.PrimaryKey("PK_HomeBuying", x => x.Id);
