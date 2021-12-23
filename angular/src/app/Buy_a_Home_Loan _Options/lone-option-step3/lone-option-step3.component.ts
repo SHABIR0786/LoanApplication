@@ -20,7 +20,7 @@ export class LoneOptionStep3Component implements OnInit {
     private _loanOptionHomeBuyingDataService: LoanOptionHomeBuyingDataService
   ) {}
 
-  formData: IBuyingHomeLoanOptionModel = {};
+  formData: IBuyingHomeLoanOptionModel;
   form: FormGroup;
   submitted = false;
 

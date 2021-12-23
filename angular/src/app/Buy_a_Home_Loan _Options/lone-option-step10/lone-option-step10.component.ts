@@ -12,7 +12,7 @@ export class LoneOptionStep10Component implements OnInit {
     private _route: Router,
     private _loanOptionHomeBuyingDataService: LoanOptionHomeBuyingDataService
   ) {}
-  formData: IBuyingHomeLoanOptionModel = {};
+  formData: IBuyingHomeLoanOptionModel;
 
   ngOnInit(): void {
     this.formData = this._loanOptionHomeBuyingDataService.data;
