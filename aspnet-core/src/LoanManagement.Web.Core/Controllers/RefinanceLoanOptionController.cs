@@ -19,17 +19,17 @@ namespace LoanManagement.Controllers
 {
 
     [Route("api/[controller]/[action]")]
-    public class LoanOptionHomeBuyingController : LoanManagementControllerBase
+    public class RefinanceLoanOptionController : LoanManagementControllerBase
     {
         private readonly SmtpClient _smtpClient;
-        public LoanOptionHomeBuyingController(SmtpClient smtpClient)
+        public RefinanceLoanOptionController(SmtpClient smtpClient)
         {
             _smtpClient = smtpClient;
         }
 
         [DisableValidation]
         [HttpPost]
-        public async Task<IActionResult> AddLoanOption([FromBody] LoanOptionHomeBuying input)
+        public async Task<IActionResult> AddRefinanceLoanOption([FromBody] RefinanceLoanOption input)
         {
             try
             {
@@ -53,20 +53,23 @@ namespace LoanManagement.Controllers
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
 
                 doc.Open();
-                doc.Add(new Paragraph("Tell us how you’re using this property.? Answer: " + input.PropertyUse));
+                doc.Add(new Paragraph("To the best of your knowledge, what’s most important to you? Answer: " + input.important_to_you));
+                doc.Add(new Paragraph("Great! Tell us how you’re using this property? Answer: " + input.PropertyUse));
                 doc.Add(new Paragraph("Now, what type of property is it? Answer: " + input.propertyType));
                 doc.Add(new Paragraph("what’s the zip code? Answer: " + input.zipCode));
+                doc.Add(new Paragraph("so what’s the estimated property value?? Answer: " + input.estimatePrice));
+                doc.Add(new Paragraph("Now what’s the remaining balance of your mortgage? Answer: " + input.remainingBalalnce));
+                doc.Add(new Paragraph("Now, do you have any other loans for this property? Answer: " + input.haveAnyOtherLoanForThisProperty));
+                doc.Add(new Paragraph("OK, so is the loan a home equity line of credit? Answer: " + input.loanHomeEquity));
+                doc.Add(new Paragraph("Are you looking to pay that off? Answer: " + input.payThatOff));
+                doc.Add(new Paragraph("What is the balance of your Home Equity Line of Credit? Answer: " + input.balanceOfHomeEquity));
+                doc.Add(new Paragraph("Great.Now, was your home equity line of credit used when you purchased the home? Answer: " + input.homeEquityPurchase));
+                doc.Add(new Paragraph("Would you like to borrow additional cash? Answer: " + input.borrowAdditionalCash));
                 doc.Add(new Paragraph("Now, approximately how long do you plan to own the property ? Answer: " + input.howLongPlan));
-                doc.Add(new Paragraph("we’ll need an estimated purchase and down payment? Answer: " + input.estimatePrice));
-                doc.Add(new Paragraph("we’ll need a down payment? Answer: " + input.downPayment));
-                doc.Add(new Paragraph("What's the percentage of down payment? Answer: " + input.downPaymentPercent + '%'));
-                doc.Add(new Paragraph("First time homebuyer? Answer: " + input.FirstTimeHomeBuying));
                 doc.Add(new Paragraph("Have you or your spouse ever served in the military? Answer: " + input.militarySevice));
-                doc.Add(new Paragraph("To the best of your knowledge, what’s most important to you? Answer: " + input.important_to_you));
                 doc.Add(new Paragraph("Now what’s your credit score? An estimate is fine.? Answer: " + input.rateCredit));
                 doc.Add(new Paragraph("Currently working with a loan officer? Answer: " + input.workingWithLoanOfficer));
-                doc.Add(new Paragraph("OK here are your personalized GRaffordability results page 11 ? Answer: " + input.plan_page11));
-                doc.Add(new Paragraph("OK here are your personalized GRaffordability results page12 ? Answer: " + input.plan_page12));
+                doc.Add(new Paragraph("Tell us her or his name.? Answer: " + input.officerName));
                 doc.Add(new Paragraph("First Name? Answer: " + input.firstName));
                 doc.Add(new Paragraph("Last Name? Answer: " + input.lastName));
                 doc.Add(new Paragraph("Email Address? Answer: " + input.emailAddress));

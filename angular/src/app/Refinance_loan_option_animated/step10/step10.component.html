@@ -10,17 +10,32 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <label
-            class="text-uppercase text-left text-white"
-            style="margin-right: 148px"
-            >Remaining balance</label
-          >
-          <input
-            value="$20,000"
-            class="form-control form-control-lg-next text-primary bg-white"
-            id="Remaining"
-            type="text"
-          />
+          <form [formGroup]="form">
+            <label
+              class="text-uppercase text-left text-white"
+              style="margin-right: 148px"
+              >Remaining balance</label
+            >
+            <input
+              class="form-control form-control-lg-next text-primary bg-white"
+              id="Remaining"
+              type="text"
+              formControlName="remaining"
+              placeholder="Balance ?"
+              prefix="$"
+              [(ngModel)]="formData.balanceOfHomeEquity"
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
+              [ngClass]="{ 'is-invalid': submitted && f.remaining.errors }"
+            />
+            <div
+              *ngIf="submitted && f.remaining.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.remaining.errors.required">Enter Valid Amout.</div>
+            </div>
+          </form>
         </div>
         <button
           id="next"
