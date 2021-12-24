@@ -3,7 +3,26 @@
     <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
       Great! Tell us how you’re using this property.
     </h2>
-    <div class="col-lg-4">
+    <div class="hrline">
+      <span class="firsticon"></span>
+      <span class="stepcircle"
+        ><span id="one"> LONE </span> <span id="two">RECOMMENDATION</span></span
+      >
+      <span class="stepcircle"
+        ><span id="three"> CREDIT</span> <span id="four">SCORES</span>
+      </span>
+      <span class="stepcircle"
+        ><span id="five"> DIGITAL </span> <span id="six">MORTGAGE</span>
+      </span>
+      <span class="stepcircle"
+        ><span id="seven"> CREDIT </span> <span id="eight">SCORES</span>
+      </span>
+      <span class="stepcircle"
+        ><span id="nine"> REAL </span> <span id="ten">APPROVAL</span>
+      </span>
+      <hr />
+    </div>
+    <div class="col-lg-4 cursor_pointer">
       <i class="fa fa-angle-left" id="icon"></i>
       <p id="Back" (click)="proceedToPrevious()">Back</p>
     </div>
@@ -11,8 +30,14 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
-            <div class="card-body">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Home to live in'"
+          >
+            <div
+              class="card-body cursor_pointer"
+              (click)="proceedToNext('Home to live in')"
+            >
               <!-- <i class="fa fa-home fa-5x"></i> -->
               <img src="assets/images/home-white.png" alt="" />
               <h5 class="mt-3">Home to live in</h5>
@@ -24,8 +49,14 @@
 
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
-            <div class="card-body">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Lowest Monthly Payment'"
+          >
+            <div
+              class="card-body cursor_pointer"
+              (click)="proceedToNext('Lowest Monthly Payment')"
+            >
               <img src="assets/images/big-dollar.png" alt="" />
               <h5 class="mt-3">Lowest Monthly Payment</h5>
             </div>
@@ -34,8 +65,14 @@
       </div>
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <div class="card">
-            <div class="card-body">
+          <div
+            class="card bg_transparent"
+            [class.selected]="formData.PropertyUse == 'Second home'"
+          >
+            <div
+              class="card-body cursor_pointer"
+              (click)="proceedToNext('Second home')"
+            >
               <img src="assets/images/date-icon.png" alt="" />
               <h5 class="mt-3">Second home</h5>
             </div>
@@ -48,9 +85,7 @@
       <!-- <h5 class="information"><i class="fa fa-lock"></i> Your information is secure | No hassles | No obligations
             </h5> -->
       <!-- <input type="text" placeholder="SKIP THIS STEP NEXT" id="button"> -->
-      <p id="button" class="box-fill" (click)="proceedToNext()">
-        SKIP THIS STEP NEXT
-      </p>
+      <!-- <p id="button" class="box-fill">SKIP THIS STEP NEXT</p> -->
     </div>
   </div>
 </div>
