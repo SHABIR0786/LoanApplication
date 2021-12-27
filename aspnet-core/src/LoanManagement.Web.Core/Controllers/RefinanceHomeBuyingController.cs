@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Abp.Runtime.Validation;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using LoanManagement.Models;
 using System.Net.Mail;
-using Rotativa.AspNetCore;
-using Rotativa.AspNetCore.Options;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using LoanManagement.DatabaseServices.Interfaces;
+using LoanManagement.ViewModels;
 
 namespace LoanManagement.Controllers
 {
@@ -21,14 +15,16 @@ namespace LoanManagement.Controllers
     public class RefinanceHomeBuyingController : LoanManagementControllerBase
     {
         private readonly SmtpClient _smtpClient;
-        public RefinanceHomeBuyingController(SmtpClient smtpClient)
+        private readonly IRefinanceHomeBuyingService _refinanceHomeBuyingService;
+        public RefinanceHomeBuyingController(SmtpClient smtpClient, IRefinanceHomeBuyingService refinanceHomeBuyingService)
         {
             _smtpClient = smtpClient;
+            _refinanceHomeBuyingService = refinanceHomeBuyingService;
         }
 
         [DisableValidation]
         [HttpPost]
-        public async Task<IActionResult> AddRefinance([FromBody] RefinanceHomeBuying input)
+        public async Task<IActionResult> AddRefinance([FromBody] RefinanceHomeBuyingDto input)
         {
             try
             {
@@ -37,13 +33,14 @@ namespace LoanManagement.Controllers
 
                 //if (!input.Id.HasValue || input.Id.Value == default)
                 //{
-                //    input = await _loanAppService.CreateAsync(input);
+                    input = await _refinanceHomeBuyingService.CreateAsync(input);
                 //}
 
                 //await _loanAppService.UpdateAsync(input);
 
                 var mailMessage = new MailMessage();
-                mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                 mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 

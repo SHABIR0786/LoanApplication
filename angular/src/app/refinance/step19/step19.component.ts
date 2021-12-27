@@ -4,6 +4,7 @@ import { IRefinanceBuyingHomeModel } from "@app/interfaces/IRefinanceBuyingHomeM
 import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyingData.service";
 import { RefinanceHomeBuyingService } from "../../services/refinance-home-buying.service";
 import { Result } from "common";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-step19",
@@ -12,12 +13,19 @@ import { Result } from "common";
 })
 export class Step19Component implements OnInit {
   constructor(
+    private formBuilder: FormBuilder,
     private _route: Router,
     private _refinancehomeBuyingService: RefinanceHomeBuyingService,
     private _refinanceHomeBuyingDataService: RefinanceHomeBuyingDataService
   ) {}
+  refferedBy = "";
+  refferedByList = ["Google", "Facebook", "Instagram", "Twitter", "Youtube"];
   formData: IRefinanceBuyingHomeModel = {};
+  form: FormGroup;
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      refferedBy: [null, Validators.required],
+    });
     this.formData = this._refinanceHomeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/refinance-step1"]);
@@ -47,8 +55,8 @@ export class Step19Component implements OnInit {
       }, 5000);
     })();
   }
-  SubmitForm(value) {
-    this.formData.refferedBy = value;
+  SubmitForm() {
+    this.formData.refferedBy = this.refferedBy;
     this._refinanceHomeBuyingDataService.data = this.formData;
 
     console.log(this._refinanceHomeBuyingDataService.data);

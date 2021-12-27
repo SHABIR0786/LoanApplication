@@ -63,3 +63,9 @@
 .invalid-feedback {
   padding: 5px;
 }
+
+.arrows {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 152px;
+}
