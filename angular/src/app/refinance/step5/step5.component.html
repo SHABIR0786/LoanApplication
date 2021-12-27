@@ -5,7 +5,7 @@
       Just an estimate is fine. You can update the amount later in the process.
     </h4>
     <form [formGroup]="form">
-      <span style="position: absolute; margin-top: 58px; margin-left: 157px"
+      <span class="arrows"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -19,27 +19,11 @@
             d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"
           /></svg
       ></span>
-      <select class="form-control input-special mb-3" name="" id="">
-        <option>$2,000,000</option>
-        <option>$2,000,000</option>
-      </select>
-      <div class="slidecontainer">
-        <input
-          type="range"
-          min="1"
-          max="100"
-          value="45"
-          class="slider"
-          id="myRange"
-        />
-      </div>
-      <!-- <span class="dollar_sign">$</span> -->
       <input
         #input
         type="text"
         required
         class="form-control input-special mb-3"
-        [(ngModel)]="formData.HomePrice"
         formControlName="amount"
         [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
         placeholder="Home Value?"
@@ -51,7 +35,19 @@
       <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
         <div *ngIf="f.amount.errors.required">Enter Valid Amount</div>
       </div>
-
+      <div class="slidecontainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="0"
+          class="slider"
+          #ref
+          id="myRange"
+          (change)="change(ref.value)"
+          (change)="change(ref.value)"
+        />
+      </div>
       <p id="Back" (click)="proceedToPrevious()">
         <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
       </p>

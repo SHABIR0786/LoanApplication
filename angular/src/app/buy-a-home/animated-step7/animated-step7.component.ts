@@ -54,18 +54,21 @@ export class AnimatedStep7Component implements OnInit {
       this._homeBuyingDataService.data.purchasePrice * (e.target.value / 100)
     );
   }
+
   downPaymentChange(e) {
-    console.log(e.target.value);
     if (e.target.value > this._homeBuyingDataService.data.purchasePrice) {
       e.preventDefault();
       this.form.controls["amount"].setValue(
         this._homeBuyingDataService.data.purchasePrice
       );
     }
+
+    // console.log(parseInt(e.target.value.split("$")[1]));
+    // console.log((parseInt(this._homeBuyingDataService.data.purchasePrice)));
+    // console.log((parseInt(e.target.value.split("$")[1]) * 100) / (parseInt(this._homeBuyingDataService.data.purchasePrice )));
     this.form.controls["downPercent"].setValue(
-      (parseInt(e.target.value.split("$")[1]) /
-        this._homeBuyingDataService.data.purchasePrice) *
-        100
+      (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
+        parseFloat(this._homeBuyingDataService.data.purchasePrice)
     );
   }
 

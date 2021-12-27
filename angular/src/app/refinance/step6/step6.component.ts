@@ -33,9 +33,13 @@ export class Step6Component implements OnInit {
   }
 
   ngAfterViewInit() {
+    const Instance = this;
+    console.log(document.getElementById("myRange"));
     document.getElementById("myRange").oninput = function (e) {
+      console.log(e);
       const Element = e.target as HTMLInputElement;
-      var value = Element.value;
+      var value: any = Element.value;
+      Instance.form.controls["amount"].setValue((value * 3000000) / 100);
       // var value = (this.value-this.min)/(this.max-this.min)*100
       Element.style.background =
         "linear-gradient(to right, #F47741 0%, #F47741 " +

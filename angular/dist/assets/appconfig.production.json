@@ -1,0 +1,18 @@
+{
+  "remoteServiceBaseUrl": "https://198.251.72.158/loan-backend",
+  "appBaseUrl": "https://198.251.72.158/loan-backend",
+  "localeMappings": [
+    {
+      "from": "pt-BR",
+      "to": "pt"
+    },
+    {
+      "from": "zh-CN",
+      "to": "zh"
+    },
+    {
+      "from": "he-IL",
+      "to": "he"
+    }
+  ]
+}

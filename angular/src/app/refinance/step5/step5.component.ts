@@ -31,18 +31,18 @@ export class Step5Component implements OnInit {
       this._route.navigate(["app/refinance-step1"]);
     }
   }
+  change(value) {
+    const Element = document.getElementById("myRange") as HTMLInputElement;
+    this.form.controls["amount"].setValue((value * 50000000) / 100);
+    // var value = (this.value-this.min)/(this.max-this.min)*100
+    Element.style.background =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      value +
+      "%, #000000 " +
+      value +
+      "%, black 100%)";
+  }
   ngAfterViewInit() {
-    document.getElementById("myRange").oninput = function (e) {
-      const Element = e.target as HTMLInputElement;
-      var value = Element.value;
-      // var value = (this.value-this.min)/(this.max-this.min)*100
-      Element.style.background =
-        "linear-gradient(to right, #F47741 0%, #F47741 " +
-        value +
-        "%, #000000 " +
-        value +
-        "%, black 100%)";
-    };
     var Element = document.getElementById("myRange") as HTMLInputElement;
     var value = Element.value;
     document.getElementById("myRange").style.background =

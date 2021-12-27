@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Abp.Runtime.Validation;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using LoanManagement.Models;
 using System.Net.Mail;
-using Rotativa.AspNetCore;
-using Rotativa.AspNetCore.Options;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using LoanManagement.DatabaseServices.Interfaces;
@@ -46,7 +37,7 @@ namespace LoanManagement.Controllers
                // }
 
                 var mailMessage = new MailMessage();
-                //mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+               // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
