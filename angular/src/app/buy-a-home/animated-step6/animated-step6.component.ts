@@ -37,9 +37,11 @@ export class AnimatedStep6Component implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step5"]);
   }
+
   proceedToNext() {
     var data = this.form.value;
     this.submitted = true;

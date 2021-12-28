@@ -2,12 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { IRefinanceBuyingHomeModel } from "@app/interfaces/IRefinanceBuyingHomeModel";
 import { RefinanceHomeBuyingDataService } from "../../services/refinanceHomeBuyingData.service";
+
 import {
   AbstractControl,
   FormBuilder,
   FormGroup,
   Validators,
 } from "@angular/forms";
+
 @Component({
   selector: "app-step7",
   templateUrl: "./step7.component.html",
@@ -31,6 +33,31 @@ export class Step7Component implements OnInit {
       this._route.navigate(["app/refinance-step1"]);
     }
   }
+
+  change(value) {
+    const Element = document.getElementById("myRange") as HTMLInputElement;
+    this.form.controls["amount"].setValue((value * 50000000) / 100);
+    // var value = (this.value-this.min)/(this.max-this.min)*100
+    Element.style.background =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      value +
+      "%, #000000 " +
+      value +
+      "%, black 100%)";
+  }
+
+  changeamount() {
+    console.log(this.formData.HomePrice);
+    const Element: any = document.getElementById("myRange") as HTMLInputElement;
+    Element.value = (this.formData.HomePrice * 100) / 50000000;
+    Element.style.background =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      Element.value +
+      "%, #000000 " +
+      Element.value +
+      "%, black 100%)";
+  }
+
   ngAfterViewInit() {
     const Instance = this;
     document.getElementById("myRange").oninput = function (e) {

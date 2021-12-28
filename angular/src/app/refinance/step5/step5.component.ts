@@ -19,6 +19,7 @@ export class Step5Component implements OnInit {
     private _route: Router,
     private _refinanceHomeBuyingDataService: RefinanceHomeBuyingDataService
   ) {}
+
   formData: IRefinanceBuyingHomeModel = {};
   form: FormGroup;
   submitted = false;
@@ -30,11 +31,13 @@ export class Step5Component implements OnInit {
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/refinance-step1"]);
     }
+    var value = (this.formData.HomePrice * 100) / 50000000;
+    //  this.backgroundColor = 'linear-gradient(to right, #F47741 0%, #F47741 '+ value +'%, #000000 '+ value +'%, #000000 100%);';
   }
+
   change(value) {
     const Element = document.getElementById("myRange") as HTMLInputElement;
     this.form.controls["amount"].setValue((value * 50000000) / 100);
-    // var value = (this.value-this.min)/(this.max-this.min)*100
     Element.style.background =
       "linear-gradient(to right, #F47741 0%, #F47741 " +
       value +
@@ -42,22 +45,38 @@ export class Step5Component implements OnInit {
       value +
       "%, black 100%)";
   }
+
+  changeamount() {
+    const Element: any = document.getElementById("myRange") as HTMLInputElement;
+    Element.value = (this.formData.HomePrice * 100) / 50000000;
+    Element.style.backgroundColor =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      Element.value +
+      "%, #000000 " +
+      Element.value +
+      "%, black 100%)";
+  }
+
   ngAfterViewInit() {
-    var Element = document.getElementById("myRange") as HTMLInputElement;
-    var value = Element.value;
-    document.getElementById("myRange").style.background =
+    var value = (this.formData.HomePrice * 100) / 50000000;
+    const Element: any = document.getElementById("myRange") as HTMLInputElement;
+    Element.value = value;
+    Element.style.background =
       "linear-gradient(to right, #F47741 0%, #F47741 " +
       value +
       "%, #000000 " +
       value +
       "%, black 100%)";
   }
+
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+
   proceedToPrevious() {
     this._route.navigate(["app/refinance-step4"]);
   }
+
   proceedToNext() {
     var data = this.form.value;
     this.submitted = true;
