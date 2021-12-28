@@ -13800,3 +13800,12 @@ ul.list-refinace li {
 #notification-area .notification.info {
   background: #00acee;
 }
+.cursor_pointer {
+  cursor: pointer;
+}
+.bg_transparent {
+  background: transparent !important;
+}
+.selected {
+  background-color: #f47741 !important;
+}

@@ -8,17 +8,34 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-5">
-          <label
-            class="text-uppercase text-left text-white"
-            style="margin-right: 175px"
-            >Property Value</label
-          >
-          <input
-            value="$500,000"
-            class="form-control form-control-lg-next text-primary bg-white"
-            id="Property"
-            type="text"
-          />
+          <form [formGroup]="form">
+            <label
+              class="text-uppercase text-left text-white"
+              style="margin-right: 175px"
+              >Property Value</label
+            >
+            <input
+              class="form-control form-control-lg-next text-primary bg-white"
+              id="Property"
+              type="text"
+              formControlName="estimatePrice"
+              placeholder="Estimate Price"
+              prefix="$"
+              [(ngModel)]="formData.estimatePrice"
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
+              [ngClass]="{ 'is-invalid': submitted && f.estimatePrice.errors }"
+            />
+            <div
+              *ngIf="submitted && f.estimatePrice.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.estimatePrice.errors.required">
+                Enter Valid Amout.
+              </div>
+            </div>
+          </form>
         </div>
         <button
           id="next"

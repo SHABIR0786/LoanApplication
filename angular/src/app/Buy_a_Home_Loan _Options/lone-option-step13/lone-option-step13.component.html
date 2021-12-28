@@ -4,7 +4,10 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-4">
-          <div class="box-fill">
+          <div
+            class="box-fill cursor_pointer"
+            (click)="proceedToNext('APPLY FOR THIS LOAN')"
+          >
             <p>APPLY FOR THIS LOAN</p>
           </div>
 
@@ -18,7 +21,12 @@
     </div>
 
     <div>
-      <p id="Save-and">Save and return later</p>
+      <p
+        id="Save-and cursor_pointer"
+        (click)="proceedToNext('Save and return later')"
+      >
+        Save and return later
+      </p>
     </div>
   </div>
 </div>
