@@ -20,17 +20,19 @@
               min="0"
               max="100"
               type="number"
+              [(ngModel)]="formData.downPaymentPercent"
               dir="rtl"
               class="form-control input-special mb-3 number_percent"
               (change)="percentChange($event)"
-              formControlName="downPercent"
+              formControlName="downPaymentPercent"
             />
             <input
               type="text"
               class="form-control input-special mb-3"
-              formControlName="amount"
+              formControlName="downPayment"
+              [(ngModel)]="formData.downPayment"
               [ngClass]="{
-                'is-invalid': submitted && StepSevenControl.amount.errors
+                'is-invalid': submitted && StepSevenControl.downPayment.errors
               }"
               placeholder="Down Payment"
               prefix="$"
@@ -42,8 +44,8 @@
             <span
               class="text-danger"
               *ngIf="
-                (StepSevenControl.amount.touched || submitted) &&
-                StepSevenControl.amount.errors?.required
+                (StepSevenControl.downPayment.touched || submitted) &&
+                StepSevenControl.downPayment.errors?.required
               "
             >
               DownPayment is required
