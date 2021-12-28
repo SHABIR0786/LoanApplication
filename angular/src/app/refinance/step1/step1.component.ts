@@ -26,6 +26,6 @@ export class Step1Component implements OnInit {
     this._route.navigate(["app/refinance-step2"]);
   }
   proceedToPrevious() {
-    this._route.navigate(["app/animated"]);
+    this._route.navigate(["app/buy-a-home-animated"]);
   }
 }

@@ -26,6 +26,6 @@ export class LoneOptionStep1Component implements OnInit {
     this._route.navigate(["app/buy-a-home-loan-options-animated-step2"]);
   }
   proceedToPrevious() {
-    this._route.navigate(["app/home"]);
+    this._route.navigate(["app/buy-a-home-loan-options-animated"]);
   }
 }
