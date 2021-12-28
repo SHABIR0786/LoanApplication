@@ -198,6 +198,7 @@ import { ApplyForARefinanceLoanComponent } from "./refinance-guide/apply-for-a-r
 import { TheAppraisalUnderwritingProcessComponent } from "./refinance-guide/the-appraisal-underwriting-process/the-appraisal-underwriting-process.component";
 import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/close-on-the-loan.component";
 import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
+import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -425,6 +426,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgWizardModule.forRoot(ngWizardConfig),
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
+    AdminPanelLayoutModule,
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [

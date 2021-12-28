@@ -21,7 +21,7 @@ export class RefinanceLoanOptionsStep1Component implements OnInit {
     }
   }
   proceedToPrevious() {
-    this._route.navigate(["app/refinance-animated"]);
+    this._route.navigate(["app/buy-a-home-loan-options-animated"]);
   }
   proceedToNext(value) {
     this.formData.important_to_you = value;
