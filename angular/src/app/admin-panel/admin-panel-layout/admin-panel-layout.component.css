@@ -1,0 +1,64 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+.sidebar ul,
+li {
+  list-style: none;
+}
+.sidebar a {
+  display: inline-block;
+  color: grey;
+  padding: 16px;
+  text-decoration: none;
+}
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: white;
+  color: blue;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: white;
+  color: blue;
+}
+
+div.content {
+  margin-left: 20%;
+  padding: 1px 16px;
+  height: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.divider {
+  border-top: 1px solid #8080806b;
+  padding: 0px;
+}

@@ -157,6 +157,8 @@ import { ApplyForARefinanceLoanComponent } from "./refinance-guide/apply-for-a-r
 import { TheAppraisalUnderwritingProcessComponent } from "./refinance-guide/the-appraisal-underwriting-process/the-appraisal-underwriting-process.component";
 import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/close-on-the-loan.component";
 import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
+import { AdminPanelLayoutComponent } from "./admin-panel/admin-panel-layout/admin-panel-layout.component";
+import { AdimPanelPageComponent } from "./admin-panel/adim-panel-page/adim-panel-page.component";
 
 @NgModule({
   imports: [
@@ -952,6 +954,16 @@ import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refi
             path: "manage-your-refinance",
             component: ManageYourRefinanceComponent,
             canActivate: [AppRouteGuard],
+          },
+        ],
+      },
+      {
+        path: "",
+        component: AdminPanelLayoutComponent,
+        children: [
+          {
+            path: "admin",
+            component: AdimPanelPageComponent,
           },
         ],
       },
