@@ -37,8 +37,7 @@ namespace LoanManagement.Controllers
                // }
 
                 var mailMessage = new MailMessage();
-               // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
-                mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
+                mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 
@@ -47,6 +46,9 @@ namespace LoanManagement.Controllers
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
 
                 doc.Open();
+                Paragraph preface = new Paragraph("Home Buying Funnel Form");
+                preface.Alignment = Element.ALIGN_CENTER;
+                doc.Add(preface);
                 doc.Add(new Paragraph("What type of property are you purchasing? Answer: "+input.propertyType));
                 doc.Add(new Paragraph("How will your property be used? Answer: "+input.propertyUse));
                 doc.Add(new Paragraph("Is this your first time buying a home? Answer: "+input.FirstTimeHomeBuying));

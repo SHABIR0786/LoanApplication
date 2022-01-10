@@ -44,7 +44,7 @@ namespace LoanManagement.Controllers
                 //await _loanAppService.UpdateAsync(input);
 
                 var mailMessage = new MailMessage();
-                mailMessage.To.Add(new MailAddress("aqeel.abdulmajeed786@gmail.com"));
+                mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
                 mailMessage.Subject = "Loan Management Application New Lead";
 
@@ -53,6 +53,9 @@ namespace LoanManagement.Controllers
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
 
                 doc.Open();
+                Paragraph preface = new Paragraph("Home Buying Loan Options");
+                preface.Alignment = Element.ALIGN_CENTER;
+                doc.Add(preface);
                 doc.Add(new Paragraph("Tell us how you’re using this property.? Answer: " + input.PropertyUse));
                 doc.Add(new Paragraph("Now, what type of property is it? Answer: " + input.propertyType));
                 doc.Add(new Paragraph("what’s the zip code? Answer: " + input.zipCode));
