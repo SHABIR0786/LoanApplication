@@ -18,7 +18,7 @@
           </h4>
           <a
             class="btn btn-secondary btn-lg ref-btn animbtn btn-animate"
-            href="Jumbo action link"
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
             role="button"
             >pre - qualify now <i class="fa fa-long-arrow-right"></i
           ></a>
@@ -32,108 +32,211 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <a [routerLink]="['/app/home']" class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i>
-      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none"> Buying a Home </a><i
-        class="fa fa-angle-right"></i>
-      <a [routerLink]="['/app/moving-and-buying-home']" class="text-decoration-none"> Moving and Buying a Home </a>
+      <a [routerLink]="['/app/home']" class="text-decoration-none">Home </a
+      ><i class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none">
+        Buying a Home </a
+      ><i class="fa fa-angle-right"></i>
+      <a
+        [routerLink]="['/app/moving-and-buying-home']"
+        class="text-decoration-none"
+      >
+        Moving and Buying a Home
+      </a>
     </section>
   </div>
 
-  
-    <div class="container text-justify">
-      <h5 class="text-secondary">Know About</h5>
-      <h2 class="font-weight-bold text-primary mb-2">Need a Moving Mortgage Provider?</h2>
-      <p class="">
-        There comes a time in most people’s lives where they find themselves facing the exciting and stressful process of selling the house, getting a mortgage and moving into their next house. If you’re moving to your next house with mortgage needs – whether it’s your first or third home – EZ Online Mortgage is ready to guide you through the mortgage process.
-  
-      </p>
+  <div class="container text-justify">
+    <h5 class="text-secondary">Know About</h5>
+    <h2 class="font-weight-bold text-primary mb-2">
+      Need a Moving Mortgage Provider?
+    </h2>
+    <p class="">
+      There comes a time in most people’s lives where they find themselves
+      facing the exciting and stressful process of selling the house, getting a
+      mortgage and moving into their next house. If you’re moving to your next
+      house with mortgage needs – whether it’s your first or third home – EZ
+      Online Mortgage is ready to guide you through the mortgage process.
+    </p>
 
-      <h2 class="font-weight-bold text-primary mb-2">Should You Sell Before Buying a New Home?</h2>
-      <p class="">
-        Most home buyers, especially first-time buyers who might have inherited the home they’re currently living in, prefer to sell their current home before purchasing a new one. This “out with the old, in with the new” mantra actually makes a lot of practical sense: sitting on a home is a lot like sitting on unused cash—cash that could be used towards the purchase of a new home.</p>
-      <p>But a home is also an asset, and assets can appreciate and depreciate, and, if one is clever about it, be used to turn a profit. If you plan to sell your house, you would ideally like to sell for the highest price possible, giving you the money necessary for moving and buying a home.</p>  
-      <ng-container *ngIf="visible">
-        <div>
-          <p>Sometimes, however, the market is not conducive to selling. If you are attempting to sell your house in a buyer’s market, expect to get shortchanged, because the buyer is king. If you’re selling in a seller’s market, however, and house values are rising, you can expect to walk away with a pleasant, tidy sum. If the current market is a bust, don’t feel pressured to sell. In fact, it’s not necessary to sell your current home before buying a second home. In fact with a moving home mortgage, you don’t have to have any hesitations about moving into a new home while keeping your old one. Then, when market forces have turned in your favor, you can sell your previous home at a much better price.</p>
-          <h2 class="font-weight-bold text-primary mb-2">Get a Mortgage Through EZ Online Mortgage</h2>
-          <p>Regardless of why you’re moving, whether it’s for work or simply for a change of scenery, the experts at EZ Online Mortgage can provide you with a smooth and speedy mortgage process.
-            Whether your job requires moving your house to get a mortgage for a transfer, or
-            For a moving house mortgage transfer or a moving home mortgage, we can help you find a loan plan that fits your needs. Let the Loan Advisors at EZ Online Mortgage guide you through anything and everything you need to know to be able to finance a mortgage when moving your house. Our loan programs for people moving and buying a home include:
-            </p>
-            <ul>
-              <li>FHA Loan: An FHA loan comes with lower down payment and lots of benefits. This is the most flexible loan program.</li>
-              <li>VA Loan: A VA loan is an ideal for veterans and military personnel. You can get a VA mortgage with no money down and no PMI.</li>
-              <li>30-Year Loan: You can get a low mortgage rate (that’s fixed for 30 years) with us.</li>
-              <li>15-Year Loan: Save thousands buy paying off your mortgage faster with this loan program.</li>
-            </ul>
-            
-            <h2 class="font-weight-bold text-primary mb-2">Apply Now</h2>
-            <p>Whether you’re a second-time homebuyer or a seasoned one, let EZ Online Mortgage help make securing a mortgage a smooth, stress-free experience. We offer 24/7 mortgage consultation, providing hands-on assistance to each and every client. Experience the EZ Online Mortgage difference. <br>Contact EZ Online Mortgage today for a free, expert consultation on getting cash from your home or apply online for a free instant rate quote.</p>
+    <h2 class="font-weight-bold text-primary mb-2">
+      Should You Sell Before Buying a New Home?
+    </h2>
+    <p class="">
+      Most home buyers, especially first-time buyers who might have inherited
+      the home they’re currently living in, prefer to sell their current home
+      before purchasing a new one. This “out with the old, in with the new”
+      mantra actually makes a lot of practical sense: sitting on a home is a lot
+      like sitting on unused cash—cash that could be used towards the purchase
+      of a new home.
+    </p>
+    <p>
+      But a home is also an asset, and assets can appreciate and depreciate,
+      and, if one is clever about it, be used to turn a profit. If you plan to
+      sell your house, you would ideally like to sell for the highest price
+      possible, giving you the money necessary for moving and buying a home.
+    </p>
+    <ng-container *ngIf="visible">
+      <div>
+        <p>
+          Sometimes, however, the market is not conducive to selling. If you are
+          attempting to sell your house in a buyer’s market, expect to get
+          shortchanged, because the buyer is king. If you’re selling in a
+          seller’s market, however, and house values are rising, you can expect
+          to walk away with a pleasant, tidy sum. If the current market is a
+          bust, don’t feel pressured to sell. In fact, it’s not necessary to
+          sell your current home before buying a second home. In fact with a
+          moving home mortgage, you don’t have to have any hesitations about
+          moving into a new home while keeping your old one. Then, when market
+          forces have turned in your favor, you can sell your previous home at a
+          much better price.
+        </p>
+        <h2 class="font-weight-bold text-primary mb-2">
+          Get a Mortgage Through EZ Online Mortgage
+        </h2>
+        <p>
+          Regardless of why you’re moving, whether it’s for work or simply for a
+          change of scenery, the experts at EZ Online Mortgage can provide you
+          with a smooth and speedy mortgage process. Whether your job requires
+          moving your house to get a mortgage for a transfer, or For a moving
+          house mortgage transfer or a moving home mortgage, we can help you
+          find a loan plan that fits your needs. Let the Loan Advisors at EZ
+          Online Mortgage guide you through anything and everything you need to
+          know to be able to finance a mortgage when moving your house. Our loan
+          programs for people moving and buying a home include:
+        </p>
+        <ul>
+          <li>
+            FHA Loan: An FHA loan comes with lower down payment and lots of
+            benefits. This is the most flexible loan program.
+          </li>
+          <li>
+            VA Loan: A VA loan is an ideal for veterans and military personnel.
+            You can get a VA mortgage with no money down and no PMI.
+          </li>
+          <li>
+            30-Year Loan: You can get a low mortgage rate (that’s fixed for 30
+            years) with us.
+          </li>
+          <li>
+            15-Year Loan: Save thousands buy paying off your mortgage faster
+            with this loan program.
+          </li>
+        </ul>
 
-         </div>
-      </ng-container>
-      <a (click)="readmore()" class="text-uppercase text-secondary featanimbtn" role="button"> {{ReadMore?"Read More":"Read
-        Less"}}
-        <i class="fa fa-long-arrow-right "></i>
-      </a>
-    </div>
-  
+        <h2 class="font-weight-bold text-primary mb-2">Apply Now</h2>
+        <p>
+          Whether you’re a second-time homebuyer or a seasoned one, let EZ
+          Online Mortgage help make securing a mortgage a smooth, stress-free
+          experience. We offer 24/7 mortgage consultation, providing hands-on
+          assistance to each and every client. Experience the EZ Online Mortgage
+          difference. <br />Contact EZ Online Mortgage today for a free, expert
+          consultation on getting cash from your home or apply online for a free
+          instant rate quote.
+        </p>
+      </div>
+    </ng-container>
+    <a
+      (click)="readmore()"
+      class="text-uppercase text-secondary featanimbtn"
+      role="button"
+    >
+      {{ ReadMore ? "Read More" : "Read
+        Less" }}
+      <i class="fa fa-long-arrow-right"></i>
+    </a>
+  </div>
 
-  
-    <div class="container bg-section-light mb-4" >
-      <h5 class="text-secondary text-center pt-5">Know About</h5>
-      <h3 class="font-weight-bold text-primary text-center ">
-        Want To Explore Your Options?
-      </h3>
-      <div class="row px-5 py-5">
-        <div class="col-sm-6 mb-3">
-          <div class=" pre-box ">
-            <p class="text-white">
-              At EZ Online, you can apply for a mortgage right from your laptop. Our simple
-              online application lets you start and finish the process at your convenience, whenever
-              you are ready.You don't have to talk to a loan officer--you can get our preliminary
-              assessment of your eligibility right away using our high-speed technology.
-            </p>
-            <button class="btn btn-primary text-white  text-uppercase">
+  <div class="container bg-section-light mb-4">
+    <h5 class="text-secondary text-center pt-5">Know About</h5>
+    <h3 class="font-weight-bold text-primary text-center">
+      Want To Explore Your Options?
+    </h3>
+    <div class="row px-5 py-5">
+      <div class="col-sm-6 mb-3">
+        <div class="pre-box">
+          <p class="text-white">
+            At EZ Online, you can apply for a mortgage right from your laptop.
+            Our simple online application lets you start and finish the process
+            at your convenience, whenever you are ready.You don't have to talk
+            to a loan officer--you can get our preliminary assessment of your
+            eligibility right away using our high-speed technology.
+          </p>
+          <a
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
+            style="text-decoration: none"
+          >
+            <button class="btn btn-primary text-white text-uppercase">
               Apply Now
             </button>
-          </div>
+          </a>
         </div>
-        <div class="col-sm-6">
-          <div class="pre-box ">
-            <p class=" text-white">
-              If you would rather talk to a human than a computer,we understand.While we use the fatest
-              and most up-to-date technology available,we also appreciate that a personal touch can
-              sometime make a difference. You can talk to our friendly loan officers to ask about loan
-              products and qualifications and ask all the question you want.
-            </p>
-            <button class="btn btn-primary  text-white text-uppercase">
+      </div>
+      <div class="col-sm-6">
+        <div class="pre-box">
+          <p class="text-white">
+            If you would rather talk to a human than a computer,we
+            understand.While we use the fatest and most up-to-date technology
+            available,we also appreciate that a personal touch can sometime make
+            a difference. You can talk to our friendly loan officers to ask
+            about loan products and qualifications and ask all the question you
+            want.
+          </p>
+          <a
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
+            style="text-decoration: none"
+          >
+            <button class="btn btn-primary text-white text-uppercase">
               Request a call <i class="fa fa-long-arrow-right"></i>
             </button>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-  
+  </div>
 
   <section class="long-term text-center">
     <span
-      class="text-white text-muted text-uppercase banner-scroll d-none d-lg-block position-absolute">
+      class="text-white text-muted text-uppercase banner-scroll d-none d-lg-block position-absolute"
+    >
       <a href="#section-submit">
-        <i class="fa fa-long-arrow-left mr-4"></i>Get to Know Us</a>
+        <i class="fa fa-long-arrow-left mr-4"></i>Get to Know Us</a
+      >
     </span>
 
     <div class="container mx-auto px-2 px-md-4">
       <div class="d-flex align-items-center justify-content-center">
         <div class="col-lg-8">
-          <video id="my_video_1" class="yimVideo video-js vjs-default-skin" style="width: 100%; height: 368px;"
-            height="368px" controls preload="none"
-            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'>
-            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-            <source src="https://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+          <video
+            id="my_video_1"
+            class="yimVideo video-js vjs-default-skin"
+            style="width: 100%; height: 368px"
+            height="368px"
+            controls
+            preload="none"
+            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'
+          >
+            <source
+              src="https://vjs.zencdn.net/v/oceans.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://vjs.zencdn.net/v/oceans.webm"
+              type="video/webm"
+            />
           </video>
         </div>
-        <img class="img-fluid img-poster" (click)="playVideo()" style="position: absolute;width:794px;height: 368px; cursor: pointer;" src="assets/images/videoThumbnail.png">
+        <img
+          class="img-fluid img-poster"
+          (click)="playVideo()"
+          style="
+            position: absolute;
+            width: 794px;
+            height: 368px;
+            cursor: pointer;
+          "
+          src="assets/images/videoThumbnail.png"
+        />
       </div>
     </div>
   </section>
@@ -199,7 +302,7 @@
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 How can I improve my chances of getting approved?
               </a>
@@ -237,7 +340,7 @@
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 What are points on a loan?
               </a>
@@ -274,7 +377,7 @@
                 aria-expanded="false"
                 aria-controls="collapseFour"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?
@@ -311,8 +414,8 @@
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-              <i class="more-less fa fa-minus"></i>
-              <i class="more-less fa fa-plus"></i>
+                <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-plus"></i>
                 How do I get a rate lock?
               </a>
             </h4>

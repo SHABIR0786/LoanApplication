@@ -19,12 +19,11 @@
             <h1 class="card-title text-primary">30</h1>
             <p class="card-subtitle">FHA FIXED</p>
             <p id="subtitle">Years</p>
-            <div class="subtitle-two">
-              Consistent payments over 30 years
-              <!-- <p>with mortgage insurance.</p> -->
-            </div>
+            <div class="subtitle-two">Consistent payments over 30 years</div>
             <div class="subtitle-three">with mortgage insurance.</div>
-            <p class="card-text" id="text-one">$1,684</p>
+            <p class="card-text" id="text-one">
+              ${{ MortgageResults[0].MonthlyPayment }}
+            </p>
             <p class="card-text" id="text-two">per month</p>
             <div class="line">
               <hr />
@@ -32,7 +31,7 @@
             <div>
               <img src="assets/images/ok.png" alt="" id="img-one" />
               <p class="float-left">Principal & Interest</p>
-              <span id="doller-one">$972</span>
+              <span id="doller-one">${{ MortgageResults[0].TotalTax }}</span>
               <img src="assets/images/ok.png" alt="" id="img-two" />
               <P class="float-left">Est. Taxes & Insurance</P
               ><span id="doller-two">$555</span>
@@ -85,7 +84,9 @@
             </div>
             <div class="subtitle-three">100% financing and consistent</div>
             <div class="subtitle-four">monthly payments over 30 years.</div>
-            <p class="card-text" id="text-one" style="color: skyblue">$1,493</p>
+            <p class="card-text" id="text-one" style="color: skyblue">
+              ${{ MortgageResults[1].MonthlyPayment }}
+            </p>
             <p class="card-text" id="text-two">per month</p>
             <div class="line">
               <hr />
@@ -93,7 +94,7 @@
             <div>
               <img src="assets/images/ok.png" alt="" id="img-one" />
               <p class="float-left">Principal & Interest</p>
-              <span id="doller-one">$938</span>
+              <span id="doller-one">${{ MortgageResults[1].TotalTax }}</span>
               <img src="assets/images/ok.png" alt="" id="img-two" />
               <P class="float-left">Est. Taxes & Insurance</P
               ><span id="doller-two">$555</span>
@@ -144,7 +145,7 @@
             </div>
             <div class="subtitle-three">payments over 30 years.</div>
             <p class="card-text" id="text-one" style="color: lightgreen">
-              $1,585
+              ${{ MortgageResults[2].MonthlyPayment }}
             </p>
             <p class="card-text" id="text-two">per month</p>
             <div class="line">
@@ -153,7 +154,7 @@
             <div>
               <img src="assets/images/ok.png" alt="" id="img-one" />
               <p class="float-left">Principal & Interest</p>
-              <span id="doller-one">$972</span>
+              <span id="doller-one">${{ MortgageResults[2].TotalTax }}</span>
               <img src="assets/images/ok.png" alt="" id="img-two" />
               <P class="float-left">Est. Taxes & Insurance</P
               ><span id="doller-two">$555</span>
@@ -194,13 +195,13 @@
       </div>
     </div>
     <div>
-      <p
+      <!-- <p
         id="button"
         class="box-fill cursor_pointer"
         (click)="proceedToNext('Nothing')"
       >
         SEE ALL OPTIONS
-      </p>
+      </p> -->
     </div>
   </div>
 </div>
