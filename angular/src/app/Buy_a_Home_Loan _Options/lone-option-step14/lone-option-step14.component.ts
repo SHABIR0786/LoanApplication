@@ -51,6 +51,8 @@ export class LoneOptionStep14Component implements OnInit {
       n.setAttribute("id", id);
       n.classList.add("notification", type);
       n.innerText = message;
+      let n_div = document.getElementsByClassName("notification_area");
+      n_div[0].id = "notification-area";
       document.getElementById("notification-area").appendChild(n);
       setTimeout(() => {
         var notifications = document
@@ -62,6 +64,7 @@ export class LoneOptionStep14Component implements OnInit {
             break;
           }
         }
+        n_div[0].id = "";
       }, 5000);
     })();
   }

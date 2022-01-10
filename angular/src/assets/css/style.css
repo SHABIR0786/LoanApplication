@@ -13762,11 +13762,20 @@ ul.list-refinace li {
   display: inline-block;
 }
 #notification-area {
-  position: fixed;
+  /* position: fixed;
   top: 0px;
   right: 10px;
   width: 250px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; */
+
+  position: fixed;
+  top: 82%;
+  right: 0px;
+  width: 200px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
