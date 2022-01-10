@@ -7,6 +7,21 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AdminPanelLayoutComponent implements OnInit {
   constructor() {}
-
-  ngOnInit(): void {}
+  toggleSidebar: boolean;
+  ngOnInit(): void {
+    this.toggleSidebar = false;
+    $(document).ready(function () {
+      $(".droprdown_class_a").click(function () {
+        $(this).toggleClass("active_class");
+        $(this).children().toggleClass("caret_active");
+        $(this).next().toggleClass("d-none");
+      });
+      $(".nav_bars_show_active").click(function () {
+        $(".buttons_nav").toggleClass("buttons_nav_active");
+      });
+    });
+  }
+  toggleSidebarFunc() {
+    this.toggleSidebar = !this.toggleSidebar;
+  }
 }
