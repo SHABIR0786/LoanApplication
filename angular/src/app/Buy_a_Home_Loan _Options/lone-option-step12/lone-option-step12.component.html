@@ -21,7 +21,9 @@
             <p id="subtitle">Years</p>
             <div class="subtitle-two">Consistent payments over 30 years</div>
             <div class="subtitle-three">with mortgage insurance.</div>
-            <p class="card-text" id="text-one">$1,684</p>
+            <p class="card-text" id="text-one">
+              ${{ MortgageResults[0].MonthlyPayment }}
+            </p>
             <p class="card-text" id="text-two">per month</p>
             <div class="line">
               <hr />
@@ -29,7 +31,7 @@
             <div>
               <img src="assets/images/ok.png" alt="" id="img-one" />
               <p class="float-left">Principal & Interest</p>
-              <span id="doller-one">$972</span>
+              <span id="doller-one">${{ MortgageResults[0].TotalTax }}</span>
               <img src="assets/images/ok.png" alt="" id="img-two" />
               <P class="float-left">Est. Taxes & Insurance</P
               ><span id="doller-two">$555</span>
@@ -40,10 +42,10 @@
             <div class="line-one">
               <hr />
             </div>
-            <div class="">
-              <p class="" id="rate">Rate</p>
+            <div>
+              <p id="rate1">Rate</p>
               <span id="apr">APR</span>
-              <p class="" id="rate-num">2.500%</p>
+              <p id="rate-num">2.500%</p>
               <span id="apr-num">3.569%</span>
             </div>
             <div class="line-three">
@@ -90,20 +92,22 @@
             <div>
               <img src="assets/images/ok.png" alt="" id="img-one" />
               <p class="float-left">Principal & Interest</p>
-              <span id="doller-one">$938</span>
+              <span id="doller-one"
+                >${{ MortgageResults[1].MonthlyPayment }}</span
+              >
               <img src="assets/images/ok.png" alt="" id="img-two" />
               <P class="float-left">Est. Taxes & Insurance</P
-              ><span id="doller-two">$555</span>
+              ><span id="doller-two">${{ MortgageResults[1].TotalTax }}</span>
               <!-- <img src="assets/images/ok.png" alt="" id="img-three">
                <P class="float-left">Mortgage Insurance</P><span id="doller-three">$157</span> -->
             </div>
             <div class="line-one">
               <hr />
             </div>
-            <div class="">
-              <p class="" id="rate">Rate</p>
+            <div>
+              <p id="rate">Rate</p>
               <span id="apr">APR</span>
-              <p class="" id="rate-num" style="color: skyblue">2.375%</p>
+              <p id="rate-num" style="color: skyblue">2.375%</p>
               <span id="apr-num" style="color: skyblue">2.636%</span>
             </div>
             <div class="line-three">
@@ -133,61 +137,112 @@
         <div class="card bg-white">
           <div class="card-body">
             <p class="text-primary" id="Loan-Details">Loan Details</p>
-            <span
-              ><img src="assets/images/Group 441.png" alt="" id="imges"
-            /></span>
-            <div class="line-five"></div>
-            <div class="box-fill bg-white">
-              <p for="" id="Purchase">Purchase price</p>
-              <p type="text" placeholder="$700,000" id="price" class=""></p>
+            <img src="assets/images/Group 441.png" alt="" id="imges" />
+            <div class="form-group">
+              <label>Purchase price</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                prefix="$"
+                style="width: 100%"
+                [(ngModel)]="formData.estimatePrice"
+                mask="separator.2"
+                thousandSeparator=","
+                maxlength="18"
+              />
             </div>
-
-            <div>
-              <label for="">Down payment</label>
-              <input type="text" placeholder="$700,000" />
-              <span><input type="text" placeholder="25%" /></span>
+            <div class="form-group">
+              <label>Down payment</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                prefix="$"
+                style="display: inline-block; width: 65%"
+                [(ngModel)]="formData.downPayment"
+                mask="separator.2"
+                thousandSeparator=","
+                maxlength="18"
+              />
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                style="display: inline-block; width: 30%; margin-left: 5%"
+                prefix="$"
+                [(ngModel)]="formData.downPaymentPercent"
+                mask="separator.2"
+                thousandSeparator=","
+                maxlength="18"
+              />
+            </div>
+            <div class="form-group">
+              <label>Zip Code</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                style="width: 100%"
+                [(ngModel)]="formData.zipCode"
+              />
+            </div>
+            <div class="form-group">
+              <label>Property use</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                style="width: 100%; font-size: 14px"
+                [(ngModel)]="formData.PropertyUse"
+              />
+            </div>
+            <div class="form-group">
+              <label>Most important to you</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                style="width: 100%; font-size: 14px"
+                [(ngModel)]="formData.important_to_you"
+              />
+            </div>
+            <div class="form-group">
+              <label>Credit score</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                prefix="$"
+                style="width: 100%"
+                [(ngModel)]="formData.rateCredit"
+                mask="separator.2"
+                thousandSeparator=","
+                maxlength="18"
+              />
+            </div>
+            <div class="form-group">
+              <label>Years you’ll own the property</label>
+              <input
+                class="form-control form-control-lg-next text-primary bg-white"
+                prefix="$"
+                style="width: 100%"
+                [(ngModel)]="formData.howLongPlan"
+                mask="separator.2"
+                thousandSeparator=","
+                maxlength="18"
+              />
             </div>
             <div>
-              <label for="">Purchase price</label>
-              <input type="text" placeholder="$175,000" />
-            </div>
-            <div>
-              <label for="">ZIP code</label>
-              <input type="text" placeholder="92021" />
-            </div>
-            <div>
-              <label for="">Property use</label>
-              <input type="text" placeholder="Home to live in" />
-            </div>
-            <div>
-              <label for="">Most important to you</label>
-              <input type="text" placeholder="Lowest interest rate" />
-            </div>
-            <div>
-              <label for="">Credit score</label>
-              <input type="text" placeholder="Excellent (740+)" />
-            </div>
-            <div>
-              <label for="">Years you’ll own the property</label>
-              <input type="text" placeholder="20+ years" />
-            </div>
-            <div>
-              <div class="box-fill">
-                <p class="pt-1">UPDATE</p>
+              <div
+                class="box-fill"
+                style="
+                  width: 150px;
+                  height: 43px;
+                  margin: 0 auto;
+                  cursor: pointer;
+                "
+                (click)="update()"
+              >
+                <p>UPDATE</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <p
-          id="button"
-          class="box-fill cursor_pointer"
-          (click)="proceedToNext('Nothing')"
-        >
-          SEE ALL OPTIONS
-        </p>
-      </div>
     </div>
+    <p
+      id="button"
+      class="box-fill cursor_pointer"
+      (click)="proceedToNext('Nothing')"
+    >
+      SEE ALL OPTIONS
+    </p>
   </div>
 </div>

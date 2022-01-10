@@ -44,7 +44,7 @@ export class LoneOptionStep5Component implements OnInit {
     if (this.form.value.downPayment <= this.form.value.estimatePrice) {
       this.Percentage =
         (this.form.value.downPayment / this.form.value.estimatePrice) * 100;
-      this.Percentage = this.Percentage.toFixed(1);
+      this.Percentage = this.Percentage.toFixed(0);
       this.submitted = true;
     } else {
       this.form.controls["downPayment"].setValue(0);
