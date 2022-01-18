@@ -1,8 +1,11 @@
 import { Component, Injector, OnInit, Renderer2 } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, NavigationStart, NavigationEnd } from "@angular/router";
 import { AppComponentBase } from "@shared/app-component-base";
 import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
 import { LayoutStoreService } from "@shared/layout/layout-store.service";
+import { Location, PopStateEvent } from "@angular/common";
+
+import { filter } from "rxjs/operators";
 
 @Component({
   templateUrl: "./app.component.html",
@@ -121,6 +124,15 @@ export class AppComponent extends AppComponentBase implements OnInit {
     this._layoutStore.sidebarExpanded.subscribe((value) => {
       this.sidebarExpanded = value;
     });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
   }
 
   toggleSidebar(): void {

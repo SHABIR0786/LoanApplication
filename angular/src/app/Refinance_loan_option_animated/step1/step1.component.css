@@ -22,3 +22,7 @@
   margin-top: 33px;
   cursor: pointer;
 }
+
+.card.bg_transparent:hover {
+  background-color: #f47741 !important;
+}

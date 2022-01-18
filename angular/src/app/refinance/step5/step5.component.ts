@@ -31,7 +31,14 @@ export class Step5Component implements OnInit {
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/refinance-step1"]);
     }
+    console.log(this.formData.HomePrice);
     var value = (this.formData.HomePrice * 100) / 50000000;
+    const Element: any = document.getElementById("myRange") as HTMLInputElement;
+    if (value) {
+      Element.value = value;
+    } else {
+      Element.value = 0;
+    }
     //  this.backgroundColor = 'linear-gradient(to right, #F47741 0%, #F47741 '+ value +'%, #000000 '+ value +'%, #000000 100%);';
   }
 
@@ -59,14 +66,19 @@ export class Step5Component implements OnInit {
 
   ngAfterViewInit() {
     var value = (this.formData.HomePrice * 100) / 50000000;
-    const Element: any = document.getElementById("myRange") as HTMLInputElement;
-    Element.value = value;
-    Element.style.background =
-      "linear-gradient(to right, #F47741 0%, #F47741 " +
-      value +
-      "%, #000000 " +
-      value +
-      "%, black 100%)";
+    if (value) {
+      const Element: any = document.getElementById(
+        "myRange"
+      ) as HTMLInputElement;
+      console.log(value);
+      Element.value = value;
+      Element.style.background =
+        "linear-gradient(to right, #F47741 0%, #F47741 " +
+        value +
+        "%, #000000 " +
+        value +
+        "%, black 100%)";
+    }
   }
 
   get f(): { [key: string]: AbstractControl } {

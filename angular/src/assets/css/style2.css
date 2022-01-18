@@ -864,7 +864,7 @@ ul.list-refinace li {
   height: 140px;
   width: 130px;
   margin: auto;
-  margin-top: 150px !important;
+  margin-top: 50px !important;
 }
 .gage-chart.p11 {
   background-image: url("../images/gage-chart-11.svg");
