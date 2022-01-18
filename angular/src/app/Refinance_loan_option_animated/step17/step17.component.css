@@ -8,12 +8,12 @@
 
 #button {
   border: 1px solid orange !important;
-  width: 260px;
+  width: 285px;
   height: 43px;
   text-align: center;
   color: #ffffff;
   background-color: #091a52;
-  margin-left: 494px;
+  margin-left: 483px;
   margin-top: 33px;
   cursor: pointer;
 }

@@ -37,3 +37,7 @@
 .selected {
   background-color: #f47741;
 }
+
+button.btn:hover {
+  background-color: #f47741;
+}

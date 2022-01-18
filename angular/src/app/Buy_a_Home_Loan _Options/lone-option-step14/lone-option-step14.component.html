@@ -73,6 +73,7 @@
               placeholder="Phone"
               [(ngModel)]="formData.phoneNumber"
               formControlName="phone"
+              appPhoneMask
               [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
             />
             <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
