@@ -32,9 +32,30 @@ export class Step6Component implements OnInit {
     }
   }
 
+  change(value) {
+    const Element = document.getElementById("myRange") as HTMLInputElement;
+    this.form.controls["amount"].setValue((value * 50000000) / 100);
+    // var value = (this.value-this.min)/(this.max-this.min)*100
+    Element.style.background =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      value +
+      "%, #000000 " +
+      value +
+      "%, black 100%)";
+  }
+  changeamount() {
+    console.log(this.formData.HomePrice);
+    const Element: any = document.getElementById("myRange") as HTMLInputElement;
+    Element.value = (this.formData.HomePrice * 100) / 50000000;
+    Element.style.background =
+      "linear-gradient(to right, #F47741 0%, #F47741 " +
+      Element.value +
+      "%, #000000 " +
+      Element.value +
+      "%, black 100%)";
+  }
   ngAfterViewInit() {
     const Instance = this;
-    console.log(document.getElementById("myRange"));
     document.getElementById("myRange").oninput = function (e) {
       console.log(e);
       const Element = e.target as HTMLInputElement;

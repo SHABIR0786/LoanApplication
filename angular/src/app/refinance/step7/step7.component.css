@@ -13,13 +13,13 @@
   padding-left: 25px;
 }
 #myRange {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     #f47741 0%,
     #f47741 50%,
     #000000 50%,
     #000000 100%
-  );
+  ); */
   border: solid 1px #f47741;
   border-radius: 8px;
   height: 10px;
@@ -62,4 +62,8 @@
 }
 .invalid-feedback {
   padding: 5px;
+}
+
+button.btn:hover {
+  background-color: #f47741;
 }

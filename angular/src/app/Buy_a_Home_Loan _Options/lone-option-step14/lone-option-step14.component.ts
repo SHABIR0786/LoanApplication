@@ -80,15 +80,10 @@ export class LoneOptionStep14Component implements OnInit {
     this.formData.phoneNumber = data.phone;
     this._loanOptionHomeBuyingDataService.data = this.formData;
 
-    console.log(this._loanOptionHomeBuyingDataService.data);
-    console.log(this.formData);
-
     this._loanOptionhomeBuyingService
       .post<Result<IBuyingHomeLoanOptionModel>>("AddLoanOption", this.formData)
       .subscribe(
         (response) => {
-          console.log(response);
-          console.log("Sbmitted");
           this.notify(
             "success",
             "Loan Option Buying Home Form Submitted successfully"

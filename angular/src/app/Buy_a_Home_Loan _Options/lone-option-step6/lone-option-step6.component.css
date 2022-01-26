@@ -10,3 +10,6 @@
   top: 209px;
   right: 230px;
 }
+.card.bg_transparent:hover {
+  background-color: #f47741 !important;
+}

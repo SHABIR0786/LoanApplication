@@ -199,6 +199,7 @@ import { TheAppraisalUnderwritingProcessComponent } from "./refinance-guide/the-
 import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/close-on-the-loan.component";
 import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
 import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
+import { LoanApplicationHeaderComponent } from "./loan-application/loan-application-header/loan-application-header.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -406,6 +407,7 @@ const ngWizardConfig: NgWizardConfig = {
     TheAppraisalUnderwritingProcessComponent,
     CloseOnTheLoanComponent,
     ManageYourRefinanceComponent,
+    LoanApplicationHeaderComponent,
   ],
   imports: [
     CommonModule,

@@ -24,12 +24,14 @@
         type="text"
         required
         class="form-control input-special mb-3"
+        [(ngModel)]="formData.HomePrice"
         formControlName="amount"
         [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
         placeholder="Home Value?"
         prefix="$ "
         mask="separator.2"
         thousandSeparator=","
+        (change)="changeamount()"
         maxlength="18"
       />
       <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
@@ -45,11 +47,11 @@
           #ref
           id="myRange"
           (change)="change(ref.value)"
-          (change)="change(ref.value)"
         />
       </div>
       <p id="Back" (click)="proceedToPrevious()">
-        <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+        <i class="fa fa-angle-left" style="font-size: 25px"></i>
+        <span style="position: absolute; line-height: 25px">Back</span>
       </p>
     </form>
     <button
