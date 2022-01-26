@@ -8,6 +8,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.ViewModels;
+using System.Drawing;
 
 namespace LoanManagement.Controllers
 {
@@ -39,36 +40,72 @@ namespace LoanManagement.Controllers
                 var mailMessage = new MailMessage();
                 mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.From = new MailAddress("shabir.abdulmajeed786@gmail.com");
-                mailMessage.Subject = "Loan Management Application New Lead";
+                mailMessage.Subject = "Home Buying Funnel Form New Lead";
 
                 var doc = new Document();
                 MemoryStream memoryStream = new MemoryStream();
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
-
+                var FontRed = FontFactory.GetFont("Arial", 13, BaseColor.Red);
                 doc.Open();
-                Paragraph preface = new Paragraph("Home Buying Funnel Form");
+                var Heading = FontFactory.GetFont("Arial", 20, BaseColor.Black);
+                Paragraph preface = new Paragraph("Home Buying Funnel Form", Heading);
                 preface.Alignment = Element.ALIGN_CENTER;
                 doc.Add(preface);
-                doc.Add(new Paragraph("What type of property are you purchasing? Answer: "+input.propertyType));
-                doc.Add(new Paragraph("How will your property be used? Answer: "+input.propertyUse));
-                doc.Add(new Paragraph("Is this your first time buying a home? Answer: "+input.FirstTimeHomeBuying));
-                doc.Add(new Paragraph("When do you plan to purchase? Answer: " + input.planToPurchase));
-                doc.Add(new Paragraph("Perporty Located? Answer: " + input.propertyLocated));
-                doc.Add(new Paragraph("What is the estimated purchase price? Answer: " + input.purchasePrice));
-                doc.Add(new Paragraph("How much is your down payment? Answer: " + input.downPayment));
-                doc.Add(new Paragraph("Are you currently employed? Answer: " + input.currentlyEmployed));
-                doc.Add(new Paragraph("What is your gross annual household income? Answer: " + input.houseHoldIncome));
-                doc.Add(new Paragraph("Can you show proof of income? Answer: " + input.proofOfincome));
-                doc.Add(new Paragraph("Active or previous U.S military sevice? Answer: " + input.militarySevice));
-                doc.Add(new Paragraph("Any bankruptcy in the past 3 years? Answer: " + input.bankruptcyPastThreeYears));
-                doc.Add(new Paragraph("Any foreclosure in the past 2 years? Answer: " + input.foreclosurePastTwoYears));
-                doc.Add(new Paragraph("Number of late mortgage payments in the last 12 months? Answer: " + input.LateMortgagePayments));
-                doc.Add(new Paragraph("How would you rate your credit? Answer: " + input.rateCredit));
-                doc.Add(new Paragraph("First Name? Answer: " + input.firstName));
-                doc.Add(new Paragraph("Last Name? Answer: " + input.lastName));
-                doc.Add(new Paragraph("Email Address? Answer: " + input.emailAddress));
-                doc.Add(new Paragraph("Mobile Phone Number? Answer: " + input.phoneNumber));
-                doc.Add(new Paragraph("Reffered By? Answer: " + input.refferedBy));
+                doc.Add(new Paragraph("Question: What type of property are you purchasing?"));
+                doc.Add(new Paragraph("Answer: " + input.propertyType,FontRed));
+                doc.Add(new Paragraph("Question: How will your property be used?"));
+                doc.Add(new Paragraph("Answer: " + input.propertyUse,FontRed));
+
+                doc.Add(new Paragraph("Question: Is this your first time buying a home?"));
+                doc.Add(new Paragraph("Answer: " + input.FirstTimeHomeBuying,FontRed));
+
+                doc.Add(new Paragraph("Question: When do you plan to purchase?"));
+                doc.Add(new Paragraph("Answer: " + input.planToPurchase,FontRed));
+
+                doc.Add(new Paragraph("Question: Perporty Located?"));
+                doc.Add(new Paragraph("Answer: " + input.propertyLocated, FontRed));
+                doc.Add(new Paragraph("Question: How much is your down payment?"));
+                doc.Add(new Paragraph("Answer: " + input.downPayment, FontRed));
+
+                doc.Add(new Paragraph("Question: Are you currently employed?"));
+                doc.Add(new Paragraph("Answer: " + input.currentlyEmployed, FontRed));
+
+                doc.Add(new Paragraph("Question: What is your gross annual household income?"));
+                doc.Add(new Paragraph("Answer: " + input.houseHoldIncome, FontRed));
+
+                doc.Add(new Paragraph("Question: Can you show proof of income?"));
+                doc.Add(new Paragraph("Answer: " + input.proofOfincome, FontRed));
+
+                doc.Add(new Paragraph("Question: Active or previous U.S military sevice?"));
+                doc.Add(new Paragraph("Answer: " + input.militarySevice, FontRed));
+
+                doc.Add(new Paragraph("Question: Any bankruptcy in the past 3 years?"));
+                doc.Add(new Paragraph("Answer: " + input.bankruptcyPastThreeYears, FontRed));
+
+                doc.Add(new Paragraph("Question: Any foreclosure in the past 2 years?"));
+                doc.Add(new Paragraph("Answer: " + input.foreclosurePastTwoYears, FontRed));
+
+                doc.Add(new Paragraph("Question: Number of late mortgage payments in the last 12 months?"));
+                doc.Add(new Paragraph("Answer: " + input.LateMortgagePayments, FontRed));
+
+                doc.Add(new Paragraph("Question: How would you rate your credit?"));
+                doc.Add(new Paragraph("Answer: " + input.rateCredit, FontRed));
+
+                doc.Add(new Paragraph("Question: First Name?"));
+                doc.Add(new Paragraph("Answer: " + input.firstName, FontRed));
+
+                doc.Add(new Paragraph("Question: Last Name?"));
+                doc.Add(new Paragraph("Answer: " + input.lastName, FontRed));
+
+                doc.Add(new Paragraph("Question: Email Address?"));
+                doc.Add(new Paragraph("Answer: " + input.emailAddress, FontRed));
+
+                doc.Add(new Paragraph("Question: Mobile Phone Number?"));
+                doc.Add(new Paragraph("Answer: " + input.phoneNumber, FontRed));
+
+                doc.Add(new Paragraph("Question: Reffered By?"));
+                doc.Add(new Paragraph("Answer: " + input.refferedBy, FontRed));
+
                 writer.CloseStream = false;
                 doc.Close();
                 memoryStream.Position = 0;

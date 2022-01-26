@@ -11,8 +11,8 @@
   right: 300px;
 }
 
-#button {
-  border: 1px solid orange !important;
+.skip-step {
+  border: 1px solid #f47741 !important;
   width: 260px;
   height: 43px;
   text-align: center;
@@ -25,4 +25,8 @@
 
 .card.bg_transparent:hover {
   background-color: #f47741 !important;
+}
+.skip-step:hover {
+  background-color: #f47741;
+  color: white;
 }

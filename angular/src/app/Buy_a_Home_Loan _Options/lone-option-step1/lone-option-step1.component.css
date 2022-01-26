@@ -11,7 +11,7 @@
 }
 
 #button {
-  border: 1px solid orange !important;
+  border: 1px solid #f47741 !important;
   width: 260px;
   height: 43px;
   text-align: center;
@@ -29,13 +29,15 @@
   width: 100%;
 }
 .firsticon {
-  /* border-radius: 100%; */
   float: left;
-  width: 10px;
-  height: 10px;
-  margin-left: -5px;
-  margin-top: -5px;
-  /* background-color: white; */
+  margin-left: -9px;
+  margin-top: -10px;
+  color: #f47741;
+}
+.firsticon span {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -53px;
 }
 .stepcircle {
   border-radius: 100%;
@@ -48,66 +50,36 @@
   margin-top: -5px;
   background-color: white;
 }
-
-#one {
-  position: relative;
-  top: 11px;
-  right: 15px;
-}
-#two {
-  position: relative;
-  top: 11px;
-  right: 61px;
-}
-
-#three {
-  position: relative;
-  top: 14px;
-  right: 19px;
-}
-
-#four {
-  position: relative;
-  top: 35px;
-  right: 79px;
-}
-
-#five {
-  position: relative;
-  top: 12px;
-  right: 26px;
-}
-
-#six {
-  position: relative;
-  top: 9px;
-  right: 47px;
-}
-
-#seven {
-  position: relative;
-  top: 11px;
-  right: 21px;
-}
-
-#eight {
-  position: relative;
-  top: 8px;
-  right: 22px;
-}
-
-#nine {
-  position: relative;
-  top: 11px;
-  right: 11px;
-}
-
-#ten {
-  position: relative;
-  top: 8px;
-  right: 32px;
-}
-
 .card.bg_transparent:hover {
   background-color: #f47741 !important;
+}
+
+.stepcircle span {
+  position: absolute;
+}
+
+.secondstep {
+  margin-left: -76px;
+  margin-top: 13px;
+}
+
+.thirdstep {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: -30px;
+}
+
+.fourthstep {
+  margin-top: 9px;
+  margin-left: -40px;
+}
+
+.fivestep {
+  margin-top: 10px;
+  margin-left: -29px;
+}
+
+.laststep {
+  margin-top: 9px;
+  margin-left: -39px;
 }
