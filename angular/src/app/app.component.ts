@@ -97,7 +97,47 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/buy-a-home-animated-step16") ||
       this.router.url.includes("/app/buy-a-home-animated-step17") ||
       this.router.url.includes("/app/buy-a-home-animated-step18") ||
-      this.router.url.includes("/app/buy-a-home-animated-step19")
+      this.router.url.includes("/app/buy-a-home-animated-step19") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step1") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step2") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step3") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step4") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step5") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step6") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step7") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step8") ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated-step9") ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step10"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step11"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step12"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step13"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step14"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step15"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step16"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step17"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step18"
+      ) ||
+      this.router.url.includes(
+        "/app/buy-a-home-loan-options-animated-step19"
+      ) ||
+      this.router.url.includes("/app/buy-a-home-loan-options-animated")
     );
   }
 

@@ -164,8 +164,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       payLoanWithNewLoan: new FormControl(this.data.payLoanWithNewLoan),
 
       startedLookingForNewHome: new FormControl(
-        this.data.startedLookingForNewHome,
-        [Validators.required]
+        this.data.startedLookingForNewHome
       ),
       refinancingCurrentHome: new FormControl(this.data.refinancingCurrentHome),
       yearAcquired: new FormControl(this.data.yearAcquired, [
@@ -439,6 +438,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
           break;
       }
     } else {
+      console.log(this.form.controls.keys);
       if (this.form.valid) {
         this._activatedRoute.queryParams.subscribe(async (params) => {
           const id = params["id"];
