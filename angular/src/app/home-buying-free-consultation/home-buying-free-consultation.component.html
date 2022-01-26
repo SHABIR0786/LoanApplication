@@ -11,21 +11,24 @@
             Consultation
           </h1>
           <h4 class="text-muted font-weight-normal pb-4">
-            If you aren’t sure which loan options are best for you, our consultants can help. EZ Online Mortgage offers free consultation for our applicants so you can be sure you get the right home loan for your needs. 
+            If you aren’t sure which loan options are best for you, our
+            consultants can help. EZ Online Mortgage offers free consultation
+            for our applicants so you can be sure you get the right home loan
+            for your needs.
           </h4>
           <a
             class="btn btn-secondary btn-lg ref-btn animbtn btn-animate"
-            href="Jumbo action link"
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
             role="button"
             >pre - qualify now <i class="fa fa-long-arrow-right"></i
           ></a>
         </div>
         <div class="col-lg-4">
           <img
-          class="special-img d-lg-block d-none"
-          src="assets/images/loan-img-7.png"
-          alt=""
-        />
+            class="special-img d-lg-block d-none"
+            src="assets/images/loan-img-7.png"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -33,69 +36,124 @@
 
   <div class="container">
     <section class="page-order-sec py-3 mb-5">
-      <a [routerLink]="['/app/home']" class="text-decoration-none ">Home </a><i class="fa fa-angle-right"></i>
-      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none"> Buying a Home </a><i
-        class="fa fa-angle-right"></i>
-      <a [routerLink]="['/app/home-buying-free-consultation']" class="text-decoration-none"> Home Buying Free Consultation </a>
+      <a [routerLink]="['/app/home']" class="text-decoration-none">Home </a
+      ><i class="fa fa-angle-right"></i>
+      <a [routerLink]="['/app/buying-home-guide']" class="text-decoration-none">
+        Buying a Home </a
+      ><i class="fa fa-angle-right"></i>
+      <a
+        [routerLink]="['/app/home-buying-free-consultation']"
+        class="text-decoration-none"
+      >
+        Home Buying Free Consultation
+      </a>
     </section>
   </div>
 
-  
-    <div class="container text-justify">
-      <h5 class="text-secondary">Know About</h5>
-      <h2 class="font-weight-bold text-primary mb-2">Home Buying Free Consultation</h2>
-      <p class="">
-        Buying a new home can be a daunting process, particularly if you’re a new homebuyer. But don’t let lack of experience, an unstable market, or confusion about the home buying process stop you from achieving your dreams. At EZ Online Mortgage, we provide a free mortgage consultation to all new clients. We’re available to help you embark upon your journey in buying a new home.
-      </p>
-      <p>Our home buying consultants are eager to assist you with all your questions and concerns, and will happily guide you through the entire mortgage process. You’ll find that getting a mortgage with EZ Online Mortgage is simple, easy, and effective! In fact, apply online and get a free instant quote today! One of our dedicated home buying consultants will contact you about scheduling a further home buying free consultation. Whether you’re a first time homebuyer or have home buying experience, we can help you smooth out the kinks in the process and get you the best mortgage at the lowest rates possible! Schedule a Free Consultation With a Professional Oscar Wilde said that “the only thing to do with good advice is to pass it on.” We at EZ Online Mortgage agree—advice is never any use only to oneself. </p>
-      <ng-container *ngIf="visible">
+  <div class="container text-justify">
+    <h5 class="text-secondary">Know About</h5>
+    <h2 class="font-weight-bold text-primary mb-2">
+      Home Buying Free Consultation
+    </h2>
+    <p class="">
+      Buying a new home can be a daunting process, particularly if you’re a new
+      homebuyer. But don’t let lack of experience, an unstable market, or
+      confusion about the home buying process stop you from achieving your
+      dreams. At EZ Online Mortgage, we provide a free mortgage consultation to
+      all new clients. We’re available to help you embark upon your journey in
+      buying a new home.
+    </p>
+    <p>
+      Our home buying consultants are eager to assist you with all your
+      questions and concerns, and will happily guide you through the entire
+      mortgage process. You’ll find that getting a mortgage with EZ Online
+      Mortgage is simple, easy, and effective! In fact, apply online and get a
+      free instant quote today! One of our dedicated home buying consultants
+      will contact you about scheduling a further home buying free consultation.
+      Whether you’re a first time homebuyer or have home buying experience, we
+      can help you smooth out the kinks in the process and get you the best
+      mortgage at the lowest rates possible! Schedule a Free Consultation With a
+      Professional Oscar Wilde said that “the only thing to do with good advice
+      is to pass it on.” We at EZ Online Mortgage agree—advice is never any use
+      only to oneself.
+    </p>
+    <ng-container *ngIf="visible">
+      <div>
+        <p>
+          Our home buying free consultants are eager to put their passion and
+          expertise to good use by assisting you with purchasing your new home.
+          No matter what your financial situation, our experience brokers can
+          help you secure a mortgage to help you buy for your new dream home.
+          Contact EZ Online Mortgage’s Expert Home Buying Consultants Have
+          questions, confusion, or doubts? Stop stressing, let go of your
+          worries, and contact our team of expert home buying consultants at EZ
+          Online Mortgage. Our home buying free consultants have answers to all
+          your questions and concerns! With over 30 years of experience in the
+          industry, extremely affordable rates, a range of online tools, and
+          24/7 mortgage assistance, we provide you the best mortgage solutions
+          to meet your needs.
+        </p>
+      </div>
+    </ng-container>
+    <a
+      (click)="readmore()"
+      class="text-uppercase text-secondary featanimbtn"
+      role="button"
+    >
+      {{ ReadMore ? "Read More" : "Read
+        Less" }}
+      <i class="fa fa-long-arrow-right"></i>
+    </a>
+  </div>
 
-        <div>
-            <p>Our home buying free consultants are eager to put their passion and expertise to good use by assisting you with purchasing your new home. No matter what your financial situation, our experience brokers can help you secure a mortgage to help you buy for your new dream home. Contact EZ Online Mortgage’s Expert Home Buying Consultants Have questions, confusion, or doubts? Stop stressing, let go of your worries, and contact our team of expert home buying consultants at EZ Online Mortgage. Our home buying free consultants have answers to all your questions and concerns! With over 30 years of experience in the industry, extremely affordable rates, a range of online tools, and 24/7 mortgage assistance, we provide you the best mortgage solutions to meet your needs.</p>
-        </div>
-      </ng-container>
-      <a (click)="readmore()" class="text-uppercase text-secondary featanimbtn" role="button"> {{ReadMore?"Read More":"Read
-        Less"}}
-        <i class="fa fa-long-arrow-right "></i>
-      </a>
-    </div>
-  
-
-    <div class="container bg-section-light mb-4" >
-      <h5 class="text-secondary text-center pt-5">Know About</h5>
-      <h3 class="font-weight-bold text-primary text-center ">
-        Want To Explore Your Options?
-      </h3>
-      <div class="row px-5 py-5">
-        <div class="col-sm-6 mb-3">
-          <div class=" pre-box ">
-            <p class="text-white">
-              At EZ Online, you can apply for a mortgage right from your laptop. Our simple
-              online application lets you start and finish the process at your convenience, whenever
-              you are ready.You don't have to talk to a loan officer--you can get our preliminary
-              assessment of your eligibility right away using our high-speed technology.
-            </p>
-            <button class="btn btn-primary text-white  text-uppercase">
+  <div class="container bg-section-light mb-4">
+    <h5 class="text-secondary text-center pt-5">Know About</h5>
+    <h3 class="font-weight-bold text-primary text-center">
+      Want To Explore Your Options?
+    </h3>
+    <div class="row px-5 py-5">
+      <div class="col-sm-6 mb-3">
+        <div class="pre-box">
+          <p class="text-white">
+            At EZ Online, you can apply for a mortgage right from your laptop.
+            Our simple online application lets you start and finish the process
+            at your convenience, whenever you are ready.You don't have to talk
+            to a loan officer--you can get our preliminary assessment of your
+            eligibility right away using our high-speed technology.
+          </p>
+          <a
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
+            style="text-decoration: none"
+          >
+            <button class="btn btn-primary text-white text-uppercase">
               Apply Now
             </button>
-          </div>
+          </a>
         </div>
-        <div class="col-sm-6">
-          <div class="pre-box ">
-            <p class=" text-white">
-              If you would rather talk to a human than a computer,we understand.While we use the fatest
-              and most up-to-date technology available,we also appreciate that a personal touch can
-              sometime make a difference. You can talk to our friendly loan officers to ask about loan
-              products and qualifications and ask all the question you want.
-            </p>
-            <button class="btn btn-primary  text-white text-uppercase">
+      </div>
+      <div class="col-sm-6">
+        <div class="pre-box">
+          <p class="text-white">
+            If you would rather talk to a human than a computer,we
+            understand.While we use the fatest and most up-to-date technology
+            available,we also appreciate that a personal touch can sometime make
+            a difference. You can talk to our friendly loan officers to ask
+            about loan products and qualifications and ask all the question you
+            want.
+          </p>
+          <a
+            [routerLink]="['/app/buy-a-home-loan-options-animated']"
+            style="text-decoration: none"
+          >
+            <button class="btn btn-primary text-white text-uppercase">
               Request a call <i class="fa fa-long-arrow-right"></i>
             </button>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-  
+  </div>
+
   <section class="long-term text-center">
     <span
       class="text-white text-muted text-uppercase banner-scroll d-none d-lg-block position-absolute"
@@ -108,14 +166,36 @@
     <div class="container mx-auto px-2 px-md-4">
       <div class="d-flex align-items-center justify-content-center">
         <div class="col-lg-8">
-          <video id="my_video_1" class="yimVideo video-js vjs-default-skin" style="width: 100%; height: 368px;"
-            height="368px" controls preload="none"
-            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'>
-            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-            <source src="https://vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+          <video
+            id="my_video_1"
+            class="yimVideo video-js vjs-default-skin"
+            style="width: 100%; height: 368px"
+            height="368px"
+            controls
+            preload="none"
+            data-setup='{ "aspectRatio":"630:360", "playbackRates": [1, 1.5, 2] }'
+          >
+            <source
+              src="https://vjs.zencdn.net/v/oceans.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://vjs.zencdn.net/v/oceans.webm"
+              type="video/webm"
+            />
           </video>
         </div>
-        <img class="img-fluid img-poster" (click)="playVideo()" style="position: absolute;width:794px;height: 368px; cursor: pointer;" src="assets/images/videoThumbnail.png">
+        <img
+          class="img-fluid img-poster"
+          (click)="playVideo()"
+          style="
+            position: absolute;
+            width: 794px;
+            height: 368px;
+            cursor: pointer;
+          "
+          src="assets/images/videoThumbnail.png"
+        />
       </div>
     </div>
   </section>
@@ -142,7 +222,7 @@
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 Does Pre-approval mean I am guaranteed to get a loan?
               </a>
@@ -181,7 +261,7 @@
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 How can I improve my chances of getting approved?
               </a>
@@ -219,7 +299,7 @@
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 What are points on a loan?
               </a>
@@ -256,7 +336,7 @@
                 aria-expanded="false"
                 aria-controls="collapseFour"
               >
-              <i class="more-less fa fa-minus"></i>
+                <i class="more-less fa fa-minus"></i>
                 <i class="more-less fa fa-plus"></i>
                 Are interest rates and points the only things to consider when
                 choosing a lender?

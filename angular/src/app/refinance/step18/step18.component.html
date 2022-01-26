@@ -7,7 +7,8 @@
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+          <i class="fa fa-angle-left" style="font-size: 25px"></i>
+          <span style="position: absolute; line-height: 25px">Back</span>
         </p>
       </div>
       <div class="col-lg-4">
@@ -39,6 +40,7 @@
                 placeholder="Enter Your Mobile  Number "
                 [(ngModel)]="formData.phoneNumber"
                 formControlName="phone"
+                appPhoneMask
                 [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
               />
               <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">

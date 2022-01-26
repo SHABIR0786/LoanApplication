@@ -9,14 +9,14 @@
   margin-top: 33px;
 }
 .card-title {
-  font-size: 48px;
+  font-size: 3.3vw;
 }
 
 .card-subtitle {
   position: absolute;
   left: 89px;
   top: 44px;
-  font-size: 20px;
+  font-size: 1.5vw;
 }
 
 #subtitle {
@@ -24,30 +24,16 @@
   left: 90px;
   top: 54px;
   color: gray;
-  font-size: 14px;
+  font-size: 1.2vw;
 }
 
 .subtitle-two {
   position: relative;
   top: 67px;
   right: 56px;
-  font-size: 11px;
+  font-size: 0.7vw;
   color: gray;
-}
-.subtitle-three {
-  font-size: 11px;
-  color: gray;
-  position: absolute;
-  top: 106px;
-  left: 31px;
-}
-
-.subtitle-four {
-  font-size: 11px;
-  color: gray;
-  position: absolute;
-  top: 120px;
-  left: 33px;
+  text-align: left;
 }
 
 #text-one {
@@ -55,7 +41,7 @@
   top: 44px;
   right: 81px;
   color: orange;
-  font-size: 26px;
+  font-size: 1.5vw;
 }
 
 #text-two {

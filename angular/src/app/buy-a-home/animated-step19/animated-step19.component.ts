@@ -25,7 +25,7 @@ export class AnimatedStep19Component implements OnInit {
     return this.form.controls;
   }
 
-  refferedBy = "";
+  refferedBy = "Google";
   refferedByList = ["Google", "Facebook", "Instagram", "Twitter", "Youtube"];
   ngOnInit(): void {
     this.form = this.formBuilder.group({

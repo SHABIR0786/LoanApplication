@@ -26,12 +26,12 @@ export class AnimatedStep7Component implements OnInit {
     return this.form.controls;
   }
 
-  amount = 0;
-  downPercent = 0;
+  downPayment = 0;
+  downPaymentPercent = 0;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      amount: [null, Validators.required],
-      downPercent: [null, [Validators.max(100), Validators.min(0)]],
+      downPayment: [null, Validators.required],
+      downPaymentPercent: [null, [Validators.max(100), Validators.min(0)]],
     });
     this.formData = this._homeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
@@ -45,12 +45,12 @@ export class AnimatedStep7Component implements OnInit {
 
   percentChange(e) {
     if (e.target.value > 100) {
-      this.form.controls["downPercent"].setValue(100);
+      this.form.controls["downPaymentPercent"].setValue(100);
     }
     if (e.target.value < 0) {
-      this.form.controls["downPercent"].setValue(0);
+      this.form.controls["downPaymentPercent"].setValue(0);
     }
-    this.form.controls["amount"].setValue(
+    this.form.controls["downPayment"].setValue(
       this._homeBuyingDataService.data.purchasePrice * (e.target.value / 100)
     );
   }
@@ -58,15 +58,11 @@ export class AnimatedStep7Component implements OnInit {
   downPaymentChange(e) {
     if (e.target.value > this._homeBuyingDataService.data.purchasePrice) {
       e.preventDefault();
-      this.form.controls["amount"].setValue(
+      this.form.controls["downPayment"].setValue(
         this._homeBuyingDataService.data.purchasePrice
       );
     }
-
-    // console.log(parseInt(e.target.value.split("$")[1]));
-    // console.log((parseInt(this._homeBuyingDataService.data.purchasePrice)));
-    // console.log((parseInt(e.target.value.split("$")[1]) * 100) / (parseInt(this._homeBuyingDataService.data.purchasePrice )));
-    this.form.controls["downPercent"].setValue(
+    this.form.controls["downPaymentPercent"].setValue(
       (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
         parseFloat(this._homeBuyingDataService.data.purchasePrice)
     );
@@ -78,8 +74,8 @@ export class AnimatedStep7Component implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.formData.downPayment = data.amount;
-    this.formData.downPaymentPercent = data.downPercent;
+    this.formData.downPayment = data.downPayment;
+    this.formData.downPaymentPercent = data.downPaymentPercent;
     this._homeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-animated-step8"]);
   }

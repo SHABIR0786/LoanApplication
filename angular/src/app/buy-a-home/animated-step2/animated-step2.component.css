@@ -22,3 +22,7 @@
 .gage-chart {
   margin-top: 50px !important;
 }
+
+button.btn:hover {
+  background-color: #f47741;
+}

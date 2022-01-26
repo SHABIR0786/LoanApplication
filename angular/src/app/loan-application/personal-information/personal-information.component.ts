@@ -227,8 +227,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         [Validators.required]
       ),
       coBorrowerResidentialAddressSameAsBorrowerResidential: new FormControl(
-        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential,
-        [Validators.required]
+        this.data.coBorrowerResidentialAddressSameAsBorrowerResidential
       ),
       residentialAddress: this.initAddressForm(
         this.data.residentialAddress || {},

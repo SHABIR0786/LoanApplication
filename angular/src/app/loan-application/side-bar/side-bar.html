@@ -1,8 +1,8 @@
 <div class="loan-application">
   <div class="row min-vh-100 flex-column flex-md-row">
-    <aside class="p-0 bg-dark-blue flex-shrink-1">
+    <aside class="col-3 p-0 flex-shrink-1">
       <nav
-        class="navbar navbar-expand navbar-dark bg-dark-blue flex-md-column flex-row align-items-start px-0"
+        class="navbar navbar-expand flex-md-column flex-row align-items-start px-0"
       >
         <ul
           class="flex-md-column flex-row navbar-nav w-100 justify-content-between mt-5"
@@ -10,7 +10,7 @@
           <li
             class="nav-item"
             [class.active]="item.isActive"
-            *ngFor="let item of menuItems"
+            *ngFor="let item of menuItems; let i=index"
           >
             <a
               class="nav-link text-nowrap"
@@ -20,20 +20,15 @@
               [queryParams]="{ id : Id }"
               [class.active]="item.isActive"
             >
-              <div class="row pr-3">
-                <div class="col-1">
-                  <i class="{{ item.icon }}"></i>
-                </div>
-                <div class="col-8">
-                  <span class="text-white">{{ item.label }}</span>
-                </div>
-              </div>
+              <div class="circle"></div>
+              <span class="label">{{ item.label }}</span>
+              <div class="line"></div>
             </a>
           </li>
         </ul>
       </nav>
     </aside>
-    <main class="col bg-faded flex-grow-1">
+    <main class="col-9 bg-faded flex-grow-1">
       <router-outlet></router-outlet>
     </main>
   </div>

@@ -23,3 +23,8 @@
   margin-left: 274px;
   margin-top: 6px;
 }
+
+.cursor_pointer:hover {
+  background-color: #f47741 !important;
+  color: white !important;
+}

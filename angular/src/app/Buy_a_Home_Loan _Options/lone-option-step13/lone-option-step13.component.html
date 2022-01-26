@@ -1,6 +1,6 @@
 <div class="Content-Step-Body text-white">
   <div class="container">
-    <h2 class="pb-5">What do you want to do next?</h2>
+    <h2>What do you want to do next?</h2>
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <div class="form-group mt-4">
@@ -17,16 +17,14 @@
             <div id="hr-two"></div>
           </div>
         </div>
+        <p
+          id="Save-and cursor_pointer"
+          style="width: 84%"
+          (click)="proceedToNext('Save and return later')"
+        >
+          Save and return later
+        </p>
       </div>
-    </div>
-
-    <div>
-      <p
-        id="Save-and cursor_pointer"
-        (click)="proceedToNext('Save and return later')"
-      >
-        Save and return later
-      </p>
     </div>
   </div>
 </div>

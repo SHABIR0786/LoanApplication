@@ -5,7 +5,7 @@
       Just an estimate is fine. You can update the amount later in the process.
     </h4>
     <form [formGroup]="form">
-      <span style="position: absolute; margin-top: 58px; margin-left: 157px"
+      <span style="position: absolute; margin-top: 21px; margin-left: 154px"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -31,7 +31,10 @@
         mask="separator.2"
         thousandSeparator=","
         maxlength="18"
+        [(ngModel)]="formData.CashBorrow"
+        (change)="changeamount()"
       />
+
       <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
         <div *ngIf="f.amount.errors.required">Enter Valid Amount</div>
       </div>
@@ -41,13 +44,16 @@
           type="range"
           min="1"
           max="100"
+          #ref
           value="2"
           class="slider"
           id="myRange"
+          (change)="change(ref.value)"
         />
       </div>
       <p id="Back" (click)="proceedToPrevious()">
-        <i class="fa fa-angle-left" style="font-size: 25px"></i>Back
+        <i class="fa fa-angle-left" style="font-size: 25px"></i>
+        <span style="position: absolute; line-height: 25px">Back</span>
       </p>
     </form>
     <button
