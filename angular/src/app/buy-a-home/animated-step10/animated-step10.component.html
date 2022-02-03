@@ -2,18 +2,18 @@
   <div class="container">
     <h2 class="">Can you show proof of income?</h2>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-5">
       <div class="col-lg-4">
         <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
-      <div class="col-lg-4">
-        <div class="btn">
+      <div class="col-lg-4 px-0 pt-0">
+        <div class="btn px-0">
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-primary btn-lg btn-block mb-3 selected2"
             (click)="proceedToNext(true)"
             [class.selected]="formData.proofOfincome == true"
           >

@@ -4,20 +4,23 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left" style="font-size: 25px"></i>
-          <span style="position: absolute; line-height: 25px">Back</span>
+        <p
+          id="Back"
+          class="fa fa-angle-left cursor_pointer"
+          (click)="proceedToPrevious()"
+        >
+          <span style="margin-left: 5px">Back</span>
         </p>
       </div>
-      <div class="col-lg-4">
-        <div class="BTN">
-          <select class="form-control input-special mb-3">
+      <div class="col-lg-4 px-0">
+        <div class="BTN px-0">
+          <select class="form-control input-special mb-3 h_70 fs_22">
             <option value="california">California</option>
           </select>
 
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-primary btn-lg btn-block mb-3 h_70 fs_22"
             (click)="proceedToNext('California')"
           >
             Next

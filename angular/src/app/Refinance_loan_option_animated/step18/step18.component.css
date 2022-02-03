@@ -1,10 +1,12 @@
 #next {
-  width: 184px;
+  width: 239px;
+  height: 56px !important;
 }
 
-#step {
-  width: 309px;
-  height: 39;
+#step,
+input {
+  width: 362px;
+  height: 56px !important;
 }
 
 #Back {
