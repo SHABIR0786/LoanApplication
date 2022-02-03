@@ -3,31 +3,35 @@
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <h2>Have you or your spouse ever served in the military?</h2>
-        <div class="col-lg-4">
-          <i class="fa fa-angle-left" id="icon"></i>
-          <p id="Back" (click)="proceedToPrevious()">Back</p>
-        </div>
       </div>
     </div>
-
+    <div class="col-lg-4 pl-4">
+      <i class="fa fa-angle-left" id="icon"></i>
+      <p id="Back" (click)="proceedToPrevious()">Back</p>
+    </div>
     <div class="row justify-content-center pt-4">
       <div class="col-md-4 col-lg-3">
         <div
-          class="card bg_transparent border mb-3 mb-md-0 text-center"
+          class="card bg_transparent mb-3 mb-md-0 text-center"
           [class.selected]="formData.militarySevice == true"
         >
-          <div class="card-body cursor_pointer" (click)="proceedToNext(true)">
-            <h1 class="pb-3 pt-4 text-white">Yes</h1>
+          <div
+            class="card-body cursor_pointer bg-white"
+            (click)="proceedToNext(true)"
+          >
+            <h1 class="pb-3 pt-4 text-white" style="color: #f47741 !important">
+              YES
+            </h1>
           </div>
         </div>
       </div>
       <div class="col-md-4 col-lg-3">
         <div
-          class="card bg_transparent border mb-3 mb-md-0 text-center"
+          class="card bg_transparent mb-3 mb-md-0 text-center selected2"
           [class.selected]="formData.militarySevice == false"
         >
           <div class="card-body cursor_pointer" (click)="proceedToNext(false)">
-            <h1 class="pb-3 pt-4 text-white">No</h1>
+            <h1 class="pb-3 pt-4 text-white">NO</h1>
           </div>
         </div>
       </div>

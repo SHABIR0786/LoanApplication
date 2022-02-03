@@ -6,13 +6,12 @@
     </p>
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left" style="font-size: 25px"></i>
+        <p id="back" (click)="proceedToPrevious()" class="fa fa-angle-left">
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
-      <div class="col-lg-4">
-        <div class="BTN">
+      <div class="col-lg-4 px-0">
+        <div class="BTN px-0">
           <form [formGroup]="form">
             <div id="first_name">
               <h3 style="width: 112px; font-size: 20px">First Name*</h3>

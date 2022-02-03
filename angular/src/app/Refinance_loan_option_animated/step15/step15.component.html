@@ -9,7 +9,7 @@
       <div class="col-lg-4">
         <div class="form-group mt-5">
           <div
-            class="box-fill bg-white cursor_pointer"
+            class="box-fill bg-white cursor_pointer px-3"
             (click)="proceedToNext('Excellent (740+)')"
             [class.selected]="formData.rateCredit == 'Excellent (740+)'"
             [class.text-white]="formData.rateCredit == 'Excellent (740+)'"
@@ -18,7 +18,7 @@
             <p class="number">(740+)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4 cursor_pointer"
+            class="box-fill bg-white mt-4 cursor_pointer px-3"
             (click)="proceedToNext('Good (700-739)')"
             [class.selected]="formData.rateCredit == 'Good (700-739)'"
             [class.text-white]="formData.rateCredit == 'Good (700-739)'"
@@ -27,7 +27,7 @@
             <p class="number">(700-739)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4 cursor_pointer"
+            class="box-fill bg-white mt-4 cursor_pointer px-3"
             (click)="proceedToNext('Average (640-699)')"
             [class.selected]="formData.rateCredit == 'Average (640-699)'"
             [class.text-white]="formData.rateCredit == 'Average (640-699)'"
@@ -36,7 +36,7 @@
             <p class="number">(640-699)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4 cursor_pointer"
+            class="box-fill bg-white mt-4 cursor_pointer px-3"
             (click)="proceedToNext('Fair (580-639)')"
             [class.selected]="formData.rateCredit == 'Fair (580-639)'"
             [class.text-white]="formData.rateCredit == 'Fair (580-639)'"
@@ -45,7 +45,7 @@
             <p class="number">(580-639)</p>
           </div>
           <div
-            class="box-fill bg-white mt-4 cursor_pointer"
+            class="box-fill bg-white mt-4 cursor_pointer px-3 selected2 text-white"
             (click)="proceedToNext('Needs Improvemnt (579 & below)')"
             [class.selected]="
               formData.rateCredit == 'Needs Improvemnt (579 & below)'
@@ -54,8 +54,8 @@
               formData.rateCredit == 'Needs Improvemnt (579 & below)'
             "
           >
-            <p class="float-left">Needs Improvemnt</p>
-            <p class="number">(579 & below)</p>
+            <p class="float-left text-white">Needs Improvemnt</p>
+            <p class="number text-white">(579 & below)</p>
           </div>
         </div>
         <!-- <a href="" class="btn btn-secondary text-uppercase mt-4 text-white btn-next" id="next">Needs Improvemnt</a> -->

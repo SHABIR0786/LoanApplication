@@ -1,25 +1,26 @@
 #Back {
   position: relative;
-  top: 188px;
-  right: 270px;
-  cursor: pointer;
+  top: 157px;
+  font-size: 20px;
+  right: -20px;
 }
 #icon {
+  top: 160px;
   font-size: 26px;
   position: relative;
-  top: 215px;
-  right: 300px;
+  right: -23px;
 }
 
 #button {
   border: 1px solid orange !important;
-  width: 260px;
-  height: 43px;
   text-align: center;
   color: #ffffff;
   background-color: #091a52;
-  margin-left: 494px;
-  margin-top: 33px;
+  cursor: pointer;
+  width: 100%;
+  height: 56px;
+  font-size: 17px;
+  font-weight: 500;
 }
 .card.bg_transparent:hover {
   background-color: #f47741 !important;
