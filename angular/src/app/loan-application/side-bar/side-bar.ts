@@ -5,6 +5,7 @@ import {
   Injector,
   OnInit,
 } from "@angular/core";
+
 import {
   NavigationEnd,
   PRIMARY_OUTLET,
@@ -28,7 +29,7 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
   menuItemsMap: { [key: number]: MenuItem } = {};
   activatedMenuItems: MenuItem[] = [];
   routerEvents: BehaviorSubject<RouterEvent> = new BehaviorSubject(undefined);
-
+  isAlreadyActive: Boolean = false;
   homeRoute = "/app/home";
   building = "fas fa-building";
   dollar = " fas fa-dollar-sign";
@@ -69,17 +70,22 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
     this.routerEvents
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
+        this.isAlreadyActive = false;
         const currentUrl = event.url !== "/" ? event.url : this.homeRoute;
         const primaryUrlSegmentGroup = this.router.parseUrl(currentUrl).root
           .children[PRIMARY_OUTLET];
         if (primaryUrlSegmentGroup) {
           this.activateMenuItems("/" + primaryUrlSegmentGroup.toString());
         }
+        this.setBackgroundColor(this.menuItems, currentUrl);
       });
+    console.log(currentUrl);
+    this.setBackgroundColor(this.menuItems, currentUrl);
   }
 
   getMenuItems(): MenuItem[] {
     return [
+      new MenuItem(this.l("Welcome"), "/app/welcome", this.dollar, ""),
       new MenuItem(this.l("Loan Detail"), "/app/loan-detail", this.dollar, ""),
       new MenuItem(
         this.l("Personal Information"),
@@ -150,14 +156,32 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
 
   activateMenuItem(item: MenuItem): void {
     item.isActive = true;
+
     if (item.children) {
       item.isCollapsed = false;
     }
+
+    item.isBackgroundcolor = true;
     this.activatedMenuItems.push(item);
     if (item.parentId) {
       this.activateMenuItem(this.menuItemsMap[item.parentId]);
     }
-
     this._changeDetectorRef.markForCheck();
+  }
+  setBackgroundColor(items: MenuItem[], currentUrl: string): void {
+    var foundcurrentURL = false;
+    items.forEach((item: MenuItem) => {
+      if (item.route == currentUrl) {
+        foundcurrentURL = true;
+      } else {
+        if (foundcurrentURL) {
+          item.isBackgroundcolor = false;
+        } else {
+          item.isBackgroundcolor = true;
+        }
+      }
+    });
+    this.menuItems = JSON.parse(JSON.stringify(items));
+    console.log(this.menuItems);
   }
 }

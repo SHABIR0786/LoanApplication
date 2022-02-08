@@ -25,6 +25,7 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
   get IsLoanForm(): boolean {
     return (
+      this.router.url.includes("/app/welcome") ||
       this.router.url.includes("/app/loan-detail") ||
       this.router.url.includes("/app/personal-information") ||
       this.router.url.includes("/app/expense") ||
