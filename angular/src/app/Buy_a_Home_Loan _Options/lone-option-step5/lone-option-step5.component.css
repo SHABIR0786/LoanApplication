@@ -1,33 +1,36 @@
 #next {
-  width: 190px;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
 }
 
-#Property {
-  width: 281px;
-  height: 58px;
-  font-size: 23px;
+#Property,
+#Property1 {
+  width: 365px;
+  height: 78px;
+  font-size: 40px;
 }
 
 #Back {
   position: relative;
   top: 182px;
-  right: 196px;
+  right: 158px;
   cursor: pointer;
 }
-
 #icon {
   font-size: 26px;
   position: relative;
   top: 209px;
-  right: 230px;
+  right: 189px;
 }
 
 .slide-value-percent {
   position: relative;
-  bottom: 49px;
+  bottom: 68px;
   left: 113px;
   color: black;
-  font-size: 26px;
+  font-size: 40px;
   border-left: 1px solid black;
   padding: 12px;
 }

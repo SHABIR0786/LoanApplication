@@ -6,7 +6,7 @@
       <p id="Back" (click)="proceedToPrevious()">Back</p>
     </div>
     <div class="row justify-content-center">
-      <div class="col-lg-4">
+      <div class="col-lg-4 pl-4">
         <div class="form-group">
           <form
             class="form"
@@ -15,7 +15,7 @@
           >
             <!-- <label class="text-uppercase text-left">Property Value</label> -->
             <input
-              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3"
+              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3 pl-4"
               id="step"
               type="text"
               required
@@ -34,7 +34,7 @@
             </div>
 
             <input
-              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3"
+              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3 pl-4"
               id="step"
               required
               type="text"
@@ -52,7 +52,7 @@
               </div>
             </div>
             <input
-              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3"
+              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3 pl-4"
               id="step"
               required
               type="text"
@@ -66,7 +66,7 @@
               <div *ngIf="f.email.errors.email">Enter Valid Email.</div>
             </div>
             <input
-              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3"
+              class="form-control form-control-lg-next text-primary bg-white font-weight-bolder mt-3 pl-4"
               id="step"
               type="text"
               required
@@ -96,7 +96,7 @@
             </p>
             <button
               type="button"
-              class="btn btn-secondary text-uppercase mt-4 text-white btn-next"
+              class="btn btn-secondary mt-4 text-white btn-next"
               id="next"
               (click)="SubmitForm()"
             >

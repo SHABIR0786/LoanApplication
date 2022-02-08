@@ -1,22 +1,25 @@
 .Content-Step-Body .card,
 .refinance-card {
-  color: #f47741 !important;
-  background-color: #ffffff !important;
+  color: #f47741;
+  background-color: #ffffff;
 }
-
-.Content-Step-Body .card:hover,
-.refinance-card:hover {
+.Content-Step-Body .selected {
   background-color: #f47741 !important;
   color: #ffffff !important;
 }
 
-.Content-Step-Body .card:hover .home-bg-img {
+/* .Content-Step-Body .card:hover,
+.refinance-card:hover {
+  background-color: #f47741 !important;
+  color: #ffffff !important;
+} */
+
+/* .Content-Step-Body .card:hover .home-bg-img {
   background-image: url("../../../assets/images/home-white.png");
 }
 .refinance-card:hover .dollar-bg-img {
   background-image: url("../../../assets/images/dollar-arrow1.png");
-}
-.home-bg-img {
+  .home-bg-img {
   width: 67px;
   height: 66px;
   background-position: center;
@@ -25,10 +28,24 @@
   background-size: cover;
   background-image: url("../../../assets/images/home.png");
 }
+} */
+.home-bg-img {
+  /* width: 67px;
+  height: 66px; */
+  width: 121px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/home-white.png");
+}
 
 .dollar-bg-img {
-  width: 60px;
-  height: 65px;
+  /* width: 60px;
+  height: 65px; */
+  width: 108px;
+  height: 116px;
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;

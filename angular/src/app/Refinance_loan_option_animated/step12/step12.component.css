@@ -1,13 +1,14 @@
 #Cash {
-  width: 291px;
-
-  height: 58px;
-
-  font-size: 23px;
+  width: 361px;
+  height: 78px;
+  font-size: 40px;
 }
 
 #next {
-  width: 167px;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
 }
 
 #Back {
@@ -21,4 +22,7 @@
   position: relative;
   top: 209px;
   right: 230px;
+}
+h2 {
+  font-size: 40px;
 }

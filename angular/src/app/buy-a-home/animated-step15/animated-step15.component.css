@@ -7,9 +7,9 @@
   text-decoration-color: white;
 }
 #back {
-  margin-top: 280px;
-  margin-right: 150px;
-  margin-left: 10px;
+  margin-top: 237px;
+  margin-right: 350px;
+  margin-left: 23px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -27,6 +27,6 @@
   background-color: #f47741;
 }
 
-button.btn:hover {
+/* button.btn:hover {
   background-color: #f47741;
-}
+} */

@@ -11,22 +11,24 @@
 
 #Back {
   position: relative;
-  top: 114px;
-  right: 270px;
-  cursor: pointer;
+  top: 25px;
+  font-size: 20px;
 }
 #icon {
+  top: 28px;
   font-size: 26px;
   position: relative;
-  top: 141px;
-  right: 300px;
+  /* top: 141px; */
+  /* right: 300px; */
 }
 .hrline {
-  width: 100%;
+  /* width: 100%; */
+  margin-left: 10%;
+  width: 85%;
 }
 .hrline hr {
   border-top: 1px solid white;
-  width: 100%;
+  width: 99%;
 }
 .firsticon {
   float: left;
@@ -35,22 +37,22 @@
   color: #f47741;
 }
 .firsticon span {
+  font-size: 12px;
   position: absolute;
-  margin-top: 20px;
-  margin-left: -53px;
+  margin-top: 26px;
+  margin-left: -48px;
 }
 .stepcircle {
   border-radius: 100%;
   border: 1px solid white;
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   float: left;
   margin-left: 19.1%;
   margin-top: -5px;
   background-color: white;
 }
-
 .card.bg_transparent:hover {
   background-color: #f47741 !important;
 }
@@ -58,24 +60,34 @@
 .stepcircle span {
   position: absolute;
 }
+
 .secondstep {
-  margin-left: -76px;
-  margin-top: 13px;
+  margin-top: 17px;
+  font-size: 12px;
+  margin-left: -58px;
 }
+
 .thirdstep {
   position: absolute;
-  margin-top: 10px;
-  margin-left: -30px;
+  margin-top: 17px;
+  margin-left: -22px;
+  font-size: 12px;
 }
+
 .fourthstep {
-  margin-top: 9px;
-  margin-left: -40px;
-}
-.fivestep {
-  margin-top: 10px;
+  margin-top: 17px;
   margin-left: -29px;
+  font-size: 12px;
 }
+
+.fivestep {
+  margin-top: 17px;
+  margin-left: -18px;
+  font-size: 12px;
+}
+
 .laststep {
-  margin-top: 9px;
-  margin-left: -39px;
+  margin-top: 17px;
+  margin-left: -26px;
+  font-size: 12px;
 }

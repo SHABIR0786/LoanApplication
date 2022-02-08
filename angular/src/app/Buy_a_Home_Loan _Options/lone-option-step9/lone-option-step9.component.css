@@ -13,6 +13,7 @@
 
 .box-fill {
   border-radius: 12px;
+  font-size: 18px;
 }
 
 .float-left {
@@ -20,11 +21,11 @@
 }
 
 .number {
-  margin-left: 274px;
+  margin-left: 233px;
   margin-top: 6px;
 }
 
-.cursor_pointer:hover {
+/* .cursor_pointer:hover {
   background-color: #f47741 !important;
   color: white !important;
-}
+} */
