@@ -11,8 +11,8 @@
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
-      <div class="col-lg-4">
-        <div class="btn">
+      <div class="col-lg-4 px-0 pt-0">
+        <div class="btn px-0">
           <br /><br />
           <form class="form" [formGroup]="form">
             <span class="percent">%</span>
@@ -22,7 +22,7 @@
               type="number"
               [(ngModel)]="formData.downPaymentPercent"
               dir="rtl"
-              class="form-control input-special mb-3 number_percent"
+              class="form-control input-special mb-3 number_percent pl-4"
               (change)="percentChange($event)"
               formControlName="downPaymentPercent"
             />
