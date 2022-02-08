@@ -32,14 +32,14 @@ export class ExpensesComponent implements OnInit, DoCheck {
     if (response && response.success) {
       this._dataService.loanApplication = response.result;
       this.data = this._dataService.loanApplication.expenses;
-      if(!this.data){
+      if (!this.data) {
         this.data = {};
       }
       if (this.data && this.data.isLiveWithFamilySelectRent) {
         this.data.isLiveWithFamilySelectRent = this.data.isLiveWithFamilySelectRent.toString();
       } else {
-         this.data.isLiveWithFamilySelectRent = "";
-    }
+        this.data.isLiveWithFamilySelectRent = "";
+      }
       this.initForm();
       this.form.patchValue(this.data);
     }
@@ -61,7 +61,8 @@ export class ExpensesComponent implements OnInit, DoCheck {
     this.form = new FormGroup({
       id: new FormControl(this.data.id),
       isLiveWithFamilySelectRent: new FormControl(
-        this.data.isLiveWithFamilySelectRent,[Validators.required]
+        this.data.isLiveWithFamilySelectRent,
+        [Validators.required]
       ),
       rent: new FormControl(this.data.rent),
       otherHousingExpenses: new FormControl(this.data.otherHousingExpenses, [
@@ -165,23 +166,23 @@ export class ExpensesComponent implements OnInit, DoCheck {
 
   proceedToNext() {
     this.submitForm();
-    if (this.form && this.form.valid) {
-      //this._ngWizardService.next();
-      this._activatedRoute.queryParams.subscribe(async (params) => {
-        const id = params["id"];
-        if (id) {
-          this._route.navigate(["app/asset"], {
-            queryParams: {
-              id: id,
-            },
-          });
-        } else {
-          this._route.navigate(["app/asset"]);
-        }
-      });
-    } else {
-      this.form.markAllAsTouched();
-    }
+    // if (this.form && this.form.valid) {
+    //this._ngWizardService.next();
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this._route.navigate(["app/asset"], {
+          queryParams: {
+            id: id,
+          },
+        });
+      } else {
+        this._route.navigate(["app/asset"]);
+      }
+    });
+    // } else {
+    //   this.form.markAllAsTouched();
+    // }
   }
 
   proceedToPrevious() {
