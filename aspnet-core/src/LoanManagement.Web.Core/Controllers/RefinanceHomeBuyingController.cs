@@ -47,72 +47,119 @@ namespace LoanManagement.Controllers
                 MemoryStream memoryStream = new MemoryStream();
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
                 var FontRed = FontFactory.GetFont("Arial", 13, BaseColor.Red);
+                var FontBlack = FontFactory.GetFont("Arial", 13, BaseColor.Black);
+                var Answer = new Chunk("Answer: ", FontBlack);
+
                 var Heading = FontFactory.GetFont("Arial", 20, BaseColor.Black);
                 doc.Open();
                 Paragraph preface = new Paragraph("Refinance Home Buying Funnel Form", Heading);
                 preface.Alignment = Element.ALIGN_CENTER;
                 doc.Add(preface);
                 doc.Add(new Paragraph("Question: What state is the property located in?"));
-                doc.Add(new Paragraph("Answer: " + input.propertyLocated,FontRed));
+                var phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.propertyLocated, FontRed));
+                doc.Add(phrase);
+
+
                 doc.Add(new Paragraph("Question: What type of home are you refinancing?"));
-                doc.Add(new Paragraph("Answer: " + input.propertyType, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.propertyType, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: How will your property be used?"));
-                doc.Add(new Paragraph("Answer: " + input.PropertyUse, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.PropertyUse, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Why do you want to refinance?"));
-                doc.Add(new Paragraph("Answer: " + input.WantRefinance, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.WantRefinance, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: What's your home's value?"));
-                doc.Add(new Paragraph("Answer: " + input.HomePrice, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.HomePrice.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: How much do you owe?"));
-                doc.Add(new Paragraph("Answer: " + input.Owe, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.Owe.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: How much cash do you want to borrow?"));
-                doc.Add(new Paragraph("Answer: " + input.CashBorrow, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.CashBorrow.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Do you currently have an FHA loan?"));
-                doc.Add(new Paragraph("Answer: " + input.FHALoan, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.FHALoan, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Active or previous U.S military sevice?"));
-                doc.Add(new Paragraph("Answer: " + input.militarySevice, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.militarySevice?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Any foreclosure in the past 2 years?"));
-                doc.Add(new Paragraph("Answer: " + input.foreclosurePastTwoYears, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.foreclosurePastTwoYears?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Any bankruptcy in the past 3 years?"));
-                doc.Add(new Paragraph("Answer: " + input.bankruptcyPastThreeYears, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.bankruptcyPastThreeYears?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Number of late mortgage payments in the last 12 months?"));
-                doc.Add(new Paragraph("Answer: " + input.LateMortgagePayments, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.LateMortgagePayments, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Are you currently employed?"));
-                doc.Add(new Paragraph("Answer: " + input.currentEmployed, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.currentEmployed, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: What is your gross annual household income?"));
-                doc.Add(new Paragraph("Answer: " + input.houseHoldIncome, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.houseHoldIncome, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Can you show proof of income?"));
-                doc.Add(new Paragraph("Answer: " + input.proofOfincome, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.proofOfincome?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: How would you rate your credit?"));
-                doc.Add(new Paragraph("Answer: " + input.rateCredit, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.rateCredit, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: First Name?"));
-                doc.Add(new Paragraph("Answer: " + input.firstName, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.firstName, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Last Name?"));
-                doc.Add(new Paragraph("Answer: " + input.lastName, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.lastName, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Email Address?"));
-                doc.Add(new Paragraph("Answer: " + input.emailAddress, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.emailAddress, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Mobile Phone Number?"));
-                doc.Add(new Paragraph("Answer: " + input.phoneNumber, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.phoneNumber, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Reffered By?"));
-                doc.Add(new Paragraph("Answer: " + input.refferedBy, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.refferedBy, FontRed));
+                doc.Add(phrase);
 
                 writer.CloseStream = false;
                 doc.Close();

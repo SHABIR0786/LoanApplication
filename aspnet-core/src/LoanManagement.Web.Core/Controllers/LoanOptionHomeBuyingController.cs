@@ -52,64 +52,103 @@ namespace LoanManagement.Controllers
                 MemoryStream memoryStream = new MemoryStream();
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
                 var FontRed = FontFactory.GetFont("Arial", 13, BaseColor.Red);
+                var FontBlack = FontFactory.GetFont("Arial", 13, BaseColor.Black);
+                var Answer = new Chunk("Answer: ", FontBlack);
+
                 var Heading = FontFactory.GetFont("Arial", 20, BaseColor.Black);
                 doc.Open();
                 Paragraph preface = new Paragraph("Home Buying Loan Options", Heading);
                 preface.Alignment = Element.ALIGN_CENTER;
                 doc.Add(preface);
                 doc.Add(new Paragraph("Question: Tell us how you’re using this property?"));
-                doc.Add(new Paragraph("Answer: " + input.PropertyUse,FontRed));
+                var phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.PropertyUse, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Now, what type of property is it? "));
-                doc.Add(new Paragraph("Answer: " + input.propertyType, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.propertyType, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: what’s the zip code?"));
-                doc.Add(new Paragraph("Answer: " + input.zipCode, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.zipCode, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Now, approximately how long do you plan to own the property ?"));
-                doc.Add(new Paragraph("Answer: " + input.howLongPlan, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.howLongPlan, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: we’ll need an estimated purchase and down payment?"));
-                doc.Add(new Paragraph("Answer: " + input.estimatePrice, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.estimatePrice.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: we’ll need a down payment?"));
-                doc.Add(new Paragraph("Answer: " + input.downPayment, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.downPayment.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: What's the percentage of down payment?"));
-                doc.Add(new Paragraph("Answer: " + input.downPaymentPercent, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.downPaymentPercent.ToString(), FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: First time homebuyer?"));
-                doc.Add(new Paragraph("Answer: " + input.FirstTimeHomeBuying, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.FirstTimeHomeBuying?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Have you or your spouse ever served in the military?"));
-                doc.Add(new Paragraph("Answer: " + input.militarySevice, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.militarySevice?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: To the best of your knowledge, what’s most important to you?"));
-                doc.Add(new Paragraph("Question: Answer: " + input.important_to_you, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.important_to_you, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Now what’s your credit score? An estimate is fine.?"));
-                doc.Add(new Paragraph("Answer: " + input.rateCredit, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.rateCredit, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Currently working with a loan officer?"));
-                doc.Add(new Paragraph("Answer: " + input.workingWithLoanOfficer, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.workingWithLoanOfficer?"Yes":"No", FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: OK here are your personalized GRaffordability results page 11 ?"));
-                doc.Add(new Paragraph("Answer: " + input.plan_page11, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.plan_page11, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: OK here are your personalized GRaffordability results page12 ?"));
-                doc.Add(new Paragraph("Answer: " + input.plan_page12, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.plan_page12, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: First Name?"));
-                doc.Add(new Paragraph("Answer: " + input.firstName, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.firstName, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Last Name?"));
-                doc.Add(new Paragraph("Answer: " + input.lastName, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.lastName, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Email Address?"));
-                doc.Add(new Paragraph("Answer: " + input.emailAddress, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.emailAddress, FontRed));
+                doc.Add(phrase);
 
                 doc.Add(new Paragraph("Question: Mobile Phone Number?"));
-                doc.Add(new Paragraph("Answer: " + input.phoneNumber, FontRed));
+                phrase = new Phrase(Answer);
+                phrase.Add(new Chunk(input.phoneNumber, FontRed));
+                doc.Add(phrase);
 
                 writer.CloseStream = false;
                 doc.Close();

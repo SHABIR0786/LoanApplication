@@ -10,6 +10,7 @@ import { TenantsComponent } from "./tenants/tenants.component";
 import { RolesComponent } from "app/roles/roles.component";
 import { ChangePasswordComponent } from "./users/change-password/change-password.component";
 import { LoanApplicationComponent } from "./loan-application/loan-application.component";
+import { WelcomeComponent } from "./loan-application/welcome/welcome.component";
 import { LoanDetailsComponent } from "./loan-application/loan-details/loan-details.component";
 import { PersonalInformationComponent } from "./loan-application/personal-information/personal-information.component";
 import { ExpensesComponent } from "./loan-application/expenses/expenses.component";
@@ -201,6 +202,15 @@ import { AdimPanelPageComponent } from "./admin-panel/adim-panel-page/adim-panel
             component: LoanApplicationComponent,
             data: { permission: "" },
             canActivate: [AppRouteGuard],
+          },
+          {
+            path: "welcome",
+            component: WelcomeComponent,
+            data: { permission: "" },
+            canActivate: [AppRouteGuard],
+            resolve: {
+              loanApp: GetLoanAppResolve,
+            },
           },
           {
             path: "loan-detail",

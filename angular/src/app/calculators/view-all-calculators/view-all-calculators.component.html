@@ -2,9 +2,20 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="m-0 text-primary">
-        Home<span class="text-muted mr-3 d-inline-block"
-          >Mortgage Calculator</span
-        >
+        <a
+          [routerLink]="['/app/home']"
+          class="text-decoration-none text-primary"
+          >Home
+        </a>
+        <span class="text-muted mr-3 d-inline-block">
+          <i class="fa fa-angle-right"></i>
+          <a
+            [routerLink]="['/app/mortgage-calculator']"
+            class="text-decoration-none text-primary"
+          >
+            Mortgage Calculator
+          </a>
+        </span>
       </p>
     </section>
   </div>

@@ -8,6 +8,7 @@ export class MenuItem {
   isActive?: boolean;
   isCollapsed?: boolean;
   children: MenuItem[];
+  isBackgroundcolor: boolean;
 
   constructor(
     label: string,
@@ -21,5 +22,6 @@ export class MenuItem {
     this.icon = icon;
     this.permissionName = permissionName;
     this.children = children;
+    this.isBackgroundcolor = false;
   }
 }
