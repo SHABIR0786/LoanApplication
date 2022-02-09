@@ -9,7 +9,7 @@
   background-color: #f47741;
 }
 #Back {
-  margin-top: 186px;
+  margin-top: 185px;
   margin-right: 300px;
   font-size: 20px;
   cursor: pointer;
@@ -20,10 +20,10 @@
 #Email {
   color: #0cc4d4 !important;
 }
-.selected {
+/* .selected {
   background-color: #f47741;
-}
+} */
 
-button.btn:hover {
+/* button.btn:hover {
   background-color: #f47741;
-}
+} */

@@ -1,6 +1,8 @@
 <div class="Content-Step-Body text-white">
   <div class="container">
-    <h2 class="mb-4">How much do you owe?</h2>
+    <h2 class="mb-5 font-weight-bold" style="font-size: 40px">
+      How much do you owe?
+    </h2>
     <h4 class="estimate">
       Just an estimate is fine. You can update the amount later in the process.
     </h4>
@@ -23,7 +25,7 @@
         #input
         type="text"
         required
-        class="form-control input-special mb-3"
+        class="form-control input-special mb-3 btn_mwh"
         formControlName="amount"
         [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
         placeholder="How much do you owe?"
@@ -50,13 +52,13 @@
         />
       </div>
       <p id="Back" (click)="proceedToPrevious()">
-        <i class="fa fa-angle-left" style="font-size: 25px"></i>
-        <span style="position: absolute; line-height: 25px">Back</span>
+        <i class="fa fa-angle-left"></i>
+        <span> Back</span>
       </p>
     </form>
     <button
       type="button"
-      class="btn btn-outline-primary btn-lg btn-block mb-3"
+      class="btn btn-outline-primary btn-lg btn-block mb-3 btn_mwh"
       style="margin-top: 20px"
       (click)="proceedToNext()"
     >
