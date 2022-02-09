@@ -3,9 +3,9 @@
   padding: 22px;
   width: 100%;
 }
-.fa {
+/* .fa {
   margin-right: 10px;
-}
+} */
 
 #Family {
   background-color: #f47741;
@@ -25,7 +25,7 @@
   color: #0cc4d4 !important;
 }
 #Back {
-  margin-top: 204px;
+  margin-top: 190px;
   margin-right: 300px;
   font-size: 20px;
   cursor: pointer;
@@ -34,10 +34,10 @@
   font-size: 20px;
   margin-top: -41px;
 }
-.selected {
+/* .selected {
   background-color: #f47741;
 }
 
 button.btn:hover {
   background-color: #f47741;
-}
+} */
