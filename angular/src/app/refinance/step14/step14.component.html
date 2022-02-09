@@ -1,19 +1,21 @@
 <div class="Content-Step-Body text-white">
   <div class="container">
-    <h2 class="pb-5">What is your gross annual household income?</h2>
+    <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
+      What is your gross annual household income?
+    </h2>
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left" style="font-size: 25px"></i>
-          <span style="position: absolute; line-height: 25px">Back</span>
+          <i class="fa fa-angle-left"></i>
+          <span> Back</span>
         </p>
       </div>
       <div class="col-lg-4">
         <div class="BTN">
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mt-4"
+            class="btn btn-outline-primary btn-lg btn_mwh btn-block mt-4 selected2"
             (click)="proceedToNext('Less than $20,000')"
             [class.selected]="formData.houseHoldIncome == 'Less than $20,000'"
           >
@@ -21,7 +23,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext('$20,000 - $50,000')"
             [class.selected]="formData.houseHoldIncome == '$20,000 - $50,000'"
           >
@@ -29,7 +31,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext('$50,000 - $100,000')"
             [class.selected]="formData.houseHoldIncome == '$50,000 - $100,000'"
           >
@@ -37,7 +39,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext('$100,000 - $200,000')"
             [class.selected]="formData.houseHoldIncome == '$100,000 - $200,000'"
           >
@@ -45,7 +47,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext('$200,000+')"
             [class.selected]="formData.houseHoldIncome == '$200,000+'"
           >

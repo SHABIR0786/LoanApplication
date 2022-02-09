@@ -13827,7 +13827,12 @@ ul.list-refinace li {
 .h_70 {
   height: 70px;
 }
-
+.btn_mwh {
+  margin-top: 20px;
+  width: 427px;
+  height: 70px !important;
+  font-size: 22px;
+}
 .page-order-sec i {
   color: #0078b7;
 }

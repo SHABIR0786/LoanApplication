@@ -28,21 +28,22 @@
   transition: background 450ms ease-in;
   -webkit-appearance: none;
 }
-.fa {
+/* .fa {
   margin-right: 10px;
 }
 .mb-4 {
   font-size: 50px;
-}
+} */
 .estimate {
   font-size: 25px;
 }
 
 #Back {
-  margin-right: 300px;
   font-size: 20px;
   max-width: fit-content;
   cursor: pointer;
+  margin-left: 22px;
+  margin-top: 27px;
 }
 #num {
   color: #0cc4d4 !important;
@@ -50,9 +51,9 @@
 #Email {
   color: #0cc4d4 !important;
 }
-.selected {
+/* .selected {
   background-color: #f47741;
-}
+} */
 .dollar_sign {
   position: absolute;
   margin-top: 58px;
@@ -64,6 +65,6 @@
   padding: 5px;
 }
 
-button.btn:hover {
+/* button.btn:hover {
   background-color: #f47741;
-}
+} */

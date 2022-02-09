@@ -1,15 +1,15 @@
 .btn {
   width: 100%;
 }
-.fa {
+/* .fa {
   margin-right: 10px;
-}
+} */
 
 #Family {
   background-color: #f47741;
 }
 #Back {
-  margin-top: 140px;
+  margin-top: 127px;
   margin-right: 300px;
   font-size: 20px;
   cursor: pointer;
@@ -20,10 +20,10 @@
 #Email {
   color: #0cc4d4 !important;
 }
-.selected {
+/* .selected {
   background-color: #f47741;
 }
 
 button.btn:hover {
   background-color: #f47741;
-}
+} */

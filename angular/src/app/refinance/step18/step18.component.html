@@ -1,14 +1,16 @@
 <div class="Content-Step-Body text-white">
   <div class="container">
-    <h2 class="pb-5">Please enter your contact info</h2>
+    <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
+      Please enter your contact info
+    </h2>
     <h4 class="co-borrower">
       You can always add a co-borrower or edit this entry later.
     </h4>
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left" style="font-size: 25px"></i>
-          <span style="position: absolute; line-height: 25px">Back</span>
+          <i class="fa fa-angle-left"></i>
+          <span> Back</span>
         </p>
       </div>
       <div class="col-lg-4" style="margin-top: -40px">
@@ -17,6 +19,7 @@
             <div id="first_name">
               <h3 style="width: 191px; font-size: 20px">Your Email Address*</h3>
               <input
+                class="btn_mwh"
                 type="email"
                 id="Fn"
                 required
@@ -34,6 +37,7 @@
             <div id="last_name">
               <h3 style="width: 206px; font-size: 20px">Your Mobile Number*</h3>
               <input
+                class="btn_mwh"
                 type="text"
                 id="Fn"
                 #phone
