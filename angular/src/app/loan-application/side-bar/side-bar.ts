@@ -182,6 +182,5 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
       }
     });
     this.menuItems = JSON.parse(JSON.stringify(items));
-    console.log(this.menuItems);
   }
 }

@@ -19,3 +19,6 @@
 nav {
   z-index: 11 !important;
 }
+a.text-white {
+  color: #ffffff !important;
+}

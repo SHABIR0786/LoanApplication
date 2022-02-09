@@ -214,8 +214,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
         [Validators.required]
       ),
       useIncomeOfPersonOtherThanBorrower: new FormControl(
-        this.data.useIncomeOfPersonOtherThanBorrower,
-        [Validators.required]
+        this.data.useIncomeOfPersonOtherThanBorrower
       ),
       agreePrivacyPolicy: new FormControl(this.data.agreePrivacyPolicy, [
         Validators.required,
@@ -560,10 +559,7 @@ export class PersonalInformationComponent implements OnInit, DoCheck {
       switch (stepIndex) {
         case 1:
           {
-            fields = [
-              "isApplyingWithCoBorrower",
-              "useIncomeOfPersonOtherThanBorrower",
-            ];
+            fields = ["isApplyingWithCoBorrower"];
             const hasError = fields.some(
               (field) => this.form.get(field) && !this.form.get(field).valid
             );
