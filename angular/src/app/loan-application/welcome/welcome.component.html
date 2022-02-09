@@ -1,0 +1,36 @@
+<section class="content">
+  <div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <h3>
+          Whatever your goal, we'll help you <br />
+          achieve it quickly and easily!
+        </h3>
+
+        <p>How can we help?</p>
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-md btn-block mb-3 purchasebtn"
+          [routerLink]="['/app/loan-detail']"
+        >
+          I am purchasing
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-md btn-block mb-3 refinancebtn"
+          [routerLink]="['/app/loan-detail']"
+        >
+          I am Refinancing
+        </button>
+        <p style="font-size: 13px">
+          Already have an account |
+          <a [routerLink]="['/app/login']">Login In</a>
+        </p>
+        <p>
+          <b>You have Questions?</b> <span style="color: #f47747"> | </span>
+          <b>We'll have answers.</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

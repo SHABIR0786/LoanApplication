@@ -200,6 +200,7 @@ import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/clo
 import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
 import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
 import { LoanApplicationHeaderComponent } from "./loan-application/loan-application-header/loan-application-header.component";
+import { WelcomeComponent } from "./loan-application/welcome/welcome.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -408,6 +409,7 @@ const ngWizardConfig: NgWizardConfig = {
     CloseOnTheLoanComponent,
     ManageYourRefinanceComponent,
     LoanApplicationHeaderComponent,
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,

@@ -25,3 +25,14 @@
   width: 34px;
   height: 34px;
 }
+@media screen and (min-width: 992px) {
+  .banner-jumbotron {
+    height: 615px !important;
+  }
+}
+#textDetail {
+  margin-top: -24px;
+}
+.jumb-button {
+  margin-top: -20px;
+}
