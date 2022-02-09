@@ -32,7 +32,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             homeBuying.firstName = input.firstName;
             homeBuying.emailAddress = input.emailAddress;
             homeBuying.downPayment = input.downPayment;
-            homeBuying.currentlyEmployed = input.currentlyEmployed;
+            homeBuying.currentlyEmployed = input.currentEmployed;
             homeBuying.bankruptcyPastThreeYears = input.bankruptcyPastThreeYears;
             homeBuying.FirstTimeHomeBuying = input.FirstTimeHomeBuying;
             homeBuying.foreclosurePastTwoYears = input.foreclosurePastTwoYears;

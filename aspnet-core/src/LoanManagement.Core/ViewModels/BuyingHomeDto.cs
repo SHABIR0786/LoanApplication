@@ -14,7 +14,7 @@ namespace LoanManagement.ViewModels
         public string propertyLocated { get; set; }
         public string purchasePrice { get; set; }
         public decimal downPayment { get; set; }
-        public string currentlyEmployed { get; set; }
+        public string currentEmployed { get; set; }
         public string houseHoldIncome { get; set; }
         public bool proofOfincome { get; set; }
         public bool militarySevice { get; set; }

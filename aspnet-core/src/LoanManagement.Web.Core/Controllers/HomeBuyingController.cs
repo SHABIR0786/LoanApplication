@@ -86,7 +86,7 @@ namespace LoanManagement.Controllers
 
                 doc.Add(new Paragraph("Question: Are you currently employed?"));
                 var phrase7 = new Phrase(Answer);
-                phrase7.Add(new Chunk(input.currentlyEmployed, FontRed));
+                phrase7.Add(new Chunk(input.currentEmployed, FontRed));
                 doc.Add(phrase7);
 
                 doc.Add(new Paragraph("Question: What is your gross annual household income?"));
