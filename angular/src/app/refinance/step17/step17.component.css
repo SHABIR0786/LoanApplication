@@ -50,13 +50,13 @@
 .pb-5 {
   font-size: 50px;
 }
-/* .selected {
+.selected {
   background-color: #f47741;
-} */
+}
 .invalid-feedback {
   padding: 5px;
 }
 
-/* button.btn:hover {
+button.btn:hover {
   background-color: #f47741;
-} */
+}

@@ -25,10 +25,10 @@
   margin-right: 300px;
   font-size: 20px;
 }
-/* .selected {
+.selected {
   background-color: #f47741;
-} */
+}
 
-/* button.btn:hover {
-    background-color: #f47741;
-  } */
+button.btn:hover {
+  background-color: #f47741;
+}
