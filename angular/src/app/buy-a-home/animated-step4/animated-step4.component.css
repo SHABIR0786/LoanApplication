@@ -26,9 +26,9 @@
 .selected {
   background-color: #f47741;
 }
-/* button.btn:hover {
+button.btn:hover {
   background-color: #f47741;
-} */
+}
 h2 {
   font-size: 40px;
 }

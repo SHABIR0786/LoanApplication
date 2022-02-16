@@ -42,9 +42,9 @@
 #Email {
   color: #0cc4d4 !important;
 }
-/* .selected {
+.selected {
   background-color: #f47741;
-} */
+}
 .dollar_sign {
   position: absolute;
   margin-top: 58px;
@@ -62,6 +62,6 @@
   margin-left: 152px;
 }
 
-/* button.btn:hover {
+button.btn:hover {
   background-color: #f47741;
-} */
+}
