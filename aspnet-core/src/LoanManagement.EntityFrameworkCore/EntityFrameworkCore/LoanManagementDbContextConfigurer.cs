@@ -12,14 +12,8 @@ namespace LoanManagement.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<LoanManagementDbContext> builder, string connectionString, ILoggerFactory loggerFactory = null, IWebHostEnvironment webHostEnvironment = null)
         {
-            builder.UseMySql(connectionString, mySqlOptions =>
-            {
-                mySqlOptions.ServerVersion(new Version(10, 3, 17), ServerType.MariaDb);
-                //mySqlOptions.EnableRetryOnFailure(
-                //    maxRetryCount: 10,
-                //    maxRetryDelay: TimeSpan.FromSeconds(30),
-                //    errorNumbersToAdd: null);
-            });
+
+            builder.UseMySql(connectionString, null);
 
             if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
             {
@@ -32,14 +26,7 @@ namespace LoanManagement.EntityFrameworkCore
 
         public static void Configure(DbContextOptionsBuilder<LoanManagementDbContext> builder, DbConnection connection, ILoggerFactory loggerFactory = null, IWebHostEnvironment webHostEnvironment = null)
         {
-            builder.UseMySql(connection, mySqlOptions =>
-            {
-                mySqlOptions.ServerVersion(new Version(10, 3, 17), ServerType.MariaDb);
-                //mySqlOptions.EnableRetryOnFailure(
-                //    maxRetryCount: 10,
-                //    maxRetryDelay: TimeSpan.FromSeconds(30),
-                //    errorNumbersToAdd: null);
-            });
+            builder.UseMySql(connection, null);
 
             if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
             {
