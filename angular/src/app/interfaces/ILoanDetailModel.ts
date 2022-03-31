@@ -1,7 +1,8 @@
 export interface ILoanDetailModel {
   id?: number;
+  whatStageAreyouIn?: number;
   isWorkingWithOfficer?: boolean;
-  loanOfficerId?: number;
+  loanOfficerId?: string;
   referredBy?: string;
   purposeOfLoan?: number;
   estimatedValue?: number;
@@ -13,7 +14,26 @@ export interface ILoanDetailModel {
   sourceOfDownPayment?: number;
   giftAmount?: number;
   giftExplanation?: string;
+  estimatedAnnualTaxes?: number;
+  estimatedAnnualHomeInsurance?: number;
 
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  phoneNumber?: string;
+  emailAddress?: string;
+
+  address?: string;
+  unit?: string;
+  zipCode?: string;
+  creditScore?: string;
+
+  contractDate?: Date;
+  newConstruction?: boolean;
+  bankOwned?: boolean;
+  hoaDues?: number;
+
+  TypeOfHome?: number;
   haveSecondMortgage?: boolean;
   secondMortgageAmount?: number;
   payLoanWithNewLoan?: boolean;
@@ -30,7 +50,6 @@ export interface ILoanDetailModel {
   loanOfficerName?: string;
   loanPurpose?: string;
   sourceOfDownPaymentName?: string;
-  stateIdName?: string;
   propertyUseName?: string;
   propertyTypeName?: string;
 }

@@ -38,7 +38,7 @@ namespace LoanManagement.Controllers
                // }
 
                 var mailMessage = new MailMessage();
-               // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("loanapplicationmail@gmail.com");
                 mailMessage.Subject = "Home Buying Funnel Form New Lead";

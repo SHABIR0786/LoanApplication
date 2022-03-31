@@ -54,8 +54,13 @@ export class SummaryComponent implements OnInit {
         this.formData.employmentIncome.coBorrowerEmploymentInfo = [{}];
       }
       if (this.formData.additionalDetails == null) {
-        this.formData.additionalDetails = {nameOfIndividualsCoBorrowerOnTitle:""};
-      } else if(this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle == null) {
+        this.formData.additionalDetails = {
+          nameOfIndividualsCoBorrowerOnTitle: "",
+        };
+      } else if (
+        this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle ==
+        null
+      ) {
         this.formData.additionalDetails.nameOfIndividualsCoBorrowerOnTitle = "";
       }
       if (
@@ -84,7 +89,9 @@ export class SummaryComponent implements OnInit {
     for (const key in formData) {
       if (formData.hasOwnProperty(key)) {
         if (
-          typeof formData[key] === "object" && formData[key] != null && formData[key] != undefined &&
+          typeof formData[key] === "object" &&
+          formData[key] != null &&
+          formData[key] != undefined &&
           Object.keys(formData[key]).length === 0
         ) {
           formData[key] = undefined;
@@ -116,6 +123,29 @@ export class SummaryComponent implements OnInit {
           console.log(error);
         }
       );
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      this._loanApplicationService
+        .get<Result<ILoanApplicationModel>>(`CreatePdfNew?id=${id}`)
+        .subscribe(
+          (response) => {
+            this._loanApplicationService
+              .get<Result<ILoanApplicationModel>>(`DownloadPdf?id=${id}`)
+              .subscribe(
+                (response) => {
+                  console.log(response);
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            console.log(response);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    });
   }
 
   proceedToPrevious() {

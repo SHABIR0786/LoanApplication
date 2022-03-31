@@ -161,6 +161,49 @@ import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refi
 import { AdminPanelLayoutComponent } from "./admin-panel/admin-panel-layout/admin-panel-layout.component";
 import { AdimPanelPageComponent } from "./admin-panel/adim-panel-page/adim-panel-page.component";
 
+// New Application component ..
+import { HowCanWeHelpComponent } from "./animated_loan_application/welcome/how-can-we-help/how-can-we-help.component";
+import { WhatStageAreYouInComponent } from "./animated_loan_application/welcome/what-stage-are-you-in/what-stage-are-you-in.component";
+import { AlreadyWorkingWithSomeoneFromEzComponent } from "./animated_loan_application/welcome/already-working-with-someone-from-ez/already-working-with-someone-from-ez.component";
+import { AddressOfNewHomeComponent } from "./animated_loan_application/property-info/address-of-new-home/address-of-new-home.component";
+import { DetailsAboutTheContractComponent } from "./animated_loan_application/property-info/details-about-the-contract/details-about-the-contract.component";
+import { PurchasePriceComponent } from "./animated_loan_application/property-info/purchase-price/purchase-price.component";
+import { CreditScoreComponent } from "./animated_loan_application/property-info/credit-score/credit-score.component";
+import { FullLegalNameComponent } from "./animated_loan_application/property-info/full-legal-name/full-legal-name.component";
+import { WhatTypeOfHomeComponent } from "./animated_loan_application/property-info/what-type-of-home/what-type-of-home.component";
+import { HOADuesComponent } from "./animated_loan_application/property-info/hoa-dues/hoa-dues.component";
+import { PlanOnUsingNewHomeComponent } from "./animated_loan_application/property-info/plan-on-using-new-home/plan-on-using-new-home.component";
+import { CurrentOrFormerMemberOfMilitaryComponent } from "./animated_loan_application/military-info/current-or-former-member-of-military/current-or-former-member-of-military.component";
+import { PropertyInfoConfirmationComponent } from "./animated_loan_application/property-info/property-info-confirmation/property-info-confirmation.component";
+import { PersonalInfoConfirmationComponent } from "./animated_loan_application/personal-info/personal-info-confirmation/personal-info-confirmation.component";
+import { CurrentMilitaryServiceComponent } from "./animated_loan_application/military-info/current-military-service/current-military-service.component";
+import { BranchOfMilitaryComponent } from "./animated_loan_application/military-info/branch-of-military/branch-of-military.component";
+import { EtsDateComponent } from "./animated_loan_application/military-info/ets-date/ets-date.component";
+import { VaLoanPreviouslyComponent } from "./animated_loan_application/military-info/va-loan-previously/va-loan-previously.component";
+import { WhoWillBeWillingInHomeComponent } from "./animated_loan_application/military-info/who-will-be-willing-in-home/who-will-be-willing-in-home.component";
+import { TellUsALittleBitAboutYourselfComponent } from "./animated_loan_application/personal-info/tell-us-a-little-bit-about-yourself/tell-us-a-little-bit-about-yourself.component";
+import { DidSomeoneRefferYouComponent } from "./animated_loan_application/personal-info/did-someone-reffer-you/did-someone-reffer-you.component";
+import { ApplyingJointlyOrOwnComponent } from "./animated_loan_application/personal-info/applying-jointly-or-own/applying-jointly-or-own.component";
+import { MartialStatusComponent } from "./animated_loan_application/personal-info/martial-status/martial-status.component";
+import { DependentsWillBeLivingInYourHomeComponent } from "./animated_loan_application/personal-info/dependents-will-be-living-in-your-home/dependents-will-be-living-in-your-home.component";
+import { CurrentlyLivingComponent } from "./animated_loan_application/personal-info/currently-living/currently-living.component";
+import { MonthlyExpensesComponent } from "./animated_loan_application/personal-info/monthly-expenses/monthly-expenses.component";
+import { BorrowerInfoComponent } from "./animated_loan_application/personal-info/borrower-info/borrower-info.component";
+import { EmployementHistoryComponent } from "./animated_loan_application/income/employement-history/employement-history.component";
+import { MostCurrentEmployerComponent } from "./animated_loan_application/income/most-current-employer/most-current-employer.component";
+import { TitleAndCompensationComponent } from "./animated_loan_application/income/title-and-compensation/title-and-compensation.component";
+import { AnyOtherFormEmploymentComponent } from "./animated_loan_application/income/any-other-form-employment/any-other-form-employment.component";
+import { OtherSourcesOfIncomeComponent } from "./animated_loan_application/income/other-sources-of-income/other-sources-of-income.component";
+import { ReviewAndConfirmComponent } from "./animated_loan_application/income/review-and-confirm/review-and-confirm.component";
+import { AboutYourAssetsComponent } from "./animated_loan_application/assets/about-your-assets/about-your-assets.component";
+import { AnyOtherAssetsComponent } from "./animated_loan_application/assets/any-other-assets/any-other-assets.component";
+import { ReviewAndConfirmAssetsComponent } from "./animated_loan_application/assets/review-and-confirm-assets/review-and-confirm-assets.component";
+import { UsGovernmentRequireQuestionsComponent } from "./animated_loan_application/us-government/us-government-require-questions/us-government-require-questions.component";
+import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_application/us-government/just-few-more-yes-or-no-questions/just-few-more-yes-or-no-questions.component";
+import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
+import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
+import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
+
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -963,6 +1006,207 @@ import { AdimPanelPageComponent } from "./admin-panel/adim-panel-page/adim-panel
           {
             path: "manage-your-refinance",
             component: ManageYourRefinanceComponent,
+            canActivate: [AppRouteGuard],
+          },
+          // These are the pages for the new loan application
+          {
+            path: "welcome/how-can-we-help",
+            component: HowCanWeHelpComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "welcome/already-working-with-someone-from-ez",
+            component: AlreadyWorkingWithSomeoneFromEzComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "welcome/what-stage-are-you-in",
+            component: WhatStageAreYouInComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "assets/about-your-assets",
+            component: AboutYourAssetsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "assets/any-other-assets",
+            component: AnyOtherAssetsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "assets/review-and-confirm-assets",
+            component: ReviewAndConfirmAssetsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "credit-score/agree-to-following",
+            component: AgreeToFollowingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "credit-score/credit-confirmation",
+            component: CreditConfirmationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/any-other-from-employement",
+            component: AnyOtherFormEmploymentComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/employment-history",
+            component: EmployementHistoryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/most-current-employer",
+            component: MostCurrentEmployerComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/other-sources-of-income",
+            component: OtherSourcesOfIncomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/review-and-confirm",
+            component: ReviewAndConfirmComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "income/title-and-compensaton",
+            component: TitleAndCompensationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/branch-of-military",
+            component: BranchOfMilitaryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/current-military-service",
+            component: CurrentMilitaryServiceComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/current-or-former-member-of-military",
+            component: CurrentOrFormerMemberOfMilitaryComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/ets-date",
+            component: EtsDateComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/va-loan-previously",
+            component: VaLoanPreviouslyComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "military-info/who-will-be-willing-in-home",
+            component: WhoWillBeWillingInHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "peronsal-info/applying-jointly-or-own",
+            component: ApplyingJointlyOrOwnComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/borrower-info",
+            component: BorrowerInfoComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/currently-living",
+            component: CurrentlyLivingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/dependents-will-be-living-in-your-home",
+            component: DependentsWillBeLivingInYourHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/did-someone-reffer-you",
+            component: DidSomeoneRefferYouComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/martial-status",
+            component: MartialStatusComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/monthly-expenses",
+            component: MonthlyExpensesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "personal-info/tell-us-a-little-bit-about-youself",
+            component: TellUsALittleBitAboutYourselfComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/address-of-new-home",
+            component: AddressOfNewHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/credit-score",
+            component: CreditScoreComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/details-about-the-contract",
+            component: DetailsAboutTheContractComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/full-legal-name",
+            component: FullLegalNameComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/hoa-dues",
+            component: HOADuesComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/plan-on-using-new-home",
+            component: PlanOnUsingNewHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/property-info-confirmation",
+            component: PropertyInfoConfirmationComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/purchase-price",
+            component: PurchasePriceComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "property-info/what-type-of-home",
+            component: WhatTypeOfHomeComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "thanks-for-applying",
+            component: ThanksForApplyingComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "us-government/just-few-more-yes-or-no-questions",
+            component: JustFewMoreYesOrNoQuestionsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "us-government/us-government-require-questions",
+            component: UsGovernmentRequireQuestionsComponent,
             canActivate: [AppRouteGuard],
           },
         ],

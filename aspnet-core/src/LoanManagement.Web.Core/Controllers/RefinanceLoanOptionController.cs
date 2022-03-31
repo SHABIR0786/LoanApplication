@@ -44,7 +44,7 @@ namespace LoanManagement.Controllers
                 //await _loanAppService.UpdateAsync(input);
 
                 var mailMessage = new MailMessage();
-                // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+                mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
                 mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
                 mailMessage.From = new MailAddress("loanapplicationmail@gmail.com");
                 mailMessage.Subject = "Refinance Home Buying Loan Options New Lead";

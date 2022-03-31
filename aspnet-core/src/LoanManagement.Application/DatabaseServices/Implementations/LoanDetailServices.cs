@@ -45,6 +45,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     HaveSecondMortgage = input.HaveSecondMortgage,
                     IsWorkingWithOfficer = input.IsWorkingWithOfficer,
                     LoanOfficerId = input.LoanOfficerId,
+                    whatStageAreyouIn = input.whatStageAreyouIn,
                     OriginalPrice = input.OriginalPrice,
                     PayLoanWithNewLoan = input.PayLoanWithNewLoan,
                     PropertyTypeId = input.PropertyTypeId,
@@ -56,19 +57,37 @@ namespace LoanManagement.DatabaseServices.Implementations
                     SecondMortgageAmount = input.SecondMortgageAmount,
                     SourceOfDownPayment = input.SourceOfDownPayment,
                     StateId = input.StateId,
+                    Address = input.Address,
+                    Unit = input.Unit,
+                    ZipCode = input.ZipCode,
+                    NewConstruction = input.NewConstruction,
+                    BankOwned = input.BankOwned,
+                    ContractDate = input.ContractDate,
                     YearAcquired = input.YearAcquired,
-                    StartedLookingForNewHome = input.StartedLookingForNewHome
+                    StartedLookingForNewHome = input.StartedLookingForNewHome,
+                    EstimatedAnnualTaxes = input.EstimatedAnnualTaxes,
+                    EstimatedAnnualHomeInsurance = input.EstimatedAnnualHomeInsurance,
+                    CreditScore = input.CreditScore,
+                    FirstName = input.FirstName,
+                    LastName = input.LastName,
+                    EmailAddress = input.EmailAddress,
+                    PhoneNumber = input.PhoneNumber,
+                    MiddleName = input.MiddleName,
+                    TypeOfHome = input.TypeOfHome,
+                    HoaDues = input.HoaDues
                 };
                 await _repository.InsertAsync(loanDetail);
                 await UnitOfWorkManager.Current.SaveChangesAsync();
-
                 input.Id = loanDetail.Id;
                 return input;
             }
+
             catch (Exception e)
             {
+                Console.WriteLine(e.GetType());
                 throw e;
             }
+
         }
 
         public async Task<LoanDetailDto> UpdateAsync(LoanDetailDto input)
@@ -80,12 +99,13 @@ namespace LoanManagement.DatabaseServices.Implementations
                 loanDetail.DownPaymentAmount = input.DownPaymentAmount;
                 loanDetail.DownPaymentPercentage = input.DownPaymentPercentage;
                 loanDetail.EstimatedPurchasePrice = input.EstimatedPurchasePrice;
-                loanDetail.EstimatedValue = input.EstimatedValue;
+                loanDetail.EstimatedValue = input.EstimatedValue; 
                 loanDetail.GiftAmount = input.GiftAmount;
                 loanDetail.GiftExplanation = input.GiftExplanation;
                 loanDetail.HaveSecondMortgage = input.HaveSecondMortgage;
                 loanDetail.IsWorkingWithOfficer = input.IsWorkingWithOfficer;
                 loanDetail.LoanOfficerId = input.LoanOfficerId;
+                loanDetail.whatStageAreyouIn = input.whatStageAreyouIn;
                 loanDetail.OriginalPrice = input.OriginalPrice;
                 loanDetail.PayLoanWithNewLoan = input.PayLoanWithNewLoan;
                 loanDetail.PropertyTypeId = input.PropertyTypeId;

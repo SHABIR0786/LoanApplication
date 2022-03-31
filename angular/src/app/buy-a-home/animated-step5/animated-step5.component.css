@@ -4,6 +4,8 @@
   width: 100%;
   font-size: 20px;
   height: 83px;
+  background-color: white !important;
+  color: black !important;
 }
 .btn {
   width: 100%;

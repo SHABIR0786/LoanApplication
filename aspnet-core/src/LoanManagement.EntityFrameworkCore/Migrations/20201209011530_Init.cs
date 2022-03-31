@@ -557,14 +557,17 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsWorkingWithOfficer = table.Column<bool>(nullable: true),
-                    LoanOfficerId = table.Column<int>(nullable: true),
+                    LoanOfficerId = table.Column<string>(nullable: true),
                     ReferredBy = table.Column<string>(nullable: true),
                     PurposeOfLoan = table.Column<int>(nullable: true),
+                    whatStageAreyouIn = table.Column<int>(nullable: true),
                     EstimatedValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     CurrentLoanAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     RequestedLoanAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     EstimatedPurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     DownPaymentAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    EstimatedAnnualTaxes = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    EstimatedAnnualHomeInsurance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     DownPaymentPercentage = table.Column<double>(nullable: true),
                     SourceOfDownPayment = table.Column<int>(nullable: true),
                     GiftAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -576,15 +579,29 @@ namespace LoanManagement.Migrations
                     YearAcquired = table.Column<string>(nullable: true),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     City = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    Unit = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: true),
                     StateId = table.Column<int>(nullable: true),
+                    NewConstruction = table.Column<bool>(nullable: true),
+                    BankOwned = table.Column<bool>(nullable: true),
+                    contractDate = table.Column<string>(nullable: true),
                     PropertyTypeId = table.Column<int>(nullable: true),
+                    creditScore = table.Column<string>(nullable: true),
                     PropertyUseId = table.Column<int>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    MiddleName = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    EmailAddress = table.Column<string>(nullable: true),
+                    TypeOfHome = table.Column<string>(nullable: true),
+                    HoaDues = table.Column<string>(type: "decimal(18,2)",nullable:true),
                     StartedLookingForNewHome = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoanDetails", x => x.Id);
-                });
+                }) ;
 
             migrationBuilder.CreateTable(
                 name: "SiteSettings",

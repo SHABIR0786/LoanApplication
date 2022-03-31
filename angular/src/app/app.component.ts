@@ -22,7 +22,68 @@ export class AppComponent extends AppComponentBase implements OnInit {
   ) {
     super(injector);
   }
-
+  get IsLoanApp(): boolean {
+    return (
+      this.router.url.includes("/app/welcome/how-can-we-help") ||
+      this.router.url.includes(
+        "/app/welcome/already-working-with-someone-from-ez"
+      ) ||
+      this.router.url.includes("/app/welcome/what-stage-are-you-in") ||
+      this.router.url.includes("/app/assets/about-your-assets") ||
+      this.router.url.includes("/app/assets/any-other-assets") ||
+      this.router.url.includes("/app/assets/review-and-confirm-assets") ||
+      this.router.url.includes("/app/credit-score/agree-to-following") ||
+      this.router.url.includes("/app/credit-score/credit-confirmation") ||
+      this.router.url.includes("/app/income/any-other-from-employement") ||
+      this.router.url.includes("/app/income/employment-history") ||
+      this.router.url.includes("/app/income/most-current-employer") ||
+      this.router.url.includes("/app/income/other-sources-of-income") ||
+      this.router.url.includes("/app/income/review-and-confirm") ||
+      this.router.url.includes("/app/income/title-and-compensaton") ||
+      this.router.url.includes("/app/military-info/branch-of-military") ||
+      this.router.url.includes("/app/military-info/current-military-service") ||
+      this.router.url.includes(
+        "/app/military-info/current-or-former-member-of-military"
+      ) ||
+      this.router.url.includes("/app/military-info/ets-date") ||
+      this.router.url.includes("/app/military-info/va-loan-previously") ||
+      this.router.url.includes(
+        "/app/military-info/who-will-be-willing-in-home"
+      ) ||
+      this.router.url.includes("/app/peronsal-info/applying-jointly-or-own") ||
+      this.router.url.includes("/app/personal-info/borrower-info") ||
+      this.router.url.includes("/app/personal-info/currently-living") ||
+      this.router.url.includes(
+        "/app/personal-info/dependents-will-be-living-in-your-home"
+      ) ||
+      this.router.url.includes("/app/personal-info/did-someone-reffer-you") ||
+      this.router.url.includes("/app/personal-info/martial-status") ||
+      this.router.url.includes("/app/personal-info/monthly-expenses") ||
+      this.router.url.includes(
+        "/app/personal-info/tell-us-a-little-bit-about-youself"
+      ) ||
+      this.router.url.includes("/app/property-info/address-of-new-home") ||
+      this.router.url.includes("/app/property-info/credit-score") ||
+      this.router.url.includes(
+        "/app/property-info/details-about-the-contract"
+      ) ||
+      this.router.url.includes("/app/property-info/full-legal-name") ||
+      this.router.url.includes("/app/property-info/hoa-dues") ||
+      this.router.url.includes("/app/property-info/plan-on-using-new-home") ||
+      this.router.url.includes(
+        "/app/property-info/property-info-confirmation"
+      ) ||
+      this.router.url.includes("/app/property-info/purchase-price") ||
+      this.router.url.includes("/app/property-info/what-type-of-home") ||
+      this.router.url.includes("/app/thanks-for-applying") ||
+      this.router.url.includes(
+        "/app/us-government/just-few-more-yes-or-no-questions"
+      ) ||
+      this.router.url.includes(
+        "/app/us-government/us-government-require-questions"
+      )
+    );
+  }
   get IsLoanForm(): boolean {
     return (
       this.router.url.includes("/app/welcome") ||

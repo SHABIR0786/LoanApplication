@@ -11,6 +11,7 @@
     <RootNamespace>LoanManagement</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.5" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>

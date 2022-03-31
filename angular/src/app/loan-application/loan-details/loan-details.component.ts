@@ -14,7 +14,6 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { LoanApplicationService } from "../../services/loan-application.service";
 import { Result } from "common";
-import { ILoanApplicationDto } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-loan-details",
@@ -64,7 +63,6 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       this.data = response.result.loanDetails;
       if (this.form) this.form.patchValue(response.result.loanDetails);
     }
-
     this.initForm();
     this.loadStates();
     this.loadLoanPurposes();
@@ -111,7 +109,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       this.propertyTypes,
       this.data.propertyTypeId
     );
-    this.data.stateIdName = this.getDataById(this.states, this.data.stateId);
+    this.data.stateId = this.getDataById(this.states, this.data.stateId);
     this.data.propertyUseName = this.getDataById(
       this.propertyUses,
       this.data.propertyUseId
@@ -438,14 +436,13 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
           break;
       }
     } else {
-      console.log(this.form.controls.keys);
       if (this.form.valid) {
         this._activatedRoute.queryParams.subscribe(async (params) => {
           const id = params["id"];
           if (id) {
             this._route.navigate(["app/personal-information"], {
               queryParams: {
-                id: id,
+                id: parseInt(id),
               },
             });
           } else {
