@@ -77,46 +77,52 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
         if (primaryUrlSegmentGroup) {
           this.activateMenuItems("/" + primaryUrlSegmentGroup.toString());
         }
-        this.setBackgroundColor(this.menuItems, currentUrl);
+        this.setBackgroundColor(this.menuItems);
       });
-    console.log(currentUrl);
-    this.setBackgroundColor(this.menuItems, currentUrl);
+    this.setBackgroundColor(this.menuItems);
   }
 
   getMenuItems(): MenuItem[] {
     return [
       new MenuItem(this.l("Welcome"), "/app/welcome", this.dollar, ""),
-      new MenuItem(this.l("Loan Detail"), "/app/loan-detail", this.dollar, ""),
       new MenuItem(
-        this.l("Personal Information"),
+        this.l("Property Info"),
+        "/app/loan-detail",
+        this.dollar,
+        ""
+      ),
+      new MenuItem(
+        this.l("Personal Info"),
         "/app/personal-information",
         this.user,
         ""
       ),
-      new MenuItem(this.l("Expense"), "/app/expense", this.dollar2, ""),
+      new MenuItem(this.l("Income"), "/app/expense", this.dollar2, ""),
+      new MenuItem(this.l("Assets"), "/app/asset", this.coins, ""),
+      new MenuItem(this.l("Government"), "/app/asset", this.coins, ""),
+      new MenuItem(this.l("Credit Scores"), "/app/asset", this.coins, ""),
 
-      new MenuItem(this.l("Asset"), "/app/asset", this.coins, ""),
-      new MenuItem(
-        this.l("Employment Income"),
-        "/app/employment-income",
-        this.briefCase,
-        ""
-      ),
-      new MenuItem(this.l("Order Credit"), "/app/order-credit", this.meter, ""),
-      new MenuItem(
-        this.l("Additional Detail"),
-        "/app/additional-detail",
-        this.file,
-        ""
-      ),
-      new MenuItem(this.l("EConsent"), "/app/econsent", this.contract, ""),
-      new MenuItem(
-        this.l("Declaration"),
-        "/app/declaration",
-        this.signature,
-        ""
-      ),
-      new MenuItem(this.l("Summary"), "/app/summary", this.summary, ""),
+      // new MenuItem(
+      //   this.l("Employment Income"),
+      //   "/app/employment-income",
+      //   this.briefCase,
+      //   ""
+      // ),
+      // new MenuItem(this.l("Order Credit"), "/app/order-credit", this.meter, ""),
+      // new MenuItem(
+      //   this.l("Additional Detail"),
+      //   "/app/additional-detail",
+      //   this.file,
+      //   ""
+      // ),
+      // new MenuItem(this.l("EConsent"), "/app/econsent", this.contract, ""),
+      // new MenuItem(
+      //   this.l("Declaration"),
+      //   "/app/declaration",
+      //   this.signature,
+      //   ""
+      // ),
+      // new MenuItem(this.l("Summary"), "/app/summary", this.summary, "")
     ];
   }
 
@@ -168,8 +174,22 @@ export class LoanSideBar extends AppComponentBase implements OnInit {
     }
     this._changeDetectorRef.markForCheck();
   }
-  setBackgroundColor(items: MenuItem[], currentUrl: string): void {
+  NextRoute(item) {
+    this._activatedRoute.queryParams.subscribe(async (params) => {
+      const id = params["id"];
+      if (id) {
+        this.router.navigate([item.route], {
+          queryParams: {
+            id: parseInt(id),
+          },
+        });
+      }
+    });
+  }
+
+  setBackgroundColor(items: MenuItem[]): void {
     var foundcurrentURL = false;
+    const currentUrl = window.location.pathname;
     items.forEach((item: MenuItem) => {
       if (item.route == currentUrl) {
         foundcurrentURL = true;

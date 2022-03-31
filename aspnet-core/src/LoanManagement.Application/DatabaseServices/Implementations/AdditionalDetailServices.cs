@@ -5,7 +5,6 @@ using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LoanManagement.DatabaseServices.Implementations

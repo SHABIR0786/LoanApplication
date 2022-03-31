@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Pdf = iTextSharp.text.pdf;
 
@@ -21,12 +22,15 @@ namespace LoanManagement.Controllers
         private readonly ILoanAppService _loanAppService;
         private readonly ICredcoApi _credcoApi;
         public IWebHostEnvironment _hostingEnvironment;
+        private readonly SmtpClient _smtpClient;
         public UniformResidentialLoanController(
+            SmtpClient smtpClient,
             ILoanAppService loanAppService,
             ICredcoApi credcoApi,
             IWebHostEnvironment hostingEnvironment
         )
         {
+            _smtpClient = smtpClient;
             _loanAppService = loanAppService;
             _credcoApi = credcoApi;
             _hostingEnvironment = hostingEnvironment;
@@ -73,20 +77,1101 @@ namespace LoanManagement.Controllers
             return Json(await _loanAppService.GetAllCustomAsync(input));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> CreatePdf([FromQuery] long Id)
+        public async Task<IActionResult> CreatePdfNew([FromQuery] long Id)
         {
+            var mailMessage = new MailMessage();
+            mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+            mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
+            mailMessage.From = new MailAddress("loanapplicationmail@gmail.com");
+            mailMessage.Subject = "Home Buying Funnel Form New Lead";
             var data = await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long?>(Id));
-            string pdfTemplate = @"1003irev-unlocked.pdf";
+            string pdfTemplate = @"Borrower_v28.pdf";
             var pdfReader = new Pdf.PdfReader(pdfTemplate);
             var (fileName, path) = CreateFileName(Id);
-
+          // MemoryStream memoryStream = new MemoryStream();
             var fileStream = new FileStream(path, FileMode.Create);
             var pdfStamper = new Pdf.PdfStamper(pdfReader, fileStream);
+            decimal assetsTotalCash = 0;
 
             try
             {
                 var pdfFormFields = pdfStamper.AcroFields;
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Name[0]", $"{StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.FirstName)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.MiddleInitial)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.LastName)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.Suffix)}");
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Security_1[0]", data.PersonalInformation.Borrower.SocialSecurityNumber.Substring(0, 3));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Security_2[0]", data.PersonalInformation.Borrower.SocialSecurityNumber.Substring(3, 2));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Security_3[0]", data.PersonalInformation.Borrower.SocialSecurityNumber.Substring(5, 4));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Alt_Name[0]", $"{StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.FirstName)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.MiddleInitial)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.LastName)}, {StringExtensions.FirstCharToUpper(data.PersonalInformation.Borrower.Suffix)}");
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Birth_1[0]", data.PersonalInformation.Borrower.DateOfBirth.Substring(5, 2));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Birth_2[0]", data.PersonalInformation.Borrower.DateOfBirth.Substring(8, 2));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Birth_3[0]", data.PersonalInformation.Borrower.DateOfBirth.Substring(0, 4));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].individual[0]._1a_Individual[0]", (data.PersonalInformation.IsApplyingWithCoBorrower != null && data.PersonalInformation.IsApplyingWithCoBorrower == true) ? "1" : "0");
+
+                if((data.PersonalInformation.IsApplyingWithCoBorrower != null && data.PersonalInformation.IsApplyingWithCoBorrower == true))
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].joint[0]._1a_Joint[0]", "1");
+                } else {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].individual[0]._1a_Individual[0]", "1");
+                }
+                pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].joint[0]._1a_Borrowers_Number[0]", "1");
+                if (data.Declaration.BorrowerDeclaration.IsUSCitizen == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].citizenship[0].citizen[0]._1a_US_Citizen[0]", "1");
+                }
+                if(data.Declaration.BorrowerDeclaration.IsPermanentResidentSlien == true)
+                {
+                   pdfFormFields.SetField("topmostSubform[0].Page1[0].citizenship[0].permanent[0]._1a_Permanent_Resident_Alien[0]", "1");
+                }else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].citizenship[0].non_permanent[0]._1a_Non_Permanent_Resident_Alien[0]", "1");
+                }
+
+               //  pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].joint[0]._1a_Borrowers_Number[0]", data);
+
+                pdfFormFields.SetField("topmostSubform[0].Page1[0].credit[0].joint[0]._1a_Initials[0]", data.PersonalInformation.Borrower.FirstName ?? " ");
+
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Borrower_s_Name[0]", $"{data.PersonalInformation.CoBorrower.FirstName ?? ""}, {data.PersonalInformation.CoBorrower.MiddleInitial ?? ""}, {data.PersonalInformation.CoBorrower.LastName ?? ""}, {data.PersonalInformation.CoBorrower.Suffix ?? ""}");
+
+                var MaritalStatusId = "";
+                if (data.PersonalInformation.Borrower.MaritalStatusId.HasValue)
+                {
+                    MaritalStatusId = data.PersonalInformation.Borrower.MaritalStatusId.Value.ToString();
+                }
+
+                if (MaritalStatusId == "1")
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].marital-status[0].married[0]._1a_Married[0]", "1");
+                }
+                else if (MaritalStatusId == "2")
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].marital-status[0].unmarried[0]._1a_Unmarried[0]", "1");
+                }
+                else if (MaritalStatusId == "3")
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].marital-status[0].separated[0]._1a_Separated[0]", "1");
+                }
+
+
+                  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Dependents[0]", data.PersonalInformation.Borrower.NumberOfDependents.HasValue ? data.PersonalInformation.Borrower.NumberOfDependents.Value.ToString() : "");
+                 // pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Dependent_Age[0]",data.PersonalInformation.Borrower);
+
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneH1[0]", data.PersonalInformation.Borrower.HomePhone.Substring(0, 3));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneH2[0]", data.PersonalInformation.Borrower.HomePhone.Substring(3, 3));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneH3[0]", data.PersonalInformation.Borrower.HomePhone.Substring(6, 3));
+
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneC1[0]", data.PersonalInformation.Borrower.CellPhone.Substring(0, 3));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneC2[0]", data.PersonalInformation.Borrower.CellPhone.Substring(3, 3));
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneC3[0]", data.PersonalInformation.Borrower.CellPhone.Substring(6, 4));
+
+                // pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_PhoneW1[0]", data.PersonalInformation.Borrower);
+
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Email[0]", data.PersonalInformation.Borrower.Email);
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_City[0]", data.PersonalInformation.ResidentialAddress.City);
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_State[0]", StateData.GetStateById(data.LoanDetails.StateId.Value));
+                // pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Country[0]", data.PersonalInformation.ResidentialAddress.);
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_Zip[0]", data.PersonalInformation.ResidentialAddress.ZipCode.ToString() ?? "");
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_St[0]", data.PersonalInformation.ResidentialAddress.AddressLine1);
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_Years[0]", data.PersonalInformation.ResidentialAddress.Years.ToString() ?? "");
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_Months[0]", data.PersonalInformation.ResidentialAddress.Months.ToString() ?? "");
+                if (data.Expenses.IsLiveWithFamilySelectRent == true)
+                {
+                  //  pdfFormFields.SetField("topmostSubform[0].Page1[0].housing_current[0].rent[0]._1a_Current_Rent[0]", "False");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0].housing_current[0].own[0]._1a_Current_Own[0]", "True");
+                }
+              //  pdfFormFields.SetField("topmostSubform[0].Page1[0].housing_current[0].rent[0]._1a_Current_Rent[0]", data.Expenses.Rent.ToString() ?? "");
+                pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Address_St[0]", data.PersonalInformation.ResidentialAddress.AddressLine1);
+                // pdfFormFields.SetField("topmostSubform[0].Page1[0].housing_current[0].no_primary[0]._1a_Current_NoPrimary[0]",data.Expenses.);
+
+
+                if (data.PersonalInformation.PreviousAddresses.Count > 0)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Former_Address_City[0]", data.PersonalInformation.PreviousAddresses[0].City);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_FormerAddress_St[0]", data.PersonalInformation.PreviousAddresses[0].AddressLine1);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Former_Address_State[0]", StateData.GetStateById(data.PersonalInformation.PreviousAddresses[0].StateId ?? 1));
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Former_Address_Zip[0]", data.PersonalInformation.PreviousAddresses[0].ZipCode.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Former_Address_Years[0]", data.PersonalInformation.PreviousAddresses[0].Years.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Former_Address_Months[0]", data.PersonalInformation.PreviousAddresses[0].Months.ToString() ?? "");
+                }
+                else
+                {
+                    var FormerAddress = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page1[0]._1a_Does_Not_Apply1[0]");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Does_Not_Apply1[0]", FormerAddress[0]);
+                }
+
+
+                if ((data.PersonalInformation.IsMailingAddressSameAsResidential != null && data.PersonalInformation.IsMailingAddressSameAsResidential == false))
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Mail_Address_City[0]", data.PersonalInformation.MailingAddress.City);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Mail_Address_State[0]", StateData.GetStateById(data.PersonalInformation.MailingAddress.StateId ?? 1));
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Mail_Address_Zip[0]", data.PersonalInformation.MailingAddress.ZipCode.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Mail_Address_St[0]", data.PersonalInformation.MailingAddress.AddressLine1);
+                }
+                else
+                {
+                    var MailAddress = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page1[0]._1a_Does_Not_Apply2[0]");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1a_Does_Not_Apply2[0]", MailAddress[0]);
+                }
+
+
+                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count > 0)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employer[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].EmployerName);
+
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE1[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(0, 3));
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE2[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(3, 3));
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE3[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(6, 3));
+
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_City[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].City);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_State[0]", StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[0].StateId ?? 1));
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Zip[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].ZipCode.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Address[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].Address1);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Position[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].Position);
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employment_Start_Day[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.ToString().Substring(8, 2));
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employment_Start_Month[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.ToString().Substring(5, 2));
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employment_Start_Year[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate.ToString().Substring(0, 4));
+                    var DateDiff = (Convert.ToDateTime(data.EmploymentIncome.BorrowerEmploymentInfo[0].StartDate) - Convert.ToDateTime(data.EmploymentIncome.BorrowerEmploymentInfo[0].EndDate));
+                    DateTime zeroTime = new DateTime(1, 1, 1);
+                    int years = (zeroTime + DateDiff).Year - 1;
+                    int Months = (zeroTime + DateDiff).Month - 1;
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employment_Years[0]", years.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Employment_Months[0]", Months.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Monthly_Income_Loss[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Base.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Base[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Base.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Bonus[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Overtime[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Commission[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Other[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.ToString() ?? "");
+                    var IncomeTotal = data.EmploymentIncome.BorrowerMonthlyIncome.Base + data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses + data.EmploymentIncome.BorrowerMonthlyIncome.Overtime + data.EmploymentIncome.BorrowerMonthlyIncome.Commissions + data.EmploymentIncome.BorrowerMonthlyIncome.Dividends;
+                    pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_IncomeTotal[0]", IncomeTotal.ToString());
+                    if (data.EmploymentIncome.BorrowerEmploymentInfo[0].IsSelfEmployed.HasValue && data.EmploymentIncome.BorrowerEmploymentInfo[0].IsSelfEmployed == true)
+                    {
+                        var SelfEmployeed = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page1[0]._1b_Owner[0]");
+                        pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_Owner[0]", SelfEmployeed[0]);
+                    }
+                }
+
+                // Page 2 started from here ..
+                // Page 2 C section
+                if (data.EmploymentIncome.BorrowerEmploymentInfo.Count > 1)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employer[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].EmployerName);
+
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE1[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(0, 3));
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE2[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(3, 3));
+                    //  pdfFormFields.SetField("topmostSubform[0].Page1[0]._1b_PhoneE3[0]", data.EmploymentIncome.BorrowerEmploymentInfo[0].HomePhone.Substring(6, 3));
+
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_City[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].City);
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_State[0]", StateData.GetStateById(data.EmploymentIncome.BorrowerEmploymentInfo[1].StateId ?? 1));
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Zip[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].ZipCode.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Address[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].Address1);
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Position[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].Position);
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employment_Start_Day[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate.ToString().Substring(8, 2));
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employment_Start_Month[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate.ToString().Substring(5, 2));
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employment_Start_Year[0]", data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate.ToString().Substring(0, 4));
+                    var DateDiff = (Convert.ToDateTime(data.EmploymentIncome.BorrowerEmploymentInfo[1].EndDate) - Convert.ToDateTime(data.EmploymentIncome.BorrowerEmploymentInfo[1].StartDate));
+                   
+                    DateTime zeroTime2 = new DateTime(1, 1, 1);
+                    int years = (zeroTime2 + DateDiff).Year - 1;
+                    int Months = (zeroTime2 + DateDiff).Month - 1;
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employment_Years[0]", years.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Employment_Months[0]", Months.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Monthly_Income_Loss[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Base.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Base[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Base.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Bonus[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Overtime[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Overtime.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Commission[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Commissions.ToString() ?? "");
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Other[0]", data.EmploymentIncome.BorrowerMonthlyIncome.Dividends.ToString() ?? "");
+                    var IncomeTotal = data.EmploymentIncome.BorrowerMonthlyIncome.Base + data.EmploymentIncome.BorrowerMonthlyIncome.Bonuses + data.EmploymentIncome.BorrowerMonthlyIncome.Overtime + data.EmploymentIncome.BorrowerMonthlyIncome.Commissions + data.EmploymentIncome.BorrowerMonthlyIncome.Dividends;
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_IncomeTotal[0]", IncomeTotal.ToString());
+                    if (data.EmploymentIncome.BorrowerEmploymentInfo[1].IsSelfEmployed.HasValue && data.EmploymentIncome.BorrowerEmploymentInfo[1].IsSelfEmployed == true)
+                    {
+                        var SelfEmployeed = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page2[0]._1c_Owner[0]");
+                        pdfFormFields.SetField("topmostSubform[0].Page2[0]._1c_Owner[0]", SelfEmployeed[0]);
+                    }
+                }
+
+                // Page 2 End C Section
+
+                if (data.EmploymentIncome.CoBorrowerEmploymentInfo.Count > 0)
+                {
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Address[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Address1);
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_City[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City);
+                    //  pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Country[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].City);
+
+                    //if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EndDate != null)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employent_End_Year[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EndDate.ToString().Substring(0, 4));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employment_End_Day[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EndDate.ToString().Substring(8, 2));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employment_End_Month[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EndDate.ToString().Substring(5, 2));
+                    //}
+
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employer[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].EmployerName);
+                    //if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate != null)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employment_Start_Day[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.ToString().Substring(8, 2));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employment_Start_Month[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.ToString().Substring(5, 2));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Employment_Start_Year[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StartDate.ToString().Substring(0, 4));
+                    //}
+
+                    //var grossIncome = data.EmploymentIncome.CoBorrowerMonthlyIncome.Base + data.EmploymentIncome.CoBorrowerMonthlyIncome.Bonuses + data.EmploymentIncome.CoBorrowerMonthlyIncome.Overtime + data.EmploymentIncome.CoBorrowerMonthlyIncome.Commissions + data.EmploymentIncome.CoBorrowerMonthlyIncome.Dividends;
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Gross_Monthly_Income[0]", grossIncome.ToString() ?? "");
+                    //if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].IsSelfEmployed.HasValue && data.EmploymentIncome.CoBorrowerEmploymentInfo[0].IsSelfEmployed == true)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Owner[0]", "1");
+                    //}
+
+                    //if (data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Position != null)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Position[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].Position.ToString());
+                    //}
+
+                    pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_State[0]", StateData.GetStateById(data.EmploymentIncome.CoBorrowerEmploymentInfo[0].StateId ?? 0));
+                    //  pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Unit[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0]);
+                    
+                   // pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Zip[0]", data.EmploymentIncome.CoBorrowerEmploymentInfo[0].ZipCode.ToString());
+                }
+                else
+                {
+                  //  var DoesNotApply = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page2[0]._1d_Does_Not_Apply[0]");
+                 //   pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Does_Not_Apply[0]", DoesNotApply[0]);
+                }
+
+
+                if (data.EmploymentIncome.AdditionalIncomes.Count > 0)
+                {
+                    //decimal TotalOtherMonthlyIncome = 0;
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R1[0]._1e_Income_Other_Sources1[0]", IncomeSourceData.GetIncomeSourceById(data.EmploymentIncome.AdditionalIncomes[0].IncomeSourceId??0));
+                    //pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R1[0]._1e_Other_Monthly_Income1[0]", data.EmploymentIncome.AdditionalIncomes[0].Amount.ToString());
+                    //TotalOtherMonthlyIncome = TotalOtherMonthlyIncome + data.EmploymentIncome.AdditionalIncomes[0].Amount ?? 0;
+                    //if (data.EmploymentIncome.AdditionalIncomes.Count > 1)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R2[0]._1e_Income_Other_Sources2[0]", IncomeSourceData.GetIncomeSourceById(data.EmploymentIncome.AdditionalIncomes[1].IncomeSourceId??0));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R2[0]._1e_Other_Monthly_Income2[0]", data.EmploymentIncome.AdditionalIncomes[1].Amount.ToString());
+                    //    TotalOtherMonthlyIncome = TotalOtherMonthlyIncome + data.EmploymentIncome.AdditionalIncomes[1].Amount ?? 0;
+
+                    //}
+                    //if (data.EmploymentIncome.AdditionalIncomes.Count > 2)
+                    //{
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R3[0]._1e_Income_Other_Sources3[0]", IncomeSourceData.GetIncomeSourceById(data.EmploymentIncome.AdditionalIncomes[2].IncomeSourceId??0));
+                    //    pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R3[0]._1e_Other_Monthly_Income3[0]", data.EmploymentIncome.AdditionalIncomes[0].Amount.ToString());
+                    //    TotalOtherMonthlyIncome = TotalOtherMonthlyIncome + data.EmploymentIncome.AdditionalIncomes[2].Amount ?? 0;
+                    //}
+                //    pdfFormFields.SetField("topmostSubform[0].Page2[0].Table1[0].T1R4[0]._1e_Total_Other_Monthly_Income[0]", TotalOtherMonthlyIncome.ToString());
+                }
+                else
+                {
+    //                var DoesNotApply = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page2[0]._1d_Does_Not_Apply[0]");
+    
+    //                pdfFormFields.SetField("topmostSubform[0].Page2[0]._1d_Does_Not_Apply[0]", DoesNotApply[0]);
+                }
+
+
+                // Page 3 is started from here...
+                decimal totalCash = 0;
+                if (data.ManualAssetEntries != null)
+                {
+                    if (data.ManualAssetEntries.Count > 0)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR1[0]._2a_Account1[0]", data.ManualAssetEntries[0].AccountNumber.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR1[0]._2a_Account_Type1[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR1[0]._2a_Cash1[0]", data.ManualAssetEntries[0].CashValue.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR1[0]._2a_Financial1[0]", data.ManualAssetEntries[0].BankName.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR1[0]._2b_Asset_Type1[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR1[0]._2b_Cash1[0]", data.ManualAssetEntries[0].CashValue.ToString());
+                        totalCash = totalCash + data.ManualAssetEntries[0].CashValue ?? 0;
+                        assetsTotalCash = assetsTotalCash + data.ManualAssetEntries[0].CashValue ?? 0;
+                    }
+
+                    if (data.ManualAssetEntries.Count > 1)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR2[0]._2a_Account2[0]", data.ManualAssetEntries[1].AccountNumber.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR2[0]._2a_Account_Type2[0]", data.ManualAssetEntries[1].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR2[0]._2a_Cash2[0]", data.ManualAssetEntries[1].CashValue.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR2[0]._2a_Financial2[0]", data.ManualAssetEntries[1].BankName.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR2[0]._2b_Asset_Type2[0]", data.ManualAssetEntries[1].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR2[0]._2b_Cash2[0]", data.ManualAssetEntries[1].CashValue.ToString());
+                        totalCash = totalCash + data.ManualAssetEntries[1].CashValue ?? 0;
+                        assetsTotalCash = assetsTotalCash + data.ManualAssetEntries[1].CashValue ?? 0;
+                    }
+                    if (data.ManualAssetEntries.Count > 2)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR3[0]._2a_Account3[0]", data.ManualAssetEntries[2].AccountNumber.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR3[0]._2a_Account_Type3[0]", data.ManualAssetEntries[2].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR3[0]._2a_Cash3[0]", data.ManualAssetEntries[2].CashValue.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR3[0]._2a_Financial3[0]", data.ManualAssetEntries[2].BankName.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR3[0]._2b_Asset_Type3[0]", data.ManualAssetEntries[2].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR3[0]._2b_Cash3[0]", data.ManualAssetEntries[2].CashValue.ToString());
+                        totalCash = totalCash + data.ManualAssetEntries[2].CashValue ?? 0;
+                        assetsTotalCash = assetsTotalCash + data.ManualAssetEntries[2].CashValue ?? 0;
+
+                    }
+
+                    if (data.ManualAssetEntries.Count > 3)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR4[0]._2a_Account4[0]", data.ManualAssetEntries[3].AccountNumber.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR4[0]._2a_Account_Type4[0]", data.ManualAssetEntries[3].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR4[0]._2a_Cash4[0]", data.ManualAssetEntries[3].CashValue.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR4[0]._2a_Financial4[0]", data.ManualAssetEntries[3].BankName.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR4[0]._2b_Asset_Type4[0]", data.ManualAssetEntries[3].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR4[0]._2b_Cash4[0]", data.ManualAssetEntries[3].CashValue.ToString());
+                        totalCash = totalCash + data.ManualAssetEntries[3].CashValue ?? 0;
+                        assetsTotalCash = assetsTotalCash + data.ManualAssetEntries[3].CashValue ?? 0;
+                    }
+
+                    if (data.ManualAssetEntries.Count > 4)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR5[0]._2a_Account5[0]", data.ManualAssetEntries[4].AccountNumber.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR5[0]._2a_Account_Type5[0]", data.ManualAssetEntries[4].AssetTypeId.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR5[0]._2a_Cash5[0]", data.ManualAssetEntries[4].CashValue.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR5[0]._2a_Financial5[0]", data.ManualAssetEntries[4].BankName.ToString());
+                        totalCash = totalCash + data.ManualAssetEntries[4].CashValue ?? 0;
+                    }
+
+
+                    pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2a[0].TR6[0]._2a_Total_Cash[0]", totalCash.ToString());
+
+                    pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2b[0].TR5[0]._2b_TotalCash[0]", assetsTotalCash.ToString());
+                    if (data.ManualAssetEntries[0].StockAndBonds != null)
+                    {
+                        if (data.ManualAssetEntries[0].StockAndBonds.Count > 0)
+                        {
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Account1[0]", data.ManualAssetEntries[0].StockAndBonds[0].AccountNumber);
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Account_Type1[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Company1[0]", data.ManualAssetEntries[0].StockAndBonds[0].CompanyName.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Monthly1[0]", data.ManualAssetEntries[0].StockAndBonds[0].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Paid_Off1[0]", data.ManualAssetEntries[0].StockAndBonds[0].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR1[0]._2c_Unpaid1[0]", data.ManualAssetEntries[0].StockAndBonds[0].Value.ToString());
+                        }
+                        if (data.ManualAssetEntries[0].StockAndBonds.Count > 1)
+                        {
+
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Account2[0]", data.ManualAssetEntries[0].StockAndBonds[1].AccountNumber);
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Account_Type2[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Company2[0]", data.ManualAssetEntries[0].StockAndBonds[1].CompanyName.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Monthly2[0]", data.ManualAssetEntries[0].StockAndBonds[1].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Paid_Off2[0]", data.ManualAssetEntries[0].StockAndBonds[1].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR2[0]._2c_Unpaid2[0]", data.ManualAssetEntries[0].StockAndBonds[1].Value.ToString());
+                        }
+                        if (data.ManualAssetEntries[0].StockAndBonds.Count > 2)
+                        {
+
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Account3[0]", data.ManualAssetEntries[0].StockAndBonds[2].AccountNumber);
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Account_Type3[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Company3[0]", data.ManualAssetEntries[0].StockAndBonds[2].CompanyName.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Monthly3[0]", data.ManualAssetEntries[0].StockAndBonds[2].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Paid_Off3[0]", data.ManualAssetEntries[0].StockAndBonds[2].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR3[0]._2c_Unpaid3[0]", data.ManualAssetEntries[0].StockAndBonds[2].Value.ToString());
+                        }
+                        if (data.ManualAssetEntries[0].StockAndBonds.Count > 3)
+                        {
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Account4[0]", data.ManualAssetEntries[0].StockAndBonds[3].AccountNumber);
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Account_Type4[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Company4[0]", data.ManualAssetEntries[0].StockAndBonds[3].CompanyName.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Monthly4[0]", data.ManualAssetEntries[0].StockAndBonds[3].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Paid_Off4[0]", data.ManualAssetEntries[0].StockAndBonds[3].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR4[0]._2c_Unpaid4[0]", data.ManualAssetEntries[0].StockAndBonds[3].Value.ToString());
+                        }
+                        if (data.ManualAssetEntries[0].StockAndBonds.Count > 4)
+                        {
+
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Account5[0]", data.ManualAssetEntries[0].StockAndBonds[4].AccountNumber);
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Account_Type5[0]", data.ManualAssetEntries[0].AssetTypeId.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Company5[0]", data.ManualAssetEntries[0].StockAndBonds[4].CompanyName.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Monthly5[0]", data.ManualAssetEntries[0].StockAndBonds[4].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Paid_Off5[0]", data.ManualAssetEntries[0].StockAndBonds[4].Value.ToString());
+                            pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2c[0].TR5[0]._2c_Unpaid5[0]", data.ManualAssetEntries[0].StockAndBonds[4].Value.ToString());
+                        }
+                    }
+                    else
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page3[0]._2b_Does_Not_Apply[0]", "1");
+                    }
+                    //  pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR1[0]._2d_Liability_Type1[0]", data.ManualAssetEntries[0]);
+                    //  pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR1[0]._2d_Monthly1[0]", );
+                    //  pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR2[0]._2d_Liability_Type2[0]", );
+                    // pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR2[0]._2d_Monthly2[0]", );
+                    // pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR3[0]._2d_Liability_Type3[0]", );
+                    //  pdfFormFields.SetField("topmostSubform[0].Page3[0].Table2d[0].TR3[0]._2d_Monthly3[0]", );
+
+                    //pdfFormFields.SetField("topmostSubform[0].Page3[0]._2c_Does_Not_Apply[0]", );
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page3[0]._2d_Does_Not_Apply[0]", "1");
+                }
+
+                // Page 3 ended here ..
+
+                // Page 4 start from here ..
+                if (data.ManualAssetEntries != null && data.ManualAssetEntries.Count != 0)
+                {
+                    if (data.ManualAssetEntries.Count > 0)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Account1[0]", data.ManualAssetEntries[0].AccountNumber);
+                        // pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Credit1[0]", data.ManualAssetEntries[0]);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Creditor1[0]", data.ManualAssetEntries[0].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Monthly_Mortgage1[0]", (data.ManualAssetEntries[0].MonthlyMortgagePayment ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Paid_Off1[0]", (data.ManualAssetEntries[0].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Type1[0]", data.ManualAssetEntries[0].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR1[0]._3a_Unpaid1[0]", (data.ManualAssetEntries[0].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Account2[0]", data.ManualAssetEntries[0].AccountNumber);
+                        // pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Credit2[0]", );
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Creditor2[0]", data.ManualAssetEntries[0].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Monthly_Mortgage2[0]", data.ManualAssetEntries[0].MonthlyMortgagePayment.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Paid_Off2[0]", data.ManualAssetEntries[0].OutstandingMortgageBalance.ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Type2[0]", data.ManualAssetEntries[0].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3a[0].TR2[0]._3a_Unpaid2[0]", data.ManualAssetEntries[0].OutstandingMortgageBalance.ToString());
+                    }
+
+                    if (data.ManualAssetEntries.Count > 1)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Account1[0]", data.ManualAssetEntries[1].AccountNumber);
+                        //  pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Credit1[0]", );
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Creditor1[0]", data.ManualAssetEntries[1].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Monthly_Mortgage1[0]", (data.ManualAssetEntries[1].MonthlyMortgagePayment ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Paid_Off1[0]", (data.ManualAssetEntries[1].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Type1[0]", data.ManualAssetEntries[1].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR1[0]._3b_Unpaid1[0]", (data.ManualAssetEntries[1].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Account2[0]", data.ManualAssetEntries[1].AccountNumber);
+                        //  pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Credit2[0]", );
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Creditor2[0]", data.ManualAssetEntries[1].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Monthly_Mortgage2[0]", (data.ManualAssetEntries[1].MonthlyMortgagePayment ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Paid_Off2[0]", (data.ManualAssetEntries[1].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Type2[0]", data.ManualAssetEntries[1].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3b[0].TR2[0]._3b_Unpaid2[0]", (data.ManualAssetEntries[1].OutstandingMortgageBalance ?? 0).ToString());
+                    }
+                    if (data.ManualAssetEntries.Count > 2)
+                    {
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Account1[0]", data.ManualAssetEntries[2].AccountNumber);
+                        // pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Credit1[0]", data.ManualAssetEntries[3].AccountNumber);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Creditor1[0]", data.ManualAssetEntries[2].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Monthly_Mortgage1[0]", (data.ManualAssetEntries[2].MonthlyMortgagePayment ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Paid_Off1[0]", (data.ManualAssetEntries[2].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Type1[0]", data.ManualAssetEntries[2].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR1[0]._3c_Unpaid1[0]", (data.ManualAssetEntries[2].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Account2[0]", data.ManualAssetEntries[2].AccountNumber);
+                        //  pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Credit2[0]", );
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Creditor2[0]", data.ManualAssetEntries[2].Name);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Monthly_Mortgage2[0]", (data.ManualAssetEntries[2].MonthlyMortgagePayment ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Paid_Off2[0]", (data.ManualAssetEntries[2].OutstandingMortgageBalance ?? 0).ToString());
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Type2[0]", data.ManualAssetEntries[2].PropertyType);
+                        pdfFormFields.SetField("topmostSubform[0].Page4[0].Table3c[0].TR2[0]._3c_Unpaid2[0]", (data.ManualAssetEntries[2].OutstandingMortgageBalance ?? 0).ToString());
+                    }
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3_Do_Not_Own[0]", "1");
+                }
+
+                if (data.ManualAssetEntries != null && data.ManualAssetEntries.Count > 0 && !String.IsNullOrEmpty(data.ManualAssetEntries[0].City) && !String.IsNullOrEmpty(data.ManualAssetEntries[0].Address) && !String.IsNullOrEmpty(data.ManualAssetEntries[0].ZipCode))
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_City[0]", data.ManualAssetEntries[0].City.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_Country[0]", data.ManualAssetEntries[0].Country.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_St[0]", data.ManualAssetEntries[0].Address.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_State[0]", data.ManualAssetEntries[0].StateId.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_Unit[0]", data.ManualAssetEntries[0]);
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Address_Zip[0]", data.ManualAssetEntries[0].ZipCode.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Intended_Occupancy[0]", data.ManualAssetEntries[0].ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Monthly_Expenses[0]", data.Expenses.OtherHousingExpenses.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Monthly_Rent[0]", data.ManualAssetEntries[0].GrossRentalIncome.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Net_Monthly[0]", data.EmploymentIncome.BorrowerMonthlyIncome.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Status[0]", data.ManualAssetEntries[0].PropertyStatus.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Value[0]", data.ManualAssetEntries[0].PresentMarketValue.ToString());
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3a_Mortgage_Does_Not_Apply[0]", "1");
+                }
+
+                if (data.ManualAssetEntries != null && data.ManualAssetEntries.Count > 1 && !String.IsNullOrEmpty(data.ManualAssetEntries[1].PropertyStatus) && data.ManualAssetEntries[1].PresentMarketValue != null)
+                {
+                
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_City[0]", data.ManualAssetEntries[1].City.ToString());
+                    // pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_Country[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_St[0]", data.ManualAssetEntries[1].Address.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_State[0]", data.ManualAssetEntries[1].StateId.ToString());
+                    // pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_Unit[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Address_Zip[0]", data.ManualAssetEntries[1].ZipCode.ToString());
+                    // pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Intended_Occupancy[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Monthly_Expenses[0]", data.Expenses.OtherHousingExpenses.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Monthly_Rent[0]", data.ManualAssetEntries[1].GrossRentalIncome.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Net_Monthly[0]", data.EmploymentIncome.BorrowerMonthlyIncome.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_No_Additional[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Status[0]", data.ManualAssetEntries[1].PropertyStatus.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Value[0]", data.ManualAssetEntries[1].PresentMarketValue.ToString());
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3b_Mortgage_Does_Not_Apply[0]", "0");
+                }
+
+
+               if(data.ManualAssetEntries != null && data.ManualAssetEntries.Count > 2 && !String.IsNullOrEmpty(data.ManualAssetEntries[2].City) && !String.IsNullOrEmpty(data.ManualAssetEntries[2].Address.ToString()))
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_City[0]", data.ManualAssetEntries[2].City.ToString());
+               //   pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_Country[0]", data.ManualAssetEntries[2].ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_St[0]", data.ManualAssetEntries[2].Address.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_State[0]", data.ManualAssetEntries[2].StateId.ToString());
+               //   pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_Unit[0]", data.ManualAssetEntries[2].ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Address_Zip[0]", data.ManualAssetEntries[2].ZipCode.ToString());
+               //   pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Intended_Occupancy[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Monthly_Expenses[0]", data.Expenses.OtherHousingExpenses.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Monthly_Rent[0]", data.ManualAssetEntries[2].GrossRentalIncome.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Mortgage_Does_Not_Apply[0]", "1");
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Net_Monthly[0]", data.EmploymentIncome.BorrowerMonthlyIncome.ToString());
+               //  pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_No_Additional[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Status[0]", data.ManualAssetEntries[2].PropertyStatus.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page4[0]._3c_Value[0]", data.ManualAssetEntries[2].PresentMarketValue.ToString());
+                }
+
+                // Page 4 ended here ..
+
+                // Page 5 starts here ..
+                if (data.LoanDetails != null)
+                {
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0].L_4a1[0].no[0]._4a_mixed_no[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0].L_4a1[0].yes[0]._4a_mixed_yes[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0].L_4a2[0].no[0]._4a_manu_no[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0].L_4a2[0].yes[0]._4a_manu_yes[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Address_City[0]", data.LoanDetails.City.ToString());
+                    //    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Address_St[0]", data.LoanDetails..ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Address_State[0]", data.LoanDetails.StateId.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Address_Unit[0]", data.LoanDetails);
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Address_Zip[0]", data.LoanDetails.);
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_FHA[0]", "1");
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Loan_Amount[0]", data.LoanDetails.CurrentLoanAmount.ToString());
+                    //  pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Property_County[0]", data.LoanDetails);
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Units[0]", data.LoanDetails);
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4a_Value[0]", data.LoanDetails.EstimatedValue.ToString());
+                 }
+
+                if(data.LoanDetails.RequestedLoanAmount != null && data.LoanDetails.SecondMortgageAmount != null)
+                {
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4a_LR1[0].first[0]._4a_L1FL[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4a_LR1[0].subordinate[0]._4a_L1SL[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4b_Amount1[0]", data.LoanDetails.RequestedLoanAmount.ToString());
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4b_Credit1[0]", );
+                    //  pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4b_Creditor1[0]", data.LoanDetails);
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR1[0]._4b_Monthly1[0]", data.LoanDetails.SecondMortgageAmount.ToString());
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4a_LR2[0].first[0]._4a_L2FL[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4a_LR2[0].subordinate[0]._4a_L2SL[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4b_Amount2[0]", data.LoanDetails.SecondMortgageAmount.ToString());
+                    // pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4b_Credit2[0]", );
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4b_Creditor2[0]", );
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Table[0].TR2[0]._4b_Monthly2[0]", data.LoanDetails);
+                } else {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4b_Does_Not_Apply[0]", "1");
+                }
+
+
+
+                if (false) { 
+                    //    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4c_Table[0].TR1[0]._4c_Amount1[0]", );
+                    //    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4c_Table[0].TR2[0]._4c_Amount2[0]", );
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4c_Does_Not_Apply[0]", "1");
+                }
+
+                if (data.LoanDetails != null && data.LoanDetails.GiftAmount != 0 && !String.IsNullOrEmpty(data.LoanDetails.GiftExplanation))
+                {
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR1[0]._4dL1[0].deposited[0]._4d_r1Deposited[0]",);
+                    //  pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR1[0]._4dL1[0].not[0]._4d_r1Not[0]",  );
+                    //   pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR1[0]._4d_Asset_Type1[0]", );
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR1[0]._4d_Cash1[0]", data.LoanDetails.GiftAmount.ToString());
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR1[0]._4d_Source1[0]", data.LoanDetails.GiftExplanation.ToString());
+                    // pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR2[0]._4dL2[0].deposited[0]._4d_r2Deposited[0]", );
+                    //  pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR2[0]._4dL2[0].not[0]._4d_r2Not[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR2[0]._4d_Asset_Type2[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR2[0]._4d_Cash2[0]", );
+                    //pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Table[0].TR2[0]._4d_Source2[0]", );
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0]._4d_Does_Not_Apply[0]", "1");
+                }
+
+                if (data.LoanDetails.PurposeOfLoan == 1)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].loan_purpose[0].purchase[0]._4a_Purchase[0]", "1");
+                } else if(data.LoanDetails.PurposeOfLoan == 2) {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].loan_purpose[0].other[0]._4a_Purpose_other_spec[0]", "1");
+                } else if(data.LoanDetails.PurposeOfLoan == 3)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].loan_purpose[0].refinance[0]._4a_Refinance[0]", "1");
+                }
+
+            //    pdfFormFields.SetField("topmostSubform[0].Page5[0].loan_purpose[0].other[0]._4a_Other[0]", );
+                
+
+                if(data.LoanDetails.PropertyUseId == 1)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].occupancy[0].primary[0]._4a_Primary[0]", "1");
+                }
+                else if(data.LoanDetails.PropertyUseId == 2)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].occupancy[0].secondary[0]._4a_SecondHome[0]", "1");
+                }
+                else if(data.LoanDetails.PropertyUseId == 3)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page5[0].occupancy[0].invest[0]._4a_Investment[0]", "1");
+                }
+    
+                
+               
+                // Page 5 ended here ..
+
+                // Page 6 starts here ..
+                //if(data.Declaration.BorrowerDeclaration.)
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0].L5a3[0]._5a31[0]._5a_About_A3[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0].L5a3[0]._5a32[0]._5a_About_A4[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aA_another[0].no[0]._5aA_another_no[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aA_another[0].yes[0]._5aA_another_yes[0]", );
+                if (!data.Declaration.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary ?? false) {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aA_primary[0].no[0]._5aA_primary_no[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aA_primary[0].yes[0]._5aA_primary_yes[0]", "1");
+                }
+
+                if(data.Declaration.BorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears == true)
+                {
+                   pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aI[0].yes[0]._5bI_yes[0]","1");
+                }
+                else
+                {
+                   pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aI[0].no[0]._5bI_no[0]", "0");
+                }
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aB[0].yes[0]._5aB_yes[0]", "1");
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aB[0].no[0]._5aB_no[0]", "0");
+
+
+                if(data.Declaration.BorrowerDeclaration.IsAnyPartOfTheDownPayment == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aC[0].yes[0]._5aC_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aC[0].no[0]._5aC_no[0]", "0");
+                }
+
+
+                if(data.Declaration.BorrowerDeclaration.IsObligatedOnAnyLoanWhichResultedForeclosure == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aD2[0].yes[0]._5aD2_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aD2[0].no[0]._5aD2_no[0]", "0");
+                }
+                if (data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aD1[0].yes[0]._5aD1_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aD1[0].no[0]._5aD1_no[0]", "0");
+                }
+
+                
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aE[0].no[0]._5aE_no[0]", "1");
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aE[0].yes[0]._5aE_yes[0]", "0");
+                if(data.Declaration.BorrowerDeclaration.IsCoMakerOrEndorser == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bF[0].yes[0]._5bF_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bF[0].no[0]._5bF_no[0]", "0");
+                }
+                if (data.Declaration.BorrowerDeclaration.IsOutstandingJudgmentsAgainstYou == true) {
+                   pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bG[0].yes[0]._5bG_yes[0]", "1");
+                } else {
+                   pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bG[0].no[0]._5bG_no[0]", "0");
+                }
+
+                if(data.Declaration.BorrowerDeclaration.IsPresentlyDelinquent == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bH[0].yes[0]._5bH_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bH[0].no[0]._5bH_no[0]", "0");
+                }
+                if(data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bJ[0].yes[0]._5bJ_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bJ[0].no[0]._5bJ_no[0]", "0");
+                }
+
+                if(data.Declaration.BorrowerDeclaration.IsPartyToLawsuit == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aI[0].yes[0]._5bI_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5aI[0].no[0]._5bI_no[0]", "0");
+                }
+
+                if(data.Declaration.BorrowerDeclaration.IsPropertyForeClosedUponOrGivenTitle == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bL[0].yes[0]._5bL_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bL[0].no[0]._5bL_no[0]", "0");
+                }
+
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bK[0].no[0]._5bK_no[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bK[0].yes[0]._5bK_yes[0]", );
+
+                if(data.Declaration.BorrowerDeclaration.IsDeclaredBankrupt == true)
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM[0].yes[0]._5bM_yes[0]", "1");
+                }
+                else
+                {
+                    pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM[0].no[0]._5bM_no[0]", "0");
+                }
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM_type[0].ch11[0]._5bM_ch11[0]", "0");
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM_type[0].ch12[0]._5bM_ch12[0]", "1");
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM_type[0].ch13[0]._5bM_ch13[0]", "0");
+                pdfFormFields.SetField("topmostSubform[0].Page6[0]._5bM_type[0].ch7[0]._5bM_ch7[0]", "0");
+
+                // Page 6 ends here ..
+
+                // Page 7 starts here ..
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate1[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate2[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate3[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate4[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate5[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page7[0]._6a_SigDate6[0]", );
+
+                // Page 7 ends here .. 
+
+                // Page 8 starts here ..
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].current[0]._7_Active_Duty_Month[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].current[0]._7_Active_Duty_Year[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].current[0]._7_Active_Duty_day[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].current[0]._7_current[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].non_active[0]._7_non_active[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].retired[0]._7_retired[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7[0].surviving[0]._7_surviving[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7service[0].no[0]._7service_no[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0]._7service[0].yes[0]._7service_yes[0]", );
+
+
+                if(data.Declaration.BorrowerDemographic.Ethnicity != null)
+                {
+                  foreach (var ethnic in data.Declaration.BorrowerDemographic.Ethnicity)
+                    {
+                        switch ((Ethnic)ethnic.Id)
+                        {
+                            case Ethnic.HispanicOrLatino:
+                                {
+                                   var HispanicOrLatino = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0]._8_hispanic[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0]._8_hispanic[0]", HispanicOrLatino[0]);
+                                }
+                                break;
+                            case Ethnic.Mexican:
+                                {
+                                    var Mexican = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].mexican[0]._8_ethnicity_Mexican[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].mexican[0]._8_ethnicity_Mexican[0]", Mexican[0]);
+                                }
+                                break;
+                            case Ethnic.PuertoRican:
+                                {
+                                    var PuertoRican = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].puertorican[0]._8_ethnicity_Puerto_Rican[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].puertorican[0]._8_ethnicity_Puerto_Rican[0]", PuertoRican[0]);
+                                };
+                                break;
+                            case Ethnic.Cuban:
+                                {
+                                    var Cuban = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].cuban[0]._8_ethnicity_Cuban[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].cuban[0]._8_ethnicity_Cuban[0]", Cuban[0]);
+
+                                }
+                                break;
+                            case Ethnic.OtherHispanicOrLatino:
+                                {
+                                    var OtherHispanicOrLatino  = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].other[0]._8_hispanic_other[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].other[0]._8_hispanic_other[0]", OtherHispanicOrLatino[0]);
+                                //  pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].hispanic[0].hispanic[0].other[0]._8_other_hispanic[0]", data.Declaration.BorrowerDemographic.Ethnicity);
+                                }
+                                break;
+                            case Ethnic.NotHispanicOrLatino:
+                                {
+                                    var NotHispanicOrLatino  = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].not_hispanic[0]._8_not_hispanic[0]");
+
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].not_hispanic[0]._8_not_hispanic[0]", NotHispanicOrLatino[0]);
+                                }
+                                break;
+                            case Ethnic.CanNotProvideEthnic:
+                                {
+                                    var CanNotProvideEthnic = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].ethnicity[0].refuse[0]._8_ethnicity_refuse[0]");
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity[0].refuse[0]._8_ethnicity_refuse[0]", CanNotProvideEthnic[0]);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                         
+                    
+                  //  pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity_visual[0].no[0]._8_inst_ethnicity_no[0]", );
+                  //  pdfFormFields.SetField("topmostSubform[0].Page8[0].ethnicity_visual[0].yes[0]._8_inst_ethnicity_yes[0]", );
+
+
+                    pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_infosrc[0].email[0]._8_infosrc_email[0]", "1");
+                    pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_infosrc[0].face[0]._8_infosrc_face[0]", "0");
+                    pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_infosrc[0].fax[0]._8_infosrc_fax[0]", "0");
+                    pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_infosrc[0].phone[0]._8_infosrc_phone[0]", "0");
+
+
+                foreach (var race in data.Declaration.BorrowerDemographic.Race)
+                    switch ((Race)race.Id)
+                    {
+                        case Race.AmericanIndianOrAlaskaNative:
+                            {
+                                var AmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].native_american[0]._8_race_native_american[0]");
+                                var RaceTribe = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].native_american[0]._8_race_tribe[0]");
+                                //var BorrowerAmericanIndianOrAlaskaNative = pdfFormFields.GetAppearanceStates("race 1");
+                                //pdfFormFields.SetField("race 1", BorrowerAmericanIndianOrAlaskaNative[0]);
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].native_american[0]._8_race_native_american[0]", AmericanIndianOrAlaskaNative[0]);
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].native_american[0]._8_race_tribe[0]", RaceTribe[0]);
+                            }
+
+                            break;
+                        case Race.Asian:
+                            {
+                                var Asian  = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0]._8_race_asian[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0]._8_race_asian[0]", Asian[0]);
+                            }
+                            break;
+                        case Race.AsianIndian:
+                            {
+                                var AsianIndian = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].indian[0]._8_race_indian[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].indian[0]._8_race_indian[0]", AsianIndian[0]);
+                            }
+                            break;
+                        case Race.BlackOrAfricanAmerican:
+                            {
+                                var BlackOrAfricanAmerican = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].black[0]._8_race_black[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].black[0]._8_race_black[0]", BlackOrAfricanAmerican[0]);
+
+                            }
+                            break;
+                        case Race.CanNotProvideRace:
+                            {
+                                var CanNotProvideRace = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].not_provide[0]._8_race_refuse[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].not_provide[0]._8_race_refuse[0]", CanNotProvideRace[0]);
+
+                            }
+                            break;
+                        case Race.Chinese:
+                            {
+                                var Chinese = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].chinese[0]._8_race_chinese[0]");
+
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].chinese[0]._8_race_chinese[0]", Chinese[0]);
+
+                            }
+                            break;
+                        case Race.Filipino:
+                            {
+                                var Filipino = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].filipino[0]._8_race_filipino[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].filipino[0]._8_race_filipino[0]", Filipino[0]);
+                            }
+                            break;
+                        case Race.GuamanianOrChamorro:
+                            {
+                                var GuamanianOrChamorro = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].guanamian[0]._8_race_guamanian[0]");
+
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].guanamian[0]._8_race_guamanian[0]", GuamanianOrChamorro[0]);
+                            }
+                            break;
+                        case Race.Japanese:
+                            {
+                                var Japanese = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].japanese[0]._8_race_japanese[0]");
+
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].japanese[0]._8_race_japanese[0]", Japanese[0]);
+                            }
+                            break;
+                        case Race.Korean:
+                            {
+                                var Korean = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].korean[0]._8_race_korean[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].korean[0]._8_race_korean[0]", Korean[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiian:
+                            {
+                                var NativeHawaiian = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].hawaiian[0]._8_race_hawaiian[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].hawaiian[0]._8_race_hawaiian[0]", NativeHawaiian[0]);
+                            }
+                            break;
+                        case Race.NativeHawaiianOrOtherPacificIslander:
+                            {
+                                var NativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].pacific[0]._8_race_pacific[0]");
+
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0]._8_race_pacific[0]", NativeHawaiianOrOtherPacificIslander[0]);
+                            }
+                            break;
+                        case Race.OtherAsian:
+                            {
+                                var OtherAsian  = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].other[0]._8_race_asian_other[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].other[0]._8_race_asian_other[0]", OtherAsian[0]);
+                            }
+                            break;
+                        case Race.OtherPacificIslander:
+                            {
+                                var OtherPacificIslander = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].other[0]._8_pacific_race[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].other[0]._8_pacific_race[0]", OtherPacificIslander[0]);
+                               // pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].other[0]._8_race_pacific_other[0]", );
+                            }
+                            break;
+                        case Race.Samoan:
+                            {
+                                var Samoan = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].samoan[0]._8_race_samoan[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].pacific[0].pacific[0].samoan[0]._8_race_samoan[0]", Samoan[0]);
+                            }
+                            break;
+                        case Race.Vietnamese:
+                            {
+                                var Vietnamese = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].vietnamese[0]._8_race_vietnamese[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].vietnamese[0]._8_race_vietnamese[0]", Vietnamese[0]);
+                            }
+                            break;
+                        case Race.White:
+                            {
+                                var White = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0]._8_race[0].white[0]._8_race_white[0]");
+                                pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].white[0]._8_race_white[0]", White[0]);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                if (data.Declaration.CoBorrowerDemographic != null && data.Declaration.CoBorrowerDemographic.Sex != null) {
+                    foreach (var sex in data.Declaration.CoBorrowerDemographic.Sex)
+                        switch ((Sex)sex.Id)
+                        {
+                            case Sex.Female:
+                                {
+                                    var Female = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].sex[0].female[0]._8_sex_female[0]");
+
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].sex[0].female[0]._8_sex_female[0]", Female[0]);
+                                }
+                                break;
+                            case Sex.Male:
+                                {
+                                    var Male = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].sex[0].male[0]._8_sex_male[0]");
+
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].sex[0].male[0]._8_sex_male[0]", Male[0]);
+                                }
+                                break;
+                            case Sex.CanNotProvideSex:
+                                {
+                                    var CanNotProvideSex  = pdfFormFields.GetAppearanceStates("topmostSubform[0].Page8[0].sex[0].refuse[0]._8_sex_refuse[0]");
+
+                                    pdfFormFields.SetField("topmostSubform[0].Page8[0].sex[0].refuse[0]._8_sex_refuse[0]", CanNotProvideSex[0]);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                }
+
+
+
+
+
+
+                //    pdfFormFields.SetField("topmostSubform[0].Page8[0]._8_race[0].asian[0].asian[0].other[0]._8_asian_race[0]", );
+
+
+
+
+
+
+
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0].race_visual[0].no[0]._8_inst_race_no[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0].race_visual[0].yes[0]._8_inst_race_yes[0]", );
+                
+                
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0].sex_visual[0].no[0]._8_inst_sex_no[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page8[0].sex_visual[0].yes[0]._8_inst_sex_yes[0]", );
+                // Page 8 ends here ..
+
+                // Page 9 starts here ..
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Address[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Org[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Orginator[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Ori_Email[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Ori_NMLSR_ID_[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Ori_Org_NMLSR_ID_[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Ori_Org_State_ID_[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Loan_Ori_State_ID_[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Phone1[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Phone2[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a.Phone3[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a_Loan_Ori_Date1[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a_Loan_Ori_Date2[0]", );
+                //pdfFormFields.SetField("topmostSubform[0].Page9[0]._8a_Loan_Ori_Date3[0]", );
+                // Page 9 ends here ..
+
+                return Ok();
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
+            finally
+            {
+                pdfStamper.Close();
+                pdfReader.Close();
+                await fileStream.DisposeAsync();
+            }
+
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreatePdf([FromQuery] long Id)
+        {
+            var mailMessage = new MailMessage();
+         // mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+            mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
+            mailMessage.From = new MailAddress("loanapplicationmail@gmail.com");
+            mailMessage.Subject = "Home Buying Funnel Form New Lead";
+            var data = await _loanAppService.GetAsync(new Abp.Application.Services.Dto.EntityDto<long?>(Id));
+            string pdfTemplate = @"Borrower_v28.pdf";
+            var pdfReader = new Pdf.PdfReader(pdfTemplate);
+        //  var (fileName, path) = CreateFileName(Id);
+            MemoryStream memoryStream = new MemoryStream();
+        //  var fileStream = new FileStream(path, FileMode.Create);
+            var pdfStamper = new Pdf.PdfStamper(pdfReader, memoryStream);
+
+            // fileStream.Position = 0;
+            memoryStream.Position = 0;
+          // fileStream.CopyTo(memoryStream);
+
+            var attachment = new Attachment(memoryStream, "test.pdf");
+            mailMessage.Attachments.Add(attachment);
+            _smtpClient.Send(mailMessage); // _smtpClient will be disposed by container
+            try
+            {
+                var pdfFormFields = pdfStamper.AcroFields;
+
+                pdfFormFields.SetField("Name", $"{data.LoanDetails.City}, {StateData.GetStateById(data.LoanDetails.StateId.Value)}");
 
                 pdfFormFields.SetField("Subject Property Address", $"{data.LoanDetails.City}, {StateData.GetStateById(data.LoanDetails.StateId.Value)}");
 
@@ -122,8 +1207,6 @@ namespace LoanManagement.Controllers
                 }
 
                 pdfFormFields.SetField("Describe Improvements Text", data.LoanDetails.YearAcquired);
-
-
 
                 if (data.Declaration.BorrowerDeclaration != null)
                 {
@@ -295,8 +1378,10 @@ namespace LoanManagement.Controllers
                         if (i == 0)
                         {
                             var CoBorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("CoBorrower Self Employed 1");
-                            if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
-                                pdfFormFields.SetField("CoBorrower Self Employed 1", CoBorrowerSelfEmployed1[0]);
+                            //if (data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed != null && data.EmploymentIncome.CoBorrowerEmploymentInfo[i].IsSelfEmployed == true)
+                            //{
+                            //    pdfFormFields.SetField("CoBorrower Self Employed 1", CoBorrowerSelfEmployed1[0]);
+                            //}
                         }
                         else if (i == 1)
                         {
@@ -363,8 +1448,8 @@ namespace LoanManagement.Controllers
                             break;
                         case Race.Asian:
                             {
-                                var BorrowerAsian = pdfFormFields.GetAppearanceStates("race 2");
-                                pdfFormFields.SetField("race 2", BorrowerAsian[0]);
+                                //var BorrowerAsian = pdfFormFields.GetAppearanceStates("race 2");
+                                //pdfFormFields.SetField("race 2", BorrowerAsian[0]);
                             }
                             break;
                         case Race.BlackOrAfricanAmerican:
@@ -375,8 +1460,8 @@ namespace LoanManagement.Controllers
                             break;
                         case Race.NativeHawaiianOrOtherPacificIslander:
                             {
-                                var BorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race 4");
-                                pdfFormFields.SetField("race 4", BorrowerNativeHawaiianOrOtherPacificIslander[0]);
+                                //var BorrowerNativeHawaiianOrOtherPacificIslander = pdfFormFields.GetAppearanceStates("race 4");
+                                //pdfFormFields.SetField("race 4", BorrowerNativeHawaiianOrOtherPacificIslander[0]);
                             }
                             break;
                         case Race.White:
@@ -605,8 +1690,8 @@ namespace LoanManagement.Controllers
                             pdfFormFields.SetField("Borrower Position/Title/Type of Business", borrowerEmploymentInfo.Position);
 
                             var BorrowerSelfEmployed1 = pdfFormFields.GetAppearanceStates("Borrower Self Employed 1");
-                            if (borrowerEmploymentInfo.IsSelfEmployed == true)
-                                pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
+                            //if (borrowerEmploymentInfo.IsSelfEmployed == true)
+                            //    pdfFormFields.SetField("Borrower Self Employed 1", BorrowerSelfEmployed1[0]);
                             break;
                         case 1:
                             //pdfFormFields.SetField("Borrower Employment info Cont position title", borrowerEmploymentInfo.Position);
@@ -965,6 +2050,13 @@ namespace LoanManagement.Controllers
                 }
 
                 #endregion
+              // fileStream.Position = 0;
+                memoryStream.Position = 0;
+             // fileStream.CopyTo(memoryStream);
+
+               // var attachment = new Attachment(memoryStream, "test.pdf");
+               // mailMessage.Attachments.Add(attachment);
+              //  _smtpClient.Send(mailMessage); // _smtpClient will be disposed by container
 
                 return Ok();
 
@@ -976,19 +2068,28 @@ namespace LoanManagement.Controllers
             finally
             {
                 pdfStamper.Close();
-                await fileStream.DisposeAsync();
+               // await fileStream.DisposeAsync();
             }
         }
-
 
         [HttpGet]
         public async Task<IActionResult> DownloadPdf([FromQuery] long id)
         {
             var (fileName, path) = CreateFileName(id);
+            //var stream = new MemoryStream(await System.IO.File.ReadAllBytesAsync(path));
+            //var response = File(stream, "application/pdf", $"{fileName}");
+            //Response.Headers.Add("Content-Disposition", $"attachment; filename={fileName}");
+            var mailMessage = new MailMessage();
+            mailMessage.To.Add(new MailAddress("wmartin@ezonlinemortgage.com"));
+            mailMessage.To.Add(new MailAddress("shabir.abdulmajeed786@gmail.com"));
+            mailMessage.From = new MailAddress("loanapplicationmail@gmail.com");
+            mailMessage.Subject = "Home Buying Funnel Form New Lead";
             var stream = new MemoryStream(await System.IO.File.ReadAllBytesAsync(path));
-            var response = File(stream, "application/pdf", $"{fileName}");
-            Response.Headers.Add("Content-Disposition", $"attachment; filename={fileName}");
-            return response;
+            var attachment = new Attachment(stream, "test.pdf");
+            mailMessage.Attachments.Add(attachment);
+            _smtpClient.Send(mailMessage);
+
+            return Ok();
         }
 
         private (string fileName, string filePath) CreateFileName(long id)

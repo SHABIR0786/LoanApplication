@@ -201,6 +201,48 @@ import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refi
 import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
 import { LoanApplicationHeaderComponent } from "./loan-application/loan-application-header/loan-application-header.component";
 import { WelcomeComponent } from "./loan-application/welcome/welcome.component";
+import { HowCanWeHelpComponent } from "./animated_loan_application/welcome/how-can-we-help/how-can-we-help.component";
+import { LoanAppSideBarComponent } from "./animated_loan_application/loan-app-side-bar/loan-app-side-bar.component";
+import { WhatStageAreYouInComponent } from "./animated_loan_application/welcome/what-stage-are-you-in/what-stage-are-you-in.component";
+import { AlreadyWorkingWithSomeoneFromEzComponent } from "./animated_loan_application/welcome/already-working-with-someone-from-ez/already-working-with-someone-from-ez.component";
+import { AddressOfNewHomeComponent } from "./animated_loan_application/property-info/address-of-new-home/address-of-new-home.component";
+import { DetailsAboutTheContractComponent } from "./animated_loan_application/property-info/details-about-the-contract/details-about-the-contract.component";
+import { PurchasePriceComponent } from "./animated_loan_application/property-info/purchase-price/purchase-price.component";
+import { CreditScoreComponent } from "./animated_loan_application/property-info/credit-score/credit-score.component";
+import { FullLegalNameComponent } from "./animated_loan_application/property-info/full-legal-name/full-legal-name.component";
+import { WhatTypeOfHomeComponent } from "./animated_loan_application/property-info/what-type-of-home/what-type-of-home.component";
+import { HOADuesComponent } from "./animated_loan_application/property-info/hoa-dues/hoa-dues.component";
+import { PlanOnUsingNewHomeComponent } from "./animated_loan_application/property-info/plan-on-using-new-home/plan-on-using-new-home.component";
+import { CurrentOrFormerMemberOfMilitaryComponent } from "./animated_loan_application/military-info/current-or-former-member-of-military/current-or-former-member-of-military.component";
+import { PropertyInfoConfirmationComponent } from "./animated_loan_application/property-info/property-info-confirmation/property-info-confirmation.component";
+import { PersonalInfoConfirmationComponent } from "./animated_loan_application/personal-info/personal-info-confirmation/personal-info-confirmation.component";
+import { CurrentMilitaryServiceComponent } from "./animated_loan_application/military-info/current-military-service/current-military-service.component";
+import { BranchOfMilitaryComponent } from "./animated_loan_application/military-info/branch-of-military/branch-of-military.component";
+import { EtsDateComponent } from "./animated_loan_application/military-info/ets-date/ets-date.component";
+import { VaLoanPreviouslyComponent } from "./animated_loan_application/military-info/va-loan-previously/va-loan-previously.component";
+import { WhoWillBeWillingInHomeComponent } from "./animated_loan_application/military-info/who-will-be-willing-in-home/who-will-be-willing-in-home.component";
+import { TellUsALittleBitAboutYourselfComponent } from "./animated_loan_application/personal-info/tell-us-a-little-bit-about-yourself/tell-us-a-little-bit-about-yourself.component";
+import { DidSomeoneRefferYouComponent } from "./animated_loan_application/personal-info/did-someone-reffer-you/did-someone-reffer-you.component";
+import { ApplyingJointlyOrOwnComponent } from "./animated_loan_application/personal-info/applying-jointly-or-own/applying-jointly-or-own.component";
+import { MartialStatusComponent } from "./animated_loan_application/personal-info/martial-status/martial-status.component";
+import { DependentsWillBeLivingInYourHomeComponent } from "./animated_loan_application/personal-info/dependents-will-be-living-in-your-home/dependents-will-be-living-in-your-home.component";
+import { CurrentlyLivingComponent } from "./animated_loan_application/personal-info/currently-living/currently-living.component";
+import { MonthlyExpensesComponent } from "./animated_loan_application/personal-info/monthly-expenses/monthly-expenses.component";
+import { BorrowerInfoComponent } from "./animated_loan_application/personal-info/borrower-info/borrower-info.component";
+import { EmployementHistoryComponent } from "./animated_loan_application/income/employement-history/employement-history.component";
+import { MostCurrentEmployerComponent } from "./animated_loan_application/income/most-current-employer/most-current-employer.component";
+import { TitleAndCompensationComponent } from "./animated_loan_application/income/title-and-compensation/title-and-compensation.component";
+import { AnyOtherFormEmploymentComponent } from "./animated_loan_application/income/any-other-form-employment/any-other-form-employment.component";
+import { OtherSourcesOfIncomeComponent } from "./animated_loan_application/income/other-sources-of-income/other-sources-of-income.component";
+import { ReviewAndConfirmComponent } from "./animated_loan_application/income/review-and-confirm/review-and-confirm.component";
+import { AboutYourAssetsComponent } from "./animated_loan_application/assets/about-your-assets/about-your-assets.component";
+import { AnyOtherAssetsComponent } from "./animated_loan_application/assets/any-other-assets/any-other-assets.component";
+import { ReviewAndConfirmAssetsComponent } from "./animated_loan_application/assets/review-and-confirm-assets/review-and-confirm-assets.component";
+import { UsGovernmentRequireQuestionsComponent } from "./animated_loan_application/us-government/us-government-require-questions/us-government-require-questions.component";
+import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_application/us-government/just-few-more-yes-or-no-questions/just-few-more-yes-or-no-questions.component";
+import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
+import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
+import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -410,6 +452,48 @@ const ngWizardConfig: NgWizardConfig = {
     ManageYourRefinanceComponent,
     LoanApplicationHeaderComponent,
     WelcomeComponent,
+    HowCanWeHelpComponent,
+    LoanAppSideBarComponent,
+    WhatStageAreYouInComponent,
+    AlreadyWorkingWithSomeoneFromEzComponent,
+    AddressOfNewHomeComponent,
+    DetailsAboutTheContractComponent,
+    PurchasePriceComponent,
+    CreditScoreComponent,
+    FullLegalNameComponent,
+    WhatTypeOfHomeComponent,
+    HOADuesComponent,
+    PlanOnUsingNewHomeComponent,
+    CurrentOrFormerMemberOfMilitaryComponent,
+    PropertyInfoConfirmationComponent,
+    PersonalInfoConfirmationComponent,
+    CurrentMilitaryServiceComponent,
+    BranchOfMilitaryComponent,
+    EtsDateComponent,
+    VaLoanPreviouslyComponent,
+    WhoWillBeWillingInHomeComponent,
+    TellUsALittleBitAboutYourselfComponent,
+    DidSomeoneRefferYouComponent,
+    ApplyingJointlyOrOwnComponent,
+    MartialStatusComponent,
+    DependentsWillBeLivingInYourHomeComponent,
+    CurrentlyLivingComponent,
+    MonthlyExpensesComponent,
+    BorrowerInfoComponent,
+    EmployementHistoryComponent,
+    MostCurrentEmployerComponent,
+    TitleAndCompensationComponent,
+    AnyOtherFormEmploymentComponent,
+    OtherSourcesOfIncomeComponent,
+    ReviewAndConfirmComponent,
+    AboutYourAssetsComponent,
+    AnyOtherAssetsComponent,
+    ReviewAndConfirmAssetsComponent,
+    UsGovernmentRequireQuestionsComponent,
+    JustFewMoreYesOrNoQuestionsComponent,
+    AgreeToFollowingComponent,
+    CreditConfirmationComponent,
+    ThanksForApplyingComponent,
   ],
   imports: [
     CommonModule,

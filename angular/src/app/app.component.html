@@ -5,14 +5,20 @@
     <app-animated-form-footer></app-animated-form-footer>
   </div>
   <ng-template #app_content>
-    <ng-container *ngIf="IsLoanForm; else other_content">
+    <div *ngIf="IsLoanApp; else loan_app">
       <app-loan-application-header></app-loan-application-header>
-      <loan-side-bar></loan-side-bar>
-    </ng-container>
-    <ng-template #other_content>
-      <app-header></app-header>
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
+      <app-loan-app-side-bar></app-loan-app-side-bar>
+    </div>
+    <ng-template #loan_app>
+      <div *ngIf="IsLoanForm; else other_content">
+        <app-loan-application-header></app-loan-application-header>
+        <loan-side-bar></loan-side-bar>
+      </div>
+      <ng-template #other_content>
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+      </ng-template>
     </ng-template>
   </ng-template>
 </div>

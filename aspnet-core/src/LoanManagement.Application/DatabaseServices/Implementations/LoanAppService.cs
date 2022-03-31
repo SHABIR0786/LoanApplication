@@ -1127,7 +1127,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Loan Detail
                 if (input.LoanDetails != null)
                 {
-                    if (!input.LoanDetails.Id.HasValue || input.LoanDetails.Id.Value == default)
+                    if (!input.LoanDetails.Id.HasValue)
                     {
                         input.LoanDetails = await _loanDetailServices.CreateAsync(input.LoanDetails);
                         loanApplication.LoanDetailId = input.LoanDetails.Id;
