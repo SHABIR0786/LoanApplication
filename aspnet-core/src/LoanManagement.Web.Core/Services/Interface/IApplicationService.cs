@@ -39,11 +39,11 @@ namespace LoanManagement.Services.Interface
 		List<UpdateAdditionalEmployementIncomeDetailRequest> GetApplicationAdditionalEmployementIncomeDetails();
 		UpdateAdditionalEmployementIncomeDetailRequest GetApplicationAdditionalEmployementIncomeDetailById(int id);
 
-		string AddApplicationDeclarationQuestion(AddDeclarationQuestionRequest request);
-		string UpdateApplicationDeclarationQuestion(UpdateDeclarationQuestionRequest request);
+		string AddApplicationDeclarationQuestion(AddApplicationDeclarationQuestionRequest request);
+		string UpdateApplicationDeclarationQuestion(UpdateApplicationDeclarationQuestionRequest request);
 		string DeleteApplicationDeclarationQuestion(int id);
-		List<UpdateDeclarationQuestionRequest> GetApplicationDeclarationQuestions();
-		UpdateDeclarationQuestionRequest GetApplicationDeclarationQuestionById(int id);
+		List<UpdateApplicationDeclarationQuestionRequest> GetApplicationDeclarationQuestions();
+		UpdateApplicationDeclarationQuestionRequest GetApplicationDeclarationQuestionById(int id);
 
 		string AddApplicationEmployementDetail(AddEmploymentDetailRequest request);
 		string UpdateApplicationEmployementDetail(UpdateEmploymentDetailRequest request);

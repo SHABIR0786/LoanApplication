@@ -320,7 +320,7 @@ namespace LoanManagement.Services.Implementation
 
 		#region Application Additional Employment Detail
 
-		public string AddApplicationDeclarationQuestion(AddDeclarationQuestionRequest request)
+		public string AddApplicationDeclarationQuestion(AddApplicationDeclarationQuestionRequest request)
 		{
 			_dbContext.ApplicationDeclarationQuestions.Add(new ApplicationDeclarationQuestion()
 			{
@@ -334,7 +334,7 @@ namespace LoanManagement.Services.Implementation
 			return AppConsts.SuccessfullyInserted;
 		}
 
-		public string UpdateApplicationDeclarationQuestion(UpdateDeclarationQuestionRequest request)
+		public string UpdateApplicationDeclarationQuestion(UpdateApplicationDeclarationQuestionRequest request)
 		{
 			var objApplicationDeclarationQuestion = _dbContext.ApplicationDeclarationQuestions.Where(s => s.Id == request.Id).FirstOrDefault();
 
@@ -369,9 +369,9 @@ namespace LoanManagement.Services.Implementation
 			return AppConsts.SuccessfullyDeleted;
 		}
 
-		public List<UpdateDeclarationQuestionRequest> GetApplicationDeclarationQuestions()
+		public List<UpdateApplicationDeclarationQuestionRequest> GetApplicationDeclarationQuestions()
 		{
-			return _dbContext.ApplicationDeclarationQuestions.Select(d => new UpdateDeclarationQuestionRequest()
+			return _dbContext.ApplicationDeclarationQuestions.Select(d => new UpdateApplicationDeclarationQuestionRequest()
 			{
 				Id = d.Id,
 				ApplicationPersonalInformationId = d.ApplicationPersonalInformationId,
@@ -381,9 +381,9 @@ namespace LoanManagement.Services.Implementation
 			}).ToList();
 		}
 
-		public UpdateDeclarationQuestionRequest GetApplicationDeclarationQuestionById(int id)
+		public UpdateApplicationDeclarationQuestionRequest GetApplicationDeclarationQuestionById(int id)
 		{
-			return _dbContext.ApplicationDeclarationQuestions.Where(s => s.Id == id).Select(d => new UpdateDeclarationQuestionRequest()
+			return _dbContext.ApplicationDeclarationQuestions.Where(s => s.Id == id).Select(d => new UpdateApplicationDeclarationQuestionRequest()
 			{
 				Id = d.Id,
 				ApplicationPersonalInformationId = d.ApplicationPersonalInformationId,

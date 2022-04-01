@@ -10,9 +10,9 @@ namespace LoanManagement.Services.Interface
     public interface ICityService
     {
         string AddCity(AddCityRequest request);
-        string UpdateCity(UpdateCountryRequest request);
+        string UpdateCity(UpdateCityRequest request);
         string DeleteCity(int id);
-        List<UpdateCountryRequest> GetCities();
-        UpdateCountryRequest GetCityById(int id);
+        List<UpdateCityRequest> GetCities();
+        UpdateCityRequest GetCityById(int id);
     }
 }

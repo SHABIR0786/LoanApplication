@@ -25,7 +25,7 @@ namespace LoanManagement.Controllers
 
 		[HttpPost]
 		[Route("Update")]
-		public string UpdateCity([FromBody] UpdateCountryRequest request)
+		public string UpdateCity([FromBody] UpdateCityRequest  request)
 		{
 			return _service.UpdateCity(request);
 		}

@@ -33,7 +33,7 @@ namespace LoanManagement.Services.Implementation
 			return AppConsts.SuccessfullyInserted;
 		}
 
-		public string UpdateCity(UpdateCountryRequest request)
+		public string UpdateCity(UpdateCityRequest request)
 		{
 			var objCity = _dbContext.Cities.Where(s => s.Id == request.Id).FirstOrDefault();
 
@@ -66,9 +66,9 @@ namespace LoanManagement.Services.Implementation
 			return AppConsts.SuccessfullyDeleted;
 		}
 
-		public List<UpdateCountryRequest> GetCities()
+		public List<UpdateCityRequest> GetCities()
 		{
-			return _dbContext.Cities.Select(d => new UpdateCountryRequest()
+			return _dbContext.Cities.Select(d => new UpdateCityRequest()
 			{
 				Id = d.Id,
 				StateId = d.StateId,
@@ -76,9 +76,9 @@ namespace LoanManagement.Services.Implementation
 			}).ToList();
 		}
 
-		public UpdateCountryRequest GetCityById(int id)
+		public UpdateCityRequest GetCityById(int id)
 		{
-			return _dbContext.Cities.Where(s => s.Id == id).Select(d => new UpdateCountryRequest()
+			return _dbContext.Cities.Where(s => s.Id == id).Select(d => new UpdateCityRequest()
 			{
 				Id = d.Id,
 				StateId = d.StateId,

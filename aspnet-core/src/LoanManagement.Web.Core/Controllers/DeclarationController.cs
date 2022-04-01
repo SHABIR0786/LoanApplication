@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using LoanManagement.Features.Declaration.DeclarationCategory;
 using LoanManagement.Features.Declaration.DeclarationQuestion;
 using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+    [Route("[controller]")]
 	[ApiController]
 	public class DeclarationController : ControllerBase
 	{
