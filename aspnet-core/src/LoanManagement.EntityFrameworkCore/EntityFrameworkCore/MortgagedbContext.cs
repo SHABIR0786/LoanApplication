@@ -67,7 +67,7 @@ namespace LoanManagement.EntityFrameworkCore
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=127.0.0.10;user id=root;password=Khas@0110;database=mortgagedb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.8.2-mariadb"));
+                optionsBuilder.UseMySql("server=127.0.0.1;user id=root;password=admin;database=mortgagedb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.8.2-mariadb"));
             }
         }
 
