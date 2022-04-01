@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Features.Application.DeclarationQuestion
 {
-    public class UpdateDeclarationQuestionRequest : AddDeclarationQuestionRequest
+    public class UpdateApplicationDeclarationQuestionRequest : AddApplicationDeclarationQuestionRequest
     {
         public int Id { get; set; }
     }

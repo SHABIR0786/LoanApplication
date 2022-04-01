@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Features.City
 {
-    public class UpdateCountryRequest: AddCityRequest
+    public class UpdateCityRequest : AddCityRequest
     {
         public int Id { get; set; }
     }

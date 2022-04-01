@@ -41,14 +41,14 @@ namespace LoanManagement.Controllers
 		}
 
 		[HttpGet]
-		[Route("property/status/statuses")]
+		[Route("property/statuses")]
 		public ActionResult GetFinancialPropertyStatuses()
 		{
 			return Ok(_service.GetFinancialPropertyStatuses());
 		}
 
 		[HttpGet]
-		[Route("property/status/status")]
+		[Route("property/status")]
 		public ActionResult GetFinancialPropertyStatus([FromQuery] int id)
 		{
 			return Ok(_service.GetFinancialPropertyStatusById(id));

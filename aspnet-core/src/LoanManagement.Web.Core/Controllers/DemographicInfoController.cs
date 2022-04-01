@@ -16,42 +16,42 @@ namespace LoanManagement.Controllers
 			_service = DemographicInfoSourceService;
 		}
 
-		[HttpPost]
-		[Route("source/add")]
-		public string InsertDemographicInfoSource([FromBody] AddDemographicInfoSourceRequest DemographicInfoSourceRequest)
-		{
-			return _service.AddDemographicInfoSource(DemographicInfoSourceRequest);
-		}
+        [HttpPost]
+        [Route("source/add")]
+        public string InsertDemographicInfoSource([FromBody] AddDemographicInfoSourceRequest DemographicInfoSourceRequest)
+        {
+            return _service.AddDemographicInfoSource(DemographicInfoSourceRequest);
+        }
 
-		[HttpPost]
-		[Route("source/Update")]
-		public string UpdateDemographicInfoSource([FromBody] UpdateDemographicInfoSourceRequest DemographicInfoSourceRequest)
-		{
-			return _service.UpdateDemographicInfoSource(DemographicInfoSourceRequest);
-		}
+        [HttpPost]
+        [Route("source/Update")]
+        public string UpdateDemographicInfoSource([FromBody] UpdateDemographicInfoSourceRequest DemographicInfoSourceRequest)
+        {
+            return _service.UpdateDemographicInfoSource(DemographicInfoSourceRequest);
+        }
 
-		[HttpDelete]
-		[Route("source/Delete")]
-		public string DeleteDemographicInfoSource([FromQuery] int id)
-		{
-			return _service.DeleteDemographicInfoSource(id);
-		}
+        [HttpDelete]
+        [Route("source/Delete")]
+        public string DeleteDemographicInfoSource([FromQuery] int id)
+        {
+            return _service.DeleteDemographicInfoSource(id);
+        }
 
-		[HttpGet]
-		[Route("sources")]
-		public ActionResult GetDemographicInfoSources()
-		{
-			return Ok(_service.GetDemographicInfoSources());
-		}
+        [HttpGet]
+        [Route("sources")]
+        public ActionResult GetDemographicInfoSources()
+        {
+            return Ok(_service.GetDemographicInfoSources());
+        }
 
-		[HttpGet]
-		[Route("source")]
-		public ActionResult GetDemographicInfoSource([FromQuery] int id)
-		{
-			return Ok(_service.GetDemographicInfoSourceById(id));
-		}
+        [HttpGet]
+        [Route("source")]
+        public ActionResult GetDemographicInfoSource([FromQuery] int id)
+        {
+            return Ok(_service.GetDemographicInfoSourceById(id));
+        }
 
-		[HttpPost]
+        [HttpPost]
 		[Route("add")]
 		public string InsertDemographicInformation([FromBody] AddDemographicInformationRequest DemographicInformationRequest)
 		{
@@ -73,18 +73,17 @@ namespace LoanManagement.Controllers
 		}
 
 		[HttpGet]
-		[Route("credit-types")]
+		[Route("informations")]
 		public ActionResult GetDemographicInformations()
 		{
 			return Ok(_service.GetDemographicInformations());
 		}
 
 		[HttpGet]
-		[Route("credit-type")]
+		[Route("information")]
 		public ActionResult GetDemographicInformation([FromQuery] int id)
 		{
 			return Ok(_service.GetDemographicInformationById(id));
 		}
-
 	}
 }

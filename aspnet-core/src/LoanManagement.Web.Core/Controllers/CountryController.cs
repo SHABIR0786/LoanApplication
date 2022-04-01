@@ -17,38 +17,38 @@ namespace LoanManagement.Controllers
 		}
 
 		[HttpPost]
-		[Route("add")]
+		[Route("Country/add")]
 		public string InsertCountry([FromBody] AddCountryRequest request)
 		{
 			return _service.AddCountry(request);
 		}
 
-		[HttpPost]
-		[Route("Update")]
-		public string UpdateCountry([FromBody] UpdateCountryRequest request)
-		{
-			return _service.UpdateCountry(request);
-		}
+        [HttpPost]
+        [Route("Country/Update")]
+        public string UpdateCountry([FromBody] UpdateCountryRequest request)
+        {
+            return _service.UpdateCountry(request);
+        }
 
-		[HttpDelete]
-		[Route("Delete")]
-		public string DeleteCountry([FromQuery] int id)
-		{
-			return _service.DeleteCountry(id);
-		}
+        [HttpDelete]
+        [Route("Country/Delete")]
+        public string DeleteCountry([FromQuery] int id)
+        {
+            return _service.DeleteCountry(id);
+        }
 
-		[HttpGet]
-		[Route("countries")]
-		public ActionResult GetCountries()
-		{
-			return Ok(_service.GetCountries());
-		}
+        [HttpGet]
+        [Route("Country/countries")]
+        public ActionResult GetCountries()
+        {
+            return Ok(_service.GetCountries());
+        }
 
-		[HttpGet]
-		[Route("Country")]
-		public ActionResult GetCountry([FromQuery] int id)
-		{
-			return Ok(_service.GetCountryById(id));
-		}
-	}
+        [HttpGet]
+        [Route("country/Country")]
+        public ActionResult GetCountry([FromQuery] int id)
+        {
+        	return Ok(_service.GetCountryById(id));
+        }
+    }
 }
