@@ -13,7 +13,7 @@ namespace LoanManagement.EntityFrameworkCore
         public static void Configure(DbContextOptionsBuilder<LoanManagementDbContext> builder, string connectionString, ILoggerFactory loggerFactory = null, IWebHostEnvironment webHostEnvironment = null)
         {
 
-            builder.UseMySql(connectionString, null);
+            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 
             if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
             {
@@ -26,8 +26,7 @@ namespace LoanManagement.EntityFrameworkCore
 
         public static void Configure(DbContextOptionsBuilder<LoanManagementDbContext> builder, DbConnection connection, ILoggerFactory loggerFactory = null, IWebHostEnvironment webHostEnvironment = null)
         {
-            builder.UseMySql(connection, null);
-
+            builder.UseMySql(connection, new MySqlServerVersion(new Version(10, 3, 17)));
             if (webHostEnvironment == null || webHostEnvironment.IsDevelopment())
             {
                 builder.UseLoggerFactory(loggerFactory);
