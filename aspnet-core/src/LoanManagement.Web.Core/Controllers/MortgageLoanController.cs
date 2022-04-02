@@ -15,11 +15,11 @@ namespace LoanManagement.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
-	public class LoanController : ControllerBase
+	public class MortgageLoanController : ControllerBase
 	{
 		private readonly ILoanService _service;
 
-		public LoanController(ILoanService loanService)
+		public MortgageLoanController(ILoanService loanService)
 		{
 			_service = loanService;
 		}
