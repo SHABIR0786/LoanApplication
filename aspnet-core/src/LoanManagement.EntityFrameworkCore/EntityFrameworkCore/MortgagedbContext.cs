@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace LoanManagement.EntityFrameworkCore
 {
-    public partial class MortgagedbContext : AbpZeroDbContext<Tenant, Role, User, MortgagedbContext>
+    public partial class MortgagedbContext : DbContext
     {
         public MortgagedbContext(DbContextOptions<MortgagedbContext> options)
             : base(options)
@@ -39,7 +39,6 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<DeclarationQuestion> DeclarationQuestions { get; set; } = null!;
         public virtual DbSet<DemographicInfoSource> DemographicInfoSources { get; set; } = null!;
         public virtual DbSet<DemographicInformation> DemographicInformations { get; set; } = null!;
-        public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; } = null!;
         public virtual DbSet<FinancialAccountType> FinancialAccountTypes { get; set; } = null!;
         public virtual DbSet<FinancialAssetsType> FinancialAssetsTypes { get; set; } = null!;
         public virtual DbSet<FinancialLaibilitiesType> FinancialLaibilitiesTypes { get; set; } = null!;
@@ -67,7 +66,7 @@ namespace LoanManagement.EntityFrameworkCore
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=127.0.0.1;user id=root;password=admin;database=mortgagedb", ServerVersion.AutoDetect("server=127.0.0.1;user id=root;password=admin;database=mortgagedb"));
+                optionsBuilder.UseMySql("server=127.0.0.1;user id=root;password=admin;database=mortgageloandb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.7.3-mariadb"));
             }
         }
 
@@ -280,7 +279,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_declaration_questions");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID1");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.DeclarationQuestionId, "DECLARATION_QUESTION_ID");
 
@@ -321,7 +320,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_employement_details");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID2");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.CityId1b43, "CITY_ID_1B.4.3");
 
@@ -474,7 +473,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_financial_assets");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID3");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.FinancialAccountTypeId2a1, "FINANCIAL_ACCOUNT_TYPE_ID_2A.1");
 
@@ -520,7 +519,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_financial_laibilities");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID4");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.FinancialLaibilitiesType2c1, "FINANCIAL_LAIBILITIES_TYPE_2C.1");
 
@@ -572,7 +571,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_financial_other_assets");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID5");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.FinancialAssetsTypesId2b1, "FINANCIAL_ASSETS_TYPES_ID_2B.1");
 
@@ -606,7 +605,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_financial_other_laibilities");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID6");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.FinancialOtherLaibilitiesTypeId2d1, "FINANCIAL_OTHER_LAIBILITIES_TYPE_ID_2D.1");
 
@@ -640,7 +639,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_financial_real_estate");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID7");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.CityId3a23, "CITY_ID_3A.2.3");
 
@@ -746,7 +745,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_income_sources");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID8");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.IncomeSourceId1e1, "INCOME_SOURCE_ID_1E.1");
 
@@ -1129,7 +1128,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("application_previous_employement_details");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID9");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.CityId1d33, "CITY_ID_1D.3.3");
 
@@ -1244,7 +1243,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("cities");
 
-                entity.HasIndex(e => e.StateId, "STATE_ID1");
+                entity.HasIndex(e => e.StateId, "STATE_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -1368,7 +1367,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("demographic_information");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID10");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.DemographicInfoSourceId87, "DEMOGRAPHIC_INFO_SOURCE_ID_8.7");
 
@@ -1423,21 +1422,6 @@ namespace LoanManagement.EntityFrameworkCore
                     .WithMany(p => p.DemographicInformations)
                     .HasForeignKey(d => d.DemographicInfoSourceId87)
                     .HasConstraintName("demographic_information_ibfk_2");
-            });
-
-            modelBuilder.Entity<Efmigrationshistory>(entity =>
-            {
-                entity.HasKey(e => e.MigrationId)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("__efmigrationshistory");
-
-                entity.HasCharSet("utf8mb4")
-                    .UseCollation("utf8mb4_general_ci");
-
-                entity.Property(e => e.MigrationId).HasMaxLength(150);
-
-                entity.Property(e => e.ProductVersion).HasMaxLength(32);
             });
 
             modelBuilder.Entity<FinancialAccountType>(entity =>
@@ -1579,7 +1563,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("loan_and_property_information");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID11");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.CityId4a33, "CITY_ID_4A.3.3");
 
@@ -1690,7 +1674,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("loan_and_property_information_gifts");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID12");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.HasIndex(e => e.LoanPropertyGiftTypeId4d1, "LOAN_PROPERTY_GIFT_TYPE_ID_4D.1");
 
@@ -1733,7 +1717,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("loan_and_property_information_other_mortage_loan");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID13");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -1771,7 +1755,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("loan_and_property_information_rental_income");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID14");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -1795,7 +1779,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("loan_originator_information");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID15");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -1918,7 +1902,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("military_service");
 
-                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID16");
+                entity.HasIndex(e => e.ApplicationPersonalInformationId, "APPLICATION_PERSONAL_INFORMATION_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -2031,7 +2015,7 @@ namespace LoanManagement.EntityFrameworkCore
             {
                 entity.ToTable("states");
 
-                entity.HasIndex(e => e.CountryId, "COUNTRY_ID1");
+                entity.HasIndex(e => e.CountryId, "COUNTRY_ID");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")

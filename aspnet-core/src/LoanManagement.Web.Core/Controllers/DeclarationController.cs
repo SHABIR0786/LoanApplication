@@ -5,9 +5,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
-	public class DeclarationController : ControllerBase
+	public class DeclarationController : LoanManagementControllerBase
 	{
 		private readonly IDeclarationService _service;
 
