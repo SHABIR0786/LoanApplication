@@ -76,7 +76,7 @@ namespace LoanManagement.Controllers
 
             return Json(await _loanAppService.GetAllCustomAsync(input));
         }
-
+        [HttpGet]
         public async Task<IActionResult> CreatePdfNew([FromQuery] long Id)
         {
             var mailMessage = new MailMessage();
