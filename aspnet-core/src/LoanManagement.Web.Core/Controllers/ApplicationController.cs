@@ -18,9 +18,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ApplicationController : ControllerBase
+    public class ApplicationController : LoanManagementControllerBase
     {
         private readonly IApplicationService _service;
 

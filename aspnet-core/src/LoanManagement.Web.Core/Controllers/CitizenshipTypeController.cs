@@ -5,9 +5,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
-	public class CitizenshipTypeController : ControllerBase
+	public class CitizenshipTypeController : LoanManagementControllerBase
 	{
 		private readonly ICitizenshipTypeService _service;
 

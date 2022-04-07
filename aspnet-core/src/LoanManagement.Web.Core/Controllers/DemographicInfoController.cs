@@ -5,9 +5,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
-	public class DemographicInfoController : ControllerBase
+	public class DemographicInfoController : LoanManagementControllerBase
 	{
 		private readonly IDemographicInformationService _service;
 

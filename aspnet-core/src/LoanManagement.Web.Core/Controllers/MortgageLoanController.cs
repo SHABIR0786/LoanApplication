@@ -13,9 +13,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
-	public class MortgageLoanController : ControllerBase
+	public class MortgageLoanController : LoanManagementControllerBase
 	{
 		private readonly ILoanService _service;
 

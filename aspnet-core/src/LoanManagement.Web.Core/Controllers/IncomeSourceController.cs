@@ -5,9 +5,9 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
-	public class IncomeSourceController : ControllerBase
+	public class IncomeSourceController : LoanManagementControllerBase
 	{
 		private readonly IIncomeSourceService _service;
 

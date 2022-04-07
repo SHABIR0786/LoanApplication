@@ -94,7 +94,7 @@ namespace LoanManagement.Web.Host.Startup
                 EnableSsl = true,
             };
             });
-
+            services.AddMortgageLoanServices();
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {

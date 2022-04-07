@@ -5,10 +5,10 @@ using LoanManagement.Services.Interface;
 
 namespace LoanManagement.Controllers
 {
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
-	public class CountryController : ControllerBase
-	{
+	public class CountryController : LoanManagementControllerBase
+    {
 		private readonly ICountryService _service;
 
 		public CountryController(ICountryService CountryService)
