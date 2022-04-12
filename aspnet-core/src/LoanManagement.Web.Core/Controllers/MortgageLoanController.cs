@@ -338,5 +338,12 @@ namespace LoanManagement.Controllers
 		{
 			return Ok(_service.GetMortageLoanOnPropertyById(id));
 		}
+	
+		[HttpGet]
+		[Route("loan-details")]
+		public ActionResult GetLoanApplicationDetail([FromQuery] long id)
+		{
+			return Ok(_service.GetLoanApplicationDetail(id));
+		}
 	}
 }

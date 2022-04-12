@@ -7,6 +7,7 @@ using LoanManagement.Features.Loan.LoanPropertyGiftType;
 using LoanManagement.Features.Loan.LoanPropertyOccupancy;
 using LoanManagement.Features.Loan.MortageLoanOnProperty;
 using LoanManagement.Features.Loan.MortageLoanType;
+using LoanManagement.Features.PdfData;
 using System.Collections.Generic;
 
 namespace LoanManagement.Services.Interface
@@ -66,5 +67,7 @@ namespace LoanManagement.Services.Interface
 		string DeleteMortageLoanOnProperty(int id);
 		List<UpdateMortageLoanOnPropertyRequest> GetMortageLoanOnProperties();
 		UpdateMortageLoanOnPropertyRequest GetMortageLoanOnPropertyById(int id);
+
+		GetPdfDataModel GetLoanApplicationDetail(long id);
 	}
 }
