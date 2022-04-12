@@ -14,6 +14,7 @@ using LoanManagement.Features.Loan.LoanAndPropertyInformationOtherMortageLoan;
 using LoanManagement.Features.Loan.LoanAndPropertyInformationRentalIncome;
 using LoanManagement.Features.Loan.MortageLoanOnProperty;
 using LoanManagement.Features.PdfData;
+using LoanManagement.Features.Application.MilitaryService;
 
 namespace LoanManagement.Services.Implementation
 {
@@ -844,7 +845,12 @@ namespace LoanManagement.Services.Implementation
 					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
 					Category = x.DeclarationQuestion.DeclarationCategory.DeclarationCategory1,
 					YesNo = (x.YesNo != null && x.YesNo == 1 ? true : false),
-					ApplicationDeclarationQuestions = new List<Features.PdfData.ApplicationDeclarationQuestion>()
+					ApplicationDeclarationQuestions = _dbContext.DeclarationQuestions.Where(s => s.DeclarationCategoryId == x.DeclarationQuestion.DeclarationCategoryId).Select(data => new Features.PdfData.ApplicationDeclarationQuestion()
+					{
+						Question = data.Question,
+						Answer = data.ApplicationDeclarationQuestions.FirstOrDefault().Description5a,
+						IsParent = data.ParentQuestionId > 0
+					}).ToList()
 				}).ToList(),
 				ApplicationEmployementDetails = d.ApplicationEmployementDetails.Select(x => new Features.PdfData.ApplicationEmployementDetail()
 				{
@@ -873,7 +879,7 @@ namespace LoanManagement.Services.Implementation
 					FinancialInstitution2a2 = x.FinancialInstitution2a2,
 					Value2a4 = x.Value2a4
 				}).ToList(),
-				ApplicationFinancialLaibilities = d.ApplicationFinancialLaibilities.Select(x => new Features.PdfData.ApplicationFinancialLiabilityDetail()
+				ApplicationFinancialLaibilities = d.ApplicationFinancialLaibilities.Select(x => new ApplicationFinancialLiabilityDetail()
 				{
 					AccountNumber2c3 = x.AccountNumber2c3,
 					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
@@ -883,7 +889,156 @@ namespace LoanManagement.Services.Implementation
 					UnpaidBalance2c4 = x.UnpaidBalance2c4,
 					FinancialLaibilitiesType2c1 = x.FinancialLaibilitiesType2c1Navigation.FinancialLaibilitiesType1
 				}).ToList(),
-				
+				AdditionalEmploymentDetails = d.ApplicationAdditionalEmployementDetails.Select(x => new AdditionalEmploymentDetail()
+				{
+					City = x.City.CityName,
+					Country = x.Country.CountryName,
+					EmployerBusinessName = x.EmployerBusinessName,
+					IsEmployedBySomeone = x.IsEmployedBySomeone,
+					IsOwnershipLessThan25 = x.IsOwnershipLessThan25,
+					IsSelfEmployed = x.IsSelfEmployed,
+					MonthlyIncome = x.MonthlyIncome,
+					Phone = x.Phone,
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					PositionTitle = x.PositionTitle,
+					StartDate = x.StartDate,
+					State = x.State.StateName,
+					Street = x.Street,
+					Unit = x.Unit,
+					WorkingMonths = x.WorkingMonths,
+					WorkingYears = x.WorkingYears,
+					Zip = x.Zip
+				}).ToList(),
+				ApplicationFinancialOtherAssets = d.ApplicationFinancialOtherAssets.Select(x => new ApplicationFinancialOtherAssetDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					FinancialAssetsType2b1 = x.FinancialAssetsTypesId2b1Navigation.FinancialCreditType,
+					Value2b2 = x.Value2b2
+				}).ToList(),
+				ApplicationFinancialOtherLaibilities = d.ApplicationFinancialOtherLaibilities.Select(x => new ApplicationFinancialOtherLaibilityDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					FinancialOtherLaibilityType2d1 = x.FinancialOtherLaibilitiesTypeId2d1Navigation.FinancialOtherLaibilitiesType1,
+					MonthlyPayment2d2 = x.MonthlyPayment2d2
+				}).ToList(),
+				ApplicationFinancialRealEstates = d.ApplicationFinancialRealEstates.Select(x => new FinancialRealEstateDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					City3a23 = x.CityId3a23Navigation.CityName,
+					Country3a26 = x.CountryId3a26Navigation.CountryName,
+					FinancialPropertyIntendedOccupancy3a5 = x.FinancialPropertyIntendedOccupancyId3a5Navigation.FinancialPropertyIntendedOccupancy1,
+					FinancialPropertyStatus3a4 = x.FinancialPropertyStatusId3a4Navigation.FinancialPropertyStatus1,
+					MonthlyMortagePayment3a6 = x.MonthlyMortagePayment3a6,
+					MonthlyRentalIncome3a7 = x.MonthlyRentalIncome3a7,
+					NetMonthlyRentalIncome3a8 = x.NetMonthlyRentalIncome3a8,
+					PropertyValue3a3 = x.PropertyValue3a3,
+					State3a24 = x.StateId3a24Navigation.StateName,
+					Street3a21 = x.Street3a21,
+					UnitNo3a22 = x.UnitNo3a22,
+					Zip3a25 = x.Zip3a25
+				}).ToList(),
+				ApplicationIncomeSources = d.ApplicationIncomeSources.Select(x => new Features.PdfData.ApplicationIncomeSourceDetail()
+				{
+					Amount1e2 = x.Amount1e2,
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					IncomeSource1e1 = x.IncomeSourceId1e1Navigation.IncomeSource1
+				}).ToList(),
+				ApplicationPreviousEmployementDetails = d.ApplicationPreviousEmployementDetails.Select(x => new Features.PdfData.PreviousEmployementDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					City1d33 = x.CityId1d33Navigation.CityName,
+					Country1d36 = x.CountryId1d36Navigation.CountryName,
+					EmployerBusinessName1d2 = x.EmployerBusinessName1d2,
+					EndDate1d6 = x.EndDate1d6,
+					GrossMonthlyIncome1d8 = x.GrossMonthlyIncome1d8,
+					IsSelfEmployed1d7 = x.IsSelfEmployed1d7,
+					PositionTitle1d4 = x.PositionTitle1d4,
+					StartDate1d5 = x.StartDate1d5,
+					StateId1d34 = x.StateId1d34Navigation.StateName,
+					Street1d31 = x.Street1d31,
+					Unit1d32 = x.Unit1d32,
+					Zip1d35 = x.Zip1d35
+				}).ToList(),
+				DemographicInformations = d.DemographicInformations.Select(x => new Features.PdfData.DemographicInformationDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					DemographicInfoSource87 = x.DemographicInfoSourceId87Navigation.Value,
+					Ethnicity81 = x.Ethnicity81,
+					Gender82 = x.Gender82,
+					IsEthnicityByObservation84 = x.IsEthnicityByObservation84,
+					IsGenderByObservation85 = x.IsGenderByObservation85,
+					IsRaceByObservation86 = x.IsRaceByObservation86,
+					Race83 = x.Race83
+				}).ToList(),
+				LoanAndPropertyInformationGifts = d.LoanAndPropertyInformationGifts.Select(x => new Features.PdfData.LoanAndPropertyInformationGiftDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					Deposited4d2 = x.Deposited4d2,
+					LoanPropertyGiftType4d1 = x.LoanPropertyGiftTypeId4d1Navigation.LoanPropertyGiftType1,
+					Source4d3 = x.Source4d3,
+					Value4d4 = x.Value4d4
+				}).ToList(),
+				LoanAndPropertyInformationOtherMortageLoans = d.LoanAndPropertyInformationOtherMortageLoans.Select(x => new UpdateLoanAndPropertyInformationOtherMortageLoanRequest()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					CreditAmount4b5 = x.CreditAmount4b5,
+					CreditorName4b1 = x.CreditorName4b1,
+					Id = x.Id,
+					LienType4b2 = x.LienType4b2,
+					LoanAmount4b4 = x.LoanAmount4b4,
+					MonthlyPayment4b3 = x.MonthlyPayment4b3
+				}).ToList(),
+				LoanAndPropertyInformationRentalIncomes = d.LoanAndPropertyInformationRentalIncomes.Select(x => new UpdateLoanAndPropertyInformationRentalIncomeRequest()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					ExpectedMonthlyIncome4c1 = x.ExpectedMonthlyIncome4c1,
+					Id = x.Id,
+					LenderExpectedMonthlyIncome4c2 = x.LenderExpectedMonthlyIncome4c2
+				}).ToList(),
+				LoanAndPropertyInformations = d.LoanAndPropertyInformations.Select(x => new LoanAndPropertyInformationDetail()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					City4a33 = x.CityId4a33Navigation.CityName,
+					Country4a36 = x.CountryId4a36Navigation.CountryName,
+					FhaSecondaryResidance4a61 = x.FhaSecondaryResidance4a61,
+					IsManufacturedHome4a8 = x.IsManufacturedHome4a8,
+					IsMixedUseProperty4a7 = x.IsMixedUseProperty4a7,
+					LoanAmount4a1 = x.LoanAmount4a1,
+					LoanPropertyOccupancy4a6 = x.LoanPropertyOccupancyId4a6Navigation.LoanPropertyOccupancy1,
+					LoanPurpose4a2 = x.LoanPurpose4a2,
+					PropertyNumberUnits4a4 = x.PropertyNumberUnits4a4,
+					PropertyStreet4a31 = x.PropertyStreet4a31,
+					PropertyUnitNo4a32 = x.PropertyUnitNo4a32,
+					PropertyValue4a5 = x.PropertyValue4a5,
+					PropertyZip4a35 = x.PropertyZip4a35,
+					State4a34 = x.StateId4a34Navigation.StateName
+				}).ToList(),
+				LoanOriginatorInformations = d.LoanOriginatorInformations.Select(x => new UpdateLoanOriginatorInformationRequest()
+				{
+					Address92 = x.Address92,
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					Date910 = x.Date910,
+					Email98 = x.Email98,
+					Id = x.Id,
+					OrganizationName91 = x.OrganizationName91,
+					OrganizationNmlsrId93 = x.OrganizationNmlsrId93,
+					OrganizationStateLicence94 = x.OrganizationStateLicence94,
+					OriginatorName95 = x.OriginatorName95,
+					OriginatorNmlsrId96 = x.OriginatorNmlsrId96,
+					OriginatorStateLicense97 = x.OriginatorStateLicense97,
+					Phone99 = x.Phone99
+				}).ToList(),
+				MilitaryServices = d.MilitaryServices.Select(x => new UpdateMilitaryServiceRequest()
+				{
+					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+					CurrentlyServing7a2 = x.CurrentlyServing7a2,
+					DateOfServiceExpiration7a3 = x.DateOfServiceExpiration7a3,
+					Id = x.Id,
+					NonActivatedMember7a2 = x.NonActivatedMember7a2,
+					Retired7a2 = x.Retired7a2,
+					ServedInForces7a1 = x.ServedInForces7a1,
+					SurvivingSpouse7a21 = x.SurvivingSpouse7a21
+				}).ToList(),
 			}).FirstOrDefault();
 		}
 	}

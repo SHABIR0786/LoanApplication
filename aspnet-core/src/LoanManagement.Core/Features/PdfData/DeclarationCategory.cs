@@ -16,7 +16,6 @@ namespace LoanManagement.Features.PdfData
 
     public class ApplicationDeclarationQuestion
     {
-        public int Id { get; set; }
         public bool? IsParent { get; set; }
         public string Question { get; set; } = null!;
         public string Answer { get; set; } = null!;

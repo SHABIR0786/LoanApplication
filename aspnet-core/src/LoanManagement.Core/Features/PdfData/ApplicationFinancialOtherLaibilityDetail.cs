@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Features.PdfData
 {
-    public class ApplicationFinancialOtherLaibilityDetail : AddApplicationFinancialOtherLaibilityRequest
+    public class ApplicationFinancialOtherLaibilityDetail 
     {
-        new public string FinancialOtherLaibilitiesTypeId2d1 { get; set; }
+        public int? ApplicationPersonalInformationId { get; set; }
+        public string FinancialOtherLaibilityType2d1 { get; set; }
+        public float? MonthlyPayment2d2 { get; set; }
     }
 }
