@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Features.PdfData
 {
-    public class ApplicationFinancialOtherAssetDetail : AddApplicationFinancialOtherAssetRequest
+    public class ApplicationFinancialOtherAssetDetail
     {
-        public int FinancialAssetsType2b1 { get; set; }
-
+        public string FinancialAssetsType2b1 { get; set; }
+        public int? ApplicationPersonalInformationId { get; set; }
+        public float? Value2b2 { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace LoanManagement.Features.PdfData
     public class ApplicationIncomeSourceDetail
     {
         public int? ApplicationPersonalInformationId { get; set; }
-        public int IncomeSource1e1 { get; set; }
+        public string IncomeSource1e1 { get; set; }
         public float? Amount1e2 { get; set; }
     }
 }
