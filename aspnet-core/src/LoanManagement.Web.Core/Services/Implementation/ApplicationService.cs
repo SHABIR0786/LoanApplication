@@ -318,7 +318,7 @@ namespace LoanManagement.Services.Implementation
 
 		#endregion
 
-		#region Application Additional Employment Detail
+		#region Application Declaration Question
 
 		public string AddApplicationDeclarationQuestion(AddApplicationDeclarationQuestionRequest request)
 		{
