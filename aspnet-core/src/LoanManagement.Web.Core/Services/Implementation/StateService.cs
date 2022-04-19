@@ -25,8 +25,10 @@ namespace LoanManagement.Services.Implementation
 		{
 			_dbContext.States.Add(new State()
 			{
+				CountryId =  request.CountryId,
 				StateName = request.StateName
 			});
+
 
 			_dbContext.SaveChanges();
 			return AppConsts.SuccessfullyInserted;

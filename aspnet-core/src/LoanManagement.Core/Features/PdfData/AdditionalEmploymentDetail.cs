@@ -22,9 +22,19 @@ namespace LoanManagement.Features.PdfData
         public DateTime? StartDate { get; set; }
         public int? WorkingYears { get; set; }
         public int? WorkingMonths { get; set; }
-        public ulong? IsEmployedBySomeone { get; set; }
-        public ulong? IsSelfEmployed { get; set; }
-        public ulong? IsOwnershipLessThan25 { get; set; }
+        public bool? IsEmployedBySomeone { get; set; }
+        public bool? IsSelfEmployed { get; set; }
+        public bool? IsOwnershipLessThan25 { get; set; }
         public float? MonthlyIncome { get; set; }
+        public List<AdditionalEmployementIncomeDetail> EmployementIncomeDetail { get; set; }
+    }
+    
+    public class AdditionalEmployementIncomeDetail
+    {
+        public int Id { get; set; }
+        public int ApplicationAdditionalEmployementDetails { get; set; }
+        public string IncomeType { get; set; }
+        public float? Amount { get; set; }
+
     }
 }
