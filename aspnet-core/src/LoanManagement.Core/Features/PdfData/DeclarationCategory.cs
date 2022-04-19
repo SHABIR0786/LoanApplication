@@ -11,7 +11,7 @@ namespace LoanManagement.Features.PdfData
         public int? ApplicationPersonalInformationId { get; set; }
         public string Category { get; set; }
         public bool? YesNo { get; set; }
-    public List<ApplicationDeclarationQuestion> ApplicationDeclarationQuestions { get; set; }
+        public List<ApplicationDeclarationQuestion> ApplicationDeclarationQuestions { get; set; }
     }
 
     public class ApplicationDeclarationQuestion
@@ -19,6 +19,7 @@ namespace LoanManagement.Features.PdfData
         public bool? IsParent { get; set; }
         public string Question { get; set; } = null!;
         public string Answer { get; set; } = null!;
+        public bool? YesNo { get; set; }
     }
 
 }

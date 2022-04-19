@@ -1,33 +1,10 @@
-﻿using LoanManagement.Features.Application;
-using LoanManagement.Features.Application.AdditionalEmploymentDetail;
-using LoanManagement.Features.Application.ApplicationFinancialAsset;
-using LoanManagement.Features.Application.ApplicationFinancialLiability;
-using LoanManagement.Features.Application.ApplicationFinancialOtherAsset;
-using LoanManagement.Features.Application.ApplicationFinancialOtherLaibility;
-using LoanManagement.Features.Application.ApplicationIncomeSource;
-using LoanManagement.Features.Application.DeclarationQuestion;
-using LoanManagement.Features.Application.EmployementIncomeDetail;
-using LoanManagement.Features.Application.FinancialRealEstate;
+﻿
 using LoanManagement.Features.Application.MilitaryService;
-using LoanManagement.Features.Application.PersonalInformation;
-using LoanManagement.Features.Application.PreviousEmployementDetail;
-using LoanManagement.Features.CitizenshipType;
-using LoanManagement.Features.City;
-using LoanManagement.Features.Country;
-using LoanManagement.Features.DemographicInformation;
-using LoanManagement.Features.HousingType;
-using LoanManagement.Features.Loan.LoanAndPropertyInformation;
-using LoanManagement.Features.Loan.LoanAndPropertyInformationGift;
 using LoanManagement.Features.Loan.LoanAndPropertyInformationOtherMortageLoan;
 using LoanManagement.Features.Loan.LoanAndPropertyInformationRentalIncome;
 using LoanManagement.Features.Loan.LoanOriginatorInformation;
-using LoanManagement.Features.MaritalStatus;
-using LoanManagement.Features.State;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LoanManagement.Features.PdfData
 {
@@ -46,7 +23,7 @@ namespace LoanManagement.Features.PdfData
         public string Ssn1a3 { get; set; }
         public DateTime? Dob1a4 { get; set; }
         public string CitizenshipType1a5 { get; set; }
-        public string MaritialStatus1a7 { get; set; }
+        public int MaritialStatusId1a7 { get; set; }
         public int? Dependents1a8 { get; set; }
         public string Ages1a81 { get; set; }
         public string HomePhone1a9 { get; set; }
@@ -84,6 +61,7 @@ namespace LoanManagement.Features.PdfData
         public ApplicationDetail Application { get; set; } = null!;
         public List<AdditionalEmploymentDetail> AdditionalEmploymentDetails { get; set; }
         public List<DeclarationCategory> ApplicationDeclarationQuestionDetail { get; set; }
+        public List<ApplicationDeclarationQuestion>  DeclarationQuestions { get; set; }
         public List<ApplicationEmployementDetail> ApplicationEmployementDetails { get; set; }
         public List<ApplicationFinancialAsset> ApplicationFinancialAssets { get; set; }
         public List<ApplicationFinancialLiabilityDetail> ApplicationFinancialLaibilities { get; set; }

@@ -69,5 +69,6 @@ namespace LoanManagement.Services.Interface
 		UpdateMortageLoanOnPropertyRequest GetMortageLoanOnPropertyById(int id);
 
 		GetPdfDataModel GetLoanApplicationDetail(long id);
+		dynamic CreatePdfNew(long id);
 	}
 }
