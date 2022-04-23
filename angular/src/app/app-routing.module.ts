@@ -208,6 +208,20 @@ import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-f
   imports: [
     RouterModule.forChild([
       {
+        path: "purchase",
+        loadChildren: () =>
+          import("./../app/modules/purchase/purchase.module").then(
+            (x) => x.PurchaseModule
+          ),
+      },
+      {
+        path: "refinance",
+        loadChildren: () =>
+          import("./../app/modules/refinancing/refinancing.module").then(
+            (x) => x.RefinancingModule
+          ),
+      },
+      {
         path: "",
         component: AppComponent,
         children: [

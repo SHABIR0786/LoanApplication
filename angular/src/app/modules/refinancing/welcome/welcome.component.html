@@ -1,0 +1,83 @@
+<div class="main-content" *ngIf="number == 1">
+  <h2>Are you already working with someone from EZ Online Mortgage?</h2>
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <a (click)="isEdit = true" class="btn btn-primary btn-style btn-blue"
+      >Yes</a
+    >
+
+    <a
+      routerLink="/app/refinance/welcome/2"
+      (click)="isEdit = false"
+      class="btn btn-primary btn-style btn-blue"
+      >No</a
+    >
+    <p *ngIf="isEdit">Who are you working with?</p>
+    <input
+      *ngIf="isEdit"
+      type="text"
+      class="form-control form-style"
+      placeholder="Select your Loan Officer"
+    />
+
+    <a
+      routerLink="/app/refinance/welcome/2"
+      class="btn btn-primary btn-next btn-blue"
+      >Next</a
+    >
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 2">
+  <h2 class="little-space">
+    With historically low rates your timing is perfect!
+  </h2>
+  <h6>Select the reason that best fits your objective.</h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/property-info/1"
+      class="btn btn-primary btn-style btn-blue double-line"
+      >Lower monthly payment <br />
+      <span class="tiny-font"
+        >Free up monthly cash to spend however you want</span
+      ></a
+    >
+
+    <a
+      routerLink="/app/refinance/property-info/1"
+      class="btn btn-primary btn-style btn-blue double-line"
+      >Lower rate <br />
+      <span class="tiny-font"
+        >Lower the rate, the less interest you pay over the life of the
+        loan</span
+      ></a
+    >
+
+    <a
+      routerLink="/app/refinance/property-info/1"
+      class="btn btn-primary btn-style btn-blue double-line"
+      >Shorter loan term <br />
+      <span class="tiny-font"
+        >Reduce your interest rate and own your home faster</span
+      ></a
+    >
+
+    <a
+      routerLink="/app/refinance/property-info/1"
+      class="btn btn-primary btn-style btn-blue double-line"
+      >Cash-Out <br />
+      <span class="tiny-font"
+        >Take cash out from the equity you’ve built up in your home to use
+        however you need</span
+      ></a
+    >
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
