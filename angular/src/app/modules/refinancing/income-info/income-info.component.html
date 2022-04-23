@@ -1,0 +1,719 @@
+<div class="main-content" *ngIf="number == 1">
+  <h2>OK great! Tell us about your co-borrower.</h2>
+  <div class="button-list col-lg-8 offset-lg-2 col-sm-12 col-xs-12 col-md-12">
+    <form action="" id="address">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Address"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Apt / Unit"
+      />
+
+      <div class="row">
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="City or Town"
+          />
+        </div>
+        <div class="col-md-4">
+          <select class="form-select form-style">
+            <option>State</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Zip Code"
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="When did you start living here?"
+      />
+    </form>
+
+    <p>Is the Co-borrower currently renting, or do they own?</p>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="row margin-top margin-right-btn">
+          <div class="col-md-4">
+            <button type="button" class="btn" id="btn-rent">Own</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn" id="btn-rent">Rent</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn" id="btn-rent">Other</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top">
+      <div class="col-md-3 offset-md-3">
+        <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/app/refinance/income/2" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<!-- click on back button it will goto page 21B section of apply-now-info-review21 -->
+<!-- click on next button it will goto page 23 apply-now-income-employment23 -->
+<div class="main-content" *ngIf="number == 2">
+  <h2>Let’s talk about employment.</h2>
+  <h6 class="narrow-padding">
+    We recommend you provide two-years of employment history. Do you have
+    current or past employment history to add?
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/income/3"
+      class="btn btn-primary btn-style btn-blue"
+      >Yes</a
+    >
+    <a
+      routerLink="/app/refinance/income/3"
+      class="btn btn-primary btn-style btn-blue"
+      >No</a
+    >
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <a (click)="history.back()" class="btn" id="btn-back">Back</a>
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<!-- click on back button it will goto apply-now-personal-income22 -->
+<!-- click on any button it will goto page 24 apply-now-current-employer24 -->
+<div class="main-content" *ngIf="number == 3">
+  <h2>Tell us about your most current employer.</h2>
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <form action="" id="employer-details">
+      <select class="form-select form-style">
+        <option>W-2 Employee</option>
+      </select>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Employer Name"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Address"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Apt / Unit"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="City or Town"
+      />
+
+      <div class="row">
+        <div class="col-md-5">
+          <select class="form-select form-style">
+            <option>State</option>
+          </select>
+        </div>
+        <div class="col-md-7">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Zip Code"
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Employer Phone Number"
+      />
+      <div class="radio-input">
+        <div class="row">
+          <div class="col-md-12">
+            <input type="checkbox" class="form-style" placeholder="" />
+            <p>This is my Current Job</p>
+          </div>
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Start date"
+      />
+    </form>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/app/refinance/income/4" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 4">
+  <h2>What’s your title and compensation?</h2>
+  <h6>We have to ask! if you’re not exactly sure, your best guess is fine.</h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <form action="" id="employer-details">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Job Title"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Base Salery"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Bonus"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Commission"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Overtime"
+      />
+    </form>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/app/refinance/income/5" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 5">
+  <h2>Great! do you have any other forms of employment?</h2>
+  <h6 class="narrow-padding">
+    if you have provided two years of employment history that’s all we need.
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/income/6"
+      class="btn btn-primary btn-style btn-blue"
+      >Yes, I have more to add</a
+    >
+
+    <a
+      routerLink="/app/refinance/income/6"
+      class="btn btn-primary btn-style btn-blue"
+      >No, I don’t have more to add</a
+    >
+
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <a routerLink="/app/refinance/income/5" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 6">
+  <h2>What's the co-borrower's title and compensation?</h2>
+  <h6>We have to ask! if you’re not exactly sure, your best guess is fine.</h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <form action="" id="employer-details">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Job Title"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Base Salery"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Bonus"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Commission"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Annual Overtime"
+      />
+    </form>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a routerLink="/app/refinance/income/5" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/app/refinance/income/7" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 7">
+  <h2>Great! Does the co-borrower have any other forms of employment?</h2>
+  <h6 class="narrow-padding">
+    If you have provided two years of employment history for the co-borrower
+    that's all we need.
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Yes
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">No</button>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a routerLink="/app/refinance/income/6" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/app/refinance/income/8" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 8">
+  <h2>
+    Does the co-borrower have any sources of income to share?
+    <img src="img/info.svg" alt="" />
+  </h2>
+  <h6 class="narrow-padding">
+    Sources of income can include things like alimony, retirement, and social
+    security. Click the info button to see a complete list.
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/income/9"
+      class="btn btn-primary btn-style btn-blue"
+      >Yes</a
+    >
+
+    <a
+      routerLink="/app/refinance/income/9"
+      class="btn btn-primary btn-style btn-blue"
+      >No</a
+    >
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <a routerLink="/app/refinance/income/7" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 9">
+  <h2>Which best describes the source of the co-borrower's income?</h2>
+
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <form action="">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="- Income Type -"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Monthly Amount"
+      />
+    </form>
+
+    <div class="row margin-top">
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a routerLink="/app/refinance/income/8" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a routerLink="/app/refinance/income/10" class="btn" id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a routerLink="/app/refinance/income/10" class="btn" id="btn-back-blue"
+          >Skip</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 10">
+  <h2>Does the co-borrower have any other sources of income?</h2>
+
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/income/11"
+      class="btn btn-primary btn-style btn-blue"
+      >Yes</a
+    >
+
+    <a
+      routerLink="/app/refinance/income/11"
+      class="btn btn-primary btn-style btn-blue"
+      >No</a
+    >
+
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <a routerLink="/app/refinance/income/9" class="btn" id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 11">
+  <h2>Let's do a quick review of your income. Look good?</h2>
+  <div class="content-area">
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Employment</h6>
+      </div>
+      <div class="col-md-4 right-align">
+        <a routerLink="/app/refinance/income/12" class="btn" id="btn-edit"
+          >Edit</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-details">
+          <p>Employment Type: Self-employed</p>
+          <p>Business Name: xpozure</p>
+          <p>Address: 6400 Sunset Boulevard</p>
+          <p>City: Los Angeles</p>
+          <p>State: CA</p>
+          <p>Zip Code: 90028</p>
+          <p>Business Phone Number: (034) 880-3755</p>
+          <p>Estimated Start Date: 12/23/2015</p>
+          <p>Estimated End Date: 02/23/2017</p>
+          <p>Years in the co-borrower's profession: 4</p>
+          <p>Job Title: Graphic Designer</p>
+          <p>Estimated Annual Base Salary: $22,323,223</p>
+          <p>Estimated Annual Bonus: $24,242,424</p>
+          <p>Estimated Annual Commission: $353,632</p>
+          <p>Estimated Annual Overtime: $346,435,223</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="seperator-line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Other Income</h6>
+      </div>
+      <div class="col-md-4 right-align">
+        <button type="button" class="btn" id="btn-edit">Edit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-details">
+          <p>Income Type: Alimony</p>
+          <p>Monthly Amount: $223,424</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          href="(N0N MILITARY OPTION) 31  Apply Now I’m Refinancing  Personal Info  Income  co-borrower any other sources of income to share.html"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          routerLink="/app/refinance/assets-info/1"
+          class="btn"
+          id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<!-- click on edit button it will goto section 32A -->
+<!-- click on back button it will goto page 31 apply-now-coborrower-other-source31 -->
+<!-- click next button it will goto page 33 apply-now-assets33 -->
+
+<!-- section 32A starts -->
+<div class="main-content" *ngIf="number == 12">
+  <h2>Let's do a quick review of your income. Look good?</h2>
+  <div class="content-area">
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Employment</h6>
+      </div>
+      <div class="col-md-4 right-align">
+        <a
+          routerLink="/app/refinance/income/11"
+          type="button"
+          class="btn"
+          id="btn-edit"
+          >Done</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 margin-top">
+        <form action="" id="employer-details">
+          <select class="form-select form-style">
+            <option>- Employment Type -</option>
+          </select>
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Business Name"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Address"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Suite"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="City"
+          />
+
+          <div class="row">
+            <div class="col-md-5">
+              <select class="form-select form-style">
+                <option>State</option>
+              </select>
+            </div>
+            <div class="col-md-7">
+              <input
+                type="text"
+                class="form-control form-style"
+                placeholder="Zip Code"
+              />
+            </div>
+          </div>
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Business Phone Number"
+          />
+          <div class="radio-input">
+            <div class="row">
+              <div class="col-md-12">
+                <input type="checkbox" class="form-style" placeholder="" />
+                <p>This is my Current Job</p>
+              </div>
+            </div>
+          </div>
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Start date"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Years in the co-borrower's profession"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Job Title"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Annual Base Salery"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Annual Bonus"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Annual Commission"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Annual Commission"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Estimated Annual Overtime"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="seperator-line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Other Income</h6>
+      </div>
+      <div class="col-md-4 right-align">
+        <button type="button" class="btn" id="btn-edit">Done</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 margin-top">
+        <form action="" id="">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="- Income Type -"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Monthly Amount"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <button type="button" class="btn" id="btn-back-blue">Back</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn" id="btn-next-blue">Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<!-- section 32A ends -->

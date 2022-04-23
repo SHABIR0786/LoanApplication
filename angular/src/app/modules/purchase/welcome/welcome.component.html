@@ -1,0 +1,63 @@
+<ng-container *ngIf="number == 1">
+  <div class="main-content">
+    <h2>Great! We’ll make this smooth and painless. What stage are you in?</h2>
+    <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+      <a
+        routerLink="/app/purchase/welcome/2"
+        class="btn btn-primary btn-style btn-orange"
+        >I’m Still shopping for a new home!</a
+      >
+      <a
+        routerLink="/app/purchase/welcome/2"
+        class="btn btn-primary btn-style btn-orange"
+        >I’m ready to make an offer!</a
+      >
+      <a
+        routerLink="/app/purchase/welcome/2"
+        class="btn btn-primary btn-style btn-orange"
+        >I have a signed purchase contract!</a
+      >
+    </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="number == 2">
+  <div class="main-content">
+    <h2>Are you already working with someone from EZ Online Mortgage?</h2>
+    <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+      <a
+        routerLink="/app/purchase/welcome/2"
+        (click)="yes = true"
+        class="btn btn-primary btn-style btn-orange"
+        >Yes</a
+      >
+      <a
+        routerLink="/app/purchase/property-info/1"
+        (click)="yes = false"
+        class="btn btn-primary btn-style btn-orange"
+        >No</a
+      >
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Select your Loan Officer"
+        *ngIf="yes"
+      />
+
+      <a
+        routerLink="/app/purchase/property-info/1"
+        class="btn btn-primary btn-next btn-orange"
+        role="button"
+        *ngIf="yes"
+        >Next</a
+      >
+    </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </div>
+</ng-container>
