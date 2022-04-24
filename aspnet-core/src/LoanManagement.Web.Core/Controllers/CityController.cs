@@ -17,7 +17,7 @@ namespace LoanManagement.Controllers
 		}
 
 		[HttpPost]
-		[Route("add")]
+		[Route("Add")]
 		public string InsertCity([FromBody] AddCityRequest request)
 		{
 			return _service.AddCity(request);

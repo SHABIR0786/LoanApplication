@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Services.Implementation
 {
-    internal class LeadAssetDetailsService : ILeadAssetsDetailsService
+    public class LeadAssetDetailsService : ILeadAssetsDetailsService
     {
         private readonly MortgagedbContext _dbContext;
         public string Add(AddLeadAssetDetails request)

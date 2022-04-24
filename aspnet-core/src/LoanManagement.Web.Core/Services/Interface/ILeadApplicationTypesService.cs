@@ -7,7 +7,7 @@ using LoanManagement.Features.LeadApplicationTypes;
 
 namespace LoanManagement.Services.Interface
 {
-    internal interface ILeadApplicationTypesService
+    public interface ILeadApplicationTypesService
     {
         string Add(AddLeadApplicationType request);
         string Update(UpdateLeadApplicationType request);

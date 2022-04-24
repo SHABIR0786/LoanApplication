@@ -343,6 +343,7 @@ namespace LoanManagement.Controllers
 		[Route("loan-details")]
 		public ActionResult GetLoanApplicationDetail([FromQuery] long id)
 		{
+			_service.CreatePdfNew(1);
 			return Ok(_service.GetLoanApplicationDetail(id));
 		}
 	}
