@@ -55,5 +55,4 @@ namespace LoanManagement.Controllers
 			return Ok(_service.GetById(id));
 		}
 	}
-    }
 }
