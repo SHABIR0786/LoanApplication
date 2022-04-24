@@ -1,6 +1,7 @@
 ﻿using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadPurchasingDetail;
 using LoanManagement.Services.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
