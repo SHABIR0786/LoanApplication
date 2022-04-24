@@ -60,13 +60,26 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<MortageLoanOnProperty> MortageLoanOnProperties { get; set; } = null!;
         public virtual DbSet<MortageLoanType> MortageLoanTypes { get; set; } = null!;
         public virtual DbSet<State> States { get; set; } = null!;
+        public virtual DbSet<LeadApplicationDetailPurchasing> LeadApplicationDetailPurchasings { get; set; }
+        public virtual DbSet<LeadApplicationDetailRefinancing> LeadApplicationDetailRefinancings { get; set; }
+        public virtual DbSet<LeadApplicationQuestion> LeadApplicationQuestions { get; set; }
+        public virtual DbSet<LeadApplicationType> LeadApplicationTypes { get; set; }
+        public virtual DbSet<LeadAssetsDetail> LeadAssetsDetails { get; set; }
+        public virtual DbSet<LeadAssetsType> LeadAssetsTypes { get; set; }
+        public virtual DbSet<LeadEmployementDetail> LeadEmployementDetails { get; set; }
+        public virtual DbSet<LeadEmployementType> LeadEmployementTypes { get; set; }
+        public virtual DbSet<LeadIncomeType> LeadIncomeTypes { get; set; }
+        public virtual DbSet<LeadOwnerType> LeadOwnerTypes { get; set; }
+        public virtual DbSet<LeadQuestionAnswer> LeadQuestionAnswers { get; set; }
+        public virtual DbSet<LeadRefinancingIncomeDetail> LeadRefinancingIncomeDetails { get; set; }
+        public virtual DbSet<LeadTaxesType> LeadTaxesTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=127.0.0.1;user id=root;password=admin;database=LoanManagementDb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.7.3-mariadb"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=admin;database=LoanManagementDb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.7.3-mariadb"));
             }
         }
 
