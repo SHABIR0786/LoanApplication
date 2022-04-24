@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Services.Implementation
 {
-    internal class LeadPurchasingDetailService : ILeadPurchasingDetailsService
+    public class LeadPurchasingDetailService : ILeadPurchasingDetailsService
     {
         private readonly MortgagedbContext _dbContext;
         public string Add(AddLeadPurchasingDetail request)

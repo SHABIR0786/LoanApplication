@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Services.Interface
 {
-    internal interface ILeadAssetTypesService
+    public interface ILeadAssetTypesService
     {
         string Add(AddLeadAssetTypes request);
         string Update(UpdateLeadAssetTypes request);

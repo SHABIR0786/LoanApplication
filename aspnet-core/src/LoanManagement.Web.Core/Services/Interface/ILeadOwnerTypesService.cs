@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.Services.Interface
 {
-    internal interface ILeadOwnerTypesService
+    public interface ILeadOwnerTypesService
     {
         string Add(AddLeadOwnerTypes request);
         string Update(UpdateLeadOwnerTypes request);
