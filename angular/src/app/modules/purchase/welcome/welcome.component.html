@@ -5,15 +5,18 @@
       <a
         routerLink="/app/purchase/welcome/2"
         class="btn btn-primary btn-style btn-orange"
+        (click)="setOption(1)"
         >I’m Still shopping for a new home!</a
       >
       <a
         routerLink="/app/purchase/welcome/2"
+        (click)="setOption(1)"
         class="btn btn-primary btn-style btn-orange"
         >I’m ready to make an offer!</a
       >
       <a
         routerLink="/app/purchase/welcome/2"
+        (click)="setOption(1)"
         class="btn btn-primary btn-style btn-orange"
         >I have a signed purchase contract!</a
       >
@@ -32,11 +35,12 @@
         routerLink="/app/purchase/welcome/2"
         (click)="yes = true"
         class="btn btn-primary btn-style btn-orange"
+        (click)="setEzOption(true)"
         >Yes</a
       >
       <a
         routerLink="/app/purchase/property-info/1"
-        (click)="yes = false"
+        (click)="setEzOption(true); yes = false"
         class="btn btn-primary btn-style btn-orange"
         >No</a
       >
@@ -44,6 +48,7 @@
         type="text"
         class="form-control form-style"
         placeholder="Select your Loan Officer"
+        [(ngModel)]="ezLoadOfficer"
         *ngIf="yes"
       />
 
@@ -52,6 +57,7 @@
         class="btn btn-primary btn-next btn-orange"
         role="button"
         *ngIf="yes"
+        (click)="onEZNext()"
         >Next</a
       >
     </div>

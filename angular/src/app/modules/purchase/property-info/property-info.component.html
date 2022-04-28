@@ -2,43 +2,48 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Congragulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="address">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="City or Town"
-      />
+    <!-- <form action="" id="address"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Address"
+      [(ngModel)]="model.newHomeAddress"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+      [(ngModel)]="model.newHomeUnit"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="City or Town"
+      [(ngModel)]="model.newHomeCityTown"
+    />
 
-      <div class="row">
-        <div class="col-md-5">
-          <select class="form-select form-style">
-            <option>State</option>
-          </select>
-        </div>
-        <div class="col-md-7">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
-          />
-        </div>
+    <div class="row">
+      <div class="col-md-5">
+        <select class="form-select form-style" [(ngModel)]="model.newHomeState">
+          <option value="state">State</option>
+        </select>
       </div>
-    </form>
+      <div class="col-md-7">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Zip Code"
+          [(ngModel)]="model.newHomeZip"
+        />
+      </div>
+    </div>
+    <!-- </form> -->
 
     <a
       [routerLink]="['/app/purchase/property-info', 2]"
       class="btn btn-primary btn-next btn-orange"
       role="button"
+      (click)="onNewHomeClick()"
       >Next</a
     >
   </div>
@@ -57,18 +62,32 @@
     <i class="fa-solid fa-circle-info"></i>
   </h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <input type="date" class="form-control form-style form-margin-top" />
+    <input
+      type="date"
+      [(ngModel)]="model.contractDate"
+      class="form-control form-style form-margin-top"
+    />
     <p class="text-center">Do either of these apply to the property?</p>
     <div class="radio-input">
       <div class="row">
         <div class="col-md-12">
-          <input type="checkbox" class="form-style" placeholder="" />
+          <input
+            type="checkbox"
+            class="form-style"
+            placeholder=""
+            [(ngModel)]="model.propertyOption1"
+          />
           <p>New construction</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <input type="checkbox" class="form-style" placeholder="" />
+          <input
+            type="checkbox"
+            class="form-style"
+            placeholder=""
+            [(ngModel)]="model.propertyOption2"
+          />
           <p>Foreclosure / Bank Owned</p>
         </div>
       </div>
@@ -80,6 +99,7 @@
           class="btn"
           id="btn-back"
           role="button"
+          (click)="onNextTwoClick()"
           >Back</a
         >
       </div>
@@ -105,39 +125,44 @@
   <h2 class="little-space">Congratulations! What’s the purchase price?</h2>
 
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="purchase-price">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Home Price"
-      />
-      <div class="row">
-        <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
-          <input
-            type="text"
-            class="form-control form-half-left"
-            placeholder="Down Payment Amount"
-          />
-        </div>
-        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
-          <input
-            type="text"
-            class="form-control form-half-right"
-            placeholder="Percent"
-          />
-        </div>
+    <!-- <form action="" id="purchase-price"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Home Price"
+      [(ngModel)]="model.estimatedPrice"
+    />
+    <div class="row">
+      <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
+        <input
+          type="text"
+          class="form-control form-half-left"
+          placeholder="Down Payment Amount"
+          [(ngModel)]="model.downPaymentAmount"
+        />
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated annual taxes"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated annual home insurance"
-      />
-    </form>
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
+        <input
+          type="text"
+          class="form-control form-half-right"
+          placeholder="Percent"
+          [(ngModel)]="model.downPaymentPercent"
+        />
+      </div>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated annual taxes"
+      [(ngModel)]="model.estAnnualTaxes"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated annual home insurance"
+      [(ngModel)]="model.estAnnualHomeIns"
+    />
+    <!-- </form> -->
 
     <div class="row">
       <div class="col-md-3 offset-md-3">
@@ -153,6 +178,7 @@
           [routerLink]="['/app/purchase/property-info', 4]"
           class="btn"
           id="btn-next"
+          (click)="onNextThreeClick()"
           >Next</a
         >
       </div>
@@ -175,30 +201,35 @@
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onCreditClick('excellent')"
       >Excellent (740+)</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onCreditClick('good')"
       >Good(700 - 739)</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onCreditClick('average')"
       >Average (640 - 699)</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onCreditClick('fair')"
       >Fair (580 - 639)</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onCreditClick('needimprovement')"
       >Needs Improvement (less then 580)</a
     >
 
@@ -227,79 +258,84 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="address">
-      <div class="row">
-        <div class="col-md-6">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Legal First Name"
-          />
-        </div>
-        <div class="col-md-6">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Middle Initial"
-          />
+    <!-- <form action="" id="address"> -->
+    <div class="row">
+      <div class="col-md-6">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Legal First Name"
+          [(ngModel)]="model.firstName"
+        />
+      </div>
+      <div class="col-md-6">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Middle Initial"
+          [(ngModel)]="model.middleName"
+        />
+      </div>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Legal Last Name"
+      [(ngModel)]="model.lastName"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Phone Number"
+      [(ngModel)]="model.phone"
+    />
+    <input
+      type="email"
+      class="form-control form-style"
+      placeholder="Email Address"
+      [(ngModel)]="model.email"
+    />
+    <p>Have an account?</p>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="terms">
+          <p>
+            By entering phone number and clicking the "Next" button, you are
+            providing express written consent for EZ Online Mortgage. and its
+            affiliates, agents, and service providers to contact you at that
+            number regarding products or services, including via auto-dialed
+            and/or prerecorded or artificial voice calls and text messages (SMS
+            and MMS), or email even if your telephone number is a cellular
+            number or on a corporate, state, or the National Do Not Call
+            Registry <span class="orange-text">(DNC)</span> or other do not
+            contact list.
+          </p>
+
+          <p>
+            You may also reach us at
+            <span class="orange-text">(800) 930-8195</span> or by utilizing our
+            services at <span class="orange-text">Loan Options</span>. You may
+            opt-out at any time by emailing us a Do Not Call Request at
+            <span class="orange-text"
+              ><a href="">dnc@ezonlinemortgage.com</a></span
+            >
+            and providing your phone number. Your consent is not required or a
+            condition of any purchase. Message and data rates may apply.
+          </p>
+
+          <p>
+            You also consent to our
+            <span class="orange-text"
+              >SMS terms, Privacy Policy, Terms of Use,</span
+            >
+            and <span class="orange-text">CA Terms</span> of Use. By
+            communicating with us by phone you consent to calls being recorded
+            and monitored.
+          </p>
         </div>
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Legal Last Name"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Phone Number"
-      />
-      <input
-        type="email"
-        class="form-control form-style"
-        placeholder="Email Address"
-      />
-      <p>Have an account?</p>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="terms">
-            <p>
-              By entering phone number and clicking the "Next" button, you are
-              providing express written consent for EZ Online Mortgage. and its
-              affiliates, agents, and service providers to contact you at that
-              number regarding products or services, including via auto-dialed
-              and/or prerecorded or artificial voice calls and text messages
-              (SMS and MMS), or email even if your telephone number is a
-              cellular number or on a corporate, state, or the National Do Not
-              Call Registry <span class="orange-text">(DNC)</span> or other do
-              not contact list.
-            </p>
-
-            <p>
-              You may also reach us at
-              <span class="orange-text">(800) 930-8195</span> or by utilizing
-              our services at <span class="orange-text">Loan Options</span>. You
-              may opt-out at any time by emailing us a Do Not Call Request at
-              <span class="orange-text"
-                ><a href="">dnc@ezonlinemortgage.com</a></span
-              >
-              and providing your phone number. Your consent is not required or a
-              condition of any purchase. Message and data rates may apply.
-            </p>
-
-            <p>
-              You also consent to our
-              <span class="orange-text"
-                >SMS terms, Privacy Policy, Terms of Use,</span
-              >
-              and <span class="orange-text">CA Terms</span> of Use. By
-              communicating with us by phone you consent to calls being recorded
-              and monitored.
-            </p>
-          </div>
-        </div>
-      </div>
-    </form>
+    </div>
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a
@@ -314,6 +350,7 @@
           [routerLink]="['/app/purchase/property-info', 6]"
           class="btn btn-orange"
           id="btn-next"
+          (click)="onAccountNextClick()"
           >Next</a
         >
       </div>
@@ -336,26 +373,31 @@
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomeTypeClick('singleFamily')"
       >Single Family</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomeTypeClick('condo')"
       >Condo</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomeTypeClick('coop')"
       >Co-op</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomeTypeClick('townhome')"
       >Townhome</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomeTypeClick('multifamily')"
       >Multi-Family</a
     >
 
@@ -390,6 +432,7 @@
         type="text"
         class="form-control form-style"
         placeholder="Monthly HOA dues"
+        [(ngModel)]="model.monthlyhoadues"
       />
     </form>
 
@@ -411,6 +454,7 @@
           [routerLink]="['/app/purchase/property-info', 8]"
           class="btn btn-orange"
           id="btn-next"
+          (click)="onNoaNextClick()"
           >Next</a
         >
       </div>
@@ -421,6 +465,7 @@
           [routerLink]="['/app/purchase/property-info', 8]"
           class="btn btn-orange"
           id="btn-back"
+          (click)="onNoaNextClick()"
           >Skip</a
         >
       </div>
@@ -443,18 +488,21 @@
     <a
       [routerLink]="['/app//purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomePlanClick('primaryresidence')"
       >Primary Residance</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomePlanClick('condo')"
       >Condo</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onHomePlanClick('coop')"
       >Co-op</a
     >
 
@@ -488,12 +536,14 @@
     <a
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilitaryClick(true)"
       >Yes</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-active btn-orange"
+      (click)="onMilitaryClick(false)"
       >No</a
     >
 
@@ -523,26 +573,31 @@
       <div class="row">
         <div class="col-md-12">
           <div class="profile-details">
-            <p>Address: 23315 Calvert Street</p>
-            <p>City or Town: Los Angeles</p>
-            <p>State: CA</p>
-            <p>Zip Code: 91367</p>
-            <p>County: Los Angeles</p>
-            <p>Closing Date: 02/20/2022</p>
-            <p>Estimated Home Price: $700,000</p>
-            <p>Down Payment Amount: $200,000</p>
-            <p>Down Payment Percent: 28%</p>
-            <p>Estimated annual taxes: $7,000</p>
-            <p>Estimated annual home insurance: $1,200</p>
-            <p>Self-selected Credit Score: Excellent (740+)</p>
-            <p>Legal First Name: Jeff</p>
-            <p>Legal Last Name: Hill</p>
-            <p>Phone Number: (213) 555-1212</p>
-            <p>Email Address: jeff@aol.com</p>
-            <p>Type of Home: Co-op</p>
-            <p>Monthly HOA dues: $200</p>
-            <p>Property Usage: Primary Residence</p>
-            <p>Are you a current or former member of the US Military?: Yes</p>
+            <p>Address: {{ model.newHomeAddress }}</p>
+            <p>City or Town: {{ model.newHomeCityTown }}</p>
+            <p>State: {{ model.newHomeState }}</p>
+            <p>Zip Code: {{ model.newHomeZip }}</p>
+            <p>County: {{ model.newHomeState }}</p>
+            <p>Closing Date: {{ model.contractDate }}</p>
+            <p>Estimated Home Price: ${{ model.estimatedPrice }}</p>
+            <p>Down Payment Amount: ${{ model.downPaymentAmount }}</p>
+            <p>Down Payment Percent: {{ model.downPaymentPercent }}%</p>
+            <p>Estimated annual taxes: ${{ model.estAnnualTaxes }}</p>
+            <p>
+              Estimated annual home insurance: ${{ model.estAnnualHomeIns }}
+            </p>
+            <p>Self-selected Credit Score: {{ model.creditScore }}</p>
+            <p>Legal First Name: {{ model.firstName }}</p>
+            <p>Legal Last Name: {{ model.lastName }}</p>
+            <p>Phone Number: {{ model.phone }}</p>
+            <p>Email Address: {{ model.email }}</p>
+            <p>Type of Home: {{ model.homeType }}</p>
+            <p>Monthly HOA dues: ${{ model.monthlyhoadues }}</p>
+            <p>Property Usage: {{ model.homePlan }}</p>
+            <p>
+              Are you a current or former member of the US Military?:
+              {{ model.isMillitary == true ? "Yes" : "No" }}
+            </p>
           </div>
         </div>
       </div>
@@ -593,88 +648,111 @@
     <div
       class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
     >
-      <form action="" id="address">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Address"
-        />
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Apt / Unit"
-        />
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="City or Town"
-        />
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <input
-              type="text"
-              class="form-control form-style"
-              placeholder="Zip Code"
-            />
-          </div>
+      <!-- <form action="" id="address"> -->
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Address"
+        [(ngModel)]="model.newHomeAddress"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Apt / Unit"
+        [(ngModel)]="model.newHomeUnit"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="City or Town"
+        [(ngModel)]="model.newHomeCityTown"
+      />
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Zip Code"
+            [(ngModel)]="model.newHomeZip"
+          />
         </div>
-        <select class="form-select form-style">
-          <option>City Name</option>
-        </select>
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Closing Date"
-        />
-      </form>
+      </div>
+      <select
+        class="form-select form-style"
+        [(ngModel)]="model.newHomeCityTown"
+      >
+        <option>City Name</option>
+      </select>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Closing Date"
+        [(ngModel)]="model.contractDate"
+      />
+      <!-- </form> -->
       <p class="text-center">Do either of these apply to the property?</p>
       <div class="radio-input">
         <div class="row">
           <div class="col-md-12">
-            <input type="checkbox" class="form-style" placeholder="" />
+            <input
+              type="checkbox"
+              class="form-style"
+              placeholder=""
+              [(ngModel)]="model.propertyOption1"
+            />
             <p>New construction</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <input type="checkbox" class="form-style" placeholder="" />
+            <input
+              type="checkbox"
+              class="form-style"
+              placeholder=""
+              [(ngModel)]="model.propertyOption2"
+            />
             <p>Foreclosure / Bank Owned</p>
           </div>
         </div>
       </div>
-      <form action="" id="purchase-price">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Estimated Home Price"
-        />
-        <div class="row">
-          <div class="col-md-8 padding-right">
-            <input
-              type="text"
-              class="form-control form-half-left"
-              placeholder="Down Payment Amount"
-            />
-          </div>
-          <div class="col-md-4 padding-left">
-            <input
-              type="text"
-              class="form-control form-half-right"
-              placeholder="Percent"
-            />
-          </div>
+      <!-- <form action="" id="purchase-price"> -->
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Home Price"
+        [(ngModel)]="model.estimatedPrice"
+      />
+      <div class="row">
+        <div class="col-md-8 padding-right">
+          <input
+            type="text"
+            class="form-control form-half-left"
+            [(ngModel)]="model.downPaymentAmount"
+            placeholder="Down Payment Amount"
+          />
         </div>
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Estimated annual taxes"
-        />
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Estimated annual home insurance"
-        />
-      </form>
+        <div class="col-md-4 padding-left">
+          <input
+            type="text"
+            class="form-control form-half-right"
+            placeholder="Percent"
+            [(ngModel)]="model.downPaymentPercent"
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated annual taxes"
+        [(ngModel)]="model.estAnnualTaxes"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated annual home insurance"
+        [(ngModel)]="model.estAnnualHomeIns"
+      />
+      <!-- </form> -->
 
       <h6 id="padding-up">Self selected Credit Score</h6>
 
@@ -694,39 +772,44 @@
         Needs Improvement (less then 580)
       </button>
 
-      <form action="" id="address">
-        <div class="row">
-          <div class="col-md-6">
-            <input
-              type="text"
-              class="form-control form-style"
-              placeholder="Legal First Name"
-            />
-          </div>
-          <div class="col-md-6">
-            <input
-              type="text"
-              class="form-control form-style"
-              placeholder="Middle Initial"
-            />
-          </div>
+      <!-- <form action="" id="address"> -->
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Legal First Name"
+            [(ngModel)]="model.firstName"
+          />
         </div>
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Legal Last Name"
-        />
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Phone Number"
-        />
-        <input
-          type="email"
-          class="form-control form-style"
-          placeholder="Email Address"
-        />
-      </form>
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Middle Initial"
+            [(ngModel)]="model.middleName"
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Legal Last Name"
+        [(ngModel)]="model.lastName"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Phone Number"
+        [(ngModel)]="model.phone"
+      />
+      <input
+        type="email"
+        class="form-control form-style"
+        placeholder="Email Address"
+        [(ngModel)]="model.email"
+      />
+      <!-- </form> -->
       <h6 id="padding-up">Type of home</h6>
 
       <button type="button" class="btn btn-primary btn-style btn-orange">
@@ -745,13 +828,14 @@
         Multi-Family
       </button>
 
-      <form action="">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Monthly HOA dues"
-        />
-      </form>
+      <!-- <form action=""> -->
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Monthly HOA dues"
+        [(ngModel)]="model.monthlyhoadues"
+      />
+      <!-- </form> -->
 
       <h6 id="padding-up">Property Usage</h6>
 
@@ -779,7 +863,7 @@
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
-            href="(N0N MILITARY OPTION) 17 Apply Now  I’m Purchasing Property Info.html"
+            (click)="window.history.back()"
             class="btn btn-orange"
             id="btn-back"
             >Back</a

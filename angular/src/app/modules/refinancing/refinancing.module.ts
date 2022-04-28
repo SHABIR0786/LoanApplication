@@ -51,7 +51,7 @@ import { AssetsInfoComponent } from "./assets-info/assets-info.component";
 import { GovInfoComponent } from "./gov-info/gov-info.component";
 import { CreditScoreComponent } from "./credit-score/credit-score.component";
 import { ThanksComponent } from "./thanks/thanks.component";
-
+import { OfflineService } from "./../../services/offline.service";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -103,6 +103,7 @@ import { ThanksComponent } from "./thanks/thanks.component";
     CreditScoreComponent,
     ThanksComponent,
   ],
+  providers: [OfflineService],
   imports: [CommonModule, RefinancingRoutingModule],
 })
 export class RefinancingModule {}

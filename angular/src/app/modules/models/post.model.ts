@@ -1,0 +1,29 @@
+export class PostModel {
+  firstChoice: string;
+  stage: string;
+  workingWdEz: boolean;
+  ezLoadOfficer: string;
+  newHomeAddress: string;
+  newHomeUnit: string;
+  newHomeCityTown: string;
+  newHomeState: string;
+  newHomeZip: string;
+  contractDate: string;
+  propertyOption1: string;
+  propertyOption2: string;
+  estimatedPrice: string;
+  downPaymentAmount: string;
+  downPaymentPercent: string;
+  estAnnualTaxes: string;
+  estAnnualHomeIns: string;
+  creditScore: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  homeType: string;
+  monthlyhoadues: string;
+  homePlan: string;
+  isMillitary: boolean;
+}

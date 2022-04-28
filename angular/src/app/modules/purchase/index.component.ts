@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { OfflineService } from "@app/services/offline.service";
 const ROUTE_DATA = [
   "/purchase/welcome",
   "/purchase/property-info",
@@ -15,7 +16,7 @@ const TABS_DATA = [];
 })
 export class IndexComponent implements OnInit {
   a: number = 0;
-  constructor(private router: Router) {
+  constructor(private router: Router, private offlineService: OfflineService) {
     this.router.events.subscribe((x) => {
       if (x instanceof NavigationEnd) {
         if (x.urlAfterRedirects === "/app/purchase") {
@@ -31,5 +32,8 @@ export class IndexComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const stepData = this.offlineService.getStep();
+    console.log({ stepData });
+  }
 }
