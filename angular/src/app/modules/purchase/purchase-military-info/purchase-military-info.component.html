@@ -9,24 +9,28 @@
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 2]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilitaryStatusClick(1)"
       >Active Duty</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilitaryStatusClick(2)"
       >Reserves / National Guard</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 4]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilitaryStatusClick(3)"
       >Surviving Spouse</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilitaryStatusClick(4)"
       >Retired / Discharged</a
     >
 
@@ -55,36 +59,42 @@
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(1)"
       >Army</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(2)"
       >Navy</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(3)"
       >Marine Corps</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(4)"
       >Air Force</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(5)"
       >Coast Guard</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 3]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilBranchClick(6)"
       >Space Force</a
     >
 
@@ -117,12 +127,14 @@
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 4]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilETSClick(true)"
       >Yes</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilETSClick(false)"
       >No</a
     >
 
@@ -154,11 +166,13 @@
       [routerLink]="['/app/purchase/purchase-mil-info', 5]"
       type="button"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilETSClick(true)"
       >Yes</a
     >
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 5]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilETSClick(false)"
       >No</a
     >
     <input type="date" class="form-control form-style" />
@@ -189,12 +203,14 @@
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 6]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilVaLoanClick(true)"
       >Yes</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-info', 6]"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilVaLoanClick(false)"
       >No</a
     >
 
@@ -224,24 +240,28 @@
     <a
       [routerLink]="['/app/purchase/purchase-mil-personal-info']"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilLiveClick('vet')"
       >Veteran will occopy the home</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-personal-info']"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilLiveClick('spouse')"
       >Spouse will occopy the home</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-personal-info']"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilLiveClick('both')"
       >Veteran and Spouse</a
     >
 
     <a
       [routerLink]="['/app/purchase/purchase-mil-personal-info']"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onMilLiveClick('sur-spouce')"
       >Surviving Spouse</a
     >
 
