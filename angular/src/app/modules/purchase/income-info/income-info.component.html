@@ -10,12 +10,14 @@
     <a
       routerLink="/app/purchase/income-info/2"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onEmpFirstClick(true)"
       >Yes</a
     >
 
     <a
       routerLink="/app/purchase/income-info/5"
       class="btn btn-primary btn-style btn-orange"
+      (click)="onEmpFirstClick(false)"
       >No</a
     >
 
@@ -41,64 +43,60 @@
 <div class="main-content" *ngIf="number == 2">
   <h2>Tell us about your most current employer.</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="employer-details">
-      <select class="form-select form-style">
-        <option>W-2 Employee</option>
-      </select>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Employer Name"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="City or Town"
-      />
+    <!-- <form action="" id="employer-details"> -->
+    <select class="form-select form-style">
+      <option>W-2 Employee</option>
+    </select>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Name"
+    />
+    <input type="text" class="form-control form-style" placeholder="Address" />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="City or Town"
+    />
 
+    <div class="row">
+      <div class="col-md-5">
+        <select class="form-select form-style">
+          <option>State</option>
+        </select>
+      </div>
+      <div class="col-md-7">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Zip Code"
+        />
+      </div>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Phone Number"
+    />
+    <div class="radio-input">
       <div class="row">
-        <div class="col-md-5">
-          <select class="form-select form-style">
-            <option>State</option>
-          </select>
-        </div>
-        <div class="col-md-7">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
-          />
+        <div class="col-md-12">
+          <input type="checkbox" class="form-style" placeholder="" />
+          <p>This is my Current Job</p>
         </div>
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Employer Phone Number"
-      />
-      <div class="radio-input">
-        <div class="row">
-          <div class="col-md-12">
-            <input type="checkbox" class="form-style" placeholder="" />
-            <p>This is my Current Job</p>
-          </div>
-        </div>
-      </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Start date"
-      />
-    </form>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Start date"
+    />
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/income-info/1" class="btn" id="btn-back"
@@ -127,33 +125,38 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="employer-details">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Job Title"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Base Salery"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Bonus"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Commission"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Overtime"
-      />
-    </form>
+    <!-- <form action="" id="employer-details"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Job Title"
+      [(ngModel)]="model.jobTitle"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Base Salery"
+      [(ngModel)]="model.estAnualBaseSalary"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Bonus"
+      [(ngModel)]="model.estAnualBonus"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Commission"
+      [(ngModel)]="model.estAnualCommision"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Overtime"
+      [(ngModel)]="model.estAnualOverTime"
+    />
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/income-info/2" class="btn" id="btn-back"
@@ -191,6 +194,7 @@
       class="btn btn-primary btn-style btn-orange"
       >Yes, I have more to add</a
     >
+    <!-- //(click)="onHaveMoreClick(true)" -->
 
     <a
       routerLink="/app/purchase/income-info/5"
@@ -198,6 +202,7 @@
       class="btn btn-primary btn-style btn-orange"
       >No, I don’t have more to add</a
     >
+    <!-- (click)="onHaveMoreClick(false)" -->
 
     <div class="row">
       <div class="col-md-12 margin-top">
@@ -268,10 +273,7 @@
         <h6>Borrower Information</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a
-          href="(N0N MILITARY) 27B Apply Now  I’m Purchasing  Income  quick review  Edits .html"
-          class="btn"
-          id="btn-edit"
+        <a routerLink="/app/purchase/income-info/7" class="btn" id="btn-edit"
           >Edit</a
         >
       </div>
@@ -302,7 +304,11 @@
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/purchase/assets-info/5" class="btn" id="btn-next"
+        <a
+          routerLink="/app/purchase/assets-info/5"
+          class="btn"
+          id="btn-next"
+          (click)="onIncomeComplete()"
           >Next</a
         >
       </div>
@@ -326,10 +332,7 @@
         <h6>Borrower Information</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a
-          href="(N0N MILITARY) 27A  Apply Now  I’m Purchasing  Income  quick review .html"
-          class="btn"
-          id="btn-edit"
+        <a routerLink="/app/purchase/income-info/6" class="btn" id="btn-edit"
           >Done</a
         >
       </div>
@@ -427,18 +430,12 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY) 27A  Apply Now  I’m Purchasing  Income  quick review .html"
-          class="btn"
-          id="btn-back"
+        <a routerLink="/app/purchase/income-info/6" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a
-          href="(N0N MILITARY) 28  Apply Now  I’m Purchasing Assets  .html"
-          class="btn"
-          id="btn-next"
+        <a routerLink="/app/purchase/assets-info/1" class="btn" id="btn-next"
           >Next</a
         >
       </div>

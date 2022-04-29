@@ -5,252 +5,396 @@
   <div class="content-area">
     <div class="row">
       <div class="col-md-10">
-        <form action="" id="gov-details">
-          <h6>What is your sex?</h6>
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Male</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Female</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>I do not wish to provide this information</p>
-              </div>
+        <!-- <form action="" id="gov-details"> -->
+        <h6>What is your sex?</h6>
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govSex"
+              />
+              <p>Male</p>
             </div>
           </div>
-          <h6>What is your ethnicity? (Check one or more)</h6>
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>No Hispanic or Latino</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Hispanic or Latino</p>
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govSex"
+              />
+              <p>Female</p>
             </div>
           </div>
-          <div class="radio-input-gov-right">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Maxican</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Maxican</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Puerto Rican</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Cuban</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Other Hispanic or Latino</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-11">
-                <input
-                  type="text"
-                  class="form-style form-control"
-                  placeholder="Enter Other Hispanic or Latino (Optional)"
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>I do not wish to provide this information</p>
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govSex"
+              />
+              <p>I do not wish to provide this information</p>
             </div>
           </div>
-          <h6>What is your race? (Check one or more)</h6>
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>American Indian or Alaska Native</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-10">
-                <input
-                  type="text"
-                  class="form-style form-control"
-                  placeholder="Enter Other Hispanic or Latino (Optional)"
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Asian</p>
-              </div>
+        </div>
+        <h6>What is your ethnicity? (Check one or more)</h6>
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>No Hispanic or Latino</p>
             </div>
           </div>
-          <div class="radio-input-gov-right">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Asian Indian</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Chinese</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Filipino</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Japanese</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Korean</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Vietnamese</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Other Asian</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-11">
-                <input
-                  type="text"
-                  class="form-style form-control"
-                  placeholder="Enter Other Hispanic or Latino (Optional)"
-                />
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Hispanic or Latino</p>
             </div>
           </div>
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Native Hawalian or Other Pacific Islander</p>
-              </div>
+        </div>
+        <div class="radio-input-gov-right">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Maxican</p>
             </div>
           </div>
-          <div class="radio-input-gov-right">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Native Hawalian</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Guamanian or Chamorro</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Samoan</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Other Pacific Islander</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-11">
-                <input
-                  type="text"
-                  class="form-style form-control"
-                  placeholder="Enter Other Hispanic or Latino (Optional)"
-                />
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Maxican</p>
             </div>
           </div>
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>Native Hawalian or Other Pacific Islander</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>White</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
-                <p>I do not wish to Provide this Information</p>
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Puerto Rican</p>
             </div>
           </div>
-          <p class="terms">
-            <span>The purpose of collecting this information</span> is to help
-            ensure that all applicants are treated fairly and that the housing
-            needs of communities and neighborhoods are being fulfilled. For
-            residential mortgage lending, Federal law requires that we ask
-            applicants for their demographic information (ethnicity, sex, and
-            race) in order to monitor our compliance with equal credit
-            opportunity, fair housing, and home mortgage disclosure laws. You
-            are not required to provide this information, but are encouraged to
-            do so. You may select one or more designations for <br />
-            "Ethnicity" and one or more designations for "Race."
-            <span>The law provides that we may not discriminate</span> on the
-            basis of this information, or on whether you choose to provide it.
-            However, if you choose not to provide the information and you have
-            made this application in person, Federal regulations require us to
-            note your ethnicity, sex, and race on the basis of visual
-            observation or surname. The law also provides that we may not
-            discriminate on the basis of age or marital status information you
-            provide in this application. If you do not wish to provide some or
-            all of this information, please check below.
-          </p>
-        </form>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Cuban</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>Other Hispanic or Latino</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-11">
+              <input
+                type="text"
+                class="form-style form-control"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                [(ngModel)]="model.govEthnicity"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govEthnicity"
+              />
+              <p>I do not wish to provide this information</p>
+            </div>
+          </div>
+        </div>
+        <h6>What is your race? (Check one or more)</h6>
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>American Indian or Alaska Native</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <input
+                type="text"
+                class="form-style form-control"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                [(ngModel)]="model.govRace"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Asian</p>
+            </div>
+          </div>
+        </div>
+        <div class="radio-input-gov-right">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Asian Indian</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Chinese</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Filipino</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Japanese</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Korean</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Vietnamese</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Other Asian</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-11">
+              <input
+                type="text"
+                class="form-style form-control"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                [(ngModel)]="model.govRace"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Native Hawalian or Other Pacific Islander</p>
+            </div>
+          </div>
+        </div>
+        <div class="radio-input-gov-right">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Native Hawalian</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Guamanian or Chamorro</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Samoan</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Other Pacific Islander</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-11">
+              <input
+                type="text"
+                class="form-style form-control"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                [(ngModel)]="model.govRace"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>Native Hawalian or Other Pacific Islander</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>White</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govRace"
+              />
+              <p>I do not wish to Provide this Information</p>
+            </div>
+          </div>
+        </div>
+        <p class="terms">
+          <span>The purpose of collecting this information</span> is to help
+          ensure that all applicants are treated fairly and that the housing
+          needs of communities and neighborhoods are being fulfilled. For
+          residential mortgage lending, Federal law requires that we ask
+          applicants for their demographic information (ethnicity, sex, and
+          race) in order to monitor our compliance with equal credit
+          opportunity, fair housing, and home mortgage disclosure laws. You are
+          not required to provide this information, but are encouraged to do so.
+          You may select one or more designations for <br />
+          "Ethnicity" and one or more designations for "Race."
+          <span>The law provides that we may not discriminate</span> on the
+          basis of this information, or on whether you choose to provide it.
+          However, if you choose not to provide the information and you have
+          made this application in person, Federal regulations require us to
+          note your ethnicity, sex, and race on the basis of visual observation
+          or surname. The law also provides that we may not discriminate on the
+          basis of age or marital status information you provide in this
+          application. If you do not wish to provide some or all of this
+          information, please check below.
+        </p>
+        <!-- </form> -->
       </div>
     </div>
   </div>
@@ -259,15 +403,16 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY) 28  Apply Now  I’m Purchasing Assets  .html"
-          class="btn"
-          id="btn-back"
-          >Back</a
-        >
+        <a (click)="window.history.back()" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/gov/2" class="btn" id="btn-next">Next</a>
+        <a
+          routerLink="/purchase/gov/2"
+          (click)="onGovClick()"
+          class="btn"
+          id="btn-next"
+          >Next</a
+        >
       </div>
     </div>
   </div>
@@ -292,8 +437,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ1 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ1 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -310,8 +469,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ2 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ2 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -328,8 +501,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ3 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ31 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -348,8 +535,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ4 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ4 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -367,8 +568,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ5 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ5 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -387,8 +602,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ6 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ6 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -405,8 +634,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ7 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ7 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -420,8 +663,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ8 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ8 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -435,8 +692,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ9 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ9 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -453,8 +724,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ10 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ10 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -471,8 +756,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ11 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ11 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -491,8 +790,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ12 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ12 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -506,8 +819,22 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ13 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ13 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -521,15 +848,29 @@
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ14 = 'yes'; saveStep()"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="model.govQ14 = 'no'; saveStep()"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <select class="form-select form-style">
+      <select class="form-select form-style" [(ngModel)]="model.govQ15">
         <option>-What is your citizenship status?-</option>
       </select>
     </div>
@@ -543,7 +884,13 @@
         <a routerLink="/purchase/gov/1" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/gov/3" class="btn" id="btn-next">Next</a>
+        <a
+          routerLink="/purchase/gov/3"
+          class="btn"
+          id="btn-next"
+          (click)="onQsClick()"
+          >Next</a
+        >
       </div>
     </div>
   </div>
@@ -566,13 +913,23 @@
           <div class="radio-input-gov">
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="radio"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.govAgree1"
+                />
                 <p>I certify the following</p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="radio"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.govAgree2"
+                />
                 <p>
                   I have read the eConsent disclosure &amp; understand that
                   communications will be provided electronically.
@@ -581,7 +938,12 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="radio"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.govAgree3"
+                />
                 <p>
                   I have read the Third Party Consent Disclosure &amp; authorize
                   EZ Online Mortgage, to obtain from third parties any and all
@@ -603,7 +965,13 @@
         <a routerLink="/purchase/gov/2" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/gov/4" class="btn" id="btn-next">Next</a>
+        <a
+          routerLink="/purchase/gov/4"
+          class="btn"
+          id="btn-next"
+          (click)="onAgreeClick()"
+          >Next</a
+        >
       </div>
     </div>
   </div>
@@ -621,18 +989,20 @@
     accurate rates and a pre-approval!
   </h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <select class="form-select form-style">
+    <select class="form-select form-style" [(ngModel)]="model.ssn">
       <option>Social Security Number</option>
     </select>
     <input
       type="text"
       class="form-control form-style"
       placeholder="Confirm SSN"
+      [(ngModel)]="model.ssnConfirm"
     />
     <input
       type="text"
       class="form-control form-style"
       placeholder="Birthdate"
+      [(ngModel)]="model.ssnBirthDay"
     />
     <p>
       By Clicking “ Next” I authorize and consent to EZ Online Mortgage, making
@@ -646,7 +1016,13 @@
         <a routerLink="/purchase/gov/3" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/gov/5" class="btn" id="btn-next">Next</a>
+        <a
+          routerLink="/purchase/gov/5"
+          class="btn"
+          id="btn-next"
+          (click)="onFinalNext()"
+          >Next</a
+        >
       </div>
     </div>
   </div>

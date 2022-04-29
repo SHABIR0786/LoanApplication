@@ -60,4 +60,7 @@ export class PropertyInfoComponent implements OnInit {
     this.model.isMillitary = e;
     this.offline.saveStep(3, this.model);
   }
+  onEditNextClick() {
+    this.offline.saveStep(3, this.model);
+  }
 }
