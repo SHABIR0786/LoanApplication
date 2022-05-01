@@ -15,6 +15,9 @@
       placeholder="Apt / Unit"
       [(ngModel)]="model.newHomeUnit"
     />
+    <!-- <select class="form-select form-style form-control" [(ngModel)]="model.newHomeState">
+      <option [value]="s.id" *ngFor="let s of cities">{{s.cityName}}</option>
+    </select> -->
     <input
       type="text"
       class="form-control form-style"
@@ -24,8 +27,14 @@
 
     <div class="row">
       <div class="col-md-5">
-        <select class="form-select form-style" [(ngModel)]="model.newHomeState">
-          <option value="state">State</option>
+        <select
+          class="form-select form-style form-control"
+          [(ngModel)]="model.newHomeState"
+        >
+          <option [value]="s.id" *ngFor="let s of states">
+            {{ s.stateName }}
+          </option>
+          <!-- <option value="state">State</option> -->
         </select>
       </div>
       <div class="col-md-7">
@@ -72,9 +81,11 @@
       <div class="row">
         <div class="col-md-12">
           <input
-            type="checkbox"
+            type="radio"
             class="form-style"
             placeholder=""
+            value="new"
+            name="propertyOption"
             [(ngModel)]="model.propertyOption1"
           />
           <p>New construction</p>
@@ -83,10 +94,12 @@
       <div class="row">
         <div class="col-md-12">
           <input
-            type="checkbox"
+            type="radio"
             class="form-style"
             placeholder=""
-            [(ngModel)]="model.propertyOption2"
+            value="Foreclosure"
+            name="propertyOption"
+            [(ngModel)]="model.propertyOption1"
           />
           <p>Foreclosure / Bank Owned</p>
         </div>
@@ -99,7 +112,6 @@
           class="btn"
           id="btn-back"
           role="button"
-          (click)="onNextTwoClick()"
           >Back</a
         >
       </div>
@@ -108,6 +120,7 @@
           [routerLink]="['/app/purchase/property-info', 3]"
           class="btn"
           id="btn-next"
+          (click)="onNextTwoClick()"
           >Next</a
         >
       </div>
@@ -616,7 +629,7 @@
         </div>
         <div class="col-md-2">
           <a
-            [routerLink]="['/app/purchase/purchase-mil-info', 1]"
+            [routerLink]="['/app/purchase/personal-info', 1]"
             class="btn"
             id="btn-next"
             >Next</a
@@ -871,7 +884,7 @@
         </div>
         <div class="col-md-2">
           <a
-            [routerLink]="['/app/purchase/purchase-mil-info', 1]"
+            [routerLink]="['/app/purchase/purchase-non-mil']"
             (click)="onEditNextClick()"
             class="btn btn-orange"
             id="btn-next"

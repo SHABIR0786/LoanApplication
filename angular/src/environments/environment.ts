@@ -7,4 +7,5 @@ export const environment = {
   production: false,
   hmr: false,
   appConfig: "appconfig.production.json",
+  baseApi: "https://loanapi.gotechtical.com/api/",
 };

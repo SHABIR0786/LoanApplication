@@ -14,6 +14,8 @@
                 type="radio"
                 class="form-style"
                 placeholder=""
+                value="male"
+                name="sex"
                 [(ngModel)]="model.govSex"
               />
               <p>Male</p>
@@ -25,6 +27,8 @@
                 type="radio"
                 class="form-style"
                 placeholder=""
+                value="female"
+                name="sex"
                 [(ngModel)]="model.govSex"
               />
               <p>Female</p>
@@ -36,6 +40,8 @@
                 type="radio"
                 class="form-style"
                 placeholder=""
+                value="other"
+                name="sex"
                 [(ngModel)]="model.govSex"
               />
               <p>I do not wish to provide this information</p>
@@ -403,11 +409,13 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a (click)="window.history.back()" class="btn" id="btn-back">Back</a>
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-back"
+          >Back</a
+        >
       </div>
       <div class="col-md-2">
         <a
-          routerLink="/purchase/gov/2"
+          routerLink="/app/purchase/gov/2"
           (click)="onGovClick()"
           class="btn"
           id="btn-next"
@@ -442,6 +450,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ1 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ1 == 'yes' }"
           >
             Yes
           </button>
@@ -450,6 +459,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ1 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ1 == 'no' }"
           >
             No
           </button>
@@ -474,6 +484,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ2 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ2 == 'yes' }"
           >
             Yes
           </button>
@@ -482,6 +493,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ2 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ2 == 'no' }"
           >
             No
           </button>
@@ -506,6 +518,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ3 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ3 == 'yes' }"
           >
             Yes
           </button>
@@ -513,7 +526,8 @@
             type="button"
             class="btn"
             id="btn-yes-no"
-            (click)="model.govQ31 = 'no'; saveStep()"
+            (click)="model.govQ3 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ3 == 'no' }"
           >
             No
           </button>
@@ -540,6 +554,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ4 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ4 == 'yes' }"
           >
             Yes
           </button>
@@ -548,6 +563,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ4 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ4 == 'no' }"
           >
             No
           </button>
@@ -573,6 +589,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ5 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ5 == 'yes' }"
           >
             Yes
           </button>
@@ -581,6 +598,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ5 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ5 == 'no' }"
           >
             No
           </button>
@@ -607,6 +625,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ6 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ6 == 'yes' }"
           >
             Yes
           </button>
@@ -615,6 +634,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ6 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ6 == 'no' }"
           >
             No
           </button>
@@ -639,6 +659,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ7 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ7 == 'yes' }"
           >
             Yes
           </button>
@@ -647,6 +668,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ7 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ7 == 'no' }"
           >
             No
           </button>
@@ -668,6 +690,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ8 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ8 == 'yes' }"
           >
             Yes
           </button>
@@ -676,6 +699,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ8 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ8 == 'no' }"
           >
             No
           </button>
@@ -697,6 +721,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ9 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ9 == 'yes' }"
           >
             Yes
           </button>
@@ -705,6 +730,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ9 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ9 == 'no' }"
           >
             No
           </button>
@@ -729,6 +755,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ10 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ10 == 'yes' }"
           >
             Yes
           </button>
@@ -737,6 +764,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ10 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ10 == 'no' }"
           >
             No
           </button>
@@ -761,6 +789,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ11 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ11 == 'yes' }"
           >
             Yes
           </button>
@@ -769,6 +798,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ11 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ11 == 'no' }"
           >
             No
           </button>
@@ -795,6 +825,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ12 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ12 == 'yes' }"
           >
             Yes
           </button>
@@ -803,6 +834,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ12 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ12 == 'no' }"
           >
             No
           </button>
@@ -824,6 +856,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ13 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ13 == 'yes' }"
           >
             Yes
           </button>
@@ -832,6 +865,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ13 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ13 == 'no' }"
           >
             No
           </button>
@@ -853,6 +887,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ14 = 'yes'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ10 == 'yes' }"
           >
             Yes
           </button>
@@ -861,6 +896,7 @@
             class="btn"
             id="btn-yes-no"
             (click)="model.govQ14 = 'no'; saveStep()"
+            [ngClass]="{ 'yes-no-active': model.govQ14 == 'no' }"
           >
             No
           </button>
@@ -871,7 +907,10 @@
   <div class="row">
     <div class="col-md-12">
       <select class="form-select form-style" [(ngModel)]="model.govQ15">
-        <option>-What is your citizenship status?-</option>
+        <option value="">-What is your citizenship status?-</option>
+        <option [value]="c.id" *ngFor="let c of cs">
+          {{ c?.citizenshipType1 }}
+        </option>
       </select>
     </div>
   </div>
@@ -881,11 +920,11 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a routerLink="/purchase/gov/1" class="btn" id="btn-back">Back</a>
+        <a routerLink="/app/purchase/gov/1" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
         <a
-          routerLink="/purchase/gov/3"
+          routerLink="/app/purchase/gov/3"
           class="btn"
           id="btn-next"
           (click)="onQsClick()"
@@ -909,51 +948,51 @@
   <div class="content-area">
     <div class="row">
       <div class="col-md-10">
-        <form action="" id="gov-details">
-          <div class="radio-input-gov">
-            <div class="row">
-              <div class="col-md-12">
-                <input
-                  type="radio"
-                  class="form-style"
-                  placeholder=""
-                  [(ngModel)]="model.govAgree1"
-                />
-                <p>I certify the following</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input
-                  type="radio"
-                  class="form-style"
-                  placeholder=""
-                  [(ngModel)]="model.govAgree2"
-                />
-                <p>
-                  I have read the eConsent disclosure &amp; understand that
-                  communications will be provided electronically.
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <input
-                  type="radio"
-                  class="form-style"
-                  placeholder=""
-                  [(ngModel)]="model.govAgree3"
-                />
-                <p>
-                  I have read the Third Party Consent Disclosure &amp; authorize
-                  EZ Online Mortgage, to obtain from third parties any and all
-                  verification information and documentation that they may
-                  request.
-                </p>
-              </div>
+        <!-- <form action="" id="gov-details"> -->
+        <div class="radio-input-gov">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="checkbox"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govAgree1"
+              />
+              <p>I certify the following</p>
             </div>
           </div>
-        </form>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="checkbox"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govAgree2"
+              />
+              <p>
+                I have read the eConsent disclosure &amp; understand that
+                communications will be provided electronically.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="checkbox"
+                class="form-style"
+                placeholder=""
+                [(ngModel)]="model.govAgree3"
+              />
+              <p>
+                I have read the Third Party Consent Disclosure &amp; authorize
+                EZ Online Mortgage, to obtain from third parties any and all
+                verification information and documentation that they may
+                request.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- </form> -->
       </div>
     </div>
   </div>
@@ -962,11 +1001,11 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a routerLink="/purchase/gov/2" class="btn" id="btn-back">Back</a>
+        <a routerLink="/app/purchase/gov/2" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
         <a
-          routerLink="/purchase/gov/4"
+          routerLink="/app/purchase/gov/4"
           class="btn"
           id="btn-next"
           (click)="onAgreeClick()"
@@ -989,9 +1028,15 @@
     accurate rates and a pre-approval!
   </h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <select class="form-select form-style" [(ngModel)]="model.ssn">
+    <!-- <select class="form-select form-style" [(ngModel)]="model.ssn">
       <option>Social Security Number</option>
-    </select>
+    </select> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Social Security Number"
+      [(ngModel)]="model.ssn"
+    />
     <input
       type="text"
       class="form-control form-style"
@@ -1013,11 +1058,11 @@
 
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a routerLink="/purchase/gov/3" class="btn" id="btn-back">Back</a>
+        <a routerLink="/app/purchase/gov/3" class="btn" id="btn-back">Back</a>
       </div>
       <div class="col-md-2">
         <a
-          routerLink="/purchase/gov/5"
+          routerLink="/app/purchase/gov/5"
           class="btn"
           id="btn-next"
           (click)="onFinalNext()"

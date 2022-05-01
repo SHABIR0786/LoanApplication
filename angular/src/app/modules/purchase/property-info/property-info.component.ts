@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
+import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
 
 @Component({
@@ -13,10 +14,13 @@ export class PropertyInfoComponent implements OnInit {
   yes = false;
   isEdit = false;
   model: PostModel = new PostModel();
+  states: any[] = [];
+  cities: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private offline: OfflineService
+    private offline: OfflineService,
+    private api: ApiService
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -27,8 +31,22 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.getStates();
+    this.getCities();
     this.model = this.offline.getStep().data;
   }
+
+  getStates() {
+    this.api.get("State/states").subscribe((x: any) => {
+      if (x && x.result) this.states = x.result;
+    });
+  }
+  getCities() {
+    this.api.get("City/cities").subscribe((x: any) => {
+      if (x && x.result) this.cities = x.result;
+    });
+  }
+
   onNewHomeClick() {
     this.offline.saveStep(3, this.model);
   }
