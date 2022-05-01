@@ -10,7 +10,9 @@ export class ApplyNowComponent implements OnInit {
   model: PostModel = new PostModel();
   constructor(private offline: OfflineService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.model = this.offline.getStep().data;
+  }
   setChoice(e: number) {
     this.model.firstChoice = e.toString();
     this.offline.saveStep(1, this.model);

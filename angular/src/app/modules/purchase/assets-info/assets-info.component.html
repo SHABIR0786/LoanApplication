@@ -7,6 +7,9 @@
     <!-- <form action="" id="employer-details"> -->
     <select class="form-select form-style" [(ngModel)]="model.accountType">
       <option>-Account type-</option>
+      <option [value]="a.id" *ngFor="let a of accType">
+        {{ a.financialAccountType1 }}
+      </option>
     </select>
     <input
       type="text"
@@ -23,13 +26,13 @@
     <!-- </form> -->
     <div class="row margin-top">
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/purchase/income-info/5" class="btn" id="btn-back"
+        <a routerLink="/app/purchase/income-info/5" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2 offset-md-1">
         <a
-          routerLink="/purchase/assets-info/2"
+          routerLink="/app/purchase/assets-info/2"
           class="btn"
           id="btn-next"
           (click)="stepOneClick()"
@@ -37,7 +40,7 @@
         >
       </div>
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/purchase/assets-info/2" class="btn" id="btn-back"
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-back"
           >Skip</a
         >
       </div>
@@ -59,12 +62,14 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      routerLink="/purchase/assets-info/6"
+      routerLink="/app/purchase/assets-info/6"
       class="btn btn-primary btn-style btn-orange"
       >Yes</a
     >
 
-    <a routerLink="/purchase/gov/1" class="btn btn-primary btn-style btn-orange"
+    <a
+      routerLink="/app/purchase/gov/1"
+      class="btn btn-primary btn-style btn-orange"
       >No</a
     >
 
@@ -253,7 +258,7 @@
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/assets-info/2" class="btn" id="btn-next"
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-next"
           >Next</a
         >
       </div>

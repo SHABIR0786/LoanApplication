@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
 import { ApplyNowComponent } from "./apply-now/apply-now.component";
 import { AssetsInfoComponent } from "./assets-info/assets-info.component";
 import { GovernmentComponent } from "./government/government.component";
@@ -17,7 +18,7 @@ import { PurchaseYesComponent } from "./purchase-yes/purchase-yes.component";
 import { PurchasingYesComponent } from "./purchasing-yes/purchasing-yes.component";
 import { SignedPurchaseComponent } from "./signed-purchase/signed-purchase.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
-
+import { PersonalInfoComponent } from "./personal-info/personal-info.component";
 const routes: Routes = [
   {
     path: "",
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: "property-info/:number",
         component: PropertyInfoComponent,
+      },
+      {
+        path: "personal-info/:number",
+        component: PersonalInfoComponent,
       },
       {
         path: "income-info/:number",
