@@ -4,34 +4,43 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="employer-details">
-      <select class="form-select form-style">
-        <option>-Account type-</option>
-      </select>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Finantional institution"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Balance"
-      />
-    </form>
+    <!-- <form action="" id="employer-details"> -->
+    <select class="form-select form-style" [(ngModel)]="model.accountType">
+      <option>-Account type-</option>
+      <option [value]="a.id" *ngFor="let a of accType">
+        {{ a.financialAccountType1 }}
+      </option>
+    </select>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Finantional institution"
+      [(ngModel)]="model.finInstitute"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Balance"
+      [(ngModel)]="model.finBalance"
+    />
+    <!-- </form> -->
     <div class="row margin-top">
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/purchase/income-info/5" class="btn" id="btn-back"
+        <a routerLink="/app/purchase/income-info/5" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/purchase/assets-info/2" class="btn" id="btn-next"
+        <a
+          routerLink="/app/purchase/assets-info/2"
+          class="btn"
+          id="btn-next"
+          (click)="stepOneClick()"
           >Next</a
         >
       </div>
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/purchase/assets-info/2" class="btn" id="btn-back"
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-back"
           >Skip</a
         >
       </div>
@@ -53,12 +62,14 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      routerLink="/purchase/assets-info/6"
+      routerLink="/app/purchase/assets-info/6"
       class="btn btn-primary btn-style btn-orange"
       >Yes</a
     >
 
-    <a routerLink="/purchase/gov/1" class="btn btn-primary btn-style btn-orange"
+    <a
+      routerLink="/app/purchase/gov/1"
+      class="btn btn-primary btn-style btn-orange"
       >No</a
     >
 
@@ -87,10 +98,7 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a
-          href="(N0N MILITARY) 28C  Apply Now  I’m Purchasing  Assets   Edits  .html"
-          class="btn"
-          id="btn-edit"
+        <a routerLink="/app/purchase/assets-info/4" class="btn" id="btn-edit"
           >Edit</a
         >
       </div>
@@ -110,18 +118,12 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY) 28A  Apply Now  I’m Purchasing  Assets  Yes Button  .html"
-          class="btn"
-          id="btn-back"
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a
-          href="(N0N MILITARY) 28D  Apply Now  I’m Purchasing  Assets  any other assets  .html"
-          class="btn"
-          id="btn-next"
+        <a routerLink="/app/purchase/assets-info/4" class="btn" id="btn-next"
           >Next</a
         >
       </div>
@@ -144,10 +146,7 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a
-          href="(N0N MILITARY) 28B Apply Now  I’m Purchasing  Assets  Review Edits  .html"
-          class="btn"
-          id="btn-edit"
+        <a routerLink="/app/purchase/assets-info/3" class="btn" id="btn-edit"
           >Done</a
         >
       </div>
@@ -178,18 +177,12 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY) 28A  Apply Now  I’m Purchasing  Assets  Yes Button  .html"
-          class="btn"
-          id="btn-back"
+        <a routerLink="/app/purchase/assets-info/3" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a
-          href="(N0N MILITARY) 28D  Apply Now  I’m Purchasing  Assets  any other assets  .html"
-          class="btn"
-          id="btn-next"
+        <a routerLink="/app/purchase/assets-info/5" class="btn" id="btn-next"
           >Next</a
         >
       </div>
@@ -209,23 +202,20 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      href="(N0N MILITARY) 28E  Apply Now  I’m Purchasing  Assets  any other assets  .html"
+      routerLink="/app/purchase/assets-info/6"
       class="btn btn-primary btn-style btn-orange"
       >Yes</a
     >
 
     <a
-      href="(N0N MILITARY) 29  Apply Now  I’m Purchasing  Government  .html"
+      routerLink="/app/purchase/assets-info/6"
       class="btn btn-primary btn-style btn-orange"
       >No</a
     >
 
     <div class="row">
       <div class="col-md-12 margin-top">
-        <a
-          href="(N0N MILITARY) 28B Apply Now  I’m Purchasing  Assets  Review Edits  .html"
-          class="btn"
-          id="btn-back"
+        <a routerLink="/app/purchase/assets-info/4" class="btn" id="btn-back"
           >Back</a
         >
       </div>
@@ -237,10 +227,6 @@
   </div>
 </div>
 
-<!-- section 28D ends -->
-<!-- Click No on 28D section it will land in section 29 -->
-<!-- Click Yes on 28D section it will land in section 28E -->
-<!-- section 28E starts -->
 <div class="main-content" *ngIf="number == 6">
   <h2>Let’s review and comfirm your assets.</h2>
   <div class="content-area">
@@ -267,15 +253,12 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY) 28D  Apply Now  I’m Purchasing  Assets  any other assets  .html"
-          class="btn"
-          id="btn-back"
+        <a routerLink="/app/purchase/assets-info/5" class="btn" id="btn-back"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/purchase/assets-info/2" class="btn" id="btn-next"
+        <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-next"
           >Next</a
         >
       </div>

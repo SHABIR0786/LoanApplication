@@ -33,7 +33,10 @@ import { IncomeInfoComponent } from "./income-info/income-info.component";
 import { AssetsInfoComponent } from "./assets-info/assets-info.component";
 import { GovernmentComponent } from "./government/government.component";
 //import { ApplyNowRefinanceComponent } from './apply-now-refinance/apply-now-refinance.component';
-
+import { OfflineService } from "./../../services/offline.service";
+import { FormsModule } from "@angular/forms";
+import { ApiService } from "@app/services/api.service";
+import { PersonalInfoComponent } from "./personal-info/personal-info.component";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -66,7 +69,9 @@ import { GovernmentComponent } from "./government/government.component";
     IncomeInfoComponent,
     AssetsInfoComponent,
     GovernmentComponent,
+    PersonalInfoComponent,
   ],
-  imports: [CommonModule, PurchaseRoutingModule],
+  providers: [OfflineService, ApiService],
+  imports: [CommonModule, PurchaseRoutingModule, FormsModule],
 })
 export class PurchaseModule {}
