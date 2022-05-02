@@ -1,11 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { OfflineService } from "@app/services/offline.service";
 const ROUTE_DATA = [
-  "/purchase/welcome",
-  "/purchase/property-info",
-  "/purchase/income-info",
-  "/purchase/assets-info",
-  "/purchase/gov",
+  "/purchase",
+  "/purchase/welcome/1",
+  "/purchase/property-info/1",
+  "/purchase/property-info/1",
+  "/purchase/income-info/1",
+  "/purchase/assets-info/1",
+  "/purchase/gov/1",
+  "/app/purchase/gov/5",
 ];
 const TABS_DATA = [];
 @Component({
@@ -15,7 +19,7 @@ const TABS_DATA = [];
 })
 export class IndexComponent implements OnInit {
   a: number = 0;
-  constructor(private router: Router) {
+  constructor(private router: Router, private offlineService: OfflineService) {
     this.router.events.subscribe((x) => {
       if (x instanceof NavigationEnd) {
         if (x.urlAfterRedirects === "/app/purchase") {
@@ -28,8 +32,13 @@ export class IndexComponent implements OnInit {
           });
         }
       }
+      //this.stepNav();
     });
   }
 
   ngOnInit() {}
+  stepNav() {
+    const stepData = this.offlineService.getStep();
+    this.router.navigate(["/app/" + ROUTE_DATA[stepData.step - 1]]);
+  }
 }
