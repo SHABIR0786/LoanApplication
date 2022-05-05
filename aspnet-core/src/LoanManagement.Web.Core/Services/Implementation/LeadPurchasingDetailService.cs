@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadPurchasingDetailService : ILeadPurchasingDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadPurchasingDetailService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadPurchasingDetail request)
         {
             _dbContext.LeadApplicationDetailPurchasings.Add(new Entities.Models.LeadApplicationDetailPurchasing

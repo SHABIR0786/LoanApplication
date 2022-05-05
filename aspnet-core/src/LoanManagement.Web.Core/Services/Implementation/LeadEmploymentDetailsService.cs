@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadEmploymentDetailsService : ILeadEmployementDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadEmploymentDetailsService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadEmploymentDetails request)
         {
             _dbContext.LeadEmployementDetails.Add(new Entities.Models.LeadEmployementDetail

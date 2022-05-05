@@ -2051,6 +2051,971 @@ namespace LoanManagement.EntityFrameworkCore
                     .HasConstraintName("states_ibfk_1");
             });
 
+
+            modelBuilder.Entity<LeadApplicationDetailPurchasing>(entity =>
+            {
+                entity.ToTable("lead_application_detail_purchasing");
+
+                entity.HasIndex(e => e.CitizenshipId, "CitizenshipId");
+
+                entity.HasIndex(e => e.CurrentStateId, "CurrentStateId");
+
+                entity.HasIndex(e => e.NewHomeStateId, "NewHomeStateId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.BirthDate).HasColumnType("datetime");
+
+                entity.Property(e => e.CitizenshipId).HasColumnType("int(11)");
+
+                entity.Property(e => e.ConformSsn)
+                    .HasMaxLength(50)
+                    .HasColumnName("ConformSSN")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.ContractClosingDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ContractType)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CreditScore)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentAddress)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentMilitaryStatus)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentReantingType)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentStartLivingDate).HasColumnType("datetime");
+
+                entity.Property(e => e.CurrentStateId).HasColumnType("int(11)");
+
+                entity.Property(e => e.CurrentUnit)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentZipCode)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Ethnicity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Etsdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("ETSDate");
+
+                entity.Property(e => e.IsApplyOwn).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsCertify).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsEmployementHistory).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsEtsdateinYear)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsETSDateinYear");
+
+                entity.Property(e => e.IsMilitaryMember).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsOtherSourceOfIncome).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsReadEconsent)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsReadEConsent");
+
+                entity.Property(e => e.IsReadThirdPartyConsent).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsSomeOneRefer).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsValoanPreviously)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsVALoanPreviously");
+
+                entity.Property(e => e.IsWorkingWithEzalready)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsWorkingWithEZAlready");
+
+                entity.Property(e => e.MaritialStatus)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.MilitaryBranch)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.MonthlyHoadues).HasColumnName("MonthlyHOADues");
+
+                entity.Property(e => e.NewHomeAddress)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.NewHomeCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.NewHomeStateId).HasColumnType("int(11)");
+
+                entity.Property(e => e.NewHomeUnit)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.NewHomeZipCode)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.NumberOfDependents).HasColumnType("int(11)");
+
+                entity.Property(e => e.PersonalEmailAddress)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_EmailAddress")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalLegalFirstName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_LegalFirstName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalLegalLastName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_LegalLastName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalMiddleInitial)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_MiddleInitial")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalPassword)
+                    .HasMaxLength(250)
+                    .HasColumnName("Personal_Password")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalPhoneNumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_PhoneNumber")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyEmailAddress)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_EmailAddress")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyLegalFirstName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_LegalFirstName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyLegalLastName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_LegalLastName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyMiddleInitial)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_MiddleInitial")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyPhoneNumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_PhoneNumber")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Race)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Sex)
+                    .HasMaxLength(10)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.SocialSecurityNumber)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Stage)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.TypeOfHome)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.TypeOfNewHome)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.WhoLivingInHome)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.WorkingOfficerName)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                //entity.HasOne(d => d.Citizenship)
+                //    .WithMany(p => p.LeadApplicationDetailPurchasings)
+                //    .HasForeignKey(d => d.CitizenshipId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Purchasing_ibfk_3");
+
+                //entity.HasOne(d => d.CurrentState)
+                //    .WithMany(p => p.LeadApplicationDetailPurchasingCurrentStates)
+                //    .HasForeignKey(d => d.CurrentStateId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Purchasing_ibfk_2");
+
+                //entity.HasOne(d => d.NewHomeState)
+                //    .WithMany(p => p.LeadApplicationDetailPurchasingNewHomeStates)
+                //    .HasForeignKey(d => d.NewHomeStateId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Purchasing_ibfk_1");
+            });
+
+            modelBuilder.Entity<LeadApplicationDetailRefinancing>(entity =>
+            {
+                entity.ToTable("lead_application_detail_refinancing");
+
+                entity.HasIndex(e => e.CurrentStateId, "CurrentStateId");
+
+                entity.HasIndex(e => e.PersonalStateId, "PersonalStateId");
+
+                entity.HasIndex(e => e.PropertyCountryId, "PropertyCountryId");
+
+                entity.HasIndex(e => e.PropertyStateId, "PropertyStateId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.BirthDate).HasColumnType("datetime");
+
+                entity.Property(e => e.CitizenshipId).HasColumnType("int(11)");
+
+                entity.Property(e => e.ConformSsn)
+                    .HasMaxLength(50)
+                    .HasColumnName("ConformSSN")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CreditScore)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentAddress)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentMilitaryStatus)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentReantingType)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentStartLivingDate).HasColumnType("datetime");
+
+                entity.Property(e => e.CurrentStateId).HasColumnType("int(11)");
+
+                entity.Property(e => e.CurrentUnit)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentZipCode)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.CurrentlyUsingHomeAs)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Ethnicity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Etsdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("ETSDate");
+
+                entity.Property(e => e.FirstDependantAge).HasColumnType("int(11)");
+
+                entity.Property(e => e.IsAddressSameAsPrimaryBorrower).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsApplyOwn).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsCertify).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsCoBorrowerHaveShareIncome).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsCurrentlyLivingOnRefinancingProperty).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsEmployementHistory).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsEtsdateinYear)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsETSDateinYear");
+
+                entity.Property(e => e.IsLegalSpouse).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsMilitaryMember).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsReadEconsent)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsReadEConsent");
+
+                entity.Property(e => e.IsReadThirdPartyConsent).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsSomeoneRefer).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsValoanPreviously)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsVALoanPreviously");
+
+                entity.Property(e => e.IsWorkingWithEzalready)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("IsWorkingWithEZAlready");
+
+                entity.Property(e => e.MaritialStatus)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.MilitaryBranch)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.MonthlyHoadues).HasColumnName("MonthlyHOADues");
+
+                entity.Property(e => e.NumberOfDependents).HasColumnType("int(11)");
+
+                entity.Property(e => e.ObjectiveReason)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalAddress)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalEmailAddress)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_EmailAddress")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalLegalFirstName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_LegalFirstName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalLegalLastName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_LegalLastName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalMiddleInitial)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_MiddleInitial")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalPassword)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_Password")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalPhoneNumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("Personal_PhoneNumber")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalReantingType)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalStartLivingDate).HasColumnType("datetime");
+
+                entity.Property(e => e.PersonalStateId).HasColumnType("int(11)");
+
+                entity.Property(e => e.PersonalUnit)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PersonalZipCode)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyAddress)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyCountryId).HasColumnType("int(11)");
+
+                entity.Property(e => e.PropertyEmailAddress)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_EmailAddress")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyLegalFirstName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_LegalFirstName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyLegalLastName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_LegalLastName")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyMiddleInitial)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_MiddleInitial")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyPassword)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_Password")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyPhoneNumber)
+                    .HasMaxLength(50)
+                    .HasColumnName("Property_PhoneNumber")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyStateId).HasColumnType("int(11)");
+
+                entity.Property(e => e.PropertyUnit)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyZip)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Race)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.RefferedBy)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Sex)
+                    .HasMaxLength(10)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.SocialSecurityNumber)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.TypeOfHome)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.WhoLivingInHome)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.WorkingOfficerName)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                //entity.HasOne(d => d.CurrentState)
+                //    .WithMany(p => p.LeadApplicationDetailRefinancingCurrentStates)
+                //    .HasForeignKey(d => d.CurrentStateId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Refinancing_ibfk_2");
+
+                //entity.HasOne(d => d.PersonalState)
+                //    .WithMany(p => p.LeadApplicationDetailRefinancingPersonalStates)
+                //    .HasForeignKey(d => d.PersonalStateId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Refinancing_ibfk_3");
+
+                //entity.HasOne(d => d.PropertyCountry)
+                //    .WithMany(p => p.LeadApplicationDetailRefinancings)
+                //    .HasForeignKey(d => d.PropertyCountryId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Refinancing_ibfk_4");
+
+                //entity.HasOne(d => d.PropertyState)
+                //    .WithMany(p => p.)
+                //    .HasForeignKey(d => d.PropertyStateId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("Lead_Application_Detail_Refinancing_ibfk_1");
+            });
+
+            modelBuilder.Entity<LeadApplicationQuestion>(entity =>
+            {
+                entity.ToTable("lead_application_questions");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Question)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadApplicationType>(entity =>
+            {
+                entity.ToTable("lead_application_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.ApplicationType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Application_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadAssetsDetail>(entity =>
+            {
+                entity.ToTable("lead_assets_details");
+
+                entity.HasIndex(e => e.AssetTypeId, "AssetTypeId");
+
+                entity.HasIndex(e => e.LeadApplicationDetailPurchasingId, "Lead_Application_Detail_Purchasing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationDetailRefinancingId, "Lead_Application_Detail_Refinancing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationTypeId, "Lead_Application_Type_Id");
+
+                entity.HasIndex(e => e.OwnerTypeId, "OwnerTypeId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.AssetTypeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.FinancialInstitution)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.LeadApplicationDetailPurchasingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Purchasing_Id");
+
+                entity.Property(e => e.LeadApplicationDetailRefinancingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Refinancing_Id");
+
+                entity.Property(e => e.LeadApplicationTypeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Type_Id");
+
+                entity.Property(e => e.OwnerTypeId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.AssetType)
+                    .WithMany(p => p.LeadAssetsDetails)
+                    .HasForeignKey(d => d.AssetTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Assets_Details_ibfk_1");
+
+                entity.HasOne(d => d.LeadApplicationDetailPurchasing)
+                    .WithMany(p => p.LeadAssetsDetails)
+                    .HasForeignKey(d => d.LeadApplicationDetailPurchasingId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Assets_Details_ibfk_3");
+
+                entity.HasOne(d => d.LeadApplicationDetailRefinancing)
+                    .WithMany(p => p.LeadAssetsDetails)
+                    .HasForeignKey(d => d.LeadApplicationDetailRefinancingId)
+                    .HasConstraintName("Lead_Assets_Details_ibfk_4");
+
+                entity.HasOne(d => d.LeadApplicationType)
+                    .WithMany(p => p.LeadAssetsDetails)
+                    .HasForeignKey(d => d.LeadApplicationTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Assets_Details_ibfk_2");
+
+                entity.HasOne(d => d.OwnerType)
+                    .WithMany(p => p.LeadAssetsDetails)
+                    .HasForeignKey(d => d.OwnerTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Assets_Details_ibfk_5");
+            });
+
+            modelBuilder.Entity<LeadAssetsType>(entity =>
+            {
+                entity.ToTable("lead_assets_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.AssetsType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Assets_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadEmployementDetail>(entity =>
+            {
+                entity.ToTable("lead_employement_details");
+
+                entity.HasIndex(e => e.EmployeeTypeId, "EmployeeTypeId");
+
+                entity.HasIndex(e => e.EmployementTaxeId, "EmployementTaxeId");
+
+                entity.HasIndex(e => e.LeadApplicationDetailPurchasingId, "Lead_Application_Detail_Purchasing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationDetailRefinancingId, "Lead_Application_Detail_Refinancing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationTypeId, "Lead_Application_Type_Id");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.EmployeeTypeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.EmployementAddress)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EmployementCity)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EmployementSuite)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EmployementTaxeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.EmployementZip)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EmployerName)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EmployerPhoneNumber)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.EstimatedStartDate).HasColumnType("datetime");
+
+                entity.Property(e => e.IsCoBorrower).HasColumnType("bit(1)");
+
+                entity.Property(e => e.IsCurrentJob).HasColumnType("bit(1)");
+
+                entity.Property(e => e.JobTitle)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.LeadApplicationDetailPurchasingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Purchasing_Id");
+
+                entity.Property(e => e.LeadApplicationDetailRefinancingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Refinancing_Id");
+
+                entity.Property(e => e.LeadApplicationTypeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Type_Id");
+
+                entity.HasOne(d => d.EmployeeType)
+                    .WithMany(p => p.LeadEmployementDetails)
+                    .HasForeignKey(d => d.EmployeeTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Employement_Details_ibfk_1");
+
+                entity.HasOne(d => d.EmployementTaxe)
+                    .WithMany(p => p.LeadEmployementDetails)
+                    .HasForeignKey(d => d.EmployementTaxeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Employement_Details_ibfk_2");
+
+                entity.HasOne(d => d.LeadApplicationDetailPurchasing)
+                    .WithMany(p => p.LeadEmployementDetails)
+                    .HasForeignKey(d => d.LeadApplicationDetailPurchasingId)
+                    .HasConstraintName("Lead_Employement_Details_ibfk_4");
+
+                entity.HasOne(d => d.LeadApplicationDetailRefinancing)
+                    .WithMany(p => p.LeadEmployementDetails)
+                    .HasForeignKey(d => d.LeadApplicationDetailRefinancingId)
+                    .HasConstraintName("Lead_Employement_Details_ibfk_5");
+
+                entity.HasOne(d => d.LeadApplicationType)
+                    .WithMany(p => p.LeadEmployementDetails)
+                    .HasForeignKey(d => d.LeadApplicationTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Employement_Details_ibfk_3");
+            });
+
+            modelBuilder.Entity<LeadEmployementType>(entity =>
+            {
+                entity.ToTable("lead_employement_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.EmployementType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Employement_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadIncomeType>(entity =>
+            {
+                entity.ToTable("lead_income_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.IncomeType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Income_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadOwnerType>(entity =>
+            {
+                entity.ToTable("lead_owner_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.OwnerType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Owner_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<LeadQuestionAnswer>(entity =>
+            {
+                entity.ToTable("lead_question_answers");
+
+                entity.HasIndex(e => e.LeadApplicationDetailPurchasingId, "Lead_Application_Detail_Purchasing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationDetailRefinancingId, "Lead_Application_Detail_Refinancing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationTypeId, "Lead_Application_Type_Id");
+
+                entity.HasIndex(e => e.QuestionId, "QuestionId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.IsYes).HasColumnType("bit(1)");
+
+                entity.Property(e => e.LeadApplicationDetailPurchasingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Purchasing_Id");
+
+                entity.Property(e => e.LeadApplicationDetailRefinancingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Refinancing_Id");
+
+                entity.Property(e => e.LeadApplicationTypeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Type_Id");
+
+                entity.Property(e => e.QuestionId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.LeadApplicationDetailPurchasing)
+                    .WithMany(p => p.LeadQuestionAnswers)
+                    .HasForeignKey(d => d.LeadApplicationDetailPurchasingId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Question_Answers_ibfk_3");
+
+                entity.HasOne(d => d.LeadApplicationDetailRefinancing)
+                    .WithMany(p => p.LeadQuestionAnswers)
+                    .HasForeignKey(d => d.LeadApplicationDetailRefinancingId)
+                    .HasConstraintName("Lead_Question_Answers_ibfk_4");
+
+                entity.HasOne(d => d.LeadApplicationType)
+                    .WithMany(p => p.LeadQuestionAnswers)
+                    .HasForeignKey(d => d.LeadApplicationTypeId)
+                    .HasConstraintName("Lead_Question_Answers_ibfk_2");
+
+                entity.HasOne(d => d.Question)
+                    .WithMany(p => p.LeadQuestionAnswers)
+                    .HasForeignKey(d => d.QuestionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Question_Answers_ibfk_1");
+            });
+
+            modelBuilder.Entity<LeadRefinancingIncomeDetail>(entity =>
+            {
+                entity.ToTable("lead_refinancing_income_details");
+
+                entity.HasIndex(e => e.IncomeTypeId, "IncomeTypeId");
+
+                entity.HasIndex(e => e.LeadApplicationDetailRefinancingId, "Lead_Application_Detail_Refinancing_Id");
+
+                entity.HasIndex(e => e.LeadApplicationTypeId, "Lead_Application_Type_Id");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.IncomeTypeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.LeadApplicationDetailRefinancingId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Detail_Refinancing_Id");
+
+                entity.Property(e => e.LeadApplicationTypeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Lead_Application_Type_Id");
+
+                entity.HasOne(d => d.IncomeType)
+                    .WithMany(p => p.LeadRefinancingIncomeDetails)
+                    .HasForeignKey(d => d.IncomeTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Lead_Refinancing_Income_Details_ibfk_1");
+
+                entity.HasOne(d => d.LeadApplicationDetailRefinancing)
+                    .WithMany(p => p.LeadRefinancingIncomeDetails)
+                    .HasForeignKey(d => d.LeadApplicationDetailRefinancingId)
+                    .HasConstraintName("Lead_Refinancing_Income_Details_ibfk_3");
+
+                entity.HasOne(d => d.LeadApplicationType)
+                    .WithMany(p => p.LeadRefinancingIncomeDetails)
+                    .HasForeignKey(d => d.LeadApplicationTypeId)
+                    .HasConstraintName("Lead_Refinancing_Income_Details_ibfk_2");
+            });
+
+            modelBuilder.Entity<LeadTaxesType>(entity =>
+            {
+                entity.ToTable("lead_taxes_types");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.TaxesType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Taxes_Type")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 

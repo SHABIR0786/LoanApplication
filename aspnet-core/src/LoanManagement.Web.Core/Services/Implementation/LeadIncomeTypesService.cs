@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadIncomeTypesService : ILeadIncomeTypesService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadIncomeTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadIncomeTypes request)
         {
             _dbContext.LeadIncomeTypes.Add(new Entities.Models.LeadIncomeType
