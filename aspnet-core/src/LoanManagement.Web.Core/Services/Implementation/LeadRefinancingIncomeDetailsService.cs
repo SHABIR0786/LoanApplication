@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadRefinancingIncomeDetailsService : ILeadRefinancingIncomeDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadRefinancingIncomeDetailsService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadRefinancingIncomeDetails request)
         {
             _dbContext.LeadRefinancingIncomeDetails.Add(new Entities.Models.LeadRefinancingIncomeDetail

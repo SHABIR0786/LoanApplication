@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadOwnerTypesService : ILeadOwnerTypesService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadOwnerTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadOwnerTypes request)
         {
             _dbContext.LeadOwnerTypes.Add(new Entities.Models.LeadOwnerType

@@ -13,6 +13,10 @@ namespace LoanManagement.Services.Implementation
     public class LeadQuestionAnswersService : ILeadQuestionAnswersService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadQuestionAnswersService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadQuestionAnswers request)
         {
             _dbContext.LeadQuestionAnswers.Add(new Entities.Models.LeadQuestionAnswer
