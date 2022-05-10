@@ -31,6 +31,16 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<ApplicationIncomeSource> ApplicationIncomeSources { get; set; } = null!;
         public virtual DbSet<ApplicationPersonalInformation> ApplicationPersonalInformations { get; set; } = null!;
         public virtual DbSet<ApplicationPreviousEmployementDetail> ApplicationPreviousEmployementDetails { get; set; } = null!;
+        public virtual DbSet<AdminDisclosure> AdminDisclosures { get; set; }
+        public virtual DbSet<AdminLoanapplicationdocument> AdminLoanapplicationdocuments { get; set; }
+        public virtual DbSet<AdminLoandetail> AdminLoandetails { get; set; }
+        public virtual DbSet<AdminLoanprogram> AdminLoanprograms { get; set; }
+        public virtual DbSet<AdminLoanstatus> AdminLoanstatuses { get; set; }
+        public virtual DbSet<AdminLoansummarystatus> AdminLoansummarystatuses { get; set; }
+        public virtual DbSet<AdminNotificationtype> AdminNotificationtypes { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
+        public virtual DbSet<AdminUserenableddevice> AdminUserenableddevices { get; set; }
+        public virtual DbSet<AdminUsernotification> AdminUsernotifications { get; set; }
         public virtual DbSet<CitizenshipType> CitizenshipTypes { get; set; } = null!;
         public virtual DbSet<City> Cities { get; set; } = null!;
         public virtual DbSet<Country> Countries { get; set; } = null!;
@@ -1235,6 +1245,319 @@ namespace LoanManagement.EntityFrameworkCore
                     .HasForeignKey(d => d.StateId1d34)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("application_previous_employement_details_ibfk_3");
+            });
+            modelBuilder.Entity<AdminDisclosure>(entity =>
+            {
+                entity.ToTable("admin_disclosures");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<AdminLoanapplicationdocument>(entity =>
+            {
+                entity.ToTable("admin_loanapplicationdocuments");
+
+                entity.HasIndex(e => e.DisclosureId, "DisclosureId");
+
+                entity.HasIndex(e => e.LoanId, "LoanId");
+
+                entity.HasIndex(e => e.UserId, "UserId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DisclosureId).HasColumnType("int(11)");
+
+                entity.Property(e => e.DocumentPath)
+                    .HasMaxLength(1000)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.LoanId).HasColumnType("int(11)");
+
+                entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Disclosure)
+                    .WithMany(p => p.AdminLoanapplicationdocuments)
+                    .HasForeignKey(d => d.DisclosureId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanApplicationDocuments_ibfk_2");
+
+                entity.HasOne(d => d.Loan)
+                    .WithMany(p => p.AdminLoanapplicationdocuments)
+                    .HasForeignKey(d => d.LoanId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanApplicationDocuments_ibfk_1");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AdminLoanapplicationdocuments)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanApplicationDocuments_ibfk_3");
+            });
+
+            modelBuilder.Entity<AdminLoandetail>(entity =>
+            {
+                entity.ToTable("admin_loandetails");
+
+                entity.HasIndex(e => e.LoanApplicationId, "LoanApplicationId");
+
+                entity.HasIndex(e => e.LoanProgramId, "LoanProgramId");
+
+                entity.HasIndex(e => e.UserId, "UserId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.ApplicationDate).HasColumnType("datetime");
+
+                entity.Property(e => e.BorrowerName)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.LoanApplicationId).HasColumnType("int(11)");
+
+                entity.Property(e => e.LoanNo)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.LoanProgramId).HasColumnType("int(11)");
+
+                entity.Property(e => e.LoanPurpose)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.MortageConsultant)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.NmlsId)
+                    .HasMaxLength(100)
+                    .HasColumnName("NMLS_ID")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.PropertyAddress)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.RateLockDate).HasColumnType("datetime");
+
+                entity.Property(e => e.RateLockExpirationDate).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.LoanApplication)
+                    .WithMany(p => p.AdminLoandetails)
+                    .HasForeignKey(d => d.LoanApplicationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanDetails_ibfk_2");
+
+                entity.HasOne(d => d.LoanProgram)
+                    .WithMany(p => p.AdminLoandetails)
+                    .HasForeignKey(d => d.LoanProgramId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanDetails_ibfk_3");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AdminLoandetails)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanDetails_ibfk_1");
+            });
+
+            modelBuilder.Entity<AdminLoanprogram>(entity =>
+            {
+                entity.ToTable("admin_loanprograms");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.LoanProgram)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<AdminLoanstatus>(entity =>
+            {
+                entity.ToTable("admin_loanstatus");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<AdminLoansummarystatus>(entity =>
+            {
+                entity.ToTable("admin_loansummarystatus");
+
+                entity.HasIndex(e => e.LoanId, "LoanId");
+
+                entity.HasIndex(e => e.StatusId, "StatusID");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.LoanId).HasColumnType("int(11)");
+
+                entity.Property(e => e.StatusId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("StatusID");
+
+                entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Loan)
+                    .WithMany(p => p.AdminLoansummarystatuses)
+                    .HasForeignKey(d => d.LoanId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanSummaryStatus_ibfk_1");
+
+                entity.HasOne(d => d.Status)
+                    .WithMany(p => p.AdminLoansummarystatuses)
+                    .HasForeignKey(d => d.StatusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_LoanSummaryStatus_ibfk_2");
+            });
+
+            modelBuilder.Entity<AdminNotificationtype>(entity =>
+            {
+                entity.ToTable("admin_notificationtypes");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<AdminUser>(entity =>
+            {
+                entity.ToTable("admin_users");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.IsActive).HasColumnType("bit(1)");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(200)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(50)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<AdminUserenableddevice>(entity =>
+            {
+                entity.ToTable("admin_userenableddevices");
+
+                entity.HasIndex(e => e.UserId, "UserId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.BioMetricData)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.DeviceId)
+                    .HasMaxLength(500)
+                    .HasColumnName("DeviceID")
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.IsEnabled).HasColumnType("bit(1)");
+
+                entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AdminUserenableddevices)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("UserEnabledDevices_ibfk_1");
+            });
+
+            modelBuilder.Entity<AdminUsernotification>(entity =>
+            {
+                entity.ToTable("admin_usernotifications");
+
+                entity.HasIndex(e => e.NotificationTypeId, "NotificationTypeId");
+
+                entity.HasIndex(e => e.UserId, "UserId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Content)
+                    .HasMaxLength(500)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.IsSeen).HasColumnType("bit(1)");
+
+                entity.Property(e => e.NotificationTypeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.Subject)
+                    .HasMaxLength(100)
+                    .UseCollation("utf8mb3_general_ci")
+                    .HasCharSet("utf8mb3");
+
+                entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+                entity.HasOne(d => d.NotificationType)
+                    .WithMany(p => p.AdminUsernotifications)
+                    .HasForeignKey(d => d.NotificationTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_UserNotifications_ibfk_2");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AdminUsernotifications)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Admin_UserNotifications_ibfk_1");
             });
 
             modelBuilder.Entity<CitizenshipType>(entity =>
