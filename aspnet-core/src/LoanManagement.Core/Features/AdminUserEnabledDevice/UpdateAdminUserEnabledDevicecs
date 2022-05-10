@@ -1,0 +1,10 @@
+using System;
+using System.Collections.Generic;
+
+namespace  LoanManagement.Features.AdminUserEnabledDevice
+{
+    public partial class UpdateAdminUserEnabledDevice : AddAdminUserEnabledDevice
+    {
+        public int Id { get; set; }
+    }
+}
