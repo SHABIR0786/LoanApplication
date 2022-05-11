@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { RefinancePost } from "@app/modules/models/post.model";
+import { OfflineService } from "@app/services/offline.service";
 
 @Component({
   selector: "app-welcome",
@@ -9,7 +11,13 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class WelcomeComponent implements OnInit {
   number: number = 1;
   isEdit = false;
-  constructor(private route: ActivatedRoute, private router: Router) {
+  model: RefinancePost = new RefinancePost();
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private offline: OfflineService
+  ) {
+    this.offline.clear();
     this.route.params.subscribe((x) => {
       if (x.number) {
         this.number = x.number;
@@ -18,6 +26,20 @@ export class WelcomeComponent implements OnInit {
       }
     });
   }
+  onMorOpt(obj: boolean) {
+    this.model.isWorkingWithEzalready = obj == true ? 1 : 0;
+    this.saveStep();
+    //this.model.objectiveReason
+  }
+  onReason(obj: string) {
+    this.model.objectiveReason = obj;
+    this.saveStep();
+  }
+  ngOnInit() {
+    this.offline.getStep().data;
+  }
 
-  ngOnInit() {}
+  saveStep() {
+    this.offline.saveStep(1, this.model);
+  }
 }

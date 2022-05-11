@@ -7,13 +7,23 @@
           <div class="radio-input-gov">
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="checkbox"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.isCertify"
+                />
                 <p>I certify the following</p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="checkbox"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.isReadEconsent"
+                />
                 <p>
                   I have read the eConsent disclosure &amp; understand that
                   communications will be provided electronically.
@@ -22,7 +32,12 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <input type="radio" class="form-style" placeholder="" />
+                <input
+                  type="checkbox"
+                  class="form-style"
+                  placeholder=""
+                  [(ngModel)]="model.isReadThirdPartyConsent"
+                />
                 <p>
                   I have read the Third Party Consent Disclosure &amp; authorize
                   EZ Online Mortgage, to obtain from third parties any and all
@@ -65,18 +80,23 @@
     accurate rates and a pre-approval!
   </h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <select class="form-select form-style">
+    <select
+      class="form-select form-style"
+      [(ngModel)]="model.socialSecurityNumber"
+    >
       <option>Social Security Number</option>
     </select>
     <input
       type="text"
       class="form-control form-style"
       placeholder="Confirm SSN"
+      [(ngModel)]="model.conformSsn"
     />
     <input
-      type="text"
+      type="datetime"
       class="form-control form-style"
       placeholder="Birthdate"
+      [(ngModel)]="model.birthDate"
     />
     <p>
       By Clicking “ Next” I authorize and consent to EZ Online Mortgage, making
@@ -95,7 +115,11 @@
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/thanks" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/thanks"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>

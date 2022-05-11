@@ -23,6 +23,10 @@ export class OfflineService {
     const stepData = this.getStep();
     this.router.navigate([ROUTE_DATA[stepData.step - 1]]);
   }
+  clear() {
+    localStorage.setItem("offline", "{}");
+    localStorage.setItem("step", "");
+  }
   getStep() {
     let num: number = 1;
     try {

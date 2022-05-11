@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { RefinancePost } from "@app/modules/models/post.model";
+import { OfflineService } from "@app/services/offline.service";
 
 @Component({
   selector: "app-assets-info",
@@ -8,7 +10,12 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class AssetsInfoComponent implements OnInit {
   number: number = 1;
-  constructor(private route: ActivatedRoute, private router: Router) {
+  model: RefinancePost = new RefinancePost();
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private offline: OfflineService
+  ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
         this.number = x.number;
@@ -18,5 +25,11 @@ export class AssetsInfoComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.model = this.offline.getStep().data;
+  }
+
+  saveStep() {
+    this.offline.saveStep(1, this.model);
+  }
 }
