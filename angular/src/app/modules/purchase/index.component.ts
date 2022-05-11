@@ -2,14 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { OfflineService } from "@app/services/offline.service";
 const ROUTE_DATA = [
-  "/purchase",
-  "/purchase/welcome/1",
-  "/purchase/property-info/1",
-  "/purchase/property-info/1",
-  "/purchase/income-info/1",
-  "/purchase/assets-info/1",
-  "/purchase/gov/1",
-  "/app/purchase/gov/5",
+  "/app/purchase/",
+  "/app/purchase/welcome/",
+  "/app/purchase/property-info/",
+  "/app/purchase/personal-info/",
+  "/app/purchase/income-info/",
+  "/app/purchase/assets-info/",
+  "/app/purchase/gov/",
+  "/app/purchase/gov/",
 ];
 const TABS_DATA = [];
 @Component({
@@ -22,15 +22,21 @@ export class IndexComponent implements OnInit {
   constructor(private router: Router, private offlineService: OfflineService) {
     this.router.events.subscribe((x) => {
       if (x instanceof NavigationEnd) {
-        if (x.urlAfterRedirects === "/app/purchase") {
-          this.a = 0;
-        } else {
-          ROUTE_DATA.filter((obj, i) => {
-            if (new RegExp(obj + "(.*?)").test(x.urlAfterRedirects)) {
-              this.a = i + 1;
-            }
-          });
-        }
+        var d = x.urlAfterRedirects.replace(/[0-9]/g, "");
+        ROUTE_DATA.filter((obj, i) => {
+          if (obj == d) {
+            this.a = i;
+          }
+        });
+        // if (x.urlAfterRedirects === "/app/purchase") {
+        //   this.a = 0;
+        // } else {
+        //   ROUTE_DATA.filter((obj, i) => {
+        //     if (new RegExp(obj + "(.*?)").test(x.urlAfterRedirects)) {
+        //       this.a = i + 1;
+        //     }
+        //   });
+        // }
       }
       //this.stepNav();
     });

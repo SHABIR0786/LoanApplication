@@ -1,45 +1,53 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>OK great! Tell us about your co-borrower.</h2>
   <div class="button-list col-lg-8 offset-lg-2 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="address">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-      />
+    <!-- <form action="" id="address"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Address"
+      [(ngModel)]="model.personalAddress"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+      [(ngModel)]="model.personalUnit"
+    />
 
-      <div class="row">
-        <div class="col-md-4">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="City or Town"
-          />
-        </div>
-        <div class="col-md-4">
-          <select class="form-select form-style">
-            <option>State</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
-          />
-        </div>
+    <div class="row">
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="City or Town"
+          [(ngModel)]="model.personalCity"
+        />
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="When did you start living here?"
-      />
-    </form>
+      <div class="col-md-4">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.personalStateId"
+        >
+          <option>State</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Zip Code"
+          [(ngModel)]="model.personalZipCode"
+        />
+      </div>
+    </div>
+    <input
+      type="datetime"
+      class="form-control form-style"
+      placeholder="When did you start living here?"
+      [(ngModel)]="model.personalStartLivingDate"
+    />
+    <!-- </form> -->
 
     <p>Is the Co-borrower currently renting, or do they own?</p>
 
@@ -47,13 +55,34 @@
       <div class="col-md-6 offset-md-3">
         <div class="row margin-top margin-right-btn">
           <div class="col-md-4">
-            <button type="button" class="btn" id="btn-rent">Own</button>
+            <button
+              type="button"
+              class="btn"
+              id="btn-rent"
+              (click)="model.personalReantingType = 'own'"
+            >
+              Own
+            </button>
           </div>
           <div class="col-md-4">
-            <button type="button" class="btn" id="btn-rent">Rent</button>
+            <button
+              type="button"
+              class="btn"
+              id="btn-rent"
+              (click)="model.personalReantingType = 'rent'"
+            >
+              Rent
+            </button>
           </div>
           <div class="col-md-4">
-            <button type="button" class="btn" id="btn-rent">Other</button>
+            <button
+              type="button"
+              class="btn"
+              id="btn-rent"
+              (click)="model.personalReantingType = 'other'"
+            >
+              Other
+            </button>
           </div>
         </div>
       </div>
@@ -64,7 +93,11 @@
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/income/2" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/income/2"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>
@@ -89,11 +122,13 @@
     <a
       routerLink="/app/refinance/income/3"
       class="btn btn-primary btn-style btn-blue"
+      (click)="model.isEmployementHistory = true; saveStep()"
       >Yes</a
     >
     <a
       routerLink="/app/refinance/income/3"
       class="btn btn-primary btn-style btn-blue"
+      (click)="model.isEmployementHistory = false; saveStep()"
       >No</a
     >
     <div class="row">
@@ -112,70 +147,86 @@
 <div class="main-content" *ngIf="number == 3">
   <h2>Tell us about your most current employer.</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="employer-details">
-      <select class="form-select form-style">
-        <option>W-2 Employee</option>
-      </select>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Employer Name"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="City or Town"
-      />
+    <!-- <form action="" id="employer-details"> -->
+    <select class="form-select form-style" [(ngModel)]="model.w2Emp">
+      <option>W-2 Employee</option>
+    </select>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Name"
+      [(ngModel)]="model.w2EmpName"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Address"
+      [(ngModel)]="model.empAddress"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+      [(ngModel)]="model.empAptUnit"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="City or Town"
+      [(ngModel)]="model.empCity"
+    />
 
+    <div class="row">
+      <div class="col-md-5">
+        <select class="form-select form-style" [(ngModel)]="model.empState">
+          <option>State</option>
+        </select>
+      </div>
+      <div class="col-md-7">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Zip Code"
+          [(ngModel)]="model.empZip"
+        />
+      </div>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Phone Number"
+      [(ngModel)]="model.empPhoneNumber"
+    />
+    <div class="radio-input">
       <div class="row">
-        <div class="col-md-5">
-          <select class="form-select form-style">
-            <option>State</option>
-          </select>
-        </div>
-        <div class="col-md-7">
+        <div class="col-md-12">
           <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
+            type="checkbox"
+            class="form-style"
+            placeholder=""
+            [(ngModel)]="model.isCurrentJob"
           />
+          <p>This is my Current Job</p>
         </div>
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Employer Phone Number"
-      />
-      <div class="radio-input">
-        <div class="row">
-          <div class="col-md-12">
-            <input type="checkbox" class="form-style" placeholder="" />
-            <p>This is my Current Job</p>
-          </div>
-        </div>
-      </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Start date"
-      />
-    </form>
+    </div>
+    <input
+      type="datetime"
+      class="form-control form-style"
+      placeholder="Estimated Start date"
+      [(ngModel)]="model.empEstDate"
+    />
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/income/4" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/income/4"
+          (click)="saveStep()"
+          class="btn"
+          id="btn-next-blue"
           >Next</a
         >
       </div>
@@ -193,39 +244,48 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="employer-details">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Job Title"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Base Salery"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Bonus"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Commission"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Annual Overtime"
-      />
-    </form>
+    <!-- <form action="" id="employer-details"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Job Title"
+      [(ngModel)]="model.jobTitle"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Base Salery"
+      [(ngModel)]="model.estAnnualBaseSalary"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Bonus"
+      [(ngModel)]="model.estAnnualBonus"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Commission"
+      [(ngModel)]="model.estAnnualCommision"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Overtime"
+      [(ngModel)]="model.estAnnualOverTime"
+    />
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/income/5" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/income/5"
+          (click)="saveStep()"
+          class="btn"
+          id="btn-next-blue"
           >Next</a
         >
       </div>
@@ -246,13 +306,13 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      routerLink="/app/refinance/income/6"
+      routerLink="/app/refinance/income/4"
       class="btn btn-primary btn-style btn-blue"
       >Yes, I have more to add</a
     >
 
     <a
-      routerLink="/app/refinance/income/6"
+      routerLink="/app/refinance/income/7"
       class="btn btn-primary btn-style btn-blue"
       >No, I don’t have more to add</a
     >
@@ -330,10 +390,20 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <button type="button" class="btn btn-primary btn-style btn-blue">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.hasCoboOtherEmp = true"
+    >
       Yes
     </button>
-    <button type="button" class="btn btn-primary btn-style btn-blue">No</button>
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.hasCoboOtherEmp = false"
+    >
+      No
+    </button>
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/refinance/income/6" class="btn" id="btn-back-blue"
@@ -341,7 +411,11 @@
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/income/8" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/income/8"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>
@@ -367,12 +441,14 @@
     <a
       routerLink="/app/refinance/income/9"
       class="btn btn-primary btn-style btn-blue"
+      (click)="model.hasCoboOtherIncSrc = true; saveStep()"
       >Yes</a
     >
 
     <a
       routerLink="/app/refinance/income/9"
       class="btn btn-primary btn-style btn-blue"
+      (click)="model.hasCoboOtherIncSrc = false; saveStep()"
       >No</a
     >
     <div class="row">
@@ -392,18 +468,20 @@
   <h2>Which best describes the source of the co-borrower's income?</h2>
 
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="- Income Type -"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Monthly Amount"
-      />
-    </form>
+    <!-- <form action=""> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="- Income Type -"
+      [(ngModel)]="model.coboIncType"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Monthly Amount"
+      [(ngModel)]="model.coboMonthlyAmount"
+    />
+    <!-- </form> -->
 
     <div class="row margin-top">
       <div
@@ -416,7 +494,11 @@
       <div
         class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
-        <a routerLink="/app/refinance/income/10" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/income/10"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>
@@ -528,7 +610,7 @@
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a
-          href="(N0N MILITARY OPTION) 31  Apply Now I’m Refinancing  Personal Info  Income  co-borrower any other sources of income to share.html"
+          [routerLink]="['/app/refinance/income/10']"
           class="btn"
           id="btn-back-blue"
           >Back</a
@@ -539,6 +621,7 @@
           routerLink="/app/refinance/assets-info/1"
           class="btn"
           id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>

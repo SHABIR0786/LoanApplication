@@ -4,35 +4,47 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="employer-details">
-      <select class="form-select form-style">
-        <option>-Account type-</option>
-      </select>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Finantional institution"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Balance"
-      />
-      <select class="form-select form-style">
-        <option>- Owner -</option>
-      </select>
-    </form>
+    <!-- <form action="" id="employer-details"> -->
+    <select
+      class="form-select form-style"
+      [(ngModel)]="model.assetsAccountType"
+    >
+      <option>-Account type-</option>
+    </select>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Finantional institution"
+      [(ngModel)]="model.assetsFinInst"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Balance"
+      [(ngModel)]="model.assetsBalance"
+    />
+    <select class="form-select form-style" [(ngModel)]="model.assetsOwner">
+      <option>- Owner -</option>
+    </select>
+    <!-- </form> -->
     <div class="row margin-top">
       <div class="col-md-2 offset-md-1">
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/refinance/assets-info/2" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/assets-info/2"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
           >Next</a
         >
       </div>
       <div class="col-md-2 offset-md-1">
-        <a routerLink="/refinance/assets-info/2" class="btn" id="btn-back-blue"
+        <a
+          routerLink="/app/refinance/assets-info/2"
+          class="btn"
+          id="btn-back-blue"
           >Skip</a
         >
       </div>
@@ -50,21 +62,29 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      routerLink="/refinance/assets-info/3"
+      routerLink="/app/refinance/assets-info/3"
       class="btn btn-primary btn-style btn-blue"
       >Yes</a
     >
-    <a routerLink="/refinance/gov/1" class="btn btn-primary btn-style btn-blue"
+    <a
+      routerLink="/app/refinance/gov/1"
+      class="btn btn-primary btn-style btn-blue"
       >No</a
     >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a routerLink="/refinance/assets-info/1" class="btn" id="btn-back-blue"
+        <a
+          routerLink="/app/refinance/assets-info/1"
+          class="btn"
+          id="btn-back-blue"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/refinance/assets-info/3" class="btn" id="btn-next-blue"
+        <a
+          routerLink="/app/refinance/assets-info/3"
+          class="btn"
+          id="btn-next-blue"
           >Next</a
         >
       </div>
@@ -84,7 +104,7 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a routerLink="/refinance/assets-info/4" class="btn" id="btn-edit"
+        <a routerLink="/app/refinance/assets-info/4" class="btn" id="btn-edit"
           >Edit</a
         >
       </div>
@@ -104,10 +124,17 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <button type="button" class="btn" id="btn-back-blue">Back</button>
+        <a
+          routerLink="/app/refinance/assets-info/2"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
       </div>
       <div class="col-md-2">
-        <button type="button" class="btn" id="btn-next-blue">Next</button>
+        <a routerLink="/app/refinance/gov/1" class="btn" id="btn-next-blue"
+          >Next</a
+        >
       </div>
     </div>
   </div>
@@ -125,7 +152,7 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a routerLink="/refinance/assets-info/3" class="btn" id="btn-edit"
+        <a routerLink="/app/refinance/assets-info/3" class="btn" id="btn-edit"
           >Done</a
         >
       </div>
@@ -156,12 +183,17 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a routerLink="/refinance/assets-info/2" class="btn" id="btn-back-blue"
+        <a
+          routerLink="/app/refinance/assets-info/2"
+          class="btn"
+          id="btn-back-blue"
           >Back</a
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/refinance/gov/1" class="btn" id="btn-next-blue">Next</a>
+        <a routerLink="/app/refinance/gov/1" class="btn" id="btn-next-blue"
+          >Next</a
+        >
       </div>
     </div>
   </div>
