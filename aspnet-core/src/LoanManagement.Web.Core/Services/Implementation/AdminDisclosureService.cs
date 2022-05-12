@@ -18,12 +18,7 @@ namespace LoanManagement.Services.Implementation
         {
             _dbContext.AdminDisclosures.Add(new Entities.Models.AdminDisclosure
             {
-                Content = request.Content,
-                Date = request.Date,
-                IsSeen = request.IsSeen,
-                NotificationTypeId = request.NotificationTypeId,
-                Subject = request.Subject,
-                UserId = request.UserId,
+                Title =  request.Title,
             });
 
             _dbContext.SaveChanges();
@@ -51,12 +46,7 @@ namespace LoanManagement.Services.Implementation
             return _dbContext.AdminDisclosures.Select(d => new UpdateAdminDisclosure()
             {
                 Id = d.Id,
-                Content = d.Content,
-                Date = d.Date,
-                IsSeen = d.IsSeen,
-                NotificationTypeId = d.NotificationTypeId,
-                Subject = d.Subject,
-                UserId = d.UserId,
+                Title = d.Title,
             }).ToList();
         }
 
@@ -65,12 +55,7 @@ namespace LoanManagement.Services.Implementation
             return _dbContext.AdminDisclosures.Where(s => s.Id == id).Select(d => new UpdateAdminDisclosure()
             {
                 Id = d.Id,
-                Content = d.Content,
-                Date = d.Date,
-                IsSeen = d.IsSeen,
-                NotificationTypeId = d.NotificationTypeId,
-                Subject = d.Subject,
-                UserId = d.UserId,
+                Title = d.Title,
             }).FirstOrDefault();
         }
 
@@ -83,12 +68,7 @@ namespace LoanManagement.Services.Implementation
                 return AppConsts.NoRecordFound;
             }
 
-            obj.Content = request.Content;
-            obj.Date = request.Date;
-            obj.IsSeen = request.IsSeen;
-            obj.NotificationTypeId = request.NotificationTypeId;
-            obj.Subject = request.Subject;
-            obj.UserId = request.UserId;
+            obj.Title = request.Title;
 
             _dbContext.Entry(obj).State = EntityState.Modified;
             _dbContext.SaveChanges();
