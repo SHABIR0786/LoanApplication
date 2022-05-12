@@ -43,6 +43,17 @@ namespace LoanManagement
             services.AddTransient<ILeadRefinancingDetailsService, LeadRefinancingDetailsService>();
             services.AddTransient<ILeadRefinancingIncomeDetailsService, LeadRefinancingIncomeDetailsService>();
             services.AddTransient<ILeadTaxTypesService, LeadTaxTypesService>();
+            services.AddTransient<IAdminDisclosureService, AdminDisclosureService>();
+            services.AddTransient<IAdminLoanApplicationDocumentService, AdminLoanApplicationDocumentService>();
+            services.AddTransient<IAdminLoanDetailService, AdminLoanDetailService>();
+            services.AddTransient<IAdminLoanProgramService, AdminLoanProgramService>();
+            services.AddTransient<IAdminLoanStatusService, AdminLoanStatusService>();
+            services.AddTransient<IAdminLoanSummaryStatusService, AdminLoanSummaryStatusService>();
+            services.AddTransient<IAdminNotificationTypeService, AdminNotificationTypeService>();
+            services.AddTransient<IAdminUserEnabledDeviceService, AdminUserEnabledDeviceService>();
+            services.AddTransient<IAdminUserNotificationService, AdminUserNotificationService>();
+            services.AddTransient<IAdminUserService, AdminUserService>();
+
 
 
             return services;
