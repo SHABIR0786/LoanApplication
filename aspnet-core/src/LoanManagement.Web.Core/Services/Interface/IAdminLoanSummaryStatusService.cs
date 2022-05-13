@@ -7,9 +7,9 @@ namespace LoanManagement.Services.Implementation
     {
         string Add(AddAdminLoanSummaryStatus request);
         string Delete(int id);
-        List<UpdateAAdminLoanSummaryStatus> GetAll();
-        UpdateAAdminLoanSummaryStatus GetById(int id);
-        string Update(UpdateAAdminLoanSummaryStatus request);
+        List<UpdateAdminLoanSummaryStatus> GetAll();
+        UpdateAdminLoanSummaryStatus GetById(int id);
+        string Update(UpdateAdminLoanSummaryStatus request);
        
     }
 }

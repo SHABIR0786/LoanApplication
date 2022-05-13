@@ -24,7 +24,7 @@ namespace LoanManagement.Controllers
 
 		[HttpPost]
 		[Route("Update")]
-		public string Update([FromBody] UpdateAAdminLoanSummaryStatus request)
+		public string Update([FromBody] UpdateAdminLoanSummaryStatus request)
 		{
 			return _service.Update(request);
 		}

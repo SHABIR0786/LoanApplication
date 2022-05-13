@@ -41,9 +41,9 @@ namespace LoanManagement.Services.Implementation
             return AppConsts.SuccessfullyDeleted;
         }
 
-        public List<UpdateAAdminLoanSummaryStatus> GetAll()
+        public List<UpdateAdminLoanSummaryStatus> GetAll()
         {
-            return _dbContext.AdminLoansummarystatuses.Select(d => new UpdateAAdminLoanSummaryStatus()
+            return _dbContext.AdminLoansummarystatuses.Select(d => new UpdateAdminLoanSummaryStatus()
             {
                 Id = d.Id,
                 StatusId = d.StatusId,
@@ -51,9 +51,9 @@ namespace LoanManagement.Services.Implementation
             }).ToList();
         }
 
-        public UpdateAAdminLoanSummaryStatus GetById(int id)
+        public UpdateAdminLoanSummaryStatus GetById(int id)
         {
-            return _dbContext.AdminLoansummarystatuses.Where(s => s.Id == id).Select(d => new UpdateAAdminLoanSummaryStatus()
+            return _dbContext.AdminLoansummarystatuses.Where(s => s.Id == id).Select(d => new UpdateAdminLoanSummaryStatus()
             {
                 Id = d.Id,
                 StatusId = d.StatusId,
@@ -61,7 +61,7 @@ namespace LoanManagement.Services.Implementation
             }).FirstOrDefault();
         }
 
-        public string Update(UpdateAAdminLoanSummaryStatus request)
+        public string Update(UpdateAdminLoanSummaryStatus request)
         {
             var obj = _dbContext.AdminLoansummarystatuses.Where(s => s.Id == request.Id).FirstOrDefault();
 
