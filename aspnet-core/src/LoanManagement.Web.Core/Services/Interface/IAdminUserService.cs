@@ -10,5 +10,8 @@ namespace LoanManagement.Services.Implementation
         List<UpdateAdminUser> GetAll();
         UpdateAdminUser GetById(int id);
         string Update(UpdateAdminUser request);
+        string ChangePassword(int id, string oldPassword, string newPassword);
+        string ChangeUsername(int id, string userName); 
+        string ChangeEmail(int id, string email);
     }
 }

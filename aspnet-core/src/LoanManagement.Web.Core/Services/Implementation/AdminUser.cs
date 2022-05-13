@@ -1,3 +1,4 @@
+using Abp.Runtime.Security;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminUser;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace LoanManagement.Services.Implementation
                 CreatedOn = System.DateTime.Now,
                 Email = request.Email,
                 IsActive = request.IsActive,
-                Password = request.Password,
+                Password = SimpleStringCipher.Instance.Encrypt(request.Password, AppConsts.DefaultPassPhrase),
                 UserName = request.UserName,
             });
 
@@ -51,7 +52,6 @@ namespace LoanManagement.Services.Implementation
                 Id = d.Id,
                 Email = d.Email,
                 IsActive = d.IsActive,
-                Password = d.Password,
                 UserName = d.UserName,
             }).ToList();
         }
@@ -63,7 +63,6 @@ namespace LoanManagement.Services.Implementation
                 Id = d.Id,
                 Email = d.Email,
                 IsActive = d.IsActive,
-                Password = d.Password,
                 UserName = d.UserName,
             }).FirstOrDefault();
         }
@@ -81,6 +80,61 @@ namespace LoanManagement.Services.Implementation
             obj.IsActive = request.IsActive;
             obj.Password = request.Password;
             obj.UserName = request.UserName;
+
+            _dbContext.Entry(obj).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return AppConsts.SuccessfullyUpdated;
+        }
+
+        public string ChangePassword(int id, string oldPassword, string newPassword)
+        {
+            var obj = _dbContext.AdminUsers.Where(s => s.Id == id).FirstOrDefault();
+
+            if (obj == null)
+            {
+                return AppConsts.NoRecordFound;
+            }
+            if (SimpleStringCipher.Instance.Encrypt(obj.Password, AppConsts.DefaultPassPhrase) != oldPassword)
+            {
+                return AppConsts.PasswordMismatch;
+            }
+
+            obj.Password = SimpleStringCipher.Instance.Encrypt(newPassword, AppConsts.DefaultPassPhrase);
+
+            _dbContext.Entry(obj).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return AppConsts.SuccessfullyUpdated;
+        }
+
+        public string ChangeUsername(int id, string userName)
+        {
+            var obj = _dbContext.AdminUsers.Where(s => s.Id == id).FirstOrDefault();
+
+            if (obj == null)
+            {
+                return AppConsts.NoRecordFound;
+            }
+
+            obj.UserName = userName;
+
+            _dbContext.Entry(obj).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return AppConsts.SuccessfullyUpdated;
+        }
+
+        public string ChangeEmail(int id, string email)
+        {
+            var obj = _dbContext.AdminUsers.Where(s => s.Id == id).FirstOrDefault();
+
+            if (obj == null)
+            {
+                return AppConsts.NoRecordFound;
+            }
+
+            obj.Email = email;
 
             _dbContext.Entry(obj).State = EntityState.Modified;
             _dbContext.SaveChanges();

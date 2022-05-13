@@ -1,9 +1,12 @@
 ﻿using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminLoanApplicationDocument;
 using LoanManagement.Services.Interface;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +16,13 @@ namespace LoanManagement.Services.Implementation
     public class AdminLoanApplicationDocumentService : IAdminLoanApplicationDocumentService
     {
         private readonly MortgagedbContext _dbContext;
-        public AdminLoanApplicationDocumentService(MortgagedbContext dbContext)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IAdminDisclosureService _adminDisclosureService;
+        public AdminLoanApplicationDocumentService(MortgagedbContext dbContext, IWebHostEnvironment webHostEnvironment, IAdminDisclosureService adminDisclosureService)
         {
             _dbContext = dbContext;
+            _webHostEnvironment = webHostEnvironment;
+            _adminDisclosureService = adminDisclosureService;
         }
         public string Add(AddAdminLoanApplicationDocument request)
         {
@@ -89,6 +96,42 @@ namespace LoanManagement.Services.Implementation
             _dbContext.SaveChanges();
 
             return AppConsts.SuccessfullyUpdated;
+        }
+
+        public string UploadDocument(UpdateAdminLoanApplicationDocument request, IFormFile formFile)
+        {
+            try
+            {
+                var rootPath = _webHostEnvironment.ContentRootPath;
+
+                var disclosureDetail = _adminDisclosureService.GetById(request.DisclosureId);
+                var folderPath = Path.Combine(rootPath, "Documents", disclosureDetail.Title);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                FileInfo fileInfo = new FileInfo(formFile.FileName);
+                var filePath = Path.Combine(folderPath, $"{request.UserId}_{Guid.NewGuid()}{fileInfo.Extension}");
+                using (var fs = new FileStream(filePath, FileMode.Create))
+                {
+                    formFile.CopyTo(fs);
+                }
+
+                _dbContext.AdminLoanapplicationdocuments.Add(new Entities.Models.AdminLoanapplicationdocument
+                {
+                    DisclosureId = request.DisclosureId,
+                    DocumentPath = request.DocumentPath,
+                    LoanId = request.LoanId,
+                    UserId = request.UserId,
+                });
+
+                _dbContext.SaveChanges();
+                return AppConsts.SuccessfullyInserted;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

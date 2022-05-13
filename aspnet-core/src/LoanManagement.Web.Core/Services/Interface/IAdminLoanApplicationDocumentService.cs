@@ -1,4 +1,5 @@
 using LoanManagement.Features.AdminLoanApplicationDocument;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace LoanManagement.Services.Interface
         string Delete(int id);
         List<UpdateAdminLoanApplicationDocument> GetAll();
         UpdateAdminLoanApplicationDocument GetById(int id);
+        string UploadDocument(UpdateAdminLoanApplicationDocument request, IFormFile formFile);
     }
 }
