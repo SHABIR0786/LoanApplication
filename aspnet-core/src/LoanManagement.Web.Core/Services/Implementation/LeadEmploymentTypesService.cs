@@ -19,13 +19,14 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddLeadEmploymentTypes request)
         {
-            _dbContext.LeadEmployementTypes.Add(new Entities.Models.LeadEmployementType
+            var entity = new Entities.Models.LeadEmployementType
             {
                 EmployementType = request.EmployementType,
-            });
+            };
+               _dbContext.LeadEmployementTypes.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

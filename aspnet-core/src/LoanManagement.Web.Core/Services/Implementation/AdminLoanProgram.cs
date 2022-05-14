@@ -15,13 +15,14 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminLoanProgram request)
         {
-            _dbContext.AdminLoanprograms.Add(new Entities.Models.AdminLoanprogram
+            var entity = new Entities.Models.AdminLoanprogram
             {
                 LoanProgram = request.LoanProgram
-            });
+            };
+               _dbContext.AdminLoanprograms.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

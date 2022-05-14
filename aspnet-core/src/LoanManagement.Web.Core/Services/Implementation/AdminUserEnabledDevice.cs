@@ -15,16 +15,17 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminUserEnabledDevice request)
         {
-            _dbContext.AdminUserenableddevices.Add(new Entities.Models.AdminUserenableddevice
+            var entity = new Entities.Models.AdminUserenableddevice
             {
                 BioMetricData = request.BioMetricData,
                 DeviceId = request.DeviceId,
                 IsEnabled = request.IsEnabled,
                 UserId = request.UserId,
-            });
+            };
+            _dbContext.AdminUserenableddevices.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

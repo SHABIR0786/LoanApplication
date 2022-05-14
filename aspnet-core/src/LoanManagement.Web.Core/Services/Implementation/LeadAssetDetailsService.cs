@@ -19,7 +19,7 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddLeadAssetDetails request)
         {
-            _dbContext.LeadAssetsDetails.Add(new Entities.Models.LeadAssetsDetail
+            var entity = new Entities.Models.LeadAssetsDetail
             {
                 LeadApplicationDetailPurchasingId = request.LeadApplicationDetailPurchasingId,
                 LeadApplicationTypeId = request.LeadApplicationTypeId,
@@ -28,10 +28,11 @@ namespace LoanManagement.Services.Implementation
                 AssetTypeId = request.AssetTypeId,
                 Balance = request.Balance,
                 FinancialInstitution = request.FinancialInstitution
-            });
+            };
+            _dbContext.LeadAssetsDetails.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

@@ -15,13 +15,14 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminNotificationType request)
         {
-            _dbContext.AdminNotificationtypes.Add(new Entities.Models.AdminNotificationtype
+            var entity = new Entities.Models.AdminNotificationtype
             {
                 Type = request.Type,
-            });
+            };
+            _dbContext.AdminNotificationtypes.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

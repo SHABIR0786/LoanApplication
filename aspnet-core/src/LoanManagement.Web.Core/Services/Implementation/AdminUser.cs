@@ -16,17 +16,18 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminUser request)
         {
-            _dbContext.AdminUsers.Add(new Entities.Models.AdminUser
+            var entity = new Entities.Models.AdminUser
             {
                 CreatedOn = System.DateTime.Now,
                 Email = request.Email,
                 IsActive = request.IsActive,
                 Password = SimpleStringCipher.Instance.Encrypt(request.Password, AppConsts.DefaultPassPhrase),
                 UserName = request.UserName,
-            });
+            };
+               _dbContext.AdminUsers.Add(entity) ;
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

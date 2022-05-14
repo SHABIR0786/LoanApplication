@@ -16,13 +16,14 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminDisclosure request)
         {
-            _dbContext.AdminDisclosures.Add(new Entities.Models.AdminDisclosure
+            var entity = new Entities.Models.AdminDisclosure
             {
-                Title =  request.Title,
-            });
+                Title = request.Title,
+            };
+            _dbContext.AdminDisclosures.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

@@ -20,15 +20,16 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddLeadTaxTypes request)
         {
+            var entity = new Entities.Models.LeadTaxesType
+            {
+                TaxesType = request.TaxesType
+            };
             try
             {
-                _dbContext.LeadTaxesTypes.Add(new Entities.Models.LeadTaxesType
-                {
-                    TaxesType = request.TaxesType
-                });
+                _dbContext.LeadTaxesTypes.Add(entity);
 
                 _dbContext.SaveChanges();
-                return AppConsts.SuccessfullyInserted;
+                return entity.Id.ToString();
             }
             catch (Exception ex)
             {
