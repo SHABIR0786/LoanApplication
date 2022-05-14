@@ -19,16 +19,17 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddLeadRefinancingIncomeDetails request)
         {
-            _dbContext.LeadRefinancingIncomeDetails.Add(new Entities.Models.LeadRefinancingIncomeDetail
+            var entity = new Entities.Models.LeadRefinancingIncomeDetail
             {
-                 IncomeTypeId = request.IncomeTypeId,
-                 LeadApplicationDetailRefinancingId = request.LeadApplicationDetailRefinancingId,
-                 LeadApplicationTypeId = request.LeadApplicationTypeId,
-                 MonthlyAmount = request.MonthlyAmount
-            });
+                IncomeTypeId = request.IncomeTypeId,
+                LeadApplicationDetailRefinancingId = request.LeadApplicationDetailRefinancingId,
+                LeadApplicationTypeId = request.LeadApplicationTypeId,
+                MonthlyAmount = request.MonthlyAmount
+            };
+               _dbContext.LeadRefinancingIncomeDetails.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
         public string Update(UpdateLeadRefinancingIncomeDetails request)
         {

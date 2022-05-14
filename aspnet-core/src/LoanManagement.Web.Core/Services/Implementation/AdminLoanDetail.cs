@@ -15,7 +15,7 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminLoanDetail request)
         {
-            _dbContext.AdminLoandetails.Add(new Entities.Models.AdminLoandetail
+            var entity = new Entities.Models.AdminLoandetail
             {
                 ApplicationDate = request.ApplicationDate,
                 BorrowerName = request.BorrowerName,
@@ -31,10 +31,11 @@ namespace LoanManagement.Services.Implementation
                 RateLockDate = request.RateLockDate,
                 RateLockExpirationDate = request.RateLockExpirationDate,
                 UserId = request.UserId,
-            });
+            };
+               _dbContext.AdminLoandetails.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

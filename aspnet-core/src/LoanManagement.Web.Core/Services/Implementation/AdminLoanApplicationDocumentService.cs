@@ -26,16 +26,17 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminLoanApplicationDocument request)
         {
-            _dbContext.AdminLoanapplicationdocuments.Add(new Entities.Models.AdminLoanapplicationdocument
+            var entity = new Entities.Models.AdminLoanapplicationdocument
             {
                 DisclosureId = request.DisclosureId,
                 DocumentPath = request.DocumentPath,
                 LoanId = request.LoanId,
                 UserId = request.UserId,
-            });
+            };
+               _dbContext.AdminLoanapplicationdocuments.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)
@@ -126,7 +127,7 @@ namespace LoanManagement.Services.Implementation
                 });
 
                 _dbContext.SaveChanges();
-                return AppConsts.SuccessfullyInserted;
+                return entity.Id.ToString();
             }
             catch (Exception ex)
             {

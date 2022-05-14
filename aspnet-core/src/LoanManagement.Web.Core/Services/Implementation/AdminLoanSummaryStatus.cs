@@ -15,14 +15,15 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminLoanSummaryStatus request)
         {
-            _dbContext.AdminLoansummarystatuses.Add(new Entities.Models.AdminLoansummarystatus
+            var entity = new Entities.Models.AdminLoansummarystatus
             {
                 StatusId = request.StatusId,
                 LoanId = request.LoanId,
-            });
+            };
+            _dbContext.AdminLoansummarystatuses.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

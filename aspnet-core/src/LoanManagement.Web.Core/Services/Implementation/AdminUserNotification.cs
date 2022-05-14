@@ -15,18 +15,19 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminUserNotification request)
         {
-            _dbContext.AdminUsernotifications.Add(new Entities.Models.AdminUsernotification
+            var entity = new Entities.Models.AdminUsernotification
             {
                 Content = request.Content,
                 Date = request.Date,
                 IsSeen = request.IsSeen,
                 NotificationTypeId = request.NotificationTypeId,
                 Subject = request.Subject,
-                UserId = request.UserId,
-            });
+                UserId = request.UserId
+            };
+            _dbContext.AdminUsernotifications.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)
