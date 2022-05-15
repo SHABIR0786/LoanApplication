@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { RefinancePost } from "@app/modules/models/post.model";
+import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
 
 @Component({
@@ -14,7 +15,8 @@ export class CreditScoreComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private offline: OfflineService
+    private offline: OfflineService,
+    private api: ApiService
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -28,8 +30,18 @@ export class CreditScoreComponent implements OnInit {
   ngOnInit() {
     this.model = this.offline.getStep().data;
   }
-
+  abc(r = "/app/refinance/gov/2") {
+    this.saveStep();
+    this.model.id = this.model.leadApplicationDetailRefinancingId;
+    this.api
+      .post("LeadRefinancingDetails/Update", this.model)
+      .subscribe((x: any) => {
+        if (x.success) {
+          this.router.navigate([r]);
+        }
+      });
+  }
   saveStep() {
-    this.offline.saveStep(1, this.model);
+    this.offline.saveStep(7, this.model);
   }
 }

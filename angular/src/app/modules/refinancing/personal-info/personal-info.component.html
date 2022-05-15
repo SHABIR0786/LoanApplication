@@ -171,7 +171,9 @@
           class="form-select form-style"
           [(ngModel)]="model.currentStateId"
         >
-          <option>State</option>
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
         </select>
       </div>
       <div class="col-md-4">
@@ -184,7 +186,7 @@
       </div>
     </div>
     <input
-      type="datetime"
+      type="date"
       class="form-control form-style"
       placeholder="When did you start living here?"
       [(ngModel)]="model.currentStartLivingDate"
@@ -639,7 +641,9 @@
               </div>
               <div class="col-md-4">
                 <select class="form-select form-style">
-                  <option>State</option>
+                  <option *ngFor="let s of states" [value]="s.id">
+                    {{ s.stateName }}
+                  </option>
                 </select>
               </div>
               <div class="col-md-4">
@@ -794,7 +798,9 @@
               </div>
               <div class="col-md-4">
                 <select class="form-select form-style">
-                  <option>State</option>
+                  <option *ngFor="let s of states" [value]="s.id">
+                    {{ s.stateName }}
+                  </option>
                 </select>
               </div>
               <div class="col-md-4">

@@ -140,7 +140,7 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <!-- <form action="" id="purchase-price"> -->
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated Home Price"
       [(ngModel)]="model.estimatedPrice"
@@ -148,7 +148,7 @@
     <div class="row">
       <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
         <input
-          type="text"
+          type="number"
           class="form-control form-half-left"
           placeholder="Down Payment Amount"
           [(ngModel)]="model.downPaymentAmount"
@@ -156,7 +156,7 @@
       </div>
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
         <input
-          type="text"
+          type="number"
           class="form-control form-half-right"
           placeholder="Percent"
           [(ngModel)]="model.downPaymentPercent"
@@ -164,13 +164,13 @@
       </div>
     </div>
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated annual taxes"
       [(ngModel)]="model.estAnnualTaxes"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated annual home insurance"
       [(ngModel)]="model.estAnnualHomeIns"
@@ -440,14 +440,14 @@
   </h2>
   <h6>if so, what is the approximate amount?</h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Monthly HOA dues"
-        [(ngModel)]="model.monthlyhoadues"
-      />
-    </form>
+    <!-- <form action=""> -->
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Monthly HOA dues"
+      [(ngModel)]="model.monthlyhoadues"
+    />
+    <!-- </form> -->
 
     <div class="row margin-top">
       <div

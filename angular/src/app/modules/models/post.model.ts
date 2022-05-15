@@ -1,4 +1,5 @@
 export class PostModel {
+  leadApplicationDetailPurchasingId: number = 1;
   firstChoice: string;
   stage: string;
   workingWdEz: boolean;
@@ -259,6 +260,8 @@ export class AddFinanceApiModel {
 }
 
 export class RefinancePost {
+  leadApplicationDetailRefinancingId: number = 1;
+  id: number = 0;
   "isWorkingWithEzalready": number;
   "workingOfficerName": string;
   "objectiveReason": string;

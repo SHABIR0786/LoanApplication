@@ -414,13 +414,7 @@
         >
       </div>
       <div class="col-md-2">
-        <a
-          routerLink="/app/purchase/gov/2"
-          (click)="onGovClick()"
-          class="btn"
-          id="btn-next"
-          >Next</a
-        >
+        <a (click)="onGovClick()" class="btn" id="btn-next">Next</a>
       </div>
     </div>
   </div>
@@ -436,11 +430,11 @@
 <!-- section 29A starts -->
 <div class="main-content" *ngIf="number == 2">
   <h2>Almost done! Just a few yes or no questions</h2>
-  <div class="yes-no-area">
+  <div class="yes-no-area" *ngFor="let x of questions">
     <div class="row">
       <div class="col-md-9">
         <div class="questions">
-          <p>Will you occupy the property as your primary residence?</p>
+          <p>{{ x.question }}</p>
         </div>
       </div>
       <div class="col-md-3 right-align">
@@ -449,8 +443,8 @@
             type="button"
             class="btn"
             id="btn-yes-no"
-            (click)="model.govQ1 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ1 == 'yes' }"
+            (click)="x.isYes = true; onQAns(x.id, true)"
+            [ngClass]="{ 'yes-no-active': x.isYes == true }"
           >
             Yes
           </button>
@@ -458,8 +452,8 @@
             type="button"
             class="btn"
             id="btn-yes-no"
-            (click)="model.govQ1 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ1 == 'no' }"
+            (click)="x.isYes = false; onQAns(x.id, false)"
+            [ngClass]="{ 'yes-no-active': x.isYes == false }"
           >
             No
           </button>
@@ -467,443 +461,7 @@
       </div>
     </div>
   </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            have you had an ownership interest in another property in the last
-            three years?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ2 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ2 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ2 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ2 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Do you have a family relationship or business affiliation with the
-            seller of the property?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ3 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ3 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ3 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ3 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Are you borrowing any money for this real estate transaction (e.g.,
-            money for your closing costs or down payment) or obtaining any money
-            from another party, such as the seller or realtor, that you have not
-            disclosed on this loan application?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ4 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ4 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ4 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ4 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Have you or will you be applying for any new credit (e.g.,
-            installment loan, credit card, etc.) on or before closing this loan
-            that is not disclosed on this application?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ5 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ5 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ5 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ5 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Will this property be subject to a lien that could take priority
-            over the first mortgage lien, such as a clean energy lien paid
-            through your property taxes (e.g., the Property Assessed Clean
-            Energy Program)?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ6 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ6 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ6 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ6 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Are you a co-signer or guarantor on any debt or loan that is not
-            disclosed on this application?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ7 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ7 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ7 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ7 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>Are there any outstanding judgments against you?</p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ8 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ8 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ8 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ8 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>Are you currently delinquent or in default on a Federal debt?</p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ9 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ9 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ9 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ9 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Are you a party to a lawsuit in which you potentially have any
-            personal financial liability?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ10 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ10 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ10 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ10 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Have you conveyed title to any property in lieu of foreclosure in
-            the past 7 years?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ11 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ11 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ11 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ11 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>
-            Within the past 7 years, have you completed a pre-foreclosure sale
-            or short sale, whereby the property was sold to a third party and
-            the Lender agreed to accept less than the outstanding mortgage
-            balance due?
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ12 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ12 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ12 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ12 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>Have you had property foreclosed upon in the last 7 years?</p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ13 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ13 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ13 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ13 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="yes-no-area">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="questions">
-          <p>Have you declared bankruptcy within the past 7 years?</p>
-        </div>
-      </div>
-      <div class="col-md-3 right-align">
-        <div class="answers">
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ14 = 'yes'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ10 == 'yes' }"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn"
-            id="btn-yes-no"
-            (click)="model.govQ14 = 'no'; saveStep()"
-            [ngClass]="{ 'yes-no-active': model.govQ14 == 'no' }"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <div class="row">
     <div class="col-md-12">
       <select class="form-select form-style" [(ngModel)]="model.govQ15">
@@ -1044,7 +602,7 @@
       [(ngModel)]="model.ssnConfirm"
     />
     <input
-      type="text"
+      type="date"
       class="form-control form-style"
       placeholder="Birthdate"
       [(ngModel)]="model.ssnBirthDay"
