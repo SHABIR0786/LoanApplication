@@ -52,6 +52,8 @@ import { GovInfoComponent } from "./gov-info/gov-info.component";
 import { CreditScoreComponent } from "./credit-score/credit-score.component";
 import { ThanksComponent } from "./thanks/thanks.component";
 import { OfflineService } from "./../../services/offline.service";
+import { FormsModule } from "@angular/forms";
+import { ApiService } from "@app/services/api.service";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -103,7 +105,7 @@ import { OfflineService } from "./../../services/offline.service";
     CreditScoreComponent,
     ThanksComponent,
   ],
-  providers: [OfflineService],
-  imports: [CommonModule, RefinancingRoutingModule],
+  providers: [OfflineService, ApiService],
+  imports: [CommonModule, RefinancingRoutingModule, FormsModule],
 })
 export class RefinancingModule {}
