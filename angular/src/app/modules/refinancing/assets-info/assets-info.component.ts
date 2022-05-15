@@ -30,6 +30,6 @@ export class AssetsInfoComponent implements OnInit {
   }
 
   saveStep() {
-    this.offline.saveStep(1, this.model);
+    this.offline.saveStep(5, this.model);
   }
 }

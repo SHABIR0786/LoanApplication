@@ -29,7 +29,9 @@
           class="form-select form-style"
           [(ngModel)]="model.personalStateId"
         >
-          <option>State</option>
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
         </select>
       </div>
       <div class="col-md-4">
@@ -42,7 +44,7 @@
       </div>
     </div>
     <input
-      type="datetime"
+      type="date"
       class="form-control form-style"
       placeholder="When did you start living here?"
       [(ngModel)]="model.personalStartLivingDate"
@@ -149,7 +151,8 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <!-- <form action="" id="employer-details"> -->
     <select class="form-select form-style" [(ngModel)]="model.w2Emp">
-      <option>W-2 Employee</option>
+      <option value="W-2 Employee">W-2 Employee</option>
+      <option value="Self Employed">Self Employed</option>
     </select>
     <input
       type="text"
@@ -179,7 +182,9 @@
     <div class="row">
       <div class="col-md-5">
         <select class="form-select form-style" [(ngModel)]="model.empState">
-          <option>State</option>
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
         </select>
       </div>
       <div class="col-md-7">
@@ -211,7 +216,7 @@
       </div>
     </div>
     <input
-      type="datetime"
+      type="date"
       class="form-control form-style"
       placeholder="Estimated Start date"
       [(ngModel)]="model.empEstDate"
@@ -617,11 +622,8 @@
         >
       </div>
       <div class="col-md-2">
-        <a
-          routerLink="/app/refinance/assets-info/1"
-          class="btn"
-          id="btn-next-blue"
-          (click)="saveStep()"
+        <!-- routerLink="/app/refinance/assets-info/1" -->
+        <a class="btn" id="btn-next-blue" (click)="saveStep(); callToDb()"
           >Next</a
         >
       </div>

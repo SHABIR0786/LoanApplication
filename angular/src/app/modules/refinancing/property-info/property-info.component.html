@@ -35,7 +35,9 @@
           class="form-select form-style"
           [(ngModel)]="model.propertyStateId"
         >
-          <option>State</option>
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
         </select>
       </div>
       <div class="col-md-12">
@@ -43,7 +45,9 @@
           class="form-select form-style"
           [(ngModel)]="model.propertyCountryId"
         >
-          <option>-County-</option>
+          <option *ngFor="let c of countries" [value]="c.id">
+            {{ c.countryName }}
+          </option>
         </select>
       </div>
     </div>
@@ -83,19 +87,19 @@
   >
     <!-- <form action=""> -->
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated Value"
       [(ngModel)]="model.propertyEstimatedValue"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Remaining Loan Balance"
       [(ngModel)]="model.propertyLoanBalance"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Cash Out Amount"
       [(ngModel)]="model.propertCashOutAmount"
@@ -244,7 +248,7 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <!-- <form action=""> -->
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Monthly HOA dues"
       [(ngModel)]="model.monthlyHoadues"
@@ -299,25 +303,25 @@
   >
     <!-- <form action="" id="employer-details"> -->
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Year Home was Purchased"
       [(ngModel)]="model.yearHomePurchased"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Original Purchase Price"
       [(ngModel)]="model.orignalPurchasedPrice"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated annual taxes"
       [(ngModel)]="model.estimatedAnnualTax"
     />
     <input
-      type="text"
+      type="number"
       class="form-control form-style"
       placeholder="Estimated annual home insurance"
       [(ngModel)]="model.estimatedAnnualHomeInsurance"

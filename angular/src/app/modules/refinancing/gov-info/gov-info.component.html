@@ -468,13 +468,7 @@
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a
-          routerLink="/app/refinance/gov/2"
-          class="btn"
-          id="btn-next-blue"
-          (click)="saveStep()"
-          >Next</a
-        >
+        <a class="btn" id="btn-next-blue" (click)="abc()">Next</a>
       </div>
     </div>
   </div>
@@ -486,17 +480,33 @@
 
 <div class="main-content" *ngIf="number == 2">
   <h2>Almost done! Just a few yes or no questions</h2>
-  <div class="yes-no-area" *ngFor="let q of questions">
+  <div class="yes-no-area" *ngFor="let x of questions">
     <div class="row">
       <div class="col-md-9">
         <div class="questions">
-          <p>{{ q.question }}?</p>
+          <p>{{ x.question }}?</p>
         </div>
       </div>
       <div class="col-md-3 right-align">
         <div class="answers">
-          <button type="button" class="btn" id="btn-yes-no">Yes</button>
-          <button type="button" class="btn" id="btn-yes-no">No</button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="x.isYes = true; onQAns(x.id, true)"
+            [ngClass]="{ 'yes-no-active': x.isYes == true }"
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="btn-yes-no"
+            (click)="x.isYes = false; onQAns(x.id, false)"
+            [ngClass]="{ 'yes-no-active': x.isYes == false }"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
@@ -505,7 +515,10 @@
   <div class="row">
     <div class="col-md-12">
       <select class="form-select form-style" [(ngModel)]="model.citizenshipId">
-        <option>-What is your citizenship status?-</option>
+        <option value="0">-What is your citizenship status?-</option>
+        <option [value]="c.id" *ngFor="let c of cs">
+          {{ c?.citizenshipType1 }}
+        </option>
       </select>
     </div>
   </div>
@@ -521,10 +534,9 @@
       </div>
       <div class="col-md-2">
         <a
-          routerLink="/app/refinance/credit-score/1"
           class="btn"
           id="btn-next-blue"
-          (click)="saveStep()"
+          (click)="abc('/app/refinance/credit-score/1'); saveStep()"
           >Next</a
         >
       </div>
