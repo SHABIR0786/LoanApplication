@@ -19,6 +19,8 @@ export class HeaderComponent {
   ) {}
 
   applyNow() {
+    this._route.navigate(["/app/purchase"]);
+    return;
     const formData = this.sanitizeFormData(this._dataService.loanApplication);
     this._loanApplicationService
       .post<Result<ILoanApplicationModel>>("Add", formData)
