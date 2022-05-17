@@ -1,0 +1,45 @@
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { RefinancePost } from "@app/modules/models/post.model";
+import { OfflineService } from "@app/services/offline.service";
+
+@Component({
+  selector: "app-welcome",
+  templateUrl: "./welcome.component.html",
+  styleUrls: ["./welcome.component.css"],
+})
+export class WelcomeComponent implements OnInit {
+  number: number = 1;
+  isEdit = false;
+  model: RefinancePost = new RefinancePost();
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private offline: OfflineService
+  ) {
+    this.offline.clear();
+    this.route.params.subscribe((x) => {
+      if (x.number) {
+        this.number = x.number;
+      } else {
+        this.router.navigate(["1"]);
+      }
+    });
+  }
+  onMorOpt(obj: boolean) {
+    this.model.isWorkingWithEzalready = obj == true ? 1 : 0;
+    this.saveStep();
+    //this.model.objectiveReason
+  }
+  onReason(obj: string) {
+    this.model.objectiveReason = obj;
+    this.saveStep();
+  }
+  ngOnInit() {
+    this.offline.getStep().data;
+  }
+
+  saveStep() {
+    this.offline.saveStep(1, this.model);
+  }
+}
