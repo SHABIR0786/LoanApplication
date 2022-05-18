@@ -13,15 +13,20 @@ namespace LoanManagement.Services.Implementation
     public class LeadIncomeTypesService : ILeadIncomeTypesService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadIncomeTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadIncomeTypes request)
         {
-            _dbContext.LeadIncomeTypes.Add(new Entities.Models.LeadIncomeType
+            var entity = new Entities.Models.LeadIncomeType
             {
-               IncomeType = request.IncomeType,
-            });
+                IncomeType = request.IncomeType,
+            };
+               _dbContext.LeadIncomeTypes.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

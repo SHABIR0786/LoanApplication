@@ -14,15 +14,28 @@ namespace LoanManagement.Services.Implementation
     {
         private readonly MortgagedbContext _dbContext;
 
+        public LeadTaxTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadTaxTypes request)
         {
-            _dbContext.LeadTaxesTypes.Add(new Entities.Models.LeadTaxesType
+            var entity = new Entities.Models.LeadTaxesType
             {
                 TaxesType = request.TaxesType
-            });
+            };
+            try
+            {
+                _dbContext.LeadTaxesTypes.Add(entity);
 
-            _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+                _dbContext.SaveChanges();
+                return entity.Id.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
         public string Update(UpdateLeadTaxTypes request)
         {

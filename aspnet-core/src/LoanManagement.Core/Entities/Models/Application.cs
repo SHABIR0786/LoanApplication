@@ -19,6 +19,7 @@ namespace LoanManagement.Entities.Models
         public string Initials { get; set; }
 
         public virtual CreditType CreditType { get; set; } = null!;
+        public virtual ICollection<AdminLoandetail> AdminLoandetails { get; set; }
         public virtual ICollection<ApplicationPersonalInformation> ApplicationPersonalInformations { get; set; }
     }
 }

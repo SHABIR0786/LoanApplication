@@ -13,15 +13,20 @@ namespace LoanManagement.Services.Implementation
     public class LeadApplicationQuestionsService : ILeadApplicationQuestionService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadApplicationQuestionsService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadApplicationQuestions request)
         {
-            _dbContext.LeadApplicationQuestions.Add(new Entities.Models.LeadApplicationQuestion
+            var entity = new Entities.Models.LeadApplicationQuestion
             {
                 Question = request.Question
-            });
+            };
+            _dbContext.LeadApplicationQuestions.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)
