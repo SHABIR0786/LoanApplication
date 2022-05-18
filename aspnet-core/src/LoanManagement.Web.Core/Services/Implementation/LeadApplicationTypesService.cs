@@ -13,15 +13,17 @@ namespace LoanManagement.Services.Implementation
     public class LeadApplicationTypesService : ILeadApplicationTypesService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadApplicationTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadApplicationType request)
         {
-            _dbContext.LeadApplicationTypes.Add(new Entities.Models.LeadApplicationType
-            {
-                ApplicationType = request.ApplicationType,
-            });
+            var entity = new Entities.Models.LeadApplicationType { ApplicationType = request.ApplicationType };
+            _dbContext.LeadApplicationTypes.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

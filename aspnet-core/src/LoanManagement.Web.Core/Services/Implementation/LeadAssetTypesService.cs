@@ -13,15 +13,20 @@ namespace LoanManagement.Services.Implementation
     public class LeadAssetTypesService : ILeadAssetTypesService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadAssetTypesService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadAssetTypes request)
         {
-            _dbContext.LeadAssetsTypes.Add(new Entities.Models.LeadAssetsType
+            var entity = new Entities.Models.LeadAssetsType
             {
                 AssetsType = request.AssetsType,
-            });
+            };
+            _dbContext.LeadAssetsTypes.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

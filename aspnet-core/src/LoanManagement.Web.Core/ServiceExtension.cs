@@ -30,6 +30,31 @@ namespace LoanManagement
             services.AddTransient<ILoanService, LoanService>();
             services.AddTransient<IMaritalStatusService, MaritalStatusService>();
             services.AddTransient<IStateService, StateService>();
+            services.AddTransient<ILeadApplicationQuestionService, LeadApplicationQuestionsService>();
+            services.AddTransient<ILeadApplicationTypesService, LeadApplicationTypesService>();
+            services.AddTransient<ILeadAssetsDetailsService, LeadAssetDetailsService>();
+            services.AddTransient<ILeadAssetTypesService, LeadAssetTypesService>();
+            services.AddTransient<ILeadEmployementDetailsService, LeadEmploymentDetailsService>();
+            services.AddTransient<ILeadEmploymentTypesService, LeadEmploymentTypesService>();
+            services.AddTransient<ILeadIncomeTypesService, LeadIncomeTypesService>();
+            services.AddTransient<ILeadOwnerTypesService, LeadOwnerTypesService>();
+            services.AddTransient<ILeadPurchasingDetailsService, LeadPurchasingDetailService>();
+            services.AddTransient<ILeadQuestionAnswersService, LeadQuestionAnswersService>();
+            services.AddTransient<ILeadRefinancingDetailsService, LeadRefinancingDetailsService>();
+            services.AddTransient<ILeadRefinancingIncomeDetailsService, LeadRefinancingIncomeDetailsService>();
+            services.AddTransient<ILeadTaxTypesService, LeadTaxTypesService>();
+            services.AddTransient<IAdminDisclosureService, AdminDisclosureService>();
+            services.AddTransient<IAdminLoanApplicationDocumentService, AdminLoanApplicationDocumentService>();
+            services.AddTransient<IAdminLoanDetailService, AdminLoanDetailService>();
+            services.AddTransient<IAdminLoanProgramService, AdminLoanProgramService>();
+            services.AddTransient<IAdminLoanStatusService, AdminLoanStatusService>();
+            services.AddTransient<IAdminLoanSummaryStatusService, AdminLoanSummaryStatusService>();
+            services.AddTransient<IAdminNotificationTypeService, AdminNotificationTypeService>();
+            services.AddTransient<IAdminUserEnabledDeviceService, AdminUserEnabledDeviceService>();
+            services.AddTransient<IAdminUserNotificationService, AdminUserNotificationService>();
+            services.AddTransient<IAdminUserService, AdminUserService>();
+
+
 
             return services;
         }

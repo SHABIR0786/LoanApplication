@@ -13,9 +13,13 @@ namespace LoanManagement.Services.Implementation
     public class LeadRefinancingDetailsService : ILeadRefinancingDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadRefinancingDetailsService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadRefinancingDetails request)
         {
-            _dbContext.LeadApplicationDetailRefinancings.Add(new Entities.Models.LeadApplicationDetailRefinancing
+            var entity = new Entities.Models.LeadApplicationDetailRefinancing
             {
                 BirthDate = request.BirthDate,
                 CitizenshipId = request.CitizenshipId,
@@ -93,10 +97,11 @@ namespace LoanManagement.Services.Implementation
                 PropertyZip = request.PropertyZip,
                 RefferedBy = request.RefferedBy,
                 YearHomePurchased = request.YearHomePurchased
-            });
+            };
+               _dbContext.LeadApplicationDetailRefinancings.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

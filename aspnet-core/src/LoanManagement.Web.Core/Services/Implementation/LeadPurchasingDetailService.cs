@@ -13,9 +13,13 @@ namespace LoanManagement.Services.Implementation
     public class LeadPurchasingDetailService : ILeadPurchasingDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadPurchasingDetailService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadPurchasingDetail request)
         {
-            _dbContext.LeadApplicationDetailPurchasings.Add(new Entities.Models.LeadApplicationDetailPurchasing
+            var entity = new Entities.Models.LeadApplicationDetailPurchasing
             {
                 BirthDate = request.BirthDate,
                 CitizenshipId = request.CitizenshipId,
@@ -78,10 +82,11 @@ namespace LoanManagement.Services.Implementation
                 TypeOfNewHome = request.TypeOfNewHome,
                 WhoLivingInHome = request.WhoLivingInHome,
                 WorkingOfficerName = request.WorkingOfficerName
-            });
+            };
+               _dbContext.LeadApplicationDetailPurchasings.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

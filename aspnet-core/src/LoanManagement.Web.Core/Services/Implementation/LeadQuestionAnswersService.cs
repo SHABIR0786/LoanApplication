@@ -13,19 +13,23 @@ namespace LoanManagement.Services.Implementation
     public class LeadQuestionAnswersService : ILeadQuestionAnswersService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadQuestionAnswersService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadQuestionAnswers request)
         {
-            _dbContext.LeadQuestionAnswers.Add(new Entities.Models.LeadQuestionAnswer
+            var entity = new Entities.Models.LeadQuestionAnswer
             {
                 LeadApplicationTypeId = request.LeadApplicationTypeId,
                 LeadApplicationDetailRefinancingId = request.LeadApplicationDetailRefinancingId,
                 IsYes = request.IsYes,
                 LeadApplicationDetailPurchasingId = request.LeadApplicationDetailPurchasingId,
                 QuestionId = request.QuestionId,
-            });
-
+            };
+            _dbContext.LeadQuestionAnswers.Add(entity);
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)

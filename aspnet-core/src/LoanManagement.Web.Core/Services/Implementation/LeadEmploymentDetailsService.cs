@@ -13,9 +13,13 @@ namespace LoanManagement.Services.Implementation
     public class LeadEmploymentDetailsService : ILeadEmployementDetailsService
     {
         private readonly MortgagedbContext _dbContext;
+        public LeadEmploymentDetailsService(MortgagedbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public string Add(AddLeadEmploymentDetails request)
         {
-            _dbContext.LeadEmployementDetails.Add(new Entities.Models.LeadEmployementDetail
+            var entity = new Entities.Models.LeadEmployementDetail
             {
                 EmployeeTypeId = request.EmployeeTypeId,
                 EmployementAddress = request.EmployementAddress,
@@ -36,10 +40,11 @@ namespace LoanManagement.Services.Implementation
                 LeadApplicationDetailPurchasingId = request.LeadApplicationDetailPurchasingId,
                 LeadApplicationDetailRefinancingId = request.LeadApplicationDetailRefinancingId,
                 LeadApplicationTypeId = request.LeadApplicationTypeId
-            });
+            };
+               _dbContext.LeadEmployementDetails.Add(entity);
 
             _dbContext.SaveChanges();
-            return AppConsts.SuccessfullyInserted;
+            return entity.Id.ToString();
         }
 
         public string Delete(int id)
