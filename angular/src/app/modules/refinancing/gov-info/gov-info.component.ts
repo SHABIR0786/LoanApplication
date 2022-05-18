@@ -1,0 +1,77 @@
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { RefinancePost } from "@app/modules/models/post.model";
+import { OfflineService } from "@app/services/offline.service";
+import { environment } from "environments/environment";
+import { ApiService } from "@app/services/api.service";
+@Component({
+  selector: "app-gov-info",
+  templateUrl: "./gov-info.component.html",
+  styleUrls: ["./gov-info.component.css", "./../index.component.css"],
+})
+export class GovInfoComponent implements OnInit {
+  number: number = 1;
+  model: RefinancePost = new RefinancePost();
+  questions: any[] = [];
+  cs: any[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private offline: OfflineService,
+    private api: ApiService
+  ) {
+    this.route.params.subscribe((x) => {
+      if (x.number) {
+        this.number = x.number;
+      } else {
+        this.router.navigate(["1"]);
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.getAllQuestions();
+    this.getCitizenShipType();
+    this.model = this.offline.getStep().data;
+  }
+  getCitizenShipType() {
+    this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
+      this.cs = x.result;
+    });
+  }
+  getAllQuestions() {
+    let url = "/LeadApplicationQuestions/GetAll";
+    this.api.get(url).subscribe((x: any) => {
+      this.questions = x.result;
+      this.questions.forEach((obj) => {
+        obj.isYes = false;
+      });
+    });
+  }
+  abc(a = "/app/refinance/gov/2") {
+    this.saveStep();
+    this.model.id = this.model.leadApplicationDetailRefinancingId;
+    this.api
+      .post("LeadRefinancingDetails/Update", this.model)
+      .subscribe((x: any) => {
+        if (x.success) {
+          this.router.navigate([a]);
+        }
+      });
+  }
+  onQAns(id, ans) {
+    let req: any = {
+      leadApplicationDetailRefinancingId: this.model
+        .leadApplicationDetailRefinancingId,
+      questionId: id,
+      isYes: ans,
+    };
+    let url = "/LeadQuestionAnswers/Add";
+    this.api.post(url, req).subscribe((x) => {
+      console.log(id);
+    });
+  }
+  saveStep() {
+    this.offline.saveStep(6, this.model);
+  }
+}
