@@ -1,0 +1,1025 @@
+<div class="main-content" *ngIf="number == 1">
+  <h2>Great now what's the address of the home you're refinancing?</h2>
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <!-- <form action="" id="address"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Address"
+      [(ngModel)]="model.propertyAddress"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+      [(ngModel)]="model.propertyUnit"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="City or Town"
+      [(ngModel)]="model.propertyCity"
+    />
+
+    <div class="row">
+      <div class="col-md-7">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Zip Code"
+          [(ngModel)]="model.propertyZip"
+        />
+      </div>
+      <div class="col-md-5">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.propertyStateId"
+        >
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.propertyCountryId"
+        >
+          <option *ngFor="let c of countries" [value]="c.id">
+            {{ c.countryName }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- </form> -->
+    <div class="row">
+      <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <a
+          routerLink="/app/refinance/welcome/2"
+          class="btn btn-blue"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-lg-2">
+        <a
+          routerLink="/app/refinance/property-info/2"
+          class="btn btn-blue"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 2">
+  <h2 id="padding-zero" class="little-space">
+    Tell us a little bit more about your home.
+  </h2>
+  <h6>If you don't know exactly your best guess is fine.</h6>
+  <div
+    class="button-list margin-top extra-margin col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <!-- <form action=""> -->
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Estimated Value"
+      [(ngModel)]="model.propertyEstimatedValue"
+    />
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Remaining Loan Balance"
+      [(ngModel)]="model.propertyLoanBalance"
+    />
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Cash Out Amount"
+      [(ngModel)]="model.propertCashOutAmount"
+    />
+    <!-- </form> -->
+    <h6 class="border-h">
+      These numbers help us give you a new estimated loan amount.
+    </h6>
+    <h4 class="new-loan">New Loan Estimate</h4>
+    <h4>$3,458,476</h4>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          routerLink="/app/refinance/property-info/1"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          routerLink="/app/refinance/property-info/3"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 3">
+  <h2 class="little-space">Do you know your credit score?</h2>
+  <h6>We Use this into to match you with the perfect load options.</h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/property-info/4"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onScoreClick('Excellent')"
+      >Excellent (740+)</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/4"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onScoreClick('Good')"
+      >Good(700 - 739)</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/4"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onScoreClick('Average')"
+      >Average (640 - 699)</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/4"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onScoreClick('Fair')"
+      >Fair (580 - 639)</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/4"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onScoreClick('Needs_Improvement')"
+      >Needs Improvement (less then 580)</a
+    >
+
+    <div class="row">
+      <div class="col-md-12">
+        <a
+          routerLink="/app/refinance/property-info/2"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 4">
+  <h2 class="little-space">
+    What type of home is it? <img src="img/info.svg" alt="" />
+  </h2>
+
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <a
+      routerLink="/app/refinance/property-info/5"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onHomeClick('Single_Family')"
+      >Single Family</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/5"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onHomeClick('Condo')"
+      >Condo</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/5"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onHomeClick('Co-op')"
+      >Co-op</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/5"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onHomeClick('Townhome')"
+      >Townhome</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/5"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onHomeClick('Multi-Family')"
+      >Multi-Family</a
+    >
+
+    <div class="row">
+      <div class="col-md-12">
+        <a
+          routerLink="/app/refinance/property-info/3"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 5">
+  <h2>What are your monthly Homeowners Association dues?</h2>
+
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <!-- <form action=""> -->
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Monthly HOA dues"
+      [(ngModel)]="model.monthlyHoadues"
+    />
+    <!-- </form> -->
+
+    <div class="row margin-top">
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a
+          routerLink="/app/refinance/property-info/4"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a
+          routerLink="/app/refinance/property-info/6"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+      <div
+        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+      >
+        <a
+          routerLink="/app/refinance/property-info/6"
+          class="btn"
+          id="btn-back-blue"
+          >Skip</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 6">
+  <h2 class="little-space">Tell us a little bit more about your home.</h2>
+  <h6>If you don't know exactly your best guess is fine.</h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <!-- <form action="" id="employer-details"> -->
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Year Home was Purchased"
+      [(ngModel)]="model.yearHomePurchased"
+    />
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Original Purchase Price"
+      [(ngModel)]="model.orignalPurchasedPrice"
+    />
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Estimated annual taxes"
+      [(ngModel)]="model.estimatedAnnualTax"
+    />
+    <input
+      type="number"
+      class="form-control form-style"
+      placeholder="Estimated annual home insurance"
+      [(ngModel)]="model.estimatedAnnualHomeInsurance"
+    />
+    <!-- </form> -->
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          routerLink="/app/refinance/property-info/5"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          routerLink="/app/refinance/property-info/7"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 7">
+  <h2 class="narrow-space">How are you currently using your home?</h2>
+
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <a
+      routerLink="/app/refinance/property-info/8"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onCurHome('Primary_Residance')"
+      >Primary Residance</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/8"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onCurHome('Second_Home')"
+      >Second Home</a
+    >
+    <a
+      routerLink="/app/refinance/property-info/8"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="onCurHome('Rental')"
+      >Investment / Rental</a
+    >
+
+    <div class="row">
+      <div class="col-md-12">
+        <a
+          routerLink="/app/refinance/property-info/6"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<!-- section 7D ends -->
+<div class="main-content" *ngIf="number == 8">
+  <h2>Are you a current or former member of the US Military?</h2>
+  <h6>
+    Active U.S. Military and veterans may be eligible for VA loan options!
+    <img src="img/info.svg" alt="" />
+  </h6>
+
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/property-info/9"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="milClick(true)"
+      >Yes</a
+    >
+
+    <a
+      routerLink="/app/refinance/property-info/9"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="milClick(false)"
+      >No</a
+    >
+
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <a
+          routerLink="/app/refinance/property-info/7"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<div class="main-content" *ngIf="number == 9">
+  <h2>Let's take a few seconds to review and confirm your info so far.</h2>
+  <div class="content-area">
+    <div class="row">
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <h6>Property Info</h6>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 right-align">
+        <a
+          routerLink="/app/refinance/property-info/10"
+          class="btn"
+          id="btn-edit"
+          >Edit</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="profile-details">
+          <p>Preferred Loan Terms: Lower rate</p>
+          <p>Address: 7431 Paso Robles Avenue</p>
+          <p>City or Town: Los Angeles</p>
+          <p>Zip Code: 91406</p>
+          <p>State: CA</p>
+          <p>County: Los Angeles</p>
+          <p>Estimated Value: $242,424</p>
+          <p>Remaining Loan Balance: $234,242</p>
+          <p>Cash Out Amount: $3,224</p>
+          <p>Loan Amount: $237,466</p>
+          <p>Self-selected Credit Score: Average (640 – 699)</p>
+          <p>Type of Home: Co-op</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="seperator-line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <h6>Property Details</h6>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 right-align">
+        <a
+          routerLink="/app/refinance/property-info/10"
+          class="btn"
+          id="btn-edit"
+          >Edit</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="profile-details">
+          <p>Year Home was Purchased: 2019</p>
+          <p>Original Purchase Price: $234,224</p>
+          <p>Estimated annual taxes: $2,342</p>
+          <p>Estimated annual home insurance: $24,252</p>
+          <p>Property Usage: Second Home</p>
+          <p>Are you a current or former member of the US Military?: Yes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <div class="row">
+      <div class="col-md-3 offset-md-3 col-lg-3 offset-lg-3 col-sm-6 col-xs-6">
+        <a
+          routerLink="/app/refinance/property-info/8"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6">
+        <a
+          routerLink="/app/refinance/property-info/11"
+          class="btn"
+          id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 10">
+  <h2>Let's take a few seconds to review and confirm your info so far.</h2>
+  <div class="content-area">
+    <div class="row padding-fifteen">
+      <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
+        <h6>Property Info</h6>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 right-align">
+        <a
+          href="(N0N MILITARY OPTION) 12  Apply Now I’m Refinancing  Property Info.html"
+          class="btn"
+          id="btn-edit"
+          >Done</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Lower monthly payment <br />
+      <span class="tiny-font"
+        >Free up monthly cash to spend however you want</span
+      >
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Lower rate <br />
+      <span class="tiny-font"
+        >Lower the rate, the less interest you pay over the life of the
+        loan</span
+      >
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Shorter loan term <br />
+      <span class="tiny-font"
+        >Reduce your interest rate and own your home faster</span
+      >
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Cash-Out <br />
+      <span class="tiny-font"
+        >Take cash out from the equity you’ve built up in your home to use
+        however you need</span
+      >
+    </button>
+
+    <form action="" id="address">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Address"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Apt / Unit"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="City or Town"
+      />
+      <div class="row">
+        <div class="col-lg-7">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Zip Code"
+          />
+        </div>
+        <div class="col-lg-5">
+          <select class="form-select form-style">
+            <option>-State-</option>
+          </select>
+        </div>
+      </div>
+      <select class="form-select form-style">
+        <option>-County-</option>
+      </select>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Value"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Remaining Loan Balance"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Cash Out Amount"
+      />
+    </form>
+
+    <h6 id="padding-up">Self selected Credit Score</h6>
+
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Excellent (740+)
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Good(700 - 739)
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Average (640 - 699)
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Fair (580 - 639)
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Needs Improvement (less then 580)
+    </button>
+
+    <form action="" id="address">
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Legal First Name"
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Middle Initial"
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Legal Last Name"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Phone Number"
+      />
+      <input
+        type="email"
+        class="form-control form-style"
+        placeholder="Email Address"
+      />
+    </form>
+    <h6 id="padding-up">Type of home</h6>
+
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Single Family
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Condo
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Co-op
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Townhome
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Multi-Family
+    </button>
+
+    <form action="">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Monthly HOA dues"
+      />
+    </form>
+  </div>
+  <div class="content-area">
+    <div class="row padding-fifteen">
+      <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
+        <h6>Property Details</h6>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 right-align">
+        <button type="button" class="btn" id="btn-edit">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <form action="" id="address">
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Address"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Apt / Unit"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="City or Town"
+      />
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Estimated Value"
+      />
+    </form>
+
+    <h6 id="padding-up">Property Usage</h6>
+
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Primary Residance
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Condo
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Co-op
+    </button>
+
+    <h6 id="padding-up">
+      Are you a current or former member of the US Military?
+    </h6>
+
+    <button type="button" class="btn btn-primary btn-style btn-blue">
+      Yes
+    </button>
+    <button type="button" class="btn btn-primary btn-style btn-blue">No</button>
+
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          href="(N0N MILITARY OPTION) 12  Apply Now I’m Refinancing  Property Info.html"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          href="(N0N MILITARY OPTION) 13  Apply Now  I’m Refinancing  Property Info  REGISTRATION.html"
+          class="btn"
+          id="btn-next-blue"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+<!-- 12A ends -->
+<!-- click done button int will move to upper section 12 -->
+<!-- click back button in section 12A then it will move to upper section 12 -->
+<!-- click on next button it will move to page 13 apply-now-prop-info-register13 -->
+
+<div class="main-content" *ngIf="number == 11">
+  <h2 id="padding-zero">OK! Now tell us a little bit about yourself.</h2>
+  <h6>
+    And for your peace of mind please know we'll never sell your info to 3rd
+    parties.
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <!-- <form action="" id="address"> -->
+    <div class="row">
+      <div class="col-md-6">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Legal First Name"
+          [(ngModel)]="model.propertyLegalFirstName"
+        />
+      </div>
+      <div class="col-md-6">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Middle Initial"
+          [(ngModel)]="model.propertyMiddleInitial"
+        />
+      </div>
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Legal Last Name"
+      [(ngModel)]="model.propertyLegalLastName"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Phone Number"
+      [(ngModel)]="model.propertyPhoneNumber"
+    />
+    <input
+      type="email"
+      class="form-control form-style"
+      placeholder="Email Address"
+      [(ngModel)]="model.propertyEmailAddress"
+    />
+    <input
+      type="password"
+      class="form-control form-style"
+      placeholder="Password"
+      [(ngModel)]="model.propertyPassword"
+    />
+    <input
+      type="password"
+      class="form-control form-style"
+      placeholder="Confirm Password"
+      [(ngModel)]="model.reppropertyPassword"
+    />
+    <div class="row">
+      <div class="col-md-12">
+        <div class="password-details">
+          <p>
+            Passwords must be at least 8 characters and use at least three of
+            the four available character types: lowercase and uppercase letters,
+            numbers, and symbols.
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>Have an account? <a href="#">Log in</a></p>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="terms">
+          <p>
+            By entering phone number and clicking the "Next" button, you are
+            providing express written consent for EZ Online Mortgage. and its
+            affiliates, agents, and service providers to contact you at that
+            number regarding products or services, including via auto-dialed
+            and/or prerecorded or artificial voice calls and text messages (SMS
+            and MMS), or email even if your telephone number is a cellular
+            number or on a corporate, state, or the National Do Not Call
+            Registry <span class="orange-text">(DNC)</span> or other do not
+            contact list.
+          </p>
+
+          <p>
+            You may also reach us at
+            <span class="orange-text">(800) 930-8195</span> or by utilizing our
+            services at <span class="orange-text">Loan Options</span>. You may
+            opt-out at any time by emailing us a Do Not Call Request at
+            <span class="orange-text"
+              ><a href="">dnc@ezonlinemortgage.com</a></span
+            >
+            and providing your phone number. Your consent is not required or a
+            condition of any purchase. Message and data rates may apply.
+          </p>
+
+          <p>
+            You also consent to our
+            <span class="orange-text"
+              >SMS terms, Privacy Policy, Terms of Use,</span
+            >
+            and <span class="orange-text">CA Terms</span> of Use. By
+            communicating with us by phone you consent to calls being recorded
+            and monitored.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- </form> -->
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          routerLink="/app/refinance/property-info/10"
+          type="button"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          routerLink="/app/refinance/property-info/12"
+          type="button"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<div class="main-content" *ngIf="number == 12">
+  <h2 class="tiny-space">Did someone refer you to EZ Online Mortgage?</h2>
+
+  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.isSomeoneRefer = 1; saveStep()"
+    >
+      Yes
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.isSomeoneRefer = 0; saveStep()"
+    >
+      No
+    </button>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="That’s make us happy! Who refered us?"
+      [(ngModel)]="model.refferedBy"
+    />
+
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a
+          routerLink="/app/refinance/property-info/11"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+      <div class="col-md-2">
+        <a
+          routerLink="/app/refinance/property-info/13"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep()"
+          >Next</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<!-- click next button it will move to page 14 apply-now-prop-info-own15 -->
+<!-- click back button it will move to page 13 apply-now-prop-info-register13 -->
+
+<div class="main-content" *ngIf="number == 13">
+  <h2>Are you applying on your own, or jointly with another person?</h2>
+  <h6 class="narrow-space">
+    if applying with another person, we’ll refer to that person as your
+    co-borrower throughout the applcation.
+  </h6>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <a
+      routerLink="/app/refinance/personal-info/1"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.isApplyOwn = 1; saveStep()"
+      >Applying on my oun</a
+    >
+
+    <a
+      routerLink="/app/refinance/personal-info/1"
+      class="btn btn-primary btn-style btn-blue"
+      (click)="model.isApplyOwn = 0; saveStep()"
+      >Applying with another person</a
+    >
+
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <a
+          routerLink="/app/refinance/property-info/12"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a href="">Log in</a></p>
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+</div>
+
+<!-- click on back button it will move to page 14 apply-now-prop-info-refer14 -->
+<!-- click on any other button it will go to page 16 apply-now-personal-info-coborrower -->
