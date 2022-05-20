@@ -68,7 +68,7 @@ body {
   color: #091a52;
 }
 .wrapper {
-  padding-top: 34px;
+  padding-top: 0px;
   margin: 0 auto;
 }
 .right-content {
@@ -545,6 +545,34 @@ body {
 .terms span {
   font-weight: 600;
 }
+
+/*
+ * Hafiz's CSS start
+ */
+
+h2.pb-5.font-weight-bold {
+  font-size: 50px;
+  padding-bottom: 10px !important;
+}
+
+.form-group.mt-5 {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+.form-group.mt-5 .card {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+.row.justify-content-center.pt-5.mt-5 {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+/*
+ * Hafiz's CSS End
+ */
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -734,6 +762,35 @@ body {
     font-family: "Avenir";
     color: #091a52;
   }
+  /*
+ * Hafiz's CSS start
+ */
+
+  h2.pb-5.font-weight-bold {
+    font-size: 50px;
+    padding-bottom: 10px !important;
+  }
+  .wrapper {
+    padding-top: 0px;
+    margin: 0 auto;
+  }
+  .form-group.mt-5 {
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+  }
+  .form-group.mt-5 .card {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+  .row.justify-content-center.pt-5.mt-5 {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  /*
+ * Hafiz's CSS End
+ */
 }
 
 /* Medium devices (tablets, 768px and up)*/
@@ -838,6 +895,35 @@ body {
     font-family: "Avenir";
     color: #091a52;
   }
+  /*
+ * Hafiz's CSS start
+ */
+
+  h2.pb-5.font-weight-bold {
+    font-size: 50px;
+    padding-bottom: 10px !important;
+  }
+  .wrapper {
+    padding-top: 0px;
+    margin: 0 auto;
+  }
+  .form-group.mt-5 {
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+  }
+  .form-group.mt-5 .card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .row.justify-content-center.pt-5.mt-5 {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  /*
+ * Hafiz's CSS End
+ */
 }
 
 /* Large devices (desktops, 992px and up)*/
@@ -942,6 +1028,35 @@ body {
     font-family: "Avenir";
     color: #091a52;
   }
+  /*
+ * Hafiz's CSS start
+ */
+
+  h2.pb-5.font-weight-bold {
+    font-size: 100px;
+    padding-bottom: 1em !important;
+  }
+  .wrapper {
+    padding-top: 35px;
+    margin: 0 auto;
+  }
+  .form-group.mt-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .form-group.mt-5 .card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .row.justify-content-center.pt-5.mt-5 {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  /*
+ * Hafiz's CSS End
+ */
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
@@ -1046,6 +1161,34 @@ body {
     font-family: "Avenir";
     color: #091a52;
   }
+  /*
+ * Hafiz's CSS start
+ */
+
+  h2.pb-5.font-weight-bold {
+    font-size: 100px;
+    padding-bottom: 1em !important;
+  }
+  .wrapper {
+    padding-top: 35px;
+    margin: 0 auto;
+  }
+  .form-group.mt-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .form-group.mt-5 .card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .row.justify-content-center.pt-5.mt-5 {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  /*
+ * Hafiz's CSS End
+ */
 }
 
 /* ==========================================================================

@@ -905,6 +905,135 @@ ul.list-refinace li {
   top: 44%;
   font-size: 30px;
 }
+
+/* Hafiz's CSS  start*/
+
+.gage-chart-orange {
+  background-image: url("../images/gage-chart-orange.png");
+  background-repeat: no-repeat;
+  position: relative;
+  height: 140px;
+  width: 130px;
+  margin: auto;
+  margin-top: 50px !important;
+}
+.gage-chart-orange.p11 {
+  background-image: url("../images/gage-chart-orange-11.png");
+}
+.gage-chart-orange.p100 {
+  background-image: url("../images/gage-chart-orange-100.png");
+}
+.gage-chart-orange.p26 {
+  background-image: url("../images/gage-chart-orange-26.png");
+}
+.gage-chart-orange.p37 {
+  background-image: url("../images/gage-chart-orange-37.png");
+}
+.gage-chart-orange.p47 {
+  background-image: url("../images/gage-chart-orange-47.png");
+}
+.gage-chart-orange.p58 {
+  background-image: url("../images/gage-chart-orange-58.png");
+}
+.gage-chart-orange.p68 {
+  background-image: url("../images/gage-chart-orange-68.png");
+}
+.gage-chart-orange.p79 {
+  background-image: url("../images/gage-chart-orange-79.png");
+}
+.gage-chart-orange.p84 {
+  background-image: url("../images/gage-chart-orange-84.png");
+}
+.gage-chart-orange.p89 {
+  background-image: url("../images/gage-chart-orange-89.png");
+}
+
+.gage-chart-orange span {
+  color: #f47741;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 51%;
+  top: 46%;
+  font-size: 30px;
+}
+
+.gage-chart-blue {
+  background-image: url("../images/gage-chart-blue.png");
+  background-repeat: no-repeat;
+  position: relative;
+  height: 140px;
+  width: 130px;
+  margin: auto;
+  margin-top: 50px !important;
+}
+.gage-chart-blue.p6 {
+  background-image: url("../images/gage-chart-blue-6.png");
+}
+.gage-chart-blue.p11 {
+  background-image: url("../images/gage-chart-blue-11.png");
+}
+.gage-chart-blue.p16 {
+  background-image: url("../images/gage-chart-blue-16.png");
+}
+.gage-chart-blue.p21 {
+  background-image: url("../images/gage-chart-blue-21.png");
+}
+.gage-chart-blue.p26 {
+  background-image: url("../images/gage-chart-blue-26.png");
+}
+.gage-chart-blue.p32 {
+  background-image: url("../images/gage-chart-blue-32.png");
+}
+.gage-chart-blue.p36 {
+  background-image: url("../images/gage-chart-blue-36.png");
+}
+.gage-chart-blue.p42 {
+  background-image: url("../images/gage-chart-blue-42.png");
+}
+.gage-chart-blue.p47 {
+  background-image: url("../images/gage-chart-blue-47.png");
+}
+.gage-chart-blue.p53 {
+  background-image: url("../images/gage-chart-blue-53.png");
+}
+.gage-chart-blue.p58 {
+  background-image: url("../images/gage-chart-blue-58.png");
+}
+.gage-chart-blue.p63 {
+  background-image: url("../images/gage-chart-blue-63.png");
+}
+.gage-chart-blue.p68 {
+  background-image: url("../images/gage-chart-blue-68.png");
+}
+.gage-chart-blue.p74 {
+  background-image: url("../images/gage-chart-blue-74.png");
+}
+.gage-chart-blue.p79 {
+  background-image: url("../images/gage-chart-blue-79.png");
+}
+.gage-chart-blue.p84 {
+  background-image: url("../images/gage-chart-blue-84.png");
+}
+.gage-chart-blue.p89 {
+  background-image: url("../images/gage-chart-blue-89.png");
+}
+.gage-chart-blue.p95 {
+  background-image: url("../images/gage-chart-blue-95.png");
+}
+.gage-chart-blue.p100 {
+  background-image: url("../images/gage-chart-blue-100.png");
+}
+.gage-chart-blue span {
+  color: #091a52;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 51%;
+  top: 46%;
+  font-size: 30px;
+}
+
+/* Hafiz's CSS end */
+
 .mt-8 {
   margin-top: 8rem !important;
 }

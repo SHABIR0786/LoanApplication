@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h1 class="">What is your gross annual household income?</h1>
 
@@ -13,7 +13,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Less Then $20,000')"
             [class.selected]="formData.houseHoldIncome == 'Less Then $20,000'"
           >
@@ -21,7 +21,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('$20,000 - $50,000')"
             [class.selected]="formData.houseHoldIncome == '$20,000 - $50,000'"
           >
@@ -29,7 +29,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('$50,000 - $100,000')"
             [class.selected]="formData.houseHoldIncome == '$50,000 - $100,000'"
           >
@@ -37,7 +37,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('$100,000 - $200,000')"
             [class.selected]="formData.houseHoldIncome == '$100,000 - $200,000'"
           >
@@ -45,7 +45,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('$200,000+')"
             [class.selected]="formData.houseHoldIncome == '$200,000+'"
           >
@@ -55,7 +55,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange p47 d-lg-flex d-none">
       <span>47%</span>
     </div>
   </div>
