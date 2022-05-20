@@ -54,7 +54,7 @@ export class GovernmentComponent implements OnInit {
   onGovClick() {
     const final = this.apiModel.map(this.model);
     debugger;
-    this.api.post("LeadPurchasingDetails/Add", final).subscribe((d: any) => {
+    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
       if (d.success === true) {
         this.router.navigate(["/app/purchase/gov/2"]);
         this.model.leadApplicationDetailPurchasingId = 1;
@@ -89,7 +89,7 @@ export class GovernmentComponent implements OnInit {
     this.saveStep();
     const final = this.apiModel.map(this.model);
 
-    this.api.post("LeadPurchasingDetails/Add", final).subscribe((d: any) => {
+    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
       if (d.success === true) {
         alert("Done");
       } else {
