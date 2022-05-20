@@ -1,25 +1,11 @@
 /* .btn{
     margin-bottom: 20px;
     } */
-.slidecontainer {
-  font-size: 20px;
-  width: 50%;
-  justify-content: center;
-  margin-left: 25%;
-}
+
 .form-control {
   height: 65px;
   margin-top: 50px;
   padding-left: 25px;
-}
-#myRange {
-  border: solid 1px #f47741;
-  border-radius: 8px;
-  height: 10px;
-  width: 100%;
-  outline: none;
-  transition: background 450ms ease-in;
-  -webkit-appearance: none;
 }
 
 .mb-4 {
@@ -42,9 +28,7 @@
 #Email {
   color: #0cc4d4 !important;
 }
-.selected {
-  background-color: #f47741;
-}
+
 .dollar_sign {
   position: absolute;
   margin-top: 58px;
@@ -64,4 +48,140 @@
 
 button.btn:hover {
   background-color: #f47741;
+}
+
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black {
+  background-color: white !important;
+  color: black;
+}
+.Content-Step-Body .btn-outline-blue {
+  border-color: #091a52;
+  color: #091a52;
+}
+.Content-Step-Body .btn-outline-blue:hover {
+  color: white;
+  background-color: #091a52;
+}
+.Content-Step-Body .form-control {
+  background-color: #091a52 !important;
+}
+.selected {
+  background-color: #091a52 !important;
+  color: white !important;
+}
+
+#back {
+  margin-top: 225px;
+  margin-right: 350px;
+  margin-left: 23px;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 33%;
+  top: 420px;
+}
+
+.btn {
+  width: 93%;
+}
+.form-control {
+  width: 93%;
+}
+
+h2 {
+  font-size: 30px !important;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 33%;
+    top: 420px;
+  }
+  .btn {
+    width: 93%;
+  }
+  .form-control {
+    width: 93%;
+  }
+  h2 {
+    font-size: 30px !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 42%;
+    top: 410px;
+  }
+  .btn {
+    width: 55%;
+  }
+  .form-control {
+    width: 55%;
+  }
+  h2 {
+    font-size: 36px !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 360px;
+    top: 260px;
+  }
+  .btn {
+    width: 28%;
+  }
+  .form-control {
+    width: 28%;
+  }
+  h2 {
+    font-size: 40px !important;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 360px;
+    top: 260px;
+  }
+  .btn {
+    width: 28%;
+  }
+  .form-control {
+    width: 28%;
+  }
+  h2 {
+    font-size: 40px !important;
+  }
 }

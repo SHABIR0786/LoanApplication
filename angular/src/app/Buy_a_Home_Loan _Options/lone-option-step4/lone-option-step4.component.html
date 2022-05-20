@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
@@ -7,16 +7,20 @@
           own the property?
         </h1>
         <div class="col-lg-4 pl-4">
-          <i class="fa fa-angle-left" id="icon"></i>
-          <p id="Back" (click)="proceedToPrevious()">Back</p>
+          <span class="pt-3 cursor_pointer">
+            <i class="fa fa-angle-left" id="icon"></i>
+            <span id="Back" (click)="proceedToPrevious()" class="pl-1">
+              Back</span
+            >
+          </span>
         </div>
       </div>
     </div>
 
     <div class="row justify-content-center pt-2 mt-n5">
-      <div class="col-md-4 col-lg-3">
+      <div class="col-md-6 col-lg-3">
         <div
-          class="card mb-3 mb-md-0 text-center bg_transparent"
+          class="card mb-3 mb-md-0 text-center bg_transparent orange-card"
           [class.selected]="formData.howLongPlan == '3-5 Years'"
         >
           <div
@@ -24,14 +28,14 @@
             (click)="proceedToNext('3-5 Years')"
             style="cursor: pointer"
           >
-            <h1 class="pb-3 pt-4 text-white">3-5</h1>
+            <h1 class="pb-3 pt-4">3-5</h1>
             <p>Years</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-lg-3">
+      <div class="col-md-6 col-lg-3">
         <div
-          class="card mb-3 mb-md-0 text-center bg_transparent"
+          class="card mb-3 mb-md-0 text-center bg_transparent orange-card"
           [class.selected]="formData.howLongPlan == '5-10 Years'"
         >
           <div
@@ -45,10 +49,10 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center pt-4 mb-n5">
-      <div class="col-md-4 col-lg-3">
+    <div class="row justify-content-center pt-4">
+      <div class="col-md-6 col-lg-3">
         <div
-          class="card mb-3 mb-md-0 text-center bg_transparent"
+          class="card mb-3 mb-md-0 text-center bg_transparent orange-card"
           [class.selected]="formData.howLongPlan == '10-20 Years'"
         >
           <div
@@ -62,9 +66,9 @@
         </div>
       </div>
 
-      <div class="col-md-4 col-lg-3">
+      <div class="col-md-6 col-lg-3">
         <div
-          class="card mb-3 mb-md-0 text-center bg_transparent"
+          class="card mb-3 mb-md-0 text-center bg_transparent orange-card"
           [class.selected]="formData.howLongPlan == '20+ Years'"
         >
           <div

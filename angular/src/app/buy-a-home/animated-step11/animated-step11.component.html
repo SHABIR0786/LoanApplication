@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h1 class="">Active or previous U.S military sevice?</h1>
 
@@ -13,7 +13,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext(true)"
             [class.selected]="formData.militarySevice == true"
           >
@@ -21,7 +21,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext(false)"
             [class.selected]="formData.militarySevice == false"
           >
@@ -31,7 +31,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange p58 d-lg-flex d-none">
       <span>58%</span>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="">How would you rate your credit?</h2>
 
@@ -13,7 +13,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Excellent (720+)')"
             [class.selected]="formData.rateCredit == 'Excellent (720+)'"
           >
@@ -21,7 +21,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Good (680 - 719)')"
             [class.selected]="formData.rateCredit == 'Good (680 - 719)'"
           >
@@ -29,7 +29,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Fair (620 - 679)')"
             [class.selected]="formData.rateCredit == 'Fair (620 - 679)'"
           >
@@ -37,7 +37,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Good (580 - 619)')"
             [class.selected]="formData.rateCredit == 'Good (580 - 619)'"
           >
@@ -45,7 +45,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Below < 580')"
             [class.selected]="formData.rateCredit == 'Below < 580'"
           >
@@ -55,7 +55,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange p79 d-lg-flex d-none">
       <span>79%</span>
     </div>
   </div>
