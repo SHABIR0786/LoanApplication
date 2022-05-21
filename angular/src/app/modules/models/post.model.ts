@@ -329,24 +329,24 @@ export class RefinancePost {
   "personalStartLivingDate": Date;
   "personalReantingType": string;
   "isEmployementHistory": number;
-  w2Emp: string;
+  w2Emp: number;
   w2EmpName: string;
   empAddress: string;
   empAptUnit: string;
   empCity: string;
-  empState: string;
+  empState: number;
   empZip: string;
   empPhoneNumber: string;
   isCurrentJob: number;
   empEstDate: string;
   jobTitle: string;
-  estAnnualBaseSalary: string;
-  estAnnualBonus: string;
-  estAnnualCommision: string;
-  estAnnualOverTime: string;
+  estAnnualBaseSalary: number;
+  estAnnualBonus: number;
+  estAnnualCommision: number;
+  estAnnualOverTime: number;
   hasCoboOtherEmp: number;
   hasCoboOtherIncSrc: number;
-  coboIncType: string;
+  coboIncType: number;
   coboMonthlyAmount: string;
   assetsAccountType: string;
   assetsFinInst: string;
@@ -363,4 +363,26 @@ export class RefinancePost {
   "socialSecurityNumber": string;
   "conformSsn": string;
   "birthDate": Date;
+}
+
+export class EmployementDetailAdd {
+  "employeeTypeId": number;
+  "leadApplicationDetailPurchasingId": number;
+  "leadApplicationDetailRefinancingId": number;
+  "leadApplicationTypeId": number;
+  "employerName": string;
+  "employementAddress": string;
+  "employementSuite": string;
+  "employementCity": string;
+  "employementTaxeId": number;
+  "employementZip": string;
+  "employerPhoneNumber": string;
+  "isCurrentJob": number;
+  "estimatedStartDate": string;
+  "jobTitle": string;
+  "estimatedAnnualBaseSalary": number;
+  "estimatedAnnualBonus": number;
+  "estimatedAnnualCommission": number;
+  "estimatedAnnualOvertime": number;
+  "isCoBorrower": number;
 }
