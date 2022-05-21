@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PostModel } from "@app/modules/models/post.model";
+import { AddFinanceApiModel, PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
 
@@ -75,6 +75,15 @@ export class PersonalInfoComponent implements OnInit {
   }
   onExpenClick() {
     this.saveStep();
+  }
+  saveToDb() {
+    this.saveStep();
+    var _model = new AddFinanceApiModel();
+    _model.map(this.model);
+    this.api.post("LeadPurchasingDetails/Add", _model).subscribe((x: any) => {
+      if (x.success == true)
+        this.router.navigate(["/app/purchase/income-info/1"]);
+    });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

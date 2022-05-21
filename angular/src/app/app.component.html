@@ -1,10 +1,19 @@
-<div class="wrapper">
-  <div *ngIf="IsRefinanceLoanOptions; else app_content">
+<div *ngIf="IsRefinanceLoanOptions; else app_content">
+  <div class="wrapper">
     <app-animated-form-header></app-animated-form-header>
     <router-outlet></router-outlet>
-    <app-animated-form-footer></app-animated-form-footer>
+    <app-animated-legal-footer></app-animated-legal-footer>
   </div>
-  <ng-template #app_content>
+</div>
+<ng-template #app_content>
+  <div *ngIf="IsBuyaHome; else main_app">
+    <div class="wrapper">
+      <app-animated-buy-home-header></app-animated-buy-home-header>
+      <router-outlet></router-outlet>
+      <app-animated-legal-footer></app-animated-legal-footer>
+    </div>
+  </div>
+  <ng-template #main_app>
     <div *ngIf="IsLoanApp; else loan_app">
       <app-loan-application-header></app-loan-application-header>
       <app-loan-app-side-bar></app-loan-app-side-bar>
@@ -21,4 +30,4 @@
       </ng-template>
     </ng-template>
   </ng-template>
-</div>
+</ng-template>

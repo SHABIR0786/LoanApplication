@@ -78,7 +78,7 @@ function changeImage() {
   if (x >= images.length) {
     x = 0;
   }
-  fadeImg(img, 5500, true);
+  fadeImg(img, 4800, true);
 
   setTimeout("changeImage()", 5500);
 }

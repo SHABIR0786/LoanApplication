@@ -1,21 +1,22 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
-      Active or previous U.S. military service?
-    </h2>
+    <h2 class="font-weight-bold">Active or previous U.S. military service?</h2>
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left"></i>
-          <span> Back</span>
+        <p
+          id="back"
+          class="fa fa-angle-left cursor_pointer"
+          (click)="proceedToPrevious()"
+        >
+          <span style="margin-left: 5px">Back</span>
         </p>
       </div>
       <div class="col-lg-4">
         <div class="BTN">
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn_mwh btn-block mt-8"
+            class="btn btn-outline-blue btn-lg btn_mwh btn-block mt-8"
             (click)="proceedToNext(true)"
             [class.selected]="formData.militarySevice == true"
           >
@@ -23,7 +24,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
+            class="btn btn-outline-blue btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext(false)"
             [class.selected]="formData.militarySevice == false"
           >
@@ -33,7 +34,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart p47 mt-5">
+    <div class="gage-chart-blue p47 mt-5 d-lg-flex d-none">
       <span>47%</span>
     </div>
   </div>
