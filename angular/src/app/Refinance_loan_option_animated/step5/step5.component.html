@@ -1,9 +1,11 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="pb-5">OK, so what’s the estimated property value?</h2>
     <div class="col-lg-4">
-      <i class="fa fa-angle-left" id="icon"></i>
-      <p id="Back" (click)="proceedToPrevious()">Back</p>
+      <span class="pt-3 cursor_pointer">
+        <i class="fa fa-angle-left" id="icon"></i>
+        <span id="Back" (click)="proceedToPrevious()" class="pl-1"> Back</span>
+      </span>
     </div>
     <div class="row justify-content-center mt-n5">
       <div class="col-lg-4">
@@ -37,7 +39,7 @@
         </div>
         <button
           id="next"
-          class="btn btn-secondary text-uppercase mt-3 text-white btn-next rounded-2"
+          class="btn btn-blue text-uppercase mt-3 text-white btn-next rounded-2"
           (click)="proceedToNext()"
         >
           Next

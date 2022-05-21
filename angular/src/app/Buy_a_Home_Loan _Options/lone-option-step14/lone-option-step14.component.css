@@ -7,6 +7,8 @@
   width: 361px;
   height: 56px;
   font-size: 27px;
+  background-color: #e5e5e5 !important;
+  border: 0px !important;
 }
 
 #Back {
@@ -33,4 +35,15 @@ input {
   width: 361px;
   height: 56px;
   font-size: 27px;
+}
+
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black,
+.text-black {
+  background-color: white !important;
+  color: black;
+}
+#icon {
+  color: #f47741;
 }

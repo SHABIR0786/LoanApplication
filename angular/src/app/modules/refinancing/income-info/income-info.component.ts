@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { RefinancePost } from "@app/modules/models/post.model";
+import {
+  EmployementDetailAdd,
+  RefinancePost,
+} from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
 
@@ -49,6 +52,31 @@ export class IncomeInfoComponent implements OnInit {
         }
         console.log({ x });
       });
+  }
+  saveEmpToDb() {
+    let _model: EmployementDetailAdd = new EmployementDetailAdd();
+    _model.leadApplicationDetailRefinancingId = 1;
+    _model.employeeTypeId = this.model.w2Emp;
+    _model.employerName = this.model.w2EmpName;
+    _model.employementAddress = this.model.empAddress;
+    _model.employementSuite = this.model.empAptUnit;
+    _model.employementCity = this.model.empCity;
+    _model.employementTaxeId = this.model.empState;
+    _model.employementZip = this.model.empZip;
+    _model.employerPhoneNumber = this.model.empPhoneNumber;
+    _model.isCurrentJob = this.model.isCurrentJob;
+    _model.estimatedStartDate = this.model.empEstDate;
+    _model.jobTitle = this.model.jobTitle;
+    _model.estimatedAnnualBaseSalary = this.model.estAnnualBaseSalary;
+    _model.estimatedAnnualBonus = this.model.estAnnualBonus;
+    _model.estimatedAnnualCommission = this.model.estAnnualCommision;
+    _model.estimatedAnnualOvertime = this.model.estAnnualOverTime;
+    _model.isCoBorrower = this.model.coboIncType;
+    this.api.post("/LeadEmploymentDetail/Add", _model).subscribe((x: any) => {
+      if (x.success == true) {
+        this.router.navigate(["/app/refinance/income/5"]);
+      }
+    });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

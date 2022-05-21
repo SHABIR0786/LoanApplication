@@ -140,7 +140,13 @@ export class AppComponent extends AppComponentBase implements OnInit {
       this.router.url.includes("/app/refinance-step16") ||
       this.router.url.includes("/app/refinance-step17") ||
       this.router.url.includes("/app/refinance-step18") ||
-      this.router.url.includes("/app/refinance-step19") ||
+      this.router.url.includes("/app/refinance-step19")
+    );
+  }
+
+  get IsBuyaHome(): boolean {
+    return (
+      this.router.url.includes("/app/buy-a-home-animated") ||
       this.router.url.includes("/app/buy-a-home-animated-step1") ||
       this.router.url.includes("/app/buy-a-home-animated-step2") ||
       this.router.url.includes("/app/buy-a-home-animated-step3") ||
