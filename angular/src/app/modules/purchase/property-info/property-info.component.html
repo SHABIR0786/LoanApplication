@@ -537,10 +537,73 @@
 </div>
 <!-- No# 11 Purchasing End -->
 <div class="main-content" *ngIf="number == 9">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body text-left">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <header>VA Loan Requirements</header>
+          <h3>For U.S. Veterans and Military Service Members</h3>
+          <ul>
+            <li>
+              You may be eligible for a VA Home Loan if you meet one or more of
+              the following conditions:
+            </li>
+            <li>
+              You have served 90 consecutive days of active service during
+              wartime
+            </li>
+            <li>You have served 181 days of active service during peacetime</li>
+            <li>
+              You have more than 6 years of service in the National Guard or
+              Reserves
+            </li>
+            <li>
+              You are the spouse of a service member who has died in the line of
+              duty or as a result of a service-related disability
+            </li>
+            <li>
+              This includes Army, Navy, Air Force, Marines, or Coast Guard
+            </li>
+          </ul>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
   <h2>Are you a current or former member of the US Military?</h2>
   <h6>
     Active U.S. Military and veterans may be eligible for VA loan options!
-    <img src="img/info.svg" alt="" />
+    <img
+      src="../../../../assets/images/info.png"
+      type="button"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      alt=""
+    />
   </h6>
 
   <div
