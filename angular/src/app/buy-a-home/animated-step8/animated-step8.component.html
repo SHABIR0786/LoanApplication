@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="">Are you currently employed?</h2>
 
@@ -13,7 +13,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Emlpoyed')"
             [class.selected]="formData.currentEmployed == 'Emlpoyed'"
           >
@@ -21,7 +21,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Self-Employed')"
             [class.selected]="formData.currentEmployed == 'Self-Employed'"
           >
@@ -29,7 +29,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Other')"
             [class.selected]="formData.currentEmployed == 'Other'"
           >
@@ -39,7 +39,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange p47 d-lg-flex d-none">
       <span>42%</span>
     </div>
   </div>

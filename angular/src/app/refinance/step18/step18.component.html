@@ -1,16 +1,17 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
-      Please enter your contact info
-    </h2>
+    <h2 class="font-weight-bold">Please enter your contact info</h2>
     <h4 class="co-borrower">
       You can always add a co-borrower or edit this entry later.
     </h4>
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left"></i>
-          <span> Back</span>
+        <p
+          id="back"
+          class="fa fa-angle-left cursor_pointer"
+          (click)="proceedToPrevious()"
+        >
+          <span style="margin-left: 5px">Back</span>
         </p>
       </div>
       <div class="col-lg-4" style="margin-top: -40px">
@@ -56,7 +57,7 @@
           </form>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-blue btn-lg btn-block mb-3 mt-3"
             (click)="proceedToNext()"
           >
             Next
@@ -65,7 +66,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart p95 mt-5">
+    <div class="gage-chart-blue p95 mt-5 d-lg-flex d-none">
       <span>95%</span>
     </div>
   </div>

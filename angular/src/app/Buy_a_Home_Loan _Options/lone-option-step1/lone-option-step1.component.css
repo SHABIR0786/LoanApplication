@@ -28,7 +28,7 @@
   width: 85%;
 }
 .hrline hr {
-  border-top: 1px solid white;
+  border-top: 1px solid #f47741;
   width: 99%;
 }
 .firsticon {
@@ -45,17 +45,13 @@
 }
 .stepcircle {
   border-radius: 100%;
-  border: 1px solid white;
+  border: 1px solid #f47741;
   display: inline-block;
   width: 15px;
   height: 15px;
-  float: left;
   margin-left: 19.1%;
   margin-top: -5px;
-  background-color: white;
-}
-.card.bg_transparent:hover {
-  background-color: #f47741 !important;
+  background-color: #f47741;
 }
 
 .stepcircle span {
@@ -91,4 +87,124 @@
   margin-top: 17px;
   margin-left: -26px;
   font-size: 12px;
+}
+
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black,
+.text-black {
+  background-color: white !important;
+  color: black;
+}
+.card.bg_transparent {
+  background-color: white !important;
+  color: #f47741;
+  border: 1px solid #f47741 !important;
+}
+.card.bg_transparent:hover {
+  background-color: #f47741 !important;
+  color: white;
+  border: 1px solid #f47741 !important;
+}
+.home-bg-img {
+  /* width: 67px;
+  height: 66px; */
+  width: 121px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/home.png");
+}
+
+.dollar-bg-img {
+  /* width: 60px;
+  height: 65px; */
+  width: 108px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/dollar-sign.png");
+}
+.second-home-img {
+  /* width: 60px;
+  height: 65px; */
+  width: 108px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/second-home.png");
+}
+.Content-Step-Body .card:hover .home-bg-img {
+  background-image: url("../../../assets/images/home-white.png");
+}
+.Content-Step-Body .card:hover .dollar-bg-img {
+  background-image: url("../../../assets/images/dollar-sign-1.png");
+}
+.Content-Step-Body .card:hover .second-home-img {
+  background-image: url("../../../assets/images/second-home-1.png");
+}
+#icon {
+  color: #f47741;
+}
+.pt-3.cursor_pointer {
+  position: absolute;
+  left: 40%;
+  top: 780px;
+}
+h5.mt-3 {
+  font-size: 16px;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 40%;
+    top: 780px;
+  }
+  h5.mt-3 {
+    font-size: 16px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 44%;
+    top: 290px;
+  }
+  h5.mt-3 {
+    font-size: 16px;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 40%;
+    top: 90px;
+  }
+  h5.mt-3 {
+    font-size: 20px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 40%;
+    top: 90px;
+  }
+  h5.mt-3 {
+    font-size: 20px;
+  }
 }

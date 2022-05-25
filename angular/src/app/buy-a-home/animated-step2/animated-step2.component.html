@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="">How will your property be used?</h2>
 
@@ -13,7 +13,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn btn-lg btn-block mb-3"
             (click)="proceedToNext('Primary Residence')"
             [class.selected]="formData.PropertyUse == 'Primary Residence'"
           >
@@ -21,7 +21,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Secondary Home')"
             [class.selected]="formData.PropertyUse == 'Secondary Home'"
           >
@@ -29,7 +29,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Investment Property')"
             [class.selected]="formData.PropertyUse == 'Investment Property'"
           >
@@ -39,7 +39,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange d-lg-flex d-none">
       <span>11%</span>
     </div>
   </div>
