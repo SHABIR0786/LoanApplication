@@ -1,4 +1,4 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="">When do you plan to purchase?</h2>
 
@@ -13,7 +13,7 @@
           <br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Now-I Signed A Contract')"
             [class.selected]="
               formData.planToPurchase == 'Now-I Signed A Contract'
@@ -23,7 +23,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Soon - I Found A Home')"
             [class.selected]="
               formData.planToPurchase == 'Soon - I Found A Home'
@@ -33,7 +33,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Within 30 Days')"
             [class.selected]="formData.planToPurchase == 'Within 30 Days'"
           >
@@ -41,7 +41,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('In The Next Few Months')"
             [class.selected]="
               formData.planToPurchase == 'In The Next Few Months'
@@ -51,7 +51,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3"
+            class="btn btn-outline-orange btn-lg btn-block mb-3"
             (click)="proceedToNext('Not Sure - Researching')"
             [class.selected]="
               formData.planToPurchase == 'Not Sure - Researching'
@@ -63,7 +63,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart">
+    <div class="gage-chart-orange d-lg-flex d-none">
       <span>21%</span>
     </div>
   </div>
