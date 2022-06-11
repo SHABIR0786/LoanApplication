@@ -1,77 +1,84 @@
 #button {
-  border: 1px solid orange !important;
+  border: 1px solid #f47741 !important;
   width: 260px;
   height: 43px;
   text-align: center;
-  color: #ffffff;
-  background-color: #091a52;
+  color: #f47741;
+  background-color: white !important;
+}
+#button:hover {
+  color: white;
+  background-color: #f47741 !important;
 }
 .card-title {
-  font-size: 3.3vw;
+  font-size: 50px;
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 25px;
 }
 
 .card-subtitle {
   position: absolute;
-  left: 89px;
-  top: 44px;
-  font-size: 1.5vw;
+  left: 105px;
+  top: 22px;
+  font-size: 20px;
+  font-family: "Avenir 85 Heavy";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
 }
 
 #subtitle {
   position: absolute;
-  left: 90px;
-  top: 54px;
   color: gray;
-  font-size: 1.2vw;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .subtitle-two {
-  position: relative;
-  top: 67px;
-  right: 56px;
-  font-size: 0.7vw;
+  position: absolute;
+  font-size: 16px;
   color: gray;
   text-align: left;
 }
 
 #text-one {
   position: relative;
-  top: 44px;
-  right: 81px;
+  top: 100px;
+  right: 125px;
   color: orange;
-  font-size: 1.5vw;
+  font-size: 28px;
 }
 
 #text-two {
   color: gray;
   position: relative;
-  top: 25px;
-  right: 81px;
 }
 
 .line {
-  margin-top: 41px;
+  margin-top: 110px;
 }
 .float-left {
-  margin-left: 16px;
+  margin-left: 25px;
   color: gray;
 }
 
 #img-one {
   position: absolute;
-  left: 15px;
-  top: 230px;
+  left: 28px;
+  top: 260px;
 }
 
 #img-two {
   position: absolute;
-  left: 14px;
-  top: 271px;
+  left: 28px;
+  top: 300px;
 }
 #img-three {
   position: absolute;
-  left: 14px;
-  top: 312px;
+  left: 28px;
+  top: 340px;
 }
 
 #doller-one {
@@ -90,40 +97,40 @@
 
 #doller-three {
   position: relative;
-  top: 56px;
-  left: 10px;
+  top: 80px;
+  left: -30px;
   color: gray;
 }
 
 .line-one {
   position: relative;
   left: 0px;
-  top: 60px;
+  top: 75px;
 }
 
 #rate {
   position: relative;
-  top: 55px;
-  right: 182px;
+  top: 75px;
+  right: 244px;
 }
 
 #rate-num {
   position: relative;
-  top: 14px;
-  right: 93px;
+  top: 45px;
+  right: 140px;
   color: orange;
 }
 
 #apr {
   position: relative;
-  top: 13px;
-  left: 110px;
+  top: 35px;
+  left: 0px;
 }
 
 #apr-num {
   position: relative;
-  left: 91px;
-  bottom: 28px;
+  left: 90px;
+  bottom: -5px;
   color: orange;
 }
 
@@ -149,6 +156,94 @@
   border-radius: 10px;
   height: 54px;
   width: 247px;
-  margin-left: 18px;
-  margin-bottom: 21px;
+  margin: 0px auto 21px auto;
+}
+
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black,
+.text-black {
+  background-color: white !important;
+  color: black;
+}
+#icon {
+  color: #f47741;
+}
+
+.subtitle-two {
+  top: 74px;
+  right: 78px;
+}
+
+#subtitle {
+  left: 106px;
+  top: 36px;
+}
+
+#text-two {
+  top: 90px;
+  right: 112px;
+}
+.marg-md {
+  margin: 20px 0px;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .subtitle-two {
+    top: 74px;
+    right: 78px;
+  }
+  #text-two {
+    top: 90px;
+    right: 112px;
+  }
+  .marg-md {
+    margin: 20px 0px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .subtitle-two {
+    top: 74px;
+    right: 110px;
+  }
+  #text-two {
+    top: 90px;
+    right: 125px;
+  }
+  .marg-md {
+    margin: 20px 155px;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .subtitle-two {
+    top: 74px;
+    right: 110px;
+  }
+  #text-two {
+    top: 90px;
+    right: 125px;
+  }
+  .marg-md {
+    margin: 0px 0px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .subtitle-two {
+    top: 74px;
+    right: 110px;
+  }
+  #text-two {
+    top: 90px;
+    right: 125px;
+  }
+  .marg-md {
+    margin: 0px 0px;
+  }
 }

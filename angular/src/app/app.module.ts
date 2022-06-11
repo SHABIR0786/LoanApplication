@@ -174,7 +174,9 @@ import { AnimatedStep17Component } from "./buy-a-home/animated-step17/animated-s
 import { AnimatedStep18Component } from "./buy-a-home/animated-step18/animated-step18.component";
 import { AnimatedStep19Component } from "./buy-a-home/animated-step19/animated-step19.component";
 import { AnimatedFormHeaderComponent } from "./layout/animated-form-header.component";
+import { AnimatedBuyHomeHeaderComponent } from "./layout/animated-buy-home-header.component";
 import { AnimatedFormFooterComponent } from "./layout/animated-form-footer.component";
+import { AnimatedLegalFooterComponent } from "./layout/animated-legal-footer.component";
 import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
 import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
 import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
@@ -494,6 +496,8 @@ const ngWizardConfig: NgWizardConfig = {
     AgreeToFollowingComponent,
     CreditConfirmationComponent,
     ThanksForApplyingComponent,
+    AnimatedBuyHomeHeaderComponent,
+    AnimatedLegalFooterComponent,
   ],
   imports: [
     CommonModule,

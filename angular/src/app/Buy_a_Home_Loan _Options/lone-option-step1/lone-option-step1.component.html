@@ -1,48 +1,12 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
     <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
       Great! Tell us how you’re using this property.
     </h2>
-    <div class="hrline">
-      <span class="firsticon">
-        <i class="fas fa-map-marker-alt"></i>
-        <span class="text-white"> INTUITIVE<br />LOAN FINDER </span>
-      </span>
-      <span class="stepcircle"
-        ><span class="secondstep">
-          LOAN <br />
-          RECOMMENDATION</span
-        ></span
-      >
-      <span class="stepcircle"
-        ><span class="thirdstep">
-          CREDIT <br />
-          SCORES</span
-        >
-      </span>
-      <span class="stepcircle"
-        ><span class="fourthstep">
-          DIGITAL <br />
-          MORTGAGE</span
-        >
-      </span>
-      <span class="stepcircle"
-        ><span class="fivestep">
-          CREDIT <br />
-          SCORES</span
-        >
-      </span>
-      <span class="stepcircle" style="float: right; margin-top: -15px"
-        ><span class="laststep">
-          REAL <br />
-          APPROVAL</span
-        >
-      </span>
-      <hr />
-    </div>
+
     <!-- <p>TELL US WHAT YOU WANT TO DO</p> -->
     <div class="row justify-content-center pt-5 mt-5">
-      <div class="col-md-2 col-sm-0">
+      <div class="col-lg-2 col-sm-0">
         <div class="pt-5 float-left pl-4">
           <span class="pt-3 cursor_pointer">
             <i class="fa fa-angle-left" id="icon"></i>
@@ -52,7 +16,7 @@
           </span>
         </div>
       </div>
-      <div class="col-md-8 col-sm-12">
+      <div class="col-md-12 col-lg-8 col-sm-12">
         <div class="row">
           <div class="col-lg-4 col-md-4">
             <div class="form-group mt-5">
@@ -65,12 +29,8 @@
                   (click)="proceedToNext('Home to live in')"
                 >
                   <!-- <i class="fa fa-home fa-5x"></i> -->
-                  <img
-                    src="assets/images/home-white.png"
-                    alt=""
-                    width="129px"
-                    height="107px"
-                  />
+                  <div class="home-bg-img"></div>
+
                   <h5 class="mt-3">Home to live in</h5>
                   <!-- <p>BUY A HOME</p> -->
                 </div>
@@ -88,12 +48,7 @@
                   class="card-body cursor_pointer"
                   (click)="proceedToNext('Investment Property')"
                 >
-                  <img
-                    src="assets/images/big-dollar.png"
-                    alt=""
-                    width="57px"
-                    height="107px"
-                  />
+                  <div class="dollar-bg-img"></div>
                   <h5 class="mt-3">Investment Property</h5>
                 </div>
               </div>
@@ -109,12 +64,7 @@
                   class="card-body cursor_pointer"
                   (click)="proceedToNext('Second home')"
                 >
-                  <img
-                    src="assets/images/date-icon.png"
-                    alt=""
-                    width="109px"
-                    height="107px"
-                  />
+                  <div class="second-home-img"></div>
                   <h5 class="mt-3">Second home</h5>
                 </div>
               </div>
@@ -122,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2 col-sm-0"></div>
+      <div class="col-md-2 col-lg-2 col-sm-0"></div>
     </div>
   </div>
 </div>

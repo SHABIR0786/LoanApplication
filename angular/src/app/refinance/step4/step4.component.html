@@ -1,13 +1,11 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="pb-5 font-weight-bold" style="font-size: 40px">
-      Why do you want to refinance?
-    </h2>
+    <h2 class="pb-5 font-weight-bold">Why do you want to refinance?</h2>
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
         <p
-          id="Back"
+          id="back"
           class="fa fa-angle-left cursor_pointer"
           (click)="proceedToPrevious()"
         >
@@ -19,7 +17,7 @@
           <br /><br />
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 btn_mwh"
+            class="btn btn-outline-blue btn-lg btn-block mb-3 btn_mwh"
             (click)="proceedToNext('Primary')"
             [class.selected]="formData.WantRefinance == 'Primary'"
           >
@@ -27,7 +25,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 btn_mwh"
+            class="btn btn-outline-blue btn-lg btn-block mb-3 btn_mwh"
             (click)="proceedToNext('Secondary Home')"
             [class.selected]="formData.WantRefinance == 'Secondary Home'"
           >
@@ -35,7 +33,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 btn_mwh"
+            class="btn btn-outline-blue btn-lg btn-block mb-3 btn_mwh"
             (click)="proceedToNext('Investment Property')"
             [class.selected]="formData.WantRefinance == 'Investment Property'"
           >
@@ -45,7 +43,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart p21 mt-5">
+    <div class="gage-chart-blue p21 mt-5 d-lg-flex d-none">
       <span>21%</span>
     </div>
   </div>
