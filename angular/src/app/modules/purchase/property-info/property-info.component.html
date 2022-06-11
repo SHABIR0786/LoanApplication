@@ -2,59 +2,119 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Congragulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <!-- <form action="" id="address"> -->
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Address"
-      [(ngModel)]="model.newHomeAddress"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Apt / Unit"
-      [(ngModel)]="model.newHomeUnit"
-    />
-    <!-- <select class="form-select form-style form-control" [(ngModel)]="model.newHomeState">
-      <option [value]="s.id" *ngFor="let s of cities">{{s.cityName}}</option>
-    </select> -->
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="City or Town"
-      [(ngModel)]="model.newHomeCityTown"
-    />
-
-    <div class="row">
-      <div class="col-md-5">
-        <select
-          class="form-select form-style form-control"
-          [(ngModel)]="model.newHomeState"
-        >
-          <option [value]="s.id" *ngFor="let s of states">
-            {{ s.stateName }}
-          </option>
-          <!-- <option value="state">State</option> -->
-        </select>
-      </div>
-      <div class="col-md-7">
+    <form
+      action=""
+      id="address"
+      #f="ngForm"
+      (ngSubmit)="f.valid && onPehlaForm(f)"
+    >
+      <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
-          placeholder="Zip Code"
-          [(ngModel)]="model.newHomeZip"
+          class="form-control form-style mb-0"
+          placeholder="Address"
+          name="newHomeAddress"
+          [(ngModel)]="model.newHomeAddress"
+          #newHomeAddressRef="ngModel"
+          required
         />
+        <div
+          *ngIf="f.submitted && !newHomeAddressRef.valid"
+          class="badge badge-danger w-100"
+        >
+          Address is required
+        </div>
       </div>
-    </div>
-    <!-- </form> -->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style mb-0"
+          placeholder="Apt / Unit"
+          name="newHomeUnit"
+          [(ngModel)]="model.newHomeUnit"
+          required
+          #newHomeUnitRef="ngModel"
+        />
+        <div
+          *ngIf="f.submitted && !newHomeUnitRef.valid"
+          class="badge badge-danger w-100"
+        >
+          Unit is required
+        </div>
+      </div>
+      <!-- <select class="form-select form-style form-control" [(ngModel)]="model.newHomeState">
+      <option [value]="s.id" *ngFor="let s of cities">{{s.cityName}}</option>
+    </select> -->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style mb-0"
+          placeholder="City or Town"
+          name="newHomeCityTown"
+          [(ngModel)]="model.newHomeCityTown"
+          required
+          #newHomeCityTownRef="ngModel"
+        />
+        <div
+          *ngIf="f.submitted && !newHomeCityTownRef.valid"
+          class="badge badge-danger w-100"
+        >
+          City is required
+        </div>
+      </div>
 
-    <a
-      [routerLink]="['/app/purchase/property-info', 2]"
-      class="btn btn-primary btn-next btn-orange"
-      role="button"
-      (click)="onNewHomeClick()"
-      >Next</a
-    >
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <select
+              class="form-select form-style form-control mb-0"
+              [(ngModel)]="model.newHomeState"
+              name="newHomeState"
+              required
+              #newHomeStateRef="ngModel"
+            >
+              <option [value]="s.id" *ngFor="let s of states">
+                {{ s.stateName }}
+              </option>
+              <!-- <option value="state">State</option> -->
+            </select>
+            <div
+              *ngIf="f.submitted && !newHomeStateRef.valid"
+              class="badge badge-danger w-100"
+            >
+              State is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style mb-0"
+              placeholder="Zip Code"
+              [(ngModel)]="model.newHomeZip"
+              name="newHomeZip"
+              #newHomeZipRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="f.submitted && !newHomeZipRef.valid"
+              class="badge badge-danger w-100"
+            >
+              Zip is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-next btn-orange"
+        role="button"
+      >
+        Next
+      </button>
+    </form>
   </div>
   <div class="content-footer">
     <p>Already have an account | <a href="">Log in</a></p>
