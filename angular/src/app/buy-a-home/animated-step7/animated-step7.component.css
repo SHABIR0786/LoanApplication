@@ -1,27 +1,16 @@
 .form-control {
   height: 65px;
   margin-top: 30px;
-  width: 100%;
   font-size: 20px;
   height: 83px;
   padding-left: 20px;
-  background-color: white;
-  color: black;
-}
-.btn {
-  width: 100%;
+  background-color: #f47741;
+  color: white;
 }
 
 #Family {
   background-color: #f47741;
   text-decoration-color: white;
-}
-#back {
-  margin-top: 196px;
-  margin-right: 350px;
-  margin-left: 23px;
-  font-size: 20px;
-  cursor: pointer;
 }
 
 #num {
@@ -35,6 +24,7 @@
 }
 .selected {
   background-color: #f47741;
+  color: white !important;
 }
 .percent {
   position: absolute;
@@ -49,13 +39,14 @@
 .number_percent {
   position: absolute;
   margin-top: 24px;
-  margin-left: 312px;
+  margin-left: 270px;
   color: black;
   height: 41px;
   float: right;
   width: 60px;
   border: none !important;
   padding: 0px;
+  display: none;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -64,4 +55,157 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 button.btn:hover {
   background-color: #f47741;
+}
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black {
+  background-color: white !important;
+  color: black;
+}
+.Content-Step-Body .btn-outline-orange {
+  border-color: #f47741;
+  color: #f47741;
+}
+.Content-Step-Body .btn-outline-orange:hover {
+  color: white;
+}
+
+.Content-Step-Body.Content-Step-Footer {
+  background-color: white !important;
+}
+
+div[_ngcontent-mcr-c79].Content-Step-Body[_ngcontent-vpi-c73] {
+  background-color: white !important;
+}
+#back.fa::before {
+  color: #f47741;
+}
+
+#back {
+  margin-top: 225px;
+  margin-right: 350px;
+  margin-left: 23px;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 33%;
+  top: 90px;
+}
+
+.btn {
+  width: 93%;
+}
+
+h2 {
+  font-size: 30px;
+}
+.form-control {
+  width: 93%;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 33%;
+    top: 90px;
+  }
+  .btn {
+    width: 93%;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+  .number_percent {
+    margin-left: 270px;
+  }
+  .form-control {
+    width: 93%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 42%;
+    top: 85px;
+  }
+  .btn {
+    width: 70%;
+  }
+  .form-control {
+    width: 70%;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+  .number_percent {
+    margin-left: 312px;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .btn {
+    width: 100%;
+  }
+  .form-control {
+    width: 100%;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  .number_percent {
+    margin-left: 312px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  #back {
+    margin-top: 225px;
+    margin-right: 350px;
+    margin-left: 23px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .btn {
+    width: 100%;
+  }
+  .form-control {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+  .number_percent {
+    margin-left: 312px;
+  }
 }

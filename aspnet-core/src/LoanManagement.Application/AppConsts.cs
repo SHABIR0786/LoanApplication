@@ -14,6 +14,7 @@
         public const string InsertFailure = "Record Failed To Insert";
         public const string UpdateFailure = "Record Failed To Update";
         public const string DeleteFailure = "Record Failed To Delete";
+        public const string PasswordMismatch = "Invalid Password";
 
         //Booking Statuses Constants
         public const string Available = "Available";

@@ -9,10 +9,19 @@
   border: 1px solid blue;
 }
 
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black,
+.text-black {
+  background-color: white !important;
+  color: black;
+}
+
 #Back {
   position: relative;
   top: 25px;
   font-size: 20px;
+  cursor: pointer;
 }
 #icon {
   top: 28px;
@@ -21,73 +30,97 @@
   /* top: 141px; */
   /* right: 300px; */
 }
-.hrline {
-  /* width: 100%; */
-  margin-left: 10%;
-  width: 85%;
-}
-.hrline hr {
-  border-top: 1px solid white;
-  width: 99%;
-}
-.firsticon {
-  float: left;
-  margin-left: -9px;
-  margin-top: -10px;
-  color: #f47741;
-}
-.firsticon span {
-  font-size: 12px;
+.pt-3.cursor_pointer {
   position: absolute;
-  margin-top: 26px;
-  margin-left: -48px;
+  left: 39%;
+  top: 775px;
 }
-.stepcircle {
-  border-radius: 100%;
-  border: 1px solid white;
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  float: left;
-  margin-left: 19.1%;
-  margin-top: -5px;
-  background-color: white;
+.card.bg_transparent {
+  background-color: white !important;
+  color: #091a52;
+  border: 1px solid #091a52 !important;
 }
 .card.bg_transparent:hover {
-  background-color: #f47741 !important;
+  background-color: #091a52 !important;
+  color: white;
+  border: 1px solid #091a52 !important;
+}
+.home-img {
+  /* width: 67px;
+  height: 66px; */
+  width: 121px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/home-blue.png");
 }
 
-.stepcircle span {
-  position: absolute;
+.condo-img {
+  /* width: 60px;
+  height: 65px; */
+  width: 63px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/condo-blue.png");
+}
+.multi-img {
+  /* width: 60px;
+  height: 65px; */
+  width: 114px;
+  height: 116px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../../assets/images/multi-blue.png");
+}
+.Content-Step-Body .card:hover .home-img {
+  background-image: url("../../../assets/images/home-white.png");
+}
+.Content-Step-Body .card:hover .condo-img {
+  background-image: url("../../../assets/images/condo-white.png");
+}
+.Content-Step-Body .card:hover .multi-img {
+  background-image: url("../../../assets/images/multi-white.png");
 }
 
-.secondstep {
-  margin-top: 17px;
-  font-size: 12px;
-  margin-left: -58px;
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 39%;
+    top: 775px;
+  }
 }
 
-.thirdstep {
-  position: absolute;
-  margin-top: 17px;
-  margin-left: -22px;
-  font-size: 12px;
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 20%;
+    top: 385px;
+  }
 }
 
-.fourthstep {
-  margin-top: 17px;
-  margin-left: -29px;
-  font-size: 12px;
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 20%;
+    top: 120px;
+  }
 }
 
-.fivestep {
-  margin-top: 17px;
-  margin-left: -18px;
-  font-size: 12px;
-}
-
-.laststep {
-  margin-top: 17px;
-  margin-left: -26px;
-  font-size: 12px;
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .pt-3.cursor_pointer {
+    position: absolute;
+    left: 20%;
+    top: 120px;
+  }
 }

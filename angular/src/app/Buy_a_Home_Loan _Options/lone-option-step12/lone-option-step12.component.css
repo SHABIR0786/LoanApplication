@@ -1,12 +1,16 @@
 #button {
-  border: 1px solid orange !important;
+  border: 1px solid #f47741 !important;
   width: 260px;
   height: 43px;
   text-align: center;
-  color: #ffffff;
-  background-color: #091a52;
+  color: #f47741;
+  background-color: white !important;
   margin-left: 499px;
   margin-top: -100px;
+}
+#button:hover {
+  color: white;
+  background-color: #f47741 !important;
 }
 
 .card-title {
@@ -124,12 +128,12 @@
 #rate {
   position: relative;
   top: 55px;
-  right: 104px;
+  right: 191px;
 }
 #rate1 {
   position: relative;
   top: 55px;
-  right: 180px;
+  right: 103px;
 }
 
 #rate-num {
@@ -142,7 +146,7 @@
 #apr {
   position: relative;
   top: 13px;
-  left: 110px;
+  left: 99px;
 }
 
 #apr-num {
@@ -233,4 +237,28 @@
 }
 label {
   text-align: left;
+}
+
+/* Hafiz's CSS */
+
+.Content-Step-Body.text-black,
+.text-black {
+  background-color: white !important;
+  color: black;
+}
+.card.orange-form {
+  color: white !important;
+}
+.card.orange-form .text-primary {
+  color: #f47741 !important;
+  border: #f47741 !important;
+}
+.card.orange-form .form-group label {
+  color: white !important;
+}
+#update {
+  border-color: white;
+}
+#icon {
+  color: #f47741;
 }

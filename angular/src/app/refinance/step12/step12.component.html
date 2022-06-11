@@ -1,6 +1,6 @@
-<div class="Content-Step-Body text-white">
+<div class="Content-Step-Body text-black">
   <div class="container">
-    <h1 class="pb-5 font-weight-bold" style="font-size: 40px">
+    <h1 class="pb-5 font-weight-bold">
       Number of late mortgage payments in the
       <br />
       last 12 months?
@@ -8,16 +8,19 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-4">
-        <p id="Back" (click)="proceedToPrevious()">
-          <i class="fa fa-angle-left"></i>
-          <span> Back</span>
+        <p
+          id="back"
+          class="fa fa-angle-left cursor_pointer"
+          (click)="proceedToPrevious()"
+        >
+          <span style="margin-left: 5px">Back</span>
         </p>
       </div>
       <div class="col-lg-4">
         <div class="BTN">
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn_mwh btn-block mt-4"
+            class="btn btn-outline-blue btn-lg btn_mwh btn-block mt-4"
             (click)="proceedToNext('None')"
             [class.selected]="formData.LateMortgagePayments == 'None'"
           >
@@ -25,7 +28,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn_mwh btn-block mb-3 mt-3"
+            class="btn btn-outline-blue btn-lg btn_mwh btn-block mb-3 mt-3"
             (click)="proceedToNext('One Late Payment')"
             [class.selected]="
               formData.LateMortgagePayments == 'One Late Payment'
@@ -35,7 +38,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary btn-lg btn-block mb-3 mt-3"
+            class="btn btn-outline-blue btn-lg btn-block mb-3 mt-3"
             (click)="proceedToNext('More Than One')"
             [class.selected]="formData.LateMortgagePayments == 'More Than One'"
           >
@@ -45,7 +48,7 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="gage-chart p63 mt-5">
+    <div class="gage-chart-blue p63 mt-5 d-lg-flex d-none">
       <span>63%</span>
     </div>
   </div>
