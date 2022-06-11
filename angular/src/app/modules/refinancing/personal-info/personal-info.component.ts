@@ -36,6 +36,10 @@ export class PersonalInfoComponent implements OnInit {
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
       if (x && x.result) this.states = x.result;
+      this.model.empState = 1;
+      this.model.currentStateId = 1;
+      this.model.personalStateId = 1;
+      this.model.propertyStateId = 1;
     });
   }
   minDep() {

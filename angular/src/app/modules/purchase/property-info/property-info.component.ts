@@ -44,7 +44,10 @@ export class PropertyInfoComponent implements OnInit {
     this.api.get("State/states").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
-        this.model.newHomeState = x.result[0].id;
+        this.model.empState = "1";
+        this.model.currentStateId = 1;
+        this.model.newHomeState = "1";
+        //this.model.newHomeState = x.result[0].id;
       }
     });
   }

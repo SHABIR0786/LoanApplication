@@ -14,14 +14,21 @@
       >No</a
     >
     <p *ngIf="isEdit">Who are you working with?</p>
-    <input
+    <!-- <input
       *ngIf="isEdit"
       type="text"
       [(ngModel)]="model.workingOfficerName"
       class="form-control form-style"
       placeholder="Select your Loan Officer"
-    />
-
+    /> -->
+    <select
+      *ngIf="isEdit"
+      placeholder="Select your Loan Officer"
+      [(ngModel)]="model.workingOfficerName"
+      class="form-control form-style"
+    >
+      <option value="Willam Martin">Willam Martin</option>
+    </select>
     <a
       routerLink="/app/refinance/welcome/2"
       class="btn btn-primary btn-next btn-blue"
