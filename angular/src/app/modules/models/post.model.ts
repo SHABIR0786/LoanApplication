@@ -7,7 +7,7 @@ export class PostModel {
   newHomeAddress: string;
   newHomeUnit: string;
   newHomeCityTown: string;
-  newHomeState: string;
+  newHomeState: string = "1";
   newHomeZip: string;
   contractDate: string;
   propertyOption1: string;
@@ -44,7 +44,7 @@ export class PostModel {
   empAddress: string;
   empAptUnit: string;
   empCityTown: string;
-  empState: string;
+  empState: string = "1";
   empZip: string;
   empIsCurrentJob: boolean;
   empEstDate: string;
@@ -103,7 +103,7 @@ export class PostModel {
   currentAddress: string;
   currentUnit: string;
   currentCity: string;
-  currentStateId: number;
+  currentStateId: number = 1;
   currentZipCode: string;
   currentStartLivingDate: string;
   currentReantingType: string;
@@ -117,7 +117,7 @@ export class AddFinanceApiModel {
   newHomeAddress: string;
   newHomeUnit: string;
   newHomeCity: string;
-  newHomeStateId: number;
+  newHomeStateId: number = 1;
   newHomeZipCode: string;
   contractClosingDate: string;
   contractType: string;
@@ -155,7 +155,7 @@ export class AddFinanceApiModel {
   currentAddress: string;
   currentUnit: string;
   currentCity: string;
-  currentStateId: number;
+  currentStateId: number = 1;
   currentZipCode: string;
   currentStartLivingDate: string;
   currentReantingType: string;
@@ -269,7 +269,7 @@ export class RefinancePost {
   "propertyUnit": string;
   "propertyCity": string;
   "propertyZip": string;
-  "propertyStateId": number;
+  "propertyStateId": number = 1;
   "propertyCountryId": number;
   "propertyEstimatedValue": number;
   "propertyLoanBalance": number;
@@ -308,7 +308,7 @@ export class RefinancePost {
   "currentAddress": string;
   "currentUnit": string;
   "currentCity": string;
-  "currentStateId": number;
+  "currentStateId": number = 1;
   "currentZipCode": string;
   "currentStartLivingDate": Date;
   "currentReantingType": string;
@@ -324,7 +324,7 @@ export class RefinancePost {
   "personalAddress": string;
   "personalUnit": string;
   "personalCity": string;
-  "personalStateId": number;
+  "personalStateId": number = 1;
   "personalZipCode": string;
   "personalStartLivingDate": Date;
   "personalReantingType": string;
@@ -334,7 +334,7 @@ export class RefinancePost {
   empAddress: string;
   empAptUnit: string;
   empCity: string;
-  empState: number;
+  empState: number = 1;
   empZip: string;
   empPhoneNumber: string;
   isCurrentJob: number;
