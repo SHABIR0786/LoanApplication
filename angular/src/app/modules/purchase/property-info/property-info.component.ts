@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
@@ -35,10 +36,19 @@ export class PropertyInfoComponent implements OnInit {
     this.getCities();
     this.model = this.offline.getStep().data;
   }
-
+  onPehlaForm(f: NgForm) {
+    this.router.navigate(["/app/purchase/property-info", 2]);
+    this.onNewHomeClick();
+  }
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
-      if (x && x.result) this.states = x.result;
+      if (x && x.result) {
+        this.states = x.result;
+        this.model.empState = "1";
+        this.model.currentStateId = 1;
+        this.model.newHomeState = "1";
+        //this.model.newHomeState = x.result[0].id;
+      }
     });
   }
   getCities() {

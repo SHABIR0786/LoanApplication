@@ -432,9 +432,62 @@
   </div>
 </div>
 <div class="main-content" *ngIf="number == 8">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body text-left">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <header>Other Sources of Income</header>
+          <h3>Sources of income can include:</h3>
+          <ul>
+            <li>Alimony</li>
+            <li>Child Support</li>
+            <li>Capital Gains</li>
+            <li>Disability</li>
+            <li>Interest and Dividends</li>
+            <li>Retirement</li>
+            <li>Social Security</li>
+            <li>Unemployment Benefits</li>
+            <li>VA Benefits</li>
+          </ul>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
   <h2>
     Does the co-borrower have any sources of income to share?
-    <img src="img/info.svg" alt="" />
+    <img
+      src="../../../../assets/images/info.png"
+      type="button"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      alt=""
+      alt=""
+    />
   </h2>
   <h6 class="narrow-padding">
     Sources of income can include things like alimony, retirement, and social

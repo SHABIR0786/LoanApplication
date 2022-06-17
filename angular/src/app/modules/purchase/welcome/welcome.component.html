@@ -44,14 +44,21 @@
         class="btn btn-primary btn-style btn-orange"
         >No</a
       >
-      <input
+      <!-- <input
         type="text"
         class="form-control form-style"
         placeholder="Select your Loan Officer"
         [(ngModel)]="ezLoadOfficer"
         *ngIf="yes"
-      />
-
+      /> -->
+      <select
+        *ngIf="isEdit"
+        placeholder="Select your Loan Officer"
+        [(ngModel)]="ezLoadOfficer"
+        class="form-control form-style"
+      >
+        <option value="Willam Martin">Willam Martin</option>
+      </select>
       <a
         routerLink="/app/purchase/property-info/1"
         class="btn btn-primary btn-next btn-orange"
