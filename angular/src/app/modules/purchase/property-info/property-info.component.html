@@ -2,59 +2,119 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Congragulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <!-- <form action="" id="address"> -->
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Address"
-      [(ngModel)]="model.newHomeAddress"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Apt / Unit"
-      [(ngModel)]="model.newHomeUnit"
-    />
-    <!-- <select class="form-select form-style form-control" [(ngModel)]="model.newHomeState">
-      <option [value]="s.id" *ngFor="let s of cities">{{s.cityName}}</option>
-    </select> -->
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="City or Town"
-      [(ngModel)]="model.newHomeCityTown"
-    />
-
-    <div class="row">
-      <div class="col-md-5">
-        <select
-          class="form-select form-style form-control"
-          [(ngModel)]="model.newHomeState"
-        >
-          <option [value]="s.id" *ngFor="let s of states">
-            {{ s.stateName }}
-          </option>
-          <!-- <option value="state">State</option> -->
-        </select>
-      </div>
-      <div class="col-md-7">
+    <form
+      action=""
+      id="address"
+      #f="ngForm"
+      (ngSubmit)="f.valid && onPehlaForm(f)"
+    >
+      <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
-          placeholder="Zip Code"
-          [(ngModel)]="model.newHomeZip"
+          class="form-control form-style mb-0"
+          placeholder="Address"
+          name="newHomeAddress"
+          [(ngModel)]="model.newHomeAddress"
+          #newHomeAddressRef="ngModel"
+          required
         />
+        <div
+          *ngIf="f.submitted && !newHomeAddressRef.valid"
+          class="badge badge-danger w-100"
+        >
+          Address is required
+        </div>
       </div>
-    </div>
-    <!-- </form> -->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style mb-0"
+          placeholder="Apt / Unit"
+          name="newHomeUnit"
+          [(ngModel)]="model.newHomeUnit"
+          required
+          #newHomeUnitRef="ngModel"
+        />
+        <div
+          *ngIf="f.submitted && !newHomeUnitRef.valid"
+          class="badge badge-danger w-100"
+        >
+          Unit is required
+        </div>
+      </div>
+      <!-- <select class="form-select form-style form-control" [(ngModel)]="model.newHomeState">
+      <option [value]="s.id" *ngFor="let s of cities">{{s.cityName}}</option>
+    </select> -->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style mb-0"
+          placeholder="City or Town"
+          name="newHomeCityTown"
+          [(ngModel)]="model.newHomeCityTown"
+          required
+          #newHomeCityTownRef="ngModel"
+        />
+        <div
+          *ngIf="f.submitted && !newHomeCityTownRef.valid"
+          class="badge badge-danger w-100"
+        >
+          City is required
+        </div>
+      </div>
 
-    <a
-      [routerLink]="['/app/purchase/property-info', 2]"
-      class="btn btn-primary btn-next btn-orange"
-      role="button"
-      (click)="onNewHomeClick()"
-      >Next</a
-    >
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <select
+              class="form-select form-style form-control mb-0"
+              [(ngModel)]="model.newHomeState"
+              name="newHomeState"
+              required
+              #newHomeStateRef="ngModel"
+            >
+              <option [value]="s.id" *ngFor="let s of states">
+                {{ s.stateName }}
+              </option>
+              <!-- <option value="state">State</option> -->
+            </select>
+            <div
+              *ngIf="f.submitted && !newHomeStateRef.valid"
+              class="badge badge-danger w-100"
+            >
+              State is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style mb-0"
+              placeholder="Zip Code"
+              [(ngModel)]="model.newHomeZip"
+              name="newHomeZip"
+              #newHomeZipRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="f.submitted && !newHomeZipRef.valid"
+              class="badge badge-danger w-100"
+            >
+              Zip is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-next btn-orange"
+        role="button"
+      >
+        Next
+      </button>
+    </form>
   </div>
   <div class="content-footer">
     <p>Already have an account | <a href="">Log in</a></p>
@@ -537,10 +597,73 @@
 </div>
 <!-- No# 11 Purchasing End -->
 <div class="main-content" *ngIf="number == 9">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body text-left">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <header>VA Loan Requirements</header>
+          <h3>For U.S. Veterans and Military Service Members</h3>
+          <ul>
+            <li>
+              You may be eligible for a VA Home Loan if you meet one or more of
+              the following conditions:
+            </li>
+            <li>
+              You have served 90 consecutive days of active service during
+              wartime
+            </li>
+            <li>You have served 181 days of active service during peacetime</li>
+            <li>
+              You have more than 6 years of service in the National Guard or
+              Reserves
+            </li>
+            <li>
+              You are the spouse of a service member who has died in the line of
+              duty or as a result of a service-related disability
+            </li>
+            <li>
+              This includes Army, Navy, Air Force, Marines, or Coast Guard
+            </li>
+          </ul>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
   <h2>Are you a current or former member of the US Military?</h2>
   <h6>
     Active U.S. Military and veterans may be eligible for VA loan options!
-    <img src="img/info.svg" alt="" />
+    <img
+      src="../../../../assets/images/info.png"
+      type="button"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      alt=""
+    />
   </h6>
 
   <div

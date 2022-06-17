@@ -117,14 +117,14 @@ namespace LoanManagement.Services.Implementation
                 {
                     formFile.CopyTo(fs);
                 }
-
-                _dbContext.AdminLoanapplicationdocuments.Add(new Entities.Models.AdminLoanapplicationdocument
+                var entity = new Entities.Models.AdminLoanapplicationdocument
                 {
                     DisclosureId = request.DisclosureId,
                     DocumentPath = request.DocumentPath,
                     LoanId = request.LoanId,
                     UserId = request.UserId,
-                });
+                };
+                _dbContext.AdminLoanapplicationdocuments.Add(entity);
 
                 _dbContext.SaveChanges();
                 return entity.Id.ToString();
