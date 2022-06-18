@@ -38,7 +38,7 @@ export class OfflineService {
       step: num,
       data: localStorage.getItem("offline")
         ? JSON.parse(localStorage.getItem("offline"))
-        : null,
+        : {},
     };
   }
 }
