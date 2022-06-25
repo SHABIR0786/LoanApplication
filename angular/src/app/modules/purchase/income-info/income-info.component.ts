@@ -36,6 +36,7 @@ export class IncomeInfoComponent implements OnInit {
   ngOnInit() {
     this.model = this.offline.getStep().data;
     this.getState();
+    this._model.employeeTypeId = 1;
   }
   getState() {
     this.api.get("State/states").subscribe((x: any) => {
@@ -43,6 +44,7 @@ export class IncomeInfoComponent implements OnInit {
       this.model.empState = "1";
       this.model.currentStateId = 1;
       this.model.newHomeState = "1";
+      this._model.employementTaxeId = 1;
     });
   }
   onHaveMoreClick(e) {}
