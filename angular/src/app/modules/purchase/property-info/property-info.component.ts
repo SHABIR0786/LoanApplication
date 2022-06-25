@@ -91,4 +91,10 @@ export class PropertyInfoComponent implements OnInit {
   onEditNextClick() {
     this.offline.saveStep(3, this.model);
   }
+  onPriceKeyUp() {
+    this.model.downPaymentPercent =
+      (parseFloat(this.model.downPaymentAmount ?? "0") * 100) /
+        parseFloat(this.model.estimatedPrice ?? "0") +
+      "";
+  }
 }
