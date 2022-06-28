@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
   model: PostModel = new PostModel();
   number: number = 1;
   yes = false;
-  ezLoadOfficer = "Willam Martin";
+  ezLoadOfficer = "";
   constructor(
     private route: ActivatedRoute,
     private router: Router,

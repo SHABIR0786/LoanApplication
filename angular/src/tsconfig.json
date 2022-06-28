@@ -12,6 +12,7 @@
     "outDir": "../dist/out-tsc",
     "sourceMap": true,
     "target": "es2015",
+    "allowJs": true,
     "typeRoots": ["../node_modules/@types"],
     "baseUrl": ".",
     "paths": {

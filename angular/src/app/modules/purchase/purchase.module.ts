@@ -37,12 +37,6 @@ import { OfflineService } from "./../../services/offline.service";
 import { FormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
-import { LoginComponent } from "./login/login.component";
-import { NgxMaskModule, IConfig } from "ngx-mask";
-export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
-const maskConfig: Partial<IConfig> = {
-  validation: false,
-};
 @NgModule({
   declarations: [
     IndexComponent,
@@ -76,14 +70,8 @@ const maskConfig: Partial<IConfig> = {
     AssetsInfoComponent,
     GovernmentComponent,
     PersonalInfoComponent,
-    LoginComponent,
   ],
   providers: [OfflineService, ApiService],
-  imports: [
-    CommonModule,
-    PurchaseRoutingModule,
-    FormsModule,
-    NgxMaskModule.forRoot(maskConfig),
-  ],
+  imports: [CommonModule, PurchaseRoutingModule, FormsModule],
 })
 export class PurchaseModule {}
