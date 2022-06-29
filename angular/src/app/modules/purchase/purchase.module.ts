@@ -76,7 +76,6 @@ const maskConfig: Partial<IConfig> = {
     AssetsInfoComponent,
     GovernmentComponent,
     PersonalInfoComponent,
-    LoginComponent,
   ],
   providers: [OfflineService, ApiService],
   imports: [
