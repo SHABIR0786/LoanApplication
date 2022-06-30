@@ -99,7 +99,7 @@ namespace LoanManagement.Services.Implementation
             return AppConsts.SuccessfullyUpdated;
         }
 
-        public string UploadDocument(UpdateAdminLoanApplicationDocument request, IFormFile formFile)
+        public string UploadDocument(UploadAdminLoanApplicationDocument request, IFormFile formFile)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace LoanManagement.Services.Implementation
                 var entity = new Entities.Models.AdminLoanapplicationdocument
                 {
                     DisclosureId = request.DisclosureId,
-                    DocumentPath = request.DocumentPath,
+                    DocumentPath = filePath,
                     LoanId = request.LoanId,
                     UserId = request.UserId,
                 };
