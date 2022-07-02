@@ -203,7 +203,8 @@
             <!-- <span class="text_primary float-left border-primary rounded p-2 btn border-0 sidebar_show_btn sidebar_show_btn_active" #showsidebar title="Show Sidebar" [class.d_none_imp] = "toggleSidebar == true" id="showsidebar" (click)="toggleSidebarFunc()"><i class="fa fa-bars" aria-hidden="true"></i></span> -->
             <!-- <span class="text_primary float-right m-2 p-1  border-danger rounded d_none btn border-0" #hidesidebar title="Hide Sidebar"><i class="fa fa-times" aria-hidden="true"></i></span> -->
             <h4 class="font-weight-bold text-truncate w_responsive">
-              Welcome, <span class="UserName">Shabir</span><span> !</span>
+              Welcome, <span class="UserName">{{ loanApplicantName }}</span
+              ><span> !</span>
             </h4>
           </div>
         </div>
@@ -242,7 +243,7 @@
       <div class="row">
         <span class="h4" style="color: #f47b46"
           >My Loan Application #
-          <span class="LoanNumber">18311091881</span></span
+          <span class="LoanNumber">{{ loanApplicationNumber }}</span></span
         >
       </div>
       <div class="row pt-2">
@@ -257,7 +258,7 @@
                   background-color: #dff9ec !important;
                   color: #1bd27a !important;
                 "
-                >Application Submitted</a
+                >{{ loanStatus }}</a
               >
             </div>
           </div>
@@ -281,7 +282,7 @@
         <div class="col-md-4 col-sm-12 pl-sm-0 py-md-2">
           <div class="card">
             <div class="card-body px-md-4 py-2">
-              <h5 class="card-title h6 pt-1">5152 White Oak Ave Loan</h5>
+              <h5 class="card-title h6 pt-1">{{ loanApplicantAddress }}</h5>
               <a
                 href="javascript:void(0)"
                 class="btn float-right mr-2"
@@ -289,7 +290,7 @@
                   background-color: #e6e9f0 !important;
                   color: #384b8e !important;
                 "
-                >#3718317</a
+                >{{ loanApplicationNumber }}</a
               >
             </div>
           </div>
@@ -331,7 +332,9 @@
                     <span class="float-left name">Loan Number</span>
                   </div>
                   <div class="col float-right">
-                    <span class="LoanNumber float-right">18311091881</span>
+                    <span class="LoanNumber float-right">{{
+                      loanApplicationNumber
+                    }}</span>
                   </div>
                 </div>
                 <div class="divider m-2 w-100"></div>
@@ -358,7 +361,9 @@
                     <span class="float-left name">Borrower Name</span>
                   </div>
                   <div class="col float-right">
-                    <span class="LoanNumber float-right">majeed</span>
+                    <span class="LoanNumber float-right">{{
+                      loanApplicantName
+                    }}</span>
                   </div>
                 </div>
                 <div class="divider m-2 w-100"></div>
@@ -367,9 +372,9 @@
                     <span class="float-left name">Property Address</span>
                   </div>
                   <div class="col float-right">
-                    <span class="LoanNumber float-right text-right"
-                      >5154 White Oak,Ecnlno, CA91316</span
-                    >
+                    <span class="LoanNumber float-right text-right">{{
+                      loanApplicantAddress
+                    }}</span>
                   </div>
                 </div>
                 <div class="divider m-2 w-100"></div>
@@ -378,7 +383,9 @@
                     <span class="float-left name">Loan Program</span>
                   </div>
                   <div class="col float-right">
-                    <span class="LoanNumber float-right">Super/Conf 30</span>
+                    <span class="LoanNumber float-right">{{
+                      loanProgramName
+                    }}</span>
                   </div>
                 </div>
               </div>

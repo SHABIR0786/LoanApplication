@@ -53,7 +53,6 @@ export class GovernmentComponent implements OnInit {
   }
   onGovClick() {
     const final = this.apiModel.map(this.model);
-    debugger;
     this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
       if (d.success === true) {
         this.router.navigate(["/app/purchase/gov/2"]);
