@@ -43,6 +43,7 @@ export class AppAuthService {
     finallyCallback = finallyCallback || (() => {});
 
     this._tokenAuthService
+
       .authenticate(this.authenticateModel)
       .pipe(
         finalize(() => {

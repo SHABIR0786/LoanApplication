@@ -17,13 +17,10 @@
           [(ngModel)]="model.newHomeAddress"
           #newHomeAddressRef="ngModel"
           required
-          [ngClass]="{
-            'error-textbox': f.submitted && !newHomeAddressRef.valid
-          }"
         />
         <div
           *ngIf="f.submitted && !newHomeAddressRef.valid"
-          class="error-text w-100"
+          class="badge badge-danger w-100"
         >
           Address is required
         </div>
@@ -37,11 +34,10 @@
           [(ngModel)]="model.newHomeUnit"
           required
           #newHomeUnitRef="ngModel"
-          [ngClass]="{ 'error-textbox': f.submitted && !newHomeUnitRef.valid }"
         />
         <div
           *ngIf="f.submitted && !newHomeUnitRef.valid"
-          class="error-text w-100"
+          class="badge badge-danger w-100"
         >
           Unit is required
         </div>
@@ -58,13 +54,10 @@
           [(ngModel)]="model.newHomeCityTown"
           required
           #newHomeCityTownRef="ngModel"
-          [ngClass]="{
-            'error-textbox': f.submitted && !newHomeCityTownRef.valid
-          }"
         />
         <div
           *ngIf="f.submitted && !newHomeCityTownRef.valid"
-          class="error-text w-100"
+          class="badge badge-danger w-100"
         >
           City is required
         </div>
@@ -79,9 +72,6 @@
               name="newHomeState"
               required
               #newHomeStateRef="ngModel"
-              [ngClass]="{
-                'error-textbox': f.submitted && !newHomeStateRef.valid
-              }"
             >
               <option [value]="s.id" *ngFor="let s of states">
                 {{ s.stateName }}
@@ -90,7 +80,7 @@
             </select>
             <div
               *ngIf="f.submitted && !newHomeStateRef.valid"
-              class="error-text w-100"
+              class="badge badge-danger w-100"
             >
               State is required
             </div>
@@ -105,14 +95,11 @@
               [(ngModel)]="model.newHomeZip"
               name="newHomeZip"
               #newHomeZipRef="ngModel"
-              [ngClass]="{
-                'error-textbox': f.submitted && !newHomeZipRef.valid
-              }"
               required
             />
             <div
               *ngIf="f.submitted && !newHomeZipRef.valid"
-              class="error-text w-100"
+              class="badge badge-danger w-100"
             >
               Zip is required
             </div>
@@ -131,6 +118,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -201,6 +189,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -217,7 +206,6 @@
       class="form-control form-style"
       placeholder="Estimated Home Price"
       [(ngModel)]="model.estimatedPrice"
-      (keyup)="onPriceKeyUp()"
     />
     <div class="row">
       <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
@@ -226,7 +214,6 @@
           class="form-control form-half-left"
           placeholder="Down Payment Amount"
           [(ngModel)]="model.downPaymentAmount"
-          (keyup)="onPriceKeyUp()"
         />
       </div>
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
@@ -274,6 +261,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -334,6 +322,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -375,7 +364,6 @@
       type="text"
       class="form-control form-style"
       placeholder="Phone Number"
-      mask="(000) 000-0000"
       [(ngModel)]="model.phone"
     />
     <input
@@ -447,6 +435,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -503,6 +492,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -562,6 +552,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -608,6 +599,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -707,6 +699,7 @@
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -777,7 +770,11 @@
       </div>
     </div>
     <div class="content-footer">
+      <<<<<<< HEAD
+      <p>Already have an account | <a href="">Log in</a></p>
+      =======
       <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
       <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
     </div>
   </div>
@@ -953,7 +950,6 @@
         type="text"
         class="form-control form-style"
         placeholder="Phone Number"
-        mask="(000) 000-0000"
         [(ngModel)]="model.phone"
       />
       <input
@@ -1034,7 +1030,11 @@
       </div>
     </div>
     <div class="content-footer">
+      <<<<<<< HEAD
+      <p>Already have an account | <a href="">Log in</a></p>
+      =======
       <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
       <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
     </div>
   </div>
