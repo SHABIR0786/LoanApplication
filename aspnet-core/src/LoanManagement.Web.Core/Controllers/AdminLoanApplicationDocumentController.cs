@@ -1,5 +1,6 @@
 using LoanManagement.Features.AdminLoanApplicationDocument;
 using LoanManagement.Services.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoanManagement.Controllers
@@ -20,6 +21,13 @@ namespace LoanManagement.Controllers
 		public string Insert([FromBody] AddAdminLoanApplicationDocument request)
 		{
 			return _service.Add(request);
+		}
+
+		[HttpPost]
+		[Route("Upload")]
+		public string Upload([FromForm] UploadAdminLoanApplicationDocument request,IFormFile formFile)
+		{
+			return _service.UploadDocument(request, formFile);
 		}
 
 		[HttpPost]

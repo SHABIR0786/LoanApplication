@@ -15,6 +15,6 @@ namespace LoanManagement.Services.Interface
         string Delete(int id);
         List<UpdateAdminLoanApplicationDocument> GetAll();
         UpdateAdminLoanApplicationDocument GetById(int id);
-        string UploadDocument(UpdateAdminLoanApplicationDocument request, IFormFile formFile);
+        string UploadDocument(UploadAdminLoanApplicationDocument request, IFormFile formFile);
     }
 }
