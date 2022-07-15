@@ -43,7 +43,8 @@
               "src/assets/css/style.css",
               "src/assets/css/style2.css",
               "src/assets/style/scss/mixins/_hover.scss",
-              "src/assets/loan_app_css/main.css"
+              "src/assets/loan_app_css/main.css",
+              "src/assets/new/css/main.css"
             ],
             "scripts": [
               "node_modules/moment/min/moment.min.js",

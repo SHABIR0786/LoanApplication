@@ -10,6 +10,7 @@ import { OfflineService } from "@app/services/offline.service";
   styleUrls: ["./credit-score.component.css", "./../index.component.css"],
 })
 export class CreditScoreComponent implements OnInit {
+  submitted = false;
   number: number = 1;
   model: RefinancePost = new RefinancePost();
   constructor(
@@ -43,5 +44,13 @@ export class CreditScoreComponent implements OnInit {
   }
   saveStep() {
     this.offline.saveStep(7, this.model);
+  }
+  onFinalCLick(f) {
+    this.submitted = true;
+    if (f.valid) {
+      this.abc("/app/refinance/thanks");
+      this.saveStep();
+      this.submitted = false;
+    }
   }
 }
