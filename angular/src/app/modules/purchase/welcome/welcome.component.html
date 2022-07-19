@@ -51,8 +51,10 @@
         [(ngModel)]="ezLoadOfficer"
         *ngIf="yes"
       /> -->
+      <p *ngIf="yes">Who are you working with?</p>
+
       <select
-        *ngIf="isEdit"
+        *ngIf="yes"
         placeholder="Select your Loan Officer"
         [(ngModel)]="ezLoadOfficer"
         class="form-control form-style"
