@@ -523,7 +523,9 @@
       </select>
     </div>
   </div>
-
+  <div *ngIf="submitted" class="text-danger d-flex justify-content-center">
+    Please answer all the questions
+  </div>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
@@ -537,7 +539,7 @@
         <a
           class="btn"
           id="btn-next-blue"
-          (click)="abc('/app/refinance/credit-score/1'); saveStep()"
+          (click)="abc('/app/refinance/credit-score/1')"
           >Next</a
         >
       </div>

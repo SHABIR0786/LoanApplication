@@ -2,25 +2,20 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Congragulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form
-      action=""
-      id="address"
-      #f="ngForm"
-      (ngSubmit)="f.valid && onPehlaForm(f)"
-    >
+    <form action="" id="address" #f="ngForm">
       <div class="form-group">
         <input
           type="text"
           class="form-control form-style mb-0"
           placeholder="Address"
           name="newHomeAddress"
-          [(ngModel)]="model.newHomeAddress"
           #newHomeAddressRef="ngModel"
+          [(ngModel)]="model.newHomeAddress"
           required
         />
         <div
-          *ngIf="f.submitted && !newHomeAddressRef.valid"
-          class="badge badge-danger w-100"
+          *ngIf="submitted && !newHomeAddressRef.valid"
+          class="text-danger d-flex"
         >
           Address is required
         </div>
@@ -36,8 +31,8 @@
           #newHomeUnitRef="ngModel"
         />
         <div
-          *ngIf="f.submitted && !newHomeUnitRef.valid"
-          class="badge badge-danger w-100"
+          *ngIf="submitted && !newHomeUnitRef.valid"
+          class="text-danger d-flex"
         >
           Unit is required
         </div>
@@ -56,8 +51,8 @@
           #newHomeCityTownRef="ngModel"
         />
         <div
-          *ngIf="f.submitted && !newHomeCityTownRef.valid"
-          class="badge badge-danger w-100"
+          *ngIf="submitted && !newHomeCityTownRef.valid"
+          class="text-danger d-flex"
         >
           City is required
         </div>
@@ -79,8 +74,8 @@
               <!-- <option value="state">State</option> -->
             </select>
             <div
-              *ngIf="f.submitted && !newHomeStateRef.valid"
-              class="badge badge-danger w-100"
+              *ngIf="submitted && !newHomeStateRef.valid"
+              class="text-danger d-flex"
             >
               State is required
             </div>
@@ -98,8 +93,8 @@
               required
             />
             <div
-              *ngIf="f.submitted && !newHomeZipRef.valid"
-              class="badge badge-danger w-100"
+              *ngIf="submitted && !newHomeZipRef.valid"
+              class="text-danger d-flex"
             >
               Zip is required
             </div>
@@ -111,6 +106,7 @@
         type="submit"
         class="btn btn-primary btn-next btn-orange"
         role="button"
+        (click)="onPehlaForm(f, 2)"
       >
         Next
       </button>
@@ -200,64 +196,132 @@
   <h2 class="little-space">Congratulations! What’s the purchase price?</h2>
 
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <!-- <form action="" id="purchase-price"> -->
-    <input
-      type="number"
-      class="form-control form-style"
-      placeholder="Estimated Home Price"
-      [(ngModel)]="model.estimatedPrice"
-    />
-    <div class="row">
-      <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
+    <form action="" id="purchase-price" #f3="ngForm">
+      <div class="form-group">
         <input
           type="number"
-          class="form-control form-half-left"
-          placeholder="Down Payment Amount"
-          [(ngModel)]="model.downPaymentAmount"
+          class="form-control form-style"
+          placeholder="Estimated Home Price"
+          [(ngModel)]="model.estimatedPrice"
+          name="estimatedPrice"
+          #estimatedPriceRef="ngModel"
+          required
+          (ngModelChange)="calculatePercent()"
         />
-      </div>
-      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
-        <input
-          type="number"
-          class="form-control form-half-right"
-          placeholder="Percent"
-          [(ngModel)]="model.downPaymentPercent"
-        />
-      </div>
-    </div>
-    <input
-      type="number"
-      class="form-control form-style"
-      placeholder="Estimated annual taxes"
-      [(ngModel)]="model.estAnnualTaxes"
-    />
-    <input
-      type="number"
-      class="form-control form-style"
-      placeholder="Estimated annual home insurance"
-      [(ngModel)]="model.estAnnualHomeIns"
-    />
-    <!-- </form> -->
-
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a
-          [routerLink]="['/app/purchase/property-info', 2]"
-          class="btn"
-          id="btn-back"
-          >Back</a
+        <div
+          *ngIf="submitted && !estimatedPriceRef.valid"
+          class="text-danger d-flex"
         >
+          Estimated home price is required
+        </div>
       </div>
-      <div class="col-md-2">
-        <a
+
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-control form-half-left"
+              placeholder="Down Payment Amount"
+              [(ngModel)]="model.downPaymentAmount"
+              name="downPaymentAmount"
+              #downPaymentAmountRef="ngModel"
+              required
+              (ngModelChange)="calculatePercent()"
+            />
+            <div
+              *ngIf="submitted && !downPaymentAmountRef.valid"
+              class="text-danger d-flex"
+            >
+              Down payment amount is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-control form-half-right"
+              placeholder="Percent"
+              [(ngModel)]="model.downPaymentPercent"
+              name="downPaymentPercent"
+              #downPaymentPercentRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="submitted && !downPaymentPercentRef.valid"
+              class="text-danger d-flex"
+            >
+              Down payment percent is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control form-style"
+          placeholder="Estimated annual taxes"
+          [(ngModel)]="model.estAnnualTaxes"
+          name="estAnnualTaxes"
+          #estAnnualTaxesRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !estAnnualTaxesRef.valid"
+          class="text-danger d-flex"
+        >
+          Estimated annual tax is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control form-style"
+          placeholder="Estimated annual home insurance"
+          [(ngModel)]="model.estAnnualHomeIns"
+          name="estAnnualHomeIns"
+          #estAnnualHomeInsRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !estAnnualHomeInsRef.valid"
+          class="text-danger d-flex"
+        >
+          Estimated annual home insurance is required
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3 offset-md-3">
+            <a
+              [routerLink]="['/app/purchase/property-info', 2]"
+              class="btn"
+              id="btn-back"
+              >Back</a
+            >
+          </div>
+          <div class="col-md-2">
+            <a
+              type="submit"
+              class="btn btn-primary btn-next btn-orange"
+              id="btn-next"
+              role="button"
+              (click)="onPehlaForm(f3, 4)"
+              >Next</a
+            >
+            <!-- <a
+          type="submit"
           [routerLink]="['/app/purchase/property-info', 4]"
           class="btn"
           id="btn-next"
-          (click)="onNextThreeClick()"
+          (click)="onNextThreeClick(f3)"
           >Next</a
-        >
+        > -->
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
@@ -335,84 +399,131 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <!-- <form action="" id="address"> -->
-    <div class="row">
-      <div class="col-md-6">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Legal First Name"
-          [(ngModel)]="model.firstName"
-        />
-      </div>
-      <div class="col-md-6">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Middle Initial"
-          [(ngModel)]="model.middleName"
-        />
-      </div>
-    </div>
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Legal Last Name"
-      [(ngModel)]="model.lastName"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Phone Number"
-      [(ngModel)]="model.phone"
-    />
-    <input
-      type="email"
-      class="form-control form-style"
-      placeholder="Email Address"
-      [(ngModel)]="model.email"
-    />
-    <p>Have an account?</p>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="terms">
-          <p>
-            By entering phone number and clicking the "Next" button, you are
-            providing express written consent for EZ Online Mortgage. and its
-            affiliates, agents, and service providers to contact you at that
-            number regarding products or services, including via auto-dialed
-            and/or prerecorded or artificial voice calls and text messages (SMS
-            and MMS), or email even if your telephone number is a cellular
-            number or on a corporate, state, or the National Do Not Call
-            Registry <span class="orange-text">(DNC)</span> or other do not
-            contact list.
-          </p>
-
-          <p>
-            You may also reach us at
-            <span class="orange-text">(800) 930-8195</span> or by utilizing our
-            services at <span class="orange-text">Loan Options</span>. You may
-            opt-out at any time by emailing us a Do Not Call Request at
-            <span class="orange-text"
-              ><a href="">dnc@ezonlinemortgage.com</a></span
+    <form action="" id="personal" #f5="ngForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Legal First Name"
+              [(ngModel)]="model.firstName"
+              name="firstName"
+              required
+              #firstNameRef="ngModel"
+            />
+            <div
+              *ngIf="submitted && !firstNameRef.valid"
+              class="text-danger d-flex"
             >
-            and providing your phone number. Your consent is not required or a
-            condition of any purchase. Message and data rates may apply.
-          </p>
-
-          <p>
-            You also consent to our
-            <span class="orange-text"
-              >SMS terms, Privacy Policy, Terms of Use,</span
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Middle Initial"
+              [(ngModel)]="model.middleName"
+              name="middleName"
+              required
+              #middleNameRef="ngModel"
+            />
+            <div
+              *ngIf="submitted && !firstNameRef.valid"
+              class="text-danger d-flex"
             >
-            and <span class="orange-text">CA Terms</span> of Use. By
-            communicating with us by phone you consent to calls being recorded
-            and monitored.
-          </p>
+              Middle Name is required
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- </form> -->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Legal Last Name"
+          [(ngModel)]="model.lastName"
+          name="lastName"
+          required
+          #lastNameRef="ngModel"
+        />
+        <div *ngIf="submitted && !lastNameRef.valid" class="text-danger d-flex">
+          Last Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Phone Number"
+          [(ngModel)]="model.phone"
+          appPhoneMask
+          name="phone"
+          required
+          #phoneRef="ngModel"
+        />
+        <div *ngIf="submitted && !phoneRef.valid" class="text-danger d-flex">
+          Phone is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control form-style"
+          placeholder="Email Address"
+          [(ngModel)]="model.email"
+          name="email"
+          required
+          #emailRef="ngModel"
+        />
+        <div *ngIf="submitted && !emailRef.valid" class="text-danger d-flex">
+          Email is required
+        </div>
+      </div>
+      <p>Have an account?</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="terms">
+            <p>
+              By entering phone number and clicking the "Next" button, you are
+              providing express written consent for EZ Online Mortgage. and its
+              affiliates, agents, and service providers to contact you at that
+              number regarding products or services, including via auto-dialed
+              and/or prerecorded or artificial voice calls and text messages
+              (SMS and MMS), or email even if your telephone number is a
+              cellular number or on a corporate, state, or the National Do Not
+              Call Registry <span class="orange-text">(DNC)</span> or other do
+              not contact list.
+            </p>
+
+            <p>
+              You may also reach us at
+              <span class="orange-text">(800) 930-8195</span> or by utilizing
+              our services at <span class="orange-text">Loan Options</span>. You
+              may opt-out at any time by emailing us a Do Not Call Request at
+              <span class="orange-text"
+                ><a href="">dnc@ezonlinemortgage.com</a></span
+              >
+              and providing your phone number. Your consent is not required or a
+              condition of any purchase. Message and data rates may apply.
+            </p>
+
+            <p>
+              You also consent to our
+              <span class="orange-text"
+                >SMS terms, Privacy Policy, Terms of Use,</span
+              >
+              and <span class="orange-text">CA Terms</span> of Use. By
+              communicating with us by phone you consent to calls being recorded
+              and monitored.
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a
@@ -423,11 +534,7 @@
         >
       </div>
       <div class="col-md-2">
-        <a
-          [routerLink]="['/app/purchase/property-info', 6]"
-          class="btn btn-orange"
-          id="btn-next"
-          (click)="onAccountNextClick()"
+        <a class="btn btn-orange" id="btn-next" (click)="onPehlaForm(f5, 6)"
           >Next</a
         >
       </div>
@@ -506,14 +613,23 @@
   </h2>
   <h6>if so, what is the approximate amount?</h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <!-- <form action=""> -->
-    <input
-      type="number"
-      class="form-control form-style"
-      placeholder="Monthly HOA dues"
-      [(ngModel)]="model.monthlyhoadues"
-    />
-    <!-- </form> -->
+    <form action="" id="personal" #f7="ngForm">
+      <input
+        type="number"
+        class="form-control form-style"
+        placeholder="Monthly HOA dues"
+        [(ngModel)]="model.monthlyhoadues"
+        name="monthlyhoadues"
+        required
+        #monthlyhoaduesRef="ngModel"
+      />
+      <div
+        *ngIf="submitted && !monthlyhoaduesRef.valid"
+        class="text-danger d-flex"
+      >
+        Monthly HOA dues is required
+      </div>
+    </form>
 
     <div class="row margin-top">
       <div
@@ -529,22 +645,14 @@
       <div
         class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
-        <a
-          [routerLink]="['/app/purchase/property-info', 8]"
-          class="btn btn-orange"
-          id="btn-next"
-          (click)="onNoaNextClick()"
+        <a class="btn btn-orange" id="btn-next" (click)="onPehlaForm(f7, 8)"
           >Next</a
         >
       </div>
       <div
         class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
-        <a
-          [routerLink]="['/app/purchase/property-info', 8]"
-          class="btn btn-orange"
-          id="btn-back"
-          (click)="onNoaNextClick()"
+        <a class="btn btn-orange" id="btn-back" (click)="onPehlaForm(f7, 8)"
           >Skip</a
         >
       </div>
@@ -712,7 +820,7 @@
           <h6>Property Info</h6>
         </div>
         <div class="col-md-4 right-align">
-          <a class="btn" id="btn-edit" (click)="isEdit = true">Edit</a>
+          <a class="btn" id="btn-edit" (click)="editClicked()">Edit</a>
         </div>
       </div>
       <div class="row">
@@ -777,7 +885,7 @@
 
   <!-- Click Edit Button will show the below content of 17A page -->
 
-  <div class="main-content" *ngIf="isEdit == true">
+  <div class="main-content" [class.hidden]="!isEdit">
     <h2>Let's take a few seconds to review and confirm your info so far.</h2>
     <div class="content-area">
       <div class="row padding-fifteen">
@@ -901,19 +1009,39 @@
 
       <h6 id="padding-up">Self selected Credit Score</h6>
 
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="excellent"
+      >
         Excellent (740+)
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="good"
+      >
         Good(700 - 739)
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="average"
+      >
         Average (640 - 699)
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="fair"
+      >
         Fair (580 - 639)
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="needimprovement"
+      >
         Needs Improvement (less then 580)
       </button>
 
@@ -957,19 +1085,39 @@
       <!-- </form> -->
       <h6 id="padding-up">Type of home</h6>
 
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="singleFamily"
+      >
         Single Family
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="condo"
+      >
         Condo
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="coop"
+      >
         Co-op
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="townhome"
+      >
         Townhome
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="multifamily"
+      >
         Multi-Family
       </button>
 
@@ -984,13 +1132,25 @@
 
       <h6 id="padding-up">Property Usage</h6>
 
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-primaryresidence"
+      >
         Primary Residance
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-condo"
+      >
         Condo
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-coop"
+      >
         Co-op
       </button>
 
@@ -998,10 +1158,18 @@
         Are you a current or former member of the US Military?
       </h6>
 
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="militery-yes"
+      >
         Yes
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="militery-no"
+      >
         No
       </button>
 

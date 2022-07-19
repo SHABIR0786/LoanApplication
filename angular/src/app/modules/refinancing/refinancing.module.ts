@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
 import { RefinancingRoutingModule } from "./refinancing-routing.module";
 import { IndexComponent } from "./index.component";
 import { ApplyNowRefinanceComponent } from "./apply-now-refinance/apply-now-refinance.component";
@@ -54,7 +53,6 @@ import { ThanksComponent } from "./thanks/thanks.component";
 import { OfflineService } from "./../../services/offline.service";
 import { FormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
-// import { LoginComponent } from "./../purchase/login/login.component";
 @NgModule({
   declarations: [
     IndexComponent,
