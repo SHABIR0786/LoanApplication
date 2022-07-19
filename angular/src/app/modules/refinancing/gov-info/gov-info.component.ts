@@ -10,6 +10,7 @@ import { ApiService } from "@app/services/api.service";
   styleUrls: ["./gov-info.component.css", "./../index.component.css"],
 })
 export class GovInfoComponent implements OnInit {
+  submitted = false;
   number: number = 1;
   model: RefinancePost = new RefinancePost();
   questions: any[] = [];
@@ -49,6 +50,15 @@ export class GovInfoComponent implements OnInit {
     });
   }
   abc(a = "/app/refinance/gov/2") {
+    let count = 0;
+    this.questions.forEach((ele) => {
+      if (ele["isYes"]) {
+        count++;
+      }
+    });
+    if (count != this.questions.length) {
+      this.submitted = true;
+    }
     this.saveStep();
     this.model.id = this.model.leadApplicationDetailRefinancingId;
     this.api

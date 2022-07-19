@@ -10,6 +10,7 @@ import { OfflineService } from "@app/services/offline.service";
   styleUrls: ["./personal-info.component.css", "./../index.component.css"],
 })
 export class PersonalInfoComponent implements OnInit {
+  submitted = false;
   number: number = 1;
   model: RefinancePost = new RefinancePost();
   deps = 0;
@@ -52,5 +53,22 @@ export class PersonalInfoComponent implements OnInit {
   }
   saveStep() {
     this.offline.saveStep(3, this.model);
+  }
+  onNextStep(f, step) {
+    this.submitted = true;
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/personal-info", step]);
+      this.saveStep();
+      this.submitted = false;
+    }
+  }
+
+  coBorrowerNextClick(f) {
+    this.submitted = true;
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/income/1"]);
+      this.saveStep();
+      this.submitted = false;
+    }
   }
 }

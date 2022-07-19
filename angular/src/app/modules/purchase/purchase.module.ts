@@ -34,9 +34,10 @@ import { AssetsInfoComponent } from "./assets-info/assets-info.component";
 import { GovernmentComponent } from "./government/government.component";
 //import { ApplyNowRefinanceComponent } from './apply-now-refinance/apply-now-refinance.component';
 import { OfflineService } from "./../../services/offline.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
+import { SharedModule } from "@shared/shared.module";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -72,6 +73,12 @@ import { PersonalInfoComponent } from "./personal-info/personal-info.component";
     PersonalInfoComponent,
   ],
   providers: [OfflineService, ApiService],
-  imports: [CommonModule, PurchaseRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    PurchaseRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+  ],
 })
 export class PurchaseModule {}

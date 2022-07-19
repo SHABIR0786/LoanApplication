@@ -22,9 +22,6 @@
       >
     </div>
     <div class="content-footer">
-      <<<<<<< HEAD
-      <p>Already have an account | <a href="">Log in</a></p>
-      =======
       <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
 
       <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
@@ -55,8 +52,10 @@
         [(ngModel)]="ezLoadOfficer"
         *ngIf="yes"
       /> -->
+      <p *ngIf="yes">Who are you working with?</p>
+
       <select
-        *ngIf="isEdit"
+        *ngIf="yes"
         placeholder="Select your Loan Officer"
         [(ngModel)]="ezLoadOfficer"
         class="form-control form-style"
@@ -73,9 +72,6 @@
       >
     </div>
     <div class="content-footer">
-      <<<<<<< HEAD
-      <p>Already have an account | <a href="">Log in</a></p>
-      =======
       <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
 
       <h5>You have Questions? <span>|</span> We’ll have answers.</h5>

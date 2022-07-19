@@ -4,51 +4,92 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <!-- <form action="" id="employer-details"> -->
-    <select
-      class="form-select form-style"
-      [(ngModel)]="model.assetsAccountType"
-    >
-      <option>-Account type-</option>
-    </select>
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Finantional institution"
-      [(ngModel)]="model.assetsFinInst"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Balance"
-      [(ngModel)]="model.assetsBalance"
-    />
-    <select class="form-select form-style" [(ngModel)]="model.assetsOwner">
-      <option>- Owner -</option>
-    </select>
-    <!-- </form> -->
-    <div class="row margin-top">
-      <div class="col-md-2 offset-md-1">
-        <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
-      </div>
-      <div class="col-md-2 offset-md-1">
-        <a
-          routerLink="/app/refinance/assets-info/2"
-          class="btn"
-          id="btn-next-blue"
-          (click)="saveStep()"
-          >Next</a
+    <form action="" id="assets" #f="ngForm">
+      <div class="form-group">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.assetsAccountType"
+          name="assetsAccountType"
+          #assetsAccountTypeRef="ngModel"
+          required
         >
-      </div>
-      <div class="col-md-2 offset-md-1">
-        <a
-          routerLink="/app/refinance/assets-info/2"
-          class="btn"
-          id="btn-back-blue"
-          >Skip</a
+          <option>-Account type-</option>
+        </select>
+        <div
+          *ngIf="submitted && !assetsAccountTypeRef.valid"
+          class="text-danger d-flex"
         >
+          Account type is required
+        </div>
       </div>
-    </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Finantional institution"
+          [(ngModel)]="model.assetsFinInst"
+          name="assetsFinInst"
+          #assetsFinInstRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !assetsFinInstRef.valid"
+          class="text-danger d-flex"
+        >
+          Finantional institution is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Balance"
+          [(ngModel)]="model.assetsBalance"
+          name="assetsBalance"
+          #assetsBalanceRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !assetsBalanceRef.valid"
+          class="text-danger d-flex"
+        >
+          Balance is required
+        </div>
+      </div>
+      <div class="form-group">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.assetsOwner"
+          name="assetsOwner"
+          #assetsOwnerRef="ngModel"
+          required
+        >
+          <option>- Owner -</option>
+        </select>
+        <div
+          *ngIf="submitted && !assetsOwnerRef.valid"
+          class="text-danger d-flex"
+        >
+          Owner is required
+        </div>
+      </div>
+      <div class="row margin-top">
+        <div class="col-md-2 offset-md-1">
+          <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+        </div>
+        <div class="col-md-2 offset-md-1">
+          <a class="btn" id="btn-next-blue" (click)="nextClicked(f, 2)">Next</a>
+        </div>
+        <div class="col-md-2 offset-md-1">
+          <a
+            routerLink="/app/refinance/assets-info/2"
+            class="btn"
+            id="btn-back-blue"
+            >Skip</a
+          >
+        </div>
+      </div>
+    </form>
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
@@ -114,9 +155,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Account Type: Checking account</p>
-          <p>Financial Institution: Bank of America</p>
-          <p>Balance: $125,000</p>
+          <p>Account Type: {{ model.assetsAccountType }}</p>
+          <p>Financial Institution: {{ model.assetsFinInst }}</p>
+          <p>Balance: ${{ model.assetsBalance }}</p>
         </div>
       </div>
     </div>
@@ -163,7 +204,11 @@
     <div class="row">
       <div class="col-md-12 margin-top">
         <form action="" id="employer-details">
-          <select class="form-select form-style">
+          <select
+            class="form-select form-style"
+            [(ngModel)]="model.assetsAccountType"
+            name="assetsAccountType"
+          >
             <option>Checking Account</option>
           </select>
 
@@ -171,11 +216,19 @@
             type="text"
             class="form-control form-style"
             placeholder="Finantional institution"
+            [(ngModel)]="model.assetsFinInst"
+            name="assetsFinInst"
+          />
+
           />
           <input
             type="text"
             class="form-control form-style"
             placeholder="Balance"
+            [(ngModel)]="model.assetsBalance"
+            name="assetsBalance"
+          />
+
           />
         </form>
       </div>

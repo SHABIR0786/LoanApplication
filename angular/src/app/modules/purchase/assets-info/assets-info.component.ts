@@ -14,6 +14,7 @@ export class AssetsInfoComponent implements OnInit {
   yes = false;
   model: PostModel = new PostModel();
   accType: any[] = [];
+  submitted = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -44,5 +45,15 @@ export class AssetsInfoComponent implements OnInit {
 
   saveStep() {
     this.offline.saveStep(6, this.model);
+  }
+
+  stepNextClick(f, step) {
+    this.submitted = true;
+    if (f.valid) {
+      this.saveStep();
+      this.submitted = false;
+
+      this.router.navigate(["/app/purchase/assets-info/" + step]);
+    }
   }
 }
