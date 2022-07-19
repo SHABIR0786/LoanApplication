@@ -54,7 +54,7 @@ import { ThanksComponent } from "./thanks/thanks.component";
 import { OfflineService } from "./../../services/offline.service";
 import { FormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
-import { LoginComponent } from "./../purchase/login/login.component";
+// import { LoginComponent } from "./../purchase/login/login.component";
 @NgModule({
   declarations: [
     IndexComponent,
