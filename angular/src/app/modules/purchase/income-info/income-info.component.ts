@@ -18,7 +18,6 @@ export class IncomeInfoComponent implements OnInit {
   model: PostModel = new PostModel();
   states = [];
   _model: EmployementDetailAdd = new EmployementDetailAdd();
-  submitted = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -50,28 +49,18 @@ export class IncomeInfoComponent implements OnInit {
   onIncomeComplete() {
     this.saveStep();
   }
-  saveEmpToDb(f) {
-    this.submitted = true;
-    if (f.valid) {
-      this._model.leadApplicationDetailPurchasingId = 1;
-      this.saveStep();
-      this.api
-        .post("/LeadEmploymentDetail/Add", this._model)
-        .subscribe((x: any) => {
-          if (x.success == true) {
-            this.router.navigate(["/app/purchase/income-info/4"]);
-          }
-        });
-    }
+  saveEmpToDb() {
+    this._model.leadApplicationDetailPurchasingId = 1;
+    this.saveStep();
+    this.api
+      .post("/LeadEmploymentDetail/Add", this._model)
+      .subscribe((x: any) => {
+        if (x.success == true) {
+          this.router.navigate(["/app/purchase/income-info/4"]);
+        }
+      });
   }
   saveStep() {
     this.offline.saveStep(5, this.model);
-  }
-  onNextClick(f, step) {
-    this.submitted = true;
-    if (f.valid) {
-      this.router.navigate(["/app/purchase/income-info/" + step]);
-      this.submitted = false;
-    }
   }
 }
