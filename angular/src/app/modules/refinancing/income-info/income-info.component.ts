@@ -16,7 +16,6 @@ export class IncomeInfoComponent implements OnInit {
   number: number = 1;
   model: RefinancePost = new RefinancePost();
   states: any[] = [];
-  submitted = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -85,22 +84,5 @@ export class IncomeInfoComponent implements OnInit {
   }
   saveStep() {
     this.offline.saveStep(4, this.model);
-  }
-  onNextClick(f, step) {
-    this.submitted = true;
-    if (f.valid) {
-      this.saveStep();
-      this.router.navigate(["/app/refinance/income/" + step]);
-      this.submitted = false;
-    }
-  }
-  saveAfterValidation(f) {
-    this.submitted = true;
-    if (f.valid) {
-      this.saveStep();
-      this.saveEmpToDb();
-
-      this.submitted = false;
-    }
   }
 }
