@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
-import { time } from "console";
 
 @Component({
   selector: "app-property-info",
@@ -15,7 +14,6 @@ export class PropertyInfoComponent implements OnInit {
   number: number = 1;
   yes = false;
   isEdit = false;
-  submitted = false;
   model: PostModel = new PostModel();
   states: any[] = [];
   cities: any[] = [];
@@ -37,18 +35,10 @@ export class PropertyInfoComponent implements OnInit {
     this.getStates();
     this.getCities();
     this.model = this.offline.getStep().data;
-    console.log(document.getElementById("average"));
   }
-  onPehlaForm(f: NgForm, step: any) {
-    this.submitted = true;
-    console.log(f, step);
-    if (f.valid) {
-      this.router.navigate(["/app/purchase/property-info", step]);
-      // this.onNewHomeClick();
-      this.submitted = false;
-
-      this.onNextClick();
-    }
+  onPehlaForm(f: NgForm) {
+    this.router.navigate(["/app/purchase/property-info", 2]);
+    this.onNewHomeClick();
   }
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
@@ -66,19 +56,16 @@ export class PropertyInfoComponent implements OnInit {
       if (x && x.result) this.cities = x.result;
     });
   }
-  onNextClick() {
+
+  onNewHomeClick() {
     this.offline.saveStep(3, this.model);
   }
-
-  // onNewHomeClick() {
-  //   this.offline.saveStep(3, this.model);
-  // }
-  // onNextTwoClick() {
-  //   this.offline.saveStep(3, this.model);
-  // }
-  // onNextThreeClick() {
-  //     this.offline.saveStep(3, this.model);
-  // }
+  onNextTwoClick() {
+    this.offline.saveStep(3, this.model);
+  }
+  onNextThreeClick() {
+    this.offline.saveStep(3, this.model);
+  }
   onCreditClick(e) {
     this.model.creditScore = e;
     this.offline.saveStep(3, this.model);
@@ -103,31 +90,5 @@ export class PropertyInfoComponent implements OnInit {
   }
   onEditNextClick() {
     this.offline.saveStep(3, this.model);
-  }
-  calculatePercent() {
-    console.log(this.model.downPaymentPercent);
-    this.model.downPaymentPercent = String(
-      (
-        (Number(this.model.downPaymentAmount) /
-          Number(this.model.estimatedPrice)) *
-        100
-      ).toFixed(3)
-    );
-  }
-  editClicked() {
-    this.isEdit = true;
-    let isMillitary;
-    document.getElementById(this.model.creditScore).classList.add("active");
-    document.getElementById(this.model.homeType).classList.add("active");
-    console.log(this.model.isMillitary, this.model.homePlan);
-    if (this.model.isMillitary) {
-      isMillitary = "militery-yes";
-    } else {
-      isMillitary = "militery-no";
-    }
-    document.getElementById(isMillitary).classList.add("active");
-    document
-      .getElementById("property-" + this.model.homePlan)
-      .classList.add("active");
   }
 }
