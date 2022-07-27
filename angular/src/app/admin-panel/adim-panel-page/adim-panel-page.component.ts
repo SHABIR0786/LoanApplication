@@ -5,8 +5,4 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./adim-panel-page.component.html",
   styleUrls: ["./adim-panel-page.component.css"],
 })
-export class AdimPanelPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class AdimPanelPageComponent {}

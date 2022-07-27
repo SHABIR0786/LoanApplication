@@ -203,6 +203,8 @@ import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_applicatio
 import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
 import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
 import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
+import { AdminProfilePageComponent } from "./admin-panel/admin-profile-page/admin-profile-page.component";
+import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
 
 @NgModule({
   imports: [
@@ -1223,6 +1225,11 @@ import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-f
             component: UsGovernmentRequireQuestionsComponent,
             canActivate: [AppRouteGuard],
           },
+          {
+            path: "admin/profile",
+            component: AdminProfilePageComponent,
+            canActivate: [AppRouteGuard],
+          },
         ],
       },
       {
@@ -1231,7 +1238,7 @@ import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-f
         children: [
           {
             path: "admin",
-            component: AdimPanelPageComponent,
+            component: AdminPanelLayoutComponent,
           },
         ],
       },

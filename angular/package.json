@@ -41,6 +41,7 @@
     "ngx-bootstrap": "^5.6.1",
     "ngx-mask": "^10.0.4",
     "ngx-pagination": "^5.1.1",
+    "onesignal-ngx": "^1.0.2",
     "push.js": "1.0.12",
     "rxjs": "^6.6.7",
     "sweetalert2": "^9.10.12",
