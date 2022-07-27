@@ -60,6 +60,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <select
+              style="width: 100%"
               class="form-select form-style"
               [(ngModel)]="model.personalStateId"
               name="personalState"
@@ -214,6 +215,7 @@
     <form action="" id="employer-details" #f3="ngForm">
       <div class="form-group">
         <select
+          style="width: 100%"
           class="form-select form-style"
           [(ngModel)]="model.w2Emp"
           name="w2Emp"
@@ -296,6 +298,7 @@
         <div class="col-md-5">
           <div class="form-group">
             <select
+              style="width: 100%"
               class="form-select form-style"
               [(ngModel)]="model.empState"
               name="empState"
@@ -424,7 +427,7 @@
       </div>
       <div class="form-group">
         <input
-          type="text"
+          type="number"
           class="form-control form-style"
           placeholder="Estimated Annual Base Salery"
           [(ngModel)]="model.estAnnualBaseSalary"
@@ -436,7 +439,7 @@
           *ngIf="submitted && !estAnnualBaseSalaryRef.valid"
           class="text-danger d-flex"
         >
-          Estimated Start date is required
+          Estimated Annual Base Salary is required
         </div>
       </div>
 
@@ -741,7 +744,25 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="co-borrower-income" #f9="ngForm">
       <div class="form-group">
-        <input
+        <select
+          style="width: 100%"
+          class="form-select form-style"
+          [(ngModel)]="model.coboIncType"
+          name="coboIncType"
+          #coboIncTypeRef="ngModel"
+          required
+          style="width: 100%"
+        >
+          <option value="incomeType1" selected>Income type 1</option>
+          <option value="incomeType2">Income type 2</option>
+        </select>
+        <div
+          *ngIf="submitted && !coboIncTypeRef.valid"
+          class="text-danger d-flex"
+        >
+          Income Type is required
+        </div>
+        <!-- <input
           type="text"
           class="form-control form-style"
           placeholder="- Income Type -"
@@ -755,7 +776,7 @@
           class="text-danger d-flex"
         >
           Income Type is required
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <input
@@ -951,6 +972,7 @@
       <div class="col-md-10 offset-md-1 margin-top">
         <form action="" id="employer-details">
           <select
+            style="width: 100%"
             class="form-select form-style"
             [(ngModel)]="model.w2Emp"
             name="w2Emp"
@@ -987,6 +1009,7 @@
           <div class="row">
             <div class="col-md-5">
               <select
+                style="width: 100%"
                 class="form-select form-style"
                 [(ngModel)]="model.empState"
                 name="empState"

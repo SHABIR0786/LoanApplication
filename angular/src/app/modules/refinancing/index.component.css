@@ -3,6 +3,7 @@
 
 .navbar-light .navbar-nav .nav-link.active {
   color: rgba(0, 0, 0, 0.9) !important;
+  font-family: "Avenir-Medium";
 }
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.5) !important;
@@ -90,7 +91,7 @@ body {
 .right-content {
   text-align: left;
   padding-top: 30px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-size: 20px;
   font-weight: 600;
 }
@@ -117,7 +118,7 @@ body {
 .title {
   color: #091a52;
   font-size: 24px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-weight: 600;
   position: absolute;
   margin-left: 70px;
@@ -178,7 +179,7 @@ body {
 }
 .main-content h2 {
   font-size: 28px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-weight: 500;
   padding-bottom: 40px;
 }
@@ -824,14 +825,14 @@ body {
   }
   .main-content h2 {
     font-size: 28px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 40px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -840,7 +841,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -931,14 +932,14 @@ body {
   }
   .main-content h2 {
     font-size: 28px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 40px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -947,7 +948,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -1038,14 +1039,14 @@ body {
   }
   .main-content h2 {
     font-size: 36px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 50px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -1054,7 +1055,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -1146,14 +1147,14 @@ body {
   }
   .main-content h2 {
     font-size: 36px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 50px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -1162,7 +1163,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -1247,4 +1248,7 @@ body {
   h3 {
     page-break-after: avoid;
   }
+}
+.sidebar:hover {
+  overflow-y: hidden;
 }

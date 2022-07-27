@@ -515,8 +515,13 @@
 
   <div class="row">
     <div class="col-md-12">
-      <select class="form-select form-style" [(ngModel)]="model.citizenshipId">
-        <option value="0">-What is your citizenship status?-</option>
+      <select
+        style="width: 100%"
+        class="form-select form-style"
+        [(ngModel)]="model.citizenshipId"
+        style="width: 100%"
+      >
+        <option value="0" selected>-What is your citizenship status?-</option>
         <option [value]="c.id" *ngFor="let c of cs">
           {{ c?.citizenshipType1 }}
         </option>
