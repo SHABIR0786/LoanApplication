@@ -5,74 +5,76 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <form action="" id="assets" #f="ngForm">
-      <div class="form-group">
-        <select
-          class="form-select form-style"
-          [(ngModel)]="model.assetsAccountType"
-          name="assetsAccountType"
-          #assetsAccountTypeRef="ngModel"
-          required
-        >
-          <option>-Account type-</option>
-        </select>
-        <div
-          *ngIf="submitted && !assetsAccountTypeRef.valid"
-          class="text-danger d-flex"
-        >
-          Account type is required
-        </div>
+      <!-- <div class="form-group"> -->
+      <select
+        style="width: 100%"
+        class="form-select form-style"
+        [(ngModel)]="model.assetsAccountType"
+        name="assetsAccountType"
+        #assetsAccountTypeRef="ngModel"
+        required
+      >
+        <option>-Account type-</option>
+      </select>
+      <div
+        *ngIf="submitted && !assetsAccountTypeRef.valid"
+        class="text-danger d-flex"
+      >
+        Account type is required
       </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Finantional institution"
-          [(ngModel)]="model.assetsFinInst"
-          name="assetsFinInst"
-          #assetsFinInstRef="ngModel"
-          required
-        />
-        <div
-          *ngIf="submitted && !assetsFinInstRef.valid"
-          class="text-danger d-flex"
-        >
-          Finantional institution is required
-        </div>
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Finantional institution"
+        [(ngModel)]="model.assetsFinInst"
+        name="assetsFinInst"
+        #assetsFinInstRef="ngModel"
+        required
+      />
+      <div
+        *ngIf="submitted && !assetsFinInstRef.valid"
+        class="text-danger d-flex"
+      >
+        Finantional institution is required
       </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Balance"
-          [(ngModel)]="model.assetsBalance"
-          name="assetsBalance"
-          #assetsBalanceRef="ngModel"
-          required
-        />
-        <div
-          *ngIf="submitted && !assetsBalanceRef.valid"
-          class="text-danger d-flex"
-        >
-          Balance is required
-        </div>
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <input
+        type="text"
+        class="form-control form-style"
+        placeholder="Balance"
+        [(ngModel)]="model.assetsBalance"
+        name="assetsBalance"
+        #assetsBalanceRef="ngModel"
+        required
+      />
+      <div
+        *ngIf="submitted && !assetsBalanceRef.valid"
+        class="text-danger d-flex"
+      >
+        Balance is required
       </div>
-      <div class="form-group">
-        <select
-          class="form-select form-style"
-          [(ngModel)]="model.assetsOwner"
-          name="assetsOwner"
-          #assetsOwnerRef="ngModel"
-          required
-        >
-          <option>- Owner -</option>
-        </select>
-        <div
-          *ngIf="submitted && !assetsOwnerRef.valid"
-          class="text-danger d-flex"
-        >
-          Owner is required
-        </div>
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <select
+        style="width: 100%"
+        class="form-select form-style"
+        [(ngModel)]="model.assetsOwner"
+        name="assetsOwner"
+        #assetsOwnerRef="ngModel"
+        required
+      >
+        <option>- Owner -</option>
+      </select>
+      <div
+        *ngIf="submitted && !assetsOwnerRef.valid"
+        class="text-danger d-flex"
+      >
+        Owner is required
       </div>
+      <!-- </div> -->
       <div class="row margin-top">
         <div class="col-md-2 offset-md-1">
           <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
@@ -205,6 +207,7 @@
       <div class="col-md-12 margin-top">
         <form action="" id="employer-details">
           <select
+            style="width: 100%"
             class="form-select form-style"
             [(ngModel)]="model.assetsAccountType"
             name="assetsAccountType"
