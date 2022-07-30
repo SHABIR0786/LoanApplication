@@ -10,7 +10,6 @@ import { OfflineService } from "@app/services/offline.service";
   styleUrls: ["./personal-info.component.css", "./../index.component.css"],
 })
 export class PersonalInfoComponent implements OnInit {
-  submitted = false;
   number: number = 1;
   model: PostModel = new PostModel();
   states: any[] = [];
@@ -44,16 +43,8 @@ export class PersonalInfoComponent implements OnInit {
     });
   }
 
-  onPersClick(f, step) {
-    this.submitted = true;
-
-    console.log(f);
-    if (f.valid) {
-      this.router.navigate(["/app/purchase/personal-info", step]);
-      this.submitted = false;
-
-      this.saveStep();
-    }
+  onPersClick() {
+    this.saveStep();
   }
   referClick(e: boolean) {
     this.model.isSomeOneRefer = e ? 1 : 0;

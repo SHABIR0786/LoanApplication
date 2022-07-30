@@ -1,6 +1,6 @@
 {
-  "remoteServiceBaseUrl": "https://74.208.32.89/loan-backend",
-  "appBaseUrl": "https://74.208.32.89/loan-backend",
+  "remoteServiceBaseUrl": "http://localhost:21021",
+  "appBaseUrl": "http://localhost:21021",
   "localeMappings": [
     {
       "from": "pt-BR",

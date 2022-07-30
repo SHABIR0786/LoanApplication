@@ -17,6 +17,19 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script
+      src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+      async=""
+    ></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "bb3098ab-49e0-44f8-897e-79f8bd859b59",
+          allowLocalhostAsSecureOrigin: true,
+        });
+      });
+    </script>
   </head>
 
   <body class="hold-transition">

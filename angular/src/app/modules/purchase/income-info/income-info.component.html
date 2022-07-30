@@ -30,8 +30,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -44,199 +43,100 @@
 <div class="main-content" *ngIf="number == 2">
   <h2>Tell us about your most current employer.</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" #f="ngForm" id="employer-details">
-      <div class="form-group">
+    <!-- <form action="" id="employer-details"> -->
+    <select
+      class="form-select form-style w-100"
+      [(ngModel)]="_model.employeeTypeId"
+    >
+      <option value="1">W-2 Employee</option>
+      <option value="2">Other Employee</option>
+    </select>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Name"
+      [(ngModel)]="_model.employerName"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Address"
+      [(ngModel)]="_model.employementAddress"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Apt / Unit"
+      [(ngModel)]="_model.employementSuite"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="City or Town"
+      [(ngModel)]="_model.employementCity"
+    />
+
+    <div class="row">
+      <div class="col-md-5">
         <select
           class="form-select form-style w-100"
-          [(ngModel)]="_model.employeeTypeId"
-          name="employeeType"
-          required
-          #employeeTypeRef="ngModel"
+          [(ngModel)]="_model.employementTaxeId"
         >
-          <option value="1">W-2 Employee</option>
-          <option value="2">Other Employee</option>
+          <option *ngFor="let s of states" [value]="s.id">
+            {{ s.stateName }}
+          </option>
         </select>
-        <div
-          *ngIf="submitted && !employeeTypeRef.valid"
-          class="text-danger d-flex"
-        >
-          Employee type is required
-        </div>
       </div>
-      <div class="form-group">
+      <div class="col-md-7">
         <input
           type="text"
           class="form-control form-style"
-          placeholder="Employer Name"
-          [(ngModel)]="_model.employerName"
-          name="employerName"
-          required
-          #employerNameRef="ngModel"
+          placeholder="Zip Code"
+          [(ngModel)]="_model.employementZip"
         />
-        <div
-          *ngIf="submitted && !employerNameRef.valid"
-          class="text-danger d-flex"
-        >
-          Employer Name is required
-        </div>
       </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Address"
-          [(ngModel)]="_model.employementAddress"
-          name="employementAddress"
-          required
-          #employementAddressRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !employementAddressRef.valid"
-          class="text-danger d-flex"
-        >
-          Employee Address is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Apt / Unit"
-          [(ngModel)]="_model.employementSuite"
-          name="employementSuite"
-          required
-          #employementSuiteRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !employementSuiteRef.valid"
-          class="text-danger d-flex"
-        >
-          Unit is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="City or Town"
-          [(ngModel)]="_model.employementCity"
-          name="employementCity"
-          required
-          #employementCityRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !employementCityRef.valid"
-          class="text-danger d-flex"
-        >
-          City is required
-        </div>
-      </div>
-
+    </div>
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Employer Phone Number"
+      [(ngModel)]="_model.employerPhoneNumber"
+    />
+    <div class="m-1 p-0 radio-input text-left">
       <div class="row">
-        <div class="col-md-5">
-          <div class="form-group">
-            <select
-              class="form-select form-style w-100"
-              [(ngModel)]="_model.employementTaxeId"
-              name="employementTaxeId"
-              required
-              #employementTaxeIdRef="ngModel"
-            >
-              <option *ngFor="let s of states" [value]="s.id">
-                {{ s.stateName }}
-              </option>
-            </select>
-            <div
-              *ngIf="submitted && !employementTaxeIdRef.valid"
-              class="text-danger d-flex"
-            >
-              State is required
-            </div>
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control form-style"
-              placeholder="Zip Code"
-              [(ngModel)]="_model.employementZip"
-              name="employementZip"
-              required
-              #employementZipRef="ngModel"
-            />
-            <div
-              *ngIf="submitted && !employementZipRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
-            </div>
-          </div>
+        <div class="col-md-12">
+          <input
+            type="checkbox"
+            class="form-style"
+            placeholder=""
+            [(ngModel)]="_model.isCurrentJob"
+          />
+          <p>This is my Current Job</p>
         </div>
       </div>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Employer Phone Number"
-          [(ngModel)]="_model.employerPhoneNumber"
-          name="employerPhoneNumber"
-          required
-          #employerPhoneNumberRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !employerPhoneNumberRef.valid"
-          class="text-danger d-flex"
+    </div>
+    <input
+      type="date"
+      class="form-control form-style"
+      placeholder="Estimated Start date"
+      [(ngModel)]="_model.estimatedStartDate"
+    />
+    <!-- </form> -->
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <a routerLink="/app/purchase/income-info/1" class="btn" id="btn-back"
+          >Back</a
         >
-          Employer Phone Number is required
-        </div>
       </div>
-      <div class="m-1 p-0 radio-input text-left">
-        <div class="row">
-          <div class="col-md-12">
-            <input
-              type="checkbox"
-              class="form-style"
-              placeholder=""
-              [(ngModel)]="_model.isCurrentJob"
-            />
-            <p>This is my Current Job</p>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="date"
-          class="form-control form-style"
-          placeholder="Estimated Start date"
-          [(ngModel)]="_model.estimatedStartDate"
-          name="estimatedStartDate"
-          required
-          #estimatedStartDateRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !estimatedStartDateRef.valid"
-          class="text-danger d-flex"
+      <div class="col-md-2">
+        <a routerLink="/app/purchase/income-info/3" class="btn" id="btn-next"
+          >Next</a
         >
-          Estimated Start date is required
-        </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-3 offset-md-3">
-          <a routerLink="/app/purchase/income-info/1" class="btn" id="btn-back"
-            >Back</a
-          >
-        </div>
-        <div class="col-md-2">
-          <a (click)="onNextClick(f, 3)" class="btn" id="btn-next">Next</a>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -250,90 +150,38 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" #f3="ngForm" id="employer-salary">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style"
-          placeholder="Job Title"
-          [(ngModel)]="_model.jobTitle"
-          name="jobTitle"
-          required
-          #jobTitleRef="ngModel"
-        />
-        <div *ngIf="submitted && !jobTitleRef.valid" class="text-danger d-flex">
-          Job Title is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="number"
-          class="form-control form-style"
-          placeholder="Estimated Annual Base Salery"
-          [(ngModel)]="_model.estimatedAnnualBaseSalary"
-          name="estimatedAnnualBaseSalary"
-          required
-          #estimatedAnnualBaseSalaryRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !estimatedAnnualBaseSalaryRef.valid"
-          class="text-danger d-flex"
-        >
-          Annual Base Salery is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="number"
-          class="form-control form-style"
-          placeholder="Estimated Annual Bonus"
-          [(ngModel)]="_model.estimatedAnnualBonus"
-          name="estimatedAnnualBonus"
-          required
-          #estimatedAnnualBonusRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !estimatedAnnualBonusRef.valid"
-          class="text-danger d-flex"
-        >
-          Annual Bonus is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="number"
-          class="form-control form-style"
-          placeholder="Estimated Annual Commission"
-          [(ngModel)]="_model.estimatedAnnualCommission"
-          name="estimatedAnnualCommission"
-          required
-          #estimatedAnnualCommissionRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !estimatedAnnualCommissionRef.valid"
-          class="text-danger d-flex"
-        >
-          Annual Commission is required
-        </div>
-      </div>
-      <div class="form-group">
-        <input
-          type="number"
-          class="form-control form-style"
-          placeholder="Estimated Annual Overtime"
-          [(ngModel)]="_model.estimatedAnnualOvertime"
-          name="estimatedAnnualOvertime"
-          required
-          #estimatedAnnualOvertimeRef="ngModel"
-        />
-        <div
-          *ngIf="submitted && !estimatedAnnualOvertimeRef.valid"
-          class="text-danger d-flex"
-        >
-          Annual Overtime is required
-        </div>
-      </div>
-    </form>
+    <!-- <form action="" id="employer-details"> -->
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Job Title"
+      [(ngModel)]="_model.jobTitle"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Base Salery"
+      [(ngModel)]="_model.estimatedAnnualBaseSalary"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Bonus"
+      [(ngModel)]="_model.estimatedAnnualBonus"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Commission"
+      [(ngModel)]="_model.estimatedAnnualCommission"
+    />
+    <input
+      type="text"
+      class="form-control form-style"
+      placeholder="Estimated Annual Overtime"
+      [(ngModel)]="_model.estimatedAnnualOvertime"
+    />
+    <!-- </form> -->
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/income-info/2" class="btn" id="btn-back"
@@ -341,13 +189,12 @@
         >
       </div>
       <div class="col-md-2">
-        <a (click)="saveEmpToDb(f3)" class="btn" id="btn-next">Next</a>
+        <a (click)="saveEmpToDb()" class="btn" id="btn-next">Next</a>
       </div>
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -393,8 +240,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -432,8 +278,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -493,8 +338,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -518,7 +362,7 @@
     </div>
     <div class="row">
       <div class="col-md-10 offset-md-1 margin-top">
-        <form action="" #f7="ngForm" id="borrower-info">
+        <form action="" id="employer-details">
           <select class="form-select form-style">
             <option>W-2 Employee</option>
           </select>
@@ -526,48 +370,26 @@
             type="text"
             class="form-control form-style"
             placeholder="Employer Name"
-            [(ngModel)]="_model.employerName"
-            name="employerName"
-            required
-            #employerNameRef="ngModel"
           />
           <input
             type="text"
             class="form-control form-style"
             placeholder="Address"
-            [(ngModel)]="_model.employementAddress"
-            name="employementAddress"
-            required
-            #employementAddressRef="ngModel"
           />
           <input
             type="text"
             class="form-control form-style"
             placeholder="Apt / Unit"
-            [(ngModel)]="_model.employementSuite"
-            name="employementSuite"
-            required
-            #employementSuiteRef="ngModel"
           />
           <input
             type="text"
             class="form-control form-style"
             placeholder="City or Town"
-            [(ngModel)]="_model.employementCity"
-            name="employementCity"
-            required
-            #employementCityRef="ngModel"
           />
 
           <div class="row">
             <div class="col-md-5">
-              <select
-                class="form-select form-style"
-                [(ngModel)]="_model.employementTaxeId"
-                name="employementTaxeId"
-                required
-                #employementTaxeIdRef="ngModel"
-              >
+              <select class="form-select form-style">
                 <option>State</option>
               </select>
             </div>
@@ -576,22 +398,13 @@
                 type="text"
                 class="form-control form-style"
                 placeholder="Zip Code"
-                [(ngModel)]="_model.employementZip"
-                name="employementZip"
-                required
-                #employementZipRef="ngModel"
               />
             </div>
           </div>
           <input
             type="text"
             class="form-control form-style"
-            appPhoneMask
             placeholder="Employer Phone Number"
-            [(ngModel)]="_model.employerPhoneNumber"
-            name="employerPhoneNumber"
-            required
-            #employerPhoneNumberRef="ngModel"
           />
           <div class="radio-input">
             <div class="row">
@@ -605,62 +418,31 @@
             type="text"
             class="form-control form-style"
             placeholder="Estimated Start date"
-            [(ngModel)]="_model.estimatedStartDate"
-            name="estimatedStartDate"
-            required
-            #estimatedStartDateRef="ngModel"
           />
-          <!-- <input
-          type="date"
-          class="form-control form-style"
-          placeholder="Estimated Start date"
-          > -->
-          <!-- [(ngModel)]="_model.estimatedStartDate" -->
-
           <input
             type="text"
             class="form-control form-style"
             placeholder="Job Title"
-            [(ngModel)]="_model.jobTitle"
-            name="jobTitle"
-            required
-            #jobTitleRef="ngModel"
           />
           <input
-            type="number"
+            type="text"
             class="form-control form-style"
             placeholder="Estimated Annual Base Salery"
-            [(ngModel)]="_model.estimatedAnnualBaseSalary"
-            name="estimatedAnnualBaseSalary"
-            required
-            #estimatedAnnualBaseSalaryRef="ngModel"
           />
           <input
-            type="number"
+            type="text"
             class="form-control form-style"
             placeholder="Estimated Annual Bonus"
-            [(ngModel)]="_model.estimatedAnnualBonus"
-            name="estimatedAnnualBonus"
-            required
-            #estimatedAnnualBonusRef="ngModel"
           />
           <input
-            type="number"
+            type="text"
             class="form-control form-style"
             placeholder="Estimated Annual Commission"
-            [(ngModel)]="_model.estimatedAnnualCommission"
-            name="estimatedAnnualCommission"
-            required
-            #estimatedAnnualCommissionRef="ngModel"
           />
           <input
-            type="number"
+            type="text"
             class="form-control form-style"
             placeholder="Estimated Annual Overtime"
-            [(ngModel)]="_model.estimatedAnnualOvertime"
-            name="estimatedAnnualOvertime"
-            required
-            #estimatedAnnualOvertimeRef="ngModel"
           />
         </form>
       </div>
@@ -683,8 +465,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
