@@ -70,8 +70,7 @@
     </div>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>
@@ -115,7 +114,7 @@
           *ngIf="submitted && !conformSsnRef.valid"
           class="text-danger d-flex"
         >
-          Confirm SSN is required
+          Confirn Social Security Number is required
         </div>
       </div>
       <div class="form-group">
@@ -152,14 +151,19 @@
           >
         </div>
         <div class="col-md-2">
-          <a class="btn" id="btn-next-blue" (click)="onFinalCLick(f2)">Next</a>
+          <a
+            routerLink="/app/refinance/thanks"
+            class="btn"
+            id="btn-next-blue"
+            (click)="saveStep(); abc('/app/refinance/thanks'); saveStep()"
+            >Next</a
+          >
         </div>
       </div>
     </form>
   </div>
   <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
+    <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>

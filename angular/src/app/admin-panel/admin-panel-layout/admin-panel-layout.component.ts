@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { LoanstatusService } from "../../../shared/service/loanstatus.service";
 
 @Component({
@@ -7,33 +7,23 @@ import { LoanstatusService } from "../../../shared/service/loanstatus.service";
   styleUrls: ["./admin-panel-layout.component.css"],
 })
 export class AdminPanelLayoutComponent implements OnInit {
+  @Input() pageName: string;
   constructor(private LoanstatusService: LoanstatusService) {}
-  toggleSidebar: boolean;
+
   loanStatus: any;
   loanApplicantName: any;
   loanApplicationNumber: any;
   loanApplicantAddress: any;
   loanProgramName: any;
   loanProgramId: any;
+  mortageConsultant: any;
+  NMLSId: any;
 
   ngOnInit(): void {
     this.getLoanStatusById();
     this.getLoanDetailsById();
-
-    this.toggleSidebar = false;
-    $(document).ready(function () {
-      $(".droprdown_class_a").click(function () {
-        $(this).toggleClass("active_class");
-        $(this).children().toggleClass("caret_active");
-        $(this).next().toggleClass("d-none");
-      });
-      $(".nav_bars_show_active").click(function () {
-        $(".buttons_nav").toggleClass("buttons_nav_active");
-      });
-    });
-  }
-  toggleSidebarFunc() {
-    this.toggleSidebar = !this.toggleSidebar;
+    debugger;
+    console.log("pageName", this.pageName);
   }
 
   getLoanStatusById() {
@@ -59,6 +49,8 @@ export class AdminPanelLayoutComponent implements OnInit {
         this.loanApplicantName = loanDetails.result.borrowerName;
         this.loanApplicationNumber = loanDetails.result.loanNo;
         this.loanApplicantAddress = loanDetails.result.propertyAddress;
+        this.mortageConsultant = loanDetails.result.mortageConsultant;
+        this.NMLSId = loanDetails.result.nmlsId;
         this.getLoanProgramById(loanDetails.result.loanProgramId);
       }
     );
@@ -75,5 +67,12 @@ export class AdminPanelLayoutComponent implements OnInit {
         this.loanProgramName = result.result.loanProgram;
       }
     );
+  }
+
+  checkProfilePageView() {
+    if (!localStorage.getItem("profilePage"))
+      localStorage.setItem("profilePage", "true");
+    else localStorage.removeItem("profilePage");
+    return localStorage.getItem("profilePage") ? false : true;
   }
 }

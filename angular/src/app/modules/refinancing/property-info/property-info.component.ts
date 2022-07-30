@@ -10,7 +10,6 @@ import { OfflineService } from "@app/services/offline.service";
   styleUrls: ["./property-info.component.css", "./../index.component.css"],
 })
 export class PropertyInfoComponent implements OnInit {
-  submitted = false;
   number: number = 1;
   model: RefinancePost = new RefinancePost();
   states: any[] = [];
@@ -76,28 +75,5 @@ export class PropertyInfoComponent implements OnInit {
   }
   saveStep() {
     this.offline.saveStep(2, this.model);
-  }
-  onNextClick(f, step) {
-    this.submitted = true;
-    if (f.valid) {
-      this.saveStep();
-      this.router.navigate(["/app/refinance/property-info/" + step]);
-      this.submitted = false;
-    }
-  }
-  getEditData() {
-    let isMillitary;
-    if (this.model.isMilitaryMember) {
-      isMillitary = "militery-yes";
-    } else {
-      isMillitary = "militery-no";
-    }
-    document.getElementById(this.model.objectiveReason).classList.add("blue");
-    document.getElementById(this.model.creditScore).classList.add("blue");
-    document.getElementById(this.model.typeOfHome).classList.add("blue");
-    document
-      .getElementById(this.model.currentlyUsingHomeAs)
-      .classList.add("blue");
-    document.getElementById(isMillitary).classList.add("blue");
   }
 }

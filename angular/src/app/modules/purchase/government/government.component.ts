@@ -10,7 +10,6 @@ import { OfflineService } from "@app/services/offline.service";
   styleUrls: ["./government.component.css"],
 })
 export class GovernmentComponent implements OnInit {
-  submitted = false;
   number: number = 1;
   yes = false;
   model: PostModel = new PostModel();
@@ -68,27 +67,10 @@ export class GovernmentComponent implements OnInit {
     this.saveStep();
   }
   onQsClick() {
-    let count = 0;
-    this.questions.forEach((ele) => {
-      if (ele["isYes"]) {
-        count++;
-      }
-    });
-    if (count != this.questions.length) {
-      this.submitted = true;
-    }
     this.saveStep();
-    this.router.navigate(["/app/purchase/gov/3"]);
   }
   onAgreeClick() {
-    if (this.model.govAgree1 && this.model.govAgree2 && this.model.govAgree3) {
-      this.submitted = false;
-
-      this.saveStep();
-      this.router.navigate(["/app/purchase/gov/4"]);
-    } else {
-      this.submitted = true;
-    }
+    this.saveStep();
   }
   onQAns(id, ans) {
     let req: any = {
@@ -102,26 +84,19 @@ export class GovernmentComponent implements OnInit {
       console.log(id);
     });
   }
-  onFinalNext(f, step) {
-    this.submitted = true;
-    if (f.valid) {
-      this.saveStep();
-      const final = this.apiModel.map(this.model);
-      this.submitted = false;
+  onFinalNext() {
+    this.saveStep();
+    const final = this.apiModel.map(this.model);
 
-      this.api
-        .post("LeadPurchasingDetails/update", final)
-        .subscribe((d: any) => {
-          if (d.success === true) {
-            alert("Done");
-          } else {
-            alert("Oops");
-            console.clear();
-            console.log({ d });
-          }
-        });
-      this.router.navigate(["/app/purchase/gov/" + step]);
-    }
+    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
+      if (d.success === true) {
+        alert("Done");
+      } else {
+        alert("Oops");
+        console.clear();
+        console.log({ d });
+      }
+    });
   }
   saveStep() {
     this.offline.saveStep(8, this.model);

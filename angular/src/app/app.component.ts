@@ -4,7 +4,7 @@ import { AppComponentBase } from "@shared/app-component-base";
 import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
 import { LayoutStoreService } from "@shared/layout/layout-store.service";
 import { Location, PopStateEvent } from "@angular/common";
-
+//import { OneSignal } from 'onesignal-ngx';
 import { filter } from "rxjs/operators";
 
 @Component({
@@ -12,15 +12,20 @@ import { filter } from "rxjs/operators";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent extends AppComponentBase implements OnInit {
+  title = "onesignal-app";
   sidebarExpanded: boolean;
 
   constructor(
     injector: Injector,
     private renderer: Renderer2,
     private _layoutStore: LayoutStoreService,
-    public router: Router
+    public router: Router // private oneSignal: OneSignal
   ) {
     super(injector);
+    // this.oneSignal.init({
+    //   appId: "bb3098ab-49e0-44f8-897e-79f8bd859b59",
+    //   allowLocalhostAsSecureOrigin: true,
+    // });
   }
   get IsLoanApp(): boolean {
     return (
