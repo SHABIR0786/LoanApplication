@@ -167,14 +167,26 @@
         />
       </div>
       <div class="col-md-4">
-        <select
-          class="form-select form-style"
-          [(ngModel)]="model.currentStateId"
-        >
-          <option *ngFor="let s of states" [value]="s.id">
-            {{ s.stateName }}
-          </option>
-        </select>
+        <div class="form-group">
+          <select
+            style="width: 100%"
+            class="form-select form-style"
+            [(ngModel)]="model.currentStateId"
+            name="currentState"
+            #currentStateRef="ngModel"
+            required
+          >
+            <option *ngFor="let s of states" [value]="s.id">
+              {{ s.stateName }}
+            </option>
+          </select>
+          <div
+            *ngIf="submitted && !currentStateRef.valid"
+            class="text-danger d-flex"
+          >
+            State is required
+          </div>
+        </div>
       </div>
       <div class="col-md-4">
         <input
@@ -640,7 +652,11 @@
                 />
               </div>
               <div class="col-md-4">
-                <select class="form-select form-style">
+                <select
+                  style="width: 100%"
+                  class="form-select form-style"
+                  [(ngModel)]="model.currentStateId"
+                >
                   <option *ngFor="let s of states" [value]="s.id">
                     {{ s.stateName }}
                   </option>
@@ -797,7 +813,7 @@
                 />
               </div>
               <div class="col-md-4">
-                <select class="form-select form-style">
+                <select class="form-select form-style" style="width: 100%">
                   <option *ngFor="let s of states" [value]="s.id">
                     {{ s.stateName }}
                   </option>
@@ -988,16 +1004,20 @@
           </p>
         </div>
       </div>
-    </div>
-    <!-- </form> -->
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a
-          href="(N0N MILITARY OPTION) 21  Apply Now I’m Refinancing  Personal Info  Review  (Edit).html"
-          class="btn"
-          id="btn-back-blue"
-          >Back</a
-        >
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <a
+            href="/app/refinance/personal-info/6"
+            class="btn"
+            id="btn-back-blue"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a class="btn" id="btn-next-blue" (click)="coBorrowerNextClick(f8)"
+            >Next</a
+          >
+        </div>
       </div>
       <div class="col-md-2">
         <a
