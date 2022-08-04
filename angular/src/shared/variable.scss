@@ -50,7 +50,7 @@ $spacers: map-merge(
 }
 
 @font-face {
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   src: local("Avenir-Medium"),
     url("/assets/fonts/Avenir-Font/fonts/Avenir Medium.ttf") format("truetype");
 }
@@ -60,7 +60,6 @@ $spacers: map-merge(
   src: local("Avenir-Heavy"),
     url("/assets/fonts/Avenir-Font/fonts/AEH.ttf") format("truetype");
 }
-
 $font-family-base: "Avenir-Medium", sans-serif;
 
 app-header {
