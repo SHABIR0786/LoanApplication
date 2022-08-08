@@ -11227,6 +11227,8 @@ a.text-warning:focus {
 
 .text-danger {
   color: #dc3545 !important;
+  margin-bottom: 1.5rem;
+  margin-top: -0.5rem;
 }
 
 a.text-danger:hover,
