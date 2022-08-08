@@ -74,7 +74,7 @@ body {
 .right-content {
   text-align: left;
   padding-top: 30px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-size: 20px;
   font-weight: 600;
 }
@@ -101,7 +101,7 @@ body {
 .title {
   color: #091a52;
   font-size: 24px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-weight: 600;
   position: absolute;
   margin-left: 70px;
@@ -162,10 +162,11 @@ body {
   text-align: center;
   padding: 30px 15px;
   color: #091a52;
+  font-family: "Avenir-Medium";
 }
 .main-content h2 {
   font-size: 28px;
-  font-family: "Avenir";
+  font-family: "Avenir-Medium";
   font-weight: 500;
   padding-bottom: 40px;
 }
@@ -173,6 +174,7 @@ body {
   font-size: 20px;
   color: #091a52;
   padding-bottom: 50px;
+  font-family: "Helvetica Neue";
 }
 .main-content .form-style {
   padding: 10px;
@@ -408,10 +410,12 @@ body {
 }
 .content-footer h5 {
   font-size: 18px;
+  font-family: "Helvetica Neue";
 }
 .content-footer p {
   font-size: 16px;
   margin-bottom: 50px;
+  font-family: "Helvetica Neue";
 }
 .content-footer p a {
   color: #f47741;
@@ -739,17 +743,18 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
+    font-family: "Helvetica Neue";
   }
   .main-content h2 {
     font-size: 28px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 40px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -758,7 +763,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -843,17 +848,18 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
+    font-family: "Helvetica Neue";
   }
   .main-content h2 {
     font-size: 28px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 40px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -862,7 +868,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -947,17 +953,18 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
+    font-family: "Helvetica Neue";
   }
   .main-content h2 {
     font-size: 36px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 50px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -966,7 +973,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
@@ -1052,17 +1059,18 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
+    font-family: "Helvetica Neue";
   }
   .main-content h2 {
     font-size: 36px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 500;
     padding-bottom: 50px;
   }
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -1071,7 +1079,7 @@ body {
   .right-content {
     text-align: right;
     padding-top: 30px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-size: 20px;
     font-weight: 600;
   }
