@@ -14,6 +14,7 @@ export class PropertyInfoComponent implements OnInit {
   number: number = 1;
   yes = false;
   isEdit = false;
+  submitted = false;
   model: PostModel = new PostModel();
   states: any[] = [];
   cities: any[] = [];
@@ -36,9 +37,16 @@ export class PropertyInfoComponent implements OnInit {
     this.getCities();
     this.model = this.offline.getStep().data;
   }
-  onPehlaForm(f: NgForm) {
-    this.router.navigate(["/app/purchase/property-info", 2]);
-    this.onNewHomeClick();
+  onPehlaForm(f: NgForm, step: any) {
+    this.submitted = true;
+    console.log(f, step);
+    if (f.valid) {
+      this.router.navigate(["/app/purchase/property-info", step]);
+      // this.onNewHomeClick();
+      this.submitted = false;
+
+      this.onNextClick();
+    }
   }
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
@@ -57,13 +65,16 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
 
-  onNewHomeClick() {
-    this.offline.saveStep(3, this.model);
-  }
-  onNextTwoClick() {
-    this.offline.saveStep(3, this.model);
-  }
-  onNextThreeClick() {
+  // onNewHomeClick() {
+  //   this.offline.saveStep(3, this.model);
+  // }
+  // onNextTwoClick() {
+  //   this.offline.saveStep(3, this.model);
+  // }
+  // onNextThreeClick() {
+  //   this.offline.saveStep(3, this.model);
+  // }
+  onNextClick() {
     this.offline.saveStep(3, this.model);
   }
   onCreditClick(e) {
@@ -90,5 +101,32 @@ export class PropertyInfoComponent implements OnInit {
   }
   onEditNextClick() {
     this.offline.saveStep(3, this.model);
+  }
+
+  calculatePercent() {
+    console.log(this.model.downPaymentPercent);
+    this.model.downPaymentPercent = String(
+      (
+        (Number(this.model.downPaymentAmount) /
+          Number(this.model.estimatedPrice)) *
+        100
+      ).toFixed(3)
+    );
+  }
+  editClicked() {
+    this.isEdit = true;
+    let isMillitary;
+    document.getElementById(this.model.creditScore).classList.add("active");
+    document.getElementById(this.model.homeType).classList.add("active");
+    console.log(this.model.isMillitary, this.model.homePlan);
+    if (this.model.isMillitary) {
+      isMillitary = "militery-yes";
+    } else {
+      isMillitary = "militery-no";
+    }
+    document.getElementById(isMillitary).classList.add("active");
+    document
+      .getElementById("property-" + this.model.homePlan)
+      .classList.add("active");
   }
 }

@@ -4,26 +4,79 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <!-- <form action="" id="employer-details"> -->
-    <select class="form-select form-style" [(ngModel)]="model.accountType">
-      <option>-Account type-</option>
-      <option [value]="a.id" *ngFor="let a of accType">
-        {{ a.financialAccountType1 }}
-      </option>
-    </select>
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Finantional institution"
-      [(ngModel)]="model.finInstitute"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Balance"
-      [(ngModel)]="model.finBalance"
-    />
-    <!-- </form> -->
+    <form action="" id="assets" #f="ngForm">
+      <div class="form-group">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.accountType"
+          name="accountType"
+          required
+          #accountTypeRef="ngModel"
+        >
+          <option>-Account type-</option>
+          <option [value]="a.id" *ngFor="let a of accType">
+            {{ a.financialAccountType1 }}
+          </option>
+        </select>
+        <div
+          *ngIf="submitted && !accountTypeRef.valid"
+          class="text-danger d-flex"
+        >
+          Account type is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Finantional institution"
+          [(ngModel)]="model.finInstitute"
+          name="finInstitute"
+          required
+          #finInstituteRef="ngModel"
+        />
+        <div
+          *ngIf="submitted && !finInstituteRef.valid"
+          class="text-danger d-flex"
+        >
+          Finantional institution is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control form-style"
+          placeholder="Balance"
+          [(ngModel)]="model.finBalance"
+          name="finBalance"
+          required
+          #finBalanceRef="ngModel"
+        />
+        <div
+          *ngIf="submitted && !finBalanceRef.valid"
+          class="text-danger d-flex"
+        >
+          Balance is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Account Type"
+          [(ngModel)]="model.accountType"
+          name="accountType"
+          required
+          #accountTypeRef="ngModel"
+        />
+        <div
+          *ngIf="submitted && !accountTypeRef.valid"
+          class="text-danger d-flex"
+        >
+          Account type is required
+        </div>
+      </div>
+    </form>
     <div class="row margin-top">
       <div class="col-md-2 offset-md-1">
         <a routerLink="/app/purchase/income-info/5" class="btn" id="btn-back"
@@ -31,13 +84,7 @@
         >
       </div>
       <div class="col-md-2 offset-md-1">
-        <a
-          routerLink="/app/purchase/assets-info/2"
-          class="btn"
-          id="btn-next"
-          (click)="stepOneClick()"
-          >Next</a
-        >
+        <a class="btn" id="btn-next" (click)="stepNextClick(f, 2)">Next</a>
       </div>
       <div class="col-md-2 offset-md-1">
         <a routerLink="/app/purchase/assets-info/2" class="btn" id="btn-back"
@@ -154,7 +201,12 @@
     <div class="row">
       <div class="col-md-12 margin-top">
         <form action="" id="employer-details">
-          <select class="form-select form-style">
+          <select
+            class="form-select form-style"
+            [(ngModel)]="model.accountType"
+            name="accountType"
+            required
+          >
             <option>Checking Account</option>
           </select>
 
@@ -162,11 +214,17 @@
             type="text"
             class="form-control form-style"
             placeholder="Finantional institution"
+            [(ngModel)]="model.finInstitute"
+            name="finInstitute"
+            required
           />
           <input
             type="text"
             class="form-control form-style"
             placeholder="Balance"
+            [(ngModel)]="model.finBalance"
+            name="finBalance"
+            required
           />
         </form>
       </div>
@@ -235,7 +293,14 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+        <button
+          type="button"
+          routerLink="/app/purchase/assets-info/4"
+          class="btn"
+          id="btn-edit"
+        >
+          Edit
+        </button>
       </div>
     </div>
     <div class="row">
