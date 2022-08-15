@@ -11227,6 +11227,8 @@ a.text-warning:focus {
 
 .text-danger {
   color: #dc3545 !important;
+  /* margin-bottom: 1.5rem;
+  margin-top: -0.5rem; */
 }
 
 a.text-danger:hover,
@@ -12084,6 +12086,7 @@ section input.form-control:focus,
 section select.form-control:focus {
   border: 1px solid #f47741;
   box-shadow: none;
+  background-color: #ffffff !important;
 }
 @media (max-width: 767.98px) {
   section {

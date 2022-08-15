@@ -1,44 +1,62 @@
 <div class="main-content" *ngIf="number == 1">
-  <h2>Are you already working with someone from EZ Online Mortgage?</h2>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <a
-      (click)="isEdit = true; onMorOpt(true)"
-      class="btn btn-primary btn-style btn-blue"
-      >Yes</a
-    >
+  <form action="" id="working" #f1="ngForm">
+    <h2>Are you already working with someone from EZ Online Mortgage?</h2>
+    <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+      <a
+        (click)="isEdit = true; onMorOpt(true)"
+        class="btn btn-primary btn-style btn-blue"
+        >Yes</a
+      >
 
-    <a
-      routerLink="/app/refinance/welcome/2"
-      (click)="isEdit = false; onMorOpt(false)"
-      class="btn btn-primary btn-style btn-blue"
-      >No</a
-    >
-    <p *ngIf="isEdit">Who are you working with?</p>
-    <!-- <input
+      <a
+        routerLink="/app/refinance/welcome/2"
+        (click)="isEdit = false; onMorOpt(false)"
+        class="btn btn-primary btn-style btn-blue"
+        >No</a
+      >
+      <p *ngIf="isEdit">Who are you working with?</p>
+      <!-- <input
       *ngIf="isEdit"
       type="text"
       [(ngModel)]="model.workingOfficerName"
       class="form-control form-style"
       placeholder="Select your Loan Officer"
     /> -->
-    <select
-      *ngIf="isEdit"
-      placeholder="Select your Loan Officer"
-      [(ngModel)]="model.workingOfficerName"
-      class="form-control form-style"
-    >
-      <option value="Willam Martin">Willam Martin</option>
-    </select>
-    <a
-      routerLink="/app/refinance/welcome/2"
-      class="btn btn-primary btn-next btn-blue"
-      >Next</a
-    >
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+      <div class="form-group">
+        <select
+          *ngIf="isEdit"
+          placeholder="Select your Loan Officer"
+          [(ngModel)]="model.workingOfficerName"
+          style="width: 100%"
+          class="form-control form-style"
+          #workingOfficerNameRef="ngModel"
+          name="workingOfficerName"
+        >
+          <option selected default disabled value="">
+            Select your Loan Officer
+          </option>
+          <option value="Willam Martin">Willam Martin</option>
+        </select>
+
+        <div
+          *ngIf="submitted && !workingOfficerNameRef.valid"
+          class="text-danger d-flex"
+        >
+          Loan Officer is required
+        </div>
+      </div>
+      <a
+        class="btn btn-primary btn-next btn-blue"
+        *ngIf="isEdit"
+        (click)="nextClicked(f1, 2)"
+        >Next</a
+      >
+    </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </form>
 </div>
 <div class="main-content" *ngIf="number == 2">
   <h2 class="little-space">

@@ -12,6 +12,7 @@ export class WelcomeComponent implements OnInit {
   number: number = 1;
   isEdit = false;
   model: RefinancePost = new RefinancePost();
+  submitted = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -41,5 +42,16 @@ export class WelcomeComponent implements OnInit {
 
   saveStep() {
     this.offline.saveStep(1, this.model);
+  }
+
+  nextClicked(f, step) {
+    this.submitted = true;
+    console.log(f);
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/welcome/", step]);
+      this.submitted = false;
+
+      // this.saveStep();
+    }
   }
 }
