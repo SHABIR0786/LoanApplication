@@ -76,9 +76,11 @@ export class GovernmentComponent implements OnInit {
     });
     if (count != this.questions.length) {
       this.submitted = true;
+    } else {
+      this.saveStep();
+      this.router.navigate(["/app/purchase/gov/3"]);
+      this.submitted = true;
     }
-    this.saveStep();
-    this.router.navigate(["/app/purchase/gov/3"]);
   }
   onAgreeClick() {
     if (this.model.govAgree1 && this.model.govAgree2 && this.model.govAgree3) {

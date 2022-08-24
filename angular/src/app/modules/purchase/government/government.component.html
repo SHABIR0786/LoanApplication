@@ -519,7 +519,11 @@
 
   <div class="row">
     <div class="col-md-12">
-      <select class="form-select form-style" [(ngModel)]="model.govQ15">
+      <select
+        class="form-select form-style"
+        [(ngModel)]="model.govQ15"
+        style="width: 100%"
+      >
         <option value="">-What is your citizenship status?-</option>
         <option [value]="c.id" *ngFor="let c of cs">
           {{ c?.citizenshipType1 }}

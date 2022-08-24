@@ -54,6 +54,7 @@ import { ThanksComponent } from "./thanks/thanks.component";
 import { OfflineService } from "./../../services/offline.service";
 import { FormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
+import { SharedModule } from "@shared/shared.module";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -106,6 +107,6 @@ import { ApiService } from "@app/services/api.service";
     ThanksComponent,
   ],
   providers: [OfflineService, ApiService],
-  imports: [CommonModule, RefinancingRoutingModule, FormsModule],
+  imports: [CommonModule, RefinancingRoutingModule, FormsModule, SharedModule],
 })
 export class RefinancingModule {}

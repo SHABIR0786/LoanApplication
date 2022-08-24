@@ -16,6 +16,7 @@ export class PersonalInfoComponent implements OnInit {
   states: any[] = [];
   cities: any[] = [];
   dependents: number = 0;
+  matched = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -46,12 +47,14 @@ export class PersonalInfoComponent implements OnInit {
 
   onPersClick(f, step) {
     this.submitted = true;
-
-    console.log(f);
+    if (this.model.personalPassword === this.model.personalPasswordCon) {
+      this.matched = true;
+    }
+    console.log(this.submitted, this.matched);
     if (f.valid) {
-      this.router.navigate(["/app/purchase/personal-info", step]);
+      // this.router.navigate(["/app/purchase/personal-info", step]);
       this.submitted = false;
-
+      this.matched = false;
       this.saveStep();
     }
   }

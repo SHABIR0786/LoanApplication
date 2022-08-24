@@ -58,16 +58,17 @@ export class GovInfoComponent implements OnInit {
     });
     if (count != this.questions.length) {
       this.submitted = true;
+    } else {
+      this.saveStep();
+      this.model.id = this.model.leadApplicationDetailRefinancingId;
+      this.api
+        .post("LeadRefinancingDetails/Update", this.model)
+        .subscribe((x: any) => {
+          if (x.success) {
+            this.router.navigate([a]);
+          }
+        });
     }
-    this.saveStep();
-    this.model.id = this.model.leadApplicationDetailRefinancingId;
-    this.api
-      .post("LeadRefinancingDetails/Update", this.model)
-      .subscribe((x: any) => {
-        if (x.success) {
-          this.router.navigate([a]);
-        }
-      });
   }
   onQAns(id, ans) {
     let req: any = {
