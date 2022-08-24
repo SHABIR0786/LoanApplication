@@ -64,6 +64,7 @@
         name="assetsOwner"
         #assetsOwnerRef="ngModel"
         required
+        style="width: 100%"
       >
         <option>- Owner -</option>
       </select>
@@ -75,13 +76,19 @@
       </div>
       <!-- </div> -->
       <div class="row margin-top">
-        <div class="col-md-2 offset-md-1">
+        <div
+          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
+        >
           <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
         </div>
-        <div class="col-md-2 offset-md-1">
+        <div
+          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
+        >
           <a class="btn" id="btn-next-blue" (click)="nextClicked(f, 2)">Next</a>
         </div>
-        <div class="col-md-2 offset-md-1">
+        <div
+          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
+        >
           <a
             routerLink="/app/refinance/assets-info/2"
             class="btn"

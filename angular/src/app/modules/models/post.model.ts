@@ -8,6 +8,7 @@ export class PostModel {
   newHomeUnit: string;
   newHomeCityTown: string;
   newHomeState: string = "1";
+  newHomeStateName: string = "";
   newHomeZip: string;
   contractDate: string;
   propertyOption1: string;

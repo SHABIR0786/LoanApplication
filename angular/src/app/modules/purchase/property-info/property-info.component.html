@@ -67,6 +67,7 @@
               name="newHomeState"
               required
               #newHomeStateRef="ngModel"
+              (change)="onStateChange($event)"
             >
               <option [value]="s.id" *ngFor="let s of states">
                 {{ s.stateName }}
@@ -428,15 +429,14 @@
               placeholder="Middle Initial"
               [(ngModel)]="model.middleName"
               name="middleName"
-              required
               #middleNameRef="ngModel"
             />
-            <div
+            <!-- <div
               *ngIf="submitted && !firstNameRef.valid"
               class="text-danger d-flex"
             >
               Middle Name is required
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -834,9 +834,9 @@
           <div class="profile-details">
             <p>Address: {{ model.newHomeAddress }}</p>
             <p>City or Town: {{ model.newHomeCityTown }}</p>
-            <p>State: {{ model.newHomeState }}</p>
+            <p>State: {{ model.newHomeStateName }}</p>
             <p>Zip Code: {{ model.newHomeZip }}</p>
-            <p>County: {{ model.newHomeState }}</p>
+            <!-- <p>County: {{ model.newHomeState }}</p> -->
             <p>Closing Date: {{ model.contractDate }}</p>
             <p>Estimated Home Price: ${{ model.estimatedPrice }}</p>
             <p>Down Payment Amount: ${{ model.downPaymentAmount }}</p>

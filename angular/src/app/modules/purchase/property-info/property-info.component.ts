@@ -18,6 +18,7 @@ export class PropertyInfoComponent implements OnInit {
   model: PostModel = new PostModel();
   states: any[] = [];
   cities: any[] = [];
+  stateName;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -52,16 +53,28 @@ export class PropertyInfoComponent implements OnInit {
     this.api.get("State/states").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
+        console.log(this.model.newHomeState);
         this.model.empState = "1";
         this.model.currentStateId = 1;
-        this.model.newHomeState = "1";
-        //this.model.newHomeState = x.result[0].id;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
       }
     });
   }
   getCities() {
     this.api.get("City/cities").subscribe((x: any) => {
       if (x && x.result) this.cities = x.result;
+    });
+  }
+
+  onStateChange(event) {
+    console.log(event.target.value);
+    this.states.forEach((element) => {
+      if (element.id == event.target.value) {
+        this.model.newHomeStateName = element.stateName;
+        console.log(this.model.newHomeStateName);
+      }
     });
   }
 

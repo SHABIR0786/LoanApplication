@@ -126,12 +126,19 @@
           name="personalPasswordCon"
           required
           #personalPasswordConRef="ngModel"
+          [appMatchPassword]="['personalPasswordRef', 'personalPasswordConRef']"
         />
         <div
           *ngIf="submitted && !personalPasswordConRef.valid"
           class="text-danger d-flex"
         >
           Confirm Password is required
+        </div>
+        <div
+          *ngIf="submitted && personalPasswordConRef.errors?.passwordMismatch"
+          class="text-danger d-flex"
+        >
+          Confirm Password and Password should match
         </div>
       </div>
 
@@ -395,7 +402,7 @@
 </div>
 <div class="main-content" *ngIf="number == 6">
   <h2>Where are you currently living?</h2>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list col-lg-8 offset-lg-2 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="personal-address" #f6="ngForm">
       <div class="form-group">
         <input
@@ -457,6 +464,7 @@
               name="currentState"
               #currentStateIdRef="ngModel"
               required
+              style="width: 100%"
             >
               <option>State</option>
               <option [value]="s.id" *ngFor="let s of states">
