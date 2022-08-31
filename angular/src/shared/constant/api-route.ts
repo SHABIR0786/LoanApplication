@@ -5,4 +5,5 @@ export const ApiRoute = {
   adminUserDetailsById: "AdminUser/GetById",
   updateAdminUserName: "AdminUser/ChangeUsername?",
   updateAdminEmailAddress: "AdminUser/ChangeEmail?",
+  uploadAdminLoanApplicationDocument:"AdminLoanApplicationDocument/Upload"
 };

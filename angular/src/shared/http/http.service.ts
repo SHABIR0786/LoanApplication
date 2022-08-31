@@ -8,13 +8,18 @@ import { environment } from "../../environments/environment";
 export class HttpService {
   constructor(private httpClient: HttpClient) {}
 
-  post(serviceName: string, data: any = {}, isAuth = true) {
+  post(serviceName: string, data: any = {}, isAuth = true,options=null) {
+    if(options!=null)
+    {
+      return this.httpClient.post(environment.apiUrl + serviceName, data,options);
+    }
     return this.httpClient.post(environment.apiUrl + serviceName, data);
   }
 
   put(serviceName: string, data) {
     const options = {
       headers: new HttpHeaders({ "Content-Type": "image/jpeg" }),
+      
     };
     return this.httpClient.put(serviceName, data, options);
   }

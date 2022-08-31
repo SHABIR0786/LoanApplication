@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LoanstatusService } from "../../../shared/service/loanstatus.service";
+import { AdminDashboardService } from "../../../shared/service/admin-dashboard.service";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -7,7 +8,7 @@ import { LoanstatusService } from "../../../shared/service/loanstatus.service";
   styleUrls: ["./admin-dashboard.component.css"],
 })
 export class AdminDashboardComponent implements OnInit {
-  constructor(private LoanstatusService: LoanstatusService) {}
+  constructor(private LoanstatusService: LoanstatusService,private AdminDashboardService:AdminDashboardService) {}
   loanStatus: any;
   loanApplicantName: any;
   loanApplicationNumber: any;
@@ -16,6 +17,7 @@ export class AdminDashboardComponent implements OnInit {
   loanProgramId: any;
   mortageConsultant: any;
   NMLSId: any;
+  formFile: FileParameter;
 
   ngOnInit(): void {
     this.getLoanStatusById();
@@ -71,4 +73,26 @@ export class AdminDashboardComponent implements OnInit {
     else localStorage.removeItem("profilePage");
     return localStorage.getItem("profilePage") ? false : true;
   }
+
+  uploadFile(files:any){
+    debugger
+    this.formFile = {
+      fileName: files[0].name,
+      data: files[0],
+    };
+    var data = {
+      UserId:1,
+      DisclosureId:1,
+      LoanId:1,
+      formFile:this.formFile
+    }
+    this.AdminDashboardService.uploadDocument(data).subscribe((res)=>{
+
+    })
+    
+  }
+}
+export interface FileParameter {
+  data: any;
+  fileName: string;
 }

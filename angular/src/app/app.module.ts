@@ -245,6 +245,7 @@ import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_applicatio
 import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
 import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
 import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
+import { NotificationComponent } from './notification/notification.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -499,6 +500,7 @@ const ngWizardConfig: NgWizardConfig = {
     ThanksForApplyingComponent,
     AnimatedBuyHomeHeaderComponent,
     AnimatedLegalFooterComponent,
+    NotificationComponent,
   ],
   imports: [
     CommonModule,
