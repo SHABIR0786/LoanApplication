@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Enums } from "shared/constant/enums";
 import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { UtilsService } from "abp-ng2-module";
+import { AppConsts } from "@shared/AppConsts";
 
 @Component({
   selector: "app-admin-side-menu",
@@ -62,8 +63,25 @@ export class AdminSideMenuComponent implements OnInit {
     this.pageName = Enums.AdminDashboard;
   }
 
-  logOut() {
-    debugger;
-    this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
+  navigateToNotification(){
+    this._router.navigate(["app/admin/notification"])
+  }
+
+  navigateToLoanProgress(){
+    this._router.navigate(["app/admin/loan-process"]);
+  }
+
+  logOut(reload?: boolean) {
+   // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
+   abp.auth.clearToken();
+   abp.utils.setCookieValue(
+     AppConsts.authorization.encryptedAuthTokenName,
+     undefined,
+     undefined,
+     abp.appPath
+   );
+   if (reload !== false) {
+     location.href = AppConsts.appBaseUrl;
+   }
   }
 }

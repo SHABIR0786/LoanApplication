@@ -9,11 +9,7 @@ import { Router } from "@angular/router";
 
 @NgModule({
   declarations: [
-    AdminPanelLayoutComponent,
-    AdimPanelPageComponent,
-    AdminSideMenuComponent,
-    AdminProfilePageComponent,
-    AdminDashboardComponent,
+    
   ],
   imports: [CommonModule],
 })

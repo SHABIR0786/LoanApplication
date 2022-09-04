@@ -29,7 +29,7 @@
         ></a>
         <ul class="pl-2 d-none">
           <li>
-            <a href="javascript:void(0)" class="font-weight-light"
+            <a href="javascript:void(0)" (click)="navigateToLoanProgress()" class="font-weight-light"
               ><i class="fa fa-sun"></i>
               <span class="pl-2"> Loan Progress</span></a
             >
@@ -41,7 +41,7 @@
             >
           </li>
           <li>
-            <a href="javascript:void(0)" class="font-weight-light"
+            <a href="javascript:void(0)" (click)="navigateToNotification()" class="font-weight-light"
               ><i class="fa fa-bell"></i>
               <span class="pl-2"> Notification</span></a
             >
@@ -233,7 +233,7 @@
             >
               My Profile
             </button>
-            <a href="javascript:void(0)" class="p-1 pl-3 h5 nav_icon"
+            <a href="javascript:void(0)" (click)="logOut()" class="p-1 pl-3 h5 nav_icon"
               ><i class="fa fa-sign-out-alt"></i
             ></a>
           </div>
@@ -251,14 +251,5 @@
 </div>
 
 <div class="content px-4">
-  <div>
-    <app-admin-dashboard
-      *ngIf="pageName == GlobalName.AdminDashboard"
-    ></app-admin-dashboard>
-  </div>
-  <div>
-    <app-admin-profile-page
-      *ngIf="pageName == GlobalName.AdminProfile"
-    ></app-admin-profile-page>
-  </div>
+ <router-outlet></router-outlet>
 </div>

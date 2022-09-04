@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientJsonpModule, HttpClientModule } from "@angular/common/http";
-import { ModalModule } from "ngx-bootstrap/modal";
+//import { ModalModule } from "ngx-bootstrap/modal";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { TabsModule } from "ngx-bootstrap/tabs";
@@ -245,6 +245,10 @@ import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_applicatio
 import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
 import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
 import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
+import { LoanProgressComponent } from './admin-panel/loan-progress/loan-progress.component';
+import { AdminModule } from "./admin/admin.module";
+import { NotificationComponent } from './admin-panel/notification/notification.component';
+import { LoanApplicationListComponent } from './admin-panel/loan-application-list/loan-application-list.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -296,8 +300,6 @@ const ngWizardConfig: NgWizardConfig = {
     AdditionalDetailsComponent,
     SummaryExpandDataComponent,
     LoanListComponent,
-    AdminPanelComponent,
-
     LoanSideBar,
     MortgageCalculatorComponent,
     HomeAffordabilityCalculatorComponent,
@@ -499,6 +501,9 @@ const ngWizardConfig: NgWizardConfig = {
     ThanksForApplyingComponent,
     AnimatedBuyHomeHeaderComponent,
     AnimatedLegalFooterComponent,
+    LoanProgressComponent,
+    NotificationComponent,
+    LoanApplicationListComponent,
   ],
   imports: [
     CommonModule,
@@ -506,7 +511,7 @@ const ngWizardConfig: NgWizardConfig = {
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    ModalModule.forChild(),
+    //ModalModule.forChild(),
     TooltipModule.forRoot(),
     BsDropdownModule,
     CollapseModule,
@@ -519,7 +524,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgWizardModule.forRoot(ngWizardConfig),
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
-    AdminPanelLayoutModule,
+    AdminModule
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [

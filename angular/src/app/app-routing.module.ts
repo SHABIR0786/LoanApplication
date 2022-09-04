@@ -204,7 +204,7 @@ import { AgreeToFollowingComponent } from "./animated_loan_application/credit-sc
 import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
 import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
 import { AdminProfilePageComponent } from "./admin-panel/admin-profile-page/admin-profile-page.component";
-import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-panel-layout.module";
+import { LoanProgressComponent } from "./admin-panel/loan-progress/loan-progress.component";
 
 @NgModule({
   imports: [
@@ -1225,22 +1225,15 @@ import { AdminPanelLayoutModule } from "./admin-panel/admin-panel-layout/admin-p
             component: UsGovernmentRequireQuestionsComponent,
             canActivate: [AppRouteGuard],
           },
-          {
-            path: "admin/profile",
-            component: AdminProfilePageComponent,
-            canActivate: [AppRouteGuard],
-          },
+          
         ],
       },
       {
-        path: "",
-        component: AdminPanelLayoutComponent,
-        children: [
-          {
-            path: "admin",
-            component: AdminPanelLayoutComponent,
-          },
-        ],
+        path: "admin",
+        loadChildren: () =>
+          import("./../app/admin/admin.module").then(
+            (x) => x.AdminModule
+          ),
       },
     ]),
   ],
