@@ -1,0 +1,74 @@
+<section class="pt-3">
+  <div class="container-fluid p-0">
+    <div class="all_content">
+      <h1 class="top_heading">My Loan Application # 1831091881</h1>
+      <div class="contentt p-4">
+        <h3 class="bold_text text-dark">
+          You have  {{notificationCount}} <span class="new_text text-white">new</span> notifications
+          for your loan application.
+        </h3>
+        <h2 class="main_heading text-dark mb-3">Notification Inbox</h2>
+        <div class="row" *ngFor="let item of notification">
+          <div class="col-6">
+            <div class="hover_text">
+              <h3 class="bold_text text-dark mb-3">Notification Subject</h3>
+              <p class="orange_text mb-2" >
+                {{item.subject}}
+              </p>
+              <!-- <p class="blue_text">
+                Loan 3718317 - Application Started - Next Steps
+              </p> -->
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="">
+              <h3 class="bold_text text-dark mb-3">Date Generated</h3>
+              <p class="simple_text">{{item.date | date}}</p>
+              <!-- <p class="simple_text">9/23/2021</p> -->
+            </div>
+          </div>
+        </div>
+
+        <p class="pink_text">
+          *Please click on the notification subject to view
+        </p>
+        <p class="simple_text">
+          <i class="fas fa-file-pdf"></i> if you need PDF viewer to download it.
+        </p>
+
+        <button
+          _ngcontent-nvv-c304=""
+          class="btn apply_btn text-white py-2 px-3 mt-3"
+        >
+          CLICK HERE
+        </button>
+
+          
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------------------MODAL----------------------------------- -->
+
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- ----------------------MODAL END-------------------------- -->
+</section>

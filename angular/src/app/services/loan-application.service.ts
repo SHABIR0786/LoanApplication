@@ -9,4 +9,5 @@ export class LoanApplicationService extends BaseService {
   constructor(http: HttpClient) {
     super(http, "UniformResidentialLoan");
   }
+ 
 }

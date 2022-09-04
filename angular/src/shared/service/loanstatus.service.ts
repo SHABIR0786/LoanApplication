@@ -19,4 +19,6 @@ export class LoanstatusService {
   getLoanProgramDetailsById(data: any) {
     return this.httpService.get(ApiRoute.loanProgramDetails, data);
   }
+
+ 
 }

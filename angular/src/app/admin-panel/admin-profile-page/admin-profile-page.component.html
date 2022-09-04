@@ -57,6 +57,7 @@
                 <div class="col col-md-6 float-left p-l-0">
                   <div class="p-b-14">
                     <input
+                     #oldpassword
                       type="password"
                       class="form-control input-box"
                       id="exampleInputEmail1"
@@ -66,6 +67,7 @@
                   </div>
                   <div class="p-b-14">
                     <input
+                    #newPassword
                       type="password"
                       class="form-control input-box"
                       id="exampleInputEmail1"
@@ -85,7 +87,7 @@
                 </div>
               </div>
               <div class="p-t-34">
-                <button class="submit-button">
+                <button class="submit-button" (click)="changePassword(oldpassword.value, newPassword.value)">
                   <span class="submit-text">Submit</span>
                 </button>
               </div>
