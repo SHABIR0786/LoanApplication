@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   hmr: false,
-  appConfig: "appconfig.production.json",
-  baseApi: "https://74.208.32.89/loan-backend/api/",
+  appConfig: "appconfig.json",
+  baseApi: "http://localhost:21021/loan-backend/api/",
   apiUrl: "http://localhost:21021/api/",
 };
