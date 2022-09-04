@@ -36,7 +36,7 @@ namespace LoanManagement.Services.Implementation
             };
             _dbContext.AdminUsernotifications.Add(entity);
 
-            _dbContext.SaveChanges();
+           // _dbContext.SaveChanges();
             var serializeData = JsonSerializer.Serialize(entity);
 
             UserNotification[] userNotifications = {new UserNotification
