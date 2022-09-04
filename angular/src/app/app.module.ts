@@ -245,10 +245,11 @@ import { JustFewMoreYesOrNoQuestionsComponent } from "./animated_loan_applicatio
 import { AgreeToFollowingComponent } from "./animated_loan_application/credit-score/agree-to-following/agree-to-following.component";
 import { CreditConfirmationComponent } from "./animated_loan_application/credit-score/credit-confirmation/credit-confirmation.component";
 import { ThanksForApplyingComponent } from "./animated_loan_application/thanks-for-applying/thanks-for-applying.component";
-import { LoanProgressComponent } from './admin-panel/loan-progress/loan-progress.component';
+import { LoanProgressComponent } from "./admin-panel/loan-progress/loan-progress.component";
 import { AdminModule } from "./admin/admin.module";
-import { NotificationComponent } from './admin-panel/notification/notification.component';
-import { LoanApplicationListComponent } from './admin-panel/loan-application-list/loan-application-list.component';
+import { NotificationComponent } from "./admin-panel/notification/notification.component";
+import { LoanApplicationListComponent } from "./admin-panel/loan-application-list/loan-application-list.component";
+import { MainLoanProcessComponent } from "./admin-panel/loan-progress/main-loan-process/main-loan-process.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -504,6 +505,7 @@ const ngWizardConfig: NgWizardConfig = {
     LoanProgressComponent,
     NotificationComponent,
     LoanApplicationListComponent,
+    MainLoanProcessComponent,
   ],
   imports: [
     CommonModule,
@@ -524,7 +526,7 @@ const ngWizardConfig: NgWizardConfig = {
     NgWizardModule.forRoot(ngWizardConfig),
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
-    AdminModule
+    AdminModule,
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [

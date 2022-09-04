@@ -7,7 +7,10 @@ import { LoanManagementService } from "../../../shared/service/loanmanagement.se
   styleUrls: ["./admin-dashboard.component.css"],
 })
 export class AdminDashboardComponent implements OnInit {
-  constructor(private LoanstatusService: LoanstatusService, private LoanManagmentService: LoanManagementService) {}
+  constructor(
+    private LoanstatusService: LoanstatusService,
+    private LoanManagmentService: LoanManagementService
+  ) {}
   loanStatus: any;
   loanApplicantName: any;
   loanApplicationNumber: any;
@@ -73,19 +76,19 @@ export class AdminDashboardComponent implements OnInit {
     else localStorage.removeItem("profilePage");
     return localStorage.getItem("profilePage") ? false : true;
   }
- 
-  getAdminDisclouserDetails(){
+
+  getAdminDisclouserDetails() {
     let obj = {
       params: {
         id: 1,
       },
     };
-  this.LoanManagmentService.getallAdminDisclouser(obj).subscribe(
-    (res: any) => {
-      debugger
-      this.disclouser = res.result[0].title;
-      console.log(res)
-    }
-  );
-}
+    this.LoanManagmentService.getallAdminDisclouser(obj).subscribe(
+      (res: any) => {
+        debugger;
+        this.disclouser = res.result.title;
+        console.log(res);
+      }
+    );
+  }
 }
