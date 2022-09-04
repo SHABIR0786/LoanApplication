@@ -6,13 +6,15 @@ import { AdminPanelLayoutComponent } from '@app/admin-panel/admin-panel-layout/a
 import { AdminProfilePageComponent } from '@app/admin-panel/admin-profile-page/admin-profile-page.component';
 import { AdminSideMenuComponent } from '@app/admin-panel/admin-side-menu/admin-side-menu.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AdminPanelComponent } from '@app/admin-panel/admin-panel.component';
 
 
 @NgModule({
   declarations: [
     AdminPanelLayoutComponent,
     AdminProfilePageComponent,
-    AdminSideMenuComponent
+    AdminSideMenuComponent,
+    AdminPanelComponent
   ],
   imports: [
     CommonModule,

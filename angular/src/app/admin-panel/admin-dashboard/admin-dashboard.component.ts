@@ -82,6 +82,7 @@ export class AdminDashboardComponent implements OnInit {
     };
   this.LoanManagmentService.getallAdminDisclouser(obj).subscribe(
     (res: any) => {
+      debugger
       this.disclouser = res.result[0].title;
       console.log(res)
     }

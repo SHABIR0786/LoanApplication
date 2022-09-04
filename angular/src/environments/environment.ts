@@ -7,6 +7,6 @@ export const environment = {
   production: false,
   hmr: false,
   appConfig: "appconfig.json",
-  baseApi: "http://localhost:21021//",
+  baseApi: "http://localhost:21021/",
   apiUrl: "http://localhost:21021/api/",
 };
