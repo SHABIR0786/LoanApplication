@@ -56,32 +56,33 @@ export class AdminSideMenuComponent implements OnInit {
   }
 
   navigateToProfile() {
-    this.pageName = Enums.AdminProfile;
+    //this.pageName = Enums.AdminProfile;
+    this._router.navigate(["app/admin/profile"]);
   }
 
   navigateToDashboard() {
     this.pageName = Enums.AdminDashboard;
   }
 
-  navigateToNotification(){
-    this._router.navigate(["app/admin/notification"])
+  navigateToNotification() {
+    this._router.navigate(["app/admin/notification"]);
   }
 
-  navigateToLoanProgress(){
+  navigateToLoanProgress() {
     this._router.navigate(["app/admin/loan-process"]);
   }
 
   logOut(reload?: boolean) {
-   // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
-   abp.auth.clearToken();
-   abp.utils.setCookieValue(
-     AppConsts.authorization.encryptedAuthTokenName,
-     undefined,
-     undefined,
-     abp.appPath
-   );
-   if (reload !== false) {
-     location.href = AppConsts.appBaseUrl;
-   }
+    // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
+    abp.auth.clearToken();
+    abp.utils.setCookieValue(
+      AppConsts.authorization.encryptedAuthTokenName,
+      undefined,
+      undefined,
+      abp.appPath
+    );
+    if (reload !== false) {
+      location.href = AppConsts.appBaseUrl;
+    }
   }
 }
