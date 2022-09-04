@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
@@ -37,8 +39,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -51,12 +53,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions");
+                    b.ToTable("AbpEditions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -77,20 +79,20 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(2000);
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
                 });
@@ -102,24 +104,24 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("BrowserInfo")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("ClientIpAddress")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("ClientName")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("CustomData")
-                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(2000);
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
 
                     b.Property<string>("Exception")
-                        .HasColumnType("varchar(2000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(2000);
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
 
                     b.Property<int>("ExecutionDuration")
                         .HasColumnType("int");
@@ -134,19 +136,19 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("MethodName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Parameters")
-                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1024);
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
 
                     b.Property<string>("ReturnValue")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ServiceName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -162,7 +164,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs");
+                    b.ToTable("AbpAuditLogs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -186,8 +188,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -196,7 +198,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
                 });
@@ -208,8 +210,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ClaimValue")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -232,7 +234,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims");
+                    b.ToTable("AbpRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -254,8 +256,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -276,8 +278,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -291,7 +293,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts");
+                    b.ToTable("AbpUserAccounts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -301,8 +303,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ClaimValue")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -325,7 +327,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims");
+                    b.ToTable("AbpUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -336,13 +338,13 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("LoginProvider")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("ProviderKey")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -358,7 +360,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins");
+                    b.ToTable("AbpUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -368,16 +370,16 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("BrowserInfo")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("ClientIpAddress")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("ClientName")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -386,8 +388,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("tinyint unsigned");
 
                     b.Property<string>("TenancyName")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -396,8 +398,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("UserNameOrEmailAddress")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -405,7 +407,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts");
+                    b.ToTable("AbpUserLoginAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -438,7 +440,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits");
+                    b.ToTable("AbpUserOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -470,7 +472,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles");
+                    b.ToTable("AbpUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -483,12 +485,12 @@ namespace LoanManagement.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -497,8 +499,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Value")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.HasKey("Id");
 
@@ -506,7 +508,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens");
+                    b.ToTable("AbpUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -526,13 +528,13 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("JobArgs")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(1048576);
+                        .HasMaxLength(1048576)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("JobType")
                         .IsRequired()
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<DateTime?>("LastTryTime")
                         .HasColumnType("datetime(6)");
@@ -550,7 +552,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs");
+                    b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -573,8 +575,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -592,7 +594,7 @@ namespace LoanManagement.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings");
+                    b.ToTable("AbpSettings", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -605,7 +607,7 @@ namespace LoanManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EntityFullName")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -617,7 +619,7 @@ namespace LoanManagement.Migrations
                     b.HasIndex("EntityFullName", "DynamicPropertyId", "TenantId")
                         .IsUnique();
 
-                    b.ToTable("AbpDynamicEntityProperties");
+                    b.ToTable("AbpDynamicEntityProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -643,7 +645,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues");
+                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -659,7 +661,7 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PropertyName")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -669,7 +671,7 @@ namespace LoanManagement.Migrations
                     b.HasIndex("PropertyName", "TenantId")
                         .IsUnique();
 
-                    b.ToTable("AbpDynamicProperties");
+                    b.ToTable("AbpDynamicProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -692,7 +694,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues");
+                    b.ToTable("AbpDynamicPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -711,12 +713,12 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("EntityId")
-                        .HasColumnType("varchar(48) CHARACTER SET utf8mb4")
-                        .HasMaxLength(48);
+                        .HasMaxLength(48)
+                        .HasColumnType("varchar(48)");
 
                     b.Property<string>("EntityTypeFullName")
-                        .HasColumnType("varchar(192) CHARACTER SET utf8mb4")
-                        .HasMaxLength(192);
+                        .HasMaxLength(192)
+                        .HasColumnType("varchar(192)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -727,7 +729,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges");
+                    b.ToTable("AbpEntityChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -737,16 +739,16 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("BrowserInfo")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("ClientIpAddress")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("ClientName")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -761,8 +763,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Reason")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -778,7 +780,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets");
+                    b.ToTable("AbpEntityChangeSets", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -791,20 +793,20 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("NewValue")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("OriginalValue")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("PropertyName")
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<string>("PropertyTypeFullName")
-                        .HasColumnType("varchar(192) CHARACTER SET utf8mb4")
-                        .HasMaxLength(192);
+                        .HasMaxLength(192)
+                        .HasColumnType("varchar(192)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -813,7 +815,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges");
+                    b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguage", b =>
@@ -836,12 +838,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("Icon")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -857,8 +859,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -867,7 +869,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages");
+                    b.ToTable("AbpLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -884,13 +886,13 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("LanguageName")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime(6)");
@@ -900,22 +902,22 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Source")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(67108864);
+                        .HasMaxLength(67108864)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts");
+                    b.ToTable("AbpLanguageTexts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -931,48 +933,48 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Data")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(1048576);
+                        .HasMaxLength(1048576)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("DataTypeName")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("EntityId")
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("EntityTypeName")
-                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4")
-                        .HasMaxLength(250);
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("ExcludedUserIds")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(131072);
+                        .HasMaxLength(131072)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("NotificationName")
                         .IsRequired()
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<byte>("Severity")
                         .HasColumnType("tinyint unsigned");
 
                     b.Property<string>("TenantIds")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(131072);
+                        .HasMaxLength(131072)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserIds")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(131072);
+                        .HasMaxLength(131072)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications");
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -988,20 +990,20 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("EntityId")
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("EntityTypeName")
-                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4")
-                        .HasMaxLength(250);
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NotificationName")
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -1015,7 +1017,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions");
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1031,29 +1033,29 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Data")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(1048576);
+                        .HasMaxLength(1048576)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("DataTypeName")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("EntityId")
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<string>("EntityTypeAssemblyQualifiedName")
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
-                        .HasMaxLength(512);
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("EntityTypeName")
-                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4")
-                        .HasMaxLength(250);
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NotificationName")
                         .IsRequired()
-                        .HasColumnType("varchar(96) CHARACTER SET utf8mb4")
-                        .HasMaxLength(96);
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<byte>("Severity")
                         .HasColumnType("tinyint unsigned");
@@ -1065,7 +1067,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications");
+                    b.ToTable("AbpTenantNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1093,7 +1095,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications");
+                    b.ToTable("AbpUserNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1104,8 +1106,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("varchar(95) CHARACTER SET utf8mb4")
-                        .HasMaxLength(95);
+                        .HasMaxLength(95)
+                        .HasColumnType("varchar(95)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -1121,8 +1123,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -1145,7 +1147,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits");
+                    b.ToTable("AbpOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1178,7 +1180,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles");
+                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1208,7 +1210,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents");
+                    b.ToTable("AbpWebhookEvents", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1242,7 +1244,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts");
+                    b.ToTable("AbpWebhookSendAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1279,7 +1281,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions");
+                    b.ToTable("AbpWebhookSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Authorization.Roles.Role", b =>
@@ -1290,8 +1292,8 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -1306,13 +1308,13 @@ namespace LoanManagement.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
-                        .HasMaxLength(5000);
+                        .HasMaxLength(5000)
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("tinyint(1)");
@@ -1331,13 +1333,13 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
 
                     b.Property<string>("NormalizedName")
                         .IsRequired()
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
@@ -1352,7 +1354,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles");
+                    b.ToTable("AbpRoles", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Authorization.Users.User", b =>
@@ -1365,13 +1367,13 @@ namespace LoanManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AuthenticationSource")
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -1387,12 +1389,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("EmailConfirmationCode")
-                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
-                        .HasMaxLength(328);
+                        .HasMaxLength(328)
+                        .HasColumnType("varchar(328)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
@@ -1423,48 +1425,48 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("NormalizedEmailAddress")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("PasswordResetCode")
-                        .HasColumnType("varchar(328) CHARACTER SET utf8mb4")
-                        .HasMaxLength(328);
+                        .HasMaxLength(328)
+                        .HasColumnType("varchar(328)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
-                        .HasMaxLength(32);
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -1478,7 +1480,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers");
+                    b.ToTable("AbpUsers", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.AdditionalDetail", b =>
@@ -1495,7 +1497,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdditionalDetails");
+                    b.ToTable("AdditionalDetails", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.AdditionalIncome", b =>
@@ -1524,7 +1526,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("AdditionalIncomes");
+                    b.ToTable("AdditionalIncomes", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Address", b =>
@@ -1571,7 +1573,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.AssetType", b =>
@@ -1585,7 +1587,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AssetType");
+                    b.ToTable("AssetType", (string)null);
 
                     b.HasData(
                         new
@@ -1701,7 +1703,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("BorrowerTypeId");
 
-                    b.ToTable("Borrowers");
+                    b.ToTable("Borrowers", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
@@ -1723,8 +1725,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("EmployersName")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime(6)");
@@ -1753,7 +1755,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("BorrowerEmploymentInformations");
+                    b.ToTable("BorrowerEmploymentInformations", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerMonthlyIncome", b =>
@@ -1789,7 +1791,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("BorrowerMonthlyIncomes");
+                    b.ToTable("BorrowerMonthlyIncomes", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerType", b =>
@@ -1803,7 +1805,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BorrowerTypes");
+                    b.ToTable("BorrowerTypes", (string)null);
 
                     b.HasData(
                         new
@@ -1855,7 +1857,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConsentDetails");
+                    b.ToTable("ConsentDetails", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.CreditAuthAgreement", b =>
@@ -1869,7 +1871,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CreditAuthAgreements");
+                    b.ToTable("CreditAuthAgreements", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Declaration", b =>
@@ -1932,7 +1934,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("Declarations");
+                    b.ToTable("Declarations", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", b =>
@@ -2043,7 +2045,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("LoanApplicationId");
 
-                    b.ToTable("DeclarationBorrowereDemographicsInformations");
+                    b.ToTable("DeclarationBorrowereDemographicsInformations", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Expense", b =>
@@ -2081,7 +2083,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Expenses");
+                    b.ToTable("Expenses", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.IncomeSource", b =>
@@ -2095,7 +2097,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IncomeSource");
+                    b.ToTable("IncomeSource", (string)null);
 
                     b.HasData(
                         new
@@ -2162,7 +2164,7 @@ namespace LoanManagement.Migrations
                     b.HasIndex("PersonalDetailId")
                         .IsUnique();
 
-                    b.ToTable("LoanApplications");
+                    b.ToTable("LoanApplications", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.LoanDetail", b =>
@@ -2245,7 +2247,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoanDetails");
+                    b.ToTable("LoanDetails", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
@@ -2311,15 +2313,15 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("PurchasePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("StateId")
+                    b.Property<int>("StateId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("TaxesInsuranceAndOther")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ZipCode")
-                        .HasColumnType("varchar(9) CHARACTER SET utf8mb4")
-                        .HasMaxLength(9);
+                        .HasMaxLength(9)
+                        .HasColumnType("varchar(9)");
 
                     b.HasKey("Id");
 
@@ -2331,7 +2333,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("ManualAssetEntries");
+                    b.ToTable("ManualAssetEntries", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
@@ -2370,7 +2372,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("CoBorrowerId");
 
-                    b.ToTable("PersonalDetails");
+                    b.ToTable("PersonalDetails", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.Models.SiteSetting", b =>
@@ -2390,7 +2392,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SiteSettings");
+                    b.ToTable("SiteSettings", (string)null);
 
                     b.HasData(
                         new
@@ -2413,7 +2415,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("States");
+                    b.ToTable("States", (string)null);
 
                     b.HasData(
                         new
@@ -2728,14 +2730,14 @@ namespace LoanManagement.Migrations
                     b.Property<long>("ManualAssetEntryId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal?>("Value")
+                    b.Property<decimal>("Value")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ManualAssetEntryId");
 
-                    b.ToTable("StockAndBonds");
+                    b.ToTable("StockAndBonds", (string)null);
                 });
 
             modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
@@ -2745,8 +2747,8 @@ namespace LoanManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConnectionString")
-                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1024);
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -2777,13 +2779,13 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("TenancyName")
                         .IsRequired()
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
-                        .HasMaxLength(64);
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.HasKey("Id");
 
@@ -2797,7 +2799,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants");
+                    b.ToTable("AbpTenants", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -2809,20 +2811,9 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
-                });
-
-            modelBuilder.Entity("Abp.MultiTenancy.TenantFeatureSetting", b =>
-                {
-                    b.HasBaseType("Abp.Application.Features.FeatureSetting");
-
-                    b.HasIndex("TenantId", "Name");
-
-                    b.ToTable("AbpFeatures");
-
-                    b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Roles.RolePermissionSetting", b =>
@@ -2834,7 +2825,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -2848,9 +2839,20 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
+                });
+
+            modelBuilder.Entity("Abp.MultiTenancy.TenantFeatureSetting", b =>
+                {
+                    b.HasBaseType("Abp.Application.Features.FeatureSetting");
+
+                    b.HasIndex("TenantId", "Name");
+
+                    b.ToTable("AbpFeatures", (string)null);
+
+                    b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Roles.RoleClaim", b =>
@@ -2912,6 +2914,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("DynamicPropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DynamicProperty");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -2921,6 +2925,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("DynamicEntityPropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DynamicEntityProperty");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -2930,6 +2936,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("DynamicPropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DynamicProperty");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -2955,6 +2963,8 @@ namespace LoanManagement.Migrations
                     b.HasOne("Abp.Organizations.OrganizationUnit", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -2964,6 +2974,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("WebhookEventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("WebhookEvent");
                 });
 
             modelBuilder.Entity("LoanManagement.Authorization.Roles.Role", b =>
@@ -2979,6 +2991,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.Navigation("CreatorUser");
+
+                    b.Navigation("DeleterUser");
+
+                    b.Navigation("LastModifierUser");
                 });
 
             modelBuilder.Entity("LoanManagement.Authorization.Users.User", b =>
@@ -2994,6 +3012,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.Navigation("CreatorUser");
+
+                    b.Navigation("DeleterUser");
+
+                    b.Navigation("LastModifierUser");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.AdditionalIncome", b =>
@@ -3011,6 +3035,12 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("IncomeSource");
+
+                    b.Navigation("LoanApplication");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Address", b =>
@@ -3030,6 +3060,12 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("PersonalDetail");
+
+                    b.Navigation("State");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Borrower", b =>
@@ -3039,6 +3075,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("BorrowerTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerEmploymentInformation", b =>
@@ -3054,6 +3092,10 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("LoanApplication");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.BorrowerMonthlyIncome", b =>
@@ -3069,6 +3111,10 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("LoanApplication");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.Declaration", b =>
@@ -3084,6 +3130,10 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("LoanApplication");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.DeclarationBorrowereDemographicsInformation", b =>
@@ -3099,6 +3149,10 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("LoanApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("LoanApplication");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
@@ -3126,6 +3180,18 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.PersonalDetail", "PersonalDetail")
                         .WithOne("LoanApplication")
                         .HasForeignKey("LoanManagement.Models.LoanApplication", "PersonalDetailId");
+
+                    b.Navigation("AdditionalDetail");
+
+                    b.Navigation("ConsentDetail");
+
+                    b.Navigation("CreditAuthAgreement");
+
+                    b.Navigation("Expense");
+
+                    b.Navigation("LoanDetail");
+
+                    b.Navigation("PersonalDetail");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
@@ -3150,7 +3216,17 @@ namespace LoanManagement.Migrations
 
                     b.HasOne("LoanManagement.Models.State", "State")
                         .WithMany("ManualAssetEntries")
-                        .HasForeignKey("StateId");
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AssetType");
+
+                    b.Navigation("BorrowerType");
+
+                    b.Navigation("LoanApplication");
+
+                    b.Navigation("State");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
@@ -3162,6 +3238,10 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Models.Borrower", "CoBorrower")
                         .WithMany()
                         .HasForeignKey("CoBorrowerId");
+
+                    b.Navigation("Borrower");
+
+                    b.Navigation("CoBorrower");
                 });
 
             modelBuilder.Entity("LoanManagement.Models.StockAndBond", b =>
@@ -3171,6 +3251,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("ManualAssetEntryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ManualAssetEntry");
                 });
 
             modelBuilder.Entity("LoanManagement.MultiTenancy.Tenant", b =>
@@ -3190,6 +3272,14 @@ namespace LoanManagement.Migrations
                     b.HasOne("LoanManagement.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.Navigation("CreatorUser");
+
+                    b.Navigation("DeleterUser");
+
+                    b.Navigation("Edition");
+
+                    b.Navigation("LastModifierUser");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -3199,6 +3289,8 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("EditionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Edition");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Roles.RolePermissionSetting", b =>
@@ -3217,6 +3309,85 @@ namespace LoanManagement.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
+                {
+                    b.Navigation("DynamicPropertyValues");
+                });
+
+            modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
+                {
+                    b.Navigation("PropertyChanges");
+                });
+
+            modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
+                {
+                    b.Navigation("EntityChanges");
+                });
+
+            modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
+                {
+                    b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("LoanManagement.Authorization.Roles.Role", b =>
+                {
+                    b.Navigation("Claims");
+
+                    b.Navigation("Permissions");
+                });
+
+            modelBuilder.Entity("LoanManagement.Authorization.Users.User", b =>
+                {
+                    b.Navigation("Claims");
+
+                    b.Navigation("Logins");
+
+                    b.Navigation("Permissions");
+
+                    b.Navigation("Roles");
+
+                    b.Navigation("Settings");
+
+                    b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.AssetType", b =>
+                {
+                    b.Navigation("ManualAssetEntries");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.LoanApplication", b =>
+                {
+                    b.Navigation("AdditionalIncomes");
+
+                    b.Navigation("BorrowerEmploymentInformations");
+
+                    b.Navigation("BorrowerMonthlyIncomes");
+
+                    b.Navigation("Declarations");
+
+                    b.Navigation("DemographicsInformations");
+
+                    b.Navigation("ManualAssetEntries");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.ManualAssetEntry", b =>
+                {
+                    b.Navigation("StockAndBonds");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.PersonalDetail", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("LoanApplication");
+                });
+
+            modelBuilder.Entity("LoanManagement.Models.State", b =>
+                {
+                    b.Navigation("ManualAssetEntries");
                 });
 #pragma warning restore 612, 618
         }

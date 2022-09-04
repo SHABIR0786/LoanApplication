@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { LoanstatusService } from "../../../shared/service/loanstatus.service";
 import { AdminDashboardService } from "../../../shared/service/admin-dashboard.service";
+import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
+import { AppConsts } from "@shared/AppConsts";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -22,6 +24,11 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getLoanStatusById();
     this.getLoanDetailsById();
+  
+   
+   
+
+    
   }
 
   getLoanStatusById() {

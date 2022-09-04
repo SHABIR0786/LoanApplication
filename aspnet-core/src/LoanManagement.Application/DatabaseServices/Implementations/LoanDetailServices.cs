@@ -23,6 +23,14 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
+        public async Task<LoanDetail> GetCustomAsync(EntityDto<long?> input)
+        {
+            var result = await _repository.GetAsync((long)input.Id);
+
+            return result;
+
+        }
+
         public Task<PagedResultDto<LoanDetailDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
         {
             throw new NotImplementedException();

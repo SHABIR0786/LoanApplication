@@ -14,6 +14,8 @@ namespace LoanManagement
         {
             Configuration.Authorization.Providers.Add<LoanManagementAuthorizationProvider>();
 
+            
+
             Configuration.Auditing.IsEnabled = false;
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.MultiTenancy.IsEnabled = false;

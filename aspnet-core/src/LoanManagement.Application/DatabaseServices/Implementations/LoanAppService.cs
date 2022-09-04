@@ -90,7 +90,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 var result = await query
                     .Where(i => i.Id == input.Id.Value)
-                   .SingleAsync();
+                   .FirstOrDefaultAsync();
 
                 var viewModel = new LoanApplicationDto
                 {
@@ -1062,6 +1062,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 throw;
             }
+        }
+
+        public async Task<LoanDetail> GetLoanDetail(EntityDto<long?> input)
+        {
+            return await _loanDetailServices.GetCustomAsync(input);
         }
 
         public Task<PagedResultDto<LoanApplicationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)

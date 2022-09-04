@@ -8,6 +8,7 @@ using Abp.Json;
 using Castle.Facilities.Logging;
 using LoanManagement.Configuration;
 using LoanManagement.Identity;
+using LoanManagement.Web.Host.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -79,6 +80,8 @@ namespace LoanManagement.Web.Host.Startup
                 )
             );
 
+            
+
             var smtpOptions = configuration.GetSection("Smtp").Get<SMTPOptions>();
            // services.Configure<SMTPOptions>(smtpConfiguration);
 
@@ -94,6 +97,7 @@ namespace LoanManagement.Web.Host.Startup
                 EnableSsl = true,
             };
             });
+            services.AddSignalR();
             services.AddMortgageLoanServices();
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
@@ -162,6 +166,7 @@ namespace LoanManagement.Web.Host.Startup
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
+            
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger(c => { c.RouteTemplate = "swagger/{documentName}/swagger.json"; });

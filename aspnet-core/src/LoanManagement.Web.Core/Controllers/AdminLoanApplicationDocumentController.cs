@@ -1,22 +1,33 @@
+using Abp;
+using Abp.Domain.Repositories;
+using Abp.Extensions;
+using Abp.Notifications;
+using Abp.Timing;
 using LoanManagement.Features.AdminLoanApplicationDocument;
+using LoanManagement.Models;
 using LoanManagement.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
 	public class AdminLoanApplicationDocumentController : LoanManagementControllerBase
-	{
+    {
 		private readonly IAdminLoanApplicationDocumentService _service;
+		private readonly INotificationPublisher _notificationPublisher;
 
-		public AdminLoanApplicationDocumentController(IAdminLoanApplicationDocumentService service)
+		public AdminLoanApplicationDocumentController(IAdminLoanApplicationDocumentService service, INotificationPublisher notificationPublisher)
 		{
 			_service = service;
+			_notificationPublisher = notificationPublisher;
 		}
 
-		[HttpPost]
+
+        [HttpPost]
 		[Route("Add")]
 		public string Insert([FromBody] AddAdminLoanApplicationDocument request)
 		{
@@ -56,6 +67,12 @@ namespace LoanManagement.Controllers
 		public ActionResult GetById([FromQuery] int id)
 		{
 			return Ok(_service.GetById(id));
+		}
+        [HttpPost]
+        [Route("SendNotificationsAsync")]
+        public Task SendNotificationsAsync(UserNotification[] userNotifications)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

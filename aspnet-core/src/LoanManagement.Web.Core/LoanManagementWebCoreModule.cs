@@ -1,6 +1,7 @@
 ﻿using Abp.AspNetCore;
 using Abp.AspNetCore.Configuration;
 using Abp.AspNetCore.SignalR;
+using Abp.AspNetCore.SignalR.Notifications;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
@@ -52,6 +53,7 @@ namespace LoanManagement
             Configuration.Auditing.IsEnabled = false;
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.MultiTenancy.IsEnabled = false;
+            //Configuration.Notifications.Notifiers.Add<RealTimeNotifier>();
         }
 
 
@@ -70,6 +72,7 @@ namespace LoanManagement
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(LoanManagementWebCoreModule).GetAssembly());
+            Configuration.Notifications.Notifiers.Add<SignalRRealTimeNotifier>();
         }
 
         public override void PostInitialize()

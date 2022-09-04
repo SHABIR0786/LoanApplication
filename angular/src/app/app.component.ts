@@ -6,6 +6,7 @@ import { LayoutStoreService } from "@shared/layout/layout-store.service";
 import { Location, PopStateEvent } from "@angular/common";
 //import { OneSignal } from 'onesignal-ngx';
 import { filter } from "rxjs/operators";
+import { AppConsts } from "@shared/AppConsts";
 
 @Component({
   templateUrl: "./app.component.html",
@@ -217,12 +218,28 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, "sidebar-mini");
-
-    SignalRAspNetCoreHelper.initSignalR();
+     debugger
+     SignalRAspNetCoreHelper.initSignalR();
+     abp.event.on("getNotification", (userNotification) => {
+      debugger
+      abp.notifications.showUiNotifyForUserNotification(userNotification);
+        debugger
+      // Desktop notification
+      Push.create("AbpZeroTemplate", {
+        body: userNotification.notification.data.message,
+        icon: abp.appPath + "assets/app-logo-small.png",
+        timeout: 6000,
+        onClick: function () {
+          window.focus();
+          this.close();
+        },
+      });
+    });
 
     abp.event.on("abp.notifications.received", (userNotification) => {
+      debugger
       abp.notifications.showUiNotifyForUserNotification(userNotification);
-
+        debugger
       // Desktop notification
       Push.create("AbpZeroTemplate", {
         body: userNotification.notification.data.message,

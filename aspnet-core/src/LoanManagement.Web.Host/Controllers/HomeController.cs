@@ -1,10 +1,18 @@
 using Abp;
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Dependency;
 using Abp.Extensions;
 using Abp.Notifications;
+using Abp.RealTime;
+using Abp.Runtime.Session;
 using Abp.Timing;
+using Castle.Core.Logging;
 using LoanManagement.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Threading.Tasks;
+
 
 namespace LoanManagement.Web.Host.Controllers
 {
@@ -47,5 +55,35 @@ namespace LoanManagement.Web.Host.Controllers
 
             return Content("Sent notification: " + message);
         }
+
+
+        
     }
+
+    
+
+    //public class MyChatHub : Hub, ITransientDependency
+    //{
+    //    public IAbpSession AbpSession { get; set; }
+
+
+
+    //    public MyChatHub()
+    //    {
+    //        AbpSession = NullAbpSession.Instance;
+
+    //    }
+
+    //    public void SendMessage(string message)
+    //    {
+    //        Clients.Clients("").SendAsync("");
+    //    }
+
+    //    public override Task OnConnectedAsync()
+    //    {
+    //        return base.OnConnectedAsync();
+    //    }
+
+
+    //}
 }
