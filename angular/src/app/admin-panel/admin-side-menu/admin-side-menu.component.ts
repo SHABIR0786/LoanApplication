@@ -61,7 +61,8 @@ export class AdminSideMenuComponent implements OnInit {
   }
 
   navigateToDashboard() {
-    this.pageName = Enums.AdminDashboard;
+    //this.pageName = Enums.AdminDashboard;
+    this._router.navigate(["app/admin/home"]);
   }
 
   navigateToNotification() {

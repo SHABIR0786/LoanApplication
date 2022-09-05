@@ -7,6 +7,9 @@ import { AdminProfilePageComponent } from '@app/admin-panel/admin-profile-page/a
 import { AdminSideMenuComponent } from '@app/admin-panel/admin-side-menu/admin-side-menu.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminPanelComponent } from '@app/admin-panel/admin-panel.component';
+import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
+import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 @NgModule({
@@ -14,12 +17,17 @@ import { AdminPanelComponent } from '@app/admin-panel/admin-panel.component';
     AdminPanelLayoutComponent,
     AdminProfilePageComponent,
     AdminSideMenuComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    NotificationDialogComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ModalModule.forChild(),
-  ]
+    BsDropdownModule,
+    CollapseModule,
+   
+  ],
+  providers: []
 })
 export class AdminModule { }

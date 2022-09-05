@@ -515,7 +515,7 @@ const ngWizardConfig: NgWizardConfig = {
     HttpClientJsonpModule,
     //ModalModule.forChild(),
     TooltipModule.forRoot(),
-    BsDropdownModule,
+    BsDropdownModule ,
     CollapseModule,
     TabsModule,
     CarouselModule.forRoot(),
@@ -527,6 +527,7 @@ const ngWizardConfig: NgWizardConfig = {
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
     AdminModule,
+
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [
@@ -542,4 +543,4 @@ const ngWizardConfig: NgWizardConfig = {
     ResetPasswordDialogComponent,
   ],
 })
-export class AppModule {}
+export class AppModule { }
