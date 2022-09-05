@@ -17,6 +17,7 @@
                 class="orange_text mb-2"
                 data-toggle="modal"
                 data-target="#exampleModal"
+                (click)="SelectedNotification(item)"
                 *ngFor="let item of notification"
               >
                 {{ item.subject }}
@@ -65,15 +66,12 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div
-      class="modal-dialog modal-dialog-centered"
-      *ngFor="let item of notification"
-    >
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header px-4">
           <div class="d-flex flex-column">
             <h1 class="modal-title text-white mb-4" id="exampleModalLabel">
-              Request ID: {{ item.id }}
+              Request ID: {{ selectedNotification?.id }}
             </h1>
             <p class="text-white m-0">Property</p>
           </div>
@@ -82,8 +80,8 @@
         </button> -->
         </div>
         <div class="modal-body p-4">
-          <h2 class="mb-2 text-dark">{{ item.subject }}</h2>
-          <p class="text-dark">{{ item.content }}</p>
+          <h2 class="mb-2 text-dark">{{ selectedNotification?.subject }}</h2>
+          <p class="text-dark">{{ selectedNotification?.content }}</p>
           <!-- <p class="text-dark">While you are working on your application, take time to understand our <span class="orange_text">loan process</span> and get your questions answered with our <span class="orange_text">FAQs.</span></p>
     <p class="text-dark m-0">Sincerely,</p> 
     <p class="text-dark">EZ Online Mortgage</p> -->
