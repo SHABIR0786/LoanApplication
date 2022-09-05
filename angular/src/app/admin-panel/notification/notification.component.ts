@@ -1,33 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { NotificationService } from'../../services/notification.service';
+import { Component, OnInit } from "@angular/core";
+import { NotificationService } from "../../services/notification.service";
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  selector: "app-notification",
+  templateUrl: "./notification.component.html",
+  styleUrls: ["./notification.component.css"],
 })
 export class NotificationComponent implements OnInit {
-  notification: any[];
+  notification: any;
   notificationCount: number;
-  constructor(private notificationservice: NotificationService) { }
+  constructor(private notificationservice: NotificationService) {}
 
   ngOnInit(): void {
-    this.getAllNotification()
-    
+    this.getAllNotification();
   }
-  countNotification(){
-    this.notificationCount=this.notification.filter(a=>a.isSeen==0).length
-    console.log(this.notificationCount)
+  countNotification() {
+    this.notificationCount = this.notification.filter(
+      (a) => a.isSeen == 0
+    ).length;
+    console.log(this.notificationCount);
   }
-  getAllNotification(){
+  getAllNotification() {
     let obj = {
-      params: {
-        
-      },
+      params: {},
     };
     this.notificationservice.getAllNotification(obj).subscribe((res: any) => {
-      console.log(res)
+      console.log(res);
       this.notification = res.result;
-      this.countNotification()
+      this.countNotification();
     });
   }
 }

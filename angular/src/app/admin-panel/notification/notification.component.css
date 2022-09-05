@@ -56,3 +56,25 @@
   border-radius: 5px;
   padding: 5px 9px;
 }
+
+.modal-header h1 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.modal-header {
+  background-color: #0d2576;
+}
+.modal-header p {
+  font-size: 14px;
+}
+.modal-body h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.modal-body p {
+  font-size: 14px;
+  font-size: 500;
+}
+.orange_text {
+  color: #f47741;
+}

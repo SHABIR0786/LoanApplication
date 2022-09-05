@@ -12,7 +12,7 @@
 }
 
 .content button {
-  height: 91px;
+  height: 91px !important;
   width: 293px;
   font-size: 20px;
   font-weight: 500;
