@@ -16,9 +16,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of Custom">
-              <td class="pl-0">{{item.id}}</td>
-              <td class="pl-0">{{item.borrower}}</td>
-              <td class="pl-0">{{item.contact}}</td>
+              <td class="pl-0">{{ item.id }}</td>
+              <td class="pl-0">{{ item.borrower }}</td>
+              <td class="pl-0">{{ item.contact }}</td>
               <!-- <td class="pl-3">3718317</td>
               <td class="pl-0">$730,000,00</td>
               <td class="pl-0">5154 White Oak AVE, Enclno, CA 91316</td> -->
@@ -33,7 +33,9 @@
       </div>
     </div>
     <p class="copy_right text-right px-3 mt-4">
-      Current Login: 09/23/2021 at 02;07 PM on Chrome 92.0.4577 browser
+      Current Login: {{ CurrentLoginInfo.releaseDate | date }} at
+      {{ CurrentLoginInfo.releaseDate | date: "shortTime" }} on Chrome
+      {{ CurrentLoginInfo.version }} browser
     </p>
   </div>
 </section>

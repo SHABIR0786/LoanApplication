@@ -11,4 +11,6 @@ export const ApiRoute = {
   updateChangePassword: "http://localhost:21021/api/AdminUser/ChangePassword?",
   loanApplication: "services/app/Loan/GetAllCustom?",
   adminnotification: "AdminUserNotification/GetAll",
+  GetCurrentLoginInformations:
+    "services/app/Session/GetCurrentLoginInformations",
 };
