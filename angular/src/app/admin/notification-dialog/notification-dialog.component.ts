@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { NotificationService } from "@app/services/notification.service";
+import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
 
 @Component({
   selector: "app-notification-dialog",
@@ -8,10 +9,31 @@ import { NotificationService } from "@app/services/notification.service";
 })
 export class NotificationDialogComponent implements OnInit {
   notification: any[];
-  constructor(private notificationservice: NotificationService) {}
+  notificationCount: number;
+  constructor(private notificationservice: NotificationService,private changeDetect
+    :ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.getAllNotification();
+    SignalRAspNetCoreHelper.initSignalR();
+    abp.event.on("abp.notifications.received", (userNotification) => {
+      debugger
+      var noti = JSON.parse(userNotification.notification.data.properties.Message);
+      var model = {
+        "id":noti.Id,
+        "userId":noti.UserId,
+        "isSeen":noti.IsSeen,
+        "content":noti.Content,
+        "subject":noti.Subject,
+        "date":noti.Date,
+        "notificationTypeId":noti.NotificationTypeId,
+     
+      };
+     this.notification.unshift(model);
+     this.countNotification();
+     this.changeDetect.detectChanges();
+      
+    });
   }
 
   getAllNotification() {
@@ -19,9 +41,16 @@ export class NotificationDialogComponent implements OnInit {
       params: {},
     };
     this.notificationservice.getAllNotification(obj).subscribe((res: any) => {
-      console.log(res);
       this.notification = res.result;
-      //this.countNotification();
+      this.countNotification();
     });
   }
+  countNotification() {
+    this.notificationCount = this.notification.filter(
+      (a) => a.isSeen == 0
+    ).length;
+    console.log(this.notificationCount);
+  }
+
+  
 }
