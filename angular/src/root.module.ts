@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { ModalModule } from "ngx-bootstrap/modal";
-import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { BsDropdownConfig, BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import * as _ from "lodash";
@@ -56,6 +56,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
+    BsDropdownConfig,
   ],
   bootstrap: [RootComponent],
 })
