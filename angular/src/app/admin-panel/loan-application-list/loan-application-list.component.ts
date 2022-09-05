@@ -32,9 +32,7 @@ export class LoanApplicationListComponent implements OnInit {
   }
   getCurrentLoginInformations() {
     let obj = {
-      params: {
-        id: 1,
-      },
+      params: {},
     };
     this.LoanManagmentService.getCurrentLoginInformations(obj).subscribe(
       (res: any) => {

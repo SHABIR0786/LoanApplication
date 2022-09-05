@@ -91,4 +91,42 @@ export class AdminDashboardComponent implements OnInit {
       }
     );
   }
+
+  // UploadDocument() {
+  //   const content_ = new FormData();
+
+  //   if (loanId === null || loanId === undefined)
+  //     throw new Error("The parameter 'loanId' cannot be null.");
+  //   else content_.append("LoanId", loanId.toString());
+
+  //   if (disclosureId === null || disclosureId === undefined)
+  //     throw new Error("The parameter 'disclosureId' cannot be null.");
+  //   else content_.append("DisclosureId", disclosureId.toString());
+
+  //   if (userId === null || userId === undefined)
+  //     throw new Error("The parameter 'userId' cannot be null.");
+  //   else content_.append("UserId", userId.toString());
+
+  //   if (formFile === null || formFile === undefined)
+  //     throw new Error("The parameter 'formFile' cannot be null.");
+  //   else
+  //     content_.append(
+  //       "formFile",
+  //       formFile.data,
+  //       formFile.fileName ? formFile.fileName : "formFile"
+  //     );
+
+  //   let options_: any = {
+  //     body: content_,
+
+  //     observe: "response",
+
+  //     responseType: "blob",
+
+  //     headers: new HttpHeaders({
+  //       Accept: "text/plain",
+  //     }),
+  //   };
+  //   this.LoanManagmentService.UploadDocument(obj).subscribe();
+  // }
 }
