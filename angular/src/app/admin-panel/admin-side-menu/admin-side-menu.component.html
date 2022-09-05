@@ -225,7 +225,18 @@
             <a href="javascript:void(0)" class="p-1 px-3 h5 nav_icon"
               ><i class="fa fa-info-circle"></i
             ></a>
-            <app-notification-dialog></app-notification-dialog>
+            <a
+              href="javascript:void(0)"
+              class="p-1 px-3 h5 nav_icon position-relative"
+            >
+              <i class="fa fa-bell">
+                <div
+                  class="notiftion_numbr rounded-circle text-white d-flex align-items-center justify-content-center position-absolute"
+                >
+                  1
+                </div></i
+              >
+            </a>
             <button
               class="btn btn-primary bg_primary text-white m-1 mx-2 nav_t_btn"
             >
@@ -252,5 +263,26 @@
 </div>
 
 <div class="content px-4 position-relative">
+  <div
+    class="position-absolute noti_text p-3"
+    *ngFor="let item of notification"
+  >
+    <div class="d-flex justify-content-between">
+      <h1 class="mr-5">Notifications</h1>
+      <h1 class="ml-5">{{ item.date | date: "short" }}</h1>
+    </div>
+    <p class="heading mb-2">
+      <span class="new_text text-white px-2 py-1">new</span> Loan
+      {{ item.id }} - {{ item.subject }}
+    </p>
+    <p class="fade_text mb-2">Loan {{ item.id }} - {{ item.subject }}</p>
+    <!-- <p class="fade_text mb-2">Loan 3718317 - Application Started - Next Steps</p>
+    <p class="fade_text mb-2">Loan 3718317 - Application Started - Next Steps</p> -->
+    <div class="d-flex justify-content-end">
+      <button class="btn text-end noti_btn text-white">
+        View All Notiifications
+      </button>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

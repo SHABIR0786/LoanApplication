@@ -4,6 +4,7 @@ import { Enums } from "shared/constant/enums";
 import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { UtilsService } from "abp-ng2-module";
 import { AppConsts } from "@shared/AppConsts";
+import { NotificationService } from "@app/services/notification.service";
 
 @Component({
   selector: "app-admin-side-menu",
@@ -13,10 +14,12 @@ import { AppConsts } from "@shared/AppConsts";
 export class AdminSideMenuComponent implements OnInit {
   sessionStorage: any;
   cookies: any;
+  notification: any[];
   constructor(
     private AdminUserServices: AdminUserServices,
     private _router: Router,
-    private _utilsService: UtilsService
+    private _utilsService: UtilsService,
+    private notificationservice: NotificationService
   ) {}
   toggleSidebar: boolean;
   userName: string;
@@ -37,6 +40,7 @@ export class AdminSideMenuComponent implements OnInit {
         $(".buttons_nav").toggleClass("buttons_nav_active");
       });
     });
+    this.getAllNotification();
   }
   toggleSidebarFunc() {
     this.toggleSidebar = !this.toggleSidebar;
@@ -85,5 +89,15 @@ export class AdminSideMenuComponent implements OnInit {
     if (reload !== false) {
       location.href = AppConsts.appBaseUrl;
     }
+  }
+  getAllNotification() {
+    let obj = {
+      params: {},
+    };
+    this.notificationservice.getAllNotification(obj).subscribe((res: any) => {
+      console.log(res);
+      this.notification = res.result;
+      //this.countNotification();
+    });
   }
 }
