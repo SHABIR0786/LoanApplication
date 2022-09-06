@@ -8,6 +8,7 @@ import { NotificationService } from "../../services/notification.service";
 export class NotificationComponent implements OnInit {
   notification: any;
   notificationCount: number;
+  selectedNotification: any;
   constructor(private notificationservice: NotificationService) {}
 
   ngOnInit(): void {
@@ -28,5 +29,8 @@ export class NotificationComponent implements OnInit {
       this.notification = res.result;
       this.countNotification();
     });
+  }
+  SelectedNotification(item: any) {
+    this.selectedNotification = item;
   }
 }
