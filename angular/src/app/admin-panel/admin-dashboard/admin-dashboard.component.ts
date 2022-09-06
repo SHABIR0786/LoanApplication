@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LoanstatusService } from "../../../shared/service/loanstatus.service";
 import { LoanManagementService } from "../../../shared/service/loanmanagement.service";
+import { HttpHeaders } from "@angular/common/http";
 @Component({
   selector: "app-admin-dashboard",
   templateUrl: "./admin-dashboard.component.html",
@@ -92,41 +93,46 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  // UploadDocument() {
-  //   const content_ = new FormData();
+  UploadDocument(formFile) {
+    var loanId = 1;
+    var disclosureId = 2;
+    var userId = 2;
+    const content_ = new FormData();
 
-  //   if (loanId === null || loanId === undefined)
-  //     throw new Error("The parameter 'loanId' cannot be null.");
-  //   else content_.append("LoanId", loanId.toString());
+    if (loanId === null || loanId === undefined)
+      throw new Error("The parameter 'loanId' cannot be null.");
+    else content_.append("LoanId", loanId.toString());
 
-  //   if (disclosureId === null || disclosureId === undefined)
-  //     throw new Error("The parameter 'disclosureId' cannot be null.");
-  //   else content_.append("DisclosureId", disclosureId.toString());
+    if (disclosureId === null || disclosureId === undefined)
+      throw new Error("The parameter 'disclosureId' cannot be null.");
+    else content_.append("DisclosureId", disclosureId.toString());
 
-  //   if (userId === null || userId === undefined)
-  //     throw new Error("The parameter 'userId' cannot be null.");
-  //   else content_.append("UserId", userId.toString());
+    if (userId === null || userId === undefined)
+      throw new Error("The parameter 'userId' cannot be null.");
+    else content_.append("UserId", userId.toString());
 
-  //   if (formFile === null || formFile === undefined)
-  //     throw new Error("The parameter 'formFile' cannot be null.");
-  //   else
-  //     content_.append(
-  //       "formFile",
-  //       formFile.data,
-  //       formFile.fileName ? formFile.fileName : "formFile"
-  //     );
+    if (formFile === null || formFile === undefined)
+      throw new Error("The parameter 'formFile' cannot be null.");
+    else
+      content_.append(
+        "formFile",
+        //formFile.data,
+        formFile.fileName ? formFile.fileName : "formFile"
+      );
 
-  //   let options_: any = {
-  //     body: content_,
+    let options_: any = {
+      body: content_,
 
-  //     observe: "response",
+      observe: "response",
 
-  //     responseType: "blob",
+      responseType: "blob",
 
-  //     headers: new HttpHeaders({
-  //       Accept: "text/plain",
-  //     }),
-  //   };
-  //   this.LoanManagmentService.UploadDocument(obj).subscribe();
-  // }
+      headers: new HttpHeaders({
+        Accept: "application/json",
+      }),
+    };
+    this.LoanManagmentService.UploadDocument(options_).subscribe((results) => {
+      console.log(results);
+    });
+  }
 }
