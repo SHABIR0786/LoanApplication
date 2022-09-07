@@ -57,7 +57,7 @@
                 <div class="col col-md-6 float-left p-l-0">
                   <div class="p-b-14">
                     <input
-                     #oldpassword
+                      #oldpassword
                       type="password"
                       class="form-control input-box"
                       id="exampleInputEmail1"
@@ -67,7 +67,7 @@
                   </div>
                   <div class="p-b-14">
                     <input
-                    #newPassword
+                      #newPassword
                       type="password"
                       class="form-control input-box"
                       id="exampleInputEmail1"
@@ -82,12 +82,16 @@
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Confirm Password"
+                      #inputpassword
                     />
                   </div>
                 </div>
               </div>
               <div class="p-t-34">
-                <button class="submit-button" (click)="changePassword(oldpassword.value, newPassword.value)">
+                <button
+                  class="submit-button"
+                  (click)="changePassword(inputpassword.value)"
+                >
                   <span class="submit-text">Submit</span>
                 </button>
               </div>
