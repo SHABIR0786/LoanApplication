@@ -28,8 +28,8 @@ export class AdminProfilePageComponent extends AppComponentBase {
   }
   adminUsername: string;
   adminEmail: string;
-  oldPassword:string;
-  newPassword:string;
+  //oldPassword:string;
+  password: string;
   ngOnInit(): void {
     this.getAdminUserDetails();
   }
@@ -44,9 +44,7 @@ export class AdminProfilePageComponent extends AppComponentBase {
       (Response: any) => {
         this.adminUsername = Response.result.userName;
         this.adminEmail = Response.result.email;
-        this.oldPassword = Response.result.oldPassword;
-        this.newPassword = Response.result.newPassword;
-
+        this.password = Response.result.password;
       }
     );
   }
@@ -60,6 +58,7 @@ export class AdminProfilePageComponent extends AppComponentBase {
     });
     this.AdminUserServices.updateAdminUserName(params).subscribe(
       (Response: any) => {
+        this.notify.info(this.l("Username Change Successfully"));
         this.getAdminUserDetails();
       }
     );
@@ -74,21 +73,23 @@ export class AdminProfilePageComponent extends AppComponentBase {
     });
     this.AdminUserServices.updateAdminEmail(params).subscribe(
       (Response: any) => {
+        this.notify.info(this.l("Email Change Successfully"));
         this.getAdminUserDetails();
       }
     );
   }
-  changePassword(oldPassword: any,newPassword: any) {
+  changePassword(password: any) {
     const params = new HttpParams({
       fromObject: {
         id: "1",
-        oldPassword: oldPassword,
-        password:newPassword
+        password: password,
       },
     });
     this.AdminUserServices.updateChangePassword(params).subscribe(
       (Response: any) => {
+        this.notify.error(this.l(Response.result));
         this.getAdminUserDetails();
+        console.log(Response);
       }
     );
   }
