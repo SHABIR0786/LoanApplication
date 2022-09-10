@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { AppConsts } from "@shared/AppConsts";
 import { ActivatedRoute } from "@angular/router";
 import { Result } from "common";
+import { LoandetailService } from "../../services/loandetail.service";
 @Component({
   selector: "app-summary",
   templateUrl: "./summary.component.html",
@@ -21,6 +22,7 @@ export class SummaryComponent implements OnInit {
   constructor(
     private _dataService: DataService,
     private _loanApplicationService: LoanApplicationService,
+    private _loandetailService: LoandetailService,
     private _route: Router,
     private _activatedRoute: ActivatedRoute
   ) {}
@@ -82,6 +84,7 @@ export class SummaryComponent implements OnInit {
         this.formData.declaration.coBorrowerDemographic = {};
       }
     }
+    this.getLoanSummary();
   }
 
   sanitizeFormData(formData) {
@@ -221,5 +224,16 @@ export class SummaryComponent implements OnInit {
 
   ConvertToInt(val) {
     return parseInt(val);
+  }
+
+  getLoanSummary() {
+    let obj = {
+      params: {
+        id: 1,
+      },
+    };
+    this._loandetailService.getLoanSummary(obj).subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }

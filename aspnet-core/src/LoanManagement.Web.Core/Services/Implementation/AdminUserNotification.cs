@@ -1,17 +1,27 @@
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.AspNetCore.SignalR.Notifications;
+using Abp.Notifications;
+using Abp.RealTime;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminUserNotification;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace LoanManagement.Services.Implementation
 {
     public class AdminUserNotificationService : IAdminUserNotificationService
     {
         private readonly MortgagedbContext _dbContext;
-        public AdminUserNotificationService(MortgagedbContext dbContext)
+        private readonly IOnlineClientManager _onlineClientManager;
+        private readonly IHubContext<AbpCommonHub> _hubContext;
+        public AdminUserNotificationService(MortgagedbContext dbContext, IOnlineClientManager onlineClientManager, IHubContext<AbpCommonHub> hubContext)
         {
             _dbContext = dbContext;
+            _onlineClientManager = onlineClientManager;
+            _hubContext = hubContext;
         }
         public string Add(AddAdminUserNotification request)
         {
@@ -27,6 +37,25 @@ namespace LoanManagement.Services.Implementation
             _dbContext.AdminUsernotifications.Add(entity);
 
             _dbContext.SaveChanges();
+            var serializeData = JsonSerializer.Serialize(entity);
+
+            UserNotification[] userNotifications = {new UserNotification
+            {
+                Notification = new TenantNotification
+                {
+                    Data = new MessageNotificationData(serializeData),
+                    TenantId = 1,
+                    Severity = NotificationSeverity.Info,
+                    NotificationName = "abp.notifications.received",
+                    EntityTypeName = "LoanManagement.Features.AdminUserNotification.AddAdminUserNotification"
+                },
+                TenantId = 1,
+                UserId = 2,
+                State = request.IsSeen == 0? UserNotificationState.Unread:UserNotificationState.Read
+            } };
+
+            var notifier = new SignalRRealTimeNotifier(_onlineClientManager, _hubContext);
+            notifier.SendNotificationsAsync(userNotifications);
             return entity.Id.ToString();
         }
 

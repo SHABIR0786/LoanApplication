@@ -22,7 +22,6 @@ export class AdminPanelLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.getLoanStatusById();
     this.getLoanDetailsById();
-    debugger;
     console.log("pageName", this.pageName);
   }
 

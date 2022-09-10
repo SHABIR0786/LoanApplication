@@ -65,7 +65,13 @@
         </p>
       </div>
       <div class="col-md-5 col-sm-12">
-        <input type="file" name="document" id="document" class="d-none" />
+        <input
+          type="file"
+          (change)="UploadDocument($event.target.files)"
+          name="document"
+          id="document"
+          class="d-none"
+        />
         <!-- <button
             class="btn bg-white m-4 text_primary float-right p-2 rounded border-0 px-3"
           > -->
@@ -162,11 +168,11 @@
                   <span class="float-left name">Rate Lock Confirmation</span>
                 </div>
                 <div class="col float-right">
-                  <button
+                  <span
                     class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
                   >
                     Not Available
-                  </button>
+                  </span>
                 </div>
               </div>
               <div class="divider m-2 w-100"></div>
@@ -178,7 +184,7 @@
                   <button
                     class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
                   >
-                    Not Available
+                    {{ disclouser }}
                   </button>
                 </div>
               </div>
