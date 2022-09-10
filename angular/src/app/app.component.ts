@@ -19,9 +19,8 @@ export class AppComponent extends AppComponentBase implements OnInit {
     injector: Injector,
     private renderer: Renderer2,
     private _layoutStore: LayoutStoreService,
-    public router: Router
-  ) // private oneSignal: OneSignal
-  {
+    public router: Router // private oneSignal: OneSignal
+  ) {
     super(injector);
     // this.oneSignal.init({
     //   appId: "bb3098ab-49e0-44f8-897e-79f8bd859b59",
@@ -217,23 +216,6 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, "sidebar-mini");
-
-    SignalRAspNetCoreHelper.initSignalR();
-
-    abp.event.on("abp.notifications.received", (userNotification) => {
-      abp.notifications.showUiNotifyForUserNotification(userNotification);
-
-      // Desktop notification
-      Push.create("AbpZeroTemplate", {
-        body: userNotification.notification.data.message,
-        icon: abp.appPath + "assets/app-logo-small.png",
-        timeout: 6000,
-        onClick: function () {
-          window.focus();
-          this.close();
-        },
-      });
-    });
 
     this._layoutStore.sidebarExpanded.subscribe((value) => {
       this.sidebarExpanded = value;

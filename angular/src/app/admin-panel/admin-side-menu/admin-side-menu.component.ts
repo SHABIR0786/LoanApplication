@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { Enums } from "shared/constant/enums";
 import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { UtilsService } from "abp-ng2-module";
+import { AppConsts } from "@shared/AppConsts";
+import { NotificationService } from "@app/services/notification.service";
 
 @Component({
   selector: "app-admin-side-menu",
@@ -12,6 +14,7 @@ import { UtilsService } from "abp-ng2-module";
 export class AdminSideMenuComponent implements OnInit {
   sessionStorage: any;
   cookies: any;
+
   constructor(
     private AdminUserServices: AdminUserServices,
     private _router: Router,
@@ -55,15 +58,34 @@ export class AdminSideMenuComponent implements OnInit {
   }
 
   navigateToProfile() {
-    this.pageName = Enums.AdminProfile;
+    //this.pageName = Enums.AdminProfile;
+    this._router.navigate(["app/admin/profile"]);
   }
 
   navigateToDashboard() {
-    this.pageName = Enums.AdminDashboard;
+    //this.pageName = Enums.AdminDashboard;
+    this._router.navigate(["app/admin/home"]);
   }
 
-  logOut() {
-    debugger;
-    this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
+  navigateToNotification() {
+    this._router.navigate(["app/admin/notification"]);
+  }
+
+  navigateToLoanProgress() {
+    this._router.navigate(["app/admin/loan-process"]);
+  }
+
+  logOut(reload?: boolean) {
+    // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
+    abp.auth.clearToken();
+    abp.utils.setCookieValue(
+      AppConsts.authorization.encryptedAuthTokenName,
+      undefined,
+      undefined,
+      abp.appPath
+    );
+    if (reload !== false) {
+      location.href = AppConsts.appBaseUrl;
+    }
   }
 }

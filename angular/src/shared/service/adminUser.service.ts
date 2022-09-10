@@ -22,4 +22,10 @@ export class AdminUserServices {
       null
     );
   }
+  updateChangePassword(data: any) {
+    return this.httpService.put(
+      ApiRoute.updateChangePassword + "" + data,
+      null
+    );
+  }
 }
