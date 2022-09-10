@@ -38,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
 import { SharedModule } from "@shared/shared.module";
+import { MatchPasswordDirective } from "@shared/directives/match-password.directive";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -71,6 +72,7 @@ import { SharedModule } from "@shared/shared.module";
     AssetsInfoComponent,
     GovernmentComponent,
     PersonalInfoComponent,
+    MatchPasswordDirective,
   ],
   providers: [OfflineService, ApiService],
   imports: [

@@ -7,7 +7,12 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <form action="" id="personal" #f="ngForm">
+    <form
+      action=""
+      id="personal"
+      #f="ngForm"
+      [appMatchPassword]="['personalPassword', 'personalPasswordCon']"
+    >
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -92,12 +97,15 @@
           name="personalEmailAddress"
           required
           #personalEmailAddressRef="ngModel"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
         />
-        <div
-          *ngIf="submitted && !personalEmailAddressRef.valid"
-          class="text-danger d-flex"
-        >
-          Email Address is required
+        <div *ngIf="submitted" class="text-danger d-flex">
+          <div *ngIf="personalEmailAddressRef.errors?.pattern">
+            This is not a valid email address
+          </div>
+          <div *ngIf="personalEmailAddressRef.errors?.required">
+            Email is required
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -108,10 +116,10 @@
           [(ngModel)]="model.personalPassword"
           name="personalPassword"
           required
-          #personalPasswordRef="ngModel"
+          #personalPassword="ngModel"
         />
         <div
-          *ngIf="submitted && !personalPasswordRef.valid"
+          *ngIf="submitted && !personalPassword.valid"
           class="text-danger d-flex"
         >
           Password is required
@@ -125,17 +133,16 @@
           [(ngModel)]="model.personalPasswordCon"
           name="personalPasswordCon"
           required
-          #personalPasswordConRef="ngModel"
-          [appMatchPassword]="['personalPasswordRef', 'personalPasswordConRef']"
+          #personalPasswordCon="ngModel"
         />
         <div
-          *ngIf="submitted && !personalPasswordConRef.valid"
+          *ngIf="submitted && personalPasswordCon.errors?.required"
           class="text-danger d-flex"
         >
           Confirm Password is required
         </div>
         <div
-          *ngIf="submitted && personalPasswordConRef.errors?.passwordMismatch"
+          *ngIf="submitted && personalPasswordCon.errors?.passwordMismatch"
           class="text-danger d-flex"
         >
           Confirm Password and Password should match

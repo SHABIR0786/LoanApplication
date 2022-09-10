@@ -50,9 +50,9 @@ export class PersonalInfoComponent implements OnInit {
     if (this.model.personalPassword === this.model.personalPasswordCon) {
       this.matched = true;
     }
-    console.log(this.submitted, this.matched);
-    if (f.valid) {
-      // this.router.navigate(["/app/purchase/personal-info", step]);
+    console.log(this.submitted, this.matched, f.errors);
+    if (f.valid && this.matched) {
+      this.router.navigate(["/app/purchase/personal-info", step]);
       this.submitted = false;
       this.matched = false;
       this.saveStep();

@@ -161,6 +161,7 @@
           name="propertyEstimatedValue"
           #propertyEstimatedValueRef="ngModel"
           required
+          min="0"
         />
         <div
           *ngIf="submitted && !propertyEstimatedValueRef.valid"
@@ -178,6 +179,7 @@
           name="propertyLoanBalance"
           #propertyLoanBalanceRef="ngModel"
           required
+          min="0"
         />
         <div
           *ngIf="submitted && !propertyLoanBalanceRef.valid"
@@ -195,6 +197,7 @@
           name="propertCashOutAmount"
           #propertCashOutAmountRef="ngModel"
           required
+          min="0"
         />
         <div
           *ngIf="submitted && !propertCashOutAmountRef.valid"
@@ -353,6 +356,7 @@
         name="monthlyHoadues"
         required
         #monthlyHoaduesRef="ngModel"
+        min="0"
       />
       <div
         *ngIf="submitted && !monthlyHoaduesRef.valid"
@@ -413,6 +417,7 @@
           name="yearHomePurchased"
           required
           #yearHomePurchasedRef="ngModel"
+          min="0"
         />
         <div
           *ngIf="submitted && !yearHomePurchasedRef.valid"
@@ -1179,12 +1184,15 @@
           name="propertyEmailAddress"
           #propertyEmailAddressRef="ngModel"
           required
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
         />
-        <div
-          *ngIf="submitted && !propertyEmailAddressRef.valid"
-          class="text-danger d-flex"
-        >
-          Email Address is required
+        <div *ngIf="submitted" class="text-danger d-flex">
+          <div *ngIf="propertyEmailAddressRef.errors?.pattern">
+            This is not a valid email address
+          </div>
+          <div *ngIf="propertyEmailAddressRef.errors?.required">
+            Email is required
+          </div>
         </div>
       </div>
       <div class="form-group">

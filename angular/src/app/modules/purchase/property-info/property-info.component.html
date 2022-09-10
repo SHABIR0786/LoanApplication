@@ -478,9 +478,13 @@
           name="email"
           required
           #emailRef="ngModel"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
         />
-        <div *ngIf="submitted && !emailRef.valid" class="text-danger d-flex">
-          Email is required
+        <div *ngIf="submitted" class="text-danger d-flex">
+          <div *ngIf="emailRef.errors?.pattern">
+            This is not a valid email address
+          </div>
+          <div *ngIf="emailRef.errors?.required">Email is required</div>
         </div>
       </div>
       <p>Have an account?</p>
@@ -906,7 +910,7 @@
     </div>
 
     <div
-      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+      class="button-list margin-top col-lg-7 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
     >
       <!-- <form action="" id="address"> -->
       <input
@@ -940,7 +944,10 @@
       <select
         class="form-select form-style"
         [(ngModel)]="model.newHomeCityTown"
+        style="width: 100%"
+        placeholder="City Name"
       >
+        <option [ngValue]="undefined" hidden>City Name</option>
         <option>City Name</option>
       </select>
       <input
