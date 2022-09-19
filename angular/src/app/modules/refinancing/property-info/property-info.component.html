@@ -244,30 +244,35 @@
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Excellent')"
+      [class.blue-active]="this.model.creditScore === 'Excellent'"
       >Excellent (740+)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Good')"
+      [class.blue-active]="this.model.creditScore === 'Good'"
       >Good(700 - 739)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Average')"
+      [class.blue-active]="this.model.creditScore === 'Average'"
       >Average (640 - 699)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Fair')"
+      [class.blue-active]="this.model.creditScore === 'Fair'"
       >Fair (580 - 639)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Needs_Improvement')"
+      [class.blue-active]="this.model.creditScore === 'Needs_Improvement'"
       >Needs Improvement (less then 580)</a
     >
 
@@ -298,30 +303,35 @@
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Single_Family')"
+      [class.blue-active]="this.model.typeOfHome === 'Single_Family'"
       >Single Family</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Condo')"
+      [class.blue-active]="this.model.typeOfHome === 'Condo'"
       >Condo</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Co-op')"
+      [class.blue-active]="this.model.typeOfHome === 'Co-op'"
       >Co-op</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Townhome')"
+      [class.blue-active]="this.model.typeOfHome === 'Townhome'"
       >Townhome</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Multi-Family')"
+      [class.blue-active]="this.model.typeOfHome === 'Multi-Family'"
       >Multi-Family</a
     >
 
@@ -509,18 +519,23 @@
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Primary_Residance')"
+      [class.blue-active]="
+        this.model.currentlyUsingHomeAs === 'Primary_Residance'
+      "
       >Primary Residance</a
     >
     <a
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Second_Home')"
+      [class.blue-active]="this.model.currentlyUsingHomeAs === 'Second_Home'"
       >Second Home</a
     >
     <a
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Rental')"
+      [class.blue-active]="this.model.currentlyUsingHomeAs === 'Rental'"
       >Investment / Rental</a
     >
 
@@ -562,6 +577,7 @@
       routerLink="/app/refinance/property-info/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="milClick(true)"
+      [class.blue-active]="this.model.isMilitaryMember == 1"
       >Yes</a
     >
 
@@ -569,6 +585,7 @@
       routerLink="/app/refinance/property-info/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="milClick(false)"
+      [class.blue-active]="this.model.isMilitaryMember == 0"
       >No</a
     >
 
@@ -1318,6 +1335,7 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isSomeoneRefer = 1; saveStep()"
+      [class.blue-active]="model.isSomeoneRefer == 1"
     >
       Yes
     </button>
@@ -1325,6 +1343,7 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isSomeoneRefer = 0; saveStep()"
+      [class.blue-active]="model.isSomeoneRefer == 0"
     >
       No
     </button>
@@ -1379,6 +1398,7 @@
       routerLink="/app/refinance/personal-info/1"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isApplyOwn = 1; saveStep()"
+      [class.blue-active]="model.isApplyOwn == 1"
       >Applying on my oun</a
     >
 
@@ -1386,6 +1406,7 @@
       routerLink="/app/refinance/personal-info/1"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isApplyOwn = 0; saveStep()"
+      [class.blue-active]="model.isApplyOwn == 0"
       >Applying with another person</a
     >
 

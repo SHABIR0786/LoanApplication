@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
     private router: Router,
     private offline: OfflineService
   ) {
-    this.offline.clear();
+    // this.offline.clear();
     this.route.params.subscribe((x) => {
       if (x.number) {
         this.number = x.number;
@@ -37,7 +37,8 @@ export class WelcomeComponent implements OnInit {
     this.saveStep();
   }
   ngOnInit() {
-    this.offline.getStep().data;
+    this.model = this.offline.getStep().data;
+    console.log(this.model);
   }
 
   saveStep() {

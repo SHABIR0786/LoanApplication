@@ -1189,3 +1189,13 @@ body {
   flex: 0 0 16.6666666667%;
   max-width: 19.6666666667%;
 }
+.orange-active {
+  background-color: #f47741 !important;
+  color: #fff !important;
+  border-color: #f47741 !important;
+}
+.blue-active {
+  border: 1px solid #091a52 !important;
+  background-color: #091a52 !important;
+  color: #fff !important;
+}
