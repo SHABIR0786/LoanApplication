@@ -70,7 +70,7 @@ export class GovernmentComponent implements OnInit {
   onQsClick() {
     let count = 0;
     this.questions.forEach((ele) => {
-      if (ele["isYes"]) {
+      if (ele["isYes"] == true || ele["isYes"] == false) {
         count++;
       }
     });

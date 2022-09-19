@@ -231,6 +231,7 @@
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
       (click)="referClick(true)"
+      [class.orange-active]="this.model.isSomeOneRefer == 1"
       >Yes</a
     >
     <a
@@ -238,6 +239,7 @@
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-active btn-orange"
       (click)="referClick(false)"
+      [class.orange-active]="this.model.isSomeOneRefer == 0"
       >No</a
     >
 
@@ -272,6 +274,7 @@
       routerLink="/app/purchase/personal-info/4"
       class="btn btn-primary btn-style btn-orange"
       (click)="ownApply(true)"
+      [class.orange-active]="this.model.isApplyOwn == 1"
       >Applying on my oun</a
     >
 
@@ -279,6 +282,7 @@
       routerLink="/app/purchase/personal-info/4"
       class="btn btn-primary btn-style btn-orange"
       (click)="ownApply(false)"
+      [class.orange-active]="this.model.isApplyOwn == 0"
       >Applying with another person</a
     >
 
@@ -306,6 +310,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('unmarried')"
       class="btn btn-primary btn-style btn-orange"
+      [class.orange-active]="this.model.maritialStatus == 'unmarried'"
       >Unmarried</a
     >
 
@@ -313,6 +318,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('married')"
       class="btn btn-primary btn-style btn-orange"
+      [class.orange-active]="this.model.maritialStatus == 'married'"
       >Married</a
     >
 
@@ -320,6 +326,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('seperated')"
       class="btn btn-primary btn-style btn-orange"
+      [class.orange-active]="this.model.maritialStatus == 'seperated'"
       >Saparated</a
     >
 

@@ -7,6 +7,7 @@
       routerLink="/app/refinance/personal-info/2"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isLegalSpouse = 1; saveStep()"
+      [class.blue-active]="model.isLegalSpouse == 1"
       >Yes</a
     >
 
@@ -14,6 +15,7 @@
       routerLink="/app/refinance/personal-info/2"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isLegalSpouse = 0; saveStep()"
+      [class.blue-active]="model.isLegalSpouse == 0"
       >No</a
     >
 
@@ -45,18 +47,21 @@
       routerLink="/app/refinance/personal-info/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.maritialStatus = 'Unmarried'; saveStep()"
+      [class.blue-active]="model.maritialStatus == 'Unmarried'"
       >Unmarried</a
     >
     <a
       routerLink="/app/refinance/personal-info/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.maritialStatus = 'married'; saveStep()"
+      [class.blue-active]="model.maritialStatus == 'married'"
       >Married</a
     >
     <a
       routerLink="/app/refinance/personal-info/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.maritialStatus = 'seperated'; saveStep()"
+      [class.blue-active]="model.maritialStatus == 'seperated'"
       >Saparated</a
     >
     <div class="row">
@@ -1075,7 +1080,6 @@
       </div>
       <div class="form-group">
         <input
-          type="number"
           class="form-control form-style"
           placeholder="Phone Number"
           [(ngModel)]="model.personalPhoneNumber"

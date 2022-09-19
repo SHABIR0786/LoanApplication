@@ -34,7 +34,6 @@ export class LoginComponent extends AppComponentBase {
   }
 
   login(): void {
-    debugger;
     this.submitting = true;
     //this._route.navigate(["app/admin"]);
     this.authService.authenticate(() => (this.submitting = false));
