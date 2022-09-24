@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -14,9 +15,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class BorrowerEmploymentInformationAppService : AbpServiceBase, IBorrowerEmploymentInformationAppService
     {
-        private readonly IRepository<BorrowerEmploymentInformation, long> _repository;
+        private readonly IRepository<Borroweremploymentinformation, long> _repository;
 
-        public BorrowerEmploymentInformationAppService(IRepository<BorrowerEmploymentInformation, long> repository)
+        public BorrowerEmploymentInformationAppService(IRepository<Borroweremploymentinformation, long> repository)
         {
             _repository = repository;
         }
@@ -31,11 +32,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
-        public async Task<List<BorrowerEmploymentInformation>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        public async Task<List<Borroweremploymentinformation>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
-                .Select(i => new BorrowerEmploymentInformation
+                .Select(i => new Borroweremploymentinformation
                 {
                     EmployersName = i.EmployersName,
                     EmployersAddress1 = i.EmployersAddress1,
@@ -58,7 +59,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var additionalDetail = new BorrowerEmploymentInformation
+                var additionalDetail = new Borroweremploymentinformation
                 {
                     EmployersName = input.EmployerName,
                     EmployersAddress1 = input.Address1,

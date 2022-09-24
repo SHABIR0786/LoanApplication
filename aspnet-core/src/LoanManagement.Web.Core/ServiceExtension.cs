@@ -15,7 +15,7 @@ namespace LoanManagement
     {
         public static IServiceCollection AddMortgageLoanServices(this IServiceCollection services)
         {
-            services.AddDbContext<MortgagedbContext>();
+            services.AddDbContext<LoanManagementDbContext>();
             services.AddTransient<IApplicationService, ApplicationService>();
             services.AddTransient<ICreditTypeService, CreditTypeService>();
             services.AddTransient<IHousingTypeService, HousingTypeService>();

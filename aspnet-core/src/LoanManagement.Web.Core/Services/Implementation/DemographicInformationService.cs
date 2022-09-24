@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LoanManagement.Entities.Models;
+
 using LoanManagement.Services.Interface;
 using LoanManagement.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,16 +10,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class DemographicInformationService : IDemographicInformationService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public DemographicInformationService(MortgagedbContext dbContext)
+		public DemographicInformationService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddDemographicInfoSource(AddDemographicInfoSourceRequest request)
 		{
-			_dbContext.DemographicInfoSources.Add(new DemographicInfoSource()
+			_dbContext.DemographicInfoSources.Add(new codeFirstEntities.DemographicInfoSource()
 			{
 				Value = request.Value
 			});
@@ -80,7 +80,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddDemographicInformation(AddDemographicInformationRequest request)
 		{
-			_dbContext.DemographicInformations.Add(new DemographicInformation()
+			_dbContext.DemographicInformations.Add(new codeFirstEntities.DemographicInformation()
 			{
 				DemographicInfoSourceId87 = request.DemographicInfoSourceId87,
 				Ethnicity81 = request.Ethnicity81,

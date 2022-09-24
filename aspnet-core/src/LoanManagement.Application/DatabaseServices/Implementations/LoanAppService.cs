@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -15,7 +16,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class LoanAppService : AbpServiceBase, ILoanAppService
     {
-        private readonly IRepository<LoanApplication, long> _repository;
+        private readonly IRepository<Loanapplication,long> _repository;
         private readonly ILoanDetailServices _loanDetailServices;
         private readonly IAdditionalDetailServices _additionalDetailsService;
         private readonly IExpenseService _expensesService;
@@ -32,7 +33,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         public IAdditionalIncomeService _additionalIncomeService { get; }
 
         public LoanAppService(
-            IRepository<LoanApplication, long> repository,
+            IRepository<Loanapplication, long> repository,
             ILoanDetailServices loanDetailServices,
             IAdditionalDetailServices additionalDetailsService,
             IExpenseService expensesService,
@@ -65,1003 +66,1004 @@ namespace LoanManagement.DatabaseServices.Implementations
         //[UnitOfWork(isTransactional: false)]
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
         {
-            try
-            {
-                var query = _repository.GetAllIncluding(
-                    i => i.LoanDetail,
-                    i => i.AdditionalDetail,
-                    i => i.AdditionalIncomes,
-                    i => i.BorrowerEmploymentInformations,
-                    i => i.BorrowerMonthlyIncomes,
-                    i => i.CreditAuthAgreement,
-                    i => i.ConsentDetail,
-                    i => i.Declarations,
-                    i => i.DemographicsInformations,
-                    i => i.Expense,
-                    i => i.ManualAssetEntries);
-
-                query = query.Include(i => i.PersonalDetail)
-                    .ThenInclude(i => i.CoBorrower);
-
-                query = query.Include(i => i.PersonalDetail)
-                    .ThenInclude(i => i.Borrower);
-                query = query.Include(i => i.PersonalDetail)
-                    .ThenInclude(i => i.Addresses);
-
-                var result = await query
-                    .Where(i => i.Id == input.Id.Value)
-                   .SingleAsync();
-
-                var viewModel = new LoanApplicationDto
-                {
-                    Id = input.Id.Value,
-                    AdditionalDetails = new AdditionalDetailsDto
-                    {
-                        Id = result.AdditionalDetail?.Id,
-                        NameOfIndividualsOnTitle = result.AdditionalDetail?.NameOfIndividualsOnTitle,
-                        NameOfIndividualsCoBorrowerOnTitle = result.AdditionalDetail?.NameOfIndividualsCoBorrowerOnTitle,
-                    },
-                    LoanDetails = new LoanDetailDto
-                    {
-                        IsWorkingWithOfficer = result.LoanDetail?.IsWorkingWithOfficer,
-                        LoanOfficerId = result.LoanDetail?.LoanOfficerId,
-                        ReferredBy = result.LoanDetail?.ReferredBy,
-                        PurposeOfLoan = result.LoanDetail?.PurposeOfLoan,
-                        EstimatedValue = result.LoanDetail?.EstimatedValue,
-                        CurrentLoanAmount = result.LoanDetail?.CurrentLoanAmount,
-                        RequestedLoanAmount = result.LoanDetail?.RequestedLoanAmount,
-                        EstimatedPurchasePrice = result.LoanDetail?.EstimatedPurchasePrice,
-                        DownPaymentAmount = result.LoanDetail?.DownPaymentAmount,
-                        DownPaymentPercentage = result.LoanDetail?.DownPaymentPercentage,
-                        SourceOfDownPayment = result.LoanDetail.SourceOfDownPayment,
-                        GiftAmount = result.LoanDetail?.GiftAmount,
-                        GiftExplanation = result.LoanDetail?.GiftExplanation,
-                        HaveSecondMortgage = result.LoanDetail?.HaveSecondMortgage,
-                        SecondMortgageAmount = result.LoanDetail?.SecondMortgageAmount,
-                        PayLoanWithNewLoan = result.LoanDetail?.PayLoanWithNewLoan,
-                        RefinancingCurrentHome = result.LoanDetail?.RefinancingCurrentHome,
-                        YearAcquired = result.LoanDetail?.YearAcquired,
-                        OriginalPrice = result.LoanDetail?.OriginalPrice,
-                        City = result.LoanDetail?.City,
-                        StateId = result.LoanDetail?.StateId,
-                        PropertyTypeId = result.LoanDetail?.PropertyTypeId,
-                        PropertyUseId = result.LoanDetail?.PropertyUseId,
-                        StartedLookingForNewHome = result.LoanDetail?.StartedLookingForNewHome,
-                        Id = result.LoanDetailId
-                    },
-                    Expenses = new ExpensesDto
-                    {
-                        IsLiveWithFamilySelectRent = result.Expense?.IsLiveWithFamilySelectRent,
-                        Rent = result.Expense?.Rent,
-                        OtherHousingExpenses = result.Expense?.OtherHousingExpenses,
-                        FirstMortgage = result.Expense?.FirstMortgage,
-                        SecondMortgage = result.Expense?.SecondMortgage,
-                        HazardInsurance = result.Expense?.HazardInsurance,
-                        RealEstateTaxes = result.Expense?.RealEstateTaxes,
-                        MortgageInsurance = result.Expense?.MortgageInsurance,
-                        HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation,
-                        Id = result.ExpenseId,
-                    },
-                    OrderCredit = new CreditAuthAgreementDto
-                    {
-                        AgreeCreditAuthAgreement = result.CreditAuthAgreement?.AgreeCreditAuthAgreement,
-                        Id = result.CreditAuthAgreementId,
-                    },
-                    EConsent = new EConsentDto
-                    {
-                        AgreeEConsent = result.ConsentDetail?.AgreeEConsent,
-                        FirstName = result.ConsentDetail?.FirstName,
-                        LastName = result.ConsentDetail?.LastName,
-                        Email = result.ConsentDetail?.Email,
-                        CoborrowerEmail = result.ConsentDetail?.CoborrowerEmail,
-                        CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
-                        CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
-                        CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
-                        Id = result.ConsentDetailId,
-                    },
-                    PersonalInformation = new PersonalInformationDto
-                    {
-                        AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
-                        CoBorrowerIsMailingAddressSameAsResidential = result.PersonalDetail?.CoBorrowerIsMailingAddressSameAsResidential,
-                        CoBorrowerResidentialAddressSameAsBorrowerResidential = result.PersonalDetail?.CoBorrowerResidentialAddressSameAsBorrowerResidential,
-                        IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
-                        IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
-                        LoanApplicationId = result.Id,
-                        UseIncomeOfPersonOtherThanBorrower = result.PersonalDetail?.UseIncomeOfPersonOtherThanBorrower,
-                        Id = result?.PersonalDetailId,
-                    },
-                };
-
-                if (result.PersonalDetail != null && result.PersonalDetail.Borrower != null)
-                    viewModel.PersonalInformation.Borrower = new BorrowerDto
-                    {
-                        BorrowerTypeId = result.PersonalDetail.Borrower.BorrowerTypeId,
-                        CellPhone = result.PersonalDetail.Borrower.CellPhone,
-                        DateOfBirth = result.PersonalDetail.Borrower.DateOfBirth,
-                        Email = result.PersonalDetail.Borrower.Email,
-                        FirstName = result.PersonalDetail.Borrower.FirstName,
-                        HomePhone = result.PersonalDetail.Borrower.HomePhone,
-                        Id = result.PersonalDetail.Borrower.Id,
-                        LastName = result.PersonalDetail.Borrower.LastName,
-                        MaritalStatusId = result.PersonalDetail.Borrower.MaritalStatusId,
-                        MiddleInitial = result.PersonalDetail.Borrower.MiddleInitial,
-                        NumberOfDependents = result.PersonalDetail.Borrower.NumberOfDependents,
-                        SocialSecurityNumber = result.PersonalDetail.Borrower.SocialSecurityNumber,
-                        Suffix = result.PersonalDetail.Borrower.Suffix
-                    };
-
-                if (result.PersonalDetail != null && result.PersonalDetail.CoBorrower != null)
-                    viewModel.PersonalInformation.CoBorrower = new BorrowerDto
-                    {
-                        BorrowerTypeId = result.PersonalDetail.CoBorrower.BorrowerTypeId,
-                        CellPhone = result.PersonalDetail.CoBorrower.CellPhone,
-                        DateOfBirth = result.PersonalDetail.CoBorrower.DateOfBirth,
-                        Email = result.PersonalDetail.CoBorrower.Email,
-                        FirstName = result.PersonalDetail.CoBorrower.FirstName,
-                        HomePhone = result.PersonalDetail.CoBorrower.HomePhone,
-                        Id = result.PersonalDetail.CoBorrower.Id,
-                        LastName = result.PersonalDetail.CoBorrower.LastName,
-                        MaritalStatusId = result.PersonalDetail.CoBorrower.MaritalStatusId,
-                        MiddleInitial = result.PersonalDetail.CoBorrower.MiddleInitial,
-                        NumberOfDependents = result.PersonalDetail.CoBorrower.NumberOfDependents,
-                        SocialSecurityNumber = result.PersonalDetail.CoBorrower.SocialSecurityNumber,
-                        Suffix = result.PersonalDetail.CoBorrower.Suffix
-                    };
-
-                if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
-                {
-                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType != Enums.AddressType.Previous.ToString()))
-                    {
-                        if (address.AddressType == Enums.AddressType.Mailing.ToString())
-                        {
-                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                            {
-                                viewModel.PersonalInformation.MailingAddress = new AddressDto
-                                {
-                                    AddressLine1 = address.AddressLine1,
-                                    AddressLine2 = address.AddressLine2,
-                                    City = address.City,
-                                    Id = address.Id,
-                                    Months = address.Months,
-                                    StateId = address.StateId,
-                                    Years = address.Years,
-                                    ZipCode = address.ZipCode,
-                                };
-                            }
-                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            {
-                                viewModel.PersonalInformation.CoBorrowerMailingAddress = new AddressDto
-                                {
-                                    AddressLine1 = address.AddressLine1,
-                                    AddressLine2 = address.AddressLine2,
-                                    City = address.City,
-                                    Id = address.Id,
-                                    Months = address.Months,
-                                    StateId = address.StateId,
-                                    Years = address.Years,
-                                    ZipCode = address.ZipCode,
-                                };
-                            }
-                        }
-
-                        if (address.AddressType == Enums.AddressType.Residential.ToString())
-                        {
-                            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                            {
-                                viewModel.PersonalInformation.ResidentialAddress = new AddressDto
-                                {
-                                    AddressLine1 = address.AddressLine1,
-                                    AddressLine2 = address.AddressLine2,
-                                    City = address.City,
-                                    Id = address.Id,
-                                    Months = address.Months,
-                                    StateId = address.StateId,
-                                    Years = address.Years,
-                                    ZipCode = address.ZipCode,
-                                };
-                            }
-                            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            {
-                                viewModel.PersonalInformation.CoBorrowerResidentialAddress = new AddressDto
-                                {
-                                    AddressLine1 = address.AddressLine1,
-                                    AddressLine2 = address.AddressLine2,
-                                    City = address.City,
-                                    Id = address.Id,
-                                    Months = address.Months,
-                                    StateId = address.StateId,
-                                    Years = address.Years,
-                                    ZipCode = address.ZipCode,
-                                };
-                            }
-                        }
-                    }
-
-                }
-                if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
-                {
-                    viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
-                    viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
-
-                    foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType == Enums.AddressType.Previous.ToString()))
-                    {
-                        if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                        {
-                            viewModel.PersonalInformation.PreviousAddresses.Add(new AddressDto
-                            {
-
-                                AddressLine1 = address.AddressLine1,
-                                AddressLine2 = address.AddressLine2,
-                                City = address.City,
-                                Id = address.Id,
-                                Months = address.Months,
-                                StateId = address.StateId,
-                                Years = address.Years,
-                                ZipCode = address.ZipCode,
-                            });
-                        }
-                        else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                        {
-                            viewModel.PersonalInformation.CoBorrowerPreviousAddresses.Add(new AddressDto
-                            {
-                                AddressLine1 = address.AddressLine1,
-                                AddressLine2 = address.AddressLine2,
-                                City = address.City,
-                                Id = address.Id,
-                                Months = address.Months,
-                                StateId = address.StateId,
-                                Years = address.Years,
-                                ZipCode = address.ZipCode,
-                            });
-                        }
-                    }
-                }
-
-
-
-                viewModel.EmploymentIncome = new EmploymentIncomeDto
-                {
-                    LoanApplicationId = result.Id
-                };
-
-                if (result.AdditionalIncomes != null && result.AdditionalIncomes.Any())
-                {
-                    viewModel.EmploymentIncome.AdditionalIncomes = new List<AdditionalIncomeDto>();
-                    foreach (var additionalIncome in result.AdditionalIncomes)
-                    {
-                        viewModel.EmploymentIncome.AdditionalIncomes.Add(new AdditionalIncomeDto
-                        {
-                            Amount = additionalIncome.Amount,
-                            IncomeSourceId = additionalIncome.IncomeSourceId,
-                            LoanApplicationId = additionalIncome.LoanApplicationId,
-                            BorrowerTypeId = additionalIncome.BorrowerTypeId,
-                            Id = additionalIncome.Id,
-                        });
-                    }
-                }
-
-                if (result.BorrowerEmploymentInformations != null && result.BorrowerEmploymentInformations.Any())
-                {
-                    viewModel.EmploymentIncome.BorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
-                    viewModel.EmploymentIncome.CoBorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
-
-                    foreach (var employmentInfo in result.BorrowerEmploymentInformations)
-                    {
-                        if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                            viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
-                            {
-                                EmployerName = employmentInfo.EmployersName,
-                                Address1 = employmentInfo.EmployersAddress1,
-                                Address2 = employmentInfo.EmployersAddress2,
-                                IsSelfEmployed = employmentInfo.IsSelfEmployed,
-                                BorrowerTypeId = employmentInfo.BorrowerTypeId,
-                                City = employmentInfo.City,
-                                StartDate = employmentInfo.StartDate,
-                                EndDate = employmentInfo.EndDate,
-                                LoanApplicationId = employmentInfo.LoanApplicationId,
-                                Position = employmentInfo.Position,
-                                StateId = employmentInfo.StateId,
-                                ZipCode = employmentInfo.ZipCode,
-                                Id = employmentInfo.Id
-                            });
-                        else if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            viewModel.EmploymentIncome.CoBorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
-                            {
-                                EmployerName = employmentInfo.EmployersName,
-                                Address1 = employmentInfo.EmployersAddress1,
-                                Address2 = employmentInfo.EmployersAddress2,
-                                IsSelfEmployed = employmentInfo.IsSelfEmployed,
-                                BorrowerTypeId = employmentInfo.BorrowerTypeId,
-                                City = employmentInfo.City,
-                                StartDate = employmentInfo.StartDate,
-                                EndDate = employmentInfo.EndDate,
-                                LoanApplicationId = employmentInfo.LoanApplicationId,
-                                Position = employmentInfo.Position,
-                                StateId = employmentInfo.StateId,
-                                ZipCode = employmentInfo.ZipCode,
-                                Id = employmentInfo.Id
-                            });
-                        else
-                            throw new InvalidOperationException("Invalid borrower type id");
-                    }
-                }
-
-                if (result.BorrowerMonthlyIncomes != null && result.BorrowerMonthlyIncomes.Any())
-                {
-                    foreach (var monthlyIncome in result.BorrowerMonthlyIncomes)
-                    {
-                        if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                            viewModel.EmploymentIncome.BorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
-                            {
-                                Base = monthlyIncome.Base,
-                                Bonuses = monthlyIncome.Bonuses,
-                                BorrowerTypeId = monthlyIncome.BorrowerTypeId,
-                                Commissions = monthlyIncome.Commissions,
-                                Dividends = monthlyIncome.Dividends,
-                                Id = monthlyIncome.Id,
-                                LoanApplicationId = monthlyIncome.LoanApplicationId,
-                                Overtime = monthlyIncome.Overtime,
-                            };
-                        else if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            viewModel.EmploymentIncome.CoBorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
-                            {
-
-                                Base = monthlyIncome.Base,
-                                Bonuses = monthlyIncome.Bonuses,
-                                BorrowerTypeId = monthlyIncome.BorrowerTypeId,
-                                Commissions = monthlyIncome.Commissions,
-                                Dividends = monthlyIncome.Dividends,
-                                Id = monthlyIncome.BorrowerTypeId,
-                                LoanApplicationId = monthlyIncome.LoanApplicationId,
-                                Overtime = monthlyIncome.Overtime,
-                            };
-                        else
-                            throw new InvalidOperationException("Invalid borrower type id");
-                    }
-                }
-
-
-                if (result.ManualAssetEntries != null && result.ManualAssetEntries.Any())
-                {
-                    viewModel.ManualAssetEntries = new List<ManualAssetEntryDto>();
-                    foreach (var manualAssetEntries in result.ManualAssetEntries)
-                    {
-                        viewModel.ManualAssetEntries.Add(new ManualAssetEntryDto
-                        {
-
-                            AssetTypeId = manualAssetEntries.AssetTypeId,
-                            AccountNumber = manualAssetEntries.AccountNumber,
-                            Address = manualAssetEntries.Address,
-                            Address2 = manualAssetEntries.Address2,
-                            BankName = manualAssetEntries.BankName,
-                            BorrowerTypeId = manualAssetEntries.BorrowerTypeId,
-                            CashValue = manualAssetEntries.CashValue,
-                            City = manualAssetEntries.City,
-                            Description = manualAssetEntries.Description,
-                            GrossRentalIncome = manualAssetEntries.GrossRentalIncome,
-                            Id = manualAssetEntries.Id,
-                            LoanApplicationId = manualAssetEntries.LoanApplicationId,
-                            MonthlyMortgagePayment = manualAssetEntries.MonthlyMortgagePayment,
-                            Name = manualAssetEntries.Name,
-                            OutstandingMortgageBalance = manualAssetEntries.OutstandingMortgageBalance,
-                            PresentMarketValue = manualAssetEntries.PresentMarketValue,
-                            PropertyIsUsedAs = manualAssetEntries.PropertyIsUsedAs,
-                            PropertyStatus = manualAssetEntries.PropertyStatus,
-                            PropertyType = manualAssetEntries.PropertyType,
-                            PurchasePrice = manualAssetEntries.PurchasePrice,
-                            StateId = manualAssetEntries.StateId,
-                            TaxesInsuranceAndOther = manualAssetEntries.TaxesInsuranceAndOther,
-                            ZipCode = manualAssetEntries.ZipCode
-                        });
-                        if (result.ManualAssetEntries != null && manualAssetEntries.StockAndBonds.Any())
-                        {
-                            manualAssetEntries.StockAndBonds = manualAssetEntries.StockAndBonds.Select(i =>
-                            new StockAndBond
-                            {
-                                AccountNumber = i.AccountNumber,
-                                CompanyName = i.CompanyName,
-                                ManualAssetEntryId = i.ManualAssetEntryId,
-                                Value = i.Value
-                            })
-                            .ToList();
-                        }
-                    }
-                }
-
-                viewModel.Declaration = new DeclarationDto();
-                if (result.Declarations != null && result.Declarations.Any())
-                {
-                    foreach (var declaration in result.Declarations)
-                    {
-                        if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                            viewModel.Declaration.BorrowerDeclaration = new DeclarationDetailDto
-                            {
-                                DeclarationsSection = declaration.DeclarationsSection,
-                                IsOutstandingJudgmentsAgainstYou = declaration.IsOutstandingJudgmentsAgainstYou,
-                                IsDeclaredBankrupt = declaration.IsDeclaredBankrupt,
-                                IsPropertyForeClosedUponOrGivenTitle = declaration.IsPropertyForeClosedUponOrGivenTitle,
-                                IsPartyToLawsuit = declaration.IsPartyToLawsuit,
-                                IsObligatedOnAnyLoanWhichResultedForeclosure = declaration.IsObligatedOnAnyLoanWhichResultedForeclosure,
-                                IsPresentlyDelinquent = declaration.IsPresentlyDelinquent,
-                                IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
-                                IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
-                                IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
-                                IsUSCitizen = declaration.IsUSCitizen,
-                                IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
-                                IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
-                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
-                                Id = declaration.Id
-                            };
-                        else if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                            viewModel.Declaration.CoBorrowerDeclaration = new DeclarationDetailDto
-                            {
-                                DeclarationsSection = declaration.DeclarationsSection,
-                                IsOutstandingJudgmentsAgainstYou = declaration.IsOutstandingJudgmentsAgainstYou,
-                                IsDeclaredBankrupt = declaration.IsDeclaredBankrupt,
-                                IsPropertyForeClosedUponOrGivenTitle = declaration.IsPropertyForeClosedUponOrGivenTitle,
-                                IsPartyToLawsuit = declaration.IsPartyToLawsuit,
-                                IsObligatedOnAnyLoanWhichResultedForeclosure = declaration.IsObligatedOnAnyLoanWhichResultedForeclosure,
-                                IsPresentlyDelinquent = declaration.IsPresentlyDelinquent,
-                                IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
-                                IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
-                                IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
-                                IsUSCitizen = declaration.IsUSCitizen,
-                                IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
-                                IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
-                                IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
-                                Id = declaration.Id
-                            };
-                        else
-                            throw new InvalidOperationException("Invalid borrower type id");
-                    }
-                    viewModel.Declaration.LoanApplicationId = result.Id;
-                }
-
-                if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
-                {
-                    foreach (var demographicsInformation in result.DemographicsInformations)
-                    {
-                        if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
-                        {
-                            viewModel.Declaration.BorrowerDemographic = new DemographicDto
-                            {
-                                Ethnicity = new List<DemographicTypeDto>(),
-                                Id = demographicsInformation.Id,
-                            };
-
-                            if (demographicsInformation.IsHispanicOrLatino.HasValue &&
-                                demographicsInformation.IsHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.HispanicOrLatino
-                                });
-                            }
-
-                            if (demographicsInformation.IsMexican.HasValue &&
-                               demographicsInformation.IsMexican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.Mexican
-                                });
-                            }
-
-                            if (demographicsInformation.IsPuertoRican.HasValue &&
-                               demographicsInformation.IsPuertoRican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.PuertoRican
-                                });
-                            }
-
-                            if (demographicsInformation.IsCuban.HasValue &&
-                                demographicsInformation.IsCuban.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.Cuban
-                                });
-                            }
-
-                            if (demographicsInformation.IsOtherHispanicOrLatino.HasValue &&
-                               demographicsInformation.IsOtherHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.OtherHispanicOrLatino,
-                                    OtherValue = demographicsInformation.Origin
-                                });
-                            }
-
-                            if (demographicsInformation.IsNotHispanicOrLatino.HasValue &&
-                               demographicsInformation.IsNotHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.NotHispanicOrLatino,
-
-                                });
-                            }
-                            if (demographicsInformation.CanNotProvideEthnic.HasValue &&
-                               demographicsInformation.CanNotProvideEthnic.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.CanNotProvideEthnic,
-
-                                });
-                            }
-
-                            viewModel.Declaration.BorrowerDemographic.Race = new List<DemographicTypeDto>();
-
-                            if (demographicsInformation.IsAmericanIndianOrAlaskaNative.HasValue &&
-                               demographicsInformation.IsAmericanIndianOrAlaskaNative.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.AmericanIndianOrAlaskaNative,
-
-                                });
-                            }
-                            if (demographicsInformation.IsAsian.HasValue &&
-                               demographicsInformation.IsAsian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Asian,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsAsianIndian.HasValue &&
-                                demographicsInformation.IsAsianIndian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.AsianIndian,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsChinese.HasValue &&
-                               demographicsInformation.IsChinese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Chinese,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsFilipino.HasValue &&
-                               demographicsInformation.IsFilipino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Filipino,
-
-                                });
-                            }
-                            if (demographicsInformation.IsJapanese.HasValue &&
-                               demographicsInformation.IsJapanese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Japanese,
-
-                                });
-                            }
-                            if (demographicsInformation.IsKorean.HasValue &&
-                               demographicsInformation.IsKorean.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Korean,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsVietnamese.HasValue &&
-                               demographicsInformation.IsVietnamese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Vietnamese,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsOtherAsian.HasValue &&
-                               demographicsInformation.IsOtherAsian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.OtherAsian,
-
-                                });
-                            }
-                            if (demographicsInformation.IsBlackOrAfricanAmerican.HasValue &&
-                               demographicsInformation.IsBlackOrAfricanAmerican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.BlackOrAfricanAmerican,
-
-                                });
-                            }
-                            if (demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.HasValue &&
-                               demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.NativeHawaiianOrOtherPacificIslander,
-
-                                });
-                            }
-                            if (demographicsInformation.IsNativeHawaiian.HasValue &&
-                               demographicsInformation.IsNativeHawaiian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.NativeHawaiian,
-
-                                });
-                            }
-                            if (demographicsInformation.IsGuamanianOrChamorro.HasValue &&
-                                demographicsInformation.IsGuamanianOrChamorro.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.GuamanianOrChamorro,
-
-                                });
-                            }
-                            if (demographicsInformation.IsSamoan.HasValue &&
-                                demographicsInformation.IsSamoan.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Samoan,
-
-                                });
-                            }
-                            if (demographicsInformation.IsOtherPacificIslander.HasValue &&
-                               demographicsInformation.IsOtherPacificIslander.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.OtherPacificIslander,
-                                    OtherValue = demographicsInformation.Origin
-
-                                });
-                            }
-                            if (demographicsInformation.IsWhite.HasValue &&
-                               demographicsInformation.IsWhite.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.White,
-
-                                });
-                            }
-                            if (demographicsInformation.CanNotProvideRace.HasValue &&
-                                demographicsInformation.CanNotProvideRace.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.CanNotProvideRace,
-
-                                });
-                            }
-
-                            viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
-
-                            if (demographicsInformation.IsFemale.HasValue &&
-                              demographicsInformation.IsFemale.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.Female,
-
-                                });
-                            }
-                            if (demographicsInformation.IsMale.HasValue &&
-                                demographicsInformation.IsMale.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.Male,
-
-                                });
-                            }
-
-                            if (demographicsInformation.CanNotProvideSex.HasValue &&
-                               demographicsInformation.CanNotProvideSex.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.CanNotProvideSex,
-
-                                });
-                            }
-
-                        }
-                        else if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
-                        {
-                            viewModel.Declaration.BorrowerDemographic = new DemographicDto();
-                            viewModel.Declaration.BorrowerDemographic.Ethnicity = new List<DemographicTypeDto>();
-
-                            if (demographicsInformation.IsHispanicOrLatino.HasValue &&
-                                demographicsInformation.IsHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.HispanicOrLatino
-                                });
-                            }
-
-                            if (demographicsInformation.IsMexican.HasValue &&
-                               demographicsInformation.IsMexican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.Mexican
-                                });
-                            }
-
-                            if (demographicsInformation.IsPuertoRican.HasValue &&
-                               demographicsInformation.IsPuertoRican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.PuertoRican
-                                });
-                            }
-
-                            if (demographicsInformation.IsCuban.HasValue &&
-                                demographicsInformation.IsCuban.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.Cuban
-                                });
-                            }
-
-                            if (demographicsInformation.IsOtherHispanicOrLatino.HasValue &&
-                               demographicsInformation.IsOtherHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.OtherHispanicOrLatino,
-                                    OtherValue = demographicsInformation.Origin
-                                });
-                            }
-
-                            if (demographicsInformation.IsNotHispanicOrLatino.HasValue &&
-                               demographicsInformation.IsNotHispanicOrLatino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.NotHispanicOrLatino,
-
-                                });
-                            }
-                            if (demographicsInformation.CanNotProvideEthnic.HasValue &&
-                               demographicsInformation.CanNotProvideEthnic.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Ethnic.CanNotProvideEthnic,
-
-                                });
-                            }
-
-                            viewModel.Declaration.BorrowerDemographic.Race = new List<DemographicTypeDto>();
-
-                            if (demographicsInformation.IsAmericanIndianOrAlaskaNative.HasValue &&
-                               demographicsInformation.IsAmericanIndianOrAlaskaNative.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.AmericanIndianOrAlaskaNative,
-
-                                });
-                            }
-                            if (demographicsInformation.IsAsian.HasValue &&
-                               demographicsInformation.IsAsian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Asian,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsAsianIndian.HasValue &&
-                                demographicsInformation.IsAsianIndian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.AsianIndian,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsChinese.HasValue &&
-                               demographicsInformation.IsChinese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Chinese,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsFilipino.HasValue &&
-                               demographicsInformation.IsFilipino.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Filipino,
-
-                                });
-                            }
-                            if (demographicsInformation.IsJapanese.HasValue &&
-                               demographicsInformation.IsJapanese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Japanese,
-
-                                });
-                            }
-                            if (demographicsInformation.IsKorean.HasValue &&
-                               demographicsInformation.IsKorean.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Korean,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsVietnamese.HasValue &&
-                               demographicsInformation.IsVietnamese.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Vietnamese,
-
-                                });
-                            }
-
-                            if (demographicsInformation.IsOtherAsian.HasValue &&
-                               demographicsInformation.IsOtherAsian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.OtherAsian,
-
-                                });
-                            }
-                            if (demographicsInformation.IsBlackOrAfricanAmerican.HasValue &&
-                               demographicsInformation.IsBlackOrAfricanAmerican.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.BlackOrAfricanAmerican,
-
-                                });
-                            }
-                            if (demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.HasValue &&
-                               demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.NativeHawaiianOrOtherPacificIslander,
-
-                                });
-                            }
-                            if (demographicsInformation.IsNativeHawaiian.HasValue &&
-                               demographicsInformation.IsNativeHawaiian.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.NativeHawaiian,
-
-                                });
-                            }
-                            if (demographicsInformation.IsGuamanianOrChamorro.HasValue &&
-                                demographicsInformation.IsGuamanianOrChamorro.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.GuamanianOrChamorro,
-
-                                });
-                            }
-                            if (demographicsInformation.IsSamoan.HasValue &&
-                                demographicsInformation.IsSamoan.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.Samoan,
-
-                                });
-                            }
-                            if (demographicsInformation.IsOtherPacificIslander.HasValue &&
-                               demographicsInformation.IsOtherPacificIslander.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.OtherPacificIslander,
-                                    OtherValue = demographicsInformation.Origin
-
-                                });
-                            }
-                            if (demographicsInformation.IsWhite.HasValue &&
-                               demographicsInformation.IsWhite.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.White,
-
-                                });
-                            }
-                            if (demographicsInformation.CanNotProvideRace.HasValue &&
-                                demographicsInformation.CanNotProvideRace.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Race.CanNotProvideRace,
-
-                                });
-                            }
-
-                            viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
-
-                            if (demographicsInformation.IsFemale.HasValue &&
-                              demographicsInformation.IsFemale.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.Female,
-
-                                });
-                            }
-                            if (demographicsInformation.IsMale.HasValue &&
-                                demographicsInformation.IsMale.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.Male,
-
-                                });
-                            }
-
-                            if (demographicsInformation.CanNotProvideSex.HasValue &&
-                               demographicsInformation.CanNotProvideSex.Value)
-                            {
-                                viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
-                                {
-                                    Id = (int)Enums.Sex.CanNotProvideSex,
-
-                                });
-                            }
-                        }
-                        else
-                            throw new InvalidOperationException("Invalid borrower type id");
-                    }
-                }
-
-                return viewModel;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+            return new LoanApplicationDto();
+            //try
+            //{
+            //    var query = _repository.GetAllIncluding(
+            //        i => i.LoanDetail,
+            //        i => i.AdditionalDetail,
+            //        i => i.AdditionalIncomes,
+            //        i => i.BorrowerEmploymentInformations,
+            //        i => i.BorrowerMonthlyIncomes,
+            //        i => i.CreditAuthAgreement,
+            //        i => i.ConsentDetail,
+            //        i => i.Declarations,
+            //        i => i.DemographicsInformations,
+            //        i => i.Expense,
+            //        i => i.ManualAssetEntries);
+
+            //    query = query.Include(i => i.PersonalDetail)
+            //        .ThenInclude(i => i.CoBorrower);
+
+            //    query = query.Include(i => i.PersonalDetail)
+            //        .ThenInclude(i => i.Borrower);
+            //    query = query.Include(i => i.PersonalDetail)
+            //        .ThenInclude(i => i.Addresses);
+
+            //    var result = await query
+            //        .Where(i => i.Id == input.Id.Value)
+            //       .SingleAsync();
+
+            //    var viewModel = new LoanApplicationDto
+            //    {
+            //        Id = input.Id.Value,
+            //        AdditionalDetails = new AdditionalDetailsDto
+            //        {
+            //            Id = result.AdditionalDetail?.Id,
+            //            NameOfIndividualsOnTitle = result.AdditionalDetail?.NameOfIndividualsOnTitle,
+            //            NameOfIndividualsCoBorrowerOnTitle = result.AdditionalDetail?.NameOfIndividualsCoBorrowerOnTitle,
+            //        },
+            //        LoanDetails = new LoanDetailDto
+            //        {
+            //            IsWorkingWithOfficer = result.LoanDetail?.IsWorkingWithOfficer,
+            //            LoanOfficerId = result.LoanDetail?.LoanOfficerId,
+            //            ReferredBy = result.LoanDetail?.ReferredBy,
+            //            PurposeOfLoan = result.LoanDetail?.PurposeOfLoan,
+            //            EstimatedValue = result.LoanDetail?.EstimatedValue,
+            //            CurrentLoanAmount = result.LoanDetail?.CurrentLoanAmount,
+            //            RequestedLoanAmount = result.LoanDetail?.RequestedLoanAmount,
+            //            EstimatedPurchasePrice = result.LoanDetail?.EstimatedPurchasePrice,
+            //            DownPaymentAmount = result.LoanDetail?.DownPaymentAmount,
+            //            DownPaymentPercentage = result.LoanDetail?.DownPaymentPercentage,
+            //            SourceOfDownPayment = result.LoanDetail.SourceOfDownPayment,
+            //            GiftAmount = result.LoanDetail?.GiftAmount,
+            //            GiftExplanation = result.LoanDetail?.GiftExplanation,
+            //            HaveSecondMortgage = result.LoanDetail?.HaveSecondMortgage,
+            //            SecondMortgageAmount = result.LoanDetail?.SecondMortgageAmount,
+            //            PayLoanWithNewLoan = result.LoanDetail?.PayLoanWithNewLoan,
+            //            RefinancingCurrentHome = result.LoanDetail?.RefinancingCurrentHome,
+            //            YearAcquired = result.LoanDetail?.YearAcquired,
+            //            OriginalPrice = result.LoanDetail?.OriginalPrice,
+            //            City = result.LoanDetail?.City,
+            //            StateId = result.LoanDetail?.StateId,
+            //            PropertyTypeId = result.LoanDetail?.PropertyTypeId,
+            //            PropertyUseId = result.LoanDetail?.PropertyUseId,
+            //            StartedLookingForNewHome = result.LoanDetail?.StartedLookingForNewHome,
+            //            Id = result.LoanDetailId
+            //        },
+            //        Expenses = new ExpensesDto
+            //        {
+            //            IsLiveWithFamilySelectRent = result.Expense?.IsLiveWithFamilySelectRent,
+            //            Rent = result.Expense?.Rent,
+            //            OtherHousingExpenses = result.Expense?.OtherHousingExpenses,
+            //            FirstMortgage = result.Expense?.FirstMortgage,
+            //            SecondMortgage = result.Expense?.SecondMortgage,
+            //            HazardInsurance = result.Expense?.HazardInsurance,
+            //            RealEstateTaxes = result.Expense?.RealEstateTaxes,
+            //            MortgageInsurance = result.Expense?.MortgageInsurance,
+            //            HomeOwnersAssociation = result.Expense?.HomeOwnersAssociation,
+            //            Id = result.ExpenseId,
+            //        },
+            //        OrderCredit = new CreditAuthAgreementDto
+            //        {
+            //            AgreeCreditAuthAgreement = result.CreditAuthAgreement?.AgreeCreditAuthAgreement,
+            //            Id = result.CreditAuthAgreementId,
+            //        },
+            //        EConsent = new EConsentDto
+            //        {
+            //            AgreeEConsent = result.ConsentDetail?.AgreeEConsent,
+            //            FirstName = result.ConsentDetail?.FirstName,
+            //            LastName = result.ConsentDetail?.LastName,
+            //            Email = result.ConsentDetail?.Email,
+            //            CoborrowerEmail = result.ConsentDetail?.CoborrowerEmail,
+            //            CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
+            //            CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
+            //            CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
+            //            Id = result.ConsentDetailId,
+            //        },
+            //        PersonalInformation = new PersonalInformationDto
+            //        {
+            //            AgreePrivacyPolicy = result.PersonalDetail?.AgreePrivacyPolicy,
+            //            CoBorrowerIsMailingAddressSameAsResidential = result.PersonalDetail?.CoBorrowerIsMailingAddressSameAsResidential,
+            //            CoBorrowerResidentialAddressSameAsBorrowerResidential = result.PersonalDetail?.CoBorrowerResidentialAddressSameAsBorrowerResidential,
+            //            IsApplyingWithCoBorrower = result.PersonalDetail?.IsApplyingWithCoBorrower,
+            //            IsMailingAddressSameAsResidential = result.PersonalDetail?.IsMailingAddressSameAsResidential,
+            //            LoanApplicationId = result.Id,
+            //            UseIncomeOfPersonOtherThanBorrower = result.PersonalDetail?.UseIncomeOfPersonOtherThanBorrower,
+            //            Id = result?.PersonalDetailId,
+            //        },
+            //    };
+
+            //    if (result.PersonalDetail != null && result.PersonalDetail.Borrower != null)
+            //        viewModel.PersonalInformation.Borrower = new BorrowerDto
+            //        {
+            //            BorrowerTypeId = result.PersonalDetail.Borrower.BorrowerTypeId,
+            //            CellPhone = result.PersonalDetail.Borrower.CellPhone,
+            //            DateOfBirth = result.PersonalDetail.Borrower.DateOfBirth,
+            //            Email = result.PersonalDetail.Borrower.Email,
+            //            FirstName = result.PersonalDetail.Borrower.FirstName,
+            //            HomePhone = result.PersonalDetail.Borrower.HomePhone,
+            //            Id = result.PersonalDetail.Borrower.Id,
+            //            LastName = result.PersonalDetail.Borrower.LastName,
+            //            MaritalStatusId = result.PersonalDetail.Borrower.MaritalStatusId,
+            //            MiddleInitial = result.PersonalDetail.Borrower.MiddleInitial,
+            //            NumberOfDependents = result.PersonalDetail.Borrower.NumberOfDependents,
+            //            SocialSecurityNumber = result.PersonalDetail.Borrower.SocialSecurityNumber,
+            //            Suffix = result.PersonalDetail.Borrower.Suffix
+            //        };
+
+            //    if (result.PersonalDetail != null && result.PersonalDetail.CoBorrower != null)
+            //        viewModel.PersonalInformation.CoBorrower = new BorrowerDto
+            //        {
+            //            BorrowerTypeId = result.PersonalDetail.CoBorrower.BorrowerTypeId,
+            //            CellPhone = result.PersonalDetail.CoBorrower.CellPhone,
+            //            DateOfBirth = result.PersonalDetail.CoBorrower.DateOfBirth,
+            //            Email = result.PersonalDetail.CoBorrower.Email,
+            //            FirstName = result.PersonalDetail.CoBorrower.FirstName,
+            //            HomePhone = result.PersonalDetail.CoBorrower.HomePhone,
+            //            Id = result.PersonalDetail.CoBorrower.Id,
+            //            LastName = result.PersonalDetail.CoBorrower.LastName,
+            //            MaritalStatusId = result.PersonalDetail.CoBorrower.MaritalStatusId,
+            //            MiddleInitial = result.PersonalDetail.CoBorrower.MiddleInitial,
+            //            NumberOfDependents = result.PersonalDetail.CoBorrower.NumberOfDependents,
+            //            SocialSecurityNumber = result.PersonalDetail.CoBorrower.SocialSecurityNumber,
+            //            Suffix = result.PersonalDetail.CoBorrower.Suffix
+            //        };
+
+            //    if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
+            //    {
+            //        foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType != Enums.AddressType.Previous.ToString()))
+            //        {
+            //            if (address.AddressType == Enums.AddressType.Mailing.ToString())
+            //            {
+            //                if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //                {
+            //                    viewModel.PersonalInformation.MailingAddress = new AddressDto
+            //                    {
+            //                        AddressLine1 = address.AddressLine1,
+            //                        AddressLine2 = address.AddressLine2,
+            //                        City = address.City,
+            //                        Id = address.Id,
+            //                        Months = address.Months,
+            //                        StateId = address.StateId,
+            //                        Years = address.Years,
+            //                        ZipCode = address.ZipCode,
+            //                    };
+            //                }
+            //                else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //                {
+            //                    viewModel.PersonalInformation.CoBorrowerMailingAddress = new AddressDto
+            //                    {
+            //                        AddressLine1 = address.AddressLine1,
+            //                        AddressLine2 = address.AddressLine2,
+            //                        City = address.City,
+            //                        Id = address.Id,
+            //                        Months = address.Months,
+            //                        StateId = address.StateId,
+            //                        Years = address.Years,
+            //                        ZipCode = address.ZipCode,
+            //                    };
+            //                }
+            //            }
+
+            //            if (address.AddressType == Enums.AddressType.Residential.ToString())
+            //            {
+            //                if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //                {
+            //                    viewModel.PersonalInformation.ResidentialAddress = new AddressDto
+            //                    {
+            //                        AddressLine1 = address.AddressLine1,
+            //                        AddressLine2 = address.AddressLine2,
+            //                        City = address.City,
+            //                        Id = address.Id,
+            //                        Months = address.Months,
+            //                        StateId = address.StateId,
+            //                        Years = address.Years,
+            //                        ZipCode = address.ZipCode,
+            //                    };
+            //                }
+            //                else if (address.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //                {
+            //                    viewModel.PersonalInformation.CoBorrowerResidentialAddress = new AddressDto
+            //                    {
+            //                        AddressLine1 = address.AddressLine1,
+            //                        AddressLine2 = address.AddressLine2,
+            //                        City = address.City,
+            //                        Id = address.Id,
+            //                        Months = address.Months,
+            //                        StateId = address.StateId,
+            //                        Years = address.Years,
+            //                        ZipCode = address.ZipCode,
+            //                    };
+            //                }
+            //            }
+            //        }
+
+            //    }
+            //    if (result.PersonalDetail?.Addresses != null && result.PersonalDetail.Addresses.Any())
+            //    {
+            //        viewModel.PersonalInformation.PreviousAddresses = new List<AddressDto>();
+            //        viewModel.PersonalInformation.CoBorrowerPreviousAddresses = new List<AddressDto>();
+
+            //        foreach (var address in result.PersonalDetail.Addresses.Where(i => i.AddressType == Enums.AddressType.Previous.ToString()))
+            //        {
+            //            if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //            {
+            //                viewModel.PersonalInformation.PreviousAddresses.Add(new AddressDto
+            //                {
+
+            //                    AddressLine1 = address.AddressLine1,
+            //                    AddressLine2 = address.AddressLine2,
+            //                    City = address.City,
+            //                    Id = address.Id,
+            //                    Months = address.Months,
+            //                    StateId = address.StateId,
+            //                    Years = address.Years,
+            //                    ZipCode = address.ZipCode,
+            //                });
+            //            }
+            //            else if (address.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //            {
+            //                viewModel.PersonalInformation.CoBorrowerPreviousAddresses.Add(new AddressDto
+            //                {
+            //                    AddressLine1 = address.AddressLine1,
+            //                    AddressLine2 = address.AddressLine2,
+            //                    City = address.City,
+            //                    Id = address.Id,
+            //                    Months = address.Months,
+            //                    StateId = address.StateId,
+            //                    Years = address.Years,
+            //                    ZipCode = address.ZipCode,
+            //                });
+            //            }
+            //        }
+            //    }
+
+
+
+            //    viewModel.EmploymentIncome = new EmploymentIncomeDto
+            //    {
+            //        LoanApplicationId = result.Id
+            //    };
+
+            //    if (result.AdditionalIncomes != null && result.AdditionalIncomes.Any())
+            //    {
+            //        viewModel.EmploymentIncome.AdditionalIncomes = new List<AdditionalIncomeDto>();
+            //        foreach (var additionalIncome in result.AdditionalIncomes)
+            //        {
+            //            viewModel.EmploymentIncome.AdditionalIncomes.Add(new AdditionalIncomeDto
+            //            {
+            //                Amount = additionalIncome.Amount,
+            //                IncomeSourceId = additionalIncome.IncomeSourceId,
+            //                LoanApplicationId = additionalIncome.LoanApplicationId,
+            //                BorrowerTypeId = additionalIncome.BorrowerTypeId,
+            //                Id = additionalIncome.Id,
+            //            });
+            //        }
+            //    }
+
+            //    if (result.BorrowerEmploymentInformations != null && result.BorrowerEmploymentInformations.Any())
+            //    {
+            //        viewModel.EmploymentIncome.BorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
+            //        viewModel.EmploymentIncome.CoBorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
+
+            //        foreach (var employmentInfo in result.BorrowerEmploymentInformations)
+            //        {
+            //            if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //                viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
+            //                {
+            //                    EmployerName = employmentInfo.EmployersName,
+            //                    Address1 = employmentInfo.EmployersAddress1,
+            //                    Address2 = employmentInfo.EmployersAddress2,
+            //                    IsSelfEmployed = employmentInfo.IsSelfEmployed,
+            //                    BorrowerTypeId = employmentInfo.BorrowerTypeId,
+            //                    City = employmentInfo.City,
+            //                    StartDate = employmentInfo.StartDate,
+            //                    EndDate = employmentInfo.EndDate,
+            //                    LoanApplicationId = employmentInfo.LoanApplicationId,
+            //                    Position = employmentInfo.Position,
+            //                    StateId = employmentInfo.StateId,
+            //                    ZipCode = employmentInfo.ZipCode,
+            //                    Id = employmentInfo.Id
+            //                });
+            //            else if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //                viewModel.EmploymentIncome.CoBorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
+            //                {
+            //                    EmployerName = employmentInfo.EmployersName,
+            //                    Address1 = employmentInfo.EmployersAddress1,
+            //                    Address2 = employmentInfo.EmployersAddress2,
+            //                    IsSelfEmployed = employmentInfo.IsSelfEmployed,
+            //                    BorrowerTypeId = employmentInfo.BorrowerTypeId,
+            //                    City = employmentInfo.City,
+            //                    StartDate = employmentInfo.StartDate,
+            //                    EndDate = employmentInfo.EndDate,
+            //                    LoanApplicationId = employmentInfo.LoanApplicationId,
+            //                    Position = employmentInfo.Position,
+            //                    StateId = employmentInfo.StateId,
+            //                    ZipCode = employmentInfo.ZipCode,
+            //                    Id = employmentInfo.Id
+            //                });
+            //            else
+            //                throw new InvalidOperationException("Invalid borrower type id");
+            //        }
+            //    }
+
+            //    if (result.BorrowerMonthlyIncomes != null && result.BorrowerMonthlyIncomes.Any())
+            //    {
+            //        foreach (var monthlyIncome in result.BorrowerMonthlyIncomes)
+            //        {
+            //            if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //                viewModel.EmploymentIncome.BorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
+            //                {
+            //                    Base = monthlyIncome.Base,
+            //                    Bonuses = monthlyIncome.Bonuses,
+            //                    BorrowerTypeId = monthlyIncome.BorrowerTypeId,
+            //                    Commissions = monthlyIncome.Commissions,
+            //                    Dividends = monthlyIncome.Dividends,
+            //                    Id = monthlyIncome.Id,
+            //                    LoanApplicationId = monthlyIncome.LoanApplicationId,
+            //                    Overtime = monthlyIncome.Overtime,
+            //                };
+            //            else if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //                viewModel.EmploymentIncome.CoBorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
+            //                {
+
+            //                    Base = monthlyIncome.Base,
+            //                    Bonuses = monthlyIncome.Bonuses,
+            //                    BorrowerTypeId = monthlyIncome.BorrowerTypeId,
+            //                    Commissions = monthlyIncome.Commissions,
+            //                    Dividends = monthlyIncome.Dividends,
+            //                    Id = monthlyIncome.BorrowerTypeId,
+            //                    LoanApplicationId = monthlyIncome.LoanApplicationId,
+            //                    Overtime = monthlyIncome.Overtime,
+            //                };
+            //            else
+            //                throw new InvalidOperationException("Invalid borrower type id");
+            //        }
+            //    }
+
+
+            //    if (result.ManualAssetEntries != null && result.ManualAssetEntries.Any())
+            //    {
+            //        viewModel.ManualAssetEntries = new List<ManualAssetEntryDto>();
+            //        foreach (var manualAssetEntries in result.ManualAssetEntries)
+            //        {
+            //            viewModel.ManualAssetEntries.Add(new ManualAssetEntryDto
+            //            {
+
+            //                AssetTypeId = manualAssetEntries.AssetTypeId,
+            //                AccountNumber = manualAssetEntries.AccountNumber,
+            //                Address = manualAssetEntries.Address,
+            //                Address2 = manualAssetEntries.Address2,
+            //                BankName = manualAssetEntries.BankName,
+            //                BorrowerTypeId = manualAssetEntries.BorrowerTypeId,
+            //                CashValue = manualAssetEntries.CashValue,
+            //                City = manualAssetEntries.City,
+            //                Description = manualAssetEntries.Description,
+            //                GrossRentalIncome = manualAssetEntries.GrossRentalIncome,
+            //                Id = manualAssetEntries.Id,
+            //                LoanApplicationId = manualAssetEntries.LoanApplicationId,
+            //                MonthlyMortgagePayment = manualAssetEntries.MonthlyMortgagePayment,
+            //                Name = manualAssetEntries.Name,
+            //                OutstandingMortgageBalance = manualAssetEntries.OutstandingMortgageBalance,
+            //                PresentMarketValue = manualAssetEntries.PresentMarketValue,
+            //                PropertyIsUsedAs = manualAssetEntries.PropertyIsUsedAs,
+            //                PropertyStatus = manualAssetEntries.PropertyStatus,
+            //                PropertyType = manualAssetEntries.PropertyType,
+            //                PurchasePrice = manualAssetEntries.PurchasePrice,
+            //                StateId = manualAssetEntries.StateId,
+            //                TaxesInsuranceAndOther = manualAssetEntries.TaxesInsuranceAndOther,
+            //                ZipCode = manualAssetEntries.ZipCode
+            //            });
+            //            if (result.ManualAssetEntries != null && manualAssetEntries.StockAndBonds.Any())
+            //            {
+            //                manualAssetEntries.StockAndBonds = manualAssetEntries.StockAndBonds.Select(i =>
+            //                new StockAndBond
+            //                {
+            //                    AccountNumber = i.AccountNumber,
+            //                    CompanyName = i.CompanyName,
+            //                    ManualAssetEntryId = i.ManualAssetEntryId,
+            //                    Value = i.Value
+            //                })
+            //                .ToList();
+            //            }
+            //        }
+            //    }
+
+            //    viewModel.Declaration = new DeclarationDto();
+            //    if (result.Declarations != null && result.Declarations.Any())
+            //    {
+            //        foreach (var declaration in result.Declarations)
+            //        {
+            //            if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //                viewModel.Declaration.BorrowerDeclaration = new DeclarationDetailDto
+            //                {
+            //                    DeclarationsSection = declaration.DeclarationsSection,
+            //                    IsOutstandingJudgmentsAgainstYou = declaration.IsOutstandingJudgmentsAgainstYou,
+            //                    IsDeclaredBankrupt = declaration.IsDeclaredBankrupt,
+            //                    IsPropertyForeClosedUponOrGivenTitle = declaration.IsPropertyForeClosedUponOrGivenTitle,
+            //                    IsPartyToLawsuit = declaration.IsPartyToLawsuit,
+            //                    IsObligatedOnAnyLoanWhichResultedForeclosure = declaration.IsObligatedOnAnyLoanWhichResultedForeclosure,
+            //                    IsPresentlyDelinquent = declaration.IsPresentlyDelinquent,
+            //                    IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
+            //                    IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
+            //                    IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
+            //                    IsUSCitizen = declaration.IsUSCitizen,
+            //                    IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
+            //                    IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
+            //                    IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
+            //                    Id = declaration.Id
+            //                };
+            //            else if (declaration.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //                viewModel.Declaration.CoBorrowerDeclaration = new DeclarationDetailDto
+            //                {
+            //                    DeclarationsSection = declaration.DeclarationsSection,
+            //                    IsOutstandingJudgmentsAgainstYou = declaration.IsOutstandingJudgmentsAgainstYou,
+            //                    IsDeclaredBankrupt = declaration.IsDeclaredBankrupt,
+            //                    IsPropertyForeClosedUponOrGivenTitle = declaration.IsPropertyForeClosedUponOrGivenTitle,
+            //                    IsPartyToLawsuit = declaration.IsPartyToLawsuit,
+            //                    IsObligatedOnAnyLoanWhichResultedForeclosure = declaration.IsObligatedOnAnyLoanWhichResultedForeclosure,
+            //                    IsPresentlyDelinquent = declaration.IsPresentlyDelinquent,
+            //                    IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
+            //                    IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
+            //                    IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
+            //                    IsUSCitizen = declaration.IsUSCitizen,
+            //                    IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
+            //                    IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
+            //                    IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
+            //                    Id = declaration.Id
+            //                };
+            //            else
+            //                throw new InvalidOperationException("Invalid borrower type id");
+            //        }
+            //        viewModel.Declaration.LoanApplicationId = result.Id;
+            //    }
+
+            //    if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
+            //    {
+            //        foreach (var demographicsInformation in result.DemographicsInformations)
+            //        {
+            //            if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
+            //            {
+            //                viewModel.Declaration.BorrowerDemographic = new DemographicDto
+            //                {
+            //                    Ethnicity = new List<DemographicTypeDto>(),
+            //                    Id = demographicsInformation.Id,
+            //                };
+
+            //                if (demographicsInformation.IsHispanicOrLatino.HasValue &&
+            //                    demographicsInformation.IsHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.HispanicOrLatino
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsMexican.HasValue &&
+            //                   demographicsInformation.IsMexican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.Mexican
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsPuertoRican.HasValue &&
+            //                   demographicsInformation.IsPuertoRican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.PuertoRican
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsCuban.HasValue &&
+            //                    demographicsInformation.IsCuban.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.Cuban
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsOtherHispanicOrLatino.HasValue &&
+            //                   demographicsInformation.IsOtherHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.OtherHispanicOrLatino,
+            //                        OtherValue = demographicsInformation.Origin
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsNotHispanicOrLatino.HasValue &&
+            //                   demographicsInformation.IsNotHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.NotHispanicOrLatino,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.CanNotProvideEthnic.HasValue &&
+            //                   demographicsInformation.CanNotProvideEthnic.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.CanNotProvideEthnic,
+
+            //                    });
+            //                }
+
+            //                viewModel.Declaration.BorrowerDemographic.Race = new List<DemographicTypeDto>();
+
+            //                if (demographicsInformation.IsAmericanIndianOrAlaskaNative.HasValue &&
+            //                   demographicsInformation.IsAmericanIndianOrAlaskaNative.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.AmericanIndianOrAlaskaNative,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsAsian.HasValue &&
+            //                   demographicsInformation.IsAsian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Asian,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsAsianIndian.HasValue &&
+            //                    demographicsInformation.IsAsianIndian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.AsianIndian,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsChinese.HasValue &&
+            //                   demographicsInformation.IsChinese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Chinese,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsFilipino.HasValue &&
+            //                   demographicsInformation.IsFilipino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Filipino,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsJapanese.HasValue &&
+            //                   demographicsInformation.IsJapanese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Japanese,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsKorean.HasValue &&
+            //                   demographicsInformation.IsKorean.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Korean,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsVietnamese.HasValue &&
+            //                   demographicsInformation.IsVietnamese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Vietnamese,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsOtherAsian.HasValue &&
+            //                   demographicsInformation.IsOtherAsian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.OtherAsian,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsBlackOrAfricanAmerican.HasValue &&
+            //                   demographicsInformation.IsBlackOrAfricanAmerican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.BlackOrAfricanAmerican,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.HasValue &&
+            //                   demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.NativeHawaiianOrOtherPacificIslander,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsNativeHawaiian.HasValue &&
+            //                   demographicsInformation.IsNativeHawaiian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.NativeHawaiian,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsGuamanianOrChamorro.HasValue &&
+            //                    demographicsInformation.IsGuamanianOrChamorro.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.GuamanianOrChamorro,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsSamoan.HasValue &&
+            //                    demographicsInformation.IsSamoan.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Samoan,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsOtherPacificIslander.HasValue &&
+            //                   demographicsInformation.IsOtherPacificIslander.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.OtherPacificIslander,
+            //                        OtherValue = demographicsInformation.Origin
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsWhite.HasValue &&
+            //                   demographicsInformation.IsWhite.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.White,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.CanNotProvideRace.HasValue &&
+            //                    demographicsInformation.CanNotProvideRace.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.CanNotProvideRace,
+
+            //                    });
+            //                }
+
+            //                viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
+
+            //                if (demographicsInformation.IsFemale.HasValue &&
+            //                  demographicsInformation.IsFemale.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.Female,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsMale.HasValue &&
+            //                    demographicsInformation.IsMale.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.Male,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.CanNotProvideSex.HasValue &&
+            //                   demographicsInformation.CanNotProvideSex.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.CanNotProvideSex,
+
+            //                    });
+            //                }
+
+            //            }
+            //            else if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.CoBorrower)
+            //            {
+            //                viewModel.Declaration.BorrowerDemographic = new DemographicDto();
+            //                viewModel.Declaration.BorrowerDemographic.Ethnicity = new List<DemographicTypeDto>();
+
+            //                if (demographicsInformation.IsHispanicOrLatino.HasValue &&
+            //                    demographicsInformation.IsHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.HispanicOrLatino
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsMexican.HasValue &&
+            //                   demographicsInformation.IsMexican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.Mexican
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsPuertoRican.HasValue &&
+            //                   demographicsInformation.IsPuertoRican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.PuertoRican
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsCuban.HasValue &&
+            //                    demographicsInformation.IsCuban.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.Cuban
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsOtherHispanicOrLatino.HasValue &&
+            //                   demographicsInformation.IsOtherHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.OtherHispanicOrLatino,
+            //                        OtherValue = demographicsInformation.Origin
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsNotHispanicOrLatino.HasValue &&
+            //                   demographicsInformation.IsNotHispanicOrLatino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.NotHispanicOrLatino,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.CanNotProvideEthnic.HasValue &&
+            //                   demographicsInformation.CanNotProvideEthnic.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Ethnicity.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Ethnic.CanNotProvideEthnic,
+
+            //                    });
+            //                }
+
+            //                viewModel.Declaration.BorrowerDemographic.Race = new List<DemographicTypeDto>();
+
+            //                if (demographicsInformation.IsAmericanIndianOrAlaskaNative.HasValue &&
+            //                   demographicsInformation.IsAmericanIndianOrAlaskaNative.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.AmericanIndianOrAlaskaNative,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsAsian.HasValue &&
+            //                   demographicsInformation.IsAsian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Asian,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsAsianIndian.HasValue &&
+            //                    demographicsInformation.IsAsianIndian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.AsianIndian,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsChinese.HasValue &&
+            //                   demographicsInformation.IsChinese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Chinese,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsFilipino.HasValue &&
+            //                   demographicsInformation.IsFilipino.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Filipino,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsJapanese.HasValue &&
+            //                   demographicsInformation.IsJapanese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Japanese,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsKorean.HasValue &&
+            //                   demographicsInformation.IsKorean.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Korean,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsVietnamese.HasValue &&
+            //                   demographicsInformation.IsVietnamese.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Vietnamese,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.IsOtherAsian.HasValue &&
+            //                   demographicsInformation.IsOtherAsian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.OtherAsian,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsBlackOrAfricanAmerican.HasValue &&
+            //                   demographicsInformation.IsBlackOrAfricanAmerican.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.BlackOrAfricanAmerican,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.HasValue &&
+            //                   demographicsInformation.IsNativeHawaiianOrOtherPacificIslander.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.NativeHawaiianOrOtherPacificIslander,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsNativeHawaiian.HasValue &&
+            //                   demographicsInformation.IsNativeHawaiian.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.NativeHawaiian,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsGuamanianOrChamorro.HasValue &&
+            //                    demographicsInformation.IsGuamanianOrChamorro.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.GuamanianOrChamorro,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsSamoan.HasValue &&
+            //                    demographicsInformation.IsSamoan.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.Samoan,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsOtherPacificIslander.HasValue &&
+            //                   demographicsInformation.IsOtherPacificIslander.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.OtherPacificIslander,
+            //                        OtherValue = demographicsInformation.Origin
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsWhite.HasValue &&
+            //                   demographicsInformation.IsWhite.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.White,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.CanNotProvideRace.HasValue &&
+            //                    demographicsInformation.CanNotProvideRace.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Race.CanNotProvideRace,
+
+            //                    });
+            //                }
+
+            //                viewModel.Declaration.BorrowerDemographic.Sex = new List<DemographicTypeDto>();
+
+            //                if (demographicsInformation.IsFemale.HasValue &&
+            //                  demographicsInformation.IsFemale.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.Female,
+
+            //                    });
+            //                }
+            //                if (demographicsInformation.IsMale.HasValue &&
+            //                    demographicsInformation.IsMale.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.Male,
+
+            //                    });
+            //                }
+
+            //                if (demographicsInformation.CanNotProvideSex.HasValue &&
+            //                   demographicsInformation.CanNotProvideSex.Value)
+            //                {
+            //                    viewModel.Declaration.BorrowerDemographic.Race.Add(new DemographicTypeDto
+            //                    {
+            //                        Id = (int)Enums.Sex.CanNotProvideSex,
+
+            //                    });
+            //                }
+            //            }
+            //            else
+            //                throw new InvalidOperationException("Invalid borrower type id");
+            //        }
+            //    }
+
+            //    return viewModel;
+            //}
+            //catch (Exception e)
+            //{
+            //    throw;
+            //}
         }
 
         public Task<PagedResultDto<LoanApplicationDto>> GetAllAsync(PagedLoanApplicationResultRequestDto input)
@@ -1093,7 +1095,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanApplication = new LoanApplication
+                var loanApplication = new Loanapplication
                 {
                     UpdatedOn = DateTime.UtcNow
                 };
@@ -1117,7 +1119,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Loadn App
                 if (input.Id == 0)
                 {
-                    var loanApplicationOb = new LoanApplication();
+                    var loanApplicationOb = new Loanapplication();
                     await _repository.InsertAsync(loanApplicationOb);
                     await UnitOfWorkManager.Current.SaveChangesAsync();
                     input.Id = loanApplication.Id;

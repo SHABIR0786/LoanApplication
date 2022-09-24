@@ -3,7 +3,7 @@ using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.City;
 
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class CityService : ICityService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public CityService(MortgagedbContext dbContext)
+		public CityService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddCity(AddCityRequest request)
 		{
-			_dbContext.Cities.Add(new City()
+			_dbContext.Cities.Add(new codeFirstEntities.City()
 			{
 				StateId = request.StateId,
 				CityName = request.CityName

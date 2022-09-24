@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadTaxTypes;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,15 +13,15 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadTaxTypesService : ILeadTaxTypesService
     {
-        private readonly MortgagedbContext _dbContext;
+        private readonly LoanManagementDbContext _dbContext;
 
-        public LeadTaxTypesService(MortgagedbContext dbContext)
+        public LeadTaxTypesService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadTaxTypes request)
         {
-            var entity = new Entities.Models.LeadTaxesType
+            var entity = new LeadTaxesType
             {
                 TaxesType = request.TaxesType
             };

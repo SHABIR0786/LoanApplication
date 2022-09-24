@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadPurchasingDetail;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadPurchasingDetailService : ILeadPurchasingDetailsService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadPurchasingDetailService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadPurchasingDetailService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadPurchasingDetail request)
         {
-            var entity = new Entities.Models.LeadApplicationDetailPurchasing
+            var entity = new LeadApplicationDetailPurchasing
             {
                 BirthDate = request.BirthDate,
                 CitizenshipId = request.CitizenshipId,

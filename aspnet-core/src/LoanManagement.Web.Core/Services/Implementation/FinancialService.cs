@@ -8,7 +8,7 @@ using LoanManagement.Features.Financial.PropertyStatus;
 
 using System.Collections.Generic;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +19,9 @@ namespace LoanManagement.Services.Implementation
 {
 	public class FinancialService : IFinancialService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public FinancialService(MortgagedbContext dbContext)
+		public FinancialService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
@@ -29,7 +29,7 @@ namespace LoanManagement.Services.Implementation
         #region Peroperty Status
         public string AddFinancialPropertyStatus(AddPropertyStatusRequest request)
 		{
-			_dbContext.FinancialPropertyStatuses.Add(new FinancialPropertyStatus()
+			_dbContext.FinancialPropertyStatuses.Add(new codeFirstEntities.FinancialPropertyStatus()
 			{
 				FinancialPropertyStatus1 = request.FinancialPropertyStatus1
 			});
@@ -94,7 +94,7 @@ namespace LoanManagement.Services.Implementation
 
         public string AddFinancialPropertyIntendedOccupancy(AddPropertyIntendedOccupancyRequest request)
 		{
-			_dbContext.FinancialPropertyIntendedOccupancies.Add(new FinancialPropertyIntendedOccupancy()
+			_dbContext.FinancialPropertyIntendedOccupancies.Add(new codeFirstEntities.FinancialPropertyIntendedOccupancy()
 			{
 				FinancialPropertyIntendedOccupancy1 = request.FinancialPropertyIntendedOccupancy1
 			});
@@ -159,7 +159,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddFinancialOtherLaibilitiesType(AddOtherLaibilitiesTypeRequest request)
 		{
-			_dbContext.FinancialOtherLaibilitiesTypes.Add(new FinancialOtherLaibilitiesType()
+			_dbContext.FinancialOtherLaibilitiesTypes.Add(new codeFirstEntities.FinancialOtherLaibilitiesType()
 			{
 				FinancialOtherLaibilitiesType1 = request.FinancialOtherLaibilitiesType1
 			});
@@ -225,7 +225,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddFinancialLaibilitiesType(AddLaibilitiesTypeRequest request)
 		{
-			_dbContext.FinancialLaibilitiesTypes.Add(new FinancialLaibilitiesType()
+			_dbContext.FinancialLaibilitiesTypes.Add(new codeFirstEntities.FinancialLaibilitiesType()
 			{
 				FinancialLaibilitiesType1 = request.FinancialLaibilitiesType1
 			});
@@ -291,7 +291,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddFinancialAccountType(AddAccountTypeRequest request)
 		{
-			_dbContext.FinancialAccountTypes.Add(new FinancialAccountType()
+			_dbContext.FinancialAccountTypes.Add(new codeFirstEntities.FinancialAccountType()
 			{
 				FinancialAccountType1 = request.FinancialAccountType1
 			});

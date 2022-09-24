@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LoanManagement.Entities.Models;
+
 using LoanManagement.Services.Interface;
 using LoanManagement.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,16 +10,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class CreditTypeService : ICreditTypeService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public CreditTypeService(MortgagedbContext dbContext)
+		public CreditTypeService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddCreditType(AddCreditTypeRequest request)
 		{
-			_dbContext.CreditTypes.Add(new CreditType()
+			_dbContext.CreditTypes.Add(new codeFirstEntities.CreditType()
 			{
 				CreditType1 = request.CreditType1
 			});

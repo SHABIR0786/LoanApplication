@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminDisclosure;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +10,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminDisclosureService : IAdminDisclosureService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminDisclosureService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminDisclosureService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminDisclosure request)
         {
-            var entity = new Entities.Models.AdminDisclosure
+            var entity = new AdminDisclosure
             {
                 Title = request.Title,
             };

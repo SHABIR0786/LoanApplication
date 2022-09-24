@@ -14,6 +14,7 @@ using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using LoanManagement.codeFirstEntities;
 
 namespace LoanManagement.Controllers
 {

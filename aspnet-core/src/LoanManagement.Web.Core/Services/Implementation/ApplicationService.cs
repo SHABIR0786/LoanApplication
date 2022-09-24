@@ -16,18 +16,17 @@ using LoanManagement.Features.Application.MilitaryService;
 using LoanManagement.Features.Application.PersonalInformation;
 using LoanManagement.Features.Application.PreviousEmployementDetail;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using LoanManagement.codeFirstEntities;
 
 namespace LoanManagement.Services.Implementation
 {
 	public class ApplicationService : IApplicationService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public ApplicationService(MortgagedbContext dbContext)
+		public ApplicationService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}

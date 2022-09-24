@@ -3,7 +3,7 @@ using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.Country;
 
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class CountryService : ICountryService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public CountryService(MortgagedbContext dbContext)
+		public CountryService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddCountry(AddCountryRequest request)
 		{
-			_dbContext.Countries.Add(new Country()
+			_dbContext.Countries.Add(new codeFirstEntities.Country()
 			{
 				CountryName = request.CountryName
 			});

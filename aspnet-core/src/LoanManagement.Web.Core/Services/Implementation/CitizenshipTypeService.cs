@@ -2,17 +2,17 @@
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.CitizenshipType;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
 using System.Collections.Generic;
 using System.Linq;
+using LoanManagement.codeFirstEntities;
 
 namespace LoanManagement.Services.Implementation
 {
     public class CitizenshipTypeService: ICitizenshipTypeService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public CitizenshipTypeService(MortgagedbContext dbContext)
+		public CitizenshipTypeService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}

@@ -2,6 +2,7 @@ using Abp.AspNetCore.SignalR.Hubs;
 using Abp.AspNetCore.SignalR.Notifications;
 using Abp.Notifications;
 using Abp.RealTime;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminUserNotification;
 using Microsoft.AspNetCore.SignalR;
@@ -14,10 +15,10 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminUserNotificationService : IAdminUserNotificationService
     {
-        private readonly MortgagedbContext _dbContext;
+        private readonly LoanManagementDbContext _dbContext;
         private readonly IOnlineClientManager _onlineClientManager;
         private readonly IHubContext<AbpCommonHub> _hubContext;
-        public AdminUserNotificationService(MortgagedbContext dbContext, IOnlineClientManager onlineClientManager, IHubContext<AbpCommonHub> hubContext)
+        public AdminUserNotificationService(LoanManagementDbContext dbContext, IOnlineClientManager onlineClientManager, IHubContext<AbpCommonHub> hubContext)
         {
             _dbContext = dbContext;
             _onlineClientManager = onlineClientManager;
@@ -25,7 +26,7 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminUserNotification request)
         {
-            var entity = new Entities.Models.AdminUsernotification
+            var entity = new AdminUsernotification
             {
                 Content = request.Content,
                 Date = request.Date,

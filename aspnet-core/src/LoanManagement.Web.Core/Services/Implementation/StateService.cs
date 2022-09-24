@@ -3,20 +3,21 @@ using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.State;
 
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LoanManagement.codeFirstEntities;
 
 namespace LoanManagement.Services.Implementation
 {
     public class StateService: IStateService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public StateService(MortgagedbContext dbContext)
+		public StateService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
@@ -25,8 +26,7 @@ namespace LoanManagement.Services.Implementation
 		{
 			_dbContext.States.Add(new State()
 			{
-				CountryId =  request.CountryId,
-				StateName = request.StateName
+				Name = request.StateName
 			});
 
 
@@ -43,7 +43,7 @@ namespace LoanManagement.Services.Implementation
 				return AppConsts.NoRecordFound;
 			}
 
-			objState.StateName = request.StateName;
+			objState.Name = request.StateName;
 
 			_dbContext.Entry(objState).State = EntityState.Modified;
 			_dbContext.SaveChanges();
@@ -71,7 +71,7 @@ namespace LoanManagement.Services.Implementation
 			return _dbContext.States.Select(d => new UpdateStateRequest()
 			{
 				Id = d.Id,
-				StateName = d.StateName
+				StateName = d.Name
 			}).ToList();
 		}
 
@@ -80,7 +80,7 @@ namespace LoanManagement.Services.Implementation
 			return _dbContext.States.Where(s => s.Id == id).Select(d => new UpdateStateRequest()
 			{
 				Id = d.Id,
-				StateName = d.StateName
+				StateName = d.Name
 			}).FirstOrDefault();
 		}
 

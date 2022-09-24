@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using LoanManagement.Entities.Models;
+
 using LoanManagement.Services.Interface;
 using LoanManagement.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -31,10 +31,10 @@ namespace LoanManagement.Services.Implementation
 {
 	public class LoanService : ILoanService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 		public IWebHostEnvironment _hostingEnvironment;
 
-		public LoanService(MortgagedbContext dbContext, IWebHostEnvironment hostingEnvironment)
+		public LoanService(LoanManagementDbContext dbContext, IWebHostEnvironment hostingEnvironment)
 		{
 			_dbContext = dbContext;
 			_hostingEnvironment = hostingEnvironment;
@@ -44,7 +44,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanPropertyGiftType(AddLoanPropertyGiftTypeRequest request)
 		{
-			_dbContext.LoanPropertyGiftTypes.Add(new LoanPropertyGiftType()
+			_dbContext.LoanPropertyGiftTypes.Add(new codeFirstEntities.LoanPropertyGiftType()
 			{
 				LoanPropertyGiftType1 = request.LoanPropertyGiftType1
 			});
@@ -109,7 +109,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanPropertyOccupancy(AddLoanPropertyOccupancyRequest request)
 		{
-			_dbContext.LoanPropertyOccupancies.Add(new LoanPropertyOccupancy()
+			_dbContext.LoanPropertyOccupancies.Add(new codeFirstEntities.LoanPropertyOccupancy()
 			{
 				LoanPropertyOccupancy1 = request.LoanPropertyOccupancy1
 			});
@@ -174,7 +174,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddMortageLoanType(AddMortageLoanTypeRequest request)
 		{
-			_dbContext.MortageLoanTypes.Add(new MortageLoanType()
+			_dbContext.MortageLoanTypes.Add(new codeFirstEntities.MortageLoanType()
 			{
 				MortageLoanTypesId = request.MortageLoanTypesId
 			});
@@ -239,7 +239,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanAndPropertyInformationGift(AddLoanAndPropertyInformationGiftRequest request)
 		{
-			_dbContext.LoanAndPropertyInformationGifts.Add(new LoanAndPropertyInformationGift()
+			_dbContext.LoanAndPropertyInformationGifts.Add(new codeFirstEntities.LoanAndPropertyInformationGift()
 			{
 				ApplicationPersonalInformationId = request.ApplicationPersonalInformationId,
 				Deposited4d2 = request.Deposited4d2,
@@ -320,7 +320,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanAndPropertyInformation(AddLoanAndPropertyInformationRequest request)
 		{
-			_dbContext.LoanAndPropertyInformations.Add(new LoanAndPropertyInformation()
+			_dbContext.LoanAndPropertyInformations.Add(new codeFirstEntities.LoanAndPropertyInformation()
 			{
 				ApplicationPersonalInformationId = request.ApplicationPersonalInformationId,
 				CityId4a33 = request.CityId4a33,
@@ -441,7 +441,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanOriginatorInformation(AddLoanOriginatorInformationRequest request)
 		{
-			_dbContext.LoanOriginatorInformations.Add(new LoanOriginatorInformation()
+			_dbContext.LoanOriginatorInformations.Add(new codeFirstEntities.LoanOriginatorInformation()
 			{
 				ApplicationPersonalInformationId = request.ApplicationPersonalInformationId,
 				Address92 = request.Address92,
@@ -546,7 +546,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanAndPropertyInformationOtherMortageLoan(AddLoanAndPropertyInformationOtherMortageLoanRequest request)
 		{
-			_dbContext.LoanAndPropertyInformationOtherMortageLoans.Add(new LoanAndPropertyInformationOtherMortageLoan()
+			_dbContext.LoanAndPropertyInformationOtherMortageLoans.Add(new codeFirstEntities.LoanAndPropertyInformationOtherMortageLoan()
 			{
 				ApplicationPersonalInformationId = request.ApplicationPersonalInformationId,
 				CreditAmount4b5 = request.CreditAmount4b5,
@@ -631,7 +631,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddLoanAndPropertyInformationRentalIncome(AddLoanAndPropertyInformationRentalIncomeRequest request)
 		{
-			_dbContext.LoanAndPropertyInformationRentalIncomes.Add(new LoanAndPropertyInformationRentalIncome()
+			_dbContext.LoanAndPropertyInformationRentalIncomes.Add(new codeFirstEntities.LoanAndPropertyInformationRentalIncome()
 			{
 				ApplicationPersonalInformationId = request.ApplicationPersonalInformationId,
 				ExpectedMonthlyIncome4c1 = request.ExpectedMonthlyIncome4c1,
@@ -704,7 +704,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddMortageLoanOnProperty(AddMortageLoanOnPropertyRequest request)
 		{
-			_dbContext.MortageLoanOnProperties.Add(new MortageLoanOnProperty()
+			_dbContext.MortageLoanOnProperties.Add(new codeFirstEntities.MortageLoanOnProperty()
 			{
 				AccountNumber3a10 = request.AccountNumber3a10,
 				ApplicationFinancialRealEstateId = request.ApplicationFinancialRealEstateId,
@@ -795,278 +795,279 @@ namespace LoanManagement.Services.Implementation
 
 		public GetPdfDataModel GetLoanApplicationDetail(long id)
 		{
-			return _dbContext.ApplicationPersonalInformations.Where(s => s.ApplicationId == id).Select(d => new GetPdfDataModel()
-			{
-				Id = d.Id,
-				Ages1a81 = d.Ages1a81,
-				AlternateFirstName1a21 = d.AlternateFirstName1a21,
-				AlternateLastName1a23 = d.AlternateLastName1a23,
-				AlternateMiddleName1a22 = d.AlternateMiddleName1a22,
-				AlternateSuffix1a24 = d.AlternateSuffix1a24,
-				ApplicationId = d.ApplicationId,
-				CellPhone1a10 = d.CellPhone1a10,
-				CitizenshipType1a5 = d.CitizenshipTypeId1a5Navigation.CitizenshipType1,
-				CurrentCity1a133 = d.CurrentCityId1a133Navigation.CityName,
-				CurrentCountry1a136 = d.CurrentCountryId1a136Navigation.CountryName,
-				CurrentHousingType1a141 = d.CurrentHousingTypeId1a141Navigation.HousingType1,
-				CurrentMonths1a15 = d.CurrentMonths1a15,
-				CurrentRent1a142 = d.CurrentRent1a142,
-				CurrentState1a134 = d.CurrentStateId1a134Navigation.StateName,
-				CurrentStreet1a131 = d.CurrentStreet1a131,
-				CurrentUnit1a132 = d.CurrentUnit1a132,
-				CurrentYears1a14 = d.CurrentYears1a14,
-				CurrentZip1a135 = d.CurrentZip1a135,
-				Dependents1a8 = d.Dependents1a8,
-				Dob1a4 = d.Dob1a4,
-				Email1a12 = d.Email1a12,
-				Ext1a111 = d.Ext1a111,
-				FirstName1a1 = d.FirstName1a1,
-				FormerCity1a153 = d.FormerCityId1a153Navigation.CityName,
-				FormerHousingType1a161 = d.FormerCountryId1a156Navigation.CountryName,
-				FormerCountry1a156 = d.FormerHousingTypeId1a161Navigation.HousingType1,
-				FormerMonths1a161 = d.FormerMonths1a161,
-				FormerRent1a162 = d.FormerRent1a162,
-				FormerState1a154 = d.FormerStateId1a154Navigation.StateName,
-				FormerStreet1a151 = d.FormerStreet1a151,
-				FormerUnit1a152 = d.FormerUnit1a152,
-				FormerYears1a16 = d.FormerYears1a16,
-				FormerZip1a155 = d.FormerZip1a155,
-				HomePhone1a9 = d.HomePhone1a9,
-				LastName1a3 = d.LastName1a3,
-				MailingCity1a173 = d.MailingCityId1a173Navigation.CityName,
-				MailingCountry1a176 = d.MailingCountryId1a176Navigation.CountryName,
-				MailingState1a174 = d.MailingStateId1a174Navigation.StateName,
-				MailingStreet1a171 = d.MailingStreet1a171,
-				MailingUnit1a172 = d.MailingUnit1a172,
-				MailingZip1a175 = d.MailingZip1a175,
-				MaritialStatusId1a7 = d.MaritialStatusId1a7,
-				MiddleName1a2 = d.MiddleName1a2,
-				Ssn1a3 = d.Ssn1a3,
-				Suffix1a4 = d.Suffix1a4,
-				WorkPhone1a11 = d.WorkPhone1a11,
-				Application = new ApplicationDetail()
-				{
-					AgencyCaseNoB2 = d.Application.AgencyCaseNoB2,
-					CreditType = d.Application.CreditType.CreditType1,
-					Date = d.Application.Date,
-					Initials = d.Application.Initials,
-					LoanNoIdentifierB1B3 = d.Application.LoanNoIdentifierB1B3,
-					TotalBorrowers1a6 = d.Application.TotalBorrowers1a6
-				},
-				DeclarationQuestions = d.ApplicationDeclarationQuestions.Select(data => new Features.PdfData.ApplicationDeclarationQuestion()
-					{
-						Question = data.DeclarationQuestion.Question,
-						Answer = data.DeclarationQuestion.ApplicationDeclarationQuestions.Where(x=>x.DeclarationQuestionId == data.Id).FirstOrDefault().Description5a,
-						IsParent = data.DeclarationQuestion.ParentQuestionId > 0,
-						YesNo = false
-				}).ToList(),
-				ApplicationEmployementDetails = d.ApplicationEmployementDetails.Select(x => new Features.PdfData.ApplicationEmployementDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					City1b43 = x.CityId1b43Navigation.CityName,
-					Country1b46 = x.CountryId1b46Navigation.CountryName,
-					EmployerBusinessName1b2 = x.EmployerBusinessName1b2,
-					IsEmployedBySomeone1b8 = x.IsEmployedBySomeone1b8,
-					IsOwnershipLessThan251b91 = x.IsOwnershipLessThan251b91,
-					IsSelfEmployed1b9 = x.IsSelfEmployed1b9,
-					MonthlyIncome1b92 = x.MonthlyIncome1b92,
-					Phone1b3 = x.Phone1b3,
-					PositionTitle1b5 = x.PositionTitle1b5,
-					StartDate1b6 = x.StartDate1b6,
-					State1b44 = x.StateId1b44Navigation.StateName,
-					Street1b41 = x.Street1b41,
-					Unit1b42 = x.Unit1b42,
-					WorkingMonths = x.WorkingMonths,
-					WorkingYears1b7 = x.WorkingYears1b7,
-					Zip1b45 = x.Zip1b45
-				}).ToList(),
-				ApplicationFinancialAssets = d.ApplicationFinancialAssets.Select(x => new Features.PdfData.ApplicationFinancialAsset()
-				{
-					AccountNumber2a3 = x.AccountNumber2a3,
-					FinancialAccountType2a1 = x.FinancialAccountTypeId2a1Navigation.FinancialAccountType1,
-					FinancialInstitution2a2 = x.FinancialInstitution2a2,
-					Value2a4 = x.Value2a4
-				}).ToList(),
-				ApplicationFinancialLaibilities = d.ApplicationFinancialLaibilities.Select(x => new ApplicationFinancialLiabilityDetail()
-				{
-					AccountNumber2c3 = x.AccountNumber2c3,
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					CompanyName2c2 = x.CompanyName2c2,
-					MonthlyValue2c6 = x.MonthlyValue2c6,
-					PaidOff2c5 = x.PaidOff2c5,
-					UnpaidBalance2c4 = x.UnpaidBalance2c4,
-					FinancialLaibilitiesType2c1 = x.FinancialLaibilitiesType2c1Navigation.FinancialLaibilitiesType1
-				}).ToList(),
-				AdditionalEmploymentDetails = d.ApplicationAdditionalEmployementDetails.Select(x => new AdditionalEmploymentDetail()
-				{
-					City = x.City.CityName,
-					Country = x.Country.CountryName,
-					EmployerBusinessName = x.EmployerBusinessName,
-					IsEmployedBySomeone = x.IsEmployedBySomeone != null && x.IsEmployedBySomeone == 1 ? true : false,
-					IsOwnershipLessThan25 = (x.IsOwnershipLessThan25 != null && x.IsOwnershipLessThan25 == 1) ? true : false,
-					IsSelfEmployed = x.IsSelfEmployed != null && x.IsSelfEmployed == 1 ? true : false,
-					MonthlyIncome = x.MonthlyIncome,
-					Phone = x.Phone,
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					PositionTitle = x.PositionTitle,
-					StartDate = x.StartDate,
-					State = x.State.StateName,
-					Street = x.Street,
-					Unit = x.Unit,
-					WorkingMonths = x.WorkingMonths,
-					WorkingYears = x.WorkingYears,
-					Zip = x.Zip,
-					EmployementIncomeDetail = x.ApplicationAdditionalEmployementIncomeDetails.Select(i => new AdditionalEmployementIncomeDetail()
-					{
-						Amount = i.Amount,
-						ApplicationAdditionalEmployementDetails = i.ApplicationAdditionalEmployementDetails,
-						Id = i.Id,
-						IncomeType = i.IncomeType.IncomeType1
-					}).ToList()
-				}).ToList(),
-				ApplicationFinancialOtherAssets = d.ApplicationFinancialOtherAssets.Select(x => new ApplicationFinancialOtherAssetDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					FinancialAssetsType2b1 = x.FinancialAssetsTypesId2b1Navigation.FinancialCreditType,
-					Value2b2 = x.Value2b2
-				}).ToList(),
-				ApplicationFinancialOtherLaibilities = d.ApplicationFinancialOtherLaibilities.Select(x => new ApplicationFinancialOtherLaibilityDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					FinancialOtherLaibilityType2d1 = x.FinancialOtherLaibilitiesTypeId2d1Navigation.FinancialOtherLaibilitiesType1,
-					MonthlyPayment2d2 = x.MonthlyPayment2d2
-				}).ToList(),
-				ApplicationFinancialRealEstates = d.ApplicationFinancialRealEstates.Select(x => new FinancialRealEstateDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					City3a23 = x.CityId3a23Navigation.CityName,
-					Country3a26 = x.CountryId3a26Navigation.CountryName,
-					FinancialPropertyIntendedOccupancy3a5 = x.FinancialPropertyIntendedOccupancyId3a5Navigation.FinancialPropertyIntendedOccupancy1,
-					FinancialPropertyStatus3a4 = x.FinancialPropertyStatusId3a4Navigation.FinancialPropertyStatus1,
-					MonthlyMortagePayment3a6 = x.MonthlyMortagePayment3a6,
-					MonthlyRentalIncome3a7 = x.MonthlyRentalIncome3a7,
-					NetMonthlyRentalIncome3a8 = x.NetMonthlyRentalIncome3a8,
-					PropertyValue3a3 = x.PropertyValue3a3,
-					State3a24 = x.StateId3a24Navigation.StateName,
-					Street3a21 = x.Street3a21,
-					UnitNo3a22 = x.UnitNo3a22,
-					Zip3a25 = x.Zip3a25,
-					MortageLoanOnPropertyDetails = x.MortageLoanOnProperties.Select(m => new MortageLoanOnPropertyDetail()
-					{
-						AccountNumber3a10 = m.AccountNumber3a10,
-						ApplicationFinancialRealEstateId = m.ApplicationFinancialRealEstateId,
-						CreditLimit3a15 = m.CreditLimit3a15,
-						CreditorName3a9 = m.CreditorName3a9,
-						Id = m.Id,
-						MonthlyMortagePayment3a11 = m.MonthlyMortagePayment3a11,
-						MortageLoanType3a14 = m.MortageLoanTypesId3a14Navigation.MortageLoanTypesId,
-						PaidOff3a13 = m.PaidOff3a13,
-						UnpaidBalance3a12 = m.UnpaidBalance3a12
-					}).ToList()
-				}).ToList(),
-				ApplicationIncomeSources = d.ApplicationIncomeSources.Select(x => new Features.PdfData.ApplicationIncomeSourceDetail()
-				{
-					Amount1e2 = x.Amount1e2,
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					IncomeSource1e1 = x.IncomeSourceId1e1Navigation.IncomeSource1
-				}).ToList(),
-				ApplicationPreviousEmployementDetails = d.ApplicationPreviousEmployementDetails.Select(x => new Features.PdfData.PreviousEmployementDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					City1d33 = x.CityId1d33Navigation.CityName,
-					Country1d36 = x.CountryId1d36Navigation.CountryName,
-					EmployerBusinessName1d2 = x.EmployerBusinessName1d2,
-					EndDate1d6 = x.EndDate1d6,
-					GrossMonthlyIncome1d8 = x.GrossMonthlyIncome1d8,
-					IsSelfEmployed1d7 = x.IsSelfEmployed1d7,
-					PositionTitle1d4 = x.PositionTitle1d4,
-					StartDate1d5 = x.StartDate1d5,
-					StateId1d34 = x.StateId1d34Navigation.StateName,
-					Street1d31 = x.Street1d31,
-					Unit1d32 = x.Unit1d32,
-					Zip1d35 = x.Zip1d35
-				}).ToList(),
-				DemographicInformations = d.DemographicInformations.Select(x => new Features.PdfData.DemographicInformationDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					DemographicInfoSource87 = x.DemographicInfoSourceId87Navigation.Value,
-					Ethnicity81 = x.Ethnicity81,
-					Gender82 = x.Gender82,
-					IsEthnicityByObservation84 = x.IsEthnicityByObservation84,
-					IsGenderByObservation85 = x.IsGenderByObservation85,
-					IsRaceByObservation86 = x.IsRaceByObservation86,
-					Race83 = x.Race83
-				}).ToList(),
-				LoanAndPropertyInformationGifts = d.LoanAndPropertyInformationGifts.Select(x => new Features.PdfData.LoanAndPropertyInformationGiftDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					Deposited4d2 = x.Deposited4d2,
-					LoanPropertyGiftType4d1 = x.LoanPropertyGiftTypeId4d1Navigation.LoanPropertyGiftType1,
-					Source4d3 = x.Source4d3,
-					Value4d4 = x.Value4d4
-				}).ToList(),
-				LoanAndPropertyInformationOtherMortageLoans = d.LoanAndPropertyInformationOtherMortageLoans.Select(x => new UpdateLoanAndPropertyInformationOtherMortageLoanRequest()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					CreditAmount4b5 = x.CreditAmount4b5,
-					CreditorName4b1 = x.CreditorName4b1,
-					Id = x.Id,
-					LienType4b2 = x.LienType4b2,
-					LoanAmount4b4 = x.LoanAmount4b4,
-					MonthlyPayment4b3 = x.MonthlyPayment4b3
-				}).ToList(),
-				LoanAndPropertyInformationRentalIncomes = d.LoanAndPropertyInformationRentalIncomes.Select(x => new UpdateLoanAndPropertyInformationRentalIncomeRequest()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					ExpectedMonthlyIncome4c1 = x.ExpectedMonthlyIncome4c1,
-					Id = x.Id,
-					LenderExpectedMonthlyIncome4c2 = x.LenderExpectedMonthlyIncome4c2
-				}).ToList(),
-				LoanAndPropertyInformations = d.LoanAndPropertyInformations.Select(x => new LoanAndPropertyInformationDetail()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					City4a33 = x.CityId4a33Navigation.CityName,
-					Country4a36 = x.CountryId4a36Navigation.CountryName,
-					FhaSecondaryResidance4a61 = x.FhaSecondaryResidance4a61,
-					IsManufacturedHome4a8 = x.IsManufacturedHome4a8,
-					IsMixedUseProperty4a7 = x.IsMixedUseProperty4a7,
-					LoanAmount4a1 = x.LoanAmount4a1,
-					LoanPropertyOccupancy4a6 = x.LoanPropertyOccupancyId4a6Navigation.LoanPropertyOccupancy1,
-					LoanPurpose4a2 = x.LoanPurpose4a2,
-					PropertyNumberUnits4a4 = x.PropertyNumberUnits4a4,
-					PropertyStreet4a31 = x.PropertyStreet4a31,
-					PropertyUnitNo4a32 = x.PropertyUnitNo4a32,
-					PropertyValue4a5 = x.PropertyValue4a5,
-					PropertyZip4a35 = x.PropertyZip4a35,
-					State4a34 = x.StateId4a34Navigation.StateName
-				}).ToList(),
-				LoanOriginatorInformations = d.LoanOriginatorInformations.Select(x => new UpdateLoanOriginatorInformationRequest()
-				{
-					Address92 = x.Address92,
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					Date910 = x.Date910,
-					Email98 = x.Email98,
-					Id = x.Id,
-					OrganizationName91 = x.OrganizationName91,
-					OrganizationNmlsrId93 = x.OrganizationNmlsrId93,
-					OrganizationStateLicence94 = x.OrganizationStateLicence94,
-					OriginatorName95 = x.OriginatorName95,
-					OriginatorNmlsrId96 = x.OriginatorNmlsrId96,
-					OriginatorStateLicense97 = x.OriginatorStateLicense97,
-					Phone99 = x.Phone99
-				}).ToList(),
-				MilitaryServices = d.MilitaryServices.Select(x => new UpdateMilitaryServiceRequest()
-				{
-					ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
-					CurrentlyServing7a2 = x.CurrentlyServing7a2,
-					DateOfServiceExpiration7a3 = x.DateOfServiceExpiration7a3,
-					Id = x.Id,
-					NonActivatedMember7a2 = x.NonActivatedMember7a2,
-					Retired7a2 = x.Retired7a2,
-					ServedInForces7a1 = x.ServedInForces7a1,
-					SurvivingSpouse7a21 = x.SurvivingSpouse7a21
-				}).ToList(),
-			}).FirstOrDefault();
+			return new GetPdfDataModel();
+			//return _dbContext.ApplicationPersonalInformations.Where(s => s.ApplicationId == id).Select(d => new GetPdfDataModel()
+			//{
+			//	Id = d.Id,
+			//	Ages1a81 = d.Ages1a81,
+			//	AlternateFirstName1a21 = d.AlternateFirstName1a21,
+			//	AlternateLastName1a23 = d.AlternateLastName1a23,
+			//	AlternateMiddleName1a22 = d.AlternateMiddleName1a22,
+			//	AlternateSuffix1a24 = d.AlternateSuffix1a24,
+			//	ApplicationId = d.ApplicationId,
+			//	CellPhone1a10 = d.CellPhone1a10,
+			//	CitizenshipType1a5 = d.CitizenshipTypeId1a5Navigation.CitizenshipType1,
+			//	CurrentCity1a133 = d.CurrentCityId1a133Navigation.CityName,
+			//	CurrentCountry1a136 = d.CurrentCountryId1a136Navigation.CountryName,
+			//	CurrentHousingType1a141 = d.CurrentHousingTypeId1a141Navigation.HousingType1,
+			//	CurrentMonths1a15 = d.CurrentMonths1a15,
+			//	CurrentRent1a142 = d.CurrentRent1a142,
+			//	CurrentState1a134 = d.CurrentStateId1a134Navigation.StateName,
+			//	CurrentStreet1a131 = d.CurrentStreet1a131,
+			//	CurrentUnit1a132 = d.CurrentUnit1a132,
+			//	CurrentYears1a14 = d.CurrentYears1a14,
+			//	CurrentZip1a135 = d.CurrentZip1a135,
+			//	Dependents1a8 = d.Dependents1a8,
+			//	Dob1a4 = d.Dob1a4,
+			//	Email1a12 = d.Email1a12,
+			//	Ext1a111 = d.Ext1a111,
+			//	FirstName1a1 = d.FirstName1a1,
+			//	FormerCity1a153 = d.FormerCityId1a153Navigation.CityName,
+			//	FormerHousingType1a161 = d.FormerCountryId1a156Navigation.CountryName,
+			//	FormerCountry1a156 = d.FormerHousingTypeId1a161Navigation.HousingType1,
+			//	FormerMonths1a161 = d.FormerMonths1a161,
+			//	FormerRent1a162 = d.FormerRent1a162,
+			//	FormerState1a154 = d.FormerStateId1a154Navigation.StateName,
+			//	FormerStreet1a151 = d.FormerStreet1a151,
+			//	FormerUnit1a152 = d.FormerUnit1a152,
+			//	FormerYears1a16 = d.FormerYears1a16,
+			//	FormerZip1a155 = d.FormerZip1a155,
+			//	HomePhone1a9 = d.HomePhone1a9,
+			//	LastName1a3 = d.LastName1a3,
+			//	MailingCity1a173 = d.MailingCityId1a173Navigation.CityName,
+			//	MailingCountry1a176 = d.MailingCountryId1a176Navigation.CountryName,
+			//	MailingState1a174 = d.MailingStateId1a174Navigation.StateName,
+			//	MailingStreet1a171 = d.MailingStreet1a171,
+			//	MailingUnit1a172 = d.MailingUnit1a172,
+			//	MailingZip1a175 = d.MailingZip1a175,
+			//	MaritialStatusId1a7 = d.MaritialStatusId1a7,
+			//	MiddleName1a2 = d.MiddleName1a2,
+			//	Ssn1a3 = d.Ssn1a3,
+			//	Suffix1a4 = d.Suffix1a4,
+			//	WorkPhone1a11 = d.WorkPhone1a11,
+			//	Application = new ApplicationDetail()
+			//	{
+			//		AgencyCaseNoB2 = d.Application.AgencyCaseNoB2,
+			//		CreditType = d.Application.CreditType.CreditType1,
+			//		Date = d.Application.Date,
+			//		Initials = d.Application.Initials,
+			//		LoanNoIdentifierB1B3 = d.Application.LoanNoIdentifierB1B3,
+			//		TotalBorrowers1a6 = d.Application.TotalBorrowers1a6
+			//	},
+			//	DeclarationQuestions = d.ApplicationDeclarationQuestions.Select(data => new Features.PdfData.ApplicationDeclarationQuestion()
+			//		{
+			//			Question = data.DeclarationQuestion.Question,
+			//			Answer = data.DeclarationQuestion.ApplicationDeclarationQuestions.Where(x=>x.DeclarationQuestionId == data.Id).FirstOrDefault().Description5a,
+			//			IsParent = data.DeclarationQuestion.ParentQuestionId > 0,
+			//			YesNo = false
+			//	}).ToList(),
+			//	ApplicationEmployementDetails = d.ApplicationEmployementDetails.Select(x => new ApplicationEmployementDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		City1b43 = x.CityId1b43Navigation.CityName,
+			//		Country1b46 = x.CountryId1b46Navigation.CountryName,
+			//		EmployerBusinessName1b2 = x.EmployerBusinessName1b2,
+			//		IsEmployedBySomeone1b8 = x.IsEmployedBySomeone1b8,
+			//		IsOwnershipLessThan251b91 = x.IsOwnershipLessThan251b91,
+			//		IsSelfEmployed1b9 = x.IsSelfEmployed1b9,
+			//		MonthlyIncome1b92 = x.MonthlyIncome1b92,
+			//		Phone1b3 = x.Phone1b3,
+			//		PositionTitle1b5 = x.PositionTitle1b5,
+			//		StartDate1b6 = x.StartDate1b6,
+			//		State1b44 = x.StateId1b44Navigation.StateName,
+			//		Street1b41 = x.Street1b41,
+			//		Unit1b42 = x.Unit1b42,
+			//		WorkingMonths = x.WorkingMonths,
+			//		WorkingYears1b7 = x.WorkingYears1b7,
+			//		Zip1b45 = x.Zip1b45
+			//	}).ToList(),
+			//	ApplicationFinancialAssets = d.ApplicationFinancialAssets.Select(x => new Features.PdfData.ApplicationFinancialAsset()
+			//	{
+			//		AccountNumber2a3 = x.AccountNumber2a3,
+			//		FinancialAccountType2a1 = x.FinancialAccountTypeId2a1Navigation.FinancialAccountType1,
+			//		FinancialInstitution2a2 = x.FinancialInstitution2a2,
+			//		Value2a4 = x.Value2a4
+			//	}).ToList(),
+			//	ApplicationFinancialLaibilities = d.ApplicationFinancialLaibilities.Select(x => new ApplicationFinancialLiabilityDetail()
+			//	{
+			//		AccountNumber2c3 = x.AccountNumber2c3,
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		CompanyName2c2 = x.CompanyName2c2,
+			//		MonthlyValue2c6 = x.MonthlyValue2c6,
+			//		PaidOff2c5 = x.PaidOff2c5,
+			//		UnpaidBalance2c4 = x.UnpaidBalance2c4,
+			//		FinancialLaibilitiesType2c1 = x.FinancialLaibilitiesType2c1Navigation.FinancialLaibilitiesType1
+			//	}).ToList(),
+			//	AdditionalEmploymentDetails = d.ApplicationAdditionalEmployementDetails.Select(x => new AdditionalEmploymentDetail()
+			//	{
+			//		City = x.City.CityName,
+			//		Country = x.Country.CountryName,
+			//		EmployerBusinessName = x.EmployerBusinessName,
+			//		IsEmployedBySomeone = x.IsEmployedBySomeone != null && x.IsEmployedBySomeone == 1 ? true : false,
+			//		IsOwnershipLessThan25 = (x.IsOwnershipLessThan25 != null && x.IsOwnershipLessThan25 == 1) ? true : false,
+			//		IsSelfEmployed = x.IsSelfEmployed != null && x.IsSelfEmployed == 1 ? true : false,
+			//		MonthlyIncome = x.MonthlyIncome,
+			//		Phone = x.Phone,
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		PositionTitle = x.PositionTitle,
+			//		StartDate = x.StartDate,
+			//		State = x.State.StateName,
+			//		Street = x.Street,
+			//		Unit = x.Unit,
+			//		WorkingMonths = x.WorkingMonths,
+			//		WorkingYears = x.WorkingYears,
+			//		Zip = x.Zip,
+			//		EmployementIncomeDetail = x.ApplicationAdditionalEmployementIncomeDetails.Select(i => new AdditionalEmployementIncomeDetail()
+			//		{
+			//			Amount = i.Amount,
+			//			ApplicationAdditionalEmployementDetails = i.ApplicationAdditionalEmployementDetails,
+			//			Id = i.Id,
+			//			IncomeType = i.IncomeType.IncomeType1
+			//		}).ToList()
+			//	}).ToList(),
+			//	ApplicationFinancialOtherAssets = d.ApplicationFinancialOtherAssets.Select(x => new ApplicationFinancialOtherAssetDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		FinancialAssetsType2b1 = x.FinancialAssetsTypesId2b1Navigation.FinancialCreditType,
+			//		Value2b2 = x.Value2b2
+			//	}).ToList(),
+			//	ApplicationFinancialOtherLaibilities = d.ApplicationFinancialOtherLaibilities.Select(x => new ApplicationFinancialOtherLaibilityDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		FinancialOtherLaibilityType2d1 = x.FinancialOtherLaibilitiesTypeId2d1Navigation.FinancialOtherLaibilitiesType1,
+			//		MonthlyPayment2d2 = x.MonthlyPayment2d2
+			//	}).ToList(),
+			//	ApplicationFinancialRealEstates = d.ApplicationFinancialRealEstates.Select(x => new FinancialRealEstateDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		City3a23 = x.CityId3a23Navigation.CityName,
+			//		Country3a26 = x.CountryId3a26Navigation.CountryName,
+			//		FinancialPropertyIntendedOccupancy3a5 = x.FinancialPropertyIntendedOccupancyId3a5Navigation.FinancialPropertyIntendedOccupancy1,
+			//		FinancialPropertyStatus3a4 = x.FinancialPropertyStatusId3a4Navigation.FinancialPropertyStatus1,
+			//		MonthlyMortagePayment3a6 = x.MonthlyMortagePayment3a6,
+			//		MonthlyRentalIncome3a7 = x.MonthlyRentalIncome3a7,
+			//		NetMonthlyRentalIncome3a8 = x.NetMonthlyRentalIncome3a8,
+			//		PropertyValue3a3 = x.PropertyValue3a3,
+			//		State3a24 = x.StateId3a24Navigation.StateName,
+			//		Street3a21 = x.Street3a21,
+			//		UnitNo3a22 = x.UnitNo3a22,
+			//		Zip3a25 = x.Zip3a25,
+			//		MortageLoanOnPropertyDetails = x.MortageLoanOnPropertyDetails.Select(m => new MortageLoanOnPropertyDetail()
+			//		{
+			//			AccountNumber3a10 = m.AccountNumber3a10,
+			//			ApplicationFinancialRealEstateId = m.ApplicationFinancialRealEstateId,
+			//			CreditLimit3a15 = m.CreditLimit3a15,
+			//			CreditorName3a9 = m.CreditorName3a9,
+			//			Id = m.Id,
+			//			MonthlyMortagePayment3a11 = m.MonthlyMortagePayment3a11,
+			//			MortageLoanType3a14 = m.MortageLoanTypesId3a14Navigation.MortageLoanTypesId,
+			//			PaidOff3a13 = m.PaidOff3a13,
+			//			UnpaidBalance3a12 = m.UnpaidBalance3a12
+			//		}).ToList()
+			//	}).ToList(),
+			//	ApplicationIncomeSources = d.ApplicationIncomeSources.Select(x => new Features.PdfData.ApplicationIncomeSourceDetail()
+			//	{
+			//		Amount1e2 = x.Amount1e2,
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		IncomeSource1e1 = x.IncomeSourceId1e1Navigation.IncomeSource1
+			//	}).ToList(),
+			//	ApplicationPreviousEmployementDetails = d.ApplicationPreviousEmployementDetails.Select(x => new Features.PdfData.PreviousEmployementDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		City1d33 = x.CityId1d33Navigation.CityName,
+			//		Country1d36 = x.CountryId1d36Navigation.CountryName,
+			//		EmployerBusinessName1d2 = x.EmployerBusinessName1d2,
+			//		EndDate1d6 = x.EndDate1d6,
+			//		GrossMonthlyIncome1d8 = x.GrossMonthlyIncome1d8,
+			//		IsSelfEmployed1d7 = x.IsSelfEmployed1d7,
+			//		PositionTitle1d4 = x.PositionTitle1d4,
+			//		StartDate1d5 = x.StartDate1d5,
+			//		StateId1d34 = x.StateId1d34Navigation.StateName,
+			//		Street1d31 = x.Street1d31,
+			//		Unit1d32 = x.Unit1d32,
+			//		Zip1d35 = x.Zip1d35
+			//	}).ToList(),
+			//	DemographicInformations = d.DemographicInformations.Select(x => new Features.PdfData.DemographicInformationDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		DemographicInfoSource87 = x.DemographicInfoSourceId87Navigation.Value,
+			//		Ethnicity81 = x.Ethnicity81,
+			//		Gender82 = x.Gender82,
+			//		IsEthnicityByObservation84 = x.IsEthnicityByObservation84,
+			//		IsGenderByObservation85 = x.IsGenderByObservation85,
+			//		IsRaceByObservation86 = x.IsRaceByObservation86,
+			//		Race83 = x.Race83
+			//	}).ToList(),
+			//	LoanAndPropertyInformationGifts = d.LoanAndPropertyInformationGifts.Select(x => new Features.PdfData.LoanAndPropertyInformationGiftDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		Deposited4d2 = x.Deposited4d2,
+			//		LoanPropertyGiftType4d1 = x.LoanPropertyGiftTypeId4d1Navigation.LoanPropertyGiftType1,
+			//		Source4d3 = x.Source4d3,
+			//		Value4d4 = x.Value4d4
+			//	}).ToList(),
+			//	LoanAndPropertyInformationOtherMortageLoans = d.LoanAndPropertyInformationOtherMortageLoans.Select(x => new UpdateLoanAndPropertyInformationOtherMortageLoanRequest()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		CreditAmount4b5 = x.CreditAmount4b5,
+			//		CreditorName4b1 = x.CreditorName4b1,
+			//		Id = x.Id,
+			//		LienType4b2 = x.LienType4b2,
+			//		LoanAmount4b4 = x.LoanAmount4b4,
+			//		MonthlyPayment4b3 = x.MonthlyPayment4b3
+			//	}).ToList(),
+			//	LoanAndPropertyInformationRentalIncomes = d.LoanAndPropertyInformationRentalIncomes.Select(x => new UpdateLoanAndPropertyInformationRentalIncomeRequest()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		ExpectedMonthlyIncome4c1 = x.ExpectedMonthlyIncome4c1,
+			//		Id = x.Id,
+			//		LenderExpectedMonthlyIncome4c2 = x.LenderExpectedMonthlyIncome4c2
+			//	}).ToList(),
+			//	LoanAndPropertyInformations = d.LoanAndPropertyInformations.Select(x => new LoanAndPropertyInformationDetail()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		City4a33 = x.CityId4a33Navigation.CityName,
+			//		Country4a36 = x.CountryId4a36Navigation.CountryName,
+			//		FhaSecondaryResidance4a61 = x.FhaSecondaryResidance4a61,
+			//		IsManufacturedHome4a8 = x.IsManufacturedHome4a8,
+			//		IsMixedUseProperty4a7 = x.IsMixedUseProperty4a7,
+			//		LoanAmount4a1 = x.LoanAmount4a1,
+			//		LoanPropertyOccupancy4a6 = x.LoanPropertyOccupancyId4a6Navigation.LoanPropertyOccupancy1,
+			//		LoanPurpose4a2 = x.LoanPurpose4a2,
+			//		PropertyNumberUnits4a4 = x.PropertyNumberUnits4a4,
+			//		PropertyStreet4a31 = x.PropertyStreet4a31,
+			//		PropertyUnitNo4a32 = x.PropertyUnitNo4a32,
+			//		PropertyValue4a5 = x.PropertyValue4a5,
+			//		PropertyZip4a35 = x.PropertyZip4a35,
+			//		State4a34 = x.StateId4a34Navigation.StateName
+			//	}).ToList(),
+			//	LoanOriginatorInformations = d.LoanOriginatorInformations.Select(x => new UpdateLoanOriginatorInformationRequest()
+			//	{
+			//		Address92 = x.Address92,
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		Date910 = x.Date910,
+			//		Email98 = x.Email98,
+			//		Id = x.Id,
+			//		OrganizationName91 = x.OrganizationName91,
+			//		OrganizationNmlsrId93 = x.OrganizationNmlsrId93,
+			//		OrganizationStateLicence94 = x.OrganizationStateLicence94,
+			//		OriginatorName95 = x.OriginatorName95,
+			//		OriginatorNmlsrId96 = x.OriginatorNmlsrId96,
+			//		OriginatorStateLicense97 = x.OriginatorStateLicense97,
+			//		Phone99 = x.Phone99
+			//	}).ToList(),
+			//	MilitaryServices = d.MilitaryServices.Select(x => new UpdateMilitaryServiceRequest()
+			//	{
+			//		ApplicationPersonalInformationId = x.ApplicationPersonalInformationId,
+			//		CurrentlyServing7a2 = x.CurrentlyServing7a2,
+			//		DateOfServiceExpiration7a3 = x.DateOfServiceExpiration7a3,
+			//		Id = x.Id,
+			//		NonActivatedMember7a2 = x.NonActivatedMember7a2,
+			//		Retired7a2 = x.Retired7a2,
+			//		ServedInForces7a1 = x.ServedInForces7a1,
+			//		SurvivingSpouse7a21 = x.SurvivingSpouse7a21
+			//	}).ToList(),
+			//}).FirstOrDefault();
 		}
 
 		public dynamic CreatePdfNew(long Id)

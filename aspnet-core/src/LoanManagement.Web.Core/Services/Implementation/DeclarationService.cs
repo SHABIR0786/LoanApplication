@@ -3,7 +3,7 @@ using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.Declaration.DeclarationCategory;
 using LoanManagement.Features.Declaration.DeclarationQuestion;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class DeclarationService : IDeclarationService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public DeclarationService(MortgagedbContext dbContext)
+		public DeclarationService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddDeclarationCategory(AddDeclarationCategoryRequest request)
 		{
-			_dbContext.DeclarationCategories.Add(new DeclarationCategory()
+			_dbContext.DeclarationCategories.Add(new codeFirstEntities.DeclarationCategory()
 			{
 				DeclarationCategory1 = request.DeclarationCategory1
 			});
@@ -84,7 +84,7 @@ namespace LoanManagement.Services.Implementation
 
 		public string AddDeclarationQuestion(AddDeclarationQuestionRequest request)
 		{
-			_dbContext.DeclarationQuestions.Add(new DeclarationQuestion()
+			_dbContext.DeclarationQuestions.Add(new codeFirstEntities.DeclarationQuestion()
 			{
 				ParentQuestionId = request.ParentQuestionId,
 				DeclarationCategoryId = request.DeclarationCategoryId,

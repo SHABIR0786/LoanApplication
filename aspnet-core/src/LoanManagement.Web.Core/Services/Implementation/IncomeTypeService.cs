@@ -4,7 +4,7 @@ using LoanManagement.Features.IncomeType;
 
 using System.Collections.Generic;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +16,16 @@ namespace LoanManagement.Services.Implementation
 
 	public class IncomeTypeService : IIncomeTypeService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public IncomeTypeService(MortgagedbContext dbContext)
+		public IncomeTypeService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddIncomeType(AddIncomeTypeRequest request)
 		{
-			_dbContext.IncomeTypes.Add(new IncomeType()
+			_dbContext.IncomeTypes.Add(new codeFirstEntities.IncomeType()
 			{
 				IncomeType1 = request.IncomeType1
 			});

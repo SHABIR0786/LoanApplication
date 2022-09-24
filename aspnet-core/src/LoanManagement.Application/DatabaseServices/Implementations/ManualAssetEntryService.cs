@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -14,12 +15,12 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class ManualAssetEntryService : AbpServiceBase, IManualAssetEntryService
     {
-        private readonly IRepository<ManualAssetEntry, long> _repository;
-        private readonly IRepository<StockAndBond, long> _stockAndBondRepository;
+        private readonly IRepository<Manualassetentry, long> _repository;
+        private readonly IRepository<Stockandbond, long> _stockAndBondRepository;
 
         public ManualAssetEntryService(
-            IRepository<ManualAssetEntry, long> manualAssetEntryRepository,
-            IRepository<StockAndBond, long> stockAndBondRepository)
+            IRepository<Manualassetentry, long> manualAssetEntryRepository,
+            IRepository<Stockandbond, long> stockAndBondRepository)
         {
             _repository = manualAssetEntryRepository;
             _stockAndBondRepository = stockAndBondRepository;
@@ -27,7 +28,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<ManualAssetEntryDto> CreateAsync(ManualAssetEntryDto input)
         {
-            var manualAssetEntry = new ManualAssetEntry
+            var manualAssetEntry = new Manualassetentry
             {
                 AccountNumber = input.AccountNumber,
                 Address = input.Address,
@@ -48,12 +49,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                 PropertyStatus = input.PropertyStatus,
                 PropertyType = input.PropertyType,
                 PurchasePrice = input.PurchasePrice,
-                StateId = input.StateId,
-                StockAndBonds = input.StockAndBonds != null && input.StockAndBonds.Any() ? input.StockAndBonds.Select(i => new StockAndBond
+                StateId = Convert.ToInt32(input.StateId),
+                Stockandbonds = input.StockAndBonds != null && input.StockAndBonds.Any() ? input.StockAndBonds.Select(i => new Stockandbond 
                 {
                     AccountNumber = i.AccountNumber,
                     CompanyName = i.CompanyName,
-                    Value = i.Value
+                    Value = Convert.ToDecimal(i.Value)
                 }).ToList() : null,
                 TaxesInsuranceAndOther = input.TaxesInsuranceAndOther,
                 ZipCode = input.ZipCode
@@ -64,11 +65,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
             input.Id = manualAssetEntry.Id;
-            if (manualAssetEntry.StockAndBonds != null && manualAssetEntry.StockAndBonds.Any())
+            if (manualAssetEntry.Stockandbonds != null && manualAssetEntry.Stockandbonds.Any())
             {
-                for (var index = 0; index < manualAssetEntry.StockAndBonds.Count; index++)
+                for (var index = 0; index < manualAssetEntry.Stockandbonds.Count; index++)
                 {
-                    input.StockAndBonds[index].Id = manualAssetEntry.StockAndBonds[index].Id;
+                    input.StockAndBonds[index].Id = Convert.ToInt64(manualAssetEntry.Stockandbonds.ToList()[index].Id);
                 }
             }
             return input;
@@ -88,11 +89,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-        public async Task<List<ManualAssetEntry>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        public async Task<List<Manualassetentry>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
-                .Select(i => new ManualAssetEntry
+                .Select(i => new Manualassetentry
                 {
                     AccountNumber = i.AccountNumber,
                     Address = i.Address,
@@ -117,7 +118,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     TaxesInsuranceAndOther = i.TaxesInsuranceAndOther,
                     ZipCode = i.ZipCode,
                     Id = i.Id,
-                    StockAndBonds = i.StockAndBonds.Select(o => new StockAndBond
+                    Stockandbonds = i.Stockandbonds.Select(o => new Stockandbond
                     {
                         AccountNumber = o.AccountNumber,
                         CompanyName = o.CompanyName,
@@ -128,7 +129,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         }
         public async Task<ManualAssetEntryDto> UpdateAsync(ManualAssetEntryDto input)
         {
-            var stockAndBonds = new List<StockAndBond>();
+            var stockAndBonds = new List<Stockandbond>();
 
             await _repository.UpdateAsync(input.Id.Value, async manualAssetEntry =>
             {
@@ -151,7 +152,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 manualAssetEntry.PropertyStatus = input.PropertyStatus;
                 manualAssetEntry.PropertyType = input.PropertyType;
                 manualAssetEntry.PurchasePrice = input.PurchasePrice;
-                manualAssetEntry.StateId = input.StateId;
+                manualAssetEntry.StateId = Convert.ToInt32(input.StateId);
                 manualAssetEntry.TaxesInsuranceAndOther = input.TaxesInsuranceAndOther;
                 manualAssetEntry.ZipCode = input.ZipCode;
 
@@ -160,18 +161,18 @@ namespace LoanManagement.DatabaseServices.Implementations
                     {
                         if (!stockAndBond.Id.HasValue || stockAndBond.Id.Value == default)
                         {
-                            var dbStockAndBond = new StockAndBond
+                            var dbStockAndBond = new Stockandbond
                             {
                                 AccountNumber = stockAndBond.AccountNumber,
                                 CompanyName = stockAndBond.CompanyName,
-                                Value = stockAndBond.Value
+                                Value = Convert.ToInt64(stockAndBond.Value)
                             };
-                            manualAssetEntry.StockAndBonds.Add(dbStockAndBond);
+                            manualAssetEntry.Stockandbonds.Add(dbStockAndBond);
                             stockAndBonds.Add(dbStockAndBond);
                         }
                         else
                         {
-                            stockAndBonds.Add(new StockAndBond
+                            stockAndBonds.Add(new Stockandbond
                             {
                                 Id = stockAndBond.Id.Value
                             });
@@ -179,7 +180,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             {
                                 dbStockAndBond.AccountNumber = stockAndBond.AccountNumber;
                                 dbStockAndBond.CompanyName = stockAndBond.CompanyName;
-                                dbStockAndBond.Value = stockAndBond.Value;
+                                dbStockAndBond.Value =Convert.ToDecimal(stockAndBond.Value);
 
                                 return Task.CompletedTask;
                             });

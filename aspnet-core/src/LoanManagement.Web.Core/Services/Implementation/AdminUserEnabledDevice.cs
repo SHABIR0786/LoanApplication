@@ -1,3 +1,4 @@
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminUserEnabledDevice;
 using Microsoft.EntityFrameworkCore;
@@ -8,14 +9,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminUserEnabledDeviceService : IAdminUserEnabledDeviceService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminUserEnabledDeviceService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminUserEnabledDeviceService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminUserEnabledDevice request)
         {
-            var entity = new Entities.Models.AdminUserenableddevice
+            var entity = new AdminUserenableddevice
             {
                 BioMetricData = request.BioMetricData,
                 DeviceId = request.DeviceId,

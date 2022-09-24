@@ -1,3 +1,4 @@
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminLoanProgram;
 using Microsoft.EntityFrameworkCore;
@@ -8,14 +9,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminLoanProgramService : IAdminLoanProgramService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminLoanProgramService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminLoanProgramService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminLoanProgram request)
         {
-            var entity = new Entities.Models.AdminLoanprogram
+            var entity = new AdminLoanprogram
             {
                 LoanProgram = request.LoanProgram
             };

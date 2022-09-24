@@ -3,7 +3,7 @@ using LoanManagement.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using LoanManagement.Features.HousingType;
 
@@ -11,16 +11,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class HousingTypeService: IHousingTypeService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public HousingTypeService(MortgagedbContext dbContext)
+		public HousingTypeService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddHousingType(AddHousingTypeRequest request)
 		{
-			_dbContext.HousingTypes.Add(new HousingType()
+			_dbContext.HousingTypes.Add(new codeFirstEntities.HousingType()
 			{
 				HousingType1 = request.HousingType1
 			});

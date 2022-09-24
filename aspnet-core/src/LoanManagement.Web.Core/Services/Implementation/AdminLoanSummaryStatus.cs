@@ -1,3 +1,4 @@
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminLoanSummaryStatus;
 using Microsoft.EntityFrameworkCore;
@@ -8,14 +9,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminLoanSummaryStatusService : IAdminLoanSummaryStatusService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminLoanSummaryStatusService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminLoanSummaryStatusService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminLoanSummaryStatus request)
         {
-            var entity = new Entities.Models.AdminLoansummarystatus
+            var entity = new AdminLoansummarystatus
             {
                 StatusId = request.StatusId,
                 LoanId = request.LoanId,

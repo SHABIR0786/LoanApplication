@@ -3,7 +3,7 @@ using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.MaritalStatus;
 
 using LoanManagement.Services.Interface;
-using LoanManagement.Entities.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ namespace LoanManagement.Services.Implementation
 {
     public class MaritalStatusService : IMaritalStatusService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public MaritalStatusService(MortgagedbContext dbContext)
+		public MaritalStatusService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddMaritalStatus(AddMaritalStatusRequest request)
 		{
-			_dbContext.MaritialStatuses.Add(new MaritialStatus()
+			_dbContext.MaritialStatuses.Add(new codeFirstEntities.MaritialStatus()
 			{
 				MaritialStatus1 = request.MaritialStatus1
 			});

@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadOwnerTypes;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadOwnerTypesService : ILeadOwnerTypesService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadOwnerTypesService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadOwnerTypesService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadOwnerTypes request)
         {
-            var entity = new Entities.Models.LeadOwnerType
+            var entity = new LeadOwnerType
             {
                 OwnerType = request.OwnerType
             };

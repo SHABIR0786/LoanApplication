@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -14,9 +15,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class BorrowerMonthlyIncomeServices : AbpServiceBase, IBorrowerMonthlyIncomeServices
     {
-        private readonly IRepository<BorrowerMonthlyIncome, long> _repository;
+        private readonly IRepository<Borrowermonthlyincome, long> _repository;
 
-        public BorrowerMonthlyIncomeServices(IRepository<BorrowerMonthlyIncome, long> repository)
+        public BorrowerMonthlyIncomeServices(IRepository<Borrowermonthlyincome, long> repository)
         {
             _repository = repository;
         }
@@ -30,11 +31,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             throw new NotImplementedException();
         }
-        public async Task<List<BorrowerMonthlyIncome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        public async Task<List<Borrowermonthlyincome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
-                .Select(i => new BorrowerMonthlyIncome
+                .Select(i => new Borrowermonthlyincome
                 {
                     Id = i.Id,
                     Base = i.Base,
@@ -52,7 +53,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             try
             {
 
-                var additionalDetail = new BorrowerMonthlyIncome
+                var additionalDetail = new Borrowermonthlyincome
                 {
                     Base = input.Base,
                     Overtime = input.Overtime,

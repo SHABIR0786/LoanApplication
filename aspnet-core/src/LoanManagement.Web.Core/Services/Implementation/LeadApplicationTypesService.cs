@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadApplicationTypes;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadApplicationTypesService : ILeadApplicationTypesService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadApplicationTypesService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadApplicationTypesService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadApplicationType request)
         {
-            var entity = new Entities.Models.LeadApplicationType { ApplicationType = request.ApplicationType };
+            var entity = new LeadApplicationType { ApplicationType = request.ApplicationType };
             _dbContext.LeadApplicationTypes.Add(entity);
 
             _dbContext.SaveChanges();

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LoanManagement.Entities.Models;
+
 using LoanManagement.Services.Interface;
 using LoanManagement.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,16 +10,16 @@ namespace LoanManagement.Services.Implementation
 {
 	public class IncomeSourceService : IIncomeSourceService
 	{
-		private readonly MortgagedbContext _dbContext;
+		private readonly LoanManagementDbContext _dbContext;
 
-		public IncomeSourceService(MortgagedbContext dbContext)
+		public IncomeSourceService(LoanManagementDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
 
 		public string AddIncomeSource(AddIncomeSourceRequest request)
 		{
-			_dbContext.IncomeSources.Add(new IncomeSource()
+			_dbContext.IncomeSources.Add(new codeFirstEntities.IncomeSource()
 			{
 				IncomeSource1 = request.IncomeSource1
 			});

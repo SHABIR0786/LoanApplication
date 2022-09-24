@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminLoanApplicationDocument;
 using LoanManagement.Services.Interface;
 using Microsoft.AspNetCore.Hosting;
@@ -15,10 +16,10 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminLoanApplicationDocumentService : IAdminLoanApplicationDocumentService
     {
-        private readonly MortgagedbContext _dbContext;
+        private readonly LoanManagementDbContext _dbContext;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IAdminDisclosureService _adminDisclosureService;
-        public AdminLoanApplicationDocumentService(MortgagedbContext dbContext, IWebHostEnvironment webHostEnvironment, IAdminDisclosureService adminDisclosureService)
+        public AdminLoanApplicationDocumentService(LoanManagementDbContext dbContext, IWebHostEnvironment webHostEnvironment, IAdminDisclosureService adminDisclosureService)
         {
             _dbContext = dbContext;
             _webHostEnvironment = webHostEnvironment;
@@ -26,7 +27,7 @@ namespace LoanManagement.Services.Implementation
         }
         public string Add(AddAdminLoanApplicationDocument request)
         {
-            var entity = new Entities.Models.AdminLoanapplicationdocument
+            var entity = new AdminLoanapplicationdocument
             {
                 DisclosureId = request.DisclosureId,
                 DocumentPath = request.DocumentPath,
@@ -117,7 +118,7 @@ namespace LoanManagement.Services.Implementation
                 {
                     formFile.CopyTo(fs);
                 }
-                var entity = new Entities.Models.AdminLoanapplicationdocument
+                var entity = new AdminLoanapplicationdocument
                 {
                     DisclosureId = request.DisclosureId,
                     DocumentPath = filePath,

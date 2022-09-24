@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadEmploymentTypes;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadEmploymentTypesService : ILeadEmploymentTypesService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadEmploymentTypesService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadEmploymentTypesService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadEmploymentTypes request)
         {
-            var entity = new Entities.Models.LeadEmployementType
+            var entity = new LeadEmployementType
             {
                 EmployementType = request.EmployementType,
             };

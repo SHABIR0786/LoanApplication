@@ -1,3 +1,4 @@
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminNotificationType;
 using Microsoft.EntityFrameworkCore;
@@ -8,14 +9,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminNotificationTypeService : IAdminNotificationTypeService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminNotificationTypeService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminNotificationTypeService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminNotificationType request)
         {
-            var entity = new Entities.Models.AdminNotificationtype
+            var entity = new AdminNotificationtype
             {
                 Type = request.Type,
             };

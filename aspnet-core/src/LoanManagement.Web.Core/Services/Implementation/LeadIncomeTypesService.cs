@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadIncomeTypes;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadIncomeTypesService : ILeadIncomeTypesService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadIncomeTypesService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadIncomeTypesService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadIncomeTypes request)
         {
-            var entity = new Entities.Models.LeadIncomeType
+            var entity = new LeadIncomeType
             {
                 IncomeType = request.IncomeType,
             };

@@ -1,4 +1,5 @@
 using Abp.Runtime.Security;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.AdminUser;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +10,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminUserService : IAdminUserService
     {
-        private readonly MortgagedbContext _dbContext;
-        public AdminUserService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public AdminUserService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddAdminUser request)
         {
-            var entity = new Entities.Models.AdminUser
+            var entity = new AdminUser
             {
                 CreatedOn = System.DateTime.Now,
                 Email = request.Email,

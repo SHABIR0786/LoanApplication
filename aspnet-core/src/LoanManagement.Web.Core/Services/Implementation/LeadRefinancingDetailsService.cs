@@ -1,4 +1,5 @@
-﻿using LoanManagement.EntityFrameworkCore;
+﻿using LoanManagement.codeFirstEntities;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Features.LeadRefinancingDetails;
 using LoanManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,14 @@ namespace LoanManagement.Services.Implementation
 {
     public class LeadRefinancingDetailsService : ILeadRefinancingDetailsService
     {
-        private readonly MortgagedbContext _dbContext;
-        public LeadRefinancingDetailsService(MortgagedbContext dbContext)
+        private readonly LoanManagementDbContext _dbContext;
+        public LeadRefinancingDetailsService(LoanManagementDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public string Add(AddLeadRefinancingDetails request)
         {
-            var entity = new Entities.Models.LeadApplicationDetailRefinancing
+            var entity = new LeadApplicationDetailRefinancing
             {
                 BirthDate = request.BirthDate,
                 CitizenshipId = request.CitizenshipId,
