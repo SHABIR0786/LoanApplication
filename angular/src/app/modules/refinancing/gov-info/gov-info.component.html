@@ -494,8 +494,7 @@
         <div class="answers">
           <button
             type="button"
-            class="btn"
-            id="btn-yes-no"
+            class="btn btn-yes-no-blue"
             (click)="x.isYes = true; onQAns(x.id, true)"
             [ngClass]="{ 'yes-no-active': x.isYes == true }"
           >
@@ -503,8 +502,7 @@
           </button>
           <button
             type="button"
-            class="btn"
-            id="btn-yes-no"
+            class="btn btn-yes-no-blue"
             (click)="x.isYes = false; onQAns(x.id, false)"
             [ngClass]="{ 'yes-no-active': x.isYes == false }"
           >

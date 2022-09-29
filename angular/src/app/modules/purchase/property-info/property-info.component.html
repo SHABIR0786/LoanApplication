@@ -343,7 +343,7 @@
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onCreditClick('excellent')"
-      [class.orange-active]="this.model.creditScore == 'excellent'"
+      [class.orange-active]="model.creditScore == 'excellent'"
       >Excellent (740+)</a
     >
 
@@ -351,7 +351,7 @@
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onCreditClick('good')"
-      [class.orange-active]="this.model.creditScore == 'good'"
+      [class.orange-active]="model.creditScore == 'good'"
       >Good(700 - 739)</a
     >
 
@@ -359,7 +359,7 @@
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onCreditClick('average')"
-      [class.orange-active]="this.model.creditScore == 'average'"
+      [class.orange-active]="model.creditScore == 'average'"
       >Average (640 - 699)</a
     >
 
@@ -367,7 +367,7 @@
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onCreditClick('fair')"
-      [class.orange-active]="this.model.creditScore == 'fair'"
+      [class.orange-active]="model.creditScore == 'fair'"
       >Fair (580 - 639)</a
     >
 
@@ -375,7 +375,7 @@
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onCreditClick('needimprovement')"
-      [class.orange-active]="this.model.creditScore == 'needimprovement'"
+      [class.orange-active]="model.creditScore == 'needimprovement'"
       >Needs Improvement (less then 580)</a
     >
 
@@ -568,35 +568,35 @@
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomeTypeClick('singleFamily')"
-      [class.orange-active]="this.model.homeType == 'singleFamily'"
+      [class.orange-active]="model.homeType == 'singleFamily'"
       >Single Family</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomeTypeClick('condo')"
-      [class.orange-active]="this.model.homeType == 'condo'"
+      [class.orange-active]="model.homeType == 'condo'"
       >Condo</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomeTypeClick('coop')"
-      [class.orange-active]="this.model.homeType == 'coop'"
+      [class.orange-active]="model.homeType == 'coop'"
       >Co-op</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomeTypeClick('townhome')"
-      [class.orange-active]="this.model.homeType == 'townhome'"
+      [class.orange-active]="model.homeType == 'townhome'"
       >Townhome</a
     >
     <a
       [routerLink]="['/app/purchase/property-info', 7]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomeTypeClick('multifamily')"
-      [class.orange-active]="this.model.homeType == 'multifamily'"
+      [class.orange-active]="model.homeType == 'multifamily'"
       >Multi-Family</a
     >
 
@@ -691,7 +691,7 @@
       [routerLink]="['/app//purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomePlanClick('primaryresidence')"
-      [class.orange-active]="this.model.homePlan == 'primaryresidence'"
+      [class.orange-active]="model.homePlan == 'primaryresidence'"
       >Primary Residance</a
     >
 
@@ -699,7 +699,7 @@
       [routerLink]="['/app/purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomePlanClick('condo')"
-      [class.orange-active]="this.model.homePlan == 'condo'"
+      [class.orange-active]="model.homePlan == 'condo'"
       >Condo</a
     >
 
@@ -707,7 +707,7 @@
       [routerLink]="['/app/purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomePlanClick('coop')"
-      [class.orange-active]="this.model.homePlan == 'coop'"
+      [class.orange-active]="model.homePlan == 'coop'"
       >Co-op</a
     >
 
@@ -806,7 +806,7 @@
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onMilitaryClick(true)"
-      [class.orange-active]="this.model.isMillitary == 'true'"
+      [class.orange-active]="model.isMillitary == 'true'"
       >Yes</a
     >
 
@@ -814,7 +814,7 @@
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-active btn-orange"
       (click)="onMilitaryClick(false)"
-      [class.orange-active]="this.model.isMillitary == 'false'"
+      [class.orange-active]="model.isMillitary == 'false'"
       >No</a
     >
 
@@ -928,49 +928,98 @@
       class="button-list margin-top col-lg-7 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
     >
       <!-- <form action="" id="address"> -->
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-        [(ngModel)]="model.newHomeAddress"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-        [(ngModel)]="model.newHomeUnit"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="City or Town"
-        [(ngModel)]="model.newHomeCityTown"
-      />
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
-            [(ngModel)]="model.newHomeZip"
-          />
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Address"
+          [(ngModel)]="model.newHomeAddress"
+          name="newHomeAddress"
+          #newHomeAddressRef="ngModel"
+          required
+        />
+        <div *ngIf="!newHomeAddressRef.valid" class="text-danger d-flex">
+          Address is required
         </div>
       </div>
-      <select
-        class="form-select form-style"
-        [(ngModel)]="model.newHomeCityTown"
-        style="width: 100%"
-        placeholder="City Name"
-      >
-        <option [ngValue]="undefined" hidden>City Name</option>
-        <option>City Name</option>
-      </select>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Closing Date"
-        [(ngModel)]="model.contractDate"
-      />
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Apt / Unit"
+          [(ngModel)]="model.newHomeUnit"
+          name="newHomeUnit"
+          #newHomeUnitRef="ngModel"
+          required
+        />
+        <div *ngIf="!newHomeUnitRef.valid" class="text-danger d-flex">
+          Unit is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="City or Town"
+          [(ngModel)]="model.newHomeCityTown"
+          name="newHomeCityTown"
+          #newHomeCityTownRef="ngModel"
+          required
+        />
+        <div *ngIf="!newHomeCityTownRef.valid" class="text-danger d-flex">
+          City is required
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Zip Code"
+              [(ngModel)]="model.newHomeZip"
+              name="newHomeZip"
+              #newHomeZipRef="ngModel"
+              required
+            />
+            <div *ngIf="!newHomeZipRef.valid" class="text-danger d-flex">
+              Zip code is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.newHomeState"
+          style="width: 100%"
+          placeholder="State Name"
+          name="newHomeState"
+          #newHomeStateRef="ngModel"
+          required
+        >
+          <!-- <option [ngValue]="undefined" hidden>City Name</option> -->
+          <option [value]="s.id" *ngFor="let s of states">
+            {{ s.stateName }}
+          </option>
+        </select>
+        <div *ngIf="!newHomeStateRef.valid" class="text-danger d-flex">
+          State is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="date"
+          [(ngModel)]="model.contractDate"
+          class="form-control form-style form-margin-top"
+          name="contractDate"
+          #contractDateRef="ngModel"
+          required
+        />
+        <div *ngIf="!contractDateRef.valid" class="text-danger d-flex">
+          Contract Date is required
+        </div>
+      </div>
       <!-- </form> -->
       <p class="text-center">Do either of these apply to the property?</p>
       <div class="radio-input">
@@ -998,42 +1047,81 @@
         </div>
       </div>
       <!-- <form action="" id="purchase-price"> -->
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Home Price"
-        [(ngModel)]="model.estimatedPrice"
-      />
-      <div class="row">
-        <div class="col-md-8 padding-right">
-          <input
-            type="text"
-            class="form-control form-half-left"
-            [(ngModel)]="model.downPaymentAmount"
-            placeholder="Down Payment Amount"
-          />
-        </div>
-        <div class="col-md-4 padding-left">
-          <input
-            type="text"
-            class="form-control form-half-right"
-            placeholder="Percent"
-            [(ngModel)]="model.downPaymentPercent"
-          />
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Estimated Home Price"
+          [(ngModel)]="model.estimatedPrice"
+          required
+          #estimatedPriceRef="ngModel"
+        />
+        <div *ngIf="!estimatedPriceRef.valid" class="text-danger d-flex">
+          Estimated Home Price is required
         </div>
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated annual taxes"
-        [(ngModel)]="model.estAnnualTaxes"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated annual home insurance"
-        [(ngModel)]="model.estAnnualHomeIns"
-      />
+
+      <div class="row">
+        <div class="col-md-8 padding-right">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-half-left"
+              [(ngModel)]="model.downPaymentAmount"
+              placeholder="Down Payment Amount"
+              required
+              #downPaymentAmountRef="ngModel"
+            />
+            <div *ngIf="!downPaymentAmountRef.valid" class="text-danger d-flex">
+              Down Payment Amount is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 padding-left">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-half-right"
+              placeholder="Percent"
+              [(ngModel)]="model.downPaymentPercent"
+              required
+              #downPaymentPercentRef="ngModel"
+            />
+            <div
+              *ngIf="!downPaymentPercentRef.valid"
+              class="text-danger d-flex"
+            >
+              Percent is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Estimated annual taxes"
+          [(ngModel)]="model.estAnnualTaxes"
+          required
+          #estAnnualTaxesRef="ngModel"
+        />
+        <div *ngIf="!estAnnualTaxesRef.valid" class="text-danger d-flex">
+          Estimated annual taxes is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Estimated annual home insurance"
+          [(ngModel)]="model.estAnnualHomeIns"
+          required
+          #estAnnualHomeInsRef="ngModel"
+        />
+        <div *ngIf="!estAnnualHomeInsRef.valid" class="text-danger d-flex">
+          Estimated annual home insurance is required
+        </div>
+      </div>
       <!-- </form> -->
 
       <h6 id="padding-up">Self selected Credit Score</h6>
@@ -1042,6 +1130,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="excellent"
+        (click)="onCreditClick('excellent')"
+        [class.orange-active]="model.creditScore == 'excellent'"
       >
         Excellent (740+)
       </button>
@@ -1049,6 +1139,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="good"
+        (click)="onCreditClick('good')"
+        [class.orange-active]="model.creditScore == 'good'"
       >
         Good(700 - 739)
       </button>
@@ -1056,6 +1148,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="average"
+        (click)="onCreditClick('average')"
+        [class.orange-active]="model.creditScore == 'average'"
       >
         Average (640 - 699)
       </button>
@@ -1063,6 +1157,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="fair"
+        (click)="onCreditClick('fair')"
+        [class.orange-active]="model.creditScore == 'fair'"
       >
         Fair (580 - 639)
       </button>
@@ -1070,6 +1166,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="needimprovement"
+        (click)="onCreditClick('needimprovement')"
+        [class.orange-active]="model.creditScore == 'needimprovement'"
       >
         Needs Improvement (less then 580)
       </button>
@@ -1077,40 +1175,76 @@
       <!-- <form action="" id="address"> -->
       <div class="row">
         <div class="col-md-6">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Legal First Name"
-            [(ngModel)]="model.firstName"
-          />
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Legal First Name"
+              [(ngModel)]="model.firstName"
+              required
+              #firstNameRef="ngModel"
+            />
+            <div
+              *ngIf="submitted && !firstNameRef.valid"
+              class="text-danger d-flex"
+            >
+              First Name is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Middle Initial"
-            [(ngModel)]="model.middleName"
-          />
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Middle Initial"
+              [(ngModel)]="model.middleName"
+            />
+          </div>
         </div>
       </div>
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Legal Last Name"
-        [(ngModel)]="model.lastName"
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Phone Number"
-        [(ngModel)]="model.phone"
-      />
-      <input
-        type="email"
-        class="form-control form-style"
-        placeholder="Email Address"
-        [(ngModel)]="model.email"
-      />
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Legal Last Name"
+          [(ngModel)]="model.lastName"
+          required
+          #lastNameRef="ngModel"
+        />
+        <div *ngIf="!lastNameRef.valid" class="text-danger d-flex">
+          Legal Last Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Phone Number"
+          [(ngModel)]="model.phone"
+          required
+          #phoneRef="ngModel"
+          appPhoneMask
+        />
+        <div *ngIf="!phoneRef.valid" class="text-danger d-flex">
+          Phone Number is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control form-style"
+          placeholder="Email Address"
+          [(ngModel)]="model.email"
+          required
+          #emailRef="ngModel"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+        />
+        <div *ngIf="emailRef.errors?.pattern">
+          This is not a valid email address
+        </div>
+        <div *ngIf="emailRef.errors?.required">Email is required</div>
+      </div>
       <!-- </form> -->
       <h6 id="padding-up">Type of home</h6>
 
@@ -1118,6 +1252,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="singleFamily"
+        (click)="onHomeTypeClick('singleFamily')"
+        [class.orange-active]="model.homeType == 'singleFamily'"
       >
         Single Family
       </button>
@@ -1125,6 +1261,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="condo"
+        (click)="onHomeTypeClick('condo')"
+        [class.orange-active]="model.homeType == 'condo'"
       >
         Condo
       </button>
@@ -1132,6 +1270,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="coop"
+        (click)="onHomeTypeClick('coop')"
+        [class.orange-active]="model.homeType == 'coop'"
       >
         Co-op
       </button>
@@ -1139,6 +1279,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="townhome"
+        (click)="onHomeTypeClick('townhome')"
+        [class.orange-active]="model.homeType == 'townhome'"
       >
         Townhome
       </button>
@@ -1146,6 +1288,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="multifamily"
+        (click)="onHomeTypeClick('multifamily')"
+        [class.orange-active]="model.homeType == 'multifamily'"
       >
         Multi-Family
       </button>
@@ -1156,7 +1300,16 @@
         class="form-control form-style"
         placeholder="Monthly HOA dues"
         [(ngModel)]="model.monthlyhoadues"
+        name="monthlyhoadues"
+        required
+        #monthlyhoaduesRef="ngModel"
       />
+      <div
+        *ngIf="submitted && !monthlyhoaduesRef.valid"
+        class="text-danger d-flex"
+      >
+        Monthly HOA dues is required
+      </div>
       <!-- </form> -->
 
       <h6 id="padding-up">Property Usage</h6>
@@ -1165,6 +1318,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="property-primaryresidence"
+        (click)="onHomePlanClick('primaryresidence')"
+        [class.orange-active]="model.homePlan == 'primaryresidence'"
       >
         Primary Residance
       </button>
@@ -1172,6 +1327,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="property-condo"
+        (click)="onHomePlanClick('condo')"
+        [class.orange-active]="model.homePlan == 'condo'"
       >
         Condo
       </button>
@@ -1179,6 +1336,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="property-coop"
+        (click)="onHomePlanClick('coop')"
+        [class.orange-active]="model.homePlan == 'coop'"
       >
         Co-op
       </button>
@@ -1191,6 +1350,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="militery-yes"
+        (click)="onMilitaryClick(true)"
+        [class.orange-active]="model.isMillitary == true"
       >
         Yes
       </button>
@@ -1198,6 +1359,8 @@
         type="button"
         class="btn btn-primary btn-style btn-orange"
         id="militery-no"
+        (click)="onMilitaryClick(false)"
+        [class.orange-active]="model.isMillitary == false"
       >
         No
       </button>
@@ -1212,11 +1375,7 @@
           >
         </div>
         <div class="col-md-2">
-          <a
-            [routerLink]="['/app/purchase/purchase-non-mil']"
-            (click)="onEditNextClick()"
-            class="btn btn-orange"
-            id="btn-next"
+          <a (click)="onEditNextClick()" class="btn btn-orange" id="btn-next"
             >Next</a
           >
         </div>

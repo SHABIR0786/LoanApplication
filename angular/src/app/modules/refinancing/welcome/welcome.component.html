@@ -5,7 +5,7 @@
       <a
         (click)="isEdit = true; onMorOpt(true)"
         class="btn btn-primary btn-style btn-blue"
-        [class.blue-active]="this.model.isWorkingWithEzalready == 1"
+        [class.blue-active]="model.isWorkingWithEzalready == 1"
         >Yes</a
       >
 
@@ -13,10 +13,12 @@
         routerLink="/app/refinance/welcome/2"
         (click)="isEdit = false; onMorOpt(false)"
         class="btn btn-primary btn-style btn-blue"
-        [class.blue-active]="this.model.isWorkingWithEzalready == 0"
+        [class.blue-active]="model.isWorkingWithEzalready == 0"
         >No</a
       >
-      <p *ngIf="isEdit">Who are you working with?</p>
+      <p *ngIf="isEdit || model.isWorkingWithEzalready == 1">
+        Who are you working with?
+      </p>
       <!-- <input
       *ngIf="isEdit"
       type="text"
@@ -26,7 +28,7 @@
     /> -->
       <div class="form-group">
         <select
-          *ngIf="isEdit"
+          *ngIf="isEdit || model.isWorkingWithEzalready == 1"
           placeholder="Select your Loan Officer"
           [(ngModel)]="model.workingOfficerName"
           style="width: 100%"
@@ -49,7 +51,7 @@
       </div>
       <a
         class="btn btn-primary btn-next btn-blue"
-        *ngIf="isEdit"
+        *ngIf="isEdit || model.isWorkingWithEzalready == 1"
         (click)="nextClicked(f1, 2)"
         >Next</a
       >

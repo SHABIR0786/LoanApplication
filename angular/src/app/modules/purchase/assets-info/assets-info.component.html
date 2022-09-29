@@ -14,7 +14,6 @@
           #accountTypeRef="ngModel"
           style="width: 100%"
         >
-          <option>-Account type-</option>
           <option [value]="a.id" *ngFor="let a of accType">
             {{ a.financialAccountType1 }}
           </option>
@@ -162,9 +161,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Account Type: Checking account</p>
-          <p>Financial Institution: Bank of America</p>
-          <p>Balance: $125,000</p>
+          <p>Account Type: {{ model.accountType }}</p>
+          <p>Financial Institution: {{ model.finInstitute }}</p>
+          <p>Balance: ${{ model.finBalance }}</p>
         </div>
       </div>
     </div>
@@ -210,31 +209,51 @@
     <div class="row">
       <div class="col-md-12 margin-top">
         <form action="" id="employer-details">
-          <select
-            class="form-select form-style"
-            [(ngModel)]="model.accountType"
-            name="accountType"
-            required
-          >
-            <option>Checking Account</option>
-          </select>
-
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Finantional institution"
-            [(ngModel)]="model.finInstitute"
-            name="finInstitute"
-            required
-          />
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Balance"
-            [(ngModel)]="model.finBalance"
-            name="finBalance"
-            required
-          />
+          <div class="form-group">
+            <select
+              class="form-select form-style"
+              [(ngModel)]="model.accountType"
+              name="accountType"
+              required
+              #accountTypeRef="ngModel"
+              style="width: 100%"
+            >
+              <option [value]="a.id" *ngFor="let a of accType">
+                {{ a.financialAccountType1 }}
+              </option>
+            </select>
+            <div *ngIf="!accountTypeRef.valid" class="text-danger d-flex">
+              Account type is required
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Finantional institution"
+              [(ngModel)]="model.finInstitute"
+              name="finInstitute"
+              required
+              #finInstituteRef="ngModel"
+            />
+            <div *ngIf="!finInstituteRef.valid" class="text-danger d-flex">
+              Finantional institution is required
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Balance"
+              [(ngModel)]="model.finBalance"
+              name="finBalance"
+              required
+              #finBalanceRef="ngModel"
+            />
+            <div *ngIf="!finBalanceRef.valid" class="text-danger d-flex">
+              Balance is required
+            </div>
+          </div>
         </form>
       </div>
     </div>

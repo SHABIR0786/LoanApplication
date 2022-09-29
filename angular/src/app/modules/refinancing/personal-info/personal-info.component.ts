@@ -71,4 +71,8 @@ export class PersonalInfoComponent implements OnInit {
       this.submitted = false;
     }
   }
+  milClick(obj: boolean) {
+    this.model.isMilitaryMember = obj == true ? 1 : 0;
+    this.saveStep();
+  }
 }

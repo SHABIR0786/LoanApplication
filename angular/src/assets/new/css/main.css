@@ -251,6 +251,7 @@ body {
 }
 .button-list {
   margin: 0 auto;
+  font-family: Helvetica Neue;
 }
 .button-list p {
   font-size: 22px;
@@ -439,7 +440,7 @@ body {
 }
 .content-area h6 {
   font-size: 22px;
-  font-family: "Avenir";
+  font-family: "Avenir-medium";
 }
 
 #padding-zero {
@@ -520,10 +521,32 @@ body {
   font-weight: 100;
   margin-right: 5px;
 }
+.btn-yes-no-blue {
+  font-size: 16px;
+  padding: 6px 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #091a52;
+  color: #091a52;
+  font-size: 16px;
+  font-family: "Avenir";
+  font-weight: 100;
+  margin-right: 5px;
+}
 #btn-yes-no:hover {
   background-color: #f47741;
   color: #fff;
   border: 1px solid #f47741;
+}
+.btn-yes-no-blue:focus {
+  background-color: #091a52;
+  color: #fff;
+  border: 1px solid #091a52;
+}
+.btn-yes-no-blue:hover {
+  background-color: #091a52;
+  color: #fff;
+  border: 1px solid #091a52;
 }
 .questions {
   margin: 10px 0px;
@@ -1070,7 +1093,7 @@ body {
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;

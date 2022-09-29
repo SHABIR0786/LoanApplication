@@ -85,19 +85,24 @@ export class PropertyInfoComponent implements OnInit {
       this.submitted = false;
     }
   }
-  getEditData() {
-    let isMillitary;
-    if (this.model.isMilitaryMember) {
-      isMillitary = "militery-yes";
-    } else {
-      isMillitary = "militery-no";
-    }
-    document.getElementById(this.model.objectiveReason).classList.add("blue");
-    document.getElementById(this.model.creditScore).classList.add("blue");
-    document.getElementById(this.model.typeOfHome).classList.add("blue");
-    document
-      .getElementById(this.model.currentlyUsingHomeAs)
-      .classList.add("blue");
-    document.getElementById(isMillitary).classList.add("blue");
+  // getEditData() {
+  //   let isMillitary;
+  //   if (this.model.isMilitaryMember) {
+  //     isMillitary = "militery-yes";
+  //   } else {
+  //     isMillitary = "militery-no";
+  //   }
+  //   document.getElementById(this.model.objectiveReason).classList.add("blue");
+  //   document.getElementById(this.model.creditScore).classList.add("blue");
+  //   document.getElementById(this.model.typeOfHome).classList.add("blue");
+  //   document
+  //     .getElementById(this.model.currentlyUsingHomeAs)
+  //     .classList.add("blue");
+  //   document.getElementById(isMillitary).classList.add("blue");
+  // }
+
+  onReason(obj: string) {
+    this.model.objectiveReason = obj;
+    this.saveStep();
   }
 }

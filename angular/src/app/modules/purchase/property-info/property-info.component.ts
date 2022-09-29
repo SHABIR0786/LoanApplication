@@ -114,6 +114,7 @@ export class PropertyInfoComponent implements OnInit {
   }
   onEditNextClick() {
     this.offline.saveStep(3, this.model);
+    this.isEdit = false;
   }
 
   calculatePercent() {
@@ -129,17 +130,17 @@ export class PropertyInfoComponent implements OnInit {
   editClicked() {
     this.isEdit = true;
     let isMillitary;
-    document.getElementById(this.model.creditScore).classList.add("active");
-    document.getElementById(this.model.homeType).classList.add("active");
-    console.log(this.model.isMillitary, this.model.homePlan);
-    if (this.model.isMillitary) {
-      isMillitary = "militery-yes";
-    } else {
-      isMillitary = "militery-no";
-    }
-    document.getElementById(isMillitary).classList.add("active");
-    document
-      .getElementById("property-" + this.model.homePlan)
-      .classList.add("active");
+    // document.getElementById(this.model.creditScore).classList.add("active");
+    // document.getElementById(this.model.homeType).classList.add("active");
+    // console.log(this.model.isMillitary, this.model.homePlan);
+    // if (this.model.isMillitary) {
+    //   isMillitary = "militery-yes";
+    // } else {
+    //   isMillitary = "militery-no";
+    // }
+    // document.getElementById(isMillitary).classList.add("active");
+    // document
+    //   .getElementById("property-" + this.model.homePlan)
+    //   .classList.add("active");
   }
 }

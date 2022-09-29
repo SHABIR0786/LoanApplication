@@ -231,7 +231,7 @@
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
       (click)="referClick(true)"
-      [class.orange-active]="this.model.isSomeOneRefer == 1"
+      [class.orange-active]="model.isSomeOneRefer == 1"
       >Yes</a
     >
     <a
@@ -239,7 +239,7 @@
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-active btn-orange"
       (click)="referClick(false)"
-      [class.orange-active]="this.model.isSomeOneRefer == 0"
+      [class.orange-active]="model.isSomeOneRefer == 0"
       >No</a
     >
 
@@ -274,7 +274,7 @@
       routerLink="/app/purchase/personal-info/4"
       class="btn btn-primary btn-style btn-orange"
       (click)="ownApply(true)"
-      [class.orange-active]="this.model.isApplyOwn == 1"
+      [class.orange-active]="model.isApplyOwn == 1"
       >Applying on my oun</a
     >
 
@@ -282,7 +282,7 @@
       routerLink="/app/purchase/personal-info/4"
       class="btn btn-primary btn-style btn-orange"
       (click)="ownApply(false)"
-      [class.orange-active]="this.model.isApplyOwn == 0"
+      [class.orange-active]="model.isApplyOwn == 0"
       >Applying with another person</a
     >
 
@@ -310,7 +310,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('unmarried')"
       class="btn btn-primary btn-style btn-orange"
-      [class.orange-active]="this.model.maritialStatus == 'unmarried'"
+      [class.orange-active]="model.maritialStatus == 'unmarried'"
       >Unmarried</a
     >
 
@@ -318,7 +318,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('married')"
       class="btn btn-primary btn-style btn-orange"
-      [class.orange-active]="this.model.maritialStatus == 'married'"
+      [class.orange-active]="model.maritialStatus == 'married'"
       >Married</a
     >
 
@@ -326,7 +326,7 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('seperated')"
       class="btn btn-primary btn-style btn-orange"
-      [class.orange-active]="this.model.maritialStatus == 'seperated'"
+      [class.orange-active]="model.maritialStatus == 'seperated'"
       >Saparated</a
     >
 
@@ -656,10 +656,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Legal First Name : Jhon</p>
-          <p>Legal Last Name: Cole</p>
-          <p>Phone Number: (512) 318-2199</p>
-          <p>Email Address: jon24@gmail.com</p>
+          <p>Legal First Name : {{ model.personalLegalFirstName }}</p>
+          <p>Legal Last Name: {{ model.personalLegalLastName }}</p>
+          <p>Phone Number: {{ model.personalPhoneNumber }}</p>
+          <p>Email Address: {{ model.personalEmailAddress }}</p>
         </div>
       </div>
     </div>
@@ -673,19 +673,31 @@
         <h6>Borrower Information</h6>
       </div>
       <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+        <button
+          type="button"
+          routerLink="/app/purchase/personal-info/9"
+          class="btn"
+          id="btn-edit"
+        >
+          Edit
+        </button>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Did someone refer you to EZ Online Mortgage? No</p>
+          <p>
+            Did someone refer you to EZ Online Mortgage?
+            {{ model.isSomeOneRefer == 1 ? "Yes" : "No" }}
+          </p>
           <p>
             Are you applying on your own, or jointly with another person?
-            Applying on my own
+            {{ model.isApplyOwn == 1 ? "Yes" : "No" }}
           </p>
-          <p>Marital Status: Unmarried</p>
-          <p>How many dependents will be living in your home? 0</p>
+          <p>Marital Status: {{ model.maritialStatus }}</p>
+          <p>
+            How many dependents will be living in your home? {{ dependents }}
+          </p>
         </div>
       </div>
     </div>
@@ -705,12 +717,17 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Address: 5902 Balcones Drive</p>
-          <p>City or Town: Austin</p>
-          <p>State: TX</p>
-          <p>ZIP Code: 78731</p>
-          <p>When did you start living here?: Jan 2017</p>
-          <p>Are you currently renting, or do you own?: Rent</p>
+          <p>Address: {{ model.currentAddress }}</p>
+          <p>City or Town: {{ model.currentCity }}</p>
+          <p>State: {{ model.currentState }}</p>
+          <p>ZIP Code: {{ model.currentZipCode }}</p>
+          <p>
+            When did you start living here?: {{ model.currentStartLivingDate }}
+          </p>
+          <p>
+            Are you currently renting, or do you own?:
+            {{ model.currentReantingType }}
+          </p>
         </div>
       </div>
     </div>
@@ -730,7 +747,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Estimated Monthly Expenses: $3,000</p>
+          <p>Estimated Monthly Expenses: ${{ model.monthlyExpress }}</p>
         </div>
       </div>
     </div>
@@ -777,88 +794,95 @@
         <div class="col-md-10">
           <div class="row">
             <div class="col-md-6">
-              <input
-                type="text"
-                class="form-control form-style"
-                placeholder="Legal First Name"
-                [(ngModel)]="model.personalLegalFirstName"
-                name="personalLegalFirstName"
-                #personalLegalFirstNameRef="ngModel"
-                required
-              />
-              <div
-                *ngIf="submitted && !personalLegalFirstNameRef.valid"
-                class="text-danger d-flex"
-              >
-                Last Name is required
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-style"
+                  placeholder="Legal First Name"
+                  [(ngModel)]="model.personalLegalFirstName"
+                  name="personalLegalFirstName"
+                  #personalLegalFirstNameRef="ngModel"
+                  required
+                />
+                <div
+                  *ngIf="!personalLegalFirstNameRef.valid"
+                  class="text-danger d-flex"
+                >
+                  First Name is required
+                </div>
               </div>
             </div>
             <div class="col-md-6">
-              <input
-                type="text"
-                class="form-control form-style"
-                [(ngModel)]="model.personalMiddleInitial"
-                placeholder="Middle Initial"
-                name="personalMiddleInitial"
-                #personalMiddleInitialRef="ngModel"
-                required
-              />
-              <div
-                *ngIf="submitted && !personalMiddleInitialRef.valid"
-                class="text-danger d-flex"
-              >
-                Middle Name is required
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-style"
+                  [(ngModel)]="model.personalMiddleInitial"
+                  placeholder="Middle Initial"
+                  name="personalMiddleInitial"
+                  #personalMiddleInitialRef="ngModel"
+                  required
+                />
+                <div
+                  *ngIf="!personalMiddleInitialRef.valid"
+                  class="text-danger d-flex"
+                >
+                  Middle Name is required
+                </div>
               </div>
             </div>
           </div>
-
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Legal Last Name"
-            [(ngModel)]="model.personalLegalLastName"
-            name="personalLegalLastName"
-            #personalLegalLastNameRef="ngModel"
-            required
-          />
-          <div
-            *ngIf="submitted && !personalLegalLastNameRef.valid"
-            class="text-danger d-flex"
-          >
-            Last Name is required
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Legal Last Name"
+              [(ngModel)]="model.personalLegalLastName"
+              name="personalLegalLastName"
+              #personalLegalLastNameRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="!personalLegalLastNameRef.valid"
+              class="text-danger d-flex"
+            >
+              Last Name is required
+            </div>
           </div>
-
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Phone Number"
-            appPhoneMask
-            [(ngModel)]="model.personalPhoneNumber"
-            name="personalPhoneNumber"
-            #personalPhoneNumberRef="ngModel"
-            required
-          />
-          <div
-            *ngIf="submitted && !personalPhoneNumberRef.valid"
-            class="text-danger d-flex"
-          >
-            Phone is required
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Phone Number"
+              appPhoneMask
+              [(ngModel)]="model.personalPhoneNumber"
+              name="personalPhoneNumber"
+              #personalPhoneNumberRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="!personalPhoneNumberRef.valid"
+              class="text-danger d-flex"
+            >
+              Phone is required
+            </div>
           </div>
-
-          <input
-            type="email"
-            class="form-control form-style"
-            placeholder="Email Address"
-            [(ngModel)]="model.personalEmailAddress"
-            name="personalEmailAddress"
-            #personalEmailAddressRef="ngModel"
-            required
-          />
-          <div
-            *ngIf="submitted && !personalEmailAddressRef.valid"
-            class="text-danger d-flex"
-          >
-            Email is required
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control form-style"
+              placeholder="Email Address"
+              [(ngModel)]="model.personalEmailAddress"
+              name="personalEmailAddress"
+              #personalEmailAddressRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="!personalEmailAddressRef.valid"
+              class="text-danger d-flex"
+            >
+              Email is required
+            </div>
           </div>
         </div>
       </div>
@@ -904,8 +928,8 @@
       <div class="row">
         <div class="col-md-12">
           <div class="profile-details">
-            <p>Address: 5902 Balcones Drive</p>
-            <p>City or Town: Austin</p>
+            <p>Address: {{ model.currentAddress }}</p>
+            <p>City or Town: {{ model.currentCity }}</p>
             <p>State: TX</p>
             <p>ZIP Code: 78731</p>
             <p>When did you start living here?: Jan 2017</p>

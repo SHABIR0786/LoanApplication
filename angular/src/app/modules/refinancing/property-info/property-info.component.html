@@ -244,35 +244,35 @@
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Excellent')"
-      [class.blue-active]="this.model.creditScore === 'Excellent'"
+      [class.blue-active]="model.creditScore === 'Excellent'"
       >Excellent (740+)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Good')"
-      [class.blue-active]="this.model.creditScore === 'Good'"
+      [class.blue-active]="model.creditScore === 'Good'"
       >Good(700 - 739)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Average')"
-      [class.blue-active]="this.model.creditScore === 'Average'"
+      [class.blue-active]="model.creditScore === 'Average'"
       >Average (640 - 699)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Fair')"
-      [class.blue-active]="this.model.creditScore === 'Fair'"
+      [class.blue-active]="model.creditScore === 'Fair'"
       >Fair (580 - 639)</a
     >
     <a
       routerLink="/app/refinance/property-info/4"
       class="btn btn-primary btn-style btn-blue"
       (click)="onScoreClick('Needs_Improvement')"
-      [class.blue-active]="this.model.creditScore === 'Needs_Improvement'"
+      [class.blue-active]="model.creditScore === 'Needs_Improvement'"
       >Needs Improvement (less then 580)</a
     >
 
@@ -303,35 +303,35 @@
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Single_Family')"
-      [class.blue-active]="this.model.typeOfHome === 'Single_Family'"
+      [class.blue-active]="model.typeOfHome === 'Single_Family'"
       >Single Family</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Condo')"
-      [class.blue-active]="this.model.typeOfHome === 'Condo'"
+      [class.blue-active]="model.typeOfHome === 'Condo'"
       >Condo</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Co-op')"
-      [class.blue-active]="this.model.typeOfHome === 'Co-op'"
+      [class.blue-active]="model.typeOfHome === 'Co-op'"
       >Co-op</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Townhome')"
-      [class.blue-active]="this.model.typeOfHome === 'Townhome'"
+      [class.blue-active]="model.typeOfHome === 'Townhome'"
       >Townhome</a
     >
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
       (click)="onHomeClick('Multi-Family')"
-      [class.blue-active]="this.model.typeOfHome === 'Multi-Family'"
+      [class.blue-active]="model.typeOfHome === 'Multi-Family'"
       >Multi-Family</a
     >
 
@@ -519,23 +519,21 @@
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Primary_Residance')"
-      [class.blue-active]="
-        this.model.currentlyUsingHomeAs === 'Primary_Residance'
-      "
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Primary_Residance'"
       >Primary Residance</a
     >
     <a
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Second_Home')"
-      [class.blue-active]="this.model.currentlyUsingHomeAs === 'Second_Home'"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Second_Home'"
       >Second Home</a
     >
     <a
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Rental')"
-      [class.blue-active]="this.model.currentlyUsingHomeAs === 'Rental'"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Rental'"
       >Investment / Rental</a
     >
 
@@ -577,7 +575,7 @@
       routerLink="/app/refinance/property-info/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="milClick(true)"
-      [class.blue-active]="this.model.isMilitaryMember == 1"
+      [class.blue-active]="model.isMilitaryMember == 1"
       >Yes</a
     >
 
@@ -585,7 +583,7 @@
       routerLink="/app/refinance/property-info/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="milClick(false)"
-      [class.blue-active]="this.model.isMilitaryMember == 0"
+      [class.blue-active]="model.isMilitaryMember == 0"
       >No</a
     >
 
@@ -628,16 +626,16 @@
         <div class="profile-details">
           <p>Preferred Loan Terms:{{ model.objectiveReason }}</p>
           <p>Address: {{ model.propertyAddress }}</p>
-          <p>City or Town: Los Angeles</p>
+          <p>City or Town: {{ model.propertyCity }}</p>
           <p>Zip Code: {{ model.propertyZip }}</p>
-          <p>State: CA</p>
-          <p>County: Los Angeles</p>
-          <p>Estimated Value: $242,424</p>
-          <p>Remaining Loan Balance: $234,242</p>
-          <p>Cash Out Amount: $3,224</p>
+          <p>State: {{ model.propertyStateName }}</p>
+          <p>County: {{ model.propertyCountryName }}</p>
+          <p>Estimated Value: ${{ model.propertyEstimatedValue }}</p>
+          <p>Remaining Loan Balance: ${{ model.propertyLoanBalance }}</p>
+          <p>Cash Out Amount: ${{ model.propertCashOutAmount }}</p>
           <p>Loan Amount: $237,466</p>
-          <p>Self-selected Credit Score: Average (640 – 699)</p>
-          <p>Type of Home: Co-op</p>
+          <p>Self-selected Credit Score: {{ model.creditScore }}</p>
+          <p>Type of Home: {{ model.typeOfHome }}</p>
         </div>
       </div>
     </div>
@@ -662,12 +660,19 @@
     <div class="row">
       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <div class="profile-details">
-          <p>Year Home was Purchased: 2019</p>
-          <p>Original Purchase Price: $234,224</p>
-          <p>Estimated annual taxes: $2,342</p>
-          <p>Estimated annual home insurance: $24,252</p>
-          <p>Property Usage: Second Home</p>
-          <p>Are you a current or former member of the US Military?: Yes</p>
+          <p>Year Home was Purchased: {{ model.yearHomePurchased }}</p>
+          <p>Original Purchase Price: ${{ model.orignalPurchasedPrice }}</p>
+          <p>Estimated annual taxes: ${{ model.estimatedAnnualTax }}</p>
+          <p>
+            Estimated annual home insurance: ${{
+              model.estimatedAnnualHomeInsurance
+            }}
+          </p>
+          <p>Property Usage: {{ model.currentlyUsingHomeAs }}</p>
+          <p>
+            Are you a current or former member of the US Military?:
+            {{ model.isMilitaryMember == 1 ? "Yes" : "No" }}
+          </p>
         </div>
       </div>
     </div>
@@ -727,6 +732,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="lower_monthly_payment"
+      [class.blue-active]="model.objectiveReason === 'lower_monthly_payment'"
+      (click)="onReason('lower_monthly_payment')"
     >
       Lower monthly payment <br />
       <span class="tiny-font"
@@ -737,6 +744,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="lower_rate"
+      (click)="onReason('lower_rate')"
+      [class.blue-active]="model.objectiveReason === 'lower_rate'"
     >
       Lower rate <br />
       <span class="tiny-font"
@@ -748,6 +757,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="shorter_loan_term"
+      (click)="onReason('shorter_loan_term')"
+      [class.blue-active]="model.objectiveReason === 'shorter_loan_term'"
     >
       Shorter loan term <br />
       <span class="tiny-font"
@@ -758,6 +769,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="cash_out"
+      (click)="onReason('cash_out')"
+      [class.blue-active]="model.objectiveReason === 'cash_out'"
     >
       Cash-Out <br />
       <span class="tiny-font"
@@ -767,101 +780,147 @@
     </button>
 
     <form action="" id="address">
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Address"
-        [(ngModel)]="model.propertyAddress"
-        name="propertyAddress"
-        #propertyAddressRef="ngModel"
-        required
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Apt / Unit"
-        [(ngModel)]="model.propertyUnit"
-        name="propertyUnit"
-        #propertyUnitRef="ngModel"
-        required
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="City or Town"
-        [(ngModel)]="model.propertyCity"
-        name="propertyCity"
-        #propertyCityRef="ngModel"
-        required
-      />
-      <div class="row">
-        <div class="col-lg-7">
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Zip Code"
-            [(ngModel)]="model.propertyZip"
-            name="propertyZip"
-            #propertyZipRef="ngModel"
-            required
-          />
-        </div>
-        <div class="col-lg-5">
-          <select
-            class="form-select form-style"
-            [(ngModel)]="model.propertyStateId"
-            name="propertyState"
-            #propertyStateIdRef="ngModel"
-            required
-            style="width: 100%"
-          >
-            <option *ngFor="let s of states" [value]="s.id">
-              {{ s.stateName }}
-            </option>
-          </select>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Address"
+          [(ngModel)]="model.propertyAddress"
+          name="propertyAddress"
+          #propertyAddressRef="ngModel"
+          required
+        />
+        <div *ngIf="!propertyAddressRef.valid" class="text-danger d-flex">
+          Address is required
         </div>
       </div>
-
-      <select
-        class="form-select form-style"
-        [(ngModel)]="model.propertyCountryId"
-        name="propertyCountry"
-        #propertyCountryRef="ngModel"
-        required
-        style="width: 100%"
-      >
-        <option *ngFor="let c of countries" [value]="c.id">
-          {{ c.countryName }}
-        </option>
-      </select>
-
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Estimated Value"
-        [(ngModel)]="model.propertyEstimatedValue"
-        name="propertyEstimatedValue"
-        #propertyEstimatedValueRef="ngModel"
-        required
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Remaining Loan Balance"
-        [(ngModel)]="model.propertyLoanBalance"
-        name="propertyLoanBalance"
-        #propertyLoanBalanceRef="ngModel"
-        required
-      />
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Cash Out Amount"
-        [(ngModel)]="model.propertCashOutAmount"
-        name="propertCashOutAmount"
-        #propertCashOutAmountRef="ngModel"
-        required
-      />
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Apt / Unit"
+          [(ngModel)]="model.propertyUnit"
+          name="propertyUnit"
+          #propertyUnitRef="ngModel"
+          required
+        />
+        <div *ngIf="!propertyUnitRef.valid" class="text-danger d-flex">
+          Unit is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="City or Town"
+          [(ngModel)]="model.propertyCity"
+          name="propertyCity"
+          #propertyCityRef="ngModel"
+          required
+        />
+        <div *ngIf="!propertyCityRef.valid" class="text-danger d-flex">
+          City is required
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Zip Code"
+              [(ngModel)]="model.propertyZip"
+              name="propertyZip"
+              #propertyZipRef="ngModel"
+              required
+            />
+            <div *ngIf="!propertyZipRef.valid" class="text-danger d-flex">
+              Zip Code is required
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="form-group">
+            <select
+              class="form-select form-style"
+              [(ngModel)]="model.propertyStateId"
+              name="propertyState"
+              #propertyStateIdRef="ngModel"
+              required
+              style="width: 100%"
+            >
+              <option *ngFor="let s of states" [value]="s.id">
+                {{ s.stateName }}
+              </option>
+            </select>
+            <div *ngIf="!propertyStateIdRef.valid" class="text-danger d-flex">
+              State is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <select
+          class="form-select form-style"
+          [(ngModel)]="model.propertyCountryId"
+          name="propertyCountry"
+          #propertyCountryRef="ngModel"
+          required
+          style="width: 100%"
+        >
+          <option *ngFor="let c of countries" [value]="c.id">
+            {{ c.countryName }}
+          </option>
+        </select>
+        <div *ngIf="!propertyCountryRef.valid" class="text-danger d-flex">
+          Country is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Estimated Value"
+          [(ngModel)]="model.propertyEstimatedValue"
+          name="propertyEstimatedValue"
+          #propertyEstimatedValueRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="!propertyEstimatedValueRef.valid"
+          class="text-danger d-flex"
+        >
+          Estimated Value is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Remaining Loan Balance"
+          [(ngModel)]="model.propertyLoanBalance"
+          name="propertyLoanBalance"
+          #propertyLoanBalanceRef="ngModel"
+          required
+        />
+        <div *ngIf="!propertyLoanBalanceRef.valid" class="text-danger d-flex">
+          Remaining Loan Balance is required
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Cash Out Amount"
+          [(ngModel)]="model.propertCashOutAmount"
+          name="propertCashOutAmount"
+          #propertCashOutAmountRef="ngModel"
+          required
+        />
+        <div *ngIf="!propertCashOutAmountRef.valid" class="text-danger d-flex">
+          Cash Out Amount is required
+        </div>
+      </div>
     </form>
 
     <h6 id="padding-up">Self selected Credit Score</h6>
@@ -870,26 +929,44 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Excellent"
+      (click)="onScoreClick('Excellent')"
+      [class.blue-active]="model.creditScore === 'Excellent'"
     >
       Excellent (740+)
     </button>
-    <button type="button" class="btn btn-primary btn-style btn-blue" id="Good">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      id="Good"
+      (click)="onScoreClick('Good')"
+      [class.blue-active]="model.creditScore === 'Good'"
+    >
       Good(700 - 739)
     </button>
     <button
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Average"
+      (click)="onScoreClick('Average')"
+      [class.blue-active]="model.creditScore === 'Average'"
     >
       Average (640 - 699)
     </button>
-    <button type="button" class="btn btn-primary btn-style btn-blue" id="Fair">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      id="Fair"
+      (click)="onScoreClick('Fair')"
+      [class.blue-active]="model.creditScore === 'Fair'"
+    >
       Fair (580 - 639)
     </button>
     <button
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Needs_Improvement"
+      (click)="onScoreClick('Needs_Improvement')"
+      [class.blue-active]="model.creditScore === 'Needs_Improvement'"
     >
       Needs Improvement (less then 580)
     </button>
@@ -906,6 +983,12 @@
             #propertyLegalFirstNameRef="ngModel"
             required
           />
+          <div
+            *ngIf="!propertyLegalFirstNameRef.valid"
+            class="text-danger d-flex"
+          >
+            Legal First Name is required
+          </div>
         </div>
         <div class="col-md-6">
           <input
@@ -928,6 +1011,9 @@
         #propertyLegalLastNameRef="ngModel"
         required
       />
+      <div *ngIf="!propertyLegalLastNameRef.valid" class="text-danger d-flex">
+        Last Name is required
+      </div>
       <input
         type="text"
         class="form-control form-style"
@@ -938,6 +1024,9 @@
         appPhoneMask
         required
       />
+      <div *ngIf="!propertyPhoneNumberRef.valid" class="text-danger d-flex">
+        Phone Number is required
+      </div>
       <input
         type="email"
         class="form-control form-style"
@@ -947,6 +1036,9 @@
         #propertyEmailAddressRef="ngModel"
         required
       />
+      <div *ngIf="!propertyEmailAddressRef.valid" class="text-danger d-flex">
+        Email Address is required
+      </div>
     </form>
     <h6 id="padding-up">Type of home</h6>
 
@@ -954,19 +1046,35 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Single_Family"
+      (click)="onHomeClick('Single_Family')"
+      [class.blue-active]="model.typeOfHome === 'Single_Family'"
     >
       Single Family
     </button>
-    <button type="button" class="btn btn-primary btn-style btn-blue" id="Condo">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      id="Condo"
+      (click)="onHomeClick('Condo')"
+      [class.blue-active]="model.typeOfHome === 'Condo'"
+    >
       Condo
     </button>
-    <button type="button" class="btn btn-primary btn-style btn-blue" id="Co-op">
+    <button
+      type="button"
+      class="btn btn-primary btn-style btn-blue"
+      id="Co-op"
+      (click)="onHomeClick('Co-op')"
+      [class.blue-active]="model.typeOfHome === 'Co-op'"
+    >
       Co-op
     </button>
     <button
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Townhome"
+      (click)="onHomeClick('Townhome')"
+      [class.blue-active]="model.typeOfHome === 'Townhome'"
     >
       Townhome
     </button>
@@ -974,6 +1082,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Multi-Family"
+      (click)="onHomeClick('Multi-Family')"
+      [class.blue-active]="model.typeOfHome === 'Multi-Family'"
     >
       Multi-Family
     </button>
@@ -988,6 +1098,9 @@
         required
         #monthlyHoaduesRef="ngModel"
       />
+      <div *ngIf="!monthlyHoaduesRef.valid" class="text-danger d-flex">
+        Monthly HOA dues is required
+      </div>
     </form>
   </div>
   <div class="content-area">
@@ -1014,6 +1127,9 @@
         #propertyAddressRef="ngModel"
         required
       />
+      <div *ngIf="!propertyAddressRef.valid" class="text-danger d-flex">
+        Address is required
+      </div>
       <input
         type="text"
         class="form-control form-style"
@@ -1023,11 +1139,21 @@
         #propertyUnitRef="ngModel"
         required
       />
+      <div *ngIf="!propertyUnitRef.valid" class="text-danger d-flex">
+        Unit is required
+      </div>
       <input
         type="text"
         class="form-control form-style"
         placeholder="City or Town"
+        name="propertyCity"
+        #propertyCityRef="ngModel"
+        required
+        [(ngModel)]="model.propertyCity"
       />
+      <div *ngIf="!propertyCityRef.valid" class="text-danger d-flex">
+        City is required
+      </div>
       <input
         type="text"
         class="form-control form-style"
@@ -1037,6 +1163,9 @@
         #propertyEstimatedValueRef="ngModel"
         required
       />
+      <div *ngIf="!propertyEstimatedValueRef.valid" class="text-danger d-flex">
+        Estimated Value is required
+      </div>
     </form>
 
     <h6 id="padding-up">Property Usage</h6>
@@ -1045,6 +1174,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Primary_Residance"
+      (click)="onCurHome('Primary_Residance')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Primary_Residance'"
     >
       Primary Residance
     </button>
@@ -1052,6 +1183,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Second_Home"
+      (click)="onCurHome('Second_Home')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Second_Home'"
     >
       Second Home
     </button>
@@ -1059,6 +1192,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Rental"
+      (click)="onCurHome('Rental')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Rental'"
     >
       Investment / Rental
     </button>
@@ -1071,6 +1206,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="militery-yes"
+      (click)="milClick(true)"
+      [class.blue-active]="model.isMilitaryMember == 1"
     >
       Yes
     </button>
@@ -1078,6 +1215,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="militery-no"
+      (click)="milClick(false)"
+      [class.blue-active]="model.isMilitaryMember == 0"
     >
       No
     </button>

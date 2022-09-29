@@ -52,7 +52,7 @@ export class GovInfoComponent implements OnInit {
   abc(a = "/app/refinance/gov/2") {
     let count = 0;
     this.questions.forEach((ele) => {
-      if (ele["isYes"]) {
+      if (ele["isYes"] == true || ele["isYes"] == false) {
         count++;
       }
     });
