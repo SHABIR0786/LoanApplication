@@ -32,6 +32,9 @@ export class PersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getStates();
+    if (this.model.currentStateId) {
+      this.getStateById(this.model.currentStateId);
+    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
@@ -41,6 +44,23 @@ export class PersonalInfoComponent implements OnInit {
       this.model.currentStateId = 1;
       this.model.personalStateId = 1;
       this.model.propertyStateId = 1;
+    });
+  }
+  onStateChange(event) {
+    console.log(event.target.value);
+    this.getStateById(event.target.value);
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.model.currentStateName = x.result.stateName;
+        console.log(this.model.currentStateName);
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
+      }
     });
   }
   minDep() {

@@ -216,6 +216,7 @@
               name="currentState"
               #currentStateRef="ngModel"
               required
+              (change)="onStateChange($event)"
             >
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
@@ -465,7 +466,7 @@
         <div class="profile-details">
           <p>Address: {{ model.currentAddress }}</p>
           <p>City or Town: {{ model.currentCity }}</p>
-          <p>State: TX</p>
+          <p>State: {{ model.currentStateName }}</p>
           <p>ZIP Code: {{ model.currentZipCode }}</p>
           <p>
             When did you start living here?: {{ model.currentStartLivingDate }}
@@ -562,7 +563,7 @@
         <div class="profile-details">
           <p>Address: {{ model.currentAddress }}</p>
           <p>City or Town: {{ model.currentCity }}</p>
-          <p>State: MI</p>
+          <p>State: {{ model.currentStateName }}</p>
           <p>Zip Code: {{ model.currentZipCode }}</p>
           <p>
             When did they start living here?: {{ model.currentStartLivingDate }}

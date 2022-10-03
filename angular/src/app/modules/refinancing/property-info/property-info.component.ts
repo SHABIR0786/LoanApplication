@@ -35,6 +35,9 @@ export class PropertyInfoComponent implements OnInit {
     this.getStates();
     this.getCities();
     this.getCountries();
+    if (this.model.propertyStateName) {
+      this.getStateById(this.model.propertyStateId);
+    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
@@ -45,6 +48,23 @@ export class PropertyInfoComponent implements OnInit {
         this.model.currentStateId = 1;
         this.model.personalStateId = 1;
         this.model.propertyStateId = 1;
+      }
+    });
+  }
+  onStateChange(event) {
+    console.log(event.target.value);
+    this.getStateById(event.target.value);
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.model.propertyStateName = x.result.stateName;
+        console.log(this.model.propertyStateName);
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
       }
     });
   }

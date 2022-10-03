@@ -17,6 +17,7 @@ export class PropertyInfoComponent implements OnInit {
   submitted = false;
   model: PostModel = new PostModel();
   states: any[] = [];
+  state;
   cities: any[] = [];
   stateName;
   constructor(
@@ -56,6 +57,19 @@ export class PropertyInfoComponent implements OnInit {
         console.log(this.model.newHomeState);
         this.model.empState = "1";
         this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
+      }
+    });
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.state = x.result;
+        console.log(this.state);
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
 
         // this.model.newHomeState = "1";
         // this.model.newHomeState = x.result[0].id;

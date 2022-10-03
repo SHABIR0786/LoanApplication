@@ -34,6 +34,9 @@ export class IncomeInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getStates();
+    if (this.model.empState) {
+      this.getStateById(this.model.empState);
+    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
@@ -43,6 +46,23 @@ export class IncomeInfoComponent implements OnInit {
       this.model.currentStateId = 1;
       this.model.personalStateId = 1;
       this.model.propertyStateId = 1;
+    });
+  }
+  onStateChange(event) {
+    console.log(event.target.value);
+    this.getStateById(event.target.value);
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.model.empStateName = x.result.stateName;
+        console.log(this.model.currentStateName);
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
+      }
     });
   }
   // routerLink="/app/refinance/assets-info/1"
@@ -99,6 +119,7 @@ export class IncomeInfoComponent implements OnInit {
     if (f.valid) {
       this.saveStep();
       this.saveEmpToDb();
+      this.router.navigate(["/app/refinance/income/5"]);
 
       this.submitted = false;
     }

@@ -224,7 +224,6 @@
 </div>
 <div class="main-content" *ngIf="number == 2">
   <h2 class="tiny-space">Did someone refer you to EZ Online Mortgage?</h2>
-
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <a
       type="button"
@@ -237,7 +236,7 @@
     <a
       type="button"
       routerLink="/app/purchase/personal-info/3"
-      class="btn btn-primary btn-style btn-active btn-orange"
+      class="btn btn-primary btn-style btn-orange"
       (click)="referClick(false)"
       [class.orange-active]="model.isSomeOneRefer == 0"
       >No</a
@@ -479,6 +478,7 @@
               #currentStateIdRef="ngModel"
               required
               style="width: 100%"
+              (change)="onStateChange($event)"
             >
               <option>State</option>
               <option [value]="s.id" *ngFor="let s of states">
@@ -711,7 +711,14 @@
         <h6>Borrower Residence</h6>
       </div>
       <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+        <button
+          routerLink="/app/purchase/personal-info/9"
+          type="button"
+          class="btn"
+          id="btn-edit"
+        >
+          Edit
+        </button>
       </div>
     </div>
     <div class="row">
@@ -719,7 +726,7 @@
         <div class="profile-details">
           <p>Address: {{ model.currentAddress }}</p>
           <p>City or Town: {{ model.currentCity }}</p>
-          <p>State: {{ model.currentState }}</p>
+          <p>State: {{ model.currentStateName }}</p>
           <p>ZIP Code: {{ model.currentZipCode }}</p>
           <p>
             When did you start living here?: {{ model.currentStartLivingDate }}
@@ -741,7 +748,14 @@
         <h6>Monthly Expenses</h6>
       </div>
       <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+        <button
+          routerLink="/app/purchase/personal-info/9"
+          type="button"
+          class="btn"
+          id="btn-edit"
+        >
+          Edit
+        </button>
       </div>
     </div>
     <div class="row">
@@ -900,6 +914,123 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-lg-12 margin-top">
+          <div class="button-list col-lg-12">
+            <p class="edit-info">
+              Did someone refer you to EZ Online Mortgage?
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              id="refer-yes"
+              (click)="model.isSomeoneRefer = 1; saveStep()"
+              [class.orange-active]="model.isSomeoneRefer == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              id="refer-no"
+              (click)="model.isSomeoneRefer = 0; saveStep()"
+              [class.orange-active]="model.isSomeoneRefer == 0"
+            >
+              No
+            </button>
+            <input
+              type="text"
+              class="form-control col-md-6 form-style offset-lg-3"
+              placeholder="That’s make us happy! Who refered us?"
+              [(ngModel)]="model.refferedBy"
+            />
+            <div class="row">
+              <div class="col-md-12">
+                <div class="seperator-line"></div>
+              </div>
+            </div>
+            <p class="edit-info">
+              Are you applying on your own, or jointly with another person?
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue offset-lg-3"
+              id="spouse-yes"
+              (click)="model.isLegalSpouse = 1; saveStep()"
+              [class.orange-active]="model.isLegalSpouse == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue offset-lg-3"
+              id="spouse-no"
+              (click)="model.isLegalSpouse = 0; saveStep()"
+              [class.orange-active]="model.isLegalSpouse == 0"
+            >
+              No
+            </button>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="seperator-line"></div>
+              </div>
+            </div>
+            <p class="edit-info">What’s your current marital status</p>
+
+            <a
+              routerLink="/app/purchase/personal-info/5"
+              (click)="maritalClick('unmarried')"
+              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              [class.orange-active]="model.maritialStatus == 'unmarried'"
+              >Unmarried</a
+            >
+
+            <a
+              routerLink="/app/purchase/personal-info/5"
+              (click)="maritalClick('married')"
+              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              [class.orange-active]="model.maritialStatus == 'married'"
+              >Married</a
+            >
+
+            <a
+              routerLink="/app/purchase/personal-info/5"
+              (click)="maritalClick('seperated')"
+              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              [class.orange-active]="model.maritialStatus == 'seperated'"
+              >Saparated</a
+            >
+            <div class="row">
+              <div class="col-md-12">
+                <div class="seperator-line"></div>
+              </div>
+            </div>
+            <p class="edit-info">
+              How many dependents will be living in your home?
+            </p>
+
+            <div class="narrow-space">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button type="button" class="btn" id="btn-minus">-</button>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <h1>{{ dependents }}</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button type="button" class="btn" id="btn-plus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <input
+              type="text"
+              class="form-control form-style margin-top"
+              placeholder="First dependent’s age"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="col-md-12">
           <div class="profile-details">
             <p>Did someone refer you to EZ Online Mortgage? No</p>
@@ -911,7 +1042,8 @@
             <p>How many dependents will be living in your home? 0</p>
           </div>
         </div>
-      </div>
+      </div> -->
+
       <div class="row">
         <div class="col-md-12">
           <div class="seperator-line"></div>
@@ -926,7 +1058,166 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <form action="" id="personal-address" #f6="ngForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Address"
+              [(ngModel)]="model.currentAddress"
+              name="currentAddress"
+              #currentAddressRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="submitted && !currentAddressRef.valid"
+              class="text-danger d-flex"
+            >
+              Address is required
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Apt / Unit"
+              [(ngModel)]="model.currentUnit"
+              name="currentUnit"
+              #currentUnit="ngModel"
+              required
+            />
+            <div
+              *ngIf="submitted && !currentUnit.valid"
+              class="text-danger d-flex"
+            >
+              Unit is required
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-style"
+                  placeholder="City or Town"
+                  [(ngModel)]="model.currentCity"
+                  name="currentCity"
+                  #currentCityRef="ngModel"
+                  required
+                />
+                <div
+                  *ngIf="submitted && !currentCityRef.valid"
+                  class="text-danger d-flex"
+                >
+                  City is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <select
+                  class="form-select form-style"
+                  [(ngModel)]="model.currentStateId"
+                  name="currentState"
+                  #currentStateIdRef="ngModel"
+                  required
+                  style="width: 100%"
+                >
+                  <option>State</option>
+                  <option [value]="s.id" *ngFor="let s of states">
+                    {{ s.stateName }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="submitted && !currentStateIdRef.valid"
+                  class="text-danger d-flex"
+                >
+                  State is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-style"
+                  placeholder="Zip Code"
+                  [(ngModel)]="model.currentZipCode"
+                  name="currentZipCode"
+                  #currentZipCodeRef="ngModel"
+                  required
+                />
+                <div
+                  *ngIf="submitted && !currentZipCodeRef.valid"
+                  class="text-danger d-flex"
+                >
+                  Zip Code is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="date"
+              class="form-control form-style"
+              placeholder="When did you start living here?"
+              [(ngModel)]="model.currentStartLivingDate"
+              name="currentStartLivingDate"
+              #currentStartLivingDateRef="ngModel"
+              required
+            />
+            <div
+              *ngIf="submitted && !currentStartLivingDateRef.valid"
+              class="text-danger d-flex"
+            >
+              Start living date is required
+            </div>
+          </div>
+
+          <p>Are you currently reanting , or do you own?</p>
+
+          <div class="row">
+            <div class="col-md-4 offset-md-3">
+              <div class="row margin-top margin-right-btn">
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-rent"
+                    [ngClass]="{ active: model.currentReantingType == 'own' }"
+                    (click)="model.currentReantingType = 'own'"
+                  >
+                    Own
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-rent"
+                    [ngClass]="{ active: model.currentReantingType == 'rent' }"
+                    (click)="model.currentReantingType = 'rent'"
+                  >
+                    Rent
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-rent"
+                    [ngClass]="{ active: model.currentReantingType == 'other' }"
+                    (click)="model.currentReantingType = 'other'"
+                  >
+                    Other
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- <div class="col-md-12">
           <div class="profile-details">
             <p>Address: {{ model.currentAddress }}</p>
             <p>City or Town: {{ model.currentCity }}</p>
@@ -935,7 +1226,7 @@
             <p>When did you start living here?: Jan 2017</p>
             <p>Are you currently renting, or do you own?: Rent</p>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -953,7 +1244,23 @@
       <div class="row">
         <div class="col-md-12">
           <div class="profile-details">
-            <p>Estimated Monthly Expenses: $3,000</p>
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control form-style"
+                placeholder="Estimated Monthly Expenses"
+                [(ngModel)]="model.monthlyExpress"
+                name="monthlyExpress"
+                #monthlyExpressRef="ngModel"
+                required
+              />
+              <div
+                *ngIf="submitted && !monthlyExpressRef.valid"
+                class="text-danger d-flex"
+              >
+                Monthly Expense is required
+              </div>
+            </div>
           </div>
         </div>
       </div>

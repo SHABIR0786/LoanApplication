@@ -105,6 +105,7 @@ export class PostModel {
   currentUnit: string;
   currentCity: string;
   currentStateId: number = 1;
+  currentStateName: string;
   currentZipCode: string;
   currentStartLivingDate: string;
   currentReantingType: string;
@@ -271,6 +272,7 @@ export class RefinancePost {
   "propertyCity": string;
   "propertyZip": string;
   "propertyStateId": number = 1;
+  "propertyStateName": string;
   "propertyCountryId": number;
   "propertyEstimatedValue": number;
   "propertyLoanBalance": number;
@@ -310,6 +312,7 @@ export class RefinancePost {
   "currentUnit": string;
   "currentCity": string;
   "currentStateId": number = 1;
+  "currentStateName": string;
   "currentZipCode": string;
   "currentStartLivingDate": Date;
   "currentReantingType": string;
@@ -336,6 +339,7 @@ export class RefinancePost {
   empAptUnit: string;
   empCity: string;
   empState: number = 1;
+  empStateName: string;
   empZip: string;
   empPhoneNumber: string;
   isCurrentJob: number;
@@ -376,6 +380,7 @@ export class EmployementDetailAdd {
   "employementSuite": string;
   "employementCity": string;
   "employementTaxeId": number;
+  "employementStateName": string;
   "employementZip": string;
   "employerPhoneNumber": string;
   "isCurrentJob": number;

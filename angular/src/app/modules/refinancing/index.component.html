@@ -51,48 +51,113 @@
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                   <ul>
-                    <li class="nav-item nav-link active">
-                      <i class="fas fa-solid fa-circle-check active"></i
+                    <li
+                      class="nav-item nav-link active"
+                      [ngClass]="{ active: a == 0 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 0,
+                          'yes-blue': a == 0
+                        }"
+                      ></i
                       ><span>Welcome</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle yes"></i
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 2 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle yes"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 1,
+                          'yes-blue': a == 1
+                        }"
+                      ></i
                       ><span>Property Info</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle"></i
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 3 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 2,
+                          'yes-blue': a == 2
+                        }"
+                      ></i
                       ><span>Personal Info</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle"></i><span>Income</span>
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 4 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 3,
+                          'yes-blue': a == 3
+                        }"
+                      ></i
+                      ><span>Income</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle"></i><span>Assets</span>
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 5 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 4,
+                          'yes-blue': a == 4
+                        }"
+                      ></i
+                      ><span>Assets</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle"></i
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 6 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 5,
+                          'yes-blue': a == 5
+                        }"
+                      ></i
                       ><span>Government</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
                     </li>
-                    <li class="nav-item nav-link">
-                      <i class="fas fa-solid fa-circle"></i
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 7 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 6,
+                          'yes-blue': a == 6
+                        }"
+                      ></i
                       ><span>Credit Scores</span>
                     </li>
                   </ul>

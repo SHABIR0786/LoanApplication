@@ -36411,7 +36411,7 @@ export class StateServiceProxy {
    * @return Success
    */
   states(): Observable<void> {
-    let url_ = this.baseUrl + "/api/State/states";
+    let url_ = this.baseUrl + "//states";
     url_ = url_.replace(/[?&]$/, "");
 
     let options_: any = {

@@ -84,16 +84,15 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="ssn-details" #f2="ngForm">
       <div class="form-group">
-        <select
-          style="width: 100%"
-          class="form-select form-style"
+        <input
+          type="text"
+          class="form-control form-style"
+          placeholder="Social Security Number"
           [(ngModel)]="model.socialSecurityNumber"
           name="socialSecurityNumber"
           required
           #socialSecurityNumberRef="ngModel"
-        >
-          <option>Social Security Number</option>
-        </select>
+        />
         <div
           *ngIf="submitted && !socialSecurityNumberRef.valid"
           class="text-danger d-flex"

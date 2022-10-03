@@ -83,6 +83,7 @@
               #propertyStateIdRef="ngModel"
               required
               style="width: 100%"
+              (change)="onStateChange($event)"
             >
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
@@ -629,7 +630,6 @@
           <p>City or Town: {{ model.propertyCity }}</p>
           <p>Zip Code: {{ model.propertyZip }}</p>
           <p>State: {{ model.propertyStateName }}</p>
-          <p>County: {{ model.propertyCountryName }}</p>
           <p>Estimated Value: ${{ model.propertyEstimatedValue }}</p>
           <p>Remaining Loan Balance: ${{ model.propertyLoanBalance }}</p>
           <p>Cash Out Amount: ${{ model.propertCashOutAmount }}</p>
