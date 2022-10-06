@@ -134,11 +134,25 @@ export class PropertyInfoComponent implements OnInit {
   calculatePercent() {
     console.log(this.model.downPaymentPercent);
     this.model.downPaymentPercent = String(
+      // Math.round(
       (
         (Number(this.model.downPaymentAmount) /
           Number(this.model.estimatedPrice)) *
         100
-      ).toFixed(3)
+      ).toFixed(1)
+      // )
+    );
+  }
+
+  calculateAmount() {
+    this.model.downPaymentAmount = String(
+      // Math.round(
+      (
+        (Number(this.model.downPaymentPercent) *
+          Number(this.model.estimatedPrice)) /
+        100
+      ).toFixed(1)
+      // )
     );
   }
   editClicked() {

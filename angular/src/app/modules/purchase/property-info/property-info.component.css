@@ -73,3 +73,10 @@
   color: white !important;
   border-color: orange !important;
 }
+#percent-sign {
+  top: 8px;
+  left: 85px;
+  color: #0004;
+  position: absolute;
+  z-index: 1;
+}
