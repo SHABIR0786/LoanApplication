@@ -124,4 +124,10 @@ export class PersonalInfoComponent implements OnInit {
   saveStep() {
     this.offline.saveStep(4, this.model);
   }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.router.navigate(["/app/purchase/personal-info/8"]);
+    }
+  }
 }

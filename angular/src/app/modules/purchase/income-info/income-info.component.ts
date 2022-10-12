@@ -89,4 +89,10 @@ export class IncomeInfoComponent implements OnInit {
       this.submitted = false;
     }
   }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.router.navigate(["/app/purchase/income-info/6"]);
+    }
+  }
 }

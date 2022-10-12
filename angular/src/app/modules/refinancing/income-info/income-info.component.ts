@@ -124,4 +124,11 @@ export class IncomeInfoComponent implements OnInit {
       this.submitted = false;
     }
   }
+  doneClicked(f) {
+    console.log(f);
+    if (f.valid) {
+      this.saveStep();
+      this.router.navigate(["/app/refinance/income/11"]);
+    }
+  }
 }

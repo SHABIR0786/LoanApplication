@@ -218,6 +218,8 @@
               required
               (change)="onStateChange($event)"
             >
+              <option value="undefined" selected disabled>State</option>
+
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -613,25 +615,21 @@
 
 <!-- section 21A starts -->
 <div class="main-content" *ngIf="number == 7">
-  <h2>Let's take a few seconds to review and confirm your info again.</h2>
-  <div class="content-area text-center">
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Borrower Information</h6>
+  <form action="" id="address" #f7="ngForm">
+    <h2>Let's take a few seconds to review and confirm your info again.</h2>
+    <div class="content-area text-center">
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <a (click)="doneClicked(f7)" type="button" class="btn" id="btn-edit"
+            >Done</a
+          >
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <a
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-          >Done</a
-        >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <form action="" id="address">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -660,14 +658,7 @@
                 [(ngModel)]="model.propertyMiddleInitial"
                 name="propertyMiddleInitial"
                 #propertyMiddleInitialRef="ngModel"
-                required
               />
-              <div
-                *ngIf="!propertyMiddleInitialRef.valid"
-                class="text-danger d-flex"
-              >
-                Middle Initial is required
-              </div>
             </div>
           </div>
           <input
@@ -693,9 +684,15 @@
             name="propertyPhoneNumber"
             #propertyPhoneNumberRef="ngModel"
             required
+            minlength="11"
           />
-          <div *ngIf="!propertyPhoneNumberRef.valid" class="text-danger d-flex">
-            Phone Number is required
+          <div class="text-danger d-flex">
+            <div *ngIf="propertyPhoneNumberRef.errors?.minlength">
+              This is not a valid phone number
+            </div>
+            <div *ngIf="propertyPhoneNumberRef.errors?.required">
+              Phone is required
+            </div>
           </div>
           <input
             type="email"
@@ -705,136 +702,153 @@
             name="propertyEmailAddress"
             #propertyEmailAddressRef="ngModel"
             required
+            pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
           />
-          <div
-            *ngIf="!propertyEmailAddressRef.valid"
-            class="text-danger d-flex"
-          >
-            Email Address is required
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Borrower Information</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <div class="button-list col-lg-12">
-          <p class="edit-info">Did someone refer you to EZ Online Mortgage?</p>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="refer-yes"
-            (click)="model.isSomeoneRefer = 1; saveStep()"
-            [class.blue-active]="model.isSomeoneRefer == 1"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="refer-no"
-            (click)="model.isSomeoneRefer = 0; saveStep()"
-            [class.blue-active]="model.isSomeoneRefer == 0"
-          >
-            No
-          </button>
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="That’s make us happy! Who refered us?"
-            [(ngModel)]="model.refferedBy"
-          />
-
-          <p class="edit-info">Is the co-borrower your legal spouse?</p>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="spouse-yes"
-            (click)="model.isLegalSpouse = 1; saveStep()"
-            [class.blue-active]="model.isLegalSpouse == 1"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="spouse-no"
-            (click)="model.isLegalSpouse = 0; saveStep()"
-            [class.blue-active]="model.isLegalSpouse == 0"
-          >
-            No
-          </button>
-
-          <p class="edit-info">
-            How many dependents will be living in your home?
-          </p>
-
-          <div class="narrow-space">
-            <div class="row">
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-minus">-</button>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <h1>{{ deps }}</h1>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-plus">+</button>
-              </div>
+          <div class="text-danger d-flex">
+            <div *ngIf="propertyEmailAddressRef.errors?.pattern">
+              This is not a valid email address
+            </div>
+            <div *ngIf="propertyEmailAddressRef.errors?.required">
+              Email is required
             </div>
           </div>
-
-          <input
-            type="text"
-            class="form-control form-style margin-top"
-            placeholder="First dependent’s age"
-          />
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Borrower Residence</h6>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f7)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
+            <p class="edit-info">
+              Did someone refer you to EZ Online Mortgage?
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="refer-yes"
+              (click)="model.isSomeoneRefer = 1; saveStep()"
+              [class.blue-active]="model.isSomeoneRefer == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="refer-no"
+              (click)="model.isSomeoneRefer = 0; saveStep()"
+              [class.blue-active]="model.isSomeoneRefer == 0"
+            >
+              No
+            </button>
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="That’s make us happy! Who refered us?"
+              [(ngModel)]="model.refferedBy"
+            />
 
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <div class="button-list col-lg-12">
-          <form action="" id="address">
+            <p class="edit-info">Is the co-borrower your legal spouse?</p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="spouse-yes"
+              (click)="model.isLegalSpouse = 1; saveStep()"
+              [class.blue-active]="model.isLegalSpouse == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="spouse-no"
+              (click)="model.isLegalSpouse = 0; saveStep()"
+              [class.blue-active]="model.isLegalSpouse == 0"
+            >
+              No
+            </button>
+
+            <p class="edit-info">
+              How many dependents will be living in your home?
+            </p>
+
+            <div class="narrow-space">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-minus"
+                    (click)="minDep()"
+                  >
+                    -
+                  </button>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <h1>{{ deps }}</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-plus"
+                    (click)="maxDep()"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <input
+              type="text"
+              class="form-control form-style margin-top"
+              placeholder="First dependent’s age"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Borrower Residence</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f7)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
             <div class="form-group">
               <input
                 type="text"
@@ -890,6 +904,7 @@
                     name="currentState"
                     #currentStateRef="ngModel"
                     required
+                    (change)="onStateChange($event)"
                   >
                     <option *ngFor="let s of states" [value]="s.id">
                       {{ s.stateName }}
@@ -938,78 +953,80 @@
             >
               Start date is required
             </div>
-          </form>
 
-          <p>Are you currently reanting , or do you own?</p>
-          <div class="row">
-            <div class="col-md-6 offset-md-3">
-              <div class="row margin-top margin-right-btn">
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'own'"
-                    [ngClass]="{ active: model.currentReantingType === 'own' }"
-                  >
-                    Own
-                  </button>
-                </div>
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'rent'"
-                    [ngClass]="{ active: model.currentReantingType === 'rent' }"
-                  >
-                    Rent
-                  </button>
-                </div>
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'other'"
-                    [ngClass]="{
-                      active: model.currentReantingType === 'other'
-                    }"
-                  >
-                    Other
-                  </button>
+            <p>Are you currently reanting , or do you own?</p>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="row margin-top margin-right-btn">
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'own'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'own'
+                      }"
+                    >
+                      Own
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'rent'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'rent'
+                      }"
+                    >
+                      Rent
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'other'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'other'
+                      }"
+                    >
+                      Other
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Monthly Expenses</h6>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Monthly Expenses</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f7)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <div class="button-list col-lg-12">
-          <form action="" id="expense">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
             <input
               type="text"
               class="form-control form-style"
@@ -1025,33 +1042,31 @@
             >
               Estimated Monthly Expenses is required
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Co-borrower Information</h6>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Co-borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f7)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <form action="" id="address">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -1136,35 +1151,33 @@
               Email Address is required
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Co-Borrower Residence</h6>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Co-Borrower Residence</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f7)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/personal-info/6"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <div class="button-list col-lg-12">
-          <form action="" id="address">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
             <div class="form-group">
               <input
                 type="text"
@@ -1219,7 +1232,10 @@
                     #currentStateRef="ngModel"
                     [(ngModel)]="model.currentState"
                     required
+                    (change)="onStateChange($event)"
                   >
+                    <option value="undefined" selected disabled>State</option>
+
                     <option *ngFor="let s of states" [value]="s.id">
                       {{ s.stateName }}
                     </option>
@@ -1269,125 +1285,143 @@
                 Start date is required
               </div>
             </div>
-          </form>
 
-          <p>Is the Co-borrower currently renting, or do they own?</p>
+            <p>Is the Co-borrower currently renting, or do they own?</p>
 
-          <div class="row">
-            <div class="col-md-6 offset-md-3">
-              <div class="row margin-top margin-right-btn">
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'own'"
-                    [ngClass]="{ active: model.currentReantingType == 'own' }"
-                  >
-                    Own
-                  </button>
-                </div>
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'rent'"
-                    [ngClass]="{ active: model.currentReantingType == 'rent' }"
-                  >
-                    Rent
-                  </button>
-                </div>
-                <div class="col-md-4">
-                  <button
-                    type="button"
-                    class="btn"
-                    id="btn-rent"
-                    (click)="model.currentReantingType = 'other'"
-                    [ngClass]="{ active: model.currentReantingType == 'other' }"
-                  >
-                    Other
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p class="edit-info margin-top">
-            Are you a current or former member of the US Military?
-          </p>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            (click)="milClick(true)"
-            [class.blue-active]="model.isMilitaryMember == 1"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            (click)="milClick(false)"
-            [class.blue-active]="model.isMilitaryMember == 0"
-          >
-            No
-          </button>
-          <p class="edit-info">
-            How many dependents will be living in your home?
-          </p>
-
-          <div class="narrow-space">
             <div class="row">
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-minus">-</button>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <h1>{{ deps }}</h1>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-plus">+</button>
+              <div class="col-md-6 offset-md-3">
+                <div class="row margin-top margin-right-btn">
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'own'"
+                      [ngClass]="{ active: model.currentReantingType == 'own' }"
+                    >
+                      Own
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'rent'"
+                      [ngClass]="{
+                        active: model.currentReantingType == 'rent'
+                      }"
+                    >
+                      Rent
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'other'"
+                      [ngClass]="{
+                        active: model.currentReantingType == 'other'
+                      }"
+                    >
+                      Other
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <input
-            type="text"
-            class="form-control form-style margin-top"
-            placeholder="First dependent’s age"
-          />
+            <p class="edit-info margin-top">
+              Are you a current or former member of the US Military?
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              (click)="milClick(true)"
+              [class.blue-active]="model.isMilitaryMember == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              (click)="milClick(false)"
+              [class.blue-active]="model.isMilitaryMember == 0"
+            >
+              No
+            </button>
+            <p class="edit-info">
+              How many dependents will be living in your home?
+            </p>
+
+            <div class="narrow-space">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-minus"
+                    (click)="minDep()"
+                  >
+                    -
+                  </button>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <h1>{{ deps }}</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-plus"
+                    (click)="maxDep()"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <input
+              type="text"
+              class="form-control form-style margin-top"
+              placeholder="First dependent’s age"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a
-          routerLink="/app/refinance/personal-info/5"
-          type="button"
-          class="btn"
-          id="btn-back-blue"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <a
-          routerLink="/app/refinance/personal-info/8"
-          type="button"
-          class="btn"
-          id="btn-next-blue"
-          >Next</a
-        >
+    <div
+      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    >
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <a
+            routerLink="/app/refinance/personal-info/5"
+            type="button"
+            class="btn"
+            id="btn-back-blue"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a
+            routerLink="/app/refinance/personal-info/8"
+            type="button"
+            class="btn"
+            id="btn-next-blue"
+            >Next</a
+          >
+        </div>
       </div>
     </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+    <div class="content-footer">
+      <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
 
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </form>
 </div>
 <!-- section 21A ends -->
 

@@ -125,4 +125,10 @@ export class PropertyInfoComponent implements OnInit {
     this.model.objectiveReason = obj;
     this.saveStep();
   }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/property-info/9"]);
+    }
+  }
 }

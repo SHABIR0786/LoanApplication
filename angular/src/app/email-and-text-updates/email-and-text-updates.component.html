@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="container">
-      <form action="##">
+      <form action="" id="personal" #f="ngForm">
         <div class="row">
           <div class="col-sm-12 form-group mb-1 ml-3">
             <input
@@ -106,12 +106,22 @@
           <div class="col-sm-4 form-group mb-3">
             <label class="text-primary" for="EmaillAddress">Your email</label>
             <input
-              value=""
               type="email"
               class="form-control"
               name="EmaillAddress"
               id="EmaillAddress"
+              placeholder="Email Address"
+              [(ngModel)]="email"
+              required
+              #emailRef="ngModel"
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
             />
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="emailRef.errors?.pattern">
+                This is not a valid email address
+              </div>
+              <div *ngIf="emailRef.errors?.required">Email is required</div>
+            </div>
           </div>
           <p class="col-sm-12 form-group text-muted">
             Click <a href="##" class="text-underline text-muted">here</a> to
@@ -163,12 +173,29 @@
           <div class="col-sm-4 form-group mb-3">
             <label class="text-primary" for="Phonenumber">Phone number</label>
             <input
-              value=""
-              type="email"
+              type="text"
               class="form-control"
               name="Phonenumber"
               id="Phonenumber"
+              placeholder="Phone Number"
+              [(ngModel)]="phone"
+              required
+              #phoneRef="ngModel"
+              appPhoneMask
+              minlength="11"
             />
+            <!-- <div
+              *ngIf="submitted && !phoneRef.valid"
+              class="text-danger d-flex"
+            >
+              Phone Number is required
+          </div> -->
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="phoneRef.errors?.minlength">
+                This is not a valid phone number
+              </div>
+              <div *ngIf="phoneRef.errors?.required">Phone is required</div>
+            </div>
           </div>
           <div class="col-sm-12 form-group my-4 mx-0 text-muted">
             <p>
@@ -195,6 +222,7 @@
             <button
               class="btn btn-secondary text-white text-uppercase w-fit-content"
               type="submit"
+              (click)="signUpClicked(f)"
             >
               Sign Me Up
             </button>

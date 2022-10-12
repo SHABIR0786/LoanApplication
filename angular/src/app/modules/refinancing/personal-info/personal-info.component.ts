@@ -95,4 +95,10 @@ export class PersonalInfoComponent implements OnInit {
     this.model.isMilitaryMember = obj == true ? 1 : 0;
     this.saveStep();
   }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/personal-info/6"]);
+    }
+  }
 }

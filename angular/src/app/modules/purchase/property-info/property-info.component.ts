@@ -36,6 +36,10 @@ export class PropertyInfoComponent implements OnInit {
   }
   ngOnInit() {
     this.getStates();
+    console.log(this.model.newHomeStateName);
+    if (this.model.newHomeStateName) {
+      this.getStateById(this.model.newHomeState);
+    }
     this.getCities();
     this.model = this.offline.getStep().data;
   }
@@ -54,20 +58,7 @@ export class PropertyInfoComponent implements OnInit {
     this.api.get("State/states").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
-        console.log(this.model.newHomeState);
-        this.model.empState = "1";
-        this.model.currentStateId = 1;
-
-        // this.model.newHomeState = "1";
-        // this.model.newHomeState = x.result[0].id;
-      }
-    });
-  }
-  getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this.state = x.result;
-        console.log(this.state);
+        // console.log(this.model.newHomeState);
         // this.model.empState = "1";
         // this.model.currentStateId = 1;
 
@@ -84,10 +75,25 @@ export class PropertyInfoComponent implements OnInit {
 
   onStateChange(event) {
     console.log(event.target.value);
-    this.states.forEach((element) => {
-      if (element.id == event.target.value) {
-        this.model.newHomeStateName = element.stateName;
+    this.getStateById(event.target.value);
+
+    // this.states.forEach((element) => {
+    //   if (element.id == event.target.value) {
+    //     this.model.newHomeStateName = element.stateName;
+    //     console.log(this.model.newHomeStateName);
+    //   }
+    // });
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.model.newHomeStateName = x.result.stateName;
         console.log(this.model.newHomeStateName);
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
       }
     });
   }
@@ -170,5 +176,11 @@ export class PropertyInfoComponent implements OnInit {
     // document
     //   .getElementById("property-" + this.model.homePlan)
     //   .classList.add("active");
+  }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.isEdit = false;
+    }
   }
 }

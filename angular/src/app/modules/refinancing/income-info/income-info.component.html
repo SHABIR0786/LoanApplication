@@ -68,6 +68,8 @@
               required
               (change)="onStateChange($event)"
             >
+              <option value="undefined" selected disabled>State</option>
+
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -317,7 +319,10 @@
               name="empState"
               #empStateRef="ngModel"
               required
+              (change)="onStateChange($event)"
             >
+              <option value="undefined" selected disabled>State</option>
+
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -360,12 +365,15 @@
           #empPhoneNumberRef="ngModel"
           appPhoneMask
           required
+          minlength="11"
         />
-        <div
-          *ngIf="submitted && !empPhoneNumberRef.valid"
-          class="text-danger d-flex"
-        >
-          Phone Number is required
+        <div class="text-danger d-flex">
+          <div *ngIf="empPhoneNumberRef.errors?.minlength">
+            This is not a valid phone number
+          </div>
+          <div *ngIf="empPhoneNumberRef.errors?.required">
+            Phone is required
+          </div>
         </div>
       </div>
       <div class="radio-input">
@@ -907,10 +915,10 @@
           <p>Estimated End Date: 02/23/2017</p>
           <p>Years in the co-borrower's profession: 4</p>
           <p>Job Title: {{ model.jobTitle }}</p>
-          <p>Estimated Annual Base Salary: ${{ model.estAnualBaseSalary }}</p>
-          <p>Estimated Annual Bonus: ${{ model.estAnualBonus }}</p>
-          <p>Estimated Annual Commission: ${{ model.estAnualCommision }}</p>
-          <p>Estimated Annual Overtime: ${{ estAnualOverTime }}</p>
+          <p>Estimated Annual Base Salary: ${{ model.estAnnualBaseSalary }}</p>
+          <p>Estimated Annual Bonus: ${{ model.estAnnualBonus }}</p>
+          <p>Estimated Annual Commission: ${{ model.estAnnualCommision }}</p>
+          <p>Estimated Annual Overtime: ${{ model.estAnnualOverTime }}</p>
         </div>
       </div>
     </div>
@@ -976,26 +984,21 @@
 
 <!-- section 32A starts -->
 <div class="main-content" *ngIf="number == 12">
-  <h2>Let's do a quick review of your income. Look good?</h2>
-  <div class="content-area">
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Co-borrower Employment</h6>
+  <form action="" id="address" #f12="ngForm">
+    <h2>Let's do a quick review of your income. Look good?</h2>
+    <div class="content-area">
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Co-borrower Employment</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <a type="button" class="btn" (click)="doneClicked(f12)" id="btn-edit"
+            >Done</a
+          >
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <a
-          routerLink="/app/refinance/income/11"
-          type="button"
-          class="btn"
-          (click)="savestep()"
-          id="btn-edit"
-          >Done</a
-        >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10 offset-md-1 margin-top">
-        <form action="" id="employer-details">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 margin-top">
           <div class="form-group">
             <select
               style="width: 100%"
@@ -1072,6 +1075,7 @@
                   name="empState"
                   #empStateRef="ngModel"
                   required
+                  (change)="onStateChange($event)"
                 >
                   <option *ngFor="let s of states" [value]="s.id">
                     {{ s.stateName }}
@@ -1109,9 +1113,15 @@
               #empPhoneNumberRef="ngModel"
               appPhoneMask
               required
+              minlength="11"
             />
-            <div *ngIf="!empPhoneNumberRef.valid" class="text-danger d-flex">
-              Phone Number is required
+            <div class="text-danger d-flex">
+              <div *ngIf="empPhoneNumberRef.errors?.minlength">
+                This is not a valid phone number
+              </div>
+              <div *ngIf="empPhoneNumberRef.errors?.required">
+                Phone is required
+              </div>
             </div>
           </div>
           <div class="radio-input">
@@ -1121,6 +1131,7 @@
                   type="checkbox"
                   class="form-style"
                   [(ngModel)]="model.isCurrentJob"
+                  name="isCurrentJob"
                   placeholder=""
                 />
                 <p>This is my Current Job</p>
@@ -1224,33 +1235,30 @@
               Estimated Annual Overtime is required
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Co-borrower Other Income</h6>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Co-borrower Other Income</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button
+            (click)="doneClicked(f12)"
+            type="button"
+            class="btn"
+            id="btn-edit"
+          >
+            Done
+          </button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button
-          (click)="savestep()"
-          routerLink="/app/refinance/income/11"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Done
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10 offset-md-1 margin-top">
-        <form action="" id="">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 margin-top">
           <div class="form-group">
             <select
               class="form-control form-style"
@@ -1282,41 +1290,41 @@
               Monthly Amount is required
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <button
-          type="button"
-          class="btn"
-          routerLink="/app/refinance/income/11"
-          id="btn-back-blue"
-        >
-          Back
-        </button>
-      </div>
-      <div class="col-md-2">
-        <button
-          type="button"
-          class="btn"
-          (click)="savestep()"
-          routerLink="/app/refinance/assets-info/1"
-          id="btn-next-blue"
-        >
-          Next
-        </button>
+    <div
+      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    >
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <button
+            type="button"
+            class="btn"
+            routerLink="/app/refinance/income/11"
+            id="btn-back-blue"
+          >
+            Back
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button
+            type="button"
+            class="btn"
+            (click)="savestep()"
+            routerLink="/app/refinance/assets-info/1"
+            id="btn-next-blue"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+    <div class="content-footer">
+      <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
 
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </form>
 </div>
 <!-- section 32A ends -->

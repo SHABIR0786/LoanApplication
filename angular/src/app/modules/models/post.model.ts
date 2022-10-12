@@ -7,8 +7,8 @@ export class PostModel {
   newHomeAddress: string;
   newHomeUnit: string;
   newHomeCityTown: string;
-  newHomeState: string = "1";
-  newHomeStateName: string = "";
+  newHomeState: string;
+  newHomeStateName: string;
   newHomeZip: string;
   contractDate: string;
   propertyOption1: string;
@@ -271,7 +271,7 @@ export class RefinancePost {
   "propertyUnit": string;
   "propertyCity": string;
   "propertyZip": string;
-  "propertyStateId": number = 1;
+  "propertyStateId": number;
   "propertyStateName": string;
   "propertyCountryId": number;
   "propertyEstimatedValue": number;

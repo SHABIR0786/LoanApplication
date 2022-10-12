@@ -80,12 +80,14 @@
           required
           #personalPhoneNumberRef="ngModel"
           appPhoneMask
+          minlength="11"
         />
-        <div
-          *ngIf="submitted && !personalPhoneNumberRef.valid"
-          class="text-danger d-flex"
-        >
-          Phone Number is required
+
+        <div *ngIf="submitted" class="text-danger d-flex">
+          <div *ngIf="phoneRef.errors?.minlength">
+            This is not a valid phone number
+          </div>
+          <div *ngIf="phoneRef.errors?.required">Phone is required</div>
         </div>
       </div>
       <div class="form-group">
@@ -480,7 +482,7 @@
               style="width: 100%"
               (change)="onStateChange($event)"
             >
-              <option>State</option>
+              <option value="undefined" selected disabled>State</option>
               <option [value]="s.id" *ngFor="let s of states">
                 {{ s.stateName }}
               </option>
@@ -796,12 +798,7 @@
           <h6>Borrower Information</h6>
         </div>
         <div class="col-md-4 right-align">
-          <a
-            routerLink="/app/purchase/personal-info/8"
-            class="btn"
-            id="btn-edit"
-            >Done</a
-          >
+          <a (click)="doneClicked(f9)" class="btn" id="btn-edit">Done</a>
         </div>
       </div>
       <div class="row">
@@ -909,9 +906,9 @@
         <div class="col-md-8">
           <h6>Borrower Information</h6>
         </div>
-        <div class="col-md-4 right-align">
+        <!-- <div class="col-md-4 right-align">
           <button type="button" class="btn" id="btn-edit">Edit</button>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-lg-12 margin-top">
@@ -977,7 +974,6 @@
             <p class="edit-info">What’s your current marital status</p>
 
             <a
-              routerLink="/app/purchase/personal-info/5"
               (click)="maritalClick('unmarried')"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               [class.orange-active]="model.maritialStatus == 'unmarried'"
@@ -985,7 +981,6 @@
             >
 
             <a
-              routerLink="/app/purchase/personal-info/5"
               (click)="maritalClick('married')"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               [class.orange-active]="model.maritialStatus == 'married'"
@@ -993,7 +988,6 @@
             >
 
             <a
-              routerLink="/app/purchase/personal-info/5"
               (click)="maritalClick('seperated')"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               [class.orange-active]="model.maritialStatus == 'seperated'"
@@ -1011,22 +1005,36 @@
             <div class="narrow-space">
               <div class="row">
                 <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                  <button type="button" class="btn" id="btn-minus">-</button>
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-minus"
+                    (click)="onDepMinClick()"
+                  >
+                    -
+                  </button>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
                   <h1>{{ dependents }}</h1>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                  <button type="button" class="btn" id="btn-plus">+</button>
+                  <button
+                    type="button"
+                    class="btn"
+                    id="btn-plus"
+                    (click)="onDepPlusClick()"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>
 
-            <input
+            <!-- <input
               type="text"
               class="form-control form-style margin-top"
               placeholder="First dependent’s age"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -1053,12 +1061,13 @@
         <div class="col-md-8">
           <h6>Borrower Residence</h6>
         </div>
-        <div class="col-md-4 right-align">
+        <!-- <div class="col-md-4 right-align">
           <button type="button" class="btn" id="btn-edit">Edit</button>
-        </div>
+        </div> -->
       </div>
       <div class="row">
-        <form action="" id="personal-address" #f6="ngForm">
+        <!-- <form action="" id="personal-address" #f6="ngForm"> -->
+        <div class="col-md-10">
           <div class="form-group">
             <input
               type="text"
@@ -1076,6 +1085,7 @@
               Address is required
             </div>
           </div>
+
           <div class="form-group">
             <input
               type="text"
@@ -1123,8 +1133,9 @@
                   #currentStateIdRef="ngModel"
                   required
                   style="width: 100%"
+                  (change)="onStateChange($event)"
                 >
-                  <option>State</option>
+                  <option value="undefined" selected disabled>State</option>
                   <option [value]="s.id" *ngFor="let s of states">
                     {{ s.stateName }}
                   </option>
@@ -1174,11 +1185,12 @@
               Start living date is required
             </div>
           </div>
-
-          <p>Are you currently reanting , or do you own?</p>
+          <div class="button-list">
+            <p class="edit-info">Are you currently reanting , or do you own?</p>
+          </div>
 
           <div class="row">
-            <div class="col-md-4 offset-md-3">
+            <div class="col-md-5 offset-md-3">
               <div class="row margin-top margin-right-btn">
                 <div class="col-md-4">
                   <button
@@ -1216,8 +1228,8 @@
               </div>
             </div>
           </div>
-        </form>
-        <!-- <div class="col-md-12">
+          <!-- </form> -->
+          <!-- <div class="col-md-12">
           <div class="profile-details">
             <p>Address: {{ model.currentAddress }}</p>
             <p>City or Town: {{ model.currentCity }}</p>
@@ -1227,6 +1239,7 @@
             <p>Are you currently renting, or do you own?: Rent</p>
           </div>
         </div> -->
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -1237,12 +1250,12 @@
         <div class="col-md-8">
           <h6>Monthly Expenses</h6>
         </div>
-        <div class="col-md-4 right-align">
-          <button type="button" class="btn" id="btn-edit">Edit</button>
-        </div>
+        <!-- <div class="col-md-4 right-align">
+            <button type="button" class="btn" id="btn-edit">Edit</button>
+          </div> -->
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
           <div class="profile-details">
             <div class="form-group">
               <input

@@ -212,7 +212,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10">
-          <form action="#">
+          <form action="" id="personal" #f="ngForm">
             <div class="row">
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="MortgagePurpose"
@@ -223,72 +223,127 @@
                   class="form-control"
                   id="MortgagePurpose"
                   name="MortgagePurpose"
+                  [(ngModel)]="form.purpose"
+                  required
+                  #purposeRef="ngModel"
                 >
                   <option>x</option>
                   <option>y</option>
                   <option>z</option>
                 </select>
+                <div
+                  *ngIf="submitted && !purposeRef.valid"
+                  class="text-danger d-flex"
+                >
+                  Purpose is required
+                </div>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="borrow"
                   >How much do you want to borrow?</label
                 >
                 <input
-                  value=""
-                  type="text"
+                  type="number"
                   class="form-control"
                   name="Borrow"
                   id="borrow"
+                  [(ngModel)]="form.amt_to_borrow"
+                  required
+                  #amtToBorrowRef="ngModel"
                 />
+                <div
+                  *ngIf="submitted && !amtToBorrowRef.valid"
+                  class="text-danger d-flex"
+                >
+                  Amount is required
+                </div>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="firstName">First name</label>
                 <input
-                  value=""
                   type="text"
                   class="form-control"
                   name="FirstName"
                   id="firstName"
+                  [(ngModel)]="form.first_name"
+                  required
+                  #first_nameRef="ngModel"
                 />
+                <div
+                  *ngIf="submitted && !first_nameRef.valid"
+                  class="text-danger d-flex"
+                >
+                  First name is required
+                </div>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="lastName">Last name</label>
                 <input
-                  value=""
                   type="text"
                   class="form-control"
                   name="LastName"
                   id="lastName"
+                  [(ngModel)]="form.last_name"
+                  required
+                  #last_nameRef="ngModel"
                 />
+                <div
+                  *ngIf="submitted && !last_nameRef.valid"
+                  class="text-danger d-flex"
+                >
+                  Last name is required
+                </div>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="EmaillAddress"
                   >Your email</label
                 >
                 <input
-                  value=""
                   type="email"
                   class="form-control"
                   name="EmaillAddress"
                   id="EmaillAddress"
+                  placeholder="Email Address"
+                  [(ngModel)]="form.email"
+                  required
+                  #emailRef="ngModel"
+                  pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
                 />
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="emailRef.errors?.pattern">
+                    This is not a valid email address
+                  </div>
+                  <div *ngIf="emailRef.errors?.required">Email is required</div>
+                </div>
               </div>
               <div class="col-sm-4 form-group">
                 <label class="text-primary" for="phoneNumber"
                   >Phone number</label
                 >
                 <input
-                  value=""
                   type="text"
                   class="form-control"
                   name="PhoneNumber"
                   id="phoneNumber"
+                  placeholder="Phone Number"
+                  [(ngModel)]="form.phone"
+                  required
+                  #phoneRef="ngModel"
+                  appPhoneMask
+                  minlength="11"
                 />
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="phoneRef.errors?.minlength">
+                    This is not a valid phone number
+                  </div>
+                  <div *ngIf="phoneRef.errors?.required">Phone is required</div>
+                </div>
               </div>
               <div class="col-sm-4 form-group m-0">
                 <button
                   class="btn btn-secondary text-white text-uppercase w-fit-content"
                   type="submit"
+                  (click)="submit(f)"
                 >
                   Submit
                 </button>

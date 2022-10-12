@@ -524,7 +524,9 @@
         [(ngModel)]="model.govQ15"
         style="width: 100%"
       >
-        <option value="0">-What is your citizenship status?-</option>
+        <option value="undefined" selected disabled>
+          -What is your citizenship status?-
+        </option>
         <option value="1">U.S. Citizen</option>
         <option value="2">Permanent Resident Alien</option>
         <option value="3">Non-Permanent Resident Alien</option>
