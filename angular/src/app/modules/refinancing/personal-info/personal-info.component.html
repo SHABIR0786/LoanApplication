@@ -685,6 +685,7 @@
             #propertyPhoneNumberRef="ngModel"
             required
             minlength="11"
+            appPhoneMask
           />
           <div class="text-danger d-flex">
             <div *ngIf="propertyPhoneNumberRef.errors?.minlength">
@@ -906,6 +907,8 @@
                     required
                     (change)="onStateChange($event)"
                   >
+                    <option value="undefined" selected disabled>State</option>
+
                     <option *ngFor="let s of states" [value]="s.id">
                       {{ s.stateName }}
                     </option>

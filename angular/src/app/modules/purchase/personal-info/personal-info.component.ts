@@ -79,8 +79,14 @@ export class PersonalInfoComponent implements OnInit {
       this.saveStep();
     }
   }
-  referClick(e: boolean) {
-    this.model.isSomeOneRefer = e ? 1 : 0;
+  referClick(e) {
+    if (e == "true") {
+      this.model.isSomeOneRefer = 1;
+    } else {
+      this.model.isSomeOneRefer = 0;
+    }
+    // this.model.isSomeOneRefer = e ? 1 : 0;
+    console.log(this.model.isSomeOneRefer);
     this.saveStep();
   }
   maritalClick(e: string) {

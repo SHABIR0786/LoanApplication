@@ -311,7 +311,7 @@ export class RefinancePost {
   "currentAddress": string;
   "currentUnit": string;
   "currentCity": string;
-  "currentStateId": number = 1;
+  "currentStateId": number;
   "currentStateName": string;
   "currentZipCode": string;
   "currentStartLivingDate": Date;
@@ -362,9 +362,9 @@ export class RefinancePost {
   "ethnicity": string;
   "race": string;
   "citizenshipId": number;
-  "isCertify": number;
-  "isReadEconsent": number;
-  "isReadThirdPartyConsent": number;
+  "isCertify": boolean;
+  "isReadEconsent": boolean;
+  "isReadThirdPartyConsent": boolean;
   "socialSecurityNumber": string;
   "conformSsn": string;
   "birthDate": Date;

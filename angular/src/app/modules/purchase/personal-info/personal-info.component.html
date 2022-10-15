@@ -231,7 +231,7 @@
       type="button"
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
-      (click)="referClick(true)"
+      (click)="model.isSomeoneRefer = 1; saveStep()"
       [class.orange-active]="model.isSomeOneRefer == 1"
       >Yes</a
     >
@@ -239,7 +239,7 @@
       type="button"
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
-      (click)="referClick(false)"
+      (click)="model.isSomeoneRefer = 0; saveStep()"
       [class.orange-active]="model.isSomeOneRefer == 0"
       >No</a
     >
@@ -915,6 +915,7 @@
           <div class="button-list col-lg-12">
             <p class="edit-info">
               Did someone refer you to EZ Online Mortgage?
+              {{ model.isSomeoneRefer }}
             </p>
             <button
               type="button"
@@ -939,6 +940,7 @@
               class="form-control col-md-6 form-style offset-lg-3"
               placeholder="That’s make us happy! Who refered us?"
               [(ngModel)]="model.refferedBy"
+              name="refferedBy"
             />
             <div class="row">
               <div class="col-md-12">
@@ -952,8 +954,8 @@
               type="button"
               class="btn btn-primary btn-style btn-blue offset-lg-3"
               id="spouse-yes"
-              (click)="model.isLegalSpouse = 1; saveStep()"
-              [class.orange-active]="model.isLegalSpouse == 1"
+              (click)="model.isApplyOwn = 1; saveStep()"
+              [class.orange-active]="model.isApplyOwn == 1"
             >
               Yes
             </button>
@@ -961,8 +963,8 @@
               type="button"
               class="btn btn-primary btn-style btn-blue offset-lg-3"
               id="spouse-no"
-              (click)="model.isLegalSpouse = 0; saveStep()"
-              [class.orange-active]="model.isLegalSpouse == 0"
+              (click)="model.isApplyOwn = 0; saveStep()"
+              [class.orange-active]="model.isApplyOwn == 0"
             >
               No
             </button>
