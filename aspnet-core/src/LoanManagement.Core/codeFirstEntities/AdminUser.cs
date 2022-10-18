@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class AdminUser
+    public partial class AdminUser:Entity<int>
     {
         public AdminUser()
         {
@@ -13,7 +14,6 @@ namespace LoanManagement.codeFirstEntities
             AdminUsernotifications = new HashSet<AdminUsernotification>();
         }
 
-        public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

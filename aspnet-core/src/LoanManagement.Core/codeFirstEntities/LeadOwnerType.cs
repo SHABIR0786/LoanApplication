@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadOwnerType
+    public partial class LeadOwnerType:Entity<int>
     {
-        public int Id { get; set; }
         public string OwnerType { get; set; }
     }
 }

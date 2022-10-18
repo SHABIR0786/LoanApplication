@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class AdminUsernotification
+    public partial class AdminUsernotification:Entity<int>
     {
-        public int Id { get; set; }
+       
         public int UserId { get; set; }
         public int NotificationTypeId { get; set; }
         public DateTime? Date { get; set; }

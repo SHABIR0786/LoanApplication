@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class State
+    public partial class State:Entity<int>
     {
         public State()
         {
@@ -11,7 +12,7 @@ namespace LoanManagement.codeFirstEntities
             Manualassetentries = new HashSet<Manualassetentry>();
         }
 
-        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public virtual ICollection<Address> Addresses { get; set; }

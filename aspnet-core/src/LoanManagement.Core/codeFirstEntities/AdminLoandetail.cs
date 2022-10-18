@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class AdminLoandetail
+    public partial class AdminLoandetail:Entity<int>
     {
         public AdminLoandetail()
         {
@@ -11,7 +12,6 @@ namespace LoanManagement.codeFirstEntities
             AdminLoansummarystatuses = new HashSet<AdminLoansummarystatus>();
         }
 
-        public int Id { get; set; }
         public int UserId { get; set; }
         public int LoanApplicationId { get; set; }
         public string LoanNo { get; set; }

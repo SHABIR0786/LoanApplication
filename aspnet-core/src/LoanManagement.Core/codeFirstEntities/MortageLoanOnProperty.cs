@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class MortageLoanOnProperty
+    public partial class MortageLoanOnProperty:Entity<int>
     {
-        public int Id { get; set; }
         public int? ApplicationFinancialRealEstateId { get; set; }
         public string CreditorName3a9 { get; set; }
         public string AccountNumber3a10 { get; set; }

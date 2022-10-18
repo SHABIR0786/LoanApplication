@@ -22,7 +22,7 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<Additionaldetail> Additionaldetails { get; set; }
         public virtual DbSet<Additionalincome> Additionalincomes { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<AdminDisclosure> AdminDisclosures { get; set; }
+        public virtual DbSet<AdminDisclosure> Admindisclosures { get; set; }
         public virtual DbSet<AdminLoanapplicationdocument> AdminLoanapplicationdocuments { get; set; }
         public virtual DbSet<AdminLoandetail> AdminLoandetails { get; set; }
         public virtual DbSet<AdminLoanprogram> AdminLoanprograms { get; set; }

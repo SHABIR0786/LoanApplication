@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadApplicationDetailRefinancing
+    public partial class LeadApplicationDetailRefinancing:Entity<int>
     {
-        public int Id { get; set; }
         public ulong? IsWorkingWithEzalready { get; set; }
         public string WorkingOfficerName { get; set; }
         public string ObjectiveReason { get; set; }

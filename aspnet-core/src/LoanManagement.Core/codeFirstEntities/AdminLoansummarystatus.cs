@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class AdminLoansummarystatus
+    public partial class AdminLoansummarystatus:Entity<int>
     {
-        public int Id { get; set; }
         public int LoanId { get; set; }
         public int StatusId { get; set; }
         public DateTime? UpdatedOn { get; set; }

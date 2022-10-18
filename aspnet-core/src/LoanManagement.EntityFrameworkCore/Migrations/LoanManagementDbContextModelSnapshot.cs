@@ -1605,7 +1605,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdminDisclosures");
+                    b.ToTable("Admindisclosures");
                 });
 
             modelBuilder.Entity("LoanManagement.codeFirstEntities.AdminLoanapplicationdocument", b =>

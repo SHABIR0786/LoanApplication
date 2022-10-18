@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class City
+    public partial class City:Entity<int>
     {
         public City()
         {
@@ -16,7 +17,6 @@ namespace LoanManagement.codeFirstEntities
             ApplicationPreviousEmployementDetails = new HashSet<ApplicationPreviousEmployementDetail>();
         }
 
-        public int Id { get; set; }
         public int StateId { get; set; }
         public string CityName { get; set; }
 

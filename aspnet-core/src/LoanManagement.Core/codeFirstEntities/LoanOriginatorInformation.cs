@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LoanOriginatorInformation
+    public partial class LoanOriginatorInformation:Entity<int>
     {
-        public int Id { get; set; }
         public int? ApplicationPersonalInformationId { get; set; }
         public string OrganizationName91 { get; set; }
         public string Address92 { get; set; }

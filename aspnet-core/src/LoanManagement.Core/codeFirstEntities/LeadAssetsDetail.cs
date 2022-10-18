@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadAssetsDetail
+    public partial class LeadAssetsDetail:Entity<int>
     {
-        public int Id { get; set; }
+        
         public int LeadApplicationDetailPurchasingId { get; set; }
         public int? LeadApplicationDetailRefinancingId { get; set; }
         public int AssetTypeId { get; set; }

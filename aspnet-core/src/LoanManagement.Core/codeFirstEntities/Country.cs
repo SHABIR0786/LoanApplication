@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Country
+    public partial class Country:Entity<int>
     {
         public Country()
         {
@@ -17,7 +18,7 @@ namespace LoanManagement.codeFirstEntities
             CountryStates = new HashSet<CountryState>();
         }
 
-        public int Id { get; set; }
+        
         public string CountryName { get; set; }
 
         public virtual ICollection<ApplicationAdditionalEmployementDetail> ApplicationAdditionalEmployementDetails { get; set; }

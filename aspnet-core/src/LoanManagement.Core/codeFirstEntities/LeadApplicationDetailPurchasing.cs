@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadApplicationDetailPurchasing
+    public partial class LeadApplicationDetailPurchasing:Entity<int>
     {
-        public int Id { get; set; }
+        
         public string Stage { get; set; }
         public ulong? IsWorkingWithEzalready { get; set; }
         public string WorkingOfficerName { get; set; }
