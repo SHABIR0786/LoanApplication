@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class AdminLoanprogram:Entity<int>
+    public partial class AdminLoanprogram : FullAuditedEntity<int>
     {
         public AdminLoanprogram()
         {

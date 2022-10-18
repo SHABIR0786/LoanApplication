@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadApplicationDetailRefinancing:Entity<int>
+    public partial class LeadApplicationDetailRefinancing: FullAuditedEntity<int>
     {
         public ulong? IsWorkingWithEzalready { get; set; }
         public string WorkingOfficerName { get; set; }

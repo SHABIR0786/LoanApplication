@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public class RefinanceLoanOption :Entity<long>
+    public class RefinanceLoanOption : FullAuditedEntity<long>
     {
         public string important_to_you { get; set; }
         public string PropertyUse { get; set; }

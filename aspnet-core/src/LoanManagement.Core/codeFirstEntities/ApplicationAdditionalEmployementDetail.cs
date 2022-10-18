@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class ApplicationAdditionalEmployementDetail
+    public partial class ApplicationAdditionalEmployementDetail: FullAuditedEntity<int>
     {
         public ApplicationAdditionalEmployementDetail()
         {
             ApplicationAdditionalEmployementIncomeDetails = new HashSet<ApplicationAdditionalEmployementIncomeDetail>();
         }
 
-        public int Id { get; set; }
-        public int? ApplicationPersonalInformationId { get; set; }
+       public int? ApplicationPersonalInformationId { get; set; }
         public string EmployerBusinessName { get; set; }
         public string Phone { get; set; }
         public string Street { get; set; }

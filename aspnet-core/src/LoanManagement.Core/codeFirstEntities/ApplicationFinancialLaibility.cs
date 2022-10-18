@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class ApplicationFinancialLaibility
+    public partial class ApplicationFinancialLaibility: FullAuditedEntity<int>
     {
-        public int Id { get; set; }
         public int? ApplicationPersonalInformationId { get; set; }
         public int FinancialLaibilitiesType2c1 { get; set; }
         public string CompanyName2c2 { get; set; }

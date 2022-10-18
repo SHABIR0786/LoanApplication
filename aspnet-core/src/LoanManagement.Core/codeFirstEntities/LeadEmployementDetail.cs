@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadEmployementDetail:Entity<int>
+    public partial class LeadEmployementDetail: FullAuditedEntity<int>
     {
         public int EmployeeTypeId { get; set; }
         public int? LeadApplicationDetailPurchasingId { get; set; }

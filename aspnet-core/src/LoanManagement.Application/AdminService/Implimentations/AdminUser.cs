@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace LoanManagement.Services.Implementation
 {
-    public class AdminUserService : Abp.Application.Services.ApplicationService, IAdminUserService
+    public class AdminUserService : IAdminUserService
     {
         private readonly IRepository<AdminUser, int> repository;
 
@@ -29,7 +29,7 @@ namespace LoanManagement.Services.Implementation
             };
               repository.Insert(entity) ;
 
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
             return entity.Id.ToString();
         }
 
@@ -44,7 +44,7 @@ namespace LoanManagement.Services.Implementation
             }
 
            repository.Delete(obj);
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyDeleted;
         }
@@ -107,7 +107,7 @@ namespace LoanManagement.Services.Implementation
             obj.Password = SimpleStringCipher.Instance.Encrypt(newPassword, AppConsts.DefaultPassPhrase);
 
             repository.Update(obj);
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyUpdated;
         }
@@ -124,7 +124,7 @@ namespace LoanManagement.Services.Implementation
             obj.UserName = userName;
 
             repository.Update(obj);
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyUpdated;
         }
@@ -141,7 +141,7 @@ namespace LoanManagement.Services.Implementation
             obj.Email = email;
 
             repository.Update(obj);
-            UnitOfWorkManager.Current.SaveChanges(); 
+            //UnitOfWorkManager.Current.SaveChanges(); 
 
             return AppConsts.SuccessfullyUpdated;
         }

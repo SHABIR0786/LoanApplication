@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public class LoanOptionHomeBuying : Entity<long?>
+    public class LoanOptionHomeBuying : FullAuditedEntity<long?>
     {
         public string PropertyUse { get; set; }
         public string propertyType { get; set; }

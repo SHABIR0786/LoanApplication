@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class MortageLoanOnProperty:Entity<int>
+    public partial class MortageLoanOnProperty: FullAuditedEntity<int>
     {
         public int? ApplicationFinancialRealEstateId { get; set; }
         public string CreditorName3a9 { get; set; }

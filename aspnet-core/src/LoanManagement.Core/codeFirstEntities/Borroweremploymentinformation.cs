@@ -1,12 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Borroweremploymentinformation : Entity<long>
+    public partial class Borroweremploymentinformation : FullAuditedEntity<long>
     {
-        public long Id { get; set; }
         public string EmployersName { get; set; }
         public string EmployersAddress1 { get; set; }
         public string EmployersAddress2 { get; set; }

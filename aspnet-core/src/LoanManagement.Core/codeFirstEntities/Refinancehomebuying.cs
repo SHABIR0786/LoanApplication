@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Refinancehomebuying : Entity<long?>
+    public partial class Refinancehomebuying : FullAuditedEntity<long?>
     {
         public string PropertyLocated { get; set; }
         public string PropertyType { get; set; }

@@ -1,12 +1,13 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Address : Entity<long>
+    public partial class Address : FullAuditedEntity<long>
     {
-        public long Id { get; set; }
+
         public string AddressType { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

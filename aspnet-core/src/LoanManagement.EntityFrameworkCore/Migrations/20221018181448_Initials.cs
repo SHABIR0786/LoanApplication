@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class intial : Migration
+    public partial class Initials : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -551,7 +551,14 @@ namespace LoanManagement.Migrations
                     NameOfIndividualsOnTitle = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NameOfIndividualsCoBorrowerOnTitle = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -566,7 +573,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Status = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -581,7 +595,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -596,7 +617,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanProgram = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -611,7 +639,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Type = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -632,7 +667,14 @@ namespace LoanManagement.Migrations
                     Password = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsActive = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    CreatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -647,7 +689,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -677,7 +726,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CitizenshipType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -704,7 +760,14 @@ namespace LoanManagement.Migrations
                     CoborrowerLastName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CoborrowerEmail = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -719,7 +782,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CountryName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -733,7 +803,14 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AgreeCreditAuthAgreement = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    AgreeCreditAuthAgreement = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -748,7 +825,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreditType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -763,7 +847,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DeclarationCategory1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -778,7 +869,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -800,7 +898,14 @@ namespace LoanManagement.Migrations
                     HazardInsurance = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     RealEstateTaxes = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     MortgageInsurance = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    HomeOwnersAssociation = table.Column<decimal>(type: "decimal(65,30)", nullable: true)
+                    HomeOwnersAssociation = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -815,7 +920,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FinancialAccountType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -845,7 +957,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FinancialLaibilitiesType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -860,7 +979,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FinancialOtherLaibilitiesType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -875,7 +1001,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FinancialPropertyIntendedOccupancy1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -890,7 +1023,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FinancialPropertyStatus1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -936,7 +1076,14 @@ namespace LoanManagement.Migrations
                     PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RefferedBy = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -951,7 +1098,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     HousingType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -966,7 +1120,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IncomeSource1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -996,7 +1157,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IncomeType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1105,7 +1273,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ConformSsn = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1235,7 +1410,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ConformSsn = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1250,7 +1432,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Question = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1265,7 +1454,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1286,7 +1482,14 @@ namespace LoanManagement.Migrations
                     FinancialInstitution = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Balance = table.Column<float>(type: "float", nullable: true),
-                    OwnerTypeId = table.Column<int>(type: "int", nullable: false)
+                    OwnerTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1301,7 +1504,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AssetsType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1340,7 +1550,14 @@ namespace LoanManagement.Migrations
                     EstimatedAnnualBonus = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualCommission = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualOvertime = table.Column<float>(type: "float", nullable: true),
-                    IsCoBorrower = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsCoBorrower = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1355,7 +1572,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     EmployementType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1370,7 +1594,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IncomeType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1385,7 +1616,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     OwnerType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1403,7 +1641,14 @@ namespace LoanManagement.Migrations
                     LeadApplicationDetailRefinancingId = table.Column<int>(type: "int", nullable: true),
                     LeadApplicationTypeId = table.Column<int>(type: "int", nullable: true),
                     QuestionId = table.Column<int>(type: "int", nullable: false),
-                    IsYes = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsYes = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1420,7 +1665,14 @@ namespace LoanManagement.Migrations
                     LeadApplicationDetailRefinancingId = table.Column<int>(type: "int", nullable: true),
                     LeadApplicationTypeId = table.Column<int>(type: "int", nullable: true),
                     IncomeTypeId = table.Column<int>(type: "int", nullable: false),
-                    MonthlyAmount = table.Column<float>(type: "float", nullable: true)
+                    MonthlyAmount = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1435,7 +1687,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TaxesType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1454,7 +1713,14 @@ namespace LoanManagement.Migrations
                     Deposited4d2 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     Source4d3 = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Value4d4 = table.Column<float>(type: "float", nullable: true)
+                    Value4d4 = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1475,7 +1741,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MonthlyPayment4b3 = table.Column<float>(type: "float", nullable: true),
                     LoanAmount4b4 = table.Column<float>(type: "float", nullable: true),
-                    CreditAmount4b5 = table.Column<float>(type: "float", nullable: true)
+                    CreditAmount4b5 = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1491,7 +1764,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     ExpectedMonthlyIncome4c1 = table.Column<float>(type: "float", nullable: true),
-                    LenderExpectedMonthlyIncome4c2 = table.Column<float>(type: "float", nullable: true)
+                    LenderExpectedMonthlyIncome4c2 = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1523,7 +1803,14 @@ namespace LoanManagement.Migrations
                     LoanPropertyOccupancyId4a6 = table.Column<int>(type: "int", nullable: true),
                     FhaSecondaryResidance4a61 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsMixedUseProperty4a7 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    IsManufacturedHome4a8 = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsManufacturedHome4a8 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1564,7 +1851,14 @@ namespace LoanManagement.Migrations
                     StateId = table.Column<int>(type: "int", nullable: true),
                     PropertyTypeId = table.Column<int>(type: "int", nullable: true),
                     PropertyUseId = table.Column<int>(type: "int", nullable: true),
-                    StartedLookingForNewHome = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    StartedLookingForNewHome = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1597,7 +1891,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Phone99 = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Date910 = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    Date910 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1612,7 +1913,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanPropertyGiftType1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1627,7 +1935,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanPropertyOccupancy1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1642,7 +1957,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MaritialStatus1 = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1685,7 +2007,14 @@ namespace LoanManagement.Migrations
                     UnpaidBalance3a12 = table.Column<float>(type: "float", nullable: true),
                     PaidOff3a13 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     MortageLoanTypesId3a14 = table.Column<int>(type: "int", nullable: false),
-                    CreditLimit3a15 = table.Column<float>(type: "float", nullable: true)
+                    CreditLimit3a15 = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1700,7 +2029,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MortageLoanTypesId = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1750,7 +2086,14 @@ namespace LoanManagement.Migrations
                     PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RefferedBy = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1769,7 +2112,14 @@ namespace LoanManagement.Migrations
                     PageName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PageSetting = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1784,7 +2134,14 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2159,7 +2516,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BioMetricData = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsEnabled = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsEnabled = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2186,7 +2550,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Content = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsSeen = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsSeen = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2232,7 +2603,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HomePhone = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2282,7 +2660,14 @@ namespace LoanManagement.Migrations
                     CreditTypeId = table.Column<int>(type: "int", nullable: false),
                     TotalBorrowers1a6 = table.Column<int>(type: "int", nullable: true),
                     Initials = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2306,7 +2691,14 @@ namespace LoanManagement.Migrations
                     ParentQuestionId = table.Column<int>(type: "int", nullable: true),
                     Question = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsActive = table.Column<ulong>(type: "bigint unsigned", nullable: true)
+                    IsActive = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2452,7 +2844,14 @@ namespace LoanManagement.Migrations
                     CoBorrowerId = table.Column<long>(type: "bigint", nullable: true),
                     IsMailingAddressSameAsResidential = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CoBorrowerIsMailingAddressSameAsResidential = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    CoBorrowerResidentialAddressSameAsBorrowerResidential = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    CoBorrowerResidentialAddressSameAsBorrowerResidential = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2478,7 +2877,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     StateId = table.Column<int>(type: "int", nullable: false),
                     CityName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2517,7 +2923,14 @@ namespace LoanManagement.Migrations
                     InterestRate = table.Column<float>(type: "float", nullable: true),
                     ApplicationDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     RateLockDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    RateLockExpirationDate = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    RateLockExpirationDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2562,7 +2975,14 @@ namespace LoanManagement.Migrations
                     Years = table.Column<int>(type: "int", nullable: true),
                     Months = table.Column<int>(type: "int", nullable: true),
                     PersonalDetailId = table.Column<long>(type: "bigint", nullable: false),
-                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2599,7 +3019,14 @@ namespace LoanManagement.Migrations
                     CreditAuthAgreementId = table.Column<long>(type: "bigint", nullable: true),
                     ConsentDetailId = table.Column<long>(type: "bigint", nullable: true),
                     ExpenseId = table.Column<long>(type: "bigint", nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2725,7 +3152,14 @@ namespace LoanManagement.Migrations
                     MailingCityId1a173NavigationId = table.Column<int>(type: "int", nullable: true),
                     MailingCountryId1a176NavigationId = table.Column<int>(type: "int", nullable: true),
                     MailingStateId1a174NavigationId = table.Column<int>(type: "int", nullable: true),
-                    MaritialStatusId1a7NavigationId = table.Column<int>(type: "int", nullable: true)
+                    MaritialStatusId1a7NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2815,7 +3249,14 @@ namespace LoanManagement.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DocumentPath = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2849,7 +3290,14 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanId = table.Column<int>(type: "int", nullable: false),
                     StatusId = table.Column<int>(type: "int", nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2878,7 +3326,14 @@ namespace LoanManagement.Migrations
                     Amount = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     IncomeSourceId = table.Column<int>(type: "int", nullable: true),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: true),
-                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false)
+                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2924,7 +3379,14 @@ namespace LoanManagement.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
-                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false)
+                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2956,7 +3418,14 @@ namespace LoanManagement.Migrations
                     Commissions = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     Dividends = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
-                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false)
+                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3016,7 +3485,14 @@ namespace LoanManagement.Migrations
                     IsFemale = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CanNotProvideSex = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
-                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false)
+                    LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3058,7 +3534,14 @@ namespace LoanManagement.Migrations
                     DeclarationsSection = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
-                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3116,7 +3599,14 @@ namespace LoanManagement.Migrations
                     GrossRentalIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     TaxesInsuranceAndOther = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
-                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3176,7 +3666,14 @@ namespace LoanManagement.Migrations
                     IsEmployedBySomeone = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsSelfEmployed = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsOwnershipLessThan25 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    MonthlyIncome = table.Column<float>(type: "float", nullable: true)
+                    MonthlyIncome = table.Column<float>(type: "float", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3217,7 +3714,14 @@ namespace LoanManagement.Migrations
                     DeclarationQuestionId = table.Column<int>(type: "int", nullable: true),
                     YesNo = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     Description5a = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3266,7 +3770,14 @@ namespace LoanManagement.Migrations
                     MonthlyIncome1b92 = table.Column<float>(type: "float", nullable: true),
                     CityId1b43NavigationId = table.Column<int>(type: "int", nullable: true),
                     CountryId1b46NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId1b44NavigationId = table.Column<int>(type: "int", nullable: true)
+                    StateId1b44NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3307,7 +3818,14 @@ namespace LoanManagement.Migrations
                     AccountNumber2a3 = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value2a4 = table.Column<float>(type: "float", nullable: true),
-                    FinancialAccountTypeId2a1NavigationId = table.Column<int>(type: "int", nullable: true)
+                    FinancialAccountTypeId2a1NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3340,7 +3858,14 @@ namespace LoanManagement.Migrations
                     UnpaidBalance2c4 = table.Column<float>(type: "float", nullable: true),
                     PaidOff2c5 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     MonthlyValue2c6 = table.Column<float>(type: "float", nullable: true),
-                    FinancialLaibilitiesType2c1NavigationId = table.Column<int>(type: "int", nullable: true)
+                    FinancialLaibilitiesType2c1NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3367,7 +3892,14 @@ namespace LoanManagement.Migrations
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     FinancialAssetsTypesId2b1 = table.Column<int>(type: "int", nullable: false),
                     Value2b2 = table.Column<float>(type: "float", nullable: true),
-                    FinancialAssetsTypesId2b1NavigationId = table.Column<int>(type: "int", nullable: true)
+                    FinancialAssetsTypesId2b1NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3394,7 +3926,14 @@ namespace LoanManagement.Migrations
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     FinancialOtherLaibilitiesTypeId2d1 = table.Column<int>(type: "int", nullable: false),
                     MonthlyPayment2d2 = table.Column<float>(type: "float", nullable: true),
-                    FinancialOtherLaibilitiesTypeId2d1NavigationId = table.Column<int>(type: "int", nullable: true)
+                    FinancialOtherLaibilitiesTypeId2d1NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3438,7 +3977,14 @@ namespace LoanManagement.Migrations
                     CountryId3a26NavigationId = table.Column<int>(type: "int", nullable: true),
                     FinancialPropertyIntendedOccupancyId3a5NavigationId = table.Column<int>(type: "int", nullable: true),
                     FinancialPropertyStatusId3a4NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId3a24NavigationId = table.Column<int>(type: "int", nullable: true)
+                    StateId3a24NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3485,7 +4031,14 @@ namespace LoanManagement.Migrations
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     IncomeSourceId1e1 = table.Column<int>(type: "int", nullable: false),
                     Amount1e2 = table.Column<float>(type: "float", nullable: true),
-                    IncomeSourceId1e1NavigationId = table.Column<int>(type: "int", nullable: true)
+                    IncomeSourceId1e1NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3529,7 +4082,14 @@ namespace LoanManagement.Migrations
                     GrossMonthlyIncome1d8 = table.Column<float>(type: "float", nullable: true),
                     CityId1d33NavigationId = table.Column<int>(type: "int", nullable: true),
                     CountryId1d36NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId1d34NavigationId = table.Column<int>(type: "int", nullable: true)
+                    StateId1d34NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3574,7 +4134,14 @@ namespace LoanManagement.Migrations
                     IsGenderByObservation85 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsRaceByObservation86 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     DemographicInfoSourceId87 = table.Column<int>(type: "int", nullable: true),
-                    DemographicInfoSourceId87NavigationId = table.Column<int>(type: "int", nullable: true)
+                    DemographicInfoSourceId87NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3603,7 +4170,14 @@ namespace LoanManagement.Migrations
                     AccountNumber = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    ManualAssetEntryId = table.Column<long>(type: "bigint", nullable: false)
+                    ManualAssetEntryId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3626,7 +4200,14 @@ namespace LoanManagement.Migrations
                     ApplicationAdditionalEmployementDetails = table.Column<int>(type: "int", nullable: false),
                     IncomeTypeId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<float>(type: "float", nullable: true),
-                    ApplicationAdditionalEmployementDetailsNavigationId = table.Column<int>(type: "int", nullable: true)
+                    ApplicationAdditionalEmployementDetailsNavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3654,7 +4235,14 @@ namespace LoanManagement.Migrations
                     ApplicationEmployementDetailsId = table.Column<int>(type: "int", nullable: false),
                     IncomeTypeId1b101 = table.Column<int>(type: "int", nullable: false),
                     Amount1b10 = table.Column<float>(type: "float", nullable: true),
-                    IncomeTypeId1b101NavigationId = table.Column<int>(type: "int", nullable: true)
+                    IncomeTypeId1b101NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3675,22 +4263,22 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.InsertData(
                 table: "Assettypes",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1L, "Cash deposit on sales contract" },
-                    { 2L, "Certificate of Deposit" },
-                    { 3L, "Checking Account" },
-                    { 4L, "Gifts" },
-                    { 5L, "Gift of equity" },
-                    { 6L, "Money Market Fund" },
-                    { 7L, "Mutual Funds" },
-                    { 8L, "Net Proceeds from Real Estate Funds" },
-                    { 9L, "Real Estate Owned" },
-                    { 10L, "Retirement Funds" },
-                    { 11L, "Savings Account" },
-                    { 12L, "Stocks & Bonds" },
-                    { 13L, "Trust Account" }
+                    { 1L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6598), null, null, null, false, null, null, "Cash deposit on sales contract" },
+                    { 2L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6616), null, null, null, false, null, null, "Certificate of Deposit" },
+                    { 3L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6619), null, null, null, false, null, null, "Checking Account" },
+                    { 4L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6620), null, null, null, false, null, null, "Gifts" },
+                    { 5L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6622), null, null, null, false, null, null, "Gift of equity" },
+                    { 6L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6623), null, null, null, false, null, null, "Money Market Fund" },
+                    { 7L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6624), null, null, null, false, null, null, "Mutual Funds" },
+                    { 8L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6625), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
+                    { 9L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6626), null, null, null, false, null, null, "Real Estate Owned" },
+                    { 10L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6627), null, null, null, false, null, null, "Retirement Funds" },
+                    { 11L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6629), null, null, null, false, null, null, "Savings Account" },
+                    { 12L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6630), null, null, null, false, null, null, "Stocks & Bonds" },
+                    { 13L, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6631), null, null, null, false, null, null, "Trust Account" }
                 });
 
             migrationBuilder.InsertData(
@@ -3705,84 +4293,84 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.InsertData(
                 table: "IncomeSources",
-                columns: new[] { "Id", "IncomeSource1" },
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IncomeSource1", "IsDeleted", "LastModificationTime", "LastModifierUserId" },
                 values: new object[,]
                 {
-                    { 1, "Accessory Unit Income" },
-                    { 2, "Alimony/Child Support" },
-                    { 3, "Automobile/Expense Account" },
-                    { 4, "Boarder Income" }
+                    { 1, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6842), null, null, null, "Accessory Unit Income", false, null, null },
+                    { 2, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6847), null, null, null, "Alimony/Child Support", false, null, null },
+                    { 3, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6849), null, null, null, "Automobile/Expense Account", false, null, null },
+                    { 4, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6850), null, null, null, "Boarder Income", false, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sitesettings",
-                columns: new[] { "Id", "PageIdentifier", "PageName", "PageSetting" },
-                values: new object[] { 1, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "PageIdentifier", "PageName", "PageSetting" },
+                values: new object[] { 1, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7082), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
 
             migrationBuilder.InsertData(
                 table: "States",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1, "AL" },
-                    { 2, "AK" },
-                    { 3, "AS" },
-                    { 4, "AZ" },
-                    { 5, "AR" },
-                    { 6, "CA" },
-                    { 7, "CO" },
-                    { 8, "CT" },
-                    { 9, "DE" },
-                    { 10, "DC" },
-                    { 11, "FM" },
-                    { 12, "FL" },
-                    { 13, "GA" },
-                    { 14, "GU" },
-                    { 15, "HI" },
-                    { 16, "ID" },
-                    { 17, "IL" },
-                    { 18, "IN" },
-                    { 19, "IA" },
-                    { 20, "KS" },
-                    { 21, "KY" },
-                    { 22, "LA" },
-                    { 23, "ME" },
-                    { 24, "MH" },
-                    { 25, "MD" },
-                    { 26, "MA" },
-                    { 27, "MI" },
-                    { 28, "MN" },
-                    { 29, "MS" },
-                    { 30, "MO" },
-                    { 31, "MT" },
-                    { 32, "NE" },
-                    { 33, "NV" },
-                    { 34, "NH" },
-                    { 35, "NJ" },
-                    { 36, "NM" },
-                    { 37, "NY" },
-                    { 38, "NC" },
-                    { 39, "ND" },
-                    { 40, "MP" },
-                    { 41, "OH" },
-                    { 42, "OK" },
-                    { 43, "OR" },
-                    { 44, "PW" },
-                    { 45, "PA" },
-                    { 46, "PR" },
-                    { 47, "RI" },
-                    { 48, "SC" },
-                    { 49, "SD" },
-                    { 50, "TN" },
-                    { 51, "TX" },
-                    { 52, "UT" },
-                    { 53, "VT" },
-                    { 54, "VI" },
-                    { 55, "VA" },
-                    { 56, "WA" },
-                    { 57, "WV" },
-                    { 58, "WI" },
-                    { 59, "WY" }
+                    { 1, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6889), null, null, null, false, null, null, "AL" },
+                    { 2, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6893), null, null, null, false, null, null, "AK" },
+                    { 3, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6894), null, null, null, false, null, null, "AS" },
+                    { 4, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6896), null, null, null, false, null, null, "AZ" },
+                    { 5, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6897), null, null, null, false, null, null, "AR" },
+                    { 6, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6898), null, null, null, false, null, null, "CA" },
+                    { 7, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6900), null, null, null, false, null, null, "CO" },
+                    { 8, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6901), null, null, null, false, null, null, "CT" },
+                    { 9, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6902), null, null, null, false, null, null, "DE" },
+                    { 10, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6903), null, null, null, false, null, null, "DC" },
+                    { 11, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6905), null, null, null, false, null, null, "FM" },
+                    { 12, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6907), null, null, null, false, null, null, "FL" },
+                    { 13, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6934), null, null, null, false, null, null, "GA" },
+                    { 14, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6950), null, null, null, false, null, null, "GU" },
+                    { 15, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6951), null, null, null, false, null, null, "HI" },
+                    { 16, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6952), null, null, null, false, null, null, "ID" },
+                    { 17, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6954), null, null, null, false, null, null, "IL" },
+                    { 18, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6955), null, null, null, false, null, null, "IN" },
+                    { 19, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6956), null, null, null, false, null, null, "IA" },
+                    { 20, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6957), null, null, null, false, null, null, "KS" },
+                    { 21, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6959), null, null, null, false, null, null, "KY" },
+                    { 22, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6960), null, null, null, false, null, null, "LA" },
+                    { 23, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6961), null, null, null, false, null, null, "ME" },
+                    { 24, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6968), null, null, null, false, null, null, "MH" },
+                    { 25, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6969), null, null, null, false, null, null, "MD" },
+                    { 26, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6983), null, null, null, false, null, null, "MA" },
+                    { 27, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6988), null, null, null, false, null, null, "MI" },
+                    { 28, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6990), null, null, null, false, null, null, "MN" },
+                    { 29, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6991), null, null, null, false, null, null, "MS" },
+                    { 30, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6992), null, null, null, false, null, null, "MO" },
+                    { 31, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6994), null, null, null, false, null, null, "MT" },
+                    { 32, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6995), null, null, null, false, null, null, "NE" },
+                    { 33, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6996), null, null, null, false, null, null, "NV" },
+                    { 34, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6997), null, null, null, false, null, null, "NH" },
+                    { 35, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6998), null, null, null, false, null, null, "NJ" },
+                    { 36, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7000), null, null, null, false, null, null, "NM" },
+                    { 37, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7001), null, null, null, false, null, null, "NY" },
+                    { 38, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7003), null, null, null, false, null, null, "NC" },
+                    { 39, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7004), null, null, null, false, null, null, "ND" },
+                    { 40, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7005), null, null, null, false, null, null, "MP" },
+                    { 41, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7006), null, null, null, false, null, null, "OH" },
+                    { 42, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7008), null, null, null, false, null, null, "OK" },
+                    { 43, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7009), null, null, null, false, null, null, "OR" },
+                    { 44, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7010), null, null, null, false, null, null, "PW" },
+                    { 45, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7012), null, null, null, false, null, null, "PA" },
+                    { 46, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7013), null, null, null, false, null, null, "PR" },
+                    { 47, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7014), null, null, null, false, null, null, "RI" },
+                    { 48, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7015), null, null, null, false, null, null, "SC" },
+                    { 49, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7017), null, null, null, false, null, null, "SD" },
+                    { 50, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7018), null, null, null, false, null, null, "TN" },
+                    { 51, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7019), null, null, null, false, null, null, "TX" },
+                    { 52, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7020), null, null, null, false, null, null, "UT" },
+                    { 53, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7022), null, null, null, false, null, null, "VT" },
+                    { 54, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7028), null, null, null, false, null, null, "VI" },
+                    { 55, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7029), null, null, null, false, null, null, "VA" },
+                    { 56, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7031), null, null, null, false, null, null, "WA" },
+                    { 57, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7032), null, null, null, false, null, null, "WV" },
+                    { 58, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7033), null, null, null, false, null, null, "WI" },
+                    { 59, new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7034), null, null, null, false, null, null, "WY" }
                 });
 
             migrationBuilder.CreateIndex(

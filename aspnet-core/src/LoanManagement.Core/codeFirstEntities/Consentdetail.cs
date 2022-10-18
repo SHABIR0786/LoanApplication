@@ -1,17 +1,17 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Consentdetail : Entity<long>
+    public partial class Consentdetail : FullAuditedEntity<long>
     {
         public Consentdetail()
         {
             Loanapplications = new HashSet<Loanapplication>();
         }
 
-        public long Id { get; set; }
         public bool? AgreeEconsent { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

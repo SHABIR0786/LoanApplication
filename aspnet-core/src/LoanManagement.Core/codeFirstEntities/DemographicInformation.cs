@@ -1,12 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class DemographicInformation:Entity<int>
+    public partial class DemographicInformation: FullAuditedEntity<int>
     {
-        public int Id { get; set; }
         public int? ApplicationPersonalInformationId { get; set; }
         public string Ethnicity81 { get; set; }
         public string Gender82 { get; set; }

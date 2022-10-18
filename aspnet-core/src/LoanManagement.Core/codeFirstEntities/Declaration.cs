@@ -1,12 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Declaration : Entity<long>
+    public partial class Declaration : FullAuditedEntity<long>
     {
-        public long Id { get; set; }
         public bool? IsOutstandingJudgmentsAgainstYou { get; set; }
         public bool? IsDeclaredBankrupt { get; set; }
         public bool? IsPropertyForeClosedUponOrGivenTitle { get; set; }

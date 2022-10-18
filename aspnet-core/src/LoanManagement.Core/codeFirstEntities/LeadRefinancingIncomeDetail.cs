@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class LeadRefinancingIncomeDetail:Entity<int>
+    public partial class LeadRefinancingIncomeDetail: FullAuditedEntity<int>
     {
         public int? LeadApplicationDetailRefinancingId { get; set; }
         public int? LeadApplicationTypeId { get; set; }

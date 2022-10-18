@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Application
+    public partial class Application: FullAuditedEntity<int>
     {
         public Application()
         {
@@ -11,7 +12,6 @@ namespace LoanManagement.codeFirstEntities
             ApplicationPersonalInformations = new HashSet<ApplicationPersonalInformation>();
         }
 
-        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string LoanNoIdentifierB1B3 { get; set; }
         public string AgencyCaseNoB2 { get; set; }

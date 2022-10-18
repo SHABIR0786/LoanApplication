@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20221017114334_intial")]
-    partial class intial
+    [Migration("20221018181448_Initials")]
+    partial class Initials
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1509,6 +1509,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("NameOfIndividualsCoBorrowerOnTitle")
                         .HasColumnType("longtext");
 
@@ -1532,8 +1553,29 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("BorrowerTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int?>("IncomeSourceId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
@@ -1570,6 +1612,27 @@ namespace LoanManagement.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<int?>("Months")
                         .HasColumnType("int");
 
@@ -1602,6 +1665,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -1616,11 +1700,32 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("DisclosureId")
                         .HasColumnType("int");
 
                     b.Property<string>("DocumentPath")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("LoanId")
                         .HasColumnType("int");
@@ -1654,8 +1759,29 @@ namespace LoanManagement.Migrations
                     b.Property<string>("BorrowerName")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<float?>("InterestRate")
                         .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("LoanAmount")
                         .HasColumnType("float");
@@ -1707,6 +1833,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("LoanProgram")
                         .HasColumnType("longtext");
 
@@ -1721,6 +1868,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Status")
                         .HasColumnType("longtext");
 
@@ -1734,6 +1902,27 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("LoanId")
                         .HasColumnType("int");
@@ -1759,6 +1948,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Type")
                         .HasColumnType("longtext");
 
@@ -1776,11 +1986,32 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
                     b.Property<ulong?>("IsActive")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Password")
                         .HasColumnType("longtext");
@@ -1802,11 +2033,32 @@ namespace LoanManagement.Migrations
                     b.Property<string>("BioMetricData")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("DeviceId")
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsEnabled")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -1827,11 +2079,32 @@ namespace LoanManagement.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsSeen")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("NotificationTypeId")
                         .HasColumnType("int");
@@ -1860,14 +2133,35 @@ namespace LoanManagement.Migrations
                     b.Property<string>("AgencyCaseNoB2")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("CreditTypeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Initials")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LoanNoIdentifierB1B3")
                         .HasColumnType("longtext");
@@ -1897,8 +2191,23 @@ namespace LoanManagement.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmployerBusinessName")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<ulong?>("IsEmployedBySomeone")
                         .HasColumnType("bigint unsigned");
@@ -1908,6 +2217,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<ulong?>("IsSelfEmployed")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyIncome")
                         .HasColumnType("float");
@@ -1967,8 +2282,29 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationAdditionalEmployementDetailsNavigationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IncomeTypeId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -1988,11 +2324,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<int?>("DeclarationQuestionId")
                         .HasColumnType("int");
 
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Description5a")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<ulong?>("YesNo")
                         .HasColumnType("bigint unsigned");
@@ -2027,8 +2384,23 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("CountryId1b46NavigationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmployerBusinessName1b2")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<ulong?>("IsEmployedBySomeone1b8")
                         .HasColumnType("bigint unsigned");
@@ -2038,6 +2410,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<ulong?>("IsSelfEmployed1b9")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyIncome1b92")
                         .HasColumnType("float");
@@ -2097,11 +2475,32 @@ namespace LoanManagement.Migrations
                     b.Property<int>("ApplicationEmployementDetailsId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IncomeTypeId1b101")
                         .HasColumnType("int");
 
                     b.Property<int?>("IncomeTypeId1b101NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -2124,6 +2523,18 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("FinancialAccountTypeId2a1")
                         .HasColumnType("int");
 
@@ -2132,6 +2543,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("FinancialInstitution2a2")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("Value2a4")
                         .HasColumnType("float");
@@ -2160,11 +2580,32 @@ namespace LoanManagement.Migrations
                     b.Property<string>("CompanyName2c2")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("FinancialLaibilitiesType2c1")
                         .HasColumnType("int");
 
                     b.Property<int?>("FinancialLaibilitiesType2c1NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyValue2c6")
                         .HasColumnType("float");
@@ -2193,11 +2634,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("FinancialAssetsTypesId2b1")
                         .HasColumnType("int");
 
                     b.Property<int?>("FinancialAssetsTypesId2b1NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("Value2b2")
                         .HasColumnType("float");
@@ -2220,11 +2682,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("FinancialOtherLaibilitiesTypeId2d1")
                         .HasColumnType("int");
 
                     b.Property<int?>("FinancialOtherLaibilitiesTypeId2d1NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyPayment2d2")
                         .HasColumnType("float");
@@ -2259,6 +2742,18 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("CountryId3a26NavigationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("FinancialPropertyIntendedOccupancyId3a5")
                         .HasColumnType("int");
 
@@ -2270,6 +2765,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<int?>("FinancialPropertyStatusId3a4NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyMortagePayment3a6")
                         .HasColumnType("float");
@@ -2327,11 +2831,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IncomeSourceId1e1")
                         .HasColumnType("int");
 
                     b.Property<int?>("IncomeSourceId1e1NavigationId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -2375,6 +2900,12 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("CitizenshipTypeId1a5NavigationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("CurrentCityId1a133")
                         .HasColumnType("int");
 
@@ -2416,6 +2947,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CurrentZip1a135")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int?>("Dependents1a8")
                         .HasColumnType("int");
@@ -2476,6 +3013,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("HomePhone1a9")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName1a3")
                         .HasColumnType("longtext");
@@ -2579,6 +3125,18 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("CountryId1d36NavigationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmployerBusinessName1d2")
                         .HasColumnType("longtext");
 
@@ -2588,8 +3146,17 @@ namespace LoanManagement.Migrations
                     b.Property<float?>("GrossMonthlyIncome1d8")
                         .HasColumnType("float");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsSelfEmployed1d7")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PositionTitle1d4")
                         .HasColumnType("longtext");
@@ -2631,6 +3198,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -2642,66 +3230,92 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6598),
+                            IsDeleted = false,
                             Name = "Cash deposit on sales contract"
                         },
                         new
                         {
                             Id = 2L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6616),
+                            IsDeleted = false,
                             Name = "Certificate of Deposit"
                         },
                         new
                         {
                             Id = 3L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6619),
+                            IsDeleted = false,
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 4L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6620),
+                            IsDeleted = false,
                             Name = "Gifts"
                         },
                         new
                         {
                             Id = 5L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6622),
+                            IsDeleted = false,
                             Name = "Gift of equity"
                         },
                         new
                         {
                             Id = 6L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6623),
+                            IsDeleted = false,
                             Name = "Money Market Fund"
                         },
                         new
                         {
                             Id = 7L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6624),
+                            IsDeleted = false,
                             Name = "Mutual Funds"
                         },
                         new
                         {
                             Id = 8L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6625),
+                            IsDeleted = false,
                             Name = "Net Proceeds from Real Estate Funds"
                         },
                         new
                         {
                             Id = 9L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6626),
+                            IsDeleted = false,
                             Name = "Real Estate Owned"
                         },
                         new
                         {
                             Id = 10L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6627),
+                            IsDeleted = false,
                             Name = "Retirement Funds"
                         },
                         new
                         {
                             Id = 11L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6629),
+                            IsDeleted = false,
                             Name = "Savings Account"
                         },
                         new
                         {
                             Id = 12L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6630),
+                            IsDeleted = false,
                             Name = "Stocks & Bonds"
                         },
                         new
                         {
                             Id = 13L,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6631),
+                            IsDeleted = false,
                             Name = "Trust Account"
                         });
                 });
@@ -2718,8 +3332,20 @@ namespace LoanManagement.Migrations
                     b.Property<string>("CellPhone")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("DateOfBirth")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
@@ -2729,6 +3355,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("HomePhone")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
@@ -2767,6 +3402,18 @@ namespace LoanManagement.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmployersAddress1")
                         .HasColumnType("longtext");
 
@@ -2779,8 +3426,17 @@ namespace LoanManagement.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool?>("IsSelfEmployed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
@@ -2824,8 +3480,29 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("Commissions")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<decimal?>("Dividends")
                         .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
@@ -2882,6 +3559,27 @@ namespace LoanManagement.Migrations
                     b.Property<string>("CitizenshipType1")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("CitizenshipTypes");
@@ -2895,6 +3593,27 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CityName")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("StateId")
                         .HasColumnType("int");
@@ -2927,11 +3646,32 @@ namespace LoanManagement.Migrations
                     b.Property<string>("CoborrowerLastName")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
@@ -2949,6 +3689,27 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CountryName")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -2983,6 +3744,27 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("AgreeCreditAuthAgreement")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("Creditauthagreements");
@@ -2994,8 +3776,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CreditType1")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3011,8 +3814,20 @@ namespace LoanManagement.Migrations
                     b.Property<int>("BorrowerTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("DeclarationsSection")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool?>("IsAnyPartOfTheDownPayment")
                         .HasColumnType("tinyint(1)");
@@ -3021,6 +3836,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsDeclaredBankrupt")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsIntendToOccupyThePropertyAsYourPrimary")
@@ -3053,6 +3871,12 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsUscitizen")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
 
@@ -3083,6 +3907,18 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("CanNotProvideSex")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EnterRace")
                         .HasColumnType("longtext");
 
@@ -3102,6 +3938,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsCuban")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsFemale")
@@ -3158,6 +3997,12 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("IsWhite")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
 
@@ -3182,8 +4027,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("DeclarationCategory1")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3196,11 +4062,32 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<int?>("DeclarationCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<ulong?>("IsActive")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("ParentQuestionId")
                         .HasColumnType("int");
@@ -3224,6 +4111,18 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int?>("DemographicInfoSourceId87")
                         .HasColumnType("int");
 
@@ -3236,6 +4135,9 @@ namespace LoanManagement.Migrations
                     b.Property<string>("Gender82")
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsEthnicityByObservation84")
                         .HasColumnType("bigint unsigned");
 
@@ -3244,6 +4146,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<ulong?>("IsRaceByObservation86")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Race83")
                         .HasColumnType("longtext");
@@ -3263,6 +4171,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
 
@@ -3277,6 +4206,18 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<decimal?>("FirstMortgage")
                         .HasColumnType("decimal(65,30)");
 
@@ -3286,8 +4227,17 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("HomeOwnersAssociation")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool?>("IsLiveWithFamilySelectRent")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<decimal?>("MortgageInsurance")
                         .HasColumnType("decimal(65,30)");
@@ -3315,8 +4265,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialAccountType1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3343,8 +4314,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialLaibilitiesType1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3357,8 +4349,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialOtherLaibilitiesType1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3371,8 +4384,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialPropertyIntendedOccupancy1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3385,8 +4419,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialPropertyStatus1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3402,8 +4457,20 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("BankruptcyPastThreeYears")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CurrentlyEmployed")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<decimal?>("DownPayment")
                         .HasColumnType("decimal(65,30)");
@@ -3422,6 +4489,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("HouseHoldIncome")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
@@ -3470,8 +4546,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("HousingType1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3484,8 +4581,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("IncomeSource1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3495,22 +4613,30 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            IncomeSource1 = "Accessory Unit Income"
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6842),
+                            IncomeSource1 = "Accessory Unit Income",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            IncomeSource1 = "Alimony/Child Support"
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6847),
+                            IncomeSource1 = "Alimony/Child Support",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
-                            IncomeSource1 = "Automobile/Expense Account"
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6849),
+                            IncomeSource1 = "Automobile/Expense Account",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
-                            IncomeSource1 = "Boarder Income"
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6850),
+                            IncomeSource1 = "Boarder Income",
+                            IsDeleted = false
                         });
                 });
 
@@ -3534,8 +4660,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("IncomeType1")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -3563,6 +4710,12 @@ namespace LoanManagement.Migrations
                     b.Property<string>("ContractType")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CreditScore")
                         .HasColumnType("longtext");
 
@@ -3589,6 +4742,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CurrentZipCode")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<float?>("DownPaymentAmount")
                         .HasColumnType("float");
@@ -3620,6 +4779,9 @@ namespace LoanManagement.Migrations
                     b.Property<ulong?>("IsCertify")
                         .HasColumnType("bigint unsigned");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsEmployementHistory")
                         .HasColumnType("bigint unsigned");
 
@@ -3646,6 +4808,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<ulong?>("IsWorkingWithEzalready")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MaritialStatus")
                         .HasColumnType("longtext");
@@ -3751,6 +4919,12 @@ namespace LoanManagement.Migrations
                     b.Property<string>("ConformSsn")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CreditScore")
                         .HasColumnType("longtext");
 
@@ -3780,6 +4954,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CurrentlyUsingHomeAs")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<float?>("EstimatedAnnualHomeInsurance")
                         .HasColumnType("float");
@@ -3814,6 +4994,9 @@ namespace LoanManagement.Migrations
                     b.Property<ulong?>("IsCurrentlyLivingOnRefinancingProperty")
                         .HasColumnType("bigint unsigned");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsEmployementHistory")
                         .HasColumnType("bigint unsigned");
 
@@ -3840,6 +5023,12 @@ namespace LoanManagement.Migrations
 
                     b.Property<ulong?>("IsWorkingWithEzalready")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MaritialStatus")
                         .HasColumnType("longtext");
@@ -3981,6 +5170,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Question")
                         .HasColumnType("longtext");
 
@@ -3997,6 +5207,27 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("ApplicationType")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -4015,8 +5246,29 @@ namespace LoanManagement.Migrations
                     b.Property<float?>("Balance")
                         .HasColumnType("float");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FinancialInstitution")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("LeadApplicationDetailPurchasingId")
                         .HasColumnType("int");
@@ -4044,6 +5296,27 @@ namespace LoanManagement.Migrations
                     b.Property<string>("AssetsType")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("LeadAssetsTypes");
@@ -4054,6 +5327,18 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("EmployeeTypeId")
                         .HasColumnType("int");
@@ -4100,8 +5385,17 @@ namespace LoanManagement.Migrations
                     b.Property<ulong?>("IsCurrentJob")
                         .HasColumnType("bigint unsigned");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("JobTitle")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("LeadApplicationDetailPurchasingId")
                         .HasColumnType("int");
@@ -4123,8 +5417,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("EmployementType")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -4137,8 +5452,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("IncomeType")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -4150,6 +5486,27 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("OwnerType")
                         .HasColumnType("longtext");
@@ -4165,8 +5522,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<ulong?>("IsYes")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("LeadApplicationDetailPurchasingId")
                         .HasColumnType("int");
@@ -4191,8 +5569,29 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IncomeTypeId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("LeadApplicationDetailRefinancingId")
                         .HasColumnType("int");
@@ -4213,6 +5612,27 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("TaxesType")
                         .HasColumnType("longtext");
@@ -4237,14 +5657,35 @@ namespace LoanManagement.Migrations
                     b.Property<int>("CountryId4a36")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<ulong?>("FhaSecondaryResidance4a61")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<ulong?>("IsManufacturedHome4a8")
                         .HasColumnType("bigint unsigned");
 
                     b.Property<ulong?>("IsMixedUseProperty4a7")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("LoanAmount4a1")
                         .HasColumnType("float");
@@ -4287,8 +5728,29 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<ulong?>("Deposited4d2")
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("LoanPropertyGiftTypeId4d1")
                         .HasColumnType("int");
@@ -4313,11 +5775,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<float?>("CreditAmount4b5")
                         .HasColumnType("float");
 
                     b.Property<string>("CreditorName4b1")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LienType4b2")
                         .HasColumnType("longtext");
@@ -4342,8 +5825,29 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<float?>("ExpectedMonthlyIncome4c1")
                         .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("LenderExpectedMonthlyIncome4c2")
                         .HasColumnType("float");
@@ -4365,10 +5869,31 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("ConsentDetailId")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("CreditAuthAgreementId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<long?>("ExpenseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LoanDetailId")
@@ -4407,8 +5932,20 @@ namespace LoanManagement.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<decimal?>("CurrentLoanAmount")
                         .HasColumnType("decimal(65,30)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<decimal?>("DownPaymentAmount")
                         .HasColumnType("decimal(65,30)");
@@ -4431,8 +5968,17 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("HaveSecondMortgage")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool?>("IsWorkingWithOfficer")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("LoanOfficerId")
                         .HasColumnType("int");
@@ -4493,11 +6039,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationPersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime?>("Date910")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email98")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("OrganizationName91")
                         .HasColumnType("longtext");
@@ -4531,6 +6098,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("LoanPropertyGiftType1")
                         .HasColumnType("longtext");
 
@@ -4544,6 +6132,27 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LoanPropertyOccupancy1")
                         .HasColumnType("longtext");
@@ -4583,11 +6192,32 @@ namespace LoanManagement.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
                     b.Property<decimal?>("GrossRentalIncome")
                         .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("LoanApplicationId")
                         .HasColumnType("bigint");
@@ -4644,6 +6274,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("MaritialStatus1")
                         .HasColumnType("longtext");
 
@@ -4696,11 +6347,32 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("ApplicationFinancialRealEstateId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<float?>("CreditLimit3a15")
                         .HasColumnType("float");
 
                     b.Property<string>("CreditorName3a9")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<float?>("MonthlyMortagePayment3a11")
                         .HasColumnType("float");
@@ -4724,6 +6396,27 @@ namespace LoanManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MortageLoanTypesId")
                         .HasColumnType("longtext");
@@ -4754,11 +6447,32 @@ namespace LoanManagement.Migrations
                     b.Property<bool?>("CoBorrowerResidentialAddressSameAsBorrowerResidential")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<bool?>("IsApplyingWithCoBorrower")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsMailingAddressSameAsResidential")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<bool?>("UseIncomeOfPersonOtherThanBorrower")
                         .HasColumnType("tinyint(1)");
@@ -4784,11 +6498,23 @@ namespace LoanManagement.Migrations
                     b.Property<decimal?>("CashBorrow")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CurrentEmployed")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CurrentlyEmployed")
                         .HasColumnType("longtext");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("EmailAddress")
                         .HasColumnType("longtext");
@@ -4807,6 +6533,15 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("HouseHoldIncome")
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
@@ -4855,6 +6590,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("PageIdentifier")
                         .HasColumnType("longtext");
 
@@ -4872,6 +6628,8 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7082),
+                            IsDeleted = false,
                             PageIdentifier = "app/home",
                             PageName = "Home page",
                             PageSetting = "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}"
@@ -4884,6 +6642,27 @@ namespace LoanManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -4895,296 +6674,414 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6889),
+                            IsDeleted = false,
                             Name = "AL"
                         },
                         new
                         {
                             Id = 2,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6893),
+                            IsDeleted = false,
                             Name = "AK"
                         },
                         new
                         {
                             Id = 3,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6894),
+                            IsDeleted = false,
                             Name = "AS"
                         },
                         new
                         {
                             Id = 4,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6896),
+                            IsDeleted = false,
                             Name = "AZ"
                         },
                         new
                         {
                             Id = 5,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6897),
+                            IsDeleted = false,
                             Name = "AR"
                         },
                         new
                         {
                             Id = 6,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6898),
+                            IsDeleted = false,
                             Name = "CA"
                         },
                         new
                         {
                             Id = 7,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6900),
+                            IsDeleted = false,
                             Name = "CO"
                         },
                         new
                         {
                             Id = 8,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6901),
+                            IsDeleted = false,
                             Name = "CT"
                         },
                         new
                         {
                             Id = 9,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6902),
+                            IsDeleted = false,
                             Name = "DE"
                         },
                         new
                         {
                             Id = 10,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6903),
+                            IsDeleted = false,
                             Name = "DC"
                         },
                         new
                         {
                             Id = 11,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6905),
+                            IsDeleted = false,
                             Name = "FM"
                         },
                         new
                         {
                             Id = 12,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6907),
+                            IsDeleted = false,
                             Name = "FL"
                         },
                         new
                         {
                             Id = 13,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6934),
+                            IsDeleted = false,
                             Name = "GA"
                         },
                         new
                         {
                             Id = 14,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6950),
+                            IsDeleted = false,
                             Name = "GU"
                         },
                         new
                         {
                             Id = 15,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6951),
+                            IsDeleted = false,
                             Name = "HI"
                         },
                         new
                         {
                             Id = 16,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6952),
+                            IsDeleted = false,
                             Name = "ID"
                         },
                         new
                         {
                             Id = 17,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6954),
+                            IsDeleted = false,
                             Name = "IL"
                         },
                         new
                         {
                             Id = 18,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6955),
+                            IsDeleted = false,
                             Name = "IN"
                         },
                         new
                         {
                             Id = 19,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6956),
+                            IsDeleted = false,
                             Name = "IA"
                         },
                         new
                         {
                             Id = 20,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6957),
+                            IsDeleted = false,
                             Name = "KS"
                         },
                         new
                         {
                             Id = 21,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6959),
+                            IsDeleted = false,
                             Name = "KY"
                         },
                         new
                         {
                             Id = 22,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6960),
+                            IsDeleted = false,
                             Name = "LA"
                         },
                         new
                         {
                             Id = 23,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6961),
+                            IsDeleted = false,
                             Name = "ME"
                         },
                         new
                         {
                             Id = 24,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6968),
+                            IsDeleted = false,
                             Name = "MH"
                         },
                         new
                         {
                             Id = 25,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6969),
+                            IsDeleted = false,
                             Name = "MD"
                         },
                         new
                         {
                             Id = 26,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6983),
+                            IsDeleted = false,
                             Name = "MA"
                         },
                         new
                         {
                             Id = 27,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6988),
+                            IsDeleted = false,
                             Name = "MI"
                         },
                         new
                         {
                             Id = 28,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6990),
+                            IsDeleted = false,
                             Name = "MN"
                         },
                         new
                         {
                             Id = 29,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6991),
+                            IsDeleted = false,
                             Name = "MS"
                         },
                         new
                         {
                             Id = 30,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6992),
+                            IsDeleted = false,
                             Name = "MO"
                         },
                         new
                         {
                             Id = 31,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6994),
+                            IsDeleted = false,
                             Name = "MT"
                         },
                         new
                         {
                             Id = 32,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6995),
+                            IsDeleted = false,
                             Name = "NE"
                         },
                         new
                         {
                             Id = 33,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6996),
+                            IsDeleted = false,
                             Name = "NV"
                         },
                         new
                         {
                             Id = 34,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6997),
+                            IsDeleted = false,
                             Name = "NH"
                         },
                         new
                         {
                             Id = 35,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(6998),
+                            IsDeleted = false,
                             Name = "NJ"
                         },
                         new
                         {
                             Id = 36,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7000),
+                            IsDeleted = false,
                             Name = "NM"
                         },
                         new
                         {
                             Id = 37,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7001),
+                            IsDeleted = false,
                             Name = "NY"
                         },
                         new
                         {
                             Id = 38,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7003),
+                            IsDeleted = false,
                             Name = "NC"
                         },
                         new
                         {
                             Id = 39,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7004),
+                            IsDeleted = false,
                             Name = "ND"
                         },
                         new
                         {
                             Id = 40,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7005),
+                            IsDeleted = false,
                             Name = "MP"
                         },
                         new
                         {
                             Id = 41,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7006),
+                            IsDeleted = false,
                             Name = "OH"
                         },
                         new
                         {
                             Id = 42,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7008),
+                            IsDeleted = false,
                             Name = "OK"
                         },
                         new
                         {
                             Id = 43,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7009),
+                            IsDeleted = false,
                             Name = "OR"
                         },
                         new
                         {
                             Id = 44,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7010),
+                            IsDeleted = false,
                             Name = "PW"
                         },
                         new
                         {
                             Id = 45,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7012),
+                            IsDeleted = false,
                             Name = "PA"
                         },
                         new
                         {
                             Id = 46,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7013),
+                            IsDeleted = false,
                             Name = "PR"
                         },
                         new
                         {
                             Id = 47,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7014),
+                            IsDeleted = false,
                             Name = "RI"
                         },
                         new
                         {
                             Id = 48,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7015),
+                            IsDeleted = false,
                             Name = "SC"
                         },
                         new
                         {
                             Id = 49,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7017),
+                            IsDeleted = false,
                             Name = "SD"
                         },
                         new
                         {
                             Id = 50,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7018),
+                            IsDeleted = false,
                             Name = "TN"
                         },
                         new
                         {
                             Id = 51,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7019),
+                            IsDeleted = false,
                             Name = "TX"
                         },
                         new
                         {
                             Id = 52,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7020),
+                            IsDeleted = false,
                             Name = "UT"
                         },
                         new
                         {
                             Id = 53,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7022),
+                            IsDeleted = false,
                             Name = "VT"
                         },
                         new
                         {
                             Id = 54,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7028),
+                            IsDeleted = false,
                             Name = "VI"
                         },
                         new
                         {
                             Id = 55,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7029),
+                            IsDeleted = false,
                             Name = "VA"
                         },
                         new
                         {
                             Id = 56,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7031),
+                            IsDeleted = false,
                             Name = "WA"
                         },
                         new
                         {
                             Id = 57,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7032),
+                            IsDeleted = false,
                             Name = "WV"
                         },
                         new
                         {
                             Id = 58,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7033),
+                            IsDeleted = false,
                             Name = "WI"
                         },
                         new
                         {
                             Id = 59,
+                            CreationTime = new DateTime(2022, 10, 18, 23, 44, 47, 548, DateTimeKind.Local).AddTicks(7034),
+                            IsDeleted = false,
                             Name = "WY"
                         });
                 });
@@ -5200,6 +7097,27 @@ namespace LoanManagement.Migrations
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("ManualAssetEntryId")
                         .HasColumnType("bigint");

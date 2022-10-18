@@ -1,10 +1,11 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Homebuying : Entity<long?>
+    public partial class Homebuying : FullAuditedEntity<long?>
     {
         public string PropertyType { get; set; }
         public string PropertyUse { get; set; }

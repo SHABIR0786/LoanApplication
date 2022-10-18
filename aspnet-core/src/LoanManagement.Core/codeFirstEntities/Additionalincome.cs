@@ -1,12 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Additionalincome : Entity<long>
+    public partial class Additionalincome :  FullAuditedEntity<long>
     {
-        public long Id { get; set; }
         public decimal? Amount { get; set; }
         public int? IncomeSourceId { get; set; }
         public int? BorrowerTypeId { get; set; }

@@ -1,12 +1,12 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class Declarationborroweredemographicsinformation : Entity<long>
+    public partial class Declarationborroweredemographicsinformation : FullAuditedEntity<long>
     {
-        public long Id { get; set; }
         public bool? IsHispanicOrLatino { get; set; }
         public bool? IsMexican { get; set; }
         public bool? IsPuertoRican { get; set; }
