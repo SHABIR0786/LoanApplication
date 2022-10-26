@@ -23,7 +23,7 @@ namespace LoanManagement.Services.Implementation
                 BioMetricData = request.BioMetricData,
                 DeviceId = request.DeviceId,
                 IsEnabled = request.IsEnabled,
-                UserId = request.UserId,
+                //UserId = request.UserId,
             };
             repository.Insert(entity);
 
@@ -55,7 +55,7 @@ namespace LoanManagement.Services.Implementation
                 BioMetricData = d.BioMetricData,
                 DeviceId = d.DeviceId,
                 IsEnabled = d.IsEnabled,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).ToList();
         }
 
@@ -67,7 +67,7 @@ namespace LoanManagement.Services.Implementation
                 BioMetricData = d.BioMetricData,
                 DeviceId = d.DeviceId,
                 IsEnabled = d.IsEnabled,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).FirstOrDefault();
         }
 
@@ -83,7 +83,7 @@ namespace LoanManagement.Services.Implementation
             obj.BioMetricData = request.BioMetricData;
             obj.DeviceId = request.DeviceId;
             obj.IsEnabled = request.IsEnabled;
-            obj.UserId = request.UserId;
+            //obj.UserId = request.UserId;
 
             repository.Update(obj);
             UnitOfWorkManager.Current.SaveChanges();

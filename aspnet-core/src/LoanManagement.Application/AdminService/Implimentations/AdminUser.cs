@@ -11,139 +11,139 @@ namespace LoanManagement.Services.Implementation
 {
     public class AdminUserService : IAdminUserService
     {
-        private readonly IRepository<AdminUser, int> repository;
+        
 
-        public AdminUserService(IRepository<AdminUser,int> repository)
+        public AdminUserService()
         {
-            this.repository = repository;
+            
         }
-        public string Add(AddAdminUser request)
-        {
-            var entity = new AdminUser
-            {
-                CreatedOn = System.DateTime.Now,
-                Email = request.Email,
-                IsActive = request.IsActive,
-                Password = SimpleStringCipher.Instance.Encrypt(request.Password, AppConsts.DefaultPassPhrase),
-                UserName = request.UserName,
-            };
-              repository.Insert(entity) ;
+        //public string Add(AddAdminUser request)
+        //{
+        //    var entity = new AdminUser
+        //    {
+        //        CreatedOn = System.DateTime.Now,
+        //        Email = request.Email,
+        //        IsActive = request.IsActive,
+        //        Password = SimpleStringCipher.Instance.Encrypt(request.Password, AppConsts.DefaultPassPhrase),
+        //        UserName = request.UserName,
+        //    };
+        //      repository.Insert(entity) ;
 
-            //UnitOfWorkManager.Current.SaveChanges();
-            return entity.Id.ToString();
-        }
+        //    //UnitOfWorkManager.Current.SaveChanges();
+        //    return entity.Id.ToString();
+        //}
 
-        public string Delete(int id)
-        {
+        //public string Delete(int id)
+        //{
 
-            var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
+        //    var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
 
-            if (obj == null)
-            {
-                return AppConsts.NoRecordFound;
-            }
+        //    if (obj == null)
+        //    {
+        //        return AppConsts.NoRecordFound;
+        //    }
 
-           repository.Delete(obj);
-            //UnitOfWorkManager.Current.SaveChanges();
+        //   repository.Delete(obj);
+        //    //UnitOfWorkManager.Current.SaveChanges();
 
-            return AppConsts.SuccessfullyDeleted;
-        }
+        //    return AppConsts.SuccessfullyDeleted;
+        //}
 
-        public List<UpdateAdminUser> GetAll()
-        {
-            return repository.GetAll().Select(d => new UpdateAdminUser()
-            {
-                Id = d.Id,
-                Email = d.Email,
-                IsActive = d.IsActive,
-                UserName = d.UserName,
-            }).ToList();
-        }
+        //public List<UpdateAdminUser> GetAll()
+        //{
+        //    return repository.GetAll().Select(d => new UpdateAdminUser()
+        //    {
+        //        Id = d.Id,
+        //        Email = d.Email,
+        //        IsActive = d.IsActive,
+        //        UserName = d.UserName,
+        //    }).ToList();
+        //}
 
-        public UpdateAdminUser GetById(int id)
-        {
-            return repository.GetAll().Where(s => s.Id == id).Select(d => new UpdateAdminUser()
-            {
-                Id = d.Id,
-                Email = d.Email,
-                IsActive = d.IsActive,
-                UserName = d.UserName,
-            }).FirstOrDefault();
-        }
+        //public UpdateAdminUser GetById(int id)
+        //{
+        //    return repository.GetAll().Where(s => s.Id == id).Select(d => new UpdateAdminUser()
+        //    {
+        //        Id = d.Id,
+        //        Email = d.Email,
+        //        IsActive = d.IsActive,
+        //        UserName = d.UserName,
+        //    }).FirstOrDefault();
+        //}
 
-        public string Update(UpdateAdminUser request)
-        {
-            var obj = repository.GetAll().Where(s => s.Id == request.Id).FirstOrDefault();
+        //public string Update(UpdateAdminUser request)
+        //{
+        //    var obj = repository.GetAll().Where(s => s.Id == request.Id).FirstOrDefault();
 
-            if (obj == null)
-            {
-                return AppConsts.NoRecordFound;
-            }
+        //    if (obj == null)
+        //    {
+        //        return AppConsts.NoRecordFound;
+        //    }
 
-            obj.Email = request.Email;
-            obj.IsActive = request.IsActive;
-            obj.Password = request.Password;
-            obj.UserName = request.UserName;
+        //    obj.Email = request.Email;
+        //    obj.IsActive = request.IsActive;
+        //    obj.Password = request.Password;
+        //    obj.UserName = request.UserName;
 
-            repository.Update(obj);
+        //    repository.Update(obj);
             
 
-            return AppConsts.SuccessfullyUpdated;
-        }
+        //    return AppConsts.SuccessfullyUpdated;
+        //}
 
-        public string ChangePassword(int id, string oldPassword, string newPassword)
-        {
-            var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
+        //public string ChangePassword(int id, string oldPassword, string newPassword)
+        //{
+        //    var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
 
-            if (obj == null)
-            {
-                return AppConsts.NoRecordFound;
-            }
-            if (SimpleStringCipher.Instance.Encrypt(obj.Password, AppConsts.DefaultPassPhrase) != oldPassword)
-            {
-                return AppConsts.PasswordMismatch;
-            }
+        //    if (obj == null)
+        //    {
+        //        return AppConsts.NoRecordFound;
+        //    }
+        //    if (SimpleStringCipher.Instance.Encrypt(obj.Password, AppConsts.DefaultPassPhrase) != oldPassword)
+        //    {
+        //        return AppConsts.PasswordMismatch;
+        //    }
 
-            obj.Password = SimpleStringCipher.Instance.Encrypt(newPassword, AppConsts.DefaultPassPhrase);
+        //    obj.Password = SimpleStringCipher.Instance.Encrypt(newPassword, AppConsts.DefaultPassPhrase);
 
-            repository.Update(obj);
-            //UnitOfWorkManager.Current.SaveChanges();
+        //    repository.Update(obj);
+        //    //UnitOfWorkManager.Current.SaveChanges();
 
-            return AppConsts.SuccessfullyUpdated;
-        }
+        //    return AppConsts.SuccessfullyUpdated;
+        //}
 
-        public string ChangeUsername(int id, string userName)
-        {
-            var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
+        //public string ChangeUsername(int id, string userName)
+        //{
+        //    var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
 
-            if (obj == null)
-            {
-                return AppConsts.NoRecordFound;
-            }
+        //    if (obj == null)
+        //    {
+        //        return AppConsts.NoRecordFound;
+        //    }
 
-            obj.UserName = userName;
+        //    obj.UserName = userName;
 
-            repository.Update(obj);
-            //UnitOfWorkManager.Current.SaveChanges();
+        //    repository.Update(obj);
+        //    //UnitOfWorkManager.Current.SaveChanges();
 
-            return AppConsts.SuccessfullyUpdated;
-        }
+        //    return AppConsts.SuccessfullyUpdated;
+        //}
 
-        public string ChangeEmail(int id, string email)
-        {
-            var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
+        //public string ChangeEmail(int id, string email)
+        //{
+        //    var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
 
-            if (obj == null)
-            {
-                return AppConsts.NoRecordFound;
-            }
+        //    if (obj == null)
+        //    {
+        //        return AppConsts.NoRecordFound;
+        //    }
 
-            obj.Email = email;
+        //    obj.Email = email;
 
-            repository.Update(obj);
-            //UnitOfWorkManager.Current.SaveChanges(); 
+        //    repository.Update(obj);
+        //    //UnitOfWorkManager.Current.SaveChanges(); 
 
-            return AppConsts.SuccessfullyUpdated;
-        }
+        //    return AppConsts.SuccessfullyUpdated;
+        //}
     }
 }

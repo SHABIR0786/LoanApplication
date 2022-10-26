@@ -30,7 +30,7 @@ namespace LoanManagement.codeFirstEntities
 
         public virtual Application LoanApplication { get; set; }
         public virtual AdminLoanprogram LoanProgram { get; set; }
-        public virtual AdminUser User { get; set; }
+        //public virtual AdminUser User { get; set; }
         public virtual ICollection<AdminLoanapplicationdocument> AdminLoanapplicationdocuments { get; set; }
         public virtual ICollection<AdminLoansummarystatus> AdminLoansummarystatuses { get; set; }
     }

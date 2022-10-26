@@ -14,7 +14,7 @@ using System.Text.Json;
 
 namespace LoanManagement.Services.Implementation
 {
-    public class AdminUserNotificationService : Abp.Application.Services.ApplicationService, IAdminUserNotificationService
+    public class AdminUserNotificationService :  IAdminUserNotificationService
     {
         private readonly IRepository<AdminUsernotification, int> repository;
         private readonly IOnlineClientManager _onlineClientManager;
@@ -38,7 +38,6 @@ namespace LoanManagement.Services.Implementation
             };
             repository.Insert(entity);
 
-            UnitOfWorkManager.Current.SaveChanges();
             var serializeData = JsonSerializer.Serialize(entity);
 
             UserNotification[] userNotifications = {new UserNotification
@@ -72,7 +71,7 @@ namespace LoanManagement.Services.Implementation
             }
 
             repository.Delete(obj);
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyDeleted;
         }
@@ -122,7 +121,7 @@ namespace LoanManagement.Services.Implementation
             obj.UserId = request.UserId;
 
             repository.Update(obj);
-            UnitOfWorkManager.Current.SaveChanges();
+            //UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyUpdated;
         }

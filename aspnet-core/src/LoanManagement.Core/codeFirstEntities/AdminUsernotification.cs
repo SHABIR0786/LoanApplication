@@ -16,6 +16,6 @@ namespace LoanManagement.codeFirstEntities
         public ulong? IsSeen { get; set; }
 
         public virtual AdminNotificationtype NotificationType { get; set; }
-        public virtual AdminUser User { get; set; }
+        //public virtual AdminUser User { get; set; }
     }
 }

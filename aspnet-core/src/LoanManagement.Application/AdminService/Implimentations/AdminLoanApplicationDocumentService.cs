@@ -34,7 +34,7 @@ namespace LoanManagement.Services.Implementation
                 DisclosureId = request.DisclosureId,
                 DocumentPath = request.DocumentPath,
                 LoanId = request.LoanId,
-                UserId = request.UserId,
+                //UserId = request.UserId,
             };
                repository.Insert(entity);
 
@@ -66,7 +66,7 @@ namespace LoanManagement.Services.Implementation
                 DisclosureId = d.DisclosureId,
                 DocumentPath = d.DocumentPath,
                 LoanId = d.LoanId,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).ToList();
         }
 
@@ -78,7 +78,7 @@ namespace LoanManagement.Services.Implementation
                 DisclosureId = d.DisclosureId,
                 DocumentPath = d.DocumentPath,
                 LoanId = d.LoanId,
-                UserId = d.UserId,
+               // UserId = d.UserId,
             }).FirstOrDefault();
         }
 
@@ -94,7 +94,7 @@ namespace LoanManagement.Services.Implementation
             obj.DisclosureId = request.DisclosureId;
             obj.DocumentPath = request.DocumentPath;
             obj.LoanId = request.LoanId;
-            obj.UserId = request.UserId;
+            //obj.UserId = request.UserId;
 
             repository.Update(obj);
             UnitOfWorkManager.Current.SaveChanges();
@@ -125,7 +125,7 @@ namespace LoanManagement.Services.Implementation
                     DisclosureId = request.DisclosureId,
                     DocumentPath = filePath,
                     LoanId = request.LoanId,
-                    UserId = request.UserId,
+                    //UserId = request.UserId,
                 };
                 repository.Insert(entity);
 
