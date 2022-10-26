@@ -13,7 +13,7 @@ namespace LoanManagement.codeFirstEntities
             AdminLoansummarystatuses = new HashSet<AdminLoansummarystatus>();
         }
 
-        public int UserId { get; set; }
+        //public int UserId { get; set; }
         public int LoanApplicationId { get; set; }
         public string LoanNo { get; set; }
         public string MortageConsultant { get; set; }

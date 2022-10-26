@@ -8,7 +8,7 @@ namespace LoanManagement.codeFirstEntities
     public partial class AdminUsernotification : FullAuditedEntity<int>
     {
        
-        public int UserId { get; set; }
+       // public int UserId { get; set; }
         public int NotificationTypeId { get; set; }
         public DateTime? Date { get; set; }
         public string Subject { get; set; }

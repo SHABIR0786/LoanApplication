@@ -34,7 +34,7 @@ namespace LoanManagement.Services.Implementation
                 PropertyAddress = request.PropertyAddress,
                 RateLockDate = request.RateLockDate,
                 RateLockExpirationDate = request.RateLockExpirationDate,
-                UserId = request.UserId,
+                //UserId = request.UserId,
             };
                repository.Insert(entity);
 
@@ -77,7 +77,7 @@ namespace LoanManagement.Services.Implementation
                 PropertyAddress = d.PropertyAddress,
                 RateLockDate = d.RateLockDate,
                 RateLockExpirationDate = d.RateLockExpirationDate,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).ToList();
         }
 
@@ -124,7 +124,7 @@ namespace LoanManagement.Services.Implementation
             obj.PropertyAddress = request.PropertyAddress;
             obj.RateLockDate = request.RateLockDate;
             obj.RateLockExpirationDate = request.RateLockExpirationDate;
-            obj.UserId = request.UserId;
+            //obj.UserId = request.UserId;
 
             repository.Update(obj);
 

@@ -34,7 +34,7 @@ namespace LoanManagement.Services.Implementation
                 IsSeen = request.IsSeen,
                 NotificationTypeId = request.NotificationTypeId,
                 Subject = request.Subject,
-                UserId = request.UserId
+                //UserId = request.UserId
             };
             repository.Insert(entity);
 
@@ -86,7 +86,7 @@ namespace LoanManagement.Services.Implementation
                 IsSeen = d.IsSeen,
                 NotificationTypeId = d.NotificationTypeId,
                 Subject = d.Subject,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).ToList();
         }
 
@@ -100,7 +100,7 @@ namespace LoanManagement.Services.Implementation
                 IsSeen = d.IsSeen,
                 NotificationTypeId = d.NotificationTypeId,
                 Subject = d.Subject,
-                UserId = d.UserId,
+                //UserId = d.UserId,
             }).FirstOrDefault();
         }
 
@@ -118,7 +118,7 @@ namespace LoanManagement.Services.Implementation
             obj.IsSeen = request.IsSeen;
             obj.NotificationTypeId = request.NotificationTypeId;
             obj.Subject = request.Subject;
-            obj.UserId = request.UserId;
+            //obj.UserId = request.UserId;
 
             repository.Update(obj);
             //UnitOfWorkManager.Current.SaveChanges();
