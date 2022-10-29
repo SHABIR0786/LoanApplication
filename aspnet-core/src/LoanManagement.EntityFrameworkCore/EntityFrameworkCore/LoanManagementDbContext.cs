@@ -28,7 +28,7 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<AdminLoanprogram> AdminLoanprograms { get; set; }
         public virtual DbSet<AdminLoanstatus> admin_loanstatus { get; set; }
         public virtual DbSet<AdminLoansummarystatus> AdminLoansummarystatuses { get; set; }
-        public virtual DbSet<AdminNotificationtype> AdminNotificationtypes { get; set; }
+        //public virtual DbSet<AdminNotificationtype> AdminNotificationtypes { get; set; }
         //public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<AdminUserenableddevice> AdminUserenableddevices { get; set; }
        // public virtual DbSet<AdminUsernotification> AdminUsernotifications { get; set; }
