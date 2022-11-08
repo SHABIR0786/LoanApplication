@@ -58,9 +58,7 @@ export class GovernmentComponent implements OnInit {
       if (d.success === true) {
         this.router.navigate(["/app/purchase/gov/2"]);
         this.model.leadApplicationDetailPurchasingId = 1;
-        alert("Done");
       } else {
-        alert("Oops");
         console.clear();
         console.log({ d });
       }
@@ -78,7 +76,7 @@ export class GovernmentComponent implements OnInit {
       this.submitted = true;
     } else {
       this.saveStep();
-      this.router.navigate(["/app/purchase/gov/3"]);
+      this.router.navigate(["/app/purchase/credit-score/1"]);
       this.submitted = true;
     }
   }

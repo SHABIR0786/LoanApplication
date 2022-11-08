@@ -19,6 +19,7 @@ import { PurchasingYesComponent } from "./purchasing-yes/purchasing-yes.componen
 import { SignedPurchaseComponent } from "./signed-purchase/signed-purchase.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
+import { CreditScoreComponent } from "./credit-score/credit-score.component";
 const routes: Routes = [
   {
     path: "",
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path: "gov/:number",
         component: GovernmentComponent,
+      },
+      {
+        path: "credit-score/:number",
+        component: CreditScoreComponent,
       },
       {
         path: "signed-purchase",

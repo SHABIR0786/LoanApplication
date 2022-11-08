@@ -39,6 +39,7 @@ import { ApiService } from "@app/services/api.service";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
 import { SharedModule } from "@shared/shared.module";
 import { MatchPasswordDirective } from "@shared/directives/match-password.directive";
+import { CreditScoreComponent } from "./credit-score/credit-score.component";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -73,6 +74,7 @@ import { MatchPasswordDirective } from "@shared/directives/match-password.direct
     GovernmentComponent,
     PersonalInfoComponent,
     MatchPasswordDirective,
+    CreditScoreComponent,
   ],
   providers: [OfflineService, ApiService],
   imports: [

@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 const ROUTE_DATA = [
-  "/app/refinance/",
+  // "/app/refinance/",
   "/app/refinance/welcome/",
   "/app/refinance/property-info/",
   "/app/refinance/personal-info/",
   "/app/refinance/income-info/",
   "/app/refinance/assets-info/",
   "/app/refinance/gov/",
-  "/app/refinance/gov/",
+  "/app/refinance/credit-score/",
 ];
 @Component({
   selector: "app-index",
