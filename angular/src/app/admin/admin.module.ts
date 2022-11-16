@@ -10,6 +10,7 @@ import { AdminPanelComponent } from "@app/admin-panel/admin-panel.component";
 import { NotificationDialogComponent } from "./notification-dialog/notification-dialog.component";
 import { BsDropdownConfig, BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { CollapseModule } from "ngx-bootstrap/collapse";
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AdminRoutingModule,
     ModalModule.forChild(),
     BsDropdownModule,

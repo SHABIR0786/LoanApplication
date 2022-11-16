@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import { StateServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-property-info",
@@ -16,10 +17,12 @@ export class PropertyInfoComponent implements OnInit {
   isEdit = false;
   submitted = false;
   model: PostModel = new PostModel();
+  allStates: any = [];
   states: any[] = [];
   cities: any[] = [];
   stateName;
   constructor(
+    private stateService: StateServiceServiceProxy,
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
@@ -34,9 +37,15 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.getState();
     this.getStates();
     this.getCities();
     this.model = this.offline.getStep().data;
+  }
+  getState() {
+    this.stateService.getStates().subscribe((res) => {
+      this.allStates = res;
+    });
   }
   onPehlaForm(f: NgForm, step: any) {
     this.submitted = true;

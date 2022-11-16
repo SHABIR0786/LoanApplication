@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AddFinanceApiModel, PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import { StateServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-personal-info",
@@ -21,7 +22,8 @@ export class PersonalInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private stateSetvice: StateServiceServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -37,8 +39,8 @@ export class PersonalInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getState() {
-    this.api.get("State/states").subscribe((x: any) => {
-      this.states = x.result;
+    this.stateSetvice.getStates().subscribe((x: any) => {
+      this.states = x;
       this.model.empState = "1";
       this.model.currentStateId = 1;
       this.model.newHomeState = "1";
@@ -52,7 +54,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     console.log(this.submitted, this.matched);
     if (f.valid) {
-      // this.router.navigate(["/app/purchase/personal-info", step]);
+      this.router.navigate(["/app/purchase/personal-info", step]);
       this.submitted = false;
       this.matched = false;
       this.saveStep();
@@ -95,10 +97,14 @@ export class PersonalInfoComponent implements OnInit {
     this.saveStep();
     var _model = new AddFinanceApiModel();
     _model.map(this.model);
-    this.api.post("LeadPurchasingDetails/Add", _model).subscribe((x: any) => {
-      if (x.success == true)
-        this.router.navigate(["/app/purchase/income-info/1"]);
-    });
+    debugger;
+    var request = JSON.stringify(_model);
+    this.api
+      .post("api/services/app/LeadPurchasingDetailService/Add", _model)
+      .subscribe((x: any) => {
+        if (x.success == true)
+          this.router.navigate(["/app/purchase/income-info/1"]);
+      });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

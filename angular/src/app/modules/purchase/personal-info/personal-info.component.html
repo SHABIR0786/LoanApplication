@@ -126,7 +126,6 @@
           name="personalPasswordCon"
           required
           #personalPasswordConRef="ngModel"
-          [appMatchPassword]="['personalPasswordRef', 'personalPasswordConRef']"
         />
         <div
           *ngIf="submitted && !personalPasswordConRef.valid"

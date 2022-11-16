@@ -8,6 +8,7 @@ export class CustomvalidationService {
   constructor() {}
 
   MatchPassword(password: string, confirmPassword: string) {
+    debugger;
     return (formGroup: FormGroup) => {
       const passwordControl = formGroup.controls[password];
       const confirmPasswordControl = formGroup.controls[confirmPassword];

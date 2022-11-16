@@ -69,7 +69,7 @@
               #newHomeStateRef="ngModel"
               (change)="onStateChange($event)"
             >
-              <option [value]="s.id" *ngFor="let s of states">
+              <option [value]="s.id" *ngFor="let s of allStates">
                 {{ s.stateName }}
               </option>
               <!-- <option value="state">State</option> -->

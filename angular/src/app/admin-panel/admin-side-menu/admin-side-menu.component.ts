@@ -5,6 +5,7 @@ import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { UtilsService } from "abp-ng2-module";
 import { AppConsts } from "@shared/AppConsts";
 import { NotificationService } from "@app/services/notification.service";
+import { SessionServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-admin-side-menu",
@@ -14,12 +15,12 @@ import { NotificationService } from "@app/services/notification.service";
 export class AdminSideMenuComponent implements OnInit {
   sessionStorage: any;
   cookies: any;
-  
+
   constructor(
+    private sessionService: SessionServiceProxy,
     private AdminUserServices: AdminUserServices,
     private _router: Router,
-    private _utilsService: UtilsService,
-    
+    private _utilsService: UtilsService
   ) {}
   toggleSidebar: boolean;
   userName: string;
@@ -27,6 +28,7 @@ export class AdminSideMenuComponent implements OnInit {
   pageName = Enums.AdminDashboard;
   // isActivePage:boolean=true
   ngOnInit(): void {
+    this.getUserDetails();
     console.log(this.pageName);
     this.getAdminUserDetails();
     this.toggleSidebar = false;
@@ -40,7 +42,11 @@ export class AdminSideMenuComponent implements OnInit {
         $(".buttons_nav").toggleClass("buttons_nav_active");
       });
     });
-    
+  }
+  getUserDetails() {
+    this.sessionService.getCurrentLoginInformations().subscribe((res) => {
+      this.userName = res.user.name;
+    });
   }
   toggleSidebarFunc() {
     this.toggleSidebar = !this.toggleSidebar;
@@ -74,7 +80,7 @@ export class AdminSideMenuComponent implements OnInit {
   }
 
   navigateToLoanProgress() {
-    this._router.navigate(["app/admin/loan-process"]);
+    this._router.navigate(["app/admin/home"]);
   }
 
   logOut(reload?: boolean) {
@@ -90,5 +96,4 @@ export class AdminSideMenuComponent implements OnInit {
       location.href = AppConsts.appBaseUrl;
     }
   }
- 
 }

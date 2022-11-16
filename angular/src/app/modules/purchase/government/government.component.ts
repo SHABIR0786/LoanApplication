@@ -54,17 +54,19 @@ export class GovernmentComponent implements OnInit {
   }
   onGovClick() {
     const final = this.apiModel.map(this.model);
-    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
-      if (d.success === true) {
-        this.router.navigate(["/app/purchase/gov/2"]);
-        this.model.leadApplicationDetailPurchasingId = 1;
-        alert("Done");
-      } else {
-        alert("Oops");
-        console.clear();
-        console.log({ d });
-      }
-    });
+    this.api
+      .put("api/services/app/LeadPurchasingDetailService/Update", final)
+      .subscribe((d: any) => {
+        if (d.success === true) {
+          this.router.navigate(["/app/purchase/gov/2"]);
+          this.model.leadApplicationDetailPurchasingId = 1;
+          alert("Done");
+        } else {
+          alert("Oops");
+          console.clear();
+          console.log({ d });
+        }
+      });
     this.saveStep();
   }
   onQsClick() {
