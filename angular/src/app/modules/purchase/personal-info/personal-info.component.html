@@ -18,7 +18,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal First Name"
               [(ngModel)]="model.personalLegalFirstName"
               name="personalLegalFirstName"
@@ -37,7 +37,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Middle Initial"
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
@@ -56,7 +56,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Legal Last Name"
           [(ngModel)]="model.personalLegalLastName"
           name="personalLegalLastName"
@@ -73,7 +73,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Phone Number"
           [(ngModel)]="model.personalPhoneNumber"
           name="personalPhoneNumber"
@@ -84,16 +84,18 @@
         />
 
         <div *ngIf="submitted" class="text-danger d-flex">
-          <div *ngIf="phoneRef.errors?.minlength">
+          <div *ngIf="personalPhoneNumberRef.errors?.minlength">
             This is not a valid phone number
           </div>
-          <div *ngIf="phoneRef.errors?.required">Phone is required</div>
+          <div *ngIf="personalPhoneNumberRef.errors?.required">
+            Phone is required
+          </div>
         </div>
       </div>
       <div class="form-group">
         <input
           type="email"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Email Address"
           [(ngModel)]="model.personalEmailAddress"
           name="personalEmailAddress"
@@ -113,35 +115,49 @@
       <div class="form-group">
         <input
           type="password"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Password"
           [(ngModel)]="model.personalPassword"
           name="personalPassword"
           required
           #personalPassword="ngModel"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z@$!%*?&\d]{8,}$"
         />
         <div
-          *ngIf="submitted && !personalPassword.valid"
+          *ngIf="submitted && personalPassword.errors?.required"
           class="text-danger d-flex"
         >
           Password is required
+        </div>
+        <div
+          *ngIf="submitted && personalPassword.errors?.pattern"
+          class="text-danger d-flex"
+        >
+          Password is not valid
         </div>
       </div>
       <div class="form-group">
         <input
           type="password"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Confirm Password"
           [(ngModel)]="model.personalPasswordCon"
           name="personalPasswordCon"
           required
           #personalPasswordCon="ngModel"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z@$!%*?&\d]{8,}$"
         />
         <div
           *ngIf="submitted && personalPasswordCon.errors?.required"
           class="text-danger d-flex"
         >
           Confirm Password is required
+        </div>
+        <div
+          *ngIf="submitted && personalPassword.errors?.pattern"
+          class="text-danger d-flex"
+        >
+          Confirm password is not valid
         </div>
         <div
           *ngIf="submitted && personalPasswordCon.errors?.passwordMismatch"
@@ -231,7 +247,7 @@
       type="button"
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
-      (click)="model.isSomeoneRefer = 1; saveStep()"
+      (click)="model.isSomeOneRefer = 1; saveStep()"
       [class.orange-active]="model.isSomeOneRefer == 1"
       >Yes</a
     >
@@ -239,11 +255,23 @@
       type="button"
       routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
-      (click)="model.isSomeoneRefer = 0; saveStep()"
+      (click)="model.isSomeOneRefer = 0; saveStep()"
       [class.orange-active]="model.isSomeOneRefer == 0"
       >No</a
     >
-
+    <input
+      type="text"
+      class="form-control col-md-6 form-style offset-lg-3 mb-0"
+      placeholder="That’s make us happy! Who refered us?"
+      [(ngModel)]="model.refferedBy"
+      name="refferedBy"
+      required
+      #refferedByRef="ngModel"
+      *ngIf="model.isSomeOneRefer == 1"
+    />
+    <div *ngIf="submitted && !refferedByRef.valid" class="text-danger d-flex">
+      Reffered by is required
+    </div>
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/personal-info/1" class="btn" id="btn-back"
@@ -422,7 +450,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.currentAddress"
           name="currentAddress"
@@ -439,7 +467,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.currentUnit"
           name="currentUnit"
@@ -456,7 +484,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="City or Town"
               [(ngModel)]="model.currentCity"
               name="currentCity"
@@ -474,7 +502,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <select
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.currentStateId"
               name="currentState"
               #currentStateIdRef="ngModel"
@@ -499,18 +527,21 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.currentZipCode"
               name="currentZipCode"
               #currentZipCodeRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !currentZipCodeRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="currentZipCodeRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="currentZipCodeRef.errors?.required">
+                Zip is required
+              </div>
             </div>
           </div>
         </div>
@@ -518,7 +549,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="When did you start living here?"
           [(ngModel)]="model.currentStartLivingDate"
           name="currentStartLivingDate"
@@ -606,7 +637,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Monthly Expenses"
           [(ngModel)]="model.monthlyExpress"
           name="monthlyExpress"
@@ -808,7 +839,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Legal First Name"
                   [(ngModel)]="model.personalLegalFirstName"
                   name="personalLegalFirstName"
@@ -827,7 +858,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   [(ngModel)]="model.personalMiddleInitial"
                   placeholder="Middle Initial"
                   name="personalMiddleInitial"
@@ -846,7 +877,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal Last Name"
               [(ngModel)]="model.personalLegalLastName"
               name="personalLegalLastName"
@@ -863,7 +894,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Phone Number"
               appPhoneMask
               [(ngModel)]="model.personalPhoneNumber"
@@ -881,7 +912,7 @@
           <div class="form-group">
             <input
               type="email"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Email Address"
               [(ngModel)]="model.personalEmailAddress"
               name="personalEmailAddress"
@@ -915,14 +946,14 @@
           <div class="button-list col-lg-12">
             <p class="edit-info">
               Did someone refer you to EZ Online Mortgage?
-              {{ model.isSomeoneRefer }}
+              {{ model.isSomeOneRefer == 1 ? "Yes" : "No" }}
             </p>
             <button
               type="button"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               id="refer-yes"
-              (click)="model.isSomeoneRefer = 1; saveStep()"
-              [class.orange-active]="model.isSomeoneRefer == 1"
+              (click)="model.isSomeOneRefer = 1; saveStep()"
+              [class.orange-active]="model.isSomeOneRefer == 1"
             >
               Yes
             </button>
@@ -930,18 +961,23 @@
               type="button"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               id="refer-no"
-              (click)="model.isSomeoneRefer = 0; saveStep()"
-              [class.orange-active]="model.isSomeoneRefer == 0"
+              (click)="model.isSomeOneRefer = 0; saveStep()"
+              [class.orange-active]="model.isSomeOneRefer == 0"
             >
               No
             </button>
             <input
               type="text"
-              class="form-control col-md-6 form-style offset-lg-3"
+              class="form-control col-md-6 form-style offset-lg-3 mb-0"
               placeholder="That’s make us happy! Who refered us?"
               [(ngModel)]="model.refferedBy"
               name="refferedBy"
+              *ngIf="model.isSomeOneRefer == 1"
+              #refferedByRef="ngModel"
             />
+            <div *ngIf="!refferedByRef.valid" class="text-danger d-flex">
+              Reffered by is required
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="seperator-line"></div>
@@ -1073,7 +1109,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Address"
               [(ngModel)]="model.currentAddress"
               name="currentAddress"
@@ -1091,7 +1127,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Apt / Unit"
               [(ngModel)]="model.currentUnit"
               name="currentUnit"
@@ -1111,7 +1147,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="City or Town"
                   [(ngModel)]="model.currentCity"
                   name="currentCity"
@@ -1129,7 +1165,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <select
-                  class="form-select form-style"
+                  class="form-select form-style mb-0"
                   [(ngModel)]="model.currentStateId"
                   name="currentState"
                   #currentStateIdRef="ngModel"
@@ -1154,18 +1190,21 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Zip Code"
                   [(ngModel)]="model.currentZipCode"
                   name="currentZipCode"
                   #currentZipCodeRef="ngModel"
                   required
+                  pattern="^[0-9]{5}(?:-[0-9]{4})?$"
                 />
-                <div
-                  *ngIf="submitted && !currentZipCodeRef.valid"
-                  class="text-danger d-flex"
-                >
-                  Zip Code is required
+                <div class="text-danger d-flex">
+                  <div *ngIf="currentZipCodeRef.errors?.pattern">
+                    This is not a valid zip code
+                  </div>
+                  <div *ngIf="currentZipCodeRef.errors?.required">
+                    Zip is required
+                  </div>
                 </div>
               </div>
             </div>
@@ -1173,7 +1212,7 @@
           <div class="form-group">
             <input
               type="date"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="When did you start living here?"
               [(ngModel)]="model.currentStartLivingDate"
               name="currentStartLivingDate"
@@ -1262,7 +1301,7 @@
             <div class="form-group">
               <input
                 type="number"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Estimated Monthly Expenses"
                 [(ngModel)]="model.monthlyExpress"
                 name="monthlyExpress"

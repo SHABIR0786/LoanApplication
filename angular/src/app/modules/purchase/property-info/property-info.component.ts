@@ -54,6 +54,10 @@ export class PropertyInfoComponent implements OnInit {
       this.onNextClick();
     }
   }
+
+  skip(step) {
+    this.router.navigate(["/app/purchase/property-info", step]);
+  }
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
       if (x && x.result) {

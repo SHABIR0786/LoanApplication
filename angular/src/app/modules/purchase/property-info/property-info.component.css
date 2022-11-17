@@ -75,7 +75,7 @@
 }
 #percent-sign {
   top: 8px;
-  left: 85px;
+  right: 50px;
   color: #0004;
   position: absolute;
   z-index: 1;

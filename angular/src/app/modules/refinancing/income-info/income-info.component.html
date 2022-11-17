@@ -5,7 +5,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.personalAddress"
           name="personalAddress"
@@ -22,7 +22,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.personalUnit"
           name="personalUnit"
@@ -42,7 +42,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="City or Town"
               [(ngModel)]="model.personalCity"
               name="personalCity"
@@ -61,7 +61,7 @@
           <div class="form-group">
             <select
               style="width: 100%"
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.personalStateId"
               name="personalState"
               #personalStateRef="ngModel"
@@ -86,18 +86,21 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.personalZipCode"
               name="personalZipCode"
               #personalZipCodeRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !personalZipCodeRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="personalZipCodeRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="personalZipCodeRef.errors?.required">
+                Zip is required
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +108,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="When did you start living here?"
           [(ngModel)]="model.personalStartLivingDate"
           name="personalStartLivingDate"
@@ -131,7 +134,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'own'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'own' }"
+                [ngClass]="{ active: model.personalReantingType == 'own' }"
               >
                 Own
               </button>
@@ -142,7 +145,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'rent'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'rent' }"
+                [ngClass]="{ active: model.personalReantingType == 'rent' }"
               >
                 Rent
               </button>
@@ -153,7 +156,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'other'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'other' }"
+                [ngClass]="{ active: model.personalReantingType == 'other' }"
               >
                 Other
               </button>
@@ -231,12 +234,14 @@
       <div class="form-group">
         <select
           style="width: 100%"
-          class="form-select form-style"
+          class="form-select form-style mb-0"
           [(ngModel)]="model.w2Emp"
           name="w2Emp"
           #w2EmpRef="ngModel"
           required
         >
+          <option value="undefined" selected disabled>Employee Type</option>
+
           <option value="1">W-2 Employee</option>
           <option value="2">Self Employed</option>
         </select>
@@ -247,7 +252,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Employer Name"
           [(ngModel)]="model.w2EmpName"
           name="w2EmpName"
@@ -264,7 +269,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.empAddress"
           name="empAddress"
@@ -281,7 +286,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.empAptUnit"
           name="empAptUnit"
@@ -298,7 +303,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="City or Town"
           [(ngModel)]="model.empCity"
           name="empCity"
@@ -314,7 +319,7 @@
           <div class="form-group">
             <select
               style="width: 100%"
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.empState"
               name="empState"
               #empStateRef="ngModel"
@@ -339,18 +344,19 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.empZip"
               name="empZip"
               #empZipRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !empZipRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="empZipRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="empZipRef.errors?.required">Zip is required</div>
             </div>
           </div>
         </div>
@@ -358,7 +364,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Employer Phone Number"
           [(ngModel)]="model.empPhoneNumber"
           name="empPhoneNumber"
@@ -392,7 +398,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Start date"
           [(ngModel)]="model.empEstDate"
           name="empEstDate"
@@ -442,7 +448,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Job Title"
           [(ngModel)]="model.jobTitle"
           name="jobTitle"
@@ -456,7 +462,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Base Salery"
           [(ngModel)]="model.estAnnualBaseSalary"
           name="estAnnualBaseSalary"
@@ -474,7 +480,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Bonus"
           [(ngModel)]="model.estAnnualBonus"
           name="estAnnualBonus"
@@ -491,7 +497,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Commission"
           [(ngModel)]="model.estAnnualCommision"
           name="estAnnualCommision"
@@ -508,7 +514,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Overtime"
           [(ngModel)]="model.estAnnualOverTime"
           name="estAnnualOverTime"
@@ -589,27 +595,27 @@
     <form action="" id="employer-details">
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Job Title"
       />
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Annual Base Salery"
       />
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Annual Bonus"
       />
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Annual Commission"
       />
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Annual Overtime"
       />
     </form>
@@ -782,14 +788,16 @@
       <div class="form-group">
         <select
           style="width: 100%"
-          class="form-select form-style"
+          class="form-select form-style mb-0"
           [(ngModel)]="model.coboIncType"
           name="coboIncType"
           #coboIncTypeRef="ngModel"
           required
           style="width: 100%"
         >
-          <option value="incomeType1" selected>Income type 1</option>
+          <option value="undefined" disabled selected>Income type</option>
+
+          <option value="incomeType1">Income type 1</option>
           <option value="incomeType2">Income type 2</option>
         </select>
         <div
@@ -802,7 +810,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Monthly Amount"
           [(ngModel)]="model.coboMonthlyAmount"
           name="coboMonthlyAmount"
@@ -1002,7 +1010,7 @@
           <div class="form-group">
             <select
               style="width: 100%"
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.w2Emp"
               name="w2Emp"
               #w2EmpRef="ngModel"
@@ -1018,7 +1026,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Business Name"
               [(ngModel)]="model.w2EmpName"
               name="w2EmpName"
@@ -1032,7 +1040,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Address"
               [(ngModel)]="model.empAddress"
               name="empAddress"
@@ -1046,14 +1054,14 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Suit"
             />
           </div>
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="City"
               [(ngModel)]="model.empCity"
               name="empCity"
@@ -1070,7 +1078,7 @@
               <div class="form-group">
                 <select
                   style="width: 100%"
-                  class="form-select form-style"
+                  class="form-select form-style mb-0"
                   [(ngModel)]="model.empState"
                   name="empState"
                   #empStateRef="ngModel"
@@ -1090,15 +1098,19 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Zip Code"
                   [(ngModel)]="model.empZip"
                   name="coboMonthempZiplyAmount"
                   #empZipRef="ngModel"
                   required
+                  pattern="^[0-9]{5}(?:-[0-9]{4})?$"
                 />
-                <div *ngIf="!empZipRef.valid" class="text-danger d-flex">
-                  Zip Code is required
+                <div class="text-danger d-flex">
+                  <div *ngIf="empZipRef.errors?.pattern">
+                    This is not a valid zip code
+                  </div>
+                  <div *ngIf="empZipRef.errors?.required">Zip is required</div>
                 </div>
               </div>
             </div>
@@ -1106,7 +1118,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Business Phone Number"
               [(ngModel)]="model.empPhoneNumber"
               name="empPhoneNumber"
@@ -1129,7 +1141,7 @@
               <div class="col-md-12">
                 <input
                   type="checkbox"
-                  class="form-style"
+                  class="form-style mb-0"
                   [(ngModel)]="model.isCurrentJob"
                   name="isCurrentJob"
                   placeholder=""
@@ -1141,7 +1153,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Start date"
               [(ngModel)]="model.empEstDate"
               name="empEstDate"
@@ -1155,14 +1167,14 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Years in the co-borrower's profession"
             />
           </div>
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Job Title"
               [(ngModel)]="model.jobTitle"
               name="jobTitle"
@@ -1176,7 +1188,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Annual Base Salery"
               [(ngModel)]="model.estAnnualBaseSalary"
               name="estAnnualBaseSalary"
@@ -1193,7 +1205,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Annual Bonus"
               [(ngModel)]="model.estAnnualBonus"
               name="estAnnualBonus"
@@ -1207,7 +1219,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Annual Commission"
               [(ngModel)]="model.estAnnualCommision"
               name="estAnnualCommision"
@@ -1224,7 +1236,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Annual Overtime"
               [(ngModel)]="model.estAnnualOverTime"
               name="estAnnualOverTime"
@@ -1261,7 +1273,7 @@
         <div class="col-md-10 offset-md-1 margin-top">
           <div class="form-group">
             <select
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="- Income Type -"
               [(ngModel)]="model.coboIncType"
               name="coboIncType"
@@ -1279,7 +1291,7 @@
           <div class="form-group">
             <input
               type="number"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Monthly Amount"
               [(ngModel)]="model.coboMonthlyAmount"
               name="coboMonthlyAmount"

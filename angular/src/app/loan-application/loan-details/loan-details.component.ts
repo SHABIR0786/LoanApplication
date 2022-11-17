@@ -475,7 +475,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
   loadStates() {
     this.states = [
       {
-        id: 6,
+        id: 1,
         name: "CA",
       },
     ];

@@ -47,12 +47,13 @@
     <form action="" #f="ngForm" id="employer-details">
       <div class="form-group">
         <select
-          class="form-select form-style w-100"
+          class="form-select form-style w-100 mb-0"
           [(ngModel)]="_model.employeeTypeId"
           name="employeeType"
           required
           #employeeTypeRef="ngModel"
         >
+          <option value="undefined" selected disabled>Employee Type</option>
           <option value="1">W-2 Employee</option>
           <option value="2">Other Employee</option>
         </select>
@@ -66,7 +67,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Employer Name"
           [(ngModel)]="_model.employerName"
           name="employerName"
@@ -83,7 +84,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="_model.employementAddress"
           name="employementAddress"
@@ -100,7 +101,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="_model.employementSuite"
           name="employementSuite"
@@ -117,7 +118,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="City or Town"
           [(ngModel)]="_model.employementCity"
           name="employementCity"
@@ -136,7 +137,7 @@
         <div class="col-md-5">
           <div class="form-group">
             <select
-              class="form-select form-style w-100"
+              class="form-select form-style w-100 mb-0"
               [(ngModel)]="_model.employementTaxeId"
               name="employementTaxeId"
               required
@@ -160,18 +161,21 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="_model.employementZip"
               name="employementZip"
               required
               #employementZipRef="ngModel"
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !employementZipRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="employementZipRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="employementZipRef.errors?.required">
+                Zip is required
+              </div>
             </div>
           </div>
         </div>
@@ -179,7 +183,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Employer Phone Number"
           [(ngModel)]="_model.employerPhoneNumber"
           name="employerPhoneNumber"
@@ -210,7 +214,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Start date"
           [(ngModel)]="_model.estimatedStartDate"
           name="estimatedStartDate"
@@ -257,7 +261,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Job Title"
           [(ngModel)]="_model.jobTitle"
           name="jobTitle"
@@ -271,7 +275,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Base Salery"
           [(ngModel)]="_model.estimatedAnnualBaseSalary"
           name="estimatedAnnualBaseSalary"
@@ -288,7 +292,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Bonus"
           [(ngModel)]="_model.estimatedAnnualBonus"
           name="estimatedAnnualBonus"
@@ -305,7 +309,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Commission"
           [(ngModel)]="_model.estimatedAnnualCommission"
           name="estimatedAnnualCommission"
@@ -322,7 +326,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Annual Overtime"
           [(ngModel)]="_model.estimatedAnnualOvertime"
           name="estimatedAnnualOvertime"
@@ -462,15 +466,24 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Employment type: W-2 Employment</p>
-          <p>Employment Name: Goolge</p>
-          <p>Address: 5500 balcones Drive</p>
-          <p>City: Austin</p>
-          <p>State: TX</p>
-          <p>Zip Code: 78731</p>
-          <p>Employer Start Date: 02/01/2015</p>
-          <p>Job Title: Programer</p>
-          <p>Estimated Annual Base Saleary: $125.000</p>
+          <p>
+            Employment type:
+            {{
+              _model.employeeTypeId == "1" ? "W-2 Employee" : "Other Employee"
+            }}
+          </p>
+          <p>Employment Name: {{ _model.employerName }}</p>
+          <p>Address: {{ _model.employementAddress }}</p>
+          <p>City: {{ _model.employementCity }}</p>
+          <p>State: {{ _model.employementStateName }}</p>
+          <p>Zip Code: {{ _model.employementZip }}</p>
+          <p>Employer Start Date: {{ _model.estimatedStartDate }}</p>
+          <p>Job Title: {{ _model.jobTitle }}</p>
+          <p>
+            Estimated Annual Base Saleary: ${{
+              _model.estimatedAnnualBaseSalary
+            }}
+          </p>
         </div>
       </div>
     </div>
@@ -525,7 +538,7 @@
           </select>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Employer Name"
             [(ngModel)]="_model.employerName"
             name="employerName"
@@ -537,7 +550,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Address"
             [(ngModel)]="_model.employementAddress"
             name="employementAddress"
@@ -549,7 +562,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Apt / Unit"
             [(ngModel)]="_model.employementSuite"
             name="employementSuite"
@@ -561,7 +574,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="City or Town"
             [(ngModel)]="_model.employementCity"
             name="employementCity"
@@ -575,7 +588,7 @@
           <div class="row">
             <div class="col-md-5">
               <select
-                class="form-select form-style w-100"
+                class="form-select form-style w-100 mb-0"
                 [(ngModel)]="_model.employementTaxeId"
                 name="employementTaxeId"
                 required
@@ -597,21 +610,27 @@
             <div class="col-md-7">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Zip Code"
                 [(ngModel)]="_model.employementZip"
                 name="employementZip"
                 required
                 #employementZipRef="ngModel"
+                pattern="^[0-9]{5}(?:-[0-9]{4})?$"
               />
-              <div *ngIf="!employementZipRef.valid" class="text-danger d-flex">
-                Zip Code is required
+              <div class="text-danger d-flex">
+                <div *ngIf="employementZipRef.errors?.pattern">
+                  This is not a valid zip code
+                </div>
+                <div *ngIf="employementZipRef.errors?.required">
+                  Zip is required
+                </div>
               </div>
             </div>
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             appPhoneMask
             placeholder="Employer Phone Number"
             [(ngModel)]="_model.employerPhoneNumber"
@@ -640,7 +659,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Start date"
             [(ngModel)]="_model.estimatedStartDate"
             name="estimatedStartDate"
@@ -659,7 +678,7 @@
 
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Job Title"
             [(ngModel)]="_model.jobTitle"
             name="jobTitle"
@@ -671,7 +690,7 @@
           </div>
           <input
             type="number"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Annual Base Salery"
             [(ngModel)]="_model.estimatedAnnualBaseSalary"
             name="estimatedAnnualBaseSalary"
@@ -686,7 +705,7 @@
           </div>
           <input
             type="number"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Annual Bonus"
             [(ngModel)]="_model.estimatedAnnualBonus"
             name="estimatedAnnualBonus"
@@ -701,7 +720,7 @@
           </div>
           <input
             type="number"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Annual Commission"
             [(ngModel)]="_model.estimatedAnnualCommission"
             name="estimatedAnnualCommission"
@@ -716,7 +735,7 @@
           </div>
           <input
             type="number"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Annual Overtime"
             [(ngModel)]="_model.estimatedAnnualOvertime"
             name="estimatedAnnualOvertime"

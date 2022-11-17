@@ -7,7 +7,7 @@
     <form action="" id="assets" #f="ngForm">
       <div class="form-group">
         <select
-          class="form-select form-style"
+          class="form-select form-style mb-0"
           [(ngModel)]="model.accountType"
           name="accountType"
           required
@@ -43,7 +43,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Finantional institution"
           [(ngModel)]="model.finInstitute"
           name="finInstitute"
@@ -60,7 +60,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Balance"
           [(ngModel)]="model.finBalance"
           name="finBalance"
@@ -125,7 +125,7 @@
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <a
-      routerLink="/app/purchase/assets-info/6"
+      routerLink="/app/purchase/assets-info/3"
       class="btn btn-primary btn-style btn-orange"
       >Yes</a
     >
@@ -226,16 +226,35 @@
         <form action="" id="employer-details">
           <div class="form-group">
             <select
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.accountType"
               name="accountType"
               required
               #accountTypeRef="ngModel"
               style="width: 100%"
             >
-              <option [value]="a.id" *ngFor="let a of accType">
-                {{ a.financialAccountType1 }}
+              <option value="undefined" selected disabled>
+                -Account type-
               </option>
+              <option value="Bonds">Bonds</option>
+              <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
+              <option value="CashValueofLifeInsurance">
+                Cash Value of Life Insurance
+              </option>
+              <option value="CertificateofDeposit">
+                Certificate of Deposit
+              </option>
+              <option value="Checking">Checking</option>
+              <option value="IndividualDevelopmentAccount">
+                Individual Development Account
+              </option>
+              <option value="MoneyMarket">Money Market</option>
+              <option value="MutualFund">Mutual Fund</option>
+              <option value="Retirement">Retirement</option>
+              <option value="Savings">Savings</option>
+              <option value="StockOptions">Stock Options</option>
+              <option value="Stocks">Stocks</option>
+              <option value="TrustAccount">Trust Account</option>
             </select>
             <div *ngIf="!accountTypeRef.valid" class="text-danger d-flex">
               Account type is required
@@ -244,7 +263,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Finantional institution"
               [(ngModel)]="model.finInstitute"
               name="finInstitute"
@@ -258,7 +277,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Balance"
               [(ngModel)]="model.finBalance"
               name="finBalance"
@@ -283,9 +302,7 @@
         >
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/purchase/assets-info/5" class="btn" id="btn-next"
-          >Next</a
-        >
+        <a routerLink="/app/purchase/gov/1" class="btn" id="btn-next">Next</a>
       </div>
     </div>
   </div>
@@ -297,7 +314,7 @@
 <!-- section 28C ends -->
 <!-- click next on 28B it will land in 28D Or click next on 28C it will land on 28D -->
 <!-- Section 28D starts -->
-<div class="main-content" *ngIf="number == 5">
+<!-- <div class="main-content" *ngIf="number == 5">
   <h2>Thanks! Do you have any other assets you’d like to share?</h2>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
@@ -376,7 +393,7 @@
     <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
-</div>
+</div> -->
 <!-- section 28E ends -->
 
 <!-- click on next button it will land in section Page 29 purchase-government29-->

@@ -94,12 +94,13 @@
               name="newHomeZip"
               #newHomeZipRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !newHomeZipRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="newHomeZipRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="newHomeZipRef.errors?.required">Zip is required</div>
             </div>
           </div>
         </div>
@@ -132,60 +133,77 @@
     <i class="fa-solid fa-circle-info"></i>
   </h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <input
-      type="date"
-      [(ngModel)]="model.contractDate"
-      class="form-control form-style form-margin-top"
-    />
-    <p class="text-center">Do either of these apply to the property?</p>
-    <div class="radio-input">
-      <div class="row">
-        <div class="col-md-12">
-          <input
-            type="radio"
-            class="form-style"
-            placeholder=""
-            value="new"
-            name="propertyOption"
-            [(ngModel)]="model.propertyOption1"
-          />
-          <p>New construction</p>
+    <form action="" id="address" #f="ngForm">
+      <div class="form-group">
+        <input
+          type="date"
+          [(ngModel)]="model.contractDate"
+          class="form-control form-style form-margin-top mb-0"
+          placeholder="Contract date"
+          name="contractDate"
+          #contractDateRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !contractDateRef.valid"
+          class="text-danger d-flex"
+        >
+          Contract Date is required
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <input
-            type="radio"
-            class="form-style"
-            placeholder=""
-            value="Foreclosure"
-            name="propertyOption"
-            [(ngModel)]="model.propertyOption1"
-          />
-          <p>Foreclosure / Bank Owned</p>
+      <p class="text-center">Do either of these apply to the property?</p>
+      <div class="radio-input">
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              type="radio"
+              class="form-style mb-0"
+              placeholder=""
+              value="new"
+              name="propertyOption"
+              [(ngModel)]="model.propertyOption1"
+              required="required"
+              #propertyOption="ngModel"
+            />
+            <p>New construction</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              type="radio"
+              class="form-style"
+              placeholder=""
+              value="Foreclosure"
+              name="propertyOption"
+              [(ngModel)]="model.propertyOption1"
+              #propertyOption="ngModel"
+            />
+            <p>Foreclosure / Bank Owned</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
-        <a
-          [routerLink]="['/app/purchase/property-info', 1]"
-          class="btn"
-          id="btn-back"
-          role="button"
-          >Back</a
-        >
+      <div
+        *ngIf="submitted && !propertyOption.valid"
+        class="text-danger d-flex"
+      >
+        Property option is required
       </div>
-      <div class="col-lg-2">
-        <a
-          [routerLink]="['/app/purchase/property-info', 3]"
-          class="btn"
-          id="btn-next"
-          (click)="onNextTwoClick()"
-          >Next</a
-        >
+      <div class="row">
+        <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <a
+            [routerLink]="['/app/purchase/property-info', 1]"
+            class="btn"
+            id="btn-back"
+            role="button"
+            >Back</a
+          >
+        </div>
+        <div class="col-lg-2">
+          <a class="btn" id="btn-next" (click)="onPehlaForm(f, 3)">Next</a>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
   <div class="content-footer">
     <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
@@ -204,7 +222,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Home Price"
           [(ngModel)]="model.estimatedPrice"
           name="estimatedPrice"
@@ -225,7 +243,7 @@
           <div class="form-group">
             <input
               type="number"
-              class="form-control form-half-left"
+              class="form-control form-half-left mb-0"
               placeholder="Down Payment Amount"
               [(ngModel)]="model.downPaymentAmount"
               name="downPaymentAmount"
@@ -246,7 +264,7 @@
             <span id="percent-sign">%</span>
             <input
               type="number"
-              class="form-control form-half-right"
+              class="form-control form-half-right mb-0"
               placeholder="Percent"
               [(ngModel)]="model.downPaymentPercent"
               name="downPaymentPercent"
@@ -266,7 +284,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated annual taxes"
           [(ngModel)]="model.estAnnualTaxes"
           name="estAnnualTaxes"
@@ -283,7 +301,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated annual home insurance"
           [(ngModel)]="model.estAnnualHomeIns"
           name="estAnnualHomeIns"
@@ -416,7 +434,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal First Name"
               [(ngModel)]="model.firstName"
               name="firstName"
@@ -435,7 +453,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Middle Initial"
               [(ngModel)]="model.middleName"
               name="middleName"
@@ -453,7 +471,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Legal Last Name"
           [(ngModel)]="model.lastName"
           name="lastName"
@@ -467,7 +485,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Phone Number"
           [(ngModel)]="model.phone"
           appPhoneMask
@@ -486,7 +504,7 @@
       <div class="form-group">
         <input
           type="email"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Email Address"
           [(ngModel)]="model.email"
           name="email"
@@ -639,7 +657,7 @@
     <form action="" id="personal" #f7="ngForm">
       <input
         type="number"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Monthly HOA dues"
         [(ngModel)]="model.monthlyhoadues"
         name="monthlyhoadues"
@@ -675,9 +693,7 @@
       <div
         class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
-        <a class="btn btn-orange" id="btn-back" (click)="onPehlaForm(f7, 8)"
-          >Skip</a
-        >
+        <a class="btn btn-orange" id="btn-back" (click)="skip(8)">Skip</a>
       </div>
     </div>
   </div>
@@ -940,7 +956,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Address"
             [(ngModel)]="model.newHomeAddress"
             name="newHomeAddress"
@@ -954,7 +970,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Apt / Unit"
             [(ngModel)]="model.newHomeUnit"
             name="newHomeUnit"
@@ -968,7 +984,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="City or Town"
             [(ngModel)]="model.newHomeCityTown"
             name="newHomeCityTown"
@@ -984,22 +1000,28 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Zip Code"
                 [(ngModel)]="model.newHomeZip"
                 name="newHomeZip"
                 #newHomeZipRef="ngModel"
                 required
+                pattern="^[0-9]{5}(?:-[0-9]{4})?$"
               />
-              <div *ngIf="!newHomeZipRef.valid" class="text-danger d-flex">
-                Zip code is required
+              <div class="text-danger d-flex">
+                <div *ngIf="newHomeZipRef.errors?.pattern">
+                  This is not a valid zip code
+                </div>
+                <div *ngIf="newHomeZipRef.errors?.required">
+                  Zip is required
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="form-group">
           <select
-            class="form-select form-style"
+            class="form-select form-style mb-0"
             [(ngModel)]="model.newHomeState"
             style="width: 100%"
             placeholder="State Name"
@@ -1021,7 +1043,7 @@
           <input
             type="date"
             [(ngModel)]="model.contractDate"
-            class="form-control form-style form-margin-top"
+            class="form-control form-style mb-0 form-margin-top"
             name="contractDate"
             #contractDateRef="ngModel"
             required
@@ -1037,7 +1059,7 @@
             <div class="col-md-12">
               <input
                 type="checkbox"
-                class="form-style"
+                class="form-style mb-0"
                 placeholder=""
                 [(ngModel)]="model.propertyOption1"
                 name="propertyOption1"
@@ -1049,7 +1071,7 @@
             <div class="col-md-12">
               <input
                 type="checkbox"
-                class="form-style"
+                class="form-style mb-0"
                 placeholder=""
                 [(ngModel)]="model.propertyOption2"
                 name="propertyOption2"
@@ -1062,7 +1084,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated Home Price"
             [(ngModel)]="model.estimatedPrice"
             name="estimatedPrice"
@@ -1080,7 +1102,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-half-left"
+                class="form-control form-half-left mb-0"
                 [(ngModel)]="model.downPaymentAmount"
                 placeholder="Down Payment Amount"
                 name="downPaymentAmount"
@@ -1100,7 +1122,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-half-right"
+                class="form-control form-half-right mb-0"
                 placeholder="Percent"
                 [(ngModel)]="model.downPaymentPercent"
                 name="downPaymentPercent"
@@ -1120,7 +1142,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated annual taxes"
             [(ngModel)]="model.estAnnualTaxes"
             required
@@ -1134,7 +1156,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Estimated annual home insurance"
             [(ngModel)]="model.estAnnualHomeIns"
             required
@@ -1201,7 +1223,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Legal First Name"
                 [(ngModel)]="model.firstName"
                 name="firstName"
@@ -1220,7 +1242,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 name="middleName"
                 placeholder="Middle Initial"
                 [(ngModel)]="model.middleName"
@@ -1231,7 +1253,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Legal Last Name"
             name="lastName"
             [(ngModel)]="model.lastName"
@@ -1245,7 +1267,7 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Phone Number"
             name="phone"
             [(ngModel)]="model.phone"
@@ -1264,7 +1286,7 @@
         <div class="form-group">
           <input
             type="email"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Email Address"
             name="email"
             [(ngModel)]="model.email"
@@ -1331,7 +1353,7 @@
         <!-- <form action=""> -->
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Monthly HOA dues"
           [(ngModel)]="model.monthlyhoadues"
           name="monthlyhoadues"

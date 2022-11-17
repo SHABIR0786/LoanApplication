@@ -8,13 +8,13 @@
       <!-- <div class="form-group"> -->
       <select
         style="width: 100%"
-        class="form-select form-style"
+        class="form-select form-style mb-0"
         [(ngModel)]="model.assetsAccountType"
         name="assetsAccountType"
         #assetsAccountTypeRef="ngModel"
         required
       >
-        <option>-Account type-</option>
+        <option value="undefined" selected disabled>-Account type-</option>
         <option value="Bonds">Bonds</option>
         <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
         <option value="CashValueofLifeInsurance">
@@ -43,7 +43,7 @@
       <div class="form-group"> -->
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Finantional institution"
         [(ngModel)]="model.assetsFinInst"
         name="assetsFinInst"
@@ -60,7 +60,7 @@
       <div class="form-group"> -->
       <input
         type="number"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Balance"
         [(ngModel)]="model.assetsBalance"
         name="assetsBalance"
@@ -76,14 +76,14 @@
       <!-- </div>
       <div class="form-group"> -->
       <select
-        class="form-select form-style"
+        class="form-select form-style mb-0"
         [(ngModel)]="model.assetsOwner"
         name="assetsOwner"
         #assetsOwnerRef="ngModel"
         required
         style="width: 100%"
       >
-        <option>- Owner -</option>
+        <option selected disabled value="undefined">- Owner -</option>
       </select>
       <div
         *ngIf="submitted && !assetsOwnerRef.valid"
@@ -231,29 +231,59 @@
         <form action="" id="employer-details">
           <select
             style="width: 100%"
-            class="form-select form-style"
+            class="form-select form-style mb-0"
             [(ngModel)]="model.assetsAccountType"
             name="assetsAccountType"
+            required
+            #assetsAccountType="ngModel"
           >
-            <option>Checking Account</option>
+            <option value="undefined" selected disabled>-Account type-</option>
+            <option value="Bonds">Bonds</option>
+            <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
+            <option value="CashValueofLifeInsurance">
+              Cash Value of Life Insurance
+            </option>
+            <option value="CertificateofDeposit">Certificate of Deposit</option>
+            <option value="Checking">Checking</option>
+            <option value="IndividualDevelopmentAccount">
+              Individual Development Account
+            </option>
+            <option value="MoneyMarket">Money Market</option>
+            <option value="MutualFund">Mutual Fund</option>
+            <option value="Retirement">Retirement</option>
+            <option value="Savings">Savings</option>
+            <option value="StockOptions">Stock Options</option>
+            <option value="Stocks">Stocks</option>
+            <option value="TrustAccount">Trust Account</option>
           </select>
-
+          <div *ngIf="!assetsAccountTypeRef.valid" class="text-danger d-flex">
+            Account type is required
+          </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Finantional institution"
             [(ngModel)]="model.assetsFinInst"
             name="assetsFinInst"
+            required
+            #assetsFinInst="ngModel"
           />
-
+          <div *ngIf="!assetsFinInst.valid" class="text-danger d-flex">
+            Finantional institution is required
+          </div>
           />
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Balance"
             [(ngModel)]="model.assetsBalance"
             name="assetsBalance"
+            required
+            #assetsBalance="ngModel"
           />
+          <div *ngIf="!assetsBalance.valid" class="text-danger d-flex">
+            Balance is required
+          </div>
 
           />
         </form>

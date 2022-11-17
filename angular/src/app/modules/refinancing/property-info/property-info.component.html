@@ -1,11 +1,16 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Great now what's the address of the home you're refinancing?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form action="" id="address" #f="ngForm">
+    <form
+      action=""
+      id="address"
+      #f="ngForm"
+      [appMatchPassword]="['propertyPassword', 'reppropertyPassword']"
+    >
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.propertyAddress"
           name="propertyAddress"
@@ -22,7 +27,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.propertyUnit"
           name="propertyUnit"
@@ -39,7 +44,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="City or Town"
           [(ngModel)]="model.propertyCity"
           name="propertyCity"
@@ -59,25 +64,26 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.propertyZip"
               name="propertyZip"
               #propertyZipRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !propertyZipRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="propertyZipRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="propertyZipRef.errors?.required">Zip is required</div>
             </div>
           </div>
         </div>
         <div class="col-md-5">
           <div class="form-group">
             <select
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.propertyStateId"
               name="propertyState"
               #propertyStateIdRef="ngModel"
@@ -102,13 +108,15 @@
         <div class="col-md-12">
           <div class="form-group">
             <select
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.propertyCountryId"
               name="propertyCountry"
               #propertyCountryRef="ngModel"
               required
               style="width: 100%"
             >
+              <option value="undefined" selected disabled>Country</option>
+
               <option *ngFor="let c of countries" [value]="c.id">
                 {{ c.countryName }}
               </option>
@@ -158,7 +166,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Value"
           [(ngModel)]="model.propertyEstimatedValue"
           name="propertyEstimatedValue"
@@ -176,7 +184,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Remaining Loan Balance"
           [(ngModel)]="model.propertyLoanBalance"
           name="propertyLoanBalance"
@@ -194,7 +202,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Cash Out Amount"
           [(ngModel)]="model.propertCashOutAmount"
           name="propertCashOutAmount"
@@ -363,7 +371,7 @@
     <form action="" id="hoa-dues" #f5="ngForm">
       <input
         type="number"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Monthly HOA dues"
         [(ngModel)]="model.monthlyHoadues"
         name="monthlyHoadues"
@@ -424,7 +432,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Year Home was Purchased"
           [(ngModel)]="model.yearHomePurchased"
           name="yearHomePurchased"
@@ -442,7 +450,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Original Purchase Price"
           [(ngModel)]="model.orignalPurchasedPrice"
           name="orignalPurchasedPrice"
@@ -459,7 +467,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated annual taxes"
           [(ngModel)]="model.estimatedAnnualTax"
           name="estimatedAnnualTax"
@@ -476,7 +484,7 @@
       <div class="form-group">
         <input
           type="number"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated annual home insurance"
           [(ngModel)]="model.estimatedAnnualHomeInsurance"
           name="estimatedAnnualHomeInsurance"
@@ -783,7 +791,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.propertyAddress"
           name="propertyAddress"
@@ -797,7 +805,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.propertyUnit"
           name="propertyUnit"
@@ -811,7 +819,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="City or Town"
           [(ngModel)]="model.propertyCity"
           name="propertyCity"
@@ -827,22 +835,26 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.propertyZip"
               name="propertyZip"
               #propertyZipRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div *ngIf="!propertyZipRef.valid" class="text-danger d-flex">
-              Zip Code is required
+            <div class="text-danger d-flex">
+              <div *ngIf="propertyZipRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="propertyZipRef.errors?.required">Zip is required</div>
             </div>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="form-group">
             <select
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.propertyStateId"
               name="propertyState"
               #propertyStateIdRef="ngModel"
@@ -864,7 +876,7 @@
       </div>
       <div class="form-group">
         <select
-          class="form-select form-style"
+          class="form-select form-style mb-0"
           [(ngModel)]="model.propertyCountryId"
           name="propertyCountry"
           #propertyCountryRef="ngModel"
@@ -882,7 +894,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Estimated Value"
           [(ngModel)]="model.propertyEstimatedValue"
           name="propertyEstimatedValue"
@@ -899,7 +911,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Remaining Loan Balance"
           [(ngModel)]="model.propertyLoanBalance"
           name="propertyLoanBalance"
@@ -913,7 +925,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Cash Out Amount"
           [(ngModel)]="model.propertCashOutAmount"
           name="propertCashOutAmount"
@@ -977,7 +989,7 @@
         <div class="col-md-6">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Legal First Name"
             [(ngModel)]="model.propertyLegalFirstName"
             name="propertyLegalFirstName"
@@ -994,7 +1006,7 @@
         <div class="col-md-6">
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Middle Initial"
             [(ngModel)]="model.propertyMiddleInitial"
             name="propertyMiddleInitial"
@@ -1005,7 +1017,7 @@
       </div>
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Legal Last Name"
         [(ngModel)]="model.propertyLegalLastName"
         name="propertyLegalLastName"
@@ -1017,7 +1029,7 @@
       </div>
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Phone Number"
         [(ngModel)]="model.propertyPhoneNumber"
         name="propertyPhoneNumber"
@@ -1036,7 +1048,7 @@
       </div>
       <input
         type="email"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Email Address"
         [(ngModel)]="model.propertyEmailAddress"
         name="propertyEmailAddress"
@@ -1106,7 +1118,7 @@
 
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Monthly HOA dues"
         [(ngModel)]="model.monthlyHoadues"
         name="monthlyHoadues"
@@ -1133,7 +1145,7 @@
     >
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Address"
         [(ngModel)]="model.propertyAddress"
         name="propertyAddress"
@@ -1145,7 +1157,7 @@
       </div>
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Apt / Unit"
         [(ngModel)]="model.propertyUnit"
         name="propertyUnit"
@@ -1157,7 +1169,7 @@
       </div>
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="City or Town"
         name="propertyCity"
         #propertyCityRef="ngModel"
@@ -1169,7 +1181,7 @@
       </div>
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Value"
         [(ngModel)]="model.propertyEstimatedValue"
         name="propertyEstimatedValue"
@@ -1280,7 +1292,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal First Name"
               [(ngModel)]="model.propertyLegalFirstName"
               name="propertyLegalFirstName"
@@ -1299,7 +1311,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Middle Initial"
               [(ngModel)]="model.propertyMiddleInitial"
               name="propertyMiddleInitial"
@@ -1318,7 +1330,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Legal Last Name"
           [(ngModel)]="model.propertyLegalLastName"
           name="propertyLegalLastName"
@@ -1335,7 +1347,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Phone Number"
           [(ngModel)]="model.propertyPhoneNumber"
           name="propertyPhoneNumber"
@@ -1356,7 +1368,7 @@
       <div class="form-group">
         <input
           type="email"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Email Address"
           [(ngModel)]="model.propertyEmailAddress"
           name="propertyEmailAddress"
@@ -1376,35 +1388,55 @@
       <div class="form-group">
         <input
           type="password"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Password"
           [(ngModel)]="model.propertyPassword"
           name="propertyPassword"
           #propertyPasswordRef="ngModel"
           required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z@$!%*?&\d]{8,}$"
         />
         <div
-          *ngIf="submitted && !propertyPasswordRef.valid"
+          *ngIf="submitted && propertyPasswordRef.errors?.required"
           class="text-danger d-flex"
         >
           Password is required
+        </div>
+        <div
+          *ngIf="submitted && propertyPasswordRef.errors?.pattern"
+          class="text-danger d-flex"
+        >
+          Password is not valid
         </div>
       </div>
       <div class="form-group">
         <input
           type="password"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Confirm Password"
           [(ngModel)]="model.reppropertyPassword"
           name="reppropertyPassword"
           #reppropertyPasswordRef="ngModel"
           required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z@$!%*?&\d]{8,}$"
         />
         <div
-          *ngIf="submitted && !reppropertyPasswordRef.valid"
+          *ngIf="submitted && !reppropertyPasswordRef.errors?.required"
           class="text-danger d-flex"
         >
           Confirm Password is required
+        </div>
+        <div
+          *ngIf="submitted && reppropertyPasswordRef.errors?.pattern"
+          class="text-danger d-flex"
+        >
+          Confirm password is not valid
+        </div>
+        <div
+          *ngIf="submitted && reppropertyPasswordRef.errors?.passwordMismatch"
+          class="text-danger d-flex"
+        >
+          Confirm Password and Password should match
         </div>
       </div>
 

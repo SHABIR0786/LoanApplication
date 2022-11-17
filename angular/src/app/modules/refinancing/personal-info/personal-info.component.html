@@ -155,7 +155,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Address"
           [(ngModel)]="model.currentAddress"
           name="currentAddress"
@@ -172,7 +172,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Apt / Unit"
           [(ngModel)]="model.currentUnit"
           name="currentUnit"
@@ -192,7 +192,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="City or Town"
               [(ngModel)]="model.currentCity"
               name="currentCity"
@@ -211,7 +211,7 @@
           <div class="form-group">
             <select
               style="width: 100%"
-              class="form-select form-style"
+              class="form-select form-style mb-0"
               [(ngModel)]="model.currentStateId"
               name="currentState"
               #currentStateRef="ngModel"
@@ -236,18 +236,21 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Zip Code"
               [(ngModel)]="model.currentZipCode"
               name="currentZipCode"
               #currentZipCodeRef="ngModel"
               required
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
             />
-            <div
-              *ngIf="submitted && !currentZipCodeRef.valid"
-              class="text-danger d-flex"
-            >
-              Zip Code is required
+            <div *ngIf="submitted" class="text-danger d-flex">
+              <div *ngIf="currentZipCodeRef.errors?.pattern">
+                This is not a valid zip code
+              </div>
+              <div *ngIf="currentZipCodeRef.errors?.required">
+                Zip is required
+              </div>
             </div>
           </div>
         </div>
@@ -255,7 +258,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="When did you start living here?"
           [(ngModel)]="model.currentStartLivingDate"
           name="currentStartLivingDate"
@@ -344,7 +347,7 @@
     <form action="" id="monthly-expense" #f5="ngForm">
       <input
         type="text"
-        class="form-control form-style"
+        class="form-control form-style mb-0"
         placeholder="Estimated Monthly Expenses"
         [(ngModel)]="model.estimatedMonthlyExpenses"
         name="estimatedMonthlyExpenses"
@@ -635,7 +638,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Legal First Name"
                   [(ngModel)]="model.propertyLegalFirstName"
                   name="personalLegalFirstName"
@@ -653,7 +656,7 @@
             <div class="col-md-6">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Middle Initial"
                 [(ngModel)]="model.propertyMiddleInitial"
                 name="propertyMiddleInitial"
@@ -663,7 +666,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Legal Last Name"
             [(ngModel)]="model.propertyLegalLastName"
             name="propertyLegalLastName"
@@ -678,7 +681,7 @@
           </div>
           <input
             type="text"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Phone Number"
             [(ngModel)]="model.propertyPhoneNumber"
             name="propertyPhoneNumber"
@@ -697,7 +700,7 @@
           </div>
           <input
             type="email"
-            class="form-control form-style"
+            class="form-control form-style mb-0"
             placeholder="Email Address"
             [(ngModel)]="model.propertyEmailAddress"
             name="propertyEmailAddress"
@@ -853,7 +856,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Address"
                 [(ngModel)]="model.currentAddress"
                 name="currentAddress"
@@ -867,7 +870,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Apt / Unit"
                 [(ngModel)]="model.currentUnit"
                 name="currentUnit"
@@ -884,7 +887,7 @@
                 <div class="form-group">
                   <input
                     type="text"
-                    class="form-control form-style"
+                    class="form-control form-style mb-0"
                     placeholder="City or Town"
                     [(ngModel)]="model.currentCity"
                     name="currentCity"
@@ -900,7 +903,7 @@
                 <div class="form-group">
                   <select
                     style="width: 100%"
-                    class="form-select form-style"
+                    class="form-select form-style mb-0"
                     [(ngModel)]="model.currentStateId"
                     name="currentState"
                     #currentStateRef="ngModel"
@@ -925,25 +928,28 @@
                 <div class="form-group">
                   <input
                     type="text"
-                    class="form-control form-style"
+                    class="form-control form-style mb-0"
                     placeholder="Zip Code"
                     [(ngModel)]="model.currentZipCode"
                     name="currentZipCode"
                     #currentZipCodeRef="ngModel"
                     required
+                    pattern="^[0-9]{5}(?:-[0-9]{4})?$"
                   />
-                  <div
-                    *ngIf="!currentZipCodeRef.valid"
-                    class="text-danger d-flex"
-                  >
-                    Zip code is required
+                  <div *ngIf="submitted" class="text-danger d-flex">
+                    <div *ngIf="currentZipCodeRef.errors?.pattern">
+                      This is not a valid zip code
+                    </div>
+                    <div *ngIf="currentZipCodeRef.errors?.required">
+                      Zip is required
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="When did you start living here?"
               [(ngModel)]="model.currentStartLivingDate"
               name="currentStartLivingDate"
@@ -1032,7 +1038,7 @@
           <div class="button-list col-lg-12">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Estimated Monthly Expenses"
               [(ngModel)]="model.estimatedMonthlyExpenses"
               name="estimatedMonthlyExpenses"
@@ -1075,7 +1081,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Legal First Name"
                   [(ngModel)]="model.personalLegalFirstName"
                   name="personalLegalFirstName"
@@ -1094,7 +1100,7 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control form-style"
+                  class="form-control form-style mb-0"
                   placeholder="Middle Initial"
                   [(ngModel)]="model.personalMiddleInitial"
                   name="personalMiddleInitial"
@@ -1106,7 +1112,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal Last Name"
               [(ngModel)]="model.personalLegalLastName"
               name="personalLegalLastName"
@@ -1123,7 +1129,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Phone Number"
               [(ngModel)]="model.propertyPhoneNumber"
               name="propertyPhoneNumber"
@@ -1140,7 +1146,7 @@
           <div class="form-group">
             <input
               type="email"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Email Address"
               [(ngModel)]="model.personalEmailAddress"
               name="personalEmailAddress"
@@ -1184,7 +1190,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Address"
                 [(ngModel)]="model.currentAddress"
                 name="currentAddress"
@@ -1198,7 +1204,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="Apt / Unit"
                 [(ngModel)]="model.currentUnit"
                 name="currentUnit"
@@ -1214,7 +1220,7 @@
                 <div class="form-group">
                   <input
                     type="text"
-                    class="form-control form-style"
+                    class="form-control form-style mb-0"
                     placeholder="City or Town"
                     [(ngModel)]="model.currentCity"
                     name="currentCity"
@@ -1229,7 +1235,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <select
-                    class="form-select form-style"
+                    class="form-select form-style mb-0"
                     style="width: 100%"
                     name="currentState"
                     #currentStateRef="ngModel"
@@ -1255,18 +1261,21 @@
                 <div class="form-group">
                   <input
                     type="text"
-                    class="form-control form-style"
+                    class="form-control form-style mb-0"
                     placeholder="Zip Code"
                     name="currentZipCode"
                     #currentZipCodeRef="ngModel"
                     required
                     [(ngModel)]="model.currentZipCode"
+                    pattern="^[0-9]{5}(?:-[0-9]{4})?$"
                   />
-                  <div
-                    *ngIf="!currentZipCodeRef.valid"
-                    class="text-danger d-flex"
-                  >
-                    Zip code is required
+                  <div class="text-danger d-flex">
+                    <div *ngIf="currentZipCodeRef.errors?.pattern">
+                      This is not a valid zip code
+                    </div>
+                    <div *ngIf="currentZipCodeRef.errors?.required">
+                      Zip is required
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1274,7 +1283,7 @@
             <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
+                class="form-control form-style mb-0"
                 placeholder="When did you start living here?"
                 name="currentStartLivingDate"
                 #currentStartLivingDateRef="ngModel"
@@ -1444,7 +1453,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Legal First Name"
               [(ngModel)]="model.personalLegalFirstName"
               name="personalLegalFirstName"
@@ -1463,7 +1472,7 @@
           <div class="form-group">
             <input
               type="text"
-              class="form-control form-style"
+              class="form-control form-style mb-0"
               placeholder="Middle Initial"
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
@@ -1482,7 +1491,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Legal Last Name"
           [(ngModel)]="model.personalLegalLastName"
           name="personalLegalLastName"
@@ -1498,7 +1507,7 @@
       </div>
       <div class="form-group">
         <input
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Phone Number"
           [(ngModel)]="model.personalPhoneNumber"
           name="personalPhoneNumber"
@@ -1516,7 +1525,7 @@
       <div class="form-group">
         <input
           type="email"
-          class="form-control form-style"
+          class="form-control form-style mb-0"
           placeholder="Email Address"
           [(ngModel)]="model.personalEmailAddress"
           name="personalEmailAddress"

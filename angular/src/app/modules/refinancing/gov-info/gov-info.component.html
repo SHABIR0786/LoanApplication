@@ -507,11 +507,13 @@
     <div class="col-md-12">
       <select
         style="width: 100%"
-        class="form-select form-style"
+        class="form-select form-style mb-0"
         [(ngModel)]="model.citizenshipId"
         style="width: 100%"
       >
-        <option value="0" selected>-What is your citizenship status?-</option>
+        <option value="undefined" selected default>
+          -What is your citizenship status?-
+        </option>
         <option value="1">U.S. Citizen</option>
         <option value="2">Permanent Resident Alien</option>
         <option value="3">Non-Permanent Resident Alien</option>
