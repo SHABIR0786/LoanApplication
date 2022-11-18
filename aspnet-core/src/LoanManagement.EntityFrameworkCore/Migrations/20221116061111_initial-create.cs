@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class intial_create : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -2103,7 +2103,7 @@ namespace LoanManagement.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "States",
+                name: "State",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -2120,7 +2120,7 @@ namespace LoanManagement.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_States", x => x.Id);
+                    table.PrimaryKey("PK_State", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -2531,11 +2531,18 @@ namespace LoanManagement.Migrations
                 name: "CountryStates",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     StateName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2781,6 +2788,7 @@ namespace LoanManagement.Migrations
                     StateId = table.Column<int>(type: "int", nullable: false),
                     CityName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -2793,11 +2801,10 @@ namespace LoanManagement.Migrations
                 {
                     table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cities_CountryStates_StateId",
-                        column: x => x.StateId,
+                        name: "FK_Cities_CountryStates_StateId1",
+                        column: x => x.StateId1,
                         principalTable: "CountryStates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -2896,9 +2903,9 @@ namespace LoanManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Addresses_States_StateId",
+                        name: "FK_Addresses_State_StateId",
                         column: x => x.StateId,
-                        principalTable: "States",
+                        principalTable: "State",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -3040,14 +3047,14 @@ namespace LoanManagement.Migrations
                     CurrentCityId1a133NavigationId = table.Column<int>(type: "int", nullable: true),
                     CurrentCountryId1a136NavigationId = table.Column<int>(type: "int", nullable: true),
                     CurrentHousingTypeId1a141NavigationId = table.Column<int>(type: "int", nullable: true),
-                    CurrentStateId1a134NavigationId = table.Column<int>(type: "int", nullable: true),
+                    CurrentStateId1a134NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     FormerCityId1a153NavigationId = table.Column<int>(type: "int", nullable: true),
                     FormerCountryId1a156NavigationId = table.Column<int>(type: "int", nullable: true),
                     FormerHousingTypeId1a161NavigationId = table.Column<int>(type: "int", nullable: true),
-                    FormerStateId1a154NavigationId = table.Column<int>(type: "int", nullable: true),
+                    FormerStateId1a154NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     MailingCityId1a173NavigationId = table.Column<int>(type: "int", nullable: true),
                     MailingCountryId1a176NavigationId = table.Column<int>(type: "int", nullable: true),
-                    MailingStateId1a174NavigationId = table.Column<int>(type: "int", nullable: true),
+                    MailingStateId1a174NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     MaritialStatusId1a7NavigationId = table.Column<int>(type: "int", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -3519,9 +3526,9 @@ namespace LoanManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Manualassetentries_States_StateId",
+                        name: "FK_Manualassetentries_State_StateId",
                         column: x => x.StateId,
-                        principalTable: "States",
+                        principalTable: "State",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -3556,6 +3563,7 @@ namespace LoanManagement.Migrations
                     IsSelfEmployed = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsOwnershipLessThan25 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     MonthlyIncome = table.Column<float>(type: "float", nullable: true),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -3585,11 +3593,10 @@ namespace LoanManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApplicationAdditionalEmployementDetails_CountryStates_StateId",
-                        column: x => x.StateId,
+                        name: "FK_ApplicationAdditionalEmployementDetails_CountryStates_StateI~",
+                        column: x => x.StateId1,
                         principalTable: "CountryStates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -3659,7 +3666,7 @@ namespace LoanManagement.Migrations
                     MonthlyIncome1b92 = table.Column<float>(type: "float", nullable: true),
                     CityId1b43NavigationId = table.Column<int>(type: "int", nullable: true),
                     CountryId1b46NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId1b44NavigationId = table.Column<int>(type: "int", nullable: true),
+                    StateId1b44NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -3866,7 +3873,7 @@ namespace LoanManagement.Migrations
                     CountryId3a26NavigationId = table.Column<int>(type: "int", nullable: true),
                     FinancialPropertyIntendedOccupancyId3a5NavigationId = table.Column<int>(type: "int", nullable: true),
                     FinancialPropertyStatusId3a4NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId3a24NavigationId = table.Column<int>(type: "int", nullable: true),
+                    StateId3a24NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -3971,7 +3978,7 @@ namespace LoanManagement.Migrations
                     GrossMonthlyIncome1d8 = table.Column<float>(type: "float", nullable: true),
                     CityId1d33NavigationId = table.Column<int>(type: "int", nullable: true),
                     CountryId1d36NavigationId = table.Column<int>(type: "int", nullable: true),
-                    StateId1d34NavigationId = table.Column<int>(type: "int", nullable: true),
+                    StateId1d34NavigationId = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -4155,19 +4162,19 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3449), null, null, null, false, null, null, "Cash deposit on sales contract" },
-                    { 2L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3469), null, null, null, false, null, null, "Certificate of Deposit" },
-                    { 3L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3472), null, null, null, false, null, null, "Checking Account" },
-                    { 4L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3474), null, null, null, false, null, null, "Gifts" },
-                    { 5L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3476), null, null, null, false, null, null, "Gift of equity" },
-                    { 6L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3477), null, null, null, false, null, null, "Money Market Fund" },
-                    { 7L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3479), null, null, null, false, null, null, "Mutual Funds" },
-                    { 8L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3481), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
-                    { 9L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3482), null, null, null, false, null, null, "Real Estate Owned" },
-                    { 10L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3484), null, null, null, false, null, null, "Retirement Funds" },
-                    { 11L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3485), null, null, null, false, null, null, "Savings Account" },
-                    { 12L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3487), null, null, null, false, null, null, "Stocks & Bonds" },
-                    { 13L, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3488), null, null, null, false, null, null, "Trust Account" }
+                    { 1L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7422), null, null, null, false, null, null, "Cash deposit on sales contract" },
+                    { 2L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7434), null, null, null, false, null, null, "Certificate of Deposit" },
+                    { 3L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7436), null, null, null, false, null, null, "Checking Account" },
+                    { 4L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7437), null, null, null, false, null, null, "Gifts" },
+                    { 5L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7438), null, null, null, false, null, null, "Gift of equity" },
+                    { 6L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7439), null, null, null, false, null, null, "Money Market Fund" },
+                    { 7L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7440), null, null, null, false, null, null, "Mutual Funds" },
+                    { 8L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7441), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
+                    { 9L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7442), null, null, null, false, null, null, "Real Estate Owned" },
+                    { 10L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7443), null, null, null, false, null, null, "Retirement Funds" },
+                    { 11L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7444), null, null, null, false, null, null, "Savings Account" },
+                    { 12L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7445), null, null, null, false, null, null, "Stocks & Bonds" },
+                    { 13L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7446), null, null, null, false, null, null, "Trust Account" }
                 });
 
             migrationBuilder.InsertData(
@@ -4185,82 +4192,16 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IncomeSource1", "IsDeleted", "LastModificationTime", "LastModifierUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3720), null, null, null, "Accessory Unit Income", false, null, null },
-                    { 2, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3726), null, null, null, "Alimony/Child Support", false, null, null },
-                    { 3, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3727), null, null, null, "Automobile/Expense Account", false, null, null },
-                    { 4, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3729), null, null, null, "Boarder Income", false, null, null }
+                    { 1, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7622), null, null, null, "Accessory Unit Income", false, null, null },
+                    { 2, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7625), null, null, null, "Alimony/Child Support", false, null, null },
+                    { 3, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7626), null, null, null, "Automobile/Expense Account", false, null, null },
+                    { 4, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7627), null, null, null, "Boarder Income", false, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sitesettings",
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "PageIdentifier", "PageName", "PageSetting" },
-                values: new object[] { 1, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4234), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
-
-            migrationBuilder.InsertData(
-                table: "States",
-                columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3837), null, null, null, false, null, null, "AL" },
-                    { 2, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3843), null, null, null, false, null, null, "AK" },
-                    { 3, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3845), null, null, null, false, null, null, "AS" },
-                    { 4, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3847), null, null, null, false, null, null, "AZ" },
-                    { 5, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3849), null, null, null, false, null, null, "AR" },
-                    { 6, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3850), null, null, null, false, null, null, "CA" },
-                    { 7, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3852), null, null, null, false, null, null, "CO" },
-                    { 8, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3854), null, null, null, false, null, null, "CT" },
-                    { 9, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3856), null, null, null, false, null, null, "DE" },
-                    { 10, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3857), null, null, null, false, null, null, "DC" },
-                    { 11, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3859), null, null, null, false, null, null, "FM" },
-                    { 12, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3892), null, null, null, false, null, null, "FL" },
-                    { 13, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3910), null, null, null, false, null, null, "GA" },
-                    { 14, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3912), null, null, null, false, null, null, "GU" },
-                    { 15, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3913), null, null, null, false, null, null, "HI" },
-                    { 16, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3915), null, null, null, false, null, null, "ID" },
-                    { 17, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3917), null, null, null, false, null, null, "IL" },
-                    { 18, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3919), null, null, null, false, null, null, "IN" },
-                    { 19, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3921), null, null, null, false, null, null, "IA" },
-                    { 20, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3922), null, null, null, false, null, null, "KS" },
-                    { 21, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3924), null, null, null, false, null, null, "KY" },
-                    { 22, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3925), null, null, null, false, null, null, "LA" },
-                    { 23, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3927), null, null, null, false, null, null, "ME" },
-                    { 24, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3929), null, null, null, false, null, null, "MH" },
-                    { 25, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3944), null, null, null, false, null, null, "MD" },
-                    { 26, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3957), null, null, null, false, null, null, "MA" },
-                    { 27, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3959), null, null, null, false, null, null, "MI" },
-                    { 28, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3961), null, null, null, false, null, null, "MN" },
-                    { 29, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3963), null, null, null, false, null, null, "MS" },
-                    { 30, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3964), null, null, null, false, null, null, "MO" },
-                    { 31, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4031), null, null, null, false, null, null, "MT" },
-                    { 32, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4033), null, null, null, false, null, null, "NE" },
-                    { 33, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4034), null, null, null, false, null, null, "NV" },
-                    { 34, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4036), null, null, null, false, null, null, "NH" },
-                    { 35, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4038), null, null, null, false, null, null, "NJ" },
-                    { 36, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4039), null, null, null, false, null, null, "NM" },
-                    { 37, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4041), null, null, null, false, null, null, "NY" },
-                    { 38, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4043), null, null, null, false, null, null, "NC" },
-                    { 39, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4044), null, null, null, false, null, null, "ND" },
-                    { 40, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4046), null, null, null, false, null, null, "MP" },
-                    { 41, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4048), null, null, null, false, null, null, "OH" },
-                    { 42, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4050), null, null, null, false, null, null, "OK" },
-                    { 43, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4051), null, null, null, false, null, null, "OR" },
-                    { 44, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4053), null, null, null, false, null, null, "PW" },
-                    { 45, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4054), null, null, null, false, null, null, "PA" },
-                    { 46, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4056), null, null, null, false, null, null, "PR" },
-                    { 47, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4058), null, null, null, false, null, null, "RI" },
-                    { 48, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4059), null, null, null, false, null, null, "SC" },
-                    { 49, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4061), null, null, null, false, null, null, "SD" },
-                    { 50, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4063), null, null, null, false, null, null, "TN" },
-                    { 51, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4065), null, null, null, false, null, null, "TX" },
-                    { 52, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4066), null, null, null, false, null, null, "UT" },
-                    { 53, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4068), null, null, null, false, null, null, "VT" },
-                    { 54, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4069), null, null, null, false, null, null, "VI" },
-                    { 55, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4071), null, null, null, false, null, null, "VA" },
-                    { 56, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4073), null, null, null, false, null, null, "WA" },
-                    { 57, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4075), null, null, null, false, null, null, "WV" },
-                    { 58, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4077), null, null, null, false, null, null, "WI" },
-                    { 59, new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4078), null, null, null, false, null, null, "WY" }
-                });
+                values: new object[] { 1, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7657), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogs_TenantId_ExecutionDuration",
@@ -4687,9 +4628,9 @@ namespace LoanManagement.Migrations
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApplicationAdditionalEmployementDetails_StateId",
+                name: "IX_ApplicationAdditionalEmployementDetails_StateId1",
                 table: "ApplicationAdditionalEmployementDetails",
-                column: "StateId");
+                column: "StateId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApplicationAdditionalEmployementIncomeDetails_ApplicationAdd~",
@@ -4942,9 +4883,9 @@ namespace LoanManagement.Migrations
                 column: "BorrowerTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_StateId",
+                name: "IX_Cities_StateId1",
                 table: "Cities",
-                column: "StateId");
+                column: "StateId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CountryStates_CountryId",
@@ -5368,7 +5309,7 @@ namespace LoanManagement.Migrations
                 name: "Loanapplications");
 
             migrationBuilder.DropTable(
-                name: "States");
+                name: "State");
 
             migrationBuilder.DropTable(
                 name: "Applications");

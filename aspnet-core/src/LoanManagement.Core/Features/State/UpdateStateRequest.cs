@@ -8,6 +8,6 @@ namespace LoanManagement.Features.State
 {
     public class UpdateStateRequest: AddStateRequest
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

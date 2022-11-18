@@ -17,18 +17,19 @@ namespace LoanManagement.Services.Implementation
 {
     public class StateService: Abp.Application.Services.ApplicationService, IStateService
 	{
-		private readonly IRepository<State, int> repository;
+		private readonly IRepository<CountryState, long> repository;
 
-		public StateService(IRepository<State,int> repository)
+		public StateService(IRepository<CountryState, long> repository)
 		{
 			this.repository = repository;
 		}
 
 		public string AddState(AddStateRequest request)
 		{
-			repository.Insert(new State()
+			repository.Insert(new CountryState()
 			{
-				Name = request.StateName
+				CountryId = request.CountryId,	
+				StateName = request.StateName
 			});
 
 
@@ -45,7 +46,8 @@ namespace LoanManagement.Services.Implementation
 				return AppConsts.NoRecordFound;
 			}
 
-			objState.Name = request.StateName;
+			objState.StateName = request.StateName;
+			objState.CountryId = request.CountryId;
 
 			repository.Update(objState);
             UnitOfWorkManager.Current.SaveChanges();
@@ -73,7 +75,8 @@ namespace LoanManagement.Services.Implementation
 			return repository.GetAll().Select(d => new UpdateStateRequest()
 			{
 				Id = d.Id,
-				StateName = d.Name
+				CountryId= d.CountryId,	
+				StateName = d.StateName
 			}).ToList();
 		}
 
@@ -82,7 +85,7 @@ namespace LoanManagement.Services.Implementation
 			return repository.GetAll().Where(s => s.Id == id).Select(d => new UpdateStateRequest()
 			{
 				Id = d.Id,
-				StateName = d.Name
+				StateName = d.StateName
 			}).FirstOrDefault();
 		}
 

@@ -49,6 +49,11 @@ const routes: Routes = [];
             component: MainLoanProcessComponent,
             canActivate: [AppRouteGuard],
           },
+          {
+            path: "main-loan-process",
+            component: MainLoanProcessComponent,
+            canActivate: [AppRouteGuard],
+          },
         ],
       },
     ]),

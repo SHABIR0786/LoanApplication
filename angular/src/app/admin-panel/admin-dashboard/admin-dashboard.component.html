@@ -2,7 +2,7 @@
   <div class="section">
     <div class="row">
       <span class="h4" style="color: #f47b46"
-        >My Loan Application #
+        >My Loan Application # {{ adminLoanDetails?.loanNo }}
         <span class="LoanNumber">{{ loanApplicationNumber }}</span></span
       >
     </div>
@@ -18,7 +18,7 @@
                 background-color: #dff9ec !important;
                 color: #1bd27a !important;
               "
-              >{{ loanStatus }}</a
+              >{{ adminLoanStatus }}</a
             >
           </div>
         </div>
@@ -42,7 +42,9 @@
       <div class="col-md-4 col-sm-12 pl-sm-0 py-md-2">
         <div class="card">
           <div class="card-body px-md-4 py-2">
-            <h5 class="card-title h6 pt-1">{{ loanApplicantAddress }}</h5>
+            <h5 class="card-title h6 pt-1">
+              {{ adminLoanDetails?.propertyAddress }}
+            </h5>
             <a
               href="javascript:void(0)"
               class="btn float-right mr-2"
@@ -50,7 +52,7 @@
                 background-color: #e6e9f0 !important;
                 color: #384b8e !important;
               "
-              >{{ loanApplicationNumber }}</a
+              >{{ adminLoanDetails?.loanNo }}</a
             >
           </div>
         </div>
@@ -91,10 +93,11 @@
                 </div>
                 <div class="col float-right">
                   <span class="LoanNumber float-right">{{
-                    loanApplicationNumber
+                    adminLoanDetails?.loanNo
                   }}</span>
                 </div>
               </div>
+              <!-- {{adminLoanDetails|json}} -->
               <div class="divider m-2 w-100"></div>
               <div class="row px-2">
                 <div class="col float-left">
@@ -102,7 +105,7 @@
                 </div>
                 <div class="col float-right">
                   <span class="LoanNumber float-right">{{
-                    mortageConsultant
+                    adminLoanDetails?.mortageConsultant
                   }}</span>
                 </div>
               </div>
@@ -112,7 +115,9 @@
                   <span class="float-left name">NMLS ID</span>
                 </div>
                 <div class="col float-right">
-                  <span class="LoanNumber float-right">{{ NMLSId }}</span>
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.nmlsId
+                  }}</span>
                 </div>
               </div>
               <div class="divider m-2 w-100"></div>
@@ -122,7 +127,7 @@
                 </div>
                 <div class="col float-right">
                   <span class="LoanNumber float-right">{{
-                    loanApplicantName
+                    adminLoanDetails?.borrowerName
                   }}</span>
                 </div>
               </div>
@@ -133,7 +138,7 @@
                 </div>
                 <div class="col float-right">
                   <span class="LoanNumber float-right text-right">{{
-                    loanApplicantAddress
+                    adminLoanDetails?.propertyAddress
                   }}</span>
                 </div>
               </div>
@@ -144,7 +149,73 @@
                 </div>
                 <div class="col float-right">
                   <span class="LoanNumber float-right">{{
-                    loanProgramName
+                    adminLoanProgramName
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Loan Amount</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.loanAmount
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Loan Purpose</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.loanPurpose
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Interest Rate</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.interestRate
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Application Date</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.applicationDate
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Rate Lock Date</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.rateLockDate
+                  }}</span>
+                </div>
+              </div>
+              <div class="divider m-2 w-100"></div>
+              <div class="row px-2">
+                <div class="col float-left">
+                  <span class="float-left name">Rate Lock Expiration Date</span>
+                </div>
+                <div class="col float-right">
+                  <span class="LoanNumber float-right">{{
+                    adminLoanDetails?.rateLockExpirationDate
                   }}</span>
                 </div>
               </div>
@@ -165,8 +236,8 @@
                   <span
                     class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
                   >
-                    Not Available 
-                </span>
+                    Not Available
+                  </span>
                 </div>
               </div>
               <div class="divider m-2 w-100"></div>
@@ -178,7 +249,7 @@
                   <button
                     class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
                   >
-                     {{disclouser}}
+                    {{ disclouser }}
                   </button>
                 </div>
               </div>

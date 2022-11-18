@@ -18,17 +18,17 @@
                 data-toggle="modal"
                 data-target="#exampleModal"
                 (click)="SelectedNotification(item)"
-                *ngFor="let item of notification"
+                *ngFor="let item of notifications"
               >
-                {{ item.subject }}
+                {{ item.Message }}
               </p>
             </div>
           </div>
           <div class="col-6">
             <div class="">
               <h3 class="bold_text text-dark mb-3">Date Generated</h3>
-              <p class="simple_text" *ngFor="let item of notification">
-                {{ item.date | date }}
+              <p class="simple_text" *ngFor="let item of notifications">
+                <!-- {{ item.date | date }} -->
               </p>
               <!-- <p class="simple_text">9/23/2021</p> -->
             </div>

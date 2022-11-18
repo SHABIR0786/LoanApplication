@@ -1,6 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { LoanstatusService } from "../../../shared/service/loanstatus.service";
 import { LoanManagementService } from "../../../shared/service/loanmanagement.service";
+import {
+  AdminLoanDetailServiceServiceProxy,
+  AdminLoanProgramServiceServiceProxy,
+  AdminLoanStatusServiceServiceProxy,
+  AdminLoanSummaryStatusServiceServiceProxy,
+} from "@shared/service-proxies/service-proxies";
+import { indexOf } from "lodash";
 @Component({
   selector: "app-admin-dashboard",
   templateUrl: "./admin-dashboard.component.html",
@@ -9,7 +16,11 @@ import { LoanManagementService } from "../../../shared/service/loanmanagement.se
 export class AdminDashboardComponent implements OnInit {
   constructor(
     private LoanstatusService: LoanstatusService,
-    private LoanManagmentService: LoanManagementService
+    private LoanManagmentService: LoanManagementService,
+    private adminLoanDetailService: AdminLoanDetailServiceServiceProxy,
+    private adminLoanProgramService: AdminLoanProgramServiceServiceProxy,
+    private adminLoanStatusService: AdminLoanStatusServiceServiceProxy,
+    private adminLoanStatusSummaryService: AdminLoanSummaryStatusServiceServiceProxy
   ) {}
   loanStatus: any;
   loanApplicantName: any;
@@ -20,13 +31,50 @@ export class AdminDashboardComponent implements OnInit {
   mortageConsultant: any;
   NMLSId: any;
   disclouser: any;
+  ////////////////////////
+  adminLoanDetails: any;
+  adminLoanProgramId: any;
+  adminLoanProgramName: any;
+  adminLoanId: any;
+  adminLoanStatusId: any;
+  adminLoanStatus: string;
   title: any;
   ngOnInit(): void {
     this.getLoanStatusById();
     this.getLoanDetailsById();
     this.getAdminDisclouserDetails();
+    this.getAdminLoanDetail();
   }
+  getAdminLoanDetail() {
+    this.adminLoanDetailService.getAll().subscribe((res) => {
+      this.adminLoanDetails = res[0];
+      this.adminLoanProgramId = this.adminLoanDetails.loanProgramId;
+      this.adminLoanId = this.adminLoanDetails.loanApplicationId;
+      this.getAdminLoanProgramById();
+      this.getAdminLoanSummaryStatusById();
+    });
+  }
+  getAdminLoanProgramById() {
+    this.adminLoanProgramService
+      .getById(this.adminLoanProgramId)
+      .subscribe((res) => {
+        this.adminLoanProgramName = res.loanProgram;
+      });
+  }
+  getAdminLoanSummaryStatusById() {
+    this.adminLoanStatusSummaryService
+      .getById(this.adminLoanId)
+      .subscribe((res) => {
+        this.adminLoanStatusId = res.statusId;
 
+        this.adminLoanStatusService
+          .getById(this.adminLoanStatusId)
+          .subscribe((res) => {
+            this.adminLoanStatus = res.status;
+          });
+      });
+  }
+  ////////////////////////////////
   getLoanStatusById() {
     let obj = {
       params: {

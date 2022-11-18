@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 
 namespace LoanManagement.codeFirstEntities
 {
-    public partial class CountryState
+    public partial class CountryState:FullAuditedEntity<long>
     {
         public CountryState()
         {
@@ -17,7 +18,6 @@ namespace LoanManagement.codeFirstEntities
             Cities = new HashSet<City>();
         }
 
-        public int Id { get; set; }
         public int CountryId { get; set; }
         public string StateName { get; set; }
 

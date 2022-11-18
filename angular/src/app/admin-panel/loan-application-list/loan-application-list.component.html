@@ -8,17 +8,17 @@
         <table class="table table-borderless">
           <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col" class="pl-0">Loan Borrower</th>
-              <th scope="col" class="pl-0">Contact</th>
+              <th scope="col">Loan Number</th>
+              <th scope="col" class="pl-0">Loan Amount</th>
+              <th scope="col" class="pl-0">Property Address</th>
               <th scope="col" class="pl-0"></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of Custom">
-              <td class="pl-0">{{ item.id }}</td>
-              <td class="pl-0">{{ item.borrower }}</td>
-              <td class="pl-0">{{ item.contact }}</td>
+            <tr *ngFor="let item of allLoanApplications">
+              <td class="pl-0">{{ item.loanNo }}</td>
+              <td class="pl-0">{{ item.loanAmount }}</td>
+              <td class="pl-0">{{ item.propertyAddress }}</td>
               <!-- <td class="pl-3">3718317</td>
               <td class="pl-0">$730,000,00</td>
               <td class="pl-0">5154 White Oak AVE, Enclno, CA 91316</td> -->
@@ -33,9 +33,9 @@
       </div>
     </div>
     <p class="copy_right text-right px-3 mt-4">
-      Current Login: {{ CurrentLoginInfo.releaseDate | date }} at
-      {{ CurrentLoginInfo.releaseDate | date: "shortTime" }} on Chrome
-      {{ CurrentLoginInfo.version }} browser
+      Current Login: {{ CurrentLoginInfo?.releaseDate | date }} at
+      {{ CurrentLoginInfo?.releaseDate | date: "shortTime" }} on Chrome
+      {{ CurrentLoginInfo?.version }} browser
     </p>
   </div>
 </section>

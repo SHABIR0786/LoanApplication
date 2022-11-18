@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AdminLoanDetailServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 import { LoanManagementService } from "@shared/service/loanmanagement.service";
 
 @Component({
@@ -9,12 +10,23 @@ import { LoanManagementService } from "@shared/service/loanmanagement.service";
 export class LoanApplicationListComponent implements OnInit {
   Custom: any[];
   CurrentLoginInfo: any;
-  constructor(private LoanManagmentService: LoanManagementService) {}
+  allLoanApplications: any = [];
+  constructor(
+    private LoanManagmentService: LoanManagementService,
+    private adminLoanDetailService: AdminLoanDetailServiceServiceProxy
+  ) {}
 
   ngOnInit(): void {
+    this.getAllLoanApplications();
     this.getLoanApplicationList();
     this.getCurrentLoginInformations();
   }
+  getAllLoanApplications() {
+    this.adminLoanDetailService.getAll().subscribe((res) => {
+      this.allLoanApplications = res;
+    });
+  }
+  ///////////////
   getLoanApplicationList() {
     let obj = {
       params: {

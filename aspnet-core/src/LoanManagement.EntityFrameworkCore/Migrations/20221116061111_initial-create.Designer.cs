@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    [Migration("20221029141952_intial_create")]
-    partial class intial_create
+    [Migration("20221116061111_initial-create")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -2088,6 +2088,9 @@ namespace LoanManagement.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
+                    b.Property<long?>("StateId1")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Street")
                         .HasColumnType("longtext");
 
@@ -2111,7 +2114,7 @@ namespace LoanManagement.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.HasIndex("StateId");
+                    b.HasIndex("StateId1");
 
                     b.ToTable("ApplicationAdditionalEmployementDetails");
                 });
@@ -2281,8 +2284,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("StateId1b44")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StateId1b44NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("StateId1b44NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Street1b41")
                         .HasColumnType("longtext");
@@ -2639,8 +2642,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("StateId3a24")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StateId3a24NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("StateId3a24NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Street3a21")
                         .HasColumnType("longtext");
@@ -2782,8 +2785,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("CurrentStateId1a134")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CurrentStateId1a134NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("CurrentStateId1a134NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CurrentStreet1a131")
                         .HasColumnType("longtext");
@@ -2845,8 +2848,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("FormerStateId1a154")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FormerStateId1a154NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("FormerStateId1a154NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("FormerStreet1a151")
                         .HasColumnType("longtext");
@@ -2890,8 +2893,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("MailingStateId1a174")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MailingStateId1a174NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("MailingStateId1a174NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MailingStreet1a171")
                         .HasColumnType("longtext");
@@ -3016,8 +3019,8 @@ namespace LoanManagement.Migrations
                     b.Property<int>("StateId1d34")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StateId1d34NavigationId")
-                        .HasColumnType("int");
+                    b.Property<long?>("StateId1d34NavigationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Street1d31")
                         .HasColumnType("longtext");
@@ -3079,91 +3082,91 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3449),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7422),
                             IsDeleted = false,
                             Name = "Cash deposit on sales contract"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3469),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7434),
                             IsDeleted = false,
                             Name = "Certificate of Deposit"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3472),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7436),
                             IsDeleted = false,
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 4L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3474),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7437),
                             IsDeleted = false,
                             Name = "Gifts"
                         },
                         new
                         {
                             Id = 5L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3476),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7438),
                             IsDeleted = false,
                             Name = "Gift of equity"
                         },
                         new
                         {
                             Id = 6L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3477),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7439),
                             IsDeleted = false,
                             Name = "Money Market Fund"
                         },
                         new
                         {
                             Id = 7L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3479),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7440),
                             IsDeleted = false,
                             Name = "Mutual Funds"
                         },
                         new
                         {
                             Id = 8L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3481),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7441),
                             IsDeleted = false,
                             Name = "Net Proceeds from Real Estate Funds"
                         },
                         new
                         {
                             Id = 9L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3482),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7442),
                             IsDeleted = false,
                             Name = "Real Estate Owned"
                         },
                         new
                         {
                             Id = 10L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3484),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7443),
                             IsDeleted = false,
                             Name = "Retirement Funds"
                         },
                         new
                         {
                             Id = 11L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3485),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7444),
                             IsDeleted = false,
                             Name = "Savings Account"
                         },
                         new
                         {
                             Id = 12L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3487),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7445),
                             IsDeleted = false,
                             Name = "Stocks & Bonds"
                         },
                         new
                         {
                             Id = 13L,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3488),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7446),
                             IsDeleted = false,
                             Name = "Trust Account"
                         });
@@ -3467,9 +3470,12 @@ namespace LoanManagement.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
+                    b.Property<long?>("StateId1")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("StateId");
+                    b.HasIndex("StateId1");
 
                     b.ToTable("Cities");
                 });
@@ -3567,12 +3573,33 @@ namespace LoanManagement.Migrations
 
             modelBuilder.Entity("LoanManagement.codeFirstEntities.CountryState", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("StateName")
                         .HasColumnType("longtext");
@@ -4462,28 +4489,28 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3720),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7622),
                             IncomeSource1 = "Accessory Unit Income",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3726),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7625),
                             IncomeSource1 = "Alimony/Child Support",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3727),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7626),
                             IncomeSource1 = "Automobile/Expense Account",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3729),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7627),
                             IncomeSource1 = "Boarder Income",
                             IsDeleted = false
                         });
@@ -6477,7 +6504,7 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4234),
+                            CreationTime = new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7657),
                             IsDeleted = false,
                             PageIdentifier = "app/home",
                             PageName = "Home page",
@@ -6517,422 +6544,7 @@ namespace LoanManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("States");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3837),
-                            IsDeleted = false,
-                            Name = "AL"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3843),
-                            IsDeleted = false,
-                            Name = "AK"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3845),
-                            IsDeleted = false,
-                            Name = "AS"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3847),
-                            IsDeleted = false,
-                            Name = "AZ"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3849),
-                            IsDeleted = false,
-                            Name = "AR"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3850),
-                            IsDeleted = false,
-                            Name = "CA"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3852),
-                            IsDeleted = false,
-                            Name = "CO"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3854),
-                            IsDeleted = false,
-                            Name = "CT"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3856),
-                            IsDeleted = false,
-                            Name = "DE"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3857),
-                            IsDeleted = false,
-                            Name = "DC"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3859),
-                            IsDeleted = false,
-                            Name = "FM"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3892),
-                            IsDeleted = false,
-                            Name = "FL"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3910),
-                            IsDeleted = false,
-                            Name = "GA"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3912),
-                            IsDeleted = false,
-                            Name = "GU"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3913),
-                            IsDeleted = false,
-                            Name = "HI"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3915),
-                            IsDeleted = false,
-                            Name = "ID"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3917),
-                            IsDeleted = false,
-                            Name = "IL"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3919),
-                            IsDeleted = false,
-                            Name = "IN"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3921),
-                            IsDeleted = false,
-                            Name = "IA"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3922),
-                            IsDeleted = false,
-                            Name = "KS"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3924),
-                            IsDeleted = false,
-                            Name = "KY"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3925),
-                            IsDeleted = false,
-                            Name = "LA"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3927),
-                            IsDeleted = false,
-                            Name = "ME"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3929),
-                            IsDeleted = false,
-                            Name = "MH"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3944),
-                            IsDeleted = false,
-                            Name = "MD"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3957),
-                            IsDeleted = false,
-                            Name = "MA"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3959),
-                            IsDeleted = false,
-                            Name = "MI"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3961),
-                            IsDeleted = false,
-                            Name = "MN"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3963),
-                            IsDeleted = false,
-                            Name = "MS"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(3964),
-                            IsDeleted = false,
-                            Name = "MO"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4031),
-                            IsDeleted = false,
-                            Name = "MT"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4033),
-                            IsDeleted = false,
-                            Name = "NE"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4034),
-                            IsDeleted = false,
-                            Name = "NV"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4036),
-                            IsDeleted = false,
-                            Name = "NH"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4038),
-                            IsDeleted = false,
-                            Name = "NJ"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4039),
-                            IsDeleted = false,
-                            Name = "NM"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4041),
-                            IsDeleted = false,
-                            Name = "NY"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4043),
-                            IsDeleted = false,
-                            Name = "NC"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4044),
-                            IsDeleted = false,
-                            Name = "ND"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4046),
-                            IsDeleted = false,
-                            Name = "MP"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4048),
-                            IsDeleted = false,
-                            Name = "OH"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4050),
-                            IsDeleted = false,
-                            Name = "OK"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4051),
-                            IsDeleted = false,
-                            Name = "OR"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4053),
-                            IsDeleted = false,
-                            Name = "PW"
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4054),
-                            IsDeleted = false,
-                            Name = "PA"
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4056),
-                            IsDeleted = false,
-                            Name = "PR"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4058),
-                            IsDeleted = false,
-                            Name = "RI"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4059),
-                            IsDeleted = false,
-                            Name = "SC"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4061),
-                            IsDeleted = false,
-                            Name = "SD"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4063),
-                            IsDeleted = false,
-                            Name = "TN"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4065),
-                            IsDeleted = false,
-                            Name = "TX"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4066),
-                            IsDeleted = false,
-                            Name = "UT"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4068),
-                            IsDeleted = false,
-                            Name = "VT"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4069),
-                            IsDeleted = false,
-                            Name = "VI"
-                        },
-                        new
-                        {
-                            Id = 55,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4071),
-                            IsDeleted = false,
-                            Name = "VA"
-                        },
-                        new
-                        {
-                            Id = 56,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4073),
-                            IsDeleted = false,
-                            Name = "WA"
-                        },
-                        new
-                        {
-                            Id = 57,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4075),
-                            IsDeleted = false,
-                            Name = "WV"
-                        },
-                        new
-                        {
-                            Id = 58,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4077),
-                            IsDeleted = false,
-                            Name = "WI"
-                        },
-                        new
-                        {
-                            Id = 59,
-                            CreationTime = new DateTime(2022, 10, 29, 19, 49, 51, 769, DateTimeKind.Local).AddTicks(4078),
-                            IsDeleted = false,
-                            Name = "WY"
-                        });
+                    b.ToTable("State");
                 });
 
             modelBuilder.Entity("LoanManagement.codeFirstEntities.Stockandbond", b =>
@@ -7397,9 +7009,7 @@ namespace LoanManagement.Migrations
 
                     b.HasOne("LoanManagement.codeFirstEntities.CountryState", "State")
                         .WithMany("ApplicationAdditionalEmployementDetails")
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StateId1");
 
                     b.Navigation("ApplicationPersonalInformation");
 
@@ -7769,9 +7379,7 @@ namespace LoanManagement.Migrations
                 {
                     b.HasOne("LoanManagement.codeFirstEntities.CountryState", "State")
                         .WithMany("Cities")
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StateId1");
 
                     b.Navigation("State");
                 });

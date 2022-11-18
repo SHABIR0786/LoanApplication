@@ -30,39 +30,47 @@
 </div> -->
 
 <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+  <a
+    href="javascript:void(0)"
+    dropdownToggle
+    class="p-1 px-3 h5 nav_icon position-relative"
+    aria-controls="dropdown-basic"
+  >
+    <i class="fa fa-bell">
+      <div
+        class="notiftion_numbr rounded-circle text-white d-flex align-items-center justify-content-center position-absolute"
+      >
+        {{ notificationCount }}
+      </div>
+    </i>
+  </a>
 
-    <a href="javascript:void(0)" dropdownToggle class="p-1 px-3 h5 nav_icon  position-relative"
-        aria-controls="dropdown-basic">
-        <i class="fa fa-bell">
-            <div
-                class="notiftion_numbr rounded-circle text-white d-flex align-items-center justify-content-center position-absolute">
-                {{notificationCount}}
-            </div>
-        </i>
-    </a>
-
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu bell_list" role="menu" aria-labelledby="button-basic">
-        <div class="noftification_drop p-2">
-            <div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="noti_main_heaing">Notifications</h1>
-                    <h1 class="ml-5 dte_text">7 Pm</h1>
-                </div>
-                <div *ngFor="let item of notification">
-                    <p *ngIf="item.isSeen == 0" class="heading mb-2">
-                        <span class="new_text text-white px-2 py-1">new</span> Loan
-                        {{ item.id }} - {{ item.subject }}
-                    </p>
-                    <p *ngIf=" item.isSeen == 1" class="fade_text mb-2">Loan {{ item.id }} - {{ item.subject }}
-
-                    </p>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button class="btn text-end noti_btn text-white">
-                        View All Notiifications
-                    </button>
-                </div>
-            </div>
+  <ul
+    id="dropdown-basic"
+    *dropdownMenu
+    class="dropdown-menu bell_list"
+    role="menu"
+    aria-labelledby="button-basic"
+  >
+    <div class="noftification_drop p-2">
+      <div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="noti_main_heaing">Notifications</h1>
+          <h1 class="ml-5 dte_text">7 Pm</h1>
         </div>
-    </ul>
+        <div *ngFor="let item of notification">
+          <p class="heading mb-2">
+            <span class="new_text text-white px-2 py-1">new</span> Loan
+            {{ item }}
+          </p>
+          <p *ngIf="item.isSeen == 1" class="fade_text mb-2"></p>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn text-end noti_btn text-white">
+            View All Notiifications
+          </button>
+        </div>
+      </div>
+    </div>
+  </ul>
 </div>

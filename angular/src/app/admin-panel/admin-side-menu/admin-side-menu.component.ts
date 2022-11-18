@@ -64,7 +64,10 @@ export class AdminSideMenuComponent implements OnInit {
       }
     );
   }
-
+  navigateToloanApplicationsList() {
+    //this.pageName = Enums.AdminProfile;
+    this._router.navigate(["app/admin/loan-application-list"]);
+  }
   navigateToProfile() {
     //this.pageName = Enums.AdminProfile;
     this._router.navigate(["app/admin/profile"]);
@@ -82,7 +85,9 @@ export class AdminSideMenuComponent implements OnInit {
   navigateToLoanProgress() {
     this._router.navigate(["app/admin/home"]);
   }
-
+  navigateToLoanProcess() {
+    this._router.navigate(["app/admin/main-loan-process"]);
+  }
   logOut(reload?: boolean) {
     // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
     abp.auth.clearToken();

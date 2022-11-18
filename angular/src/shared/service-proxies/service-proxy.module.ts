@@ -14,6 +14,11 @@ import * as ApiServiceProxies from "./service-proxies";
     ApiServiceProxies.AccountServiceProxy,
     ApiServiceProxies.ConfigurationServiceProxy,
     ApiServiceProxies.StateServiceServiceProxy,
+    ApiServiceProxies.AdminLoanDetailServiceServiceProxy,
+    ApiServiceProxies.AdminLoanProgramServiceServiceProxy,
+    ApiServiceProxies.AdminLoanStatusServiceServiceProxy,
+    ApiServiceProxies.AdminLoanSummaryStatusServiceServiceProxy,
+    ApiServiceProxies.AdminNotificationsServiceProxy,
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
   ],
 })
