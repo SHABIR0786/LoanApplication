@@ -109,7 +109,7 @@ export class LoanDetailsComponent implements OnInit, DoCheck {
       this.propertyTypes,
       this.data.propertyTypeId
     );
-    this.data.stateId = this.getDataById(this.states, this.data.stateId);
+    this.data.stateName = this.getDataById(this.states, this.data.stateId);
     this.data.propertyUseName = this.getDataById(
       this.propertyUses,
       this.data.propertyUseId

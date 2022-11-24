@@ -52,4 +52,5 @@ export interface ILoanDetailModel {
   sourceOfDownPaymentName?: string;
   propertyUseName?: string;
   propertyTypeName?: string;
+  stateName?: string;
 }

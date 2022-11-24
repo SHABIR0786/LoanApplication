@@ -642,25 +642,16 @@
                       id="stateId"
                       formControlName="stateId"
                       [(ngModel)]="data.stateId"
+                      required
                     >
-                      <option selected disabled value="undefined">
-                        --Select--
-                      </option>
+                      <option selected disabled>--Select--</option>
                       <option [ngValue]="state.id" *ngFor="let state of states">
                         {{ state.name }}
                       </option>
                     </select>
-                    <span
-                      *ngIf="
-                        form.controls.stateId.touched &&
-                        form.controls.stateId.hasError('required')
-                      "
-                      class="text-danger"
-                      >This field is required
-                    </span>
-                    <!-- <validation-summary
+                    <validation-summary
                       [control]="form.controls.stateId"
-                    ></validation-summary> -->
+                    ></validation-summary>
                   </div>
                 </div>
               </div>
