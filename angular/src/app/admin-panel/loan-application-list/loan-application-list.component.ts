@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Route, Router } from "@angular/router";
 import { AdminLoanDetailServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 import { LoanManagementService } from "@shared/service/loanmanagement.service";
 
@@ -13,7 +14,8 @@ export class LoanApplicationListComponent implements OnInit {
   allLoanApplications: any = [];
   constructor(
     private LoanManagmentService: LoanManagementService,
-    private adminLoanDetailService: AdminLoanDetailServiceServiceProxy
+    private adminLoanDetailService: AdminLoanDetailServiceServiceProxy,
+    private _route: Router
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +54,8 @@ export class LoanApplicationListComponent implements OnInit {
         this.CurrentLoginInfo = res.result.application;
       }
     );
+  }
+  checkLoanStatus() {
+    this._route.navigate(["/app/admin/home"]);
   }
 }

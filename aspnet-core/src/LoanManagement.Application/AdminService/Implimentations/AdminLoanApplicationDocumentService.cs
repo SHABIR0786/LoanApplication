@@ -2,13 +2,16 @@
 using LoanManagement.AdminService.Interfaces;
 using LoanManagement.codeFirstEntities;
 using LoanManagement.EntityFrameworkCore;
+using LoanManagement.Features.AdminDisclosure;
 using LoanManagement.Features.AdminLoanApplicationDocument;
 using LoanManagement.Services.Interface;
+using LoanManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -104,6 +107,23 @@ namespace LoanManagement.Services.Implementation
             UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyUpdated;
+        }
+        public async Task GetDisclouserData()
+        {
+            var dis=await admindisclousreRepo.GetAll().Where(x=>x.IsDeleted==false).ToListAsync();
+            var data = new List<AdminDisclauserDataDto>();
+            foreach (var item in dis)
+            {
+                var doc=repository.GetAll().Where(x=>x.DisclosureId==item.Id).FirstOrDefault();
+                var record = new AdminDisclauserDataDto()
+                {
+                    Id= item.Id,
+                    Title= item.Title,
+                    adminLoanapplicationdocument=doc,
+                };
+                data.Add(record);
+            }
+          
         }
         public string UploadFile([FromForm] UploadAdminLoanApplicationDocument request)
         {
