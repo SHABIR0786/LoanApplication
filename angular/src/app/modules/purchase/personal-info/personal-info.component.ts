@@ -3,7 +3,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AddFinanceApiModel, PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
-import { StateServiceServiceProxy } from "@shared/service-proxies/service-proxies";
+import {
+  AccountServiceProxy,
+  RegisterInput,
+  StateServiceServiceProxy,
+} from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-personal-info",
@@ -18,12 +22,14 @@ export class PersonalInfoComponent implements OnInit {
   cities: any[] = [];
   dependents: number = 0;
   matched = false;
+  user: RegisterInput = new RegisterInput();
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
     private api: ApiService,
-    private stateSetvice: StateServiceServiceProxy
+    private stateSetvice: StateServiceServiceProxy,
+    private accountService: AccountServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -97,13 +103,20 @@ export class PersonalInfoComponent implements OnInit {
     this.saveStep();
     var _model = new AddFinanceApiModel();
     _model.map(this.model);
+    this.user.name = this.model.personalLegalFirstName;
+    this.user.surname = this.model.personalLegalLastName;
+    this.user.userName = this.model.personalEmailAddress;
+    this.user.emailAddress = this.model.personalEmailAddress;
+    this.user.password = this.model.personalPassword;
     debugger;
     var request = JSON.stringify(_model);
     this.api
       .post("api/services/app/LeadPurchasingDetailService/Add", _model)
       .subscribe((x: any) => {
         if (x.success == true)
-          this.router.navigate(["/app/purchase/income-info/1"]);
+          this.accountService.register(this.user).subscribe((res) => {
+            this.router.navigate(["/app/purchase/income-info/1"]);
+          });
       });
   }
   saveStep() {

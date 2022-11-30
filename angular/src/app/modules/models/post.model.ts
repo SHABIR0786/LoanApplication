@@ -194,7 +194,7 @@ export class AddFinanceApiModel {
     this.creditScore = e.creditScore;
     this.propertyLegalFirstName = e.firstName;
     this.propertyMiddleInitial = e.middleName;
-    this.propertyLegalFirstName = e.lastName;
+    this.propertyLegalLastName = e.lastName;
     this.propertyPhoneNumber = e.phone;
     this.propertyEmailAddress = e.email;
     this.typeOfHome = e.homeType;

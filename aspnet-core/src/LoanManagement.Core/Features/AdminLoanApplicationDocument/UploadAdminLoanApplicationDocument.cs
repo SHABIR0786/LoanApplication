@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace LoanManagement.Features.AdminLoanApplicationDocument
         public int LoanId { get; set; }
         public int DisclosureId { get; set; }
         public int UserId { get; set; }
+        public IFormFile formFile { get; set; }
     }
 }

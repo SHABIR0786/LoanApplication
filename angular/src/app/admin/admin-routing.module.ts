@@ -1,4 +1,6 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
 import { Routes, RouterModule } from "@angular/router";
 import { AdminDashboardComponent } from "@app/admin-panel/admin-dashboard/admin-dashboard.component";
 import { AdminPanelLayoutComponent } from "@app/admin-panel/admin-panel-layout/admin-panel-layout.component";

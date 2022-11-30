@@ -528,6 +528,7 @@ const ngWizardConfig: NgWizardConfig = {
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
     AdminModule,
+    AdminPanelLayoutModule,
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [
@@ -542,5 +543,6 @@ const ngWizardConfig: NgWizardConfig = {
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
   ],
+  exports: [CommonModule],
 })
 export class AppModule {}

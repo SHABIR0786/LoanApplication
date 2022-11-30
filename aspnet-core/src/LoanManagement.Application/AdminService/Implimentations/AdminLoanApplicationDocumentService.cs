@@ -6,13 +6,17 @@ using LoanManagement.Features.AdminLoanApplicationDocument;
 using LoanManagement.Services.Interface;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LoanManagement.Services.Implementation
 {
@@ -21,7 +25,7 @@ namespace LoanManagement.Services.Implementation
         private readonly IRepository<AdminLoanapplicationdocument, int> repository;
         private readonly IRepository<AdminDisclosure, int> admindisclousreRepo;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminLoanApplicationDocumentService(IRepository<AdminLoanapplicationdocument,int> repository, IRepository<AdminDisclosure,int> admindisclousreRepo, IWebHostEnvironment webHostEnvironment)
+        public AdminLoanApplicationDocumentService(IRepository<AdminLoanapplicationdocument, int> repository, IRepository<AdminDisclosure, int> admindisclousreRepo, IWebHostEnvironment webHostEnvironment)
         {
             this.repository = repository;
             this.admindisclousreRepo = admindisclousreRepo;
@@ -36,7 +40,7 @@ namespace LoanManagement.Services.Implementation
                 LoanId = request.LoanId,
                 //UserId = request.UserId,
             };
-               repository.Insert(entity);
+            repository.Insert(entity);
 
             UnitOfWorkManager.Current.SaveChanges();
             return entity.Id.ToString();
@@ -52,7 +56,7 @@ namespace LoanManagement.Services.Implementation
                 return AppConsts.NoRecordFound;
             }
 
-           repository.Delete(obj);
+            repository.Delete(obj);
             UnitOfWorkManager.Current.SaveChanges();
 
             return AppConsts.SuccessfullyDeleted;
@@ -60,25 +64,25 @@ namespace LoanManagement.Services.Implementation
 
         public List<UpdateAdminLoanApplicationDocument> GetAll()
         {
-            return repository.GetAll().Select(d => new UpdateAdminLoanApplicationDocument()
+            return repository.GetAll().Where(x => x.IsDeleted == false).Select(d => new UpdateAdminLoanApplicationDocument()
             {
                 Id = d.Id,
                 DisclosureId = d.DisclosureId,
                 DocumentPath = d.DocumentPath,
                 LoanId = d.LoanId,
-                //UserId = d.UserId,
+                UserId = d.CreatorUserId,
             }).ToList();
         }
 
         public UpdateAdminLoanApplicationDocument GetById(int id)
         {
-            return repository.GetAll().Where(s => s.Id == id).Select(d => new UpdateAdminLoanApplicationDocument()
+            return repository.GetAll().Where(s => s.Id == id).Where(x=>x.IsDeleted==false).Select(d => new UpdateAdminLoanApplicationDocument()
             {
                 Id = d.Id,
                 DisclosureId = d.DisclosureId,
                 DocumentPath = d.DocumentPath,
                 LoanId = d.LoanId,
-               // UserId = d.UserId,
+                // UserId = d.UserId,
             }).FirstOrDefault();
         }
 
@@ -101,14 +105,67 @@ namespace LoanManagement.Services.Implementation
 
             return AppConsts.SuccessfullyUpdated;
         }
+        public string UploadFile([FromForm] UploadAdminLoanApplicationDocument request)
+        {
+            try
+            {
+              //if(request.formFile.ContentType!= "application / pdf")
+                //{
+                //    throw new Exception("")
+                //}
+                var rootPath = _webHostEnvironment.WebRootPath;
+                var disclosureDetail = admindisclousreRepo.Get(request.DisclosureId);
+                var folderPath = Path.Combine(rootPath, "Documents", disclosureDetail.Title);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                FileInfo fileInfo = new FileInfo(request.formFile.FileName);
+                var fileName=Path.Combine($"{request.UserId}_{Guid.NewGuid()}{fileInfo.Extension}");
+                var filePath = Path.Combine(folderPath, fileName);
+                using (var fs = new FileStream(filePath, FileMode.Create))
+                {
+                    request.formFile.CopyTo(fs);
+                }
+                using (var fs = new FileStream(filePath, FileMode.Open))
+                {
+                    request.formFile.CopyTo(fs);
+                }
+                var entity = new AdminLoanapplicationdocument
+                {
+                    DisclosureId = request.DisclosureId,
+                    DocumentPath = fileName,
+                    LoanId = request.LoanId,
+                   // UserId = request.UserId,
+                };
+                 repository.Insert(entity);
 
+                 UnitOfWorkManager.Current.SaveChanges();
+                return entity.Id.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task DeleteFile(int disId,int userID)
+        {
+            var entity = await repository.GetAll().Where(x=>x.DisclosureId== disId&&x.CreatorUserId==userID).Include(a=>a.Disclosure).FirstOrDefaultAsync();
+            var rootPath = _webHostEnvironment.WebRootPath;
+            var folderPath = Path.Combine(rootPath, "Documents", entity.Disclosure.Title,entity.DocumentPath);
+            if(System.IO.File.Exists(folderPath))
+            {
+                System.IO.File.Delete(folderPath);
+            }
+            repository.DeleteAsync(entity.Id);
+        }
         public string UploadDocument(UploadAdminLoanApplicationDocument request, IFormFile formFile)
         {
             try
             {
                 var rootPath = _webHostEnvironment.ContentRootPath;
 
-                var disclosureDetail =  admindisclousreRepo.Get(request.DisclosureId);
+                var disclosureDetail = admindisclousreRepo.Get(request.DisclosureId);
                 var folderPath = Path.Combine(rootPath, "Documents", disclosureDetail.Title);
                 if (!Directory.Exists(folderPath))
                 {
@@ -127,9 +184,16 @@ namespace LoanManagement.Services.Implementation
                     LoanId = request.LoanId,
                     //UserId = request.UserId,
                 };
-                repository.Insert(entity);
+                var display = new AdminLoanapplicationdocument
+                {
+                    //DisclosureId = request.DisclosureId,
+                    DocumentPath = filePath,
+                    //LoanId = request.LoanId,
+                    //UserId = request.UserId,
+                };
+                // repository.Insert(entity);
 
-                UnitOfWorkManager.Current.SaveChanges();
+                // UnitOfWorkManager.Current.SaveChanges();
                 return entity.Id.ToString();
             }
             catch (Exception ex)
@@ -138,4 +202,4 @@ namespace LoanManagement.Services.Implementation
             }
         }
     }
-}
+    }

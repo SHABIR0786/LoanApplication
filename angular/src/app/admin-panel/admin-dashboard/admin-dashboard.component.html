@@ -80,6 +80,7 @@
         </label>
         <!-- </button> -->
       </div>
+      <div></div>
     </div>
     <div class="row mt-3">
       <div class="col-md-6 col-sm-12 p-1 m-0 pr-md-3">
@@ -232,12 +233,32 @@
                 <div class="col float-left">
                   <span class="float-left name">Rate Lock Confirmation</span>
                 </div>
-                <div class="col float-right">
-                  <span
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                <div *ngIf="rateLock == false" class="col float-right">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '1')"
+                    #fileNameEl
+                  />
+                </div>
+                <div *ngIf="rateLock != false" class="col float-right">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/Rate_Lock_Confirmation/{{
+                        rateLock?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
+                  <button
+                    (click)="deleteFile(rateLock.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    Not Available
-                  </span>
+                    Delete
+                  </button>
                 </div>
               </div>
               <div class="divider m-2 w-100"></div>
@@ -245,11 +266,31 @@
                 <div class="col float-left">
                   <span class="float-left name">Disclousers</span>
                 </div>
-                <div class="col float-right">
+                <div class="col float-right" *ngIf="disclousersDoc == false">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '2')"
+                    #fileNameEl
+                  />
+                </div>
+                <div class="col float-right" *ngIf="disclousersDoc != false">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/Disclousers/{{
+                        disclousersDoc?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
                   <button
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                    (click)="deleteFile(disclousersDoc.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    {{ disclouser }}
+                    Delete
                   </button>
                 </div>
               </div>
@@ -260,11 +301,31 @@
                     >Borrower's Certificate and Authorization</span
                   >
                 </div>
-                <div class="col float-right">
+                <div *ngIf="borrowerCerti == false" class="col float-right">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '3')"
+                    #fileNameEl
+                  />
+                </div>
+                <div class="col float-right" *ngIf="borrowerCerti != false">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/Borrower's_Certificate_and_Authorization/{{
+                        borrowerCerti?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
                   <button
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                    (click)="deleteFile(borrowerCerti.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    Not Available
+                    Delete
                   </button>
                 </div>
               </div>
@@ -273,11 +334,31 @@
                 <div class="col float-left">
                   <span class="float-left name">1003 Application</span>
                 </div>
-                <div class="col float-right">
+                <div *ngIf="doc1003 == false" class="col float-right">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '4')"
+                    #fileNameEl
+                  />
+                </div>
+                <div *ngIf="doc1003 != false" class="col float-right">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/1003_Application/{{
+                        doc1003?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
                   <button
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                    (click)="deleteFile(doc1003.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    Not Available
+                    Delete
                   </button>
                 </div>
               </div>
@@ -286,11 +367,31 @@
                 <div class="col float-left">
                   <span class="float-left name">Loan Documents</span>
                 </div>
-                <div class="col float-right">
+                <div *ngIf="loanDoc == false" class="col float-right">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '5')"
+                    #fileNameEl
+                  />
+                </div>
+                <div *ngIf="loanDoc != false" class="col float-right">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/Loan_Documents/{{
+                        loanDoc?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
                   <button
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                    (click)="deleteFile(loanDoc.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    Not Available
+                    Delete
                   </button>
                 </div>
               </div>
@@ -299,11 +400,31 @@
                 <div class="col float-left">
                   <span class="float-left name">FICO Finding</span>
                 </div>
-                <div class="col float-right">
+                <div *ngIf="fICO == false" class="col float-right">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="fileName"
+                    id="fileName"
+                    (change)="uploadFile($event.target.files, '6')"
+                    #fileNameEl
+                  />
+                </div>
+                <div *ngIf="fICO != false" class="col float-right">
+                  <button class="btn btn-primary">
+                    <a
+                      href="http://localhost:21021/documents/FICO_Finding/{{
+                        fICO?.documentPath
+                      }}"
+                      target="_blank"
+                      >Download File</a
+                    ></button
+                  >&nbsp;
                   <button
-                    class="LoanNumber float-right btn rounded px-2 py-0 btn_bg_grey"
+                    (click)="deleteFile(fICO.disclosureId)"
+                    class="btn btn-danger"
                   >
-                    Not Available
+                    Delete
                   </button>
                 </div>
               </div>

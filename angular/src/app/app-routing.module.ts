@@ -230,7 +230,6 @@ import { LoanProgressComponent } from "./admin-panel/loan-progress/loan-progress
           {
             path: "home",
             component: HomeComponent,
-            canActivate: [AppRouteGuard],
           },
           {
             path: "users",
@@ -1225,15 +1224,12 @@ import { LoanProgressComponent } from "./admin-panel/loan-progress/loan-progress
             component: UsGovernmentRequireQuestionsComponent,
             canActivate: [AppRouteGuard],
           },
-          
         ],
       },
       {
         path: "admin",
         loadChildren: () =>
-          import("./../app/admin/admin.module").then(
-            (x) => x.AdminModule
-          ),
+          import("./../app/admin/admin.module").then((x) => x.AdminModule),
       },
     ]),
   ],

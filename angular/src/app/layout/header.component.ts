@@ -52,4 +52,7 @@ export class HeaderComponent {
     }
     return formData;
   }
+  loanStatus() {
+    this._route.navigate(["/app/admin/home"]);
+  }
 }

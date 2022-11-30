@@ -641,10 +641,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Legal First Name : Jhon</p>
-          <p>Legal Last Name: Cole</p>
-          <p>Phone Number: (512) 318-2199</p>
-          <p>Email Address: jon24@gmail.com</p>
+          <p>Legal First Name : {{ model.personalLegalFirstName }}</p>
+          <p>Legal Last Name: {{ model.personalLegalLastName }}</p>
+          <p>Phone Number: {{ model.personalPhoneNumber }}</p>
+          <p>Email Address: {{ model.personalEmailAddress }}</p>
         </div>
       </div>
     </div>
@@ -664,13 +664,23 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Did someone refer you to EZ Online Mortgage? No</p>
+          <p>
+            Did someone refer you to EZ Online Mortgage?
+            {{ model.isSomeOneRefer ? "Yes" : "No" }}
+          </p>
           <p>
             Are you applying on your own, or jointly with another person?
-            Applying on my own
+            {{
+              model.isApplyOwn
+                ? "Applying on my own"
+                : "Applying with another person"
+            }}
           </p>
-          <p>Marital Status: Unmarried</p>
-          <p>How many dependents will be living in your home? 0</p>
+          <p>Marital Status: {{ model.maritialStatus }}</p>
+          <p>
+            How many dependents will be living in your home?
+            {{ model.numberOfDependents }}
+          </p>
         </div>
       </div>
     </div>
@@ -690,12 +700,17 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Address: 5902 Balcones Drive</p>
-          <p>City or Town: Austin</p>
+          <p>Address: {{ model.currentAddress }}</p>
+          <p>City or Town: {{ model.currentCity }}</p>
           <p>State: TX</p>
-          <p>ZIP Code: 78731</p>
-          <p>When did you start living here?: Jan 2017</p>
-          <p>Are you currently renting, or do you own?: Rent</p>
+          <p>ZIP Code: 78731{{ model.currentZipCode }}</p>
+          <p>
+            When did you start living here?: {{ model.currentStartLivingDate }}
+          </p>
+          <p>
+            Are you currently renting, or do you own?:
+            {{ model.currentReantingType }}
+          </p>
         </div>
       </div>
     </div>
@@ -715,7 +730,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Estimated Monthly Expenses: $3,000</p>
+          <p>Estimated Monthly Expenses: ${{ model.monthlyExpress }}</p>
         </div>
       </div>
     </div>

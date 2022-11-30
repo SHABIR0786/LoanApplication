@@ -30,7 +30,7 @@ export class AdminSideMenuComponent implements OnInit {
   ngOnInit(): void {
     this.getUserDetails();
     console.log(this.pageName);
-    this.getAdminUserDetails();
+    // this.getAdminUserDetails();
     this.toggleSidebar = false;
     $(document).ready(function () {
       $(".droprdown_class_a").click(function () {

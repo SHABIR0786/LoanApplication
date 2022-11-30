@@ -19,7 +19,7 @@ export class NotificationDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNotification();
-    SignalRAspNetCoreHelper.initSignalR();
+    //SignalRAspNetCoreHelper.initSignalR();
     abp.event.on("abp.notifications.received", (userNotification) => {
       debugger;
 

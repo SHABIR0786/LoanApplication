@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import { FinancialServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-assets-info",
@@ -19,7 +20,8 @@ export class AssetsInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private accountTypeService: FinancialServiceServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -35,9 +37,12 @@ export class AssetsInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getAccountTypes() {
-    this.api.get("Financial/account-types").subscribe((x: any) => {
-      this.accType = x.result;
+    this.accountTypeService.getFinancialAccountTypes().subscribe((res) => {
+      this.accType = res;
     });
+    // this.api.get("Financial/account-types").subscribe((x: any) => {
+    //   this.accType = x.result;
+    // });
   }
   stepOneClick() {
     this.saveStep();

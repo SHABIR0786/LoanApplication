@@ -7,7 +7,7 @@ namespace  LoanManagement.Features.AdminLoanApplicationDocument
     {
          public int LoanId { get; set; }
         public int DisclosureId { get; set; }
-        //public int UserId { get; set; }
+        public long? UserId { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public string DocumentPath { get; set; }
     }

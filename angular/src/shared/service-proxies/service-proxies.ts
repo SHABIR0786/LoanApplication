@@ -2151,6 +2151,198 @@ export class AdminLoanApplicationDocumentServiceServiceProxy {
   }
 
   /**
+   * @param loanId (optional)
+   * @param disclosureId (optional)
+   * @param userId (optional)
+   * @param formFile (optional)
+   * @return Success
+   */
+  uploadFile(
+    loanId: number | undefined,
+    disclosureId: number | undefined,
+    userId: number | undefined,
+    formFile: FileParameter | undefined
+  ): Observable<string> {
+    let url_ =
+      this.baseUrl +
+      "/api/services/app/AdminLoanApplicationDocumentService/UploadFile";
+    url_ = url_.replace(/[?&]$/, "");
+
+    const content_ = new FormData();
+    if (loanId === null || loanId === undefined)
+      throw new Error("The parameter 'loanId' cannot be null.");
+    else content_.append("LoanId", loanId.toString());
+    if (disclosureId === null || disclosureId === undefined)
+      throw new Error("The parameter 'disclosureId' cannot be null.");
+    else content_.append("DisclosureId", disclosureId.toString());
+    if (userId === null || userId === undefined)
+      throw new Error("The parameter 'userId' cannot be null.");
+    else content_.append("UserId", userId.toString());
+    if (formFile === null || formFile === undefined)
+      throw new Error("The parameter 'formFile' cannot be null.");
+    else
+      content_.append(
+        "formFile",
+        formFile.data,
+        formFile.fileName ? formFile.fileName : "formFile"
+      );
+
+    let options_: any = {
+      body: content_,
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({
+        Accept: "text/plain",
+      }),
+    };
+
+    return this.http
+      .request("post", url_, options_)
+      .pipe(
+        _observableMergeMap((response_: any) => {
+          return this.processUploadFile(response_);
+        })
+      )
+      .pipe(
+        _observableCatch((response_: any) => {
+          if (response_ instanceof HttpResponseBase) {
+            try {
+              return this.processUploadFile(<any>response_);
+            } catch (e) {
+              return <Observable<string>>(<any>_observableThrow(e));
+            }
+          } else return <Observable<string>>(<any>_observableThrow(response_));
+        })
+      );
+  }
+
+  protected processUploadFile(response: HttpResponseBase): Observable<string> {
+    const status = response.status;
+    const responseBlob =
+      response instanceof HttpResponse
+        ? response.body
+        : (<any>response).error instanceof Blob
+        ? (<any>response).error
+        : undefined;
+
+    let _headers: any = {};
+    if (response.headers) {
+      for (let key of response.headers.keys()) {
+        _headers[key] = response.headers.get(key);
+      }
+    }
+    if (status === 200) {
+      return blobToText(responseBlob).pipe(
+        _observableMergeMap((_responseText) => {
+          let result200: any = null;
+          let resultData200 =
+            _responseText === ""
+              ? null
+              : JSON.parse(_responseText, this.jsonParseReviver);
+          result200 = resultData200 !== undefined ? resultData200 : <any>null;
+          return _observableOf(result200);
+        })
+      );
+    } else if (status !== 200 && status !== 204) {
+      return blobToText(responseBlob).pipe(
+        _observableMergeMap((_responseText) => {
+          return throwException(
+            "An unexpected server error occurred.",
+            status,
+            _responseText,
+            _headers
+          );
+        })
+      );
+    }
+    return _observableOf<string>(<any>null);
+  }
+
+  /**
+   * @param disId (optional)
+   * @param userID (optional)
+   * @return Success
+   */
+  deleteFile(
+    disId: number | undefined,
+    userID: number | undefined
+  ): Observable<void> {
+    let url_ =
+      this.baseUrl +
+      "/api/services/app/AdminLoanApplicationDocumentService/DeleteFile?";
+    if (disId === null)
+      throw new Error("The parameter 'disId' cannot be null.");
+    else if (disId !== undefined)
+      url_ += "disId=" + encodeURIComponent("" + disId) + "&";
+    if (userID === null)
+      throw new Error("The parameter 'userID' cannot be null.");
+    else if (userID !== undefined)
+      url_ += "userID=" + encodeURIComponent("" + userID) + "&";
+    url_ = url_.replace(/[?&]$/, "");
+
+    let options_: any = {
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({}),
+    };
+
+    return this.http
+      .request("delete", url_, options_)
+      .pipe(
+        _observableMergeMap((response_: any) => {
+          return this.processDeleteFile(response_);
+        })
+      )
+      .pipe(
+        _observableCatch((response_: any) => {
+          if (response_ instanceof HttpResponseBase) {
+            try {
+              return this.processDeleteFile(<any>response_);
+            } catch (e) {
+              return <Observable<void>>(<any>_observableThrow(e));
+            }
+          } else return <Observable<void>>(<any>_observableThrow(response_));
+        })
+      );
+  }
+
+  protected processDeleteFile(response: HttpResponseBase): Observable<void> {
+    const status = response.status;
+    const responseBlob =
+      response instanceof HttpResponse
+        ? response.body
+        : (<any>response).error instanceof Blob
+        ? (<any>response).error
+        : undefined;
+
+    let _headers: any = {};
+    if (response.headers) {
+      for (let key of response.headers.keys()) {
+        _headers[key] = response.headers.get(key);
+      }
+    }
+    if (status === 200) {
+      return blobToText(responseBlob).pipe(
+        _observableMergeMap((_responseText) => {
+          return _observableOf<void>(<any>null);
+        })
+      );
+    } else if (status !== 200 && status !== 204) {
+      return blobToText(responseBlob).pipe(
+        _observableMergeMap((_responseText) => {
+          return throwException(
+            "An unexpected server error occurred.",
+            status,
+            _responseText,
+            _headers
+          );
+        })
+      );
+    }
+    return _observableOf<void>(<any>null);
+  }
+
+  /**
    * @param body (optional)
    * @return Success
    */
@@ -32471,6 +32663,7 @@ export class AddAdminLoanApplicationDocument
   implements IAddAdminLoanApplicationDocument {
   loanId: number;
   disclosureId: number;
+  userId: number | undefined;
   updatedOn: moment.Moment | undefined;
   documentPath: string | undefined;
 
@@ -32487,6 +32680,7 @@ export class AddAdminLoanApplicationDocument
     if (_data) {
       this.loanId = _data["loanId"];
       this.disclosureId = _data["disclosureId"];
+      this.userId = _data["userId"];
       this.updatedOn = _data["updatedOn"]
         ? moment(_data["updatedOn"].toString())
         : <any>undefined;
@@ -32505,6 +32699,7 @@ export class AddAdminLoanApplicationDocument
     data = typeof data === "object" ? data : {};
     data["loanId"] = this.loanId;
     data["disclosureId"] = this.disclosureId;
+    data["userId"] = this.userId;
     data["updatedOn"] = this.updatedOn
       ? this.updatedOn.toISOString()
       : <any>undefined;
@@ -32523,6 +32718,7 @@ export class AddAdminLoanApplicationDocument
 export interface IAddAdminLoanApplicationDocument {
   loanId: number;
   disclosureId: number;
+  userId: number | undefined;
   updatedOn: moment.Moment | undefined;
   documentPath: string | undefined;
 }
@@ -48249,6 +48445,7 @@ export class UpdateAdminLoanApplicationDocument
   implements IUpdateAdminLoanApplicationDocument {
   loanId: number;
   disclosureId: number;
+  userId: number | undefined;
   updatedOn: moment.Moment | undefined;
   documentPath: string | undefined;
   id: number;
@@ -48266,6 +48463,7 @@ export class UpdateAdminLoanApplicationDocument
     if (_data) {
       this.loanId = _data["loanId"];
       this.disclosureId = _data["disclosureId"];
+      this.userId = _data["userId"];
       this.updatedOn = _data["updatedOn"]
         ? moment(_data["updatedOn"].toString())
         : <any>undefined;
@@ -48285,6 +48483,7 @@ export class UpdateAdminLoanApplicationDocument
     data = typeof data === "object" ? data : {};
     data["loanId"] = this.loanId;
     data["disclosureId"] = this.disclosureId;
+    data["userId"] = this.userId;
     data["updatedOn"] = this.updatedOn
       ? this.updatedOn.toISOString()
       : <any>undefined;
@@ -48304,6 +48503,7 @@ export class UpdateAdminLoanApplicationDocument
 export interface IUpdateAdminLoanApplicationDocument {
   loanId: number;
   disclosureId: number;
+  userId: number | undefined;
   updatedOn: moment.Moment | undefined;
   documentPath: string | undefined;
   id: number;
@@ -51546,6 +51746,7 @@ export class UploadAdminLoanApplicationDocument
   loanId: number;
   disclosureId: number;
   userId: number;
+  formFile: string | undefined;
 
   constructor(data?: IUploadAdminLoanApplicationDocument) {
     if (data) {
@@ -51561,6 +51762,7 @@ export class UploadAdminLoanApplicationDocument
       this.loanId = _data["loanId"];
       this.disclosureId = _data["disclosureId"];
       this.userId = _data["userId"];
+      this.formFile = _data["formFile"];
     }
   }
 
@@ -51576,6 +51778,7 @@ export class UploadAdminLoanApplicationDocument
     data["loanId"] = this.loanId;
     data["disclosureId"] = this.disclosureId;
     data["userId"] = this.userId;
+    data["formFile"] = this.formFile;
     return data;
   }
 
@@ -51591,6 +51794,7 @@ export interface IUploadAdminLoanApplicationDocument {
   loanId: number;
   disclosureId: number;
   userId: number;
+  formFile: string | undefined;
 }
 
 export class UserDto implements IUserDto {
@@ -51864,6 +52068,11 @@ export interface IUserNotification {
 export enum UserNotificationState {
   _0 = 0,
   _1 = 1,
+}
+
+export interface FileParameter {
+  data: any;
+  fileName: string;
 }
 
 export class ApiException extends Error {
