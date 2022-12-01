@@ -21,8 +21,6 @@ export class NotificationDialogComponent implements OnInit {
     this.getAllNotification();
     //SignalRAspNetCoreHelper.initSignalR();
     abp.event.on("abp.notifications.received", (userNotification) => {
-      debugger;
-
       this.notification.push(
         userNotification.notification.data.properties.Message
       );

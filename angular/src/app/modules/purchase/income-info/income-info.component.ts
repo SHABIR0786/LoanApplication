@@ -62,7 +62,6 @@ export class IncomeInfoComponent implements OnInit {
     this.saveStep();
   }
   saveEmpToDb(f) {
-    debugger;
     this.submitted = true;
     if (f.valid) {
       this._model.leadApplicationDetailPurchasingId = 1;
@@ -94,7 +93,6 @@ export class IncomeInfoComponent implements OnInit {
   }
 
   onNextClick(f, step) {
-    debugger;
     this.submitted = true;
     if (f.valid) {
       this.router.navigate(["/app/purchase/income-info/" + step]);

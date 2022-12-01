@@ -206,7 +206,6 @@ export class AdminDashboardComponent
     };
     this.LoanManagmentService.getallAdminDisclouser(obj).subscribe(
       (res: any) => {
-        debugger;
         this.disclouser = res.result;
         console.log(res);
       }
@@ -268,11 +267,19 @@ export class AdminDashboardComponent
       });
   }
   deleteFile(disId: any) {
-    this.adminLoanApplicationDocService
-      .deleteFile(disId, this.userId)
-      .subscribe((res) => {
-        window.location.reload();
-        this.notify.info("File successfully deleted");
-      });
+    abp.message.confirm(
+      this.l("This File will be deleted...!!"),
+      undefined,
+      (result: boolean) => {
+        if (result) {
+          this.adminLoanApplicationDocService
+            .deleteFile(disId, this.userId)
+            .subscribe((res) => {
+              window.location.reload();
+              this.notify.info("File successfully deleted");
+            });
+        }
+      }
+    );
   }
 }

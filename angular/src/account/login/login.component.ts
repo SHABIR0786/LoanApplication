@@ -16,7 +16,7 @@ export class LoginComponent extends AppComponentBase {
     injector: Injector,
     public authService: AppAuthService,
     private _sessionService: AbpSessionService,
-    private _route: Router,
+    private _route: Router
   ) {
     super(injector);
   }
@@ -34,7 +34,6 @@ export class LoginComponent extends AppComponentBase {
   }
 
   login(): void {
-    debugger
     this.submitting = true;
     //this._route.navigate(["app/admin"]);
     this.authService.authenticate(() => (this.submitting = false));

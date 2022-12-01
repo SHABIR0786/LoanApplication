@@ -108,7 +108,6 @@ export class PersonalInfoComponent implements OnInit {
     this.user.userName = this.model.personalEmailAddress;
     this.user.emailAddress = this.model.personalEmailAddress;
     this.user.password = this.model.personalPassword;
-    debugger;
     var request = JSON.stringify(_model);
     this.api
       .post("api/services/app/LeadPurchasingDetailService/Add", _model)
