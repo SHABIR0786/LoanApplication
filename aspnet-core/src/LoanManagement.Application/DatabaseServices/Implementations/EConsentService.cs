@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -11,9 +12,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class EConsentService : AbpServiceBase, IEConsentService
     {
-        private readonly IRepository<ConsentDetail, long> _repository;
+        private readonly IRepository<Consentdetail, long> _repository;
 
-        public EConsentService(IRepository<ConsentDetail, long> repository)
+        public EConsentService(IRepository<Consentdetail, long> repository)
         {
             _repository = repository;
         }
@@ -32,13 +33,13 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var consentDetail = new ConsentDetail
+                var consentDetail = new Consentdetail
                 {
-                    AgreeEConsent = input.AgreeEConsent,
+                    AgreeEconsent = input.AgreeEConsent,
                     FirstName = input.FirstName,
                     LastName = input.LastName,
                     Email = input.Email,
-                    CoborrowerAgreeEConsent = input.CoborrowerAgreeEConsent,
+                    CoborrowerAgreeEconsent = input.CoborrowerAgreeEConsent,
                     CoborrowerFirstName = input.CoborrowerFirstName,
                     CoborrowerLastName = input.CoborrowerLastName,
                     CoborrowerEmail = input.CoborrowerEmail,
@@ -60,11 +61,11 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             await _repository.UpdateAsync(input.Id.Value, consentDetail =>
             {
-                consentDetail.AgreeEConsent = input.AgreeEConsent;
+                consentDetail.AgreeEconsent = input.AgreeEConsent;
                 consentDetail.FirstName = input.FirstName;
                 consentDetail.LastName = input.LastName;
                 consentDetail.Email = input.Email;
-                consentDetail.CoborrowerAgreeEConsent = input.CoborrowerAgreeEConsent;
+                consentDetail.CoborrowerAgreeEconsent = input.CoborrowerAgreeEConsent;
                 consentDetail.CoborrowerEmail = input.CoborrowerEmail;
                 consentDetail.CoborrowerFirstName = input.CoborrowerFirstName;
                 consentDetail.CoborrowerLastName = input.CoborrowerLastName;

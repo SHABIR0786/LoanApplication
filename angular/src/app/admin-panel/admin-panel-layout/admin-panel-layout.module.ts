@@ -8,7 +8,7 @@ import { AdminDashboardComponent } from "../admin-dashboard/admin-dashboard.comp
 import { Router } from "@angular/router";
 
 @NgModule({
-  declarations: [],
+  declarations: [AdminDashboardComponent],
   imports: [CommonModule],
 })
 export class AdminPanelLayoutModule {}

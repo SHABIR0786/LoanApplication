@@ -29,7 +29,6 @@
                 name="sex"
                 class="form-style"
                 placeholder=""
-                [(ngModel)]="model.sex"
               />
               <p>Female</p>
             </div>
@@ -42,7 +41,6 @@
                 name="sex"
                 class="form-style"
                 placeholder=""
-                [(ngModel)]="model.sex"
               />
               <p>I do not wish to provide this information</p>
             </div>
@@ -91,7 +89,19 @@
               <p>Maxican</p>
             </div>
           </div>
-
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                type="radio"
+                value="Maxican"
+                [(ngModel)]="model.ethnicity"
+                name="ethnicity"
+                class="form-style"
+                placeholder=""
+              />
+              <p>Maxican</p>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-12">
               <input
@@ -131,15 +141,13 @@
               <p>Other Hispanic or Latino</p>
             </div>
           </div>
-          <div
-            class="row"
-            *ngIf="model.ethnicity == 'Other Hispanic or Latino'"
-          >
+          <div class="row">
             <div class="col-md-11">
               <input
                 type="text"
                 class="form-style form-control"
                 placeholder="Enter Other Hispanic or Latino (Optional)"
+                value=""
                 name="ethnicity"
                 [(ngModel)]="model.ethnicity"
               />
@@ -174,7 +182,7 @@
               <p>American Indian or Alaska Native</p>
             </div>
           </div>
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-md-10">
               <input
                 type="text"
@@ -185,7 +193,7 @@
                 name="race"
               />
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="col-md-12">
               <input
@@ -292,12 +300,13 @@
               <p>Other Asian</p>
             </div>
           </div>
-          <div class="row" *ngIf="model.race == 'Other Asian'">
+          <div class="row">
             <div class="col-md-11">
               <input
                 type="text"
                 class="form-style form-control"
-                placeholder="Enter Other Asian (Optional)"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                value=""
                 name="race"
                 [(ngModel)]="model.race"
               />
@@ -372,12 +381,13 @@
               <p>Other Pacific Islander</p>
             </div>
           </div>
-          <div class="row" *ngIf="model.race == 'Other Pacific Islander'">
+          <div class="row">
             <div class="col-md-11">
               <input
                 type="text"
                 class="form-style form-control"
-                placeholder="Enter Other Pacific Islander (Optional)"
+                placeholder="Enter Other Hispanic or Latino (Optional)"
+                value=""
                 name="race"
                 [(ngModel)]="model.race"
               />
@@ -385,7 +395,7 @@
           </div>
         </div>
         <div class="radio-input-gov">
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-md-12">
               <input
                 type="radio"
@@ -397,7 +407,7 @@
               />
               <p>Native Hawalian or Other Pacific Islander</p>
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="col-md-12">
               <input
@@ -484,7 +494,8 @@
         <div class="answers">
           <button
             type="button"
-            class="btn btn-yes-no-blue"
+            class="btn"
+            id="btn-yes-no"
             (click)="x.isYes = true; onQAns(x.id, true)"
             [ngClass]="{ 'yes-no-active': x.isYes == true }"
           >
@@ -492,7 +503,8 @@
           </button>
           <button
             type="button"
-            class="btn btn-yes-no-blue"
+            class="btn"
+            id="btn-yes-no"
             (click)="x.isYes = false; onQAns(x.id, false)"
             [ngClass]="{ 'yes-no-active': x.isYes == false }"
           >
@@ -512,13 +524,9 @@
         style="width: 100%"
       >
         <option value="0" selected>-What is your citizenship status?-</option>
-        <option value="1">U.S. Citizen</option>
-        <option value="2">Permanent Resident Alien</option>
-        <option value="3">Non-Permanent Resident Alien</option>
-
-        <!-- <option [value]="c.id" *ngFor="let c of cs">
+        <option [value]="c.id" *ngFor="let c of cs">
           {{ c?.citizenshipType1 }}
-        </option> -->
+        </option>
       </select>
     </div>
   </div>

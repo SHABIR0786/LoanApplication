@@ -15,23 +15,6 @@
         required
       >
         <option>-Account type-</option>
-        <option value="Bonds">Bonds</option>
-        <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
-        <option value="CashValueofLifeInsurance">
-          Cash Value of Life Insurance
-        </option>
-        <option value="CertificateofDeposit">Certificate of Deposit</option>
-        <option value="Checking">Checking</option>
-        <option value="IndividualDevelopmentAccount">
-          Individual Development Account
-        </option>
-        <option value="MoneyMarket">Money Market</option>
-        <option value="MutualFund">Mutual Fund</option>
-        <option value="Retirement">Retirement</option>
-        <option value="Savings">Savings</option>
-        <option value="StockOptions">Stock Options</option>
-        <option value="Stocks">Stocks</option>
-        <option value="TrustAccount">Trust Account</option>
       </select>
       <div
         *ngIf="submitted && !assetsAccountTypeRef.valid"
@@ -59,7 +42,7 @@
       <!-- </div>
       <div class="form-group"> -->
       <input
-        type="number"
+        type="text"
         class="form-control form-style"
         placeholder="Balance"
         [(ngModel)]="model.assetsBalance"

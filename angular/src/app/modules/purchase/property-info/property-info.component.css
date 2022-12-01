@@ -68,15 +68,3 @@
   background-color: #091a52;
   color: #fff;
 }
-.active {
-  background: #f47741 !important;
-  color: white !important;
-  border-color: orange !important;
-}
-#percent-sign {
-  top: 8px;
-  left: 85px;
-  color: #0004;
-  position: absolute;
-  z-index: 1;
-}

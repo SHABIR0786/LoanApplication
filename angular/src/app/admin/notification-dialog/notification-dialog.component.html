@@ -59,13 +59,11 @@
           <h1 class="ml-5 dte_text">7 Pm</h1>
         </div>
         <div *ngFor="let item of notification">
-          <p *ngIf="item.isSeen == 0" class="heading mb-2">
+          <p class="heading mb-2">
             <span class="new_text text-white px-2 py-1">new</span> Loan
-            {{ item.id }} - {{ item.subject }}
+            {{ item }}
           </p>
-          <p *ngIf="item.isSeen == 1" class="fade_text mb-2">
-            Loan {{ item.id }} - {{ item.subject }}
-          </p>
+          <p *ngIf="item.isSeen == 1" class="fade_text mb-2"></p>
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn text-end noti_btn text-white">

@@ -6,18 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./email-and-text-updates.component.css"],
 })
 export class EmailAndTextUpdatesComponent implements OnInit {
-  email;
-  phone;
-  submitted = false;
   constructor() {}
 
   ngOnInit(): void {}
-
-  signUpClicked(form) {
-    this.submitted = true;
-    alert("not submitted");
-    if (form.valid) {
-      alert("submitted");
-    }
-  }
 }

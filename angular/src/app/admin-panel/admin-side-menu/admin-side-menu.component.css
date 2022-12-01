@@ -348,3 +348,6 @@ div.content {
     width: 100px !important;
   }
 }
+.sidebar a {
+  color: #a5a5a5;
+}

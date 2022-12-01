@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -14,10 +15,10 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class SiteSettingServices : AbpServiceBase, ISiteSettingServices
     {
-        private readonly IRepository<SiteSetting, int> _repository;
+        private readonly IRepository<Sitesetting, int> _repository;
         private readonly IMapper _mapper;
 
-        public SiteSettingServices(IRepository<SiteSetting, int> repository, IMapper mapper)
+        public SiteSettingServices(IRepository<Sitesetting, int> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -58,7 +59,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<SiteSettingDto> UpdateAsync(SiteSettingDto input)
         {
-            var siteSetting = new SiteSetting
+            var siteSetting = new Sitesetting
             {
                 Id = input.Id
             };

@@ -5,6 +5,7 @@ import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { UtilsService } from "abp-ng2-module";
 import { AppConsts } from "@shared/AppConsts";
 import { NotificationService } from "@app/services/notification.service";
+import { SessionServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-admin-side-menu",
@@ -16,6 +17,7 @@ export class AdminSideMenuComponent implements OnInit {
   cookies: any;
 
   constructor(
+    private sessionService: SessionServiceProxy,
     private AdminUserServices: AdminUserServices,
     private _router: Router,
     private _utilsService: UtilsService
@@ -26,8 +28,9 @@ export class AdminSideMenuComponent implements OnInit {
   pageName = Enums.AdminDashboard;
   // isActivePage:boolean=true
   ngOnInit(): void {
+    this.getUserDetails();
     console.log(this.pageName);
-    this.getAdminUserDetails();
+    // this.getAdminUserDetails();
     this.toggleSidebar = false;
     $(document).ready(function () {
       $(".droprdown_class_a").click(function () {
@@ -38,6 +41,11 @@ export class AdminSideMenuComponent implements OnInit {
       $(".nav_bars_show_active").click(function () {
         $(".buttons_nav").toggleClass("buttons_nav_active");
       });
+    });
+  }
+  getUserDetails() {
+    this.sessionService.getCurrentLoginInformations().subscribe((res) => {
+      this.userName = res.user.name;
     });
   }
   toggleSidebarFunc() {
@@ -56,7 +64,10 @@ export class AdminSideMenuComponent implements OnInit {
       }
     );
   }
-
+  navigateToloanApplicationsList() {
+    //this.pageName = Enums.AdminProfile;
+    this._router.navigate(["app/admin/loan-application-list"]);
+  }
   navigateToProfile() {
     //this.pageName = Enums.AdminProfile;
     this._router.navigate(["app/admin/profile"]);
@@ -72,9 +83,11 @@ export class AdminSideMenuComponent implements OnInit {
   }
 
   navigateToLoanProgress() {
-    this._router.navigate(["app/admin/loan-process"]);
+    this._router.navigate(["app/admin/home"]);
   }
-
+  navigateToLoanProcess() {
+    this._router.navigate(["app/admin/main-loan-process"]);
+  }
   logOut(reload?: boolean) {
     // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
     abp.auth.clearToken();

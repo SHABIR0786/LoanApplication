@@ -2,6 +2,7 @@ using Abp.Authorization;
 using Abp.Authorization.Roles;
 using AutoMapper;
 using LoanManagement.Authorization.Roles;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace LoanManagement.Roles.Dto
             CreateMap<Role, RoleListDto>();
             CreateMap<Role, RoleEditDto>();
             CreateMap<Permission, FlatPermissionDto>();
-            CreateMap<SiteSetting, SiteSettingDto>();
+            CreateMap<Sitesetting, SiteSettingDto>();
         }
     }
 }

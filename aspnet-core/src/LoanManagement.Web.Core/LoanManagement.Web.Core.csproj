@@ -32,4 +32,8 @@
     <PackageReference Include="Abp.ZeroCore" Version="7.1.0" />
     <PackageReference Include="Abp.AspNetCore.SignalR" Version="7.1.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Implementation\" />
+    <Folder Include="Services\Interface\" />
+  </ItemGroup>
 </Project>
