@@ -7,6 +7,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class HomeBuyingService extends BaseService {
   constructor(http: HttpClient) {
-    super(http, "HomeBuying");
+    super(http, "services/app/HomeBuyingService");
   }
 }
