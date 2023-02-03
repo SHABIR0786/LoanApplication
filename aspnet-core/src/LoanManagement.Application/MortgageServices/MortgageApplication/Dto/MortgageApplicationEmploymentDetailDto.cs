@@ -25,7 +25,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
         public int? workingYears { get; set; }
         public int? workingMonths { get; set; }
         public string position { get; set; }
-        public DateTime startDate { get; set; }
+        public string startDate { get; set; }
         public bool isEmployedBySomeone { get; set; }
         public bool isSelfEmployed { get; set; }
         public bool isOwnershipLessThan25 { get; set; }

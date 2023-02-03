@@ -20,7 +20,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
         public decimal other { get; set; }
         public decimal total { get; set; }
         public int? AdditionalEmploymentDetailId { get; set; }
-      //  public virtual MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmploymentDetail { get; set; }
+        //  public virtual MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmploymentDetail { get; set; }
     }
 
 }

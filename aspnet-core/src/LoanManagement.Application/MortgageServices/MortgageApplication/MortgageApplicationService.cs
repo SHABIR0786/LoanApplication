@@ -2,6 +2,7 @@
 using Abp.Domain.Repositories;
 using LoanManagement.MortgageServices.MortgageApplication.Dto;
 using LoanManagement.MortgageTables;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,12 +66,12 @@ namespace LoanManagement.MortgageServices.MortgageApplication
             _applicationSourceRepository = applicationSourceRepository;
         }
 
-        public async Task CreateMortgageLoanApplication(CreateMortgageLoanApplicationDto createMortgageLoanApplicationDto)
+        public async Task CreateMortgageLoanApplication(MortgageApplicationDto createMortgageLoanApplicationDto)
         {
             try
             {
                 //application
-                var application = ObjectMapper.Map<MortgageApplications>(createMortgageLoanApplicationDto.MortgageApplication);
+                var application = ObjectMapper.Map<MortgageApplications>(createMortgageLoanApplicationDto);
                 if (application != null)
                 {
                     var applicationId = await _applicationRepository.InsertAndGetIdAsync(application);
@@ -172,14 +173,63 @@ namespace LoanManagement.MortgageServices.MortgageApplication
         }
         //public async Task<CreateMortgageLoanApplicationDto> GetMortgageLoanApplication(int applicationId)
         //{
-        //    var applicationDetail = new CreateMortgageLoanApplicationDto();
-        //    var application=await _applicationRepository.GetAsync(applicationId);
-        //    applicationDetail.MortgageApplication =ObjectMapper.Map<MortgageApplicationDto>(application);
-        //    var personalDetail
+        //    try
+        //    {
+        //        var applicationDetail = new CreateMortgageLoanApplicationDto();
+        //        var application = await _applicationRepository.GetAsync(applicationId);
+        //        applicationDetail.MortgageApplication = ObjectMapper.Map<MortgageApplicationDto>(application);
+        //        var personalDetail = await _applicationPersonalInformationRepository.GetAll().Where(x => x.MortgageApplicationId == applicationId).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation = ObjectMapper.Map<MortgageApplicationPersonalInformationDto>(personalDetail);
+        //        var alternateName = await _applicationAlternateNameRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.AlternateNames = ObjectMapper.Map<MortgageApplicationAlternateNameDto>(alternateName);
 
+        //        var currentAddress = await _applicationCurrentAddressRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.CurrentAddress = ObjectMapper.Map<MortgageApplicationCurrentAddressDto>(currentAddress);
 
+        //        var formerAddress = await _applicationFormerAddressRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.FormerAddress = ObjectMapper.Map<MortgageApplicationFormerAddressDto>(formerAddress);
 
-        //    return applicationDetail;
+        //        var mailingAddress = await _applicationMailingAddressRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.MailingAddress = ObjectMapper.Map<MortgageApplicationMailingAddressDto>(mailingAddress);
+
+        //        var typeOfCredit = await _applicationTypeOfCreditRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.TypeOfCredit = ObjectMapper.Map<MortgageApplicationTypeOfCreditDto>(typeOfCredit);
+
+        //        var otherBorrowers = await _applicationOtherBorrowerRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).ToListAsync();
+        //        applicationDetail.PersonalInformation.OtherBorrowers = ObjectMapper.Map<List<MortgageApplicationOtherBorrowerDto>>(otherBorrowers);
+
+        //        var contactInformation = await _applicationContactInformationRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PersonalInformation.ContactInformation = ObjectMapper.Map<MortgageApplicationContactInformationDto>(contactInformation);
+
+        //        var currentEmploymentDetail = await _applicationEmploymentDetailRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.CurrentEmployment = ObjectMapper.Map<MortgageApplicationEmploymentDetailDto>(currentEmploymentDetail);
+
+        //        var currentEmploymentIncomeDetail = await _applicationEmploymentIncomeDetailRepository.GetAll().Where(x => x.EmploymentDetailId == currentEmploymentDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.CurrentEmployment.GrossMonthlyIncome = ObjectMapper.Map<MortgageApplicationEmploymentIncomeDetailDto>(currentEmploymentIncomeDetail);
+
+        //        var additionalEmploymentDetail = await _applicationAdditionalEmploymentDetailRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.AdditionalEmployment = ObjectMapper.Map<MortgageApplicationAdditionalEmploymentDetailDto>(additionalEmploymentDetail);
+
+        //        var additionalEmploymentIncomeDetail = await _applicationAdditionalEmploymentIncomeDetailRepository.GetAll().Where(x => x.AdditionalEmploymentDetailId == additionalEmploymentDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.AdditionalEmployment.GrossMonthlyIncome = ObjectMapper.Map<MortgageApplicationAdditionalEmploymentIncomeDetailDto>(additionalEmploymentIncomeDetail);
+
+        //        var previousEmploymentDetail = await _applicationPreviousEmploymentDetailRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.PreviousEmployment = ObjectMapper.Map<MortgageApplicationPreviousEmploymentDetailDto>(previousEmploymentDetail);
+
+        //        var incomesource = await _applicationIncomeSourceRepository.GetAll().Where(x => x.PersonalInformationId == personalDetail.Id).FirstOrDefaultAsync();
+        //        applicationDetail.IncomeOtherSources = ObjectMapper.Map<MortgageApplicationIncomeSourceDto>(incomesource);
+
+        //        var sources = await _applicationSourceRepository.GetAll().Where(x => x.IncomeSourceId == incomesource.Id).ToListAsync();
+        //        applicationDetail.IncomeOtherSources.Sources = ObjectMapper.Map<List<MortgageApplicationSourceDto>>(sources);
+
+        //        return applicationDetail;
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        throw;
+        //    }
+
         //}
     }
 }

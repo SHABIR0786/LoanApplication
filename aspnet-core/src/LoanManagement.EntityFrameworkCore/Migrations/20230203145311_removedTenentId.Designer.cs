@@ -3,6 +3,7 @@ using System;
 using LoanManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanManagement.Migrations
 {
     [DbContext(typeof(LoanManagementDbContext))]
-    partial class LoanManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230203145311_removedTenentId")]
+    partial class removedTenentId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3080,91 +3082,91 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7440),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(419),
                             IsDeleted = false,
                             Name = "Cash deposit on sales contract"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7460),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(432),
                             IsDeleted = false,
                             Name = "Certificate of Deposit"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7461),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(433),
                             IsDeleted = false,
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 4L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7462),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(564),
                             IsDeleted = false,
                             Name = "Gifts"
                         },
                         new
                         {
                             Id = 5L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7463),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(571),
                             IsDeleted = false,
                             Name = "Gift of equity"
                         },
                         new
                         {
                             Id = 6L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7464),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(572),
                             IsDeleted = false,
                             Name = "Money Market Fund"
                         },
                         new
                         {
                             Id = 7L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7465),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(574),
                             IsDeleted = false,
                             Name = "Mutual Funds"
                         },
                         new
                         {
                             Id = 8L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7472),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(575),
                             IsDeleted = false,
                             Name = "Net Proceeds from Real Estate Funds"
                         },
                         new
                         {
                             Id = 9L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7473),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(576),
                             IsDeleted = false,
                             Name = "Real Estate Owned"
                         },
                         new
                         {
                             Id = 10L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7474),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(577),
                             IsDeleted = false,
                             Name = "Retirement Funds"
                         },
                         new
                         {
                             Id = 11L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7475),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(578),
                             IsDeleted = false,
                             Name = "Savings Account"
                         },
                         new
                         {
                             Id = 12L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7476),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(579),
                             IsDeleted = false,
                             Name = "Stocks & Bonds"
                         },
                         new
                         {
                             Id = 13L,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7478),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(580),
                             IsDeleted = false,
                             Name = "Trust Account"
                         });
@@ -4487,28 +4489,28 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7678),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(799),
                             IncomeSource1 = "Accessory Unit Income",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7685),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(802),
                             IncomeSource1 = "Alimony/Child Support",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7686),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(803),
                             IncomeSource1 = "Automobile/Expense Account",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7687),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(805),
                             IncomeSource1 = "Boarder Income",
                             IsDeleted = false
                         });
@@ -6502,7 +6504,7 @@ namespace LoanManagement.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 2, 3, 20, 57, 33, 540, DateTimeKind.Local).AddTicks(7717),
+                            CreationTime = new DateTime(2023, 2, 3, 20, 23, 10, 491, DateTimeKind.Local).AddTicks(841),
                             IsDeleted = false,
                             PageIdentifier = "app/home",
                             PageName = "Home page",
@@ -6621,6 +6623,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("city")
                         .HasColumnType("longtext");
 
@@ -6651,8 +6656,8 @@ namespace LoanManagement.Migrations
                     b.Property<string>("position")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("startDate")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("startDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("state")
                         .HasColumnType("longtext");
@@ -6708,6 +6713,9 @@ namespace LoanManagement.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("baseIncome")
                         .HasColumnType("decimal(65,30)");
@@ -6767,6 +6775,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("firstName")
                         .HasColumnType("longtext");
 
@@ -6814,6 +6825,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("PersonalInformationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("cellPhone")
@@ -6866,6 +6880,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("PersonalInformationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("city")
@@ -6935,6 +6952,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("city")
                         .HasColumnType("longtext");
 
@@ -6965,8 +6985,8 @@ namespace LoanManagement.Migrations
                     b.Property<string>("position")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("startDate")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("startDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("state")
                         .HasColumnType("longtext");
@@ -7022,6 +7042,9 @@ namespace LoanManagement.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("baseIncome")
                         .HasColumnType("decimal(65,30)");
@@ -7079,6 +7102,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("PersonalInformationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("city")
@@ -7148,6 +7174,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("totalAmount")
                         .HasColumnType("decimal(65,30)");
 
@@ -7186,6 +7215,9 @@ namespace LoanManagement.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("PersonalInformationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenantId")
                         .HasColumnType("int");
 
                     b.Property<string>("city")
@@ -7243,6 +7275,9 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("email")
                         .HasColumnType("longtext");
 
@@ -7295,14 +7330,17 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("MortgageApplicationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("citizenship")
                         .HasColumnType("longtext");
 
                     b.Property<string>("dependents")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("dob")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("dob")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("firstName")
                         .HasColumnType("longtext");
@@ -7316,7 +7354,7 @@ namespace LoanManagement.Migrations
                     b.Property<string>("middleName")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("socialSecurityNumber")
+                    b.Property<int>("socialSecurityNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("suffix")
@@ -7359,14 +7397,17 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("city")
                         .HasColumnType("longtext");
 
                     b.Property<string>("country")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("endDate")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("endDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("isSelfEmployed")
                         .HasColumnType("tinyint(1)");
@@ -7380,8 +7421,8 @@ namespace LoanManagement.Migrations
                     b.Property<string>("position")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("startDate")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("startDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("state")
                         .HasColumnType("longtext");
@@ -7464,6 +7505,9 @@ namespace LoanManagement.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("monthlyIncome")
                         .HasColumnType("decimal(65,30)");
 
@@ -7507,10 +7551,13 @@ namespace LoanManagement.Migrations
                     b.Property<int?>("PersonalInformationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.Property<string>("applyingFor")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("totalBorrowers")
+                    b.Property<int>("totalBorrowers")
                         .HasColumnType("int");
 
                     b.Property<string>("yourIntials")

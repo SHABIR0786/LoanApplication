@@ -13,17 +13,21 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplications))]
     public class MortgageApplicationDto : FullAuditedEntityDto<int>
     {
-
-    }
-    public class CreateMortgageLoanApplicationDto
-    {
-        public MortgageApplicationDto MortgageApplication { get; set; }
         public MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
         public MortgageApplicationEmploymentDetailDto CurrentEmployment { get; set; }
         public MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmployment { get; set; }
         public MortgageApplicationPreviousEmploymentDetailDto PreviousEmployment { get; set; }
         public MortgageApplicationIncomeSourceDto IncomeOtherSources { get; set; }
     }
+    //public class CreateMortgageLoanApplicationDto
+    //{
+    //    public MortgageApplicationDto MortgageApplication { get; set; }
+    //    public MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
+    //    public MortgageApplicationEmploymentDetailDto CurrentEmployment { get; set; }
+    //    public MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmployment { get; set; }
+    //    public MortgageApplicationPreviousEmploymentDetailDto PreviousEmployment { get; set; }
+    //    public MortgageApplicationIncomeSourceDto IncomeOtherSources { get; set; }
+    //}
 
     [AutoMapFrom(typeof(MortgageApplicationIncomeSource))]
     public class MortgageApplicationIncomeSourceDto : FullAuditedEntityDto<int>
@@ -37,7 +41,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     public class MortgageApplicationTypeOfCreditDto : FullAuditedEntityDto<int>
     {
         public string applyingFor { get; set; }
-        public int totalBorrowers { get; set; }
+        public int? totalBorrowers { get; set; }
         public string yourIntials { get; set; }
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
@@ -62,6 +66,6 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
         public string ext { get; set; }
         public string email { get; set; }
         public int? PersonalInformationId { get; set; }
-       // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
+        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
     }
 }

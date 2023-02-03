@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,8 +15,8 @@ namespace LoanManagement.MortgageTables
         public string middleName { get; set; }
         public string lastName { get; set; }
         public string suffix { get; set; }
-        public int socialSecurityNumber { get; set; }
-        public DateTime dob { get; set; }
+        public int? socialSecurityNumber { get; set; }
+        public string dob { get; set; }
         public string citizenship { get; set; }
         public string marritalStatus { get; set; }
         public string dependents { get; set; }

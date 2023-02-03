@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace LoanManagement.MortgageTables
         public string country { get; set; }
         public string monthlyIncome { get; set; }
         public string position { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string startDate { get; set; }
+        public string endDate { get; set; }
         public bool isSelfEmployed { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
