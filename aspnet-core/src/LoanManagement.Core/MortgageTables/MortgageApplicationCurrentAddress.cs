@@ -19,7 +19,7 @@ namespace LoanManagement.MortgageTables
         public string month { get; set; }
         public string housingType { get; set; }
         public decimal rent { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }

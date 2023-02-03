@@ -12,7 +12,7 @@ namespace LoanManagement.MortgageTables
         public string applyingFor { get; set; }
         public int totalBorrowers { get; set; }
         public string yourIntials { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }

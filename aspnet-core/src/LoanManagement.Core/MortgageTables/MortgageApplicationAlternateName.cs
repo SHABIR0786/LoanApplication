@@ -13,7 +13,7 @@ namespace LoanManagement.MortgageTables
         public string middleName { get; set; }
         public string lastName { get; set; }
         public string suffix { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }
