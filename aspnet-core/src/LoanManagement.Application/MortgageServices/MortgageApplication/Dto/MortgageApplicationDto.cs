@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.MortgageServices.MortgageApplication.Dto
 {
-    //[AutoMapFrom(typeof(MortgageApplication))]
-    //public class MortgageApplicationDto : FullAuditedEntityDto<int>
-    //{
+    [AutoMapFrom(typeof(MortgageApplications))]
+    public class MortgageApplicationsDto : FullAuditedEntityDto<int>
+    {
 
-    //}
+    }
     [AutoMapFrom(typeof(MortgageApplicationPersonalInformation))]
     public class MortgageApplicationPersonalInformationDto : FullAuditedEntityDto<int>
     {

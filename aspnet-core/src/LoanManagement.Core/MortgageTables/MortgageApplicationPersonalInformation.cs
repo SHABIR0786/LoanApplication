@@ -19,5 +19,7 @@ namespace LoanManagement.MortgageTables
         public string citizenship { get; set; }
         public string marritalStatus { get; set; }
         public string dependents { get; set; }
+        public int MortgageApplication { get; set; }
+        public virtual MortgageApplications MortgageApplicationId { get; set; }
     }
 }

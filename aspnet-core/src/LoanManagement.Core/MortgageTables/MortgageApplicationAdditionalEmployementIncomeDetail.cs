@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.MortgageTables
 {
-    public class MortageApplicationAdditionalEmployementIncomeDetail:FullAuditedEntity<int>
+    public class MortgageApplicationAdditionalEmployementIncomeDetail:FullAuditedEntity<int>
     {
         public decimal baseIncome { get; set; }
         public decimal overtime { get; set; }

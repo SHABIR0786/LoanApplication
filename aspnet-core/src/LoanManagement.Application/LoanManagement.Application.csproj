@@ -19,8 +19,4 @@
     <ProjectReference Include="..\LoanManagement.Core\LoanManagement.Core.csproj" />
     <ProjectReference Include="..\LoanManagement.EntityFrameworkCore\LoanManagement.EntityFrameworkCore.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MortgageServices\Application\" />
-    <Folder Include="MortgageServices\ApplicationPersonalInformation\" />
-  </ItemGroup>
 </Project>

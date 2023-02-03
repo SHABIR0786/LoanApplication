@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.MortgageTables
 {
-    public class MortgageApplication:FullAuditedEntity<int>
+    public class MortgageApplications:FullAuditedEntity<int>
     {
+
     }
 }
