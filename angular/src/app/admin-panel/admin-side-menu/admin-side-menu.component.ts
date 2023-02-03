@@ -75,6 +75,53 @@ export class AdminSideMenuComponent implements OnInit {
     this._router.navigate(["app/admin/loan-process"]);
   }
 
+  navigateToBorrowerInfo() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/borrower-info",
+    ]);
+  }
+
+  navigateToFinancialInfoAssetsLiabilities() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/financial-info-assets-liabilities",
+    ]);
+  }
+  navigateToFinancialInfoRealEstate() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/financial-info-real-estate",
+    ]);
+  }
+  navigateToLoanPropertyInfo() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/loan-property-info",
+    ]);
+  }
+  navigateToDeclarations() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/declarations",
+    ]);
+  }
+  navigateToAcknowledgements() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/acknowledgements-agreements",
+    ]);
+  }
+  navigateToMilitaryService() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/military-service",
+    ]);
+  }
+  navigateToDemographicInfo() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/demographic-info",
+    ]);
+  }
+  navigateToLoanOriginatorInfo() {
+    this._router.navigate([
+      "app/admin/incomplete-loan-application/loan-originator-info",
+    ]);
+  }
+
   logOut(reload?: boolean) {
     // this._utilsService.deleteCookie("Abp.AuthToken", "enc_auth_token");
     abp.auth.clearToken();
