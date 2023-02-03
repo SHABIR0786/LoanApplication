@@ -111,19 +111,19 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<Stockandbond> Stockandbonds { get; set; }
 
         // Mortgage Applications Tables
-        public virtual DbSet<MortgageApplicationAdditionalEmployementDetail> MortgageApplicationAdditionalEmployementDetails { get; set; }
-        public virtual DbSet<MortgageApplicationAdditionalEmployementIncomeDetail> MortgageApplicationAdditionalEmployementIncomeDetails { get; set; }
+        public virtual DbSet<MortgageApplicationAdditionalEmploymentDetail> MortgageApplicationAdditionalEmploymentDetails { get; set; }
+        public virtual DbSet<MortgageApplicationAdditionalEmploymentIncomeDetail> MortgageApplicationAdditionalEmploymentIncomeDetails { get; set; }
         public virtual DbSet<MortgageApplicationAlternateName> MortgageApplicationAlternateNames { get; set; }
         public virtual DbSet<MortgageApplicationContactInformation> MortgageApplicationContactInformation { get; set; }
         public virtual DbSet<MortgageApplicationCurrentAddress> MortgageApplicationCurrentAddresses { get; set; }
-        public virtual DbSet<MortgageApplicationEmployementDetail> MortgageApplicationEmployementDetails { get; set; }
-        public virtual DbSet<MortgageApplicationEmployementIncomeDetail> MortgageApplicationEmployementIncomeDetails { get; set; }
+        public virtual DbSet<MortgageApplicationEmploymentDetail> MortgageApplicationEmploymentDetails { get; set; }
+        public virtual DbSet<MortgageApplicationEmploymentIncomeDetail> MortgageApplicationEmploymentIncomeDetails { get; set; }
         public virtual DbSet<MortgageApplicationFormerAddress> MortgageApplicationFormerAddresses { get; set; }
         public virtual DbSet<MortgageApplicationIncomeSource> MortgageApplicationIncomeSources { get; set; }
         public virtual DbSet<MortgageApplicationMailingAddress> MortgageApplicationMailingAddresses { get; set; }
         public virtual DbSet<MortgageApplicationOtherBorrower> MortgageApplicationOtherBorrowers { get; set; }
         public virtual DbSet<MortgageApplicationPersonalInformation> MortgageApplicationPersonalInformation { get; set; }
-        public virtual DbSet<MortgageApplicationPreviousEmployementDetail> MortgageApplicationPreviousEmployementDetails { get; set; }
+        public virtual DbSet<MortgageApplicationPreviousEmploymentDetail> MortgageApplicationPreviousEmploymentDetails { get; set; }
         public virtual DbSet<MortgageApplications> MortgageApplications { get; set; }
         public virtual DbSet<MortgageApplicationSource> MortgageApplicationSources { get; set; }
         public virtual DbSet<MortgageApplicationTypeOfCredit> MortgageApplicationTypeOfCredits { get; set; }

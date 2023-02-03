@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagement.MortgageTables
 {
-    public class MortgageApplicationAdditionalEmployementDetail : FullAuditedEntity<int>
+    public class MortgageApplicationAdditionalEmploymentDetail : FullAuditedEntity<int>
     {
         public string name { get; set; }
         public string phone { get; set; }
@@ -26,7 +26,7 @@ namespace LoanManagement.MortgageTables
         public bool isEmployedBySomeone { get; set; }
         public bool isSelfEmployed { get; set; }
         public bool isOwnershipLessThan25 { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
 
     }

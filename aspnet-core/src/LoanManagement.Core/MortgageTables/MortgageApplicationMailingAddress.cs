@@ -15,7 +15,7 @@ namespace LoanManagement.MortgageTables
         public string state { get; set; }
         public string zip { get; set; }
         public string country { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }

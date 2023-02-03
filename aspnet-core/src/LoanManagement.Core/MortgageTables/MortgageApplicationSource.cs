@@ -11,5 +11,7 @@ namespace LoanManagement.MortgageTables
     {
         public string sourceType { get; set; }
         public decimal monthlyIncome { get; set; }
+        public int? IncomeSourceId { get; set; }
+        public virtual MortgageApplicationIncomeSource IncomeSource { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace LoanManagement.MortgageTables
         public string workPhone { get; set; }
         public string ext { get; set; }
         public string email { get; set; }
-        public int PersonalInformationId { get; set; }
+        public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }
