@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using LoanManagement.MortgageServices.MortgageFinancialInformationService.Dto;
+using LoanManagement.MortgageTables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,10 @@ namespace LoanManagement.MortgageMappingProfile
     {
         public MortgageMappingProfile()
         {
-
+            CreateMap<MortgagePropertyFinancialInformation, MortgagePropertyFinancialInformationDto>().ReverseMap();
+            CreateMap<MortgageLoanOnProperyFinancialInformation, MortgageLoanOnProperyFinancialInformationDto>().ReverseMap();
+            CreateMap<MortgagePropertyAdditionalFinancialInformation, MortgagePropertyAdditionalFinancialInformationDto>().ReverseMap();
+            CreateMap<MortgageLoanOnAdditionalPropertyFinancialInformation, MortgageLoanOnAdditionalPropertyFinancialInformationDto>().ReverseMap();
         }
     }
 }

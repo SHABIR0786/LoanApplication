@@ -127,6 +127,10 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<MortgageApplications> MortgageApplications { get; set; }
         public virtual DbSet<MortgageApplicationSource> MortgageApplicationSources { get; set; }
         public virtual DbSet<MortgageApplicationTypeOfCredit> MortgageApplicationTypeOfCredits { get; set; }
+        public virtual DbSet<MortgagePropertyFinancialInformation> MortgagePropertyFinancialInformations { get; set; }
+        public virtual DbSet<MortgageLoanOnProperyFinancialInformation> MortgageLoanOnProperyFinancialInformations { get; set; }
+        public virtual DbSet<MortgagePropertyAdditionalFinancialInformation> MortgagePropertyAdditionalFinancialInformations { get; set; }
+        public virtual DbSet<MortgageLoanOnAdditionalPropertyFinancialInformation> MortgageLoanOnAdditionalPropertyFinancialInformations { get; set; }
 
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
