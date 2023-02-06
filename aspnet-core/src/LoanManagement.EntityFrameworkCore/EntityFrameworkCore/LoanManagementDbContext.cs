@@ -128,6 +128,37 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<MortgageApplicationSource> MortgageApplicationSources { get; set; }
         public virtual DbSet<MortgageApplicationTypeOfCredit> MortgageApplicationTypeOfCredits { get; set; }
 
+        public virtual DbSet<MortgageApplicationLoanPropertyInformation> MortgageApplicationLoanPropertyInformation { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyOtherNewMortgageLoans> MortgageApplicationLoanPropertyOtherNewMortgageLoans { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyAddress> MortgageApplicationLoanPropertyAddresses { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyRentalIncome> MortgageApplicationLoanPropertyRentalIncomes { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyGiftsOrGrants> MortgageApplicationLoanPropertyGiftsOrGrants { get; set; }
+        public virtual DbSet<MortgageApplicationLoanOriginatorInformation> MortgageApplicationLoanOriginatorInformations { get; set; }
+        public virtual DbSet<MortgageApplicationMilitaryService> MortgageApplicationMilitaryServices { get; set; }
+
+        //FinancialInformation
+        public virtual DbSet<MortgagePropertyFinancialInformation> MortgagePropertyFinancialInformations { get; set; }
+        public virtual DbSet<MortgageLoanOnProperyFinancialInformation> MortgageLoanOnProperyFinancialInformations { get; set; }
+        public virtual DbSet<MortgagePropertyAdditionalFinancialInformation> MortgagePropertyAdditionalFinancialInformations { get; set; }
+        public virtual DbSet<MortgageLoanOnAdditionalPropertyFinancialInformation> MortgageLoanOnAdditionalPropertyFinancialInformations { get; set; }
+        //Financila Info- Assets & Liabilities
+        public virtual DbSet<MortgageAppliactionFinancialAccount> MortgageAppliactionFinancialAccounts { get; set; }
+        public virtual DbSet<MortgageAppliactionFinancialCredit> MortgageAppliactionFinancialCredits { get; set; }
+        public virtual DbSet<MortgageAppliactionFinancialLiability> MortgageAppliactionFinancialLiabilities { get; set; }
+        public virtual DbSet<MortgageAppliactionFinancialOtherLiability> MortgageAppliactionFinancialOtherLiabilities { get; set; }
+        public virtual DbSet<MortgageFinancialAccountType> MortgageFinancialAccountTypes { get; set; }
+        public virtual DbSet<MortgageFinancialCreditType> MortgageFinancialCreditTypes { get; set; }
+        public virtual DbSet<MortgageFinancialLaibilitiesType> MortgageFinancialLaibilitiesTypes { get; set; }
+        public virtual DbSet<MortgageFinancialOtherLaibilitiesType> MortgageFinancialOtherLaibilitiesTypes { get; set; }
+        //Demographic Information
+        public virtual DbSet<MortgageApplicationDemographicInformation> MortgageApplicationDemographicInformation { get; set; }
+        public virtual DbSet<MortgageApplicaitonDempgraphicInfoByFinancialInstitution> MortgageApplicaitonDempgraphicInfoByFinancialInstitutions { get; set; }
+        //Agreement
+        public virtual DbSet<MortgageApplicationAgreement> MortgageApplicationAgreements { get; set; }
+        //Question
+        public virtual DbSet<MortgageApplicationQuestions> MortgageApplicationQuestions { get; set; }
+
+
 
         public LoanManagementDbContext(DbContextOptions<LoanManagementDbContext> options)
             : base(options)

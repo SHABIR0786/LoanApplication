@@ -29,6 +29,8 @@ namespace LoanManagement.MortgageServices.MortgageApplication
         private readonly IRepository<MortgageApplicationPreviousEmploymentDetail> _applicationPreviousEmploymentDetailRepository;
         private readonly IRepository<MortgageApplicationIncomeSource> _applicationIncomeSourceRepository;
         private readonly IRepository<MortgageApplicationSource> _applicationSourceRepository;
+        private readonly IRepository<MortgageApplicationAgreement> _applicationAgreementRepository;
+        private readonly IRepository<MortgageApplicationQuestions> _questionRepository;
         public MortgageApplicationService(IRepository<MortgageApplications> applicationRepository,
             IRepository<MortgageApplicationPersonalInformation> applicationPersonalInformationRepository,
             IRepository<MortgageApplicationAlternateName> applicationAlternateNameRepository,
@@ -44,7 +46,9 @@ namespace LoanManagement.MortgageServices.MortgageApplication
              IRepository<MortgageApplicationAdditionalEmploymentIncomeDetail> applicationAdditionalEmploymentIncomeDetailRepository,
              IRepository<MortgageApplicationPreviousEmploymentDetail> applicationPreviousEmploymentDetailRepository,
              IRepository<MortgageApplicationSource> applicationSourceRepository,
-              IRepository<MortgageApplicationIncomeSource> applicationIncomeSourceRepository
+              IRepository<MortgageApplicationIncomeSource> applicationIncomeSourceRepository,
+              IRepository<MortgageApplicationAgreement> applicationAgreementRepository,
+              IRepository<MortgageApplicationQuestions> questionRepository
 
             ) : base(applicationRepository)
         {
@@ -64,6 +68,8 @@ namespace LoanManagement.MortgageServices.MortgageApplication
             _applicationPreviousEmploymentDetailRepository = applicationPreviousEmploymentDetailRepository;
             _applicationIncomeSourceRepository = applicationIncomeSourceRepository;
             _applicationSourceRepository = applicationSourceRepository;
+            _applicationAgreementRepository = applicationAgreementRepository;
+            _questionRepository= questionRepository;
         }
 
         public async Task CreateMortgageLoanApplication(MortgageApplicationDto createMortgageLoanApplicationDto)
@@ -121,7 +127,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication
                 {
                     foreach (var item in createMortgageLoanApplicationDto.PersonalInformation.OtherBorrowers)
                     {
-                        var borrower=ObjectMapper.Map<MortgageApplicationOtherBorrower>(item);
+                        var borrower = ObjectMapper.Map<MortgageApplicationOtherBorrower>(item);
                         borrower.PersonalInformationId = createMortgageLoanApplicationDto.PersonalInformation.ContactInformation.PersonalInformationId;
                         await _applicationOtherBorrowerRepository.InsertAsync(borrower);
                     }
@@ -140,8 +146,8 @@ namespace LoanManagement.MortgageServices.MortgageApplication
                 var applicationAdditionalEmploymentDetail = ObjectMapper.Map<MortgageApplicationAdditionalEmploymentDetail>(createMortgageLoanApplicationDto.AdditionalEmployment);
                 if (applicationAdditionalEmploymentDetail != null)
                 {
-                   var additionalEmploymentId= await _applicationAdditionalEmploymentDetailRepository.InsertAndGetIdAsync(applicationAdditionalEmploymentDetail);
-                    createMortgageLoanApplicationDto.AdditionalEmployment.GrossMonthlyIncome.AdditionalEmploymentDetailId= additionalEmploymentId;
+                    var additionalEmploymentId = await _applicationAdditionalEmploymentDetailRepository.InsertAndGetIdAsync(applicationAdditionalEmploymentDetail);
+                    createMortgageLoanApplicationDto.AdditionalEmployment.GrossMonthlyIncome.AdditionalEmploymentDetailId = additionalEmploymentId;
                 }
                 var applicationAdditionalEmploymentIncomeDetail = ObjectMapper.Map<MortgageApplicationAdditionalEmploymentIncomeDetail>(createMortgageLoanApplicationDto.AdditionalEmployment.GrossMonthlyIncome);
                 if (applicationAdditionalEmploymentIncomeDetail != null)
@@ -152,7 +158,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication
                     await _applicationPreviousEmploymentDetailRepository.InsertAsync(applicationPreviousEmploymentDetail);
                 //IncomeSource
                 var incomeSource = ObjectMapper.Map<MortgageApplicationIncomeSource>(createMortgageLoanApplicationDto.IncomeOtherSources);
-                var incomeSourceId= await _applicationIncomeSourceRepository.InsertAndGetIdAsync(incomeSource);
+                var incomeSourceId = await _applicationIncomeSourceRepository.InsertAndGetIdAsync(incomeSource);
                 if (createMortgageLoanApplicationDto.IncomeOtherSources.Sources.Any())
                 {
                     foreach (var item in createMortgageLoanApplicationDto.IncomeOtherSources.Sources)
@@ -170,6 +176,25 @@ namespace LoanManagement.MortgageServices.MortgageApplication
             }
 
 
+        }
+        public async Task CreateMortgageApplicationAgreement(MortgageApplicationAgreementDto agreementDto)
+        {
+            if (agreementDto != null)
+            {
+                var entity = ObjectMapper.Map<MortgageApplicationAgreement>(agreementDto);
+                await _applicationAgreementRepository.InsertAsync(entity);
+            }
+        }
+        public async Task MortgageApplicationQuestions(List<MortgageApplicationQuestionsDto> questions)
+        {
+            if(questions.Count>0)
+            {
+                foreach (var item in questions)
+                {
+                    var question = ObjectMapper.Map<MortgageApplicationQuestions>(item);
+                    await _questionRepository.InsertAsync(question);
+                }
+            }
         }
         //public async Task<CreateMortgageLoanApplicationDto> GetMortgageLoanApplication(int applicationId)
         //{
