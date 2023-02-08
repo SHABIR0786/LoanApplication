@@ -32,7 +32,7 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplicationIncomeSource))]
     public class MortgageApplicationIncomeSourceDto : FullAuditedEntityDto<int>
     {
-        public decimal totalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public int? PersonalInformationId { get; set; }
       //  public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
         public List<MortgageApplicationSourceDto> Sources { get; set; }
@@ -40,31 +40,31 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplicationTypeOfCredit))]
     public class MortgageApplicationTypeOfCreditDto : FullAuditedEntityDto<int>
     {
-        public string applyingFor { get; set; }
-        public int? totalBorrowers { get; set; }
-        public string yourIntials { get; set; }
+        public string ApplyingFor { get; set; }
+        public int? TotalBorrowers { get; set; }
+        public string YourIntials { get; set; }
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationOtherBorrower))]
     public class MortgageApplicationOtherBorrowerDto : FullAuditedEntityDto<int>
     {
-        public string firstName { get; set; }
-        public string middleName { get; set; }
-        public string lastName { get; set; }
-        public string suffix { get; set; }
-        public string email { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Suffix { get; set; }
+        public string Email { get; set; }
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationContactInformation))]
     public class MortgageApplicationContactInformationDto : FullAuditedEntityDto<int>
     {
-        public string homePhone { get; set; }
-        public string cellPhone { get; set; }
-        public string workPhone { get; set; }
-        public string ext { get; set; }
-        public string email { get; set; }
+        public string HomePhone { get; set; }
+        public string CellPhone { get; set; }
+        public string WorkPhone { get; set; }
+        public string Ext { get; set; }
+        public string Email { get; set; }
         public int? PersonalInformationId { get; set; }
         // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
     }

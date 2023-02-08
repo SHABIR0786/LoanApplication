@@ -10,23 +10,23 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationAdditionalEmploymentDetail : FullAuditedEntity<int>
     {
-        public string name { get; set; }
-        public string phone { get; set; }
-        public string street { get; set; }
-        public string unit { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public string ownershipShare { get; set; }
-        public string monthlyIncome { get; set; }
-        public int? workingYears { get; set; }
-        public int? workingMonths { get; set; }
-        public string position { get; set; }
-        public string startDate { get; set; }
-        public bool isEmployedBySomeone { get; set; }
-        public bool isSelfEmployed { get; set; }
-        public bool isOwnershipLessThan25 { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Street { get; set; }
+        public string Unit { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public string OwnershipShare { get; set; }
+        public string MonthlyIncome { get; set; }
+        public int? WorkingYears { get; set; }
+        public int? WorkingMonths { get; set; }
+        public string Position { get; set; }
+        public string StartDate { get; set; }
+        public bool IsEmployedBySomeone { get; set; }
+        public bool IsSelfEmployed { get; set; }
+        public bool IsOwnershipLessThan25 { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

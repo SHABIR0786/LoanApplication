@@ -10,11 +10,11 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationContactInformation:FullAuditedEntity<int>
     {
-        public string homePhone { get; set; }
-        public string cellPhone { get; set; }
-        public string workPhone { get; set; }
-        public string ext { get; set; }
-        public string email { get; set; }
+        public string HomePhone { get; set; }
+        public string CellPhone { get; set; }
+        public string WorkPhone { get; set; }
+        public string Ext { get; set; }
+        public string Email { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
