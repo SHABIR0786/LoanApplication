@@ -55,11 +55,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
         {
             try
             {
-                var mortgageAsset = ObjectMapper.Map<MortgageAppliactionFinancialAccount>(input.mortgageAppliactionFinancialAccount);
+                var mortgageAsset = ObjectMapper.Map<MortgageAppliactionFinancialAccount>(input.MortgageAppliactionFinancialAccount);
                 var mortgageAssetId = await _mortgageAppliactionFinancialAssetRepo.InsertAndGetIdAsync(mortgageAsset);
-                if (input.mortgageAppliactionFinancialAccount.MortgageFinancialAccountType.Count > 0)
+                if (input.MortgageAppliactionFinancialAccount.MortgageFinancialAccountType.Count > 0)
                 {
-                    foreach (var item in input.mortgageAppliactionFinancialAccount.MortgageFinancialAccountType)
+                    foreach (var item in input.MortgageAppliactionFinancialAccount.MortgageFinancialAccountType)
                     {
                         //var account = new MortgageFinancialAccountType()
                         //{
@@ -76,11 +76,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
                 }
 
 
-                var mortgageOtherAsset = ObjectMapper.Map<MortgageAppliactionFinancialCredit>(input.mortgageAppliactionFinancialCredit);
+                var mortgageOtherAsset = ObjectMapper.Map<MortgageAppliactionFinancialCredit>(input.MortgageAppliactionFinancialCredit);
                 var mortgageOtherAssetId = await _mortgageAppliactionFinancialOtherAssetRepo.InsertAndGetIdAsync(mortgageOtherAsset);
-                if (input.mortgageAppliactionFinancialCredit.MortgageFinancialAssetsType.Count > 0)
+                if (input.MortgageAppliactionFinancialCredit.MortgageFinancialAssetsType.Count > 0)
                 {
-                    foreach (var item in input.mortgageAppliactionFinancialCredit.MortgageFinancialAssetsType)
+                    foreach (var item in input.MortgageAppliactionFinancialCredit.MortgageFinancialAssetsType)
                     {
                         //var credit = new MortgageFinancialCreditType()
                         //{
@@ -94,11 +94,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
                     }
                 }
 
-                var liability = ObjectMapper.Map<MortgageAppliactionFinancialLiability>(input.mortgageappliactionFinancialLiability);
+                var liability = ObjectMapper.Map<MortgageAppliactionFinancialLiability>(input.MortgageappliactionFinancialLiability);
                 var liabilityId = await _mortgageAppliactionFinancialLiabilityRepo.InsertAndGetIdAsync(liability);
-                if(input.mortgageappliactionFinancialLiability.MortgageFinancialLaibilitiesType.Count > 0)
+                if(input.MortgageappliactionFinancialLiability.MortgageFinancialLaibilitiesType.Count > 0)
                 {
-                    foreach (var item in input.mortgageappliactionFinancialLiability.MortgageFinancialLaibilitiesType)
+                    foreach (var item in input.MortgageappliactionFinancialLiability.MortgageFinancialLaibilitiesType)
                     {
                         //var liabilityType = new MortgageFinancialLaibilitiesType()
                         //{
@@ -115,11 +115,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
                     }
                 }
              
-                var Otherliability = ObjectMapper.Map<MortgageAppliactionFinancialOtherLiability>(input.mortgageappliactionFinancialOtherLiability);
+                var Otherliability = ObjectMapper.Map<MortgageAppliactionFinancialOtherLiability>(input.MortgageappliactionFinancialOtherLiability);
                 var OtherliabilityId = await _mortgageAppliactionFinancialOtherLiabilityRepo.InsertAndGetIdAsync(Otherliability);
-                if (input.mortgageappliactionFinancialOtherLiability.MortgageFinancialOtherLaibilitiesType.Count > 0)
+                if (input.MortgageappliactionFinancialOtherLiability.MortgageFinancialOtherLaibilitiesType.Count > 0)
                 {
-                    foreach (var item in input.mortgageappliactionFinancialOtherLiability.MortgageFinancialOtherLaibilitiesType)
+                    foreach (var item in input.MortgageappliactionFinancialOtherLiability.MortgageFinancialOtherLaibilitiesType)
                     {
                         //var otherLiabilityType = new MortgageFinancialOtherLaibilitiesType()
                         //{

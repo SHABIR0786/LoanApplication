@@ -12,63 +12,63 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
 {
     public class CreateMortgageLoanAndProperty
     {
-        public MortgageApplicationLoanPropertyInformationDto loanPropertyInfo { get; set; }
-        public List<MortgageApplicationLoanPropertyOtherNewMortgageLoansDto> newMortgageLoans { get; set; }
-        public List<MortgageApplicationLoanPropertyRentalIncomeDto> rentalIncome { get; set; }
-        public List<MortgageApplicationLoanPropertyGiftsOrGrantsDto> giftsOrGrants { get; set; }
+        public MortgageApplicationLoanPropertyInformationDto LoanPropertyInfo { get; set; }
+        public List<MortgageApplicationLoanPropertyOtherNewMortgageLoansDto> NewMortgageLoans { get; set; }
+        public List<MortgageApplicationLoanPropertyRentalIncomeDto> RentalIncome { get; set; }
+        public List<MortgageApplicationLoanPropertyGiftsOrGrantsDto> GiftsOrGrants { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyInformation))]
     public class MortgageApplicationLoanPropertyInformationDto:FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
         //public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public decimal loanAmount { get; set; }
-        public string loanPurpose { get; set; }
-        public string occupancy { get; set; }
-        public bool isManufacturedHome { get; set; }
-        public bool isMixedUseProperty { get; set; }
-        public MortgageApplicationLoanPropertyAddressDto propertyAddress { get; set; }
+        public decimal LoanAmount { get; set; }
+        public string LoanPurpose { get; set; }
+        public string Occupancy { get; set; }
+        public bool IsManufacturedHome { get; set; }
+        public bool IsMixedUseProperty { get; set; }
+        public MortgageApplicationLoanPropertyAddressDto PropertyAddress { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyAddress))]
     public class MortgageApplicationLoanPropertyAddressDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public int? numberOfUnits { get; set; }
-        public decimal propertyValue { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public int? NumberOfUnits { get; set; }
+        public decimal PropertyValue { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyOtherNewMortgageLoans))]
     public class MortgageApplicationLoanPropertyOtherNewMortgageLoansDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string creditorName { get; set; }
-        public string lienType { get; set; }
-        public decimal monthlyPayment { get; set; }
-        public decimal loanAmount { get; set; }
-        public decimal creditLimit { get; set; }
+        public string CreditorName { get; set; }
+        public string LienType { get; set; }
+        public decimal MonthlyPayment { get; set; }
+        public decimal LoanAmount { get; set; }
+        public decimal CreditLimit { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyRentalIncome))]
     public class MortgageApplicationLoanPropertyRentalIncomeDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
         //public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string incomeType { get; set; }
-        public decimal amount { get; set; }
+        public string IncomeType { get; set; }
+        public decimal Amount { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyGiftsOrGrants))]
     public class MortgageApplicationLoanPropertyGiftsOrGrantsDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string assetType { get; set; }
-        public bool isDeposited { get; set; }
-        public string source { get; set; }
-        public decimal marketValue { get; set; }
+        public string AssetType { get; set; }
+        public bool IsDeposited { get; set; }
+        public string Source { get; set; }
+        public decimal MarketValue { get; set; }
     }
 }

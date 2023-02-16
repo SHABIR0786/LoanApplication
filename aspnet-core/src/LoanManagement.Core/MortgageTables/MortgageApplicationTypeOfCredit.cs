@@ -10,9 +10,9 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationTypeOfCredit : FullAuditedEntity<int>
     {
-        public string applyingFor { get; set; }
-        public int? totalBorrowers { get; set; }
-        public string yourIntials { get; set; }
+        public string ApplyingFor { get; set; }
+        public int? TotalBorrowers { get; set; }
+        public string YourIntials { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

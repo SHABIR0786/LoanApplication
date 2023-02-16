@@ -11,10 +11,10 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public decimal loanAmount { get; set; }
-        public string loanPurpose { get; set; }
-        public string occupancy { get; set; }
-        public bool isManufacturedHome { get; set; }
-        public bool isMixedUseProperty  { get; set; }
+        public decimal LoanAmount { get; set; }
+        public string LoanPurpose { get; set; }
+        public string Occupancy { get; set; }
+        public bool IsManufacturedHome { get; set; }
+        public bool IsMixedUseProperty  { get; set; }
     }
 }

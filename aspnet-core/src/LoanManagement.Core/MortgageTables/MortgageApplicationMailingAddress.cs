@@ -10,12 +10,12 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationMailingAddress : FullAuditedEntity<int>
     {
-        public string street { get; set; }
-        public string unit { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
+        public string Street { get; set; }
+        public string Unit { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

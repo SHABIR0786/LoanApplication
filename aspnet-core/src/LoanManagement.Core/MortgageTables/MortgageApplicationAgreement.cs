@@ -9,7 +9,7 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationAgreement:FullAuditedEntity<int>
     {
-        public bool? isAgreeAgreement { get; set; }
+        public bool? IsAgreeAgreement { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

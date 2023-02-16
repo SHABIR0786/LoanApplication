@@ -11,10 +11,10 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string creditorName { get; set; }
-        public string lienType { get; set; }
-        public decimal monthlyPayment { get; set; }
-        public decimal loanAmount { get; set; }
-        public decimal creditLimit { get; set; }
+        public string CreditorName { get; set; }
+        public string LienType { get; set; }
+        public decimal MonthlyPayment { get; set; }
+        public decimal LoanAmount { get; set; }
+        public decimal CreditLimit { get; set; }
     }
 }

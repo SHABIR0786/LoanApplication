@@ -11,12 +11,12 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public int? numberOfUnits { get; set; }
-        public decimal propertyValue { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public int? NumberOfUnits { get; set; }
+        public decimal PropertyValue { get; set; }
     }
 }

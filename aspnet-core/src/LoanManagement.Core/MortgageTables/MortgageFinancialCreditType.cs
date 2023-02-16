@@ -9,8 +9,8 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageFinancialCreditType : FullAuditedEntity<int>
     {
-        public string assetsCreditType { get; set; }
-        public string cashMarketValue { get; set; }
+        public string AssetsCreditType { get; set; }
+        public string CashMarketValue { get; set; }
 
         public int? MortgageAppliactionFinancialCreditId { get; set; }
         public virtual MortgageAppliactionFinancialCredit MortgageAppliactionFinancialCredit { get; set; }

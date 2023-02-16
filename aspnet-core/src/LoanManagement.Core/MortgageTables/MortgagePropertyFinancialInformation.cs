@@ -11,16 +11,16 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string street { get; set; }
-        public string unit { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public decimal propertyValue { get; set; }
-        public string intendedOccupancy { get; set; }
-        public decimal monthlyInsurance { get; set; }
-        public decimal monthlyRentalIncome { get; set; }
-        public decimal netMonthlyRentalIncome { get; set; }
+        public string Street { get; set; }
+        public string Unit { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public decimal PropertyValue { get; set; }
+        public string IntendedOccupancy { get; set; }
+        public decimal MonthlyInsurance { get; set; }
+        public decimal MonthlyRentalIncome { get; set; }
+        public decimal NetMonthlyRentalIncome { get; set; }
     }
 }

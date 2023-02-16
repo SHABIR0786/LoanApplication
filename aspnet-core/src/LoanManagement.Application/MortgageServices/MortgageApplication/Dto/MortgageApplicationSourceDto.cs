@@ -12,8 +12,8 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplicationSource))]
     public class MortgageApplicationSourceDto:FullAuditedEntity<int>
     {
-        public string sourceType { get; set; }
-        public decimal monthlyIncome { get; set; }
+        public string SourceType { get; set; }
+        public decimal MonthlyIncome { get; set; }
         public int? IncomeSourceId { get; set; }
         //public virtual MortgageApplicationIncomeSourceDto IncomeSource { get; set; }
     }

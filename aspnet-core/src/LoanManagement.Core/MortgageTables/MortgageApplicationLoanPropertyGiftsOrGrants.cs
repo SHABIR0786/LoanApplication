@@ -11,9 +11,9 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string assetType { get; set; }
-        public bool isDeposited { get; set; }
-        public string source { get; set; }
-        public decimal marketValue { get; set; }
+        public string AssetType { get; set; }
+        public bool IsDeposited { get; set; }
+        public string Source { get; set; }
+        public decimal MarketValue { get; set; }
     }
 }

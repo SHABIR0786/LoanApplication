@@ -9,11 +9,11 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageFinancialLaibilitiesType : FullAuditedEntity<int>
     {
-        public string accountType { get; set; }
-        public string companyName { get; set; }
-        public string accountNumber { get; set; }
-        public string unpaidBalance { get; set; }
-        public string cashMarketValue { get; set; }
+        public string AccountType { get; set; }
+        public string CompanyName { get; set; }
+        public string AccountNumber { get; set; }
+        public string UnpaidBalance { get; set; }
+        public string CashMarketValue { get; set; }
 
         public int? MortgageApplicationFinancialLiabilityId { get; set; }
 

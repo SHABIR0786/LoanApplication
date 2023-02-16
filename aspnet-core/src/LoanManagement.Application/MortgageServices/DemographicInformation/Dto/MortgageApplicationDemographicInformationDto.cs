@@ -44,7 +44,7 @@ namespace LoanManagement.MortgageServices.DemographicInformation.Dto
         public bool? IsMale { get; set; }
         public bool? IsFemale { get; set; }
         public bool? CanNotProvideSexInfo { get; set; }
-        public string demographicInfoSource { get; set; }
+        public string DemographicInfoSource { get; set; }
         public int? PersonalInformationId { get; set; }
         //public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
         public MortgageApplicaitonDempgraphicInfoByFinancialInstitutionDto DemographicInfoByFinancialInstitution { get; set; }

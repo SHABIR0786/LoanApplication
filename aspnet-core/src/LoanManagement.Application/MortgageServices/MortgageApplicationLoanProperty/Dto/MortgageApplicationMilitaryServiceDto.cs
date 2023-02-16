@@ -14,11 +14,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
     {
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public bool? isServeUSForces { get; set; }
-        public bool? isCurrentlyServing { get; set; }
-        public string projectedExpirationServiceDate { get; set; }
-        public bool? isCurrentlyRetired { get; set; }
-        public bool? isNonActivatedMember { get; set; }
-        public bool? isSurvivingSpouse { get; set; }
+        public bool? IsServeUSForces { get; set; }
+        public bool? IsCurrentlyServing { get; set; }
+        public string ProjectedExpirationServiceDate { get; set; }
+        public bool? IsCurrentlyRetired { get; set; }
+        public bool? IsNonActivatedMember { get; set; }
+        public bool? IsSurvivingSpouse { get; set; }
     }
 }

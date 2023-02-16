@@ -11,7 +11,7 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string incomeType { get; set; }
-        public decimal amount { get; set; }
+        public string IncomeType { get; set; }
+        public decimal Amount { get; set; }
     }
 }

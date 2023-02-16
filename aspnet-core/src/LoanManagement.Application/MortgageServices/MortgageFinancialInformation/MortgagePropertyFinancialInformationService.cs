@@ -36,12 +36,12 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation
                 {
                     var mortgagePropertyLoan = new MortgageLoanOnProperyFinancialInformation()
                     {
-                        creditorName = item.creditorName,
-                        accountNumber = item.accountNumber,
-                        monthlyMortagagePayment = item.monthlyMortagagePayment,
-                        unpaidBalance = item.unpaidBalance,
-                        type = item.type,
-                        creditLimit = item.creditLimit,
+                        CreditorName = item.CreditorName,
+                        AccountNumber = item.AccountNumber,
+                        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
+                        UnpaidBalance = item.UnpaidBalance,
+                        Type = item.Type,
+                        CreditLimit = item.CreditLimit,
                         MortgagePropertyFinancialInformationId = id,
                     };
                     await _mortgageLoanOnProperyFinancialInformation.InsertAsync(mortgagePropertyLoan);
@@ -52,11 +52,11 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation
                 {
                     var additionalMortgagePropertyLoan = new MortgageLoanOnAdditionalPropertyFinancialInformation()
                     {
-                        creditorName = item.creditorName,
-                        accountNumber = item.accountNumber,
-                        monthlyMortagagePayment = item.monthlyMortagagePayment,
-                        unpaidBalance = item.unpaidBalance,
-                        type = item.type,
+                        CreditorName = item.CreditorName,
+                        AccountNumber = item.AccountNumber,
+                        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
+                        UnpaidBalance = item.UnpaidBalance,
+                        Type = item.Type,
                         MortgagePropertyFinancialInformationId = data,
                     };
                     await _mortgageLoanOnAdditionalPropertyFinancialInformation.InsertAsync(additionalMortgagePropertyLoan);

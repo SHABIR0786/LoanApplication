@@ -10,7 +10,7 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationIncomeSource:FullAuditedEntity<int>
     {
-        public decimal totalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

@@ -37,29 +37,29 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty
         }
         public async Task CreateMortgageApplicationLoanProperty(CreateMortgageLoanAndProperty createMortgageLoanAndProperty)
         {
-            var propertyInfo = ObjectMapper.Map<MortgageApplicationLoanPropertyInformation>(createMortgageLoanAndProperty.loanPropertyInfo);
+            var propertyInfo = ObjectMapper.Map<MortgageApplicationLoanPropertyInformation>(createMortgageLoanAndProperty.LoanPropertyInfo);
             if(propertyInfo != null)
                 await _loanPropertyInfoRepository.InsertAsync(propertyInfo);
             //Property Address
-            var propertyAddress = ObjectMapper.Map<MortgageApplicationLoanPropertyAddress>(createMortgageLoanAndProperty.loanPropertyInfo.propertyAddress);
+            var propertyAddress = ObjectMapper.Map<MortgageApplicationLoanPropertyAddress>(createMortgageLoanAndProperty.LoanPropertyInfo.PropertyAddress);
             if(propertyAddress!=null)
                 await _propertyAddressRepository.InsertAsync(propertyAddress);
             //mortgageLoans
-            var propertyMortgageLoans = ObjectMapper.Map<List<MortgageApplicationLoanPropertyOtherNewMortgageLoans>>(createMortgageLoanAndProperty.newMortgageLoans);
+            var propertyMortgageLoans = ObjectMapper.Map<List<MortgageApplicationLoanPropertyOtherNewMortgageLoans>>(createMortgageLoanAndProperty.NewMortgageLoans);
             if(propertyMortgageLoans.Count>0)
                 foreach (var item in propertyMortgageLoans)
                 {
                     await _otherNewMortgageLoansRepository.InsertAsync(item);
                 }
             //Rental Income
-            var rentalIncomes = ObjectMapper.Map<List<MortgageApplicationLoanPropertyRentalIncome>>(createMortgageLoanAndProperty.rentalIncome);
+            var rentalIncomes = ObjectMapper.Map<List<MortgageApplicationLoanPropertyRentalIncome>>(createMortgageLoanAndProperty.RentalIncome);
             if (rentalIncomes.Count > 0)
                 foreach (var item in rentalIncomes)
                 {
                     await _rentalIncomeRepository.InsertAsync(item);
                 }
             //Gifts Or Grants
-            var giftsOrGrants = ObjectMapper.Map<List<MortgageApplicationLoanPropertyGiftsOrGrants>>(createMortgageLoanAndProperty.giftsOrGrants);
+            var giftsOrGrants = ObjectMapper.Map<List<MortgageApplicationLoanPropertyGiftsOrGrants>>(createMortgageLoanAndProperty.GiftsOrGrants);
             if (giftsOrGrants.Count > 0)
                 foreach (var item in giftsOrGrants)
                 {

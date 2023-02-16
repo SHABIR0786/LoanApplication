@@ -16,29 +16,29 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation.Dto
     {
         public int? PersonalInformationId { get; set; }
       //  public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
-        public string street { get; set; }
-        public string unit { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public decimal propertyValue { get; set; }
-        public string intendedOccupancy { get; set; }
-        public decimal monthlyInsurance { get; set; }
-        public decimal monthlyRentalIncome { get; set; }
-        public decimal netMonthlyRentalIncome { get; set; }
+        public string Street { get; set; }
+        public string Unit { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public decimal PropertyValue { get; set; }
+        public string IntendedOccupancy { get; set; }
+        public decimal MonthlyInsurance { get; set; }
+        public decimal MonthlyRentalIncome { get; set; }
+        public decimal NetMonthlyRentalIncome { get; set; }
     }
 
     [AutoMapFrom(typeof(MortgageLoanOnProperyFinancialInformation))]
     public class MortgageLoanOnProperyFinancialInformationDto : FullAuditedEntity<int>
     {
-        public string creditorName { get; set; }
-        public long accountNumber { get; set; }
-        public decimal monthlyMortagagePayment { get; set; }
-        public decimal unpaidBalance { get; set; }
-        public string type { get; set; }
-        public decimal creditLimit { get; set; }
-        public bool isApplied { get; set; }
+        public string CreditorName { get; set; }
+        public long AccountNumber { get; set; }
+        public decimal MonthlyMortagagePayment { get; set; }
+        public decimal UnpaidBalance { get; set; }
+        public string Type { get; set; }
+        public decimal CreditLimit { get; set; }
+        public bool IsApplied { get; set; }
         public int? MortgagePropertyFinancialInformationId { get; set; }
       //  public virtual MortgagePropertyFinancialInformationDto MortgagePropertyFinancialInformation { get; set; }
     }
@@ -46,17 +46,17 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation.Dto
     [AutoMapFrom(typeof(MortgagePropertyAdditionalFinancialInformation))]
     public class MortgagePropertyAdditionalFinancialInformationDto : FullAuditedEntity<int>
     {
-        public string street { get; set; }
-        public string unit { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string zip { get; set; }
-        public string country { get; set; }
-        public decimal propertyValue { get; set; }
-        public string intendedOccupancy { get; set; }
-        public decimal monthlyInsurance { get; set; }
-        public decimal monthlyRentalIncome { get; set; }
-        public decimal netMonthlyRentalIncome { get; set; }
+        public string Street { get; set; }
+        public string Unit { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public decimal PropertyValue { get; set; }
+        public string IntendedOccupancy { get; set; }
+        public decimal MonthlyInsurance { get; set; }
+        public decimal MonthlyRentalIncome { get; set; }
+        public decimal NetMonthlyRentalIncome { get; set; }
         public int? PersonalInformationId { get; set; }
     //    public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
     }
@@ -64,13 +64,13 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation.Dto
     [AutoMapFrom(typeof(MortgageLoanOnAdditionalPropertyFinancialInformation))]
     public class MortgageLoanOnAdditionalPropertyFinancialInformationDto : FullAuditedEntity<int>
     {
-        public string creditorName { get; set; }
-        public long accountNumber { get; set; }
-        public decimal monthlyMortagagePayment { get; set; }
-        public decimal unpaidBalance { get; set; }
-        public string type { get; set; }
-        public decimal creditLimit { get; set; }
-        public bool isApplied { get; set; }
+        public string CreditorName { get; set; }
+        public long AccountNumber { get; set; }
+        public decimal MonthlyMortagagePayment { get; set; }
+        public decimal UnpaidBalance { get; set; }
+        public string Type { get; set; }
+        public decimal CreditLimit { get; set; }
+        public bool IsApplied { get; set; }
         public int? MortgagePropertyFinancialInformationId { get; set; }
     //    public virtual MortgagePropertyFinancialInformationDto MortgagePropertyFinancialInformation { get; set; }
     }
