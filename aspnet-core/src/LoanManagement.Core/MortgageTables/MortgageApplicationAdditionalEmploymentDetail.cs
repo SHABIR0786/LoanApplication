@@ -18,8 +18,8 @@ namespace LoanManagement.MortgageTables
         public string State { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
-        public string OwnershipShare { get; set; }
-        public string MonthlyIncome { get; set; }
+        public decimal OwnershipShare { get; set; }
+        public decimal MonthlyIncome { get; set; }
         public int? WorkingYears { get; set; }
         public int? WorkingMonths { get; set; }
         public string Position { get; set; }

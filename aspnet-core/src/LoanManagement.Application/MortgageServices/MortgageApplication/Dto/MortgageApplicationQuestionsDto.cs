@@ -12,9 +12,8 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplicationQuestions))]
     public class MortgageApplicationQuestionsDto:FullAuditedEntityDto<int>
     {
-        public string Question { get; set; }
+        public int? DeclarationQuestionId { get; set; }
         public string Answer { get; set; }
-        public bool? YesNo { get; set; }
         public int? PersonalInformationId { get; set; }
         //public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

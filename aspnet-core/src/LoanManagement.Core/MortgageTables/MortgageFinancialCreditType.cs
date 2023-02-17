@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using LoanManagement.codeFirstEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageFinancialCreditType : FullAuditedEntity<int>
     {
-        public string AssetsCreditType { get; set; }
-        public string CashMarketValue { get; set; }
+        public int? FinancialAssetsTypeId { get; set; }
+        public virtual FinancialAssetsType FinancialAssetsType { get; set; }
+        public decimal CashMarketValue { get; set; }
 
-        public int? MortgageAppliactionFinancialCreditId { get; set; }
-        public virtual MortgageAppliactionFinancialCredit MortgageAppliactionFinancialCredit { get; set; }
+        public int? PersonalInformationId { get; set; }
+        public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }
 }

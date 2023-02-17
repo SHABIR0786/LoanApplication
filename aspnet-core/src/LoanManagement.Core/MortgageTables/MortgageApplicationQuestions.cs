@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using LoanManagement.codeFirstEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgageApplicationQuestions:FullAuditedEntity<int>
     {
-        public string Question { get; set; }
+        public int? DeclarationQuestionId { get; set; }
+        public virtual DeclarationQuestion DeclarationQuestion { get; set; }
         public string Answer { get; set; }
-        public bool? YesNo { get; set; }
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
     }

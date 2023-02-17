@@ -18,7 +18,8 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
 
         public int? PersonalInformationId  { get; set; }
       // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
-        public string TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
+        public string FinancialType { get; set; }
     }
 
 
@@ -28,7 +29,7 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
         public List<MortgageFinancialAssetsTypeDto> MortgageFinancialAssetsType { get; set; }
         public int? PersonalInformationId  { get; set; }
        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
-        public string TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
     }
 
@@ -39,7 +40,7 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
     public class MortgageApplicationFinancialLiabilityDto : FullAuditedEntityDto<int>
     {
         public List<MortgageFinancialLaibilitiesTypeDto> MortgageFinancialLaibilitiesType { get; set; }
-        public string TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
         public int? PersonalInformationId  { get; set; }
        // public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
@@ -63,14 +64,11 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
     public class MortgageFinancialAccountTypeDto : FullAuditedEntityDto<int>
     {
 
-        public string AccountType { get; set; }
+        public int? AccountTypeId { get; set; }
         public string FinancialInstitution { get; set; }
         public string AccountNumber { get; set; }
-        public string CashMarketValue { get; set; }
-
-        public int? MortgageAppliactionFinancialAccountId { get; set; }
-
-        //public virtual MortgageAppliactionFinancialAccountDto MortgageAppliactionFinancialAccount { get; set; }
+        public decimal CashMarketValue { get; set; }
+        public int? PersonalInformationId { get; set; }     
 
     }
 
@@ -81,11 +79,10 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
     public class MortgageFinancialAssetsTypeDto : FullAuditedEntityDto<int>
     {
 
-        public string AssetsCreditType { get; set; }
-        public string CashMarketValue { get; set; }
+        public int? FinancialAssetsTypeId { get; set; }
+        public decimal CashMarketValue { get; set; }
 
-        public int? MortgageAppliactionFinancialCreditId { get; set; }
-       // public virtual MortgageAppliactionFinancialCreditDto MortgageAppliactionFinancialCreditDto { get; set; }
+        public int? PersonalInformationId { get; set; }       
     }
 
 
@@ -93,35 +90,30 @@ namespace LoanManagement.MortgageServices.MortgageApplicationFinancialAssetServi
     [AutoMapFrom(typeof(MortgageFinancialLaibilitiesType))]
     public class MortgageFinancialLaibilitiesTypeDto : FullAuditedEntityDto<int>
     {
-
-        public string AccountType { get; set; }
+        public int? FinancialLaibilitiesTypeId { get; set; }
         public string CompanyName { get; set; }
         public string AccountNumber { get; set; }
-        public string UnpaidBalance { get; set; }
-        public string CashMarketValue { get; set; }
-
-        public int? MortgageApplicationFinancialLiabilityId { get; set; }
-
-       // public virtual MortgageApplicationFinancialLiabilityDto MortgageApplicationFinancialLiability { get; set; }
+        public decimal UnpaidBalance { get; set; }
+        public bool? IsPaidBeforeClosing { get; set; }
+        public decimal MonthlyPayment { get; set; }
+        public int? PersonalInformationId { get; set; }
     }
 
 
     [AutoMapFrom(typeof(MortgageFinancialOtherLaibilitiesType))]
     public class MortgageFinancialOtherLaibilitiesTypeDto : FullAuditedEntityDto<int>
     {
-        public string Expense { get; set; }
-        public string CashMarketValue { get; set; }
-
-        public int? MortgageApplicationFinancialOtherLiabilityId { get; set; }
-       // public virtual MortgageApplicationFinancialOtherLiabilityDto MortgageApplicationFinancialOtherLiability { get; set; }
+        public int? FinancialOtherLaibilitiesTypeId { get; set; }
+        public decimal MonthlyPayment { get; set; }
+        public int? PersonalInformationId { get; set; }
+        
     }
 
     public class CreateMotgageApplicationFinancialAsset
     {
-        public MortgageAppliactionFinancialAccountDto MortgageAppliactionFinancialAccount { get; set; }
-        public MortgageAppliactionFinancialCreditDto MortgageAppliactionFinancialCredit { get; set; }
-        public MortgageApplicationFinancialLiabilityDto MortgageappliactionFinancialLiability { get; set; }
-        public MortgageApplicationFinancialOtherLiabilityDto MortgageappliactionFinancialOtherLiability { get; set; }
-        public string BorrowerName { get; set; }
+        public List<MortgageFinancialAccountTypeDto> MortgageFinancialAssets { get; set; }
+        public List<MortgageFinancialAssetsTypeDto> MortgageFinancialOtherAssets { get; set; }
+        public List<MortgageFinancialLaibilitiesTypeDto> MortgageFinancialLiabilities { get; set; }
+        public List<MortgageFinancialOtherLaibilitiesTypeDto> MortgageFinancialOtherLaibilities { get; set; }
     }
 }

@@ -14,25 +14,16 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     public class MortgageApplicationDto : FullAuditedEntityDto<int>
     {
         public MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
-        public MortgageApplicationEmploymentDetailDto CurrentEmployment { get; set; }
-        public MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmployment { get; set; }
-        public MortgageApplicationPreviousEmploymentDetailDto PreviousEmployment { get; set; }
-        public MortgageApplicationIncomeSourceDto IncomeOtherSources { get; set; }
+        public List<MortgageApplicationEmploymentDetailDto> Employment { get; set; }
+        public List<MortgageApplicationIncomeSourceDto> IncomeOtherSources { get; set; }
+        public List<MortgageApplicationPersonalInformationDto> OtherBorrowers { get; set; }
     }
-    //public class CreateMortgageLoanApplicationDto
-    //{
-    //    public MortgageApplicationDto MortgageApplication { get; set; }
-    //    public MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
-    //    public MortgageApplicationEmploymentDetailDto CurrentEmployment { get; set; }
-    //    public MortgageApplicationAdditionalEmploymentDetailDto AdditionalEmployment { get; set; }
-    //    public MortgageApplicationPreviousEmploymentDetailDto PreviousEmployment { get; set; }
-    //    public MortgageApplicationIncomeSourceDto IncomeOtherSources { get; set; }
-    //}
 
     [AutoMapFrom(typeof(MortgageApplicationIncomeSource))]
     public class MortgageApplicationIncomeSourceDto : FullAuditedEntityDto<int>
     {
-        public decimal TotalAmount { get; set; }
+        public decimal MonthlyIncome { get; set; }
+        public int? IncomeSourceId { get; set; }
         public int? PersonalInformationId { get; set; }
       //  public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
         public List<MortgageApplicationSourceDto> Sources { get; set; }

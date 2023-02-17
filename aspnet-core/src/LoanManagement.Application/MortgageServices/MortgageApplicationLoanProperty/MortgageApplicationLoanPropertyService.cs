@@ -52,12 +52,9 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty
                     await _otherNewMortgageLoansRepository.InsertAsync(item);
                 }
             //Rental Income
-            var rentalIncomes = ObjectMapper.Map<List<MortgageApplicationLoanPropertyRentalIncome>>(createMortgageLoanAndProperty.RentalIncome);
-            if (rentalIncomes.Count > 0)
-                foreach (var item in rentalIncomes)
-                {
-                    await _rentalIncomeRepository.InsertAsync(item);
-                }
+            var rentalIncome = ObjectMapper.Map<MortgageApplicationLoanPropertyRentalIncome>(createMortgageLoanAndProperty.RentalIncome);
+            if (rentalIncome!=null)
+                    await _rentalIncomeRepository.InsertAsync(rentalIncome);
             //Gifts Or Grants
             var giftsOrGrants = ObjectMapper.Map<List<MortgageApplicationLoanPropertyGiftsOrGrants>>(createMortgageLoanAndProperty.GiftsOrGrants);
             if (giftsOrGrants.Count > 0)

@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using LoanManagement.codeFirstEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace LoanManagement.MortgageTables
     {
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string AssetType { get; set; }
+        public int? AssetTypeId { get; set; }
+        public virtual Assettype AssetType { get; set; }
         public bool IsDeposited { get; set; }
         public string Source { get; set; }
         public decimal MarketValue { get; set; }

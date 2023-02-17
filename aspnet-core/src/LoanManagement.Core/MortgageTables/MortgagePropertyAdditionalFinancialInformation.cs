@@ -9,7 +9,6 @@ namespace LoanManagement.MortgageTables
 {
     public class MortgagePropertyAdditionalFinancialInformation : FullAuditedEntity<int>
     {
-
         public string Street { get; set; }
         public string Unit { get; set; }
         public string City { get; set; }

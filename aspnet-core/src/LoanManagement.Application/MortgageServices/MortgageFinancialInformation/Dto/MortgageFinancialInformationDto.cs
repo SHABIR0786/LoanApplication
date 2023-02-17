@@ -14,31 +14,34 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation.Dto
     [AutoMapFrom(typeof(MortgagePropertyFinancialInformation))]
     public class MortgagePropertyFinancialInformationDto : FullAuditedEntityDto<int>
     {
+        //type: current, additional
+        public string FinancialInformationType { get; set; }
         public int? PersonalInformationId { get; set; }
       //  public virtual MortgageApplicationPersonalInformationDto PersonalInformation { get; set; }
         public string Street { get; set; }
         public string Unit { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
+        public int? CityId { get; set; }
+        public int? StateId { get; set; }
+        public int? CountryId { get; set; }
         public string Zip { get; set; }
-        public string Country { get; set; }
         public decimal PropertyValue { get; set; }
         public string IntendedOccupancy { get; set; }
         public decimal MonthlyInsurance { get; set; }
         public decimal MonthlyRentalIncome { get; set; }
         public decimal NetMonthlyRentalIncome { get; set; }
+        public List<MortgageLoanOnProperyFinancialInformationDto> MortgageLoanOnProperty { get; set; }
     }
 
     [AutoMapFrom(typeof(MortgageLoanOnProperyFinancialInformation))]
     public class MortgageLoanOnProperyFinancialInformationDto : FullAuditedEntity<int>
     {
         public string CreditorName { get; set; }
-        public long AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         public decimal MonthlyMortagagePayment { get; set; }
         public decimal UnpaidBalance { get; set; }
         public string Type { get; set; }
         public decimal CreditLimit { get; set; }
-        public bool IsApplied { get; set; }
+        public bool? IsPaidBeforeClosing { get; set; }
         public int? MortgagePropertyFinancialInformationId { get; set; }
       //  public virtual MortgagePropertyFinancialInformationDto MortgagePropertyFinancialInformation { get; set; }
     }
@@ -76,10 +79,7 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation.Dto
     }
     public class CreateMortgagePropertyFinancialInformationDto
     {
-        public MortgagePropertyFinancialInformationDto MortgagePropertyFinancialInformation { get; set; }
-        public MortgagePropertyAdditionalFinancialInformationDto MortgagePropertyAdditionalFinancialInformation { get; set; }
-        public List<MortgageLoanOnProperyFinancialInformationDto> MortgageLoanOnProperyFinancialInformation { get; set; }
-        public List<MortgageLoanOnAdditionalPropertyFinancialInformationDto> MortgageLoanOnAdditionalPropertyFinancialInformation { get; set; }
+        public List<MortgagePropertyFinancialInformationDto> MortgagePropertyFinancialInformation { get; set; }
     }
 
 

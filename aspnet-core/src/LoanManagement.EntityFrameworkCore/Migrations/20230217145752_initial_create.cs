@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoanManagement.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class initial_create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Parameters = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ReturnValue = table.Column<string>(type: "longtext", nullable: true)
+                    ReturnValue = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ExecutionTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ExecutionDuration = table.Column<int>(type: "int", nullable: false),
@@ -60,7 +60,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     JobType = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    JobArgs = table.Column<string>(type: "longtext", maxLength: 1048576, nullable: false)
+                    JobArgs = table.Column<string>(type: "text", maxLength: 1048576, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TryCount = table.Column<short>(type: "smallint", nullable: false),
                     NextTryTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -84,11 +84,11 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PropertyName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DisplayName = table.Column<string>(type: "longtext", nullable: true)
+                    DisplayName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    InputType = table.Column<string>(type: "longtext", nullable: true)
+                    InputType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Permission = table.Column<string>(type: "longtext", nullable: true)
+                    Permission = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TenantId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -135,7 +135,7 @@ namespace LoanManagement.Migrations
                     ClientName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtensionData = table.Column<string>(type: "longtext", nullable: true)
+                    ExtensionData = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ImpersonatorTenantId = table.Column<int>(type: "int", nullable: true),
                     ImpersonatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -191,7 +191,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Key = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Value = table.Column<string>(type: "longtext", maxLength: 67108864, nullable: false)
+                    Value = table.Column<string>(type: "text", maxLength: 67108864, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -211,7 +211,7 @@ namespace LoanManagement.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     NotificationName = table.Column<string>(type: "varchar(96)", maxLength: 96, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data = table.Column<string>(type: "longtext", maxLength: 1048576, nullable: true)
+                    Data = table.Column<string>(type: "text", maxLength: 1048576, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataTypeName = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -222,11 +222,11 @@ namespace LoanManagement.Migrations
                     EntityId = table.Column<string>(type: "varchar(96)", maxLength: 96, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Severity = table.Column<byte>(type: "tinyint unsigned", nullable: false),
-                    UserIds = table.Column<string>(type: "longtext", maxLength: 131072, nullable: true)
+                    UserIds = table.Column<string>(type: "text", maxLength: 131072, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ExcludedUserIds = table.Column<string>(type: "longtext", maxLength: 131072, nullable: true)
+                    ExcludedUserIds = table.Column<string>(type: "text", maxLength: 131072, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TenantIds = table.Column<string>(type: "longtext", maxLength: 131072, nullable: true)
+                    TenantIds = table.Column<string>(type: "text", maxLength: 131072, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true)
@@ -319,7 +319,7 @@ namespace LoanManagement.Migrations
                     TenantId = table.Column<int>(type: "int", nullable: true),
                     NotificationName = table.Column<string>(type: "varchar(96)", maxLength: 96, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data = table.Column<string>(type: "longtext", maxLength: 1048576, nullable: true)
+                    Data = table.Column<string>(type: "text", maxLength: 1048576, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataTypeName = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -503,9 +503,9 @@ namespace LoanManagement.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    WebhookName = table.Column<string>(type: "longtext", nullable: false)
+                    WebhookName = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data = table.Column<string>(type: "longtext", nullable: true)
+                    Data = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     TenantId = table.Column<int>(type: "int", nullable: true),
@@ -524,14 +524,14 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     TenantId = table.Column<int>(type: "int", nullable: true),
-                    WebhookUri = table.Column<string>(type: "longtext", nullable: false)
+                    WebhookUri = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Secret = table.Column<string>(type: "longtext", nullable: false)
+                    Secret = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Webhooks = table.Column<string>(type: "longtext", nullable: true)
+                    Webhooks = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Headers = table.Column<string>(type: "longtext", nullable: true)
+                    Headers = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true)
@@ -548,9 +548,9 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NameOfIndividualsOnTitle = table.Column<string>(type: "longtext", nullable: true)
+                    NameOfIndividualsOnTitle = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NameOfIndividualsCoBorrowerOnTitle = table.Column<string>(type: "longtext", nullable: true)
+                    NameOfIndividualsCoBorrowerOnTitle = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -572,7 +572,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Status = table.Column<string>(type: "longtext", nullable: true)
+                    Status = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -594,7 +594,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
+                    Title = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -616,7 +616,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LoanProgram = table.Column<string>(type: "longtext", nullable: true)
+                    LoanProgram = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -638,9 +638,9 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DeviceId = table.Column<string>(type: "longtext", nullable: true)
+                    DeviceId = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BioMetricData = table.Column<string>(type: "longtext", nullable: true)
+                    BioMetricData = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsEnabled = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -663,7 +663,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -685,7 +685,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -700,7 +700,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CitizenshipType1 = table.Column<string>(type: "longtext", nullable: true)
+                    CitizenshipType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -723,18 +723,18 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AgreeEconsent = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true)
+                    FirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: true)
+                    LastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
+                    Email = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CoborrowerAgreeEconsent = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    CoborrowerFirstName = table.Column<string>(type: "longtext", nullable: true)
+                    CoborrowerFirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CoborrowerLastName = table.Column<string>(type: "longtext", nullable: true)
+                    CoborrowerLastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CoborrowerEmail = table.Column<string>(type: "longtext", nullable: true)
+                    CoborrowerEmail = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -756,7 +756,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CountryName = table.Column<string>(type: "longtext", nullable: true)
+                    CountryName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -799,7 +799,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreditType1 = table.Column<string>(type: "longtext", nullable: true)
+                    CreditType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -821,7 +821,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DeclarationCategory1 = table.Column<string>(type: "longtext", nullable: true)
+                    DeclarationCategory1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -843,7 +843,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(type: "longtext", nullable: true)
+                    Value = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -894,7 +894,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialAccountType1 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialAccountType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -916,7 +916,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialCreditType = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialCreditType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -931,7 +931,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialLaibilitiesType1 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialLaibilitiesType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -953,7 +953,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialOtherLaibilitiesType1 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialOtherLaibilitiesType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -975,7 +975,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialPropertyIntendedOccupancy1 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialPropertyIntendedOccupancy1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -997,7 +997,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FinancialPropertyStatus1 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialPropertyStatus1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1019,38 +1019,38 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PropertyType = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyUse = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyUse = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FirstTimeHomeBuying = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    PlanToPurchase = table.Column<string>(type: "longtext", nullable: true)
+                    PlanToPurchase = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyLocated = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLocated = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PurchasePrice = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     DownPayment = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    CurrentlyEmployed = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentlyEmployed = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    HouseHoldIncome = table.Column<string>(type: "longtext", nullable: true)
+                    HouseHoldIncome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProofOfincome = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     MilitarySevice = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     BankruptcyPastThreeYears = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     ForeclosurePastTwoYears = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    LateMortgagePayments = table.Column<string>(type: "longtext", nullable: true)
+                    LateMortgagePayments = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RateCredit = table.Column<string>(type: "longtext", nullable: true)
+                    RateCredit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true)
+                    FirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: true)
+                    LastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    EmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RefferedBy = table.Column<string>(type: "longtext", nullable: true)
+                    RefferedBy = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1072,7 +1072,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    HousingType1 = table.Column<string>(type: "longtext", nullable: true)
+                    HousingType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1094,7 +1094,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IncomeSource1 = table.Column<string>(type: "longtext", nullable: true)
+                    IncomeSource1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1116,7 +1116,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -1131,7 +1131,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IncomeType1 = table.Column<string>(type: "longtext", nullable: true)
+                    IncomeType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1153,100 +1153,100 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Stage = table.Column<string>(type: "longtext", nullable: true)
+                    Stage = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsWorkingWithEzalready = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    WorkingOfficerName = table.Column<string>(type: "longtext", nullable: true)
+                    WorkingOfficerName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NewHomeAddress = table.Column<string>(type: "longtext", nullable: true)
+                    NewHomeAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NewHomeUnit = table.Column<string>(type: "longtext", nullable: true)
+                    NewHomeUnit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NewHomeCity = table.Column<string>(type: "longtext", nullable: true)
+                    NewHomeCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NewHomeStateId = table.Column<int>(type: "int", nullable: false),
-                    NewHomeZipCode = table.Column<string>(type: "longtext", nullable: true)
+                    NewHomeZipCode = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ContractClosingDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    ContractType = table.Column<string>(type: "longtext", nullable: true)
+                    ContractType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EstimatedHomePrice = table.Column<float>(type: "float", nullable: true),
                     DownPaymentAmount = table.Column<float>(type: "float", nullable: true),
                     DownPaymentPercentage = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualTax = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualHomeInsurance = table.Column<float>(type: "float", nullable: true),
-                    CreditScore = table.Column<string>(type: "longtext", nullable: true)
+                    CreditScore = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyLegalFirstName = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLegalFirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyMiddleInitial = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyMiddleInitial = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyLegalLastName = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLegalLastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyPhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyEmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyEmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TypeOfHome = table.Column<string>(type: "longtext", nullable: true)
+                    TypeOfHome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MonthlyHoadues = table.Column<float>(type: "float", nullable: true),
-                    TypeOfNewHome = table.Column<string>(type: "longtext", nullable: true)
+                    TypeOfNewHome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsMilitaryMember = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    CurrentMilitaryStatus = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentMilitaryStatus = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MilitaryBranch = table.Column<string>(type: "longtext", nullable: true)
+                    MilitaryBranch = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsEtsdateinYear = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     Etsdate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     IsValoanPreviously = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    WhoLivingInHome = table.Column<string>(type: "longtext", nullable: true)
+                    WhoLivingInHome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalLegalFirstName = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalLegalFirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalMiddleInitial = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalMiddleInitial = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalLegalLastName = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalLegalLastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalPhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalEmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalEmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalPassword = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalPassword = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsSomeOneRefer = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsApplyOwn = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    MaritialStatus = table.Column<string>(type: "longtext", nullable: true)
+                    MaritialStatus = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfDependents = table.Column<int>(type: "int", nullable: true),
-                    CurrentAddress = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentUnit = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentUnit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentCity = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CurrentStateId = table.Column<int>(type: "int", nullable: false),
-                    CurrentZipCode = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentZipCode = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CurrentStartLivingDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    CurrentReantingType = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentReantingType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EstimatedMonthlyExpenses = table.Column<float>(type: "float", nullable: true),
                     IsEmployementHistory = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsOtherSourceOfIncome = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    Sex = table.Column<string>(type: "longtext", nullable: true)
+                    Sex = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ethnicity = table.Column<string>(type: "longtext", nullable: true)
+                    Ethnicity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Race = table.Column<string>(type: "longtext", nullable: true)
+                    Race = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CitizenshipId = table.Column<int>(type: "int", nullable: false),
                     IsCertify = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsReadEconsent = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsReadThirdPartyConsent = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    SocialSecurityNumber = table.Column<string>(type: "longtext", nullable: true)
+                    SocialSecurityNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ConformSsn = table.Column<string>(type: "longtext", nullable: true)
+                    ConformSsn = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -1270,17 +1270,17 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsWorkingWithEzalready = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    WorkingOfficerName = table.Column<string>(type: "longtext", nullable: true)
+                    WorkingOfficerName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ObjectiveReason = table.Column<string>(type: "longtext", nullable: true)
+                    ObjectiveReason = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyUnit = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyUnit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyCity = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyZip = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyZip = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PropertyStateId = table.Column<int>(type: "int", nullable: false),
                     PropertyCountryId = table.Column<int>(type: "int", nullable: false),
@@ -1288,102 +1288,102 @@ namespace LoanManagement.Migrations
                     PropertyLoanBalance = table.Column<float>(type: "float", nullable: true),
                     PropertCashOutAmount = table.Column<float>(type: "float", nullable: true),
                     NewLoanEstimateAmount = table.Column<float>(type: "float", nullable: true),
-                    CreditScore = table.Column<string>(type: "longtext", nullable: true)
+                    CreditScore = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TypeOfHome = table.Column<string>(type: "longtext", nullable: true)
+                    TypeOfHome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MonthlyHoadues = table.Column<float>(type: "float", nullable: true),
                     YearHomePurchased = table.Column<float>(type: "float", nullable: true),
                     OrignalPurchasedPrice = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualTax = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualHomeInsurance = table.Column<float>(type: "float", nullable: true),
-                    CurrentlyUsingHomeAs = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentlyUsingHomeAs = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsMilitaryMember = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    CurrentMilitaryStatus = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentMilitaryStatus = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MilitaryBranch = table.Column<string>(type: "longtext", nullable: true)
+                    MilitaryBranch = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsEtsdateinYear = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     Etsdate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     IsValoanPreviously = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    WhoLivingInHome = table.Column<string>(type: "longtext", nullable: true)
+                    WhoLivingInHome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyLegalFirstName = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLegalFirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyMiddleInitial = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyMiddleInitial = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyLegalLastName = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLegalLastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyPhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyEmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyEmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyPassword = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyPassword = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsSomeoneRefer = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    RefferedBy = table.Column<string>(type: "longtext", nullable: true)
+                    RefferedBy = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsApplyOwn = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsLegalSpouse = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    MaritialStatus = table.Column<string>(type: "longtext", nullable: true)
+                    MaritialStatus = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfDependents = table.Column<int>(type: "int", nullable: true),
                     FirstDependantAge = table.Column<int>(type: "int", nullable: true),
                     IsCurrentlyLivingOnRefinancingProperty = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    CurrentAddress = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentUnit = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentUnit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentCity = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CurrentStateId = table.Column<int>(type: "int", nullable: false),
-                    CurrentZipCode = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentZipCode = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CurrentStartLivingDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    CurrentReantingType = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentReantingType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EstimatedMonthlyExpenses = table.Column<float>(type: "float", nullable: true),
-                    PersonalLegalFirstName = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalLegalFirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalMiddleInitial = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalMiddleInitial = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalLegalLastName = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalLegalLastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalPhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalEmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalEmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalPassword = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalPassword = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsAddressSameAsPrimaryBorrower = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    PersonalAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalUnit = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalUnit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PersonalCity = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PersonalStateId = table.Column<int>(type: "int", nullable: false),
-                    PersonalZipCode = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalZipCode = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PersonalStartLivingDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    PersonalReantingType = table.Column<string>(type: "longtext", nullable: true)
+                    PersonalReantingType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsEmployementHistory = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsCoBorrowerHaveShareIncome = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    Sex = table.Column<string>(type: "longtext", nullable: true)
+                    Sex = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ethnicity = table.Column<string>(type: "longtext", nullable: true)
+                    Ethnicity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Race = table.Column<string>(type: "longtext", nullable: true)
+                    Race = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CitizenshipId = table.Column<int>(type: "int", nullable: false),
                     IsCertify = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsReadEconsent = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsReadThirdPartyConsent = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    SocialSecurityNumber = table.Column<string>(type: "longtext", nullable: true)
+                    SocialSecurityNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ConformSsn = table.Column<string>(type: "longtext", nullable: true)
+                    ConformSsn = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -1406,7 +1406,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Question = table.Column<string>(type: "longtext", nullable: true)
+                    Question = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1428,7 +1428,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ApplicationType = table.Column<string>(type: "longtext", nullable: true)
+                    ApplicationType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1454,7 +1454,7 @@ namespace LoanManagement.Migrations
                     LeadApplicationDetailRefinancingId = table.Column<int>(type: "int", nullable: true),
                     AssetTypeId = table.Column<int>(type: "int", nullable: false),
                     LeadApplicationTypeId = table.Column<int>(type: "int", nullable: false),
-                    FinancialInstitution = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialInstitution = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Balance = table.Column<float>(type: "float", nullable: true),
                     OwnerTypeId = table.Column<int>(type: "int", nullable: false),
@@ -1478,7 +1478,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AssetsType = table.Column<string>(type: "longtext", nullable: true)
+                    AssetsType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1504,22 +1504,22 @@ namespace LoanManagement.Migrations
                     LeadApplicationDetailPurchasingId = table.Column<int>(type: "int", nullable: true),
                     LeadApplicationDetailRefinancingId = table.Column<int>(type: "int", nullable: true),
                     LeadApplicationTypeId = table.Column<int>(type: "int", nullable: false),
-                    EmployerName = table.Column<string>(type: "longtext", nullable: true)
+                    EmployerName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployementAddress = table.Column<string>(type: "longtext", nullable: true)
+                    EmployementAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployementSuite = table.Column<string>(type: "longtext", nullable: true)
+                    EmployementSuite = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployementCity = table.Column<string>(type: "longtext", nullable: true)
+                    EmployementCity = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EmployementTaxeId = table.Column<int>(type: "int", nullable: false),
-                    EmployementZip = table.Column<string>(type: "longtext", nullable: true)
+                    EmployementZip = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployerPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    EmployerPhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsCurrentJob = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     EstimatedStartDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    JobTitle = table.Column<string>(type: "longtext", nullable: true)
+                    JobTitle = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EstimatedAnnualBaseSalary = table.Column<float>(type: "float", nullable: true),
                     EstimatedAnnualBonus = table.Column<float>(type: "float", nullable: true),
@@ -1546,7 +1546,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    EmployementType = table.Column<string>(type: "longtext", nullable: true)
+                    EmployementType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1568,7 +1568,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IncomeType = table.Column<string>(type: "longtext", nullable: true)
+                    IncomeType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1590,7 +1590,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    OwnerType = table.Column<string>(type: "longtext", nullable: true)
+                    OwnerType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1661,7 +1661,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TaxesType = table.Column<string>(type: "longtext", nullable: true)
+                    TaxesType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1686,7 +1686,7 @@ namespace LoanManagement.Migrations
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     LoanPropertyGiftTypeId4d1 = table.Column<int>(type: "int", nullable: true),
                     Deposited4d2 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    Source4d3 = table.Column<string>(type: "longtext", nullable: true)
+                    Source4d3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value4d4 = table.Column<float>(type: "float", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -1710,9 +1710,9 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    CreditorName4b1 = table.Column<string>(type: "longtext", nullable: true)
+                    CreditorName4b1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LienType4b2 = table.Column<string>(type: "longtext", nullable: true)
+                    LienType4b2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MonthlyPayment4b3 = table.Column<float>(type: "float", nullable: true),
                     LoanAmount4b4 = table.Column<float>(type: "float", nullable: true),
@@ -1762,13 +1762,13 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     LoanAmount4a1 = table.Column<float>(type: "float", nullable: true),
-                    LoanPurpose4a2 = table.Column<string>(type: "longtext", nullable: true)
+                    LoanPurpose4a2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyStreet4a31 = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyStreet4a31 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyUnitNo4a32 = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyUnitNo4a32 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyZip4a35 = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyZip4a35 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CountryId4a36 = table.Column<int>(type: "int", nullable: false),
                     StateId4a34 = table.Column<int>(type: "int", nullable: false),
@@ -1801,7 +1801,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsWorkingWithOfficer = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     LoanOfficerId = table.Column<int>(type: "int", nullable: true),
-                    ReferredBy = table.Column<string>(type: "longtext", nullable: true)
+                    ReferredBy = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PurposeOfLoan = table.Column<int>(type: "int", nullable: true),
                     EstimatedValue = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
@@ -1812,16 +1812,16 @@ namespace LoanManagement.Migrations
                     DownPaymentPercentage = table.Column<double>(type: "double", nullable: true),
                     SourceOfDownPayment = table.Column<int>(type: "int", nullable: true),
                     GiftAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    GiftExplanation = table.Column<string>(type: "longtext", nullable: true)
+                    GiftExplanation = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HaveSecondMortgage = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     SecondMortgageAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     PayLoanWithNewLoan = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     RefinancingCurrentHome = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    YearAcquired = table.Column<string>(type: "longtext", nullable: true)
+                    YearAcquired = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     OriginalPrice = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    City = table.Column<string>(type: "longtext", nullable: true)
+                    City = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StateId = table.Column<int>(type: "int", nullable: true),
                     PropertyTypeId = table.Column<int>(type: "int", nullable: true),
@@ -1848,23 +1848,23 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    OrganizationName91 = table.Column<string>(type: "longtext", nullable: true)
+                    OrganizationName91 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Address92 = table.Column<string>(type: "longtext", nullable: true)
+                    Address92 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OrganizationNmlsrId93 = table.Column<string>(type: "longtext", nullable: true)
+                    OrganizationNmlsrId93 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OrganizationStateLicence94 = table.Column<string>(type: "longtext", nullable: true)
+                    OrganizationStateLicence94 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OriginatorName95 = table.Column<string>(type: "longtext", nullable: true)
+                    OriginatorName95 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OriginatorNmlsrId96 = table.Column<string>(type: "longtext", nullable: true)
+                    OriginatorNmlsrId96 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OriginatorStateLicense97 = table.Column<string>(type: "longtext", nullable: true)
+                    OriginatorStateLicense97 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email98 = table.Column<string>(type: "longtext", nullable: true)
+                    Email98 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Phone99 = table.Column<string>(type: "longtext", nullable: true)
+                    Phone99 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date910 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -1887,7 +1887,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LoanPropertyGiftType1 = table.Column<string>(type: "longtext", nullable: true)
+                    LoanPropertyGiftType1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1909,7 +1909,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LoanPropertyOccupancy1 = table.Column<string>(type: "longtext", nullable: true)
+                    LoanPropertyOccupancy1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1931,7 +1931,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    MaritialStatus1 = table.Column<string>(type: "longtext", nullable: true)
+                    MaritialStatus1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -1974,9 +1974,9 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationFinancialRealEstateId = table.Column<int>(type: "int", nullable: true),
-                    CreditorName3a9 = table.Column<string>(type: "longtext", nullable: true)
+                    CreditorName3a9 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountNumber3a10 = table.Column<string>(type: "longtext", nullable: true)
+                    AccountNumber3a10 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MonthlyMortagePayment3a11 = table.Column<float>(type: "float", nullable: true),
                     UnpaidBalance3a12 = table.Column<float>(type: "float", nullable: true),
@@ -2003,7 +2003,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    MortageLoanTypesId = table.Column<string>(type: "longtext", nullable: true)
+                    MortageLoanTypesId = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2025,42 +2025,42 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PropertyLocated = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyLocated = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyType = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyUse = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyUse = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    WantRefinance = table.Column<string>(type: "longtext", nullable: true)
+                    WantRefinance = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HomePrice = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     Owe = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     CashBorrow = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    Fhaloan = table.Column<string>(type: "longtext", nullable: true)
+                    Fhaloan = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MilitarySevice = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     ProofOfincome = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    CurrentlyEmployed = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentlyEmployed = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BankruptcyPastThreeYears = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     ForeclosurePastTwoYears = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    LateMortgagePayments = table.Column<string>(type: "longtext", nullable: true)
+                    LateMortgagePayments = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentEmployed = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentEmployed = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    HouseHoldIncome = table.Column<string>(type: "longtext", nullable: true)
+                    HouseHoldIncome = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RateCredit = table.Column<string>(type: "longtext", nullable: true)
+                    RateCredit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true)
+                    FirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: true)
+                    LastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmailAddress = table.Column<string>(type: "longtext", nullable: true)
+                    EmailAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RefferedBy = table.Column<string>(type: "longtext", nullable: true)
+                    RefferedBy = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2082,11 +2082,11 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PageIdentifier = table.Column<string>(type: "longtext", nullable: true)
+                    PageIdentifier = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PageName = table.Column<string>(type: "longtext", nullable: true)
+                    PageName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PageSetting = table.Column<string>(type: "longtext", nullable: true)
+                    PageSetting = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2108,7 +2108,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2121,6 +2121,26 @@ namespace LoanManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_State", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_application",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_application", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -2153,7 +2173,7 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(type: "longtext", nullable: false)
+                    Value = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TenantId = table.Column<int>(type: "int", nullable: true),
                     DynamicPropertyId = table.Column<int>(type: "int", nullable: false)
@@ -2181,7 +2201,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Discriminator = table.Column<string>(type: "longtext", nullable: false)
+                    Discriminator = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     EditionId = table.Column<int>(type: "int", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2284,7 +2304,7 @@ namespace LoanManagement.Migrations
                     UserId = table.Column<long>(type: "bigint", nullable: true),
                     Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Value = table.Column<string>(type: "longtext", nullable: true)
+                    Value = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2360,7 +2380,7 @@ namespace LoanManagement.Migrations
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     ClaimType = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ClaimValue = table.Column<string>(type: "longtext", nullable: true)
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true)
@@ -2461,7 +2481,7 @@ namespace LoanManagement.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     WebhookEventId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     WebhookSubscriptionId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Response = table.Column<string>(type: "longtext", nullable: true)
+                    Response = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ResponseStatusCode = table.Column<int>(type: "int", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2486,25 +2506,25 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true)
+                    FirstName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MiddleInitial = table.Column<string>(type: "longtext", nullable: true)
+                    MiddleInitial = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: true)
+                    LastName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Suffix = table.Column<string>(type: "longtext", nullable: true)
+                    Suffix = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
+                    Email = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateOfBirth = table.Column<string>(type: "longtext", nullable: true)
+                    DateOfBirth = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    SocialSecurityNumber = table.Column<string>(type: "longtext", nullable: true)
+                    SocialSecurityNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MaritalStatusId = table.Column<int>(type: "int", nullable: true),
                     NumberOfDependents = table.Column<int>(type: "int", nullable: true),
-                    CellPhone = table.Column<string>(type: "longtext", nullable: true)
+                    CellPhone = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    HomePhone = table.Column<string>(type: "longtext", nullable: true)
+                    HomePhone = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2534,7 +2554,7 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    StateName = table.Column<string>(type: "longtext", nullable: true)
+                    StateName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2563,13 +2583,13 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    LoanNoIdentifierB1B3 = table.Column<string>(type: "longtext", nullable: true)
+                    LoanNoIdentifierB1B3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AgencyCaseNoB2 = table.Column<string>(type: "longtext", nullable: true)
+                    AgencyCaseNoB2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreditTypeId = table.Column<int>(type: "int", nullable: false),
                     TotalBorrowers1a6 = table.Column<int>(type: "int", nullable: true),
-                    Initials = table.Column<string>(type: "longtext", nullable: true)
+                    Initials = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2599,7 +2619,7 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DeclarationCategoryId = table.Column<int>(type: "int", nullable: true),
                     ParentQuestionId = table.Column<int>(type: "int", nullable: true),
-                    Question = table.Column<string>(type: "longtext", nullable: true)
+                    Question = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsActive = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2622,14 +2642,65 @@ namespace LoanManagement.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "urla_personal_information",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    BorrowerType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FirstName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MiddleName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Suffix = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    SocialSecurityNumber = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Dob = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Citizenship = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MarritalStatus = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Dependents = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ApplyingFor = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TotalBorrowers = table.Column<int>(type: "int", nullable: true),
+                    YourInitials = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MortgageApplicationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_personal_information", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_personal_information_urla_application_MortgageApplicati~",
+                        column: x => x.MortgageApplicationId,
+                        principalTable: "urla_application",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "AbpDynamicEntityPropertyValues",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(type: "longtext", nullable: false)
+                    Value = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EntityId = table.Column<string>(type: "longtext", nullable: true)
+                    EntityId = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DynamicEntityPropertyId = table.Column<int>(type: "int", nullable: false),
                     TenantId = table.Column<int>(type: "int", nullable: true)
@@ -2662,9 +2733,9 @@ namespace LoanManagement.Migrations
                     PropertyTypeFullName = table.Column<string>(type: "varchar(192)", maxLength: 192, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TenantId = table.Column<int>(type: "int", nullable: true),
-                    NewValueHash = table.Column<string>(type: "longtext", nullable: true)
+                    NewValueHash = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OriginalValueHash = table.Column<string>(type: "longtext", nullable: true)
+                    OriginalValueHash = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -2689,7 +2760,7 @@ namespace LoanManagement.Migrations
                     Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsGranted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Discriminator = table.Column<string>(type: "longtext", nullable: false)
+                    Discriminator = table.Column<string>(type: "text", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RoleId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<long>(type: "bigint", nullable: true),
@@ -2724,7 +2795,7 @@ namespace LoanManagement.Migrations
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     ClaimType = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ClaimValue = table.Column<string>(type: "longtext", nullable: true)
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true)
@@ -2786,7 +2857,7 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     StateId = table.Column<int>(type: "int", nullable: false),
-                    CityName = table.Column<string>(type: "longtext", nullable: true)
+                    CityName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StateId1 = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2815,19 +2886,19 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LoanApplicationId = table.Column<int>(type: "int", nullable: false),
-                    LoanNo = table.Column<string>(type: "longtext", nullable: true)
+                    LoanNo = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MortageConsultant = table.Column<string>(type: "longtext", nullable: true)
+                    MortageConsultant = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NmlsId = table.Column<string>(type: "longtext", nullable: true)
+                    NmlsId = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BorrowerName = table.Column<string>(type: "longtext", nullable: true)
+                    BorrowerName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyAddress = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyAddress = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LoanProgramId = table.Column<int>(type: "int", nullable: false),
                     LoanAmount = table.Column<float>(type: "float", nullable: true),
-                    LoanPurpose = table.Column<string>(type: "longtext", nullable: true)
+                    LoanPurpose = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     InterestRate = table.Column<float>(type: "float", nullable: true),
                     ApplicationDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -2860,18 +2931,660 @@ namespace LoanManagement.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "urla_agreements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IsAgreeAgreement = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_agreements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_agreements_urla_personal_information_PersonalInformatio~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_alternate_names",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MiddleName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Suffix = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_alternate_names", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_alternate_names_urla_personal_information_PersonalInfor~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_contact_information",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    HomePhone = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CellPhone = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    WorkPhone = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Ext = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_contact_information", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_contact_information_urla_personal_information_PersonalI~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_declaration_questions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DeclarationQuestionId = table.Column<int>(type: "int", nullable: true),
+                    Answer = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_declaration_questions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_declaration_questions_DeclarationQuestions_DeclarationQ~",
+                        column: x => x.DeclarationQuestionId,
+                        principalTable: "DeclarationQuestions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_declaration_questions_urla_personal_information_Persona~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_demographic_information",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IsHispanicOrLatino = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsMexican = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsPuertoRican = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsCuban = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsOtherHispanicOrLatino = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    Origin = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsNotHispanicOrLatino = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CanNotProvideEthnicInfo = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsAmericanIndianOrAlaskaNative = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    NameOfEnrolledOrPrincipalTribe = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsAsian = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsAsianIndian = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsChinese = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsFilipino = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsJapanese = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsKorean = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsVietnamese = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsOtherAsian = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    OtherAsianRace = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsBlackOrAfricanAmerican = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsNativeHawaiianOrOtherPacificIslander = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsNativeHawaiian = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsGuamanianOrChamorro = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsSamoan = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsOtherPacificIslander = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    OtherPacificIslanderRace = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsWhite = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CanNotProvideRaceInfo = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsMale = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsFemale = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CanNotProvideSexInfo = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    DemographicInfoSource = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_demographic_information", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_demographic_information_urla_personal_information_Perso~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_dempgraphic_info_by_financial_institutions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IsEthnicityByObservation = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsGenderByObservation = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsRaceByObservation = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_dempgraphic_info_by_financial_institutions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_dempgraphic_info_by_financial_institutions_urla_persona~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_financial_assets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AccountTypeId = table.Column<int>(type: "int", nullable: true),
+                    FinancialInstitution = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AccountNumber = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CashMarketValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_financial_assets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_financial_assets_FinancialAccountTypes_AccountTypeId",
+                        column: x => x.AccountTypeId,
+                        principalTable: "FinancialAccountTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_financial_assets_urla_personal_information_PersonalInfo~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_financial_liabilities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FinancialLaibilitiesTypeId = table.Column<int>(type: "int", nullable: true),
+                    AccountNumber = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UnpaidBalance = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    IsPaidBeforeClosing = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    MonthlyPayment = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_financial_liabilities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_financial_liabilities_FinancialLaibilitiesTypes_Financi~",
+                        column: x => x.FinancialLaibilitiesTypeId,
+                        principalTable: "FinancialLaibilitiesTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_financial_liabilities_urla_personal_information_Persona~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_financial_other_assets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FinancialAssetsTypeId = table.Column<int>(type: "int", nullable: true),
+                    CashMarketValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_financial_other_assets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_financial_other_assets_FinancialAssetsTypes_FinancialAs~",
+                        column: x => x.FinancialAssetsTypeId,
+                        principalTable: "FinancialAssetsTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_financial_other_assets_urla_personal_information_Person~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_financial_other_liabilities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FinancialOtherLaibilitiesTypeId = table.Column<int>(type: "int", nullable: true),
+                    MonthlyPayment = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_financial_other_liabilities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_financial_other_liabilities_FinancialOtherLaibilitiesTy~",
+                        column: x => x.FinancialOtherLaibilitiesTypeId,
+                        principalTable: "FinancialOtherLaibilitiesTypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_financial_other_liabilities_urla_personal_information_P~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_income_sources",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    MonthlyIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    IncomeSourceId = table.Column<int>(type: "int", nullable: true),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_income_sources", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_income_sources_IncomeSources_IncomeSourceId",
+                        column: x => x.IncomeSourceId,
+                        principalTable: "IncomeSources",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_income_sources_urla_personal_information_PersonalInform~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_originator_informations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    OrganizationName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Address = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OrganizationNmlsrId = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OrganizationStateLicenceId = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OriginatorName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OriginatorNmlsrId = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OriginatorStateLicenseId = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Phone = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Date = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_originator_informations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_originator_informations_urla_personal_information_~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_property_gifts_or_grants",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    AssetTypeId = table.Column<int>(type: "int", nullable: true),
+                    AssetTypeId1 = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeposited = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Source = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MarketValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_property_gifts_or_grants", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_gifts_or_grants_Assettypes_AssetTypeId1",
+                        column: x => x.AssetTypeId1,
+                        principalTable: "Assettypes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_gifts_or_grants_urla_personal_information~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_property_information",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    LoanAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    LoanPurpose = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Occupancy = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsManufacturedHome = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsMixedUseProperty = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_property_information", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_information_urla_personal_information_Per~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_property_other_new_mortgage_loans",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreditorName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LienType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MonthlyPayment = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    LoanAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreditLimit = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_property_other_new_mortgage_loans", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_other_new_mortgage_loans_urla_personal_in~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_property_rental_incomes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    MonthlyRentalIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    NetMonthlyRentalIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_property_rental_incomes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_rental_incomes_urla_personal_information_~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_military_services",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    IsServeUSForces = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsCurrentlyServing = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    ProjectedExpirationServiceDate = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsCurrentlyRetired = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsNonActivatedMember = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsSurvivingSpouse = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_military_services", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_military_services_urla_personal_information_PersonalInf~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_other_borrowers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MiddleName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Suffix = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_other_borrowers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_other_borrowers_urla_personal_information_PersonalInfor~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AddressType = table.Column<string>(type: "longtext", nullable: true)
+                    AddressType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AddressLine1 = table.Column<string>(type: "longtext", nullable: true)
+                    AddressLine1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AddressLine2 = table.Column<string>(type: "longtext", nullable: true)
+                    AddressLine2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    City = table.Column<string>(type: "longtext", nullable: true)
+                    City = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StateId = table.Column<int>(type: "int", nullable: true),
                     ZipCode = table.Column<int>(type: "int", nullable: true),
@@ -2974,45 +3687,45 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationId = table.Column<int>(type: "int", nullable: false),
-                    FirstName1a1 = table.Column<string>(type: "longtext", nullable: true)
+                    FirstName1a1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MiddleName1a2 = table.Column<string>(type: "longtext", nullable: true)
+                    MiddleName1a2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName1a3 = table.Column<string>(type: "longtext", nullable: true)
+                    LastName1a3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Suffix1a4 = table.Column<string>(type: "longtext", nullable: true)
+                    Suffix1a4 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AlternateFirstName1a21 = table.Column<string>(type: "longtext", nullable: true)
+                    AlternateFirstName1a21 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AlternateMiddleName1a22 = table.Column<string>(type: "longtext", nullable: true)
+                    AlternateMiddleName1a22 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AlternateLastName1a23 = table.Column<string>(type: "longtext", nullable: true)
+                    AlternateLastName1a23 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AlternateSuffix1a24 = table.Column<string>(type: "longtext", nullable: true)
+                    AlternateSuffix1a24 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ssn1a3 = table.Column<string>(type: "longtext", nullable: true)
+                    Ssn1a3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Dob1a4 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CitizenshipTypeId1a5 = table.Column<int>(type: "int", nullable: false),
                     MaritialStatusId1a7 = table.Column<int>(type: "int", nullable: false),
                     Dependents1a8 = table.Column<int>(type: "int", nullable: true),
-                    Ages1a81 = table.Column<string>(type: "longtext", nullable: true)
+                    Ages1a81 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    HomePhone1a9 = table.Column<string>(type: "longtext", nullable: true)
+                    HomePhone1a9 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CellPhone1a10 = table.Column<string>(type: "longtext", nullable: true)
+                    CellPhone1a10 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    WorkPhone1a11 = table.Column<string>(type: "longtext", nullable: true)
+                    WorkPhone1a11 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ext1a111 = table.Column<string>(type: "longtext", nullable: true)
+                    Ext1a111 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email1a12 = table.Column<string>(type: "longtext", nullable: true)
+                    Email1a12 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentStreet1a131 = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentStreet1a131 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentUnit1a132 = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentUnit1a132 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CurrentZip1a135 = table.Column<string>(type: "longtext", nullable: true)
+                    CurrentZip1a135 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CurrentCountryId1a136 = table.Column<int>(type: "int", nullable: false),
                     CurrentStateId1a134 = table.Column<int>(type: "int", nullable: false),
@@ -3021,11 +3734,11 @@ namespace LoanManagement.Migrations
                     CurrentMonths1a15 = table.Column<int>(type: "int", nullable: true),
                     CurrentHousingTypeId1a141 = table.Column<int>(type: "int", nullable: false),
                     CurrentRent1a142 = table.Column<float>(type: "float", nullable: true),
-                    FormerStreet1a151 = table.Column<string>(type: "longtext", nullable: true)
+                    FormerStreet1a151 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FormerUnit1a152 = table.Column<string>(type: "longtext", nullable: true)
+                    FormerUnit1a152 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FormerZip1a155 = table.Column<string>(type: "longtext", nullable: true)
+                    FormerZip1a155 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FormerCountryId1a156 = table.Column<int>(type: "int", nullable: false),
                     FormerStateId1a154 = table.Column<int>(type: "int", nullable: false),
@@ -3034,11 +3747,11 @@ namespace LoanManagement.Migrations
                     FormerMonths1a161 = table.Column<int>(type: "int", nullable: true),
                     FormerHousingTypeId1a161 = table.Column<int>(type: "int", nullable: false),
                     FormerRent1a162 = table.Column<float>(type: "float", nullable: true),
-                    MailingStreet1a171 = table.Column<string>(type: "longtext", nullable: true)
+                    MailingStreet1a171 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MailingUnit1a172 = table.Column<string>(type: "longtext", nullable: true)
+                    MailingUnit1a172 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    MailingZip1a175 = table.Column<string>(type: "longtext", nullable: true)
+                    MailingZip1a175 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MailingCountryId1a176 = table.Column<int>(type: "int", nullable: false),
                     MailingStateId1a174 = table.Column<int>(type: "int", nullable: false),
@@ -3142,6 +3855,243 @@ namespace LoanManagement.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "urla_addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Street = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Unit = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    Zip = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Year = table.Column<int>(type: "int", nullable: true),
+                    Month = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    HousingType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Rent = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AddressType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_addresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_addresses_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_addresses_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_addresses_CountryStates_StateId1",
+                        column: x => x.StateId1,
+                        principalTable: "CountryStates",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_addresses_urla_personal_information_PersonalInformation~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_employment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    EmploymentType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Name = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Phone = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Street = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Unit = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    Zip = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OwnershipShare = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    MonthlyIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    WorkingYears = table.Column<int>(type: "int", nullable: true),
+                    WorkingMonths = table.Column<int>(type: "int", nullable: true),
+                    Position = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    StartDate = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsEmployedBySomeone = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsSelfEmployed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsOwnershipLessThan25 = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_employment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_employment_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_employment_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_employment_CountryStates_StateId1",
+                        column: x => x.StateId1,
+                        principalTable: "CountryStates",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_employment_urla_personal_information_PersonalInformatio~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_loan_property_addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    Street = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    Zip = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NumberOfUnits = table.Column<int>(type: "int", nullable: true),
+                    PropertyValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_loan_property_addresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_addresses_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_addresses_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_addresses_CountryStates_StateId1",
+                        column: x => x.StateId1,
+                        principalTable: "CountryStates",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_loan_property_addresses_urla_personal_information_Perso~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_property_financial_informations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FinancialInformationType = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PersonalInformationId = table.Column<int>(type: "int", nullable: true),
+                    Street = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Unit = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
+                    StateId1 = table.Column<long>(type: "bigint", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    Zip = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PropertyValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    IntendedOccupancy = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MonthlyInsurance = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    MonthlyRentalIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    NetMonthlyRentalIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_property_financial_informations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_property_financial_informations_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_property_financial_informations_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_property_financial_informations_CountryStates_StateId1",
+                        column: x => x.StateId1,
+                        principalTable: "CountryStates",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_urla_property_financial_informations_urla_personal_informati~",
+                        column: x => x.PersonalInformationId,
+                        principalTable: "urla_personal_information",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "AdminLoanapplicationdocuments",
                 columns: table => new
                 {
@@ -3150,7 +4100,7 @@ namespace LoanManagement.Migrations
                     LoanId = table.Column<int>(type: "int", nullable: false),
                     DisclosureId = table.Column<int>(type: "int", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    DocumentPath = table.Column<string>(type: "longtext", nullable: true)
+                    DocumentPath = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -3259,16 +4209,16 @@ namespace LoanManagement.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    EmployersName = table.Column<string>(type: "longtext", nullable: true)
+                    EmployersName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployersAddress1 = table.Column<string>(type: "longtext", nullable: true)
+                    EmployersAddress1 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmployersAddress2 = table.Column<string>(type: "longtext", nullable: true)
+                    EmployersAddress2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsSelfEmployed = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    Position = table.Column<string>(type: "longtext", nullable: true)
+                    Position = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    City = table.Column<string>(type: "longtext", nullable: true)
+                    City = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StateId = table.Column<int>(type: "int", nullable: true),
                     ZipCode = table.Column<int>(type: "int", nullable: true),
@@ -3352,12 +4302,12 @@ namespace LoanManagement.Migrations
                     IsPuertoRican = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsCuban = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsOtherHispanicOrLatino = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    Origin = table.Column<string>(type: "longtext", nullable: true)
+                    Origin = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsNotHispanicOrLatino = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CanNotProvideEthnic = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsAmericanIndianOrAlaskaNative = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    NameOfEnrolledOrPrincipalTribe = table.Column<string>(type: "longtext", nullable: true)
+                    NameOfEnrolledOrPrincipalTribe = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsAsian = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsAsianIndian = table.Column<bool>(type: "tinyint(1)", nullable: true),
@@ -3373,7 +4323,7 @@ namespace LoanManagement.Migrations
                     IsGuamanianOrChamorro = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsSamoan = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsOtherPacificIslander = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    EnterRace = table.Column<string>(type: "longtext", nullable: true)
+                    EnterRace = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsWhite = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CanNotProvideRace = table.Column<bool>(type: "tinyint(1)", nullable: true),
@@ -3427,7 +4377,7 @@ namespace LoanManagement.Migrations
                     IsPermanentResidentSlien = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsIntendToOccupyThePropertyAsYourPrimary = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsOwnershipInterestInPropertyInTheLastThreeYears = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    DeclarationsSection = table.Column<string>(type: "longtext", nullable: true)
+                    DeclarationsSection = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LoanApplicationId = table.Column<long>(type: "bigint", nullable: false),
                     BorrowerTypeId = table.Column<int>(type: "int", nullable: false),
@@ -3464,29 +4414,29 @@ namespace LoanManagement.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AssetTypeId = table.Column<long>(type: "bigint", nullable: false),
-                    AccountNumber = table.Column<string>(type: "longtext", nullable: true)
+                    AccountNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CashValue = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
-                    Address = table.Column<string>(type: "longtext", nullable: true)
+                    Address = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Address2 = table.Column<string>(type: "longtext", nullable: true)
+                    Address2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    City = table.Column<string>(type: "longtext", nullable: true)
+                    City = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StateId = table.Column<int>(type: "int", nullable: false),
-                    ZipCode = table.Column<string>(type: "longtext", nullable: true)
+                    ZipCode = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Description = table.Column<string>(type: "longtext", nullable: true)
+                    Description = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BankName = table.Column<string>(type: "longtext", nullable: true)
+                    BankName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyStatus = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyStatus = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyIsUsedAs = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyIsUsedAs = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PropertyType = table.Column<string>(type: "longtext", nullable: true)
+                    PropertyType = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PresentMarketValue = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     OutstandingMortgageBalance = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
@@ -3541,20 +4491,20 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    EmployerBusinessName = table.Column<string>(type: "longtext", nullable: true)
+                    EmployerBusinessName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Phone = table.Column<string>(type: "longtext", nullable: true)
+                    Phone = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Street = table.Column<string>(type: "longtext", nullable: true)
+                    Street = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Unit = table.Column<string>(type: "longtext", nullable: true)
+                    Unit = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Zip = table.Column<string>(type: "longtext", nullable: true)
+                    Zip = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     StateId = table.Column<int>(type: "int", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false),
-                    PositionTitle = table.Column<string>(type: "longtext", nullable: true)
+                    PositionTitle = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkingYears = table.Column<int>(type: "int", nullable: true),
@@ -3609,7 +4559,7 @@ namespace LoanManagement.Migrations
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     DeclarationQuestionId = table.Column<int>(type: "int", nullable: true),
                     YesNo = table.Column<ulong>(type: "bigint unsigned", nullable: true),
-                    Description5a = table.Column<string>(type: "longtext", nullable: true)
+                    Description5a = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -3642,20 +4592,20 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    EmployerBusinessName1b2 = table.Column<string>(type: "longtext", nullable: true)
+                    EmployerBusinessName1b2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Phone1b3 = table.Column<string>(type: "longtext", nullable: true)
+                    Phone1b3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Street1b41 = table.Column<string>(type: "longtext", nullable: true)
+                    Street1b41 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Unit1b42 = table.Column<string>(type: "longtext", nullable: true)
+                    Unit1b42 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Zip1b45 = table.Column<string>(type: "longtext", nullable: true)
+                    Zip1b45 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CountryId1b46 = table.Column<int>(type: "int", nullable: false),
                     StateId1b44 = table.Column<int>(type: "int", nullable: false),
                     CityId1b43 = table.Column<int>(type: "int", nullable: false),
-                    PositionTitle1b5 = table.Column<string>(type: "longtext", nullable: true)
+                    PositionTitle1b5 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StartDate1b6 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkingYears1b7 = table.Column<int>(type: "int", nullable: true),
@@ -3709,9 +4659,9 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     FinancialAccountTypeId2a1 = table.Column<int>(type: "int", nullable: false),
-                    FinancialInstitution2a2 = table.Column<string>(type: "longtext", nullable: true)
+                    FinancialInstitution2a2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountNumber2a3 = table.Column<string>(type: "longtext", nullable: true)
+                    AccountNumber2a3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value2a4 = table.Column<float>(type: "float", nullable: true),
                     FinancialAccountTypeId2a1NavigationId = table.Column<int>(type: "int", nullable: true),
@@ -3747,9 +4697,9 @@ namespace LoanManagement.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
                     FinancialLaibilitiesType2c1 = table.Column<int>(type: "int", nullable: false),
-                    CompanyName2c2 = table.Column<string>(type: "longtext", nullable: true)
+                    CompanyName2c2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountNumber2c3 = table.Column<string>(type: "longtext", nullable: true)
+                    AccountNumber2c3 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UnpaidBalance2c4 = table.Column<float>(type: "float", nullable: true),
                     PaidOff2c5 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
@@ -3854,11 +4804,11 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    Street3a21 = table.Column<string>(type: "longtext", nullable: true)
+                    Street3a21 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    UnitNo3a22 = table.Column<string>(type: "longtext", nullable: true)
+                    UnitNo3a22 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Zip3a25 = table.Column<string>(type: "longtext", nullable: true)
+                    Zip3a25 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CountryId3a26 = table.Column<int>(type: "int", nullable: false),
                     StateId3a24 = table.Column<int>(type: "int", nullable: false),
@@ -3959,18 +4909,18 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    EmployerBusinessName1d2 = table.Column<string>(type: "longtext", nullable: true)
+                    EmployerBusinessName1d2 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Street1d31 = table.Column<string>(type: "longtext", nullable: true)
+                    Street1d31 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Unit1d32 = table.Column<string>(type: "longtext", nullable: true)
+                    Unit1d32 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Zip1d35 = table.Column<string>(type: "longtext", nullable: true)
+                    Zip1d35 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CountryId1d36 = table.Column<int>(type: "int", nullable: false),
                     StateId1d34 = table.Column<int>(type: "int", nullable: false),
                     CityId1d33 = table.Column<int>(type: "int", nullable: false),
-                    PositionTitle1d4 = table.Column<string>(type: "longtext", nullable: true)
+                    PositionTitle1d4 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StartDate1d5 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     EndDate1d6 = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -4020,11 +4970,11 @@ namespace LoanManagement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ApplicationPersonalInformationId = table.Column<int>(type: "int", nullable: true),
-                    Ethnicity81 = table.Column<string>(type: "longtext", nullable: true)
+                    Ethnicity81 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Gender82 = table.Column<string>(type: "longtext", nullable: true)
+                    Gender82 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Race83 = table.Column<string>(type: "longtext", nullable: true)
+                    Race83 = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsEthnicityByObservation84 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
                     IsGenderByObservation85 = table.Column<ulong>(type: "bigint unsigned", nullable: true),
@@ -4056,14 +5006,83 @@ namespace LoanManagement.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "urla_employment_income",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    BaseIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Overtime = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Bonus = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Commission = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    MilitaryEntitlements = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Other = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    EmploymentDetailId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_employment_income", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_employment_income_urla_employment_EmploymentDetailId",
+                        column: x => x.EmploymentDetailId,
+                        principalTable: "urla_employment",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "urla_property_mortgage_loan",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreditorName = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AccountNumber = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MonthlyMortagagePayment = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    UnpaidBalance = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Type = table.Column<string>(type: "text", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreditLimit = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    IsPaidBeforeClosing = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    MortgagePropertyFinancialInformationId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_urla_property_mortgage_loan", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_urla_property_mortgage_loan_urla_property_financial_informat~",
+                        column: x => x.MortgagePropertyFinancialInformationId,
+                        principalTable: "urla_property_financial_informations",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Stockandbonds",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CompanyName = table.Column<string>(type: "longtext", nullable: true)
+                    CompanyName = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountNumber = table.Column<string>(type: "longtext", nullable: true)
+                    AccountNumber = table.Column<string>(type: "text", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     ManualAssetEntryId = table.Column<long>(type: "bigint", nullable: false),
@@ -4162,19 +5181,19 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7422), null, null, null, false, null, null, "Cash deposit on sales contract" },
-                    { 2L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7434), null, null, null, false, null, null, "Certificate of Deposit" },
-                    { 3L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7436), null, null, null, false, null, null, "Checking Account" },
-                    { 4L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7437), null, null, null, false, null, null, "Gifts" },
-                    { 5L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7438), null, null, null, false, null, null, "Gift of equity" },
-                    { 6L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7439), null, null, null, false, null, null, "Money Market Fund" },
-                    { 7L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7440), null, null, null, false, null, null, "Mutual Funds" },
-                    { 8L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7441), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
-                    { 9L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7442), null, null, null, false, null, null, "Real Estate Owned" },
-                    { 10L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7443), null, null, null, false, null, null, "Retirement Funds" },
-                    { 11L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7444), null, null, null, false, null, null, "Savings Account" },
-                    { 12L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7445), null, null, null, false, null, null, "Stocks & Bonds" },
-                    { 13L, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7446), null, null, null, false, null, null, "Trust Account" }
+                    { 1L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9759), null, null, null, false, null, null, "Cash deposit on sales contract" },
+                    { 2L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9775), null, null, null, false, null, null, "Certificate of Deposit" },
+                    { 3L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9777), null, null, null, false, null, null, "Checking Account" },
+                    { 4L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9778), null, null, null, false, null, null, "Gifts" },
+                    { 5L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9779), null, null, null, false, null, null, "Gift of equity" },
+                    { 6L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9781), null, null, null, false, null, null, "Money Market Fund" },
+                    { 7L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9782), null, null, null, false, null, null, "Mutual Funds" },
+                    { 8L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9783), null, null, null, false, null, null, "Net Proceeds from Real Estate Funds" },
+                    { 9L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9792), null, null, null, false, null, null, "Real Estate Owned" },
+                    { 10L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9794), null, null, null, false, null, null, "Retirement Funds" },
+                    { 11L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9795), null, null, null, false, null, null, "Savings Account" },
+                    { 12L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9796), null, null, null, false, null, null, "Stocks & Bonds" },
+                    { 13L, new DateTime(2023, 2, 17, 20, 27, 51, 640, DateTimeKind.Local).AddTicks(9797), null, null, null, false, null, null, "Trust Account" }
                 });
 
             migrationBuilder.InsertData(
@@ -4192,16 +5211,16 @@ namespace LoanManagement.Migrations
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IncomeSource1", "IsDeleted", "LastModificationTime", "LastModifierUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7622), null, null, null, "Accessory Unit Income", false, null, null },
-                    { 2, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7625), null, null, null, "Alimony/Child Support", false, null, null },
-                    { 3, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7626), null, null, null, "Automobile/Expense Account", false, null, null },
-                    { 4, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7627), null, null, null, "Boarder Income", false, null, null }
+                    { 1, new DateTime(2023, 2, 17, 20, 27, 51, 641, DateTimeKind.Local).AddTicks(27), null, null, null, "Accessory Unit Income", false, null, null },
+                    { 2, new DateTime(2023, 2, 17, 20, 27, 51, 641, DateTimeKind.Local).AddTicks(32), null, null, null, "Alimony/Child Support", false, null, null },
+                    { 3, new DateTime(2023, 2, 17, 20, 27, 51, 641, DateTimeKind.Local).AddTicks(33), null, null, null, "Automobile/Expense Account", false, null, null },
+                    { 4, new DateTime(2023, 2, 17, 20, 27, 51, 641, DateTimeKind.Local).AddTicks(34), null, null, null, "Boarder Income", false, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sitesettings",
                 columns: new[] { "Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "IsDeleted", "LastModificationTime", "LastModifierUserId", "PageIdentifier", "PageName", "PageSetting" },
-                values: new object[] { 1, new DateTime(2022, 11, 16, 11, 41, 10, 680, DateTimeKind.Local).AddTicks(7657), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
+                values: new object[] { 1, new DateTime(2023, 2, 17, 20, 27, 51, 641, DateTimeKind.Local).AddTicks(71), null, null, null, false, null, null, "app/home", "Home page", "{\"MainCarousels\":[{\"FilePath\":\"assets/img/house.png\",\"Header\":\"Best California Home Loans\",\"SubHeader\":\"Better Rate then banks, Better customer services\"}],\"FirstBlog\":{\"FilePath\":\"assets/img/house.png\",\"Header\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"SubHeader\":\"Fast Closing FHA Loans\",\"Description\":\"Take Advantage of our FHA Elite Rates starting at\"},\"SecondBlog\":{\"FilePath\":\"assets/img/living-room.png\",\"Header\":\"Conventional Jombo Rate\",\"SubHeader\":\"GET A NO-HASSLE LOAN FOR UP TO $697,650\",\"Description\":\"Save cash with a low-rate conventional loan up to\"},\"ThirdBlog\":{\"FilePath\":\"assets/img/money.png\",\"Header\":\"Tap Into Your Equity\",\"SubHeader\":\"\",\"Description\":\"We offer unique programs that let you refinance up\"},\"ForthBlog\":{\"FilePath\":\"assets/img/new-home.png\",\"Header\":\"Purchase Your Dream Home\",\"SubHeader\":\"\",\"Description\":\"Your dream home may no longer be a dream\"},\"VideoSection\":{\"FilePath\":\"assets/img/Image 16.png\",\"Header\":\"Know about\",\"SubHeader\":\"YOUR INDEPENDENT MORTGAGE BROKER IN CALIFORNIA\",\"Description\":\"To make sure all borrowers get the best mortgage rate and loan program with excellent customer service and satisfaction.\"},\"KnowAboutHeader\":\"Tips For Getting A Home Mortgage In California\",\"ChecklistMainHeader\":\"How To Apply For Your Loan\",\"Checklist\":{\"Checklist1\":\"Calculate Loan Rate\",\"Checklist2\":\"Speak With An Expert\",\"Checklist3\":\"Benefit Of Preapproval\",\"Checklist4\":\"Get A Free Quote\"},\"SloganImage\":\"assets/img/finance.png\",\"Slogan\":\"Work With A High-Tech Mortgage Loan Broker\",\"SloganChecklist\":\"Our easy-to-use online tools streamline the mortgage process.\\nGet mortgage estimates, instant rate quotes, and access to our online calculators.\\nLoan applications can be done entirely online(or via fax) on our secure portal.\\nReceive updates about your application – as well as helpful mortgage news – on your phone, tablet or laptop\",\"Testimonials\":[{\"Comment\":\"Thank you for all your help in making the mortgage process go smoothly! my husband and i could n't have done it without you.\",\"Author\":\"Anne Davidson (San Francisco, CA)\"}]}" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogs_TenantId_ExecutionDuration",
@@ -4992,6 +6011,226 @@ namespace LoanManagement.Migrations
                 name: "IX_Stockandbonds_ManualAssetEntryId",
                 table: "Stockandbonds",
                 column: "ManualAssetEntryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_addresses_CityId",
+                table: "urla_addresses",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_addresses_CountryId",
+                table: "urla_addresses",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_addresses_PersonalInformationId",
+                table: "urla_addresses",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_addresses_StateId1",
+                table: "urla_addresses",
+                column: "StateId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_agreements_PersonalInformationId",
+                table: "urla_agreements",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_alternate_names_PersonalInformationId",
+                table: "urla_alternate_names",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_contact_information_PersonalInformationId",
+                table: "urla_contact_information",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_declaration_questions_DeclarationQuestionId",
+                table: "urla_declaration_questions",
+                column: "DeclarationQuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_declaration_questions_PersonalInformationId",
+                table: "urla_declaration_questions",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_demographic_information_PersonalInformationId",
+                table: "urla_demographic_information",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_dempgraphic_info_by_financial_institutions_PersonalInfo~",
+                table: "urla_dempgraphic_info_by_financial_institutions",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_employment_CityId",
+                table: "urla_employment",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_employment_CountryId",
+                table: "urla_employment",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_employment_PersonalInformationId",
+                table: "urla_employment",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_employment_StateId1",
+                table: "urla_employment",
+                column: "StateId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_employment_income_EmploymentDetailId",
+                table: "urla_employment_income",
+                column: "EmploymentDetailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_assets_AccountTypeId",
+                table: "urla_financial_assets",
+                column: "AccountTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_assets_PersonalInformationId",
+                table: "urla_financial_assets",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_liabilities_FinancialLaibilitiesTypeId",
+                table: "urla_financial_liabilities",
+                column: "FinancialLaibilitiesTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_liabilities_PersonalInformationId",
+                table: "urla_financial_liabilities",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_other_assets_FinancialAssetsTypeId",
+                table: "urla_financial_other_assets",
+                column: "FinancialAssetsTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_other_assets_PersonalInformationId",
+                table: "urla_financial_other_assets",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_other_liabilities_FinancialOtherLaibilitiesTy~",
+                table: "urla_financial_other_liabilities",
+                column: "FinancialOtherLaibilitiesTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_financial_other_liabilities_PersonalInformationId",
+                table: "urla_financial_other_liabilities",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_income_sources_IncomeSourceId",
+                table: "urla_income_sources",
+                column: "IncomeSourceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_income_sources_PersonalInformationId",
+                table: "urla_income_sources",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_originator_informations_PersonalInformationId",
+                table: "urla_loan_originator_informations",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_addresses_CityId",
+                table: "urla_loan_property_addresses",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_addresses_CountryId",
+                table: "urla_loan_property_addresses",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_addresses_PersonalInformationId",
+                table: "urla_loan_property_addresses",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_addresses_StateId1",
+                table: "urla_loan_property_addresses",
+                column: "StateId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_gifts_or_grants_AssetTypeId1",
+                table: "urla_loan_property_gifts_or_grants",
+                column: "AssetTypeId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_gifts_or_grants_PersonalInformationId",
+                table: "urla_loan_property_gifts_or_grants",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_information_PersonalInformationId",
+                table: "urla_loan_property_information",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_other_new_mortgage_loans_PersonalInformat~",
+                table: "urla_loan_property_other_new_mortgage_loans",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_loan_property_rental_incomes_PersonalInformationId",
+                table: "urla_loan_property_rental_incomes",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_military_services_PersonalInformationId",
+                table: "urla_military_services",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_other_borrowers_PersonalInformationId",
+                table: "urla_other_borrowers",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_personal_information_MortgageApplicationId",
+                table: "urla_personal_information",
+                column: "MortgageApplicationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_property_financial_informations_CityId",
+                table: "urla_property_financial_informations",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_property_financial_informations_CountryId",
+                table: "urla_property_financial_informations",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_property_financial_informations_PersonalInformationId",
+                table: "urla_property_financial_informations",
+                column: "PersonalInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_property_financial_informations_StateId1",
+                table: "urla_property_financial_informations",
+                column: "StateId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_urla_property_mortgage_loan_MortgagePropertyFinancialInforma~",
+                table: "urla_property_mortgage_loan",
+                column: "MortgagePropertyFinancialInformationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -5219,6 +6458,72 @@ namespace LoanManagement.Migrations
                 name: "Stockandbonds");
 
             migrationBuilder.DropTable(
+                name: "urla_addresses");
+
+            migrationBuilder.DropTable(
+                name: "urla_agreements");
+
+            migrationBuilder.DropTable(
+                name: "urla_alternate_names");
+
+            migrationBuilder.DropTable(
+                name: "urla_contact_information");
+
+            migrationBuilder.DropTable(
+                name: "urla_declaration_questions");
+
+            migrationBuilder.DropTable(
+                name: "urla_demographic_information");
+
+            migrationBuilder.DropTable(
+                name: "urla_dempgraphic_info_by_financial_institutions");
+
+            migrationBuilder.DropTable(
+                name: "urla_employment_income");
+
+            migrationBuilder.DropTable(
+                name: "urla_financial_assets");
+
+            migrationBuilder.DropTable(
+                name: "urla_financial_liabilities");
+
+            migrationBuilder.DropTable(
+                name: "urla_financial_other_assets");
+
+            migrationBuilder.DropTable(
+                name: "urla_financial_other_liabilities");
+
+            migrationBuilder.DropTable(
+                name: "urla_income_sources");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_originator_informations");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_property_addresses");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_property_gifts_or_grants");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_property_information");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_property_other_new_mortgage_loans");
+
+            migrationBuilder.DropTable(
+                name: "urla_loan_property_rental_incomes");
+
+            migrationBuilder.DropTable(
+                name: "urla_military_services");
+
+            migrationBuilder.DropTable(
+                name: "urla_other_borrowers");
+
+            migrationBuilder.DropTable(
+                name: "urla_property_mortgage_loan");
+
+            migrationBuilder.DropTable(
                 name: "AbpDynamicEntityProperties");
 
             migrationBuilder.DropTable(
@@ -5249,13 +6554,28 @@ namespace LoanManagement.Migrations
                 name: "ApplicationAdditionalEmployementDetails");
 
             migrationBuilder.DropTable(
-                name: "DeclarationQuestions");
-
-            migrationBuilder.DropTable(
                 name: "ApplicationEmployementDetails");
 
             migrationBuilder.DropTable(
                 name: "IncomeTypes");
+
+            migrationBuilder.DropTable(
+                name: "FinancialPropertyIntendedOccupancies");
+
+            migrationBuilder.DropTable(
+                name: "FinancialPropertyStatuses");
+
+            migrationBuilder.DropTable(
+                name: "DemographicInfoSources");
+
+            migrationBuilder.DropTable(
+                name: "Manualassetentries");
+
+            migrationBuilder.DropTable(
+                name: "DeclarationQuestions");
+
+            migrationBuilder.DropTable(
+                name: "urla_employment");
 
             migrationBuilder.DropTable(
                 name: "FinancialAccountTypes");
@@ -5270,19 +6590,10 @@ namespace LoanManagement.Migrations
                 name: "FinancialOtherLaibilitiesTypes");
 
             migrationBuilder.DropTable(
-                name: "FinancialPropertyIntendedOccupancies");
-
-            migrationBuilder.DropTable(
-                name: "FinancialPropertyStatuses");
-
-            migrationBuilder.DropTable(
                 name: "IncomeSources");
 
             migrationBuilder.DropTable(
-                name: "DemographicInfoSources");
-
-            migrationBuilder.DropTable(
-                name: "Manualassetentries");
+                name: "urla_property_financial_informations");
 
             migrationBuilder.DropTable(
                 name: "AbpDynamicProperties");
@@ -5297,9 +6608,6 @@ namespace LoanManagement.Migrations
                 name: "AdminLoanprograms");
 
             migrationBuilder.DropTable(
-                name: "DeclarationCategories");
-
-            migrationBuilder.DropTable(
                 name: "ApplicationPersonalInformations");
 
             migrationBuilder.DropTable(
@@ -5310,6 +6618,12 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "State");
+
+            migrationBuilder.DropTable(
+                name: "DeclarationCategories");
+
+            migrationBuilder.DropTable(
+                name: "urla_personal_information");
 
             migrationBuilder.DropTable(
                 name: "Applications");
@@ -5343,6 +6657,9 @@ namespace LoanManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Personaldetails");
+
+            migrationBuilder.DropTable(
+                name: "urla_application");
 
             migrationBuilder.DropTable(
                 name: "CreditTypes");

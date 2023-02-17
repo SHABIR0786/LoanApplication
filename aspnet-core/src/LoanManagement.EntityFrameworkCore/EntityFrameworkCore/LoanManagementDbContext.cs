@@ -111,52 +111,56 @@ namespace LoanManagement.EntityFrameworkCore
         public virtual DbSet<Stockandbond> Stockandbonds { get; set; }
 
         // Mortgage Applications Tables
-        public virtual DbSet<MortgageApplicationAdditionalEmploymentDetail> MortgageApplicationAdditionalEmploymentDetails { get; set; }
-        public virtual DbSet<MortgageApplicationAdditionalEmploymentIncomeDetail> MortgageApplicationAdditionalEmploymentIncomeDetails { get; set; }
-        public virtual DbSet<MortgageApplicationAlternateName> MortgageApplicationAlternateNames { get; set; }
-        public virtual DbSet<MortgageApplicationContactInformation> MortgageApplicationContactInformation { get; set; }
-        public virtual DbSet<MortgageApplicationCurrentAddress> MortgageApplicationCurrentAddresses { get; set; }
-        public virtual DbSet<MortgageApplicationEmploymentDetail> MortgageApplicationEmploymentDetails { get; set; }
-        public virtual DbSet<MortgageApplicationEmploymentIncomeDetail> MortgageApplicationEmploymentIncomeDetails { get; set; }
-        public virtual DbSet<MortgageApplicationFormerAddress> MortgageApplicationFormerAddresses { get; set; }
-        public virtual DbSet<MortgageApplicationIncomeSource> MortgageApplicationIncomeSources { get; set; }
-        public virtual DbSet<MortgageApplicationMailingAddress> MortgageApplicationMailingAddresses { get; set; }
-        public virtual DbSet<MortgageApplicationOtherBorrower> MortgageApplicationOtherBorrowers { get; set; }
-        public virtual DbSet<MortgageApplicationPersonalInformation> MortgageApplicationPersonalInformation { get; set; }
-        public virtual DbSet<MortgageApplicationPreviousEmploymentDetail> MortgageApplicationPreviousEmploymentDetails { get; set; }
-        public virtual DbSet<MortgageApplications> MortgageApplications { get; set; }
-        public virtual DbSet<MortgageApplicationSource> MortgageApplicationSources { get; set; }
-        public virtual DbSet<MortgageApplicationTypeOfCredit> MortgageApplicationTypeOfCredits { get; set; }
+      
+        public virtual DbSet<MortgageApplicationAlternateName> urla_alternate_names { get; set; }
+        public virtual DbSet<MortgageApplicationContactInformation> urla_contact_information { get; set; }
+        public virtual DbSet<MortgageApplicationCurrentAddress> urla_addresses { get; set; }
+        //public virtual DbSet<MortgageApplicationFormerAddress> urla_former_addresses { get; set; }
+        //public virtual DbSet<MortgageApplicationMailingAddress> urla_mailing_addresses { get; set; }
+        public virtual DbSet<MortgageApplicationEmploymentDetail> urla_employment { get; set; }
+        public virtual DbSet<MortgageApplicationEmploymentIncomeDetail> urla_employment_income { get; set; }
+       // public virtual DbSet<MortgageApplicationAdditionalEmploymentDetail> urla_additional_employment_details { get; set; }
+       // public virtual DbSet<MortgageApplicationAdditionalEmploymentIncomeDetail> urla_additional_employment_income_details { get; set; }
+       // public virtual DbSet<MortgageApplicationPreviousEmploymentDetail> urla_previous_employment_details { get; set; }
+        public virtual DbSet<MortgageApplicationIncomeSource> urla_income_sources { get; set; }
+        //public virtual DbSet<MortgageApplicationSource> urla_sources { get; set; }
+        public virtual DbSet<MortgageApplicationOtherBorrower> urla_other_borrowers { get; set; }
+        public virtual DbSet<MortgageApplicationPersonalInformation> urla_personal_information { get; set; }
+        public virtual DbSet<MortgageApplications> urla_application { get; set; }
+       // public virtual DbSet<MortgageApplicationTypeOfCredit> urla_type_of_credits { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyInformation> urla_loan_property_information { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyOtherNewMortgageLoans> urla_loan_property_other_new_mortgage_loans { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyAddress> urla_loan_property_addresses { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyRentalIncome> urla_loan_property_rental_incomes { get; set; }
+        public virtual DbSet<MortgageApplicationLoanPropertyGiftsOrGrants> urla_loan_property_gifts_or_grants { get; set; }
+        public virtual DbSet<MortgageApplicationLoanOriginatorInformation> urla_loan_originator_informations { get; set; }
+        public virtual DbSet<MortgageApplicationMilitaryService> urla_military_services { get; set; }
 
-        public virtual DbSet<MortgageApplicationLoanPropertyInformation> MortgageApplicationLoanPropertyInformation { get; set; }
-        public virtual DbSet<MortgageApplicationLoanPropertyOtherNewMortgageLoans> MortgageApplicationLoanPropertyOtherNewMortgageLoans { get; set; }
-        public virtual DbSet<MortgageApplicationLoanPropertyAddress> MortgageApplicationLoanPropertyAddresses { get; set; }
-        public virtual DbSet<MortgageApplicationLoanPropertyRentalIncome> MortgageApplicationLoanPropertyRentalIncomes { get; set; }
-        public virtual DbSet<MortgageApplicationLoanPropertyGiftsOrGrants> MortgageApplicationLoanPropertyGiftsOrGrants { get; set; }
-        public virtual DbSet<MortgageApplicationLoanOriginatorInformation> MortgageApplicationLoanOriginatorInformations { get; set; }
-        public virtual DbSet<MortgageApplicationMilitaryService> MortgageApplicationMilitaryServices { get; set; }
+                                                                                
+        //Property Financial Information
+        public virtual DbSet<MortgagePropertyFinancialInformation> urla_property_financial_informations { get; set; }
+        public virtual DbSet<MortgageLoanOnProperyFinancialInformation> urla_property_mortgage_loan { get; set; }
+        //public virtual DbSet<MortgagePropertyAdditionalFinancialInformation> urla_property_additional_financial_informations { get; set; }
+       // public virtual DbSet<MortgageLoanOnAdditionalPropertyFinancialInformation> urla_loan_on_additional_property_financial_informations { get; set; }
+        
 
-        //FinancialInformation
-        public virtual DbSet<MortgagePropertyFinancialInformation> MortgagePropertyFinancialInformations { get; set; }
-        public virtual DbSet<MortgageLoanOnProperyFinancialInformation> MortgageLoanOnProperyFinancialInformations { get; set; }
-        public virtual DbSet<MortgagePropertyAdditionalFinancialInformation> MortgagePropertyAdditionalFinancialInformations { get; set; }
-        public virtual DbSet<MortgageLoanOnAdditionalPropertyFinancialInformation> MortgageLoanOnAdditionalPropertyFinancialInformations { get; set; }
-        //Financila Info- Assets & Liabilities
-        public virtual DbSet<MortgageAppliactionFinancialAccount> MortgageAppliactionFinancialAccounts { get; set; }
-        public virtual DbSet<MortgageAppliactionFinancialCredit> MortgageAppliactionFinancialCredits { get; set; }
-        public virtual DbSet<MortgageAppliactionFinancialLiability> MortgageAppliactionFinancialLiabilities { get; set; }
-        public virtual DbSet<MortgageAppliactionFinancialOtherLiability> MortgageAppliactionFinancialOtherLiabilities { get; set; }
-        public virtual DbSet<MortgageFinancialAccountType> MortgageFinancialAccountTypes { get; set; }
-        public virtual DbSet<MortgageFinancialCreditType> MortgageFinancialCreditTypes { get; set; }
-        public virtual DbSet<MortgageFinancialLaibilitiesType> MortgageFinancialLaibilitiesTypes { get; set; }
-        public virtual DbSet<MortgageFinancialOtherLaibilitiesType> MortgageFinancialOtherLaibilitiesTypes { get; set; }
+        //Financial Info- Assets & Liabilities
+        //public virtual DbSet<MortgageAppliactionFinancialAccount> urla_financial_information { get; set; }
+        //public virtual DbSet<MortgageAppliactionFinancialCredit> urla_financial_credits { get; set; }
+        //public virtual DbSet<MortgageAppliactionFinancialLiability> urla_financial_liabilities { get; set; }
+       // public virtual DbSet<MortgageAppliactionFinancialOtherLiability> urla_financial_other_liabilities { get; set; }
+        public virtual DbSet<MortgageFinancialAccountType> urla_financial_assets { get; set; }
+        public virtual DbSet<MortgageFinancialCreditType> urla_financial_other_assets { get; set; }
+        public virtual DbSet<MortgageFinancialLaibilitiesType> urla_financial_liabilities { get; set; }
+        public virtual DbSet<MortgageFinancialOtherLaibilitiesType> urla_financial_other_liabilities { get; set; }
+
         //Demographic Information
-        public virtual DbSet<MortgageApplicationDemographicInformation> MortgageApplicationDemographicInformation { get; set; }
-        public virtual DbSet<MortgageApplicaitonDempgraphicInfoByFinancialInstitution> MortgageApplicaitonDempgraphicInfoByFinancialInstitutions { get; set; }
+        public virtual DbSet<MortgageApplicationDemographicInformation> urla_demographic_information { get; set; }
+        public virtual DbSet<MortgageApplicaitonDempgraphicInfoByFinancialInstitution> urla_dempgraphic_info_by_financial_institutions { get; set; }
         //Agreement
-        public virtual DbSet<MortgageApplicationAgreement> MortgageApplicationAgreements { get; set; }
+        public virtual DbSet<MortgageApplicationAgreement> urla_agreements { get; set; }
         //Question
-        public virtual DbSet<MortgageApplicationQuestions> MortgageApplicationQuestions { get; set; }
+        public virtual DbSet<MortgageApplicationQuestions> urla_declaration_questions { get; set; }
 
 
 

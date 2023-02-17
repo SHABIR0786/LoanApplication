@@ -1,9 +1,12 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Entities.Auditing;
+using Castle.MicroKernel.SubSystems.Conversion;
 using LoanManagement.MortgageTables;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +17,7 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
     {
         public MortgageApplicationLoanPropertyInformationDto LoanPropertyInfo { get; set; }
         public List<MortgageApplicationLoanPropertyOtherNewMortgageLoansDto> NewMortgageLoans { get; set; }
-        public List<MortgageApplicationLoanPropertyRentalIncomeDto> RentalIncome { get; set; }
+        public MortgageApplicationLoanPropertyRentalIncomeDto RentalIncome { get; set; }
         public List<MortgageApplicationLoanPropertyGiftsOrGrantsDto> GiftsOrGrants { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyInformation))]
@@ -35,10 +38,10 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
         public int? PersonalInformationId { get; set; }
        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
         public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
+        public int? CityId { get; set; }
+        public int? StateId { get; set; }
+        public int? CountryId { get; set; }
         public string Zip { get; set; }
-        public string Country { get; set; }
         public int? NumberOfUnits { get; set; }
         public decimal PropertyValue { get; set; }
     }
@@ -46,7 +49,8 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
     public class MortgageApplicationLoanPropertyOtherNewMortgageLoansDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
-       // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
+        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
+        [DataType(DataType.Text)]
         public string CreditorName { get; set; }
         public string LienType { get; set; }
         public decimal MonthlyPayment { get; set; }
@@ -58,15 +62,15 @@ namespace LoanManagement.MortgageServices.MortgageApplicationLoanProperty.Dto
     {
         public int? PersonalInformationId { get; set; }
         //public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string IncomeType { get; set; }
-        public decimal Amount { get; set; }
+        public decimal MonthlyRentalIncome { get; set; }
+        public decimal NetMonthlyRentalIncome { get; set; }
     }
     [AutoMapFrom(typeof(MortgageApplicationLoanPropertyGiftsOrGrants))]
     public class MortgageApplicationLoanPropertyGiftsOrGrantsDto : FullAuditedEntityDto<int>
     {
         public int? PersonalInformationId { get; set; }
-       // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
-        public string AssetType { get; set; }
+        // public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
+        public int? AssetTypeId { get; set; }
         public bool IsDeposited { get; set; }
         public string Source { get; set; }
         public decimal MarketValue { get; set; }

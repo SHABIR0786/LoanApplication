@@ -15,52 +15,68 @@ namespace LoanManagement.MortgageServices.MortgageFinancialInformation
     {
         private readonly IRepository<MortgagePropertyFinancialInformation> _mortgagePropertyFinancialInformation;
         private readonly IRepository<MortgageLoanOnProperyFinancialInformation> _mortgageLoanOnProperyFinancialInformation;
-        private readonly IRepository<MortgagePropertyAdditionalFinancialInformation> _mortgagePropertyAdditionalFinancialInformation;
-        private readonly IRepository<MortgageLoanOnAdditionalPropertyFinancialInformation> _mortgageLoanOnAdditionalPropertyFinancialInformation;
-
-        public MortgagePropertyFinancialInformationService(IRepository<MortgagePropertyFinancialInformation> mortgagePropertyFinancialInformation, IRepository<MortgageLoanOnProperyFinancialInformation> mortgageLoanOnProperyFinancialInformation, IRepository<MortgagePropertyAdditionalFinancialInformation> mortgagePropertyAdditionalFinancialInformation, IRepository<MortgageLoanOnAdditionalPropertyFinancialInformation> mortgageLoanOnAdditionalPropertyFinancialInformation) : base(mortgagePropertyFinancialInformation)
+        public MortgagePropertyFinancialInformationService(IRepository<MortgagePropertyFinancialInformation> mortgagePropertyFinancialInformation, IRepository<MortgageLoanOnProperyFinancialInformation> mortgageLoanOnProperyFinancialInformation) : base(mortgagePropertyFinancialInformation)
         {
             this._mortgagePropertyFinancialInformation = mortgagePropertyFinancialInformation;
             this._mortgageLoanOnProperyFinancialInformation = mortgageLoanOnProperyFinancialInformation;
-            this._mortgagePropertyAdditionalFinancialInformation = mortgagePropertyAdditionalFinancialInformation;
-            this._mortgageLoanOnAdditionalPropertyFinancialInformation = mortgageLoanOnAdditionalPropertyFinancialInformation;
         }
 
-        public async Task CreateMortgagePropertyFinancialInformationAsync(CreateMortgagePropertyFinancialInformationDto createMortgagePropertyFinancialInformationDto)
+        public async Task CreateMortgagePropertyFinancialInformationAsync(List<MortgagePropertyFinancialInformationDto> createMortgagePropertyFinancialInformationDto)
         {
             try
             {
-                var entity = ObjectMapper.Map<MortgagePropertyFinancialInformation>(createMortgagePropertyFinancialInformationDto.MortgagePropertyFinancialInformation);
-                var id = await _mortgagePropertyFinancialInformation.InsertAndGetIdAsync(entity);
-                foreach (var item in createMortgagePropertyFinancialInformationDto.MortgageLoanOnProperyFinancialInformation)
+                foreach (var item in createMortgagePropertyFinancialInformationDto)
                 {
-                    var mortgagePropertyLoan = new MortgageLoanOnProperyFinancialInformation()
+                    var entity = ObjectMapper.Map<MortgagePropertyFinancialInformation>(item);
+                    var id = await _mortgagePropertyFinancialInformation.InsertAndGetIdAsync(entity);
+                    foreach (var data in item.MortgageLoanOnProperty)
                     {
-                        CreditorName = item.CreditorName,
-                        AccountNumber = item.AccountNumber,
-                        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
-                        UnpaidBalance = item.UnpaidBalance,
-                        Type = item.Type,
-                        CreditLimit = item.CreditLimit,
-                        MortgagePropertyFinancialInformationId = id,
-                    };
-                    await _mortgageLoanOnProperyFinancialInformation.InsertAsync(mortgagePropertyLoan);
-                } 
-                var mortageAdditionaldetail = ObjectMapper.Map<MortgagePropertyAdditionalFinancialInformation>(createMortgagePropertyFinancialInformationDto.MortgagePropertyAdditionalFinancialInformation);
-                var data = await _mortgagePropertyAdditionalFinancialInformation.InsertAndGetIdAsync(mortageAdditionaldetail);
-                foreach (var item in createMortgagePropertyFinancialInformationDto.MortgageLoanOnAdditionalPropertyFinancialInformation)
-                {
-                    var additionalMortgagePropertyLoan = new MortgageLoanOnAdditionalPropertyFinancialInformation()
-                    {
-                        CreditorName = item.CreditorName,
-                        AccountNumber = item.AccountNumber,
-                        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
-                        UnpaidBalance = item.UnpaidBalance,
-                        Type = item.Type,
-                        MortgagePropertyFinancialInformationId = data,
-                    };
-                    await _mortgageLoanOnAdditionalPropertyFinancialInformation.InsertAsync(additionalMortgagePropertyLoan);
+                        var mortgagePropertyLoan = new MortgageLoanOnProperyFinancialInformation()
+                        {
+                            CreditorName = data.CreditorName,
+                            AccountNumber = data.AccountNumber,
+                            MonthlyMortagagePayment = data.MonthlyMortagagePayment,
+                            UnpaidBalance = data.UnpaidBalance,
+                            Type = data.Type,
+                            IsPaidBeforeClosing= data.IsPaidBeforeClosing,
+                            CreditLimit = data.CreditLimit,                          
+                            MortgagePropertyFinancialInformationId = id,
+                        };
+                        await _mortgageLoanOnProperyFinancialInformation.InsertAsync(mortgagePropertyLoan);
+                    }
                 }
+              
+                //var entity = ObjectMapper.Map<MortgagePropertyFinancialInformation>(createMortgagePropertyFinancialInformationDto.MortgagePropertyFinancialInformation);
+                //var id = await _mortgagePropertyFinancialInformation.InsertAndGetIdAsync(entity);
+                //foreach (var item in createMortgagePropertyFinancialInformationDto.MortgageLoanOnProperyFinancialInformation)
+                //{
+                //    var mortgagePropertyLoan = new MortgageLoanOnProperyFinancialInformation()
+                //    {
+                //        CreditorName = item.CreditorName,
+                //        AccountNumber = item.AccountNumber,
+                //        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
+                //        UnpaidBalance = item.UnpaidBalance,
+                //        Type = item.Type,
+                //        CreditLimit = item.CreditLimit,
+                //        MortgagePropertyFinancialInformationId = id,
+                //    };
+                //    await _mortgageLoanOnProperyFinancialInformation.InsertAsync(mortgagePropertyLoan);
+                //} 
+                //var mortageAdditionaldetail = ObjectMapper.Map<MortgagePropertyAdditionalFinancialInformation>(createMortgagePropertyFinancialInformationDto.MortgagePropertyAdditionalFinancialInformation);
+                //var data = await _mortgagePropertyAdditionalFinancialInformation.InsertAndGetIdAsync(mortageAdditionaldetail);
+                //foreach (var item in createMortgagePropertyFinancialInformationDto.MortgageLoanOnAdditionalPropertyFinancialInformation)
+                //{
+                //    var additionalMortgagePropertyLoan = new MortgageLoanOnAdditionalPropertyFinancialInformation()
+                //    {
+                //        CreditorName = item.CreditorName,
+                //        AccountNumber = item.AccountNumber,
+                //        MonthlyMortagagePayment = item.MonthlyMortagagePayment,
+                //        UnpaidBalance = item.UnpaidBalance,
+                //        Type = item.Type,
+                //        MortgagePropertyFinancialInformationId = data,
+                //    };
+                //    await _mortgageLoanOnAdditionalPropertyFinancialInformation.InsertAsync(additionalMortgagePropertyLoan);
+                //}
             }
             catch (Exception error)
             {

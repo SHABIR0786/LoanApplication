@@ -12,16 +12,18 @@ namespace LoanManagement.MortgageServices.MortgageApplication.Dto
     [AutoMapFrom(typeof(MortgageApplicationEmploymentDetail))]
     public class MortgageApplicationEmploymentDetailDto : FullAuditedEntityDto<int>
     {
+        //type: current, additional, former
+        public string EmploymentType { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Street { get; set; }
         public string Unit { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
+        public int? CityId { get; set; }
+        public int? StateId { get; set; }
+        public int? CountryId { get; set; }
         public string Zip { get; set; }
-        public string Country { get; set; }
-        public string OwnershipShare { get; set; }
-        public string MonthlyIncome { get; set; }
+        public decimal OwnershipShare { get; set; }
+        public decimal MonthlyIncome { get; set; }
         public int? WorkingYears { get; set; }
         public int? WorkingMonths { get; set; }
         public string Position { get; set; }

@@ -10,7 +10,7 @@ namespace LoanManagement.MortgageTables
     public class MortgageAppliactionFinancialLiability : FullAuditedEntity<int>
     {
         //public List<MortgageFinancialLaibilitiesType> MortgageFinancialLaibilitiesType { get; set; }
-        public string TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
         public int? PersonalInformationId { get; set; }
         public virtual MortgageApplicationPersonalInformation PersonalInformation { get; set; }
