@@ -7,6 +7,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class SiteSettingService extends BaseService {
   constructor(http: HttpClient) {
-    super(http, "SiteSetting");
+    super(http, "services/app/SiteSettingServices");
   }
 }

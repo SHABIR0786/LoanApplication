@@ -52,44 +52,41 @@ export class HomeAffordabilityCalculatorComponent implements OnInit {
 
   calculate() {
     this.submitted = true;
-    if (this.homeAffordAbility.valid) {
-      var monthlyGrossIncome = this.homeAffordAbility.value.annualIncome / 12;
-      var monthlyPITI = monthlyGrossIncome * 0.32;
-      if (this.homeAffordAbility.value.monthlyDebt > 0) {
-        var monthlyPaymentwithoutDebit =
-          monthlyPITI - this.homeAffordAbility.value.monthlyDebt + 2;
-      } else {
-        var monthlyPaymentwithoutDebit = monthlyPITI;
-      }
-      var interestRate = 0;
-      if (this.homeAffordAbility.value.creditScore == 1) {
-        interestRate = 3.75;
-      } else if (this.homeAffordAbility.value.creditScore == 2) {
-        interestRate = 3.79;
-      } else if (this.homeAffordAbility.value.creditScore == 3) {
-        interestRate = 4.793;
-      } else if (this.homeAffordAbility.value.creditScore == 4) {
-        interestRate = 5.339;
-      }
-      console.log(monthlyPaymentwithoutDebit);
-      var principal = this.calculatePrincipleAmount(
-        monthlyPaymentwithoutDebit,
-        interestRate,
-        30
-      );
-      var totalPrincipal =
-        Math.ceil(
-          (principal + this.homeAffordAbility.value.downPayment) * 100
-        ) / 100;
-      this.HomeAfford = totalPrincipal;
-      // console.log(totalPrincipal);
-      // var YearlyPropertyTaxes = totalPrincipal * (1.20/100)
-      // var YearlyHomeInsuranceinPercent = 15.13023659084891 * 0.42;
-      // // var Taxes = Math.ceil((YearlyPropertyTaxes / 12) * 100) / 100;
-      // var Insurance = (YearlyHomeInsuranceinPercent * totalPrincipal / 100);
-      // totalPrincipal = totalPrincipal - Insurance;
-      // console.log(totalPrincipal);
-      // var DITI = (this.homeAffordAbility.value.monthlyDebt / monthlyGrossIncome) * 100;
+    var monthlyGrossIncome = this.homeAffordAbility.value.annualIncome / 12;
+    var monthlyPITI = monthlyGrossIncome * 0.32;
+    if (this.homeAffordAbility.value.monthlyDebt > 0) {
+      var monthlyPaymentwithoutDebit =
+        monthlyPITI - this.homeAffordAbility.value.monthlyDebt + 2;
+    } else {
+      var monthlyPaymentwithoutDebit = monthlyPITI;
     }
+    var interestRate = 0;
+    if (this.homeAffordAbility.value.creditScore == 1) {
+      interestRate = 3.75;
+    } else if (this.homeAffordAbility.value.creditScore == 2) {
+      interestRate = 3.79;
+    } else if (this.homeAffordAbility.value.creditScore == 3) {
+      interestRate = 4.793;
+    } else if (this.homeAffordAbility.value.creditScore == 4) {
+      interestRate = 5.339;
+    }
+    console.log(monthlyPaymentwithoutDebit);
+    var principal = this.calculatePrincipleAmount(
+      monthlyPaymentwithoutDebit,
+      interestRate,
+      30
+    );
+    var totalPrincipal =
+      Math.ceil((principal + this.homeAffordAbility.value.downPayment) * 100) /
+      100;
+    this.HomeAfford = totalPrincipal;
+    // console.log(totalPrincipal);
+    // var YearlyPropertyTaxes = totalPrincipal * (1.20/100)
+    // var YearlyHomeInsuranceinPercent = 15.13023659084891 * 0.42;
+    // // var Taxes = Math.ceil((YearlyPropertyTaxes / 12) * 100) / 100;
+    // var Insurance = (YearlyHomeInsuranceinPercent * totalPrincipal / 100);
+    // totalPrincipal = totalPrincipal - Insurance;
+    // console.log(totalPrincipal);
+    // var DITI = (this.homeAffordAbility.value.monthlyDebt / monthlyGrossIncome) * 100;
   }
 }

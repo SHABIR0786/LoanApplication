@@ -38,7 +38,7 @@ import { MatchPasswordDirective } from "../shared/directives/match-password.dire
     EqualValidator,
     BootstrapValidationCssDirective,
     PhoneMaskDirective,
-    // MatchPasswordDirective,
+    MatchPasswordDirective,
   ],
   exports: [
     AbpPaginationControlsComponent,
@@ -53,7 +53,7 @@ import { MatchPasswordDirective } from "../shared/directives/match-password.dire
     EqualValidator,
     BootstrapValidationCssDirective,
     PhoneMaskDirective,
-    // MatchPasswordDirective,
+    MatchPasswordDirective,
   ],
 })
 export class SharedModule {

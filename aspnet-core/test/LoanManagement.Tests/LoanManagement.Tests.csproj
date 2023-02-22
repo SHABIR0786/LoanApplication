@@ -11,6 +11,9 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="..\..\src\LoanManagement.Migrator\appsettings.json" Link="appsettings.json" />
+  </ItemGroup>
+  <ItemGroup>
     <!-- <ProjectReference Include="..\..\src\LoanManagement.Application\LoanManagement.Application.csproj" />
     <ProjectReference Include="..\..\src\LoanManagement.EntityFrameworkCore\LoanManagement.EntityFrameworkCore.csproj" />
   </ItemGroup>

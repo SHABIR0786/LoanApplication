@@ -12,4 +12,7 @@ export class ApiService {
   post<T>(url: string, data: any): Observable<T> {
     return this.http.post<T>(`${this.API_BASE}${url}`, data);
   }
+  put<T>(url: string, data: any): Observable<T> {
+    return this.http.put<T>(`${this.API_BASE}${url}`, data);
+  }
 }

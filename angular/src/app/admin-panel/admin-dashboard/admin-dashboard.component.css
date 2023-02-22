@@ -304,3 +304,19 @@ div.content {
     width: 100px !important;
   }
 }
+button.button {
+  background: #0077b6;
+  color: #fff;
+  border-radius: 4px;
+  padding: 7px 19px;
+  border: none;
+}
+.btn-primary a {
+  color: #fff;
+}
+.float-right {
+  color: #f5a623;
+}
+.swal2-icon.swal2-warning {
+  color: #f5a623;
+}

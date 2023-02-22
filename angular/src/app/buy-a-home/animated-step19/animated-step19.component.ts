@@ -73,7 +73,7 @@ export class AnimatedStep19Component implements OnInit {
     console.log(this.formData);
 
     this._homeBuyingService
-      .post<Result<IBuyingHomeModel>>("Add", this.formData)
+      .post<Result<IBuyingHomeModel>>("Create", this.formData)
       .subscribe(
         (response) => {
           console.log(response);

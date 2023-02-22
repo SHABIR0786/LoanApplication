@@ -70,7 +70,7 @@
               ></strong
             >
             <a
-              href=""
+              (click)="loanStatus()"
               class="btn btn-outline-info text-white text-uppercase cls"
               >Check loan status</a
             >
@@ -384,7 +384,7 @@
                       <div class="col-lg-3">
                         <ul class="list-unstyled dropList">
                           <li>
-                            <a [routerLink]="['/app/mortgage-glossary']">
+                            <a href="30-years.html">
                               <i class="fa fa-check-circle"></i>
                               <p>Mortgage Rates</p>
                             </a>

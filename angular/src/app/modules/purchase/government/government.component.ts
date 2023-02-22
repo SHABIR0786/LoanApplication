@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AddFinanceApiModel, PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import { CitizenshipTypeServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-government",
@@ -25,7 +26,8 @@ export class GovernmentComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private citizenshipTypeService: CitizenshipTypeServiceServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -39,12 +41,15 @@ export class GovernmentComponent implements OnInit {
   ngOnInit() {
     this.model = this.offline.getStep().data;
     this.getCitizenShipType();
-    this.getAllQuestions();
+    // this.getAllQuestions();
   }
   getCitizenShipType() {
-    this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
-      this.cs = x.result;
+    this.citizenshipTypeService.getCitizenshipTypes().subscribe((res) => {
+      this.cs = res;
     });
+    // this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
+    //   this.cs = x.result;
+    // });
   }
   getAllQuestions() {
     let url = "/LeadApplicationQuestions/GetAll";
@@ -54,21 +59,25 @@ export class GovernmentComponent implements OnInit {
   }
   onGovClick() {
     const final = this.apiModel.map(this.model);
-    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
-      if (d.success === true) {
-        this.router.navigate(["/app/purchase/gov/2"]);
-        this.model.leadApplicationDetailPurchasingId = 1;
-      } else {
-        console.clear();
-        console.log({ d });
-      }
-    });
+    this.api
+      .put("api/services/app/LeadPurchasingDetailService/Update", final)
+      .subscribe((d: any) => {
+        if (d.success === true) {
+          this.router.navigate(["/app/purchase/gov/2"]);
+          this.model.leadApplicationDetailPurchasingId = 1;
+          alert("Done");
+        } else {
+          alert("Oops");
+          console.clear();
+          console.log({ d });
+        }
+      });
     this.saveStep();
   }
   onQsClick() {
     let count = 0;
     this.questions.forEach((ele) => {
-      if (ele["isYes"] == true || ele["isYes"] == false) {
+      if (ele["isYes"]) {
         count++;
       }
     });
@@ -76,7 +85,7 @@ export class GovernmentComponent implements OnInit {
       this.submitted = true;
     } else {
       this.saveStep();
-      this.router.navigate(["/app/purchase/credit-score/1"]);
+      this.router.navigate(["/app/purchase/gov/3"]);
       this.submitted = true;
     }
   }

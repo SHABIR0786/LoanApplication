@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -11,9 +12,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class LoanDetailServices : AbpServiceBase, ILoanDetailServices
     {
-        private readonly IRepository<LoanDetail, long> _repository;
+        private readonly IRepository<Loandetail, long> _repository;
 
-        public LoanDetailServices(IRepository<LoanDetail, long> repository)
+        public LoanDetailServices(IRepository<Loandetail, long> repository)
         {
             _repository = repository;
         }
@@ -30,63 +31,63 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<LoanDetailDto> CreateAsync(LoanDetailDto input)
         {
-            try
-            {
-                var loanDetail = new LoanDetail
-                {
-                    City = input.City,
-                    CurrentLoanAmount = input.CurrentLoanAmount,
-                    DownPaymentAmount = input.DownPaymentAmount,
-                    DownPaymentPercentage = input.DownPaymentPercentage,
-                    EstimatedPurchasePrice = input.EstimatedPurchasePrice,
-                    EstimatedValue = input.EstimatedValue,
-                    GiftAmount = input.GiftAmount,
-                    GiftExplanation = input.GiftExplanation,
-                    HaveSecondMortgage = input.HaveSecondMortgage,
-                    IsWorkingWithOfficer = input.IsWorkingWithOfficer,
-                    LoanOfficerId = input.LoanOfficerId,
-                    whatStageAreyouIn = input.whatStageAreyouIn,
-                    OriginalPrice = input.OriginalPrice,
-                    PayLoanWithNewLoan = input.PayLoanWithNewLoan,
-                    PropertyTypeId = input.PropertyTypeId,
-                    PropertyUseId = input.PropertyUseId,
-                    PurposeOfLoan = input.PurposeOfLoan,
-                    RefinancingCurrentHome = input.RefinancingCurrentHome,
-                    ReferredBy = input.ReferredBy,
-                    RequestedLoanAmount = input.RequestedLoanAmount,
-                    SecondMortgageAmount = input.SecondMortgageAmount,
-                    SourceOfDownPayment = input.SourceOfDownPayment,
-                    StateId = input.StateId,
-                    Address = input.Address,
-                    Unit = input.Unit,
-                    ZipCode = input.ZipCode,
-                    NewConstruction = input.NewConstruction,
-                    BankOwned = input.BankOwned,
-                    ContractDate = input.ContractDate,
-                    YearAcquired = input.YearAcquired,
-                    StartedLookingForNewHome = input.StartedLookingForNewHome,
-                    EstimatedAnnualTaxes = input.EstimatedAnnualTaxes,
-                    EstimatedAnnualHomeInsurance = input.EstimatedAnnualHomeInsurance,
-                    CreditScore = input.CreditScore,
-                    FirstName = input.FirstName,
-                    LastName = input.LastName,
-                    EmailAddress = input.EmailAddress,
-                    PhoneNumber = input.PhoneNumber,
-                    MiddleName = input.MiddleName,
-                    TypeOfHome = input.TypeOfHome,
-                    HoaDues = input.HoaDues
-                };
-                await _repository.InsertAsync(loanDetail);
-                await UnitOfWorkManager.Current.SaveChangesAsync();
-                input.Id = loanDetail.Id;
-                return input;
-            }
+            return new LoanDetailDto();
+            //try
+            //{
+            //    var loanDetail = new Loandetail
+            //    {
+            //        City = input.City,
+            //        CurrentLoanAmount = input.CurrentLoanAmount,
+            //        DownPaymentAmount = input.DownPaymentAmount,
+            //        DownPaymentPercentage = input.DownPaymentPercentage,
+            //        EstimatedPurchasePrice = input.EstimatedPurchasePrice,
+            //        EstimatedValue = input.EstimatedValue,
+            //        GiftAmount = input.GiftAmount,
+            //        GiftExplanation = input.GiftExplanation,
+            //        HaveSecondMortgage = input.HaveSecondMortgage,
+            //        IsWorkingWithOfficer = input.IsWorkingWithOfficer,
+            //        LoanOfficerId = Convert.ToInt32( input.LoanOfficerId),
+            //        OriginalPrice = input.OriginalPrice,
+            //        PayLoanWithNewLoan = input.PayLoanWithNewLoan,
+            //        PropertyTypeId = input.PropertyTypeId,
+            //        PropertyUseId = input.PropertyUseId,
+            //        PurposeOfLoan = input.PurposeOfLoan,
+            //        RefinancingCurrentHome = input.RefinancingCurrentHome,
+            //        ReferredBy = input.ReferredBy,
+            //        RequestedLoanAmount = input.RequestedLoanAmount,
+            //        SecondMortgageAmount = input.SecondMortgageAmount,
+            //        SourceOfDownPayment = input.SourceOfDownPayment,
+            //        StateId = input.StateId,
+            //        Loanapplications.s = input.Address,
+            //        Unit = input.Unit,
+            //        ZipCode = input.ZipCode,
+            //        NewConstruction = input.NewConstruction,
+            //        BankOwned = input.BankOwned,
+            //        ContractDate = input.ContractDate,
+            //        YearAcquired = input.YearAcquired,
+            //        StartedLookingForNewHome = input.StartedLookingForNewHome,
+            //        EstimatedAnnualTaxes = input.EstimatedAnnualTaxes,
+            //        EstimatedAnnualHomeInsurance = input.EstimatedAnnualHomeInsurance,
+            //        CreditScore = input.CreditScore,
+            //        FirstName = input.FirstName,
+            //        LastName = input.LastName,
+            //        EmailAddress = input.EmailAddress,
+            //        PhoneNumber = input.PhoneNumber,
+            //        MiddleName = input.MiddleName,
+            //        TypeOfHome = input.TypeOfHome,
+            //        HoaDues = input.HoaDues
+            //    };
+            //    await _repository.InsertAsync(loanDetail);
+            //    await UnitOfWorkManager.Current.SaveChangesAsync();
+            //    input.Id = loanDetail.Id;
+            //    return input;
+            //}
 
-            catch (Exception e)
-            {
-                Console.WriteLine(e.GetType());
-                throw e;
-            }
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.GetType());
+            //    throw e;
+            //}
 
         }
 
@@ -104,8 +105,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 loanDetail.GiftExplanation = input.GiftExplanation;
                 loanDetail.HaveSecondMortgage = input.HaveSecondMortgage;
                 loanDetail.IsWorkingWithOfficer = input.IsWorkingWithOfficer;
-                loanDetail.LoanOfficerId = input.LoanOfficerId;
-                loanDetail.whatStageAreyouIn = input.whatStageAreyouIn;
+                loanDetail.LoanOfficerId = Convert.ToInt32(input.LoanOfficerId);
                 loanDetail.OriginalPrice = input.OriginalPrice;
                 loanDetail.PayLoanWithNewLoan = input.PayLoanWithNewLoan;
                 loanDetail.PropertyTypeId = input.PropertyTypeId;

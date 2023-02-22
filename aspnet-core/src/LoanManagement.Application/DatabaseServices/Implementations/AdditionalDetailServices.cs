@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -11,9 +12,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class AdditionalDetailServices : AbpServiceBase, IAdditionalDetailServices
     {
-        private readonly IRepository<AdditionalDetail, long> _repository;
+        private readonly IRepository<Additionaldetail, long> _repository;
 
-        public AdditionalDetailServices(IRepository<AdditionalDetail, long> repository)
+        public AdditionalDetailServices(IRepository<Additionaldetail, long> repository)
         {
             _repository = repository;
         }
@@ -30,7 +31,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<AdditionalDetailsDto> CreateAsync(AdditionalDetailsDto input)
         {
-            var additionalDetail = new AdditionalDetail
+            var additionalDetail = new Additionaldetail
             {
                 NameOfIndividualsOnTitle = input.NameOfIndividualsOnTitle,
                 NameOfIndividualsCoBorrowerOnTitle = input.NameOfIndividualsCoBorrowerOnTitle

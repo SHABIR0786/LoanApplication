@@ -9,7 +9,7 @@
             <div class="col-md-12">
               <input
                 type="checkbox"
-                class="form-style mb-0"
+                class="form-style"
                 placeholder=""
                 [(ngModel)]="model.isCertify"
               />
@@ -20,7 +20,7 @@
             <div class="col-md-12">
               <input
                 type="checkbox"
-                class="form-style mb-0"
+                class="form-style"
                 placeholder=""
                 [(ngModel)]="model.isReadEconsent"
               />
@@ -34,7 +34,7 @@
             <div class="col-md-12">
               <input
                 type="checkbox"
-                class="form-style mb-0"
+                class="form-style"
                 placeholder=""
                 [(ngModel)]="model.isReadThirdPartyConsent"
               />
@@ -51,9 +51,6 @@
       </div>
     </div>
   </div>
-  <div *ngIf="submitted" class="text-danger d-flex justify-content-center">
-    Please check all the options
-  </div>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
@@ -62,7 +59,13 @@
         <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a class="btn" id="btn-next-blue" (click)="onNextClick()">Next</a>
+        <a
+          routerLink="/app/refinance/credit-score/2"
+          class="btn"
+          id="btn-next-blue"
+          (click)="saveStep(); abc('/app/refinance/credit-score/2'); saveStep()"
+          >Next</a
+        >
       </div>
     </div>
   </div>
@@ -81,15 +84,16 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="ssn-details" #f2="ngForm">
       <div class="form-group">
-        <input
-          type="text"
-          class="form-control form-style mb-0"
-          placeholder="Social Security Number"
+        <select
+          style="width: 100%"
+          class="form-select form-style"
           [(ngModel)]="model.socialSecurityNumber"
           name="socialSecurityNumber"
           required
           #socialSecurityNumberRef="ngModel"
-        />
+        >
+          <option>Social Security Number</option>
+        </select>
         <div
           *ngIf="submitted && !socialSecurityNumberRef.valid"
           class="text-danger d-flex"
@@ -100,7 +104,7 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control form-style mb-0"
+          class="form-control form-style"
           placeholder="Confirm SSN"
           [(ngModel)]="model.conformSsn"
           name="conformSsn"
@@ -117,7 +121,7 @@
       <div class="form-group">
         <input
           type="date"
-          class="form-control form-style mb-0"
+          class="form-control form-style"
           placeholder="Birthdate"
           [(ngModel)]="model.birthDate"
           name="birthDate"

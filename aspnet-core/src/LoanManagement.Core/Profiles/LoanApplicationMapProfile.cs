@@ -1,4 +1,5 @@
 using AutoMapper;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
 
@@ -8,8 +9,8 @@ namespace LoanManagement.Profiles
     {
         public LoanApplicationMapProfile()
         {
-            CreateMap<LoanApplicationDto, LoanApplication>().ReverseMap();
-            CreateMap<BorrowerEmploymentInformationDto, BorrowerEmploymentInformation>().ReverseMap();
+            CreateMap<LoanApplicationDto, Loanapplication>().ReverseMap();
+            CreateMap<BorrowerEmploymentInformationDto, Borroweremploymentinformation>().ReverseMap();
         }
     }
 }

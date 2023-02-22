@@ -250,6 +250,7 @@ import { AdminModule } from "./admin/admin.module";
 import { NotificationComponent } from "./admin-panel/notification/notification.component";
 import { LoanApplicationListComponent } from "./admin-panel/loan-application-list/loan-application-list.component";
 import { MainLoanProcessComponent } from "./admin-panel/loan-progress/main-loan-process/main-loan-process.component";
+import { AdminProfilePageComponent } from "./admin-panel/admin-profile-page/admin-profile-page.component";
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default,
@@ -527,6 +528,7 @@ const ngWizardConfig: NgWizardConfig = {
     AccordionModule.forRoot(),
     NgxMaskModule.forRoot(),
     AdminModule,
+    AdminPanelLayoutModule,
   ],
   providers: [DataService, GetLoanAppResolve],
   entryComponents: [
@@ -541,5 +543,6 @@ const ngWizardConfig: NgWizardConfig = {
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
   ],
+  exports: [CommonModule],
 })
 export class AppModule {}

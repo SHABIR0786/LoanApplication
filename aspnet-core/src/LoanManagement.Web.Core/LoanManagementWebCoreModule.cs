@@ -71,7 +71,6 @@ namespace LoanManagement
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(LoanManagementWebCoreModule).GetAssembly());
-            Configuration.Notifications.Notifiers.Add<SignalRRealTimeNotifier>();
         }
 
         public override void PostInitialize()

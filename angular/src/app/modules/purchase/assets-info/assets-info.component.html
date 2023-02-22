@@ -14,24 +14,10 @@
           #accountTypeRef="ngModel"
           style="width: 100%"
         >
-          <option value="undefined" selected disabled>-Account type-</option>
-          <option value="Bonds">Bonds</option>
-          <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
-          <option value="CashValueofLifeInsurance">
-            Cash Value of Life Insurance
+          <option>-Account type-</option>
+          <option [value]="a.id" *ngFor="let a of accType">
+            {{ a.financialAccountType1 }}
           </option>
-          <option value="CertificateofDeposit">Certificate of Deposit</option>
-          <option value="Checking">Checking</option>
-          <option value="IndividualDevelopmentAccount">
-            Individual Development Account
-          </option>
-          <option value="MoneyMarket">Money Market</option>
-          <option value="MutualFund">Mutual Fund</option>
-          <option value="Retirement">Retirement</option>
-          <option value="Savings">Savings</option>
-          <option value="StockOptions">Stock Options</option>
-          <option value="Stocks">Stocks</option>
-          <option value="TrustAccount">Trust Account</option>
         </select>
         <div
           *ngIf="submitted && !accountTypeRef.valid"
@@ -74,7 +60,7 @@
           Balance is required
         </div>
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
         <input
           type="text"
           class="form-control form-style"
@@ -91,7 +77,7 @@
         >
           Account type is required
         </div>
-      </div> -->
+      </div>
     </form>
     <div class="row margin-top">
       <div class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4">
@@ -176,9 +162,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Account Type: {{ model.accountType }}</p>
-          <p>Financial Institution: {{ model.finInstitute }}</p>
-          <p>Balance: ${{ model.finBalance }}</p>
+          <p>Account Type: Checking account</p>
+          <p>Financial Institution: Bank of America</p>
+          <p>Balance: $125,000</p>
         </div>
       </div>
     </div>

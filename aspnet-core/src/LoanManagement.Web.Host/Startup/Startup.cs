@@ -3,13 +3,16 @@ using Abp.AspNetCore.Mvc.Antiforgery;
 using Abp.AspNetCore.SignalR.Hubs;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Dependency;
+using Abp.EntityFrameworkCore;
 using Abp.Extensions;
 using Abp.Json;
 using Castle.Facilities.Logging;
 using LoanManagement.Configuration;
+using LoanManagement.EntityFrameworkCore;
 using LoanManagement.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -94,6 +97,8 @@ namespace LoanManagement.Web.Host.Startup
                 EnableSsl = true,
             };
             });
+
+
             services.AddMortgageLoanServices();
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>

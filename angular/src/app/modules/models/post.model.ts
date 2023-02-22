@@ -7,8 +7,8 @@ export class PostModel {
   newHomeAddress: string;
   newHomeUnit: string;
   newHomeCityTown: string;
-  newHomeState: string;
-  newHomeStateName: string;
+  newHomeState: string = "1";
+  newHomeStateName: string = "";
   newHomeZip: string;
   contractDate: string;
   propertyOption1: string;
@@ -105,7 +105,6 @@ export class PostModel {
   currentUnit: string;
   currentCity: string;
   currentStateId: number = 1;
-  currentStateName: string;
   currentZipCode: string;
   currentStartLivingDate: string;
   currentReantingType: string;
@@ -195,7 +194,7 @@ export class AddFinanceApiModel {
     this.creditScore = e.creditScore;
     this.propertyLegalFirstName = e.firstName;
     this.propertyMiddleInitial = e.middleName;
-    this.propertyLegalFirstName = e.lastName;
+    this.propertyLegalLastName = e.lastName;
     this.propertyPhoneNumber = e.phone;
     this.propertyEmailAddress = e.email;
     this.typeOfHome = e.homeType;
@@ -271,8 +270,7 @@ export class RefinancePost {
   "propertyUnit": string;
   "propertyCity": string;
   "propertyZip": string;
-  "propertyStateId": number;
-  "propertyStateName": string;
+  "propertyStateId": number = 1;
   "propertyCountryId": number;
   "propertyEstimatedValue": number;
   "propertyLoanBalance": number;
@@ -311,8 +309,7 @@ export class RefinancePost {
   "currentAddress": string;
   "currentUnit": string;
   "currentCity": string;
-  "currentStateId": number;
-  "currentStateName": string;
+  "currentStateId": number = 1;
   "currentZipCode": string;
   "currentStartLivingDate": Date;
   "currentReantingType": string;
@@ -339,7 +336,6 @@ export class RefinancePost {
   empAptUnit: string;
   empCity: string;
   empState: number = 1;
-  empStateName: string;
   empZip: string;
   empPhoneNumber: string;
   isCurrentJob: number;
@@ -362,9 +358,9 @@ export class RefinancePost {
   "ethnicity": string;
   "race": string;
   "citizenshipId": number;
-  "isCertify": boolean;
-  "isReadEconsent": boolean;
-  "isReadThirdPartyConsent": boolean;
+  "isCertify": number;
+  "isReadEconsent": number;
+  "isReadThirdPartyConsent": number;
   "socialSecurityNumber": string;
   "conformSsn": string;
   "birthDate": Date;
@@ -380,7 +376,6 @@ export class EmployementDetailAdd {
   "employementSuite": string;
   "employementCity": string;
   "employementTaxeId": number;
-  "employementStateName": string;
   "employementZip": string;
   "employerPhoneNumber": string;
   "isCurrentJob": number;

@@ -6,6 +6,12 @@ import {
 } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import {
+  AddLeadEmploymentDetails,
+  LeadEmploymentDetailsServiceServiceProxy,
+  StateServiceServiceProxy,
+} from "@shared/service-proxies/service-proxies";
+import * as moment from "moment";
 
 @Component({
   selector: "app-income-info",
@@ -17,13 +23,15 @@ export class IncomeInfoComponent implements OnInit {
   yes = false;
   model: PostModel = new PostModel();
   states = [];
-  _model: EmployementDetailAdd = new EmployementDetailAdd();
+  _model: AddLeadEmploymentDetails = new AddLeadEmploymentDetails();
   submitted = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private stateService: StateServiceServiceProxy,
+    private leadEmpDetail: LeadEmploymentDetailsServiceServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -37,28 +45,17 @@ export class IncomeInfoComponent implements OnInit {
   ngOnInit() {
     this.model = this.offline.getStep().data;
     this.getState();
-    if (this.model.currentStateId) {
-      this.getStateById(this._model.employementTaxeId);
-    }
-  }
-  onStateChange(event) {
-    console.log(event.target.value);
-    this.getStateById(event.target.value);
   }
   getState() {
-    this.api.get("State/states").subscribe((x: any) => {
-      this.states = x.result;
-      this.model.empState = "1";
-      this.model.currentStateId = 1;
-      this.model.newHomeState = "1";
+    this.stateService.getStates().subscribe((res) => {
+      this.states = res;
     });
-  }
-  getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this._model.employementStateName = x.result.stateName;
-      }
-    });
+    // this.api.get("State/states").subscribe((x: any) => {
+    //   this.states = x.result;
+    //   this.model.empState = "1";
+    //   this.model.currentStateId = 1;
+    //   this.model.newHomeState = "1";
+    // });
   }
   onHaveMoreClick(e) {}
   onIncomeComplete() {
@@ -69,13 +66,26 @@ export class IncomeInfoComponent implements OnInit {
     if (f.valid) {
       this._model.leadApplicationDetailPurchasingId = 1;
       this.saveStep();
-      this.api
-        .post("/LeadEmploymentDetail/Add", this._model)
-        .subscribe((x: any) => {
-          if (x.success == true) {
-            this.router.navigate(["/app/purchase/income-info/4"]);
-          }
-        });
+      ///////////
+      if (this._model.estimatedStartDate) {
+        this._model.estimatedStartDate = moment(this._model.estimatedStartDate)
+          .add("5", "hours")
+          .add("30", "minutes");
+      } else {
+        this._model.estimatedStartDate = null;
+      }
+      this.leadEmpDetail.add(this._model).subscribe((res) => {
+        if (res != null) {
+          this.router.navigate(["/app/purchase/income-info/4"]);
+        }
+      });
+      // this.api
+      //   .post("/LeadEmploymentDetail/Add", this._model)
+      //   .subscribe((x: any) => {
+      //     if (x.success == true) {
+      //       this.router.navigate(["/app/purchase/income-info/4"]);
+      //     }
+      //   });
     }
   }
   saveStep() {
@@ -87,12 +97,6 @@ export class IncomeInfoComponent implements OnInit {
     if (f.valid) {
       this.router.navigate(["/app/purchase/income-info/" + step]);
       this.submitted = false;
-    }
-  }
-
-  doneClicked(f) {
-    if (f.valid) {
-      this.router.navigate(["/app/purchase/income-info/6"]);
     }
   }
 }
