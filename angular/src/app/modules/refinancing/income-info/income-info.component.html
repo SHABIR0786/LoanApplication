@@ -66,10 +66,7 @@
               name="personalState"
               #personalStateRef="ngModel"
               required
-              (change)="onStateChange($event)"
             >
-              <option value="undefined" selected disabled>State</option>
-
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -167,12 +164,7 @@
 
       <div class="row margin-top">
         <div class="col-md-3 offset-md-3">
-          <a
-            routerLink="/app/refinance/personal-info/8"
-            class="btn"
-            id="btn-back-blue"
-            >Back</a
-          >
+          <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
         </div>
         <div class="col-md-2">
           <a class="btn" id="btn-next-blue" (click)="onNextClick(f, 2)">Next</a>
@@ -201,21 +193,17 @@
       routerLink="/app/refinance/income/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isEmployementHistory = true; saveStep()"
-      [class.blue-active]="model.isEmployementHistory == true"
       >Yes</a
     >
     <a
       routerLink="/app/refinance/income/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isEmployementHistory = false; saveStep()"
-      [class.blue-active]="model.isEmployementHistory == false"
       >No</a
     >
     <div class="row">
       <div class="col-md-12 margin-top">
-        <a routerLink="/app/refinance/income/1" class="btn" id="btn-back-blue"
-          >Back</a
-        >
+        <a (click)="history.back()" class="btn" id="btn-back">Back</a>
       </div>
     </div>
   </div>
@@ -324,10 +312,7 @@
               name="empState"
               #empStateRef="ngModel"
               required
-              (change)="onStateChange($event)"
             >
-              <option value="undefined" selected disabled>State</option>
-
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -369,17 +354,13 @@
           [(ngModel)]="model.empPhoneNumber"
           name="empPhoneNumber"
           #empPhoneNumberRef="ngModel"
-          appPhoneMask
           required
-          minlength="11"
         />
-        <div class="text-danger d-flex">
-          <div *ngIf="empPhoneNumberRef.errors?.minlength">
-            This is not a valid phone number
-          </div>
-          <div *ngIf="empPhoneNumberRef.errors?.required">
-            Phone is required
-          </div>
+        <div
+          *ngIf="submitted && !empPhoneNumberRef.valid"
+          class="text-danger d-flex"
+        >
+          Phone Number is required
         </div>
       </div>
       <div class="radio-input">
@@ -529,9 +510,7 @@
       </div>
       <div class="row">
         <div class="col-md-3 offset-md-3">
-          <a routerLink="/app/refinance/income/3" class="btn" id="btn-back-blue"
-            >Back</a
-          >
+          <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
         </div>
         <div class="col-md-2">
           <!-- routerLink="/app/refinance/income/5" -->
@@ -560,8 +539,6 @@
     <a
       routerLink="/app/refinance/income/3"
       class="btn btn-primary btn-style btn-blue"
-      (click)="model.isEmployementHistory = true; saveStep()"
-      [class.blue-active]="model.isEmployementHistory == true"
       >Yes, I have more to add</a
     >
 
@@ -573,7 +550,7 @@
 
     <div class="row">
       <div class="col-md-12 margin-top">
-        <a routerLink="/app/refinance/income/4" class="btn" id="btn-back-blue"
+        <a routerLink="/app/refinance/income/5" class="btn" id="btn-back-blue"
           >Back</a
         >
       </div>
@@ -650,7 +627,6 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.hasCoboOtherEmp = true"
-      [class.blue-active]="model.hasCoboOtherEmp == true"
     >
       Yes
     </button>
@@ -658,7 +634,6 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.hasCoboOtherEmp = false"
-      [class.blue-active]="model.hasCoboOtherEmp == false"
     >
       No
     </button>
@@ -754,7 +729,6 @@
       routerLink="/app/refinance/income/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.hasCoboOtherIncSrc = true; saveStep()"
-      [class.blue-active]="model.hasCoboOtherIncSrc == true"
       >Yes</a
     >
 
@@ -762,7 +736,6 @@
       routerLink="/app/refinance/income/9"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.hasCoboOtherIncSrc = false; saveStep()"
-      [class.blue-active]="model.hasCoboOtherIncSrc == false"
       >No</a
     >
     <div class="row">
@@ -867,16 +840,12 @@
     <a
       routerLink="/app/refinance/income/11"
       class="btn btn-primary btn-style btn-blue"
-      (click)="model.hasCoboOtherIncSrc = true"
-      [class.blue-active]="model.hasCoboOtherIncSrc == true"
       >Yes</a
     >
 
     <a
       routerLink="/app/refinance/income/11"
       class="btn btn-primary btn-style btn-blue"
-      (click)="model.hasCoboOtherIncSrc = false"
-      [class.blue-active]="model.hasCoboOtherIncSrc == false"
       >No</a
     >
 
@@ -911,21 +880,21 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Employment Type: {{ model.w2Emp }}</p>
-          <p>Business Name: {{ model.w2EmpName }}</p>
-          <p>Address: {{ model.empAddress }}</p>
-          <p>City: {{ model.empCity }}</p>
-          <p>State: {{ model.empStateName }}</p>
-          <p>Zip Code: {{ model.empZip }}</p>
-          <p>Business Phone Number: {{ model.empPhoneNumber }}</p>
-          <p>Estimated Start Date: {{ model.empEstDate }}</p>
+          <p>Employment Type: Self-employed</p>
+          <p>Business Name: xpozure</p>
+          <p>Address: 6400 Sunset Boulevard</p>
+          <p>City: Los Angeles</p>
+          <p>State: CA</p>
+          <p>Zip Code: 90028</p>
+          <p>Business Phone Number: (034) 880-3755</p>
+          <p>Estimated Start Date: 12/23/2015</p>
           <p>Estimated End Date: 02/23/2017</p>
           <p>Years in the co-borrower's profession: 4</p>
-          <p>Job Title: {{ model.jobTitle }}</p>
-          <p>Estimated Annual Base Salary: ${{ model.estAnnualBaseSalary }}</p>
-          <p>Estimated Annual Bonus: ${{ model.estAnnualBonus }}</p>
-          <p>Estimated Annual Commission: ${{ model.estAnnualCommision }}</p>
-          <p>Estimated Annual Overtime: ${{ model.estAnnualOverTime }}</p>
+          <p>Job Title: Graphic Designer</p>
+          <p>Estimated Annual Base Salary: $22,323,223</p>
+          <p>Estimated Annual Bonus: $24,242,424</p>
+          <p>Estimated Annual Commission: $353,632</p>
+          <p>Estimated Annual Overtime: $346,435,223</p>
         </div>
       </div>
     </div>
@@ -939,21 +908,14 @@
         <h6>Co-borrower Other Income</h6>
       </div>
       <div class="col-md-4 right-align">
-        <button
-          routerLink="/app/refinance/income/12"
-          type="button"
-          class="btn"
-          id="btn-edit"
-        >
-          Edit
-        </button>
+        <button type="button" class="btn" id="btn-edit">Edit</button>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="profile-details">
-          <p>Income Type: {{ model.coboIncType }}</p>
-          <p>Monthly Amount: ${{ model.coboMonthlyAmount }}</p>
+          <p>Income Type: Alimony</p>
+          <p>Monthly Amount: $223,424</p>
         </div>
       </div>
     </div>
@@ -991,18 +953,11 @@
 
 <!-- section 32A starts -->
 <div class="main-content" *ngIf="number == 12">
-  <form action="" id="address" #f12="ngForm">
-    <h2>Let's do a quick review of your income. Look good?</h2>
-    <div class="content-area">
-      <div class="row">
-        <div class="col-md-8">
-          <h6>Co-borrower Employment</h6>
-        </div>
-        <div class="col-md-4 right-align">
-          <a type="button" class="btn" (click)="doneClicked(f12)" id="btn-edit"
-            >Done</a
-          >
-        </div>
+  <h2>Let's do a quick review of your income. Look good?</h2>
+  <div class="content-area">
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Employment</h6>
       </div>
       <div class="row">
         <div class="col-md-10 offset-md-1 margin-top">
@@ -1135,6 +1090,13 @@
               </div>
             </div>
           </div>
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Business Phone Number"
+            [(ngModel)]="model.empPhoneNumber"
+            name="empPhoneNumber"
+          />
           <div class="radio-input">
             <div class="row">
               <div class="col-md-12">
@@ -1248,25 +1210,15 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="seperator-line"></div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="seperator-line"></div>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <h6>Co-borrower Other Income</h6>
-        </div>
-        <div class="col-md-4 right-align">
-          <button
-            (click)="doneClicked(f12)"
-            type="button"
-            class="btn"
-            id="btn-edit"
-          >
-            Done
-          </button>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Co-borrower Other Income</h6>
       </div>
       <div class="row">
         <div class="col-md-10 offset-md-1 margin-top">
@@ -1304,38 +1256,43 @@
         </div>
       </div>
     </div>
-    <div
-      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-    >
-      <div class="row">
-        <div class="col-md-3 offset-md-3">
-          <button
-            type="button"
-            class="btn"
-            routerLink="/app/refinance/income/11"
-            id="btn-back-blue"
-          >
-            Back
-          </button>
-        </div>
-        <div class="col-md-2">
-          <button
-            type="button"
-            class="btn"
-            (click)="savestep()"
-            routerLink="/app/refinance/assets-info/1"
-            id="btn-next-blue"
-          >
-            Next
-          </button>
-        </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 margin-top">
+        <form action="" id="">
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="- Income Type -"
+            [(ngModel)]="model.coboIncType"
+            name="coboIncType"
+          />
+          <input
+            type="text"
+            class="form-control form-style"
+            placeholder="Monthly Amount"
+            [(ngModel)]="model.coboMonthlyAmount"
+            name="coboMonthlyAmount"
+          />
+        </form>
       </div>
     </div>
-    <div class="content-footer">
-      <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
+  <div
+    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+  >
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <button type="button" class="btn" id="btn-back-blue">Back</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn" id="btn-next-blue">Next</button>
+      </div>
     </div>
-  </form>
+  </div>
+  <div class="content-footer">
+    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
+
+    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+  </div>
 </div>
 <!-- section 32A ends -->

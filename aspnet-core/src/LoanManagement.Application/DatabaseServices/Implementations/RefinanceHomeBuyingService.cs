@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using AutoMapper;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -14,11 +15,11 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class RefinanceHomeBuyingService : AbpServiceBase, IRefinanceHomeBuyingService
     {
-        private readonly IRepository<RefinanceHomeBuying, long?> _repository;
+        private readonly IRepository<Refinancehomebuying, long?> _repository;
         private readonly IMapper _mapper;
 
         public RefinanceHomeBuyingService(
-          IRepository<RefinanceHomeBuying, long?> repository, IMapper mapper)
+          IRepository<Refinancehomebuying, long?> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -26,28 +27,28 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<RefinanceHomeBuyingDto> CreateAsync(RefinanceHomeBuyingDto input)
         {
-            RefinanceHomeBuying refinanceHomeBuying = new RefinanceHomeBuying();
-            refinanceHomeBuying.propertyLocated = input.propertyLocated;
-            refinanceHomeBuying.propertyType = input.propertyType;
+            Refinancehomebuying refinanceHomeBuying = new Refinancehomebuying();
+            refinanceHomeBuying.PropertyLocated = input.propertyLocated;
+            refinanceHomeBuying.PropertyLocated = input.propertyType;
             refinanceHomeBuying.PropertyUse = input.propertyType;
             refinanceHomeBuying.WantRefinance = input.propertyType;
             refinanceHomeBuying.HomePrice = input.HomePrice;
             refinanceHomeBuying.Owe = input.Owe;
             refinanceHomeBuying.CashBorrow = input.CashBorrow;
-            refinanceHomeBuying.FHALoan = input.FHALoan;
-            refinanceHomeBuying.militarySevice = input.militarySevice;
-            refinanceHomeBuying.foreclosurePastTwoYears = input.foreclosurePastTwoYears;
-            refinanceHomeBuying.bankruptcyPastThreeYears = input.bankruptcyPastThreeYears;
+            refinanceHomeBuying.Fhaloan = input.FHALoan;
+            refinanceHomeBuying.MilitarySevice = input.militarySevice;
+            refinanceHomeBuying.ForeclosurePastTwoYears = input.foreclosurePastTwoYears;
+            refinanceHomeBuying.BankruptcyPastThreeYears = input.bankruptcyPastThreeYears;
             refinanceHomeBuying.LateMortgagePayments = input.LateMortgagePayments; 
-            refinanceHomeBuying.currentEmployed = input.currentEmployed;
-            refinanceHomeBuying.houseHoldIncome = input.houseHoldIncome;
-            refinanceHomeBuying.proofOfincome = input.proofOfincome;
-            refinanceHomeBuying.rateCredit = input.rateCredit;
-            refinanceHomeBuying.firstName = input.firstName;
-            refinanceHomeBuying.lastName = input.lastName;
-            refinanceHomeBuying.emailAddress = input.emailAddress;
-            refinanceHomeBuying.phoneNumber = input.phoneNumber;
-            refinanceHomeBuying.refferedBy = input.refferedBy;
+            refinanceHomeBuying.CurrentEmployed = input.currentEmployed;
+            refinanceHomeBuying.HouseHoldIncome = input.houseHoldIncome;
+            refinanceHomeBuying.ProofOfincome = input.proofOfincome;
+            refinanceHomeBuying.RateCredit = input.rateCredit;
+            refinanceHomeBuying.FirstName = input.firstName;
+            refinanceHomeBuying.LastName = input.lastName;
+            refinanceHomeBuying.EmailAddress = input.emailAddress;
+            refinanceHomeBuying.PhoneNumber = input.phoneNumber;
+            refinanceHomeBuying.RefferedBy = input.refferedBy;
             await _repository.InsertAsync(refinanceHomeBuying);
             await UnitOfWorkManager.Current.SaveChangesAsync();
             return input;

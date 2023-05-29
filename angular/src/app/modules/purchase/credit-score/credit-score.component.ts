@@ -7,7 +7,6 @@ import { OfflineService } from "@app/services/offline.service";
 @Component({
   selector: "app-credit-score",
   templateUrl: "./credit-score.component.html",
-  styleUrls: ["./credit-score.component.css"],
 })
 export class CreditScoreComponent implements OnInit {
   submitted = false;

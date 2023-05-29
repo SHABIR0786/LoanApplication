@@ -165,6 +165,15 @@
             >
           </li>
           <li>
+            <a
+              href="javascript:void(0)"
+              (click)="navigateToLoanProcess()"
+              class="font-weight-light"
+              ><i class="fa fa-sun"></i>
+              <span class="pl-2">Our Loan Process</span></a
+            >
+          </li>
+          <li>
             <a href="javascript:void(0)" class="font-weight-light"
               ><i class="fa fa-file"></i>
               <span class="pl-2"> Upload Document</span></a
@@ -319,6 +328,7 @@
             <app-notification-dialog></app-notification-dialog>
             <button
               class="btn btn-primary bg_primary text-white m-1 mx-2 nav_t_btn"
+              (click)="navigateToloanApplicationsList()"
             >
               Portfolio
             </button>

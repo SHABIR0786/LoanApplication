@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -13,12 +14,12 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class PersonalDetailServices : AbpServiceBase, IPersonalDetailService
     {
-        private readonly IRepository<PersonalDetail, long> _repository;
+        private readonly IRepository<Personaldetail, long> _repository;
         private readonly IRepository<Borrower, long> _borrowerRepository;
         private readonly IRepository<Address, long> _addressRepository;
 
         public PersonalDetailServices(
-            IRepository<PersonalDetail, long> repository,
+            IRepository<Personaldetail, long> repository,
             IRepository<Borrower, long> borrowerRepository,
             IRepository<Address, long> addressRepository)
         {
@@ -95,7 +96,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     input.CoBorrower.Id = borrower.Id;
                 }
 
-                var personalDetail = new PersonalDetail
+                var personalDetail = new Personaldetail
                 {
                     IsApplyingWithCoBorrower = input.IsApplyingWithCoBorrower,
                     UseIncomeOfPersonOtherThanBorrower = input.UseIncomeOfPersonOtherThanBorrower,
@@ -206,7 +207,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
                 input.Id = personalDetail.Id;
 
-                AssignAddressIds(personalDetail?.Addresses, input);
+                AssignAddressIds(personalDetail?.Addresses.ToList(), input);
 
                 return input;
             }

@@ -142,9 +142,7 @@
               name="employementTaxeId"
               required
               #employementTaxeIdRef="ngModel"
-              (change)="onStateChange($event)"
             >
-              <option value="undefined" selected disabled>State</option>
               <option *ngFor="let s of states" [value]="s.id">
                 {{ s.stateName }}
               </option>
@@ -188,7 +186,6 @@
           [(ngModel)]="_model.employerPhoneNumber"
           name="employerPhoneNumber"
           required
-          appPhoneMask
           #employerPhoneNumberRef="ngModel"
         />
         <div
@@ -522,17 +519,19 @@
 <div class="main-content" *ngIf="number == 7">
   <h2>Let's do a quick review of your income. Look good?</h2>
   <div class="content-area">
-    <form action="" #f7="ngForm" id="borrower-info">
-      <div class="row">
-        <div class="col-md-8">
-          <h6>Borrower Information</h6>
-        </div>
-        <div class="col-md-4 right-align">
-          <a (click)="doneClicked(f7)" class="btn" id="btn-edit">Done</a>
-        </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h6>Borrower Information</h6>
       </div>
-      <div class="row">
-        <div class="col-md-10 offset-md-1 margin-top">
+      <div class="col-md-4 right-align">
+        <a routerLink="/app/purchase/income-info/6" class="btn" id="btn-edit"
+          >Done</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 margin-top">
+        <form action="" #f7="ngForm" id="borrower-info">
           <select class="form-select form-style">
             <option>W-2 Employee</option>
           </select>
@@ -545,9 +544,6 @@
             required
             #employerNameRef="ngModel"
           />
-          <div *ngIf="!employerNameRef.valid" class="text-danger d-flex">
-            Employer Name is required
-          </div>
           <input
             type="text"
             class="form-control form-style mb-0"
@@ -557,9 +553,6 @@
             required
             #employementAddressRef="ngModel"
           />
-          <div *ngIf="!employementAddressRef.valid" class="text-danger d-flex">
-            Address is required
-          </div>
           <input
             type="text"
             class="form-control form-style mb-0"
@@ -569,9 +562,6 @@
             required
             #employementSuiteRef="ngModel"
           />
-          <div *ngIf="!employementSuiteRef.valid" class="text-danger d-flex">
-            Unit is required
-          </div>
           <input
             type="text"
             class="form-control form-style mb-0"
@@ -581,9 +571,6 @@
             required
             #employementCityRef="ngModel"
           />
-          <div *ngIf="!employementCityRef.valid" class="text-danger d-flex">
-            City is required
-          </div>
 
           <div class="row">
             <div class="col-md-5">
@@ -593,19 +580,9 @@
                 name="employementTaxeId"
                 required
                 #employementTaxeIdRef="ngModel"
-                (change)="onStateChange($event)"
               >
-                <option value="undefined" selected disabled>State</option>
-                <option *ngFor="let s of states" [value]="s.id">
-                  {{ s.stateName }}
-                </option>
+                <option>State</option>
               </select>
-              <div
-                *ngIf="!employementTaxeIdRef.valid"
-                class="text-danger d-flex"
-              >
-                State is required
-              </div>
             </div>
             <div class="col-md-7">
               <input
@@ -637,18 +614,7 @@
             name="employerPhoneNumber"
             required
             #employerPhoneNumberRef="ngModel"
-            appPhoneMask
-            minlength="11"
           />
-
-          <div class="text-danger d-flex">
-            <div *ngIf="employerPhoneNumberRef.errors?.minlength">
-              This is not a valid phone number
-            </div>
-            <div *ngIf="employerPhoneNumberRef.errors?.required">
-              Phone is required
-            </div>
-          </div>
           <div class="radio-input">
             <div class="row">
               <div class="col-md-12">
@@ -666,9 +632,6 @@
             required
             #estimatedStartDateRef="ngModel"
           />
-          <div *ngIf="!estimatedStartDateRef.valid" class="text-danger d-flex">
-            Estimated Start date is required
-          </div>
           <!-- <input
           type="date"
           class="form-control form-style"
@@ -685,9 +648,6 @@
             required
             #jobTitleRef="ngModel"
           />
-          <div *ngIf="!jobTitleRef.valid" class="text-danger d-flex">
-            Job Title is required
-          </div>
           <input
             type="number"
             class="form-control form-style mb-0"
@@ -712,12 +672,6 @@
             required
             #estimatedAnnualBonusRef="ngModel"
           />
-          <div
-            *ngIf="!estimatedAnnualBonusRef.valid"
-            class="text-danger d-flex"
-          >
-            Estimated Annual Bonus is required
-          </div>
           <input
             type="number"
             class="form-control form-style mb-0"
@@ -727,12 +681,6 @@
             required
             #estimatedAnnualCommissionRef="ngModel"
           />
-          <div
-            *ngIf="!estimatedAnnualCommissionRef.valid"
-            class="text-danger d-flex"
-          >
-            Estimated Annual Commission is required
-          </div>
           <input
             type="number"
             class="form-control form-style mb-0"
@@ -742,15 +690,9 @@
             required
             #estimatedAnnualOvertimeRef="ngModel"
           />
-          <div
-            *ngIf="!estimatedAnnualOvertimeRef.valid"
-            class="text-danger d-flex"
-          >
-            Estimated Annual Overtime is required
-          </div>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"

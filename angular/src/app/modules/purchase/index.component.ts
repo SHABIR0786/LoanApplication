@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { OfflineService } from "@app/services/offline.service";
 const ROUTE_DATA = [
-  // "/app/purchase/",
+  "/app/purchase/",
   "/app/purchase/welcome/",
   "/app/purchase/property-info/",
   "/app/purchase/military-info/",
@@ -10,7 +10,7 @@ const ROUTE_DATA = [
   "/app/purchase/income-info/",
   "/app/purchase/assets-info/",
   "/app/purchase/gov/",
-  "/app/purchase/credit-score/",
+  "/app/purchase/gov/",
 ];
 const TABS_DATA = [];
 @Component({

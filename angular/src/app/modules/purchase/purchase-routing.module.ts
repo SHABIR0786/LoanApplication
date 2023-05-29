@@ -59,10 +59,6 @@ const routes: Routes = [
         component: GovernmentComponent,
       },
       {
-        path: "credit-score/:number",
-        component: CreditScoreComponent,
-      },
-      {
         path: "signed-purchase",
         component: SignedPurchaseComponent,
       },

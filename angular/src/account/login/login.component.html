@@ -16,7 +16,7 @@
         />
         <div class="input-group-append">
           <div class="input-group-text">
-            <span class="fas fa-user"></span>
+            <span class="fas fa-user" style="color: #091a52"></span>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
         />
         <div class="input-group-append">
           <div class="input-group-text">
-            <span class="fas fa-lock"></span>
+            <span class="fas fa-lock" style="color: #091a52"></span>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
       <div class="col-md-4">
         <button
           type="submit"
-          class="btn btn-primary btn-block"
+          class="btn-primary btn-block bg-blue-dark"
           [disabled]="!loginForm.form.valid || submitting"
         >
           {{ "LogIn" | localize }}
@@ -76,7 +76,7 @@
     </div>
   </form>
   <p *ngIf="isSelfRegistrationAllowed" class="mb-1">
-    <a [routerLink]="['../register']">
+    <a [routerLink]="['../register']" style="color: #0cc4d4">
       <i class="fa fa-plus-circle"></i> {{ "Register" | localize }}
     </a>
   </p>

@@ -10,6 +10,7 @@ using LoanManagement.Authorization.Roles;
 using LoanManagement.Authorization.Users;
 using LoanManagement.MultiTenancy;
 using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace LoanManagement.Authorization
 {
@@ -40,6 +41,14 @@ namespace LoanManagement.Authorization
                   roleManager,
                   claimsPrincipalFactory)
         {
+        }
+        public override Task<AbpLoginResult<Tenant, User>> LoginAsync(UserLoginInfo login, string tenancyName = null)
+        {
+            return base.LoginAsync(login, tenancyName);
+        }
+        public override Task<AbpLoginResult<Tenant, User>> LoginAsync(string userNameOrEmailAddress, string plainPassword, string tenancyName = null, bool shouldLockout = true)
+        {
+            return base.LoginAsync(userNameOrEmailAddress, plainPassword, tenancyName, shouldLockout);
         }
     }
 }

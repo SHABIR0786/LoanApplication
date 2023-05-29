@@ -230,7 +230,6 @@ import { LoanProgressComponent } from "./admin-panel/loan-progress/loan-progress
           {
             path: "home",
             component: HomeComponent,
-            canActivate: [AppRouteGuard],
           },
           {
             path: "users",

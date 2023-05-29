@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;

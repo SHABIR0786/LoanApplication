@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -11,9 +12,9 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class CreditAuthAgreementService : AbpServiceBase, ICreditAuthAgreementService
     {
-        private readonly IRepository<CreditAuthAgreement, long> _repository;
+        private readonly IRepository<Creditauthagreement, long> _repository;
 
-        public CreditAuthAgreementService(IRepository<CreditAuthAgreement, long> repository)
+        public CreditAuthAgreementService(IRepository<Creditauthagreement, long> repository)
         {
             _repository = repository;
         }
@@ -32,7 +33,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var creditAuthAgreement = new CreditAuthAgreement
+                var creditAuthAgreement = new Creditauthagreement
                 {
                     AgreeCreditAuthAgreement = input.AgreeCreditAuthAgreement,
                 };

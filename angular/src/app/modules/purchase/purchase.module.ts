@@ -74,7 +74,7 @@ import { MilitaryInfoComponent } from "./military-info/military-info.component";
     AssetsInfoComponent,
     GovernmentComponent,
     PersonalInfoComponent,
-    MatchPasswordDirective,
+    // MatchPasswordDirective,
     CreditScoreComponent,
     MilitaryInfoComponent,
   ],
