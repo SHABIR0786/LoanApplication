@@ -55,6 +55,7 @@ import { OfflineService } from "./../../services/offline.service";
 import { FormsModule } from "@angular/forms";
 import { ApiService } from "@app/services/api.service";
 import { SharedModule } from "@shared/shared.module";
+import { MilitaryInfoComponent } from "./military-info/military-info.component";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -105,6 +106,7 @@ import { SharedModule } from "@shared/shared.module";
     GovInfoComponent,
     CreditScoreComponent,
     ThanksComponent,
+    MilitaryInfoComponent,
   ],
   providers: [OfflineService, ApiService],
   imports: [CommonModule, RefinancingRoutingModule, FormsModule, SharedModule],

@@ -148,4 +148,8 @@ h5.mt-3 {
   h5.mt-3 {
     font-size: 20px;
   }
+  .nxt_btn {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
 }

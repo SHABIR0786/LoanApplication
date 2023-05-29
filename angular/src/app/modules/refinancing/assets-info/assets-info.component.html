@@ -44,7 +44,7 @@
       <input
         type="text"
         class="form-control form-style mb-0"
-        placeholder="Finantional institution"
+        placeholder="Financial institution"
         [(ngModel)]="model.assetsFinInst"
         name="assetsFinInst"
         #assetsFinInstRef="ngModel"
@@ -54,7 +54,7 @@
         *ngIf="submitted && !assetsFinInstRef.valid"
         class="text-danger d-flex"
       >
-        Finantional institution is required
+        Financial institution is required
       </div>
       <!-- </div>
       <div class="form-group"> -->
@@ -96,7 +96,12 @@
         <div
           class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
         >
-          <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+          <a
+            routerLink="/app/refinance/income/11"
+            class="btn"
+            id="btn-back-blue"
+            >Back</a
+          >
         </div>
         <div
           class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
@@ -165,7 +170,7 @@
 </div>
 
 <div class="main-content" *ngIf="number == 3">
-  <h2>Let’s review and comfirm your assets.</h2>
+  <h2>Let’s review and confirm your assets.</h2>
   <div class="content-area">
     <div class="row">
       <div class="col-md-8">
@@ -214,7 +219,7 @@
 </div>
 
 <div class="main-content" *ngIf="number == 4">
-  <h2>Let’s review and comfirm your assets.</h2>
+  <h2>Let’s review and confirm your assets.</h2>
   <div class="content-area">
     <div class="row">
       <div class="col-md-8">
@@ -262,14 +267,14 @@
           <input
             type="text"
             class="form-control form-style mb-0"
-            placeholder="Finantional institution"
+            placeholder="Financial institution"
             [(ngModel)]="model.assetsFinInst"
             name="assetsFinInst"
             required
             #assetsFinInst="ngModel"
           />
           <div *ngIf="!assetsFinInst.valid" class="text-danger d-flex">
-            Finantional institution is required
+            Financial institution is required
           </div>
           />
           <input

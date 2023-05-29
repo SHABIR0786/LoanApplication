@@ -88,7 +88,7 @@
                 class="form-style"
                 placeholder=""
               />
-              <p>Maxican</p>
+              <p>Mexican</p>
             </div>
           </div>
 
@@ -315,7 +315,7 @@
                 name="race"
                 [(ngModel)]="model.race"
               />
-              <p>Native Hawalian or Other Pacific Islander</p>
+              <p>Native Hawaiian or Other Pacific Islander</p>
             </div>
           </div>
         </div>
@@ -330,7 +330,7 @@
                 name="race"
                 [(ngModel)]="model.race"
               />
-              <p>Native Hawalian</p>
+              <p>Native Hawaiian</p>
             </div>
           </div>
           <div class="row">
@@ -455,7 +455,12 @@
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+        <a
+          routerLink="/app/refinance/assets-info/3"
+          class="btn"
+          id="btn-back-blue"
+          >Back</a
+        >
       </div>
       <div class="col-md-2">
         <a class="btn" id="btn-next-blue" routerLink="/app/refinance/gov/2"

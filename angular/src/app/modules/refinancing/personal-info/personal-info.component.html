@@ -62,7 +62,7 @@
       class="btn btn-primary btn-style btn-blue"
       (click)="model.maritialStatus = 'seperated'; saveStep()"
       [class.blue-active]="model.maritialStatus == 'seperated'"
-      >Saparated</a
+      >Separated</a
     >
     <div class="row">
       <div class="col-md-12 margin-top">
@@ -88,7 +88,7 @@
 <div class="main-content" *ngIf="number == 3">
   <h2 class="little-space">How many dependents will be living in your home?</h2>
   <h6 class="narrow-space">
-    All dependents must be between 0 and 18 years old or must be finnacially
+    All dependents must be between 0 and 18 years old or must be financially
     dependent upon you, the borrower. Do not include yourself or your spouse.
   </h6>
   <div
@@ -274,7 +274,7 @@
       </div>
       <!-- </form> -->
 
-      <p>Are you currently reanting , or do you own? <br /></p>
+      <p>Are you currently renting , or do you own? <br /></p>
 
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -765,7 +765,7 @@
             <input
               type="text"
               class="form-control form-style"
-              placeholder="That’s make us happy! Who refered us?"
+              placeholder="That’s make us happy! Who referred us?"
               [(ngModel)]="model.refferedBy"
             />
 
@@ -963,7 +963,7 @@
               Start date is required
             </div>
 
-            <p>Are you currently reanting , or do you own?</p>
+            <p>Are you currently renting , or do you own?</p>
             <div class="row">
               <div class="col-md-6 offset-md-3">
                 <div class="row margin-top margin-right-btn">
@@ -1477,14 +1477,7 @@
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
               #personalMiddleInitialRef="ngModel"
-              required
             />
-            <div
-              *ngIf="submitted && !personalMiddleInitialRef.valid"
-              class="text-danger d-flex"
-            >
-              Middle Name is required
-            </div>
           </div>
         </div>
       </div>

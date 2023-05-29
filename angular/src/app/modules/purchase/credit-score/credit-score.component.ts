@@ -66,4 +66,24 @@ export class CreditScoreComponent implements OnInit {
       this.router.navigate(["/app/purchase/credit-score/" + step]);
     }
   }
+
+  formatSSN(value) {
+    if (!value) return value;
+    const ssn = value.replace(/[^\d]/g, "");
+    const ssnLength = ssn.length;
+
+    if (ssnLength < 4) return ssn;
+
+    if (ssnLength < 6) {
+      return `${ssn.slice(0, 3)}-${ssn.slice(3)}`;
+    }
+
+    return `${ssn.slice(0, 3)}-${ssn.slice(3, 5)}-${ssn.slice(5, 9)}`;
+  }
+
+  inputSSN(e: any) {
+    const inputField = document.getElementById("ssn");
+    const formattedInputValue = this.formatSSN(e.target.value);
+    e.target.value = formattedInputValue;
+  }
 }

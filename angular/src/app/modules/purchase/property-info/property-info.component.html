@@ -1,6 +1,6 @@
 <!--No# 4 Purchasing  Start -->
 <div class="main-content" *ngIf="number == 1">
-  <h2>Congragulations! What’s the address of your new home?</h2>
+  <h2>Congratulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="address" #f="ngForm">
       <div class="form-group">
@@ -129,7 +129,7 @@
 <div class="main-content" *ngIf="number == 2">
   <h2 class="little-space">Please give us a few details about your contract</h2>
   <h6>
-    if you don’t knoe all the details, that’s okay. We can add those letter.
+    if you don’t know all the details, that’s okay. We can add those letter.
     <i class="fa-solid fa-circle-info"></i>
   </h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
@@ -162,7 +162,6 @@
               value="new"
               name="propertyOption"
               [(ngModel)]="model.propertyOption1"
-              required="required"
               #propertyOption="ngModel"
             />
             <p>New construction</p>
@@ -183,12 +182,7 @@
           </div>
         </div>
       </div>
-      <div
-        *ngIf="submitted && !propertyOption.valid"
-        class="text-danger d-flex"
-      >
-        Property option is required
-      </div>
+
       <div class="row">
         <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
           <a
@@ -221,7 +215,8 @@
     <form action="" id="purchase-price" #f3="ngForm">
       <div class="form-group">
         <input
-          type="number"
+          matInput
+          type="text"
           class="form-control form-style mb-0"
           placeholder="Estimated Home Price"
           [(ngModel)]="model.estimatedPrice"
@@ -229,6 +224,10 @@
           #estimatedPriceRef="ngModel"
           required
           (ngModelChange)="calculatePercent()"
+          prefix="$"
+          mask="separator.2"
+          thousandSeparator=","
+          maxlength="18"
         />
         <div
           *ngIf="submitted && !estimatedPriceRef.valid"
@@ -242,7 +241,7 @@
         <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
           <div class="form-group">
             <input
-              type="number"
+              type="text"
               class="form-control form-half-left mb-0"
               placeholder="Down Payment Amount"
               [(ngModel)]="model.downPaymentAmount"
@@ -250,6 +249,10 @@
               #downPaymentAmountRef="ngModel"
               required
               (ngModelChange)="calculatePercent()"
+              prefix="$"
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
             />
             <div
               *ngIf="submitted && !downPaymentAmountRef.valid"
@@ -717,7 +720,7 @@
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomePlanClick('primaryresidence')"
       [class.orange-active]="model.homePlan == 'primaryresidence'"
-      >Primary Residance</a
+      >Primary Residence</a
     >
 
     <a
@@ -919,7 +922,11 @@
         </div>
         <div class="col-md-2">
           <a
-            [routerLink]="['/app/purchase/personal-info', 1]"
+            [routerLink]="
+              model.isMillitary == true
+                ? ['/app/purchase/military-info', 1]
+                : ['/app/purchase/personal-info', 1]
+            "
             class="btn"
             id="btn-next"
             >Next</a
@@ -1377,7 +1384,7 @@
           (click)="onHomePlanClick('primaryresidence')"
           [class.orange-active]="model.homePlan == 'primaryresidence'"
         >
-          Primary Residance
+          Primary Residence
         </button>
         <button
           type="button"

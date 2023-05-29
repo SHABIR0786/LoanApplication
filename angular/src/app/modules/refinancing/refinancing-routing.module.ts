@@ -10,6 +10,7 @@ import { CreditScoreComponent } from "./credit-score/credit-score.component";
 import { GovInfoComponent } from "./gov-info/gov-info.component";
 import { IncomeInfoComponent } from "./income-info/income-info.component";
 import { IndexComponent } from "./index.component";
+import { MilitaryInfoComponent } from "./military-info/military-info.component";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
 import { PropertyInfoComponent } from "./property-info/property-info.component";
 import { ThanksComponent } from "./thanks/thanks.component";
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: "property-info/:number",
         component: PropertyInfoComponent,
+      },
+      {
+        path: "military-info/:number",
+        component: MilitaryInfoComponent,
       },
       {
         path: "personal-info/:number",

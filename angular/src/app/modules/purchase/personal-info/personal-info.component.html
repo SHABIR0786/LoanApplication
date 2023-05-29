@@ -41,15 +41,8 @@
               placeholder="Middle Initial"
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
-              required
               #personalMiddleInitialRef="ngModel"
             />
-            <div
-              *ngIf="submitted && !personalMiddleInitialRef.valid"
-              class="text-danger d-flex"
-            >
-              Middle Name is required
-            </div>
           </div>
         </div>
       </div>
@@ -222,7 +215,7 @@
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
-            routerLink="/app/purchase/property-info/1"
+            routerLink="/app/purchase/property-info/10"
             class="btn"
             id="btn-back"
             >Back</a
@@ -262,7 +255,7 @@
     <input
       type="text"
       class="form-control col-md-6 form-style offset-lg-3 mb-0"
-      placeholder="That’s make us happy! Who refered us?"
+      placeholder="That’s make us happy! Who referred us?"
       [(ngModel)]="model.refferedBy"
       name="refferedBy"
       required
@@ -270,7 +263,7 @@
       *ngIf="model.isSomeOneRefer == 1"
     />
     <div *ngIf="submitted && !refferedByRef.valid" class="text-danger d-flex">
-      Reffered by is required
+      Referred by is required
     </div>
     <div class="row">
       <div class="col-md-3 offset-md-3">
@@ -294,7 +287,7 @@
   <h2>Are you applying on your own, or jointly with another person?</h2>
   <h6 class="narrow-space">
     if applying with another person, we’ll refer to that person as your
-    co-borrower throughout the applcation.
+    co-borrower throughout the application.
   </h6>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
@@ -356,7 +349,7 @@
       (click)="maritalClick('seperated')"
       class="btn btn-primary btn-style btn-orange"
       [class.orange-active]="model.maritialStatus == 'seperated'"
-      >Saparated</a
+      >Separated</a
     >
 
     <div class="row">
@@ -379,7 +372,7 @@
 <div class="main-content" *ngIf="number == 5">
   <h2 class="little-space">How many dependents will be living in your home?</h2>
   <h6 class="narrow-space">
-    All dependents must be between 0 and 18 years old or must be finnacially
+    All dependents must be between 0 and 18 years old or must be financially
     dependent upon you, the borrower. Do not include yourself or your spouse.
   </h6>
   <div
@@ -564,7 +557,7 @@
         </div>
       </div>
 
-      <p>Are you currently reanting , or do you own?</p>
+      <p>Are you currently renting , or do you own?</p>
 
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -863,14 +856,7 @@
                   placeholder="Middle Initial"
                   name="personalMiddleInitial"
                   #personalMiddleInitialRef="ngModel"
-                  required
                 />
-                <div
-                  *ngIf="!personalMiddleInitialRef.valid"
-                  class="text-danger d-flex"
-                >
-                  Middle Name is required
-                </div>
               </div>
             </div>
           </div>
@@ -969,7 +955,7 @@
             <input
               type="text"
               class="form-control col-md-6 form-style offset-lg-3 mb-0"
-              placeholder="That’s make us happy! Who refered us?"
+              placeholder="That’s make us happy! Who referred us?"
               [(ngModel)]="model.refferedBy"
               name="refferedBy"
               *ngIf="model.isSomeOneRefer == 1"
@@ -1029,7 +1015,7 @@
               (click)="maritalClick('seperated')"
               class="btn btn-primary btn-style btn-orange offset-lg-3"
               [class.orange-active]="model.maritialStatus == 'seperated'"
-              >Saparated</a
+              >Separated</a
             >
             <div class="row">
               <div class="col-md-12">
@@ -1227,7 +1213,7 @@
             </div>
           </div>
           <div class="button-list">
-            <p class="edit-info">Are you currently reanting , or do you own?</p>
+            <p class="edit-info">Are you currently renting , or do you own?</p>
           </div>
 
           <div class="row">

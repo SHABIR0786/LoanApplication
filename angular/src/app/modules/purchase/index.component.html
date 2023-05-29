@@ -94,7 +94,7 @@
                           yes: a == 2
                         }"
                       ></i
-                      ><span>Personal Info</span>
+                      ><span>Military Info</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
@@ -110,7 +110,7 @@
                           yes: a == 3
                         }"
                       ></i
-                      ><span>Income</span>
+                      ><span>Personal Info</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
@@ -126,7 +126,7 @@
                           yes: a == 4
                         }"
                       ></i
-                      ><span>Assets</span>
+                      ><span>Income</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
@@ -142,7 +142,7 @@
                           yes: a == 5
                         }"
                       ></i
-                      ><span>Government</span>
+                      ><span>Assets</span>
                     </li>
                     <li class="nav-item nav-link">
                       <img src="assets/img/seperator.svg" alt="" />
@@ -156,6 +156,22 @@
                         [ngClass]="{
                           'fa-circle-check active': a > 6,
                           yes: a == 6
+                        }"
+                      ></i
+                      ><span>Government</span>
+                    </li>
+                    <li class="nav-item nav-link">
+                      <img src="assets/img/seperator.svg" alt="" />
+                    </li>
+                    <li
+                      class="nav-item nav-link"
+                      [ngClass]="{ active: a == 7 }"
+                    >
+                      <i
+                        class="fas fa-solid fa-circle"
+                        [ngClass]="{
+                          'fa-circle-check active': a > 7,
+                          yes: a == 7
                         }"
                       ></i
                       ><span>Credit Scores</span>

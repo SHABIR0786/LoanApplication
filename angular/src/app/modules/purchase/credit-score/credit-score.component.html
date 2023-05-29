@@ -80,7 +80,7 @@
 <!-- section 29C starts -->
 <div class="main-content" *ngIf="number == 2">
   <h2>
-    Last Step! Cradit confirmation! We’ll provide your cradit scores along with
+    Last Step! Credit confirmation! We’ll provide your credit scores along with
     accurate rates and a pre-approval!
   </h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
@@ -97,10 +97,21 @@
           name="ssn"
           required
           #ssnRef="ngModel"
+          (input)="inputSSN($event)"
+          id="ssn"
+          minlength="9"
         />
-        <div *ngIf="submitted && !ssnRef.valid" class="text-danger d-flex">
-          Social Security Number is required
+        <!-- <div *ngIf="submitted && !ssnRef.valid" class="text-danger d-flex">
+            Social Security Number is required
+        </div> -->
+
+        <div
+          *ngIf="submitted && !ssnRef.valid && ssnRef.errors?.minlength"
+          class="text-danger d-flex"
+        >
+          Please enter a valid 9 digit SSN.
         </div>
+        <!-- </div> -->
       </div>
       <div class="form-group">
         <input
@@ -111,9 +122,14 @@
           name="ssnConfirm"
           required
           #ssnConfirmRef="ngModel"
+          (input)="inputSSN($event)"
+          id="ssn"
+          minlength="9"
         />
         <div
-          *ngIf="submitted && !ssnConfirmRef.valid"
+          *ngIf="
+            submitted && !ssnConfirmRef.valid && ssnConfirmRef.errors?.minlength
+          "
           class="text-danger d-flex"
         >
           Confirm SSN is required
@@ -138,9 +154,9 @@
       </div>
       <p>
         By Clicking “ Next” I authorize and consent to EZ Online Mortgage,
-        making inquiriesninto my credit as discribed under the Federal Fair
-        Credit Reporting Act(15 U.S.C., 1681 (a), etseq.). Please click here for
-        our full terms and conditions.
+        making inquiries into my credit as described under the Federal Fair
+        Credit Reporting Act(15 U.S.C., 1681 (a), et seq.). Please click here
+        for our full terms and conditions.
       </p>
 
       <div class="row">

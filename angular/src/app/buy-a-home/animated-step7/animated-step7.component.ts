@@ -28,6 +28,8 @@ export class AnimatedStep7Component implements OnInit {
 
   downPayment = 0;
   downPaymentPercent = 0;
+  Percentage = null;
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       downPayment: [null, Validators.required],
@@ -37,22 +39,12 @@ export class AnimatedStep7Component implements OnInit {
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/buy-a-home-animated-step1"]);
     }
+
+    this.Percentage = this.form.value.downPaymentPercent;
   }
 
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step6"]);
-  }
-
-  percentChange(e) {
-    if (e.target.value > 100) {
-      this.form.controls["downPaymentPercent"].setValue(100);
-    }
-    if (e.target.value < 0) {
-      this.form.controls["downPaymentPercent"].setValue(0);
-    }
-    this.form.controls["downPayment"].setValue(
-      this._homeBuyingDataService.data.purchasePrice * (e.target.value / 100)
-    );
   }
 
   downPaymentChange(e) {
@@ -66,6 +58,22 @@ export class AnimatedStep7Component implements OnInit {
       (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
         parseFloat(this._homeBuyingDataService.data.purchasePrice)
     );
+
+    this.Percentage =
+      (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
+      parseFloat(this._homeBuyingDataService.data.purchasePrice);
+    this.Percentage = this.Percentage.toFixed(0);
+
+    // if (this.form.value.downPayment <= this.form.value.estimatePrice) {
+    //   this.Percentage =
+    //     (this.form.value.downPayment / this.form.value.estimatePrice) * 100;
+    //   this.Percentage = this.Percentage.toFixed(0);
+    //   this.submitted = true;
+    // } else {
+    //   this.form.controls["downPayment"].setValue(0);
+    //   this.Percentage = 0;
+    //   this.submitted = false;
+    // }
   }
 
   proceedToNext() {
