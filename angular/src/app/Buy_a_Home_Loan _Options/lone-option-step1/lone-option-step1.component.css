@@ -207,4 +207,7 @@ h5.mt-3 {
   h5.mt-3 {
     font-size: 20px;
   }
+  .card_pad {
+    padding: 0.9rem;
+  }
 }

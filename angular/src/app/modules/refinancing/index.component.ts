@@ -4,6 +4,7 @@ const ROUTE_DATA = [
   // "/app/refinance/",
   "/app/refinance/welcome/",
   "/app/refinance/property-info/",
+  "/app/refinance/military-info/",
   "/app/refinance/personal-info/",
   "/app/refinance/income-info/",
   "/app/refinance/assets-info/",

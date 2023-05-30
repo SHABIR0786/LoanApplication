@@ -396,7 +396,12 @@
       <!-- </form> -->
       <div class="row">
         <div class="col-md-3 offset-md-3">
-          <a (click)="history.back()" class="btn" id="btn-back-blue">Back</a>
+          <a
+            routerLink="/app/refinance/personal-info/6"
+            class="btn"
+            id="btn-back-blue"
+            >Back</a
+          >
         </div>
         <div class="col-md-2">
           <a (click)="onNextClick(f3, 4)" class="btn" id="btn-next-blue"
@@ -438,7 +443,7 @@
         <input
           type="number"
           class="form-control form-style mb-0"
-          placeholder="Estimated Annual Base Salery"
+          placeholder="Estimated Annual Base Salary"
           [(ngModel)]="model.estAnnualBaseSalary"
           name="estAnnualBaseSalary"
           #estAnnualBaseSalaryRef="ngModel"
@@ -572,7 +577,7 @@
       <input
         type="text"
         class="form-control form-style mb-0"
-        placeholder="Estimated Annual Base Salery"
+        placeholder="Estimated Annual Base Salary"
       />
       <input
         type="text"
@@ -1145,7 +1150,7 @@
             <input
               type="text"
               class="form-control form-style mb-0"
-              placeholder="Estimated Annual Base Salery"
+              placeholder="Estimated Annual Base Salary"
               [(ngModel)]="model.estAnnualBaseSalary"
               name="estAnnualBaseSalary"
               #estAnnualBaseSalaryRef="ngModel"

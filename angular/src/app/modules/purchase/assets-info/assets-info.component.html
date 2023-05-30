@@ -30,7 +30,7 @@
         <input
           type="text"
           class="form-control form-style mb-0"
-          placeholder="Finantional institution"
+          placeholder="Financial institution"
           [(ngModel)]="model.finInstitute"
           name="finInstitute"
           required
@@ -40,10 +40,10 @@
           *ngIf="submitted && !finInstituteRef.valid"
           class="text-danger d-flex"
         >
-          Finantional institution is required
+          Financial institution is required
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group input-box">
         <input
           type="number"
           class="form-control form-style mb-0"
@@ -147,7 +147,7 @@
 <!-- click Yes button it will move you to the section 28B-->
 <!-- section 28B starts -->
 <div class="main-content" *ngIf="number == 3">
-  <h2>Let’s review and comfirm your assets.</h2>
+  <h2>Let’s review and confirm your assets.</h2>
   <div class="content-area">
     <div class="row">
       <div class="col-md-8">
@@ -195,7 +195,7 @@
 <!-- Click edit button it will open section 28C -->
 <!-- section 28C starts -->
 <div class="main-content" *ngIf="number == 4">
-  <h2>Let’s review and comfirm your assets.</h2>
+  <h2>Let’s review and confirm your assets.</h2>
   <div class="content-area">
     <div class="row">
       <div class="col-md-8">
@@ -257,7 +257,7 @@
               #finInstituteRef="ngModel"
             />
             <div *ngIf="!finInstituteRef.valid" class="text-danger d-flex">
-              Finantional institution is required
+              Financial institution is required
             </div>
           </div>
           <div class="form-group">

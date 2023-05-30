@@ -1,13 +1,8 @@
 <!--No# 4 Purchasing  Start -->
 <div class="main-content" *ngIf="number == 1">
-  <h2>Congragulations! What’s the address of your new home?</h2>
+  <h2>Congratulations! What’s the address of your new home?</h2>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <form
-      action=""
-      id="address"
-      #f="ngForm"
-      (ngSubmit)="f.valid && onPehlaForm(f)"
-    >
+    <form action="" id="address" #f="ngForm">
       <div class="form-group">
         <input
           type="text"
@@ -70,7 +65,6 @@
               class="form-select form-style form-control mb-0"
               [(ngModel)]="model.newHomeState"
               name="newHomeState"
-              required
               #newHomeStateRef="ngModel"
             >
               <option [value]="s.id" *ngFor="let s of states">
@@ -127,7 +121,7 @@
 <div class="main-content" *ngIf="number == 2">
   <h2 class="little-space">Please give us a few details about your contract</h2>
   <h6>
-    if you don’t knoe all the details, that’s okay. We can add those letter.
+    if you don’t know all the details, that’s okay. We can add those letter.
     <i class="fa-solid fa-circle-info"></i>
   </h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
@@ -151,38 +145,51 @@
           <p>New construction</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <input
-            type="radio"
-            class="form-style"
-            placeholder=""
-            value="Foreclosure"
-            name="propertyOption"
-            [(ngModel)]="model.propertyOption1"
-          />
-          <p>Foreclosure / Bank Owned</p>
+      <p class="text-center">Do either of these apply to the property?</p>
+      <div class="radio-input">
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              type="radio"
+              class="form-style mb-0"
+              placeholder=""
+              value="new"
+              name="propertyOption"
+              [(ngModel)]="model.propertyOption1"
+              #propertyOption="ngModel"
+            />
+            <p>New construction</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              type="radio"
+              class="form-style"
+              placeholder=""
+              value="Foreclosure"
+              name="propertyOption"
+              [(ngModel)]="model.propertyOption1"
+              #propertyOption="ngModel"
+            />
+            <p>Foreclosure / Bank Owned</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
-        <a
-          [routerLink]="['/app/purchase/property-info', 1]"
-          class="btn"
-          id="btn-back"
-          role="button"
-          >Back</a
-        >
-      </div>
-      <div class="col-lg-2">
-        <a
-          [routerLink]="['/app/purchase/property-info', 3]"
-          class="btn"
-          id="btn-next"
-          (click)="onNextTwoClick()"
-          >Next</a
-        >
+
+      <div class="row">
+        <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <a
+            [routerLink]="['/app/purchase/property-info', 1]"
+            class="btn"
+            id="btn-back"
+            role="button"
+            >Back</a
+          >
+        </div>
+        <div class="col-lg-2">
+          <a class="btn" id="btn-next" (click)="onPehlaForm(f, 3)">Next</a>
+        </div>
       </div>
     </div>
   </div>
@@ -208,11 +215,74 @@
     <div class="row">
       <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
         <input
-          type="number"
-          class="form-control form-half-left"
-          placeholder="Down Payment Amount"
-          [(ngModel)]="model.downPaymentAmount"
+          matInput
+          type="text"
+          class="form-control form-style mb-0"
+          placeholder="Estimated Home Price"
+          [(ngModel)]="model.estimatedPrice"
+          name="estimatedPrice"
+          #estimatedPriceRef="ngModel"
+          required
+          (ngModelChange)="calculatePercent()"
+          prefix="$"
+          mask="separator.2"
+          thousandSeparator=","
+          maxlength="18"
         />
+        <div
+          *ngIf="submitted && !estimatedPriceRef.valid"
+          class="text-danger d-flex"
+        >
+          Estimated home price is required
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-sm-4 col-xs-4 padding-right">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-half-left mb-0"
+              placeholder="Down Payment Amount"
+              [(ngModel)]="model.downPaymentAmount"
+              name="downPaymentAmount"
+              #downPaymentAmountRef="ngModel"
+              required
+              (ngModelChange)="calculatePercent()"
+              prefix="$"
+              mask="separator.2"
+              thousandSeparator=","
+              maxlength="18"
+            />
+            <div
+              *ngIf="submitted && !downPaymentAmountRef.valid"
+              class="text-danger d-flex"
+            >
+              Down payment amount is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
+          <div class="form-group">
+            <span id="percent-sign">%</span>
+            <input
+              type="number"
+              class="form-control form-half-right mb-0"
+              placeholder="Percent"
+              [(ngModel)]="model.downPaymentPercent"
+              name="downPaymentPercent"
+              #downPaymentPercentRef="ngModel"
+              required
+              (ngModelChange)="calculateAmount()"
+            />
+            <div
+              *ngIf="submitted && !downPaymentPercentRef.valid"
+              class="text-danger d-flex"
+            >
+              Down payment percent is required
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 padding-left">
         <input
@@ -562,7 +632,8 @@
       [routerLink]="['/app//purchase/property-info', 9]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onHomePlanClick('primaryresidence')"
-      >Primary Residance</a
+      [class.orange-active]="model.homePlan == 'primaryresidence'"
+      >Primary Residence</a
     >
 
     <a
@@ -752,7 +823,11 @@
         </div>
         <div class="col-md-2">
           <a
-            [routerLink]="['/app/purchase/personal-info', 1]"
+            [routerLink]="
+              model.isMillitary == true
+                ? ['/app/purchase/military-info', 1]
+                : ['/app/purchase/personal-info', 1]
+            "
             class="btn"
             id="btn-next"
             >Next</a
@@ -975,13 +1050,31 @@
 
       <h6 id="padding-up">Property Usage</h6>
 
-      <button type="button" class="btn btn-primary btn-style btn-orange">
-        Primary Residance
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-primaryresidence"
+        (click)="onHomePlanClick('primaryresidence')"
+        [class.orange-active]="model.homePlan == 'primaryresidence'"
+      >
+        Primary Residence
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-condo"
+        (click)="onHomePlanClick('condo')"
+        [class.orange-active]="model.homePlan == 'condo'"
+      >
         Condo
       </button>
-      <button type="button" class="btn btn-primary btn-style btn-orange">
+      <button
+        type="button"
+        class="btn btn-primary btn-style btn-orange"
+        id="property-coop"
+        (click)="onHomePlanClick('coop')"
+        [class.orange-active]="model.homePlan == 'coop'"
+      >
         Co-op
       </button>
 

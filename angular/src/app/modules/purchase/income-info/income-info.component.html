@@ -273,7 +273,7 @@
         <input
           type="number"
           class="form-control form-style mb-0"
-          placeholder="Estimated Annual Base Salery"
+          placeholder="Estimated Annual Base Salary"
           [(ngModel)]="_model.estimatedAnnualBaseSalary"
           name="estimatedAnnualBaseSalary"
           required
@@ -283,7 +283,7 @@
           *ngIf="submitted && !estimatedAnnualBaseSalaryRef.valid"
           class="text-danger d-flex"
         >
-          Annual Base Salery is required
+          Annual Base Salary is required
         </div>
       </div>
       <div class="form-group">
@@ -477,7 +477,7 @@
           <p>Employer Start Date: {{ _model.estimatedStartDate }}</p>
           <p>Job Title: {{ _model.jobTitle }}</p>
           <p>
-            Estimated Annual Base Saleary: ${{
+            Estimated Annual Base Salary: ${{
               _model.estimatedAnnualBaseSalary
             }}
           </p>
@@ -651,12 +651,18 @@
           <input
             type="number"
             class="form-control form-style mb-0"
-            placeholder="Estimated Annual Base Salery"
+            placeholder="Estimated Annual Base Salary"
             [(ngModel)]="_model.estimatedAnnualBaseSalary"
             name="estimatedAnnualBaseSalary"
             required
             #estimatedAnnualBaseSalaryRef="ngModel"
           />
+          <div
+            *ngIf="!estimatedAnnualBaseSalaryRef.valid"
+            class="text-danger d-flex"
+          >
+            Estimated Annual Base Salary is required
+          </div>
           <input
             type="number"
             class="form-control form-style mb-0"

@@ -209,3 +209,13 @@ h2 {
     margin-left: 312px;
   }
 }
+
+.slide-value-percent {
+  position: relative;
+  bottom: 68px;
+  left: 113px;
+  color: #ffffff !important;
+  font-size: 20px;
+  /* border-left: 1px solid black; */
+  padding: 12px;
+}

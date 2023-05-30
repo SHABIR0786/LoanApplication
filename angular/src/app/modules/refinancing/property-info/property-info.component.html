@@ -207,7 +207,12 @@
         These numbers help us give you a new estimated loan amount.
       </h6>
       <h4 class="new-loan">New Loan Estimate</h4>
-      <h4>$3,458,476</h4>
+      <h4>
+        ${{
+          (model.propertyEstimatedValue * model.propertyLoanBalance) /
+            model.propertCashOutAmount
+        }}
+      </h4>
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
@@ -504,7 +509,8 @@
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
       (click)="onCurHome('Primary_Residance')"
-      >Primary Residance</a
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Primary_Residance'"
+      >Primary Residence</a
     >
     <a
       routerLink="/app/refinance/property-info/8"
@@ -664,7 +670,11 @@
       </div>
       <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6">
         <a
-          routerLink="/app/refinance/property-info/11"
+          [routerLink]="
+            model.isMilitaryMember == 1
+              ? ['/app/refinance/military-info', 1]
+              : ['/app/refinance/property-info', 11]
+          "
           class="btn"
           id="btn-next-blue"
           >Next</a
@@ -1023,13 +1033,17 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Primary_Residance"
+      (click)="onCurHome('Primary_Residance')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Primary_Residance'"
     >
-      Primary Residance
+      Primary Residence
     </button>
     <button
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Second_Home"
+      (click)="onCurHome('Second_Home')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Second_Home'"
     >
       Second Home
     </button>
@@ -1037,6 +1051,8 @@
       type="button"
       class="btn btn-primary btn-style btn-blue"
       id="Rental"
+      (click)="onCurHome('Rental')"
+      [class.blue-active]="model.currentlyUsingHomeAs === 'Rental'"
     >
       Investment / Rental
     </button>
@@ -1124,14 +1140,7 @@
               [(ngModel)]="model.propertyMiddleInitial"
               name="propertyMiddleInitial"
               #propertyMiddleInitialRef="ngModel"
-              required
             />
-            <div
-              *ngIf="submitted && !propertyMiddleInitialRef.valid"
-              class="text-danger d-flex"
-            >
-              Middle Name is required
-            </div>
           </div>
         </div>
       </div>
@@ -1324,7 +1333,7 @@
       *ngIf="model.isSomeoneRefer == 1"
       type="text"
       class="form-control form-style"
-      placeholder="That’s make us happy! Who refered us?"
+      placeholder="That’s make us happy! Who referred us?"
       [(ngModel)]="model.refferedBy"
     />
 
@@ -1362,7 +1371,7 @@
   <h2>Are you applying on your own, or jointly with another person?</h2>
   <h6 class="narrow-space">
     if applying with another person, we’ll refer to that person as your
-    co-borrower throughout the applcation.
+    co-borrower throughout the application.
   </h6>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"

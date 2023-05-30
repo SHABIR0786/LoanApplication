@@ -7,9 +7,46 @@
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
-    <!-- <form action="" id="address"> -->
-    <div class="row">
-      <div class="col-md-6">
+    <form
+      action=""
+      id="personal"
+      #f="ngForm"
+      [appMatchPassword]="['personalPassword', 'personalPasswordCon']"
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style mb-0"
+              placeholder="Legal First Name"
+              [(ngModel)]="model.personalLegalFirstName"
+              name="personalLegalFirstName"
+              required
+              #personalLegalFirstNameRef="ngModel"
+            />
+            <div
+              *ngIf="submitted && !personalLegalFirstNameRef.valid"
+              class="text-danger d-flex"
+            >
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-style mb-0"
+              placeholder="Middle Initial"
+              [(ngModel)]="model.personalMiddleInitial"
+              name="personalMiddleInitial"
+              #personalMiddleInitialRef="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
         <input
           type="text"
           class="form-control form-style"
@@ -25,107 +62,99 @@
           [(ngModel)]="model.personalMiddleInitial"
         />
       </div>
-    </div>
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Legal Last Name"
-      [(ngModel)]="model.personalLegalLastName"
-    />
-    <input
-      type="text"
-      class="form-control form-style"
-      placeholder="Phone Number"
-      [(ngModel)]="model.personalPhoneNumber"
-    />
-    <input
-      type="email"
-      class="form-control form-style"
-      placeholder="Email Address"
-      [(ngModel)]="model.personalEmailAddress"
-    />
-    <input
-      type="password"
-      class="form-control form-style"
-      placeholder="Password"
-      [(ngModel)]="model.personalPassword"
-    />
-    <input
-      type="password"
-      class="form-control form-style"
-      placeholder="Confirm Password"
-      [(ngModel)]="model.personalPasswordCon"
-    />
-    <div class="row">
-      <div class="col-md-12">
-        <div class="password-details">
-          <p>
-            Passwords must be at least 8 characters and use at least three of
-            the four available character types: lowercase and uppercase letters,
-            numbers, and symbols.
-          </p>
-        </div>
-      </div>
-    </div>
-    <p>Have an account?</p>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="terms">
-          <p>
-            By entering phone number and clicking the "Next" button, you are
-            providing express written consent for EZ Online Mortgage. and its
-            affiliates, agents, and service providers to contact you at that
-            number regarding products or services, including via auto-dialed
-            and/or prerecorded or artificial voice calls and text messages (SMS
-            and MMS), or email even if your telephone number is a cellular
-            number or on a corporate, state, or the National Do Not Call
-            Registry <span class="orange-text">(DNC)</span> or other do not
-            contact list.
-          </p>
-
-          <p>
-            You may also reach us at
-            <span class="orange-text">(800) 930-8195</span> or by utilizing our
-            services at <span class="orange-text">Loan Options</span>. You may
-            opt-out at any time by emailing us a Do Not Call Request at
-            <span class="orange-text"
-              ><a href="">dnc@ezonlinemortgage.com</a></span
-            >
-            and providing your phone number. Your consent is not required or a
-            condition of any purchase. Message and data rates may apply.
-          </p>
-
-          <p>
-            You also consent to our
-            <span class="orange-text"
-              >SMS terms, Privacy Policy, Terms of Use,</span
-            >
-            and <span class="orange-text">CA Terms</span> of Use. By
-            communicating with us by phone you consent to calls being recorded
-            and monitored.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- </form> -->
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a routerLink="/app/purchase/property-info/1" class="btn" id="btn-back"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <a
-          routerLink="/app/purchase/personal-info/2"
-          (click)="onPersClick()"
-          class="btn"
-          id="btn-next"
-          >Next</a
-        >
+    </form>
+  </div>
+  <input
+    type="text"
+    class="form-control form-style"
+    placeholder="Legal Last Name"
+    [(ngModel)]="model.personalLegalLastName"
+  />
+  <input
+    type="text"
+    class="form-control form-style"
+    placeholder="Phone Number"
+    [(ngModel)]="model.personalPhoneNumber"
+  />
+  <input
+    type="email"
+    class="form-control form-style"
+    placeholder="Email Address"
+    [(ngModel)]="model.personalEmailAddress"
+  />
+  <input
+    type="password"
+    class="form-control form-style"
+    placeholder="Password"
+    [(ngModel)]="model.personalPassword"
+  />
+  <input
+    type="password"
+    class="form-control form-style"
+    placeholder="Confirm Password"
+    [(ngModel)]="model.personalPasswordCon"
+  />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="password-details">
+        <p>
+          Passwords must be at least 8 characters and use at least three of the
+          four available character types: lowercase and uppercase letters,
+          numbers, and symbols.
+        </p>
       </div>
     </div>
   </div>
+  <p>Have an account?</p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms">
+        <p>
+          By entering phone number and clicking the "Next" button, you are
+          providing express written consent for EZ Online Mortgage. and its
+          affiliates, agents, and service providers to contact you at that
+          number regarding products or services, including via auto-dialed
+          and/or prerecorded or artificial voice calls and text messages (SMS
+          and MMS), or email even if your telephone number is a cellular number
+          or on a corporate, state, or the National Do Not Call Registry
+          <span class="orange-text">(DNC)</span> or other do not contact list.
+        </p>
+
+        <p>
+          You may also reach us at
+          <span class="orange-text">(800) 930-8195</span> or by utilizing our
+          services at <span class="orange-text">Loan Options</span>. You may
+          opt-out at any time by emailing us a Do Not Call Request at
+          <span class="orange-text"
+            ><a href="">dnc@ezonlinemortgage.com</a></span
+          >
+          and providing your phone number. Your consent is not required or a
+          condition of any purchase. Message and data rates may apply.
+        </p>
+
+        <p>
+          You also consent to our
+          <span class="orange-text"
+            >SMS terms, Privacy Policy, Terms of Use,</span
+          >
+          and <span class="orange-text">CA Terms</span> of Use. By communicating
+          with us by phone you consent to calls being recorded and monitored.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <a routerLink="/app/purchase/property-info/10" class="btn" id="btn-back"
+        >Back</a
+      >
+    </div>
+    <div class="col-md-2">
+      <a (click)="onPersClick(f, 2)" class="btn" id="btn-next">Next</a>
+    </div>
+  </div>
+  <!-- </div> -->
   <div class="content-footer">
     <p>Already have an account | <a href="">Log in</a></p>
     <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
@@ -149,7 +178,19 @@
       (click)="referClick(false)"
       >No</a
     >
-
+    <input
+      type="text"
+      class="form-control col-md-6 form-style offset-lg-3 mb-0"
+      placeholder="That’s make us happy! Who referred us?"
+      [(ngModel)]="model.refferedBy"
+      name="refferedBy"
+      required
+      #refferedByRef="ngModel"
+      *ngIf="model.isSomeOneRefer == 1"
+    />
+    <div *ngIf="submitted && !refferedByRef.valid" class="text-danger d-flex">
+      Referred by is required
+    </div>
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/personal-info/1" class="btn" id="btn-back"
@@ -171,7 +212,7 @@
   <h2>Are you applying on your own, or jointly with another person?</h2>
   <h6 class="narrow-space">
     if applying with another person, we’ll refer to that person as your
-    co-borrower throughout the applcation.
+    co-borrower throughout the application.
   </h6>
   <div
     class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
@@ -227,7 +268,8 @@
       routerLink="/app/purchase/personal-info/5"
       (click)="maritalClick('seperated')"
       class="btn btn-primary btn-style btn-orange"
-      >Saparated</a
+      [class.orange-active]="model.maritialStatus == 'seperated'"
+      >Separated</a
     >
 
     <div class="row">
@@ -249,7 +291,7 @@
 <div class="main-content" *ngIf="number == 5">
   <h2 class="little-space">How many dependents will be living in your home?</h2>
   <h6 class="narrow-space">
-    All dependents must be between 0 and 18 years old or must be finnacially
+    All dependents must be between 0 and 18 years old or must be financially
     dependent upon you, the borrower. Do not include yourself or your spouse.
   </h6>
   <div
@@ -407,323 +449,729 @@
           </div>
         </div>
       </div>
-    </div>
+      <div class="form-group">
+        <input
+          type="date"
+          class="form-control form-style mb-0"
+          placeholder="When did you start living here?"
+          [(ngModel)]="model.currentStartLivingDate"
+          name="currentStartLivingDate"
+          #currentStartLivingDateRef="ngModel"
+          required
+        />
+        <div
+          *ngIf="submitted && !currentStartLivingDateRef.valid"
+          class="text-danger d-flex"
+        >
+          Start living date is required
+        </div>
+      </div>
 
-    <div class="row margin-top">
-      <div class="col-md-3 offset-md-3">
-        <a routerLink="/app/purchase/personal-info/5" class="btn" id="btn-back"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <a
-          routerLink="/app/purchase/personal-info/7"
-          class="btn"
-          id="btn-next"
-          (click)="onPersonalClick()"
-          >Next</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
-</div>
-<div class="main-content" *ngIf="number == 7">
-  <h2 id="padding-zero">Tell us about your monthly expenses?</h2>
-  <h6>Simply provide your monthly rent.</h6>
-  <div
-    class="button-list margin-top extra-margin col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <!-- <form action=""> -->
+      <p>Are you currently renting , or do you own?</p>
 
-    <input
-      type="number"
-      class="form-control form-style"
-      placeholder="Estimated Monthly Expenses"
-      [(ngModel)]="model.monthlyExpress"
-    />
+      <div class="row margin-top">
+        <div class="col-md-3 offset-md-3">
+          <a
+            routerLink="/app/purchase/personal-info/5"
+            class="btn"
+            id="btn-back"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a
+            routerLink="/app/purchase/personal-info/7"
+            class="btn"
+            id="btn-next"
+            (click)="onPersonalClick()"
+            >Next</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
+    </div>
+  </div>
+  <div class="main-content" *ngIf="number == 7">
+    <h2 id="padding-zero">Tell us about your monthly expenses?</h2>
+    <h6>Simply provide your monthly rent.</h6>
+    <div
+      class="button-list margin-top extra-margin col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    >
+      <!-- <form action=""> -->
 
-    <!-- </form> -->
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a routerLink="/app/purchase/personal-info/6" class="btn" id="btn-back"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <a
-          routerLink="/app/purchase/personal-info/8"
-          class="btn"
-          id="btn-next"
-          (click)="onExpenClick()"
-          >Next</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
-</div>
-<div class="main-content" *ngIf="number == 8">
-  <h2>Let's take a few seconds to review and confirm your info again.</h2>
-  <div class="content-area">
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Information</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <a routerLink="/app/purchase/personal-info/9" class="btn" id="btn-edit"
-          >Edit</a
-        >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Legal First Name : Jhon</p>
-          <p>Legal Last Name: Cole</p>
-          <p>Phone Number: (512) 318-2199</p>
-          <p>Email Address: jon24@gmail.com</p>
+      <input
+        type="number"
+        class="form-control form-style"
+        placeholder="Estimated Monthly Expenses"
+        [(ngModel)]="model.monthlyExpress"
+      />
+
+      <!-- </form> -->
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <a
+            routerLink="/app/purchase/personal-info/6"
+            class="btn"
+            id="btn-back"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a
+            routerLink="/app/purchase/personal-info/8"
+            class="btn"
+            id="btn-next"
+            (click)="onExpenClick()"
+            >Next</a
+          >
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Information</h6>
+  </div>
+  <div class="main-content" *ngIf="number == 8">
+    <h2>Let's take a few seconds to review and confirm your info again.</h2>
+    <div class="content-area">
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <a
+            routerLink="/app/purchase/personal-info/9"
+            class="btn"
+            id="btn-edit"
+            >Edit</a
+          >
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Legal First Name : Jhon</p>
+            <p>Legal Last Name: Cole</p>
+            <p>Phone Number: (512) 318-2199</p>
+            <p>Email Address: jon24@gmail.com</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Did someone refer you to EZ Online Mortgage? No</p>
-          <p>
-            Are you applying on your own, or jointly with another person?
-            Applying on my own
-          </p>
-          <p>Marital Status: Unmarried</p>
-          <p>How many dependents will be living in your home? 0</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Edit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Did someone refer you to EZ Online Mortgage? No</p>
+            <p>
+              Are you applying on your own, or jointly with another person?
+              Applying on my own
+            </p>
+            <p>Marital Status: Unmarried</p>
+            <p>How many dependents will be living in your home? 0</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Borrower Residence</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Edit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Address: 5902 Balcones Drive</p>
+            <p>City or Town: Austin</p>
+            <p>State: TX</p>
+            <p>ZIP Code: 78731</p>
+            <p>When did you start living here?: Jan 2017</p>
+            <p>Are you currently renting, or do you own?: Rent</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Monthly Expenses</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Edit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Estimated Monthly Expenses: $3,000</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Residence</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Address: 5902 Balcones Drive</p>
-          <p>City or Town: Austin</p>
-          <p>State: TX</p>
-          <p>ZIP Code: 78731</p>
-          <p>When did you start living here?: Jan 2017</p>
-          <p>Are you currently renting, or do you own?: Rent</p>
+    <div
+      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    >
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <a
+            routerLink="/app/purchase/personal-info/7"
+            class="btn"
+            id="btn-back"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <!-- routerLink="/app/purchase/income-info/1" -->
+          <a (click)="saveToDb()" class="btn" id="btn-next">Next</a>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Monthly Expenses</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Estimated Monthly Expenses: $3,000</p>
+  </div>
+  <div class="main-content" *ngIf="number == 9">
+    <h2>Let's take a few seconds to review and confirm your info again.</h2>
+    <div class="content-area">
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <a
+            routerLink="/app/purchase/personal-info/8"
+            class="btn"
+            id="btn-edit"
+            >Done</a
+          >
         </div>
       </div>
-    </div>
-  </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a routerLink="/app/purchase/personal-info/7" class="btn" id="btn-back"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <!-- routerLink="/app/purchase/income-info/1" -->
-        <a (click)="saveToDb()" class="btn" id="btn-next">Next</a>
-      </div>
-    </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
-</div>
-<div class="main-content" *ngIf="number == 9">
-  <h2>Let's take a few seconds to review and confirm your info again.</h2>
-  <div class="content-area">
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Information</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <a routerLink="/app/purchase/personal-info/8" class="btn" id="btn-edit"
-          >Done</a
-        >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10">
-        <form action="" id="address">
-          <div class="row">
-            <div class="col-md-6">
-              <input
-                type="text"
-                class="form-control form-style"
-                placeholder="Legal First Name"
-              />
+      <div class="row">
+        <div class="col-md-10">
+          <form action="" id="address">
+            <div class="row">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control form-style"
+                  placeholder="Legal First Name"
+                />
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control form-style mb-0"
+                    [(ngModel)]="model.personalMiddleInitial"
+                    placeholder="Middle Initial"
+                    name="personalMiddleInitial"
+                    #personalMiddleInitialRef="ngModel"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="col-md-6">
+            <div class="form-group">
               <input
                 type="text"
-                class="form-control form-style"
-                placeholder="Middle Initial"
+                class="form-control form-style mb-0"
+                placeholder="Legal Last Name"
+                [(ngModel)]="model.personalLegalLastName"
+                name="personalLegalLastName"
+                #personalLegalLastNameRef="ngModel"
+                required
               />
+              <div
+                *ngIf="!personalLegalLastNameRef.valid"
+                class="text-danger d-flex"
+              >
+                Last Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-style mb-0"
+                placeholder="Phone Number"
+                appPhoneMask
+                [(ngModel)]="model.personalPhoneNumber"
+                name="personalPhoneNumber"
+                #personalPhoneNumberRef="ngModel"
+                required
+              />
+              <div
+                *ngIf="!personalPhoneNumberRef.valid"
+                class="text-danger d-flex"
+              >
+                Phone is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control form-style mb-0"
+                placeholder="Email Address"
+                [(ngModel)]="model.personalEmailAddress"
+                name="personalEmailAddress"
+                #personalEmailAddressRef="ngModel"
+                required
+              />
+              <div
+                *ngIf="!personalEmailAddressRef.valid"
+                class="text-danger d-flex"
+              >
+                Email is required
+              </div>
+            </div>
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Legal Last Name"
+            />
+            <input
+              type="text"
+              class="form-control form-style"
+              placeholder="Phone Number"
+            />
+            <input
+              type="email"
+              class="form-control form-style"
+              placeholder="Email Address"
+            />
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Borrower Information</h6>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 margin-top">
+            <div class="button-list col-lg-12">
+              <p class="edit-info">
+                Did someone refer you to EZ Online Mortgage?
+                {{ model.isSomeOneRefer == 1 ? "Yes" : "No" }}
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary btn-style btn-orange offset-lg-3"
+                id="refer-yes"
+                (click)="model.isSomeOneRefer = 1; saveStep()"
+                [class.orange-active]="model.isSomeOneRefer == 1"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-style btn-orange offset-lg-3"
+                id="refer-no"
+                (click)="model.isSomeOneRefer = 0; saveStep()"
+                [class.orange-active]="model.isSomeOneRefer == 0"
+              >
+                No
+              </button>
+              <input
+                type="text"
+                class="form-control col-md-6 form-style offset-lg-3 mb-0"
+                placeholder="That’s make us happy! Who referred us?"
+                [(ngModel)]="model.refferedBy"
+                name="refferedBy"
+                *ngIf="model.isSomeOneRefer == 1"
+                #refferedByRef="ngModel"
+              />
+              <div *ngIf="!refferedByRef.valid" class="text-danger d-flex">
+                Reffered by is required
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="seperator-line"></div>
+                </div>
+              </div>
+              <p class="edit-info">
+                Are you applying on your own, or jointly with another person?
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary btn-style btn-blue offset-lg-3"
+                id="spouse-yes"
+                (click)="model.isApplyOwn = 1; saveStep()"
+                [class.orange-active]="model.isApplyOwn == 1"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-style btn-blue offset-lg-3"
+                id="spouse-no"
+                (click)="model.isApplyOwn = 0; saveStep()"
+                [class.orange-active]="model.isApplyOwn == 0"
+              >
+                No
+              </button>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="seperator-line"></div>
+                </div>
+              </div>
+              <p class="edit-info">What’s your current marital status</p>
+
+              <a
+                (click)="maritalClick('unmarried')"
+                class="btn btn-primary btn-style btn-orange offset-lg-3"
+                [class.orange-active]="model.maritialStatus == 'unmarried'"
+                >Unmarried</a
+              >
+
+              <a
+                (click)="maritalClick('married')"
+                class="btn btn-primary btn-style btn-orange offset-lg-3"
+                [class.orange-active]="model.maritialStatus == 'married'"
+                >Married</a
+              >
+
+              <a
+                (click)="maritalClick('seperated')"
+                class="btn btn-primary btn-style btn-orange offset-lg-3"
+                [class.orange-active]="model.maritialStatus == 'seperated'"
+                >Separated</a
+              >
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="seperator-line"></div>
+                </div>
+              </div>
+              <p class="edit-info">
+                How many dependents will be living in your home?
+              </p>
+
+              <div class="narrow-space">
+                <div class="row">
+                  <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-minus"
+                      (click)="onDepMinClick()"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                    <h1>{{ dependents }}</h1>
+                  </div>
+                  <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-plus"
+                      (click)="onDepPlusClick()"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <input
+              type="text"
+              class="form-control form-style margin-top"
+              placeholder="First dependent’s age"
+            /> -->
             </div>
           </div>
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Legal Last Name"
-          />
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="Phone Number"
-          />
-          <input
-            type="email"
-            class="form-control form-style"
-            placeholder="Email Address"
-          />
-        </form>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Did someone refer you to EZ Online Mortgage? No</p>
+            <p>
+              Are you applying on your own, or jointly with another person?
+              Applying on my own
+            </p>
+            <p>Marital Status: Unmarried</p>
+            <p>How many dependents will be living in your home? 0</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Information</h6>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+        <div class="row">
+          <!-- <form action="" id="personal-address" #f6="ngForm"> -->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-style mb-0"
+                placeholder="Address"
+                [(ngModel)]="model.currentAddress"
+                name="currentAddress"
+                #currentAddressRef="ngModel"
+                required
+              />
+              <div
+                *ngIf="submitted && !currentAddressRef.valid"
+                class="text-danger d-flex"
+              >
+                Address is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-style mb-0"
+                placeholder="Apt / Unit"
+                [(ngModel)]="model.currentUnit"
+                name="currentUnit"
+                #currentUnit="ngModel"
+                required
+              />
+              <div
+                *ngIf="submitted && !currentUnit.valid"
+                class="text-danger d-flex"
+              >
+                Unit is required
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control form-style mb-0"
+                    placeholder="City or Town"
+                    [(ngModel)]="model.currentCity"
+                    name="currentCity"
+                    #currentCityRef="ngModel"
+                    required
+                  />
+                  <div
+                    *ngIf="submitted && !currentCityRef.valid"
+                    class="text-danger d-flex"
+                  >
+                    City is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <select
+                    class="form-select form-style mb-0"
+                    [(ngModel)]="model.currentStateId"
+                    name="currentState"
+                    #currentStateIdRef="ngModel"
+                    required
+                    style="width: 100%"
+                    (change)="onStateChange($event)"
+                  >
+                    <option value="undefined" selected disabled>State</option>
+                    <option [value]="s.id" *ngFor="let s of states">
+                      {{ s.stateName }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="submitted && !currentStateIdRef.valid"
+                    class="text-danger d-flex"
+                  >
+                    State is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control form-style mb-0"
+                    placeholder="Zip Code"
+                    [(ngModel)]="model.currentZipCode"
+                    name="currentZipCode"
+                    #currentZipCodeRef="ngModel"
+                    required
+                    pattern="^[0-9]{5}(?:-[0-9]{4})?$"
+                  />
+                  <div class="text-danger d-flex">
+                    <div *ngIf="currentZipCodeRef.errors?.pattern">
+                      This is not a valid zip code
+                    </div>
+                    <div *ngIf="currentZipCodeRef.errors?.required">
+                      Zip is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="date"
+                class="form-control form-style mb-0"
+                placeholder="When did you start living here?"
+                [(ngModel)]="model.currentStartLivingDate"
+                name="currentStartLivingDate"
+                #currentStartLivingDateRef="ngModel"
+                required
+              />
+              <div
+                *ngIf="submitted && !currentStartLivingDateRef.valid"
+                class="text-danger d-flex"
+              >
+                Start living date is required
+              </div>
+            </div>
+            <div class="button-list">
+              <p class="edit-info">
+                Are you currently renting , or do you own?
+              </p>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 offset-md-3">
+                <div class="row margin-top margin-right-btn">
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      [ngClass]="{ active: model.currentReantingType == 'own' }"
+                      (click)="model.currentReantingType = 'own'"
+                    >
+                      Own
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      [ngClass]="{
+                        active: model.currentReantingType == 'rent'
+                      }"
+                      (click)="model.currentReantingType = 'rent'"
+                    >
+                      Rent
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      [ngClass]="{
+                        active: model.currentReantingType == 'other'
+                      }"
+                      (click)="model.currentReantingType = 'other'"
+                    >
+                      Other
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- </form> -->
+            <!-- <div class="col-md-12">
+          <div class="profile-details">
+            <p>Address: {{ model.currentAddress }}</p>
+            <p>City or Town: {{ model.currentCity }}</p>
+            <p>State: TX</p>
+            <p>ZIP Code: 78731</p>
+            <p>When did you start living here?: Jan 2017</p>
+            <p>Are you currently renting, or do you own?: Rent</p>
+          </div>
+        </div> -->
+          </div>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Edit</button>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Address: 5902 Balcones Drive</p>
+            <p>City or Town: Austin</p>
+            <p>State: TX</p>
+            <p>ZIP Code: 78731</p>
+            <p>When did you start living here?: Jan 2017</p>
+            <p>Are you currently renting, or do you own?: Rent</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Did someone refer you to EZ Online Mortgage? No</p>
-          <p>
-            Are you applying on your own, or jointly with another person?
-            Applying on my own
-          </p>
-          <p>Marital Status: Unmarried</p>
-          <p>How many dependents will be living in your home? 0</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Monthly Expenses</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Edit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Estimated Monthly Expenses: $3,000</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Borrower Residence</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Address: 5902 Balcones Drive</p>
-          <p>City or Town: Austin</p>
-          <p>State: TX</p>
-          <p>ZIP Code: 78731</p>
-          <p>When did you start living here?: Jan 2017</p>
-          <p>Are you currently renting, or do you own?: Rent</p>
+    <div
+      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    >
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <a
+            routerLink="/app/purchase/personal-info/7"
+            class="btn"
+            id="btn-back"
+            >Back</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a routerLink="/app/purchase/income-info/1" class="btn" id="btn-next"
+            >Next</a
+          >
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
+    <div class="content-footer">
+      <p>Already have an account | <a href="">Log in</a></p>
+      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Monthly Expenses</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Edit</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Estimated Monthly Expenses: $3,000</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <a routerLink="/app/purchase/personal-info/7" class="btn" id="btn-back"
-          >Back</a
-        >
-      </div>
-      <div class="col-md-2">
-        <a routerLink="/app/purchase/income-info/1" class="btn" id="btn-next"
-          >Next</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
   </div>
 </div>

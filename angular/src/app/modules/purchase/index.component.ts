@@ -5,6 +5,7 @@ const ROUTE_DATA = [
   "/app/purchase/",
   "/app/purchase/welcome/",
   "/app/purchase/property-info/",
+  "/app/purchase/military-info/",
   "/app/purchase/personal-info/",
   "/app/purchase/income-info/",
   "/app/purchase/assets-info/",

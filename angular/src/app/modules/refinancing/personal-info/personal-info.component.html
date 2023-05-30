@@ -57,7 +57,8 @@
       routerLink="/app/refinance/personal-info/3"
       class="btn btn-primary btn-style btn-blue"
       (click)="model.maritialStatus = 'seperated'; saveStep()"
-      >Saparated</a
+      [class.blue-active]="model.maritialStatus == 'seperated'"
+      >Separated</a
     >
     <div class="row">
       <div class="col-md-12 margin-top">
@@ -83,7 +84,7 @@
 <div class="main-content" *ngIf="number == 3">
   <h2 class="little-space">How many dependents will be living in your home?</h2>
   <h6 class="narrow-space">
-    All dependents must be between 0 and 18 years old or must be finnacially
+    All dependents must be between 0 and 18 years old or must be financially
     dependent upon you, the borrower. Do not include yourself or your spouse.
   </h6>
   <div
@@ -263,10 +264,7 @@
       </div>
       <!-- </form> -->
 
-      <p>
-        Are you currently reanting , or do you own? <br />
-        {{ model.currentReantingType }}
-      </p>
+      <p>Are you currently renting , or do you own? <br /></p>
 
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -638,142 +636,192 @@
           >
             Yes
           </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="refer-no"
-          >
-            No
-          </button>
-          <input
-            type="text"
-            class="form-control form-style"
-            placeholder="That’s make us happy! Who refered us?"
-          />
-
-          <p class="edit-info">Is the co-borrower your legal spouse?</p>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="spouse-yes"
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-style btn-blue"
-            id="spouse-no"
-          >
-            No
-          </button>
-
-          <p class="edit-info">
-            How many dependents will be living in your home?
-          </p>
-
-          <div class="narrow-space">
-            <div class="row">
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-minus">-</button>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <h1>{{ deps }}</h1>
-              </div>
-              <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
-                <button type="button" class="btn" id="btn-plus">+</button>
-              </div>
-            </div>
-          </div>
-
-          <input
-            type="text"
-            class="form-control form-style margin-top"
-            placeholder="First dependent’s age"
-          />
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="seperator-line"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 left-align">
-        <h6>Borrower Residence</h6>
-      </div>
-      <div class="col-md-4 right-align">
-        <button type="button" class="btn" id="btn-edit">Done</button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 margin-top">
-        <div class="button-list col-lg-12">
-          <form action="" id="address">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
+            <p class="edit-info">
+              Did someone refer you to EZ Online Mortgage?
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="refer-yes"
+              (click)="model.isSomeoneRefer = 1; saveStep()"
+              [class.blue-active]="model.isSomeoneRefer == 1"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="refer-no"
+              (click)="model.isSomeoneRefer = 0; saveStep()"
+              [class.blue-active]="model.isSomeoneRefer == 0"
+            >
+              No
+            </button>
             <input
               type="text"
               class="form-control form-style"
-              placeholder="Address"
-              [(ngModel)]="model.currentAddress"
-            />
-            <input
-              type="text"
-              class="form-control form-style"
-              placeholder="Apt / Unit"
-              [(ngModel)]="model.currentUnit"
+              placeholder="That’s make us happy! Who referred us?"
+              [(ngModel)]="model.refferedBy"
             />
 
-            <div class="row">
-              <div class="col-md-4">
-                <input
-                  type="text"
-                  class="form-control form-style"
-                  placeholder="City or Town"
-                  [(ngModel)]="model.currentCity"
-                />
-              </div>
-              <div class="col-md-4">
-                <select
-                  style="width: 100%"
-                  class="form-select form-style"
-                  [(ngModel)]="model.currentStateId"
-                >
-                  <option *ngFor="let s of states" [value]="s.id">
-                    {{ s.stateName }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <input
-                  type="text"
-                  class="form-control form-style"
-                  placeholder="Zip Code"
-                  [(ngModel)]="model.currentZipCode"
-                />
+            <p class="edit-info">Is the co-borrower your legal spouse?</p>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="spouse-yes"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-style btn-blue"
+              id="spouse-no"
+            >
+              No
+            </button>
+
+            <p class="edit-info">
+              How many dependents will be living in your home?
+            </p>
+
+            <div class="narrow-space">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button type="button" class="btn" id="btn-minus">-</button>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <h1>{{ deps }}</h1>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-3 col-xs-3">
+                  <button type="button" class="btn" id="btn-plus">+</button>
+                </div>
               </div>
             </div>
+
             <input
               type="text"
-              class="form-control form-style"
-              placeholder="When did you start living here?"
-              [(ngModel)]="model.currentStartLivingDate"
+              class="form-control form-style margin-top"
+              placeholder="First dependent’s age"
             />
-          </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="seperator-line"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 left-align">
+          <h6>Borrower Residence</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <button type="button" class="btn" id="btn-edit">Done</button>
+        </div>
+      </div>
 
-          <p>Are you currently reanting , or do you own?</p>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 margin-top">
+          <div class="button-list col-lg-12">
+            <form action="" id="address">
+              <input
+                type="text"
+                class="form-control form-style"
+                placeholder="Address"
+                [(ngModel)]="model.currentAddress"
+              />
+              <input
+                type="text"
+                class="form-control form-style"
+                placeholder="Apt / Unit"
+                [(ngModel)]="model.currentUnit"
+              />
 
-          <div class="row">
-            <div class="col-md-6 offset-md-3">
-              <div class="row margin-top margin-right-btn">
+              <div class="row">
                 <div class="col-md-4">
-                  <button type="button" class="btn" id="btn-rent">Own</button>
+                  <input
+                    type="text"
+                    class="form-control form-style"
+                    placeholder="City or Town"
+                    [(ngModel)]="model.currentCity"
+                  />
                 </div>
                 <div class="col-md-4">
-                  <button type="button" class="btn" id="btn-rent">Rent</button>
+                  <select
+                    style="width: 100%"
+                    class="form-select form-style"
+                    [(ngModel)]="model.currentStateId"
+                  >
+                    <option *ngFor="let s of states" [value]="s.id">
+                      {{ s.stateName }}
+                    </option>
+                  </select>
                 </div>
                 <div class="col-md-4">
-                  <button type="button" class="btn" id="btn-rent">Other</button>
+                  <input
+                    type="text"
+                    class="form-control form-style"
+                    placeholder="Zip Code"
+                    [(ngModel)]="model.currentZipCode"
+                  />
+                </div>
+              </div>
+              <input
+                type="text"
+                class="form-control form-style"
+                placeholder="When did you start living here?"
+                [(ngModel)]="model.currentStartLivingDate"
+              />
+            </form>
+
+            <p>Are you currently renting , or do you own?</p>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="row margin-top margin-right-btn">
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'own'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'own'
+                      }"
+                    >
+                      Own
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'rent'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'rent'
+                      }"
+                    >
+                      Rent
+                    </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      type="button"
+                      class="btn"
+                      id="btn-rent"
+                      (click)="model.currentReantingType = 'other'"
+                      [ngClass]="{
+                        active: model.currentReantingType === 'other'
+                      }"
+                    >
+                      Other
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1045,14 +1093,7 @@
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
               #personalMiddleInitialRef="ngModel"
-              required
             />
-            <div
-              *ngIf="submitted && !personalMiddleInitialRef.valid"
-              class="text-danger d-flex"
-            >
-              Middle Name is required
-            </div>
           </div>
         </div>
       </div>

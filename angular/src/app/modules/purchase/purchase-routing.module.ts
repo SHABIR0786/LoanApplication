@@ -19,6 +19,8 @@ import { PurchasingYesComponent } from "./purchasing-yes/purchasing-yes.componen
 import { SignedPurchaseComponent } from "./signed-purchase/signed-purchase.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { PersonalInfoComponent } from "./personal-info/personal-info.component";
+import { CreditScoreComponent } from "./credit-score/credit-score.component";
+import { MilitaryInfoComponent } from "./military-info/military-info.component";
 const routes: Routes = [
   {
     path: "",
@@ -39,6 +41,10 @@ const routes: Routes = [
       {
         path: "personal-info/:number",
         component: PersonalInfoComponent,
+      },
+      {
+        path: "military-info/:number",
+        component: MilitaryInfoComponent,
       },
       {
         path: "income-info/:number",
