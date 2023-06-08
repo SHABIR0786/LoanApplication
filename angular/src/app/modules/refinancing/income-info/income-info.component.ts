@@ -40,7 +40,7 @@ export class IncomeInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getStates() {
-    this.api.get("State/states").subscribe((x: any) => {
+    this.api.get("StateService/GetStates").subscribe((x: any) => {
       if (x && x.result) this.states = x.result;
       this.model.empState = 1;
       this.model.currentStateId = 1;
@@ -53,7 +53,7 @@ export class IncomeInfoComponent implements OnInit {
     this.getStateById(event.target.value);
   }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+    this.api.get("StateService/GetStates?id=" + id).subscribe((x: any) => {
       if (x && x.result) {
         this.model.empStateName = x.result.stateName;
         console.log(this.model.currentStateName);
@@ -68,7 +68,7 @@ export class IncomeInfoComponent implements OnInit {
   // routerLink="/app/refinance/assets-info/1"
   callToDb() {
     this.api
-      .post("LeadRefinancingDetails/Add", this.model)
+      .post("LeadRefinancingDetailsService/Add", this.model)
       .subscribe((x: any) => {
         if (x.success == true) {
           this.model.leadApplicationDetailRefinancingId = 1;
@@ -97,11 +97,13 @@ export class IncomeInfoComponent implements OnInit {
     _model.estimatedAnnualCommission = this.model.estAnnualCommision;
     _model.estimatedAnnualOvertime = this.model.estAnnualOverTime;
     _model.isCoBorrower = this.model.coboIncType;
-    this.api.post("/LeadEmploymentDetail/Add", _model).subscribe((x: any) => {
-      if (x.success == true) {
-        this.router.navigate(["/app/refinance/income/5"]);
-      }
-    });
+    this.api
+      .post("LeadEmploymentDetailsService/Add", _model)
+      .subscribe((x: any) => {
+        if (x.success == true) {
+          this.router.navigate(["/app/refinance/income/5"]);
+        }
+      });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

@@ -53,7 +53,7 @@ export class CreditScoreComponent implements OnInit {
       const final = this.apiModel.map(this.model);
       this.submitted = false;
       this.api
-        .post("LeadPurchasingDetails/update", final)
+        .post("LeadPurchasingDetailService/update", final)
         .subscribe((d: any) => {
           if (d.success === true) {
             alert("Done");

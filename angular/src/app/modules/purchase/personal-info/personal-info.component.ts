@@ -41,7 +41,7 @@ export class PersonalInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getState() {
-    this.api.get("State/states").subscribe((x: any) => {
+    this.api.get("StateService/GetStates").subscribe((x: any) => {
       this.states = x.result;
       this.model.empState = "1";
       this.model.currentStateId = 1;
@@ -54,7 +54,7 @@ export class PersonalInfoComponent implements OnInit {
     this.getStateById(event.target.value);
   }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+    this.api.get("StateService/GetStates?id=" + id).subscribe((x: any) => {
       if (x && x.result) {
         this.model.currentStateName = x.result.stateName;
         console.log(this.model.currentStateName);
@@ -122,10 +122,12 @@ export class PersonalInfoComponent implements OnInit {
     this.saveStep();
     var _model = new AddFinanceApiModel();
     _model.map(this.model);
-    this.api.post("LeadPurchasingDetails/Add", _model).subscribe((x: any) => {
-      if (x.success == true)
-        this.router.navigate(["/app/purchase/income-info/1"]);
-    });
+    this.api
+      .post("LeadPurchasingDetailService/Add", _model)
+      .subscribe((x: any) => {
+        if (x.success == true)
+          this.router.navigate(["/app/purchase/income-info/1"]);
+      });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

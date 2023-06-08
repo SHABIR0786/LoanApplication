@@ -35,7 +35,7 @@ export class CreditScoreComponent implements OnInit {
     this.saveStep();
     this.model.id = this.model.leadApplicationDetailRefinancingId;
     this.api
-      .post("LeadRefinancingDetails/Update", this.model)
+      .post("LeadRefinancingDetailsService/Update", this.model)
       .subscribe((x: any) => {
         if (x.success) {
           this.router.navigate([r]);

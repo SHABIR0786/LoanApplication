@@ -38,7 +38,7 @@ export class PersonalInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getStates() {
-    this.api.get("State/states").subscribe((x: any) => {
+    this.api.get("StateService/GetStates").subscribe((x: any) => {
       if (x && x.result) this.states = x.result;
       this.model.empState = 1;
       this.model.currentStateId = 1;
@@ -51,7 +51,7 @@ export class PersonalInfoComponent implements OnInit {
     this.getStateById(event.target.value);
   }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+    this.api.get("StateService/GetStates?id=" + id).subscribe((x: any) => {
       if (x && x.result) {
         this.model.currentStateName = x.result.stateName;
         console.log(this.model.currentStateName);

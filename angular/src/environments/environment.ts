@@ -7,6 +7,6 @@ export const environment = {
   production: false,
   hmr: false,
   appConfig: "appconfig.json",
-  baseApi: "https://74.208.32.89/loan-backend/api/",
+  baseApi: "https://74.208.32.89/loan-backend/api/services/app/",
   apiUrl: "https://74.208.32.89/loan-backend/api/",
 };

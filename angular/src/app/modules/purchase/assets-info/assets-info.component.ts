@@ -35,9 +35,11 @@ export class AssetsInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getAccountTypes() {
-    this.api.get("Financial/account-types").subscribe((x: any) => {
-      this.accType = x.result;
-    });
+    this.api
+      .get("FinancialService/GetFinancialAccountTypes")
+      .subscribe((x: any) => {
+        this.accType = x.result;
+      });
   }
   stepOneClick() {
     this.saveStep();

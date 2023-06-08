@@ -42,27 +42,31 @@ export class GovernmentComponent implements OnInit {
     this.getAllQuestions();
   }
   getCitizenShipType() {
-    this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
-      this.cs = x.result;
-    });
+    this.api
+      .get("CitizenshipTypeService/GetCitizenshipTypes")
+      .subscribe((x: any) => {
+        this.cs = x.result;
+      });
   }
   getAllQuestions() {
-    let url = "/LeadApplicationQuestions/GetAll";
+    let url = "LeadApplicationQuestionsService/GetAll";
     this.api.get(url).subscribe((x: any) => {
       this.questions = x.result;
     });
   }
   onGovClick() {
     const final = this.apiModel.map(this.model);
-    this.api.post("LeadPurchasingDetails/update", final).subscribe((d: any) => {
-      if (d.success === true) {
-        this.router.navigate(["/app/purchase/gov/2"]);
-        this.model.leadApplicationDetailPurchasingId = 1;
-      } else {
-        console.clear();
-        console.log({ d });
-      }
-    });
+    this.api
+      .post("LeadPurchasingDetailService/Update", final)
+      .subscribe((d: any) => {
+        if (d.success === true) {
+          this.router.navigate(["/app/purchase/gov/2"]);
+          this.model.leadApplicationDetailPurchasingId = 1;
+        } else {
+          console.clear();
+          console.log({ d });
+        }
+      });
     this.saveStep();
   }
   onQsClick() {
@@ -97,7 +101,7 @@ export class GovernmentComponent implements OnInit {
       questionId: id,
       isYes: ans,
     };
-    let url = "/LeadQuestionAnswers/Add";
+    let url = "LeadQuestionAnswersService/Add";
     this.api.post(url, req).subscribe((x) => {
       console.log(id);
     });
@@ -109,7 +113,7 @@ export class GovernmentComponent implements OnInit {
       const final = this.apiModel.map(this.model);
       this.submitted = false;
       this.api
-        .post("LeadPurchasingDetails/update", final)
+        .post("LeadPurchasingDetailService/Update", final)
         .subscribe((d: any) => {
           if (d.success === true) {
             alert("Done");

@@ -36,12 +36,14 @@ export class GovInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getCitizenShipType() {
-    this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
-      this.cs = x.result;
-    });
+    this.api
+      .get("CitizenshipTypeService/GetCitizenshipTypes")
+      .subscribe((x: any) => {
+        this.cs = x.result;
+      });
   }
   getAllQuestions() {
-    let url = "/LeadApplicationQuestions/GetAll";
+    let url = "LeadApplicationQuestionsService/GetAll";
     this.api.get(url).subscribe((x: any) => {
       this.questions = x.result;
       this.questions.forEach((obj) => {
@@ -62,7 +64,7 @@ export class GovInfoComponent implements OnInit {
       this.saveStep();
       this.model.id = this.model.leadApplicationDetailRefinancingId;
       this.api
-        .post("LeadRefinancingDetails/Update", this.model)
+        .post("LeadRefinancingDetailsService/Update", this.model)
         .subscribe((x: any) => {
           if (x.success) {
             this.router.navigate([a]);
@@ -77,7 +79,7 @@ export class GovInfoComponent implements OnInit {
       questionId: id,
       isYes: ans,
     };
-    let url = "/LeadQuestionAnswers/Add";
+    let url = "LeadQuestionAnswersService/Add";
     this.api.post(url, req).subscribe((x) => {
       console.log(id);
     });

@@ -41,7 +41,7 @@ export class PropertyInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getStates() {
-    this.api.get("State/states").subscribe((x: any) => {
+    this.api.get("StateService/GetStates").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
         this.model.empState = 1;
@@ -56,7 +56,7 @@ export class PropertyInfoComponent implements OnInit {
     this.getStateById(event.target.value);
   }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+    this.api.get("StateService/GetStates?id=" + id).subscribe((x: any) => {
       if (x && x.result) {
         this.model.propertyStateName = x.result.stateName;
         console.log(this.model.propertyStateName);
@@ -69,12 +69,12 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
   getCountries() {
-    this.api.get("Country/Country/Countries").subscribe((x: any) => {
+    this.api.get("CountryService/GetCountries").subscribe((x: any) => {
       if (x && x.result) this.countries = x.result;
     });
   }
   getCities() {
-    this.api.get("City/cities").subscribe((x: any) => {
+    this.api.get("CityService/GetCities").subscribe((x: any) => {
       if (x && x.result) this.cities = x.result;
     });
   }
