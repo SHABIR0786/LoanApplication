@@ -7,22 +7,1254 @@
       to qualify for this loan.
     </p>
   </div>
+
+  <div class="Main" style="width: 100%;">
+    <div class="div-main-grp" style="width: 100%;">
+      <div class="row div-sub-grp">
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">First name</label>
+            <p class="frm-fld-input"><input type="text" [(ngModel)]="borrowerInfo.personalInformation.firstName" name="firstName" placeholder="First Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Middle Name</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.middleName" placeholder="Middle Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Last Name</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.lastName" placeholder="Last Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Suffix</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.suffix" placeholder="(Jr. or Sr. if applicable)" /></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row div-sub-grp">
+
+        <div class="col-4">
+          <div class="frm-group">
+            <label class="frm-label">Social Security Number (or Individual Taxpayer Identification Number)</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.socialSecurityNumber"
+                placeholder="_______________---______________---______________" /></p>
+          </div>
+        </div>
+
+
+        <div class="col-4">
+          <div class="frm-group">
+            <label class="frm-label">Date of Birth (mm/dd/yyyy)</label>
+            <p class="frm-fld-input"><input type="date" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.dob" placeholder="____/____/________" /></p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="frm-group">
+            <label class="frm-label">Citizenship</label>
+            <p class="frm-fld-input"><select class="form-control" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.citizenship">
+                <option value="-1" selected disabled>Citizenship</option>
+                <option value="a">a</option>
+              </select></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row div-sub-grp">
+        <div class="col-10">
+          <div class="frm-group">
+            <label class="frm-label">Alternate Names</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.yourInitials"
+                placeholder="List any names by which you are known or any names under which credit was previously received (First, Middle, Last, Suffix)" />
+            </p>
+          </div>
+        </div>
+
+
+        <div class="col-2">
+          <label class="container"><span style="font-weight: bold;">Do Not Apply</span>
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="row div-sub-grp">
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">First name</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.firstName" placeholder="First Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Middle Name</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.middleName" placeholder="Middle Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Last Name</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.lastName" placeholder="Last Name" /></p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Suffix</label>
+            <p class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.suffix" placeholder="(Jr. or Sr. if applicable)" /></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type of Credit ---- List Name(s) of Other Borrower(s) Applying for this Loan -->
+    <div class="div-main-grp" style="width: 100%;">
+      <div class="row div-sub-grp">
+        <div class="col-4">
+          <div class="frm-group">
+            <label class="frm-label">First name</label>
+            <div class="frm-fld-input">
+              <div style="display: flex; margin-top: 5px; align-items:center;">
+                <input type="radio"  [(ngModel)]="borrowerInfo.personalInformation.creditValue" name="credit0" (change)="creditClick()"
+                  value="1" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" />
+                  <label style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                  am applying for <b
+                    style=" color:#696969  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">individual
+                    credit.</b></label></div>
+              <div style="display: flex;margin-top: 5px; align-items:center;">
+                <input type="radio" name="credit0" [(ngModel)]="borrowerInfo.personalInformation.creditValue"
+                  value="2" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;  color:#a5a5a5;" />
+                  <label style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                  am applying for <b
+                    style=" color:#696969; font-size: 14px !important; font-family: 'Mulish', sans-serif;">joint
+                    credit.</b></label></div>
+              <div class="frm-fld-input"
+                style="margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
+                Total Number of <b
+                  style=" color:#696969  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">Borrowers:</b>
+                <input [disabled]="borrowerInfo.personalInformation.creditValue=='1'" type="text" [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (keyup)="creditClick()"
+                  style="width: 30px; border-bottom: 1px solid #696969  !important;  margin-left: 10px; width: 50px; text-align: center;" />
+              </div>
+
+              <div class="frm-fld-input"
+                style="margin-top:10px; margin-left: 10px;  color:#a5a5a5; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
+                Each Borrower intends to apply for joint credit.</div>
+              <div class="frm-fld-input"
+                style="margin-top: 10px; margin-left: 10px;  color:#a5a5a5; font-weight: bold;">Your initials: <input
+                  type="text" style="width: 30px; border-bottom: 1px solid #696969 ;" [(ngModel)]="borrowerInfo.personalInformation.yourInitials" /></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="frm-group" style="height: 170px; overflow-y: scroll; overflow-x: hidden;">
+            <label class="frm-label">List Name(s) of Other Borrower(s) Applying for this Loan</label>
+            <div class="frm-fld-input">
+              <div class="gray-text">(First, Middle, Last, Suffix And Email)</div>
+
+              <div class="row mt-2" *ngFor="let creditItem of borrowerInfo.personalInformation.creditList">
+                <div class="col-3">
+                  <div class="frm-group-borderless">
+                    <label class="frm-label">First Name*</label>
+                    <div class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="creditItem.Firstname" placeholder="First Name" /></div>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <div class="frm-group-borderless">
+                    <label class="frm-label">Middle Name</label>
+                    <div class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="creditItem.Middlename" placeholder="Middle Name" /></div>
+                  </div>
+                </div>
+
+                <div class="col-3">
+                  <div class="frm-group-borderless">
+                    <label class="frm-label">Last Name</label>
+                    <div class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="creditItem.Lastname" placeholder="Last Name" /></div>
+                  </div>
+                </div>
+
+                <div class="col-1">
+                  <div class="frm-group-borderless">
+                    <label class="frm-label">Surfix</label>
+                    <div class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="creditItem.Surfix" placeholder="(Jr./Sr.)" /></div>
+                  </div>
+                </div>
+
+                <div class="col-3">
+                  <div class="frm-group-borderless">
+                    <label class="frm-label">Email*</label>
+                    <div class="frm-fld-input"><input type="text" name="firstName" [(ngModel)]="creditItem.Email" placeholder="Email Address" /></div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; text-align: top !important;">
+      <div class="row div-sub-grp">
+        <div class="col-6">
+          <div class="frm-group">
+            <label class="frm-label">Marital Status</label>
+            <div class="frm-fld-input">
+              <select name="firstName" class="form-control" [(ngModel)]="borrowerInfo.personalInformation.marritalStatus">
+                <option class="option" value="-1" selected disabled>(Single, Divorced, Widowed, Civil Union, Domestic Partnership)</option>
+                <option class="option" value="Single">Single </option>
+                <option  class="option" value="Divorced">Divorced </option>
+                <option  class="option" value="Widowed">Widowed </option>
+                <option  class="option" value="Civil Union">Civil Union </option>
+                <option  class="option" value="Domestic Partnership">Domestic Partnership </option>
+                <option  class="option" value="Registered">Registered </option>
+                <option  class="option" value="Reciprocal">Reciprocal </option>
+                <option  class="option" value="Beneficiary">Beneficiary </option>
+                <option  class="option" value="Relationship">Relationship </option>
+              </select>
+            </div>
+          </div>
+          <div class="clear-all"></div>
+          <div class="frm-group" style="margin-bottom: 50px;">
+            <label class="frm-label">Dependents</label>
+            <div class="frm-fld-input"><select class="form-control" name="firstName" [(ngModel)]="borrowerInfo.personalInformation.dependents">
+                <option value="-1" selected disabled>(not listed by another Borrower)</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="frm-group">
+            <label class="frm-label">Contact Information</label>
+            <div class="row mt-2">
+              <div class="col-3"><label class="gray-text">Home Phone</label></div>
+              <div class="col-4 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.contactInformation.homePhone"/>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-3"><label class="gray-text">Cell Phone </label></div>
+              <div class="col-4 input-border-bottom"><input type="text" mask="(000) 000-0000" [(ngModel)]="borrowerInfo.personalInformation.contactInformation.cellPhone"/></div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col-3"><label class="gray-text">Work Phone</label></div>
+              <div class="col-4 input-border-bottom"><input type="text" [(ngModel)]="borrowerInfo.personalInformation.contactInformation.workPhone"/></div>
+              <div class="col-2"><label class="gray-text" style="text-align: right !important;">Ext.</label></div>
+              <div class="col-2 input-border-bottom"><input type="text" [(ngModel)]="borrowerInfo.personalInformation.contactInformation.ext"/></div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-3"><label class="gray-text">Email Address</label></div>
+              <div class="col-4 input-border-bottom"><input type="text" [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email"/></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-bottom: 30px !important;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">Current Address</label>
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-7 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].street"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit#</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].unit"/>
+              </div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].countryId"/>
+              </div>
+
+            </div>
+
+
+
+            <div class="row mt-3">
+              <div class="col-2"><label class="gray-text">How Long at Current Address?</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display:flex; align-items: center; justify-content: center;">
+                  <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].year"/>
+                  <label class="gray-text">Years</label>
+                  <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].month"/>
+                  <label class="gray-text">Months</label>
+                </div>
+              </div>
+
+              <div class="col-5 text-right "
+                style="margin-left:25px; text-align: right; display: flex; align-items: center; justify-content: center;">
+                <label class="gray-text"><b>Housing</b></label>
+                <div class="frm-fld-input" style="display: flex; align-items: center; justify-content: center;">
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit1" value="1" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">No primary housing expense</label></div>
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit1" value="2" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">Own</label></div>
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit1" value="3" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">Rent ($_______/month)</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <div style="display: flex; align-items: center;">
+                <span> If at Current Address for LESS than 2 years, list Former Address</span>
+                <label class="container" style="margin-left:20px;"><span style=" font-weight: bold;">Does Not
+                    Apply</span>
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+
+              </div>
+
+            </label>
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-7 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].street"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit#</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit"/>
+              </div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].cityId" />
+              </div>
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].stateId"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text"  [(ngModel)]="borrowerInfo.personalInformation.address[1].countryId"/>
+              </div>
+
+            </div>
+
+
+
+            <div class="row mt-3">
+              <div class="col-2"><label class="gray-text">How Long at Current Address?</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display:flex; align-items: center; justify-content: center;">
+                  <input type="text"  [(ngModel)]="borrowerInfo.personalInformation.address[1].year"/>
+                  <label class="gray-text">Years</label>
+                  <input type="text"  [(ngModel)]="borrowerInfo.personalInformation.address[1].month"/>
+                  <label class="gray-text">Months</label>
+                </div>
+              </div>
+
+              <div class="col-5 text-right "
+                style="margin-left:25px; text-align: right; display: flex; align-items: center; justify-content: center;">
+                <label class="gray-text"><b>Housing</b></label>
+                <div class="frm-fld-input" style="display: flex; align-items: center; justify-content: center;">
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit2" value="1" [(ngModel)]="borrowerInfo.personalInformation.address[1].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">No primary housing expense</label></div>
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit2" value="2" [(ngModel)]="borrowerInfo.personalInformation.address[1].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">Own</label></div>
+                  <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
+                      name="credit2" value="3" [(ngModel)]="borrowerInfo.personalInformation.address[1].housingType"
+                      style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                      class="gray-text">Rent ($_______/month)</label></div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="div-main-grp" style="width: 100%; margin-bottom: 50px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <div style="display: flex; align-items: center;">
+                <span> Mailing Address (if different from Current Address)</span>
+                <label class="container" style="margin-left:20px;"><span style=" font-weight: bold;">Does Not
+                    Apply</span>
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+
+              </div>
+
+            </label>
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-7 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].street"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit#</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit"/>
+              </div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].stateId"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text"  [(ngModel)]="borrowerInfo.personalInformation.address[2].countryId"/>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+      <span style="font-size: 20px;">Current Employment/Self-Employment and Income</span>
+      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
+          Apply</span>
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Employer or Business Name</span>
+            </label>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
+              <div class="col-4 input-border-bottom">
+                <input type="text"[(ngModel)]="borrowerInfo.employment[0].name" />
+              </div>
+
+              <div class="col-1"><label class="gray-text">Phone</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].phone"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].street"/>
+              </div>
+
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].cityId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit #</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].unit"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].stateId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].countryId"/>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-9">
+          <div class="frm-group" style="padding-bottom: 30px;">
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Position or Title</label></div>
+              <div class="col-9 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].position"/>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Start Date <span
+                    style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="date" [(ngModel)]="borrowerInfo.employment[0].startDate"/>
+              </div>
+
+              <div class="col-3"><label class="gray-text">How long in this line of work?</label></div>
+              <div class="col-3 input-border-bottom">
+                <div style="display:flex; align-items: center; justify-content: center;">
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingYears"/>
+                  <label class="gray-text">Years</label>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingMonths"/>
+                  <label class="gray-text">Months</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Current Address</label>
+
+            <label class="container mt-2"><span class="gray-text">
+                I am employed by a family member, property seller, real estate agent, or other party to the transaction.
+              </span>
+              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isEmployedBySomeone">
+              <span class="checkmark"></span>
+            </label>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+
+            <div class="row">
+              <div class="col-9">
+                <label class="frm-label">
+                  <div style="display: flex; align-items: center;">
+                    <label class="container" style="margin-left:20px;"><span
+                        style=" font-weight: normal;font-size: 10px;">Check if you are the Business Owner or
+                        Self-Employed </span>
+                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isSelfEmployed">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </label>
+              </div>
+              <div class="col-2">
+                <label class="frm-label">Monthly Income (or Loss)</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9" style="display: flex;">
+                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
+                    value="true" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                    have an ownership share of less than 25%.</label></div>
+                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
+                    value="false"
+                    style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;  color:#a5a5a5;" /><label
+                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                    have an ownership share of 25% or more.</label></div>
+              </div>
+
+              <div class="col-2 input-border-bottom">
+                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="div-main-grp" style="width: 100%;  margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Gross Monthly Income</span>
+            </label>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Base</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Overtime</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"/><span>/month</span></div>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Bonus</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Commission</label></div>
+              <div class="col-1 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"/><span>/month</span></div>
+              </div>
+
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Other</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"/><span>/month</span></div>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">TOTAL </label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"/><span>/month</span></div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+      <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and
+        Income</span>
+      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
+          Apply</span>
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Employer or Business Name</span>
+            </label>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
+              <div class="col-4 input-border-bottom">
+                <input type="text"[(ngModel)]="borrowerInfo.employment[1].name" />
+              </div>
+
+              <div class="col-1"><label class="gray-text">Phone</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].phone"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].street"/>
+              </div>
+
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].cityId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit #</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].unit"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].stateId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].countryId"/>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-9">
+          <div class="frm-group" style="padding-bottom: 30px;">
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Position or Title</label></div>
+              <div class="col-9 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].position"/>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Start Date <span
+                    style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="date" [(ngModel)]="borrowerInfo.employment[1].startDate"/>
+              </div>
+
+              <div class="col-3"><label class="gray-text">How long in this line of work?</label></div>
+              <div class="col-3 input-border-bottom">
+                <div style="display:flex; align-items: center; justify-content: center;">
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingYears"/>
+                  <label class="gray-text">Years</label>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingMonths"/>
+                  <label class="gray-text">Months</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="frm-group">
+            <label class="frm-label">Current Address</label>
+
+            <label class="container mt-2"><span class="gray-text">
+                I am employed by a family member, property seller, real estate agent, or other party to the transaction.
+              </span>
+              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isEmployedBySomeone">
+              <span class="checkmark"></span>
+            </label>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+
+            <div class="row">
+              <div class="col-9">
+                <label class="frm-label">
+                  <div style="display: flex; align-items: center;">
+                    <label class="container" style="margin-left:20px;"><span
+                        style=" font-weight: normal;font-size: 10px;">Check if you are the Business Owner or
+                        Self-Employed </span>
+                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </label>
+              </div>
+              <div class="col-2">
+                <label class="frm-label">Monthly Income (or Loss)</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9" style="display: flex;">
+                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit4" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
+                    value="true" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
+                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                    have an ownership share of less than 25%.</label></div>
+                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit4" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
+                    value="false"
+                    style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;  color:#a5a5a5;" /><label
+                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
+                    have an ownership share of 25% or more.</label></div>
+              </div>
+
+              <div class="col-2 input-border-bottom">
+                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[1].monthlyIncome"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="div-main-grp" style="width: 100%;  margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Gross Monthly Income</span>
+            </label>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Base</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Overtime</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.overtime"/><span>/month</span></div>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Bonus</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.bonus"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Commission</label></div>
+              <div class="col-1 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.commission"/><span>/month</span></div>
+              </div>
+
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Other</label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.other"/><span>/month</span></div>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">TOTAL </label></div>
+              <div class="col-2 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.total"/><span>/month</span></div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+      <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment and
+        Income</span>
+      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <h4>Provide at least 2 years of current and previous employment and income.</h4>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-12">
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Employer or Business Name</span>
+            </label>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
+              <div class="col-4 input-border-bottom">
+                <input type="text"[(ngModel)]="borrowerInfo.employment[2].name" />
+              </div>
+
+              <div class="col-1"><label class="gray-text">Phone</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].phone"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Street</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].street"/>
+              </div>
+
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-2 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].cityId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit #</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].unit"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].stateId"/>
+              </div>
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].countryId"/>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="row div-sub-grp">
+        <div class="col-9">
+          <div class="frm-group" style="padding-bottom: 30px;">
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Position or Title</label></div>
+              <div class="col-9 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].position"/>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-2"><label class="gray-text">Start Date <span
+                    style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate"/>
+              </div>
+
+              <div class="col-2"><label class="gray-text">Start Date <span
+                    style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
+              <div class="col-3 input-border-bottom">
+                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+
+          <label class="container mt-1 mb-2"><span class="gray-text" style="font-size: 10px !important;">
+              Check if you were the Business Owner or Self-Employed.
+            </span>
+            <input type="checkbox" style="zoom: 1 !important;" [(ngModel)]="borrowerInfo.employment[2].isSelfEmployed">
+            <span class="checkmark"></span>
+          </label>
+
+          <div class="frm-group">
+            <label class="frm-label">
+              <span>Previous Gross Monthly</span>
+            </label>
+            <div class="row">
+              <div class="col-5"><label class="gray-text">Income</label></div>
+              <div class="col-5 input-border-bottom">
+                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                    type="text"  [(ngModel)]="borrowerInfo.employment[2].monthlyIncome"/><span>/month</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+      <span style="font-size: 20px;">Income from Other Sources</span>
+      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <ul>
+        <li>Alimony</li>
+        <li>Automobile Allowance</li>
+        <li>Boarder Income</li>
+        <li>Capital Gains</li>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <li>Child Support</li>
+        <li>Disability</li>
+        <li>Foster Care</li>
+        <li>Housing or Parsonage</li>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <li>Interest and Dividends</li>
+        <li>Mortgage Credit Certificate</li>
+        <li>Mortgage Differential Payments</li>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <li>Notes Receivable</li>
+        <li>Public Assistance</li>
+        <li>Retirement (e.g., Pension)</li>
+      </ul>
+    </div>
+
+    <div class="col-2">
+      <ul>
+        <li>Royalty Payments</li>
+        <li>Separate Maintenance</li>
+        <li>Social Security</li>
+        <li>Trust</li>
+      </ul>
+    </div>
+
+    <div class="col-2">
+      <ul>
+        <li>Unemployment</li>
+        <li>Benefits</li>
+        <li>VA Compensation</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-sub-grp">
+        <div class="frm-group">
+        <div class="row ">
+          <label class="col-8 frm-label">
+            <span>Income Source (– use list above)</span>
+          </label>
+          <label class="col-4 frm-label">
+            <span>Income Source (– use list above)</span>
+          </label>
+        </div>
+
+        <div class="row" *ngFor="let itemOR of borrowerInfo.incomeOtherSources[0].sources">
+          <div class="col-8">
+            <div class="frm-group mt-3">
+              <div class="frm-fld-input">
+                  <select class="form-control" name="firstName" [(ngModel)]="itemOR.sourceType">
+                    <option value="-1" selected disabled>Interest and Dividends</option>
+                    <option value="a">a</option>
+                </select>
+              </div>
+            </div>
+<!--
+            <div class="frm-group mt-3">
+              <div class="frm-fld-input">
+                  <select name="firstName">
+                    <option value="-1" selected disabled>Interest and Dividends</option>
+                    <option value="a">a</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="frm-group mt-3">
+              <div class="frm-fld-input">
+                  <select name="firstName">
+                    <option value="-1" selected disabled>Interest and Dividends</option>
+                    <option value="a">a</option>
+                </select>
+              </div>
+            </div> -->
+          </div>
+          <div class=" col-4">
+            <div class="frm-group mt-3">
+            <div class="input-border-bottom">
+              <!-- <div *ngFor="let itemOR of borrowerInfo.incomeOtherSources[0].sources" style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="itemOR.monthlyIncome"/></div> -->
+               <div style="display: flex; align-items: center;margin-top: 12px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"  [(ngModel)]="itemOR.monthlyIncome"/></div>
+              <!--<div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="row " style="margin-top:12px">
+          <label class="col-8 frm-label">
+            <div class="row mt-3">
+              <div class="col-6"><a (click)="addMoreIncomeSource()" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Add more</a> / <a (click)="delMoreIncomeSource()" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Remove</a></div>
+              <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
+            </div>
+          </label>
+          <label class="col-4 frm-label">
+           <div class="frm-group">
+            <div class="input-border-bottom">
+              <div style="display: flex; align-items: center; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"/></div>
+            </div>
+           </div>
+          </label>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="separator"></div>
   <div class="row borrower-block">
     <div class="col-sm-8">
       <div class="input-group">
         <div class="input-group-text">Borrower Name:</div>
-        <input
-          type="text"
-          class="form-control"
-          id="specificSizeInputGroupUsername"
-        />
+        <input type="text" class="form-control" id="specificSizeInputGroupUsername" />
       </div>
     </div>
   </div>
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill">NEXT</button>
+      <button class="btn btn-fill" type="button" (click)="nextBtnClick()">NEXT</button>
     </div>
   </div>
 </div>
