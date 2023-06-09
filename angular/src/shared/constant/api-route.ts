@@ -11,6 +11,11 @@ export const ApiRoute = {
   updateChangePassword: "http://localhost:21021/api/AdminUser/ChangePassword?",
   loanApplication: "services/app/Loan/GetAllCustom?",
   adminnotification: "AdminUserNotification/GetAll",
-  GetCurrentLoginInformations:
-    "services/app/Session/GetCurrentLoginInformations",
+  GetCurrentLoginInformations:"services/app/Session/GetCurrentLoginInformations",
+  getCitizenshipType: "services/app/CitizenshipTypeService/GetCitizenshipTypes",
+  createMortgageLoanApplication: "services/app/Mortgage/CreateMortgageLoanApplication",
+
+  createMortgageApplicationAssetandLiability:"MortgageApplicationFinancialAsset/CreateMortgageApplicationAssetandLiability",
+  getMortgageApplicationAssetandLiability:"MortgageApplicationFinancialAsset/GetAll"
+
 };
