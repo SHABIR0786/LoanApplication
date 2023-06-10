@@ -17,4 +17,14 @@ export class BorrowService extends BaseService{
   createMortgageLoanApplication(data) {
     return this.post(ApiRoute.createMortgageLoanApplication, data);
   }
+  getCountries(){
+    return this.get(ApiRoute.getCountry, null);
+  }
+  getStates(){
+    return this.get(ApiRoute.getStates, null);
+  }
+  getCities()
+  {
+    return this.get(ApiRoute.getCities, null);
+  }
 }
