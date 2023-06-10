@@ -16,6 +16,9 @@ export class BorrowerInfoComponent implements OnInit {
   doNotApplyForEmp0:boolean = false;
   doNotApplyForEmp1:boolean = false;
   doNotApplyForEmp2:boolean = false;
+  countryList:any[]=[];
+  stateList:any[]=[];
+  cityList:any[]=[];
   constructor(private loanManagmentService: LoanManagementService, private borrowService:BorrowService) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
     this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -40,6 +43,9 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCountries();
+    this.getStates();
+    this.getCities()
     this.creditClick();  
     this.borrowService.getAllCitizenshipType().subscribe(
       (res: any) => {
@@ -91,6 +97,50 @@ export class BorrowerInfoComponent implements OnInit {
         alert("data has inserted successfully");
       }
     );
+  }
+  getCountries()
+  {
+    debugger
+    this.borrowService.getCountries().subscribe((data:any)=>{
+      debugger
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          debugger
+          this.countryList.push({countryName:element.countryName,id:element.id})
+        })
+      }
+    })
+  }
+  getStates(  )
+  {
+    debugger
+    this.borrowService.getStates().subscribe((data:any)=>{
+      debugger
+      this.stateList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          debugger
+          this.stateList.push({stateName:element.stateName,id:element.id})
+        })
+      }
+    })
+  }
+  getCities()
+  {debugger
+    this.borrowService.getCities().subscribe((data:any)=>{
+      debugger
+      this.cityList=[]
+       if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          debugger
+          this.cityList.push({cityName:element.cityName,id:element.id})
+        })
+      }
+    })
   }
   // bindValues() {
   //   this.borrowerInfo.personalInformation.firstName = "fffff";

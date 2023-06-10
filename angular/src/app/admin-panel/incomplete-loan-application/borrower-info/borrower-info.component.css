@@ -348,23 +348,32 @@ border-width: 0 3px 3px 0;
 transform: rotate(45deg);
 }
 
-.div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, input:focus{
+.div-main-grp .div-sub-grp .frm-group_sml .frm-fld-input {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  color: #A5A5A5;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml focus, input:focus{
 font-size: 15px;
 outline: none;
 font-weight: 500;
-line-height: 1.2575;
 border:0px solid transparent;
 background-color: #e6e6e6;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
 
-.div-main-grp .div-sub-grp .frm-group .frm-fld-input select{
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml select{
 -webkit-appearance: none;
 -moz-appearance: none;
 background: transparent;
 background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
-background-size: auto 88%;
+background-size: auto 50%;
 background-repeat: no-repeat;
 background-position-x: 98%;
 background-position-y: 90%;
@@ -373,10 +382,42 @@ width: 100%;
 color: #a5a5a5;
 border: 0px !important;
 font-weight: 500;
-line-height: 30px;
+line-height: 20px;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
+
+
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, input:focus{
+  font-size: 15px;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.2575;
+  border:0px solid transparent;
+  background-color: #e6e6e6;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
+  background-size: auto 88%;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 90%;
+  font-size: 15px;
+  width: 100%;
+  color: #a5a5a5;
+  border: 0px !important;
+  font-weight: 500;
+  line-height: 30px;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
 
 
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input select option{

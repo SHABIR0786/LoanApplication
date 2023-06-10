@@ -296,28 +296,51 @@
 
 
             <div class="row mt-2">
-              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-1 mt-2"><label class="gray-text">City</label></div>
               <div class="col-3 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
-              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
 
-              <div class="col-1"><label class="gray-text">ZIP</label></div>
-              <div class="col-1 input-border-bottom">
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
+              <div class="col-1 input-border-bottom mt-1">
                 <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].zip"/>
               </div>
 
 
-              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[0].countryId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
-
             </div>
 
 
@@ -391,6 +414,58 @@
             </div>
 
 
+
+            <div class="row mt-2">
+              <div class="col-1 mt-2"><label class="gray-text">City</label></div>
+              <div class="col-3 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
+              <div class="col-1 input-border-bottom mt-1">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].zip"/>
+              </div>
+
+
+              <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
+              <div class="col-2 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+<!--
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">City</label></div>
               <div class="col-3 input-border-bottom">
@@ -415,7 +490,7 @@
               </div>
 
             </div>
-
+ -->
 
 
             <div class="row mt-3">
@@ -487,6 +562,56 @@
 
 
             <div class="row mt-2">
+              <div class="col-1 mt-2"><label class="gray-text">City</label></div>
+              <div class="col-3 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
+              <div class="col-1 input-border-bottom mt-1">
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip"/>
+              </div>
+
+
+              <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
+              <div class="col-2 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select  >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+<!--
+            <div class="row mt-2">
               <div class="col-1"><label class="gray-text">City</label></div>
               <div class="col-3 input-border-bottom">
                 <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId"/>
@@ -509,7 +634,7 @@
                 <input type="text"  [(ngModel)]="borrowerInfo.personalInformation.address[2].countryId"/>
               </div>
 
-            </div>
+            </div> -->
 
 
           </div>
@@ -556,7 +681,15 @@
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">City</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].cityId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
@@ -567,7 +700,16 @@
 
               <div class="col-1"><label class="gray-text">State</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].stateId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
+
               </div>
 
               <div class="col-1"><label class="gray-text">ZIP</label></div>
@@ -578,7 +720,15 @@
 
               <div class="col-1"><label class="gray-text">Country</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].countryId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -787,10 +937,20 @@
 
             </div>
 
+
+
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">City</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].cityId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
@@ -801,7 +961,16 @@
 
               <div class="col-1"><label class="gray-text">State</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].stateId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
+
               </div>
 
               <div class="col-1"><label class="gray-text">ZIP</label></div>
@@ -812,7 +981,15 @@
 
               <div class="col-1"><label class="gray-text">Country</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].countryId"/>
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select  >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -1019,7 +1196,7 @@
               </div>
 
             </div>
-
+<!--
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">City</label></div>
               <div class="col-2 input-border-bottom">
@@ -1046,6 +1223,63 @@
               <div class="col-1"><label class="gray-text">Country</label></div>
               <div class="col-1 input-border-bottom">
                 <input type="text" [(ngModel)]="borrowerInfo.employment[2].countryId"/>
+              </div>
+
+            </div> -->
+
+
+
+            <div class="row mt-2">
+              <div class="col-1"><label class="gray-text">City</label></div>
+              <div class="col-2 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select   >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of cityList" 
+                      [ngValue]="obj.id" > {{obj.cityName}} </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-1"><label class="gray-text">Unit #</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].unit"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">State</label></div>
+              <div class="col-1 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select  >
+                      <option [ngValue]="undefined" disabled>Select State </option>
+                      <option *ngFor="let obj of stateList" 
+                      [ngValue]="obj.id" > {{obj.stateName}} </option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-1"><label class="gray-text">ZIP</label></div>
+              <div class="col-1 input-border-bottom">
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip"/>
+              </div>
+
+
+              <div class="col-1"><label class="gray-text">Country</label></div>
+              <div class="col-1 input-border-bottom">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                    <select  >
+                      <option [ngValue]="undefined" disabled>Select Country </option>
+                      <option *ngFor="let obj of countryList" 
+                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
             </div>
