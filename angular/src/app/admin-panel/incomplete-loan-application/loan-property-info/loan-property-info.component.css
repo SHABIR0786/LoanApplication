@@ -15,6 +15,10 @@ line-height: 30px;
 color: #000000;
 }
 
+h4{
+  font-size: 16px !important;
+  color: #A5A5A5;
+}
 .section-title-wo-border {
   border-bottom: 0px solid rgba(0, 0, 0, 0.5);
   padding-bottom: 20px;
@@ -374,7 +378,7 @@ white-space: nowrap;
 -moz-appearance: none;
 background: transparent;
 background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
-background-size: auto 70%;
+background-size: auto 60%;
 background-repeat: no-repeat;
 background-position-x: 98%;
 background-position-y: 90%;
@@ -387,6 +391,37 @@ line-height: 1.2575;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
+
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml focus, input:focus{
+  font-size: 15px;
+  outline: none;
+  font-weight: 500;
+  border:0px solid transparent;
+  background-color: #e6e6e6;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 90%;
+  font-size: 15px;
+  width: 100%;
+  color: #a5a5a5;
+  border: 0px !important;
+  font-weight: 500;
+  line-height: 20px;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
 
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, select:focus{
 font-size: 15px;
