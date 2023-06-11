@@ -404,12 +404,12 @@
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-7 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].street"/>
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].street" [readOnly]="doNotApplyForaddress1 == true"/>
               </div>
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit"/>
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit" [readOnly]="doNotApplyForaddress1 == true"/>
               </div>
             </div>
 
@@ -420,7 +420,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForaddress1 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -433,7 +433,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select  [disabled]="doNotApplyForaddress1 == true" >
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -445,7 +445,7 @@
 
               <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
               <div class="col-1 input-border-bottom mt-1">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].zip"/>
+                <input type="text" [readOnly]="doNotApplyForaddress1 == true" [(ngModel)]="borrowerInfo.personalInformation.address[1].zip"/>
               </div>
 
 
@@ -453,7 +453,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select  [disabled]="doNotApplyForaddress1 == true">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -551,12 +551,12 @@
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-7 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].street"/>
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].street" [readonly]="doNotApplyForaddress2 == true"/>
               </div>
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit"/>
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit" [readonly]="doNotApplyForaddress2 == true"/>
               </div>
             </div>
 
@@ -566,7 +566,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForaddress2 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -579,7 +579,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForaddress2 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -591,7 +591,7 @@
 
               <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
               <div class="col-1 input-border-bottom mt-1">
-                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip"/>
+                <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip" [readonly]="doNotApplyForaddress2 == true"/>
               </div>
 
 
@@ -599,7 +599,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  >
+                    <select [disabled]="doNotApplyForaddress2 == true" >
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -662,18 +662,18 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
               <div class="col-4 input-border-bottom">
-                <input type="text"[(ngModel)]="borrowerInfo.employment[0].name" />
+                <input type="text"[(ngModel)]="borrowerInfo.employment[0].name" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
               <div class="col-1"><label class="gray-text">Phone</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].phone"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].phone" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].street"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].street" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
             </div>
@@ -683,7 +683,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForEmp0 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -694,7 +694,7 @@
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].unit"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].unit" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
 
@@ -702,7 +702,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select >
+                    <select [disabled]="doNotApplyForEmp0 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -714,7 +714,7 @@
 
               <div class="col-1"><label class="gray-text">ZIP</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].zip"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].zip" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
 
@@ -722,7 +722,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForEmp0 == true">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -747,7 +747,7 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Position or Title</label></div>
               <div class="col-9 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[0].position"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[0].position" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
             </div>
 
@@ -755,15 +755,15 @@
               <div class="col-2"><label class="gray-text">Start Date <span
                     style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
               <div class="col-3 input-border-bottom">
-                <input type="date" [(ngModel)]="borrowerInfo.employment[0].startDate"/>
+                <input type="date" [(ngModel)]="borrowerInfo.employment[0].startDate" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
               <div class="col-3"><label class="gray-text">How long in this line of work?</label></div>
               <div class="col-3 input-border-bottom">
                 <div style="display:flex; align-items: center; justify-content: center;">
-                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingYears"/>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingYears" [readonly]="doNotApplyForEmp0 == true"/>
                   <label class="gray-text">Years</label>
-                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingMonths"/>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[0].workingMonths" [readonly]="doNotApplyForEmp0 == true"/>
                   <label class="gray-text">Months</label>
                 </div>
               </div>
@@ -778,7 +778,7 @@
             <label class="container mt-2"><span class="gray-text">
                 I am employed by a family member, property seller, real estate agent, or other party to the transaction.
               </span>
-              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isEmployedBySomeone">
+              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isEmployedBySomeone" [readonly]="doNotApplyForEmp0 == true">
               <span class="checkmark"></span>
             </label>
 
@@ -799,7 +799,7 @@
                     <label class="container" style="margin-left:20px;"><span
                         style=" font-weight: normal;font-size: 10px;">Check if you are the Business Owner or
                         Self-Employed </span>
-                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isSelfEmployed">
+                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isSelfEmployed" [readonly]="doNotApplyForEmp0 == true">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -812,11 +812,11 @@
 
             <div class="row">
               <div class="col-9" style="display: flex;">
-                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
+                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
                     value="true" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
                     style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
                     have an ownership share of less than 25%.</label></div>
-                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
+                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit3" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25"
                     value="false"
                     style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;  color:#a5a5a5;" /><label
                     style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
@@ -824,7 +824,7 @@
               </div>
 
               <div class="col-2 input-border-bottom">
-                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome"/>
+                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
             </div>
           </div>
@@ -846,26 +846,26 @@
               <div class="col-1"><label class="gray-text">Base</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Overtime</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Bonus</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Commission</label></div>
               <div class="col-1 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"/><span>/month</span></div>
               </div>
 
             </div>
@@ -874,20 +874,20 @@
               <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Other</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">TOTAL </label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"/><span>/month</span></div>
+                    type="text" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"/><span>/month</span></div>
               </div>
 
 
@@ -921,18 +921,18 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
               <div class="col-4 input-border-bottom">
-                <input type="text"[(ngModel)]="borrowerInfo.employment[1].name" />
+                <input type="text"[(ngModel)]="borrowerInfo.employment[1].name" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
               <div class="col-1"><label class="gray-text">Phone</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].phone"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].phone" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].street"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].street" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
             </div>
@@ -944,7 +944,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select  [disabled]="doNotApplyForEmp1 == true" >
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -955,7 +955,7 @@
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].unit"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].unit" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
 
@@ -963,7 +963,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForEmp1 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -975,7 +975,7 @@
 
               <div class="col-1"><label class="gray-text">ZIP</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].zip"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].zip" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
 
@@ -983,7 +983,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  >
+                    <select  [disabled]="doNotApplyForEmp1 == true">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -1008,7 +1008,7 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Position or Title</label></div>
               <div class="col-9 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[1].position"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[1].position" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
             </div>
 
@@ -1016,15 +1016,15 @@
               <div class="col-2"><label class="gray-text">Start Date <span
                     style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
               <div class="col-3 input-border-bottom">
-                <input type="date" [(ngModel)]="borrowerInfo.employment[1].startDate"/>
+                <input type="date" [(ngModel)]="borrowerInfo.employment[1].startDate" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
               <div class="col-3"><label class="gray-text">How long in this line of work?</label></div>
               <div class="col-3 input-border-bottom">
                 <div style="display:flex; align-items: center; justify-content: center;">
-                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingYears"/>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingYears" [readonly]="doNotApplyForEmp1 == true"/>
                   <label class="gray-text">Years</label>
-                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingMonths"/>
+                  <input type="text" [(ngModel)]="borrowerInfo.employment[1].workingMonths " [readonly]="doNotApplyForEmp1 == true"/>
                   <label class="gray-text">Months</label>
                 </div>
               </div>
@@ -1039,7 +1039,7 @@
             <label class="container mt-2"><span class="gray-text">
                 I am employed by a family member, property seller, real estate agent, or other party to the transaction.
               </span>
-              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isEmployedBySomeone">
+              <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isEmployedBySomeone" [readonly]="doNotApplyForEmp1 == true">
               <span class="checkmark"></span>
             </label>
 
@@ -1060,7 +1060,7 @@
                     <label class="container" style="margin-left:20px;"><span
                         style=" font-weight: normal;font-size: 10px;">Check if you are the Business Owner or
                         Self-Employed </span>
-                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed">
+                      <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed" [readonly]="doNotApplyForEmp1 == true">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1073,11 +1073,11 @@
 
             <div class="row">
               <div class="col-9" style="display: flex;">
-                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit4" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
+                <div style="display: flex; margin-top: 5px; align-items:center;"><input type="radio" name="credit4" [readonly]="doNotApplyForEmp1 == true" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
                     value="true" style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;" /><label
                     style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
                     have an ownership share of less than 25%.</label></div>
-                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit4" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
+                <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio"  [readonly]="doNotApplyForEmp1 == true" name="credit4" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
                     value="false"
                     style="width: 30px !important; margin-right: 2px; width: 10px; height:10px;  color:#a5a5a5;" /><label
                     style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
@@ -1085,7 +1085,7 @@
               </div>
 
               <div class="col-2 input-border-bottom">
-                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[1].monthlyIncome"/>
+                $<input type="text" class="ml-1" [(ngModel)]="borrowerInfo.employment[1].monthlyIncome" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
             </div>
           </div>
@@ -1106,26 +1106,26 @@
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">Base</label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Overtime</label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.overtime"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Bonus</label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.bonus"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Commission</label></div>
               <div class="col-1 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.commission"/><span>/month</span></div>
               </div>
 
@@ -1134,20 +1134,20 @@
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Other</label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.other"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">TOTAL </label></div>
               <div class="col-2 input-border-bottom">
-                <div style="display: flex; align-items: center;"><span>$ </span> <input
+                <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
                     type="text" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.total"/><span>/month</span></div>
               </div>
 
@@ -1164,7 +1164,7 @@
       <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment and
         Income</span>
       <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="doNotApplyForEmp2">
+        <input type="checkbox" [(ngModel)]="doNotApplyForEmp2" >
         <span class="checkmark"></span>
       </label>
     </div>
@@ -1181,18 +1181,18 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
               <div class="col-4 input-border-bottom">
-                <input type="text"[(ngModel)]="borrowerInfo.employment[2].name" />
+                <input type="text"[(ngModel)]="borrowerInfo.employment[2].name" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
               <div class="col-1"><label class="gray-text">Phone</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[2].phone"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].phone" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[2].street"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].street" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
             </div>
@@ -1234,7 +1234,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [disabled]="doNotApplyForEmp2 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -1245,7 +1245,7 @@
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[2].unit"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].unit" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
 
@@ -1253,7 +1253,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  >
+                    <select  [disabled]="doNotApplyForEmp2 == true">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -1265,7 +1265,7 @@
 
               <div class="col-1"><label class="gray-text">ZIP</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
 
@@ -1273,7 +1273,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  >
+                    <select [disabled]="doNotApplyForEmp2 == true" >
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -1298,7 +1298,7 @@
             <div class="row mt-2">
               <div class="col-2"><label class="gray-text">Position or Title</label></div>
               <div class="col-9 input-border-bottom">
-                <input type="text" [(ngModel)]="borrowerInfo.employment[2].position"/>
+                <input type="text" [(ngModel)]="borrowerInfo.employment[2].position" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
             </div>
 
@@ -1306,13 +1306,13 @@
               <div class="col-2"><label class="gray-text">Start Date <span
                     style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
               <div class="col-3 input-border-bottom">
-                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate"/>
+                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
               <div class="col-2"><label class="gray-text">Start Date <span
                     style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
               <div class="col-3 input-border-bottom">
-                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate"/>
+                <input type="date" [(ngModel)]="borrowerInfo.employment[2].startDate" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
             </div>
           </div>
@@ -1323,7 +1323,7 @@
           <label class="container mt-1 mb-2"><span class="gray-text" style="font-size: 10px !important;">
               Check if you were the Business Owner or Self-Employed.
             </span>
-            <input type="checkbox" style="zoom: 1 !important;" [(ngModel)]="borrowerInfo.employment[2].isSelfEmployed">
+            <input type="checkbox" style="zoom: 1 !important;" [(ngModel)]="borrowerInfo.employment[2].isSelfEmployed" [readonly]="doNotApplyForEmp2 == true">
             <span class="checkmark"></span>
           </label>
 
@@ -1335,7 +1335,7 @@
               <div class="col-5"><label class="gray-text">Income</label></div>
               <div class="col-5 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="text"  [(ngModel)]="borrowerInfo.employment[2].monthlyIncome"/><span>/month</span></div>
+                    type="text"  [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [readonly]="doNotApplyForEmp2 == true"/><span>/month</span></div>
               </div>
             </div>
           </div>
@@ -1347,7 +1347,7 @@
     <div class="section-title" style="display: flex; align-items: center; width: 100%;">
       <span style="font-size: 20px;">Income from Other Sources</span>
       <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="incomeFromOtherSources">
         <span class="checkmark"></span>
       </label>
     </div>
@@ -1419,7 +1419,7 @@
           <div class="col-8">
             <div class="frm-group mt-3">
               <div class="frm-fld-input">
-                  <select class="form-control" name="firstName" [(ngModel)]="itemOR.sourceType">
+                  <select [disabled]="incomeFromOtherSources == true" class="form-control" name="firstName" [(ngModel)]="itemOR.sourceType">
                     <option value="-1" selected disabled>Interest and Dividends</option>
                     <option value="a">a</option>
                 </select>
@@ -1448,7 +1448,7 @@
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
               <!-- <div *ngFor="let itemOR of borrowerInfo.incomeOtherSources[0].sources" style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="itemOR.monthlyIncome"/></div> -->
-               <div style="display: flex; align-items: center;margin-top: 12px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"  [(ngModel)]="itemOR.monthlyIncome"/></div>
+               <div style="display: flex; align-items: center;margin-top: 12px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"  [(ngModel)]="itemOR.monthlyIncome" [readonly]="incomeFromOtherSources == true"/></div>
               <!--<div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
             </div>
           </div>
@@ -1465,7 +1465,7 @@
           <label class="col-4 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"/></div>
+              <div style="display: flex; align-items: center; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome" [readonly]="incomeFromOtherSources == true"/></div>
             </div>
            </div>
           </label>
