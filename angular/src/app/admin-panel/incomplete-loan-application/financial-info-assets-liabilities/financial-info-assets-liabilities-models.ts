@@ -9,24 +9,24 @@ export class MortgageFinancialAssets{
     financialInstitution:string;
     accountNumber:string;
     cashMarketValue:number;
-    personalInformationId:number;
+    personalInformationId:number=3;
 }
 export class MortgageFinancialOtherAssets{
     financialAssetsTypeId:number;
     cashMarketValue:number;
-    personalInformationId:number;
+    personalInformationId:number=3;
 }
 export class MortgageFinancialLiabilities{
     financialLaibilitiesTypeId:number;
     companyName:string;
     accountNumber:string;
     unpaidBalance:number;
-    isPaidBeforeClosing:number;
+    isPaidBeforeClosing:boolean=true;
     monthlyPayment:number;
-    PersonalInformationId:number;
+    PersonalInformationId:number=3;
 }
 export class MortgageFinancialOtherLaibilities{
     financialLaibilitiesTypeId:number;
     monthlyPayment:number;
-    personalInformationId:number;
+    personalInformationId:number=3;
 }

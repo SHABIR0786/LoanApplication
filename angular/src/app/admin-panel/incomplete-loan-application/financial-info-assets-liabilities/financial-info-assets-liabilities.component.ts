@@ -90,8 +90,19 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities = [];
     }
     debugger
-    this.financialInfoService.createFinancialInfoAssetsLiabilities(this.financialInfoAssetsLiabilitiesModels).subscribe(data=>{
+    var obj ={
+      mortgageFinancialAssets:this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets,
+      mortgageFinancialOtherAssets:this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities,
+      mortgageFinancialLiabilities:this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets,
+      mortgageFinancialOtherLaibilities:this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities
+    }
+    this.financialInfoService.createFinancialInfoAssetsLiabilities(obj).subscribe((data:any)=>{
 debugger
+if(data.success)
+{
+  alert("Data Saved;")
+}
+
     })
 
   }

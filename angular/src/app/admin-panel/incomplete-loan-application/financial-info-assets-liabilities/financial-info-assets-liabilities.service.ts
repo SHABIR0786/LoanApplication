@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class FinancialInfoAssetsLiabilitiesService extends BaseService{
   constructor(private httpService: HttpClient) {
-    super(httpService, "http://localhost:21021/api/services/app");
+    super(httpService, "http://localhost:21021/api");
   }
   getAllFinancialInfoAssetsLiabilities(data) {
     return this.get(ApiRoute.getMortgageApplicationAssetandLiability,{Sorting:"",SkipCount:0,MaxResultCount:10});
