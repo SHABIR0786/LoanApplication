@@ -16,9 +16,11 @@ export const ApiRoute = {
     getCitizenshipType: "services/app/CitizenshipTypeService/GetCitizenshipTypes",
     createMortgageLoanApplication: "services/app/Mortgage/CreateMortgageLoanApplication",
 
-  createMortgageApplicationAssetandLiability:"MortgageApplicationFinancialAsset/CreateMortgageApplicationAssetandLiability",
-  getMortgageApplicationAssetandLiability:"MortgageApplicationFinancialAsset/GetAll",
+  createMortgageApplicationAssetandLiability:"services/app/MortgageApplicationFinancialAsset/CreateMortgageApplicationAssetandLiability",
+  getMortgageApplicationAssetandLiability:"services/app/MortgageApplicationFinancialAsset/GetAll",
   getCountry:"services/app/CountryService/GetCountries",
   getStates:"services/app/StateService/GetStates",
-  getCities:"services/app/CityService/GetCities"
+  getCities:"services/app/CityService/GetCities",
+  createFinancialRealEstate:"services/app/MortgagePropertyFinancialInformationService/CreateMortgagePropertyFinancialInformation",
+  createFinancialInfo:"services/app/MortgageApplicationLoanPropertyService/CreateMortgageApplicationLoanProperty"
 };
