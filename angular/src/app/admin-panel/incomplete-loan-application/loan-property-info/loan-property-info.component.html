@@ -32,7 +32,7 @@
           <div class="col-2">
             <div class="frm-group">
               <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount" id="loanAmount" #loanAmount="ngModel" /></div>
               </div>
              </div>
           </div>
@@ -43,21 +43,21 @@
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;" />
+                      <input type="radio"  value="Purchase" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose" name="loanPurpose" id="loanPurpose" #loanPurpose="ngModel" style="width: 40px;" />
                       <label class="text-gray">Purchase</label>
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;"/>
+                      <input type="radio"  [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose" name="loanPurpose" id="loanPurpose" #loanPurpose="ngModel" value="Refinance " style="width: 40px;"/>
                       <label class="text-gray">Refinance</label>
                     </div>
                   </div>
 
                   <div class="col-3">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;"/>
+                      <input type="radio" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose" name="loanPurpose" id="loanPurpose" #loanPurpose="ngModel" value="Refinance " name="Other" style="width: 40px;"/>
                       <label class="text-gray">Other (specify)</label>
                     </div>
                   </div>
@@ -87,12 +87,12 @@
         <div class="row mt-2">
           <div class="col-1"><label class="gray-text">Street</label></div>
           <div class="col-7 input-border-bottom">
-            <input type="text" />
+            <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street" name="street" id="street" #street="ngModel"/>
           </div>
 
           <div class="col-1"><label class="gray-text">Unit#</label></div>
           <div class="col-2 input-border-bottom">
-            <input type="text" />
+            <input type="number" />
           </div>
         </div>
 
@@ -103,8 +103,10 @@
           <div class="col-3 input-border-bottom">
             <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
               <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                <select>
-                  <option  disabled>Select State </option>
+                <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId" name="cityId" id="cityId" #cityId="ngModel">
+                  <option  disabled>Select City </option>
+                  <option *ngFor="let obj of cityList" 
+                  [ngValue]="obj.id" > {{obj.cityName}} </option>
                 </select>
               </div>
             </div>
@@ -114,8 +116,10 @@
           <div class="col-1 input-border-bottom">
             <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
               <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                <select>
+                <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.stateId" name="stateId" id="stateId" #stateId="ngModel">
                   <option  disabled>Select State </option>
+                  <option *ngFor="let obj of stateList" 
+                  [ngValue]="obj.id" > {{obj.stateName}} </option>
                 </select>
               </div>
             </div>
@@ -124,7 +128,7 @@
 
           <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
           <div class="col-1 input-border-bottom mt-1">
-            <input type="text" />
+            <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip" name="zip" id="zip" #zip="ngModel"/>
           </div>
 
 
@@ -132,8 +136,10 @@
           <div class="col-2 input-border-bottom">
             <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
               <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                <select   >
+                <select   [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.countryId" name="countryId" id="countryId" #countryId="ngModel">
                   <option  disabled>Select Country </option>
+                  <option *ngFor="let obj of countryList" 
+                  [ngValue]="obj.id" > {{obj.countryName}} </option>
                 </select>
               </div>
             </div>
@@ -171,7 +177,7 @@
         <div class="row mt-2">
           <div class="col-1"><label class="gray-text">Number of Units</label></div>
           <div class="col-4 input-border-bottom">
-            <input type="text" />
+            <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits"  name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"/>
           </div>
 
           <div class="col-1"><label class="gray-text">PROPERTY VALUE $</label></div>
@@ -213,21 +219,21 @@
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;" />
+                      <input type="radio" value="Primary Residence" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy"  name="occupancy" id="occupancy" #occupancy="ngModel" style="width: 40px;" />
                       <label class="text-gray">Primary Residence</label>
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;"/>
+                      <input type="radio" value="Second Home" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy"  name="occupancy" id="occupancy" #occupancy="ngModel" style="width: 40px;"/>
                       <label class="text-gray">Second Home</label>
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;"/>
+                      <input type="radio" value="Investment Property" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy"  name="occupancy" id="occupancy" #occupancy="ngModel" style="width: 40px;"/>
                       <label class="text-gray">Investment Property</label>
                     </div>
                   </div>
@@ -281,14 +287,14 @@
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;" />
+                      <input type="radio" value="true" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isMixedUseProperty"  name="isMixedUseProperty" id="isMixedUseProperty" #isMixedUseProperty="ngModel"  style="width: 40px;" />
                       <label class="text-gray">Yes</label>
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div style="display: flex; justify-content: center;">
-                      <input type="radio" name="Purchase" style="width: 40px;"/>
+                      <input type="radio" value="false" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isMixedUseProperty"  name="isMixedUseProperty" id="isMixedUseProperty" #isMixedUseProperty="ngModel" style="width: 40px;"/>
                       <label class="text-gray">No</label>
                     </div>
                   </div>
@@ -303,14 +309,14 @@
 
                 <div class="col-2">
                   <div style="display: flex; justify-content: center;">
-                    <input type="radio" name="Purchase" style="width: 40px;" />
+                    <input type="radio" value="true" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isManufacturedHome"  name="isManufacturedHome" id="isManufacturedHome" #isManufacturedHome="ngModel" style="width: 40px;" />
                     <label class="text-gray">Yes</label>
                   </div>
                 </div>
 
                 <div class="col-2">
                   <div style="display: flex; justify-content: center;">
-                    <input type="radio" name="Purchase" style="width: 40px;"/>
+                    <input type="radio" value="false" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isManufacturedHome"  name="isManufacturedHome" id="isManufacturedHome" #isManufacturedHome="ngModel" style="width: 40px;"/>
                     <label class="text-gray">No</label>
                   </div>
                 </div>
@@ -370,11 +376,11 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" *ngFor="let item of loanPropertyInfoModel.newMortgageLoans">
           <div class="col-3">
             <div class="frm-group mt-2">
               <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="item.creditorName"  name="creditorName" id="creditorName" #creditorName="ngModel"/></div>
               </div>
              </div>
           </div>
@@ -382,12 +388,12 @@
             <div class="col-3 " style="border-left: 1px solid #a5a5a5 !important">
               <div style="display: flex; justify-content: left;" class="mt-3">
                 <div style="display: flex; justify-content: center;">
-                  <input type="radio" name="Purchase" style="width: 40px;" />
+                  <input type="radio" value="First Lien" [(ngModel)]="item.lienType"  name="lienType" id="lienType" #lienType="ngModel" style="width: 40px;" />
                   <label class="text-gray">First Lien</label>
                 </div>
 
                 <div style="display: flex; justify-content: center; margin-left: 40px;">
-                  <input type="radio" name="Purchase" style="width: 40px;"/>
+                  <input type="radio" value="Subordinate Lien" [(ngModel)]="item.lienType"  name="lienType" id="lienType" #lienType="ngModel" style="width: 40px;"/>
                   <label class="text-gray">Subordinate Lien</label>
                 </div>
               </div>
@@ -397,7 +403,7 @@
             <div class="col-2">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  [(ngModel)]="item.monthlyPayment"  name="monthlyPayment" id="monthlyPayment" #monthlyPayment="ngModel"/></div>
                 </div>
                 </div>
             </div>
@@ -405,7 +411,7 @@
             <div class="col-2">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  [(ngModel)]="item.loanAmount"  name="loanAmount" id="loanAmount" #loanAmount="ngModel"/></div>
                 </div>
                 </div>
             </div>
@@ -413,65 +419,15 @@
             <div class="col-2">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="item.creditLimit"  name="creditLimit" id="creditLimit" #creditLimit="ngModel"/></div>
                 </div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-          <div class="col-3">
-            <div class="frm-group mt-2">
-              <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-              </div>
-             </div>
-          </div>
-
-            <div class="col-3 " style="border-left: 1px solid #a5a5a5 !important">
-              <div style="display: flex; justify-content: left;" class="mt-3">
-                <div style="display: flex; justify-content: center;">
-                  <input type="radio" name="Purchase" style="width: 40px;" />
-                  <label class="text-gray">First Lien</label>
-                </div>
-
-                <div style="display: flex; justify-content: center; margin-left: 40px;">
-                  <input type="radio" name="Purchase" style="width: 40px;"/>
-                  <label class="text-gray">Subordinate Lien</label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-2">
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-2">
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-2">
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-                </div>
-            </div>
-        </div>
-
         <div>
           <label class="frm-label">
             <div class="row mt-3">
-              <div class="col-6"><a style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Add more</a> / <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Remove</a></div>
+              <div class="col-6"><a style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageLoanList()">Add more</a> / <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageLoanList()">Remove</a></div>
             </div>
           </label>
         </div>
@@ -513,7 +469,7 @@
         <div class=" col-4">
           <div class="frm-group mt-3">
           <div class="input-border-bottom">
-            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" /></div>
+            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome"  name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
           </div>
         </div>
         </div>
@@ -530,7 +486,7 @@
         <div class=" col-4">
           <div class="frm-group mt-3">
           <div class="input-border-bottom">
-            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" /></div>
+            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"  name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"/></div>
           </div>
         </div>
         </div>
@@ -586,57 +542,11 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants">
           <div class="col-3">
             <div class="frm-group">
               <p class="frm-fld-input">
-                <select class="form-control" name="firstName" >
-                  <option value="-1" selected disabled>Citizenship</option>
-                </select>
-              </p>
-            </div>
-
-          </div>
-
-            <div class="col-3 " style="border-left: 1px solid #a5a5a5 !important">
-              <div style="display: flex; justify-content: left;" class="mt-3">
-                <div style="display: flex; justify-content: center;">
-                  <input type="radio" name="Purchase" style="width: 40px;" />
-                  <label class="text-gray">Deposited</label>
-                </div>
-
-                <div style="display: flex; justify-content: center; margin-left: 40px;">
-                  <input type="radio" name="Purchase" style="width: 40px;"/>
-                  <label class="text-gray">Not Deposited</label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-3" style="border-left: 1px solid #696969;">
-              <div class="frm-group mt-2">
-                <p class="frm-fld-input"><select class="form-control" name="firstName" >
-                    <option value="-1" selected disabled>Citizenship</option>
-                  </select></p>
-              </div>
-            </div>
-
-            <div class="col-2" style="border-left: 1px solid #696969;">
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <div class="row">
-          <div class="col-3">
-            <div class="frm-group">
-              <p class="frm-fld-input"><select class="form-control" name="firstName" >
+                <select class="form-control" [(ngModel)]="item.assetTypeId"  name="assetTypeId" id="assetTypeId" #assetTypeId="ngModel" >
                   <option value="-1" selected disabled>Citizenship</option>
                 </select></p>
             </div>
@@ -646,12 +556,12 @@
             <div class="col-3 " style="border-left: 1px solid #a5a5a5 !important">
               <div style="display: flex; justify-content: left;" class="mt-3">
                 <div style="display: flex; justify-content: center;">
-                  <input type="radio" name="Purchase" style="width: 40px;" />
+                  <input type="radio" value="true" [(ngModel)]="item.isDeposited"  name="isDeposited" id="isDeposited" #isDeposited="ngModel" style="width: 40px;" />
                   <label class="text-gray">Deposited</label>
                 </div>
 
                 <div style="display: flex; justify-content: center; margin-left: 40px;">
-                  <input type="radio" name="Purchase" style="width: 40px;"/>
+                  <input type="radio"[(ngModel)]="item.isDeposited" value="false"  name="isDeposited" id="isDeposited" #isDeposited="ngModel" style="width: 40px;"/>
                   <label class="text-gray">Not Deposited</label>
                 </div>
               </div>
@@ -660,7 +570,7 @@
 
             <div class="col-3" style="border-left: 1px solid #696969;">
               <div class="frm-group mt-2">
-                <p class="frm-fld-input"><select class="form-control" name="firstName" >
+                <p class="frm-fld-input"><select class="form-control"[(ngModel)]="item.source"  name="source" id="source" #source="ngModel" >
                     <option value="-1" selected disabled>Citizenship</option>
                   </select></p>
               </div>
@@ -669,7 +579,7 @@
             <div class="col-2" style="border-left: 1px solid #696969;">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"  [(ngModel)]="item.marketValue"  name="marketValue" id="marketValue" #marketValue="ngModel"/></div>
                 </div>
                 </div>
             </div>
@@ -678,9 +588,10 @@
         </div>
 
 
+
           <label class="frm-label">
             <div class="row mt-3">
-              <div class="col-6"><a style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Add more</a> / <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Remove</a></div>
+              <div class="col-6"><a style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;" (click)="addGiftsOrGrants()">Add more</a> / <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;" (click)="removeGiftsOrGrants()">Remove</a></div>
             </div>
           </label>
 
@@ -712,7 +623,7 @@
 
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill">NEXT</button>
+      <button class="btn btn-fill" (click)="create()">NEXT</button>
     </div>
   </div>
 </div>
