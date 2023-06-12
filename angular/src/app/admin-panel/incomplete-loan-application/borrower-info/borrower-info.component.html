@@ -139,7 +139,7 @@
                 style="margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
                 Total Number of <b
                   style=" color:#696969  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">Borrowers:</b>
-                <input [disabled]="borrowerInfo.personalInformation.creditValue=='1'" type="text" [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (keyup)="creditClick()"
+                <input [disabled]="borrowerInfo.personalInformation.creditValue=='1'" type="number" [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (keyup)="creditClick()"
                   style="width: 30px; border-bottom: 1px solid #696969  !important;  margin-left: 10px; width: 50px; text-align: center;" />
               </div>
 
@@ -300,7 +300,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -313,7 +313,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -333,7 +333,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
+                    <select   [(ngModel)]="borrowerInfo.personalInformation.address[0].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -420,7 +420,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForaddress1 == true">
+                    <select   [disabled]="doNotApplyForaddress1 == true" [(ngModel)]="borrowerInfo.personalInformation.address[1].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -433,7 +433,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  [disabled]="doNotApplyForaddress1 == true" >
+                    <select  [disabled]="doNotApplyForaddress1 == true" [(ngModel)]="borrowerInfo.personalInformation.address[1].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -453,7 +453,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  [disabled]="doNotApplyForaddress1 == true">
+                    <select  [disabled]="doNotApplyForaddress1 == true" [(ngModel)]="borrowerInfo.personalInformation.address[1].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -566,7 +566,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForaddress2 == true">
+                    <select   [disabled]="doNotApplyForaddress2 == true" [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -579,7 +579,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForaddress2 == true">
+                    <select   [disabled]="doNotApplyForaddress2 == true" [(ngModel)]="borrowerInfo.personalInformation.address[2].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -599,7 +599,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select [disabled]="doNotApplyForaddress2 == true" >
+                    <select [disabled]="doNotApplyForaddress2 == true" [(ngModel)]="borrowerInfo.personalInformation.address[2].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -683,7 +683,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForEmp0 == true">
+                    <select   [disabled]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -702,7 +702,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select [disabled]="doNotApplyForEmp0 == true">
+                    <select [disabled]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -722,7 +722,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForEmp0 == true">
+                    <select   [disabled]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -944,7 +944,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  [disabled]="doNotApplyForEmp1 == true" >
+                    <select  [disabled]="doNotApplyForEmp1 == true" [(ngModel)]="borrowerInfo.employment[1].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -963,7 +963,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForEmp1 == true">
+                    <select   [disabled]="doNotApplyForEmp1 == true" [(ngModel)]="borrowerInfo.employment[1].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -983,7 +983,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  [disabled]="doNotApplyForEmp1 == true">
+                    <select  [disabled]="doNotApplyForEmp1 == true" [(ngModel)]="borrowerInfo.employment[1].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -1234,7 +1234,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [disabled]="doNotApplyForEmp2 == true">
+                    <select   [disabled]="doNotApplyForEmp2 == true" [(ngModel)]="borrowerInfo.employment[2].cityId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -1253,7 +1253,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  [disabled]="doNotApplyForEmp2 == true">
+                    <select  [disabled]="doNotApplyForEmp2 == true" [(ngModel)]="borrowerInfo.employment[2].stateId">
                       <option [ngValue]="undefined" disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -1273,7 +1273,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select [disabled]="doNotApplyForEmp2 == true" >
+                    <select [disabled]="doNotApplyForEmp2 == true" [(ngModel)]="borrowerInfo.employment[2].countryId">
                       <option [ngValue]="undefined" disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
