@@ -8,7 +8,7 @@ import {FinancialInfoRealEstateService} from "./financial-info-real-estate.servi
 })
 export class FinancialInfoRealEstateComponent implements OnInit {
   objFinancialInfoRealState :FinancialInfoRealEstate = new FinancialInfoRealEstate()
-  financialInfoRealState:FinancialInfoRealEstate[]=[]
+  financialInfoRealState:FinancialInfoRealEstate[]=[new FinancialInfoRealEstate()]
   constructor(private financialInfoRealEstateService:FinancialInfoRealEstateService) {}
   cityList:any[]=[]
   countryList:any[]=[]
@@ -16,7 +16,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   objMortgageLoanProperty:MortgageLoanOnProperty = new MortgageLoanOnProperty()
   ngOnInit(): void {
     debugger
-    this.financialInfoRealState.push(this.objFinancialInfoRealState);
     // this.financialInfoRealState.push(this.objFinancialInfoRealState)
     this.getCities();
     this.getCountries();
@@ -73,26 +72,74 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   }
   removeMortgageLoanList(index:any){
     debugger
-    var mortgageFinancialLength = this.financialInfoRealState[index].mortgageLoanOnProperty.length;
-    if(mortgageFinancialLength == 1)
+    var indexList:any[]=[]
+    if(this.financialInfoRealState[index].mortgageLoanOnProperty.length > 0)
     {
-      return;
+      debugger
+      this.financialInfoRealState[index].mortgageLoanOnProperty.forEach((element:any,index:any)=>{
+        if(element.isPaidBeforeClosing == true)
+        {
+          indexList.push({index:index})
+        }
+      })
+      if(indexList.length > 0)
+      {
+        debugger
+        indexList.sort((a:any,b:any)=>{
+          return b.index - a.index
+        })
+        debugger
+        indexList.forEach((element:any)=>{
+          debugger
+          this.financialInfoRealState[index].mortgageLoanOnProperty.splice(element.index,1)
+        })
+      }
+      else
+      {
+        var mortgageFinancialLength = this.financialInfoRealState[index].mortgageLoanOnProperty.length;
+        if(mortgageFinancialLength == 1)
+        {
+          return;
+        }
+        else
+        {
+          var obj= mortgageFinancialLength - 1;
+          this.financialInfoRealState[index].mortgageLoanOnProperty.splice(obj,1)
+        }
+      }
+    
     }
-    else
-    {
-      this.financialInfoRealState[index].mortgageLoanOnProperty.splice(1,mortgageFinancialLength)
-    }
+    // isPaidBeforeClosing
+    
     
   }
   create()
   {
     debugger
-    this.financialInfoRealEstateService.create(this.financialInfoRealState).subscribe((data:any)=>{
+    var obj=this.financialInfoRealState
+    this.financialInfoRealEstateService.create(obj).subscribe((data:any)=>{
       debugger
       if(data.success == true)
       {
         alert("Data added successfully");
       }
     })
+  }
+  addMoreProperty()
+  {
+    this.financialInfoRealState.push(this.objFinancialInfoRealState);
+  }
+  changeCheckBox(index:any){
+    debugger
+    if(this.financialInfoRealState[index].flgApplicableNotApply ==false)
+    {
+      this.financialInfoRealState[index].flgApplicableNotApply =true; 
+    }
+    else
+    {
+      this.financialInfoRealState[index].flgApplicableNotApply =false; 
+    }
+    this.financialInfoRealState[0].flgApplicableNotApply=false;
+    
   }
 }

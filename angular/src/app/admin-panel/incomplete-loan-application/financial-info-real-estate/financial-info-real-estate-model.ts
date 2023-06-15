@@ -1,29 +1,44 @@
 export class FinancialInfoRealEstate {
-financialInformationType: string='';
-personalInformationId: number=0;
-street: string='';
-unit: string='';
-cityId:  number=0;
-stateId:  number=0;
-countryId:  number=0;
-zip:string='';
-propertyValue:  number=0;
-intendedOccupancy: string='';
-monthlyInsurance:  number=0;
-monthlyRentalIncome:  number=0;
-netMonthlyRentalIncome:  number=0;
-flgMortgageLoanNotApply:boolean=false;
-flgApplicableNotApply:boolean=false;
-flgMortgageLoan2NotApply:boolean=false;
-mortgageLoanOnProperty: MortgageLoanOnProperty[]=[new MortgageLoanOnProperty()]
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    financialInformationType: string ;
+    personalInformationId: number;
+    street: string ;
+    unit: string ;
+    cityId: number ;
+    stateId: number;
+    countryId: number ;
+    zip: string ;
+    propertyValue: number ;
+    intendedOccupancy: string ;
+    monthlyInsurance: number ;
+    monthlyRentalIncome: number ;
+    netMonthlyRentalIncome: number ;
+    flgMortgageLoanNotApply: boolean =false;
+    flgApplicableNotApply: boolean=false ;
+    mortgageLoanOnProperty: MortgageLoanOnProperty[] = [new MortgageLoanOnProperty()]
 
 }
-export class MortgageLoanOnProperty{
-    creditorName: string='';
-    accountNumber: string='';
-    monthlyMortagagePayment: number=0;
-    unpaidBalance: number=0;
-    type: string='';
-    creditLimit: number=0;
-    isPaidBeforeClosing: boolean=false;
+export class MortgageLoanOnProperty {
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    creditorName: string ;
+    accountNumber: string ;
+    monthlyMortagagePayment: number ;
+    unpaidBalance: number;
+    type: string ;
+    creditLimit: number ;
+    isPaidBeforeClosing: boolean ;
 }

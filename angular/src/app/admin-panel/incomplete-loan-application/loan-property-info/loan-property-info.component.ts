@@ -7,6 +7,9 @@ import {LoanPropertyInfoService} from "./loan-property-info.service"
   styleUrls: ["./loan-property-info.component.css"],
 })
 export class LoanPropertyInfoComponent implements OnInit {
+  flgOtherNewMortgageLoans:boolean=false;
+  flgRentalIncome:boolean=false;
+  flgGiftsorGrants :boolean=false;
   loanPropertyInfoModel:LoanPropertyInfoModels = new LoanPropertyInfoModels()
   cityList:any[]=[];
   countryList:any[]=[];
@@ -15,7 +18,6 @@ export class LoanPropertyInfoComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    var obj = this.loanPropertyInfoModel
     this.getCities();
     this.getCountries();
     this.getStates();
@@ -102,8 +104,24 @@ export class LoanPropertyInfoComponent implements OnInit {
   }
   create()
   {
-    this.loanPropertyInfoService.create(this.loanPropertyInfoModel).subscribe((data:any)=>{
-      alert("data has created successfully")
+    if(this.flgOtherNewMortgageLoans == true)
+    {
+      this.loanPropertyInfoModel.newMortgageLoans=[];
+    }
+    if(this.flgRentalIncome == true)
+    {
+      this.loanPropertyInfoModel.rentalIncome=null;
+    }
+    if(this.flgGiftsorGrants == true)
+    {
+      this.loanPropertyInfoModel.giftsOrGrants=[];
+    }
+    var obj=this.loanPropertyInfoModel;
+    this.loanPropertyInfoService.create(obj).subscribe((data:any)=>{
+      if(data.success == true)
+      {
+        alert("Data inserted successfully")
+      }
     })
   }
 }

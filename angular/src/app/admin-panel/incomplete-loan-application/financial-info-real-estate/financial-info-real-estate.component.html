@@ -1,3 +1,8 @@
+<style>
+  :host/deep/ .hidde{
+    visibility: hidden !important;
+  }
+</style>
 <div>
   <h4 class="section-title">Property You Own</h4>
   <div class="info-block">
@@ -16,6 +21,13 @@
     <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
 
     <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;" *ngFor="let item of financialInfoRealState ; index as i">
+      <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;" [ngClass]="{'hidde':i == 0}">
+        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Property</span>
+        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
+          <input type="checkbox" [ngModel]="item.flgApplicableNotApply" (change)="changeCheckBox(i)">
+          <span class="checkmark mt-2"></span>
+        </label>
+      </div>
       <div class="row div-sub-grp">
         <div class="col-12">
           <div class="frm-group">
@@ -25,7 +37,7 @@
             <div class="row mt-12">
               <div class="col-1"><label class="gray-text">Street</label></div>
               <div class="col-10 input-border-bottom" >
-                <input type="text" [(ngModel)]="item.street" name="street" id="street" #street="ngModel"  />
+                <input type="text" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.street" name="street" id="street" #street="ngModel"  />
               </div>
             </div>
 
@@ -36,7 +48,7 @@
               <div class="col-3 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select [(ngModel)]="item.cityId" name="cityId" id="cityId" #cityId="ngModel">
+                    <select [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.cityId" name="cityId" id="cityId" #cityId="ngModel">
                       <option  disabled>Select State </option>
                       <option *ngFor="let obj of cityList" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
@@ -49,7 +61,7 @@
               <div class="col-1 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select [(ngModel)]="item.stateId" name="stateId" id="stateId" #stateId="ngModel">
+                    <select [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.stateId" name="stateId" id="stateId" #stateId="ngModel">
                       <option  disabled>Select State </option>
                       <option *ngFor="let obj of stateList" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
@@ -61,7 +73,7 @@
 
               <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
               <div class="col-1 input-border-bottom mt-1">
-                <input type="text" [(ngModel)]="item.zip" name="zip" id="zip" #zip="ngModel"/>
+                <input type="text" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.zip" name="zip" id="zip" #zip="ngModel"/>
               </div>
 
 
@@ -69,7 +81,7 @@
               <div class="col-2 input-border-bottom">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   [(ngModel)]="item.countryId" name="countryId" id="countryId" #countryId="ngModel">
+                    <select [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="countryId" id="countryId" #countryId="ngModel">
                       <option  disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" 
                       [ngValue]="obj.id" > {{obj.countryName}} </option>
@@ -164,14 +176,14 @@
               <div class="col-2">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="item.propertyValue" name="propertyValue" id="propertyValue" #propertyValue="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.propertyValue" name="propertyValue" id="propertyValue" #propertyValue="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group ">
                   <div class="frm-fld-input">
-                      <select [(ngModel)]="item.financialInformationType" name="financialInformationType" id="financialInformationType" #financialInformationType="ngModel">
+                      <select [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.financialInformationType" name="financialInformationType" id="financialInformationType" #financialInformationType="ngModel">
                         <option value="-1" selected disabled>-Select One-</option>
                         <option value="Sold">Sold</option>
                         <option value="Pending">Pending Sale</option>
@@ -182,7 +194,7 @@
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5"><div class="frm-group ">
                 <div class="frm-fld-input">
-                    <select [(ngModel)]="item.intendedOccupancy" name="intendedOccupancy" id="intendedOccupancy" #intendedOccupancy="ngModel">
+                    <select [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.intendedOccupancy" name="intendedOccupancy" id="intendedOccupancy" #intendedOccupancy="ngModel">
                       <option value="-1" selected disabled>-Select One-</option>
                       <option value="Sold">Sold</option>
                       <option value="Primary Residence">Primary Residence</option>
@@ -194,21 +206,21 @@
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  [(ngModel)]="item.monthlyInsurance" name="monthlyInsurance" id="monthlyInsurance" #monthlyInsurance="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="monthlyInsurance" id="monthlyInsurance" #monthlyInsurance="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  [(ngModel)]="item.monthlyRentalIncome" name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyRentalIncome" name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2" style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="item.netMonthlyRentalIncome" name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel" /></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel" /></div>
                   </div>
                  </div>
               </div>
@@ -221,7 +233,7 @@
       <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;">
         <span style="font-size: 20px;">Mortgage Loans on this Property</span>
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-          <input type="checkbox" >
+          <input type="checkbox" [(ngModel)]="item.flgMortgageLoanNotApply" name="flgMortgageLoanNotApply" id="flgMortgageLoanNotApply">
           <span class="checkmark mt-2"></span>
         </label>
       </div>
@@ -278,13 +290,13 @@
             <div class="row" *ngFor="let item2 of item.mortgageLoanOnProperty">
               <div class="col-2">
                 <div class="frm-group ">
-                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item2.creditorName" name="creditorName" id="creditorName" #creditorName="ngModel"/></p>
+                  <p class="frm-fld-input height35"><input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.creditorName" name="creditorName" id="creditorName" #creditorName="ngModel"/></p>
               </div>
 
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group ">
-                    <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item2.accountNumber" name="accountNumber" id="accountNumber" #accountNumber="ngModel" /></p>
+                    <p class="frm-fld-input height35"><input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.accountNumber" name="accountNumber" id="accountNumber" #accountNumber="ngModel" /></p>
                 </div>
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
@@ -292,23 +304,23 @@
 
               <div class="frm-group mt-2" style="display: flex; justify-content: space-between;">
                 <div class="input-border-bottom  mr-3">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="item2.monthlyMortagagePayment" name="monthlyMortagagePayment" id="monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"/></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="monthlyMortagagePayment" id="monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"/></div>
                 </div>
-                  <input type="checkbox" [(ngModel)]="item2.isPaidBeforeClosing" name="isPaidBeforeClosing" id="isPaidBeforeClosing" #isPaidBeforeClosing="ngModel">
+                  <input type="checkbox" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.isPaidBeforeClosing" name="isPaidBeforeClosing" id="isPaidBeforeClosing" #isPaidBeforeClosing="ngModel">
               </div>
 
             </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="item2.unpaidBalance" name="unpaidBalance" id="unpaidBalance" #unpaidBalance="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.unpaidBalance" name="unpaidBalance" id="unpaidBalance" #unpaidBalance="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group mt-2">
                   <div class="frm-fld-input">
-                      <select [(ngModel)]="item2.type" name="type" id="type" #type="ngModel">
+                      <select [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.type" name="type" id="type" #type="ngModel">
                         <option value="-1" selected disabled>Interest and Dividends</option>
                         <option  value="Checking">Checking</option>
                         <option value="Savings">Savings</option>
@@ -327,7 +339,7 @@
 
                 <div class="frm-group ">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [(ngModel)]="item2.creditLimit" name="creditLimit" id="creditLimit" #creditLimit="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.creditLimit" name="creditLimit" id="creditLimit" #creditLimit="ngModel"/></div>
                   </div>
               </div>
 
@@ -341,16 +353,12 @@
             </div>
           </div>
         </div>
+        <div  style="display: flex;justify-content: end;margin-top: 3px;"><a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;" (click)="addMoreProperty()">Add More Property</a></div>
       </div>
 
-
-      <!-- <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Property</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-          <input type="checkbox">
-          <span class="checkmark mt-2"></span>
-        </label>
-      </div> -->
+    
+      
+    </div>
 <!-- 
       <div class="row div-sub-grp">
         <div class="col-12">
@@ -691,9 +699,9 @@
           </div>
         </div>
       </div> -->
+     
 
 
-</div>
 
 
   <div class="separator"></div>

@@ -5,42 +5,82 @@ export class LoanPropertyInfoModels {
     giftsOrGrants:GiftsOrGrants[] = [new GiftsOrGrants()];
 }
 export class LoanPropertyInfo{
-    personalInformationId: number =0;
-    loanAmount:  number =0;
-    loanPurpose: string='';
-    occupancy: string='';
-    isManufacturedHome: boolean=false;
-    isMixedUseProperty: boolean=false;
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    personalInformationId: number ;
+    loanAmount:  number ;
+    loanPurpose: string;
+    occupancy: string;
+    isManufacturedHome: boolean;
+    isMixedUseProperty: boolean;
     propertyAddress:PropertyAddress = new PropertyAddress()
 }
 export class PropertyAddress{
-    personalInformationId:  number =0;
-    street: string='';
-    cityId:  number =0;
-    stateId:  number =0;
-    countryId:  number =0;
-    zip:  number =0;
-    numberOfUnits:  number =0;
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    personalInformationId:  number ;
+    street: string;
+    cityId:  number ;
+    stateId:  number ;
+    countryId:  number ;
+    zip:  number ;
+    numberOfUnits:  number ;
         
 }
 export class NewMortgageLoans{
-    personalInformationId:  number =0;
-    creditorName: string='';
-    lienType: string='';
-    monthlyPayment:  number =0;
-    loanAmount:  number =0;
-    creditLimit:  number =0;
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    personalInformationId:  number ;
+    creditorName: string;
+    lienType: string;
+    monthlyPayment:  number ;
+    loanAmount:  number ;
+    creditLimit:  number ;
 }
 export class RentalIncome{
-    personalInformationId:  number =0;
-    monthlyRentalIncome:  number =0;
-    netMonthlyRentalIncome:  number =0;
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    personalInformationId:  number ;
+    monthlyRentalIncome:  number ;
+    netMonthlyRentalIncome:  number ;
 }
 export class  GiftsOrGrants{
-    personalInformationId:  number =0;
-    assetTypeId:  number =0;
-    isDeposited:  boolean=false;
-    source: string='';
-    marketValue:  number =0;
+    id: number;
+    creationTime: Date;
+    creatorUserId: number;
+    lastModificationTime: Date;
+    lastModifierUserId: number;
+    isDeleted: boolean;
+    deleterUserId: number;
+    deletionTime: Date;
+    personalInformationId:  number ;
+    assetTypeId:  number ;
+    isDeposited:  boolean;
+    source: string;
+    marketValue:  number ;
 }
   

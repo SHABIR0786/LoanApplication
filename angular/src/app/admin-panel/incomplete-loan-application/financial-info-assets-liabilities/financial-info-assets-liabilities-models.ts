@@ -1,10 +1,10 @@
 export class FinancialInfoAssetsLiabilitiesModels {
-    mortgageFinancialAssets:MortgageFinancialAssets[]=[new MortgageFinancialAssets()];
-    mortgageFinancialOtherAssets:MortgageFinancialOtherAssets[]=[new MortgageFinancialOtherAssets()];
-    mortgageFinancialLiabilities:MortgageFinancialLiabilities[]=[new MortgageFinancialLiabilities()];
-    mortgageFinancialOtherLaibilities:MortgageFinancialOtherLaibilities[]=[new MortgageFinancialOtherLaibilities()];
+    mortgageFinancialAssets:mortgageFinancialAssets[]=[new mortgageFinancialAssets()];
+    mortgageFinancialOtherAssets:mortgageFinancialOtherAssets[]=[new mortgageFinancialOtherAssets()];
+    mortgageFinancialLiabilities:mortgageFinancialLiabilities[]=[new mortgageFinancialLiabilities()];
+    mortgageFinancialOtherLaibilities:mortgageFinancialOtherLaibilities[]=[new mortgageFinancialOtherLaibilities()];
 }
-export class MortgageFinancialAssets{
+export class mortgageFinancialAssets{
     id: number
     creationTime: string
     creatorUserId: number
@@ -17,9 +17,9 @@ export class MortgageFinancialAssets{
     financialInstitution:string;
     accountNumber:string;
     cashMarketValue:number;
-    personalInformationId:number=3;
+    personalInformationId:number;
 }
-export class MortgageFinancialOtherAssets{
+export class mortgageFinancialOtherAssets{
     id: number
     creationTime: string
     creatorUserId: number
@@ -30,9 +30,9 @@ export class MortgageFinancialOtherAssets{
     deletionTime: string
     financialAssetsTypeId:number;
     cashMarketValue:number;
-    personalInformationId:number=3;
+    personalInformationId:number;
 }
-export class MortgageFinancialLiabilities{
+export class mortgageFinancialLiabilities{
     id: number
     creationTime: string
     creatorUserId: number
@@ -45,11 +45,11 @@ export class MortgageFinancialLiabilities{
     companyName:string;
     accountNumber:string;
     unpaidBalance:number;
-    isPaidBeforeClosing:boolean=true;
+    isPaidBeforeClosing:boolean=false;
     monthlyPayment:number;
-    PersonalInformationId:number=3;
+    PersonalInformationId:number;
 }
-export class MortgageFinancialOtherLaibilities{
+export class mortgageFinancialOtherLaibilities{
     id: number
     creationTime: string
     creatorUserId: number
@@ -60,5 +60,5 @@ export class MortgageFinancialOtherLaibilities{
     deletionTime: string
     financialLaibilitiesTypeId:number;
     monthlyPayment:number;
-    personalInformationId:number=3;
+    personalInformationId:number;
 }

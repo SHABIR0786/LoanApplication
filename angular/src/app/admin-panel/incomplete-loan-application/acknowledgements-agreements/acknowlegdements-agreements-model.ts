@@ -1,4 +1,4 @@
-export class DeclarationsModel {
+export class AcknowlegdementsAgreementsModel {
     id: number;
     creationTime: Date;
     creatorUserId: number;
@@ -7,7 +7,6 @@ export class DeclarationsModel {
     isDeleted: boolean;
     deleterUserId: number;
     deletionTime: Date;
-    declarationQuestionId: number=0;
-    answer: string='';
-    personalInformationId: number=0;
+    isAgreeAgreement: boolean;
+    personalInformationId: number;
 }

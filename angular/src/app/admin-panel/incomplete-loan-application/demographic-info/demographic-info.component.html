@@ -13,8 +13,8 @@
       compliance with equal credit opportunity, fair housing, and home mortgage
       disclosure laws. You are not required to provide this information, but are
       encouraged to do so. You may select one or more designations for
-      "Ethnicity" and one or more designations for "Race." The law provides that
-      we may not discriminate on the basis of this information, or on whether
+      "Ethnicity" and one or more designations for "Race." <b>The law provides that
+      we may not discriminate</b> on the basis of this information, or on whether
       you choose to provide it. However, if you choose not to provide the
       information and you have made this application in person, Federal
       regulations require us to note your ethnicity, sex, and race on the basis
@@ -35,7 +35,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  id="isHispanicOrLatino"
+                  name="isHispanicOrLatino"
+                  #isHispanicOrLatino="ngModel"
+                  [(ngModel)]="demographicInfoModels.isHispanicOrLatino"
                   id="defaultCheck1"
                 />
                 <label class="form-check-label" for="defaultCheck1">
@@ -48,8 +51,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="inlineCheckbox1"
-                  value="option1"
+                  id="isMexican"
+                  name="isMexican"
+                  #isMexican="ngModel"
+                  [(ngModel)]="demographicInfoModels.isMexican"
                 />
                 <label class="form-check-label" for="inlineCheckbox1"
                   >Mexican</label
@@ -59,8 +64,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="inlineCheckbox2"
-                  value="option2"
+                  id="isPuertoRican"
+                  name="isPuertoRican"
+                  #isPuertoRican="ngModel"
+                  [(ngModel)]="demographicInfoModels.isPuertoRican"
                 />
                 <label class="form-check-label" for="inlineCheckbox2"
                   >Puerto Rican</label
@@ -70,8 +77,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="inlineCheckbox3"
-                  value="option3"
+                  id="isCuban"
+                  name="isCuban"
+                  #isCuban="ngModel"
+                  [(ngModel)]="demographicInfoModels.isCuban"
                   disabled
                 />
                 <label class="form-check-label" for="inlineCheckbox3"
@@ -82,8 +91,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  id="inlineCheckbox3"
-                  value="option3"
+                  id="isOtherHispanicOrLatino"
+                  name="isOtherHispanicOrLatino"
+                  #isOtherHispanicOrLatino="ngModel"
+                  [(ngModel)]="demographicInfoModels.isOtherHispanicOrLatino"
                   disabled
                 />
                 <label class="form-check-label" for="inlineCheckbox3"
@@ -102,8 +113,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="defaultCheck1"
+                  id="isNotHispanicOrLatino"
+                  name="isNotHispanicOrLatino"
+                  #isNotHispanicOrLatino="ngModel"
+                  [(ngModel)]="demographicInfoModels.isNotHispanicOrLatino"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   Not Hispanic or Latino
@@ -115,8 +128,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="defaultCheck1"
+                  id="canNotProvideEthnicInfo"
+                  name="canNotProvideEthnicInfo"
+                  #canNotProvideEthnicInfo="ngModel"
+                  [(ngModel)]="demographicInfoModels.canNotProvideEthnicInfo"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -131,8 +146,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="defaultCheck1"
+                  id="isFemale"
+                  name="isFemale"
+                  #isFemale="ngModel"
+                  [(ngModel)]="demographicInfoModels.isFemale"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   Female
@@ -144,8 +161,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="defaultCheck1"
+                  id="isMale"
+                  name="isMale"
+                  #isMale="ngModel"
+                  [(ngModel)]="demographicInfoModels.isMale"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   Male
@@ -157,8 +176,10 @@
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="defaultCheck1"
+                  id="canNotProvideSexInfo"
+                  name="canNotProvideSexInfo"
+                  #canNotProvideSexInfo="ngModel"
+                  [(ngModel)]="demographicInfoModels.canNotProvideSexInfo"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -167,7 +188,259 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <p><b>Race:</b> Check one or more</p>
+          <div style="border-bottom: 1px solid #000;">
+            <div class="form-check">
+              <input  class="form-check-input" type="checkbox" id="isAmericanIndianOrAlaskaNative"
+              name="isAmericanIndianOrAlaskaNative"
+              #isAmericanIndianOrAlaskaNative="ngModel"
+              [(ngModel)]="demographicInfoModels.isAmericanIndianOrAlaskaNative" />
+              <label class="form-check-label" for="defaultCheck1">American Indian or Alaska Native – Print name of enrolled</label>
+            </div>
+          </div>
+
+          <div>
+            <p>
+              or principal tribe :
+            </p>
+          </div>
+
+          <div>
+            <div class="form-check">
+              <input  class="form-check-input" type="checkbox"  id="isAsian"
+              name="isAsian"
+              #isAsian="ngModel"
+              [(ngModel)]="demographicInfoModels.isAsian" />
+              <label class="form-check-label" for="defaultCheck1">Asian</label>
+            </div>
+          </div>
+
+
+
+          <div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isAsianIndian"
+              name="isAsianIndian"
+              #isAsianIndian="ngModel"
+              [(ngModel)]="demographicInfoModels.isAsianIndian"
+              />
+              <label class="form-check-label" for="inlineCheckbox1">Asian Indian</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isChinese"
+                name="isChinese"
+                #isChinese="ngModel"
+                [(ngModel)]="demographicInfoModels.isChinese" />
+              <label class="form-check-label" for="inlineCheckbox2">Chinese</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isFilipino"
+                name="isFilipino"
+                #isFilipino="ngModel"
+                [(ngModel)]="demographicInfoModels.isFilipino"
+
+              />
+              <label class="form-check-label" for="inlineCheckbox3"
+                >Filipino</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isJapanese"
+                name="isJapanese"
+                #isJapanese="ngModel"
+                [(ngModel)]="demographicInfoModels.isJapanese"
+
+              />
+              <label class="form-check-label" for="inlineCheckbox3"
+                >Japanese</label
+              >
+            </div>
+
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isKorean"
+                name="isKorean"
+                #isKorean="ngModel"
+                [(ngModel)]="demographicInfoModels.isKorean"
+
+              />
+              <label class="form-check-label" for="inlineCheckbox3">Korean</label>
+            </div>
+
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isVietnamese"
+                name="isVietnamese"
+                #isVietnamese="ngModel"
+                [(ngModel)]="demographicInfoModels.isVietnamese"
+                />
+              <label class="form-check-label" for="inlineCheckbox3">Vietnamese</label>
+            </div>
+            <div></div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isOtherAsian"
+                name="isOtherAsian"
+                #isOtherAsian="ngModel"
+                [(ngModel)]="demographicInfoModels.isOtherAsian"
+                />
+              <label class="form-check-label" for="inlineCheckbox3">Other Asian</label>
+            </div>
+
+            <div class="form-check form-check-inline frm-fld-input">
+                <label class="form-check-label" for="inlineCheckbox3"> Print race:</label>
+                <input  type="text"    id="otherAsianRace"
+                name="otherAsianRace"
+                #otherAsianRace="ngModel"
+                [(ngModel)]="demographicInfoModels.otherAsianRace" />
+            </div>
+
+            <div>
+              <p>
+                For example: Hmong, Laotian, Thai, Pakistani, Cambodian, and so on.
+              </p>
+            </div>
+          </div>
+
+
+
+            <!-- <div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="defaultCheck1"
+                />
+                <label class="form-check-label" for="defaultCheck1">
+                  Black or African American
+                </label>
+              </div>
+            </div> -->
+
+
+            <!-- <div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="defaultCheck1"
+                />
+                <label class="form-check-label" for="defaultCheck1">
+                  Native Hawaiian or Other Pacific Islander
+                </label>
+              </div>
+            </div> -->
+
+
+
+          <div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isBlackOrAfricanAmerican"
+                name="isBlackOrAfricanAmerican"
+                #isBlackOrAfricanAmerican="ngModel"
+                [(ngModel)]="demographicInfoModels.isBlackOrAfricanAmerican" />
+              <label class="form-check-label" for="inlineCheckbox1">Black or African American </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isNativeHawaiianOrOtherPacificIslander"
+                name="isNativeHawaiianOrOtherPacificIslander"
+                #isNativeHawaiianOrOtherPacificIslander="ngModel"
+                [(ngModel)]="demographicInfoModels.isNativeHawaiianOrOtherPacificIslander "/>
+              <label class="form-check-label" for="inlineCheckbox1">Native Hawaiian or Other Pacific Islander</label>
+            </div>
+
+            <div></div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isOtherPacificIslander"
+                name="isOtherPacificIslander"
+                #isOtherPacificIslander="ngModel"
+                [(ngModel)]="demographicInfoModels.isOtherPacificIslander "/>
+              <label class="form-check-label" for="inlineCheckbox2">Other Pacific Islander</label>
+            </div>
+
+
+
+            <div class="form-check form-check-inline frm-fld-input">
+                <label class="form-check-label" for="inlineCheckbox3"> Print race:</label>
+                <input  type="text"   id="otherPacificIslanderRace"
+                name="otherPacificIslanderRace"
+                #otherPacificIslanderRace="ngModel"
+                [(ngModel)]="demographicInfoModels.otherPacificIslanderRace "/>
+            </div>
+
+
+            <div>
+              <p>
+                For example: Hmong, Laotian, Thai, Pakistani, Cambodian, and so on.
+              </p>
+            </div>
+
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="isWhite"
+                name="isWhite"
+                #isWhite="ngModel"
+                [(ngModel)]="demographicInfoModels.isWhite" />
+              <label class="form-check-label" for="inlineCheckbox3">White</label>
+            </div><br>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="canNotProvideRaceInfo"
+                name="canNotProvideRaceInfo"
+                #canNotProvideRaceInfo="ngModel"
+                [(ngModel)]="demographicInfoModels.canNotProvideRaceInfo"/>
+              <label class="form-check-label" for="inlineCheckbox3">I do not wish to provide this information</label>
+            </div>
+
+
+            <div></div>
+
+
+          </div>
+
+
+        </div>
       </div>
     </form>
   </div>
@@ -186,7 +459,7 @@
   </div>
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill">Finish</button>
+      <button class="btn btn-fill" (click)="create()">Finish</button>
     </div>
   </div>
 </div>
