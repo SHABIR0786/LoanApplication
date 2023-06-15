@@ -22,5 +22,10 @@ export const ApiRoute = {
   getStates:"services/app/StateService/GetStates",
   getCities:"services/app/CityService/GetCities",
   createFinancialRealEstate:"services/app/MortgagePropertyFinancialInformationService/CreateMortgagePropertyFinancialInformation",
-  createFinancialInfo:"services/app/MortgageApplicationLoanPropertyService/CreateMortgageApplicationLoanProperty"
+  createFinancialInfo:"services/app/MortgageApplicationLoanPropertyService/CreateMortgageApplicationLoanProperty",
+  createDeclarations:"services/app/Mortgage/MortgageApplicationQuestions",
+  createApplicationAgreement:"services/app/Mortgage/CreateMortgageApplicationAgreement",
+  createMilitaryService:"services/app/MortgageApplicationLoanPropertyService/CreateMilitaryService",
+  createDemoGraphicInfo:"services/app/MortgageApplicationDemographicInformationService/CreateDemographicInformation",
+  createLoanOriginatorInfo:"services/app/MortgageApplicationLoanPropertyService/CreateOriginatorInformation"
 };
