@@ -196,7 +196,7 @@
           <label class="col-3 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="totalMortgageFinancialAssets" /></div>
+                <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="totalMortgageFinancialAssets" /></div>
             </div>
            </div>
           </label>
@@ -347,15 +347,13 @@
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
               <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [disabled]="flgMortgageFinancialOtherAssets" [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialOtherAssets()"/></div>
-              <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-              <div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
             </div>
           </div>
           </div>
         </div>
 
         <div class="row ">
-          <label class="col-9 frm-label">
+          <label class="col-8 frm-label">
             <div class="row mt-3">
               <div class="col-6"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialOtherAssets()">Add more</a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
               <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
@@ -459,7 +457,7 @@
           </div>
           <div class="col-2">
             <div class="frm-group mt-3">
-              <p class="frm-fld-input height35 "  style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number" [disabled]="flgMortgageFinancialLiabilities"  [(ngModel)]="item.isPaidBeforeClosing" id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel" /></span><input type="checkbox" style="width: 40px;"/></p>
+              <p class="frm-fld-input height35 "  style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number"  /></span><input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"  [(ngModel)]="item.isPaidBeforeClosing" id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel" style="width: 40px;"/></p>
             </div>
           </div>
 
@@ -473,20 +471,18 @@
           </div>
         </div>
 
-        <div class="row ">
-          <label class="col-8 frm-label">
+        <div class="row">
+          <label class="col-10 frm-label">
             <div class="row mt-3">
               <div class="col-6"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialLiabilities()">Add more</a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
               <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
             </div>
           </label>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
+
           <label class="col-2 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="totalMortgageFinancialOtherLaibilities" /></div>
+              <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="totalMortgageFinancialOtherLaibilities" /></div>
             </div>
            </div>
           </label>

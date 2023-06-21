@@ -16,6 +16,7 @@ export class BorrowerInfoComponent implements OnInit {
   doNotApplyForEmp0:boolean = false;
   doNotApplyForEmp1:boolean = false;
   doNotApplyForEmp2:boolean = false;
+  incomeFromOtherSources:boolean = false;
   countryList:any[]=[];
   stateList:any[]=[];
   cityList:any[]=[];
@@ -90,7 +91,7 @@ export class BorrowerInfoComponent implements OnInit {
     if(this.doNotApplyForEmp2){
       this.borrowerInfo.employment[2] = new Employment();
     }
-
+    debugger
     this.borrowService.createMortgageLoanApplication(this.borrowerInfo).subscribe(
          (res: any) => {
         console.log(res.result);

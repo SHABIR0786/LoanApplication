@@ -17,7 +17,7 @@
   margin-bottom: 0;
 }
 .form-block {
-  background: #e7e7e7;
+  background: #ffffff;
   border: 1px solid #a5a5a5;
   border-radius: 8px;
   padding: 14px 21px 24px 21px;
@@ -98,3 +98,31 @@
   border-radius: 6px;
   width: 118px;
 }
+
+
+.frm-fld-input {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #A5A5A5;
+  font-weight: 500;
+  color: #A5A5A5;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+
+
+  .frm-fld-input input{
+  border: 0px !important;
+  font-size: 14px;
+  margin-bottom: 0px;
+  padding-left: 0px !important;
+  width: 100%;
+  color: #A5A5A5;
+  font-weight: 500;
+  line-height: 1.2575;
+  background-color: #ffffff;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }

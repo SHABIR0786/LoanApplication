@@ -24,6 +24,37 @@ color: #000000;
   color: #000000;
   }
 
+
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml focus, input:focus{
+  font-size: 15px;
+  outline: none;
+  font-weight: 500;
+  border:0px solid transparent;
+  background-color: #e6e6e6;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 90%;
+  font-size: 15px;
+  width: 100%;
+  color: #a5a5a5;
+  border: 0px !important;
+  font-weight: 500;
+  line-height: 20px;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
 .info-block {
 padding: 15px;
 background: #091a52;

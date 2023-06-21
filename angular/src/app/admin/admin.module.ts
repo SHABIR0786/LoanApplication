@@ -1,3 +1,4 @@
+import { InputMaskModule } from 'primeng/inputmask';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AdminRoutingModule } from "./admin-routing.module";
@@ -19,7 +20,6 @@ import { NotificationDialogComponent } from "./notification-dialog/notification-
 import { BsDropdownConfig, BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
 @NgModule({
   declarations: [
     AdminPanelLayoutComponent,
@@ -38,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     LoanOriginatorInformationComponent,
   ],
   imports: [
+    InputMaskModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

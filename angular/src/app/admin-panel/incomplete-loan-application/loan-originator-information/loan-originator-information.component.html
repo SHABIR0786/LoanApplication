@@ -1,3 +1,17 @@
+<style>
+  :host/deep/.ui-inputtext {
+    margin: 0;
+    outline: medium none;
+    padding: 0.25em;
+    font-weight: normal;
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    width: 100% !important;
+}
+</style>
+
 <div>
   <h4 class="section-title">Loan Originator Information</h4>
   <div class="info-block">
@@ -17,7 +31,8 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="organizationName" name="organizationName"
+              #organizationName="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationName"
             />
           </div>
         </div>
@@ -32,7 +47,8 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="address" name="address"
+              #address="ngModel" [(ngModel)]="loanOriginatorInfoModels.address"
             />
           </div>
         </div>
@@ -49,7 +65,8 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="organizationNmlsrId" name="organizationNmlsrId"
+              #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId"
             />
           </div>
         </div>
@@ -59,11 +76,13 @@
           </label>
           <div class="input-group">
             <div class="input-group-text">State License ID#</div>
-            <input
+            <p-inputMask  id="organizationStateLicenceId" name="organizationStateLicenceId" #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId" mask="(999) 999-9999"></p-inputMask>
+            <!-- <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
-            />
+              id="organizationStateLicenceId" name="organizationStateLicenceId"
+              #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId"
+            /> -->
           </div>
         </div>
       </div>
@@ -77,7 +96,8 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="originatorName" name="originatorName"
+              #originatorName="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorName"
             />
           </div>
         </div>
@@ -92,7 +112,8 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="originatorNmlsrId" name="originatorNmlsrId"
+              #originatorNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorNmlsrId"
             />
           </div>
         </div>
@@ -102,11 +123,14 @@
           </label>
           <div class="input-group">
             <div class="input-group-text">State License ID#</div>
-            <input
+            <p-inputMask  id="originatorStateLicenseId" name="originatorStateLicenseId" #originatorStateLicenseId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorStateLicenseId" mask="(999) 999-9999"></p-inputMask>
+
+            <!-- <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
-            />
+              id="originatorStateLicenseId" name="originatorStateLicenseId"
+              #originatorStateLicenseId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorStateLicenseId"
+            /> -->
           </div>
         </div>
       </div>
@@ -118,23 +142,17 @@
           <div class="input-group">
             <div class="input-group-text">Email</div>
             <input
-              type="text"
-              class="form-control"
-              id="specificSizeInputGroupUsername"
-            />
+              type="text" class="form-control" id="email" name="email"     #email="ngModel" [(ngModel)]="loanOriginatorInfoModels.email"/>
           </div>
         </div>
         <div class="col-sm-3">
-          <label class="visually-hidden" for="specificSizeInputGroupUsername"
-            >Phone</label
-          >
+          <label class="visually-hidden" for="specificSizeInputGroupUsername">Phone</label>
           <div class="input-group">
             <div class="input-group-text">Phone</div>
-            <input
-              type="text"
-              class="form-control"
-              id="specificSizeInputGroupUsername"
-            />
+
+            <p-inputMask  id="phone" name="phone" #phone="ngModel" [(ngModel)]="loanOriginatorInfoModels.phone" mask="(999) 999-9999"></p-inputMask>
+
+            <!-- <input  type="text"  class="form-control"  id="phone" name="phone"  #phone="ngModel" [(ngModel)]="loanOriginatorInfoModels.phone"/> -->
           </div>
         </div>
       </div>
@@ -148,20 +166,19 @@
             <input
               type="text"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+
             />
           </div>
         </div>
         <div class="col-sm-4">
-          <label class="visually-hidden" for="specificSizeInputGroupUsername"
-            >Date (mm/dd/yyyy)</label
-          >
+          <label class="visually-hidden" for="specificSizeInputGroupUsername">Date</label>
           <div class="input-group">
-            <div class="input-group-text">Date (mm/dd/yyyy)</div>
+            <div class="input-group-text">Date</div>
             <input
-              type="text"
+              type="date"
               class="form-control"
-              id="specificSizeInputGroupUsername"
+              id="date" name="date"
+              #date="ngModel" [(ngModel)]="loanOriginatorInfoModels.date"
             />
           </div>
         </div>
@@ -183,7 +200,7 @@
   </div>
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill">Finish</button>
+      <button class="btn btn-fill" (click)="create()">Finish</button>
     </div>
   </div>
 </div>
