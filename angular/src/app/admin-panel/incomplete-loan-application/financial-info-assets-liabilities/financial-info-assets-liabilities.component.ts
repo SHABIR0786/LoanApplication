@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { FinancialInfoAssetsLiabilitiesModels, mortgageFinancialAssets, mortgageFinancialOtherAssets, mortgageFinancialLiabilities, mortgageFinancialOtherLaibilities } from './financial-info-assets-liabilities-models';
 import { FinancialInfoAssetsLiabilitiesService } from './financial-info-assets-liabilities.service';
+import { Router } from "@angular/router";
 @Component({
   selector: "app-financial-info-assets-liabilities",
   templateUrl: "./financial-info-assets-liabilities.component.html",
   styleUrls: ["./financial-info-assets-liabilities.component.css"],
 })
 export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
-  constructor(private financialInfoService: FinancialInfoAssetsLiabilitiesService) { }
+  constructor(private financialInfoService: FinancialInfoAssetsLiabilitiesService,private router: Router) { }
   flgMortgageFinancialOtherAssets: boolean = false;
   flgMortgageFinancialLiabilities: boolean = false;
   flgMortgageFinancialOtherLaibilities: boolean = false;
@@ -21,6 +22,23 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   financialInfoAssetsLiabilitiesModels: FinancialInfoAssetsLiabilitiesModels = new FinancialInfoAssetsLiabilitiesModels();
   ngOnInit(): void {
     // this.getAllMortgageApplicationAssetandLiability()
+    debugger
+    if(localStorage.financialInfoAssetsLiabilitiesModels != undefined && localStorage.financialInfoAssetsLiabilitiesModels != '')
+    {
+      this.financialInfoAssetsLiabilitiesModels =JSON.parse(localStorage.getItem('financialInfoAssetsLiabilitiesModels'));
+    }
+    if(localStorage.flgMortgageFinancialOtherAssets != undefined)
+    {
+      this.flgMortgageFinancialOtherAssets = JSON.parse(localStorage.getItem('flgMortgageFinancialOtherAssets'));
+    }
+    if(localStorage.flgMortgageFinancialLiabilities != undefined)
+    {
+      this.flgMortgageFinancialLiabilities = JSON.parse(localStorage.getItem('flgMortgageFinancialLiabilities'));
+    }
+    if(localStorage.flgMortgageFinancialOtherLaibilities != undefined)
+    {
+      this.flgMortgageFinancialOtherLaibilities = JSON.parse(localStorage.getItem('flgMortgageFinancialOtherLaibilities'));
+    }
   }
 
   addMortgageFinancialAssets() {
@@ -139,13 +157,18 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     //   mortgageFinancialLiabilities: this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets,
     //   mortgageFinancialOtherLaibilities: this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities
     // }
+    localStorage.setItem("financialInfoAssetsLiabilitiesModels",JSON.stringify(this.financialInfoAssetsLiabilitiesModels))
+    localStorage.setItem("flgMortgageFinancialOtherAssets",JSON.stringify(this.flgMortgageFinancialOtherAssets))
+    localStorage.setItem("flgMortgageFinancialLiabilities",JSON.stringify(this.flgMortgageFinancialLiabilities))
+    localStorage.setItem("flgMortgageFinancialOtherLaibilities",JSON.stringify(this.flgMortgageFinancialOtherLaibilities))
     this.financialInfoService.createFinancialInfoAssetsLiabilities(this.financialInfoAssetsLiabilitiesModels).subscribe((data: any) => {
-      debugger
       if (data.success == true) {
         alert("Data inserted successfully")
+        this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-real-estate');
       }
-
-    })
+      })
+    
+  
 
   }
 

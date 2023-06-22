@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {LoanPropertyInfoModels,NewMortgageLoans,GiftsOrGrants} from "./loan-property-info-models"
 import {LoanPropertyInfoService} from "./loan-property-info.service"
+import { Router } from "@angular/router";
 @Component({
   selector: "app-loan-property-info",
   templateUrl: "./loan-property-info.component.html",
@@ -14,13 +15,29 @@ export class LoanPropertyInfoComponent implements OnInit {
   cityList:any[]=[];
   countryList:any[]=[];
   stateList:any[]=[];
-  constructor(private loanPropertyInfoService:LoanPropertyInfoService) {}
+  constructor(private loanPropertyInfoService:LoanPropertyInfoService,private router: Router) {}
 
   ngOnInit(): void {
     debugger
     this.getCities();
     this.getCountries();
     this.getStates();
+    if(localStorage.loanPropertyInfoModel != undefined && localStorage.loanPropertyInfoModel != '')
+    {
+      this.loanPropertyInfoModel =JSON.parse(localStorage.getItem('loanPropertyInfoModel'));
+    }
+    if(localStorage.flgOtherNewMortgageLoans != undefined && localStorage.flgOtherNewMortgageLoans != '')
+    {
+      this.flgOtherNewMortgageLoans =JSON.parse(localStorage.getItem('flgOtherNewMortgageLoans'));
+    }
+    if(localStorage.flgGiftsorGrants != undefined && localStorage.flgGiftsorGrants != '')
+    {
+      this.flgGiftsorGrants =JSON.parse(localStorage.getItem('flgGiftsorGrants'));
+    }
+    if(localStorage.flgRentalIncome != undefined && localStorage.flgRentalIncome != '')
+    {
+      this.flgRentalIncome =JSON.parse(localStorage.getItem('flgRentalIncome'));
+    }
   }
   getCountries()
   {
@@ -117,10 +134,15 @@ export class LoanPropertyInfoComponent implements OnInit {
       this.loanPropertyInfoModel.giftsOrGrants=[];
     }
     var obj=this.loanPropertyInfoModel;
+    localStorage.setItem("loanPropertyInfoModel",JSON.stringify(obj))
+    localStorage.setItem("flgOtherNewMortgageLoans",JSON.stringify(this.flgOtherNewMortgageLoans))
+    localStorage.setItem("flgRentalIncome",JSON.stringify(this.flgRentalIncome))
+    localStorage.setItem("flgGiftsorGrants",JSON.stringify(this.flgGiftsorGrants))
     this.loanPropertyInfoService.create(obj).subscribe((data:any)=>{
       if(data.success == true)
       {
-        alert("Data inserted successfully")
+        alert("Data inserted successfully");
+        this.router.navigateByUrl('app/admin/incomplete-loan-application/declarations');
       }
     })
   }

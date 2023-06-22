@@ -184,7 +184,7 @@
             <div class="col-2 input-border-bottom">
               <div style="display: flex; align-items: center;width: 400px;">
                 <span>$ </span>
-                <input type="number" style="width: 200px;"  [(ngModel)]="declarationsList[6].answer" [readonly]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" /></div>
+                <input type="number" min="0" style="width: 200px;"  [(ngModel)]="declarationsList[6].answer" [readonly]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" /></div>
             </div>
           </div>
         </div>
@@ -550,21 +550,21 @@ that is not disclosed on this application?
               <div class="frm-fld-input">
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
-                   <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question16" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style="-ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" />
+                   <div style="display: flex; justify-content: center;margin-left:20px">
+                     <input type="radio" name="question16" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style=" width:80px;-ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" />
                      <label class="text-gray ml-1" style="font-size: 18px;">Chapter 7 </label>
                    </div>
                  </div>
 
                  <div class="col-2">
-                   <div style="display: flex; justify-content: center; margin-left:40px">
+                   <div style="display: flex; justify-content: center; margin-left:20px">
                     <input type="radio" name="question17" value="Chapter 11" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style="width:80px; -ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" />
                      <label class="text-gray ml-1" style="font-size: 18px;">Chapter 11</label>
                    </div>
                  </div>
 
                  <div class="col-2">
-                  <div style="display: flex; justify-content: center; margin-left:40px">
+                  <div style="display: flex; justify-content: center; margin-left:20px">
                    <input type="radio" name="question18" value="Chapter 12" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style="width:80px; -ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" />
                     <label class="text-gray ml-1" style="font-size: 18px;">Chapter 12</label>
                   </div>
@@ -572,7 +572,7 @@ that is not disclosed on this application?
 
 
                 <div class="col-2">
-                  <div style="display: flex; justify-content: center; margin-left:40px">
+                  <div style="display: flex; justify-content: center; margin-left:20px">
                    <input type="radio" name="question19" value="Chapter 13" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)"  style="width:80px; -ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" />
                     <label class="text-gray ml-1" style="font-size: 18px;">Chapter 13</label>
                   </div>

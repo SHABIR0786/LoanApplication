@@ -32,7 +32,7 @@
           <div class="col-2">
             <div class="frm-group">
               <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount" id="loanAmount" #loanAmount="ngModel" /></div>
+                <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount" id="loanAmount" #loanAmount="ngModel" /></div>
               </div>
              </div>
           </div>
@@ -92,7 +92,7 @@
 
           <div class="col-1"><label class="gray-text">Unit#</label></div>
           <div class="col-2 input-border-bottom">
-            <input type="number" />
+            <input type="number" min="0"/>
           </div>
         </div>
 
@@ -128,7 +128,7 @@
 
           <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
           <div class="col-1 input-border-bottom mt-1">
-            <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip" name="zip" id="zip" #zip="ngModel"/>
+            <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip" name="zip" id="zip" #zip="ngModel"/>
           </div>
 
 
@@ -177,12 +177,12 @@
         <div class="row mt-2">
           <div class="col-1"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label></div>
           <div class="col-4 input-border-bottom">
-            <input type="number" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits"  name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"/>
+            <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits"  name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"/>
           </div>
 
           <div class="col-2"><label class="gray-text" style="font-size: 14px !important;">PROPERTY VALUE $</label></div>
           <div class="col-4 input-border-bottom">
-            <input type="number" />
+            <input type="number"  min="0"/>
           </div>
         </div>
 
@@ -411,7 +411,7 @@
             <div class="col-2">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="flgOtherNewMortgageLoans == true"  [(ngModel)]="item.loanAmount"  name="loanAmount" id="loanAmount" #loanAmount="ngModel"/></div>
+                  <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="flgOtherNewMortgageLoans == true"  [(ngModel)]="item.loanAmount"  name="loanAmount" id="loanAmount" #loanAmount="ngModel"/></div>
                 </div>
                 </div>
             </div>
@@ -419,7 +419,7 @@
             <div class="col-2">
               <div class="frm-group mt-2">
                 <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"  name="creditLimit" id="creditLimit" #creditLimit="ngModel"/></div>
+                  <div style="display: flex; align-items: center; margin-top: 10px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"  name="creditLimit" id="creditLimit" #creditLimit="ngModel"/></div>
                 </div>
                 </div>
             </div>
@@ -469,7 +469,7 @@
         <div class=" col-4">
           <div class="frm-group mt-3">
           <div class="input-border-bottom">
-            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="flgRentalIncome == true" [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome"  name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
+            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [readonly]="flgRentalIncome == true" [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome"  name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
           </div>
         </div>
         </div>
@@ -486,7 +486,7 @@
         <div class=" col-4">
           <div class="frm-group mt-3">
           <div class="input-border-bottom">
-            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  [readonly]="flgRentalIncome == true" [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"  name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"/></div>
+            <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [readonly]="flgRentalIncome == true" [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"  name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"/></div>
           </div>
         </div>
         </div>
