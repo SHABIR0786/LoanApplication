@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {FinancialInfoRealEstate,MortgageLoanOnProperty} from "./financial-info-real-estate-model";
 import {FinancialInfoRealEstateService} from "./financial-info-real-estate.service"
+import { Router } from "@angular/router";
 @Component({
   selector: "app-financial-info-real-estate",
   templateUrl: "./financial-info-real-estate.component.html",
@@ -9,7 +10,7 @@ import {FinancialInfoRealEstateService} from "./financial-info-real-estate.servi
 export class FinancialInfoRealEstateComponent implements OnInit {
   objFinancialInfoRealState :FinancialInfoRealEstate = new FinancialInfoRealEstate()
   financialInfoRealState:FinancialInfoRealEstate[]=[new FinancialInfoRealEstate()]
-  constructor(private financialInfoRealEstateService:FinancialInfoRealEstateService) {}
+  constructor(private financialInfoRealEstateService:FinancialInfoRealEstateService,private router: Router) {}
   cityList:any[]=[]
   countryList:any[]=[]
   stateList:any[]=[]
@@ -20,6 +21,10 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.getCities();
     this.getCountries();
     this.getStates();
+     if(localStorage.financialInfoRealState != undefined && localStorage.financialInfoRealState != '')
+    {
+      this.financialInfoRealState =JSON.parse(localStorage.getItem('financialInfoRealState'));
+    }
   }
   getCountries()
   {
@@ -117,13 +122,15 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   {
     debugger
     var obj=this.financialInfoRealState
-    this.financialInfoRealEstateService.create(obj).subscribe((data:any)=>{
-      debugger
-      if(data.success == true)
-      {
-        alert("Data added successfully");
+    localStorage.setItem("financialInfoRealState",JSON.stringify(obj))
+    this.financialInfoRealEstateService.create(obj).subscribe((data: any) => {
+
+      if (data.success == true) {
+        alert("Data inserted successfully");
+        this.router.navigateByUrl('app/admin/incomplete-loan-application/loan-property-info');
       }
-    })
+      })
+    
   }
   addMoreProperty()
   {

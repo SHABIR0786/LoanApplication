@@ -62,12 +62,14 @@
             <div class="input-group-text">
               Loan Originator Organization NMLSR ID#
             </div>
-            <input
+            <p-inputMask       id="organizationNmlsrId" name="organizationNmlsrId"
+            #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId" mask="9999 9999 9999 9999"></p-inputMask>
+            <!-- <input
               type="text"
               class="form-control"
               id="organizationNmlsrId" name="organizationNmlsrId"
               #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId"
-            />
+            /> -->
           </div>
         </div>
         <div class="col">
@@ -76,7 +78,7 @@
           </label>
           <div class="input-group">
             <div class="input-group-text">State License ID#</div>
-            <p-inputMask  id="organizationStateLicenceId" name="organizationStateLicenceId" #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId" mask="(999) 999-9999"></p-inputMask>
+            <p-inputMask  id="organizationStateLicenceId" name="organizationStateLicenceId" #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId" mask="9999 9999 9999 9999"></p-inputMask>
             <!-- <input
               type="text"
               class="form-control"
@@ -109,12 +111,14 @@
           >
           <div class="input-group">
             <div class="input-group-text">Loan Originator NMLSR ID#</div>
-            <input
+            <p-inputMask   id="originatorNmlsrId" name="originatorNmlsrId"
+            #originatorNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorNmlsrId" mask="9999 9999 9999 9999"></p-inputMask>
+            <!-- <input
               type="text"
               class="form-control"
               id="originatorNmlsrId" name="originatorNmlsrId"
               #originatorNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorNmlsrId"
-            />
+            /> -->
           </div>
         </div>
         <div class="col">
@@ -123,7 +127,7 @@
           </label>
           <div class="input-group">
             <div class="input-group-text">State License ID#</div>
-            <p-inputMask  id="originatorStateLicenseId" name="originatorStateLicenseId" #originatorStateLicenseId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorStateLicenseId" mask="(999) 999-9999"></p-inputMask>
+            <p-inputMask  id="originatorStateLicenseId" name="originatorStateLicenseId" #originatorStateLicenseId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorStateLicenseId" mask="9999 9999 9999 9999"></p-inputMask>
 
             <!-- <input
               type="text"

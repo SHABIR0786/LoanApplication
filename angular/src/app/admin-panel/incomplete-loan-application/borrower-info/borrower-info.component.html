@@ -154,7 +154,7 @@
                 style="margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
                 Total Number of <b
                   style=" color:#696969  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">Borrowers:</b>
-                <input [disabled]="borrowerInfo.personalInformation.creditValue=='1'" type="number" [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (keyup)="creditClick()"
+                <input [disabled]="borrowerInfo.personalInformation.creditValue=='1'" type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (keyup)="creditClick()"
                   style="width: 30px; border-bottom: 1px solid #696969  !important;  margin-left: 10px; width: 50px; text-align: center;" />
               </div>
 
@@ -311,7 +311,7 @@
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.personalInformation.address[0].unit"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.address[0].unit"/>
               </div>
             </div>
 
@@ -392,7 +392,9 @@
                   <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio"
                       name="credit1" value="3" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
                       style="margin-right: 8px; width: 15px; height:15px;" /><label
-                      class="gray-text">Rent ($_______/month)</label>
+                      class="gray-text">Rent ($<input type="number" min="0"
+                      name="credit1" value="2" 
+                      style="margin-right: 8px; width: 30px; height:15px;" />/month)</label>
                   </div>
                 </div>
               </div>
@@ -427,7 +429,7 @@
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit" [readonly]="doNotApplyForaddress1 == true"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit" [readonly]="doNotApplyForaddress1 == true"/>
               </div>
             </div>
 
@@ -537,7 +539,9 @@
                   <div style="margin-left:15px;display: flex; margin-top: 5px; align-items:center;"><input type="radio" [disabled]="doNotApplyForaddress1 == true"
                       name="credit2" value="3" [(ngModel)]="borrowerInfo.personalInformation.address[1].housingType"
                       style="margin-right: 8px; width: 15px; height:15px;" /><label
-                      class="gray-text">Rent ($_______/month)</label></div>
+                      class="gray-text">Rent ($<input type="number" min="0"
+                      name="credit1" value="2" 
+                      style="margin-right: 8px; width: 30px; height:15px;" />/month)</label></div>
                 </div>
 
               </div>
@@ -574,7 +578,7 @@
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
               <div class="col-2 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit" [readonly]="doNotApplyForaddress2 == true"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit" [readonly]="doNotApplyForaddress2 == true"/>
               </div>
             </div>
 
@@ -711,7 +715,7 @@
 
               <div class="col-1"><label class="gray-text text-right">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.employment[0].unit" [readonly]="doNotApplyForEmp0 == true"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.employment[0].unit" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
 
 
@@ -841,7 +845,7 @@
               </div>
 
               <div class="col-2 input-border-bottom">
-                $<input type="number" class="ml-1" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome" [readonly]="doNotApplyForEmp0 == true"/>
+                $<input type="number" min="0" class="ml-1" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome" [readonly]="doNotApplyForEmp0 == true"/>
               </div>
             </div>
           </div>
@@ -863,26 +867,26 @@
               <div class="col-1"><label class="gray-text">Base</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Overtime</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Bonus</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Commission</label></div>
               <div class="col-1 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"/><span>/month</span></div>
               </div>
 
             </div>
@@ -891,20 +895,20 @@
               <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Other</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">TOTAL </label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"/><span>/month</span></div>
+                    type="number" min="0" [readonly]="doNotApplyForEmp0 == true" [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"/><span>/month</span></div>
               </div>
 
 
@@ -972,7 +976,7 @@
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.employment[1].unit" [readonly]="doNotApplyForEmp1 == true"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].unit" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
 
 
@@ -1102,7 +1106,7 @@
               </div>
 
               <div class="col-2 input-border-bottom">
-                $<input type="number" class="ml-1" [(ngModel)]="borrowerInfo.employment[1].monthlyIncome" [readonly]="doNotApplyForEmp1 == true"/>
+                $<input type="number" min="0" class="ml-1" [(ngModel)]="borrowerInfo.employment[1].monthlyIncome" [readonly]="doNotApplyForEmp1 == true"/>
               </div>
             </div>
           </div>
@@ -1124,20 +1128,20 @@
               <div class="col-1"><label class="gray-text">Base</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.baseIncome"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Overtime</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.overtime"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.overtime"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">Bonus</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.bonus"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.bonus"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Commission</label></div>
@@ -1152,20 +1156,20 @@
               <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements"/><span>/month</span></div>
               </div>
 
               <div class="col-1"><label class="gray-text">Other</label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.other"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.other"/><span>/month</span></div>
               </div>
 
 
               <div class="col-1"><label class="gray-text">TOTAL </label></div>
               <div class="col-2 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input [readonly]="doNotApplyForEmp1 == true"
-                    type="number" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.total"/><span>/month</span></div>
+                    type="number" min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.total"/><span>/month</span></div>
               </div>
 
 
@@ -1231,7 +1235,7 @@
 
               <div class="col-1"><label class="gray-text">Unit #</label></div>
               <div class="col-1 input-border-bottom">
-                <input type="number" [(ngModel)]="borrowerInfo.employment[2].unit" [readonly]="doNotApplyForEmp2 == true"/>
+                <input type="number" min="0" [(ngModel)]="borrowerInfo.employment[2].unit" [readonly]="doNotApplyForEmp2 == true"/>
               </div>
 
 
@@ -1321,7 +1325,7 @@
               <div class="col-5"><label class="gray-text">Income</label></div>
               <div class="col-5 input-border-bottom">
                 <div style="display: flex; align-items: center;"><span>$ </span> <input
-                    type="number"  [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [readonly]="doNotApplyForEmp2 == true"/><span>/month</span></div>
+                    type="number" min="0"  [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [readonly]="doNotApplyForEmp2 == true"/><span>/month</span></div>
               </div>
             </div>
           </div>
@@ -1417,7 +1421,7 @@
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
                <div style="display: flex; align-items: center;margin-top: 12px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-                <input type="number"  [(ngModel)]="itemOR.monthlyIncome" [readonly]="incomeFromOtherSources == true"/>
+                <input type="number"  min="0" [(ngModel)]="itemOR.monthlyIncome" [readonly]="incomeFromOtherSources == true"/>
               </div>
             </div>
           </div>

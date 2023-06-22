@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {DeclarationsModel} from "./declarations-model"
 import {DeclarationsService} from "./declarations.service"
+import { Router } from "@angular/router";
 @Component({
   selector: "app-declarations",
   templateUrl: "./declarations.component.html",
@@ -8,12 +9,16 @@ import {DeclarationsService} from "./declarations.service"
 })
 export class DeclarationsComponent implements OnInit {
   declarationsList:DeclarationsModel[]=[]
-  constructor(private declarationsService:DeclarationsService) {}
+  constructor(private declarationsService:DeclarationsService,private router: Router) {}
 
   ngOnInit(): void {
     debugger
     for(var i=0 ; i<19 ; i = i+1){
       this.declarationsList.push(new DeclarationsModel())
+    }
+    if(localStorage.declarationsList != undefined && localStorage.declarationsList != '')
+    {
+      this.declarationsList =JSON.parse(localStorage.getItem('declarationsList'));
     }
     debugger
   }
@@ -57,10 +62,12 @@ export class DeclarationsComponent implements OnInit {
     }
    
     var obj = this.declarationsList;
+    localStorage.setItem("declarationsList",JSON.stringify(obj))
     this.declarationsService.create(obj).subscribe((data:any)=>{
       if(data.success == true)
       {
-        alert("Data inserted successfully")
+        alert("Data inserted successfully");
+        this.router.navigateByUrl('app/admin/incomplete-loan-application/acknowledgements-agreements');
       }
     })
   }

@@ -176,7 +176,7 @@
               <div class="col-2">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.propertyValue" name="propertyValue" id="propertyValue" #propertyValue="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input min="0" type="number" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.propertyValue" name="propertyValue" id="propertyValue" #propertyValue="ngModel"/></div>
                   </div>
                  </div>
               </div>
@@ -206,21 +206,21 @@
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="monthlyInsurance" id="monthlyInsurance" #monthlyInsurance="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="monthlyInsurance" id="monthlyInsurance" #monthlyInsurance="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyRentalIncome" name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyRentalIncome" name="monthlyRentalIncome" id="monthlyRentalIncome" #monthlyRentalIncome="ngModel"/></div>
                   </div>
                  </div>
               </div>
               <div class="col-2" style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel" /></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel" /></div>
                   </div>
                  </div>
               </div>
@@ -304,7 +304,7 @@
 
               <div class="frm-group mt-2" style="display: flex; justify-content: space-between;">
                 <div class="input-border-bottom  mr-3">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="monthlyMortagagePayment" id="monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"/></div>
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="monthlyMortagagePayment" id="monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"/></div>
                 </div>
                   <input type="checkbox" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.isPaidBeforeClosing" name="isPaidBeforeClosing" id="isPaidBeforeClosing" #isPaidBeforeClosing="ngModel">
               </div>
@@ -313,7 +313,7 @@
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.unpaidBalance" name="unpaidBalance" id="unpaidBalance" #unpaidBalance="ngModel"/></div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.unpaidBalance" name="unpaidBalance" id="unpaidBalance" #unpaidBalance="ngModel"/></div>
                   </div>
                  </div>
               </div>
