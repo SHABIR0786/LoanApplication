@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -13,16 +14,16 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class AdditionalIncomeService : AbpServiceBase, IAdditionalIncomeService
     {
-        private readonly IRepository<AdditionalIncome, long> _repository;
+        private readonly IRepository<Additionalincome, long> _repository;
 
-        public AdditionalIncomeService(IRepository<AdditionalIncome, long> repository)
+        public AdditionalIncomeService(IRepository<Additionalincome, long> repository)
         {
             _repository = repository;
         }
 
         public async Task<AdditionalIncomeDto> CreateAsync(AdditionalIncomeDto input)
         {
-            var additionalIncome = new AdditionalIncome
+            var additionalIncome = new Additionalincome
             {
                 Amount = input.Amount,
                 BorrowerTypeId = input.BorrowerTypeId,
@@ -47,11 +48,11 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<AdditionalIncome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
+        public async Task<List<Additionalincome>> GetAllByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
-                .Select(i => new AdditionalIncome
+                .Select(i => new Additionalincome
                 {
                     Amount = i.Amount,
                     BorrowerTypeId = i.BorrowerTypeId,
@@ -69,7 +70,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 
         public async Task<AdditionalIncomeDto> UpdateAsync(AdditionalIncomeDto input)
         {
-            var additionalIncome = new AdditionalIncome
+            var additionalIncome = new Additionalincome
             {
                 Amount = input.Amount,
                 BorrowerTypeId = input.BorrowerTypeId,

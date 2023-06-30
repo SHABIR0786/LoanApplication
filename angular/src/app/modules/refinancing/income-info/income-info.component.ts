@@ -34,9 +34,6 @@ export class IncomeInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getStates();
-    if (this.model.empState) {
-      this.getStateById(this.model.empState);
-    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
@@ -121,16 +118,8 @@ export class IncomeInfoComponent implements OnInit {
     if (f.valid) {
       this.saveStep();
       this.saveEmpToDb();
-      this.router.navigate(["/app/refinance/income/5"]);
 
       this.submitted = false;
-    }
-  }
-  doneClicked(f) {
-    console.log(f);
-    if (f.valid) {
-      this.saveStep();
-      this.router.navigate(["/app/refinance/income/11"]);
     }
   }
 }

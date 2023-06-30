@@ -37,3 +37,6 @@ tbody td {
   font-size: 12px;
   font-weight: 500;
 }
+thead {
+  background: #caf0f8;
+}

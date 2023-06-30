@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import { StateServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-property-info",
@@ -16,11 +17,12 @@ export class PropertyInfoComponent implements OnInit {
   isEdit = false;
   submitted = false;
   model: PostModel = new PostModel();
+  allStates: any = [];
   states: any[] = [];
-  state;
   cities: any[] = [];
   stateName;
   constructor(
+    private stateService: StateServiceServiceProxy,
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
@@ -35,13 +37,15 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.getState();
     this.getStates();
-    console.log(this.model.newHomeStateName);
-    if (this.model.newHomeStateName) {
-      this.getStateById(this.model.newHomeState);
-    }
     this.getCities();
     this.model = this.offline.getStep().data;
+  }
+  getState() {
+    this.stateService.getStates().subscribe((res) => {
+      this.allStates = res;
+    });
   }
   onPehlaForm(f: NgForm, step: any) {
     this.submitted = true;
@@ -62,9 +66,9 @@ export class PropertyInfoComponent implements OnInit {
     this.api.get("StateService/GetStates").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
-        // console.log(this.model.newHomeState);
-        // this.model.empState = "1";
-        // this.model.currentStateId = 1;
+        console.log(this.model.newHomeState);
+        this.model.empState = "1";
+        this.model.currentStateId = 1;
 
         // this.model.newHomeState = "1";
         // this.model.newHomeState = x.result[0].id;
@@ -79,25 +83,10 @@ export class PropertyInfoComponent implements OnInit {
 
   onStateChange(event) {
     console.log(event.target.value);
-    this.getStateById(event.target.value);
-
-    // this.states.forEach((element) => {
-    //   if (element.id == event.target.value) {
-    //     this.model.newHomeStateName = element.stateName;
-    //     console.log(this.model.newHomeStateName);
-    //   }
-    // });
-  }
-  getStateById(id) {
-    this.api.get("StateService/GetStates?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this.model.newHomeStateName = x.result.stateName;
+    this.states.forEach((element) => {
+      if (element.id == event.target.value) {
+        this.model.newHomeStateName = element.stateName;
         console.log(this.model.newHomeStateName);
-        // this.model.empState = "1";
-        // this.model.currentStateId = 1;
-
-        // this.model.newHomeState = "1";
-        // this.model.newHomeState = x.result[0].id;
       }
     });
   }
@@ -138,53 +127,32 @@ export class PropertyInfoComponent implements OnInit {
   }
   onEditNextClick() {
     this.offline.saveStep(3, this.model);
-    this.isEdit = false;
   }
 
   calculatePercent() {
     console.log(this.model.downPaymentPercent);
     this.model.downPaymentPercent = String(
-      // Math.round(
       (
         (Number(this.model.downPaymentAmount) /
           Number(this.model.estimatedPrice)) *
         100
-      ).toFixed(1)
-      // )
-    );
-  }
-
-  calculateAmount() {
-    this.model.downPaymentAmount = String(
-      // Math.round(
-      (
-        (Number(this.model.downPaymentPercent) *
-          Number(this.model.estimatedPrice)) /
-        100
-      ).toFixed(1)
-      // )
+      ).toFixed(3)
     );
   }
   editClicked() {
     this.isEdit = true;
     let isMillitary;
-    // document.getElementById(this.model.creditScore).classList.add("active");
-    // document.getElementById(this.model.homeType).classList.add("active");
-    // console.log(this.model.isMillitary, this.model.homePlan);
-    // if (this.model.isMillitary) {
-    //   isMillitary = "militery-yes";
-    // } else {
-    //   isMillitary = "militery-no";
-    // }
-    // document.getElementById(isMillitary).classList.add("active");
-    // document
-    //   .getElementById("property-" + this.model.homePlan)
-    //   .classList.add("active");
-  }
-
-  doneClicked(f) {
-    if (f.valid) {
-      this.isEdit = false;
+    document.getElementById(this.model.creditScore).classList.add("active");
+    document.getElementById(this.model.homeType).classList.add("active");
+    console.log(this.model.isMillitary, this.model.homePlan);
+    if (this.model.isMillitary) {
+      isMillitary = "militery-yes";
+    } else {
+      isMillitary = "militery-no";
     }
+    document.getElementById(isMillitary).classList.add("active");
+    document
+      .getElementById("property-" + this.model.homePlan)
+      .classList.add("active");
   }
 }

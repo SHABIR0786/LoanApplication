@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Models;
 using LoanManagement.ViewModels;
@@ -15,7 +16,7 @@ namespace LoanManagement.DatabaseServices.Implementations
 {
     public class LoanAppService : AbpServiceBase, ILoanAppService
     {
-        private readonly IRepository<LoanApplication, long> _repository;
+        private readonly IRepository<Loanapplication,long> _repository;
         private readonly ILoanDetailServices _loanDetailServices;
         private readonly IAdditionalDetailServices _additionalDetailsService;
         private readonly IExpenseService _expensesService;
@@ -32,7 +33,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         public IAdditionalIncomeService _additionalIncomeService { get; }
 
         public LoanAppService(
-            IRepository<LoanApplication, long> repository,
+            IRepository<Loanapplication, long> repository,
             ILoanDetailServices loanDetailServices,
             IAdditionalDetailServices additionalDetailsService,
             IExpenseService expensesService,
@@ -65,20 +66,21 @@ namespace LoanManagement.DatabaseServices.Implementations
         //[UnitOfWork(isTransactional: false)]
         public async Task<LoanApplicationDto> GetAsync(EntityDto<long?> input)
         {
+            //return new LoanApplicationDto();
             try
             {
                 var query = _repository.GetAllIncluding(
                     i => i.LoanDetail,
                     i => i.AdditionalDetail,
-                    i => i.AdditionalIncomes,
-                    i => i.BorrowerEmploymentInformations,
-                    i => i.BorrowerMonthlyIncomes,
+                    i => i.Additionalincomes,
+                    i => i.Borroweremploymentinformations,
+                    i => i.Borrowermonthlyincomes,
                     i => i.CreditAuthAgreement,
                     i => i.ConsentDetail,
                     i => i.Declarations,
-                    i => i.DemographicsInformations,
+                    i => i.Declarationborroweredemographicsinformations,
                     i => i.Expense,
-                    i => i.ManualAssetEntries);
+                    i => i.Manualassetentries);
 
                 query = query.Include(i => i.PersonalDetail)
                     .ThenInclude(i => i.CoBorrower);
@@ -104,7 +106,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     LoanDetails = new LoanDetailDto
                     {
                         IsWorkingWithOfficer = result.LoanDetail?.IsWorkingWithOfficer,
-                        LoanOfficerId = result.LoanDetail?.LoanOfficerId,
+                        LoanOfficerId = Convert.ToInt32(result.LoanDetail?.LoanOfficerId).ToString(),
                         ReferredBy = result.LoanDetail?.ReferredBy,
                         PurposeOfLoan = result.LoanDetail?.PurposeOfLoan,
                         EstimatedValue = result.LoanDetail?.EstimatedValue,
@@ -149,14 +151,14 @@ namespace LoanManagement.DatabaseServices.Implementations
                     },
                     EConsent = new EConsentDto
                     {
-                        AgreeEConsent = result.ConsentDetail?.AgreeEConsent,
+                        AgreeEConsent = result.ConsentDetail?.AgreeEconsent,
                         FirstName = result.ConsentDetail?.FirstName,
                         LastName = result.ConsentDetail?.LastName,
                         Email = result.ConsentDetail?.Email,
                         CoborrowerEmail = result.ConsentDetail?.CoborrowerEmail,
                         CoborrowerFirstName = result.ConsentDetail?.CoborrowerFirstName,
                         CoborrowerLastName = result.ConsentDetail?.CoborrowerLastName,
-                        CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEConsent,
+                        CoborrowerAgreeEConsent = result.ConsentDetail?.CoborrowerAgreeEconsent,
                         Id = result.ConsentDetailId,
                     },
                     PersonalInformation = new PersonalInformationDto
@@ -324,10 +326,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                     LoanApplicationId = result.Id
                 };
 
-                if (result.AdditionalIncomes != null && result.AdditionalIncomes.Any())
+                if (result.Additionalincomes != null && result.Additionalincomes.Any())
                 {
                     viewModel.EmploymentIncome.AdditionalIncomes = new List<AdditionalIncomeDto>();
-                    foreach (var additionalIncome in result.AdditionalIncomes)
+                    foreach (var additionalIncome in result.Additionalincomes)
                     {
                         viewModel.EmploymentIncome.AdditionalIncomes.Add(new AdditionalIncomeDto
                         {
@@ -340,12 +342,12 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
                 }
 
-                if (result.BorrowerEmploymentInformations != null && result.BorrowerEmploymentInformations.Any())
+                if (result.Borroweremploymentinformations != null && result.Borroweremploymentinformations.Any())
                 {
                     viewModel.EmploymentIncome.BorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
                     viewModel.EmploymentIncome.CoBorrowerEmploymentInfo = new List<BorrowerEmploymentInformationDto>();
 
-                    foreach (var employmentInfo in result.BorrowerEmploymentInformations)
+                    foreach (var employmentInfo in result.Borroweremploymentinformations)
                     {
                         if (employmentInfo.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                             viewModel.EmploymentIncome.BorrowerEmploymentInfo.Add(new BorrowerEmploymentInformationDto
@@ -386,9 +388,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     }
                 }
 
-                if (result.BorrowerMonthlyIncomes != null && result.BorrowerMonthlyIncomes.Any())
+                if (result.Borrowermonthlyincomes != null && result.Borrowermonthlyincomes.Any())
                 {
-                    foreach (var monthlyIncome in result.BorrowerMonthlyIncomes)
+                    foreach (var monthlyIncome in result.Borrowermonthlyincomes)
                     {
                         if (monthlyIncome.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                             viewModel.EmploymentIncome.BorrowerMonthlyIncome = new BorrowerMonthlyIncomeDto
@@ -421,10 +423,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                 }
 
 
-                if (result.ManualAssetEntries != null && result.ManualAssetEntries.Any())
+                if (result.Manualassetentries != null && result.Manualassetentries.Any())
                 {
                     viewModel.ManualAssetEntries = new List<ManualAssetEntryDto>();
-                    foreach (var manualAssetEntries in result.ManualAssetEntries)
+                    foreach (var manualAssetEntries in result.Manualassetentries)
                     {
                         viewModel.ManualAssetEntries.Add(new ManualAssetEntryDto
                         {
@@ -453,10 +455,10 @@ namespace LoanManagement.DatabaseServices.Implementations
                             TaxesInsuranceAndOther = manualAssetEntries.TaxesInsuranceAndOther,
                             ZipCode = manualAssetEntries.ZipCode
                         });
-                        if (result.ManualAssetEntries != null && manualAssetEntries.StockAndBonds.Any())
+                        if (result.Manualassetentries != null && manualAssetEntries.Stockandbonds.Any())
                         {
-                            manualAssetEntries.StockAndBonds = manualAssetEntries.StockAndBonds.Select(i =>
-                            new StockAndBond
+                            manualAssetEntries.Stockandbonds = manualAssetEntries.Stockandbonds.Select(i =>
+                            new Stockandbond
                             {
                                 AccountNumber = i.AccountNumber,
                                 CompanyName = i.CompanyName,
@@ -486,7 +488,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
                                 IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
                                 IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
-                                IsUSCitizen = declaration.IsUSCitizen,
+                                IsUSCitizen = declaration.IsUscitizen,
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
                                 IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
@@ -505,7 +507,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                                 IsObligatedToPayAlimonyChildSupport = declaration.IsObligatedToPayAlimonyChildSupport,
                                 IsAnyPartOfTheDownPayment = declaration.IsAnyPartOfTheDownPayment,
                                 IsCoMakerOrEndorser = declaration.IsCoMakerOrEndorser,
-                                IsUSCitizen = declaration.IsUSCitizen,
+                                IsUSCitizen = declaration.IsUscitizen,
                                 IsPermanentResidentSlien = declaration.IsPermanentResidentSlien,
                                 IsIntendToOccupyThePropertyAsYourPrimary = declaration.IsIntendToOccupyThePropertyAsYourPrimary,
                                 IsOwnershipInterestInPropertyInTheLastThreeYears = declaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
@@ -517,9 +519,9 @@ namespace LoanManagement.DatabaseServices.Implementations
                     viewModel.Declaration.LoanApplicationId = result.Id;
                 }
 
-                if (result.DemographicsInformations != null && result.DemographicsInformations.Any())
+                if (result.Declarationborroweredemographicsinformations != null && result.Declarationborroweredemographicsinformations.Any())
                 {
-                    foreach (var demographicsInformation in result.DemographicsInformations)
+                    foreach (var demographicsInformation in result.Declarationborroweredemographicsinformations)
                     {
                         if (demographicsInformation.BorrowerTypeId == (int)Enums.BorrowerType.Borrower)
                         {
@@ -1093,7 +1095,7 @@ namespace LoanManagement.DatabaseServices.Implementations
         {
             try
             {
-                var loanApplication = new LoanApplication
+                var loanApplication = new Loanapplication
                 {
                     UpdatedOn = DateTime.UtcNow
                 };
@@ -1117,7 +1119,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 #region Loadn App
                 if (input.Id == 0)
                 {
-                    var loanApplicationOb = new LoanApplication();
+                    var loanApplicationOb = new Loanapplication();
                     await _repository.InsertAsync(loanApplicationOb);
                     await UnitOfWorkManager.Current.SaveChangesAsync();
                     input.Id = loanApplication.Id;

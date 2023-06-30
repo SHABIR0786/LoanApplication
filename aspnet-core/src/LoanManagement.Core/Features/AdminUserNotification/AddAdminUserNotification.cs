@@ -5,7 +5,7 @@ namespace  LoanManagement.Features.AdminUserNotification
 {
     public partial class AddAdminUserNotification
     {
-        public int UserId { get; set; }
+       // public int UserId { get; set; }
         public int NotificationTypeId { get; set; }
         public DateTime? Date { get; set; }
         public string Subject { get; set; }

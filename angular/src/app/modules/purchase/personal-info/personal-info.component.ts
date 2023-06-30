@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AddFinanceApiModel, PostModel } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
+import {
+  AccountServiceProxy,
+  RegisterInput,
+  StateServiceServiceProxy,
+} from "@shared/service-proxies/service-proxies";
 
 @Component({
   selector: "app-personal-info",
@@ -17,11 +22,14 @@ export class PersonalInfoComponent implements OnInit {
   cities: any[] = [];
   dependents: number = 0;
   matched = false;
+  user: RegisterInput = new RegisterInput();
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private stateSetvice: StateServiceServiceProxy,
+    private accountService: AccountServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -34,15 +42,11 @@ export class PersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getState();
-    if (this.model.currentStateId) {
-      this.getStateById(this.model.currentStateId);
-    }
-
     this.model = this.offline.getStep().data;
   }
   getState() {
-    this.api.get("StateService/GetStates").subscribe((x: any) => {
-      this.states = x.result;
+    this.stateSetvice.getStates().subscribe((x: any) => {
+      this.states = x;
       this.model.empState = "1";
       this.model.currentStateId = 1;
       this.model.newHomeState = "1";
@@ -71,22 +75,16 @@ export class PersonalInfoComponent implements OnInit {
     if (this.model.personalPassword === this.model.personalPasswordCon) {
       this.matched = true;
     }
-    console.log(this.submitted, this.matched, f.errors);
-    if (f.valid && this.matched) {
+    console.log(this.submitted, this.matched);
+    if (f.valid) {
       this.router.navigate(["/app/purchase/personal-info", step]);
       this.submitted = false;
       this.matched = false;
       this.saveStep();
     }
   }
-  referClick(e) {
-    if (e == "true") {
-      this.model.isSomeOneRefer = 1;
-    } else {
-      this.model.isSomeOneRefer = 0;
-    }
-    // this.model.isSomeOneRefer = e ? 1 : 0;
-    console.log(this.model.isSomeOneRefer);
+  referClick(e: boolean) {
+    this.model.isSomeOneRefer = e ? 1 : 0;
     this.saveStep();
   }
   maritalClick(e: string) {
@@ -122,20 +120,22 @@ export class PersonalInfoComponent implements OnInit {
     this.saveStep();
     var _model = new AddFinanceApiModel();
     _model.map(this.model);
+    this.user.name = this.model.personalLegalFirstName;
+    this.user.surname = this.model.personalLegalLastName;
+    this.user.userName = this.model.personalEmailAddress;
+    this.user.emailAddress = this.model.personalEmailAddress;
+    this.user.password = this.model.personalPassword;
+    var request = JSON.stringify(_model);
     this.api
-      .post("LeadPurchasingDetailService/Add", _model)
+      .post("api/services/app/LeadPurchasingDetailService/Add", _model)
       .subscribe((x: any) => {
         if (x.success == true)
-          this.router.navigate(["/app/purchase/income-info/1"]);
+          this.accountService.register(this.user).subscribe((res) => {
+            this.router.navigate(["/app/purchase/income-info/1"]);
+          });
       });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);
-  }
-
-  doneClicked(f) {
-    if (f.valid) {
-      this.router.navigate(["/app/purchase/personal-info/8"]);
-    }
   }
 }

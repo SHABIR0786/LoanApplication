@@ -8,7 +8,12 @@ import {
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { AppComponentBase } from "@shared/app-component-base";
-import { ChangePasswordDto } from "@shared/service-proxies/service-proxies";
+import {
+  ChangePasswordDto,
+  SessionServiceProxy,
+  UserDto,
+  UserServiceProxy,
+} from "@shared/service-proxies/service-proxies";
 import { AdminUserServices } from "../../../shared/service/adminUser.service";
 import { finalize } from "rxjs/operators";
 @Component({
@@ -20,18 +25,63 @@ export class AdminProfilePageComponent extends AppComponentBase {
   @Output() onSave = new EventEmitter<any>();
   saving = false;
   constructor(
+    private userService: UserServiceProxy,
+    private sessionService: SessionServiceProxy,
     injector: Injector,
     private AdminUserServices: AdminUserServices,
     private router: Router
   ) {
     super(injector);
   }
-  adminUsername: string;
-  adminEmail: string;
-  //oldPassword:string;
-  password: string;
+  adminUsername: string = null;
+  adminEmail: string = null;
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+  userId: any;
+  user: UserDto = new UserDto();
+  changePasswordDto: ChangePasswordDto = new ChangePasswordDto();
   ngOnInit(): void {
-    this.getAdminUserDetails();
+    this.getUserId();
+    // this.getAdminUserDetails();
+  }
+  getUserId() {
+    this.sessionService.getCurrentLoginInformations().subscribe((res) => {
+      this.userId = res.user.id;
+      this.getLoggedInUserDetails();
+    });
+  }
+  getLoggedInUserDetails() {
+    this.userService.get(this.userId).subscribe((res) => {
+      this.user = res;
+    });
+  }
+  updateUserEmail() {
+    if (this.adminEmail != null) {
+      this.user.emailAddress = this.adminEmail;
+    }
+    this.userService.update(this.user).subscribe((res) => {
+      window.location.reload();
+      this.notify.info("Email Successfully Updated");
+    });
+  }
+  updateUserName() {
+    if (this.adminUsername != null) {
+      this.user.name = this.adminUsername;
+    }
+    this.userService.update(this.user).subscribe((res) => {
+      window.location.reload();
+      this.notify.info("User Name Successfully Updated");
+    });
+  }
+  updatePassword() {
+    if (this.newPassword != this.changePasswordDto.newPassword) {
+      this.notify.info("Passwords do NOT match...!");
+    } else {
+      this.userService
+        .changePassword(this.changePasswordDto)
+        .subscribe((res) => {});
+    }
   }
 
   getAdminUserDetails() {
@@ -44,7 +94,8 @@ export class AdminProfilePageComponent extends AppComponentBase {
       (Response: any) => {
         this.adminUsername = Response.result.userName;
         this.adminEmail = Response.result.email;
-        this.password = Response.result.password;
+        this.oldPassword = Response.result.oldPassword;
+        this.newPassword = Response.result.newPassword;
       }
     );
   }
@@ -58,7 +109,6 @@ export class AdminProfilePageComponent extends AppComponentBase {
     });
     this.AdminUserServices.updateAdminUserName(params).subscribe(
       (Response: any) => {
-        this.notify.info(this.l("Username Change Successfully"));
         this.getAdminUserDetails();
       }
     );
@@ -73,23 +123,21 @@ export class AdminProfilePageComponent extends AppComponentBase {
     });
     this.AdminUserServices.updateAdminEmail(params).subscribe(
       (Response: any) => {
-        this.notify.info(this.l("Email Change Successfully"));
         this.getAdminUserDetails();
       }
     );
   }
-  changePassword(password: any) {
+  changePassword(oldPassword: any, newPassword: any) {
     const params = new HttpParams({
       fromObject: {
         id: "1",
-        password: password,
+        oldPassword: oldPassword,
+        password: newPassword,
       },
     });
     this.AdminUserServices.updateChangePassword(params).subscribe(
       (Response: any) => {
-        this.notify.error(this.l(Response.result));
         this.getAdminUserDetails();
-        console.log(Response);
       }
     );
   }

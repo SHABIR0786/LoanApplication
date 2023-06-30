@@ -32,9 +32,6 @@ export class PersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.getStates();
-    if (this.model.currentStateId) {
-      this.getStateById(this.model.currentStateId);
-    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
@@ -89,16 +86,6 @@ export class PersonalInfoComponent implements OnInit {
       this.router.navigate(["/app/refinance/income/1"]);
       this.saveStep();
       this.submitted = false;
-    }
-  }
-  milClick(obj: boolean) {
-    this.model.isMilitaryMember = obj == true ? 1 : 0;
-    this.saveStep();
-  }
-
-  doneClicked(f) {
-    if (f.valid) {
-      this.router.navigate(["/app/refinance/personal-info/6"]);
     }
   }
 }

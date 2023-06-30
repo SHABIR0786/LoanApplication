@@ -1,6 +1,7 @@
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using LoanManagement.codeFirstEntities;
 using LoanManagement.DatabaseServices.Interfaces;
 using LoanManagement.Enums;
 using LoanManagement.Models;
@@ -16,11 +17,11 @@ namespace LoanManagement.DatabaseServices.Implementations
     public class DeclarationService : AbpServiceBase, IDeclarationService
     {
         private readonly IRepository<Declaration, long> _repository;
-        private readonly IRepository<DeclarationBorrowereDemographicsInformation, long> _declarationBorrowerRepository;
+        private readonly IRepository<Declarationborroweredemographicsinformation, long> _declarationBorrowerRepository;
 
         public DeclarationService(
             IRepository<Declaration, long> repository,
-            IRepository<DeclarationBorrowereDemographicsInformation, long> declarationBorrowerRepository)
+            IRepository<Declarationborroweredemographicsinformation, long> declarationBorrowerRepository)
         {
             _repository = repository;
             _declarationBorrowerRepository = declarationBorrowerRepository;
@@ -55,7 +56,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                     IsObligatedToPayAlimonyChildSupport = i.IsObligatedToPayAlimonyChildSupport,
                     IsAnyPartOfTheDownPayment = i.IsAnyPartOfTheDownPayment,
                     IsCoMakerOrEndorser = i.IsCoMakerOrEndorser,
-                    IsUSCitizen = i.IsUSCitizen,
+                    IsUscitizen = i.IsUscitizen,
                     IsPermanentResidentSlien = i.IsPermanentResidentSlien,
                     IsIntendToOccupyThePropertyAsYourPrimary = i.IsIntendToOccupyThePropertyAsYourPrimary,
                     IsOwnershipInterestInPropertyInTheLastThreeYears = i.IsOwnershipInterestInPropertyInTheLastThreeYears,
@@ -66,11 +67,11 @@ namespace LoanManagement.DatabaseServices.Implementations
                 })
                 .ToListAsync();
         }
-        public async Task<List<DeclarationBorrowereDemographicsInformation>> GetAllDemographicInformationByLoanApplicationIdAsync(long loanApplicationId)
+        public async Task<List<Declarationborroweredemographicsinformation>> GetAllDemographicInformationByLoanApplicationIdAsync(long loanApplicationId)
         {
             return await _repository.GetAll()
                 .Where(i => i.LoanApplicationId == loanApplicationId)
-                .Select(i => new DeclarationBorrowereDemographicsInformation
+                .Select(i => new Declarationborroweredemographicsinformation
                 {
                     BorrowerTypeId = i.BorrowerTypeId,
                     LoanApplicationId = i.LoanApplicationId,
@@ -84,8 +85,8 @@ namespace LoanManagement.DatabaseServices.Implementations
             {
                 Declaration borrowerDeclaration = null;
                 Declaration coBorrowerDeclaration = null;
-                DeclarationBorrowereDemographicsInformation borrowerDemographic = null;
-                DeclarationBorrowereDemographicsInformation coBorrowerDemographic = null;
+                Declarationborroweredemographicsinformation borrowerDemographic = null;
+                Declarationborroweredemographicsinformation coBorrowerDemographic = null;
 
                 if (input.BorrowerDeclaration != null)
                 {
@@ -102,7 +103,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             IsObligatedToPayAlimonyChildSupport = input.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport,
                             IsAnyPartOfTheDownPayment = input.BorrowerDeclaration.IsAnyPartOfTheDownPayment,
                             IsCoMakerOrEndorser = input.BorrowerDeclaration.IsCoMakerOrEndorser,
-                            IsUSCitizen = input.BorrowerDeclaration.IsUSCitizen,
+                            IsUscitizen = input.BorrowerDeclaration.IsUSCitizen,
                             IsPermanentResidentSlien = input.BorrowerDeclaration.IsPermanentResidentSlien,
                             IsIntendToOccupyThePropertyAsYourPrimary = input.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary,
                             IsOwnershipInterestInPropertyInTheLastThreeYears = input.BorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
@@ -125,7 +126,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             declaration.IsObligatedToPayAlimonyChildSupport = input.BorrowerDeclaration.IsObligatedToPayAlimonyChildSupport;
                             declaration.IsAnyPartOfTheDownPayment = input.BorrowerDeclaration.IsAnyPartOfTheDownPayment;
                             declaration.IsCoMakerOrEndorser = input.BorrowerDeclaration.IsCoMakerOrEndorser;
-                            declaration.IsUSCitizen = input.BorrowerDeclaration.IsUSCitizen;
+                            declaration.IsUscitizen = input.BorrowerDeclaration.IsUSCitizen;
                             declaration.IsPermanentResidentSlien = input.BorrowerDeclaration.IsPermanentResidentSlien;
                             declaration.IsIntendToOccupyThePropertyAsYourPrimary = input.BorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary;
                             declaration.IsOwnershipInterestInPropertyInTheLastThreeYears = input.BorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears;
@@ -153,7 +154,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             IsObligatedToPayAlimonyChildSupport = input.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport,
                             IsAnyPartOfTheDownPayment = input.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment,
                             IsCoMakerOrEndorser = input.CoBorrowerDeclaration.IsCoMakerOrEndorser,
-                            IsUSCitizen = input.CoBorrowerDeclaration.IsUSCitizen,
+                            IsUscitizen = input.CoBorrowerDeclaration.IsUSCitizen,
                             IsPermanentResidentSlien = input.CoBorrowerDeclaration.IsPermanentResidentSlien,
                             IsIntendToOccupyThePropertyAsYourPrimary = input.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary,
                             IsOwnershipInterestInPropertyInTheLastThreeYears = input.CoBorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears,
@@ -176,7 +177,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                             declaration.IsObligatedToPayAlimonyChildSupport = input.CoBorrowerDeclaration.IsObligatedToPayAlimonyChildSupport;
                             declaration.IsAnyPartOfTheDownPayment = input.CoBorrowerDeclaration.IsAnyPartOfTheDownPayment;
                             declaration.IsCoMakerOrEndorser = input.CoBorrowerDeclaration.IsCoMakerOrEndorser;
-                            declaration.IsUSCitizen = input.CoBorrowerDeclaration.IsUSCitizen;
+                            declaration.IsUscitizen = input.CoBorrowerDeclaration.IsUSCitizen;
                             declaration.IsPermanentResidentSlien = input.CoBorrowerDeclaration.IsPermanentResidentSlien;
                             declaration.IsIntendToOccupyThePropertyAsYourPrimary = input.CoBorrowerDeclaration.IsIntendToOccupyThePropertyAsYourPrimary;
                             declaration.IsOwnershipInterestInPropertyInTheLastThreeYears = input.CoBorrowerDeclaration.IsOwnershipInterestInPropertyInTheLastThreeYears;
@@ -193,7 +194,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     if (!input.BorrowerDemographic.Id.HasValue || input.BorrowerDemographic.Id == default)
                     {
-                        borrowerDemographic = new DeclarationBorrowereDemographicsInformation
+                        borrowerDemographic = new Declarationborroweredemographicsinformation
                         {
                             BorrowerTypeId = (int)Enums.BorrowerType.Borrower,
                             LoanApplicationId = input.LoanApplicationId
@@ -218,7 +219,7 @@ namespace LoanManagement.DatabaseServices.Implementations
                 {
                     if (!input.CoBorrowerDemographic.Id.HasValue || input.BorrowerDemographic.Id == default)
                     {
-                        coBorrowerDemographic = new DeclarationBorrowereDemographicsInformation
+                        coBorrowerDemographic = new Declarationborroweredemographicsinformation
                         {
                             BorrowerTypeId = (int)Enums.BorrowerType.CoBorrower,
                             LoanApplicationId = input.LoanApplicationId
@@ -316,7 +317,7 @@ namespace LoanManagement.DatabaseServices.Implementations
             throw new NotImplementedException();
         }
 
-        private void FillDemographicData(DemographicDto demographic, DeclarationBorrowereDemographicsInformation borrowerDemographic)
+        private void FillDemographicData(DemographicDto demographic,Declarationborroweredemographicsinformation borrowerDemographic)
         {
             borrowerDemographic.IsAmericanIndianOrAlaskaNative = false;
             borrowerDemographic.IsAsian = false;
