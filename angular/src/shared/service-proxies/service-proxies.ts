@@ -33796,6 +33796,7 @@ export class AddLeadEmploymentDetails implements IAddLeadEmploymentDetails {
   employerName: string | undefined;
   employementAddress: string | undefined;
   employementSuite: string | undefined;
+  employementStateName: string | undefined;
   employementCity: string | undefined;
   employementTaxeId: number;
   employementZip: string | undefined;
@@ -33899,6 +33900,7 @@ export interface IAddLeadEmploymentDetails {
   employerName: string | undefined;
   employementAddress: string | undefined;
   employementSuite: string | undefined;
+  employementStateName: string | undefined;
   employementCity: string | undefined;
   employementTaxeId: number;
   employementZip: string | undefined;

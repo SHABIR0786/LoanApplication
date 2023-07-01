@@ -152,6 +152,10 @@ body {
   color: #f47741;
   font-size: 40px;
 }
+.form-stat ul li .yes-blue {
+  color: #091a52;
+  font-size: 40px;
+}
 .form-stat ul li span {
   vertical-align: super;
   font-size: 20px;
@@ -251,6 +255,7 @@ body {
 }
 .button-list {
   margin: 0 auto;
+  font-family: Helvetica Neue;
 }
 .button-list p {
   font-size: 22px;
@@ -439,7 +444,7 @@ body {
 }
 .content-area h6 {
   font-size: 22px;
-  font-family: "Avenir";
+  font-family: "Avenir-medium";
 }
 
 #padding-zero {
@@ -519,6 +524,28 @@ body {
   font-family: "Avenir";
   font-weight: 100;
   margin-right: 5px;
+}
+.btn-yes-no-blue {
+  font-size: 16px;
+  padding: 6px 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #091a52;
+  color: #091a52;
+  font-size: 16px;
+  font-family: "Avenir";
+  font-weight: 100;
+  margin-right: 5px;
+}
+.btn-yes-no-blue:focus {
+  background-color: #091a52;
+  color: #fff;
+  border: 1px solid #091a52;
+}
+.btn-yes-no-blue:hover {
+  background-color: #091a52;
+  color: #fff;
+  border: 1px solid #091a52;
 }
 #btn-yes-no:hover {
   background-color: #f47741;
@@ -1070,7 +1097,7 @@ body {
   .title {
     color: #091a52;
     font-size: 24px;
-    font-family: "Avenir";
+    font-family: "Avenir-Medium";
     font-weight: 600;
     position: inherit;
     margin-left: 0px;
@@ -1188,4 +1215,14 @@ body {
 .col-lg-2 {
   flex: 0 0 16.6666666667%;
   max-width: 19.6666666667%;
+}
+.orange-active {
+  background-color: #f47741 !important;
+  color: #fff !important;
+  border-color: #f47741 !important;
+}
+.blue-active {
+  border: 1px solid #091a52 !important;
+  background-color: #091a52 !important;
+  color: #fff !important;
 }

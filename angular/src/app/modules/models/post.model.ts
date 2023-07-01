@@ -8,6 +8,7 @@ export class PostModel {
   newHomeUnit: string;
   newHomeCityTown: string;
   newHomeState: string = "1";
+  currentStateName: string;
   newHomeStateName: string = "";
   newHomeZip: string;
   contractDate: string;
@@ -264,6 +265,9 @@ export class RefinancePost {
   leadApplicationDetailRefinancingId: number = 1;
   id: number = 0;
   "isWorkingWithEzalready": number;
+  "currentStateName": string;
+  "empStateName": string;
+  "propertyStateName": string;
   "workingOfficerName": string;
   "objectiveReason": string;
   "propertyAddress": string;

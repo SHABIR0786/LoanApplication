@@ -52,7 +52,7 @@ export class GovernmentComponent implements OnInit {
     // });
   }
   getAllQuestions() {
-    let url = "/LeadApplicationQuestions/GetAll";
+    let url = "LeadApplicationQuestionsService/GetAll";
     this.api.get(url).subscribe((x: any) => {
       this.questions = x.result;
     });
@@ -106,7 +106,7 @@ export class GovernmentComponent implements OnInit {
       questionId: id,
       isYes: ans,
     };
-    let url = "/LeadQuestionAnswers/Add";
+    let url = "LeadQuestionAnswersService/Add";
     this.api.post(url, req).subscribe((x) => {
       console.log(id);
     });
@@ -118,7 +118,7 @@ export class GovernmentComponent implements OnInit {
       const final = this.apiModel.map(this.model);
       this.submitted = false;
       this.api
-        .post("LeadPurchasingDetails/update", final)
+        .post("LeadPurchasingDetailService/Update", final)
         .subscribe((d: any) => {
           if (d.success === true) {
             alert("Done");

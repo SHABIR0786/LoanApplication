@@ -53,4 +53,17 @@ export class CreditScoreComponent implements OnInit {
       this.submitted = false;
     }
   }
+  onNextClick() {
+    if (
+      this.model.isCertify &&
+      this.model.isReadEconsent &&
+      this.model.isReadThirdPartyConsent
+    ) {
+      this.submitted = false;
+
+      this.abc("/app/refinance/credit-score/2");
+    } else {
+      this.submitted = true;
+    }
+  }
 }

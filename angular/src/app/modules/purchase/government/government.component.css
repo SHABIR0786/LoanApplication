@@ -5,3 +5,23 @@
   color: white !important;
   border-color: #f47741 !important;
 }
+
+.content-area h6 {
+  font-size: 22px;
+  font-family: "Avenir" !important;
+}
+.yes-no-area p {
+  font-size: 22px;
+  font-family: "Avenir" !important;
+  font-weight: 200 !important;
+}
+.button-list p {
+  font-size: 22px;
+  text-align: left;
+  font-weight: 600;
+  font-family: avenir-medium !important;
+}
+.thanks {
+  font-size: 22px;
+  font-family: "Helvetica Neue" !important;
+}

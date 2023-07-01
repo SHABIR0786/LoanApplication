@@ -35,16 +35,35 @@ export class PropertyInfoComponent implements OnInit {
     this.getStates();
     this.getCities();
     this.getCountries();
+    if (this.model.propertyStateName) {
+      this.getStateById(this.model.propertyStateId);
+    }
     this.model = this.offline.getStep().data;
   }
   getStates() {
     this.api.get("State/states").subscribe((x: any) => {
+      console.log(x);
       if (x && x.result) {
         this.states = x.result;
         this.model.empState = 1;
         this.model.currentStateId = 1;
         this.model.personalStateId = 1;
         this.model.propertyStateId = 1;
+      }
+    });
+  }
+  onStateChange(event) {
+    this.getStateById(event.target.value);
+  }
+  getStateById(id) {
+    this.api.get("State/State?id=" + id).subscribe((x: any) => {
+      if (x && x.result) {
+        this.model.propertyStateName = x.result.stateName;
+        // this.model.empState = "1";
+        // this.model.currentStateId = 1;
+
+        // this.model.newHomeState = "1";
+        // this.model.newHomeState = x.result[0].id;
       }
     });
   }
@@ -85,19 +104,30 @@ export class PropertyInfoComponent implements OnInit {
       this.submitted = false;
     }
   }
-  getEditData() {
-    let isMillitary;
-    if (this.model.isMilitaryMember) {
-      isMillitary = "militery-yes";
-    } else {
-      isMillitary = "militery-no";
+  // getEditData() {
+  //   let isMillitary;
+  //   if (this.model.isMilitaryMember) {
+  //     isMillitary = "militery-yes";
+  //   } else {
+  //     isMillitary = "militery-no";
+  //   }
+  //   document.getElementById(this.model.objectiveReason).classList.add("blue");
+  //   document.getElementById(this.model.creditScore).classList.add("blue");
+  //   document.getElementById(this.model.typeOfHome).classList.add("blue");
+  //   document
+  //     .getElementById(this.model.currentlyUsingHomeAs)
+  //     .classList.add("blue");
+  //   document.getElementById(isMillitary).classList.add("blue");
+  // }
+
+  onReason(obj: string) {
+    this.model.objectiveReason = obj;
+    this.saveStep();
+  }
+
+  doneClicked(f) {
+    if (f.valid) {
+      this.router.navigate(["/app/refinance/property-info/9"]);
     }
-    document.getElementById(this.model.objectiveReason).classList.add("blue");
-    document.getElementById(this.model.creditScore).classList.add("blue");
-    document.getElementById(this.model.typeOfHome).classList.add("blue");
-    document
-      .getElementById(this.model.currentlyUsingHomeAs)
-      .classList.add("blue");
-    document.getElementById(isMillitary).classList.add("blue");
   }
 }

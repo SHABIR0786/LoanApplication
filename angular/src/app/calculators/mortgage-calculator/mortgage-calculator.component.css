@@ -18,3 +18,6 @@
 .homeprice-input {
   padding-left: 20px;
 }
+.arrow-list a {
+  position: relative !important;
+}

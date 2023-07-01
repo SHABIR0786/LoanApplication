@@ -63,7 +63,7 @@ export class PropertyInfoComponent implements OnInit {
     this.router.navigate(["/app/purchase/property-info", step]);
   }
   getStates() {
-    this.api.get("State/states").subscribe((x: any) => {
+    this.api.get("StateService/GetStates").subscribe((x: any) => {
       if (x && x.result) {
         this.states = x.result;
         console.log(this.model.newHomeState);
@@ -76,7 +76,7 @@ export class PropertyInfoComponent implements OnInit {
     });
   }
   getCities() {
-    this.api.get("City/cities").subscribe((x: any) => {
+    this.api.get("CityService/GetCities").subscribe((x: any) => {
       if (x && x.result) this.cities = x.result;
     });
   }

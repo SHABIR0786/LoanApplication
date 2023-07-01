@@ -148,7 +148,10 @@ body {
   color: #e4e4e4;
   font-size: 40px;
 }
-
+.form-stat ul li:first-child i {
+  color: #091a52;
+  font-size: 40px;
+}
 .form-stat ul li:first-child i.fa-circle-check {
   color: #52c41a;
   font-size: 40px;
@@ -162,8 +165,8 @@ body {
   font-weight: 600;
 }
 .form-stat ul li.yes-blue i {
-  color: #091a52;
-  font-size: 40px;
+  color: #091a52 !important;
+  font-size: 40px !important;
 }
 .form-stat ul li span {
   vertical-align: super;
