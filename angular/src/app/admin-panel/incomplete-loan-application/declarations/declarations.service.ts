@@ -9,7 +9,7 @@ import { AppConsts } from "@shared/AppConsts";
 })
 export class DeclarationsService extends BaseService {
   constructor(private httpService: HttpClient) {
-    super(httpService, AppConsts.remoteServiceBaseUrl);
+    super(httpService,  "http://localhost:21021/api");
   }
   create(data: any) {
     return this.post(ApiRoute.createDeclarations, data);

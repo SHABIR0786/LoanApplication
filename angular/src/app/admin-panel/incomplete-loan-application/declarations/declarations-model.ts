@@ -9,5 +9,10 @@ export class DeclarationsModel {
     deletionTime: Date;
     declarationQuestionId: number=0;
     answer: string='';
-    personalInformationId: number=0;
+    personalInformationId: number;
+    questionNumberIndex:number;
 }
+export class DeclarationsModel1 {
+    answer: string='';
+}
+

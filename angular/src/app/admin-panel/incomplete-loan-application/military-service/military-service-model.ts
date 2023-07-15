@@ -8,7 +8,7 @@ export class MilitaryServiceModel {
     deleterUserId: number;
     deletionTime: Date;
     personalInformationId: number;
-    isServeUSForces: boolean=false;
+    isServeUSForces: boolean;
     isCurrentlyServing: boolean;
     projectedExpirationServiceDate: Date;
     isCurrentlyRetired: boolean;
