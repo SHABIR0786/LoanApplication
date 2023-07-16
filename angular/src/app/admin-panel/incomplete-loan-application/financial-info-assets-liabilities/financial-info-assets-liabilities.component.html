@@ -12,7 +12,7 @@
   </div>
   <div class="separator"></div>
 
-
+  <form #financialInfoAssetsLiaForm="ngForm" (ngSubmit)="financialInfoAssetsLiaForm.valid && submitFinancialAssetsLiabilities()" class="w-full">
   <div class="Main" style="width: 100%;">
 
     <div class="section-title" style="display: flex; align-items: center; width: 100%;">
@@ -79,7 +79,9 @@
               <div class="col-6">
                 <div class="frm-group mt-3">
                   <div class="frm-fld-input">
-                      <select [(ngModel)]="item.accountTypeId" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId" #accountTypeId="ngModel" required>
+                      <select [(ngModel)]="item.accountTypeId" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId" #accountTypeId="ngModel" required 
+                      [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
+                      [ngClass]="{'input-error':  accountTypeId.touched && accountTypeId.errors}">
                         <option [ngValue]="-1" selected disabled>Interest and Dividends</option>
                         <option value="1">Checking</option>
                         <option value="2">Savings</option>
@@ -100,12 +102,16 @@
               </div>
               <div class="col-3">
                 <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.financialInstitution" id="{{i}}.financialInstitution" required name="{{i}}.financialInstitution" #financialInstitution="ngModel" /></p>
+                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.financialInstitution" id="{{i}}.financialInstitution" required name="{{i}}.financialInstitution" #financialInstitution="ngModel" 
+                    [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && financialInstitution.errors}"
+                    [ngClass]="{'input-error':  financialInstitution.touched && financialInstitution.errors}"/></p>
                 </div>
               </div>
               <div class="col-3">
                 <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber" required #accountNumber="ngModel"/></p>
+                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber"  #accountNumber="ngModel" required
+                    [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
+                    [ngClass]="{'input-error':  accountNumber.touched && accountNumber.errors}"/></p>
                 </div>
               </div>
             </div>
@@ -178,7 +184,7 @@
           <div class=" col-3">
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" required [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialAssets()"/></div>
+              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0"  [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialAssets()"/></div>
               <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
               <div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
             </div>
@@ -196,7 +202,7 @@
           <label class="col-3 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [(ngModel)]="totalMortgageFinancialAssets" /></div>
+                <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets" name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel"/></div>
             </div>
            </div>
           </label>
@@ -212,7 +218,7 @@
     <div class="section-title" style="display: flex; align-items: center; width: 100%;">
       <span style="font-size: 20px;">Other Assets and Credits You Have</span>
       <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherAssets">
+        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherAssets" id="flgMortgageFinancialOtherAssets" name="flgMortgageFinancialOtherAssets" #txtflgMortgageFinancialOtherAssets="ngModel">
         <span class="checkmark"></span>
       </label>
     </div>
@@ -282,7 +288,7 @@
           <div class="col-8">
             <div class="frm-group mt-3">
               <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialOtherAssets" [(ngModel)]="item.financialAssetsTypeId" id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId" #financialAssetsTypeId="ngModel">
+                  <select [disabled]="flgMortgageFinancialOtherAssets" [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId" id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId" #financialAssetsTypeId="ngModel">
                     <option value="-1" selected disabled>-Select One-</option>
                     <option value="1">Proceeds from Real Estate</option>
                     <option value="2">Property to be sold on or before closing</option>
@@ -346,7 +352,7 @@
           <div class=" col-4">
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherAssets" [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialOtherAssets()"/></div>
+              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherAssets" [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialOtherAssets()"/></div>
             </div>
           </div>
           </div>
@@ -362,7 +368,7 @@
           <label class="col-4 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherAssets" /></div>
+              <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherAssets" id="totalMortgageFinancialOtherAssets" name="totalMortgageFinancialOtherAssets" #txttotalMortgageFinancialOtherAssets="ngModel" /></div>
             </div>
            </div>
           </label>
@@ -382,7 +388,7 @@
     <div class="section-title" style="display: flex; align-items: center; width: 100%;">
       <span style="font-size: 20px;">Liabilities – Credit Cards, Other Debts, and Leases that You Owe</span>
       <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialLiabilities">
+        <input type="checkbox" [(ngModel)]="flgMortgageFinancialLiabilities" id="flgMortgageFinancialLiabilities" name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel">
         <span class="checkmark"></span>
       </label>
     </div>
@@ -434,7 +440,7 @@
           <div class="col-4">
             <div class="frm-group mt-3">
               <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
+                  <select [disabled]="flgMortgageFinancialLiabilities" [required]="flgMortgageFinancialLiabilities == false" [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
                     <option value="-1" selected disabled>-Select One-</option>
                     <option value="1">Revolving (e.g., credit cards)</option>
                     <option value="2">Installment (e.g., car, student, personal loans)</option>
@@ -447,17 +453,17 @@
           </div>
           <div class="col-2">
             <div class="frm-group mt-3">
-              <p class="frm-fld-input height35"><input type="text" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.companyName" id="{{i}}.companyName" name="{{i}}.companyName" #companyName="ngModel" /></p>
+              <p class="frm-fld-input height35"><input type="text" [required]="flgMortgageFinancialLiabilities ==false" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.companyName" id="{{i}}.companyName" name="{{i}}.companyName" #companyName="ngModel" /></p>
             </div>
           </div>
           <div class="col-2">
             <div class="frm-group mt-3">
-              <p class="frm-fld-input height35"><input type="text" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" /></p>
+              <p class="frm-fld-input height35"><input type="text" [required]="flgMortgageFinancialLiabilities ==false" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" /></p>
             </div>
           </div>
           <div class="col-2">
             <div class="frm-group mt-3">
-              <p class="frm-fld-input height35 "  style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number" min="0"  /></span><input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"  [(ngModel)]="item.isPaidBeforeClosing" id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel" style="width: 40px;"/></p>
+              <p class="frm-fld-input height35 "  style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number" min="0"  /></span><input type="checkbox" [disabled]="flgMortgageFinancialLiabilities" [required]="flgMortgageFinancialLiabilities ==false"  [(ngModel)]="item.isPaidBeforeClosing" id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel" style="width: 40px;"/></p>
             </div>
           </div>
 
@@ -482,7 +488,7 @@
           <label class="col-2 frm-label">
            <div class="frm-group">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherLaibilities" /></div>
+              <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherLaibilities"  id="totalMortgageFinancialOtherLaibilities" name="totalMortgageFinancialOtherLaibilities" #txttotalMortgageFinancialOtherLaibilities="ngModel"/></div>
             </div>
            </div>
           </label>
@@ -504,7 +510,7 @@
     <div class="section-title" style="display: flex; align-items: center; width: 100%;">
       <span style="font-size: 20px;">Other Liabilities and Expenses</span>
       <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities">
+        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities" id="flgMortgageFinancialOtherLaibilities" name="flgMortgageFinancialOtherLaibilities" #txtflgMortgageFinancialOtherLaibilities="ngModel">
         <span class="checkmark"></span>
       </label>
     </div>
@@ -555,7 +561,7 @@
           <div class="col-8">
             <div class="frm-group mt-3">
               <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialOtherLaibilities" [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel" >
+                  <select [disabled]="flgMortgageFinancialOtherLaibilities" [required]="flgMortgageFinancialOtherLaibilities ==false"  [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel" >
                     <option value="-1" selected disabled>-Select One-</option>
                     <option value="1">Alimony</option>
                     <option value="2">Child Support</option>
@@ -595,7 +601,7 @@
           <div class=" col-4">
             <div class="frm-group mt-3">
             <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherLaibilities" [(ngModel)]="item.monthlyPayment" id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"/></div>
+              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherLaibilities" [required]="flgMortgageFinancialOtherLaibilities ==false" [(ngModel)]="item.monthlyPayment" id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"/></div>
               <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
               <div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
             </div>
@@ -640,7 +646,8 @@
   </div>
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill" type="button" (click)="submitFinancialAssetsLiabilities()">NEXT</button>
+      <button class="btn btn-fill" type="submit" >NEXT</button>
     </div>
   </div>
+  </form>
 </div>

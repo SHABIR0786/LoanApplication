@@ -9,7 +9,7 @@ import { AppConsts } from "@shared/AppConsts";
 })
 export class LoanOriginatorInfoService extends BaseService {
   constructor(private httpService: HttpClient) {
-    super(httpService, AppConsts.remoteServiceBaseUrl);
+    super(httpService,  "http://localhost:21021/api");
   }
   create(data) {
     return this.post(ApiRoute.createLoanOriginatorInfo, data);

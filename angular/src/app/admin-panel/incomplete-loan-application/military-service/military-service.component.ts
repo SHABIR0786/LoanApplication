@@ -43,4 +43,9 @@ export class MilitaryServiceComponent implements OnInit {
     this.militaryServiceModel.isServeUSForces = false;
    
   }
+  test()
+  {
+    debugger
+    var aa=this.militaryServiceModel.isServeUSForces
+  }
 }

@@ -141,10 +141,12 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     if(this.financialInfoRealState[index].flgApplicableNotApply ==false)
     {
       this.financialInfoRealState[index].flgApplicableNotApply =true; 
+      this.financialInfoRealState[index].flgMortgageLoanNotApply = true
     }
     else
     {
       this.financialInfoRealState[index].flgApplicableNotApply =false; 
+      this.financialInfoRealState[index].flgMortgageLoanNotApply = false
     }
     this.financialInfoRealState[0].flgApplicableNotApply=false;
     
