@@ -37,7 +37,7 @@ export class MilitaryInfoComponent implements OnInit {
     this.saveStep();
   }
   onMilETSClick(e) {
-    this.model.etsdate = e;
+    // this.model.etsdate = e;
     this.saveStep();
   }
   onMilVaLoanClick(e) {

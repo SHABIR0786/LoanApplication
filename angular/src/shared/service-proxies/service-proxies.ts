@@ -33873,7 +33873,7 @@ export class AddLeadEmploymentDetails implements IAddLeadEmploymentDetails {
     data["employerPhoneNumber"] = this.employerPhoneNumber;
     data["isCurrentJob"] = this.isCurrentJob;
     data["estimatedStartDate"] = this.estimatedStartDate
-      ? this.estimatedStartDate.toISOString()
+      ? this.estimatedStartDate.toString()
       : <any>undefined;
     data["jobTitle"] = this.jobTitle;
     data["estimatedAnnualBaseSalary"] = this.estimatedAnnualBaseSalary;

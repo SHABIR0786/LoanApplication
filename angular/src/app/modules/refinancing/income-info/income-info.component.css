@@ -7,3 +7,9 @@
   color: white !important;
   border-color: #091a52 !important;
 }
+.est-date-field {
+  position: relative;
+}
+.est-date-field label {
+  position: absolute;
+}

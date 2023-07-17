@@ -2,7 +2,7 @@
 
 <div class="main-content" *ngIf="number == 1">
   <h2>
-    Our sincere thanks for your service.<br />
+    Our sincere thanks for your service.s<br />
     What’s your current military status?
   </h2>
 
@@ -50,10 +50,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 
 <!-- No 14A Military Branches -->
@@ -63,7 +60,7 @@
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(1)"
       [class.orange-active]="model.milBranch == 1"
       >Army</a
@@ -71,41 +68,41 @@
 
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(2)"
-      [class.orange-active]="model.milBranch == 1"
+      [class.orange-active]="model.milBranch == 2"
       >Navy</a
     >
 
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(3)"
-      [class.orange-active]="model.milBranch == 1"
+      [class.orange-active]="model.milBranch == 3"
       >Marine Corps</a
     >
 
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(4)"
-      [class.orange-active]="model.milBranch == 1"
+      [class.orange-active]="model.milBranch == 4"
       >Air Force</a
     >
 
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(5)"
-      [class.orange-active]="model.milBranch == 1"
+      [class.orange-active]="model.milBranch == 5"
       >Coast Guard</a
     >
 
     <a
       [routerLink]="['/app/purchase/military-info', 3]"
-      class="btn btn-primary btn-style btn-orange"
+      class="btn btn-primary btn-style"
       (click)="onMilBranchClick(6)"
-      [class.orange-active]="model.milBranch == 1"
+      [class.orange-active]="model.milBranch == 6"
       >Space Force</a
     >
 
@@ -120,16 +117,13 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 
 <!-- No 14B Military Branches  -Yes -->
 <div class="main-content" *ngIf="number == 3">
   <h2>Great! Is your ETS date within the next 12 months?</h2>
-  <h6>
+  <h6 style="margin-bottom: 50px">
     Active U.S. Military and veterans may be eligible for VA loan options!
   </h6>
   <div
@@ -162,10 +156,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 
 <!-- No 14C Military Branches On clicking any miitary branch from 14B Click yes then go to 14C Yes ETS Date -->
@@ -190,7 +181,14 @@
       [class.orange-active]="model.milEts == false"
       >No</a
     >
-    <input type="date" class="form-control form-style" />
+    <div class="est-date">
+      <label>EST Date</label>
+      <input
+        type="date"
+        class="form-control form-style"
+        [(ngModel)]="model.etsdate"
+      />
+    </div>
 
     <div class="row">
       <div class="col-md-12">
@@ -203,10 +201,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- Click Next or No button on above page it will go to 14D -->
 
@@ -242,10 +237,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- Click Back on 14D it will land on 14B click Yes or No it will land on 14E -->
 
@@ -297,10 +289,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 
 <!-- Click back button it will land on 14D -->

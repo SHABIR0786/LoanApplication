@@ -41,7 +41,7 @@ export class GovernmentComponent implements OnInit {
   ngOnInit() {
     this.model = this.offline.getStep().data;
     this.getCitizenShipType();
-    // this.getAllQuestions();
+    this.getAllQuestions();
   }
   getCitizenShipType() {
     this.citizenshipTypeService.getCitizenshipTypes().subscribe((res) => {
@@ -60,12 +60,11 @@ export class GovernmentComponent implements OnInit {
   onGovClick() {
     const final = this.apiModel.map(this.model);
     this.api
-      .put("api/services/app/LeadPurchasingDetailService/Update", final)
+      .put("LeadPurchasingDetailService/Update", final)
       .subscribe((d: any) => {
         if (d.success === true) {
           this.router.navigate(["/app/purchase/gov/2"]);
           this.model.leadApplicationDetailPurchasingId = 1;
-          alert("Done");
         } else {
           alert("Oops");
           console.clear();
@@ -85,7 +84,8 @@ export class GovernmentComponent implements OnInit {
       this.submitted = true;
     } else {
       this.saveStep();
-      this.router.navigate(["/app/purchase/gov/3"]);
+      // this.router.navigate(["/app/purchase/gov/3"]);
+      this.router.navigate(["/app/purchase/credit-score/1"]);
       this.submitted = true;
     }
   }

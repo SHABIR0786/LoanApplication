@@ -31,6 +31,7 @@ export class PostModel {
   milStatus: string;
   milBranch: string;
   milEts: string;
+  etsDate: string;
   milVa: boolean;
   milLive: string;
   isMillitary: boolean;
@@ -64,7 +65,9 @@ export class PostModel {
   govSex: string;
   govConfirmaion: boolean;
   govEthnicity: string;
+  govEthnicitytext: string;
   govRace: string;
+  govRaceText: string;
   govQ1: string;
   govQ2: string;
   govQ3: string;
@@ -206,7 +209,7 @@ export class AddFinanceApiModel {
     this.currentMilitaryStatus = e.milStatus;
     this.militaryBranch = e.milBranch;
     this.isEtsdateinYear = new Date(e.milEts).getFullYear();
-    this.etsdate = e.milEts;
+    this.etsdate = e.etsDate;
     this.isValoanPreviously = e.milVa ? 1 : 0;
     this.whoLivingInHome = e.milLive;
     this.personalLegalFirstName = e.milFirstName;
@@ -340,6 +343,7 @@ export class RefinancePost {
   empAptUnit: string;
   empCity: string;
   empState: number = 1;
+  newHomeState: string = "1";
   empZip: string;
   empPhoneNumber: string;
   isCurrentJob: number;
@@ -372,6 +376,7 @@ export class RefinancePost {
 
 export class EmployementDetailAdd {
   "employeeTypeId": number;
+  "currentOrPastEmployementHistory": boolean;
   "leadApplicationDetailPurchasingId": number;
   "leadApplicationDetailRefinancingId": number;
   "leadApplicationTypeId": number;
@@ -390,4 +395,34 @@ export class EmployementDetailAdd {
   "estimatedAnnualCommission": number;
   "estimatedAnnualOvertime": number;
   "isCoBorrower": number;
+  "currentStateId": number = 1;
+  "empState": number = 1;
+  "newHomeState": string = "1";
+  "currentStateName": string;
+
+  map(e: EmployementDetailAdd) {
+    this.employeeTypeId = e.employeeTypeId;
+    this.leadApplicationDetailPurchasingId =
+      e.leadApplicationDetailPurchasingId;
+    this.leadApplicationDetailRefinancingId =
+      e.leadApplicationDetailRefinancingId;
+    this.leadApplicationTypeId = e.leadApplicationTypeId;
+    this.employerName = e.employerName;
+    this.employementAddress = e.employementAddress;
+    this.employementSuite = e.employementSuite;
+    this.employementCity = e.employementCity;
+    this.employementTaxeId = e.employementTaxeId;
+    this.employementZip = e.employementZip;
+    this.employerPhoneNumber = e.employerPhoneNumber;
+    this.isCurrentJob = e.isCurrentJob;
+    this.estimatedStartDate = e.estimatedStartDate;
+    this.jobTitle = e.jobTitle;
+    this.estimatedAnnualBaseSalary = e.estimatedAnnualBaseSalary;
+    this.estimatedAnnualBonus = e.estimatedAnnualBonus;
+    this.estimatedAnnualCommission = e.estimatedAnnualCommission;
+    this.estimatedAnnualOvertime = e.estimatedAnnualOvertime;
+    this.isCoBorrower = e.isCoBorrower;
+    this.currentStateId = e.currentStateId;
+    return this;
+  }
 }
