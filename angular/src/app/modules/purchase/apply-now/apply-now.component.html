@@ -2,7 +2,6 @@
   <h2>Whatever your goal, we’ll help you achieve it quickly and easily!</h2>
   <h4>How can we help?</h4>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
-    <!-- href="2 Apply Now-I’m Purchasing  I have a signed purchase contract.html" -->
     <a
       [ngClass]="{ active: model?.firstChoice === '1' }"
       routerLink="/app/purchase/welcome/1"
@@ -21,8 +20,5 @@
       >I’m Refinancing</a
     >
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a href="">Log in</a></p>
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>

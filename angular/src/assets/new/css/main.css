@@ -178,7 +178,7 @@ body {
   font-size: 20px;
   color: #091a52;
   padding-bottom: 50px;
-  font-family: "Helvetica Neue";
+  font-family: "Avenir-Medium";
 }
 .main-content .form-style {
   padding: 10px;
@@ -255,7 +255,7 @@ body {
 }
 .button-list {
   margin: 0 auto;
-  font-family: Helvetica Neue;
+  font-family: Avenir-Medium;
 }
 .button-list p {
   font-size: 22px;
@@ -415,12 +415,12 @@ body {
 }
 .content-footer h5 {
   font-size: 18px;
-  font-family: "Helvetica Neue";
+  font-family: "Avenir-Medium";
 }
 .content-footer p {
   font-size: 16px;
   margin-bottom: 50px;
-  font-family: "Helvetica Neue";
+  font-family: "Avenir-Medium";
 }
 .content-footer p a {
   color: #f47741;
@@ -770,7 +770,7 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
-    font-family: "Helvetica Neue";
+    font-family: "Avenir-Medium";
   }
   .main-content h2 {
     font-size: 28px;
@@ -875,7 +875,7 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
-    font-family: "Helvetica Neue";
+    font-family: "Avenir-Medium";
   }
   .main-content h2 {
     font-size: 28px;
@@ -980,7 +980,7 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
-    font-family: "Helvetica Neue";
+    font-family: "Avenir-Medium";
   }
   .main-content h2 {
     font-size: 36px;
@@ -1086,13 +1086,17 @@ body {
   }
   .content-footer h5 {
     font-size: 20px;
-    font-family: "Helvetica Neue";
+    font-family: "Avenir-Medium";
   }
   .main-content h2 {
     font-size: 36px;
     font-family: "Avenir-Medium";
-    font-weight: 500;
     padding-bottom: 50px;
+    color: #091a52;
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
   }
   .title {
     color: #091a52;

@@ -105,23 +105,23 @@
           </div>
         </div>
       </div>
-
-      <!-- <button
-        type="submit"
-        class="btn btn-primary btn-next btn-orange"
-        role="button"
-        (click)="onPehlaForm(f, 2)"
-      >
-        Next
-      </button> -->
-      <a class="btn" id="btn-next" (click)="onPehlaForm(f, 2)">Next</a>
+      <div class="row">
+        <div class="col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <a
+            [routerLink]="['/app/purchase/welcome', 2]"
+            class="btn"
+            id="btn-back"
+            role="button"
+            >Back</a
+          >
+        </div>
+        <div class="col-lg-2">
+          <a class="btn" id="btn-next" (click)="onPehlaForm(f, 2)">Next</a>
+        </div>
+      </div>
     </form>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 4 Purchasing End -->
 
@@ -134,9 +134,11 @@
   </h6>
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="address" #f="ngForm">
-      <div class="form-group">
+      <div class="form-group closing-date">
+        <label>Closing Date</label>
         <input
           type="date"
+          label="Closing Date"
           [(ngModel)]="model.contractDate"
           class="form-control form-style form-margin-top mb-0"
           placeholder="Contract date"
@@ -148,11 +150,11 @@
           *ngIf="submitted && !contractDateRef.valid"
           class="text-danger d-flex"
         >
-          Contract Date is required
+          Closing Date is required
         </div>
       </div>
       <p class="text-center">Do either of these apply to the property?</p>
-      <div class="radio-input">
+      <div class="radio-input contract">
         <div class="row">
           <div class="col-md-12">
             <input
@@ -199,11 +201,7 @@
       </div>
     </form>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 5 Purchasing End -->
 
@@ -350,11 +348,7 @@
       </div>
     </form>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 6 Purchasing End -->
 
@@ -416,20 +410,18 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 7 Purchasing End -->
 
 <!-- No# 8 Purchasing Start -->
 <div class="main-content" *ngIf="number == 5">
   <h2 class="little-space">Ok! We’s like to get to know you.</h2>
-  <h6>Please provide you full legal name.</h6>
+  <h6 style="margin-bottom: 50px !important; font-size: 16px">
+    Please provide you full legal name.
+  </h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top col-lg-9 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
   >
     <form action="" id="personal" #f5="ngForm">
       <div class="row">
@@ -513,7 +505,7 @@
           name="email"
           required
           #emailRef="ngModel"
-          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         />
         <div *ngIf="submitted" class="text-danger d-flex">
           <div *ngIf="emailRef.errors?.pattern">
@@ -534,17 +526,23 @@
               and/or prerecorded or artificial voice calls and text messages
               (SMS and MMS), or email even if your telephone number is a
               cellular number or on a corporate, state, or the National Do Not
-              Call Registry <span class="orange-text">(DNC)</span> or other do
-              not contact list.
+              Call Registry
+              <span style="cursor: pointer" class="orange-text">(DNC)</span> or
+              other do not contact list.
             </p>
 
             <p>
               You may also reach us at
-              <span class="orange-text">(800) 930-8195</span> or by utilizing
-              our services at <span class="orange-text">Loan Options</span>. You
-              may opt-out at any time by emailing us a Do Not Call Request at
+              <a href="tel:(800) 930-8195" class="orange-text"
+                >(800) 930-8195</a
+              >
+              or by utilizing our services at
+              <span class="orange-text">Loan Options</span>. You may opt-out at
+              any time by emailing us a Do Not Call Request at
               <span class="orange-text"
-                ><a href="">dnc@ezonlinemortgage.com</a></span
+                ><a href="mailto:dnc@ezonlinemortgage.com"
+                  >dnc@ezonlinemortgage.com</a
+                ></span
               >
               and providing your phone number. Your consent is not required or a
               condition of any purchase. Message and data rates may apply.
@@ -579,18 +577,15 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 8 Purchasing End -->
 
 <!-- No# 9 Purchasing Start -->
 <div class="main-content" *ngIf="number == 6">
   <h2 class="little-space">
-    What type of home is it? <img src="img/info.svg" alt="" />
+    What type of home is it?
+    <img src="../../../../assets/img/info.svg" alt="" />
   </h2>
 
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
@@ -641,11 +636,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 9 Purchasing End -->
 
@@ -653,10 +644,10 @@
 <div class="main-content" *ngIf="number == 7">
   <h2>
     For the properties you’ve been looking at, are there typically HOA fees?
-    <img src="img/info.svg" alt="" />
+    <img src="../../../../assets/img/info.svg" alt="" />
   </h2>
-  <h6>if so, what is the approximate amount?</h6>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <h6 style="margin-bottom: 50px">if so, what is the approximate amount?</h6>
+  <div class="button-list col-lg-9 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
     <form action="" id="personal" #f7="ngForm">
       <input
         type="number"
@@ -677,7 +668,7 @@
 
     <div class="row margin-top">
       <div
-        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+        class="col-md-2 offset-md-1 col-lg-1 offset-lg-3 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
         <a
           [routerLink]="['/app/purchase/property-info', 6]"
@@ -687,24 +678,20 @@
         >
       </div>
       <div
-        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+        class="col-md-2 offset-md-1 col-lg-1 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
         <a class="btn btn-orange" id="btn-next" (click)="onPehlaForm(f7, 8)"
           >Next</a
         >
       </div>
       <div
-        class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
+        class="col-md-2 offset-md-1 col-lg-1 offset-lg-1 col-sm-2 offset-sm-1 col-xs-2 offset-xs-1"
       >
         <a class="btn btn-orange" id="btn-back" (click)="skip(8)">Skip</a>
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <!-- No# 10 Purchasing End -->
 
@@ -834,15 +821,15 @@
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-orange"
       (click)="onMilitaryClick(true)"
-      [class.orange-active]="model.isMillitary == 'true'"
+      [class.orange-active]="model.isMillitary"
       >Yes</a
     >
 
     <a
       [routerLink]="['/app/purchase/property-info', 10]"
-      class="btn btn-primary btn-style btn-active btn-orange"
+      class="btn btn-primary btn-style btn-orange"
       (click)="onMilitaryClick(false)"
-      [class.orange-active]="model.isMillitary == 'false'"
+      [class.orange-active]="!model.isMillitary"
       >No</a
     >
 
@@ -858,11 +845,7 @@
       </div>
     </div>
   </div>
-  <div class="content-footer">
-    <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-    <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-  </div>
+  <app-applynow-footer></app-applynow-footer>
 </div>
 <ng-container *ngIf="number == 10">
   <div class="main-content" *ngIf="isEdit != true">
@@ -934,11 +917,7 @@
         </div>
       </div>
     </div>
-    <div class="content-footer">
-      <p>Already have an account | <a routerLink="/account/login">Log in</a></p>
-
-      <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-    </div>
+    <app-applynow-footer></app-applynow-footer>
   </div>
 
   <!-- Click Edit Button will show the below content of 17A page -->
@@ -1049,6 +1028,7 @@
         <div class="form-group">
           <input
             type="date"
+            style="padding-top: 25px; height: 50px"
             [(ngModel)]="model.contractDate"
             class="form-control form-style mb-0 form-margin-top"
             name="contractDate"
@@ -1061,7 +1041,7 @@
         </div>
         <!-- </form> -->
         <p class="text-center">Do either of these apply to the property?</p>
-        <div class="radio-input">
+        <div class="radio-input contract">
           <div class="row">
             <div class="col-md-12">
               <input
@@ -1299,7 +1279,7 @@
             [(ngModel)]="model.email"
             required
             #emailRef="ngModel"
-            pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
           />
           <div *ngIf="emailRef.errors?.pattern" class="text-danger d-flex">
             This is not a valid email address
@@ -1408,7 +1388,6 @@
         <h6 id="padding-up">
           Are you a current or former member of the US Military?
         </h6>
-
         <button
           type="button"
           class="btn btn-primary btn-style btn-orange"
@@ -1445,13 +1424,7 @@
           </div>
         </div>
       </div>
-      <div class="content-footer">
-        <p>
-          Already have an account | <a routerLink="/account/login">Log in</a>
-        </p>
-
-        <h5>You have Questions? <span>|</span> We’ll have answers.</h5>
-      </div>
+      <app-applynow-footer></app-applynow-footer>
     </form>
   </div>
 </ng-container>

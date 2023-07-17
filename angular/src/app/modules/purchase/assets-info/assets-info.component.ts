@@ -36,6 +36,9 @@ export class AssetsInfoComponent implements OnInit {
     this.getAccountTypes();
     this.model = this.offline.getStep().data;
   }
+  haveOtherSourceOfIncome(e) {
+    this.model.haveOtherSourceOfIncome = e;
+  }
   getAccountTypes() {
     this.accountTypeService.getFinancialAccountTypes().subscribe((res) => {
       this.accType = res;

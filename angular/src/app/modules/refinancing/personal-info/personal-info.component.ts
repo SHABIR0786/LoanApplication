@@ -53,7 +53,7 @@ export class PersonalInfoComponent implements OnInit {
   getStateById(id) {
     this.api.get("State/State?id=" + id).subscribe((x: any) => {
       if (x && x.result) {
-        this.model.currentStateName = x.result.stateName;
+        this.model.empStateName = x.result.stateName;
         // this.model.empState = "1";
         // this.model.currentStateId = 1;
 

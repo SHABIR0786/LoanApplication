@@ -122,6 +122,7 @@ export class PropertyInfoComponent implements OnInit {
     this.offline.saveStep(3, this.model);
   }
   onMilitaryClick(e) {
+    console.log(e);
     this.model.isMillitary = e;
     this.offline.saveStep(3, this.model);
   }
@@ -154,5 +155,8 @@ export class PropertyInfoComponent implements OnInit {
     document
       .getElementById("property-" + this.model.homePlan)
       .classList.add("active");
+  }
+  doneClicked() {
+    this.isEdit = false;
   }
 }

@@ -54,6 +54,11 @@ $spacers: map-merge(
   src: local("Avenir-Medium"),
     url("/assets/fonts/Avenir-Font/fonts/Avenir Medium.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Avenir-Medium";
+  src: local("Avenir-Medium"),
+    url("/assets/fonts/Avenir-Font/fonts/Avenir Medium.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "Avenir-Heavy";

@@ -41,6 +41,7 @@ import { SharedModule } from "@shared/shared.module";
 import { MatchPasswordDirective } from "@shared/directives/match-password.directive";
 import { CreditScoreComponent } from "./credit-score/credit-score.component";
 import { MilitaryInfoComponent } from "./military-info/military-info.component";
+import { ApplynowFooterComponent } from "./applynow-footer/applynow-footer.component";
 @NgModule({
   declarations: [
     IndexComponent,
@@ -77,6 +78,7 @@ import { MilitaryInfoComponent } from "./military-info/military-info.component";
     // MatchPasswordDirective,
     CreditScoreComponent,
     MilitaryInfoComponent,
+    ApplynowFooterComponent,
   ],
   providers: [OfflineService, ApiService],
   imports: [

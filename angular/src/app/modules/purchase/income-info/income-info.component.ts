@@ -21,9 +21,8 @@ import * as moment from "moment";
 export class IncomeInfoComponent implements OnInit {
   number: number = 1;
   yes = false;
-  model: PostModel = new PostModel();
+  model: EmployementDetailAdd = new EmployementDetailAdd();
   states = [];
-  _model: AddLeadEmploymentDetails = new AddLeadEmploymentDetails();
   submitted = false;
   constructor(
     private route: ActivatedRoute,
@@ -44,28 +43,41 @@ export class IncomeInfoComponent implements OnInit {
 
   ngOnInit() {
     this.model = this.offline.getStep().data;
-    this.getState();
+    this.getStates();
     if (this.model.currentStateId) {
-      this.getStateById(this._model.employementTaxeId);
+      this.getStateById(this.model.employementTaxeId);
     }
   }
   onStateChange(event) {
     this.getStateById(event.target.value);
   }
-  getState() {
-    this.api.get("State/states").subscribe((x: any) => {
-      this.states = x.result;
-      this.model.empState = "1";
+
+  getStates() {
+    this.stateService.getStates().subscribe((x: any) => {
+      this.states = x;
+      this.model.empState = 1;
       this.model.currentStateId = 1;
       this.model.newHomeState = "1";
     });
   }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this._model.employementStateName = x.result.stateName;
-      }
-    });
+    if (id) {
+      this.api.get("StateService/GetStateById?id=" + id).subscribe((x: any) => {
+        if (x && x.result) {
+          this.model.currentStateName = x.result.stateName;
+          console.log(this.model.currentStateName);
+          // this.model.empState = "1";
+          // this.model.currentStateId = 1;
+
+          // this.model.newHomeState = "1";
+          // this.model.newHomeState = x.result[0].id;
+        }
+      });
+    }
+  }
+  EmpHistory(e) {
+    console.log(e);
+    this.model.currentOrPastEmployementHistory = e;
   }
   onHaveMoreClick(e) {}
   onIncomeComplete() {
@@ -73,11 +85,13 @@ export class IncomeInfoComponent implements OnInit {
   }
   saveEmpToDb(f) {
     this.submitted = true;
+    var _model = new EmployementDetailAdd();
+    _model.map(this.model);
     if (f.valid) {
-      this._model.leadApplicationDetailPurchasingId = 1;
+      this.model.leadApplicationDetailPurchasingId = 1;
       this.saveStep();
       this.api
-        .post("/LeadEmploymentDetail/Add", this._model)
+        .post("LeadEmploymentDetailsService/Add", _model)
         .subscribe((x: any) => {
           if (x.success == true) {
             this.router.navigate(["/app/purchase/income-info/4"]);

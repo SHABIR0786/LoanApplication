@@ -7,6 +7,7 @@ import { OfflineService } from "@app/services/offline.service";
 @Component({
   selector: "app-credit-score",
   templateUrl: "./credit-score.component.html",
+  styleUrls: ["./credit-score.component.css"],
 })
 export class CreditScoreComponent implements OnInit {
   submitted = false;
@@ -52,10 +53,10 @@ export class CreditScoreComponent implements OnInit {
       const final = this.apiModel.map(this.model);
       this.submitted = false;
       this.api
-        .post("LeadPurchasingDetails/update", final)
+        .put("LeadPurchasingDetailService/Update", final)
         .subscribe((d: any) => {
           if (d.success === true) {
-            alert("Done");
+            // alert("Done");
           } else {
             alert("Oops");
             console.clear();

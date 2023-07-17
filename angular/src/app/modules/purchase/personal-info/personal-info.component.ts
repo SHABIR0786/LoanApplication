@@ -28,7 +28,7 @@ export class PersonalInfoComponent implements OnInit {
     private router: Router,
     private offline: OfflineService,
     private api: ApiService,
-    private stateSetvice: StateServiceServiceProxy,
+    private stateService: StateServiceServiceProxy,
     private accountService: AccountServiceProxy
   ) {
     this.route.params.subscribe((x) => {
@@ -44,31 +44,31 @@ export class PersonalInfoComponent implements OnInit {
     this.getState();
     this.model = this.offline.getStep().data;
   }
+  onStateChange(event) {
+    this.getStateById(event.target.value);
+  }
   getState() {
-    this.stateSetvice.getStates().subscribe((x: any) => {
+    this.stateService.getStates().subscribe((x: any) => {
       this.states = x;
       this.model.empState = "1";
       this.model.currentStateId = 1;
       this.model.newHomeState = "1";
     });
   }
-
-  onStateChange(event) {
-    console.log(event.target.value);
-    this.getStateById(event.target.value);
-  }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this.model.currentStateName = x.result.stateName;
-        console.log(this.model.currentStateName);
-        // this.model.empState = "1";
-        // this.model.currentStateId = 1;
+    if (id) {
+      this.api.get("StateService/GetStateById?id=" + id).subscribe((x: any) => {
+        if (x && x.result) {
+          this.model.currentStateName = x.result.stateName;
+          console.log(this.model.currentStateName);
+          // this.model.empState = "1";
+          // this.model.currentStateId = 1;
 
-        // this.model.newHomeState = "1";
-        // this.model.newHomeState = x.result[0].id;
-      }
-    });
+          // this.model.newHomeState = "1";
+          // this.model.newHomeState = x.result[0].id;
+        }
+      });
+    }
   }
 
   onPersClick(f, step) {
@@ -76,7 +76,6 @@ export class PersonalInfoComponent implements OnInit {
     if (this.model.personalPassword === this.model.personalPasswordCon) {
       this.matched = true;
     }
-    console.log(this.submitted, this.matched);
     if (f.valid) {
       this.router.navigate(["/app/purchase/personal-info", step]);
       this.submitted = false;
@@ -128,7 +127,7 @@ export class PersonalInfoComponent implements OnInit {
     this.user.password = this.model.personalPassword;
     var request = JSON.stringify(_model);
     this.api
-      .post("api/services/app/LeadPurchasingDetailService/Add", _model)
+      .post("/LeadPurchasingDetailService/Add", _model)
       .subscribe((x: any) => {
         if (x.success == true)
           this.accountService.register(this.user).subscribe((res) => {
