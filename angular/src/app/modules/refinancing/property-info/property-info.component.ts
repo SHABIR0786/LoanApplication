@@ -69,12 +69,12 @@ export class PropertyInfoComponent implements OnInit {
     }
   }
   getCountries() {
-    this.api.get("Country/Country/Countries").subscribe((x: any) => {
+    this.api.get("CountryService/GetCountries").subscribe((x: any) => {
       if (x && x.result) this.countries = x.result;
     });
   }
   getCities() {
-    this.api.get("City/cities").subscribe((x: any) => {
+    this.api.get("CityService/GetCities").subscribe((x: any) => {
       if (x && x.result) this.cities = x.result;
     });
   }

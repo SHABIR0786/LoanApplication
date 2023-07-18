@@ -252,8 +252,12 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="position: relative">
+        <label style="position: absolute; margin-left: 9px; margin-top: 5px"
+          >When did you start living here?</label
+        >
         <input
+          style="height: 50px; padding-top: 22px"
           type="date"
           class="form-control form-style"
           placeholder="When did you start living here?"
@@ -615,6 +619,7 @@
 
 <!-- section 21A starts -->
 <div class="main-content" *ngIf="number == 7">
+  {{ model.propertyLegalFirstName }}
   <form action="" id="address" #f7="ngForm">
     <h2>Let's take a few seconds to review and confirm your info again.</h2>
     <div class="content-area text-center">
@@ -1465,14 +1470,13 @@
               [(ngModel)]="model.personalMiddleInitial"
               name="personalMiddleInitial"
               #personalMiddleInitialRef="ngModel"
-              required
             />
-            <div
+            <!-- <div
               *ngIf="submitted && !personalMiddleInitialRef.valid"
               class="text-danger d-flex"
             >
               Middle Name is required
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

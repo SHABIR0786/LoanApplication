@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { RefinancePost } from "@app/modules/models/post.model";
 import { ApiService } from "@app/services/api.service";
 import { OfflineService } from "@app/services/offline.service";
-
+import { StateServiceServiceProxy } from "@shared/service-proxies/service-proxies";
 @Component({
   selector: "app-personal-info",
   templateUrl: "./personal-info.component.html",
@@ -19,7 +19,8 @@ export class PersonalInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private offline: OfflineService,
-    private api: ApiService
+    private api: ApiService,
+    private stateService: StateServiceServiceProxy
   ) {
     this.route.params.subscribe((x) => {
       if (x.number) {
@@ -37,30 +38,35 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.model = this.offline.getStep().data;
   }
+  onStateChange(event) {
+    this.getStateById(event.target.value);
+  }
   getStates() {
-    this.api.get("State/states").subscribe((x: any) => {
-      if (x && x.result) this.states = x.result;
+    this.stateService.getStates().subscribe((x: any) => {
+      this.states = x;
+      this.model.empState = 1;
+      this.model.currentStateId = 1;
+      this.model.newHomeState = "1";
       this.model.empState = 1;
       this.model.currentStateId = 1;
       this.model.personalStateId = 1;
       this.model.propertyStateId = 1;
     });
   }
-  onStateChange(event) {
-    console.log(event.target.value);
-    this.getStateById(event.target.value);
-  }
   getStateById(id) {
-    this.api.get("State/State?id=" + id).subscribe((x: any) => {
-      if (x && x.result) {
-        this.model.empStateName = x.result.stateName;
-        // this.model.empState = "1";
-        // this.model.currentStateId = 1;
+    if (id) {
+      this.api.get("StateService/GetStateById?id=" + id).subscribe((x: any) => {
+        if (x && x.result) {
+          this.model.currentStateName = x.result.stateName;
+          this.model.empStateName = x.result.stateName;
+          // this.model.empState = "1";
+          // this.model.currentStateId = 1;
 
-        // this.model.newHomeState = "1";
-        // this.model.newHomeState = x.result[0].id;
-      }
-    });
+          // this.model.newHomeState = "1";
+          // this.model.newHomeState = x.result[0].id;
+        }
+      });
+    }
   }
   minDep() {
     if (this.deps > 0) {

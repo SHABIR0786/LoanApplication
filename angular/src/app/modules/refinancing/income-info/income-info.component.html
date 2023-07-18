@@ -102,8 +102,12 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="position: relative">
+        <label style="position: absolute; margin-left: 9px; margin-top: 5px"
+          >When did you start living here?</label
+        >
         <input
+          style="height: 50px; padding-top: 22px"
           type="date"
           class="form-control form-style"
           placeholder="When did you start living here?"
@@ -131,7 +135,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'own'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'own' }"
+                [ngClass]="{ active: model.personalReantingType == 'own' }"
               >
                 Own
               </button>
@@ -142,7 +146,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'rent'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'rent' }"
+                [ngClass]="{ active: model.personalReantingType == 'rent' }"
               >
                 Rent
               </button>
@@ -153,7 +157,7 @@
                 class="btn"
                 id="btn-rent"
                 (click)="model.personalReantingType = 'other'"
-                [ngClass]="{ 'active:': model.personalReantingType == 'other' }"
+                [ngClass]="{ active: model.personalReantingType == 'other' }"
               >
                 Other
               </button>
@@ -367,7 +371,7 @@
           required
           minlength="11"
         />
-        <div class="text-danger d-flex">
+        <div *ngIf="submitted" class="text-danger d-flex">
           <div *ngIf="empPhoneNumberRef.errors?.minlength">
             This is not a valid phone number
           </div>
@@ -383,6 +387,7 @@
               type="checkbox"
               class="form-style"
               placeholder=""
+              name="isCurrentJob"
               [(ngModel)]="model.isCurrentJob"
             />
             <p>This is my Current Job</p>
@@ -790,8 +795,15 @@
           required
           style="width: 100%"
         >
-          <option value="incomeType1" selected>Income type 1</option>
-          <option value="incomeType2">Income type 2</option>
+          <option value="Alimony">Alimony</option>
+          <option value="Child Support">Child Support</option>
+          <option value="Capital Gains">Capital Gains</option>
+          <option value="Disability">Disability</option>
+          <option value="Interest and Dividends">Interest and Dividends</option>
+          <option value="Retirement">Retirement</option>
+          <option value="Social Security">Social Security</option>
+          <option value="Unemployment Benefits">Unemployment Benefits</option>
+          <option value="VA Benefits">VA Benefits</option>
         </select>
         <div
           *ngIf="submitted && !coboIncTypeRef.valid"
@@ -1271,8 +1283,19 @@
               required
               style="width: 100%"
             >
-              <option value="incomeType1" selected>Income type 1</option>
-              <option value="incomeType2">Income type 2</option>
+              <option value="Alimony">Alimony</option>
+              <option value="Child Support">Child Support</option>
+              <option value="Capital Gains">Capital Gains</option>
+              <option value="Disability">Disability</option>
+              <option value="Interest and Dividends">
+                Interest and Dividends
+              </option>
+              <option value="Retirement">Retirement</option>
+              <option value="Social Security">Social Security</option>
+              <option value="Unemployment Benefits">
+                Unemployment Benefits
+              </option>
+              <option value="VA Benefits">VA Benefits</option>
             </select>
             <div *ngIf="!coboIncTypeRef.valid" class="text-danger d-flex">
               Income Type is required

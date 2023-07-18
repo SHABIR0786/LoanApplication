@@ -36,12 +36,14 @@ export class GovInfoComponent implements OnInit {
     this.model = this.offline.getStep().data;
   }
   getCitizenShipType() {
-    this.api.get("CitizenshipType/citizenship-types").subscribe((x: any) => {
-      this.cs = x.result;
-    });
+    this.api
+      .get("CitizenshipTypeService/GetCitizenshipTypes")
+      .subscribe((x: any) => {
+        this.cs = x.result;
+      });
   }
   getAllQuestions() {
-    let url = "/LeadApplicationQuestions/GetAll";
+    let url = "LeadApplicationQuestionsService/GetAll";
     this.api.get(url).subscribe((x: any) => {
       this.questions = x.result;
       this.questions.forEach((obj) => {
@@ -49,7 +51,18 @@ export class GovInfoComponent implements OnInit {
       });
     });
   }
-  abc(a = "/app/refinance/gov/2") {
+  onGovClick() {
+    this.saveStep();
+    this.model.id = this.model.leadApplicationDetailRefinancingId;
+    this.api
+      .put("LeadRefinancingDetailsService/Update", this.model)
+      .subscribe((x: any) => {
+        if (x.success) {
+          this.router.navigate(["/app/refinance/gov/2"]);
+        }
+      });
+  }
+  abc(a) {
     let count = 0;
     this.questions.forEach((ele) => {
       if (ele["isYes"]) {
@@ -62,7 +75,7 @@ export class GovInfoComponent implements OnInit {
       this.saveStep();
       this.model.id = this.model.leadApplicationDetailRefinancingId;
       this.api
-        .post("LeadRefinancingDetails/Update", this.model)
+        .put("LeadRefinancingDetailsService/Update", this.model)
         .subscribe((x: any) => {
           if (x.success) {
             this.router.navigate([a]);
@@ -77,7 +90,7 @@ export class GovInfoComponent implements OnInit {
       questionId: id,
       isYes: ans,
     };
-    let url = "/LeadQuestionAnswers/Add";
+    let url = "/LeadQuestionAnswersService/Add";
     this.api.post(url, req).subscribe((x) => {
       console.log(id);
     });

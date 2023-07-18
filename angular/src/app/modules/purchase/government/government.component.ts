@@ -66,7 +66,6 @@ export class GovernmentComponent implements OnInit {
           this.router.navigate(["/app/purchase/gov/2"]);
           this.model.leadApplicationDetailPurchasingId = 1;
         } else {
-          alert("Oops");
           console.clear();
           console.log({ d });
         }

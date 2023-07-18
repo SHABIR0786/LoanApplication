@@ -562,15 +562,13 @@
     <div class="col-md-12" class="radio-wrapper">
       <select
         class="form-select form-style mb-0"
-        [(ngModel)]="model.govQ15"
+        [(ngModel)]="model.citizenshipId"
         style="width: 100%"
       >
-        <option value="undefined" selected disabled>
-          -What is your citizenship status?-
+        <option value="0" selected>-What is your citizenship status?-</option>
+        <option [value]="c.id" *ngFor="let c of cs">
+          {{ c?.citizenshipType1 }}
         </option>
-        <option value="1">U.S. Citizen</option>
-        <option value="2">Permanent Resident Alien</option>
-        <option value="3">Non-Permanent Resident Alien</option>
       </select>
     </div>
   </div>

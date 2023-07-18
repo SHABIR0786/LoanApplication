@@ -213,7 +213,7 @@
         These numbers help us give you a new estimated loan amount.
       </h6>
       <h4 class="new-loan">New Loan Estimate</h4>
-      <h4>$3,458,476</h4>
+      <h4>${{ model.propertyLoanBalance + model.propertCashOutAmount }}</h4>
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
@@ -298,7 +298,8 @@
 </div>
 <div class="main-content" *ngIf="number == 4">
   <h2 class="little-space">
-    What type of home is it? <img src="img/info.svg" alt="" />
+    What type of home is it?
+    <img src="../../../../assets/img/info.svg" alt="" />
   </h2>
 
   <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
@@ -1042,14 +1043,13 @@
         name="propertyEmailAddress"
         #propertyEmailAddressRef="ngModel"
         required
-        pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
       />
-      <div
+      <!-- <div
         *ngIf="propertyEmailAddressRef.errors?.pattern"
         class="text-danger d-flex"
       >
         This is not a valid email address
-      </div>
+      </div> -->
       <div
         *ngIf="propertyEmailAddressRef.errors?.required"
         class="text-danger d-flex"
@@ -1304,14 +1304,13 @@
               [(ngModel)]="model.propertyMiddleInitial"
               name="propertyMiddleInitial"
               #propertyMiddleInitialRef="ngModel"
-              required
             />
-            <div
+            <!-- <div
               *ngIf="submitted && !propertyMiddleInitialRef.valid"
               class="text-danger d-flex"
             >
               Middle Name is required
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -1362,12 +1361,11 @@
           name="propertyEmailAddress"
           #propertyEmailAddressRef="ngModel"
           required
-          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
         />
         <div *ngIf="submitted" class="text-danger d-flex">
-          <div *ngIf="propertyEmailAddressRef.errors?.pattern">
+          <!-- <div *ngIf="propertyEmailAddressRef.errors?.pattern">
             This is not a valid email address
-          </div>
+          </div> -->
           <div *ngIf="propertyEmailAddressRef.errors?.required">
             Email is required
           </div>
@@ -1560,7 +1558,7 @@
       class="btn btn-primary btn-style btn-blue"
       (click)="model.isApplyOwn = 1; saveStep()"
       [class.blue-active]="model.isApplyOwn == 1"
-      >Applying on my oun</a
+      >Applying on my Own</a
     >
 
     <a

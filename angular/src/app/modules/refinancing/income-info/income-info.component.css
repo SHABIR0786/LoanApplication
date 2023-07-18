@@ -12,4 +12,10 @@
 }
 .est-date-field label {
   position: absolute;
+  margin-left: 9px;
+  margin-top: 5px;
+}
+.est-date-field input {
+  height: 50px;
+  padding-top: 22px !important;
 }
