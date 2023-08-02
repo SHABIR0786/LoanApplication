@@ -97,7 +97,8 @@ export class BaseService {
   }
 
   private urlGenerator(route: string): string {
-    const baseURL = `${AppConsts.remoteServiceBaseUrl}/api`;
-    return [baseURL, this.baseRoute, route].filter((obj) => obj).join("/");
+    const baseURL =  ``;
+    const baseRoute=`https://74.208.32.89/loan-backend/api`;
+    return [baseURL, baseRoute, route].filter((obj) => obj).join("/");
   }
 }

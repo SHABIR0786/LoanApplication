@@ -24,7 +24,9 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Loan Originator Organization Name</label
           >
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && organizationName.errors}"
+          [ngClass]="{'error':  organizationName.touched && organizationName.errors}">
             <div class="input-group-text">
               Loan Originator Organization Name
             </div>
@@ -34,8 +36,7 @@
               id="organizationName" name="organizationName"
               #organizationName="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationName"
               required
-              [ngClass]="{'input-error': loanOriginatorForm.submitted && organizationName.errors}"
-              [ngClass]="{'input-error':  organizationName.touched && organizationName.errors}"/>
+             />
           </div>
         </div>
       </div>
@@ -44,7 +45,9 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Address</label
           >
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && address.errors}"
+          [ngClass]="{'error':  address.touched && address.errors}">
             <div class="input-group-text">Address</div>
             <input
               type="text"
@@ -52,8 +55,7 @@
               id="address" name="address"
               #address="ngModel" [(ngModel)]="loanOriginatorInfoModels.address"
               required
-              [ngClass]="{'input-error': loanOriginatorForm.submitted && address.errors}"
-              [ngClass]="{'input-error':  address.touched && address.errors}"/>
+       />
           </div>
         </div>
       </div>
@@ -62,15 +64,16 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Loan Originator Organization NMLSR ID#</label
           >
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && organizationNmlsrId.errors}"
+          [ngClass]="{'error':  organizationNmlsrId.touched && organizationNmlsrId.errors}">
             <div class="input-group-text">
               Loan Originator Organization NMLSR ID#
             </div>
             <p-inputMask       id="organizationNmlsrId" name="organizationNmlsrId"
             #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId" mask="9999 9999 9999 9999"
             [required]="true"
-            [ngClass]="{'input-error': loanOriginatorForm.submitted && organizationNmlsrId.errors}"
-            [ngClass]="{'input-error':  organizationNmlsrId.touched && organizationNmlsrId.errors}"></p-inputMask>
+          ></p-inputMask>
             <!-- <input
               type="text"
               class="form-control"
@@ -83,12 +86,13 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >State License ID#
           </label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && organizationStateLicenceId.errors}"
+          [ngClass]="{'error':  organizationStateLicenceId.touched && organizationStateLicenceId.errors}">
             <div class="input-group-text">State License ID#</div>
             <p-inputMask  id="organizationStateLicenceId" name="organizationStateLicenceId" #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId" mask="9999 9999 9999 9999"
             [required]="true"
-            [ngClass]="{'input-error': loanOriginatorForm.submitted && organizationStateLicenceId.errors}"
-            [ngClass]="{'input-error':  organizationStateLicenceId.touched && organizationStateLicenceId.errors}"></p-inputMask>
+           ></p-inputMask>
             <!-- <input
               type="text"
               class="form-control"
@@ -103,7 +107,9 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Loan Originator Name
           </label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && originatorName.errors}"
+          [ngClass]="{'error':  originatorName.touched && originatorName.errors}">
             <div class="input-group-text">Loan Originator Name</div>
             <input
               type="text"
@@ -111,8 +117,7 @@
               id="originatorName" name="originatorName"
               #originatorName="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorName"
               required
-              [ngClass]="{'input-error': loanOriginatorForm.submitted && originatorName.errors}"
-              [ngClass]="{'input-error':  originatorName.touched && originatorName.errors}"/>
+             />
           </div>
         </div>
       </div>
@@ -121,13 +126,14 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Loan Originator NMLSR ID#</label
           >
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && originatorNmlsrId.errors}"
+            [ngClass]="{'error':  originatorNmlsrId.touched && originatorNmlsrId.errors}">
             <div class="input-group-text">Loan Originator NMLSR ID#</div>
             <p-inputMask   id="originatorNmlsrId" name="originatorNmlsrId"
             #originatorNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorNmlsrId" mask="9999 9999 9999 9999"
             [required]="true"
-            [ngClass]="{'input-error': loanOriginatorForm.submitted && originatorNmlsrId.errors}"
-            [ngClass]="{'input-error':  originatorNmlsrId.touched && originatorNmlsrId.errors}"></p-inputMask>
+            ></p-inputMask>
             <!-- <input
               type="text"
               class="form-control"
@@ -140,12 +146,12 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >State License ID#
           </label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && originatorStateLicenseId.errors}"
+          [ngClass]="{'error':  originatorStateLicenseId.touched && originatorStateLicenseId.errors}">
             <div class="input-group-text">State License ID#</div>
             <p-inputMask  id="originatorStateLicenseId" name="originatorStateLicenseId" #originatorStateLicenseId="ngModel" [(ngModel)]="loanOriginatorInfoModels.originatorStateLicenseId" mask="9999 9999 9999 9999"
-            [required]="true"
-            [ngClass]="{'input-error': loanOriginatorForm.submitted && originatorStateLicenseId.errors}"
-            [ngClass]="{'input-error':  originatorStateLicenseId.touched && originatorStateLicenseId.errors}"></p-inputMask>
+            [required]="true"></p-inputMask>
 
             <!-- <input
               type="text"
@@ -161,24 +167,25 @@
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Email
           </label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && email.errors}"
+          [ngClass]="{'error':  email.touched && email.errors}">
             <div class="input-group-text">Email</div>
             <input
               type="text" class="form-control" id="email" name="email"     #email="ngModel" [(ngModel)]="loanOriginatorInfoModels.email"
-              required
-              [ngClass]="{'input-error': loanOriginatorForm.submitted && email.errors}"
-              [ngClass]="{'input-error':  email.touched && email.errors}"/>
+              required/>
           </div>
         </div>
         <div class="col-sm-3">
           <label class="visually-hidden" for="specificSizeInputGroupUsername">Phone</label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && phone.errors}"
+          [ngClass]="{'error':  phone.touched && phone.errors}">
             <div class="input-group-text">Phone</div>
 
             <p-inputMask  id="phone" name="phone" #phone="ngModel" [(ngModel)]="loanOriginatorInfoModels.phone" mask="(999) 999-9999"
             [required]="true"
-            [ngClass]="{'input-error': loanOriginatorForm.submitted && phone.errors}"
-            [ngClass]="{'input-error':  phone.touched && phone.errors}"></p-inputMask>
+           ></p-inputMask>
 
             <!-- <input  type="text"  class="form-control"  id="phone" name="phone"  #phone="ngModel" [(ngModel)]="loanOriginatorInfoModels.phone"/> -->
           </div>
@@ -200,7 +207,9 @@
         </div>
         <div class="col-sm-4">
           <label class="visually-hidden" for="specificSizeInputGroupUsername">Date</label>
-          <div class="input-group">
+          <div class="input-group"
+          [ngClass]="{'error': loanOriginatorForm.submitted && date.errors}"
+              [ngClass]="{'error':  date.touched && date.errors}">
             <div class="input-group-text">Date</div>
             <input
               type="date"
@@ -208,8 +217,7 @@
               id="date" name="date"
               #date="ngModel" [(ngModel)]="loanOriginatorInfoModels.date"
               required
-              [ngClass]="{'input-error': loanOriginatorForm.submitted && date.errors}"
-              [ngClass]="{'input-error':  date.touched && date.errors}"/>
+              />
           </div>
         </div>
       </div>

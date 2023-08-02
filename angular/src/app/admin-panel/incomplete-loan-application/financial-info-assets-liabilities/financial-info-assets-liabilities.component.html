@@ -12,144 +12,119 @@
   </div>
   <div class="separator"></div>
 
-  <form #financialInfoAssetsLiaForm="ngForm" (ngSubmit)="financialInfoAssetsLiaForm.valid && submitFinancialAssetsLiabilities()" class="w-full">
-  <div class="Main" style="width: 100%;">
+  <form #financialInfoAssetsLiaForm="ngForm"
+    (ngSubmit)="financialInfoAssetsLiaForm.valid && submitFinancialAssetsLiabilities()" class="w-full">
+    <div class="Main" style="width: 100%;">
 
-    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-      <span style="font-size: 20px;">Include all accounts below. Under Account Type, choose from the types listed here:</span>
+      <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+        <span style="font-size: 20px;">Include all accounts below. Under Account Type, choose from the types listed
+          here:</span>
 
-    </div>
-    <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
-
-
-  <div class="row">
-    <div class="col-2">
-      <ul>
-        <li>Checking</li>
-        <li>Savings</li>
-        <li>Money Market</li>
-
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Certificate of Deposit</li>
-        <li>Mutual Fund</li>
-        <li>Stocks</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Stock Options</li>
-        <li>Bonds</li>
-        <li>Retirement (e.g., 401k, IRA)</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Bridge Loan Proceeds</li>
-        <li>Individual Development Account</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <ul>
-        <li>Trust Account</li>
-        <li>Cash Value of Life Insurance (used for the transaction)</li>
-      </ul>
-    </div>
+      </div>
+      <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
 
 
+      <div class="row">
+        <div class="col-2">
+          <ul>
+            <li>Checking</li>
+            <li>Savings</li>
+            <li>Money Market</li>
 
-    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
-      <div class="div-sub-grp">
-        <div class="frm-group">
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <span>Account Type – use list above Financial Institution Account Number</span>
-          </label>
-          <label class="col-4 frm-label">
-            <span>Cash or Market Value`</span>
-          </label>
+          </ul>
+        </div>
+        <div class="col-2">
+          <ul>
+            <li>Certificate of Deposit</li>
+            <li>Mutual Fund</li>
+            <li>Stocks</li>
+          </ul>
+        </div>
+        <div class="col-2">
+          <ul>
+            <li>Stock Options</li>
+            <li>Bonds</li>
+            <li>Retirement (e.g., 401k, IRA)</li>
+          </ul>
+        </div>
+        <div class="col-2">
+          <ul>
+            <li>Bridge Loan Proceeds</li>
+            <li>Individual Development Account</li>
+          </ul>
         </div>
 
-        <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
-          <div class="col-9">
-            <div class="row">
-              <div class="col-6">
-                <div class="frm-group mt-3">
-                  <div class="frm-fld-input">
-                      <select [(ngModel)]="item.accountTypeId" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId" #accountTypeId="ngModel" required 
-                      [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
-                      [ngClass]="{'input-error':  accountTypeId.touched && accountTypeId.errors}">
-                        <option [ngValue]="-1" selected disabled>Interest and Dividends</option>
-                        <option value="1">Checking</option>
-                        <option value="2">Savings</option>
-                        <option value="3">Money Market</option>
-                        <option value="4">Certificate of Deposit</option>
-                        <option value="5">Mutual Fund</option>
-                        <option value="6">Stocks</option>
-                        <option value="7">Stock Options</option>
-                        <option value="8">Bonds</option>
-                        <option value="9">Retirement (e.g.  , 401k ,IRA)</option>
-                        <option value="10">Bridhe Loan Proceeds</option>
-                        <option value="11">Individual Development Account</option>
-                        <option value="12">Trust Account</option>
-                        <option value="13">Cash Value of Life Insurance (used for the transaction)</option>
-                    </select>
+        <div class="col-2">
+          <ul>
+            <li>Trust Account</li>
+            <li>Cash Value of Life Insurance (used for the transaction)</li>
+          </ul>
+        </div>
+
+
+
+        <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+          <div class="div-sub-grp">
+            <div class="frm-group">
+              <div class="row ">
+                <label class="col-8 frm-label">
+                  <span>Account Type – use list above Financial Institution Account Number</span>
+                </label>
+                <label class="col-4 frm-label">
+                  <span>Cash or Market Value`</span>
+                </label>
+              </div>
+
+              <div class="row"
+                *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
+                <div class="col-9">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="frm-group mt-3"
+                        [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
+                        [ngClass]="{'error':  accountTypeId.touched && accountTypeId.errors}">
+                        <div class="frm-fld-input">
+                          <select [(ngModel)]="item.accountTypeId" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId"
+                            #accountTypeId="ngModel" required>
+                            <option [ngValue]="-1" selected disabled>Interest and Dividends</option>
+                            <option value="1">Checking</option>
+                            <option value="2">Savings</option>
+                            <option value="3">Money Market</option>
+                            <option value="4">Certificate of Deposit</option>
+                            <option value="5">Mutual Fund</option>
+                            <option value="6">Stocks</option>
+                            <option value="7">Stock Options</option>
+                            <option value="8">Bonds</option>
+                            <option value="9">Retirement (e.g. , 401k ,IRA)</option>
+                            <option value="10">Bridhe Loan Proceeds</option>
+                            <option value="11">Individual Development Account</option>
+                            <option value="12">Trust Account</option>
+                            <option value="13">Cash Value of Life Insurance (used for the transaction)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="frm-group mt-3"
+                        [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialInstitution.errors}"
+                        [ngClass]="{'error':  financialInstitution.touched && financialInstitution.errors}">
+                        <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.financialInstitution"
+                            id="{{i}}.financialInstitution" required name="{{i}}.financialInstitution"
+                            #financialInstitution="ngModel" /></p>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="frm-group mt-3"
+                        [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
+                        [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
+                        <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.accountNumber"
+                            id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" required /></p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.financialInstitution" id="{{i}}.financialInstitution" required name="{{i}}.financialInstitution" #financialInstitution="ngModel" 
-                    [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && financialInstitution.errors}"
-                    [ngClass]="{'input-error':  financialInstitution.touched && financialInstitution.errors}"/></p>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber"  #accountNumber="ngModel" required
-                    [ngClass]="{'input-error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
-                    [ngClass]="{'input-error':  accountNumber.touched && accountNumber.errors}"/></p>
-                </div>
-              </div>
-            </div>
 
 
-            <!-- <div class="row">
-              <div class="col-6">
-                <div class="frm-group mt-3">
-                  <div class="frm-fld-input">
-                      <select name="firstName">
-                        <option value="-1" selected disabled>Interest and Dividends</option>
-                        <option value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Money Market">Money Market</option>
-                        <option value="Certificate of Deposit">Certificate of Deposit</option>
-                        <option value="Mutual Fund">Mutual Fund</option>
-                        <option value="Bridge Loan Proceeds">Bridge Loan Proceeds</option>
-                        <option value="Individual Development Account">Individual Development Account</option>
-                        <option value="Trust Account">Trust Account</option>
-                        <option value="Cash Value of Life Insurance (used for the transaction)">Cash Value of Life Insurance (used for the transaction)</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="frm-group mt-3">
-                  <p class="frm-fld-input height35"><input type="text" name="firstName"/></p>
-                </div>
-              </div>
-            </div> -->
-
-
-            <!-- <div class="row">
+                  <!-- <div class="row">
               <div class="col-6">
                 <div class="frm-group mt-3">
                   <div class="frm-fld-input">
@@ -180,399 +155,517 @@
               </div>
             </div> -->
 
-          </div>
-          <div class=" col-3">
-            <div class="frm-group mt-3">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0"  [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialAssets()"/></div>
-              <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+
+                  <!-- <div class="row">
+              <div class="col-6">
+                <div class="frm-group mt-3">
+                  <div class="frm-fld-input">
+                      <select name="firstName">
+                        <option value="-1" selected disabled>Interest and Dividends</option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Money Market">Money Market</option>
+                        <option value="Certificate of Deposit">Certificate of Deposit</option>
+                        <option value="Mutual Fund">Mutual Fund</option>
+                        <option value="Bridge Loan Proceeds">Bridge Loan Proceeds</option>
+                        <option value="Individual Development Account">Individual Development Account</option>
+                        <option value="Trust Account">Trust Account</option>
+                        <option value="Cash Value of Life Insurance (used for the transaction)">Cash Value of Life Insurance (used for the transaction)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="frm-group mt-3">
+                  <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="frm-group mt-3">
+                  <p class="frm-fld-input height35"><input type="text" name="firstName"/></p>
+                </div>
+              </div>
+            </div> -->
+
+                </div>
+                <div class=" col-3">
+                  <div class="frm-group mt-3">
+                    <div class="input-border-bottom">
+                      <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                          style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                          min="0" [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
+                          name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                          (blur)="getTotalMortgageFinancialAssets()" /></div>
+                      <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
               <div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <div class="row ">
-          <label class="col-9 frm-label">
-            <div class="row mt-3">
-              <div class="col-6"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialAssets()">Add more </a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;margin-left: 2px;" (click)="removeMortgageFinancialAssets()">Remove</a></div>
-              <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
-            </div>
-          </label>
-          <label class="col-3 frm-label">
-           <div class="frm-group">
-            <div class="input-border-bottom">
-                <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"  min="0" [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets" name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel"/></div>
-            </div>
-           </div>
-          </label>
-        </div>
-
-      </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="">
-    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-      <span style="font-size: 20px;">Other Assets and Credits You Have</span>
-      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherAssets" id="flgMortgageFinancialOtherAssets" name="flgMortgageFinancialOtherAssets" #txtflgMortgageFinancialOtherAssets="ngModel">
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    <h4>Include all other assets and credits below. Under Asset or Credit Type, choose from the types listed here:Assets</h4>
-
-  <div class="row">
-    <div class="col-2">
-      <b>Assets</b>
-      <ul>
-        <li>Proceeds from Real Estate</li>
-        <li>Property to be sold on or</li>
-        <li>before closing</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <b><br> </b>
-      <ul>
-        <li>Proceeds from Sale of Non-Real Estate Asset</li>
-        <li>Secured Borrowed Funds</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <b><br> </b>
-      <ul>
-        <li>Unsecured Borrowed Funds</li>
-        <li>Other</li>
-      </ul>
-    </div>
-    <div class="col-2" style="border-left:1px solid #696969 ;">
-      <b>Credits</b>
-      <ul>
-        <li>Earnest Money</li>
-        <li>Employer Assistance</li>
-        <li>Lot Equity</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <b><br> </b>
-      <ul>
-        <li>Relocation Funds</li>
-        <li>Rent Credit</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <b><br></b>
-      <ul>
-        <li>Sweat Equity</li>
-        <li>Trade Equity</li>
-      </ul>
-    </div>
-
-    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
-      <div class="div-sub-grp">
-        <div class="frm-group">
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <span>Asset or Credit Type – use list above</span>
-          </label>
-          <label class="col-4 frm-label">
-            <span>Cash or Market Value</span>
-          </label>
-        </div>
-
-        <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i"   >
-          <div class="col-8">
-            <div class="frm-group mt-3">
-              <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialOtherAssets" [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId" id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId" #financialAssetsTypeId="ngModel">
-                    <option value="-1" selected disabled>-Select One-</option>
-                    <option value="1">Proceeds from Real Estate</option>
-                    <option value="2">Property to be sold on or before closing</option>
-                    <option value="3">Proceeds from Sale of Non-Real Estate Asset</option>
-                    <option value="4">Secured Borrowed Funds</option>
-                    <option value="5">Unsecured Borrowed Funds</option>
-                    <option value="6">Earnest Money</option>
-                    <option value="7">Employer Assistance</option>
-                    <option value="8">Lot Equity</option>
-                    <option value="9">Relocation Funds</option>
-                    <option value="10">Rent Credit</option>
-                    <option value="11">Sweat Equity</option>
-                    <option value="12">Trade Equity</option>
-                    <option value="13">Other</option>
-                </select>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <!-- <div class="frm-group mt-3">
-              <div class="frm-fld-input">
-                  <select name="firstName">
-                    <option value="-1" selected disabled>-Select One-</option>
-                    <option>Proceeds from Real Estate</option>
-                    <option>Property to be sold on or before closing</option>
-                    <option>Proceeds from Sale of Non-Real Estate Asset</option>
-                    <option>Secured Borrowed Funds</option>
-                    <option>Unsecured Borrowed Funds</option>
-                    <option>Earnest Money</option>
-                    <option>Employer Assistance</option>
-                    <option>Lot Equity</option>
-                    <option>Relocation Funds</option>
-                    <option>Rent Credit</option>
-                    <option>Sweat Equity</option>
-                    <option>Trade Equity</option>
-                    <option>Other</option>
-                </select>
+              <div class="row ">
+                <label class="col-9 frm-label">
+                  <div class="row mt-3">
+                    <div class="col-6"><a style="color: #696969; text-decoration: none; font-size: 14px;"
+                        (click)="addMortgageFinancialAssets()">Add more </a>/<a
+                        style="color: #696969; text-decoration: none; font-size: 14px;margin-left: 2px;"
+                        (click)="removeMortgageFinancialAssets()">Remove</a></div>
+                    <div class="col-6 text-right" style="text-align: right;"><a href="#"
+                        style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL
+                        Amount Here</a></div>
+                  </div>
+                </label>
+                <label class="col-3 frm-label">
+                  <div class="frm-group">
+                    <div class="input-border-bottom">
+                      <div style="display: flex; align-items: center; margin-top: 15px;"><span
+                          style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                          min="0" [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets"
+                          name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel" /></div>
+                    </div>
+                  </div>
+                </label>
               </div>
-            </div> -->
 
-            <!-- <div class="frm-group mt-3">
-              <div class="frm-fld-input">
-                  <select name="firstName">
-                    <option value="-1" selected disabled>-Select One-</option>
-                    <option>Proceeds from Real Estate</option>
-                    <option>Property to be sold on or before closing</option>
-                    <option>Proceeds from Sale of Non-Real Estate Asset</option>
-                    <option>Secured Borrowed Funds</option>
-                    <option>Unsecured Borrowed Funds</option>
-                    <option>Earnest Money</option>
-                    <option>Employer Assistance</option>
-                    <option>Lot Equity</option>
-                    <option>Relocation Funds</option>
-                    <option>Rent Credit</option>
-                    <option>Sweat Equity</option>
-                    <option>Trade Equity</option>
-                    <option>Other</option>
-                </select>
-              </div>
-            </div> -->
-          </div>
-          <div class=" col-4">
-            <div class="frm-group mt-3">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherAssets" [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel" (blur)="getTotalMortgageFinancialOtherAssets()"/></div>
             </div>
-          </div>
           </div>
         </div>
-
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <div class="row mt-3">
-              <div class="col-6"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialOtherAssets()">Add more</a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
-              <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
-            </div>
-          </label>
-          <label class="col-4 frm-label">
-           <div class="frm-group">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherAssets" id="totalMortgageFinancialOtherAssets" name="totalMortgageFinancialOtherAssets" #txttotalMortgageFinancialOtherAssets="ngModel" /></div>
-            </div>
-           </div>
-          </label>
-        </div>
-
       </div>
-      </div>
-    </div>
-  </div>
 
 
-  </div>
-
-
-
-  <div class="">
-    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-      <span style="font-size: 20px;">Liabilities – Credit Cards, Other Debts, and Leases that You Owe</span>
-      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialLiabilities" id="flgMortgageFinancialLiabilities" name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel">
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    <h4>List all liabilities below (except real estate) and include deferred payments. Under Account Type, choose from the types listed here:</h4>
-
-  <div class="row">
-    <div class="col-2">
-      <ul>
-        <li>Revolving (e.g., credit cards)</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Installment (e.g., car, student, personal loans)</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Open 30-Day (balance paid monthly)</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Lease (not real estate)</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <ul>
-        <li>Other</li>
-      </ul>
-    </div>
-
-
-
-    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
-      <div class="div-sub-grp">
-        <div class="frm-group">
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <span>Account Type – use list above Company Name Account Number</span>
-          </label>
-          <label class="col-4 frm-label">
-            <span>Unpaid Balance (To be paid off at or before closing)</span>
+      <div class="">
+        <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+          <span style="font-size: 20px;">Other Assets and Credits You Have</span>
+          <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
+              Apply</span>
+            <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherAssets" id="flgMortgageFinancialOtherAssets"
+              name="flgMortgageFinancialOtherAssets" #txtflgMortgageFinancialOtherAssets="ngModel">
+            <span class="checkmark"></span>
           </label>
         </div>
-
-        <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities; index as i">
-          <div class="col-4">
-            <div class="frm-group mt-3">
-              <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialLiabilities" [required]="flgMortgageFinancialLiabilities == false" [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
-                    <option value="-1" selected disabled>-Select One-</option>
-                    <option value="1">Revolving (e.g., credit cards)</option>
-                    <option value="2">Installment (e.g., car, student, personal loans)</option>
-                    <option value="3">Open 30-Day (balance paid monthly)</option>
-                    <option value="4">Lease (not real estate)</option>
-                    <option value="5">Other</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-2">
-            <div class="frm-group mt-3">
-              <p class="frm-fld-input height35"><input type="text" [required]="flgMortgageFinancialLiabilities ==false" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.companyName" id="{{i}}.companyName" name="{{i}}.companyName" #companyName="ngModel" /></p>
-            </div>
-          </div>
-          <div class="col-2">
-            <div class="frm-group mt-3">
-              <p class="frm-fld-input height35"><input type="text" [required]="flgMortgageFinancialLiabilities ==false" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.accountNumber" id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" /></p>
-            </div>
-          </div>
-          <div class="col-2">
-            <div class="frm-group mt-3">
-              <p class="frm-fld-input height35 "  style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number" min="0"  /></span><input type="checkbox" [disabled]="flgMortgageFinancialLiabilities" [required]="flgMortgageFinancialLiabilities ==false"  [(ngModel)]="item.isPaidBeforeClosing" id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel" style="width: 40px;"/></p>
-            </div>
-          </div>
-
-          <div class=" col-2">
-            <div class="frm-label" style="margin-top: -15px !important;">Cash or Market Value`</div>
-            <div class="frm-group mt-3">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.monthlyPayment" id="{{i}}.monthlyPayment"  name="{{i}}.monthlyPayment" #monthlyPayment="ngModel" (blur)="getTotalMortgageFinancialOtherLaibilities()"/></div>
-            </div>
-          </div>
-          </div>
-        </div>
+        <h4>Include all other assets and credits below. Under Asset or Credit Type, choose from the types listed
+          here:Assets</h4>
 
         <div class="row">
-          <label class="col-10 frm-label">
-            <div class="row mt-3">
-              <div class="col-6"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialLiabilities()">Add more</a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
-              <div class="col-6 text-right" style="text-align: right;"><a href="#" style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
-            </div>
-          </label>
+          <div class="col-2">
+            <b>Assets</b>
+            <ul>
+              <li>Proceeds from Real Estate</li>
+              <li>Property to be sold on or</li>
+              <li>before closing</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <b><br> </b>
+            <ul>
+              <li>Proceeds from Sale of Non-Real Estate Asset</li>
+              <li>Secured Borrowed Funds</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <b><br> </b>
+            <ul>
+              <li>Unsecured Borrowed Funds</li>
+              <li>Other</li>
+            </ul>
+          </div>
+          <div class="col-2" style="border-left:1px solid #696969 ;">
+            <b>Credits</b>
+            <ul>
+              <li>Earnest Money</li>
+              <li>Employer Assistance</li>
+              <li>Lot Equity</li>
+            </ul>
+          </div>
 
-          <label class="col-2 frm-label">
-           <div class="frm-group">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center; margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [(ngModel)]="totalMortgageFinancialOtherLaibilities"  id="totalMortgageFinancialOtherLaibilities" name="totalMortgageFinancialOtherLaibilities" #txttotalMortgageFinancialOtherLaibilities="ngModel"/></div>
-            </div>
-           </div>
-          </label>
-        </div>
+          <div class="col-2">
+            <b><br> </b>
+            <ul>
+              <li>Relocation Funds</li>
+              <li>Rent Credit</li>
+            </ul>
+          </div>
 
-      </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-2">
+            <b><br></b>
+            <ul>
+              <li>Sweat Equity</li>
+              <li>Trade Equity</li>
+            </ul>
+          </div>
 
+          <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+            <div class="div-sub-grp">
+              <div class="frm-group">
+                <div class="row ">
+                  <label class="col-8 frm-label">
+                    <span>Asset or Credit Type – use list above</span>
+                  </label>
+                  <label class="col-4 frm-label">
+                    <span>Cash or Market Value</span>
+                  </label>
+                </div>
 
-  </div>
+                <div class="row"
+                  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
+                  <div class="col-8">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
+                      [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}">
+                      <div class="frm-fld-input">
+                        <select [disabled]="flgMortgageFinancialOtherAssets"
+                          [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
+                          id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId"
+                          #financialAssetsTypeId="ngModel">
+                          <option value="-1" selected disabled>-Select One-</option>
+                          <option value="1">Proceeds from Real Estate</option>
+                          <option value="2">Property to be sold on or before closing</option>
+                          <option value="3">Proceeds from Sale of Non-Real Estate Asset</option>
+                          <option value="4">Secured Borrowed Funds</option>
+                          <option value="5">Unsecured Borrowed Funds</option>
+                          <option value="6">Earnest Money</option>
+                          <option value="7">Employer Assistance</option>
+                          <option value="8">Lot Equity</option>
+                          <option value="9">Relocation Funds</option>
+                          <option value="10">Rent Credit</option>
+                          <option value="11">Sweat Equity</option>
+                          <option value="12">Trade Equity</option>
+                          <option value="13">Other</option>
+                        </select>
+                      </div>
+                    </div>
 
-
-
-
-
-  <div class="">
-    <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-      <span style="font-size: 20px;">Other Liabilities and Expenses</span>
-      <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-        <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities" id="flgMortgageFinancialOtherLaibilities" name="flgMortgageFinancialOtherLaibilities" #txtflgMortgageFinancialOtherLaibilities="ngModel">
-        <span class="checkmark"></span>
-      </label>
-    </div>
-    <h4>Include all other liabilities and expenses below. Choose from the types listed here:</h4>
-
-  <div class="row">
-    <div class="col-2">
-      <ul>
-        <li>Alimony</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Child Support</li>
-      </ul>
-    </div>
-    <div class="col-2">
-      <ul>
-        <li>Separate Maintenance</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <ul>
-        <li>Job Related Expenses</li>
-      </ul>
-    </div>
-
-    <div class="col-2">
-      <ul>
-        <li>Other</li>
-      </ul>
-    </div>
-
-    <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
-      <div class="div-sub-grp">
-        <div class="frm-group">
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <span>Other liabilities and expenses – use list above</span>
-          </label>
-          <label class="col-4 frm-label">
-            <span>Cash or Market Value</span>
-          </label>
-        </div>
-
-        <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
-          <div class="col-8">
-            <div class="frm-group mt-3">
+                    <!-- <div class="frm-group mt-3">
               <div class="frm-fld-input">
-                  <select [disabled]="flgMortgageFinancialOtherLaibilities" [required]="flgMortgageFinancialOtherLaibilities ==false"  [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId" name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel" >
+                  <select name="firstName">
                     <option value="-1" selected disabled>-Select One-</option>
-                    <option value="1">Alimony</option>
-                    <option value="2">Child Support</option>
-                    <option value="3">Separate Maintenance</option>
-                    <option value="4">Job Related Expenses</option>
-                    <option value="5">Other</option>
+                    <option>Proceeds from Real Estate</option>
+                    <option>Property to be sold on or before closing</option>
+                    <option>Proceeds from Sale of Non-Real Estate Asset</option>
+                    <option>Secured Borrowed Funds</option>
+                    <option>Unsecured Borrowed Funds</option>
+                    <option>Earnest Money</option>
+                    <option>Employer Assistance</option>
+                    <option>Lot Equity</option>
+                    <option>Relocation Funds</option>
+                    <option>Rent Credit</option>
+                    <option>Sweat Equity</option>
+                    <option>Trade Equity</option>
+                    <option>Other</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
-            <!-- <div class="frm-group mt-3">
+                    <!-- <div class="frm-group mt-3">
+              <div class="frm-fld-input">
+                  <select name="firstName">
+                    <option value="-1" selected disabled>-Select One-</option>
+                    <option>Proceeds from Real Estate</option>
+                    <option>Property to be sold on or before closing</option>
+                    <option>Proceeds from Sale of Non-Real Estate Asset</option>
+                    <option>Secured Borrowed Funds</option>
+                    <option>Unsecured Borrowed Funds</option>
+                    <option>Earnest Money</option>
+                    <option>Employer Assistance</option>
+                    <option>Lot Equity</option>
+                    <option>Relocation Funds</option>
+                    <option>Rent Credit</option>
+                    <option>Sweat Equity</option>
+                    <option>Trade Equity</option>
+                    <option>Other</option>
+                </select>
+              </div>
+            </div> -->
+                  </div>
+                  <div class=" col-4">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && cashMarketValue.errors}"
+                      [ngClass]="{'error':  cashMarketValue.touched && cashMarketValue.errors}">
+                      <div class="input-border-bottom">
+                        <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            min="0" [disabled]="flgMortgageFinancialOtherAssets"
+                            [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue"
+                            id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                            (blur)="getTotalMortgageFinancialOtherAssets()" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row ">
+                  <label class="col-8 frm-label">
+                    <div class="row mt-3">
+                      <div class="col-6"><a style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="addMortgageFinancialOtherAssets()">Add more</a>/<a
+                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
+                      <div class="col-6 text-right" style="text-align: right;"><a href="#"
+                          style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide
+                          TOTAL Amount Here</a></div>
+                    </div>
+                  </label>
+                  <label class="col-4 frm-label">
+                    <div class="frm-group">
+                      <div class="input-border-bottom">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;"><span
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            min="0" [(ngModel)]="totalMortgageFinancialOtherAssets"
+                            id="totalMortgageFinancialOtherAssets" name="totalMortgageFinancialOtherAssets"
+                            #txttotalMortgageFinancialOtherAssets="ngModel" /></div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      <div class="">
+        <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+          <span style="font-size: 20px;">Liabilities – Credit Cards, Other Debts, and Leases that You Owe</span>
+          <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
+              Apply</span>
+            <input type="checkbox" [(ngModel)]="flgMortgageFinancialLiabilities" id="flgMortgageFinancialLiabilities"
+              name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <h4>List all liabilities below (except real estate) and include deferred payments. Under Account Type, choose
+          from the types listed here:</h4>
+
+        <div class="row">
+          <div class="col-2">
+            <ul>
+              <li>Revolving (e.g., credit cards)</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <ul>
+              <li>Installment (e.g., car, student, personal loans)</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <ul>
+              <li>Open 30-Day (balance paid monthly)</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <ul>
+              <li>Lease (not real estate)</li>
+            </ul>
+          </div>
+
+          <div class="col-2">
+            <ul>
+              <li>Other</li>
+            </ul>
+          </div>
+
+
+
+          <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+            <div class="div-sub-grp">
+              <div class="frm-group">
+                <div class="row ">
+                  <label class="col-8 frm-label">
+                    <span>Account Type – use list above Company Name Account Number</span>
+                  </label>
+                  <label class="col-4 frm-label">
+                    <span>Unpaid Balance (To be paid off at or before closing)</span>
+                  </label>
+                </div>
+
+                <div class="row"
+                  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities; index as i">
+                  <div class="col-4">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId.errors}"
+                      [ngClass]="{'error':  financialLaibilitiesTypeId.touched && financialLaibilitiesTypeId.errors}">
+                      <div class="frm-fld-input">
+                        <select [disabled]="flgMortgageFinancialLiabilities"
+                          [required]="flgMortgageFinancialLiabilities == false"
+                          [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
+                          name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
+                          <option value="-1" selected disabled>-Select One-</option>
+                          <option value="1">Revolving (e.g., credit cards)</option>
+                          <option value="2">Installment (e.g., car, student, personal loans)</option>
+                          <option value="3">Open 30-Day (balance paid monthly)</option>
+                          <option value="4">Lease (not real estate)</option>
+                          <option value="5">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && companyName.errors}"
+                      [ngClass]="{'error':  companyName.touched && companyName.errors}">
+                      <p class="frm-fld-input height35"><input type="text"
+                          [required]="flgMortgageFinancialLiabilities ==false"
+                          [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.companyName"
+                          id="{{i}}.companyName" name="{{i}}.companyName" #companyName="ngModel" /></p>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
+                      [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
+                      <p class="frm-fld-input height35"><input type="text"
+                          [required]="flgMortgageFinancialLiabilities ==false"
+                          [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.accountNumber"
+                          id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" /></p>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && isPaidBeforeClosing.errors}"
+                      [ngClass]="{'error':  isPaidBeforeClosing.touched && isPaidBeforeClosing.errors}">
+                      <p class="frm-fld-input height35 "
+                        style="display: flex; justify-content: center; align-items: center;"><span>$ </span><span
+                          style="margin-left:10px; border-bottom:1px solid #ccc ;"><input type="number"
+                            min="0" /></span><input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
+                          [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item.isPaidBeforeClosing"
+                          id="{{i}}.isPaidBeforeClosing" name="{{i}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel"
+                          style="width: 40px;" /></p>
+                    </div>
+                  </div>
+
+                  <div class=" col-2">
+                    <div class="frm-label" style="margin-top: -15px !important;">Cash or Market Value`</div>
+                    <div class="frm-group mt-3">
+                      <div class="input-border-bottom">
+                        <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            min="0" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.monthlyPayment"
+                            id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
+                            (blur)="getTotalMortgageFinancialOtherLaibilities()" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <label class="col-10 frm-label">
+                    <div class="row mt-3">
+                      <div class="col-6"><a style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="addMortgageFinancialLiabilities()">Add more</a>/<a
+                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
+                      <div class="col-6 text-right" style="text-align: right;"><a href="#"
+                          style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide
+                          TOTAL Amount Here</a></div>
+                    </div>
+                  </label>
+
+                  <label class="col-2 frm-label">
+                    <div class="frm-group">
+                      <div class="input-border-bottom">
+                        <div style="display: flex; align-items: center; margin-top: 15px;"><span
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            min="0" [(ngModel)]="totalMortgageFinancialOtherLaibilities"
+                            id="totalMortgageFinancialOtherLaibilities" name="totalMortgageFinancialOtherLaibilities"
+                            #txttotalMortgageFinancialOtherLaibilities="ngModel" /></div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+      <div class="">
+        <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+          <span style="font-size: 20px;">Other Liabilities and Expenses</span>
+          <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
+              Apply</span>
+            <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities"
+              id="flgMortgageFinancialOtherLaibilities" name="flgMortgageFinancialOtherLaibilities"
+              #txtflgMortgageFinancialOtherLaibilities="ngModel">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <h4>Include all other liabilities and expenses below. Choose from the types listed here:</h4>
+
+        <div class="row">
+          <div class="col-2">
+            <ul>
+              <li>Alimony</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <ul>
+              <li>Child Support</li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <ul>
+              <li>Separate Maintenance</li>
+            </ul>
+          </div>
+
+          <div class="col-2">
+            <ul>
+              <li>Job Related Expenses</li>
+            </ul>
+          </div>
+
+          <div class="col-2">
+            <ul>
+              <li>Other</li>
+            </ul>
+          </div>
+
+          <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+            <div class="div-sub-grp">
+              <div class="frm-group">
+                <div class="row ">
+                  <label class="col-8 frm-label">
+                    <span>Other liabilities and expenses – use list above</span>
+                  </label>
+                  <label class="col-4 frm-label">
+                    <span>Cash or Market Value</span>
+                  </label>
+                </div>
+
+                <div class="row"
+                  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
+                  <div class="col-8">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId1.errors}"
+                      [ngClass]="{'error':  financialLaibilitiesTypeId1.touched && financialLaibilitiesTypeId1.errors}">
+                      <div class="frm-fld-input">
+                        <select [disabled]="flgMortgageFinancialOtherLaibilities"
+                          [required]="flgMortgageFinancialOtherLaibilities ==false"
+                          [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
+                          name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId1="ngModel">
+                          <option value="-1" selected disabled>-Select One-</option>
+                          <option value="1">Alimony</option>
+                          <option value="2">Child Support</option>
+                          <option value="3">Separate Maintenance</option>
+                          <option value="4">Job Related Expenses</option>
+                          <option value="5">Other</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- <div class="frm-group mt-3">
               <div class="frm-fld-input">
                 <select name="firstName">
                   <option value="-1" selected disabled>-Select One-</option>
@@ -597,57 +690,62 @@
               </select>
               </div>
             </div> -->
-          </div>
-          <div class=" col-4">
-            <div class="frm-group mt-3">
-            <div class="input-border-bottom">
-              <div style="display: flex; align-items: center;margin-top: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number" min="0" [disabled]="flgMortgageFinancialOtherLaibilities" [required]="flgMortgageFinancialOtherLaibilities ==false" [(ngModel)]="item.monthlyPayment" id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"/></div>
-              <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
+                  </div>
+                  <div class=" col-4">
+                    <div class="frm-group mt-3"
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && monthlyPayment.errors}"
+                      [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
+                      <div class="input-border-bottom">
+                        <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            min="0" [disabled]="flgMortgageFinancialOtherLaibilities"
+                            [required]="flgMortgageFinancialOtherLaibilities ==false" [(ngModel)]="item.monthlyPayment"
+                            id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel" /></div>
+                        <!-- <div style="display: flex; align-items: center;margin-top: 35px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
               <div style="display: flex; align-items: center;margin-top: 35px; margin-bottom: 25px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row ">
+                  <label class="col-8 frm-label">
+                    <div class="row mt-3">
+                      <div class="col-12"><a style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="addMortgageFinancialOtherLaibilities()">Add more</a>/<a
+                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          (click)="removeMortgageFinancialOtherLaibilities()">Remove</a></div>
+                    </div>
+                  </label>
+
+                </div>
+
+              </div>
             </div>
-          </div>
           </div>
         </div>
 
-        <div class="row ">
-          <label class="col-8 frm-label">
-            <div class="row mt-3">
-              <div class="col-12"><a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="addMortgageFinancialOtherLaibilities()">Add more</a>/<a  style="color: #696969; text-decoration: none; font-size: 14px;" (click)="removeMortgageFinancialOtherLaibilities()">Remove</a></div>
-            </div>
-          </label>
 
+      </div>
+
+
+
+
+    </div>
+
+
+    <div class="row borrower-block">
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-text">Borrower Name:</div>
+          <input type="text" class="form-control" id="specificSizeInputGroupUsername" />
         </div>
-
-      </div>
       </div>
     </div>
-  </div>
-
-
-  </div>
-
-
-
-
-  </div>
-
-
-  <div class="row borrower-block">
-    <div class="col-sm-8">
-      <div class="input-group">
-        <div class="input-group-text">Borrower Name:</div>
-        <input
-          type="text"
-          class="form-control"
-          id="specificSizeInputGroupUsername"
-        />
+    <div class="row text-right mt-5">
+      <div class="col-sm-12">
+        <button class="btn btn-fill" type="submit">NEXT</button>
       </div>
     </div>
-  </div>
-  <div class="row text-right mt-5">
-    <div class="col-sm-12">
-      <button class="btn btn-fill" type="submit" >NEXT</button>
-    </div>
-  </div>
   </form>
 </div>

@@ -30,14 +30,13 @@
 
             <div class="row">
               <div class="col-2">
-                <div class="frm-group">
+                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && loanAmount.errors}"
+                  [ngClass]="{'error':  loanAmount.touched && loanAmount.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
-                        id="loanAmount" #loanAmount="ngModel" required
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && loanAmount.errors}"
-                        [ngClass]="{'input-error':  loanAmount.touched && loanAmount.errors}" /></div>
+                        id="loanAmount" #loanAmount="ngModel" required /></div>
                   </div>
                 </div>
               </div>
@@ -51,8 +50,8 @@
                           <input type="radio" value="Purchase"
                             [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose" name="loanPurpose"
                             id="loanPurpose" #loanPurpose="ngModel" style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && loanPurpose.errors}"
-                            [ngClass]="{'input-error':  loanPurpose.touched && loanPurpose.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && loanPurpose.errors}"
+                            [ngClass]="{'error-checkbox':  loanPurpose.touched && loanPurpose.errors}" />
                           <label class="text-gray">Purchase</label>
                         </div>
                       </div>
@@ -62,8 +61,8 @@
                           <input type="radio" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose"
                             name="loanPurpose" id="loanPurpose" #loanPurpose="ngModel" value="Refinance "
                             style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && loanPurpose.errors}"
-                            [ngClass]="{'input-error':  loanPurpose.touched && loanPurpose.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && loanPurpose.errors}"
+                            [ngClass]="{'error-checkbox':  loanPurpose.touched && loanPurpose.errors}" />
                           <label class="text-gray">Refinance</label>
                         </div>
                       </div>
@@ -73,8 +72,8 @@
                           <input type="radio" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanPurpose"
                             name="loanPurpose" id="loanPurpose" #loanPurpose="ngModel" value="Other " name="loanPurpose"
                             style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && loanPurpose.errors}"
-                            [ngClass]="{'input-error':  loanPurpose.touched && loanPurpose.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && loanPurpose.errors}"
+                            [ngClass]="{'error-checkbox':  loanPurpose.touched && loanPurpose.errors}" />
                           <label class="text-gray">Other (specify)</label>
                         </div>
                       </div>
@@ -103,11 +102,11 @@
             <label class="frm-label">Property Address</label>
             <div class="row mt-2">
               <div class="col-1"><label class="gray-text">Street</label></div>
-              <div class="col-7 input-border-bottom">
+              <div class="col-7 input-border-bottom"
+                [ngClass]="{'error': loanPropertyInfoForm.submitted && street.errors}"
+                [ngClass]="{'error':  street.touched && street.errors}">
                 <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"
-                  name="street" id="street" #street="ngModel" required
-                  [ngClass]="{'input-error': loanPropertyInfoForm.submitted && street.errors}"
-                  [ngClass]="{'input-error':  street.touched && street.errors}" />
+                  name="street" id="street" #street="ngModel" required />
               </div>
 
               <div class="col-1"><label class="gray-text">Unit#</label></div>
@@ -121,13 +120,12 @@
             <div class="row mt-2">
               <div class="col-1 mt-2"><label class="gray-text">City</label></div>
               <div class="col-3 input-border-bottom">
-                <div class="frm-group"
+                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && cityId.errors}"
+                  [ngClass]="{'error':  cityId.touched && cityId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId" name="cityId"
-                      id="cityId" #cityId="ngModel" required
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && cityId.errors}"
-                      [ngClass]="{'input-error':  cityId.touched && cityId.errors}">
+                      id="cityId" #cityId="ngModel" required>
                       <option disabled>Select City </option>
                       <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                     </select>
@@ -137,13 +135,12 @@
 
               <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
               <div class="col-1 input-border-bottom">
-                <div class="frm-group"
+                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && stateId.errors}"
+                  [ngClass]="{'error':  stateId.touched && stateId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.stateId" name="stateId"
-                      id="stateId" #stateId="ngModel" required
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && stateId.errors}"
-                      [ngClass]="{'input-error':  stateId.touched && stateId.errors}">
+                      id="stateId" #stateId="ngModel" required>
                       <option disabled>Select State </option>
                       <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                     </select>
@@ -153,23 +150,22 @@
 
 
               <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
-              <div class="col-1 input-border-bottom mt-1">
+              <div class="col-1 input-border-bottom mt-1"
+                [ngClass]="{'error': loanPropertyInfoForm.submitted && zip.errors}"
+                [ngClass]="{'error':  zip.touched && zip.errors}">
                 <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
-                  name="zip" id="zip" #zip="ngModel" required
-                  [ngClass]="{'input-error': loanPropertyInfoForm.submitted && zip.errors}"
-                  [ngClass]="{'input-error':  zip.touched && zip.errors}" />
+                  name="zip" id="zip" #zip="ngModel" required />
               </div>
 
 
               <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
               <div class="col-2 input-border-bottom">
-                <div class="frm-group"
+                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && countryId.errors}"
+                  [ngClass]="{'error':  countryId.touched && countryId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.countryId"
-                      name="countryId" id="countryId" #countryId="ngModel" required
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && countryId.errors}"
-                      [ngClass]="{'input-error':  countryId.touched && countryId.errors}">
+                      name="countryId" id="countryId" #countryId="ngModel" required>
                       <option disabled>Select Country </option>
                       <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                     </select>
@@ -258,8 +254,8 @@
                           <input type="radio" value="Primary Residence"
                             [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy" name="occupancy"
                             id="occupancy" #occupancy="ngModel" style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && occupancy.errors}"
-                            [ngClass]="{'input-error':  occupancy.touched && occupancy.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && occupancy.errors}"
+                            [ngClass]="{'error-checkbox':  occupancy.touched && occupancy.errors}" />
 
                           <label class="text-gray">Primary Residence</label>
                         </div>
@@ -270,8 +266,8 @@
                           <input type="radio" value="Second Home"
                             [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy" name="occupancy"
                             id="occupancy" #occupancy="ngModel" style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && occupancy.errors}"
-                            [ngClass]="{'input-error':  occupancy.touched && occupancy.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && occupancy.errors}"
+                            [ngClass]="{'error-checkbox':  occupancy.touched && occupancy.errors}" />
                           <label class="text-gray">Second Home</label>
                         </div>
                       </div>
@@ -281,8 +277,8 @@
                           <input type="radio" value="Investment Property"
                             [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.occupancy" name="occupancy"
                             id="occupancy" #occupancy="ngModel" style="width: 40px;" required
-                            [ngClass]="{'input-error': loanPropertyInfoForm.submitted && occupancy.errors}"
-                            [ngClass]="{'input-error':  occupancy.touched && occupancy.errors}" />
+                            [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && occupancy.errors}"
+                            [ngClass]="{'error-checkbox':  occupancy.touched && occupancy.errors}" />
                           <label class="text-gray">Investment Property</label>
                         </div>
                       </div>
@@ -342,8 +338,8 @@
                           [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isMixedUseProperty"
                           name="isMixedUseProperty" id="isMixedUseProperty" #isMixedUseProperty="ngModel"
                           style="width: 40px;" required
-                          [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isMixedUseProperty.errors}"
-                          [ngClass]="{'input-error':  isMixedUseProperty.touched && isMixedUseProperty.errors}" />
+                          [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isMixedUseProperty.errors}"
+                          [ngClass]="{'error-checkbox':  isMixedUseProperty.touched && isMixedUseProperty.errors}" />
                         <label class="text-gray">Yes</label>
                       </div>
                     </div>
@@ -354,8 +350,8 @@
                           [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isMixedUseProperty"
                           name="isMixedUseProperty" id="isMixedUseProperty" #isMixedUseProperty="ngModel"
                           style="width: 40px;" required
-                          [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isMixedUseProperty.errors}"
-                          [ngClass]="{'input-error':  isMixedUseProperty.touched && isMixedUseProperty.errors}" />
+                          [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isMixedUseProperty.errors}"
+                          [ngClass]="{'error-checkbox':  isMixedUseProperty.touched && isMixedUseProperty.errors}" />
                         <label class="text-gray">No</label>
                       </div>
                     </div>
@@ -374,8 +370,8 @@
                           [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isManufacturedHome"
                           name="isManufacturedHome" id="isManufacturedHome" #isManufacturedHome="ngModel"
                           style="width: 40px;" required
-                          [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isManufacturedHome.errors}"
-                          [ngClass]="{'input-error':  isManufacturedHome.touched && isManufacturedHome.errors}" />
+                          [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isManufacturedHome.errors}"
+                          [ngClass]="{'error-checkbox':  isManufacturedHome.touched && isManufacturedHome.errors}" />
                         <label class="text-gray">Yes</label>
                       </div>
                     </div>
@@ -386,8 +382,8 @@
                           [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.isManufacturedHome"
                           name="isManufacturedHome" id="isManufacturedHome" #isManufacturedHome="ngModel"
                           style="width: 40px;" required
-                          [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isManufacturedHome.errors}"
-                          [ngClass]="{'input-error':  isManufacturedHome.touched && isManufacturedHome.errors}" />
+                          [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isManufacturedHome.errors}"
+                          [ngClass]="{'error-checkbox':  isManufacturedHome.touched && isManufacturedHome.errors}" />
                         <label class="text-gray">No</label>
                       </div>
                     </div>
@@ -451,15 +447,15 @@
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.newMortgageLoans; index as i">
               <div class="col-3">
-                <div class="frm-group mt-2">
+                <div class="frm-group mt-2"
+                  [ngClass]="{'error': loanPropertyInfoForm.submitted && txtcreditorName.errors}"
+                  [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && txtcreditorName.errors}"
-                        [ngClass]="{'input-error':  txtcreditorName.touched && txtcreditorName.errors}" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /></div>
                   </div>
                 </div>
               </div>
@@ -470,8 +466,8 @@
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="First Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
                       style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && lienType.errors}"
-                      [ngClass]="{'input-error':  lienType.touched && lienType.errors}" />
+                      [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
+                      [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
                     <label class="text-gray">First Lien</label>
                   </div>
 
@@ -479,8 +475,8 @@
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="Subordinate Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
                       style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && lienType.errors}"
-                      [ngClass]="{'input-error':  lienType.touched && lienType.errors}" />
+                      [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
+                      [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
                     <label class="text-gray">Subordinate Lien</label>
                   </div>
                 </div>
@@ -488,43 +484,46 @@
 
 
               <div class="col-2">
-                <div class="frm-group mt-2">
-                  <div class="input-border-bottom">
+                <div class="frm-group mt-2"
+                [ngClass]="{'error': loanPropertyInfoForm.submitted && monthlyPayment.errors}"
+                    [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
+                  <div class="input-border-bottom"
+                    >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && monthlyPayment.errors}"
-                        [ngClass]="{'input-error':  monthlyPayment.touched && monthlyPayment.errors}" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /></div>
                   </div>
                 </div>
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2">
-                  <div class="input-border-bottom">
+                <div class="frm-group mt-2"
+                [ngClass]="{'error': loanPropertyInfoForm.submitted && txtloanAmount.errors}"
+                [ngClass]="{'error':  txtloanAmount.touched && txtloanAmount.errors}">
+                  <div class="input-border-bottom"
+                   >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && txtloanAmount.errors}"
-                        [ngClass]="{'input-error':  txtloanAmount.touched && txtloanAmount.errors}" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /></div>
                   </div>
                 </div>
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2">
-                  <div class="input-border-bottom">
+                <div class="frm-group mt-2"
+                [ngClass]="{'error': loanPropertyInfoForm.submitted && creditLimit.errors}"
+                [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}">
+                  <div class="input-border-bottom"
+                >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && creditLimit.errors}"
-                        [ngClass]="{'input-error':  creditLimit.touched && creditLimit.errors}" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /></div>
                   </div>
                 </div>
               </div>
@@ -577,15 +576,16 @@
 
               </div>
               <div class=" col-4">
-                <div class="frm-group mt-3">
+                <div class="frm-group mt-3"
+                  [ngClass]="{'error': loanPropertyInfoForm.submitted && txtmonthlyRentalIncome.errors}"
+                  [ngClass]="{'error':  txtmonthlyRentalIncome.touched && txtmonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 15px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         min="0" [readonly]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
-                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel" [required]="flgRentalIncome == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && txtmonthlyRentalIncome.errors}"
-                        [ngClass]="{'input-error':  txtmonthlyRentalIncome.touched && txtmonthlyRentalIncome.errors}" />
+                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
+                        [required]="flgRentalIncome == false" />
                     </div>
                   </div>
                 </div>
@@ -601,16 +601,16 @@
                 </div>
               </div>
               <div class=" col-4">
-                <div class="frm-group mt-3">
+                <div class="frm-group mt-3"
+                  [ngClass]="{'error': loanPropertyInfoForm.submitted && netMonthlyRentalIncome.errors}"
+                  [ngClass]="{'error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 15px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         min="0" [readonly]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && netMonthlyRentalIncome.errors}"
-                        [ngClass]="{'input-error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}" />
+                        [required]="flgRentalIncome == false" />
                     </div>
                   </div>
                 </div>
@@ -671,13 +671,12 @@
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
               <div class="col-3">
-                <div class="frm-group">
+                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
+                  [ngClass]="{'error':  assetTypeId.touched && assetTypeId.errors}">
                   <p class="frm-fld-input">
                     <select class="form-control" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
                       name="{{i}}.assetTypeId" id="{{i}}.assetTypeId" #assetTypeId="ngModel"
-                      [required]="flgGiftsorGrants == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
-                      [ngClass]="{'input-error':  assetTypeId.touched && assetTypeId.errors}">
+                      [required]="flgGiftsorGrants == false">
                       <option value="-1" selected disabled>Select Asset Type</option>
                       <option value="1">Cash Gift</option>
                       <option value="2">Gift or Equity</option>
@@ -695,8 +694,8 @@
                       [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited" name="{{i}}.isDeposited"
                       id="{{i}}.isDeposited" #isDeposited="ngModel" style="width: 40px;"
                       [required]="flgGiftsorGrants == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isDeposited.errors}"
-                      [ngClass]="{'input-error':  isDeposited.touched && isDeposited.errors}" />
+                      [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
+                      [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
                     <label class="text-gray">Deposited</label>
                   </div>
 
@@ -704,8 +703,8 @@
                     <input type="radio" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited"
                       value="false" name="{{i}}.isDeposited" id="{{i}}.isDeposited" #isDeposited="ngModel"
                       style="width: 40px;" [required]="flgGiftsorGrants == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && isDeposited.errors}"
-                      [ngClass]="{'input-error':  isDeposited.touched && isDeposited.errors}" />
+                      [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
+                      [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
                     <label class="text-gray">Not Deposited</label>
                   </div>
                 </div>
@@ -713,26 +712,25 @@
 
 
               <div class="col-3" style="border-left: 1px solid #696969;">
-                <div class="frm-group mt-2">
+                <div class="frm-group mt-2" [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
+                  [ngClass]="{'error':  source.touched && source.errors}">
                   <p class="frm-fld-input"><select [disabled]="flgGiftsorGrants == true" class="form-control"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
-                      [required]="flgGiftsorGrants == false"
-                      [ngClass]="{'input-error': loanPropertyInfoForm.submitted && source.errors}"
-                      [ngClass]="{'input-error':  source.touched && source.errors}">
+                      [required]="flgGiftsorGrants == false">
                       <option value="-1" selected disabled>Citizenship</option>
                     </select></p>
                 </div>
               </div>
 
               <div class="col-2" style="border-left: 1px solid #696969;">
-                <div class="frm-group mt-2">
+                <div class="frm-group mt-2"
+                  [ngClass]="{'error': loanPropertyInfoForm.submitted && marketValue.errors}"
+                  [ngClass]="{'error':  marketValue.touched && marketValue.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"
                         [readonly]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
-                        id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
-                        [ngClass]="{'input-error': loanPropertyInfoForm.submitted && marketValue.errors}"
-                        [ngClass]="{'input-error':  marketValue.touched && marketValue.errors}" /></div>
+                        id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /></div>
                   </div>
                 </div>
               </div>

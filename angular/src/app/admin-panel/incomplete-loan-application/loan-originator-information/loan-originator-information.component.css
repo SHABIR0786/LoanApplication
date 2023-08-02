@@ -25,6 +25,17 @@
   margin-bottom: 74px;
 }
 
+.error {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  min-height: 50px;
+  border: solid 0.1rem #ff0000 !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  flex-shrink: 0;
+  }
+
+  
 .form-block.disabled {
   cursor: not-allowed;
 }
