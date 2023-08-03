@@ -155,7 +155,6 @@
                 </label>
               </div>
 
-
               <div class="col-2" style="border-left:1px solid #a5a5a5">
                 <label class="frm-label">
                   <span>Status</span>
@@ -211,8 +210,7 @@
                 [ngClass]="{'error':  financialInformationType.touched && financialInformationType.errors}">
                   <div class="frm-fld-input">
                       <select [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.financialInformationType" name="{{i}}.financialInformationType" id="{{i}}.financialInformationType" #financialInformationType="ngModel"
-                      [required]="item.flgApplicableNotApply == false"
-                   >
+                      [required]="item.flgApplicableNotApply == false">
                         <option value="-1" selected disabled>-Select One-</option>
                         <option value="Sold">Sold</option>
                         <option value="Pending">Pending Sale</option>
@@ -353,7 +351,7 @@
               <div class="col-2"  style="border-left:1px solid #a5a5a5">
 
 
-              <div class="frm-group mt-2" style="display: flex; justify-content: space-between;"
+              <div class="frm-group mt-0" style="display: flex; justify-content: space-between;"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyMortagagePayment.errors}"
               [ngClass]="{'error':  monthlyMortagagePayment.touched && monthlyMortagagePayment.errors}">
                 <div class="input-border-bottom  mr-3">

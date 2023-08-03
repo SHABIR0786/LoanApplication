@@ -465,19 +465,19 @@
                   <div style="display: flex; justify-content: center;">
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="First Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
-                      style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
+                      style="width: 23px;" [required]="flgOtherNewMortgageLoans == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
                       [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
-                    <label class="text-gray">First Lien</label>
+                    <label class="text-gray ml-2">First Lien</label>
                   </div>
 
                   <div style="display: flex; justify-content: center; margin-left: 40px;">
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="Subordinate Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
-                      style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
+                      style="width: 23px;" [required]="flgOtherNewMortgageLoans == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
                       [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
-                    <label class="text-gray">Subordinate Lien</label>
+                    <label class="text-gray  ml-2">Subordinate Lien</label>
                   </div>
                 </div>
               </div>
@@ -692,20 +692,20 @@
                   <div style="display: flex; justify-content: center;">
                     <input type="radio" value="true" [disabled]="flgGiftsorGrants == true"
                       [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited" name="{{i}}.isDeposited"
-                      id="{{i}}.isDeposited" #isDeposited="ngModel" style="width: 40px;"
+                      id="{{i}}.isDeposited" #isDeposited="ngModel" style="width: 23px;"
                       [required]="flgGiftsorGrants == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
                       [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
-                    <label class="text-gray">Deposited</label>
+                    <label class="text-gray ml-2">Deposited</label>
                   </div>
 
                   <div style="display: flex; justify-content: center; margin-left: 40px;">
                     <input type="radio" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited"
                       value="false" name="{{i}}.isDeposited" id="{{i}}.isDeposited" #isDeposited="ngModel"
-                      style="width: 40px;" [required]="flgGiftsorGrants == false"
+                      style="width: 23px;" [required]="flgGiftsorGrants == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
                       [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
-                    <label class="text-gray">Not Deposited</label>
+                    <label class="text-gray ml-2">Not Deposited</label>
                   </div>
                 </div>
               </div>

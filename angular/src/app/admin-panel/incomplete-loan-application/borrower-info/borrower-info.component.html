@@ -115,9 +115,10 @@
 
 
           <div class="col-2">
-            <label class="container"><span style="font-weight: bold;">Do Not Apply</span>
+            <label class="container flex ">
+              <span style="font-weight: bold;">Do Not Apply</span>
               <input type="checkbox">
-              <span class="checkmark"></span>
+              <span class="checkmark" style="margin-top: 5px !important;"></span>
             </label>
           </div>
         </div>
@@ -388,24 +389,18 @@
 
               <div class="row mt-2 mr-0">
                 <div class="col-3"><label class="gray-text">Email Address</label></div>
-                <div class="col-4 input-border-bottom"
+                <div class="col-4 input-border-bottom" style="min-width: 38% !important;" 
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsEmail1.errors}"
                   [ngClass]="{'error_bb':  creditItemsEmail1.touched && creditItemsEmail1.errors}">
 
-                  <input type="text" style="margin-right: 15px;" 
+                  <input type="text" 
                   name="creditItemsEmail1" id="creditItemsEmail1"  #creditItemsEmail1="ngModel" 
                   [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" [required]="true"/>
 
-<!--                   
-                  <input type="email"
-                    name="creditItemsEmail1" id="creditItemsEmail1" #creditItemsEmail1="ngModel"
-                    [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" required /> -->
+                  <!--   <input type="email"  name="creditItemsEmail1" id="creditItemsEmail1" #creditItemsEmail1="ngModel"  [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" required /> -->
                   </div>
 
-                  <div class="col-2"><label class="gray-text" style="text-align: right !important;"> </label></div>
-                <div class="col-2 input-border-bottom">
-                
-                </div>
+                 
 
               </div>
 
@@ -460,7 +455,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"
                         name="creditItemsState" id="creditItemsState" #creditItemsState="ngModel">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled></option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -557,11 +552,13 @@
               <label class="frm-label">
                 <div style="display: flex; align-items: center;">
                   <span> If at Current Address for LESS than 2 years, list Former Address</span>
-                  <label class="container" style="margin-left:20px;"><span style=" font-weight: bold;">Does Not
-                      Apply</span>
+                  
+                  <label class="container flex" style="margin-left:20px;">
+                    
+                    <span style=" font-weight: bold; ">Does Not Apply</span>
                     <input type="checkbox" [(ngModel)]="doNotApplyForaddress1" name="doNotApplyForaddress1"
                       id="doNotApplyForaddress1" #txtdoNotApplyForaddress1="ngModel">
-                    <span class="checkmark"></span>
+                      <span class="checkmark" style="margin-top: 2px !important;"></span>
                   </label>
 
                 </div>
@@ -595,7 +592,7 @@
                       <select [required]="doNotApplyForaddress1 == false" [disabled]="doNotApplyForaddress1 == true"
                         name="cityId1" id="cityId1" #cityId1="ngModel"
                         [(ngModel)]="borrowerInfo.personalInformation.address[1].cityId">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -611,7 +608,7 @@
                       <select [disabled]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
                         name="stateId1" id="stateId1" #stateId1="ngModel"
                         [(ngModel)]="borrowerInfo.personalInformation.address[1].stateId">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -744,15 +741,13 @@
               <label class="frm-label">
                 <div style="display: flex; align-items: center;">
                   <span> Mailing Address (if different from Current Address)</span>
-                  <label class="container" style="margin-left:20px;"><span style=" font-weight: bold;">Does Not
-                      Apply</span>
+                  <label class="container" style="margin-left:20px;">
+                    <span style=" font-weight: bold;">Does Not Apply</span>
                     <input type="checkbox" [(ngModel)]="doNotApplyForaddress2" name="doNotApplyForaddress2"
                       id="doNotApplyForaddress2" #txtdoNotApplyForaddress2="ngModel">
-                    <span class="checkmark"></span>
+                    <span class="checkmark" style="margin-top: 5px !important;"></span>
                   </label>
-
                 </div>
-
               </label>
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Street</label></div>
@@ -781,7 +776,7 @@
                       <select [disabled]="doNotApplyForaddress2 == true"
                         [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId"
                         [required]="doNotApplyForaddress2 == false" name="cityId2" id="cityId2" #cityId2="ngModel">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -797,7 +792,7 @@
                       <select [disabled]="doNotApplyForaddress2 == true" [required]="doNotApplyForaddress2 == false"
                         [(ngModel)]="borrowerInfo.personalInformation.address[2].stateId" name="stateId2" id="stateId2"
                         #stateId2="ngModel">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -870,7 +865,7 @@
             Apply</span>
           <input type="checkbox" [(ngModel)]="doNotApplyForEmp0" name="doNotApplyForEmp0" id="doNotApplyForEmp0"
             #txtdoNotApplyForEmp0="ngModel">
-          <span class="checkmark"></span>
+          <span class="checkmark"  style="margin-top: 8px !important;"></span>
         </label>
       </div>
 
@@ -916,7 +911,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp0 == true" name="cityId3" id="cityId3" #cityId3="ngModel"
                         [(ngModel)]="borrowerInfo.employment[0].cityId" [required]="doNotApplyForEmp0 == false">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled></option>
                         <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -938,7 +933,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp0 == true" name="stateId3" id="stateId3" #stateId3="ngModel"
                         [(ngModel)]="borrowerInfo.employment[0].stateId" [required]="doNotApplyForEmp0 == false">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled></option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -960,10 +955,10 @@
                     [ngClass]="{'error_bb':  countryId3.touched && countryId3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp0 == true" name="countryId3" id="countryId3" style="width: 200px !important;"
+                      <select [disabled]="doNotApplyForEmp0 == true" name="countryId3" id="countryId3"
                         #countryId3="ngModel" [(ngModel)]="borrowerInfo.employment[0].countryId"
                         [required]="doNotApplyForEmp0 == false">
-                        <option [ngValue]="undefined" disabled>Select Country </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -1194,13 +1189,10 @@
 
 
       <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and
-          Income</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
-            Apply</span>
-          <input type="checkbox" [(ngModel)]="doNotApplyForEmp1" name="doNotApplyForEmp1" id="doNotApplyForEmp1"
-            #txtdoNotApplyForEmp1="ngModel">
-          <span class="checkmark"></span>
+        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and Income</span>
+        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
+          <input type="checkbox" [(ngModel)]="doNotApplyForEmp1" name="doNotApplyForEmp1" id="doNotApplyForEmp1"  #txtdoNotApplyForEmp1="ngModel">
+          <span class="checkmark" style="margin-top: 10px !important;"></span>
         </label>
       </div>
 
@@ -1251,7 +1243,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp1 == true" name="cityId4" id="cityId4" #cityId4="ngModel"
                         [(ngModel)]="borrowerInfo.employment[1].cityId" [required]="doNotApplyForEmp1 == false">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -1271,9 +1263,9 @@
                     [ngClass]="{'error_bb':  stateId4.touched && stateId4.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important; ">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select style="min-width: 200px;" [disabled]="doNotApplyForEmp1 == true" name="stateId4" id="stateId4" #stateId4="ngModel"
+                      <select  [disabled]="doNotApplyForEmp1 == true" name="stateId4" id="stateId4" #stateId4="ngModel"
                         [(ngModel)]="borrowerInfo.employment[1].stateId" [required]="doNotApplyForEmp1 == false">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -1298,7 +1290,7 @@
                       <select [disabled]="doNotApplyForEmp1 == true" name="countryId4" id="countryId4"
                         #countryId4="ngModel" [(ngModel)]="borrowerInfo.employment[1].countryId"
                         [required]="doNotApplyForEmp1 == false">
-                        <option [ngValue]="undefined" disabled>Select Country </option>
+                        <option [ngValue]="undefined" disabled>  </option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -1573,7 +1565,7 @@
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">Street</label></div>
+                <div class="col-1 text-right mr-1"><label class="gray-text">Street</label></div>
                 <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                   [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[2].street"
@@ -1585,30 +1577,30 @@
 
 
               <div class="row mt-2">
-                <div class="col-1"><label class="gray-text">City</label></div>
-                <div class="col-2 input-border-bottom">
+                <div class="col-1" ><label class="gray-text">City</label></div>
+                <div class="col-2 input-border-bottom" >
                   <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId9.errors}"
                     [ngClass]="{'error_bb':  cityId9.touched && cityId9.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp2 == true" name="cityId9" id="cityId9" #cityId9="ngModel"
                         [(ngModel)]="borrowerInfo.employment[2].cityId" [required]="doNotApplyForEmp2 == false">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of cityList" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-1"><label class="gray-text">Unit #</label></div>
-                <div class="col-1 input-border-bottom">
+                <div class="col-1" ><label class="gray-text">Unit #</label></div>
+                <div class="col-1 input-border-bottom" >
                   <input type="number" min="0" name="unit9" id="unit9" #unit9="ngModel"
                     [(ngModel)]="borrowerInfo.employment[2].unit" [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
 
-                <div class="col-1  text-right mr-2"><label class="gray-text">State</label></div>
-                <div class="col-1 input-border-bottom">
+                <div class="col-1  text-right mr-2"  ><label class="gray-text">State</label></div>
+                <div class="col-1 input-border-bottom"  >
                   <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && stateId49.errors}"
                     [ngClass]="{'error_bb':  stateId49.touched && stateId49.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1616,7 +1608,7 @@
                       <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
                         [(ngModel)]="borrowerInfo.employment[2].stateId" name="stateId49" id="stateId49"
                         #stateId49="ngModel">
-                        <option [ngValue]="undefined" disabled>Select State </option>
+                        <option [ngValue]="undefined" disabled> </option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -1624,34 +1616,30 @@
 
                 </div>
 
-                <div class="col-1  text-right mr-2"><label class="gray-text">ZIP</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
+                <div class="col-1  text-right mr-2"  ><label class="gray-text">ZIP</label></div>
+                <div class="col-1 input-border-bottom"    [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
                   [ngClass]="{'error_bb':  zip9.touched && zip9.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip" [readonly]="doNotApplyForEmp2 == true"
                     name="zip9" id="zip9" #zip9="ngModel" />
                 </div>
 
 
-                <div class="col-1  text-right mr-2"><label class="gray-text">Country</label></div>
-                <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
-                    [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}"
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
-                        [(ngModel)]="borrowerInfo.employment[2].countryId" name="countryId9" id="countryId9"
-                        #countryId9="ngModel">
-                        <option [ngValue]="undefined" disabled>Select Country </option>
-                        <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
-                      </select>
+                <div class="col-1  text-right mr-2"  ><label class="gray-text">Country</label></div>
+                  <div class="col-1 input-border-bottom"  >
+                    <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
+                      [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}"
+                      style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                      <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                        <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
+                          [(ngModel)]="borrowerInfo.employment[2].countryId" name="countryId9" id="countryId9"
+                          #countryId9="ngModel">
+                          <option [ngValue]="undefined" disabled>Select Country </option>
+                          <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
-
               </div>
-
-
-
             </div>
           </div>
         </div>
@@ -1732,7 +1720,7 @@
             Apply</span>
           <input type="checkbox" [(ngModel)]="incomeFromOtherSources" name="incomeFromOtherSources4"
             id="incomeFromOtherSources4" #incomeFromOtherSources4="ngModel">
-          <span class="checkmark"></span>
+          <span class="checkmark" style="margin-top: 10px !important;"></span>
         </label>
       </div>
       <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
@@ -1814,11 +1802,10 @@
               </div>
               <div class=" col-4">
                 <div class="frm-group mt-3">
-                  <div class="input-border-bottom">
+                  <div class="frm-fld-input">
                     <div style="display: flex; align-items: center;margin-top: 12px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-                      <input type="number" min="0" [(ngModel)]="itemOR.monthlyIncome"
-                        [readonly]="incomeFromOtherSources == true" />
+                      <input type="number" min="0" [(ngModel)]="itemOR.monthlyIncome"  [readonly]="incomeFromOtherSources == true" />
                     </div>
                   </div>
                 </div>
@@ -1840,7 +1827,7 @@
               <label class="col-4 frm-label">
                 <div class="frm-group">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 25px;"><span
+                    <div style="display: flex; align-items: center;margin-top: 12px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                         [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"
                         [readonly]="incomeFromOtherSources == true" /></div>

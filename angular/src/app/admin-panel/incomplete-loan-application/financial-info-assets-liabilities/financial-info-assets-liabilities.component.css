@@ -39,6 +39,10 @@ color: #000000;
   flex-shrink: 0;
   } */
 
+  .height35{
+    height: 35px;
+  }
+
   .error {
     box-sizing: border-box;
     padding: 5px 5px 5px 16px;

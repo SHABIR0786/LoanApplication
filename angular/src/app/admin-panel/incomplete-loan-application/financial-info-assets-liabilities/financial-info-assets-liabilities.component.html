@@ -83,7 +83,7 @@
                       <div class="frm-group mt-3"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
                         [ngClass]="{'error':  accountTypeId.touched && accountTypeId.errors}">
-                        <div class="frm-fld-input">
+                        <div class="frm-fld-input" >
                           <select [(ngModel)]="item.accountTypeId" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId"
                             #accountTypeId="ngModel" required>
                             <option [ngValue]="-1" selected disabled>Interest and Dividends</option>
@@ -211,14 +211,13 @@
                         style="color: #696969; text-decoration: none; font-size: 14px;margin-left: 2px;"
                         (click)="removeMortgageFinancialAssets()">Remove</a></div>
                     <div class="col-6 text-right" style="text-align: right;"><a href="#"
-                        style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL
-                        Amount Here</a></div>
+                        style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
                   </div>
                 </label>
                 <label class="col-3 frm-label">
                   <div class="frm-group">
                     <div class="input-border-bottom">
-                      <div style="display: flex; align-items: center; margin-top: 15px;"><span
+                      <div style="display: flex; align-items: center;  padding-top:10px !important"><span
                           style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
                           min="0" [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets"
                           name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel" /></div>
@@ -598,7 +597,7 @@
             <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities"
               id="flgMortgageFinancialOtherLaibilities" name="flgMortgageFinancialOtherLaibilities"
               #txtflgMortgageFinancialOtherLaibilities="ngModel">
-            <span class="checkmark"></span>
+            <span class="checkmark" style="margin-top: 8px !important;"></span>
           </label>
         </div>
         <h4>Include all other liabilities and expenses below. Choose from the types listed here:</h4>
