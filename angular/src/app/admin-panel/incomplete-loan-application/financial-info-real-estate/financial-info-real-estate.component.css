@@ -6,6 +6,20 @@ font-family: 'Nunito', sans-serif;
 font-family: 'Mulish', sans-serif;
 font-family: 'Source Sans Pro', sans-serif; */
 
+.disabled {
+  background-color: #E7E7E7 !important;
+}
+
+.disabled input{
+  pointer-events: none;
+  background-color: #E7E7E7 !important;
+}
+
+.disabled .frm-group-borderless{
+  pointer-events: none;
+  background-color: #E7E7E7 !important;
+}
+
 .section-title {
 border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 padding-bottom: 20px;
@@ -24,7 +38,7 @@ color: #000000;
   color: #000000;
   }
 
-  .error {
+  /* .error {
     box-sizing: border-box;
     padding: 5px 5px 5px 16px;
     min-height: 50px;
@@ -33,8 +47,31 @@ color: #000000;
     border-radius: 10px;
     flex-shrink: 0;
     }
-  
+   */
 
+
+   .error {
+    box-sizing: border-box;
+    padding: 5px 5px 5px 16px;
+    min-height: 50px;
+    border: solid 1px !important;
+    border-color: red !important;
+    background-color: #ffffff;
+    border-radius: 10px;
+    /* flex-shrink: 0; */
+    }
+  
+    .error_bb{
+      box-sizing: border-box;
+      padding: 5px 5px 5px 16px;
+      border: solid 1px !important;
+      border-color: red !important;
+      background-color: #ffffff;
+      border-radius: 10px;
+      max-height:35px !important;
+      /* flex-shrink: 0; */
+    }
+    
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml focus, input:focus{
   font-size: 15px;
   outline: none;

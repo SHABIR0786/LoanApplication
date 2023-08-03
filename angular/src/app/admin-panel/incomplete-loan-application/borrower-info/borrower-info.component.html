@@ -24,21 +24,22 @@
     <div class="Main" style="width: 100%;">
       <div class="div-main-grp" style="width: 100%;">
         <div class="row div-sub-grp">
-          <div class="col-3">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && firstName.errors}"
+          <div class="col-3 ">
+            <div class="frm-group" aria-disabled="true"  [ngClass]="{'error': borrowForm.submitted && firstName.errors}"
               [ngClass]="{'error':  firstName.touched && firstName.errors}">
               <label class="frm-label">First name</label>
               <p class="frm-fld-input">
                 <input type="text" [(ngModel)]="borrowerInfo.personalInformation.firstName" id="firstName"
                   name="firstName" #firstName="ngModel" placeholder="First Name" required placeholder="First Name" />
               </p>
+              
             </div>
           </div>
           <div class="col-3">
             <div class="frm-group">
-              <label class="frm-label">Middle Name</label>
-              <p class="frm-fld-input"><input type="text" id="middleName" name="middleName" #middleName="ngModel"
-                  [(ngModel)]="borrowerInfo.personalInformation.middleName" placeholder="Middle Name" /></p>
+              <label class="frm-label" style="color: #a5a5a5 !important;">Middle Name</label>
+              <p class="frm-fld-input" style="color: #d1d0d0 !important;">
+                <input type="text" id="middleName" name="middleName" #middleName="ngModel" [(ngModel)]="borrowerInfo.personalInformation.middleName" placeholder="Middle Name" /></p>
             </div>
           </div>
           <div class="col-3">
@@ -52,8 +53,9 @@
           <div class="col-3">
             <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && jr.errors}"
               [ngClass]="{'error':  jr.touched && jr.errors}">
-              <label class="frm-label">Suffix</label>
-              <p class="frm-fld-input"><input type="text" id="jr" name="jr" #jr="ngModel" required
+              <label class="frm-label" style="color: #a5a5a5 !important;">Suffix</label>
+              <p class="frm-fld-input" style="color: #d1d0d0 !important;">
+                <input type="text" id="jr" name="jr" #jr="ngModel" required
                   [(ngModel)]="borrowerInfo.personalInformation.suffix" placeholder="(Jr. or Sr. if applicable)" /></p>
             </div>
           </div>
@@ -342,8 +344,8 @@
               <div class="row mt-2">
                 <div class="col-3"><label class="gray-text">Home Phone</label></div>
                 <div class="col-4 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemshomePhone.errors}"
-                  [ngClass]="{'error':  creditItemshomePhone.touched && creditItemshomePhone.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemshomePhone.errors}"
+                  [ngClass]="{'error_bb':  creditItemshomePhone.touched && creditItemshomePhone.errors}">
                   <p-inputMask ame="creditItemshomePhone" id="creditItemshomePhone" #creditItemshomePhone="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.contactInformation.homePhone" mask="(999) 999-9999"
                     [required]="borrowerInfo.personalInformation.contactInformation.workPhone == null && borrowerInfo.personalInformation.contactInformation.cellPhone"></p-inputMask>
@@ -353,8 +355,8 @@
               <div class="row mt-2">
                 <div class="col-3"><label class="gray-text">Cell Phone </label></div>
                 <div class="col-4 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsCellPhone.errors}"
-                  [ngClass]="{'error':  creditItemsCellPhone.touched && creditItemsCellPhone.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsCellPhone.errors}"
+                  [ngClass]="{'error_bb':  creditItemsCellPhone.touched && creditItemsCellPhone.errors}">
                   <p-inputMask styleClass="pMaskBorderLess" name="creditItemsCellPhone" id="creditItemsCellPhone"
                     #creditItemsCellPhone="ngModel"
                     [required]="borrowerInfo.personalInformation.contactInformation.workPhone == null && borrowerInfo.personalInformation.contactInformation.homePhone"
@@ -364,11 +366,11 @@
               </div>
 
 
-              <div class="row mt-2">
+              <div class="row mt-2 mr-0">
                 <div class="col-3"><label class="gray-text">Work Phone</label></div>
                 <div class="col-4 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsWorkPhone.errors}"
-                  [ngClass]="{'error':  creditItemsWorkPhone.touched && creditItemsWorkPhone.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsWorkPhone.errors}"
+                  [ngClass]="{'error_bb':  creditItemsWorkPhone.touched && creditItemsWorkPhone.errors}">
                   <p-inputMask [(ngModel)]="borrowerInfo.personalInformation.contactInformation.workPhone"
                     name="creditItemsWorkPhone" id="creditItemsWorkPhone" #creditItemsWorkPhone="ngModel"
                     mask="(999) 999-9999" [required]="true"
@@ -376,21 +378,35 @@
                 </div>
                 <div class="col-2"><label class="gray-text" style="text-align: right !important;">Ext.</label></div>
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsExt.errors}"
-                  [ngClass]="{'error':  creditItemsExt.touched && creditItemsExt.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsExt.errors}"
+                  [ngClass]="{'error_bb':  creditItemsExt.touched && creditItemsExt.errors}">
                   <p-inputMask [(ngModel)]="borrowerInfo.personalInformation.contactInformation.ext"
                     name="creditItemsExt" id="creditItemsExt" #creditItemsExt="ngModel" mask="999" size="3"
                     [required]="true"></p-inputMask>
                 </div>
               </div>
 
-              <div class="row mt-2">
+              <div class="row mt-2 mr-0">
                 <div class="col-3"><label class="gray-text">Email Address</label></div>
                 <div class="col-4 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsEmail1.errors}"
-                  [ngClass]="{'error':  creditItemsEmail1.touched && creditItemsEmail1.errors}"><input type="email"
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsEmail1.errors}"
+                  [ngClass]="{'error_bb':  creditItemsEmail1.touched && creditItemsEmail1.errors}">
+
+                  <input type="text" style="margin-right: 15px;" 
+                  name="creditItemsEmail1" id="creditItemsEmail1"  #creditItemsEmail1="ngModel" 
+                  [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" [required]="true"/>
+
+<!--                   
+                  <input type="email"
                     name="creditItemsEmail1" id="creditItemsEmail1" #creditItemsEmail1="ngModel"
-                    [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" required /></div>
+                    [(ngModel)]="borrowerInfo.personalInformation.contactInformation.email" required /> -->
+                  </div>
+
+                  <div class="col-2"><label class="gray-text" style="text-align: right !important;"> </label></div>
+                <div class="col-2 input-border-bottom">
+                
+                </div>
+
               </div>
 
             </div>
@@ -406,13 +422,13 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Street</label></div>
                 <div class="col-7 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsStreet.errors}"
-                  [ngClass]="{'error':  creditItemsStreet.touched && creditItemsStreet.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
+                  [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
                   <input type="text" name="creditItemsStreet" id="creditItemsStreet" #creditItemsStreet="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].street" required />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Unit#</label></div>
+                <div class="col-1 text-right mr-2"><label class="gray-text">Unit#</label></div>
                 <div class="col-2 input-border-bottom">
                   <input type="number" min="0" name="creditItemsUnit" id="creditItemsUnit" #creditItemsUnit="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].unit" />
@@ -423,8 +439,8 @@
               <div class="row mt-2">
                 <div class="col-1 mt-2"><label class="gray-text">City</label></div>
                 <div class="col-3 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && creditItemscityId.errors}"
-                    [ngClass]="{'error':  creditItemscityId.touched && creditItemscityId.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && creditItemscityId.errors}"
+                    [ngClass]="{'error_bb':  creditItemscityId.touched && creditItemscityId.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId" name="creditItemscityId"
@@ -438,8 +454,8 @@
 
                 <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && creditItemsState.errors}"
-                    [ngClass]="{'error':  creditItemsState.touched && creditItemsState.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && creditItemsState.errors}"
+                    [ngClass]="{'error_bb':  creditItemsState.touched && creditItemsState.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"
@@ -453,17 +469,17 @@
 
 
                 <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
-                <div class="col-1 input-border-bottom mt-1" [ngClass]="{'error': borrowForm.submitted && ZIP.errors}"
-                  [ngClass]="{'error':  ZIP.touched && ZIP.errors}">
+                <div class="col-1 input-border-bottom mt-1" [ngClass]="{'error_bb': borrowForm.submitted && ZIP.errors}"
+                  [ngClass]="{'error_bb':  ZIP.touched && ZIP.errors}">
                   <input type="text" name="ZIP" id="ZIP" #ZIP="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].zip" required />
                 </div>
 
 
-                <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
+                <div class="col-1 mt-2 text-right mr-2"><label class="gray-text">Country</label></div>
                 <div class="col-2 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && Country.errors}"
-                    [ngClass]="{'error':  Country.touched && Country.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && Country.errors}"
+                    [ngClass]="{'error_bb':  Country.touched && Country.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select name="Country" id="Country" #Country="ngModel" required
@@ -479,20 +495,19 @@
 
 
               <div class="row mt-3">
-                <div class="col-2"><label class="gray-text">How Long at Current Address?</label></div>
-                <div class="col-2 input-border-bottom" 
-                 >
+                <div class="col-2" style="margin-right: 2px;"><label class="gray-text">How Long at Current Address?</label></div>
+                <div class="col-2 input-border-bottom">
                   <div style="display:flex; align-items: center; justify-content: center;">
                     <input type="number" min="0" name="year" id="year" #year="ngModel"
                       [(ngModel)]="borrowerInfo.personalInformation.address[0].year" required 
-                      [ngClass]="{'error': borrowForm.submitted && year.errors}"
-                  [ngClass]="{'error':  year.touched && year.errors}"/>
-                    <label class="gray-text">Years</label>
-                    <input type="number" min="0" name="month" id="month" #month="ngModel"
+                      [ngClass]="{'error_bb': borrowForm.submitted && year.errors}"
+                  [ngClass]="{'error_bb':  year.touched && year.errors}"/>
+                    <label class="gray-text mr-2 ml-2">Years</label>
+                    <input type="number" min="0" name="month" id="month" #month="ngModel" class="ml-1"
                       [(ngModel)]="borrowerInfo.personalInformation.address[0].month" required 
-                      [ngClass]="{'error': borrowForm.submitted && month.errors}"
-                      [ngClass]="{'error':  month.touched && month.errors}"/>
-                    <label class="gray-text">Months</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && month.errors}"
+                      [ngClass]="{'error_bb':  month.touched && month.errors}"/>
+                    <label class="gray-text ml-2">Months</label>
                   </div>
                 </div>
 
@@ -554,14 +569,14 @@
               </label>
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Street</label></div>
-                <div class="col-7 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && street1.errors}"
-                  [ngClass]="{'error':  street1.touched && street1.errors}">
+                <div class="col-7 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street1.errors}"
+                  [ngClass]="{'error_bb':  street1.touched && street1.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[1].street" name="street1"
                     id="street1" #street1="ngModel" [readonly]="doNotApplyForaddress1 == true"
                     [required]="doNotApplyForaddress1 == false" />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Unit#</label></div>
+                <div class="col-1 text-right mr-2"><label class="gray-text">Unit#</label></div>
                 <div class="col-2 input-border-bottom">
                   <input type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.address[1].unit"
                     name="unit1" id="unit1" #unit1="ngModel" [readonly]="doNotApplyForaddress1 == true" />
@@ -573,8 +588,8 @@
               <div class="row mt-2">
                 <div class="col-1 mt-2"><label class="gray-text">City</label></div>
                 <div class="col-3 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && cityId1.errors}"
-                    [ngClass]="{'error':  cityId1.touched && cityId1.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId1.errors}"
+                    [ngClass]="{'error_bb':  cityId1.touched && cityId1.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [required]="doNotApplyForaddress1 == false" [disabled]="doNotApplyForaddress1 == true"
@@ -589,8 +604,8 @@
 
                 <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && stateId1.errors}"
-                    [ngClass]="{'error':  stateId1.touched && stateId1.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && stateId1.errors}"
+                    [ngClass]="{'error_bb':  stateId1.touched && stateId1.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
@@ -606,17 +621,17 @@
 
                 <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
                 <div class="col-1 input-border-bottom mt-1"
-                  [ngClass]="{'error': borrowForm.submitted && address1w.errors}"
-                  [ngClass]="{'error':  address1w.touched && address1w.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && address1w.errors}"
+                  [ngClass]="{'error_bb':  address1w.touched && address1w.errors}">
                   <input type="text" [readonly]="doNotApplyForaddress1 == true" name="address1w" id="address1w"
                     #address1w="ngModel" [(ngModel)]="borrowerInfo.personalInformation.address[1].zip"
                     [required]="doNotApplyForaddress1 == false" />
                 </div>
 
 
-                <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && countryId1.errors}"
-                  [ngClass]="{'error':  countryId1.touched && countryId1.errors}">
+                <div class="col-1 mt-2 text-right mr-2"><label class="gray-text">Country</label></div>
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && countryId1.errors}"
+                  [ngClass]="{'error_bb':  countryId1.touched && countryId1.errors}">
                   <div class="frm-group"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
@@ -668,15 +683,15 @@
                     <input type="number" min="0" max="150" name="year1" id="year1" #year1="ngModel"
                       [(ngModel)]="borrowerInfo.personalInformation.address[1].year"
                       [readonly]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
-                      [ngClass]="{'error': borrowForm.submitted && year1.errors}"
-                      [ngClass]="{'error':  year1.touched && year1.errors}" />
-                    <label class="gray-text">Years</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
+                      [ngClass]="{'error_bb':  year1.touched && year1.errors}" />
+                    <label class="gray-text ml-1 mr-2">Years</label>
                     <input type="number" min="0" max="150" name="month1" id="month1" #month1="ngModel"
                       [(ngModel)]="borrowerInfo.personalInformation.address[1].month"
                       [readonly]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
-                      [ngClass]="{'error': borrowForm.submitted && month1.errors}"
-                      [ngClass]="{'error':  month1.touched && month1.errors}" />
-                    <label class="gray-text">Months</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
+                      [ngClass]="{'error_bb':  month1.touched && month1.errors}" />
+                    <label class="gray-text ml-2">Months</label>
                   </div>
                 </div>
 
@@ -741,14 +756,14 @@
               </label>
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Street</label></div>
-                <div class="col-7 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && street2.errors}"
-                  [ngClass]="{'error':  street2.touched && street2.errors}">
+                <div class="col-7 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street2.errors}"
+                  [ngClass]="{'error_bb':  street2.touched && street2.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].street" name="street2"
                     id="street2" #street2="ngModel" [readonly]="doNotApplyForaddress2 == true"
                     [required]="doNotApplyForaddress2 == false" />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Unit#</label></div>
+                <div class="col-1 text-right mr-2"><label class="gray-text">Unit#</label></div>
                 <div class="col-2 input-border-bottom">
                   <input type="number" min="0" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit"
                     [readonly]="doNotApplyForaddress2 == true" name="unit2" id="unit2" #unit2="ngModel" />
@@ -759,8 +774,8 @@
               <div class="row mt-2">
                 <div class="col-1 mt-2"><label class="gray-text">City</label></div>
                 <div class="col-3 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && cityId2.errors}"
-                    [ngClass]="{'error':  cityId2.touched && cityId2.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId2.errors}"
+                    [ngClass]="{'error_bb':  cityId2.touched && cityId2.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForaddress2 == true"
@@ -791,18 +806,18 @@
 
 
                 <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
-                <div class="col-1 input-border-bottom mt-1" [ngClass]="{'error': borrowForm.submitted && zip2.errors}"
-                  [ngClass]="{'error':  zip2.touched && zip2.errors}">
+                <div class="col-1 input-border-bottom mt-1" [ngClass]="{'error_bb': borrowForm.submitted && zip2.errors}"
+                  [ngClass]="{'error_bb':  zip2.touched && zip2.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip" name="zip2" id="zip2"
                     #zip2="ngModel" [readonly]="doNotApplyForaddress2 == true"
                     [required]="doNotApplyForaddress2 == false" />
                 </div>
 
 
-                <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
+                <div class="col-1 mt-2 text-right mr-2"><label class="gray-text">Country</label></div>
                 <div class="col-2 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && countryId2.errors}"
-                    [ngClass]="{'error':  countryId2.touched && countryId2.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId2.errors}"
+                    [ngClass]="{'error_bb':  countryId2.touched && countryId2.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForaddress2 == true" [required]="doNotApplyForaddress2 == false"
@@ -869,23 +884,23 @@
 
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-4 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && name3.errors}"
-                  [ngClass]="{'error':  name3.touched && name3.errors}">
+                <div class="col-4 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name3.errors}"
+                  [ngClass]="{'error_bb':  name3.touched && name3.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[0].name" name="name3" id="name3"
                     #name3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Phone</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && phone3.errors}"
-                  [ngClass]="{'error':  phone3.touched && phone3.errors}">
-                  <p-inputMask [(ngModel)]="borrowerInfo.employment[0].phone" mask="(999) 999-9999" name="phone3"
+                <div class="col-1 text-right"><label class="gray-text">Phone</label></div>
+                <div class="col-1 input-border-bottom" style="padding-left: 5px;" [ngClass]="{'error_bb': borrowForm.submitted && phone3.errors}"
+                  [ngClass]="{'error_bb':  phone3.touched && phone3.errors}">
+                  <p-inputMask size="10" [(ngModel)]="borrowerInfo.employment[0].phone" mask="(999) 999-9999" name="phone3"
                     id="phone3" #phone3="ngModel" [readonly]="doNotApplyForEmp0 == true"
                     [required]="doNotApplyForEmp0 == false"></p-inputMask>
                 </div>
 
                 <div class="col-1"><label class="gray-text">Street</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && street3.errors}"
-                  [ngClass]="{'error':  street3.touched && street3.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
+                  [ngClass]="{'error_bb':  street3.touched && street3.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[0].street" name="street3" id="street3"
                     #street3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
                 </div>
@@ -895,8 +910,8 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">City</label></div>
                 <div class="col-2 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && cityId3.errors}"
-                    [ngClass]="{'error':  cityId3.touched && cityId3.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId3.errors}"
+                    [ngClass]="{'error_bb':  cityId3.touched && cityId3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp0 == true" name="cityId3" id="cityId3" #cityId3="ngModel"
@@ -915,10 +930,10 @@
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">State</label></div>
+                <div class="col-1 text-right mr-2"><label class="gray-text">State</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && stateId3.errors}"
-                    [ngClass]="{'error':  stateId3.touched && stateId3.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && stateId3.errors}"
+                    [ngClass]="{'error_bb':  stateId3.touched && stateId3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp0 == true" name="stateId3" id="stateId3" #stateId3="ngModel"
@@ -931,21 +946,21 @@
 
                 </div>
 
-                <div class="col-1"><label class="gray-text">ZIP</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && zip3.errors}"
-                  [ngClass]="{'error':  zip3.touched && zip3.errors}">
+                <div class="col-1  text-right mr-2"><label class="gray-text">ZIP</label></div>
+                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && zip3.errors}"
+                  [ngClass]="{'error_bb':  zip3.touched && zip3.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[0].zip" name="zip3" id="zip3" #zip3="ngModel"
                     [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">Country</label></div>
+                <div class="col-1  text-right mr-2" style="width: 100px !important;"><label class="gray-text">Country</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && countryId3.errors}"
-                    [ngClass]="{'error':  countryId3.touched && countryId3.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId3.errors}"
+                    [ngClass]="{'error_bb':  countryId3.touched && countryId3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp0 == true" name="countryId3" id="countryId3"
+                      <select [disabled]="doNotApplyForEmp0 == true" name="countryId3" id="countryId3" style="width: 200px !important;"
                         #countryId3="ngModel" [(ngModel)]="borrowerInfo.employment[0].countryId"
                         [required]="doNotApplyForEmp0 == false">
                         <option [ngValue]="undefined" disabled>Select Country </option>
@@ -970,8 +985,8 @@
             <div class="frm-group" style="padding-bottom: 30px;">
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Position or Title</label></div>
-                <div class="col-9 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && position2.errors}"
-                  [ngClass]="{'error':  position2.touched && position2.errors}">
+                <div class="col-9 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && position2.errors}"
+                  [ngClass]="{'error_bb':  position2.touched && position2.errors}">
                   <input type="text" name="position2" id="position2" #position2="ngModel"
                     [(ngModel)]="borrowerInfo.employment[0].position" [required]="doNotApplyForEmp0 == false"
                     [readonly]="doNotApplyForEmp0 == true" />
@@ -981,8 +996,8 @@
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Start Date <span
                       style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
-                <div class="col-3 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && startDate.errors}"
-                  [ngClass]="{'error':  startDate.touched && startDate.errors}">
+                <div class="col-3 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate.errors}"
+                  [ngClass]="{'error_bb':  startDate.touched && startDate.errors}">
                   <input type="date" name="startDate" id="startDate" #startDate="ngModel"
                     [(ngModel)]="borrowerInfo.employment[0].startDate" [required]="doNotApplyForEmp0 == false"
                     [readonly]="doNotApplyForEmp0 == true" />
@@ -993,16 +1008,16 @@
                   <div style="display:flex; align-items: center; justify-content: center;">
                     <input type="text" name="workingYears" id="workingYears" #workingYears="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].workingYears" [readonly]="doNotApplyForEmp0 == true"
-                      [ngClass]="{'error': borrowForm.submitted && workingYears.errors}"
-                      [ngClass]="{'error':  workingYears.touched && workingYears.errors}"
+                      [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
+                      [ngClass]="{'error_bb':  workingYears.touched && workingYears.errors}"
                       [required]="doNotApplyForEmp0 == false" />
-                    <label class="gray-text">Years</label>
+                    <label class="gray-text ml-1 mr-2">Years</label>
                     <input type="text" name="workingMonths" id="workingMonths" #workingMonths="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].workingMonths" [readonly]="doNotApplyForEmp0 == true"
                       [required]="doNotApplyForEmp0 == false"
-                      [ngClass]="{'error': borrowForm.submitted && workingMonths.errors}"
-                      [ngClass]="{'error':  workingMonths.touched && workingMonths.errors}" />
-                    <label class="gray-text">Months</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
+                      [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}" />
+                    <label class="gray-text ml-2">Months</label>
                   </div>
                 </div>
               </div>
@@ -1075,8 +1090,8 @@
                 </div>
 
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && monthlyIncome.errors}"
-                  [ngClass]="{'error':  monthlyIncome.touched && monthlyIncome.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome.errors}"
+                  [ngClass]="{'error_bb':  monthlyIncome.touched && monthlyIncome.errors}">
                   $<input type="number" min="0" class="ml-1" name="monthlyIncome" id="monthlyIncome"
                     #monthlyIncome="ngModel" [(ngModel)]="borrowerInfo.employment[0].monthlyIncome"
                     [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
@@ -1099,8 +1114,8 @@
 
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Base</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && baseIncome.errors}"
-                  [ngClass]="{'error':  baseIncome.touched && baseIncome.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && baseIncome.errors}"
+                  [ngClass]="{'error_bb':  baseIncome.touched && baseIncome.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="baseIncome" id="baseIncome" #baseIncome="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.baseIncome"
@@ -1108,8 +1123,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Overtime</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && overtime.errors}"
-                  [ngClass]="{'error':  overtime.touched && overtime.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && overtime.errors}"
+                  [ngClass]="{'error_bb':  overtime.touched && overtime.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="overtime" id="overtime" #overtime="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.overtime"
@@ -1118,8 +1133,8 @@
 
 
                 <div class="col-1"><label class="gray-text">Bonus</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && bonus.errors}"
-                  [ngClass]="{'error':  bonus.touched && bonus.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && bonus.errors}"
+                  [ngClass]="{'error_bb':  bonus.touched && bonus.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="bonus" id="bonus" #bonus="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.bonus"
@@ -1127,8 +1142,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Commission</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && commission.errors}"
-                  [ngClass]="{'error':  commission.touched && commission.errors}">
+                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && commission.errors}"
+                  [ngClass]="{'error_bb':  commission.touched && commission.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="commission" id="commission" #commission="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.commission"
@@ -1140,8 +1155,8 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && militaryEntitlements.errors}"
-                  [ngClass]="{'error':  militaryEntitlements.touched && militaryEntitlements.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements.errors}"
+                  [ngClass]="{'error_bb':  militaryEntitlements.touched && militaryEntitlements.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="militaryEntitlements" id="militaryEntitlements"
                       #militaryEntitlements="ngModel" [required]="doNotApplyForEmp0 == false"
@@ -1150,8 +1165,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Other</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && other.errors}"
-                  [ngClass]="{'error':  other.touched && other.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && other.errors}"
+                  [ngClass]="{'error_bb':  other.touched && other.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="other" id="other" #other="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.other"
@@ -1160,8 +1175,8 @@
 
 
                 <div class="col-1"><label class="gray-text">TOTAL </label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && total.errors}"
-                  [ngClass]="{'error':  total.touched && total.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && total.errors}"
+                  [ngClass]="{'error_bb':  total.touched && total.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       [readonly]="doNotApplyForEmp0 == true" name="total" id="total" #total="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].grossMonthlyIncome.total"
@@ -1199,25 +1214,25 @@
 
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-4 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && name4.errors}"
-                  [ngClass]="{'error':  name4.touched && name4.errors}">
+                <div class="col-4 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name4.errors}"
+                  [ngClass]="{'error_bb':  name4.touched && name4.errors}">
                   <input type="text" name="name4" id="name4" #name4="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].name" [required]="doNotApplyForEmp1 == false"
                     [readonly]="doNotApplyForEmp1 == true" />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Phone</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && phone4.errors}"
-                  [ngClass]="{'error':  phone4.touched && phone4.errors}">
-                  <p-inputMask name="phone4" id="phone4" #phone4="ngModel"
+                <div class="col-1 text-right"><label class="gray-text">Phone</label></div>
+                <div class="col-1 input-border-bottom" style="padding-left: 5px;" [ngClass]="{'error_bb': borrowForm.submitted && phone4.errors}"
+                  [ngClass]="{'error_bb':  phone4.touched && phone4.errors}">
+                  <p-inputMask size="10" name="phone4" id="phone4" #phone4="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].phone" mask="(999) 999-9999"
                     [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false"></p-inputMask>
                 </div>
 
 
                 <div class="col-1"><label class="gray-text">Street</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && street4.errors}"
-                  [ngClass]="{'error':  street4.touched && street4.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street4.errors}"
+                  [ngClass]="{'error_bb':  street4.touched && street4.errors}">
                   <input type="text" name="street4" id="street4" #street4="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].street" [required]="doNotApplyForEmp1 == false"
                     [readonly]="doNotApplyForEmp1 == true" />
@@ -1230,8 +1245,8 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">City</label></div>
                 <div class="col-2 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && cityId4.errors}"
-                    [ngClass]="{'error':  cityId4.touched && cityId4.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId4.errors}"
+                    [ngClass]="{'error_bb':  cityId4.touched && cityId4.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp1 == true" name="cityId4" id="cityId4" #cityId4="ngModel"
@@ -1250,13 +1265,13 @@
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">State</label></div>
+                <div class="col-1  text-right mr-2"><label class="gray-text">State</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && stateId4.errors}"
-                    [ngClass]="{'error':  stateId4.touched && stateId4.errors}"
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && stateId4.errors}"
+                    [ngClass]="{'error_bb':  stateId4.touched && stateId4.errors}"
+                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important; ">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp1 == true" name="stateId4" id="stateId4" #stateId4="ngModel"
+                      <select style="min-width: 200px;" [disabled]="doNotApplyForEmp1 == true" name="stateId4" id="stateId4" #stateId4="ngModel"
                         [(ngModel)]="borrowerInfo.employment[1].stateId" [required]="doNotApplyForEmp1 == false">
                         <option [ngValue]="undefined" disabled>Select State </option>
                         <option *ngFor="let obj of stateList" [ngValue]="obj.id"> {{obj.stateName}} </option>
@@ -1266,18 +1281,18 @@
 
                 </div>
 
-                <div class="col-1"><label class="gray-text">ZIP</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && zip4.errors}"
-                  [ngClass]="{'error':  zip4.touched && zip4.errors}">
+                <div class="col-1  text-right mr-2"><label class="gray-text">ZIP</label></div>
+                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && zip4.errors}"
+                  [ngClass]="{'error_bb':  zip4.touched && zip4.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[1].zip" name="zip4" id="zip4" #zip4="ngModel"
                     [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false " />
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">Country</label></div>
+                <div class="col-1  text-right mr-2"><label class="gray-text">Country</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && countryId4.errors}"
-                    [ngClass]="{'error':  countryId4.touched && countryId4.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId4.errors}"
+                    [ngClass]="{'error_bb':  countryId4.touched && countryId4.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp1 == true" name="countryId4" id="countryId4"
@@ -1317,8 +1332,8 @@
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Start Date <span
                       style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
-                <div class="col-3 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && startDate3.errors}"
-                  [ngClass]="{'error':  startDate3.touched && startDate3.errors}">
+                <div class="col-3 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate3.errors}"
+                  [ngClass]="{'error_bb':  startDate3.touched && startDate3.errors}">
                   <input type="date" name="startDate3" id="startDate3" #startDate3="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].startDate" [readonly]="doNotApplyForEmp1 == true"
                     [required]="doNotApplyForEmp1 == false" />
@@ -1330,15 +1345,15 @@
                     <input type="text" name="workingYears3" id="workingYears3" #workingYears3="ngModel"
                       [(ngModel)]="borrowerInfo.employment[1].workingYears" [readonly]="doNotApplyForEmp1 == true"
                       [required]="doNotApplyForEmp1 == false"
-                      [ngClass]="{'error': borrowForm.submitted && workingYears3.errors}"
-                      [ngClass]="{'error':  workingYears3.touched && workingYears3.errors}" />
-                    <label class="gray-text">Years</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
+                      [ngClass]="{'error_bb':  workingYears3.touched && workingYears3.errors}" />
+                    <label class="gray-text ml-1 mr-2">Years</label>
                     <input type="text" name="workingMonths3" id="workingMonths3" #workingMonths3="ngModel"
                       [(ngModel)]="borrowerInfo.employment[1].workingMonths " [readonly]="doNotApplyForEmp1 == true"
                       [required]="doNotApplyForEmp1 == false"
-                      [ngClass]="{'error': borrowForm.submitted && workingMonths3.errors}"
-                      [ngClass]="{'error':  workingMonths3.touched && workingMonths3.errors}" />
-                    <label class="gray-text">Months</label>
+                      [ngClass]="{'error_bb': borrowForm.submitted && workingMonths3.errors}"
+                      [ngClass]="{'error_bb':  workingMonths3.touched && workingMonths3.errors}" />
+                    <label class="gray-text ml-2">Months</label>
                   </div>
                 </div>
               </div>
@@ -1413,8 +1428,8 @@
                 </div>
 
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && monthlyIncome2.errors}"
-                  [ngClass]="{'error':  monthlyIncome2.touched && monthlyIncome2.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome2.errors}"
+                  [ngClass]="{'error_bb':  monthlyIncome2.touched && monthlyIncome2.errors}">
                   $<input type="number" min="0" class="ml-1" [required]="doNotApplyForEmp1 == false"
                     [(ngModel)]="borrowerInfo.employment[1].monthlyIncome" name="monthlyIncome2" id="monthlyIncome2"
                     #monthlyIncome2="ngModel" [readonly]="doNotApplyForEmp1 == true" />
@@ -1437,8 +1452,8 @@
 
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Base</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && baseIncome2.errors}"
-                  [ngClass]="{'error':  baseIncome2.touched && baseIncome2.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && baseIncome2.errors}"
+                  [ngClass]="{'error_bb':  baseIncome2.touched && baseIncome2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.baseIncome" name="baseIncome2"
@@ -1447,8 +1462,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Overtime</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && overtime2.errors}"
-                  [ngClass]="{'error':  overtime2.touched && overtime2.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && overtime2.errors}"
+                  [ngClass]="{'error_bb':  overtime2.touched && overtime2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.overtime" name="overtime2"
@@ -1457,8 +1472,8 @@
 
 
                 <div class="col-1"><label class="gray-text">Bonus</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && bonus2.errors}"
-                  [ngClass]="{'error':  bonus2.touched && bonus2.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && bonus2.errors}"
+                  [ngClass]="{'error_bb':  bonus2.touched && bonus2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.bonus" name="bonus2"
@@ -1466,8 +1481,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Commission</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && commission2.errors}"
-                  [ngClass]="{'error':  commission2.touched && commission2.errors}">
+                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && commission2.errors}"
+                  [ngClass]="{'error_bb':  commission2.touched && commission2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.commission" name="commission2"
@@ -1480,8 +1495,8 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">Military Entitlements</label></div>
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && militaryEntitlements2.errors}"
-                  [ngClass]="{'error':  militaryEntitlements2.touched && militaryEntitlements2.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements2.errors}"
+                  [ngClass]="{'error_bb':  militaryEntitlements2.touched && militaryEntitlements2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements"
@@ -1491,8 +1506,8 @@
                 </div>
 
                 <div class="col-1"><label class="gray-text">Other</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && other3.errors}"
-                  [ngClass]="{'error':  other3.touched && other3.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && other3.errors}"
+                  [ngClass]="{'error_bb':  other3.touched && other3.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.other" name="other23"
@@ -1502,8 +1517,8 @@
 
                 <div class="col-1"><label class="gray-text">TOTAL </label></div>
                 <div class="col-2 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && creditItemsaLastname.errors}"
-                  [ngClass]="{'error':  creditItemsaLastname.touched && creditItemsaLastname.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsaLastname.errors}"
+                  [ngClass]="{'error_bb':  creditItemsaLastname.touched && creditItemsaLastname.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input
                       [readonly]="doNotApplyForEmp1 == true" [required]="doNotApplyForEmp1 == false" type="number"
                       min="0" [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.total"
@@ -1543,27 +1558,27 @@
 
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-4 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && name9.errors}"
-                  [ngClass]="{'error':  name9.touched && name9.errors}">
+                <div class="col-4 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name9.errors}"
+                  [ngClass]="{'error_bb':  name9.touched && name9.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[2].name" name="name9" id="name9"
                     #name9="ngModel" [required]="doNotApplyForEmp2 == false" [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
-                <div class="col-1"><label class="gray-text">Phone</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && phone9.errors}"
-                  [ngClass]="{'error':  phone9.touched && phone9.errors}">
-                  <p-inputMask [(ngModel)]="borrowerInfo.employment[2].phone" [required]="doNotApplyForEmp2 == false"
+                <div class="col-1 text-right"><label class="gray-text">Phone</label></div>
+                <div class="col-1 input-border-bottom" style="padding-left: 5px;" [ngClass]="{'error_bb': borrowForm.submitted && phone9.errors}"
+                  [ngClass]="{'error_bb':  phone9.touched && phone9.errors}">
+                  <p-inputMask size="10" [(ngModel)]="borrowerInfo.employment[2].phone" [required]="doNotApplyForEmp2 == false"
                     mask="(999) 999-9999" name="phone9" id="phone9" #phone9="ngModel"
                     [readonly]="doNotApplyForEmp2 == true"></p-inputMask>
                 </div>
 
 
                 <div class="col-1"><label class="gray-text">Street</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && street9.errors}"
-                  [ngClass]="{'error':  street9.touched && street9.errors}">
+                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
+                  [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[2].street"
                     [required]="doNotApplyForEmp2 == false" name="street9" id="street9" #street9="ngModel"
-                    [readonly]="doNotApplyForEmp2 == true" /> />
+                    [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
               </div>
@@ -1572,8 +1587,8 @@
               <div class="row mt-2">
                 <div class="col-1"><label class="gray-text">City</label></div>
                 <div class="col-2 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && cityId9.errors}"
-                    [ngClass]="{'error':  cityId9.touched && cityId9.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && cityId9.errors}"
+                    [ngClass]="{'error_bb':  cityId9.touched && cityId9.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp2 == true" name="cityId9" id="cityId9" #cityId9="ngModel"
@@ -1592,10 +1607,10 @@
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">State</label></div>
+                <div class="col-1  text-right mr-2"><label class="gray-text">State</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && stateId49.errors}"
-                    [ngClass]="{'error':  stateId49.touched && stateId49.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && stateId49.errors}"
+                    [ngClass]="{'error_bb':  stateId49.touched && stateId49.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
@@ -1609,18 +1624,18 @@
 
                 </div>
 
-                <div class="col-1"><label class="gray-text">ZIP</label></div>
-                <div class="col-1 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && zip9.errors}"
-                  [ngClass]="{'error':  zip9.touched && zip9.errors}">
+                <div class="col-1  text-right mr-2"><label class="gray-text">ZIP</label></div>
+                <div class="col-1 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
+                  [ngClass]="{'error_bb':  zip9.touched && zip9.errors}">
                   <input type="text" [(ngModel)]="borrowerInfo.employment[2].zip" [readonly]="doNotApplyForEmp2 == true"
                     name="zip9" id="zip9" #zip9="ngModel" />
                 </div>
 
 
-                <div class="col-1"><label class="gray-text">Country</label></div>
+                <div class="col-1  text-right mr-2"><label class="gray-text">Country</label></div>
                 <div class="col-1 input-border-bottom">
-                  <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && countryId9.errors}"
-                    [ngClass]="{'error':  countryId9.touched && countryId9.errors}"
+                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
+                    [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
@@ -1648,8 +1663,8 @@
             <div class="frm-group" style="padding-bottom: 30px;">
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Position or Title</label></div>
-                <div class="col-9 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && position4.errors}"
-                  [ngClass]="{'error':  position4.touched && position4.errors}">
+                <div class="col-9 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && position4.errors}"
+                  [ngClass]="{'error_bb':  position4.touched && position4.errors}">
                   <input type="text" [required]="doNotApplyForEmp2 == false"
                     [(ngModel)]="borrowerInfo.employment[2].position" name="position4" id="position4"
                     #position4="ngModel" [readonly]="doNotApplyForEmp2 == true" />
@@ -1659,8 +1674,8 @@
               <div class="row mt-2">
                 <div class="col-2"><label class="gray-text">Start Date <span
                       style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
-                <div class="col-3 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && startDate4.errors}"
-                  [ngClass]="{'error':  startDate4.touched && startDate4.errors}">
+                <div class="col-3 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate4.errors}"
+                  [ngClass]="{'error_bb':  startDate4.touched && startDate4.errors}">
                   <input type="date" [required]="doNotApplyForEmp2 == false"
                     [(ngModel)]="borrowerInfo.employment[2].startDate" name="startDate4" id="startDate4"
                     #startDate4="ngModel" [readonly]="doNotApplyForEmp2 == true" />
@@ -1668,8 +1683,8 @@
 
                 <div class="col-2"><label class="gray-text">Start Date <span
                       style="font-size: 11px;">(mm/dd/yyyy)</span></label></div>
-                <div class="col-3 input-border-bottom" [ngClass]="{'error': borrowForm.submitted && startDate5.errors}"
-                  [ngClass]="{'error':  startDate5.touched && startDate5.errors}">
+                <div class="col-3 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate5.errors}"
+                  [ngClass]="{'error_bb':  startDate5.touched && startDate5.errors}">
                   <input type="date" [required]="doNotApplyForEmp2 == false"
                     [(ngModel)]="borrowerInfo.employment[2].startDate" name="startDate5" id="startDate5"
                     #startDate5="ngModel" [readonly]="doNotApplyForEmp2 == true" />
@@ -1696,8 +1711,8 @@
               <div class="row">
                 <div class="col-5"><label class="gray-text">Income</label></div>
                 <div class="col-5 input-border-bottom"
-                  [ngClass]="{'error': borrowForm.submitted && monthlyIncome4.errors}"
-                  [ngClass]="{'error':  monthlyIncome4.touched && monthlyIncome4.errors}">
+                  [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome4.errors}"
+                  [ngClass]="{'error_bb':  monthlyIncome4.touched && monthlyIncome4.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> <input type="number" min="0"
                       name="monthlyIncome4" id="monthlyIncome4" #monthlyIncome4="ngModel"
                       [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [required]="doNotApplyForEmp2 == false"
