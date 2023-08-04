@@ -1,3 +1,56 @@
+<style>
+   :host/deep/.ui-inputtext {
+    margin: 0;
+    outline: medium none;
+    padding: 0.25em;
+    font-weight: normal;
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+  }
+
+ 
+  :host/deep/  .disabled input{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/  .disabled .input-border-bottom{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/  .disabled .input-border-bottom .frm-group{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled .frm-fld-input{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+
+  :host/deep/ .frm-group .disabled .input-border-bottom{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+  
+  
+  
+  :host/deep/ .frm-group .disabled .frm-group .frm-fld-input {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+  
+</style>
+
 <div>
   <h4 class="section-title">
     Assets – Bank Accounts, Retirement, and Other Accounts You Have
@@ -295,7 +348,7 @@
 
           <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
             <div class="div-sub-grp">
-              <div class="frm-group">
+              <div class="frm-group" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                 <div class="row ">
                   <label class="col-8 frm-label">
                     <span>Asset or Credit Type – use list above</span>
@@ -308,7 +361,7 @@
                 <div class="row"
                   *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
                   <div class="col-8">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3"  [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
                       [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}">
                       <div class="frm-fld-input">
@@ -377,7 +430,7 @@
             </div> -->
                   </div>
                   <div class=" col-4">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && cashMarketValue.errors}"
                       [ngClass]="{'error':  cashMarketValue.touched && cashMarketValue.errors}">
                       <div class="input-border-bottom">
@@ -405,11 +458,11 @@
                     </div>
                   </label>
                   <label class="col-4 frm-label">
-                    <div class="frm-group">
+                    <div class="frm-group" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}" >
                       <div class="input-border-bottom">
                         <div style="display: flex; align-items: center; margin-bottom: 15px;"><span
-                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
-                            min="0" [(ngModel)]="totalMortgageFinancialOtherAssets"
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                            <input type="number" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}" min="0" [(ngModel)]="totalMortgageFinancialOtherAssets"
                             id="totalMortgageFinancialOtherAssets" name="totalMortgageFinancialOtherAssets"
                             #txttotalMortgageFinancialOtherAssets="ngModel" /></div>
                       </div>
@@ -436,7 +489,7 @@
               name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel">
             <span class="checkmark"></span>
           </label>
-        </div>
+        </div> 
         <h4>List all liabilities below (except real estate) and include deferred payments. Under Account Type, choose
           from the types listed here:</h4>
 
@@ -472,7 +525,7 @@
 
           <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
             <div class="div-sub-grp">
-              <div class="frm-group">
+              <div class="frm-group" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                 <div class="row ">
                   <label class="col-8 frm-label">
                     <span>Account Type – use list above Company Name Account Number</span>
@@ -485,7 +538,7 @@
                 <div class="row"
                   *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities; index as i">
                   <div class="col-4">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId.errors}"
                       [ngClass]="{'error':  financialLaibilitiesTypeId.touched && financialLaibilitiesTypeId.errors}">
                       <div class="frm-fld-input">
@@ -504,7 +557,7 @@
                     </div>
                   </div>
                   <div class="col-2">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && companyName.errors}"
                       [ngClass]="{'error':  companyName.touched && companyName.errors}">
                       <p class="frm-fld-input height35"><input type="text"
@@ -514,7 +567,7 @@
                     </div>
                   </div>
                   <div class="col-2">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
                       [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
                       <p class="frm-fld-input height35"><input type="text"
@@ -524,7 +577,7 @@
                     </div>
                   </div>
                   <div class="col-2">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && isPaidBeforeClosing.errors}"
                       [ngClass]="{'error':  isPaidBeforeClosing.touched && isPaidBeforeClosing.errors}">
                       <p class="frm-fld-input height35 "
@@ -539,10 +592,11 @@
 
                   <div class=" col-2">
                     <div class="frm-label" style="margin-top: -15px !important;">Cash or Market Value`</div>
-                    <div class="frm-group mt-3">
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                       <div class="input-border-bottom">
                         <div style="display: flex; align-items: center;margin-top: 15px;"><span
-                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                            style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                            <input type="number"
                             min="0" [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.monthlyPayment"
                             id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
                             (blur)="getTotalMortgageFinancialOtherLaibilities()" /></div>
@@ -565,7 +619,7 @@
                   </label>
 
                   <label class="col-2 frm-label">
-                    <div class="frm-group">
+                    <div class="frm-group" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                       <div class="input-border-bottom">
                         <div style="display: flex; align-items: center; margin-top: 15px;"><span
                             style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
@@ -599,7 +653,7 @@
               #txtflgMortgageFinancialOtherLaibilities="ngModel">
             <span class="checkmark" style="margin-top: 8px !important;"></span>
           </label>
-        </div>
+        </div> 
         <h4>Include all other liabilities and expenses below. Choose from the types listed here:</h4>
 
         <div class="row">
@@ -633,7 +687,7 @@
 
           <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
             <div class="div-sub-grp">
-              <div class="frm-group">
+              <div class="frm-group" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
                 <div class="row ">
                   <label class="col-8 frm-label">
                     <span>Other liabilities and expenses – use list above</span>
@@ -646,7 +700,7 @@
                 <div class="row"
                   *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
                   <div class="col-8">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId1.errors}"
                       [ngClass]="{'error':  financialLaibilitiesTypeId1.touched && financialLaibilitiesTypeId1.errors}">
                       <div class="frm-fld-input">
@@ -691,7 +745,7 @@
             </div> -->
                   </div>
                   <div class=" col-4">
-                    <div class="frm-group mt-3"
+                    <div class="frm-group mt-3" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                       [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && monthlyPayment.errors}"
                       [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
                       <div class="input-border-bottom">

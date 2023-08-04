@@ -38,6 +38,7 @@
   padding: 14px 21px 24px 21px;
   cursor: not-allowed;
   margin-bottom: 74px;
+  background-color: #E7E7E7 !important;
 }
 
 /* .error {
