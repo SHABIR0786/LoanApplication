@@ -1,3 +1,9 @@
+<style>
+    :host/deep/  .disabled .input-border-bottom{
+       pointer-events: none;
+       background-color: #E7E7E7 !important;
+  }
+</style>
 <div>
   <h4 class="section-title">Loan and Property Information</h4>
   <div class="info-block">
@@ -410,7 +416,7 @@
 
       <div class="row div-sub-grp">
         <div class="col-12">
-          <div class="frm-group">
+          <div class="frm-group" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}">
 
             <div class="row">
               <div class="col-3">
@@ -447,7 +453,7 @@
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.newMortgageLoans; index as i">
               <div class="col-3">
-                <div class="frm-group mt-2"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && txtcreditorName.errors}"
                   [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}">
                   <div class="input-border-bottom">
@@ -465,26 +471,26 @@
                   <div style="display: flex; justify-content: center;">
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="First Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
-                      style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
+                      style="width: 23px;" [required]="flgOtherNewMortgageLoans == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
                       [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
-                    <label class="text-gray">First Lien</label>
+                    <label class="text-gray ml-2">First Lien</label>
                   </div>
 
                   <div style="display: flex; justify-content: center; margin-left: 40px;">
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="Subordinate Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
-                      style="width: 40px;" [required]="flgOtherNewMortgageLoans == false"
+                      style="width: 23px;" [required]="flgOtherNewMortgageLoans == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && lienType.errors}"
                       [ngClass]="{'error-checkbox':  lienType.touched && lienType.errors}" />
-                    <label class="text-gray">Subordinate Lien</label>
+                    <label class="text-gray  ml-2">Subordinate Lien</label>
                   </div>
                 </div>
               </div>
 
 
               <div class="col-2">
-                <div class="frm-group mt-2"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && monthlyPayment.errors}"
                     [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
                   <div class="input-border-bottom"
@@ -499,7 +505,7 @@
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && txtloanAmount.errors}"
                 [ngClass]="{'error':  txtloanAmount.touched && txtloanAmount.errors}">
                   <div class="input-border-bottom"
@@ -514,7 +520,7 @@
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && creditLimit.errors}"
                 [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}">
                   <div class="input-border-bottom"
@@ -556,7 +562,7 @@
 
       <div class="div-main-grp" style="width: 100%;">
         <div class="div-sub-grp">
-          <div class="frm-group">
+          <div class="frm-group" [ngClass]="{'disabled':flgRentalIncome==true}">
             <div class="row ">
               <label class="col-8 frm-label">
                 <span>Complete if the property is a 2-4 Unit Primary Residence or an Investment Property </span>
@@ -568,7 +574,7 @@
 
             <div class="row">
               <div class="col-8">
-                <div class="frm-group mt-3">
+                <div class="frm-group mt-3" [ngClass]="{'disabled':flgRentalIncome==true}">
                   <div class="frm-fld-input">
                     <span class="text-gray">Expected Monthly Rental Income</span>
                   </div>
@@ -576,7 +582,7 @@
 
               </div>
               <div class=" col-4">
-                <div class="frm-group mt-3"
+                <div class="frm-group mt-3" [ngClass]="{'disabled':flgRentalIncome==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && txtmonthlyRentalIncome.errors}"
                   [ngClass]="{'error':  txtmonthlyRentalIncome.touched && txtmonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
@@ -594,14 +600,14 @@
 
             <div class="row">
               <div class="col-8">
-                <div class="frm-group mt-3">
+                <div class="frm-group mt-3" [ngClass]="{'disabled':flgRentalIncome==true}">
                   <div class="frm-fld-input">
                     <span class="text-gray"><b>For LENDER to calculate:</b> Expected Net Monthly Rental Income</span>
                   </div>
                 </div>
               </div>
               <div class=" col-4">
-                <div class="frm-group mt-3"
+                <div class="frm-group mt-3" [ngClass]="{'disabled':flgRentalIncome==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && netMonthlyRentalIncome.errors}"
                   [ngClass]="{'error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
@@ -638,7 +644,7 @@
 
       <div class="row div-sub-grp">
         <div class="col-12">
-          <div class="frm-group">
+          <div class="frm-group" [ngClass]="{'disabled':flgGiftsorGrants==true}">
 
             <div class="row">
               <div class="col-3">
@@ -671,7 +677,7 @@
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
               <div class="col-3">
-                <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
+                <div class="frm-group" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
                   [ngClass]="{'error':  assetTypeId.touched && assetTypeId.errors}">
                   <p class="frm-fld-input">
                     <select class="form-control" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
@@ -692,27 +698,27 @@
                   <div style="display: flex; justify-content: center;">
                     <input type="radio" value="true" [disabled]="flgGiftsorGrants == true"
                       [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited" name="{{i}}.isDeposited"
-                      id="{{i}}.isDeposited" #isDeposited="ngModel" style="width: 40px;"
+                      id="{{i}}.isDeposited" #isDeposited="ngModel" style="width: 23px;"
                       [required]="flgGiftsorGrants == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
                       [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
-                    <label class="text-gray">Deposited</label>
+                    <label class="text-gray ml-2">Deposited</label>
                   </div>
 
                   <div style="display: flex; justify-content: center; margin-left: 40px;">
                     <input type="radio" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited"
                       value="false" name="{{i}}.isDeposited" id="{{i}}.isDeposited" #isDeposited="ngModel"
-                      style="width: 40px;" [required]="flgGiftsorGrants == false"
+                      style="width: 23px;" [required]="flgGiftsorGrants == false"
                       [ngClass]="{'error-checkbox': loanPropertyInfoForm.submitted && isDeposited.errors}"
                       [ngClass]="{'error-checkbox':  isDeposited.touched && isDeposited.errors}" />
-                    <label class="text-gray">Not Deposited</label>
+                    <label class="text-gray ml-2">Not Deposited</label>
                   </div>
                 </div>
               </div>
 
 
               <div class="col-3" style="border-left: 1px solid #696969;">
-                <div class="frm-group mt-2" [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
                   [ngClass]="{'error':  source.touched && source.errors}">
                   <p class="frm-fld-input"><select [disabled]="flgGiftsorGrants == true" class="form-control"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
@@ -723,7 +729,7 @@
               </div>
 
               <div class="col-2" style="border-left: 1px solid #696969;">
-                <div class="frm-group mt-2"
+                <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && marketValue.errors}"
                   [ngClass]="{'error':  marketValue.touched && marketValue.errors}">
                   <div class="input-border-bottom">

@@ -1,5 +1,5 @@
 <style>
-  :host/deep/.ui-inputtext {
+   :host/deep/.ui-inputtext  {
     margin: 0;
     outline: medium none;
     padding: 0.25em;
@@ -10,19 +10,21 @@
     border-right: 0px !important;
     width: 100% !important;
 }
-</style>
+:host/deep/ input {
+  background-color: #E7E7E7 !important;
+} 
 
+</style>
 <div>
   <form #loanOriginatorForm="ngForm" (ngSubmit)="loanOriginatorForm.valid && create()" class="w-full">
   <h4 class="section-title">Loan Originator Information</h4>
   <div class="info-block">
     <p>To be completed by your <b>Loan Originator.</b></p>
   </div>
-  <div class="form-block disabled">
+  <div class="form-block ">
       <div class="row gx-3 gy-2 mb-3 align-items-center">
         <div class="col-12">
-          <label class="visually-hidden" for="specificSizeInputGroupUsername"
-            >Loan Originator Organization Name</label
+          <label class="visually-hidden" for="specificSizeInputGroupUsername">Loan Originator Organization Name</label
           >
           <div class="input-group"
           [ngClass]="{'error': loanOriginatorForm.submitted && organizationName.errors}"
@@ -51,7 +53,7 @@
             <div class="input-group-text">Address</div>
             <input
               type="text"
-              class="form-control"
+              class="form-control "
               id="address" name="address"
               #address="ngModel" [(ngModel)]="loanOriginatorInfoModels.address"
               required
@@ -70,7 +72,7 @@
             <div class="input-group-text">
               Loan Originator Organization NMLSR ID#
             </div>
-            <p-inputMask       id="organizationNmlsrId" name="organizationNmlsrId"
+            <p-inputMask   class="custom"  id="organizationNmlsrId" name="organizationNmlsrId"
             #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId" mask="9999 9999 9999 9999"
             [required]="true"
           ></p-inputMask>
@@ -229,7 +231,7 @@
       <div class="input-group">
         <div class="input-group-text">Borrower Name:</div>
         <input
-          type="text"
+          type="text" style="background-color: white !important;"
           class="form-control"
           id="specificSizeInputGroupUsername"
         />

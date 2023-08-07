@@ -27,8 +27,7 @@
                    <input type="radio" value="Yes" name="question1" id="question1" #txtquestion1="ngModel" [(ngModel)]="declarationsList[0].answer"  
                    required
                   
-                  (change)="assignQuestionId(0,1)" style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);"
-                    />
+                  (change)="assignQuestionId(0,1)" style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);"/>
                    <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
                  </div>
                </div>
@@ -62,7 +61,7 @@
               <div class="row mt-2 ml-4">
                <div class="col-2">
                  <div style="display: flex; justify-content: center;">
-                   <input type="radio" value="Yes" name="question2" id="question2" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" (change)="assignQuestionId(1,1)" [(ngModel)]="declarationsList[1].answer"  style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                   <input type="radio" value="Yes" name="question2" id="question2" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" (change)="assignQuestionId(1,1)" [(ngModel)]="declarationsList[1].answer"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                    [required]="declarationsList[0].answer == 'Yes'"
                  />
                    <label class="text-gray ml-2" style="font-size: 18px;"   >Yes</label>
@@ -217,7 +216,7 @@
                 [ngClass]="{'error':  question4ans.touched && question4ans.errors}">
               <div style="display: flex; align-items: center;width: 400px;">
                 <span>$ </span>
-                <input type="number" min="0" style="width: 200px;"  [(ngModel)]="declarationsList[6].answer" id="question4ans" name="question4ans" #question4ans="ngModel" [readonly]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" 
+                <input type="number" min="0" style="width: 160px;"  [(ngModel)]="declarationsList[6].answer" id="question4ans" name="question4ans" #question4ans="ngModel" [readonly]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" 
                 [required]="declarationsList[5].answer == 'Yes'"
                 /></div>
             </div>
@@ -243,7 +242,7 @@
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question5" id="question5" #question5="ngModel"  value="yes"  [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question5" id="question5" #question5="ngModel"  value="yes"  [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                     />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -276,7 +275,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question6" id="question6" #question6="ngModel"  value="Yes" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question6" id="question6" #question6="ngModel"  value="Yes" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
           />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -317,7 +316,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question7" id="question7" #question7="ngModel" value="Yes" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question7" id="question7" #question7="ngModel" value="Yes" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                     />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -358,7 +357,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question8" id="question8" #question8="ngModel" value="Yes" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question8" id="question8" #question8="ngModel" value="Yes" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                   />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -395,7 +394,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question9" id="question9" #question9="ngModel" value="Yes"  [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question9" id="question9" #question9="ngModel" value="Yes"  [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                 />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -432,7 +431,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" name="question10" id="question10" #question10="ngModel" value="Yes" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" name="question10" id="question10" #question10="ngModel" value="Yes" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                   />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -470,7 +469,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11" #question11="ngModel" name="question11" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11" #question11="ngModel" name="question11" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                     />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -508,7 +507,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12" #question12="ngModel" name="question12" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12" #question12="ngModel" name="question12" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                     />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -548,7 +547,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13" #question13="ngModel" name="question13" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13" #question13="ngModel" name="question13" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                   />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -586,7 +585,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14" #question14="ngModel" name="question14" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14" #question14="ngModel" name="question14" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
                     />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
@@ -624,7 +623,7 @@ that is not disclosed on this application?
                 <div class="row mt-2 ml-4">
                  <div class="col-2">
                    <div style="display: flex; justify-content: center;">
-                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15" #question15="ngModel" name="question15" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);"
+                     <input type="radio" value="Yes" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15" #question15="ngModel" name="question15" style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);"
                      required
                      />
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
