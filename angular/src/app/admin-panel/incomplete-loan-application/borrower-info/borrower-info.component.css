@@ -1,55 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,400;1,300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
-/* font-family: 'Mulish', sans-serif;
+/* Genuine Font Family is: Avenir, but its not avaliable under Google Fonts 
+font-family: 'Mulish', sans-serif;
 font-family: 'Nunito', sans-serif;
 font-family: 'Mulish', sans-serif;
 font-family: 'Source Sans Pro', sans-serif; */
 
 .section-title {
-border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-padding-bottom: 20px;
-font-weight: 900;
-font-size: 20px;
-line-height: 30px;
-color: #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
 }
 .info-block {
-padding: 15px;
-background: #091a52;
-border-radius: 8px;
-margin: 16px 0px;
+  padding: 15px;
+  background: #091a52;
+  border-radius: 8px;
+  margin: 16px 0px;
 }
 .info-block p {
   color: #ffffff;
-
   font-family: 'Mulish', sans-serif;
   font-size: 16px;
 }
 .form-block {
-background: #e7e7e7;
-border: 1px solid #a5a5a5;
-border-radius: 8px;
-padding: 14px 21px 24px 21px;
-cursor: not-allowed;
-margin-bottom: 74px;
+  background: #e7e7e7;
+  border: 1px solid #a5a5a5;
+  border-radius: 8px;
+  padding: 14px 21px 24px 21px;
+  cursor: not-allowed;
+  margin-bottom: 74px;
 }
 
-
-
 .form-block.disabled {
-cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .form-block .input-group {
-align-items: flex-end;
+  align-items: flex-end;
 }
 
 .form-block .input-group .input-group-text {
-padding: 0;
-padding-right: 10px;
-background-color: transparent;
-border: 0;
+  padding: 0;
+  padding-right: 10px;
+  background-color: transparent;
+  border: 0;
 }
 
 .form-block.disabled .input-group .input-group-text {
@@ -143,6 +141,45 @@ flex-shrink: 0;
 }
 
 
+.error {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  min-height: 50px;
+  border: solid 1px !important;
+  border-color: red !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* flex-shrink: 0; */
+  }
+
+  .error_bb{
+    box-sizing: border-box;
+    padding: 5px 5px 5px 16px;
+    border: solid 1px !important;
+    border-color: red !important;
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-height:35px !important;
+    /* flex-shrink: 0; */
+  }
+
+
+  .disabled {
+    background-color: #E7E7E7 !important;
+  }
+
+  .disabled input{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  .disabled .frm-group-borderless{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+
+
 .div-main-grp .div-sub-grp .block {
   box-sizing: border-box;
   padding: 5px 5px 5px 16px;
@@ -153,38 +190,37 @@ flex-shrink: 0;
   flex-shrink: 0;
   }
 
-
 .div-main-grp .div-sub-grp .frm-group .frm-label {
-margin-bottom: 0px;
-font-size: 10px !important;
-font-weight: 600;
-line-height: 1.2575;
-color: #000000;
-font-family: 'Mulish', sans-serif;
-white-space: nowrap;
+  margin-bottom: 0px;
+  font-size: 10px !important;
+  font-weight: 600;
+  line-height: 1.2575;
+  color: #000000;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
 }
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input {
-font-size: 16px;
-margin-top: 0px;
-margin-bottom: 0px;
-font-weight: 500;
-color: #A5A5A5;
-font-family: 'Mulish', sans-serif;
-white-space: nowrap;
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  color: #A5A5A5;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
 }
 
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input input{
-border: 0px !important;
-font-size: 16px;
-margin-bottom: 0px;
-padding-left: 0px !important;
-width: 100%;
-color: #A5A5A5;
-font-weight: 500;
-line-height: 1.2575;
-background-color: #ffffff;
-font-family: 'Mulish', sans-serif;
-white-space: nowrap;
+  border: 0px !important;
+  font-size: 16px;
+  margin-bottom: 0px;
+  padding-left: 0px !important;
+  width: 100%;
+  color: #A5A5A5;
+  font-weight: 500;
+  line-height: 1.2575;
+  background-color: #ffffff;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
 }
 
 
@@ -273,6 +309,23 @@ white-space: nowrap;
 }
 
 
+p-inputmask .ui-inputtext{
+    border: 0px !important;
+    font-size: 14px;
+    margin-bottom: 0px;
+    padding-left: 0px !important;
+    width: 100%;
+    color: #A5A5A5;
+    font-weight: 500;
+    line-height: 1.2575;
+    border-bottom: 1px solid #A5A5A5 !important;
+    background-color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    white-space: nowrap;
+}
+
+
+
 .checkbox {
 zoom: 2;
 accent-color: #e6e6e6;
@@ -329,7 +382,7 @@ width: 0;
 /* Create a custom checkbox */
 .checkmark {
 position: absolute;
-top: 0;
+top: 0px;
 left: 0;
 height: 20px;
 width: 20px;

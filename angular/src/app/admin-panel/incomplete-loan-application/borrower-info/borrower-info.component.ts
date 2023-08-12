@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 })
 export class BorrowerInfoComponent implements OnInit {
   borrowerInfo: BorrowModel = new BorrowModel();
+  doNotApplyForAddress0: boolean = false;
   doNotApplyForaddress1: boolean = false;
   doNotApplyForaddress2: boolean = false;
   doNotApplyForEmp0: boolean = false;
@@ -78,6 +79,10 @@ export class BorrowerInfoComponent implements OnInit {
     {
       this.doNotApplyForEmp2 = JSON.parse(localStorage.getItem('doNotApplyForEmp2'));
     }
+    if(localStorage.doNotApplyForAddress0 != undefined)
+    {
+      this.doNotApplyForAddress0 = JSON.parse(localStorage.getItem('doNotApplyForAddress0'));
+    }
     if(localStorage.incomeFromOtherSources != undefined)
     {
       this.incomeFromOtherSources = JSON.parse(localStorage.getItem('incomeFromOtherSources'));
@@ -125,6 +130,7 @@ export class BorrowerInfoComponent implements OnInit {
     localStorage.setItem("doNotApplyForEmp0", JSON.stringify(this.doNotApplyForEmp0))
     localStorage.setItem("doNotApplyForEmp1", JSON.stringify(this.doNotApplyForEmp1))
     localStorage.setItem("doNotApplyForEmp2", JSON.stringify(this.doNotApplyForEmp2))
+    localStorage.setItem("doNotApplyForAddress0", JSON.stringify(this.doNotApplyForAddress0))
     localStorage.setItem("incomeFromOtherSources", JSON.stringify(this.incomeFromOtherSources))
     this.borrowService.createMortgageLoanApplication(this.borrowerInfo).subscribe(
       (res: any) => {
