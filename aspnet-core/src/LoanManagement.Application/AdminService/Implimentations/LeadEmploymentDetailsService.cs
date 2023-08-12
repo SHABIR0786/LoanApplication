@@ -96,6 +96,60 @@ namespace LoanManagement.Services.Implementation
             }).ToList();
         }
 
+        public List<UpdateLeadEmploymentDetails> GetPurchaseEmployementDetails(int id)
+        {
+            return repository.GetAll().Where(x=>x.LeadApplicationDetailPurchasingId == id).Select(d => new UpdateLeadEmploymentDetails()
+            {
+                Id = d.Id,
+                EmployeeTypeId = d.EmployeeTypeId,
+                EmployementAddress = d.EmployementAddress,
+                EmployementCity = d.EmployementCity,
+                EmployementSuite = d.EmployementSuite,
+                EmployementTaxeId = d.EmployementTaxeId,
+                EmployementZip = d.EmployementZip,
+                EmployerName = d.EmployerName,
+                EmployerPhoneNumber = d.EmployerPhoneNumber,
+                EstimatedAnnualBaseSalary = d.EstimatedAnnualBaseSalary,
+                EstimatedAnnualBonus = d.EstimatedAnnualBonus,
+                EstimatedAnnualCommission = d.EstimatedAnnualCommission,
+                EstimatedAnnualOvertime = d.EstimatedAnnualOvertime,
+                EstimatedStartDate = d.EstimatedStartDate,
+                IsCoBorrower = d.IsCoBorrower,
+                IsCurrentJob = d.IsCurrentJob,
+                JobTitle = d.JobTitle,
+                LeadApplicationDetailPurchasingId = d.LeadApplicationDetailPurchasingId,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
+                LeadApplicationTypeId = d.LeadApplicationTypeId
+            }).ToList();
+        }
+
+        public List<UpdateLeadEmploymentDetails> GetRefinanceEmployementDetails(int id)
+        {
+            return repository.GetAll().Where(x => x.LeadApplicationDetailRefinancingId == id).Select(d => new UpdateLeadEmploymentDetails()
+            {
+                Id = d.Id,
+                EmployeeTypeId = d.EmployeeTypeId,
+                EmployementAddress = d.EmployementAddress,
+                EmployementCity = d.EmployementCity,
+                EmployementSuite = d.EmployementSuite,
+                EmployementTaxeId = d.EmployementTaxeId,
+                EmployementZip = d.EmployementZip,
+                EmployerName = d.EmployerName,
+                EmployerPhoneNumber = d.EmployerPhoneNumber,
+                EstimatedAnnualBaseSalary = d.EstimatedAnnualBaseSalary,
+                EstimatedAnnualBonus = d.EstimatedAnnualBonus,
+                EstimatedAnnualCommission = d.EstimatedAnnualCommission,
+                EstimatedAnnualOvertime = d.EstimatedAnnualOvertime,
+                EstimatedStartDate = d.EstimatedStartDate,
+                IsCoBorrower = d.IsCoBorrower,
+                IsCurrentJob = d.IsCurrentJob,
+                JobTitle = d.JobTitle,
+                LeadApplicationDetailPurchasingId = d.LeadApplicationDetailPurchasingId,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
+                LeadApplicationTypeId = d.LeadApplicationTypeId
+            }).ToList();
+        }
+
         public UpdateLeadEmploymentDetails GetById(int id)
         {
             return repository.GetAll().Where(s => s.Id == id).Select(d => new UpdateLeadEmploymentDetails()

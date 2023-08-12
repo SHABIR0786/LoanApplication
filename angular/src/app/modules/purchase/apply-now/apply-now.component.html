@@ -1,7 +1,7 @@
 <div class="main-content">
   <h2>Whatever your goal, we’ll help you achieve it quickly and easily!</h2>
   <h4>How can we help?</h4>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       [ngClass]="{ active: model?.firstChoice === '1' }"
       routerLink="/app/purchase/welcome/1"
@@ -21,4 +21,8 @@
     >
   </div>
   <app-applynow-footer></app-applynow-footer>
+  <div class="contact-mortgage">
+    <p>Conatact a Mortage Expert</p>
+    <img src="../../../../assets/img/chat.svg" />
+  </div>
 </div>

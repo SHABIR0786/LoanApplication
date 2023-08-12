@@ -5,7 +5,7 @@
     parties.
   </h6>
   <div
-    class="button-list margin-top col-lg-9 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <form
       action=""
@@ -230,12 +230,11 @@
 </div>
 <div class="main-content" *ngIf="number == 2">
   <h2 class="tiny-space">Did someone refer you to EZ Online Mortgage?</h2>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       type="button"
-      routerLink="/app/purchase/personal-info/3"
       class="btn btn-primary btn-style btn-orange"
-      (click)="model.isSomeOneRefer = 1; saveStep()"
+      (click)="refersomeone()"
       [class.orange-active]="model.isSomeOneRefer == 1"
       >Yes</a
     >
@@ -249,27 +248,23 @@
     >
     <input
       type="text"
-      class="form-control col-md-8 form-style offset-lg-3 mb-0"
+      class="form-control form-style mb-0"
       placeholder="That’s make us happy! Who referred us?"
       [(ngModel)]="model.refferedBy"
       name="refferedBy"
       required
       #refferedByRef="ngModel"
-      *ngIf="model.isSomeOneRefer == 1"
-    />
+      *ngIf="model.isSomeOneRefer == 1"/>
     <div *ngIf="submitted && !refferedByRef.valid" class="text-danger d-flex">
       Referred by is required
     </div>
     <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <a routerLink="/app/purchase/personal-info/1" class="btn" id="btn-back"
-          >Back</a
-        >
+      <div class="col-md-4 offset-md-2">
+        <a routerLink="/app/purchase/personal-info/1" class="btn" id="btn-back">Back</a>
       </div>
-      <!-- <div class="col-md-2">
-            
-            <a routerLink="/app/purchase/personal-info/3" class="btn" id="btn-next">Next</a>
-        </div> -->
+      <div class="col-md-2">
+        <a routerLink="/app/purchase/personal-info/3" class="btn" id="btn-next">Next</a>
+      </div>
     </div>
   </div>
   <app-applynow-footer></app-applynow-footer>
@@ -281,7 +276,7 @@
     co-borrower throughout the application.
   </h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/purchase/personal-info/4"
@@ -313,7 +308,7 @@
 <div class="main-content" *ngIf="number == 4">
   <h2>What’s your current marital status?</h2>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/purchase/personal-info/5"
@@ -359,7 +354,7 @@
     dependent upon you, the borrower. Do not include yourself or your spouse.
   </h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <div class="row margin-top margin-left">
       <div class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-3 col-xs-3">
@@ -417,7 +412,7 @@
 </div>
 <div class="main-content" *ngIf="number == 6">
   <h2>Where are you currently living?</h2>
-  <div class="button-list col-lg-8 offset-lg-2 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="" id="personal-address" #f6="ngForm">
       <div class="form-group">
         <input
@@ -600,7 +595,7 @@
   <h2 id="padding-zero">Tell us about your monthly housing expenses?</h2>
   <h6>Simply provide your monthly rent.</h6>
   <div
-    class="button-list margin-top extra-margin col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top extra-margin"
   >
     <form action="" id="personal-address" #f7="ngForm">
       <div class="form-group">
@@ -646,7 +641,7 @@
         <h6>Borrower Information</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a routerLink="/app/purchase/personal-info/9" class="btn" id="btn-edit"
+        <a (click)="edit()" class="btn" id="btn-edit"
           >Edit</a
         >
       </div>
@@ -681,7 +676,7 @@
       <div class="col-md-4 right-align">
         <button
           type="button"
-          routerLink="/app/purchase/personal-info/9"
+          (click)="edit()"
           class="btn"
           id="btn-edit"
         >
@@ -721,7 +716,7 @@
       </div>
       <div class="col-md-4 right-align">
         <button
-          routerLink="/app/purchase/personal-info/9"
+          (click)="edit()"
           type="button"
           class="btn"
           id="btn-edit"
@@ -766,7 +761,7 @@
       </div>
       <div class="col-md-4 right-align">
         <button
-          routerLink="/app/purchase/personal-info/9"
+          (click)="edit()"
           type="button"
           class="btn"
           id="btn-edit"
@@ -786,7 +781,7 @@
     </div>
   </div>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
@@ -806,7 +801,7 @@
   <h2>Let's take a few seconds to review and confirm your info again.</h2>
   <form action="" id="personal" #f9="ngForm">
     <div class="content-area">
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-md-8">
           <h6>Borrower Information</h6>
         </div>
@@ -918,14 +913,13 @@
       </div>
       <div class="row">
         <div class="col-lg-12 margin-top">
-          <div class="button-list col-lg-12">
+          <div class="button-list">
             <p class="edit-info">
               Did someone refer you to EZ Online Mortgage?
-              <b>{{ model.isSomeOneRefer == 1 ? "Yes" : "No" }}</b>
             </p>
             <button
               type="button"
-              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              class="btn btn-primary btn-style btn-orange w-100"
               id="refer-yes"
               (click)="model.isSomeOneRefer = 1; saveStep()"
               [class.orange-active]="model.isSomeOneRefer == 1"
@@ -934,7 +928,7 @@
             </button>
             <button
               type="button"
-              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              class="btn btn-primary btn-style btn-orange w-100"
               id="refer-no"
               (click)="model.isSomeOneRefer = 0; saveStep()"
               [class.orange-active]="model.isSomeOneRefer == 0"
@@ -942,9 +936,9 @@
               No
             </button>
             <input
-              style="width: 361px !important; height: 52.6px"
+              style="height: 52.6px"
               type="text"
-              class="form-control col-md-6 form-style offset-lg-3 mb-0"
+              class="form-control form-style mb-0 ml-0"
               placeholder="That’s make us happy! Who referred us?"
               [(ngModel)]="model.refferedBy"
               name="refferedBy"
@@ -967,7 +961,7 @@
             </p>
             <button
               type="button"
-              class="btn btn-primary btn-style btn-blue offset-lg-3"
+              class="btn btn-primary btn-style btn-blue w-100"
               id="spouse-yes"
               (click)="model.isApplyOwn = 1; saveStep()"
               [class.orange-active]="model.isApplyOwn == 1"
@@ -976,7 +970,7 @@
             </button>
             <button
               type="button"
-              class="btn btn-primary btn-style btn-blue offset-lg-3"
+              class="btn btn-primary btn-style btn-blue w-100"
               id="spouse-no"
               (click)="model.isApplyOwn = 0; saveStep()"
               [class.orange-active]="model.isApplyOwn == 0"
@@ -992,21 +986,21 @@
 
             <a
               (click)="maritalClick('unmarried')"
-              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              class="btn btn-primary btn-style btn-orange w-100"
               [class.orange-active]="model.maritialStatus == 'unmarried'"
               >Unmarried</a
             >
 
             <a
               (click)="maritalClick('married')"
-              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              class="btn btn-primary btn-style btn-orange w-100"
               [class.orange-active]="model.maritialStatus == 'married'"
               >Married</a
             >
 
             <a
               (click)="maritalClick('seperated')"
-              class="btn btn-primary btn-style btn-orange offset-lg-3"
+              class="btn btn-primary btn-style btn-orange w-100"
               [class.orange-active]="model.maritialStatus == 'seperated'"
               >Separated</a
             >
@@ -1299,9 +1293,14 @@
       </div>
     </div>
     <div
-      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+      class="button-list margin-top"
     >
-      <div class="row">
+    <div class="row">
+      <div class="col-md-12" *ngIf="isEdit">
+        <a (click)="done(f9)" class="btn w-100" id="btn-edit">Done</a>
+      </div>
+    </div>
+      <div class="row" *ngIf="!isEdit">
         <div class="col-md-3 offset-md-3">
           <a
             routerLink="/app/purchase/personal-info/7"

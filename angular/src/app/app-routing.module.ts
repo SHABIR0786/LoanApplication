@@ -135,7 +135,6 @@ import { AnimatedStep16Component } from "./buy-a-home/animated-step16/animated-s
 import { AnimatedStep17Component } from "./buy-a-home/animated-step17/animated-step17.component";
 import { AnimatedStep18Component } from "./buy-a-home/animated-step18/animated-step18.component";
 import { AnimatedStep19Component } from "./buy-a-home/animated-step19/animated-step19.component";
-
 import { LoneOptionAnimatedComponent } from "./Buy_a_Home_Loan _Options/lone-option-animated/lone-option-animated.component";
 import { LoneOptionStep1Component } from "./Buy_a_Home_Loan _Options/lone-option-step1/lone-option-step1.component";
 import { LoneOptionStep2Component } from "./Buy_a_Home_Loan _Options/lone-option-step2/lone-option-step2.component";
@@ -160,7 +159,6 @@ import { CloseOnTheLoanComponent } from "./refinance-guide/close-on-the-loan/clo
 import { ManageYourRefinanceComponent } from "./refinance-guide/manage-your-refinance/manage-your-refinance.component";
 import { AdminPanelLayoutComponent } from "./admin-panel/admin-panel-layout/admin-panel-layout.component";
 import { AdimPanelPageComponent } from "./admin-panel/adim-panel-page/adim-panel-page.component";
-
 // New Application component ..
 import { HowCanWeHelpComponent } from "./animated_loan_application/welcome/how-can-we-help/how-can-we-help.component";
 import { WhatStageAreYouInComponent } from "./animated_loan_application/welcome/what-stage-are-you-in/what-stage-are-you-in.component";

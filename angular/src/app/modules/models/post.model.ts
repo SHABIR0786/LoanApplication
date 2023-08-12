@@ -374,6 +374,27 @@ export class RefinancePost {
   "birthDate": Date;
 }
 
+export class LeadAssetDetail {
+  Id: number;
+  leadApplicationDetailPurchasingId: number;
+  leadApplicationDetailRefinancingId: number;
+  AssetTypeId: number;
+  LeadApplicationTypeId: number;
+  FinancialInstitution: number;
+  Balance: number;
+  OwnerTypeId: number;
+  haveOtherSourceOfIncome: boolean;
+}
+
+export class MonthlyIncomeDetailsAdd {
+  Id: number;
+  leadApplicationDetailPurchasingId: number;
+  leadApplicationDetailRefinancingId: number;
+  LeadApplicationTypeId: number;
+  IncomeTypeId: number;
+  MonthlyAmount: number;
+}
+
 export class EmployementDetailAdd {
   "employeeTypeId": number;
   "currentOrPastEmployementHistory": boolean;

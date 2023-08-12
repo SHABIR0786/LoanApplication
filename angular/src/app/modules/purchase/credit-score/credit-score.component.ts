@@ -56,6 +56,10 @@ export class CreditScoreComponent implements OnInit {
         .put("LeadPurchasingDetailService/Update", final)
         .subscribe((d: any) => {
           if (d.success === true) {
+            // Clear offline
+            localStorage.removeItem('offline');
+            localStorage.removeItem('leadApplicationDetailPurchasingId');
+            localStorage.localStorage('step');
             // alert("Done");
           } else {
             alert("Oops");

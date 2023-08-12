@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "https://webfonts.brand.ucsb.edu/webfont.min.css";
+/* @import "https://webfonts.brand.ucsb.edu/webfont.min.css"; */
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -6202,7 +6202,7 @@ a.close.disabled {
 .modal-body {
   position: relative;
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .modal-footer {
@@ -6229,7 +6229,8 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 935px;
+    margin-top: 100px;
     margin: 1.75rem auto;
   }
 

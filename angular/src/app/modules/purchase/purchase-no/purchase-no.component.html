@@ -30,7 +30,7 @@
 <!--No# 4 Purchasing  Start -->
 <div class="main-content" *ngIf="number == 2">
   <h2>Congragulations! What’s the address of your new home?</h2>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="" id="address">
       <input
         type="text"
@@ -82,7 +82,7 @@
     if you don’t knoe all the details, that’s okay. We can add those letter.
     <i class="fa-solid fa-circle-info"></i>
   </h6>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <input type="date" class="form-control form-style form-margin-top" />
     <p class="text-center">Do either of these apply to the property?</p>
     <div class="radio-input">
@@ -127,7 +127,7 @@
 <div class="main-content" *ngIf="number == 4">
   <h2 class="little-space">Congratulations! What’s the purchase price?</h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="" id="purchase-price">
       <input
         type="text"
@@ -190,7 +190,7 @@
   <h2 class="little-space">Do you know your credit score?</h2>
   <h6>We Use this into to match you with the perfect load options.</h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       [routerLink]="['/purchase/purchasing-no', 6]"
@@ -242,7 +242,7 @@
   <h2 class="little-space">Ok! We’s like to get to know you.</h2>
   <h6>Please provide you full legal name.</h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <form action="" id="address">
       <div class="row">
@@ -346,7 +346,7 @@
     What type of home is it? <img src="img/info.svg" alt="" />
   </h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       [routerLink]="['/purchase/purchasing-no', 8]"
       class="btn btn-primary btn-style btn-orange"
@@ -395,7 +395,7 @@
     <img src="img/info.svg" alt="" />
   </h2>
   <h6>if so, what is the approximate amount?</h6>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="">
       <input
         type="text"
@@ -447,7 +447,7 @@
     OK great! And how do you plan on using your new home?
   </h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       [routerLink]="['/purchase/purchase-non-mil']"
       class="btn btn-primary btn-style btn-orange"

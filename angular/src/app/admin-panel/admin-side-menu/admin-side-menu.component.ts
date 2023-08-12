@@ -29,7 +29,6 @@ export class AdminSideMenuComponent implements OnInit {
   // isActivePage:boolean=true
   ngOnInit(): void {
     this.getUserDetails();
-    console.log(this.pageName);
     // this.getAdminUserDetails();
     this.toggleSidebar = false;
     $(document).ready(function () {

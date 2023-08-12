@@ -69,12 +69,12 @@ export class PersonalInfoComponent implements OnInit {
     }
   }
   minDep() {
-    if (this.deps > 0) {
-      this.deps--;
+    if (this.model.numberOfDependents > 0) {
+      this.model.numberOfDependents--;
     }
   }
   maxDep() {
-    this.deps++;
+    this.model.numberOfDependents++;
   }
   saveStep() {
     this.offline.saveStep(3, this.model);
@@ -92,9 +92,24 @@ export class PersonalInfoComponent implements OnInit {
     this.submitted = true;
     if (f.valid) {
       this.router.navigate(["/app/refinance/income/1"]);
+      // save data to refiance section 
+      this.addLeadRefinancingDetail(this.model);
       this.saveStep();
       this.submitted = false;
     }
+  }
+  addLeadRefinancingDetail(_model) {
+    this.api.post("/LeadRefinancingDetailsService/Add", _model).subscribe((x: any) => {
+      if (x.success == true) {
+        console.log(x);
+        // this.model.leadApplicationDetailPurchasingId = x.result;
+        this.saveStep();
+        localStorage.setItem('LeadApplicationDetailRefinancingId',x.result);
+        // this.accountService.register(this.user).subscribe((res:any) => {
+        //   this.router.navigate(["/app/purchase/income-info/1"]);
+        // });
+      }
+    });
   }
   milClick(obj: boolean) {
     this.model.isMilitaryMember = obj == true ? 1 : 0;

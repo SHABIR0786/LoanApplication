@@ -23,6 +23,7 @@ export class PersonalInfoComponent implements OnInit {
   dependents: number = 0;
   matched = false;
   user: RegisterInput = new RegisterInput();
+  isEdit = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -71,6 +72,10 @@ export class PersonalInfoComponent implements OnInit {
     }
   }
 
+  refersomeone() {
+    this.model.isSomeOneRefer = 1;
+  }
+
   onPersClick(f, step) {
     this.submitted = true;
     if (this.model.personalPassword === this.model.personalPasswordCon) {
@@ -90,6 +95,14 @@ export class PersonalInfoComponent implements OnInit {
   maritalClick(e: string) {
     this.model.maritialStatus = e;
     this.saveStep();
+  }
+  edit() {
+    this.isEdit = true;
+    this.router.navigate(["/app/purchase/personal-info/9"]);
+  }
+  done() {
+    this.isEdit = true;
+    this.router.navigate(["/app/purchase/personal-info/8"]);
   }
 
   onDepPlusClick() {
@@ -116,7 +129,7 @@ export class PersonalInfoComponent implements OnInit {
   onExpenClick() {
     this.saveStep();
   }
-  saveToDb() {
+ async saveToDb() {
     this.saveStep();
     var _model = new AddFinanceApiModel();
     _model.map(this.model);
@@ -125,15 +138,43 @@ export class PersonalInfoComponent implements OnInit {
     this.user.userName = this.model.personalEmailAddress;
     this.user.emailAddress = this.model.personalEmailAddress;
     this.user.password = this.model.personalPassword;
-    var request = JSON.stringify(_model);
-    this.api
-      .post("/LeadPurchasingDetailService/Add", _model)
-      .subscribe((x: any) => {
-        if (x.success == true)
-          this.accountService.register(this.user).subscribe((res) => {
-            this.router.navigate(["/app/purchase/income-info/1"]);
-          });
-      });
+    // check if the user already exist then update the leadpurchasing detailservice
+    let leadApplicationDetailPurchasingId = localStorage.getItem('leadApplicationDetailPurchasingId');
+    if(leadApplicationDetailPurchasingId) {
+    await this.api.get('/LeadPurchasingDetailService/GetById?id='+leadApplicationDetailPurchasingId).subscribe((res:any) => {
+      if(res.result && res.result.id) {
+        this.updateLeadPurchasingDetail(_model,leadApplicationDetailPurchasingId);
+      } else {
+        this.addLeadPurchasingDetail(_model);
+      }
+    })
+    } else {
+      this.addLeadPurchasingDetail(_model);
+    }
+  }
+  addLeadPurchasingDetail(_model) {
+    this.api.post("/LeadPurchasingDetailService/Add", _model).subscribe((x: any) => {
+      if (x.success == true) {
+        this.model.leadApplicationDetailPurchasingId = x.result;
+        this.saveStep();
+        localStorage.setItem('leadApplicationDetailPurchasingId',x.result);
+        this.accountService.register(this.user).subscribe((res:any) => {
+          this.router.navigate(["/app/purchase/income-info/1"]);
+        });
+      }
+    });
+  }
+  updateLeadPurchasingDetail(_model,leadApplicationDetailPurchasingId) {
+    _model.id = leadApplicationDetailPurchasingId;
+    this.api.put("/LeadPurchasingDetailService/Update", _model).subscribe((x: any) => {
+      if (x.success == true) {
+        this.saveStep();
+        this.router.navigate(["/app/purchase/income-info/1"]);
+        // this.accountService.register(this.user).subscribe((res:any) => {
+        //   this.router.navigate(["/app/purchase/income-info/1"]);
+        // });
+      }
+    });
   }
   saveStep() {
     this.offline.saveStep(4, this.model);

@@ -504,7 +504,7 @@
     </div>
   </div>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <div class="row">
       <div class="col-md-3 offset-md-3">
@@ -559,12 +559,11 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12" class="radio-wrapper">
+    <div class="col-md-12">
       <select
         class="form-select form-style mb-0"
         [(ngModel)]="model.citizenshipId"
-        style="width: 100%"
-      >
+        style="width: 100%">
         <option value="0" selected>-What is your citizenship status?-</option>
         <option [value]="c.id" *ngFor="let c of cs">
           {{ c?.citizenshipType1 }}
@@ -575,9 +574,7 @@
   <div *ngIf="submitted" class="text-danger d-flex justify-content-center">
     Please answer all the questions
   </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
+  <div class="button-list margin-top">
     <div class="row">
       <div class="col-md-3 offset-md-3">
         <a routerLink="/app/purchase/gov/1" class="btn" id="btn-back">Back</a>

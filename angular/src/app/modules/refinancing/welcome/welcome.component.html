@@ -1,7 +1,7 @@
 <div class="main-content" *ngIf="number == 1">
   <form action="" id="working" #f1="ngForm">
     <h2>Are you already working with someone from EZ Online Mortgage?</h2>
-    <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+    <div class="button-list">
       <a
         (click)="isEdit = true; onMorOpt(true)"
         class="btn btn-primary btn-style btn-blue"
@@ -68,7 +68,7 @@
   </h2>
   <h6>Select the reason that best fits your objective.</h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/refinance/property-info/1"

@@ -13,6 +13,8 @@ namespace LoanManagement.Services.Interface
         string Update(UpdateLeadEmploymentDetails request);
         string Delete(int id);
         List<UpdateLeadEmploymentDetails> GetAll();
+        List<UpdateLeadEmploymentDetails> GetPurchaseEmployementDetails(int id);
+        List<UpdateLeadEmploymentDetails> GetRefinanceEmployementDetails(int id);
         UpdateLeadEmploymentDetails GetById(int id);
     }
 }

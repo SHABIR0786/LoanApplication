@@ -75,7 +75,7 @@ export class GovernmentComponent implements OnInit {
   onQsClick() {
     let count = 0;
     this.questions.forEach((ele) => {
-      if (ele["isYes"]) {
+      if (ele.hasOwnProperty('isYes')) {
         count++;
       }
     });
@@ -100,8 +100,7 @@ export class GovernmentComponent implements OnInit {
   }
   onQAns(id, ans) {
     let req: any = {
-      leadApplicationDetailPurchasingId: this.model
-        .leadApplicationDetailPurchasingId,
+      leadApplicationDetailPurchasingId: this.model.leadApplicationDetailPurchasingId??localStorage.getItem('leadApplicationDetailPurchasingId'),
       questionId: id,
       isYes: ans,
     };

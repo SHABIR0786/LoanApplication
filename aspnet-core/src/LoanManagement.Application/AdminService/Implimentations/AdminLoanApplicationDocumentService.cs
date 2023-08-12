@@ -67,14 +67,21 @@ namespace LoanManagement.Services.Implementation
 
         public List<UpdateAdminLoanApplicationDocument> GetAll()
         {
-            return repository.GetAll().Where(x => x.IsDeleted == false).Select(d => new UpdateAdminLoanApplicationDocument()
+            try
             {
-                Id = d.Id,
-                DisclosureId = d.DisclosureId,
-                DocumentPath = d.DocumentPath,
-                LoanId = d.LoanId,
-                UserId = d.CreatorUserId,
-            }).ToList();
+                return repository.GetAll().Where(x => x.IsDeleted == false).Select(d => new UpdateAdminLoanApplicationDocument()
+                {
+                    Id = d.Id,
+                    DisclosureId = d.DisclosureId,
+                    DocumentPath = d.DocumentPath,
+                    LoanId = d.LoanId,
+                    UserId = d.CreatorUserId,
+                }).ToList();
+            } 
+            catch (Exception e)
+            {
+                throw e.GetBaseException();
+            }
         }
 
         public UpdateAdminLoanApplicationDocument GetById(int id)

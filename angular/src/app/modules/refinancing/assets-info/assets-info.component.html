@@ -1,81 +1,34 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Now tell us about your assets.</h2>
   <h6>if you’re not exactly sure, your best guess is fine.</h6>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
+  <div class="button-list margin-top">
     <form action="" id="assets" #f="ngForm">
       <!-- <div class="form-group"> -->
-      <select
-        style="width: 100%"
-        class="form-select form-style"
-        [(ngModel)]="model.assetsAccountType"
-        name="assetsAccountType"
-        #assetsAccountTypeRef="ngModel"
-        required
-      >
+      <select style="width: 100%" class="form-select form-style" [(ngModel)]="model.assetTypeId"
+        name="assetsAccountType" #assetsAccountTypeRef="ngModel" required>
         <option value="undefined" selected disabled>-Account type-</option>
-        <option value="Bonds">Bonds</option>
-        <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
-        <option value="CashValueofLifeInsurance">
-          Cash Value of Life Insurance
-        </option>
-        <option value="CertificateofDeposit">Certificate of Deposit</option>
-        <option value="Checking">Checking</option>
-        <option value="IndividualDevelopmentAccount">
-          Individual Development Account
-        </option>
-        <option value="MoneyMarket">Money Market</option>
-        <option value="MutualFund">Mutual Fund</option>
-        <option value="Retirement">Retirement</option>
-        <option value="Savings">Savings</option>
-        <option value="StockOptions">Stock Options</option>
-        <option value="Stocks">Stocks</option>
-        <option value="TrustAccount">Trust Account</option>
+        <option [value]="assetType.id" *ngFor="let assetType of assetTypes">{{assetType.assetsType}}</option>
       </select>
-      <div
-        *ngIf="submitted && !assetsAccountTypeRef.valid"
-        class="text-danger d-flex"
-      >
+      <div *ngIf="submitted && !assetsAccountTypeRef.valid" class="text-danger d-flex">
         Account type is required
       </div>
       <!-- </div>
       <div class="form-group"> -->
-      <input
-        type="text"
-        class="form-control form-style"
-        placeholder="Financial institution"
-        [(ngModel)]="model.assetsFinInst"
-        name="assetsFinInst"
-        #assetsFinInstRef="ngModel"
-        required
-      />
-      <div
-        *ngIf="submitted && !assetsFinInstRef.valid"
-        class="text-danger d-flex"
-      >
+      <input type="text" class="form-control form-style" placeholder="Financial institution"
+        [(ngModel)]="model.FinancialInstitution" name="FinancialInstitution" #assetsFinInstRef="ngModel" required />
+      <div *ngIf="submitted && !assetsFinInstRef.valid" class="text-danger d-flex">
         Financial institution is required
       </div>
       <!-- </div>
       <div class="form-group"> -->
-      <input
-        type="number"
-        class="form-control form-style"
-        placeholder="Balance"
-        [(ngModel)]="model.assetsBalance"
-        name="assetsBalance"
-        #assetsBalanceRef="ngModel"
-        required
-      />
-      <div
-        *ngIf="submitted && !assetsBalanceRef.valid"
-        class="text-danger d-flex"
-      >
+      <input type="number" class="form-control form-style" placeholder="Balance" [(ngModel)]="model.Balance"
+        name="Balance" #assetsBalanceRef="ngModel" required />
+      <div *ngIf="submitted && !assetsBalanceRef.valid" class="text-danger d-flex">
         Balance is required
       </div>
       <!-- </div>
       <div class="form-group"> -->
-      <select
+      <!-- <select
         class="form-select form-style"
         [(ngModel)]="model.assetsOwner"
         name="assetsOwner"
@@ -90,33 +43,17 @@
         class="text-danger d-flex"
       >
         Owner is required
-      </div>
+      </div> -->
       <!-- </div> -->
       <div class="row margin-top">
-        <div
-          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
-        >
-          <a
-            routerLink="/app/refinance/income/11"
-            class="btn"
-            id="btn-back-blue"
-            >Back</a
-          >
+        <div class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4">
+          <a routerLink="/app/refinance/income/11" class="btn" id="btn-back-blue">Back</a>
         </div>
-        <div
-          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
-        >
+        <div class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4">
           <a class="btn" id="btn-next-blue" (click)="nextClicked(f, 2)">Next</a>
         </div>
-        <div
-          class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4"
-        >
-          <a
-            routerLink="/app/refinance/assets-info/2"
-            class="btn"
-            id="btn-back-blue"
-            >Skip</a
-          >
+        <div class="col-md-2 offset-md-1 col-lg-2 offset-lg-1 col-sm-4 col-xs-4">
+          <a routerLink="/app/refinance/gove/1" class="btn" id="btn-back-blue">Skip</a>
         </div>
       </div>
     </form>
@@ -130,35 +67,15 @@
 
 <div class="main-content" *ngIf="number == 2">
   <h2>Thanks! Do you have any other assets you’d like to share?</h2>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
-    <a
-      routerLink="/app/refinance/assets-info/3"
-      class="btn btn-primary btn-style btn-blue"
-      >Yes</a
-    >
-    <a
-      routerLink="/app/refinance/gov/1"
-      class="btn btn-primary btn-style btn-blue"
-      >No</a
-    >
+  <div class="button-list margin-top">
+    <a routerLink="/app/refinance/assets-info/1" class="btn btn-primary btn-style btn-blue">Yes</a>
+    <a routerLink="/app/refinance/assets-info/3" class="btn btn-primary btn-style btn-blue">No</a>
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          routerLink="/app/refinance/assets-info/1"
-          class="btn"
-          id="btn-back-blue"
-          >Back</a
-        >
+        <a routerLink="/app/refinance/assets-info/1" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a
-          routerLink="/app/refinance/assets-info/3"
-          class="btn"
-          id="btn-next-blue"
-          >Next</a
-        >
+        <a routerLink="/app/refinance/assets-info/3" class="btn" id="btn-next-blue">Next</a>
       </div>
     </div>
   </div>
@@ -172,42 +89,34 @@
 <div class="main-content" *ngIf="number == 3">
   <h2>Let’s review and confirm your assets.</h2>
   <div class="content-area">
-    <div class="row">
-      <div class="col-md-8">
-        <h6>Asset</h6>
+    <div *ngFor="let asset of assets">
+      <div class="row">
+        <div class="col-md-8">
+          <h6>Asset</h6>
+        </div>
+        <div class="col-md-4 right-align">
+          <a (click)="editAsset(asset)" class="btn" id="btn-edit">Edit</a>
+          <a (click)="delete(asset.id)" class="btn btn-danger ml-2">Delete</a>
+        </div>
       </div>
-      <div class="col-md-4 right-align">
-        <a routerLink="/app/refinance/assets-info/4" class="btn" id="btn-edit"
-          >Edit</a
-        >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="profile-details">
-          <p>Account Type: {{ model.assetsAccountType }}</p>
-          <p>Financial Institution: {{ model.assetsFinInst }}</p>
-          <p>Balance: ${{ model.assetsBalance }}</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-details">
+            <p>Account Type: {{ getAssetTypeName(asset.assetTypeId) }}</p>
+            <p>Financial Institution: {{ asset.financialInstitution }}</p>
+            <p>Balance: ${{ asset.balance }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
+  <div class="button-list margin-top">
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          routerLink="/app/refinance/assets-info/2"
-          class="btn"
-          id="btn-back-blue"
-          >Back</a
-        >
+        <a routerLink="/app/refinance/assets-info/2" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/gov/1" class="btn" id="btn-next-blue"
-          >Next</a
-        >
+        <a routerLink="/app/refinance/gov/1" class="btn" id="btn-next-blue">Next</a>
       </div>
     </div>
   </div>
@@ -226,91 +135,44 @@
         <h6>Asset</h6>
       </div>
       <div class="col-md-4 right-align">
-        <a routerLink="/app/refinance/assets-info/3" class="btn" id="btn-edit"
-          >Done</a
-        >
+        <a routerLink="/app/refinance/assets-info/3" class="btn" id="btn-edit">Done</a>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 margin-top">
-        <form action="" id="employer-details">
-          <select
-            style="width: 100%"
-            class="form-select form-style mb-0"
-            [(ngModel)]="model.assetsAccountType"
-            name="assetsAccountType"
-            required
-            #assetsAccountType="ngModel"
-          >
+        <form action="" id="employer-details" #f2="ngForm">
+          <select style="width: 100%" class="form-select form-style" [(ngModel)]="assetDetail.assetTypeId"
+            name="assetsAccountType" required #assetsAccountTypeRef="ngModel">
             <option value="undefined" selected disabled>-Account type-</option>
-            <option value="Bonds">Bonds</option>
-            <option value="BridgeLoanProceeds">Bridge Loan Proceeds</option>
-            <option value="CashValueofLifeInsurance">
-              Cash Value of Life Insurance
-            </option>
-            <option value="CertificateofDeposit">Certificate of Deposit</option>
-            <option value="Checking">Checking</option>
-            <option value="IndividualDevelopmentAccount">
-              Individual Development Account
-            </option>
-            <option value="MoneyMarket">Money Market</option>
-            <option value="MutualFund">Mutual Fund</option>
-            <option value="Retirement">Retirement</option>
-            <option value="Savings">Savings</option>
-            <option value="StockOptions">Stock Options</option>
-            <option value="Stocks">Stocks</option>
-            <option value="TrustAccount">Trust Account</option>
+            <option [value]="assetType.id" *ngFor="let assetType of assetTypes">{{assetType.assetsType}}</option>
           </select>
           <div *ngIf="!assetsAccountTypeRef.valid" class="text-danger d-flex">
             Account type is required
           </div>
-          <input
-            type="text"
-            class="form-control form-style mb-0"
-            placeholder="Financial institution"
-            [(ngModel)]="model.assetsFinInst"
-            name="assetsFinInst"
-            required
-            #assetsFinInst="ngModel"
-          />
+          <input type="text" class="form-control form-style" placeholder="Financial institution"
+            [(ngModel)]="assetDetail.financialInstitution" name="assetsFinInst" required #assetsFinInst="ngModel" />
           <div *ngIf="!assetsFinInst.valid" class="text-danger d-flex">
             Financial institution is required
           </div>
-          />
-          <input
-            type="text"
-            class="form-control form-style mb-0"
-            placeholder="Balance"
-            [(ngModel)]="model.assetsBalance"
-            name="assetsBalance"
-            required
-            #assetsBalance="ngModel"
-          />
+          <input type="text" class="form-control form-style" placeholder="Balance"
+            [(ngModel)]="assetDetail.balance" name="assetsBalance" required #assetsBalance="ngModel" />
           <div *ngIf="!assetsBalance.valid" class="text-danger d-flex">
             Balance is required
           </div>
 
-          />
+
+
         </form>
       </div>
     </div>
   </div>
-  <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
-  >
+  <div class="button-list margin-top">
     <div class="row">
       <div class="col-md-3 offset-md-3">
-        <a
-          routerLink="/app/refinance/assets-info/2"
-          class="btn"
-          id="btn-back-blue"
-          >Back</a
-        >
+        <a routerLink="/app/refinance/assets-info/3" class="btn" id="btn-back-blue">Back</a>
       </div>
       <div class="col-md-2">
-        <a routerLink="/app/refinance/gov/1" class="btn" id="btn-next-blue"
-          >Next</a
-        >
+        <a (click)="update(f2)" class="btn" id="btn-next-blue">Update</a>
       </div>
     </div>
   </div>

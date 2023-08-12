@@ -14,7 +14,7 @@ $theme-colors: (
   "dark-grey-3": #091a5214,
   "dark-grey-4": #091a5229,
   "light": #f8fafd,
-  "skin": #f4774129,
+  "skin": #f4774129
 );
 
 $spacer: 1rem !default;
@@ -51,15 +51,14 @@ $spacers: map-merge(
 
 @font-face {
   font-family: "Avenir";
-  src: local("Avenir-Medium"),
-    url("/assets/fonts/Avenir-Font/fonts/Avenir Medium.ttf") format("truetype");
+  src: local("Avenir"),
+    url("/assets/fonts/Avenir-Font/fonts/fa-solid-900-Avenir.woff2") format("woff2");
 }
 @font-face {
   font-family: "Avenir-Medium";
   src: local("Avenir-Medium"),
     url("/assets/fonts/Avenir-Font/fonts/Avenir Medium.ttf") format("truetype");
 }
-
 @font-face {
   font-family: "Avenir-Heavy";
   src: local("Avenir-Heavy"),

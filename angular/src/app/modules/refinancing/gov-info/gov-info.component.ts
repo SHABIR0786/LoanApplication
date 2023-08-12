@@ -65,7 +65,7 @@ export class GovInfoComponent implements OnInit {
   abc(a) {
     let count = 0;
     this.questions.forEach((ele) => {
-      if (ele["isYes"]) {
+      if (ele.hasOwnProperty('isYes')) {
         count++;
       }
     });

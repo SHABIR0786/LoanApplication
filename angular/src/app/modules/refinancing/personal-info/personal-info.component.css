@@ -7,3 +7,6 @@
   color: white !important;
   border-color: #091a52 !important;
 }
+.button-list {
+  max-width: 100% !important;
+}

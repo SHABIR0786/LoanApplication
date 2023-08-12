@@ -102,6 +102,7 @@ export class PropertyInfoComponent implements OnInit {
   // }
   onNextClick() {
     this.offline.saveStep(3, this.model);
+    this.isEdit = false;
   }
   onCreditClick(e) {
     this.model.creditScore = e;
@@ -127,17 +128,24 @@ export class PropertyInfoComponent implements OnInit {
     this.offline.saveStep(3, this.model);
   }
   onEditNextClick() {
+    this.isEdit = false;
     this.offline.saveStep(3, this.model);
   }
 
   calculatePercent() {
-    console.log(this.model.downPaymentPercent);
     this.model.downPaymentPercent = String(
       (
         (Number(this.model.downPaymentAmount) /
           Number(this.model.estimatedPrice)) *
         100
       ).toFixed(3)
+    );
+  }
+  calculateAmount() {
+    this.model.downPaymentAmount = String(
+        (Number(this.model.downPaymentPercent) *
+          Number(this.model.estimatedPrice)) /
+        100
     );
   }
   editClicked() {

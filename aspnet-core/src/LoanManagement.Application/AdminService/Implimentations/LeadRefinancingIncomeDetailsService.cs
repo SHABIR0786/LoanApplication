@@ -26,6 +26,7 @@ namespace LoanManagement.Services.Implementation
             {
                 IncomeTypeId = request.IncomeTypeId,
                 LeadApplicationDetailRefinancingId = request.LeadApplicationDetailRefinancingId,
+                LeadApplicationDetailPurchasingId = request.LeadApplicationDetailPurchasingId,
                 LeadApplicationTypeId = request.LeadApplicationTypeId,
                 MonthlyAmount = request.MonthlyAmount
             };
@@ -50,21 +51,17 @@ namespace LoanManagement.Services.Implementation
 
             repository.Update(obj);
             UnitOfWorkManager.Current.SaveChanges();
-
             return AppConsts.SuccessfullyUpdated;
         }
         public string Delete(int id)
         {
             var obj = repository.GetAll().Where(s => s.Id == id).FirstOrDefault();
-
             if (obj == null)
             {
                 return AppConsts.NoRecordFound;
             }
-
             repository.Delete(obj);
             UnitOfWorkManager.Current.SaveChanges();
-
             return AppConsts.SuccessfullyDeleted;
         }
 
@@ -76,6 +73,30 @@ namespace LoanManagement.Services.Implementation
                 IncomeTypeId = d.IncomeTypeId,
                 MonthlyAmount = d.MonthlyAmount,
                 LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,  
+                LeadApplicationTypeId = d.LeadApplicationTypeId
+            }).ToList();
+        }
+
+        public List<UpdateLeadRefinancingIncomeDetails> getPurchaseIncomeDetails(int id)
+        {
+            return repository.GetAll().Where(x=> x.LeadApplicationDetailPurchasingId == id).Select(d => new UpdateLeadRefinancingIncomeDetails()
+            {
+                Id = d.Id,
+                IncomeTypeId = d.IncomeTypeId,
+                MonthlyAmount = d.MonthlyAmount,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
+                LeadApplicationTypeId = d.LeadApplicationTypeId
+            }).ToList();
+        }
+
+        public List<UpdateLeadRefinancingIncomeDetails> GetRefinancingIncomeDetails(int id)
+        {
+            return repository.GetAll().Where(x => x.LeadApplicationDetailRefinancingId == id).Select(d => new UpdateLeadRefinancingIncomeDetails()
+            {
+                Id = d.Id,
+                IncomeTypeId = d.IncomeTypeId,
+                MonthlyAmount = d.MonthlyAmount,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
                 LeadApplicationTypeId = d.LeadApplicationTypeId
             }).ToList();
         }

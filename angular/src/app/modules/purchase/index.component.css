@@ -4,7 +4,7 @@
 @import url('../../../assets/new/css/bootstrap.min.css');
 
 @import url('../../../assets/new/css/all.min.css'); */
-@import url("../../../assets/new/css/fontawesome.min.css");
+/* @import url("../../../assets/new/css/fontawesome.min.css"); */
 
 .navbar-light .navbar-nav .nav-link.active {
   color: rgba(0, 0, 0, 0.9) !important;

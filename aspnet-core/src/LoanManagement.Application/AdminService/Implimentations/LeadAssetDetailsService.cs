@@ -67,6 +67,35 @@ namespace LoanManagement.Services.Implementation
                 FinancialInstitution = d.FinancialInstitution
             }).ToList();
         }
+        
+        public List<UpdateLeadAssetDetails> GetLeadAssetDetailsByPurchasingId(int Id)
+        {
+            return repository.GetAll().Where(x=>x.LeadApplicationDetailPurchasingId == Id).Select(d => new UpdateLeadAssetDetails()
+            {
+                Id = d.Id,
+                LeadApplicationDetailPurchasingId = d.LeadApplicationDetailPurchasingId,
+                LeadApplicationTypeId = d.LeadApplicationTypeId,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
+                OwnerTypeId = d.OwnerTypeId,
+                AssetTypeId = d.AssetTypeId,
+                Balance = d.Balance,
+                FinancialInstitution = d.FinancialInstitution
+            }).ToList();
+        }
+        public List<UpdateLeadAssetDetails> GetLeadAssetDetailsByRefinancingId(int Id)
+        {
+            return repository.GetAll().Where(x => x.LeadApplicationDetailRefinancingId == Id).Select(d => new UpdateLeadAssetDetails()
+            {
+                Id = d.Id,
+                LeadApplicationDetailPurchasingId = d.LeadApplicationDetailPurchasingId,
+                LeadApplicationTypeId = d.LeadApplicationTypeId,
+                LeadApplicationDetailRefinancingId = d.LeadApplicationDetailRefinancingId,
+                OwnerTypeId = d.OwnerTypeId,
+                AssetTypeId = d.AssetTypeId,
+                Balance = d.Balance,
+                FinancialInstitution = d.FinancialInstitution
+            }).ToList();
+        }
 
         public UpdateLeadAssetDetails GetById(int id)
         {

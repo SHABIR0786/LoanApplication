@@ -1,6 +1,6 @@
 <div class="main-content" *ngIf="number == 1">
   <h2>Great now what's the address of the home you're refinancing?</h2>
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="" id="address" #f="ngForm">
       <div class="form-group">
         <input
@@ -152,7 +152,7 @@
   </h2>
   <h6>If you don't know exactly your best guess is fine.</h6>
   <div
-    class="button-list margin-top extra-margin col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top extra-margin"
   >
     <form action="" id="property-estimate" #f2="ngForm">
       <div class="form-group">
@@ -241,7 +241,7 @@
   <h2 class="little-space">Do you know your credit score?</h2>
   <h6>We Use this into to match you with the perfect load options.</h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/refinance/property-info/4"
@@ -302,7 +302,7 @@
     <img src="../../../../assets/img/info.svg" alt="" />
   </h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       routerLink="/app/refinance/property-info/5"
       class="btn btn-primary btn-style btn-blue"
@@ -360,7 +360,7 @@
 <div class="main-content" *ngIf="number == 5">
   <h2>What are your monthly Homeowners Association dues?</h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <form action="" id="hoa-dues" #f5="ngForm">
       <input
         type="number"
@@ -419,7 +419,7 @@
   <h2 class="little-space">Tell us a little bit more about your home.</h2>
   <h6>If you don't know exactly your best guess is fine.</h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <form action="" id="home-details" #f6="ngForm">
       <div class="form-group">
@@ -518,7 +518,7 @@
 <div class="main-content" *ngIf="number == 7">
   <h2 class="narrow-space">How are you currently using your home?</h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <a
       routerLink="/app/refinance/property-info/8"
       class="btn btn-primary btn-style btn-blue"
@@ -573,7 +573,7 @@
   </h6>
 
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/refinance/property-info/9"
@@ -620,7 +620,6 @@
           routerLink="/app/refinance/property-info/10"
           class="btn"
           id="btn-edit"
-          (click)="getEditData()"
           >Edit</a
         >
       </div>
@@ -681,7 +680,7 @@
     </div>
   </div>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <div class="row">
       <div class="col-md-3 offset-md-3 col-lg-3 offset-lg-3 col-sm-6 col-xs-6">
@@ -728,7 +727,7 @@
     </div>
 
     <div
-      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+      class="button-list margin-top"
     >
       <button
         type="button"
@@ -974,7 +973,7 @@
         Needs Improvement (less then 580)
       </button>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
           <input
             type="text"
@@ -1044,18 +1043,18 @@
         #propertyEmailAddressRef="ngModel"
         required
       />
-      <!-- <div
+      <div
         *ngIf="propertyEmailAddressRef.errors?.pattern"
         class="text-danger d-flex"
       >
         This is not a valid email address
-      </div> -->
+      </div>
       <div
         *ngIf="propertyEmailAddressRef.errors?.required"
         class="text-danger d-flex"
       >
         Email is required
-      </div>
+      </div> -->
       <h6 id="padding-up">Type of home</h6>
 
       <button
@@ -1123,13 +1122,13 @@
           <h6>Property Details</h6>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 right-align">
-          <button type="button" class="btn" id="btn-edit">Done</button>
+          <button type="button" class="btn" (click)="doneClicked(f10)" id="btn-edit">Done</button>
         </div>
       </div>
     </div>
 
     <div
-      class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+      class="button-list margin-top"
     >
       <input
         type="text"
@@ -1236,7 +1235,7 @@
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
-            href="/app/refinance/property-info/9"
+            routerLink="/app/refinance/property-info/9"
             class="btn"
             id="btn-back-blue"
             >Back</a
@@ -1244,7 +1243,7 @@
         </div>
         <div class="col-md-2">
           <a
-            href="/app/refinance/property-info/11"
+            routerLink="/app/refinance/property-info/9"
             class="btn"
             id="btn-next-blue"
             >Next</a
@@ -1272,7 +1271,7 @@
     parties.
   </h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <form action="" id="personal" #f11="ngForm">
       <div class="row">
@@ -1344,10 +1343,10 @@
           minlength="11"
         />
         <div class="text-danger d-flex">
-          <div *ngIf="propertyPhoneNumberRef.errors?.minlength">
+          <div *ngIf="submitted && propertyPhoneNumberRef.errors?.minlength">
             This is not a valid phone number
           </div>
-          <div *ngIf="propertyPhoneNumberRef.errors?.required">
+          <div *ngIf="submitted && propertyPhoneNumberRef.errors?.required">
             Phone is required
           </div>
         </div>
@@ -1489,7 +1488,7 @@
 <div class="main-content" *ngIf="number == 12">
   <h2 class="tiny-space">Did someone refer you to EZ Online Mortgage?</h2>
 
-  <div class="button-list col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12">
+  <div class="button-list">
     <button
       type="button"
       class="btn btn-primary btn-style btn-blue"
@@ -1551,7 +1550,7 @@
     co-borrower throughout the applcation.
   </h6>
   <div
-    class="button-list margin-top col-lg-6 offset-lg-3 col-sm-12 col-xs-12 col-md-12"
+    class="button-list margin-top"
   >
     <a
       routerLink="/app/refinance/personal-info/1"

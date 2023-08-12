@@ -28,7 +28,7 @@ const routes: Routes = [];
     RouterModule.forChild([
       {
         path: "",
-        component: AdminSideMenuComponent,
+        component: AdminPanelLayoutComponent,
         children: [
           {
             path: "home",

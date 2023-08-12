@@ -13,6 +13,8 @@ namespace LoanManagement.Services.Interface
         string Update(UpdateLeadRefinancingIncomeDetails request);
         string Delete(int id);
         List<UpdateLeadRefinancingIncomeDetails> GetAll();
+        List<UpdateLeadRefinancingIncomeDetails> getPurchaseIncomeDetails(int id);
+        List<UpdateLeadRefinancingIncomeDetails> GetRefinancingIncomeDetails(int id);
         UpdateLeadRefinancingIncomeDetails GetById(int id);
     }
 }
