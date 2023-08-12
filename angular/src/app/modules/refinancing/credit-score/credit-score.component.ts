@@ -48,8 +48,11 @@ export class CreditScoreComponent implements OnInit {
   onFinalCLick(f) {
     this.submitted = true;
     if (f.valid) {
-      this.abc("/app/refinance/thanks");
       this.saveStep();
+      this.abc("/app/refinance/thanks");
+      localStorage.removeItem("offline");
+      localStorage.removeItem("LeadApplicationDetailRefinancingId");
+      localStorage.localStorage("step");
       this.submitted = false;
     }
   }

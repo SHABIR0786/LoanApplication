@@ -76,7 +76,7 @@ export class HomeComponent extends AppComponentBase implements OnInit, DoCheck {
 
   ngOnInit() {
     this.siteSettingService
-      .get(`Get?Id=${1}`)
+      .get(`services/app/SiteSettingServices/Get?Id=${1}`)
       .subscribe((response: Result<SiteSettings>) => {
         const homeSettings: HomeSettings = JSON.parse(
           response.result.pageSetting
