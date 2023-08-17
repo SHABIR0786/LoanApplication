@@ -25,6 +25,7 @@ export class BorrowerInfoComponent implements OnInit {
   countryList: any[] = [];
   stateList: any[] = [];
   cityList: any[] = [];
+  citizenshipType:any[]=[];
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
     this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -57,6 +58,12 @@ export class BorrowerInfoComponent implements OnInit {
     this.borrowService.getAllCitizenshipType().subscribe(
       (res: any) => {
         console.log(res.result);
+        this.citizenshipType = []
+        if (res.success == true && res.result.length > 0) {
+          res.result.forEach((element: any) => {
+          this.citizenshipType.push({ citizenshipType1: element.citizenshipType1, id: element.id })
+        })
+      }
         //this.Custom = res.result.items;
       }
     );
@@ -216,5 +223,10 @@ export class BorrowerInfoComponent implements OnInit {
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
   // }
+  getInitials(){
+    var f = this.borrowerInfo.personalInformation.firstName.charAt(0)
+    var l = this.borrowerInfo.personalInformation.lastName.charAt(0)
+    this.borrowerInfo.personalInformation.yourInitials = f.toUpperCase() + l.toUpperCase()
+  }
 }
 
