@@ -216,9 +216,12 @@
                 [ngClass]="{'error':  question4ans.touched && question4ans.errors}">
               <div style="display: flex; align-items: center;width: 400px;">
                 <span>$ </span>
-                <input type="number" min="0" style="width: 160px;"  [(ngModel)]="declarationsList[6].answer" id="question4ans" name="question4ans" #question4ans="ngModel" [readonly]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" 
+                <!-- <input type="number" min="0" 
+                /> -->
+                <p-inputNumber style="width: 160px;"  [(ngModel)]="declarationsList[6].answer" id="question4ans" name="question4ans" #question4ans="ngModel" [disabled]="declarationsList[5].answer == 'No'" (change)="assignQuestionId(6,3)" 
                 [required]="declarationsList[5].answer == 'Yes'"
-                /></div>
+                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+              </div>
             </div>
           </div>
         </div>

@@ -3,6 +3,90 @@
        pointer-events: none;
        background-color: #E7E7E7 !important;
   }
+
+  :host/deep/.ui-inputtext {
+    /* margin: 0;
+    outline: medium none;
+    padding: 0.25em;
+    font-weight: normal;
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    line-height: 1.2575; */
+
+    border: 0px !important;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-left: 0px !important;
+    width: 100%;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    color: #A5A5A5;
+    font-weight: 500;
+    line-height: 1.2575;
+    border-bottom: 0px solid #A5A5A5 !important;
+    background-color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 #ffffff !important;
+    outline: medium none;
+  }
+
+  
+ 
+  :host/deep/  .disabled input{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/  .disabled .input-border-bottom{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/  .disabled .input-border-bottom .frm-group{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled .frm-fld-input{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+  ::ng-deep .fifty .ui-inputtext {
+        width: 50% !important;
+        /* border: none !important; */
+  }
+  ::ng-deep .sixty .ui-inputtext {
+        width: 60% !important;
+        /* border: none !important; */
+  }
+  ::ng-deep .seventy .ui-inputtext {
+        width: 70% !important;
+        /* border: none !important; */
+  }
+  ::ng-deep .eighty .ui-inputtext {
+        width: 80% !important;
+        /* border: none !important; */
+  }
+  ::ng-deep .noBorder .ui-inputtext {
+        border: none !important;
+  }
+
+  ::ng-deep .showBorder .ui-inputtext {
+        border-bottom:1px solid #A5A5A5 !important;
+        padding-left:5px ;
+        padding-right: 5px;
+  }
+
+
 </style>
 <div>
   <h4 class="section-title">Loan and Property Information</h4>
@@ -40,9 +124,13 @@
                   [ngClass]="{'error':  loanAmount.touched && loanAmount.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
-                        min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
-                        id="loanAmount" #loanAmount="ngModel" required /></div>
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                      
+                      <p-inputNumber class="showBorder"
+                  [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
+                      id="loanAmount" #loanAmount="ngModel" [required]="true"
+                          [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -106,26 +194,23 @@
         <div class="col-12">
           <div class="frm-group">
             <label class="frm-label">Property Address</label>
-            <div class="row mt-2">
-              <div class="col-1"><label class="gray-text">Street</label></div>
-              <div class="col-7 input-border-bottom"
+            <div class="row mt-2 ml-2 ">
+              <div class="col-1 p-0"><label class="gray-text">Street</label></div>
+              <div class="col-7  p-0 input-border-bottom"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && street.errors}"
                 [ngClass]="{'error':  street.touched && street.errors}">
-                <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"
-                  name="street" id="street" #street="ngModel" required />
+                <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"  name="street" id="street" #street="ngModel" required />
               </div>
 
-              <div class="col-1"><label class="gray-text">Unit#</label></div>
-              <div class="col-2 input-border-bottom">
-                <input type="number" min="0" />
+              <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit#</label></div>
+              <div class="col-2  p-0 input-border-bottom">
+                <p-inputNumber class="showBorder"  [min]="0"></p-inputNumber>
               </div>
             </div>
 
-
-
-            <div class="row mt-2">
-              <div class="col-1 mt-2"><label class="gray-text">City</label></div>
-              <div class="col-3 input-border-bottom">
+            <div class="row mt-2 ml-2">
+              <div class="col-1  p-0 mt-2"><label class="gray-text">City</label></div>
+              <div class="col-3  p-0 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && cityId.errors}"
                   [ngClass]="{'error':  cityId.touched && cityId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -139,8 +224,8 @@
                 </div>
               </div>
 
-              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
-              <div class="col-1 input-border-bottom">
+              <div class="col-1  p-0 mt-2"><label class="gray-text" style="text-align: center;">State</label></div>
+              <div class="col-1  p-0 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && stateId.errors}"
                   [ngClass]="{'error':  stateId.touched && stateId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -155,8 +240,8 @@
               </div>
 
 
-              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
-              <div class="col-1 input-border-bottom mt-1"
+              <div class="col-1  p-0 mt-2"><label class="gray-text" style="text-align: center;">ZIP</label></div>
+              <div class="col-1  p-0 input-border-bottom mt-1"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && zip.errors}"
                 [ngClass]="{'error':  zip.touched && zip.errors}">
                 <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
@@ -164,8 +249,8 @@
               </div>
 
 
-              <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
-              <div class="col-2 input-border-bottom">
+              <div class="col-1  p-0 mt-2"><label class="gray-text" style="text-align: center;">Country</label></div>
+              <div class="col-2  p-0 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && countryId.errors}"
                   [ngClass]="{'error':  countryId.touched && countryId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -181,46 +266,17 @@
             </div>
 
 
-            <!--
-        <div class="row mt-2">
-          <div class="col-1"><label class="gray-text">City</label></div>
-          <div class="col-3 input-border-bottom">
-            <input type="text" />
-          </div>
 
-          <div class="col-1"><label class="gray-text">State</label></div>
-          <div class="col-1 input-border-bottom">
-            <input type="text" />
-          </div>
-
-
-          <div class="col-1"><label class="gray-text">ZIP</label></div>
-          <div class="col-1 input-border-bottom">
-            <input type="text" />
-          </div>
-
-
-          <div class="col-1"><label class="gray-text">Country</label></div>
-          <div class="col-2 input-border-bottom">
-            <input type="text" />
-          </div>
-
-        </div> -->
-
-
-            <div class="row mt-2">
-              <div class="col-1"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label>
-              </div>
-              <div class="col-4 input-border-bottom">
-                <input type="number" min="0"
-                  [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits"
-                  name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel" />
+            <div class="row mt-2 ml-2">
+              <div class="col-1 p-0"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label></div>
+              <div class="col-2  p-0 input-border-bottom">
+                  <p-inputNumber class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber>
               </div>
 
-              <div class="col-2"><label class="gray-text" style="font-size: 14px !important;">PROPERTY VALUE $</label>
-              </div>
-              <div class="col-4 input-border-bottom">
-                <input type="number" min="0" />
+              <div class="col-2  p-0"><label class="gray-text" style="font-size: 14px !important; text-align: center;">PROPERTY VALUE</label></div>
+              <div class="col-2  p-0 input-border-bottom" style="display: flex;">
+                <span class="mr-2">$</span>
+                <p-inputNumber class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
               </div>
             </div>
 
@@ -458,10 +514,17 @@
                   [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                        <!-- <input type="text"
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /> -->
+                        <p-inputNumber class="showBorder" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
+                        name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -496,10 +559,17 @@
                   <div class="input-border-bottom"
                     >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                        <!-- <input type="number"
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /> -->
+                        <p-inputNumber class="showBorder" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
+                        name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -511,10 +581,17 @@
                   <div class="input-border-bottom"
                    >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
+                         <!-- <input type="number"
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /> -->
+                        <p-inputNumber class="showBorder"
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
+                        name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -526,10 +603,17 @@
                   <div class="input-border-bottom"
                 >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                        <!-- <input type="number"
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
-                        [required]="flgOtherNewMortgageLoans == false" /></div>
+                        [required]="flgOtherNewMortgageLoans == false" /> -->
+                        <p-inputNumber class="showBorder" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
+                        name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -587,11 +671,19 @@
                   [ngClass]="{'error':  txtmonthlyRentalIncome.touched && txtmonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 15px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                        <!-- <input type="number"
                         min="0" [readonly]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
                         id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" />
+                        [required]="flgRentalIncome == false" /> -->
+
+                        <p-inputNumber class="showBorder"
+                        [disabled]="flgRentalIncome == true"
+                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
+                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
+                        [required]="flgRentalIncome == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
                     </div>
                   </div>
                 </div>
@@ -612,11 +704,19 @@
                   [ngClass]="{'error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 15px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="number"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
+                         <!-- <input type="number"
                         min="0" [readonly]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" />
+                        [required]="flgRentalIncome == false" /> -->
+
+                        <p-inputNumber class="showBorder"
+                         [disabled]="flgRentalIncome == true"
+                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
+                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
+                        [required]="flgRentalIncome == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
                     </div>
                   </div>
                 </div>
@@ -734,9 +834,16 @@
                   [ngClass]="{'error':  marketValue.touched && marketValue.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
-                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text"
+                        style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
+                        <!-- <input type="text"
                         [readonly]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
-                        id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /></div>
+                        id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /> -->
+                        <p-inputNumber class="showBorder" 
+                         [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
+                         id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      
+                      </div>
                   </div>
                 </div>
               </div>

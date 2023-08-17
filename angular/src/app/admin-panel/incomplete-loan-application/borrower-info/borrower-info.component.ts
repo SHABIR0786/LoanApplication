@@ -19,6 +19,9 @@ export class BorrowerInfoComponent implements OnInit {
   doNotApplyForEmp1: boolean = false;
   doNotApplyForEmp2: boolean = false;
   incomeFromOtherSources: boolean = false;
+  yearList:any[]=[];
+  monthList:any[]=[];
+  browerList:any[]=[];
   countryList: any[] = [];
   stateList: any[] = [];
   cityList: any[] = [];
@@ -46,6 +49,7 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.monthYearList();
     this.getCountries();
     this.getStates();
     this.getCities()
@@ -88,7 +92,25 @@ export class BorrowerInfoComponent implements OnInit {
       this.incomeFromOtherSources = JSON.parse(localStorage.getItem('incomeFromOtherSources'));
     }
   }
-
+  monthYearList()
+  {
+    this.yearList = [];
+    this.monthList=[];
+    this.browerList=[];
+    for(var i= 1 ; i<=100 ; i = i + 1)
+    {
+      this.yearList.push({id:i,label:i});
+    } 
+    for(var i= 1 ; i<=12 ; i = i + 1)
+    {
+      this.monthList.push({id:i,label:i});
+    }
+    for(var i= 1 ; i<=12 ; i = i + 1)
+    {
+      this.browerList.push({id:i,label:i});
+    }
+    debugger
+  }
   creditClick() {
     debugger;
     if (this.borrowerInfo.personalInformation.creditValue == "1") {

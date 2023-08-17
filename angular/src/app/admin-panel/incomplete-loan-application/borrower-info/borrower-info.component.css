@@ -7,6 +7,33 @@ font-family: 'Nunito', sans-serif;
 font-family: 'Mulish', sans-serif;
 font-family: 'Source Sans Pro', sans-serif; */
 
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  color: #A5A5A5;
+}
+*:-moz-placeholder {
+  /* FF 4-18 */
+  color:  #A5A5A5;
+  opacity: 1;
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color:  #A5A5A5;
+  opacity: 1;
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color:  #A5A5A5;
+}
+*::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color:  #A5A5A5;
+}
+*::placeholder {
+  /* modern browser */
+  color:  #A5A5A5;
+}
+
 .section-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   padding-bottom: 20px;
@@ -132,7 +159,7 @@ width: 100%;
 }
 .div-main-grp .div-sub-grp .frm-group {
 box-sizing: border-box;
-padding: 5px 5px 5px 16px;
+padding: 5px 15px 5px 25px !important;
 min-height: 50px;
 border: solid 0.1rem #A5A5A5;
 background-color: #ffffff;
@@ -143,7 +170,7 @@ flex-shrink: 0;
 
 .error {
   box-sizing: border-box;
-  padding: 5px 5px 5px 16px;
+  padding: 5px 5px 5px 16px !important;
   min-height: 50px;
   border: solid 1px !important;
   border-color: red !important;
@@ -161,6 +188,9 @@ flex-shrink: 0;
     border-radius: 10px;
     max-height:35px !important;
     /* flex-shrink: 0; */
+  }
+  :host/deep/ .ui-inputtext{
+    color: #A5A5A5 !important;
   }
 
 
@@ -226,7 +256,9 @@ flex-shrink: 0;
 
 .div-main-grp .div-sub-grp .frm-group-borderless {
 box-sizing: border-box;
-padding: 5px 5px 5px 5px;
+/* padding: 5px 5px 5px 5px; */
+/* padding: 5px 15px 5px 25px !important; */
+padding: 5px 2px 5px 10px !important;
 border: solid 0 #A5A5A5;
 background-color: #ffffff;
 border-radius: 10px;
@@ -243,8 +275,8 @@ font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
 .div-main-grp .div-sub-grp .frm-group-borderless .frm-fld-input {
-font-size: 14px;
-margin-top: 0px;
+font-size: 15px;
+margin-top: 5px;
 margin-bottom: 0px;
 border-bottom: 1px solid #A5A5A5;
 font-weight: 500;
@@ -252,7 +284,6 @@ color: #A5A5A5;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
-
 
 
 .div-main-grp .div-sub-grp .frm-group-borderless .frm-fld-input input{
@@ -277,6 +308,37 @@ white-space: nowrap;
   font-weight: 500;
   line-height: 1.2575;
 }
+
+
+
+.input-border-none{
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #ffffff;
+  border-top:0px;
+  border-left:0px;
+  border-right: 0px;
+  font-weight: 500;
+  color: #A5A5A5;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+  
+  .input-border-none input{
+  border: 0px !important;
+  font-size: 14px;
+  margin-bottom: 0px;
+  padding-left: 0px !important;
+  width: 100%;
+  color: #A5A5A5;
+  font-weight: 500;
+  line-height: 1.2575;
+  border-bottom: 0px solid #A5A5A5 !important;
+  background-color: #ffffff;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
 
 
 .input-border-bottom{
@@ -308,6 +370,28 @@ font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
 
+
+
+.input-border-bottom select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  /* background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png"); */
+  background-image: none;
+  border-bottom: 1px solid #002B4E;
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 90%;
+  font-size: 15px;
+  width: 100%;
+  color: #a5a5a5;
+  border: 0px !important;
+  font-weight: 500;
+  line-height: 20px;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
 
 p-inputmask .ui-inputtext{
     border: 0px !important;
@@ -476,6 +560,16 @@ white-space: nowrap;
   white-space: nowrap;
   }
 
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, input:focus{
+    font-size: 15px;
+    outline: none;
+    font-weight: 500;
+    border:0px solid transparent;
+    background-color: #e6e6e6;
+    font-family: 'Mulish', sans-serif;
+    white-space: nowrap;
+    }
+
   .div-main-grp .div-sub-grp .frm-group .frm-fld-input select{
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -496,6 +590,26 @@ white-space: nowrap;
   }
 
 
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input-no-arrow select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image:none; /* url("https://cdn-icons-png.flaticon.com/512/60/60995.png"); */
+    background-size: auto 60%;
+    background-repeat: no-repeat;
+    height: 15px !important;
+    background-position-x: 98%;
+    font-size: 15px;
+    width: 100%;
+    color: #a5a5a5;
+    border: 0px !important;
+    font-weight: 500;
+    line-height: 15px;
+    font-family: 'Mulish', sans-serif;
+    white-space: nowrap;
+    }
+
+
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input select option{
   font-size: 15px;
   width: 100%;
@@ -504,6 +618,16 @@ white-space: nowrap;
   line-height: 30px !important;
   font-family: 'Mulish', sans-serif;
   }
+
+
+  .div-main-grp .div-sub-grp .frm-group .frm-fld-input_sml select option{
+    font-size: 15px;
+    width: 100%;
+    margin-bottom: 20px !important;
+    padding-top: 5px !important;
+    line-height: 30px !important;
+    font-family: 'Mulish', sans-serif;
+    }
 
 
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, select:focus{
@@ -517,3 +641,25 @@ white-space: nowrap;
   white-space: nowrap;
 }
 
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, input:focus{
+  font-size: 15px;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.2575;
+  border:0px solid transparent;
+  background-color: #e6e6e6;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+  shadow-none{
+    box-shadow: inset 0 -1px 0 #ddd !important;
+  }
+
+  .span-bold{
+    color:#696969  !important; 
+    font-weight: 600; 
+    font-size: 14px !important; 
+    font-family: 'Mulish', sans-serif;
+  }

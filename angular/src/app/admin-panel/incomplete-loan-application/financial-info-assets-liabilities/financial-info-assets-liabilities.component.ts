@@ -22,7 +22,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   financialInfoAssetsLiabilitiesModels: FinancialInfoAssetsLiabilitiesModels = new FinancialInfoAssetsLiabilitiesModels();
   ngOnInit(): void {
     // this.getAllMortgageApplicationAssetandLiability()
-    debugger
+    
     if(localStorage.financialInfoAssetsLiabilitiesModels != undefined && localStorage.financialInfoAssetsLiabilitiesModels != '')
     {
       this.financialInfoAssetsLiabilitiesModels =JSON.parse(localStorage.getItem('financialInfoAssetsLiabilitiesModels'));
@@ -45,7 +45,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.push(new mortgageFinancialAssets())
   }
   removeMortgageFinancialAssets() {
-    debugger
+    
     var mortgageFinancialAssetsLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length;
     if (mortgageFinancialAssetsLength == 1) {
       return;
@@ -63,7 +63,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets())
   }
   removeMortgageFinancialOtherAssets() {
-    debugger
+    
     var mortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
     if(mortgageFinancialOtherAssets == 1)
     {
@@ -80,11 +80,11 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
   }
   removeMortgageFinancialLiabilities() {
-    debugger
+    
     var indexList:any[]=[]
     if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 0)
     {
-      debugger
+      
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.forEach((element:any,index:any)=>{
         if(element.isPaidBeforeClosing == true)
         {
@@ -93,13 +93,13 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       })
       if(indexList.length > 0)
       {
-        debugger
+        
         indexList.sort((a:any,b:any)=>{
           return b.index - a.index
         })
-        debugger
+        
         indexList.forEach((element:any)=>{
-          debugger
+          
           this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(element.index,1)
         })
       }
@@ -127,7 +127,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.push(new mortgageFinancialOtherLaibilities())
   }
   removeMortgageFinancialOtherLaibilities() {
-    debugger
+    
     var mortgageFinancialOtherLaibilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length;
     if(mortgageFinancialOtherLaibilitiesLength == 1)
     {
@@ -140,7 +140,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
 
   }
   submitFinancialAssetsLiabilities() {
-    debugger
+    
     if (this.flgMortgageFinancialOtherAssets == true) {
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets = [];
     }
@@ -150,7 +150,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     if (this.flgMortgageFinancialOtherLaibilities == true) {
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities = [];
     }
-    debugger
+    
     // var obj = {
     //   mortgageFinancialAssets: this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets,
     //   mortgageFinancialOtherAssets: this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities,
@@ -173,28 +173,26 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
 
   getTotalMortgageFinancialAssets() {
-    debugger
-
     this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
   }
   getTotalMortgageFinancialOtherAssets() {
-    debugger
+    
     this.totalMortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
   }
   getTotalMortgageFinancialOtherLaibilities() {
-    debugger
+    
     this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce((sum, current) => sum + current.monthlyPayment, 0)
   }
   getAllMortgageApplicationAssetandLiability() {
-    debugger
+    
     var obj = {
       Sorting: "",
       SkipCount: 0,
       MaxResultCount: 10
     }
-    debugger
+    
     this.financialInfoService.getAllFinancialInfoAssetsLiabilities(obj).subscribe(data => {
-      debugger
+      
     })
   }
   // nextBtnClick(){
