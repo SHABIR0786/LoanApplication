@@ -514,11 +514,17 @@
               <label class="frm-label">Current Address</label>
               <div class="row mt-2">
                 <div class="col-1 p-0"><label class="gray-text">Street</label></div>
-                <div class="col-8 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
-                  [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
-                  <input type="text"  max="100"  required name="creditItemsStreet" id="creditItemsStreet" #creditItemsStreet="ngModel"
-                    [(ngModel)]="borrowerInfo.personalInformation.address[0].street" />
+                <div class="col-8 p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
+                [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
+                  
+                  <!-- [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
+                  [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}" -->
+                  
+                  <!-- <input type="text"   max="100"  required name="creditItemsStreet" id="creditItemsStreet" #creditItemsStreet="ngModel"
+                    [(ngModel)]="borrowerInfo.personalInformation.address[0].street" /> -->
+
+                    <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.personalInformation.address[0].street"  id="creditItemsStreet" name="creditItemsStreet"  [options]='options' #creditItemsStreet="ngModel"  (onAddressChange)="handleAddressChange($event)"/>
+
                 </div>
 
                 <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">Unit #</label></div>

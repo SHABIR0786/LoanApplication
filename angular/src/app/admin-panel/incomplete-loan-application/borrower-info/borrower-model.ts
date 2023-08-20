@@ -18,6 +18,7 @@ export class BorrowModel {
         this.contactInformation = new ContactInformation();
         this.creditList = [];
         this.creditValue = '1';
+        
     }
     borrowerType: string
     firstName: string
@@ -38,6 +39,8 @@ export class BorrowModel {
     address: Address[]
     creditValue:string;
     creditList: CreditList[] = [];
+    endDate:Date;
+
   }
   
   export class AlternateNames {
@@ -61,6 +64,18 @@ export class BorrowModel {
     email: string
   }
   
+  export class GoogleAddress {
+    addressLine1: string
+    addressLine2: string
+    city: string
+    state: string
+    country: string
+    countryShort:string;
+    postalCode: string;
+
+    
+  }
+
   export class Address {
     street: string
     unit: string
@@ -99,6 +114,7 @@ export class BorrowModel {
     workingMonths: number
     position: string
     startDate: string
+    endDate: string;
     isEmployedBySomeone: boolean
     isSelfEmployed: boolean
     isOwnershipLessThan25: boolean

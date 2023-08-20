@@ -1,16 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { Address, AlternateNames, BorrowModel, CreditList, Employment, GrossMonthlyIncome, IncomeOtherSource, PersonalInformation, Source } from './borrower-model';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Address, AlternateNames, BorrowModel, CreditList, Employment, GoogleAddress, GrossMonthlyIncome, IncomeOtherSource, PersonalInformation, Source } from './borrower-model';
 import { LoanManagementService } from "@shared/service/loanmanagement.service";
 import { BorrowService } from "app/services/borrow.service";
 import { Router } from "@angular/router";
+import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
+import { add } from "lodash";
 
-
+``
 @Component({
   selector: "app-borrower-info",
   templateUrl: "./borrower-info.component.html",
   styleUrls: ["./borrower-info.component.css"],
 })
 export class BorrowerInfoComponent implements OnInit {
+
+  @ViewChild("creditItemsStreet") placesRef : GooglePlaceDirective;
+  options: any = {
+    componentRestrictions: { country: 'US' }
+  }
+  
   borrowerInfo: BorrowModel = new BorrowModel();
   doNotApplyForAddress0: boolean = false;
   doNotApplyForaddress1: boolean = false;
@@ -50,11 +58,14 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.monthYearList();
     this.getCountries();
     this.getStates();
     this.getCities()
     this.creditClick();
+    this.borrowerInfo.personalInformation.address[0] = new Address();
+
     this.borrowService.getAllCitizenshipType().subscribe(
       (res: any) => {
         console.log(res.result);
@@ -228,5 +239,61 @@ export class BorrowerInfoComponent implements OnInit {
     var l = this.borrowerInfo.personalInformation.lastName.charAt(0)
     this.borrowerInfo.personalInformation.yourInitials = f.toUpperCase() + l.toUpperCase()
   }
+
+
+
+  public handleAddressChange(place: google.maps.places.Place) {
+     console.log(place);
+     let COMPONENT_TEMPLATE :any;
+     let Address_01: GoogleAddress = new GoogleAddress(); 
+
+    COMPONENT_TEMPLATE = { street_number: 'short_name' }; 
+    Address_01.addressLine1 = this.getAddrComponent(place,COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { route: 'long_name' }; //street
+    Address_01.addressLine2 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { locality: 'long_name' };
+    Address_01.city = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { administrative_area_level_1: 'short_name' },
+    Address_01.state = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { country: 'long_name' },
+    Address_01.countryShort = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { postal_code: 'long_name' },
+    Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    console.log(Address_01);
+    
+    const stateID = this.stateList.find(state => state.stateName === Address_01.state);
+    const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
+
+    console.log(CountryID);
+
+    this.borrowerInfo.personalInformation.address[0].street = Address_01.addressLine1 + " " +  Address_01.addressLine2  ;
+    this.borrowerInfo.personalInformation.address[0].zip = Address_01.postalCode;
+    this.borrowerInfo.personalInformation.address[0].cityId = this.cityList.find(city => city.cityName === Address_01.city);
+    this.borrowerInfo.personalInformation.address[0].stateId = stateID.id;
+    this.borrowerInfo.personalInformation.address[0].countryId = CountryID.id;
+ 
+
+  }
+
+
+  getAddrComponent(place, componentTemplate) {
+    let result;
+  
+    for (let i = 0; i < place.address_components.length; i++) {
+      const addressType = place.address_components[i].types[0];
+      if (componentTemplate[addressType]) {
+        result = place.address_components[i][componentTemplate[addressType]];        
+        return result;
+      }
+    }
+    return;
+  }
+
 }
 
