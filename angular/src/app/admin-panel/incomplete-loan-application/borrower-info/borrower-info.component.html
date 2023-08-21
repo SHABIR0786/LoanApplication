@@ -523,7 +523,8 @@
                   <!-- <input type="text"   max="100"  required name="creditItemsStreet" id="creditItemsStreet" #creditItemsStreet="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].street" /> -->
 
-                    <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.personalInformation.address[0].street"  id="creditItemsStreet" name="creditItemsStreet"  [options]='options' #creditItemsStreet="ngModel"  (onAddressChange)="handleAddressChange($event)"/>
+                    
+                    <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.personalInformation.address[0].street"  id="creditItemsStreet" name="creditItemsStreet"  [options]='options' #creditItemsStreet="ngModel"  (onAddressChange)="handleAddressChange($event,0)"/>
 
                 </div>
 
@@ -683,7 +684,11 @@
               <div class="row mt-2">
                 <div class="col-1 p-0"><label class="gray-text">Street</label></div>
                 <div class="col-8 p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street1.errors}" [ngClass]="{'error_bb':  street1.touched && street1.errors}">
-                  <input type="text" max="100"  [(ngModel)]="borrowerInfo.personalInformation.address[1].street" name="street1" id="street1" #street1="ngModel" [readonly]="doNotApplyForaddress1 == true"  [required]="doNotApplyForaddress1 == false" />
+                  <!-- <input type="text" max="100"  [(ngModel)]="borrowerInfo.personalInformation.address[1].street" name="street1" id="street1" #street1="ngModel" [readonly]="doNotApplyForaddress1 == true"  [required]="doNotApplyForaddress1 == false" /> -->
+
+                  <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.personalInformation.address[1].street"  id="street1" name="street1"  [options]='options' #street1="ngModel"  (onAddressChange)="handleAddressChange($event,1)"/>
+
+
                 </div>
 
                 <div class="col-1 p-0 text-right" style="text-align: center;"><label class="gray-text">Unit #</label></div>
@@ -939,9 +944,16 @@
                 <div class="col-1 p-0"><label class="gray-text">Street</label></div>
                 <div class="col-8  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street2.errors}"
                   [ngClass]="{'error_bb':  street2.touched && street2.errors}">
-                  <input type="text" max="100"  [(ngModel)]="borrowerInfo.personalInformation.address[2].street" name="street2"
+
+                  <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.personalInformation.address[2].street"  id="street2" name="street2"  
+                  [options]='options' #street2="ngModel"  
+                  (onAddressChange)="handleAddressChange($event,2)" 
+                  [required]="doNotApplyForaddress2 == false" 
+                  [readonly]="doNotApplyForaddress2 == true" />
+
+                  <!-- <input type="text" max="100"  [(ngModel)]="borrowerInfo.personalInformation.address[2].street" name="street2"
                     id="street2" #street2="ngModel" [readonly]="doNotApplyForaddress2 == true"
-                    [required]="doNotApplyForaddress2 == false" />
+                    [required]="doNotApplyForaddress2 == false" /> -->
                 </div>
 
                 <div class="col-1  p-0 text-right "><label class="gray-text">Unit #</label></div>
@@ -1039,8 +1051,11 @@
                 <div class="col-3 p-0"><label class="gray-text">Employer or Business Name</label></div>
                 <div class="col-4 p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name3.errors}"
                   [ngClass]="{'error_bb':  name3.touched && name3.errors}">
+
+                  
                   <input type="text" max="50"  [(ngModel)]="borrowerInfo.employment[0].name" name="name3" id="name3"
                     #name3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
+
                 </div>
 
                 <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">Phone</label></div>
@@ -1054,8 +1069,15 @@
                 <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">Street</label></div>
                 <div class="col-2  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
                   [ngClass]="{'error_bb':  street3.touched && street3.errors}">
-                  <input type="text"  max="100"  [(ngModel)]="borrowerInfo.employment[0].street" name="street3" id="street3"
-                    #street3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
+
+                  <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.employment[0].street"  id="street3" name="street3"   max="100" 
+                    [options]='options' #street3="ngModel"  
+                    (onAddressChange)="handleEmploymentChange($event,0)" 
+                    [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
+
+
+                  <!-- <input type="text"  max="100"  [(ngModel)]="borrowerInfo.employment[0].street" name="street3" id="street3"
+                    #street3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" /> -->
                 </div>
 
               </div>
@@ -1421,10 +1443,17 @@
                 
                 <div class="col-1 p-0"><label class="gray-text">Street</label></div>
                 <div class="col-4 p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street4.errors}"
-                  [ngClass]="{'error_bb':  street4.touched && street4.errors}">
-                  <input type="text"  max="100"  name="street4" id="street4" #street4="ngModel"
+                [ngClass]="{'error_bb':  street4.touched && street4.errors}">
+                  <!-- <input type="text"  max="100"  name="street4" id="street4" #street4="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].street" [required]="doNotApplyForEmp1 == false"
+                    [readonly]="doNotApplyForEmp1 == true" /> -->
+
+                    <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.employment[1].street"  id="street4" name="street4"   max="100" 
+                    [options]='options' #street4="ngModel"  
+                    (onAddressChange)="handleEmploymentChange($event,1)" 
+                    [required]="doNotApplyForEmp1 == false"
                     [readonly]="doNotApplyForEmp1 == true" />
+
                 </div>
 
                 <!-- <div class="col-1 p-0 text-right"><label class="gray-text">Phone</label></div>
@@ -1819,9 +1848,16 @@
                 <div class="col-1" style="text-align: center;"><label class="gray-text">Street</label></div>
                 <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                   [ngClass]="{'error_bb':  street9.touched && street9.errors}">
-                  <input type="text"  max="50" [(ngModel)]="borrowerInfo.employment[2].street"
+                  <!-- <input type="text"  max="50" [(ngModel)]="borrowerInfo.employment[2].street"
                     [required]="doNotApplyForEmp2 == false" name="street9" id="street9" #street9="ngModel"
-                    [readonly]="doNotApplyForEmp2 == true" />
+                    [readonly]="doNotApplyForEmp2 == true" /> -->
+
+                    <input ngx-google-places-autocomplete  [(ngModel)]="borrowerInfo.employment[2].street"  id="street9" name="street9"   max="100" 
+                    [options]='options' #street9="ngModel"  
+                    (onAddressChange)="handleEmploymentChange($event,2)" 
+                    [required]="doNotApplyForEmp1 == false"
+                    [readonly]="doNotApplyForEmp1 == true" />
+
                 </div>
               </div>
 
