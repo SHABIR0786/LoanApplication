@@ -1,4 +1,4 @@
-import { InputMaskModule } from 'primeng/inputmask';
+import { InputMaskModule } from "primeng/inputmask";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AdminRoutingModule } from "./admin-routing.module";
@@ -20,6 +20,10 @@ import { NotificationDialogComponent } from "./notification-dialog/notification-
 import { BsDropdownConfig, BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { InputNumberModule } from "primeng/inputnumber";
+import { GoogleMapsModule } from "@angular/google-maps";
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
 @NgModule({
   declarations: [
     AdminPanelLayoutComponent,
@@ -38,7 +42,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     LoanOriginatorInformationComponent,
   ],
   imports: [
+    GooglePlaceModule,
     InputMaskModule,
+    InputNumberModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

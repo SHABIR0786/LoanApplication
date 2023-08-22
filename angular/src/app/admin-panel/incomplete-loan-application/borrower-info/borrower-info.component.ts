@@ -1,16 +1,36 @@
-import { Component, OnInit } from "@angular/core";
-import { Address, AlternateNames, BorrowModel, CreditList, Employment, GrossMonthlyIncome, IncomeOtherSource, PersonalInformation, Source } from './borrower-model';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import {
+  Address,
+  AlternateNames,
+  BorrowModel,
+  CreditList,
+  Employment,
+  GoogleAddress,
+  GrossMonthlyIncome,
+  IncomeOtherSource,
+  PersonalInformation,
+  Source,
+} from "./borrower-model";
 import { LoanManagementService } from "@shared/service/loanmanagement.service";
 import { BorrowService } from "app/services/borrow.service";
 import { Router } from "@angular/router";
+import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
+import { add } from "lodash";
 
-
+``;
 @Component({
   selector: "app-borrower-info",
   templateUrl: "./borrower-info.component.html",
   styleUrls: ["./borrower-info.component.css"],
 })
 export class BorrowerInfoComponent implements OnInit {
+  @ViewChild("creditItemsStreet") placesRef: GooglePlaceDirective;
+  @ViewChild("street1") street1: GooglePlaceDirective;
+
+  options: any = {
+    componentRestrictions: { country: "US" },
+  };
+
   borrowerInfo: BorrowModel = new BorrowModel();
   doNotApplyForAddress0: boolean = false;
   doNotApplyForaddress1: boolean = false;
@@ -19,10 +39,18 @@ export class BorrowerInfoComponent implements OnInit {
   doNotApplyForEmp1: boolean = false;
   doNotApplyForEmp2: boolean = false;
   incomeFromOtherSources: boolean = false;
+  yearList: any[] = [];
+  monthList: any[] = [];
+  browerList: any[] = [];
   countryList: any[] = [];
   stateList: any[] = [];
   cityList: any[] = [];
-  constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
+  citizenshipType: any[] = [];
+  constructor(
+    private loanManagmentService: LoanManagementService,
+    private borrowService: BorrowService,
+    private router: Router
+  ) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
     this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
     this.borrowerInfo.personalInformation.address = [];
@@ -46,56 +74,94 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.monthYearList();
     this.getCountries();
     this.getStates();
-    this.getCities()
+    this.getCities();
     this.creditClick();
-    this.borrowService.getAllCitizenshipType().subscribe(
-      (res: any) => {
-        console.log(res.result);
-        //this.Custom = res.result.items;
+    this.borrowerInfo.personalInformation.address[0] = new Address();
+
+    this.borrowService.getAllCitizenshipType().subscribe((res: any) => {
+      console.log(res.result);
+      this.citizenshipType = [];
+      if (res.success == true && res.result.length > 0) {
+        res.result.forEach((element: any) => {
+          this.citizenshipType.push({
+            citizenshipType1: element.citizenshipType1,
+            id: element.id,
+          });
+        });
       }
-    );
-    if (localStorage.borrowerInfo != undefined && localStorage.borrowerInfo != '') {
-      this.borrowerInfo = JSON.parse(localStorage.getItem('borrowerInfo'));
+      //this.Custom = res.result.items;
+    });
+    if (
+      localStorage.borrowerInfo != undefined &&
+      localStorage.borrowerInfo != ""
+    ) {
+      this.borrowerInfo = JSON.parse(localStorage.getItem("borrowerInfo"));
     }
-    if(localStorage.doNotApplyForaddress1 != undefined)
-    {
-      this.doNotApplyForaddress1 = JSON.parse(localStorage.getItem('doNotApplyForaddress1'));
+    if (localStorage.doNotApplyForaddress1 != undefined) {
+      this.doNotApplyForaddress1 = JSON.parse(
+        localStorage.getItem("doNotApplyForaddress1")
+      );
     }
-    if(localStorage.doNotApplyForaddress2 != undefined)
-    {
-      this.doNotApplyForaddress2 = JSON.parse(localStorage.getItem('doNotApplyForaddress2'));
+    if (localStorage.doNotApplyForaddress2 != undefined) {
+      this.doNotApplyForaddress2 = JSON.parse(
+        localStorage.getItem("doNotApplyForaddress2")
+      );
     }
-    if(localStorage.doNotApplyForEmp0 != undefined)
-    {
-      this.doNotApplyForEmp0 = JSON.parse(localStorage.getItem('doNotApplyForEmp0'));
+    if (localStorage.doNotApplyForEmp0 != undefined) {
+      this.doNotApplyForEmp0 = JSON.parse(
+        localStorage.getItem("doNotApplyForEmp0")
+      );
     }
-    if(localStorage.doNotApplyForEmp1 != undefined)
-    {
-      this.doNotApplyForEmp1 = JSON.parse(localStorage.getItem('doNotApplyForEmp1'));
+    if (localStorage.doNotApplyForEmp1 != undefined) {
+      this.doNotApplyForEmp1 = JSON.parse(
+        localStorage.getItem("doNotApplyForEmp1")
+      );
     }
-    if(localStorage.doNotApplyForEmp2 != undefined)
-    {
-      this.doNotApplyForEmp2 = JSON.parse(localStorage.getItem('doNotApplyForEmp2'));
+    if (localStorage.doNotApplyForEmp2 != undefined) {
+      this.doNotApplyForEmp2 = JSON.parse(
+        localStorage.getItem("doNotApplyForEmp2")
+      );
     }
-    if(localStorage.doNotApplyForAddress0 != undefined)
-    {
-      this.doNotApplyForAddress0 = JSON.parse(localStorage.getItem('doNotApplyForAddress0'));
+    if (localStorage.doNotApplyForAddress0 != undefined) {
+      this.doNotApplyForAddress0 = JSON.parse(
+        localStorage.getItem("doNotApplyForAddress0")
+      );
     }
-    if(localStorage.incomeFromOtherSources != undefined)
-    {
-      this.incomeFromOtherSources = JSON.parse(localStorage.getItem('incomeFromOtherSources'));
+    if (localStorage.incomeFromOtherSources != undefined) {
+      this.incomeFromOtherSources = JSON.parse(
+        localStorage.getItem("incomeFromOtherSources")
+      );
     }
   }
-
+  monthYearList() {
+    this.yearList = [];
+    this.monthList = [];
+    this.browerList = [];
+    for (var i = 1; i <= 100; i = i + 1) {
+      this.yearList.push({ id: i, label: i });
+    }
+    for (var i = 1; i <= 12; i = i + 1) {
+      this.monthList.push({ id: i, label: i });
+    }
+    for (var i = 1; i <= 12; i = i + 1) {
+      this.browerList.push({ id: i, label: i });
+    }
+    debugger;
+  }
   creditClick() {
     debugger;
     if (this.borrowerInfo.personalInformation.creditValue == "1") {
       this.borrowerInfo.personalInformation.totalBorrowers = 1;
     }
     this.borrowerInfo.personalInformation.creditList = [];
-    for (var i = 0; i < this.borrowerInfo.personalInformation.totalBorrowers; i++) {
+    for (
+      var i = 0;
+      i < this.borrowerInfo.personalInformation.totalBorrowers;
+      i++
+    ) {
       this.borrowerInfo.personalInformation.creditList.push(new CreditList());
     }
   }
@@ -123,64 +189,88 @@ export class BorrowerInfoComponent implements OnInit {
     if (this.doNotApplyForEmp2) {
       this.borrowerInfo.employment[2] = new Employment();
     }
-    debugger
-    localStorage.setItem("borrowerInfo", JSON.stringify(this.borrowerInfo))
-    localStorage.setItem("doNotApplyForaddress1", JSON.stringify(this.doNotApplyForaddress1))
-    localStorage.setItem("doNotApplyForaddress2", JSON.stringify(this.doNotApplyForaddress2))
-    localStorage.setItem("doNotApplyForEmp0", JSON.stringify(this.doNotApplyForEmp0))
-    localStorage.setItem("doNotApplyForEmp1", JSON.stringify(this.doNotApplyForEmp1))
-    localStorage.setItem("doNotApplyForEmp2", JSON.stringify(this.doNotApplyForEmp2))
-    localStorage.setItem("doNotApplyForAddress0", JSON.stringify(this.doNotApplyForAddress0))
-    localStorage.setItem("incomeFromOtherSources", JSON.stringify(this.incomeFromOtherSources))
-    this.borrowService.createMortgageLoanApplication(this.borrowerInfo).subscribe(
-      (res: any) => {
-        if(res.success == true)
-        {
-          alert("Data has inserted successfully");
-          this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-assets-liabilities');
-        }
-      
-      }
+    debugger;
+    localStorage.setItem("borrowerInfo", JSON.stringify(this.borrowerInfo));
+    localStorage.setItem(
+      "doNotApplyForaddress1",
+      JSON.stringify(this.doNotApplyForaddress1)
     );
+    localStorage.setItem(
+      "doNotApplyForaddress2",
+      JSON.stringify(this.doNotApplyForaddress2)
+    );
+    localStorage.setItem(
+      "doNotApplyForEmp0",
+      JSON.stringify(this.doNotApplyForEmp0)
+    );
+    localStorage.setItem(
+      "doNotApplyForEmp1",
+      JSON.stringify(this.doNotApplyForEmp1)
+    );
+    localStorage.setItem(
+      "doNotApplyForEmp2",
+      JSON.stringify(this.doNotApplyForEmp2)
+    );
+    localStorage.setItem(
+      "doNotApplyForAddress0",
+      JSON.stringify(this.doNotApplyForAddress0)
+    );
+    localStorage.setItem(
+      "incomeFromOtherSources",
+      JSON.stringify(this.incomeFromOtherSources)
+    );
+    this.borrowService
+      .createMortgageLoanApplication(this.borrowerInfo)
+      .subscribe((res: any) => {
+        if (res.success == true) {
+          alert("Data has inserted successfully");
+          this.router.navigateByUrl(
+            "app/admin/incomplete-loan-application/financial-info-assets-liabilities"
+          );
+        }
+      });
   }
   getCountries() {
-    debugger
+    debugger;
     this.borrowService.getCountries().subscribe((data: any) => {
-      debugger
-      this.countryList = []
+      debugger;
+      this.countryList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          debugger
-          this.countryList.push({ countryName: element.countryName, id: element.id })
-        })
+          debugger;
+          this.countryList.push({
+            countryName: element.countryName,
+            id: element.id,
+          });
+        });
       }
-    })
+    });
   }
   getStates() {
-    debugger
+    debugger;
     this.borrowService.getStates().subscribe((data: any) => {
-      debugger
-      this.stateList = []
+      debugger;
+      this.stateList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          debugger
-          this.stateList.push({ stateName: element.stateName, id: element.id })
-        })
+          debugger;
+          this.stateList.push({ stateName: element.stateName, id: element.id });
+        });
       }
-    })
+    });
   }
   getCities() {
-    debugger
+    debugger;
     this.borrowService.getCities().subscribe((data: any) => {
-      debugger
-      this.cityList = []
+      debugger;
+      this.cityList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          debugger
-          this.cityList.push({ cityName: element.cityName, id: element.id })
-        })
+          debugger;
+          this.cityList.push({ cityName: element.cityName, id: element.id });
+        });
       }
-    })
+    });
   }
   // bindValues() {
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
@@ -194,5 +284,123 @@ export class BorrowerInfoComponent implements OnInit {
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
   // }
-}
+  getInitials() {
+    var f = this.borrowerInfo.personalInformation.firstName.charAt(0);
+    var l = this.borrowerInfo.personalInformation.lastName.charAt(0);
+    this.borrowerInfo.personalInformation.yourInitials =
+      f.toUpperCase() + l.toUpperCase();
+  }
 
+  public handleAddressChange(
+    place: google.maps.places.Place,
+    fldIndex: number
+  ) {
+    let COMPONENT_TEMPLATE: any;
+    let Address_01: GoogleAddress = new GoogleAddress();
+
+    COMPONENT_TEMPLATE = { street_number: "short_name" };
+    Address_01.addressLine1 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { route: "long_name" }; //street
+    Address_01.addressLine2 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { locality: "long_name" };
+    Address_01.city = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    (COMPONENT_TEMPLATE = { administrative_area_level_1: "short_name" }),
+      (Address_01.state = this.getAddrComponent(place, COMPONENT_TEMPLATE));
+
+    (COMPONENT_TEMPLATE = { country: "long_name" }),
+      (Address_01.countryShort = this.getAddrComponent(
+        place,
+        COMPONENT_TEMPLATE
+      ));
+
+    (COMPONENT_TEMPLATE = { postal_code: "long_name" }),
+      (Address_01.postalCode = this.getAddrComponent(
+        place,
+        COMPONENT_TEMPLATE
+      ));
+
+    console.log(Address_01);
+
+    const stateID = this.stateList.find(
+      (state) => state.stateName === Address_01.state
+    );
+    const CountryID = this.countryList.find(
+      (country) => country.countryName === Address_01.countryShort
+    );
+
+    console.log(CountryID);
+
+    this.borrowerInfo.personalInformation.address[fldIndex].street =
+      Address_01.addressLine1 + " " + Address_01.addressLine2;
+    this.borrowerInfo.personalInformation.address[fldIndex].zip =
+      Address_01.postalCode;
+    this.borrowerInfo.personalInformation.address[
+      fldIndex
+    ].cityId = this.cityList.find((city) => city.cityName === Address_01.city);
+    this.borrowerInfo.personalInformation.address[fldIndex].stateId =
+      stateID.id;
+    this.borrowerInfo.personalInformation.address[fldIndex].countryId =
+      CountryID.id;
+  }
+
+  handleEmploymentChange(place: google.maps.places.Place, fldIndex: number) {
+    let COMPONENT_TEMPLATE: any;
+    let Address_01: GoogleAddress = new GoogleAddress();
+
+    COMPONENT_TEMPLATE = { street_number: "short_name" };
+    Address_01.addressLine1 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { route: "long_name" }; //street
+    Address_01.addressLine2 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    COMPONENT_TEMPLATE = { locality: "long_name" };
+    Address_01.city = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+    (COMPONENT_TEMPLATE = { administrative_area_level_1: "short_name" }),
+      (Address_01.state = this.getAddrComponent(place, COMPONENT_TEMPLATE));
+
+    (COMPONENT_TEMPLATE = { country: "long_name" }),
+      (Address_01.countryShort = this.getAddrComponent(
+        place,
+        COMPONENT_TEMPLATE
+      ));
+
+    (COMPONENT_TEMPLATE = { postal_code: "long_name" }),
+      (Address_01.postalCode = this.getAddrComponent(
+        place,
+        COMPONENT_TEMPLATE
+      ));
+
+    const stateID = this.stateList.find(
+      (state) => state.stateName === Address_01.state
+    );
+    const CountryID = this.countryList.find(
+      (country) => country.countryName === Address_01.countryShort
+    );
+
+    this.borrowerInfo.employment[fldIndex].street =
+      Address_01.addressLine1 + " " + Address_01.addressLine2;
+    this.borrowerInfo.employment[fldIndex].zip = Address_01.postalCode;
+    this.borrowerInfo.employment[fldIndex].cityId = this.cityList.find(
+      (city) => city.cityName === Address_01.city
+    );
+    this.borrowerInfo.employment[fldIndex].stateId = stateID.id;
+    this.borrowerInfo.employment[fldIndex].countryId = CountryID.id;
+  }
+
+  getAddrComponent(place, componentTemplate) {
+    let result;
+
+    for (let i = 0; i < place.address_components.length; i++) {
+      const addressType = place.address_components[i].types[0];
+      if (componentTemplate[addressType]) {
+        result = place.address_components[i][componentTemplate[addressType]];
+        return result;
+      }
+    }
+    return;
+  }
+}
