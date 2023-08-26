@@ -401,20 +401,12 @@
             [ngClass]="{'error': borrowForm.submitted && creditItemsMarritalStatus.errors}"
               [ngClass]="{'error':  creditItemsMarritalStatus.touched && creditItemsMarritalStatus.errors}">
               <label class="frm-label">Marital Status</label>
-              <div class="frm-fld-input">
-                <select name="firstName" required class="form-control shadow-none"  name="creditItemsMarritalStatus"
+              <div class="frm-fld-input">                
+                <select  class="form-control shadow-none"  name="creditItemsMarritalStatus"
                   id="creditItemsMarritalStatus" #creditItemsMarritalStatus="ngModel"
-                  [(ngModel)]="borrowerInfo.personalInformation.marritalStatus">
-                  <option class="option" value="-1" selected disabled >(Single, Divorced, Widowed, Civil Union, Domestic Partnership, Registered Reciprocal Beneficiary Relationship)</option>
-                  <option class="option" value="Single">Single </option>
-                  <option class="option" value="Divorced">Divorced </option>
-                  <option class="option" value="Widowed">Widowed </option>
-                  <option class="option" value="Civil Union">Civil Union </option>
-                  <option class="option" value="Domestic Partnership">Domestic Partnership </option>
-                  <option class="option" value="Registered">Registered </option>
-                  <option class="option" value="Reciprocal">Reciprocal </option>
-                  <option class="option" value="Beneficiary">Beneficiary </option>
-                  <option class="option" value="Relationship">Relationship </option>
+                  [(ngModel)]="borrowerInfo.personalInformation.marritalStatus" required>
+                  <option [ngValue]="undefined" disabled>Marital Status</option>
+                  <option *ngFor="let obj of maritalStatusList" [ngValue]="obj.id"> {{obj.maritialStatus1}} </option>
                 </select>
               </div>
             </div>
@@ -2094,7 +2086,7 @@
                       [required]="incomeFromOtherSources == false"
                       >
                       <option value="-1" selected disabled>Interest and Dividends</option>
-                      <option value="a">a</option>
+                      <option *ngFor="let obj of incomeTypeList" [ngValue]="obj.id"> {{obj.incomeType}} </option>
                     </select>
                   </div>
                 </div>
