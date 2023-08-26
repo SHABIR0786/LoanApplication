@@ -155,7 +155,7 @@
           <div class="col-4">
             <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && socialSecurityNumber.errors}"
               [ngClass]="{'error':  socialSecurityNumber.touched && socialSecurityNumber.errors}">
-              <label class="frm-label">Social Security Number (or Individual Taxpayer Identification Number)</label>
+              <label class="frm-label">Social Security Number (Individual Taxpayer Identification Number)</label>
               <p class="frm-fld-input">
                 <p-inputMask class="noBorder" inputStyleClass="p-inputMask" mask="999-99-9999"
                   [(ngModel)]="borrowerInfo.personalInformation.socialSecurityNumber" id="socialSecurityNumber"
@@ -171,7 +171,7 @@
               <label class="frm-label">Date of Birth </label>
               <p class="frm-fld-input">
                 
-                <input type="date" onkeydown="return false" id="dob" name="dob" #dob="ngModel" [(ngModel)]="borrowerInfo.personalInformation.dob" placeholder="____/____/________" required />
+                <input type="date" onkeydown="return false" id="dob" name="dob" #dob="ngModel" [(ngModel)]="borrowerInfo.personalInformation.dob" max="{{currentDate | date:'yyyy-MM-dd'}}" placeholder="____/____/________" required />
               </p>
             </div>
           </div>
@@ -405,8 +405,7 @@
                 <select name="firstName" required class="form-control shadow-none"  name="creditItemsMarritalStatus"
                   id="creditItemsMarritalStatus" #creditItemsMarritalStatus="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.marritalStatus">
-                  <option class="option" value="-1" selected disabled>(Single, Divorced, Widowed, Civil Union, Domestic
-                    Partnership)</option>
+                  <option class="option" value="-1" selected disabled >(Single, Divorced, Widowed, Civil Union, Domestic Partnership, Registered Reciprocal Beneficiary Relationship)</option>
                   <option class="option" value="Single">Single </option>
                   <option class="option" value="Divorced">Divorced </option>
                   <option class="option" value="Widowed">Widowed </option>
@@ -1815,10 +1814,10 @@
             Apply</span>
           <input type="checkbox" [(ngModel)]="doNotApplyForEmp2" name="doNotApplyForEmp2" id="doNotApplyForEmp2"
             #txtdoNotApplyForEmp2="ngModel">
-          <span class="checkmark"></span>
+          <span class="checkmark" style="margin-top: 10px;"></span>
         </label>
       </div>
-      <h4>Provide at least 2 years of current and previous employment and income.</h4>
+      <h4 style="font-size: 16px;">Provide at least 2 years of current and previous employment and income.</h4>
 
       <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
         <div class="row div-sub-grp">
@@ -1830,14 +1829,14 @@
 
               <div class="row mt-2">
                 <div class="col-3  p-0"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-4  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name9.errors}"
+                <div class="col-3  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && name9.errors}"
                   [ngClass]="{'error_bb':  name9.touched && name9.errors}">
                   <input type="text"  max="50"  [(ngModel)]="borrowerInfo.employment[2].name" name="name9" id="name9"
                     #name9="ngModel" [required]="doNotApplyForEmp2 == false" [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
                 <div class="col-1  p-0"  style="text-align: center;"><label class="gray-text">Phone</label></div>
-                <div class="col-1  p-0 input-border-bottom" style="padding-left: 5px;" [ngClass]="{'error_bb': borrowForm.submitted && phone9.errors}"
+                <div class="col-2  p-0 input-border-bottom" style="padding-left: 5px;" [ngClass]="{'error_bb': borrowForm.submitted && phone9.errors}"
                   [ngClass]="{'error_bb':  phone9.touched && phone9.errors}">
                   <p-inputMask size="10" placeholder="(___) ___-____" [(ngModel)]="borrowerInfo.employment[2].phone" [required]="doNotApplyForEmp2 == false"
                     mask="(999) 999-9999" name="phone9" id="phone9" #phone9="ngModel"
@@ -1933,7 +1932,7 @@
 
       <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
         <div class="row div-sub-grp">
-          <div class="col-9  p-0">
+          <div class="col-8  p-0">
             <div class="frm-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
               <div class="row mt-2">
                 <div class="col-2 p-0"><label class="gray-text">Position or Title</label></div>
@@ -1955,9 +1954,9 @@
                     #startDate4="ngModel" [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
-                <div class="col-2  p-0"><label class="gray-text">End Date <span
+                <div class="col-2  p-0"  style="text-align: center; "><label class="gray-text">End Date <span
                       style="font-size: 11px;"></span></label></div>
-                <div class="col-3  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate5.errors}"
+                <div class="col-4  p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && startDate5.errors}"
                   [ngClass]="{'error_bb':  startDate5.touched && startDate5.errors}">
                   <input type="date" onkeydown="return false" [required]="doNotApplyForEmp2 == false"
                     [(ngModel)]="borrowerInfo.employment[2].endDate" name="startDate5" id="startDate5"
@@ -1967,7 +1966,7 @@
             </div>
           </div>
 
-          <div class="col-3">
+          <div class="col-4">
 
             <label class="container mt-1 mb-2"><span class="gray-text" style="font-size: 10px !important;">
                 Check if you were the Business Owner or Self-Employed.
@@ -1983,8 +1982,8 @@
                 <span>Previous Gross Monthly</span>
               </label>
               <div class="row">
-                <div class="col-5"><label class="gray-text">Income</label></div>
-                <div class="col-5 input-border-bottom"
+                <div class="col-3"><label class="gray-text">Income</label></div>
+                <div class="col-7  p-0 input-border-bottom "
                   [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome4.errors}"
                   [ngClass]="{'error_bb':  monthlyIncome4.touched && monthlyIncome4.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span> 
@@ -1993,7 +1992,7 @@
                       name="monthlyIncome4" id="monthlyIncome4" #monthlyIncome4="ngModel"
                       [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [required]="doNotApplyForEmp2 == false"
                       [readonly]="doNotApplyForEmp2 == true" /> -->
-                      <p-inputNumber  class="eighty" 
+                      <p-inputNumber  class="eighty showBorder " 
                       name="monthlyIncome4" id="monthlyIncome4" #monthlyIncome4="ngModel"
                       [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [required]="doNotApplyForEmp2 == false"
                       [disabled]="doNotApplyForEmp2 == true" 
@@ -2019,10 +2018,10 @@
           <span class="checkmark" style="margin-top: 10px !important;"></span>
         </label>
       </div>
-      <h4>Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
+      <h4 style="font-size: 16px !important;">Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Alimony</li>
           <li>Automobile Allowance</li>
@@ -2030,7 +2029,7 @@
           <li>Capital Gains</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Child Support</li>
           <li>Disability</li>
@@ -2038,22 +2037,22 @@
           <li>Housing or Parsonage</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Interest and Dividends</li>
           <li>Mortgage Credit Certificate</li>
           <li>Mortgage Differential Payments</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Notes Receivable</li>
           <li>Public Assistance</li>
-          <li>Retirement (e.g., Pension)</li>
+          <li>Retirement (e.g., Pension, IRA)</li>
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Royalty Payments</li>
           <li>Separate Maintenance</li>
@@ -2062,7 +2061,7 @@
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Unemployment</li>
           <li>Benefits</li>
@@ -2070,7 +2069,9 @@
           <li>Other</li>
         </ul>
       </div>
-
+<div style="font-size: 16px; font-style: italic;">
+  <b>Note: </b> Reveal alimony, child support, separate maintenance, or other income ONLY IF you want it considered in determining your qualification for this loan.
+</div>
       <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
         <div class="div-sub-grp">
           <div class="frm-group" [ngClass]="{'disabled':incomeFromOtherSources==true}">
@@ -2128,7 +2129,7 @@
                       (click)="delMoreIncomeSource()"
                       style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Remove</a></div>
                   <div class="col-6 text-right" style="text-align: right;"><a href="#"
-                      style="color: #696969; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL
+                      style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL
                       Amount Here</a></div>
                 </div>
               </label>

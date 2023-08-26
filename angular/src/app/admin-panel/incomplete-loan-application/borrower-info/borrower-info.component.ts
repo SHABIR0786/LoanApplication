@@ -36,6 +36,8 @@ export class BorrowerInfoComponent implements OnInit {
   stateList: any[] = [];
   cityList: any[] = [];
   citizenshipType:any[]=[];
+  currentDate:Date = new Date();
+  
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
     this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -186,26 +188,20 @@ export class BorrowerInfoComponent implements OnInit {
     );
   }
   getCountries() {
-    debugger
     this.borrowService.getCountries().subscribe((data: any) => {
-      debugger
       this.countryList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          debugger
           this.countryList.push({ countryName: element.countryName, id: element.id })
         })
       }
     })
   }
   getStates() {
-    debugger
     this.borrowService.getStates().subscribe((data: any) => {
-      debugger
       this.stateList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          debugger
           this.stateList.push({ stateName: element.stateName, id: element.id })
         })
       }
@@ -224,6 +220,8 @@ export class BorrowerInfoComponent implements OnInit {
       }
     })
   }
+
+
   // bindValues() {
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
   //   this.borrowerInfo.personalInformation.firstName = "fffff";
