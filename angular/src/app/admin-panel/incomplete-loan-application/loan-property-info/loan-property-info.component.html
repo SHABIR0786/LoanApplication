@@ -202,7 +202,7 @@
                 <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"  name="street" id="street" #street="ngModel" required />
               </div>
 
-              <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit#</label></div>
+              <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit #</label></div>
               <div class="col-2  p-0 input-border-bottom">
                 <p-inputNumber class="showBorder"  [min]="0"></p-inputNumber>
               </div>
@@ -770,9 +770,6 @@
                   <span>Cash or Market Value</span>
                 </label>
               </div>
-
-
-
             </div>
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
@@ -783,10 +780,8 @@
                     <select class="form-control" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
                       name="{{i}}.assetTypeId" id="{{i}}.assetTypeId" #assetTypeId="ngModel"
                       [required]="flgGiftsorGrants == false">
-                      <option value="-1" selected disabled>Select Asset Type</option>
-                      <option value="1">Cash Gift</option>
-                      <option value="2">Gift or Equity</option>
-                      <option value="3">Grant</option>
+                      <option value="-1" selected disabled>-Select one-</option>
+                      <option *ngFor="let obj of giftTypeList" [ngValue]="obj.id"> {{obj.loanPropertyGiftType1}} </option>
                     </select>
                   </p>
                 </div>
@@ -823,7 +818,17 @@
                   <p class="frm-fld-input"><select [disabled]="flgGiftsorGrants == true" class="form-control"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
                       [required]="flgGiftsorGrants == false">
-                      <option value="-1" selected disabled>Citizenship</option>
+                      <option value="-1" selected disabled>-Select One-</option>
+                      <option value="-1" >Community Nonprofit</option>
+                      <option value="-1" >Employer</option>
+                      <option value="-1" >Federal Agency</option>
+                      <option value="-1" >Local Agency</option>
+                      <option value="-1" >Relative</option>
+                      <option value="-1" >Religious Non Profit</option>
+                      <option value="-1" >State Agency</option>
+                      <option value="-1" >Unmarried Partner</option>
+                      <option value="-1" >Lender</option>
+                      <option value="-1" >Other</option>
                     </select></p>
                 </div>
               </div>

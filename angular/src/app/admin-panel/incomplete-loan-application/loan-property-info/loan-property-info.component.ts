@@ -16,6 +16,7 @@ export class LoanPropertyInfoComponent implements OnInit {
   cityList:any[]=[];
   countryList:any[]=[];
   stateList:any[]=[];
+  giftTypeList:any[]=[]
   constructor(private loanPropertyInfoService:LoanPropertyInfoService,private router: Router) {}
 
   ngOnInit(): void {
@@ -23,7 +24,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     this.getCities();
     this.getCountries();
     this.getStates();
-    debugger
     if(localStorage.flgOtherNewMortgageLoans != undefined && localStorage.flgOtherNewMortgageLoans != '')
     {
       this.flgOtherNewMortgageLoans =JSON.parse(localStorage.getItem('flgOtherNewMortgageLoans'));
@@ -52,6 +52,16 @@ export class LoanPropertyInfoComponent implements OnInit {
     {
       this.loanPropertyInfoModel.newMortgageLoans.push(new NewMortgageLoans());
     }
+    //----Get Gift Types
+    this.loanPropertyInfoService.getLoanPropertyGiftTypes().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.giftTypeList.push({loanPropertyGiftType1:element.loanPropertyGiftType1,id:element.id})
+        })
+      }
+    })   
   }
   getCountries()
   {
