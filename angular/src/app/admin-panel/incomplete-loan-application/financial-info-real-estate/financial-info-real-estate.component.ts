@@ -14,9 +14,11 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   cityList:any[]=[]
   countryList:any[]=[]
   stateList:any[]=[]
+  proprtyStatusList:any[]=[]
+  loanPropertyOccupanciesList:any[]=[]
+  mortgageLoanTypeList:any[]=[]
   objMortgageLoanProperty:MortgageLoanOnProperty = new MortgageLoanOnProperty()
   ngOnInit(): void {
-    debugger
     // this.financialInfoRealState.push(this.objFinancialInfoRealState)
     this.getCities();
     this.getCountries();
@@ -25,17 +27,44 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     {
       this.financialInfoRealState =JSON.parse(localStorage.getItem('financialInfoRealState'));
     }
-  }
-  getCountries()
-  {
-    debugger
-    this.financialInfoRealEstateService.getCountries().subscribe((data:any)=>{
-      debugger
+    //---Get Property Status
+    this.financialInfoRealEstateService.getFinancialPropertyStatuses().subscribe((data:any)=>{
       this.countryList=[]
       if(data.success == true && data.result.length > 0)
       {
         data.result.forEach((element:any)=>{
-          debugger
+          this.proprtyStatusList.push({financialPropertyStatus1:element.financialPropertyStatus1,id:element.id})
+        })
+      }
+    })    
+    //--- Loan Property Occupencies
+    this.financialInfoRealEstateService.getLoanPropertyOccupancies().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.loanPropertyOccupanciesList.push({loanPropertyOccupancy1:element.loanPropertyOccupancy1,id:element.id})
+        })
+      }
+    })
+    //--- Mortgage Loan Types
+    this.financialInfoRealEstateService.getMortageLoanTypes().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.mortgageLoanTypeList.push({mortageLoanTypesId:element.mortageLoanTypesId,id:element.id})
+        })
+      }
+    })
+  }
+  getCountries()
+  {
+    this.financialInfoRealEstateService.getCountries().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
           this.countryList.push({countryName:element.countryName,id:element.id})
         })
       }
@@ -43,28 +72,23 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   }
   getStates(  )
   {
-    debugger
     this.financialInfoRealEstateService.getStates().subscribe((data:any)=>{
-      debugger
       this.stateList=[]
       if(data.success == true && data.result.length > 0)
       {
         data.result.forEach((element:any)=>{
-          debugger
           this.stateList.push({stateName:element.stateName,id:element.id})
         })
       }
     })
   }
   getCities()
-  {debugger
+  {
     this.financialInfoRealEstateService.getCities().subscribe((data:any)=>{
-      debugger
       this.cityList=[]
        if(data.success == true && data.result.length > 0)
       {
         data.result.forEach((element:any)=>{
-          debugger
           this.cityList.push({cityName:element.cityName,id:element.id})
         })
       }
@@ -72,15 +96,14 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   }
   addMortgageLoanList(index:any)
   {
-    debugger
+    
     this.financialInfoRealState[index].mortgageLoanOnProperty.push(new MortgageLoanOnProperty())
   }
   removeMortgageLoanList(index:any){
-    debugger
     var indexList:any[]=[]
     if(this.financialInfoRealState[index].mortgageLoanOnProperty.length > 0)
     {
-      debugger
+      
       this.financialInfoRealState[index].mortgageLoanOnProperty.forEach((element:any,index:any)=>{
         if(element.isPaidBeforeClosing == true)
         {
@@ -89,13 +112,13 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       })
       if(indexList.length > 0)
       {
-        debugger
+       
         indexList.sort((a:any,b:any)=>{
           return b.index - a.index
         })
-        debugger
+        
         indexList.forEach((element:any)=>{
-          debugger
+         
           this.financialInfoRealState[index].mortgageLoanOnProperty.splice(element.index,1)
         })
       }
@@ -120,7 +143,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   }
   create()
   {
-    debugger
     var obj=this.financialInfoRealState
     localStorage.setItem("financialInfoRealState",JSON.stringify(obj))
     this.financialInfoRealEstateService.create(obj).subscribe((data: any) => {
@@ -137,7 +159,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.financialInfoRealState.push(this.objFinancialInfoRealState);
   }
   changeCheckBox(index:any){
-    debugger
     if(this.financialInfoRealState[index].flgApplicableNotApply ==false)
     {
       this.financialInfoRealState[index].flgApplicableNotApply =true; 
