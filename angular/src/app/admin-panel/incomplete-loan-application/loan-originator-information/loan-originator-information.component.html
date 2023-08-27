@@ -12,6 +12,11 @@
 }
 :host/deep/ input {
   background-color: #E7E7E7 !important;
+  border-bottom: 1px solid #000 !important;
+  border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    
 } 
 
 </style>
@@ -33,6 +38,7 @@
               Loan Originator Organization Name
             </div>
             <input
+            maxlength="50"
               type="text"
               class="form-control"
               id="organizationName" name="organizationName"
@@ -52,6 +58,7 @@
           [ngClass]="{'error':  address.touched && address.errors}">
             <div class="input-group-text">Address</div>
             <input
+            maxlength="50"
               type="text"
               class="form-control "
               id="address" name="address"
@@ -114,6 +121,7 @@
           [ngClass]="{'error':  originatorName.touched && originatorName.errors}">
             <div class="input-group-text">Loan Originator Name</div>
             <input
+            maxlength="50"
               type="text"
               class="form-control"
               id="originatorName" name="originatorName"
@@ -174,6 +182,7 @@
           [ngClass]="{'error':  email.touched && email.errors}">
             <div class="input-group-text">Email</div>
             <input
+            maxlength="50"
               type="text" class="form-control" id="email" name="email"     #email="ngModel" [(ngModel)]="loanOriginatorInfoModels.email"
               required/>
           </div>
@@ -201,6 +210,7 @@
           <div class="input-group">
             <div class="input-group-text">Signature</div>
             <input
+            maxlength="50"
               type="text"
               class="form-control"
 

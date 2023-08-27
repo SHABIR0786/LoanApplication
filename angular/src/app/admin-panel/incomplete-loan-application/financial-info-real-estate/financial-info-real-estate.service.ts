@@ -30,15 +30,6 @@ export class FinancialInfoRealEstateService extends BaseService {
   getCities() {
     return this.get(ApiRoute.getCities, null);
   }
-  getFinancialPropertyStatuses(){
-    return this.get(ApiRoute.getFinancialPropertyStatuses,null)
-  }
-  getLoanPropertyOccupancies(){
-    return this.get(ApiRoute.getLoanPropertyOccupancies,null)
-  }
-  getMortageLoanTypes(){
-    return this.get(ApiRoute.getMortageLoanTypes,null)
-  }  
   create(data: any) {
     return this.post(ApiRoute.createFinancialRealEstate, data);
   }

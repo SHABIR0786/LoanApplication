@@ -126,7 +126,7 @@
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
                       
-                      <p-inputNumber class="showBorder"
+                      <p-inputNumber class="showBorder" maxlength="9" 
                   [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
                       id="loanAmount" #loanAmount="ngModel" [required]="true"
                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
@@ -199,12 +199,18 @@
               <div class="col-7  p-0 input-border-bottom"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && street.errors}"
                 [ngClass]="{'error':  street.touched && street.errors}">
-                <input type="text" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"  name="street" id="street" #street="ngModel" required />
+                
+                <input type="text"  ngx-google-places-autocomplete    [options]='options' 
+                (onAddressChange)="handleAddressChange($event,0)"
+                [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"  
+                name="street" id="street" #street="ngModel" required />
+              
+              
               </div>
 
-              <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit #</label></div>
+              <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit#</label></div>
               <div class="col-2  p-0 input-border-bottom">
-                <p-inputNumber class="showBorder"  [min]="0"></p-inputNumber>
+                <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber>
               </div>
             </div>
 
@@ -244,7 +250,7 @@
               <div class="col-1  p-0 input-border-bottom mt-1"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && zip.errors}"
                 [ngClass]="{'error':  zip.touched && zip.errors}">
-                <input type="number" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
+                <input type="text" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
                   name="zip" id="zip" #zip="ngModel" required />
               </div>
 
@@ -270,13 +276,13 @@
             <div class="row mt-2 ml-2">
               <div class="col-1 p-0"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label></div>
               <div class="col-2  p-0 input-border-bottom">
-                  <p-inputNumber class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber>
+                  <p-inputNumber maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber>
               </div>
 
-              <div class="col-2  p-0"><label class="gray-text" style="font-size: 14px !important; text-align: center;">PROPERTY VALUE</label></div>
+              <div class="col-2  p-0"><label class="gray-text" style="color:black !important;font-size: 14px !important; text-align: center;">PROPERTY VALUE</label></div>
               <div class="col-2  p-0 input-border-bottom" style="display: flex;">
-                <span class="mr-2">$</span>
-                <p-inputNumber class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                <span class="mr-2" style="color:black">$</span>
+                <p-inputNumber maxlength="9" class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
               </div>
             </div>
 
@@ -519,7 +525,7 @@
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder" 
+                        <p-inputNumber class="showBorder"  maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
@@ -564,7 +570,7 @@
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder" 
+                        <p-inputNumber class="showBorder"  maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
@@ -586,7 +592,7 @@
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder"
+                        <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
@@ -608,7 +614,7 @@
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder" 
+                        <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
@@ -678,7 +684,7 @@
                         id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false" /> -->
 
-                        <p-inputNumber class="showBorder"
+                        <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
                         id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
@@ -711,7 +717,7 @@
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false" /> -->
 
-                        <p-inputNumber class="showBorder"
+                        <p-inputNumber class="showBorder" maxlength="9"
                          [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
@@ -770,6 +776,9 @@
                   <span>Cash or Market Value</span>
                 </label>
               </div>
+
+
+
             </div>
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
@@ -780,8 +789,10 @@
                     <select class="form-control" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
                       name="{{i}}.assetTypeId" id="{{i}}.assetTypeId" #assetTypeId="ngModel"
                       [required]="flgGiftsorGrants == false">
-                      <option value="-1" selected disabled>-Select one-</option>
-                      <option *ngFor="let obj of giftTypeList" [ngValue]="obj.id"> {{obj.loanPropertyGiftType1}} </option>
+                      <option value="-1" selected disabled>Select Asset Type</option>
+                      <option value="1">Cash Gift</option>
+                      <option value="2">Gift or Equity</option>
+                      <option value="3">Grant</option>
                     </select>
                   </p>
                 </div>
@@ -818,17 +829,7 @@
                   <p class="frm-fld-input"><select [disabled]="flgGiftsorGrants == true" class="form-control"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
                       [required]="flgGiftsorGrants == false">
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option value="-1" >Community Nonprofit</option>
-                      <option value="-1" >Employer</option>
-                      <option value="-1" >Federal Agency</option>
-                      <option value="-1" >Local Agency</option>
-                      <option value="-1" >Relative</option>
-                      <option value="-1" >Religious Non Profit</option>
-                      <option value="-1" >State Agency</option>
-                      <option value="-1" >Unmarried Partner</option>
-                      <option value="-1" >Lender</option>
-                      <option value="-1" >Other</option>
+                      <option value="-1" selected disabled>Citizenship</option>
                     </select></p>
                 </div>
               </div>
@@ -843,7 +844,7 @@
                         <!-- <input type="text"
                         [readonly]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
                         id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /> -->
-                        <p-inputNumber class="showBorder" 
+                        <p-inputNumber class="showBorder"  maxlength="9"
                          [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
                          id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>

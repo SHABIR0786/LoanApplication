@@ -15,7 +15,7 @@ export class DeclarationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.declarationsList=[];
-    debugger
+    
     if(localStorage.declarationsList != undefined && localStorage.declarationsList != '')
     {
       this.oldDeclarationsList =JSON.parse(localStorage.getItem('declarationsList'));
@@ -27,7 +27,6 @@ export class DeclarationsComponent implements OnInit {
     if(this.oldDeclarationsList.length > 0)
     {
       this.oldDeclarationsList.forEach((element:any)=>{
-        debugger
         this.declarationsList[element.questionNumberIndex]=element
       })
     }  
@@ -41,7 +40,7 @@ export class DeclarationsComponent implements OnInit {
   }
   create()
   {
-    debugger
+    
     if(this.declarationsList[17] != undefined && this.declarationsList[17].answer == "No")
     {
       this.declarationsList.splice(18,18)
@@ -67,7 +66,7 @@ export class DeclarationsComponent implements OnInit {
     if(indexList.length > 0 && indexList != undefined)
     {
       indexList.forEach((element:any)=>{
-        debugger
+        
         this.declarationsList.splice(element.index,1)
   
       })
@@ -77,7 +76,7 @@ export class DeclarationsComponent implements OnInit {
    this.declarationsList.forEach((element:any)=>{
     this.sendDeclarationList.push({answer:element.answer})
    })
-   debugger
+   
     var obj = this.sendDeclarationList;
     localStorage.setItem("declarationsList",JSON.stringify(obj))
     this.declarationsService.create(obj).subscribe((data:any)=>{

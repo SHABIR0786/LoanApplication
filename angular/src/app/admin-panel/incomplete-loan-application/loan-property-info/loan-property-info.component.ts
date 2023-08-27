@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import {LoanPropertyInfoModels,NewMortgageLoans,GiftsOrGrants,RentalIncome} from "./loan-property-info-models"
 import {LoanPropertyInfoService} from "./loan-property-info.service"
 import { Router } from "@angular/router";
+import { GoogleAddress } from "../borrower-info/borrower-model";
 @Component({
   selector: "app-loan-property-info",
   templateUrl: "./loan-property-info.component.html",
@@ -16,7 +17,10 @@ export class LoanPropertyInfoComponent implements OnInit {
   cityList:any[]=[];
   countryList:any[]=[];
   stateList:any[]=[];
-  giftTypeList:any[]=[]
+  options: any = {
+    componentRestrictions: { country: 'US' }
+  }
+
   constructor(private loanPropertyInfoService:LoanPropertyInfoService,private router: Router) {}
 
   ngOnInit(): void {
@@ -24,6 +28,7 @@ export class LoanPropertyInfoComponent implements OnInit {
     this.getCities();
     this.getCountries();
     this.getStates();
+    debugger
     if(localStorage.flgOtherNewMortgageLoans != undefined && localStorage.flgOtherNewMortgageLoans != '')
     {
       this.flgOtherNewMortgageLoans =JSON.parse(localStorage.getItem('flgOtherNewMortgageLoans'));
@@ -52,16 +57,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     {
       this.loanPropertyInfoModel.newMortgageLoans.push(new NewMortgageLoans());
     }
-    //----Get Gift Types
-    this.loanPropertyInfoService.getLoanPropertyGiftTypes().subscribe((data:any)=>{
-      this.countryList=[]
-      if(data.success == true && data.result.length > 0)
-      {
-        data.result.forEach((element:any)=>{
-          this.giftTypeList.push({loanPropertyGiftType1:element.loanPropertyGiftType1,id:element.id})
-        })
-      }
-    })   
   }
   getCountries()
   {
@@ -143,6 +138,8 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
     
   }
+
+
   create()
   {
     debugger
@@ -175,4 +172,51 @@ export class LoanPropertyInfoComponent implements OnInit {
       }
     })
   }
+
+
+  
+  public handleAddressChange(place: google.maps.places.Place, fldIndex:number) {
+   
+    let COMPONENT_TEMPLATE :any;
+    let Address_01: GoogleAddress = new GoogleAddress(); 
+
+   COMPONENT_TEMPLATE = { street_number: 'short_name' }; 
+   Address_01.addressLine1 = this.getAddrComponent(place,COMPONENT_TEMPLATE);
+
+   COMPONENT_TEMPLATE = { route: 'long_name' }; //street
+   Address_01.addressLine2 = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+   COMPONENT_TEMPLATE = { locality: 'long_name' };
+   Address_01.city = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+   COMPONENT_TEMPLATE = { administrative_area_level_1: 'short_name' },
+   Address_01.state = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+   COMPONENT_TEMPLATE = { country: 'long_name' },
+   Address_01.countryShort = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+   COMPONENT_TEMPLATE = { postal_code: 'long_name' },
+   Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+   const stateID = this.stateList.find(state => state.stateName === Address_01.state);
+   const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street = Address_01.addressLine1 + " " +  Address_01.addressLine2  ;
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip = Address_01.postalCode;
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = this.cityList.find(city => city.cityName === Address_01.city);
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.stateId = stateID.id;
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.countryId = CountryID.id;
+ }
+
+ getAddrComponent(place, componentTemplate) {
+  let result;
+
+  for (let i = 0; i < place.address_components.length; i++) {
+    const addressType = place.address_components[i].types[0];
+    if (componentTemplate[addressType]) {
+      result = place.address_components[i][componentTemplate[addressType]];        
+      return result;
+    }
+  }
+  return;
+}
+ 
 }

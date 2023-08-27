@@ -8,10 +8,13 @@ import { Router } from "@angular/router";
   styleUrls: ["./military-service.component.css"],
 })
 export class MilitaryServiceComponent implements OnInit {
+  currentDate:Date = new Date();
   militaryServiceModel:MilitaryServiceModel = new MilitaryServiceModel()
   constructor(private militaryServicesService:MilitaryServicesService,private router: Router) {}
 
   ngOnInit(): void {
+    this.militaryServiceModel.isServeUSForces = false;
+    
     if(localStorage.militaryServiceModel != undefined && localStorage.militaryServiceModel != '')
     {
       this.militaryServiceModel =JSON.parse(localStorage.getItem('militaryServiceModel'));

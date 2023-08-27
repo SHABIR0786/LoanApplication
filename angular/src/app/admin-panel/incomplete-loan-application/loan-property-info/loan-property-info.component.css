@@ -54,7 +54,7 @@ h4{
 
     .error {
       box-sizing: border-box;
-      padding: 5px 5px 5px 16px;
+      padding: 5px 5px 5px 5px !important;
       min-height: 50px;
       border: solid 1px !important;
       border-color: red !important;
@@ -65,7 +65,7 @@ h4{
     
       .error_bb{
         box-sizing: border-box;
-        padding: 5px 5px 5px 16px;
+        padding: 0px 5px 0px 5px !important;
         border: solid 1px !important;
         border-color: red !important;
         background-color: #ffffff;
@@ -93,6 +93,20 @@ border-radius: 8px;
 padding: 14px 21px 24px 21px;
 cursor: not-allowed;
 margin-bottom: 74px;
+}
+
+.disabled {
+  background-color: #E7E7E7 !important;
+}
+
+.disabled input{
+  pointer-events: none;
+  background-color: #E7E7E7 !important;
+}
+
+.disabled .frm-group-borderless{
+  pointer-events: none;
+  background-color: #E7E7E7 !important;
 }
 
 .form-block.disabled {

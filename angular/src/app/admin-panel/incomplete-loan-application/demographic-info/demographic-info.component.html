@@ -45,7 +45,7 @@
                 </label>
               </div>
             </div>
-            <div>
+            <div class="mt-2 pl-3">
               <div class="form-check form-check-inline">
                 <input [disabled]="demographicInfoModels.canNotProvideEthnicInfo == true"
                   class="form-check-input"
@@ -94,8 +94,7 @@
                   #isOtherHispanicOrLatino="ngModel"
                   [(ngModel)]="demographicInfoModels.isOtherHispanicOrLatino"
                 />
-                <label class="form-check-label" for="inlineCheckbox3"
-                  >Other Hispanic or Latino – Print origin:</label
+                <label class="form-check-label" for="inlineCheckbox3">Other Hispanic or Latino – Print origin:</label
                 >
               </div>
               <div>
@@ -105,7 +104,7 @@
                 </p>
               </div>
             </div>
-            <div>
+            <div class="mt-2">
               <div class="form-check">
                 <input [disabled]="demographicInfoModels.canNotProvideEthnicInfo == true"
                   class="form-check-input"
@@ -137,8 +136,9 @@
             </div>
           </div>
           <div class="demographic-info">
-            <p><b>Sex</b></p>
-            <div>
+            
+            <div class="mt-2">
+              <b>Sex</b>
               <div class="form-check">
                 <input [disabled]="demographicInfoModels.canNotProvideSexInfo == true"
                   class="form-check-input"
@@ -197,7 +197,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="pl-3">
             <p>
               or principal tribe :
             </p>
@@ -215,7 +215,7 @@
 
 
 
-          <div>
+          <div class="pl-3">
             <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
@@ -309,7 +309,7 @@
 
             <div class="form-check form-check-inline frm-fld-input">
                 <label class="form-check-label" for="inlineCheckbox3"> Print race:</label>
-                <input  type="text"    id="otherAsianRace"
+                <input  type="text"  id="otherAsianRace" class="bottom_border"
                 name="otherAsianRace"
                 #otherAsianRace="ngModel" [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 [(ngModel)]="demographicInfoModels.otherAsianRace" />
@@ -322,36 +322,6 @@
             </div>
           </div>
 
-
-
-            <!-- <div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Black or African American
-                </label>
-              </div>
-            </div> -->
-
-
-            <!-- <div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Native Hawaiian or Other Pacific Islander
-                </label>
-              </div>
-            </div> -->
 
 
 
@@ -367,7 +337,7 @@
               <label class="form-check-label" for="inlineCheckbox1">Black or African American </label>
             </div>
 
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline pl-3">
               <input
                 class="form-check-input"
                 type="checkbox"
@@ -402,9 +372,9 @@
             </div>
 
 
-            <div>
+            <div class="pl-3">
               <p>
-                For example: Hmong, Laotian, Thai, Pakistani, Cambodian, and so on.
+                For example: Fijian, Tongan, and so on.
               </p>
             </div>
 
@@ -431,8 +401,7 @@
             </div>
 
 
-            <div></div>
-
+          
 
           </div>
 
@@ -441,6 +410,144 @@
       </div>
     </form>
   </div>
+
+  <div>
+    <h4 style="font-size: 14px; font-family: 600; color:black"> To Be Completed by Financial Institution (for application taken in person):</h4>
+  </div>
+
+
+  <div class="form-block">
+    <div class="row">
+      <div class="col-9 txt  mt-0">
+        <ol style="list-style: none;">
+          <li style="font-size: 14px !important;font-weight: 500; font-family: 'Avenir'  !important; color: #000;">
+            Was the ethnicity of the Borrower collected on the basis of visual observation or surname?
+          </li>
+        </ol>
+            
+      </div>
+      <div class="col-3 txt">
+        <div class="frm-fld-input">
+          <div class="row mt-2 ml-4">
+           <div class="col-2">
+             <div style="display: flex; justify-content: center;">
+               <input type="radio" name="question8" id="question8"  value="Yes"  style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+               required />
+               <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
+             </div>
+           </div>
+
+           <div class="col-2">
+             <div style="display: flex; justify-content: center; margin-left:40px">
+              <input type="radio" name="question8" id="question8"  value="No" style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+              required />
+               <label class="text-gray ml-2" style="font-size: 18px;">No</label>
+             </div>
+           </div>
+          </div>
+       </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9 txt  mt-0">
+        <ol style="list-style: none;">
+          <li style="font-size: 14px !important;font-weight: 500; font-family: 'Avenir'  !important; color: #000;">
+            Was the sex of the Borrower collected on the basis of visual observation or surname?
+          </li>
+        </ol>
+            
+      </div>
+      <div class="col-3 txt">
+        <div class="frm-fld-input">
+          <div class="row mt-2 ml-4">
+           <div class="col-2">
+             <div style="display: flex; justify-content: center;">
+               <input type="radio" name="question9" id="question9"  value="Yes"  style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+               required />
+               <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
+             </div>
+           </div>
+
+           <div class="col-2">
+             <div style="display: flex; justify-content: center; margin-left:40px">
+              <input type="radio" name="question9" id="question9"  value="No" style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+              required />
+               <label class="text-gray ml-2" style="font-size: 18px;">No</label>
+             </div>
+           </div>
+          </div>
+       </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-9 txt  mt-0">
+        <ol style="list-style: none;">
+          <li style="font-size: 14px !important;font-weight: 500; font-family: 'Avenir'  !important; color: #000;">
+            Was the race of the Borrower collected on the basis of visual observation or surname?
+          </li>
+        </ol>
+            
+      </div>
+      <div class="col-3 txt">
+        <div class="frm-fld-input">
+          <div class="row mt-2 ml-4">
+           <div class="col-2">
+             <div style="display: flex; justify-content: center;">
+               <input type="radio" name="question10" id="question10"  value="Yes"  style="width:85px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+               required />
+               <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
+             </div>
+           </div>
+
+           <div class="col-2">
+             <div style="display: flex; justify-content: center; margin-left:40px">
+              <input type="radio" name="question10" id="question10"  value="No" style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+              required />
+               <label class="text-gray ml-2" style="font-size: 18px;">No</label>
+             </div>
+           </div>
+          </div>
+       </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div>
+    <h4 style="font-size: 14px; font-family: 600; color:black">The Demographic Information was provided through:</h4>
+  </div>
+
+  <div class="form-block">
+
+<div style="display: inline-flex; justify-content: center; align-items: center;">
+    
+  <div style="display: flex;justify-content: center;align-items: center;margin-right: 12px;">
+    <input type="radio" id="html1" name="fav_language" value="HTML1">
+  <label class="pl-3" for="html1" style="font-size: 14px !important;font-family: 'Avenir';color: black !important;font-weight: 500;">Face-to-Face Interview (includes Electronic Media w/ Video Component)</label>
+  </div>
+
+  <div style="display: flex;justify-content: center;align-items: center;margin-right: 12px;">
+<input type="radio" id="html2" name="fav_language" value="HTML2">  
+<label class="pl-3" for="html2" style="font-size: 14px !important;font-family: 'Avenir';color: black !important;font-weight: 500;">Telephone Interview</label>
+</div>
+
+<div style="display: flex;justify-content: center;align-items: center;margin-right: 12px;">
+<input type="radio" id="html3" name="fav_language" value="HTML3">
+  <label class="pl-3" for="html3" style="font-size: 14px !important;font-family: 'Avenir';color: black !important;font-weight: 500;">Fax or Mail</label>
+</div>
+
+<div style="display: flex;justify-content: center;align-items: center;margin-right: 12px;">
+<input type="radio" id="html4" name="fav_language" value="HTML4">
+  <label class="pl-3" for="html4"  style="font-size: 14px !important;font-family: 'Avenir';color: black !important;font-weight: 500;">Email or Internet</label>
+</div>
+</div>
+
+  </div>
+
   <div class="separator"></div>
   <div class="row borrower-block">
     <div class="col-sm-8">
@@ -456,7 +563,7 @@
   </div>
   <div class="row text-right mt-5">
     <div class="col-sm-12">
-      <button class="btn btn-fill" (click)="create()">Finish</button>
+      <button class="btn btn-fill" (click)="create()">Next</button>
     </div>
   </div>
 </div>

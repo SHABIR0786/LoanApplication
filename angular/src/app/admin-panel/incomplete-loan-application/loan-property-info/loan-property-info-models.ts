@@ -35,7 +35,7 @@ export class PropertyAddress{
     cityId:  number ;
     stateId:  number ;
     countryId:  number ;
-    zip:  number ;
+    zip:  string ;
     numberOfUnits:  number ;
         
 }

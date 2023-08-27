@@ -79,6 +79,7 @@
 
 .form-block .input-group {
   align-items: flex-end;
+  align-items: center;
   background-color: #E7E7E7 !important;
 }
 
@@ -130,6 +131,13 @@
   background-color: transparent;
   border: 0;
 }
+
+
+.borrower-block .input-group .input-group-text input{
+  border-bottom: 1px solid #000;
+}
+
+
 .borrower-block .input-group .form-control {
   border: 0;
   border-radius: 0;

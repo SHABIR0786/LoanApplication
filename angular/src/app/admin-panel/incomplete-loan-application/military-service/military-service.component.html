@@ -11,7 +11,7 @@
 
       <div class="row">
         <div class="col-10">
-          <p>
+          <p style="color: black;">
             <b>Military Service</b> – Did you (or your deceased spouse) ever
             serve, or are you currently serving, in the United States Armed
             Forces?
@@ -95,7 +95,7 @@
         <div class="col-2 input-border-bottom"
         [ngClass]="{'error': militaryForm.submitted && projectedExpirationServiceDate.errors}"
         [ngClass]="{'error':  projectedExpirationServiceDate.touched && projectedExpirationServiceDate.errors}">
-          <input type="date" id="projectedExpirationServiceDate" name="projectedExpirationServiceDate"
+          <input max="{{currentDate | date:'yyyy-MM-dd'}}" type="date" id="projectedExpirationServiceDate" name="projectedExpirationServiceDate"
             [(ngModel)]="militaryServiceModel.projectedExpirationServiceDate" #projectedExpirationServiceDate="ngModel"
             [disabled]="militaryServiceModel.isServeUSForces == false" 
             [required]="militaryServiceModel.isServeUSForces == true" 

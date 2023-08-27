@@ -36,8 +36,6 @@ export class BorrowerInfoComponent implements OnInit {
   stateList: any[] = [];
   cityList: any[] = [];
   citizenshipType:any[]=[];
-  maritalStatusList:any[]=[];
-  incomeTypeList:any[]=[];
   currentDate:Date = new Date();
   
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
@@ -71,7 +69,7 @@ export class BorrowerInfoComponent implements OnInit {
     this.getCities()
     this.creditClick();
     this.borrowerInfo.personalInformation.address[0] = new Address();
-    //---GetCitizenshipType
+
     this.borrowService.getAllCitizenshipType().subscribe(
       (res: any) => {
         console.log(res.result);
@@ -84,28 +82,6 @@ export class BorrowerInfoComponent implements OnInit {
         //this.Custom = res.result.items;
       }
     );
-    //---Get Marital Statuses
-    this.borrowService.getAllMaritalStatus().subscribe(
-      (res:any)=>{
-        this.maritalStatusList=[];
-        if(res.success ==true && res.result.length>0){
-          res.result.forEach((element:any)=>{
-            this.maritalStatusList.push({maritialStatus1:element.maritialStatus1, id:element.id})
-          })
-        }
-      }
-    )
-    //--- Get IncomeType
-    this.borrowService.getIncomeTypes().subscribe(
-      (res:any)=>{
-        this.incomeTypeList=[];
-        if(res.success ==true && res.result.length>0){
-          res.result.forEach((element:any)=>{
-            this.incomeTypeList.push({incomeType:element.incomeType, id:element.id})
-          })
-        }
-      }
-    )
     if (localStorage.borrowerInfo != undefined && localStorage.borrowerInfo != '') {
       this.borrowerInfo = JSON.parse(localStorage.getItem('borrowerInfo'));
     }
@@ -155,8 +131,10 @@ export class BorrowerInfoComponent implements OnInit {
     {
       this.browerList.push({id:i,label:i});
     }
+    debugger
   }
   creditClick() {
+    debugger;
     if (this.borrowerInfo.personalInformation.creditValue == "1") {
       this.borrowerInfo.personalInformation.totalBorrowers = 1;
     }
@@ -173,6 +151,7 @@ export class BorrowerInfoComponent implements OnInit {
   }
   nextBtnClick() {
     console.log(this.borrowerInfo);
+    debugger;
     if (this.doNotApplyForaddress1) {
       this.borrowerInfo.personalInformation.address[1] = new Address();
     }
@@ -188,6 +167,7 @@ export class BorrowerInfoComponent implements OnInit {
     if (this.doNotApplyForEmp2) {
       this.borrowerInfo.employment[2] = new Employment();
     }
+    debugger
     localStorage.setItem("borrowerInfo", JSON.stringify(this.borrowerInfo))
     localStorage.setItem("doNotApplyForaddress1", JSON.stringify(this.doNotApplyForaddress1))
     localStorage.setItem("doNotApplyForaddress2", JSON.stringify(this.doNotApplyForaddress2))
@@ -228,10 +208,13 @@ export class BorrowerInfoComponent implements OnInit {
     })
   }
   getCities() {
+    debugger
     this.borrowService.getCities().subscribe((data: any) => {
+      debugger
       this.cityList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
+          debugger
           this.cityList.push({ cityName: element.cityName, id: element.id })
         })
       }
