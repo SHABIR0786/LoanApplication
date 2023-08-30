@@ -15,8 +15,9 @@ export class AcknowledgementsAgreementsComponent implements OnInit {
     //   this.financialInfoAssetsLiabilitiesModels =JSON.parse(localStorage.getItem('financialInfoAssetsLiabilitiesModels'));
     // }
   }
-  create()
-  {
-    this.router.navigateByUrl('app/admin/incomplete-loan-application/military-service');
+  create() {
+    this.router.navigateByUrl(
+      "app/admin/incomplete-loan-application/military-service"
+    );
   }
 }

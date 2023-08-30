@@ -146,6 +146,7 @@
 
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [(ngModel)]="
                           loanPropertyInfoModel.loanPropertyInfo.loanAmount
                         "
@@ -278,6 +279,9 @@
               >
                 <input
                   type="text"
+                  ngx-google-places-autocomplete
+                  [options]="options"
+                  (onAddressChange)="handleAddressChange($event, 0)"
                   [(ngModel)]="
                     loanPropertyInfoModel.loanPropertyInfo.propertyAddress
                       .street
@@ -295,7 +299,11 @@
                 >
               </div>
               <div class="col-2 p-0 input-border-bottom">
-                <p-inputNumber class="showBorder" [min]="0"></p-inputNumber>
+                <p-inputNumber
+                  class="showBorder"
+                  maxlength="5"
+                  [min]="0"
+                ></p-inputNumber>
               </div>
             </div>
 
@@ -397,7 +405,7 @@
                 [ngClass]="{ error: zip.touched && zip.errors }"
               >
                 <input
-                  type="number"
+                  type="text"
                   min="0"
                   [(ngModel)]="
                     loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip
@@ -465,6 +473,7 @@
               </div>
               <div class="col-2 p-0 input-border-bottom">
                 <p-inputNumber
+                  maxlength="9"
                   class="showBorder"
                   [min]="0"
                   [(ngModel)]="
@@ -480,13 +489,18 @@
               <div class="col-2 p-0">
                 <label
                   class="gray-text"
-                  style="font-size: 14px !important; text-align: center"
+                  style="
+                    color: black !important;
+                    font-size: 14px !important;
+                    text-align: center;
+                  "
                   >PROPERTY VALUE</label
                 >
               </div>
               <div class="col-2 p-0 input-border-bottom" style="display: flex">
-                <span class="mr-2">$</span>
+                <span class="mr-2" style="color: black">$</span>
                 <p-inputNumber
+                  maxlength="9"
                   class="showBorder"
                   [minFractionDigits]="2"
                   [min]="0"
@@ -881,6 +895,7 @@
                         [required]="flgOtherNewMortgageLoans == false" /> -->
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true"
                         [(ngModel)]="item.creditorName"
                         name="{{ i }}.creditorName"
@@ -987,6 +1002,7 @@
                         [required]="flgOtherNewMortgageLoans == false" /> -->
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true"
                         [(ngModel)]="item.monthlyPayment"
                         name="{{ i }}.monthlyPayment"
@@ -1036,6 +1052,7 @@
                         [required]="flgOtherNewMortgageLoans == false" /> -->
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true"
                         [(ngModel)]="item.loanAmount"
                         name="{{ i }}.loanAmount"
@@ -1084,6 +1101,7 @@
                         [required]="flgOtherNewMortgageLoans == false" /> -->
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true"
                         [(ngModel)]="item.creditLimit"
                         name="{{ i }}.creditLimit"
@@ -1223,6 +1241,7 @@
 
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="
                           loanPropertyInfoModel.rentalIncome.monthlyRentalIncome
@@ -1294,6 +1313,7 @@
 
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="
                           loanPropertyInfoModel.rentalIncome
@@ -1539,6 +1559,7 @@
                         id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /> -->
                       <p-inputNumber
                         class="showBorder"
+                        maxlength="9"
                         [disabled]="flgGiftsorGrants == true"
                         [(ngModel)]="item.marketValue"
                         name="{{ i }}.marketValue"

@@ -1,3 +1,89 @@
+<style>
+  :host/deep/ .ui-inputnumber {
+    padding-left: 3px !important;
+  }
+
+  :host/deep/.ui-inputtext {
+    border: 0px !important;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-left: 0px !important;
+    width: 100%;
+    color: #a5a5a5;
+    font-weight: 500;
+    line-height: 1.2575;
+    border-bottom: 1px solid #a5a5a5 !important;
+    background-color: #ffffff;
+    font-family: "Mulish", sans-serif;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 #ffffff !important;
+    outline: medium none;
+  }
+
+  :host/deep/ .disabled input {
+    pointer-events: none;
+    background-color: #e7e7e7 !important;
+  }
+
+  :host/deep/ .disabled .input-border-bottom {
+    pointer-events: none;
+    background-color: #e7e7e7 !important;
+  }
+
+  :host/deep/ .disabled .input-border-bottom .frm-group {
+    pointer-events: none;
+    background-color: #e7e7e7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled {
+    pointer-events: none;
+    background-color: #e7e7e7 !important;
+  }
+
+  :host/deep/ .frm-group .disabled .frm-fld-input {
+    pointer-events: none;
+    background-color: #e7e7e7 !important;
+  }
+  ::ng-deep .fifty .ui-inputtext {
+    width: 50% !important;
+    /* border: none !important; */
+  }
+  ::ng-deep .sixty .ui-inputtext {
+    width: 60% !important;
+    /* border: none !important; */
+  }
+  ::ng-deep .seventy .ui-inputtext {
+    width: 70% !important;
+    /* border: none !important; */
+  }
+  ::ng-deep .eighty .ui-inputtext {
+    width: 80% !important;
+    /* border: none !important; */
+  }
+  ::ng-deep .noBorder .ui-inputtext {
+    border: none !important;
+  }
+
+  ::ng-deep .showBorder .ui-inputtext {
+    border-bottom: 1px solid #a5a5a5 !important;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+</style>
 <div>
   <h4 class="section-title">
     About this Property and Your Money for this Loan
@@ -28,11 +114,11 @@
             [ngClass]="{ error: txtquestion1.touched && txtquestion1.errors }"
           >
             <div class="row">
-              <div class="col-10">
+              <div class="col-9 txt">
                 <b>A.</b> Will you occupy the property as your primary
                 residence?
               </div>
-              <div class="col-2">
+              <div class="col-3">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -94,12 +180,12 @@
             </div>
 
             <div class="row">
-              <div class="col-9" style="padding-left: 50px">
+              <div class="col-9 txt" style="padding-left: 50px">
                 If YES, have you had an ownership interest in another property
                 in the last three years?
                 <div class="pl-2">If YES, complete (1) and (2) below:</div>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div
                   class="frm-fld-input"
                   [ngClass]="{
@@ -169,12 +255,16 @@
             </div>
 
             <div class="row mt-2">
-              <div class="col-9" style="padding-left: 50px">
-                <b>(1)</b> What type of property did you own: primary residence
-                (PR), FHA secondary residence (SR), second home (SH), or
-                investment property (IP)?
+              <div class="col-9 txt" style="padding-left: 60px">
+                <ol type="(1)" class="txt mt-2">
+                  <li>
+                    What type of property did you own: primary residence (PR),
+                    FHA secondary residence (SR), second home (SH), or
+                    investment property (IP)?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div
                   class="frm-group"
                   style="
@@ -190,7 +280,7 @@
                 >
                   <div class="frm-fld-input">
                     <select
-                      class="form-control"
+                      class="form-control shadow-none"
                       [(ngModel)]="declarationsList[2].answer"
                       (change)="assignQuestionId(2, 1)"
                       [required]="declarationsList[0].answer == 'Yes'"
@@ -211,12 +301,16 @@
             </div>
 
             <div class="row mt-3">
-              <div class="col-9" style="padding-left: 50px">
-                <b>(2)</b> How did you hold title to the property: by yourself
-                (S), jointly with yourspouse (SP), or jointly with another
-                person (O)?
+              <div class="col-9 txt" style="padding-left: 60px">
+                <ol type="(2)" start="2" class="txt mt-2">
+                  <li>
+                    How did you hold title to the property: by yourself (S),
+                    jointly with yourspouse (SP), or jointly with another person
+                    (O)?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div
                   class="frm-group"
                   style="
@@ -232,7 +326,7 @@
                 >
                   <div class="frm-fld-input">
                     <select
-                      class="form-control"
+                      class="form-control shadow-none"
                       name="drop2"
                       id="drop2"
                       #drop2="ngModel"
@@ -262,12 +356,16 @@
             [ngClass]="{ error: question3.touched && question3.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>B.</b> If this is a Purchase Transaction: Do you have a
-                family relationship or business affiliation with the seller of
-                the property?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="2">
+                  <li>
+                    If this is a Purchase Transaction: Do you have a family
+                    relationship or business affiliation with the seller of the
+                    property?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -338,13 +436,18 @@
             [ngClass]="{ error: question4.touched && question4.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>C.</b> Are you borrowing any money for this real estate
-                transaction (e.g., money for your closing costs or down payment)
-                or obtaining any money from another party, such as the seller or
-                realtor, that you have not disclosed on this loan application?
+              <div class="col-9 txt mt-1">
+                <ol type="A" start="3">
+                  <li>
+                    Are you borrowing any money for this real estate transaction
+                    (e.g., money for your closing costs or down payment) or
+                    obtaining any money from another party, such as the seller
+                    or realtor, that you have not disclosed on this loan
+                    application?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -405,7 +508,7 @@
             </div>
 
             <div class="row mt-2">
-              <div class="col-9" style="padding-left: 50px">
+              <div class="col-9 txt" style="padding-left: 50px">
                 If YES, what is the amount of this money?
               </div>
               <div
@@ -422,7 +525,7 @@
                   <!-- <input type="number" min="0" 
                 /> -->
                   <p-inputNumber
-                    style="width: 160px"
+                    style="width: 160px; text-align: center"
                     [(ngModel)]="declarationsList[6].answer"
                     id="question4ans"
                     name="question4ans"
@@ -445,14 +548,22 @@
         <div class="col-12">
           <div class="frm-group">
             <div class="row">
-              <div class="col-9">
-                <b>D.</b> <b>1.</b> Have you or will you be applying for a
-                mortgage loan on another property (not the property securing
-                this loan) on <b>or</b>
-                before closing this transaction that is not disclosed on this
-                loan application?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="4">
+                  <li>
+                    <ol start="1">
+                      <li>
+                        Have you or will you be applying for a mortgage loan on
+                        another property (not the property securing this loan)
+                        on <b>or</b>
+                        before closing this transaction that is not disclosed on
+                        this loan application?
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div
                   class="frm-fld-input"
                   [ngClass]="{
@@ -520,12 +631,21 @@
             </div>
 
             <div class="row">
-              <div class="col-9">
-                <b>B.</b> <b>2.</b> Have you or will you be applying for any new
-                credit (e.g., installment loan, credit card, etc.) on or before
-                closing this loan that is not disclosed on this application?
+              <div class="col-9 txt">
+                <ol type="A" start="5">
+                  <li style="list-style: none">
+                    <ol start="2">
+                      <li>
+                        Have you or will you be applying for any new credit
+                        (e.g., installment loan, credit card, etc.) on or before
+                        closing this loan that is not disclosed on this
+                        application?
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div
                   class="frm-fld-input"
                   [ngClass]="{
@@ -603,13 +723,17 @@
             [ngClass]="{ error: question7.touched && question7.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>E.</b> Will this property be subject to a lien that could
-                take priority over the first mortgage lien, such as a clean
-                energy lien paid through your property taxes (e.g., the Property
-                Assessed Clean Energy Program)?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="5">
+                  <li>
+                    Will this property be subject to a lien that could take
+                    priority over the first mortgage lien, such as a clean
+                    energy lien paid through your property taxes (e.g., the
+                    Property Assessed Clean Energy Program)?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -673,7 +797,7 @@
         </div>
       </div>
 
-      <h4>About Your</h4>
+      <h4>About Your Finances</h4>
 
       <div class="row div-sub-grp">
         <div class="col-12">
@@ -683,11 +807,15 @@
             [ngClass]="{ error: question8.touched && question8.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>F.</b>Are you a co-signer or guarantor on any debt or loan
-                that is not disclosed on this application?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="6">
+                  <li>
+                    Are you a co-signer or guarantor on any debt or loan that is
+                    not disclosed on this application?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -759,10 +887,12 @@
             [ngClass]="{ error: question9.touched && question9.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>G.</b> Are there any outstanding judgments against you?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="7">
+                  <li>Are there any outstanding judgments against you?</li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -836,11 +966,15 @@
             [ngClass]="{ error: question10.touched && question10.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>H.</b> Are you currently delinquent or in default on a
-                Federal debt?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="8">
+                  <li>
+                    Are you currently delinquent or in default on a Federal
+                    debt?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -914,11 +1048,15 @@
             [ngClass]="{ error: question11.touched && question11.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>I.</b> Are you a party to a lawsuit in which you potentially
-                have any personal financial liability?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="9">
+                  <li>
+                    Are you a party to a lawsuit in which you potentially have
+                    any personal financial liability?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -992,11 +1130,15 @@
             [ngClass]="{ error: question12.touched && question12.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>J.</b> Have you conveyed title to any property in lieu of
-                foreclosure in the past 7 years?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="10">
+                  <li>
+                    Have you conveyed title to any property in lieu of
+                    foreclosure in the past 7 years?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -1070,13 +1212,17 @@
             [ngClass]="{ error: question13.touched && question13.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>K.</b> Within the past 7 years, have you completed a
-                pre-foreclosure sale or short sale, whereby the property was
-                sold to a third party and the Lender agreed to accept less than
-                the outstanding mortgage balance due?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="11">
+                  <li>
+                    Within the past 7 years, have you completed a
+                    pre-foreclosure sale or short sale, whereby the property was
+                    sold to a third party and the Lender agreed to accept less
+                    than the outstanding mortgage balance due?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -1150,11 +1296,14 @@
             [ngClass]="{ error: question14.touched && question14.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>L.</b> Have you had property foreclosed upon in the last 7
-                years?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="12">
+                  <li>
+                    Have you had property foreclosed upon in the last 7 years?
+                  </li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -1228,10 +1377,12 @@
             [ngClass]="{ error: question15.touched && question15.errors }"
           >
             <div class="row">
-              <div class="col-9">
-                <b>M.</b> Have you declared bankruptcy within the past 7 years?
+              <div class="col-9 txt mt-2">
+                <ol type="A" start="13">
+                  <li>Have you declared bankruptcy within the past 7 years?</li>
+                </ol>
               </div>
-              <div class="col-3">
+              <div class="col-3 txt">
                 <div class="frm-fld-input">
                   <div class="row mt-2 ml-4">
                     <div class="col-2">
@@ -1293,7 +1444,7 @@
             </div>
 
             <div class="row mb-2">
-              <div class="col-4" style="padding-left: 50px">
+              <div class="col-4 txt" style="padding-left: 50px">
                 If YES, identify the type(s) of bankruptcy:
               </div>
               <div class="col-8">
@@ -1305,7 +1456,7 @@
                   [ngClass]="{ error: question16.touched && question16.errors }"
                 >
                   <div class="row mt-2 ml-4">
-                    <div class="col-2">
+                    <div class="col-2 txt">
                       <div
                         style="
                           display: flex;
@@ -1314,7 +1465,7 @@
                         "
                       >
                         <input
-                          type="radio"
+                          type="checkbox"
                           name="question16"
                           id="question16"
                           #question16="ngModel"
@@ -1336,7 +1487,7 @@
                       </div>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-2 txt">
                       <div
                         style="
                           display: flex;

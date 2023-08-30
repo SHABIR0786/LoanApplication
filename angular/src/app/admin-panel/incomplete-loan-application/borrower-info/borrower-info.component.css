@@ -158,7 +158,7 @@ font-family: 'Source Sans Pro', sans-serif; */
 }
 .div-main-grp .div-sub-grp .frm-group {
   box-sizing: border-box;
-  padding: 5px 15px 5px 25px !important;
+  padding: 5px 20px 5px 25px !important;
   min-height: 50px;
   border: solid 0.1rem #a5a5a5;
   background-color: #ffffff;
@@ -168,7 +168,7 @@ font-family: 'Source Sans Pro', sans-serif; */
 
 .error {
   box-sizing: border-box;
-  padding: 5px 5px 5px 16px !important;
+  padding: 5px 5px 5px 5px !important;
   min-height: 50px;
   border: solid 1px !important;
   border-color: red !important;
@@ -179,7 +179,7 @@ font-family: 'Source Sans Pro', sans-serif; */
 
 .error_bb {
   box-sizing: border-box;
-  padding: 5px 5px 5px 16px;
+  padding: 0px 5px 0px 5px !important;
   border: solid 1px !important;
   border-color: red !important;
   background-color: #ffffff;
@@ -333,6 +333,8 @@ font-family: 'Source Sans Pro', sans-serif; */
   font-size: 14px;
   margin-top: 0px;
   margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
   background-color: #ffffff;
   border-top: 0px;
   border-left: 0px;
@@ -347,10 +349,12 @@ font-family: 'Source Sans Pro', sans-serif; */
   border: 0px !important;
   font-size: 14px;
   margin-bottom: 0px;
-  padding-left: 0px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
   width: 100%;
   color: #a5a5a5;
   font-weight: 500;
+  border-radius: 10px 10px 0px 0px !important;
   line-height: 1.2575;
   border-bottom: 1px solid #a5a5a5 !important;
   background-color: #ffffff;
@@ -359,6 +363,7 @@ font-family: 'Source Sans Pro', sans-serif; */
 }
 
 .input-border-bottom select {
+  text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
@@ -568,6 +573,7 @@ input:focus {
   color: #a5a5a5;
   border: 0px !important;
   font-weight: 500;
+  margin-left: -10px !important;
   line-height: 15px;
   font-family: "Mulish", sans-serif;
   white-space: nowrap;

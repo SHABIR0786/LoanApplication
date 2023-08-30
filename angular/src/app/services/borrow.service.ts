@@ -12,7 +12,13 @@ export class BorrowService extends BaseService {
     super(httpService, AppConsts.remoteServiceBaseUrl);
   }
   getAllCitizenshipType() {
-    return this.get(ApiRoute.getCitizenshipType, null);
+    return this.get(ApiRoute.getCitizenshipTypes, null);
+  }
+  getAllMaritalStatus() {
+    return this.get(ApiRoute.getMaritalStatus, null);
+  }
+  getIncomeTypes() {
+    return this.get(ApiRoute.getIncomeTypes, null);
   }
   createMortgageLoanApplication(data) {
     return this.post(ApiRoute.createMortgageLoanApplication, data);

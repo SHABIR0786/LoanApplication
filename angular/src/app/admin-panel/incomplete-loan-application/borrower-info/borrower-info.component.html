@@ -216,7 +216,7 @@
               }"
             >
               <label class="frm-label"
-                >Social Security Number (or Individual Taxpayer Identification
+                >Social Security Number (Individual Taxpayer Identification
                 Number)</label
               >
               <p class="frm-fld-input">
@@ -246,11 +246,13 @@
               <p class="frm-fld-input">
                 <input
                   type="date"
+                  onfocus="this.showPicker()"
                   onkeydown="return false"
                   id="dob"
                   name="dob"
                   #dob="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.dob"
+                  max="{{ currentDate | date: 'yyyy-MM-dd' }}"
                   placeholder="____/____/________"
                   required
                 />
@@ -778,7 +780,7 @@
                 >
                   <option class="option" value="-1" selected disabled>
                     (Single, Divorced, Widowed, Civil Union, Domestic
-                    Partnership)
+                    Partnership, Registered Reciprocal Beneficiary Relationship)
                   </option>
                   <option class="option" value="Single">Single</option>
                   <option class="option" value="Divorced">Divorced</option>
@@ -4096,10 +4098,10 @@
             id="doNotApplyForEmp2"
             #txtdoNotApplyForEmp2="ngModel"
           />
-          <span class="checkmark"></span>
+          <span class="checkmark" style="margin-top: 10px"></span>
         </label>
       </div>
-      <h4>
+      <h4 style="font-size: 16px">
         Provide at least 2 years of current and previous employment and income.
       </h4>
 
@@ -4122,7 +4124,7 @@
                   <label class="gray-text">Employer or Business Name</label>
                 </div>
                 <div
-                  class="col-4 p-0 input-border-bottom"
+                  class="col-3 p-0 input-border-bottom"
                   [ngClass]="{ error_bb: borrowForm.submitted && name9.errors }"
                   [ngClass]="{ error_bb: name9.touched && name9.errors }"
                 >
@@ -4142,7 +4144,7 @@
                   <label class="gray-text">Phone</label>
                 </div>
                 <div
-                  class="col-1 p-0 input-border-bottom"
+                  class="col-2 p-0 input-border-bottom"
                   style="padding-left: 5px"
                   [ngClass]="{
                     error_bb: borrowForm.submitted && phone9.errors
@@ -4367,7 +4369,7 @@
         style="width: 100%; margin-top: 30px; margin-bottom: 20px"
       >
         <div class="row div-sub-grp">
-          <div class="col-9 p-0">
+          <div class="col-8 p-0">
             <div
               class="frm-group"
               style="padding-bottom: 30px"
@@ -4426,13 +4428,13 @@
                   />
                 </div>
 
-                <div class="col-2 p-0">
+                <div class="col-2 p-0" style="text-align: center">
                   <label class="gray-text"
                     >End Date <span style="font-size: 11px"></span
                   ></label>
                 </div>
                 <div
-                  class="col-3 p-0 input-border-bottom"
+                  class="col-4 p-0 input-border-bottom"
                   [ngClass]="{
                     error_bb: borrowForm.submitted && startDate5.errors
                   }"
@@ -4455,7 +4457,7 @@
             </div>
           </div>
 
-          <div class="col-3">
+          <div class="col-4">
             <label class="container mt-1 mb-2"
               ><span class="gray-text" style="font-size: 10px !important">
                 Check if you were the Business Owner or Self-Employed.
@@ -4481,9 +4483,9 @@
                 <span>Previous Gross Monthly</span>
               </label>
               <div class="row">
-                <div class="col-5"><label class="gray-text">Income</label></div>
+                <div class="col-3"><label class="gray-text">Income</label></div>
                 <div
-                  class="col-5 input-border-bottom"
+                  class="col-7 p-0 input-border-bottom"
                   [ngClass]="{
                     error_bb: borrowForm.submitted && monthlyIncome4.errors
                   }"
@@ -4499,7 +4501,7 @@
                       [(ngModel)]="borrowerInfo.employment[2].monthlyIncome" [required]="doNotApplyForEmp2 == false"
                       [readonly]="doNotApplyForEmp2 == true" /> -->
                     <p-inputNumber
-                      class="eighty"
+                      class="eighty showBorder"
                       name="monthlyIncome4"
                       id="monthlyIncome4"
                       #monthlyIncome4="ngModel"
@@ -4537,13 +4539,13 @@
           <span class="checkmark" style="margin-top: 10px !important"></span>
         </label>
       </div>
-      <h4>
+      <h4 style="font-size: 16px !important">
         Include income from other sources below. Under Income Source, choose
         from the sources listed here:
       </h4>
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Alimony</li>
           <li>Automobile Allowance</li>
@@ -4551,7 +4553,7 @@
           <li>Capital Gains</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Child Support</li>
           <li>Disability</li>
@@ -4559,22 +4561,22 @@
           <li>Housing or Parsonage</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Interest and Dividends</li>
           <li>Mortgage Credit Certificate</li>
           <li>Mortgage Differential Payments</li>
         </ul>
       </div>
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Notes Receivable</li>
           <li>Public Assistance</li>
-          <li>Retirement (e.g., Pension)</li>
+          <li>Retirement (e.g., Pension, IRA)</li>
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Royalty Payments</li>
           <li>Separate Maintenance</li>
@@ -4583,7 +4585,7 @@
         </ul>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 p-0">
         <ul>
           <li>Unemployment</li>
           <li>Benefits</li>
@@ -4591,7 +4593,11 @@
           <li>Other</li>
         </ul>
       </div>
-
+      <div style="font-size: 16px; font-style: italic">
+        <b>Note: </b> Reveal alimony, child support, separate maintenance, or
+        other income ONLY IF you want it considered in determining your
+        qualification for this loan.
+      </div>
       <div
         class="div-main-grp"
         style="width: 100%; margin-top: 30px; margin-bottom: 20px"
@@ -4716,7 +4722,7 @@
                     <a
                       href="#"
                       style="
-                        color: #696969;
+                        color: #000000;
                         text-decoration: none;
                         font-size: 14px;
                         text-align: right;

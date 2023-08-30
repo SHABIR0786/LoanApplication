@@ -9,7 +9,7 @@ import { Injectable } from "@angular/core";
 })
 export class MilitaryServicesService extends BaseService {
   constructor(private httpService: HttpClient) {
-    super(httpService,AppConsts.remoteServiceBaseUrl);
+    super(httpService, AppConsts.remoteServiceBaseUrl);
   }
   createMilitaryService(data) {
     return this.post(ApiRoute.createMilitaryService, data);

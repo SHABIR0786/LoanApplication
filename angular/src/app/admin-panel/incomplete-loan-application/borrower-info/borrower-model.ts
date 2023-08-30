@@ -26,8 +26,8 @@ export class PersonalInformation {
   socialSecurityNumber: string;
   dob: string;
   citizenship: string;
-  marritalStatus: string;
-  dependents: string;
+  marritalStatus: string = "-1";
+  dependents: string = "-1";
   applyingFor: string;
   totalBorrowers: number;
   yourInitials: string;
@@ -132,7 +132,7 @@ export class IncomeOtherSource {
 }
 
 export class Source {
-  sourceType: string;
+  sourceType: string = "-1";
   monthlyIncome: number;
 }
 

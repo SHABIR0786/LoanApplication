@@ -1,16 +1,15 @@
-
 .disabled {
-  background-color: #E7E7E7 !important;
+  background-color: #e7e7e7 !important;
 }
 
-.disabled input{
+.disabled input {
   pointer-events: none;
-  background-color: #E7E7E7 !important;
+  background-color: #e7e7e7 !important;
 }
 
-.disabled .frm-group-borderless{
+.disabled .frm-group-borderless {
   pointer-events: none;
-  background-color: #E7E7E7 !important;
+  background-color: #e7e7e7 !important;
 }
 
 .section-title {
@@ -38,7 +37,7 @@
   padding: 14px 21px 24px 21px;
   cursor: not-allowed;
   margin-bottom: 74px;
-  background-color: #E7E7E7 !important;
+  background-color: #e7e7e7 !important;
 }
 
 /* .error {
@@ -51,40 +50,41 @@
   flex-shrink: 0;
   } */
 
-  .error {
-    box-sizing: border-box;
-    padding: 5px 5px 5px 16px;
-    min-height: 50px;
-    border: solid 1px !important;
-    border-color: red !important;
-    background-color: #ffffff;
-    border-radius: 10px;
-    /* flex-shrink: 0; */
-    }
-  
-    .error_bb{
-      box-sizing: border-box;
-      padding: 5px 5px 5px 16px;
-      border: solid 1px !important;
-      border-color: red !important;
-      background-color: #ffffff;
-      border-radius: 10px;
-      max-height:35px !important;
-      /* flex-shrink: 0; */
-    }
-  
+.error {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  min-height: 50px;
+  border: solid 1px !important;
+  border-color: red !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* flex-shrink: 0; */
+}
+
+.error_bb {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  border: solid 1px !important;
+  border-color: red !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  max-height: 35px !important;
+  /* flex-shrink: 0; */
+}
+
 .form-block.disabled {
   cursor: not-allowed;
 }
 
 .form-block .input-group {
   align-items: flex-end;
-  background-color: #E7E7E7 !important;
+  align-items: center;
+  background-color: #e7e7e7 !important;
 }
 
 .form-block .input-group input {
   align-items: flex-end;
-  background-color: #E7E7E7 !important;
+  background-color: #e7e7e7 !important;
 }
 
 .form-block .input-group .input-group-text {
@@ -130,6 +130,11 @@
   background-color: transparent;
   border: 0;
 }
+
+.borrower-block .input-group .input-group-text input {
+  border-bottom: 1px solid #000;
+}
+
 .borrower-block .input-group .form-control {
   border: 0;
   border-radius: 0;

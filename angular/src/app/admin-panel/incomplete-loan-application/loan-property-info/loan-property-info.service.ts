@@ -9,7 +9,7 @@ import { AppConsts } from "@shared/AppConsts";
 })
 export class LoanPropertyInfoService extends BaseService {
   constructor(private httpService: HttpClient) {
-    super(httpService,AppConsts.remoteServiceBaseUrl);
+    super(httpService, AppConsts.remoteServiceBaseUrl);
   }
   getCountries() {
     return this.get(ApiRoute.getCountry, null);

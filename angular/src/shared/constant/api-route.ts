@@ -13,7 +13,22 @@ export const ApiRoute = {
   adminnotification: "AdminUserNotification/GetAll",
   GetCurrentLoginInformations:
     "services/app/Session/GetCurrentLoginInformations",
-  getCitizenshipType: "services/app/CitizenshipTypeService/GetCitizenshipTypes",
+  getCitizenshipTypes:
+    "services/app/CitizenshipTypeService/GetCitizenshipTypes",
+  getMaritalStatus: "services/app/MaritalStatusService/GetMaritalStatuses",
+  getIncomeTypes: "services/app/LeadIncomeTypesService/GetAll",
+  getAssetTypes: "services/app/LeadAssetTypesService/GetAll",
+  getCreditTypes: "services/app/CreditTypeService/GetCreditTypes",
+  getFinancialLaibilitiesTypes:
+    "services/app/FinancialService/GetFinancialLaibilitiesTypes",
+  getFinancialOtherLaibilitiesTypes:
+    "services/app/FinancialService/GetFinancialOtherLaibilitiesTypes",
+  getFinancialPropertyStatuses:
+    "services/app/FinancialService/GetFinancialPropertyStatuses",
+  getLoanPropertyOccupancies:
+    "services/app/LoanService/GetLoanPropertyOccupancies",
+  getMortageLoanTypes: "services/app/LoanService/GetMortageLoanTypes",
+  getLoanPropertyGiftTypes: "services/app/LoanService/GetLoanPropertyGiftTypes",
   createMortgageLoanApplication:
     "services/app/Mortgage/CreateMortgageLoanApplication",
 
