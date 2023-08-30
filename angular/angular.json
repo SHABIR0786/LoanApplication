@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["ngx-google-places-autocomplete"],
+            // "allowedCommonJsDependencies": ["ngx-google-places-autocomplete"],
             "aot": true,
             "outputPath": "dist",
             "index": "src/index.html",
