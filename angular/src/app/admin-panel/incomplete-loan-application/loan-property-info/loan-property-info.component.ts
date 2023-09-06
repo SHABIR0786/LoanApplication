@@ -207,11 +207,16 @@ export class LoanPropertyInfoComponent implements OnInit {
 
    COMPONENT_TEMPLATE = { postal_code: 'long_name' },
    Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+
+   
+   const cityID = this.cityList.find(city => city.cityName === Address_01.city);
+   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = cityID.id;
+
    const stateID = this.stateList.find(state => state.stateName === Address_01.state);
    const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
    this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street = Address_01.addressLine1 + " " +  Address_01.addressLine2  ;
    this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip = Address_01.postalCode;
-   this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = this.cityList.find(city => city.cityName === Address_01.city);
+   //this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = this.cityList.find(city => city.cityName === Address_01.city);
    this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.stateId = stateID.id;
    this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.countryId = CountryID.id;
  }
