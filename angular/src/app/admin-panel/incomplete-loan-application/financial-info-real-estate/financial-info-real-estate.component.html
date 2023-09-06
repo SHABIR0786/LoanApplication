@@ -208,17 +208,17 @@
                 [required]="item.flgApplicableNotApply == false" />
               </div>
 
-              <div class="col-1  p-0 mt-2" style="text-align: center;"><label class="gray-text">Country</label></div>
+              <div class="col-1  p-0 mt-2" style="text-align: center;">
+                <label class="gray-text">Country</label>
+              </div>
               <div class="col-2  p-0 input-border-bottom"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && countryId.errors}"
               [ngClass]="{'error':  countryId.touched && countryId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="{{i}}_countryId" id="{{i}}_countryId" #countryId="ngModel"
-                    [required]="item.flgApplicableNotApply == false" >
+                    <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="{{i}}_countryId" id="{{i}}_countryId" #countryId="ngModel" [required]="item.flgApplicableNotApply == false" >
                       <option  disabled>Select Country </option>
-                      <option *ngFor="let obj of countryList" 
-                      [ngValue]="obj.id" > {{obj.countryName}} </option>
+                      <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                     </select>
                   </div>
                 </div>

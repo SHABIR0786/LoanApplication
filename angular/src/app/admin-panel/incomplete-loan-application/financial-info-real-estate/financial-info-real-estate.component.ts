@@ -66,6 +66,19 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       }
     })
   }
+  // getCountries()
+  // {
+  //   this.financialInfoRealEstateService.getCountries().subscribe((data:any)=>{
+  //     this.countryList=[]
+  //     if(data.success == true && data.result.length > 0)
+  //     {
+  //       data.result.forEach((element:any)=>{
+  //         this.countryList.push({countryName:element.countryName,id:element.id})
+  //       })
+  //     }
+  //   })
+  // }
+
   getCountries()
   {
     this.financialInfoRealEstateService.getCountries().subscribe((data:any)=>{
@@ -78,6 +91,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       }
     })
   }
+  
   getStates(  )
   {
     this.financialInfoRealEstateService.getStates().subscribe((data:any)=>{
