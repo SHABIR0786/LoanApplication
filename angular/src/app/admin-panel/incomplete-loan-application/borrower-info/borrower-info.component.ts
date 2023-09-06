@@ -350,18 +350,20 @@ export class BorrowerInfoComponent implements OnInit {
     Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
 
     console.log(Address_01);
-    
+
+
     const stateID = this.stateList.find(state => state.stateName === Address_01.state);
     const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
 
-    console.log(CountryID);
-
     this.borrowerInfo.personalInformation.address[fldIndex].street = Address_01.addressLine1 + " " +  Address_01.addressLine2  ;
     this.borrowerInfo.personalInformation.address[fldIndex].zip = Address_01.postalCode;
-    this.borrowerInfo.personalInformation.address[fldIndex].cityId = this.cityList.find(city => city.cityName === Address_01.city);
     this.borrowerInfo.personalInformation.address[fldIndex].stateId = stateID.id;
     this.borrowerInfo.personalInformation.address[fldIndex].countryId = CountryID.id;
- 
+
+    
+    const cityID = this.cityList.find(city => city.cityName === Address_01.city);
+    this.borrowerInfo.personalInformation.address[fldIndex].cityId = cityID.id;
+
 
   }
 
@@ -397,6 +399,10 @@ export class BorrowerInfoComponent implements OnInit {
    this.borrowerInfo.employment[fldIndex].cityId = this.cityList.find(city => city.cityName === Address_01.city);
    this.borrowerInfo.employment[fldIndex].stateId = stateID.id;
    this.borrowerInfo.employment[fldIndex].countryId = CountryID.id;
+
+   const cityID = this.cityList.find(city => city.cityName === Address_01.city);
+   this.borrowerInfo.employment[fldIndex].cityId = cityID.id;
+
    
  }
 
