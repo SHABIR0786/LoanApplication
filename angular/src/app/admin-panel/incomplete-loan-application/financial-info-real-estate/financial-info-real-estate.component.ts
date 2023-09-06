@@ -225,18 +225,23 @@ export class FinancialInfoRealEstateComponent implements OnInit {
    COMPONENT_TEMPLATE = { postal_code: 'long_name' },
    Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
 
-   console.log(Address_01);
-   
    const stateID = this.stateList.find(state => state.stateName === Address_01.state);
    const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
 
-   console.log(CountryID);
+   debugger
+   
+   const cityID = this.cityList.find(city => city.cityName === Address_01.city);
+   this.financialInfoRealState[fldIndex].cityId = cityID.id;
 
    this.financialInfoRealState[fldIndex].street = Address_01.addressLine1 + " " +  Address_01.addressLine2  ;
    this.financialInfoRealState[fldIndex].zip = Address_01.postalCode;
-   this.financialInfoRealState[fldIndex].cityId = this.cityList.find(city => city.cityName === Address_01.city);
+   //this.financialInfoRealState[fldIndex].cityId = this.cityList.find(city => city.cityName === Address_01.city);
    this.financialInfoRealState[fldIndex].stateId = stateID.id;
    this.financialInfoRealState[fldIndex].countryId = CountryID.id;
+
+ 
+
+
  }
 
  getAddrComponent(place, componentTemplate) {
