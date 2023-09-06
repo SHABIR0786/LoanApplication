@@ -20,6 +20,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   mortgageFinancialLiabilities: mortgageFinancialLiabilities = new mortgageFinancialLiabilities();
   mortgageFinancialOtherLaibilities: mortgageFinancialOtherLaibilities = new mortgageFinancialOtherLaibilities()
   financialInfoAssetsLiabilitiesModels: FinancialInfoAssetsLiabilitiesModels = new FinancialInfoAssetsLiabilitiesModels();
+  assetTypeList:any[]=[];
+  creditTypeList:any[]=[];
+  financialLiabilityTypeList:any[]=[]
+  otherLiabilityTypeList:any[]=[]
   ngOnInit(): void {
     // this.getAllMortgageApplicationAssetandLiability()
     
@@ -39,7 +43,52 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     {
       this.flgMortgageFinancialOtherLaibilities = JSON.parse(localStorage.getItem('flgMortgageFinancialOtherLaibilities'));
     }
-  }
+  
+  //---Get asset Types
+  this.financialInfoService.getAssetTypes().subscribe(
+    (res:any)=>{
+      this.assetTypeList=[];
+      if(res.success ==true && res.result.length>0){
+        res.result.forEach((element:any)=>{
+          this.assetTypeList.push({assetsType:element.assetsType, id:element.id})
+        })
+      }
+    }
+  )
+  //---Get credit Types
+  this.financialInfoService.getCreditTypes().subscribe(
+    (res:any)=>{
+      this.creditTypeList=[];
+      if(res.success ==true && res.result.length>0){
+        res.result.forEach((element:any)=>{
+          this.creditTypeList.push({creditType1:element.creditType1, id:element.id})
+        })
+      }
+    }
+  )
+   //---Get Financial Liability Types
+   this.financialInfoService.getFinancialLaibilitiesTypes().subscribe(
+    (res:any)=>{
+      this.financialLiabilityTypeList=[];
+      if(res.success ==true && res.result.length>0){
+        res.result.forEach((element:any)=>{
+          this.financialLiabilityTypeList.push({financialLaibilitiesType1:element.financialLaibilitiesType1, id:element.id})
+        })
+      }
+    }
+  )
+   //---Get Other Liability Types
+   this.financialInfoService.getFinancialOtherLaibilitiesTypes().subscribe(
+    (res:any)=>{
+      this.otherLiabilityTypeList=[];
+      if(res.success ==true && res.result.length>0){
+        res.result.forEach((element:any)=>{
+          this.otherLiabilityTypeList.push({financialOtherLaibilitiesType1:element.financialOtherLaibilitiesType1, id:element.id})
+        })
+      }
+    }
+  )
+}
 
   addMortgageFinancialAssets() {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.push(new mortgageFinancialAssets())
@@ -56,14 +105,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     }
 
   }
-
-
-
   addMortgageFinancialOtherAssets() {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets())
   }
-  removeMortgageFinancialOtherAssets() {
-    
+  removeMortgageFinancialOtherAssets() {    
     var mortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
     if(mortgageFinancialOtherAssets == 1)
     {
@@ -74,13 +119,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(obj,1)
     }
   }
-
-
   addMortgageFinancialLiabilities() {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
   }
-  removeMortgageFinancialLiabilities() {
-    
+  removeMortgageFinancialLiabilities() {    
     var indexList:any[]=[]
     if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 0)
     {
@@ -121,13 +163,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     // var mortgageFinancialLiabilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length;
     // this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(1, mortgageFinancialLiabilitiesLength)
   }
-
-
   addMortgageFinancialOtherLaibilities() {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.push(new mortgageFinancialOtherLaibilities())
   }
-  removeMortgageFinancialOtherLaibilities() {
-    
+  removeMortgageFinancialOtherLaibilities() {    
     var mortgageFinancialOtherLaibilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length;
     if(mortgageFinancialOtherLaibilitiesLength == 1)
     {
@@ -139,8 +178,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     }
 
   }
-  submitFinancialAssetsLiabilities() {
-    
+  submitFinancialAssetsLiabilities() {    
     if (this.flgMortgageFinancialOtherAssets == true) {
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets = [];
     }
@@ -166,12 +204,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
         alert("Data inserted successfully")
         this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-real-estate');
       }
-      })
-    
-  
-
+      })  
   }
-
   getTotalMortgageFinancialAssets() {
     this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
   }
@@ -183,16 +217,13 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     
     this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce((sum, current) => sum + current.monthlyPayment, 0)
   }
-  getAllMortgageApplicationAssetandLiability() {
-    
+  getAllMortgageApplicationAssetandLiability() {    
     var obj = {
       Sorting: "",
       SkipCount: 0,
       MaxResultCount: 10
-    }
-    
-    this.financialInfoService.getAllFinancialInfoAssetsLiabilities(obj).subscribe(data => {
-      
+    }    
+    this.financialInfoService.getAllFinancialInfoAssetsLiabilities(obj).subscribe(data => {      
     })
   }
   // nextBtnClick(){

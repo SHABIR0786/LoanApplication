@@ -11,6 +11,18 @@ export class FinancialInfoAssetsLiabilitiesService extends BaseService {
   constructor(private httpService: HttpClient) {
     super(httpService, AppConsts.remoteServiceBaseUrl);
   }
+  getAssetTypes(){
+    return this.get(ApiRoute.getAssetTypes,null)
+  }
+  getCreditTypes(){
+    return this.get(ApiRoute.getCreditTypes,null)
+  }
+  getFinancialLaibilitiesTypes(){
+    return this.get(ApiRoute.getFinancialLaibilitiesTypes,null)
+  }
+  getFinancialOtherLaibilitiesTypes(){
+    return this.get(ApiRoute.getFinancialOtherLaibilitiesTypes,null)
+  }
   getAllFinancialInfoAssetsLiabilities(data) {
     return this.get(ApiRoute.getMortgageApplicationAssetandLiability, {
       Sorting: "",

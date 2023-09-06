@@ -176,20 +176,8 @@
                         <div class="frm-fld-input" >
                           <select [(ngModel)]="item.accountTypeId" class="form-control shadow-none" id="{{i}}.accountTypeId" name="{{i}}.accountTypeId"
                             #accountTypeId="ngModel" required>
-                            <option [ngValue]="-1" selected>Interest and Dividends</option>
-                            <option value="1">Checking</option>
-                            <option value="2">Savings</option>
-                            <option value="3">Money Market</option>
-                            <option value="4">Certificate of Deposit</option>
-                            <option value="5">Mutual Fund</option>
-                            <option value="6">Stocks</option>
-                            <option value="7">Stock Options</option>
-                            <option value="8">Bonds</option>
-                            <option value="9">Retirement (e.g. , 401k ,IRA)</option>
-                            <option value="10">Bridhe Loan Proceeds</option>
-                            <option value="11">Individual Development Account</option>
-                            <option value="12">Trust Account</option>
-                            <option value="13">Cash Value of Life Insurance (used for the transaction)</option>
+                           <option [ngValue]="-1"  disabled>-Select-One</option>
+                            <option *ngFor="let obj of assetTypeList" [ngValue]="obj.id"> {{obj.assetsType}} </option>
                           </select>
                         </div>
                       </div>
@@ -350,19 +338,7 @@
                           id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId"
                           #financialAssetsTypeId="ngModel">
                           <option value="-1" selected disabled>-Select One-</option>
-                          <option value="1">Proceeds from Real Estate</option>
-                          <option value="2">Property to be sold on or before closing</option>
-                          <option value="3">Proceeds from Sale of Non-Real Estate Asset</option>
-                          <option value="4">Secured Borrowed Funds</option>
-                          <option value="5">Unsecured Borrowed Funds</option>
-                          <option value="6">Earnest Money</option>
-                          <option value="7">Employer Assistance</option>
-                          <option value="8">Lot Equity</option>
-                          <option value="9">Relocation Funds</option>
-                          <option value="10">Rent Credit</option>
-                          <option value="11">Sweat Equity</option>
-                          <option value="12">Trade Equity</option>
-                          <option value="13">Other</option>
+                          <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
                         </select>
                       </div>
                     </div>
@@ -507,11 +483,7 @@
                             [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
                             name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
                             <option value="-1" selected disabled>-Select One-</option>
-                            <option value="1">Revolving (e.g., credit cards)</option>
-                            <option value="2">Installment (e.g., car, student, personal loans)</option>
-                            <option value="3">Open 30-Day (balance paid monthly)</option>
-                            <option value="4">Lease (not real estate)</option>
-                            <option value="5">Other</option>
+                            <option *ngFor="let obj of financialLiabilityTypeList" [ngValue]="obj.id"> {{obj.financialLaibilitiesType1}} </option>
                           </select>
                         </div>
                       </div>
@@ -683,11 +655,7 @@
                             [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
                             name="{{i}}.financialLaibilitiesTypeId" #financialLaibilitiesTypeId1="ngModel">
                             <option value="-1" selected disabled>-Select One-</option>
-                            <option value="1">Alimony</option>
-                            <option value="2">Child Support</option>
-                            <option value="3">Separate Maintenance</option>
-                            <option value="4">Job Related Expenses</option>
-                            <option value="5">Other</option>
+                            <option *ngFor="let obj of otherLiabilityTypeList" [ngValue]="obj.id"> {{obj.financialOtherLaibilitiesType1}} </option>
                           </select>
                         </div>
                       </div>

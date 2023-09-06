@@ -17,6 +17,9 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   cityList:any[]=[]
   countryList:any[]=[]
   stateList:any[]=[]
+  proprtyStatusList:any[]=[]
+  loanPropertyOccupanciesList:any[]=[]
+  mortgageLoanTypeList:any[]=[]
   options: any = {
     componentRestrictions: { country: 'US' }
   }
@@ -32,6 +35,36 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     {
       this.financialInfoRealState =JSON.parse(localStorage.getItem('financialInfoRealState'));
     }
+    //---Get Property Status
+    this.financialInfoRealEstateService.getFinancialPropertyStatuses().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.proprtyStatusList.push({financialPropertyStatus1:element.financialPropertyStatus1,id:element.id})
+        })
+      }
+    })    
+     //--- Loan Property Occupencies
+     this.financialInfoRealEstateService.getLoanPropertyOccupancies().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.loanPropertyOccupanciesList.push({loanPropertyOccupancy1:element.loanPropertyOccupancy1,id:element.id})
+        })
+      }
+    })
+    //--- Mortgage Loan Types
+    this.financialInfoRealEstateService.getMortageLoanTypes().subscribe((data:any)=>{
+      this.countryList=[]
+      if(data.success == true && data.result.length > 0)
+      {
+        data.result.forEach((element:any)=>{
+          this.mortgageLoanTypeList.push({mortageLoanTypesId:element.mortageLoanTypesId,id:element.id})
+        })
+      }
+    })
   }
   getCountries()
   {

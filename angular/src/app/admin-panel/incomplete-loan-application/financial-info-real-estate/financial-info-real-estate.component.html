@@ -301,10 +301,8 @@
                   <div class="frm-fld-input">
                       <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.financialInformationType" name="{{i}}.financialInformationType" id="{{i}}.financialInformationType" #financialInformationType="ngModel"
                       [required]="item.flgApplicableNotApply == false">
-                        <option value="-1" selected disabled>-Select One-</option>
-                        <option value="Sold">Sold</option>
-                        <option value="Pending">Pending Sale</option>
-                        <option value="Retained">Retained</option>
+                      <option value="-1" selected disabled>-Select One-</option>
+                      <option *ngFor="let obj of proprtyStatusList" [ngValue]="obj.id"> {{obj.financialPropertyStatus1}} </option>
                     </select>
                   </div>
                 </div>
@@ -317,11 +315,8 @@
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.intendedOccupancy" name="{{i}}.intendedOccupancy" id="{{i}}.intendedOccupancy" #intendedOccupancy="ngModel"
                     [required]="item.flgApplicableNotApply == false"
                    >
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option value="Sold">Sold</option>
-                      <option value="Primary Residence">Primary Residence</option>
-                      <option value="Second Home">Second Home</option>
-                      <option value="Other">Other</option>
+                   <option value="-1" selected disabled>-Select One-</option>
+                   <option *ngFor="let obj of loanPropertyOccupanciesList" [ngValue]="obj.id"> {{obj.loanPropertyOccupancy1}} </option>
                   </select>
                 </div>
               </div></div>
@@ -524,16 +519,8 @@
                 [ngClass]="{'error':  type.touched && type.errors}">
                   <div class="frm-fld-input">
                       <select  class="form-control shadow-none"  [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.type" name="{{i}}_type" id="{{i}}_type" #type="ngModel">
-                        <option value="-1" selected disabled>Interest and Dividends</option>
-                        <option  value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                        <option  value="Money Market">Money Market</option>
-                        <option  value="Certificate of Deposit">Certificate of Deposit</option>
-                        <option  value="Mutual Fund">Mutual Fund</option>
-                        <option value="Bridge Loan Proceeds">Bridge Loan Proceeds</option>
-                        <option value="Individual Development Account">Individual Development Account</option>
-                        <option  value="Trust Account">Trust Account</option>
-                        <option  value="Cash Value of Life Insurance (used for the transaction)">Cash Value of Life Insurance (used for the transaction)</option>
+                        <option value="-1" selected disabled>-Select One-</option>
+                        <option *ngFor="let obj of mortgageLoanTypeList" [ngValue]="obj.id"> {{obj.mortageLoanTypesId}} </option>
                     </select>
                   </div>
                 </div>
