@@ -95,7 +95,7 @@
         <div class="col-2 input-border-bottom"
         [ngClass]="{'error': militaryForm.submitted && projectedExpirationServiceDate.errors}"
         [ngClass]="{'error':  projectedExpirationServiceDate.touched && projectedExpirationServiceDate.errors}">
-          <input max="{{currentDate | date:'yyyy-MM-dd'}}" type="date" id="projectedExpirationServiceDate" name="projectedExpirationServiceDate"
+          <input onfocus="this.showPicker()" onkeydown="return false" max="{{currentDate | date:'yyyy-MM-dd'}}" type="date" id="projectedExpirationServiceDate" name="projectedExpirationServiceDate"
             [(ngModel)]="militaryServiceModel.projectedExpirationServiceDate" #projectedExpirationServiceDate="ngModel"
             [disabled]="militaryServiceModel.isServeUSForces == false" 
             [required]="militaryServiceModel.isServeUSForces == true" 
