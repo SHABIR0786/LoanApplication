@@ -1,6 +1,6 @@
 <style>
 
-  :host/deep/.ui-inputtext {
+:host/deep/.ui-inputtext {
     border: 0px !important;
     font-size: 16px;
     margin-bottom: 0px;
@@ -73,7 +73,6 @@
         padding-right: 5px;
         width: 100%;
   }
-  
 </style>
 
 <div>
@@ -223,12 +222,12 @@
               <div class="row mt-0">
                 <label class="col-9 frm-label">
                   <div class="row mt-3">
-                    <div class="col-6" style="color: #696969; text-decoration: none; font-size: 14px;"><a style="color: #696969; text-decoration: none; font-size: 14px;"
+                    <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;"><a style="color: #696969; text-decoration: none; font-size: 14px;"
                         (click)="addMortgageFinancialAssets()">Add more </a> / <a
-                        style="color: #696969; text-decoration: none; font-size: 14px;margin-left: 2px;"
+                        style="color: #696969; text-decoration: none; font-size: 12px;margin-left: 2px;"
                         (click)="removeMortgageFinancialAssets()">Remove</a></div>
                     <div class="col-6 text-right" style="text-align: right;"><a href="#"
-                        style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</a></div>
+                        style="color: #000000; text-decoration: none;font-size: 12px; text-align: right;">Provide TOTAL Amount Here</a></div>
                   </div>
                 </label>
                 <label class="col-3 p-0 frm-label">
@@ -326,7 +325,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-8" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
                       <div class="col-12">
                     <div class="frm-group mt-1"  [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
@@ -346,7 +345,7 @@
                     </div>
                   </div>
 
-                  <div class=" col-4 frm-group-combine-border">
+                  <div class=" col-4 frm-group-combine-border" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
                       <div class="col-12">
                         <div class="mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
@@ -374,11 +373,11 @@
                 <div class="row ">
                   <label class="col-8 frm-label">
                     <div class="row mt-3" >
-                      <div class="col-6" style="color: #696969; text-decoration: none; font-size: 14px;">
-                        <a style="color: #696969; text-decoration: none; font-size: 14px;" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
+                      <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;">
+                        <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                           (click)="addMortgageFinancialOtherAssets()">Add more</a> / 
                           <a [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
-                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
                       <div class="col-6 text-right mt-1" style="text-align: right;"><a href="#"
                           style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide
@@ -527,7 +526,7 @@
                   </div>
                  </div>
                  
-                  <div class="col-2 frm-group-combine-border">
+                  <div class="col-2 frm-group-combine-border" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                    <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities; index as i">
                     <div class="col-12">
                       <div class="frm-group-borderless mt-0" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
@@ -549,11 +548,11 @@
                 <div class="row">
                   <label class="col-10 frm-label">
                     <div class="row mt-3">
-                      <div class="col-6" style="color: #696969; text-decoration: none; font-size: 14px;;">
-                        <a style="color: #696969; text-decoration: none; font-size: 14px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
+                      <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;;">
+                        <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                           (click)="addMortgageFinancialLiabilities()">Add more</a> / 
                           <a [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
-                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
                       <div class="col-6 text-right" style="text-align: right;"><a href="#"
                           style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide
@@ -661,16 +660,15 @@
                       </div>
                       </div>
                     </div>
-                    
                   </div>
 
-                  <div class="col-4 frm-group mt-1  ">
+                  <div class="col-4 frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
                     <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
                       <div class="col-12" style="margin-bottom: 12px;">
                         <div [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && monthlyPayment.errors}"
                         [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
-                        <div class="input-border-bottom">
+                        <div class="input-border-bottom" >
                           <div style="display: flex; align-items: center;margin-top: 5px;">
                             <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
                               <p-inputNumber style="width:100%;"
@@ -691,11 +689,11 @@
                 <div class="row ">
                   <label class="col-8 frm-label">
                     <div class="row mt-3">
-                      <div class="col-12" style="color: #696969; text-decoration: none; font-size: 14px;">
-                        <a style="color: #696969; text-decoration: none; font-size: 14px;" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
+                      <div class="col-12" style="color: #696969; text-decoration: none; font-size: 12px;">
+                        <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                           (click)="addMortgageFinancialOtherLaibilities()">Add more</a> / 
                           <a [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
-                          style="color: #696969; text-decoration: none; font-size: 14px;"
+                          style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialOtherLaibilities()">Remove</a></div>
                     </div>
                   </label>
