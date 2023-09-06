@@ -444,7 +444,7 @@ background-position-x: 98%;
 background-position-y: 90%;
 font-size: 15px;
 width: 100%;
-color: #a5a5a5;
+color: #3b3b3b;
 border: 0px !important;
 font-weight: 500;
 line-height: 1.2575;
@@ -493,3 +493,25 @@ background-color: #e6e6e6;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
 }
+
+
+
+.div-main-grp .div-sub-grp .frm-group .frm-fld-input focus, input:focus{
+  font-size: 15px;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.2575;
+  border:0px solid transparent;
+  background-color: #e6e6e6;
+  font-family: 'Mulish', sans-serif;
+  white-space: nowrap;
+  }
+
+  shadow-none{
+    box-shadow: inset 0 -1px 0 #ddd !important;
+  }
+
+ul li{
+  font-size: 12px;
+  font-weight: 600;
+ }
