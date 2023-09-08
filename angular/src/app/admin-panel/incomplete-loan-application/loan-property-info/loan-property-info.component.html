@@ -197,7 +197,8 @@
 
               <div class="col-1  p-0"><label class="gray-text" style="text-align: center;">Unit#</label></div>
               <div class="col-2  p-0 input-border-bottom">
-                <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber>
+                <input type="text" class="showBorder" maxlength="5"  [min]="0" />
+                <!-- <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber> -->
               </div>
             </div>
 
@@ -263,7 +264,8 @@
             <div class="row mt-2 ml-2">
               <div class="col-2 p-0"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label></div>
               <div class="col-2  p-0 input-border-bottom">
-                  <p-inputNumber maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber>
+                <input type="text" maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel" />
+                  <!-- <p-inputNumber maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber> -->
               </div>
 
               <div class="col-2  p-0"><label class="gray-text" style="color:black !important;font-size: 14px !important; text-align: center;">PROPERTY VALUE</label></div>

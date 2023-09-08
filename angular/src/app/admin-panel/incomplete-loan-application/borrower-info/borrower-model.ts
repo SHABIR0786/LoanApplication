@@ -40,6 +40,7 @@ export class BorrowModel {
     creditValue:string;
     creditList: CreditList[] = [];
     endDate:Date;
+    BorrowerName: string
 
   }
   

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Address, AlternateNames, BorrowModel, CreditList, Employment, GoogleAddress, GrossMonthlyIncome, IncomeOtherSource, PersonalInformation, Source } from './borrower-model';
 import { LoanManagementService } from "@shared/service/loanmanagement.service";
 import { BorrowService } from "app/services/borrow.service";
@@ -17,6 +17,7 @@ export class BorrowerInfoComponent implements OnInit {
 
   @ViewChild("creditItemsStreet") placesRef : GooglePlaceDirective;
   @ViewChild("street1") street1 : GooglePlaceDirective;
+
 
   options: any = {
     componentRestrictions: { country: 'US' }
@@ -40,7 +41,8 @@ export class BorrowerInfoComponent implements OnInit {
   maritalStatusList:any[]=[];
   incomeTypeList:any[]=[];
   currentDate:Date = new Date();
-  
+  BorrowerName:any;
+
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
     this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -83,6 +85,8 @@ export class BorrowerInfoComponent implements OnInit {
         //this.Custom = res.result.items;
       }
     );
+
+    
     //---Get Marital Statuses
     this.borrowService.getAllMaritalStatus().subscribe(
       (res:any)=>{
@@ -150,19 +154,22 @@ export class BorrowerInfoComponent implements OnInit {
     {
       this.monthList.push({id:i,label:i});
     }
-    for(var i= 1 ; i<=12 ; i = i + 1)
+    for(var i= 2 ; i<=12 ; i = i + 1)
     {
       this.browerList.push({id:i,label:i});
     }
+    this.borrowerInfo.personalInformation.totalBorrowers=2
+    // this.borrowerInfo.personalInformation.creditValue = "2";
     
   }
   creditClick() {
-   
+   debugger
     if (this.borrowerInfo.personalInformation.creditValue == "1") {
-      this.borrowerInfo.personalInformation.totalBorrowers = 1;
+      this.borrowerInfo.personalInformation.totalBorrowers = 2;
     }
+
     this.borrowerInfo.personalInformation.creditList = [];
-    for (var i = 0; i < this.borrowerInfo.personalInformation.totalBorrowers; i++) {
+    for (var i = 0; i < this.borrowerInfo.personalInformation.totalBorrowers -1; i++) {
       this.borrowerInfo.personalInformation.creditList.push(new CreditList());
     }
   }
@@ -173,15 +180,7 @@ export class BorrowerInfoComponent implements OnInit {
     this.borrowerInfo.incomeOtherSources[0].sources.splice(-1);
   }
   
-  nextBtnClick(ngForm:NgForm) {
-    debugger;
-    // if(ngForm.invalid)
-    // {
-    //   alert("Please fill Required Field");
-    //   return;
-    // }
-    console.log(this.borrowerInfo);
-    debugger;
+  nextBtnClick() {
     if (this.doNotApplyForaddress1) {
       this.borrowerInfo.personalInformation.address[1] = new Address();
     }
@@ -202,7 +201,6 @@ export class BorrowerInfoComponent implements OnInit {
       this.borrowerInfo.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
     }
    
-    debugger
     localStorage.setItem("borrowerInfo", JSON.stringify(this.borrowerInfo))
     localStorage.setItem("doNotApplyForaddress1", JSON.stringify(this.doNotApplyForaddress1))
     localStorage.setItem("doNotApplyForaddress2", JSON.stringify(this.doNotApplyForaddress2))
@@ -216,16 +214,14 @@ export class BorrowerInfoComponent implements OnInit {
         if(res.success == true)
         {
           alert("Data has inserted successfully");
-          this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-assets-liabilities');
+          //this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-assets-liabilities');
         }
       
       }
     );
   }
 
-  // nextBtnClick() {
-  //   console.log(this.borrowerInfo);
-   
+  // nextBtnClick(ngForm:NgForm) {
   //   if (this.doNotApplyForaddress1) {
   //     this.borrowerInfo.personalInformation.address[1] = new Address();
   //   }
@@ -417,6 +413,10 @@ export class BorrowerInfoComponent implements OnInit {
       }
     }
     return;
+  }
+
+  selectNumber(event){
+    event.target.select();
   }
 
 }

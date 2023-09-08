@@ -160,8 +160,12 @@
 
               <div class="col-1  p-0 text-right pr-2 "><label class="gray-text">Unit #</label></div>
               <div class="col-2  p-0 input-border-bottom" style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;"> 
-                  <p-inputNumber  [min]="0"  maxlength="5"
-                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"></p-inputNumber>
+
+                <input type="text"  [min]="0"  maxlength="5"
+                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"/>
+
+                  <!-- <p-inputNumber  [min]="0"  maxlength="5"
+                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"></p-inputNumber> -->
               </div>
               
             </div>
