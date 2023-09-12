@@ -106,10 +106,10 @@
     <p> This section asks you to list all properties you currently own and what you owe on them.</p>
 
    
-    <label style="margin-left: 10px;;">
-      <input type="checkbox" style=" transform: scale(1.9);">
-      <span class="checkmark mt-2" style="margin-top: 5px; margin-left: 5px;"></span>
-      <span style="font-weight: bold; color:white; margin-left: 15px;">I do not own any real estate</span>
+    <label class="container flex ">
+      <span style="font-weight: bold; color: #fff;">I do not own any real estate</span>
+      <input type="checkbox" />
+      <span class="checkmark" style="margin-top: 5px !important;"></span>
     </label>
 
   </div>
@@ -288,10 +288,20 @@
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                      <p-inputNumber class="showBorder"  maxlength="9"
+                      
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="item.flgApplicableNotApply == true" 
+                        [(ngModel)]="item.propertyValue" name="{{i}}.propertyValue" 
+                        id="{{i}}.propertyValue" #propertyValue="ngModel"
+                        [required]="item.flgApplicableNotApply == false" 
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
+
+                      <!-- <p-inputNumber class="showBorder"  maxlength="9"
                        type="number" [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.propertyValue" name="{{i}}.propertyValue" id="{{i}}.propertyValue" #propertyValue="ngModel"
-                      [required]="item.flgApplicableNotApply == false"
-                             [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      [required]="item.flgApplicableNotApply == false" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                           </span>
                     </div>
                   </div>
@@ -336,10 +346,24 @@
                       /> -->
 
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                      <p-inputNumber class="showBorder"  maxlength="9"
+                     
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="item.flgApplicableNotApply == true"  
+                        [(ngModel)]="item.monthlyInsurance" 
+                        name="{{i}}.monthlyInsurance" 
+                        id="{{i}}.monthlyInsurance" 
+                        #monthlyInsurance="ngModel"                
+                        [required]="item.flgApplicableNotApply == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
+                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
                       [disabled]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="{{i}}.monthlyInsurance" id="{{i}}.monthlyInsurance" #monthlyInsurance="ngModel"                
                       [required]="item.flgApplicableNotApply == false"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+
                         </span>
                     </div>
                   </div>
@@ -356,10 +380,28 @@
                       [required]="item.flgApplicableNotApply == false"
                  /> -->
                  <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                 <p-inputNumber class="showBorder"  maxlength="9"
-                  [disabled]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyRentalIncome" name="{{i}}.monthlyRentalIncome" id="{{i}}.monthlyRentalIncome" #monthlyRentalIncome="ngModel"                 
+                 
+                  <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="item.flgApplicableNotApply == true"  
+                        [(ngModel)]="item.monthlyRentalIncome" 
+                        name="{{i}}.monthlyRentalIncome" 
+                        id="{{i}}.monthlyRentalIncome" 
+                        #monthlyRentalIncome="ngModel"                 
+                        [required]="item.flgApplicableNotApply == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
+                  <!-- <p-inputNumber class="showBorder"  maxlength="9"
+                  [disabled]="item.flgApplicableNotApply == true"  
+                  [(ngModel)]="item.monthlyRentalIncome" 
+                  name="{{i}}.monthlyRentalIncome" 
+                  id="{{i}}.monthlyRentalIncome" 
+                  #monthlyRentalIncome="ngModel"                 
                  [required]="item.flgApplicableNotApply == false"
-                       [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                       [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+
                       </span>
                 </div>
                   </div>
@@ -377,10 +419,24 @@
                     /> -->
 
                     <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                    <p-inputNumber class="showBorder"  maxlength="9"
+                    
+                      <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      [min]="0" maxlength="9" 
+                      [disabled]="item.flgApplicableNotApply == true" 
+                      [(ngModel)]="item.netMonthlyRentalIncome" 
+                      name="{{i}}.netMonthlyRentalIncome" 
+                      id="{{i}}.netMonthlyRentalIncome" 
+                      #netMonthlyRentalIncome="ngModel"                
+                      [required]="item.flgApplicableNotApply == false"
+                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                      (keydown)="scroll($event);"/>
+
+                      <!-- <p-inputNumber class="showBorder"  maxlength="9"
                      [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="{{i}}.netMonthlyRentalIncome" id="{{i}}.netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"                
                       [required]="item.flgApplicableNotApply == false"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+
                     </span>
                   </div>
                   </div>
@@ -395,7 +451,7 @@
       <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;" >
         <span style="font-size: 20px;">Mortgage Loans on this Property</span>
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold; color:black">Does Not Apply</span>
-          <input type="checkbox" [(ngModel)]="item.flgMortgageLoanNotApply" name="{{i}}_flgMortgageLoanNotApply" id="{{i}}_flgMortgageLoanNotApply">
+          <input type="checkbox" (change)="disabledSection(i)" [(ngModel)]="item.flgMortgageLoanNotApply" name="{{i}}_flgMortgageLoanNotApply" id="{{i}}_flgMortgageLoanNotApply">
           <span class="checkmark mt-2"></span>
         </label>
       </div>
@@ -482,9 +538,21 @@
                   /> -->
 
                   <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                  <p-inputNumber class="showBorder"  maxlength="9"
+
+                    <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      [min]="0" maxlength="9" 
+                      [required]="item.flgMortgageLoanNotApply == false " 
+                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  
+                      [(ngModel)]="item2.monthlyMortagagePayment" 
+                      name="{{i}}_monthlyMortagagePayment" 
+                      id="{{i}}_monthlyMortagagePayment" 
+                      #monthlyMortagagePayment="ngModel"
+                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                      (keydown)="scroll($event);"/>
+
+                  <!-- <p-inputNumber class="showBorder"  maxlength="9"
                   type="number" min="0" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="{{i}}_monthlyMortagagePayment" id="{{i}}_monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"
-                     [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                     [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                      </span>
                 </div>
                 </div>
@@ -501,9 +569,21 @@
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
                       <!-- <input type="number"  min="0" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.unpaidBalance" name="{{i}}_unpaidBalance" id="{{i}}_unpaidBalance" #unpaidBalance="ngModel"/> -->
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                      <p-inputNumber class="showBorder"  maxlength="9"
+                      
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      [min]="0" maxlength="9" 
+                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                      [required]="item.flgMortgageLoanNotApply == false " 
+                      [(ngModel)]="item2.unpaidBalance" 
+                      name="{{i}}_unpaidBalance" 
+                      id="{{i}}_unpaidBalance" 
+                      #unpaidBalance="ngModel"
+                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                      (keydown)="scroll($event);"/>
+
+                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
                       type="number"  min="0" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.unpaidBalance" name="{{i}}_unpaidBalance" id="{{i}}_unpaidBalance" #unpaidBalance="ngModel"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                         </span>
 
 
@@ -536,7 +616,19 @@
                 [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span>
-                       <input type="text" maxlength="5" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.creditLimit" name="creditLimit" id="creditLimit" #creditLimit="ngModel"/>
+
+                      <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      [min]="0" maxlength="9" 
+                      [required]="item.flgMortgageLoanNotApply == false" 
+                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                      [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                      [(ngModel)]="item2.creditLimit" name="creditLimit" 
+                      id="creditLimit" 
+                      #creditLimit="ngModel"
+                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                      (keydown)="scroll($event);"/>
+
+                       <!-- <input type="text" maxlength="5" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.creditLimit" name="creditLimit" id="creditLimit" #creditLimit="ngModel"/> -->
                        <!-- <p-inputNumber 
                        type="number" min="0" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="{{i}}_monthlyMortagagePayment" id="{{i}}_monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"
                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->

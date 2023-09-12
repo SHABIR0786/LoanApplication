@@ -41,4 +41,5 @@ export class MortgageLoanOnProperty {
     type: string ;
     creditLimit: number ;
     isPaidBeforeClosing: boolean ;
+    // removeMortgageLoanPropertyList:any[]=[]
 }

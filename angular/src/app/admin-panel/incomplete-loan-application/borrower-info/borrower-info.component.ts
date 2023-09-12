@@ -6,8 +6,8 @@ import { Router } from "@angular/router";
 import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
 import { add } from "lodash";
 import { NgForm } from "@angular/forms";
+import { elementEventFullName } from "@angular/compiler/src/view_compiler/view_compiler";
 
-``
 @Component({
   selector: "app-borrower-info",
   templateUrl: "./borrower-info.component.html",
@@ -42,6 +42,8 @@ export class BorrowerInfoComponent implements OnInit {
   incomeTypeList:any[]=[];
   currentDate:Date = new Date();
   BorrowerName:any;
+
+  
 
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
     this.borrowerInfo.personalInformation = new PersonalInformation();
@@ -163,7 +165,7 @@ export class BorrowerInfoComponent implements OnInit {
     
   }
   creditClick() {
-   debugger
+   
     if (this.borrowerInfo.personalInformation.creditValue == "1") {
       this.borrowerInfo.personalInformation.totalBorrowers = 2;
     }
@@ -177,7 +179,23 @@ export class BorrowerInfoComponent implements OnInit {
     this.borrowerInfo.incomeOtherSources[0].sources.push(new Source());
   }
   delMoreIncomeSource() {
-    this.borrowerInfo.incomeOtherSources[0].sources.splice(-1);
+    debugger
+    var removearray=[];
+    if(this.borrowerInfo.incomeOtherSources[0].sources.length > 0)
+    {
+      this.borrowerInfo.incomeOtherSources[0].sources.forEach((element:any,index)=>{
+        if(element.flgDeletedRow == true)
+        {
+          removearray.push(index)
+        }
+        removearray.sort((a,b)=>{
+          return b - a
+        })
+      })
+      removearray.forEach((element:any)=>{
+        this.borrowerInfo.incomeOtherSources[0].sources.splice(element,1)
+      })
+    }
   }
   
   nextBtnClick() {
@@ -320,6 +338,7 @@ export class BorrowerInfoComponent implements OnInit {
     var f = this.borrowerInfo.personalInformation.firstName.charAt(0)
     var l = this.borrowerInfo.personalInformation.lastName.charAt(0)
     this.borrowerInfo.personalInformation.yourInitials = f.toUpperCase() + l.toUpperCase()
+    //this.borrowerInfo.personalInformation.yourInitials1 = f.toUpperCase() + l.toUpperCase();
   }
 
   public handleAddressChange(place: google.maps.places.Place, fldIndex:number) {
@@ -417,6 +436,223 @@ export class BorrowerInfoComponent implements OnInit {
 
   selectNumber(event){
     event.target.select();
+  }
+
+  fixDecimals(event: any){
+    var vals = event.target.value;
+    var int:number = parseInt(vals);
+    var dec = vals - int;
+    if(dec > 0){
+      event.target.value = int + dec;
+    }else{
+      event.target.value = int + ".00";
+    }
+  }
+
+  scroll(event: any) {
+    //up 38 down 40
+    var curBox = event.currentTarget;
+    if (event.keyCode === 40) {//down
+        var curBox = event.currentTarget;
+        var cellNo = event.currentTarget.offsetParent.cellIndex;
+        var nextRow = curBox.parentElement.parentElement.nextElementSibling;
+        if (nextRow) {
+            var nextCell = nextRow.cells[cellNo].lastElementChild;
+            //---Select text
+            if (nextCell.type == 'number') {
+                nextCell.type = 'text';
+                nextCell.setSelectionRange(0, nextCell.value.length);
+                nextCell.type = 'number';
+            } else {
+                nextCell.setSelectionRange(0, nextCell.value.length);
+            }
+            nextCell.focus();
+        }
+
+        event.preventDefault();
+    } else if (event.keyCode === 38) { //up
+        var curBox = event.currentTarget;
+        var cellNo = event.currentTarget.offsetParent.cellIndex;
+        var prvRow = curBox.parentElement.parentElement.previousElementSibling;
+        if (prvRow) {
+            var prvCell = prvRow.cells[cellNo].lastElementChild;
+            if (prvCell.type == 'number') {
+                prvCell.type = 'text';
+                prvCell.setSelectionRange(0, prvCell.value.length);
+                prvCell.type = 'number';
+            } else {
+                prvCell.setSelectionRange(0, prvCell.value.length);
+            }
+            prvCell.focus();
+        }
+        event.preventDefault();
+    }
+    else if (event.keyCode === 9) { //---do not enable save button on pressing tab
+        return
+    } else {
+        return;
+    }
+}
+
+ 
+
+  doNotApplyForAddress0F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.personalInformation.yourInitials1 = "";
+    }
+  }
+  doNotApplyForaddress1F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.personalInformation.address[1].street="";
+      this.borrowerInfo.personalInformation.address[1].unit="";
+      this.borrowerInfo.personalInformation.address[1].cityId=0
+      this.borrowerInfo.personalInformation.address[1].stateId=0;
+      this.borrowerInfo.personalInformation.address[1].zip="";
+      this.borrowerInfo.personalInformation.address[1].countryId=0;
+      this.borrowerInfo.personalInformation.address[1].year = null;
+      this.borrowerInfo.personalInformation.address[1].month = "";
+      this.borrowerInfo.personalInformation.address[1].housingType ="";
+      this.borrowerInfo.personalInformation.address[1].rent =0;
+    }
+  }
+  doNotApplyForaddress2F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.personalInformation.address[2].street="";
+      this.borrowerInfo.personalInformation.address[2].unit="";
+      this.borrowerInfo.personalInformation.address[2].cityId=0
+      this.borrowerInfo.personalInformation.address[2].stateId=0;
+      this.borrowerInfo.personalInformation.address[2].zip="";
+      this.borrowerInfo.personalInformation.address[2].countryId=0;
+      this.borrowerInfo.personalInformation.address[2].year = null;
+      this.borrowerInfo.personalInformation.address[2].month = "";
+      this.borrowerInfo.personalInformation.address[2].housingType ="";
+      this.borrowerInfo.personalInformation.address[2].rent =0;
+    }
+  }
+  doNotApplyForEmp0F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.employment[0].name="";
+      this.borrowerInfo.employment[0].phone="";
+      this.borrowerInfo.employment[0].street=""
+      this.borrowerInfo.employment[0].cityId=0;
+      this.borrowerInfo.employment[0].unit="";
+      this.borrowerInfo.employment[0].stateId=0;
+      this.borrowerInfo.employment[0].zip = "";
+      this.borrowerInfo.employment[0].countryId = 0;
+      this.borrowerInfo.employment[0].position = "";
+      this.borrowerInfo.employment[0].startDate = "";
+      this.borrowerInfo.employment[0].workingYears = 0;
+      this.borrowerInfo.employment[0].workingMonths = 0;
+      this.borrowerInfo.employment[0].isEmployedBySomeone = false;
+      this.borrowerInfo.employment[0].isSelfEmployed= false;
+      this.borrowerInfo.employment[0].monthlyIncome = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.baseIncome = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.overtime = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.bonus = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.commission = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.militaryEntitlements = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.other = 0;
+      this.borrowerInfo.employment[0].grossMonthlyIncome.total = 0;
+      this.borrowerInfo.employment[0].isOwnershipLessThan25= false;
+    }
+  }
+  doNotApplyForEmp1F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.employment[1].name="";
+      // this.borrowerInfo.employment[0].phone="";
+      this.borrowerInfo.employment[1].street=""
+      this.borrowerInfo.employment[1].cityId=0;
+      this.borrowerInfo.employment[1].unit="";
+      this.borrowerInfo.employment[1].stateId=0;
+      this.borrowerInfo.employment[1].zip = "";
+      this.borrowerInfo.employment[1].countryId = 0;
+      this.borrowerInfo.employment[1].position = "";
+      this.borrowerInfo.employment[1].startDate = "";
+      this.borrowerInfo.employment[1].workingYears = 0;
+      this.borrowerInfo.employment[1].workingMonths = 0;
+      this.borrowerInfo.employment[1].isEmployedBySomeone = false;
+      this.borrowerInfo.employment[1].isSelfEmployed= false;
+      this.borrowerInfo.employment[1].isOwnershipLessThan25= false;
+      this.borrowerInfo.employment[1].monthlyIncome = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.baseIncome = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.overtime = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.bonus = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.commission = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.militaryEntitlements = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.other = 0;
+      this.borrowerInfo.employment[1].grossMonthlyIncome.total = 0;
+    }
+  }
+  doNotApplyForEmp2F(value:any){
+    if(value == true)
+    {
+      this.borrowerInfo.employment[2].name="";
+      this.borrowerInfo.employment[2].phone="";
+      this.borrowerInfo.employment[2].street=""
+      this.borrowerInfo.employment[2].cityId=0;
+      this.borrowerInfo.employment[2].unit="";
+      this.borrowerInfo.employment[2].stateId=0;
+      this.borrowerInfo.employment[2].zip = "";
+      this.borrowerInfo.employment[2].countryId = 0;
+      this.borrowerInfo.employment[2].position = "";
+      this.borrowerInfo.employment[2].startDate = "";
+      this.borrowerInfo.employment[2].workingYears = 0;
+      this.borrowerInfo.employment[2].workingMonths = 0;
+      this.borrowerInfo.employment[2].isEmployedBySomeone = false;
+      this.borrowerInfo.employment[2].isSelfEmployed= false;
+      this.borrowerInfo.employment[2].isOwnershipLessThan25= false;
+      this.borrowerInfo.employment[2].monthlyIncome = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.baseIncome = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.overtime = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.bonus = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.commission = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.militaryEntitlements = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.other = 0;
+      this.borrowerInfo.employment[2].grossMonthlyIncome.total = 0;
+    }
+  }
+  incomeFromOtherSourcesF(event:any){
+    if(event == true){
+       this.borrowerInfo.incomeOtherSources[0].sources=[];
+    }
+  }
+  
+  onKeydown(event: any, selectedDate:any ){
+    let sDate:Date = new Date(selectedDate);
+    console.log(sDate.getFullYear());
+    const years = sDate.getFullYear();
+    if(years <= 1900){
+      
+    }
+  }
+
+  onBlurDt(event: any){
+    var sDate = new Date(event.target.value);
+    var currentDate = new Date();
+    if(sDate.getFullYear() <1900 || sDate.getDate() > currentDate.getDate() || this.isValidDate(sDate.getFullYear(), sDate.getMonth(), sDate.getDay())==false){
+      event.target.value = currentDate.getDate().toString();
+    }else{}
+
+    if(Number.isNaN(sDate.getDate())){
+      event.target.value = "";
+    }
+  }
+
+  isValidDate(year, month, day) {
+    var d = new Date(year, month, day);
+    if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {
+        return true;
+    }
+    return false;
+}
+
+  onSearchChange(searchValue: string) {
+
   }
 
 }

@@ -57,4 +57,46 @@ export class DemographicInfoComponent implements OnInit {
 
     }
   }
+  disbaleEnthicity(event:any){
+    if(event == true){
+      this.demographicInfoModels.isHispanicOrLatino = false
+      this.demographicInfoModels.isMexican = false
+      this.demographicInfoModels.isPuertoRican = false
+      this.demographicInfoModels.isCuban = false
+      this.demographicInfoModels.isOtherHispanicOrLatino = false
+      this.demographicInfoModels.isNotHispanicOrLatino = false
+    }
+  }
+  disbaleGender(event:any){
+    if(event == true){
+      this.demographicInfoModels.isFemale = false
+      this.demographicInfoModels.isMale = false
+    }
+  }
+  disbaleRace(event:any){
+    if(event == true){
+      this.demographicInfoModels.isAmericanIndianOrAlaskaNative = false
+      this.demographicInfoModels.isAsian = false
+      this.demographicInfoModels.isAsianIndian = false
+      this.demographicInfoModels.isChinese = false
+      this.demographicInfoModels.isFilipino = false
+      this.demographicInfoModels.isJapanese = false
+
+      this.demographicInfoModels.isKorean = false
+      this.demographicInfoModels.isVietnamese = false
+      this.demographicInfoModels.isOtherAsian = false
+
+      this.demographicInfoModels.otherAsianRace = ''
+
+      this.demographicInfoModels.isBlackOrAfricanAmerican = false
+      this.demographicInfoModels.isNativeHawaiianOrOtherPacificIslander = false
+
+
+      this.demographicInfoModels.isOtherPacificIslander = false
+      this.demographicInfoModels.otherPacificIslanderRace = ''
+      this.demographicInfoModels.isWhite = false
+
+
+    }
+  }
 }

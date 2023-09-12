@@ -33,6 +33,7 @@ export class BorrowModel {
     applyingFor: string
     totalBorrowers: number
     yourInitials: string
+    yourInitials1: string
     alternateNames: AlternateNames
     typeOfCredit: TypeOfCredit
     contactInformation: ContactInformation
@@ -84,7 +85,7 @@ export class BorrowModel {
     stateId: number
     countryId: number
     zip: string
-    year: number
+    year: number | null
     month: string
     housingType: string
     rent: number
@@ -111,7 +112,7 @@ export class BorrowModel {
     zip: string
     ownershipShare: number
     monthlyIncome: number
-    workingYears: number
+    workingYears: number | null
     workingMonths: number
     position: string
     startDate: string
@@ -133,6 +134,7 @@ export class BorrowModel {
   }
   
   export class IncomeOtherSource {
+    flgDeletedRow:boolean;
     monthlyIncome: number
     sources: Source[]
   }
@@ -156,6 +158,7 @@ export class BorrowModel {
     applyingFor: string
     totalBorrowers: number
     yourInitials: string
+    yourInitials1: string
     alternateNames: AlternateNames2
     typeOfCredit: TypeOfCredit2
     contactInformation: ContactInformation2
@@ -190,7 +193,7 @@ export class BorrowModel {
     stateId: number
     countryId: number
     zip: string
-    year: number
+    year: number | null
     month: string
     housingType: string
     rent: number

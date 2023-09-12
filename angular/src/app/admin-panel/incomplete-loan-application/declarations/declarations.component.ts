@@ -38,6 +38,19 @@ export class DeclarationsComponent implements OnInit {
     
     this.declarationsList[index].declarationQuestionId = questionId; 
   }
+  clearQuestionData(){
+    this.declarationsList[1].answer=""
+    this.declarationsList[2].answer=""
+    this.declarationsList[3].answer=""
+  }
+  clearQuestionData1(){
+    this.declarationsList[2].answer=""
+    this.declarationsList[3].answer=""
+  }
+  clearQuestionData2(){
+    this.declarationsList[6].answer=""
+  }
+  
   create()
   {
     

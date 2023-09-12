@@ -24,6 +24,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   creditTypeList:any[]=[];
   financialLiabilityTypeList:any[]=[]
   otherLiabilityTypeList:any[]=[]
+  mortgageFinancialOtherAssetsRemoveIndex:any[]=[]
+  mortgageFinancialOtherLaibilitiesRemoveIndex:any[]=[]
+  removeMortgageFinancialAssetsList:any[]=[]
   ngOnInit(): void {
     // this.getAllMortgageApplicationAssetandLiability()
     
@@ -96,13 +99,17 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   removeMortgageFinancialAssets() {
     
     var mortgageFinancialAssetsLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length;
-    if (mortgageFinancialAssetsLength == 1) {
-      return;
+    if(mortgageFinancialAssetsLength > 0)
+    {
+      this.removeMortgageFinancialAssetsList.sort((a,b)=>{
+        return b-a;
+      })
+      this.removeMortgageFinancialAssetsList.forEach((element:any)=>{
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.splice(element,1)
+      })
+      this.removeMortgageFinancialAssetsList=[]
     }
-    else {
-      var obj = mortgageFinancialAssetsLength -1
-      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.splice(obj,1)
-    }
+    this.getTotalMortgageFinancialAssets();
 
   }
   addMortgageFinancialOtherAssets() {
@@ -110,14 +117,21 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   removeMortgageFinancialOtherAssets() {    
     var mortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
-    if(mortgageFinancialOtherAssets == 1)
+    if(mortgageFinancialOtherAssets > 0)
     {
-      return;
+      this.mortgageFinancialOtherAssetsRemoveIndex.sort((a,b)=>{
+        return b-a;
+      })
+      this.mortgageFinancialOtherAssetsRemoveIndex.forEach((element:any)=>{
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(element,1)
+      })
+      this.mortgageFinancialOtherAssetsRemoveIndex=[]
     }
-    else{
-    var obj =mortgageFinancialOtherAssets -1;
-    this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(obj,1)
-    }
+    this.getTotalMortgageFinancialOtherAssets();
+    // else{
+    // var obj =mortgageFinancialOtherAssets -1;
+    // this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(obj,1)
+    // }
   }
   addMortgageFinancialLiabilities() {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
@@ -158,7 +172,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
           this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(obj,1)
         }
       }
-
+      this.getTotalMortgageFinancialOtherLaibilities()
     }
     // var mortgageFinancialLiabilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length;
     // this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(1, mortgageFinancialLiabilitiesLength)
@@ -168,15 +182,16 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   removeMortgageFinancialOtherLaibilities() {    
     var mortgageFinancialOtherLaibilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length;
-    if(mortgageFinancialOtherLaibilitiesLength == 1)
+    if(mortgageFinancialOtherLaibilitiesLength > 0)
     {
-      return;
+      this.mortgageFinancialOtherLaibilitiesRemoveIndex.sort((a,b)=>{
+        return b-a;
+      })
+      this.mortgageFinancialOtherLaibilitiesRemoveIndex.forEach((element:any)=>{
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.splice(element,1)
+      })
+      this.mortgageFinancialOtherLaibilitiesRemoveIndex=[]
     }
-    else{
-      var obj= mortgageFinancialOtherLaibilitiesLength -1;
-      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.splice(obj ,1 )
-    }
-
   }
   submitFinancialAssetsLiabilities() {    
     if (this.flgMortgageFinancialOtherAssets == true) {
@@ -235,4 +250,68 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   //     }
   //   );
   // }
+  flgMortgageFinancialOtherAssetsF(event:any){
+    if(event == true){
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets = [];
+      this.totalMortgageFinancialOtherAssets = 0;
+    }
+  }
+  addRemoveMortgageFinancialOtherAssets(index:any,event:any){
+    if(event.target.checked == true){
+      this.mortgageFinancialOtherAssetsRemoveIndex.push(index)
+    }
+    else
+    {
+      var remove =this.mortgageFinancialOtherAssetsRemoveIndex.findIndex((s:any)=>s == index)
+      this.mortgageFinancialOtherAssetsRemoveIndex.splice(remove,1)
+    }
+    
+    
+  }
+  flgMortgageFinancialLiabilitiesF(event:any){
+    if(event == true){
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities = [];
+      this.totalMortgageFinancialOtherLaibilities = 0;
+    }
+  }
+  addRemoveMortgageFinancialOtherLaibilities(index:any,event:any){
+    if(event.target.checked == true){
+      this.mortgageFinancialOtherLaibilitiesRemoveIndex.push(index)
+    }
+    else
+    {
+      var remove =this.mortgageFinancialOtherLaibilitiesRemoveIndex.findIndex((s:any)=>s == index)
+      this.mortgageFinancialOtherLaibilitiesRemoveIndex.splice(remove,1)
+    }
+    
+    
+  }
+  flgMortgageFinancialOtherLaibilitiesF(event:any){
+    if(event == true){
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities = [];
+      this.totalMortgageFinancialOtherLaibilities = 0;
+    }
+  }
+  removeMortgageFinancialAssetsF(index:any,event:any){
+    if(event.target.checked == true){
+      this.removeMortgageFinancialAssetsList.push(index)
+    }
+    else
+    {
+      var remove =this.removeMortgageFinancialAssetsList.findIndex((s:any)=>s == index)
+      this.removeMortgageFinancialAssetsList.splice(remove,1)
+    }
+  }
+  fixDecimals(event: any){
+    var vals = event.target.value;
+    var int:number = parseInt(vals);
+    var dec = vals - int;
+    if(dec > 0){
+      event.target.value = int + dec;
+    }else{
+      event.target.value = int + ".00";
+    }
+
+  }
+  
 }

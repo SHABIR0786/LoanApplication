@@ -168,7 +168,10 @@
               <div class="row">
                 <div class="col-9">
                   <div class="row"  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
-                    <div class="col-6">
+                    <div style="width: 2% !important; display:inline-flex; align-items: center; justify-items: center;padding-top:5px" >
+                      <input type="checkbox"   (change)="removeMortgageFinancialAssetsF(i,$event)">
+                    </div>
+                    <div class="col-4">
                       <div class="frm-group mt-2"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
                         [ngClass]="{'error':  accountTypeId.touched && accountTypeId.errors}">
@@ -207,11 +210,22 @@
                     <div class="input-border-bottom" style="border-radius: 10px;padding-left:10px;padding-right:10px; ">
                       <div style="display: flex; align-items: center;min-height: 40px;"><span
                           style="width: 20px; text-align: right; margin-right: 5px; ">$ </span>
-                          <p-inputNumber  style="width: 100%;"
+
+                          <!-- <span style="border-bottom: 1px solid #696969 !important;"> -->
+                            <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                            [min]="0" maxlength="9" 
+                            [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
+                            name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                            (focusout)="getTotalMortgageFinancialAssets()"
+                            [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"
+                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"/>
+                          <!-- </span> -->
+
+                          <!-- <p-inputNumber  style="width: 100%;"
                            [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
                           name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
                           (onBlur)="getTotalMortgageFinancialAssets()"
-                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                         </div>
                     </div>
                   </div>
@@ -226,8 +240,8 @@
                         (click)="addMortgageFinancialAssets()">Add more </a> / <a
                         style="color: #696969; text-decoration: none; font-size: 12px;margin-left: 2px;"
                         (click)="removeMortgageFinancialAssets()">Remove</a></div>
-                    <div class="col-6 text-right" style="text-align: right;"><a href="#"
-                        style="color: #000000; text-decoration: none;font-size: 12px; text-align: right;">Provide TOTAL Amount Here</a></div>
+                    <div class="col-6 text-right" style="text-align: right;">
+                      <span style="color: #000000; text-decoration: none;font-size: 12px; text-align: right;">Provide TOTAL Amount Here</span></div>
                   </div>
                 </label>
                 <label class="col-3 p-0 frm-label">
@@ -257,7 +271,7 @@
           <span style="font-size: 20px;">Other Assets and Credits You Have</span>
           <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
             <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherAssets" id="flgMortgageFinancialOtherAssets"
-              name="flgMortgageFinancialOtherAssets" #txtflgMortgageFinancialOtherAssets="ngModel">
+              name="flgMortgageFinancialOtherAssets" #txtflgMortgageFinancialOtherAssets="ngModel" (change)=flgMortgageFinancialOtherAssetsF(txtflgMortgageFinancialOtherAssets.value)>
             <span class="checkmark" style="margin-top: 6px;"></span>
           </label>
         </div>
@@ -326,22 +340,25 @@
 
                 <div class="row">
                   <div class="col-8" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
-                    <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
-                      <div class="col-12">
-                    <div class="frm-group mt-1"  [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
-                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
-                      [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}">
-                      <div class="frm-fld-input">
-                        <select [disabled]="flgMortgageFinancialOtherAssets" class="form-control shadow-none"
-                          [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
-                          id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId"
-                          #financialAssetsTypeId="ngModel">
-                          <option value="-1" selected disabled>-Select One-</option>
-                          <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
-                        </select>
+                    <div style="display:flex; align-items: center !important;" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
+                      <div style="width: 2% !important; display:inline-flex; align-items: center; justify-items: center;padding-top:5px" >
+                        <input type="checkbox"  name="deleteSelectRow1" id="eleteSelectRow1" (change)="addRemoveMortgageFinancialOtherAssets(i,$event)">
                       </div>
-                    </div>
-                  </div>
+                      <div style="width:98% !important">
+                        <div class="frm-group mt-1"  [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
+                          [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
+                          [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}">
+                          <div class="frm-fld-input">
+                            <select [disabled]="flgMortgageFinancialOtherAssets" class="form-control shadow-none"
+                              [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
+                              id="{{i}}.financialAssetsTypeId" name="{{i}}.financialAssetsTypeId"
+                              #financialAssetsTypeId="ngModel">
+                              <option value="-1" selected disabled>-Select One-</option>
+                              <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -354,12 +371,22 @@
                         <div class="input-border-bottom">
                           <div style="display: flex; align-items: center; min-height: 35px; margin-top: 8px; padding-right: 20px; padding-left:20px"><span
                               style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-                              <p-inputNumber  style="width: 100%;" 
+                             
+                             <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                            [min]="0" maxlength="9" 
+                            [disabled]="flgMortgageFinancialOtherAssets"
+                            [required]="flgMortgageFinancialOtherAssets ==false"
+                            [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                            (focusout)="getTotalMortgageFinancialOtherAssets()"
+                            [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"
+                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"/>
+
+                              <!-- <p-inputNumber  style="width: 100%;" 
                              [disabled]="flgMortgageFinancialOtherAssets"
                               [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue"
                               id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
                               (onBlur)="getTotalMortgageFinancialOtherAssets()" 
-                              [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                              [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                             </div>
                         </div>
                       </div>
@@ -379,9 +406,9 @@
                           <a [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                           style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
-                      <div class="col-6 text-right mt-1" style="text-align: right;"><a href="#"
-                          style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide
-                          TOTAL Amount Here</a></div>
+                      <div class="col-6 text-right mt-1" style="text-align: right;">
+                        <span style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide TOTAL Amount Here</span>
+                      </div>
                     </div>
                   </label>
                   <label class="col-4 p-0 frm-label mt-0">
@@ -415,7 +442,7 @@
           <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
               Apply</span>
             <input type="checkbox" [(ngModel)]="flgMortgageFinancialLiabilities" id="flgMortgageFinancialLiabilities"
-              name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel">
+              name="flgMortgageFinancialLiabilities" #txtflgMortgageFinancialLiabilities="ngModel" (change)="flgMortgageFinancialLiabilitiesF(txtflgMortgageFinancialLiabilities.value)">
             <span class="checkmark" style="margin-top: 6px;"></span>
           </label>
         </div> 
@@ -554,9 +581,11 @@
                           <a [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                           style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
-                      <div class="col-6 text-right" style="text-align: right;"><a href="#"
-                          style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">Provide
-                          TOTAL Amount Here</a></div>
+                      <div class="col-6 text-right" style="text-align: right;">
+                        <span style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">
+                          Provide TOTAL Amount Here
+                        </span>
+                      </div>
                     </div>
                   </label>
 
@@ -594,7 +623,7 @@
               Apply</span>
             <input type="checkbox" [(ngModel)]="flgMortgageFinancialOtherLaibilities"
               id="flgMortgageFinancialOtherLaibilities" name="flgMortgageFinancialOtherLaibilities"
-              #txtflgMortgageFinancialOtherLaibilities="ngModel">
+              #txtflgMortgageFinancialOtherLaibilities="ngModel" (change)="flgMortgageFinancialOtherLaibilitiesF(txtflgMortgageFinancialOtherLaibilities.value)">
             <span class="checkmark" style="margin-top: 8px !important;"></span>
           </label>
         </div> 
@@ -643,8 +672,11 @@
 
                 <div class="row" >
                   <div class="col-8">
-                    <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
-                      <div class="col-12">
+                    <div style="display:flex; align-items: center !important;" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
+                      <div style="width:2%; display:inline-flex; align-items: center; justify-items: center;padding-top:5px">
+                        <input type="checkbox"  name="deleteSelectRow21" id="deleteSelectRow21" (change)="addRemoveMortgageFinancialOtherLaibilities(i,$event)">
+                      </div>
+                      <div style="width: 98%;">
                         <div class="frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId1.errors}"
                         [ngClass]="{'error':  financialLaibilitiesTypeId1.touched && financialLaibilitiesTypeId1.errors}">

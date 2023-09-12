@@ -128,6 +128,7 @@
                   name="canNotProvideEthnicInfo"
                   #canNotProvideEthnicInfo="ngModel"
                   [(ngModel)]="demographicInfoModels.canNotProvideEthnicInfo"
+                  (change)="disbaleEnthicity(canNotProvideEthnicInfo.value)"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -177,6 +178,7 @@
                   name="canNotProvideSexInfo"
                   #canNotProvideSexInfo="ngModel"
                   [(ngModel)]="demographicInfoModels.canNotProvideSexInfo"
+                  (change)="disbaleGender(canNotProvideSexInfo.value)"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -396,7 +398,8 @@
                 id="canNotProvideRaceInfo"
                 name="canNotProvideRaceInfo"
                 #canNotProvideRaceInfo="ngModel" 
-                [(ngModel)]="demographicInfoModels.canNotProvideRaceInfo"/>
+                [(ngModel)]="demographicInfoModels.canNotProvideRaceInfo"
+                (change)="disbaleRace(canNotProvideRaceInfo.value)"/>
               <label class="form-check-label" for="inlineCheckbox3">I do not wish to provide this information</label>
             </div>
 

@@ -112,11 +112,18 @@
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
-                      
-                      <p-inputNumber class="showBorder" maxlength="9" 
+                     
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
+                        id="loanAmount" #loanAmount="ngModel" [required]="true"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
+                      <!-- <p-inputNumber class="showBorder" maxlength="9" 
                   [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
                       id="loanAmount" #loanAmount="ngModel" [required]="true"
-                          [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                          [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                       </div>
                   </div>
                 </div>
@@ -271,7 +278,15 @@
               <div class="col-2  p-0"><label class="gray-text" style="color:black !important;font-size: 14px !important; text-align: center;">PROPERTY VALUE</label></div>
               <div class="col-2  p-0 input-border-bottom" style="display: flex;">
                 <span class="mr-2" style="color:black">$</span>
-                <p-inputNumber maxlength="9" class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+
+                <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
+                  <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+                  </span>
+
+                <!-- <p-inputNumber maxlength="9" class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
               </div>
             </div>
 
@@ -460,7 +475,7 @@
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
             Apply</span>
           <input type="checkbox" [(ngModel)]="flgOtherNewMortgageLoans" id="flgOtherNewMortgageLoans"
-            name="flgOtherNewMortgageLoans" #txtflgOtherNewMortgageLoans="ngModel">
+            name="flgOtherNewMortgageLoans" #txtflgOtherNewMortgageLoans="ngModel" (change)="flgOtherNewMortgageLoansF(txtflgOtherNewMortgageLoans.value)">
           <span class="checkmark mt-2"></span>
         </label>
       </div>
@@ -475,8 +490,8 @@
                   <span>Creditor Name:</span>
                 </label>
               </div>
-
-              <div class="col-4" style="border-left: 1px solid #a5a5a5 !important">
+              <div class="col-1 p-0"  style="width:20px !important"></div>
+              <div class="col-3" style="border-left: 1px solid #a5a5a5 !important">
                 <label class="frm-label">
                   <span>Lien Type</span>
                 </label>
@@ -503,8 +518,13 @@
             </div>
 
             <div class="row" *ngFor="let item of loanPropertyInfoModel.newMortgageLoans; index as i">
-              <div class="col-2">
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
+              <div class="col-2" style="display:flex; align-items: center !important;">
+                
+                <div style="padding-right: 5px !important; padding-top:5px !important">
+                  <input type="checkbox" (change)="removeOtherNewMortgageLoansF(i,$event)">
+                </div>
+
+                <div class="frm-group mt-2"  [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && txtcreditorName.errors}"
                   [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}">
                   <div class="input-border-bottom">
@@ -514,18 +534,30 @@
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder"  maxlength="9"
+                       
+                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
                         name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  
+                        style="border:0px !important; padding-left:5px; border: 0px !important; font-size: 14px; margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
+                        name="{{i}}.creditorName" id="{{i}}.creditorName" #txtcreditorName="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                       </div>
+                    </div>
                   </div>
-                </div>
               </div>
 
-              <div class="col-4 " style="border-left: 1px solid #a5a5a5 !important">
-                <div style="display: flex; justify-content: left;" class="mt-3">
+              <div class="col-1 p-0" style="width:20px !important"></div>
+              <div class="col-3 p-0 " style="border-spacing: 10px 0px; border-left: 1px solid #a5a5a5 !important;">
+                <div style="display: flex; justify-content: center;" class="mt-3">
                   <div style="display: flex; justify-content: center;">
                     <input [disabled]="flgOtherNewMortgageLoans == true" type="radio" value="First Lien"
                       [(ngModel)]="item.lienType" name="{{i}}.lienType" id="{{i}}.lienType" #lienType="ngModel"
@@ -559,11 +591,21 @@
                         [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder"  maxlength="9"
+                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
+                        name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                       </div>
                   </div>
                 </div>
@@ -581,11 +623,21 @@
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder" maxlength="9"
+                        <!-- <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
+                        name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                       </div>
                   </div>
                 </div>
@@ -603,11 +655,21 @@
                         min="0" [readonly]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
                         [required]="flgOtherNewMortgageLoans == false" /> -->
-                        <p-inputNumber class="showBorder" maxlength="9"
+
+                        <!-- <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
                         [required]="flgOtherNewMortgageLoans == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
+                        name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
+                        [required]="flgOtherNewMortgageLoans == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                       </div>
                   </div>
                 </div>
@@ -633,7 +695,7 @@
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
             Apply</span>
           <input type="checkbox" [(ngModel)]="flgRentalIncome" id="flgRentalIncome" name="flgRentalIncome"
-            #txtflgRentalIncome="ngModel">
+            #txtflgRentalIncome="ngModel" (change)="flgRentalIncomeF(txtflgRentalIncome.value)">
           <span class="checkmark mt-2"></span>
         </label>
       </div>
@@ -673,12 +735,22 @@
                         id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false" /> -->
 
-                        <p-inputNumber class="showBorder" maxlength="9"
+                        <!-- <p-inputNumber class="showBorder" maxlength="9"
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
                         id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgRentalIncome == true"
+                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
+                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
+                        [required]="flgRentalIncome == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                     </div>
                   </div>
                 </div>
@@ -706,12 +778,22 @@
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false" /> -->
 
-                        <p-inputNumber class="showBorder" maxlength="9"
+                        <!-- <p-inputNumber class="showBorder" maxlength="9"
                          [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
                         name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
                         [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgRentalIncome == true"
+                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
+                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
+                        [required]="flgRentalIncome == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                     </div>
                   </div>
                 </div>
@@ -729,7 +811,7 @@
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
             Apply</span>
           <input type="checkbox" [(ngModel)]="flgGiftsorGrants" id="flgGiftsorGrants" name="flgGiftsorGrants"
-            #txtflgGiftsorGrants="ngModel">
+            #txtflgGiftsorGrants="ngModel" (change)="flgGiftsorGrantsF(txtflgGiftsorGrants.value)">
           <span class="checkmark mt-2"></span>
         </label>
       </div>
@@ -775,34 +857,38 @@
         <div class="col-12">
           <div class="frm-group" [ngClass]="{'disabled':flgGiftsorGrants==true}">
 
-            <div class="row pb-2">
-              <div class="col-3">
+            <div class="pb-2" style="display:flex; align-items: center !important;">
+              <div style="width: 5% !important"></div>
+              <div style="width: 20% !important; padding-left:0px !important; border-right: 1px solid #a5a5a5 !important;padding-right: 10px !important;">
                 <label class="frm-label">
                   <span>Asset Type – Cash Gift, Gift of Equity, Grant</span>
                 </label>
               </div>
 
-              <div class="col-4" style="border-left: 1px solid #a5a5a5 !important">
-                <label class="frm-label">
+              <div style="width: 35% !important;">
+                <label class="frm-label pl-2">
                   <span>Deposited/Not Deposited</span>
                 </label>
               </div>
 
-              <div class="col-2" style="border-left: 1px solid #a5a5a5 !important">
+              <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important">
                 <label class="frm-label">
                   <span>Source – use list above</span>
                 </label>
               </div>
 
-              <div class="col-2" style="border-left: 1px solid #a5a5a5 !important">
+              <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important" >
                 <label class="frm-label">
                   <span>Cash or Market Value</span>
                 </label>
               </div>
             </div>
 
-            <div class="row" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
-              <div class="col-3">
+            <div style="display:flex; align-items: center !important;" *ngFor="let item of loanPropertyInfoModel.giftsOrGrants; index as i">
+              <div style="width: 5% !important">
+                <input type="checkbox"  (change)="removeGiftsorGrantsF(i,$event)">
+              </div>
+              <div style="width: 20% !important; padding-left:0px !important; border-right: 1px solid #a5a5a5 !important;padding-right: 10px !important;">
                 <div class="frm-group" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
                   [ngClass]="{'error':  assetTypeId.touched && assetTypeId.errors}">
                   <p class="frm-fld-input">
@@ -816,8 +902,8 @@
                 </div>
               </div>
 
-              <div class="col-4" style="border-left: 1px solid #a5a5a5 !important">
-                <div style="display: flex; justify-content: left;" class="mt-3">
+              <div style="width: 35% !important; ">
+                <div style="display: flex; justify-content: left;" class="mt-0 ml-3">
                   <div style="display: flex; justify-content: center;">
                     <input type="radio" value="true" [disabled]="flgGiftsorGrants == true"
                       [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.isDeposited" name="{{i}}.isDeposited"
@@ -840,7 +926,7 @@
               </div>
 
 
-              <div class="col-2" style="border-left: 1px solid #696969;">
+              <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important" >
                 <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
                   [ngClass]="{'error':  source.touched && source.errors}">
                   <p class="frm-fld-input">
@@ -862,7 +948,7 @@
                 </div>
               </div>
 
-              <div class="col-2" style="border-left: 1px solid #696969;">
+              <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important">
                 <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && marketValue.errors}"
                   [ngClass]="{'error':  marketValue.touched && marketValue.errors}">
@@ -872,21 +958,23 @@
                         <!-- <input type="text"
                         [readonly]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
                         id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false" /> -->
-                        <p-inputNumber class="showBorder"  maxlength="9"
+                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
                          [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
                          id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                       
+                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
+                         id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
                       </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
-
-
-
             <label class="frm-label">
               <div class="row mt-3">
                 <div class="col-6"><a style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;"
