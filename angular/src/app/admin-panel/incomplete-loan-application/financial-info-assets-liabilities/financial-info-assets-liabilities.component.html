@@ -148,7 +148,8 @@
               <div class="row mb-2">
               <div class="col-9">
                 <div class="row">
-                  <div class="col-6">
+                  <div style="width: 2%;"></div>
+                  <div class="col-4">
                    <label class="frm-label">Account Type - Use list above</label>
                   </div>
                   <div class="col-3">
@@ -237,7 +238,8 @@
                 <label class="col-9 frm-label">
                   <div class="row mt-3">
                     <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;"><a style="color: #696969; text-decoration: none; font-size: 14px;"
-                        (click)="addMortgageFinancialAssets()">Add more </a> / <a
+                        (click)="addMortgageFinancialAssets()">Add more </a> 
+                        <span *ngIf="flgShowRemove1 == true"> /</span>  <a *ngIf="flgShowRemove1 == true"
                         style="color: #696969; text-decoration: none; font-size: 12px;margin-left: 2px;"
                         (click)="removeMortgageFinancialAssets()">Remove</a></div>
                     <div class="col-6 text-right" style="text-align: right;">
@@ -402,8 +404,9 @@
                     <div class="row mt-3" >
                       <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;">
                         <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
-                          (click)="addMortgageFinancialOtherAssets()">Add more</a> / 
-                          <a [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
+                          (click)="addMortgageFinancialOtherAssets()">Add more</a> 
+                          <span *ngIf="flgShowRemove2 == true"> /</span>  
+                          <a *ngIf="flgShowRemove2 == true"[ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                           style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialOtherAssets()">Remove</a></div>
                       <div class="col-6 text-right mt-1" style="text-align: right;">
@@ -485,7 +488,8 @@
                 <div class="row mb-2">
                   <label class="col-10 frm-label" style="white-space:normal">
                     <div class="row">
-                      <div class="col-6"><span>Account Type – use list above Company Name Account Number</span></div>
+                      <div style="width: 2% !important;"></div>
+                      <div class="col-5"><span>Account Type – use list above Company Name Account Number</span></div>
                       <div class="col-2">Company Name</div>
                       <div class="col-2">Account Number</div>
                       <div class="col-2"><span>Unpaid Balance (To be paid off at or before closing)</span></div>
@@ -499,11 +503,17 @@
                 <div class="row" >
                  <div class="col-10">
                   <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities; index as i">
-                    <div class="col-6">
+                    <div style="width: 2% !important; display: flex;">
+                      <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
+                       [(ngModel)]="item.isPaidBeforeClosing1"
+                      id="{{i}}.isPaidBeforeClosing1" name="{{i}}.isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"
+                      style="width: 40px;"  (change)=showRemoveOption()/>
+                    </div>
+                    <div class="col-5">
                       <div class="frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId.errors}"
                         [ngClass]="{'error':  financialLaibilitiesTypeId.touched && financialLaibilitiesTypeId.errors}">
-                        <div class="frm-fld-input">
+                        <div class="frm-fld-input" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                           <select [disabled]="flgMortgageFinancialLiabilities" class="form-control shadow-none"
                             [required]="flgMortgageFinancialLiabilities == false"
                             [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
@@ -577,8 +587,9 @@
                     <div class="row mt-3">
                       <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;;">
                         <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
-                          (click)="addMortgageFinancialLiabilities()">Add more</a> / 
-                          <a [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}"
+                          (click)="addMortgageFinancialLiabilities()">Add more</a> 
+                          <span *ngIf="flgShowRemove3 == true"> /</span> 
+                          <a [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}" *ngIf="flgShowRemove3 == true"
                           style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialLiabilities()">Remove</a></div>
                       <div class="col-6 text-right" style="text-align: right;">
@@ -680,7 +691,7 @@
                         <div class="frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialLaibilitiesTypeId1.errors}"
                         [ngClass]="{'error':  financialLaibilitiesTypeId1.touched && financialLaibilitiesTypeId1.errors}">
-                        <div class="frm-fld-input">
+                        <div class="frm-fld-input" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"> 
                           <select [disabled]="flgMortgageFinancialOtherLaibilities" class="form-control shadow-none"
                             [required]="flgMortgageFinancialOtherLaibilities ==false"
                             [(ngModel)]="item.financialLaibilitiesTypeId" id="{{i}}.financialLaibilitiesTypeId"
@@ -723,8 +734,9 @@
                     <div class="row mt-3">
                       <div class="col-12" style="color: #696969; text-decoration: none; font-size: 12px;">
                         <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
-                          (click)="addMortgageFinancialOtherLaibilities()">Add more</a> / 
-                          <a [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
+                          (click)="addMortgageFinancialOtherLaibilities()">Add more</a>
+                          <span *ngIf="flgShowRemove4 == true"> /</span>
+                          <a *ngIf="flgShowRemove4 == true" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
                           style="color: #696969; text-decoration: none; font-size: 12px;"
                           (click)="removeMortgageFinancialOtherLaibilities()">Remove</a></div>
                     </div>

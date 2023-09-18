@@ -100,4 +100,20 @@ export class DeclarationsComponent implements OnInit {
       }
     })
   }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value;
+    var int: number = parseInt(vals);
+    var dec = vals - int;
+    if (dec > 0) {
+      event.target.value = int + dec;
+    } else {
+      event.target.value = int + ".00";
+    }
+  }
+
+  selectNumber(event) {
+    event.target.select();
+  }
+  
 }

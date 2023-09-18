@@ -134,7 +134,6 @@ export class BorrowModel {
   }
   
   export class IncomeOtherSource {
-    flgDeletedRow:boolean;
     monthlyIncome: number
     sources: Source[]
   }
@@ -142,6 +141,7 @@ export class BorrowModel {
   export class Source {
     sourceType: string="-1"
     monthlyIncome: number
+    flgDeletedRow:boolean=false;
   }
   
   export class OtherBorrower {

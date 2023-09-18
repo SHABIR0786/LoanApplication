@@ -12,9 +12,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   flgMortgageFinancialOtherAssets: boolean = false;
   flgMortgageFinancialLiabilities: boolean = false;
   flgMortgageFinancialOtherLaibilities: boolean = false;
-  totalMortgageFinancialAssets: number;
-  totalMortgageFinancialOtherAssets: number;
-  totalMortgageFinancialOtherLaibilities: number;
+  totalMortgageFinancialAssets: number=0;
+  totalMortgageFinancialOtherAssets: number=0;
+  totalMortgageFinancialOtherLaibilities: number=0;
   mortgageFinancialAssets: mortgageFinancialAssets = new mortgageFinancialAssets();
   mortgageFinancialOtherAssets: mortgageFinancialOtherAssets = new mortgageFinancialOtherAssets();
   mortgageFinancialLiabilities: mortgageFinancialLiabilities = new mortgageFinancialLiabilities();
@@ -27,6 +27,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   mortgageFinancialOtherAssetsRemoveIndex:any[]=[]
   mortgageFinancialOtherLaibilitiesRemoveIndex:any[]=[]
   removeMortgageFinancialAssetsList:any[]=[]
+  flgShowRemove1:boolean=false;
+  flgShowRemove2:boolean=false;
+  flgShowRemove3:boolean=false;
+  flgShowRemove4:boolean=false;
   ngOnInit(): void {
     // this.getAllMortgageApplicationAssetandLiability()
     
@@ -45,6 +49,18 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     if(localStorage.flgMortgageFinancialOtherLaibilities != undefined)
     {
       this.flgMortgageFinancialOtherLaibilities = JSON.parse(localStorage.getItem('flgMortgageFinancialOtherLaibilities'));
+    }
+    if(localStorage.totalMortgageFinancialAssets != undefined)
+    {
+      this.totalMortgageFinancialAssets = JSON.parse(localStorage.getItem('totalMortgageFinancialAssets'));
+    }
+    if(localStorage.totalMortgageFinancialOtherAssets != undefined)
+    {
+      this.totalMortgageFinancialOtherAssets = JSON.parse(localStorage.getItem('totalMortgageFinancialOtherAssets'));
+    }
+    if(localStorage.totalMortgageFinancialOtherLaibilities != undefined)
+    {
+      this.totalMortgageFinancialOtherLaibilities = JSON.parse(localStorage.getItem('totalMortgageFinancialOtherLaibilities'));
     }
   
   //---Get asset Types
@@ -99,15 +115,23 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   removeMortgageFinancialAssets() {
     
     var mortgageFinancialAssetsLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length;
-    if(mortgageFinancialAssetsLength > 0)
+    if(mortgageFinancialAssetsLength == 1)
     {
+      return;
+    }
+    else if(mortgageFinancialAssetsLength > 1){
       this.removeMortgageFinancialAssetsList.sort((a,b)=>{
         return b-a;
       })
       this.removeMortgageFinancialAssetsList.forEach((element:any)=>{
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.splice(element,1)
       })
+      if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length == 0)
+      {
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.push(new mortgageFinancialAssets()) 
+      }
       this.removeMortgageFinancialAssetsList=[]
+      this.flgShowRemove1=false;
     }
     this.getTotalMortgageFinancialAssets();
 
@@ -116,16 +140,25 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets())
   }
   removeMortgageFinancialOtherAssets() {    
-    var mortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
-    if(mortgageFinancialOtherAssets > 0)
+    var mortgageFinancialOtherAssets1 = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
+    if(mortgageFinancialOtherAssets1 == 1)
     {
+      return;
+      
+    }
+    else if(mortgageFinancialOtherAssets1 > 1){
       this.mortgageFinancialOtherAssetsRemoveIndex.sort((a,b)=>{
         return b-a;
       })
       this.mortgageFinancialOtherAssetsRemoveIndex.forEach((element:any)=>{
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(element,1)
       })
+      if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length == 0){
+        
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets());
+      }
       this.mortgageFinancialOtherAssetsRemoveIndex=[]
+      this.flgShowRemove2 =false;
     }
     this.getTotalMortgageFinancialOtherAssets();
     // else{
@@ -138,11 +171,15 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   removeMortgageFinancialLiabilities() {    
     var indexList:any[]=[]
-    if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 0)
+    if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length == 1){
+      return;
+    }
+    else if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 1)
     {
+      debugger
       
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.forEach((element:any,index:any)=>{
-        if(element.isPaidBeforeClosing == true)
+        if(element.isPaidBeforeClosing1 == true)
         {
           indexList.push({index:index})
         }
@@ -158,6 +195,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
           
           this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(element.index,1)
         })
+        if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length == 0 ){
+          this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
+        }
       }
       else
       {
@@ -172,6 +212,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
           this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.splice(obj,1)
         }
       }
+      this.flgShowRemove3 =false;
       this.getTotalMortgageFinancialOtherLaibilities()
     }
     // var mortgageFinancialLiabilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length;
@@ -182,26 +223,36 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   removeMortgageFinancialOtherLaibilities() {    
     var mortgageFinancialOtherLaibilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length;
-    if(mortgageFinancialOtherLaibilitiesLength > 0)
+    if(mortgageFinancialOtherLaibilitiesLength == 1)
     {
+      return;
+   
+    }
+    else if(mortgageFinancialOtherLaibilitiesLength > 1){
       this.mortgageFinancialOtherLaibilitiesRemoveIndex.sort((a,b)=>{
         return b-a;
       })
       this.mortgageFinancialOtherLaibilitiesRemoveIndex.forEach((element:any)=>{
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.splice(element,1)
       })
+      if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length == 0){
+        this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.push(new mortgageFinancialOtherLaibilities());
+      }
       this.mortgageFinancialOtherLaibilitiesRemoveIndex=[]
+      this.flgShowRemove4 =false;
     }
   }
   submitFinancialAssetsLiabilities() {    
+    debugger
+    var financialInfo= this.financialInfoAssetsLiabilitiesModels
     if (this.flgMortgageFinancialOtherAssets == true) {
-      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets = [];
+      financialInfo.mortgageFinancialOtherAssets = [];
     }
     if (this.flgMortgageFinancialLiabilities == true) {
-      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities = [];
+      financialInfo.mortgageFinancialLiabilities = [];
     }
     if (this.flgMortgageFinancialOtherLaibilities == true) {
-      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities = [];
+      financialInfo.mortgageFinancialOtherLaibilities = [];
     }
     
     // var obj = {
@@ -214,7 +265,10 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     localStorage.setItem("flgMortgageFinancialOtherAssets",JSON.stringify(this.flgMortgageFinancialOtherAssets))
     localStorage.setItem("flgMortgageFinancialLiabilities",JSON.stringify(this.flgMortgageFinancialLiabilities))
     localStorage.setItem("flgMortgageFinancialOtherLaibilities",JSON.stringify(this.flgMortgageFinancialOtherLaibilities))
-    this.financialInfoService.createFinancialInfoAssetsLiabilities(this.financialInfoAssetsLiabilitiesModels).subscribe((data: any) => {
+    localStorage.setItem("totalMortgageFinancialAssets",JSON.stringify(this.totalMortgageFinancialAssets))
+    localStorage.setItem("totalMortgageFinancialOtherAssets",JSON.stringify(this.totalMortgageFinancialOtherAssets))
+    localStorage.setItem("totalMortgageFinancialOtherLaibilities",JSON.stringify(this.totalMortgageFinancialOtherLaibilities))
+    this.financialInfoService.createFinancialInfoAssetsLiabilities(financialInfo).subscribe((data: any) => {
       if (data.success == true) {
         alert("Data inserted successfully")
         this.router.navigateByUrl('app/admin/incomplete-loan-application/financial-info-real-estate');
@@ -222,15 +276,25 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       })  
   }
   getTotalMortgageFinancialAssets() {
+    debugger
     this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
+  if(isNaN(this.totalMortgageFinancialAssets)  == true){
+    this.totalMortgageFinancialAssets = 0;
+  }
   }
   getTotalMortgageFinancialOtherAssets() {
-    
+    debugger
     this.totalMortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
+    if(isNaN(this.totalMortgageFinancialOtherAssets)  == true){
+      this.totalMortgageFinancialOtherAssets = 0;
+    }
   }
   getTotalMortgageFinancialOtherLaibilities() {
-    
+    debugger
     this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce((sum, current) => sum + current.monthlyPayment, 0)
+    if(isNaN(this.totalMortgageFinancialOtherLaibilities)  == true){
+      this.totalMortgageFinancialOtherLaibilities = 0;
+    }
   }
   getAllMortgageApplicationAssetandLiability() {    
     var obj = {
@@ -253,6 +317,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   flgMortgageFinancialOtherAssetsF(event:any){
     if(event == true){
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets = [];
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets());
+      
       this.totalMortgageFinancialOtherAssets = 0;
     }
   }
@@ -265,12 +331,20 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       var remove =this.mortgageFinancialOtherAssetsRemoveIndex.findIndex((s:any)=>s == index)
       this.mortgageFinancialOtherAssetsRemoveIndex.splice(remove,1)
     }
-    
+    if(this.mortgageFinancialOtherAssetsRemoveIndex.length > 0){
+      this.flgShowRemove2= true;
+    }
+    else if(this.mortgageFinancialOtherAssetsRemoveIndex.length == 0)
+    {
+      this.flgShowRemove2= false;
+    }
     
   }
   flgMortgageFinancialLiabilitiesF(event:any){
     if(event == true){
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities = [];
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
+      
       this.totalMortgageFinancialOtherLaibilities = 0;
     }
   }
@@ -283,12 +357,19 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       var remove =this.mortgageFinancialOtherLaibilitiesRemoveIndex.findIndex((s:any)=>s == index)
       this.mortgageFinancialOtherLaibilitiesRemoveIndex.splice(remove,1)
     }
-    
+    if(this.mortgageFinancialOtherLaibilitiesRemoveIndex.length > 0){
+      this.flgShowRemove4= true;
+    }
+    else if(this.mortgageFinancialOtherLaibilitiesRemoveIndex.length == 0)
+    {
+      this.flgShowRemove4= false;
+    }
     
   }
   flgMortgageFinancialOtherLaibilitiesF(event:any){
     if(event == true){
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities = [];
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.push(new mortgageFinancialOtherLaibilities());
       this.totalMortgageFinancialOtherLaibilities = 0;
     }
   }
@@ -301,6 +382,13 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       var remove =this.removeMortgageFinancialAssetsList.findIndex((s:any)=>s == index)
       this.removeMortgageFinancialAssetsList.splice(remove,1)
     }
+    if(this.removeMortgageFinancialAssetsList.length > 0){
+      this.flgShowRemove1= true;
+    }
+    else if(this.removeMortgageFinancialAssetsList.length == 0)
+    {
+      this.flgShowRemove1= false;
+    }
   }
   fixDecimals(event: any){
     var vals = event.target.value;
@@ -312,6 +400,19 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       event.target.value = int + ".00";
     }
 
+  }
+  showRemoveOption(){
+    if( this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 0){
+      var found:any[]= this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.filter((s:any)=> s.isPaidBeforeClosing1 == true);
+        if(found){
+          this.flgShowRemove3 = true
+        }
+        else
+        {
+          this.flgShowRemove3 = false
+        }
+    }
+   
   }
   
 }

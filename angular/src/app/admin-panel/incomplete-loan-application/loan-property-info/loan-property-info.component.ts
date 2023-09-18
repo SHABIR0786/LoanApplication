@@ -18,9 +18,12 @@ export class LoanPropertyInfoComponent implements OnInit {
   countryList: any[] = [];
   stateList: any[] = [];
   giftTypeList: any[] = [];
-  removeOtherNewMortgageLoansIndex:any[]=[]
-  removeGiftsorGrantsIndex:any[]=[]
-
+  cityListAddress0: any[] = [];
+  removeOtherNewMortgageLoansIndex: any[] = []
+  removeGiftsorGrantsIndex: any[] = []
+  stateListAddress0: any[] = []
+  flgRemove1: boolean = false;
+  flgRemove2: boolean = false;
   options: any = {
     componentRestrictions: { country: 'US' }
   }
@@ -32,6 +35,14 @@ export class LoanPropertyInfoComponent implements OnInit {
     this.getCities();
     this.getCountries();
     this.getStates();
+    if (localStorage.form4CityList != undefined && localStorage.form4CityList != '') {
+      this.cityListAddress0=[]
+      this.cityListAddress0 = JSON.parse(localStorage.getItem('form4CityList'));
+    }
+    if (localStorage.form4StateList != undefined && localStorage.form4StateList != '') {
+      this.stateListAddress0 =[];
+      this.stateListAddress0 = JSON.parse(localStorage.getItem('form4StateList'));
+    }
     if (localStorage.flgOtherNewMortgageLoans != undefined && localStorage.flgOtherNewMortgageLoans != '') {
       this.flgOtherNewMortgageLoans = JSON.parse(localStorage.getItem('flgOtherNewMortgageLoans'));
     }
@@ -55,7 +66,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
     //----Get Gift Types
     this.loanPropertyInfoService.getLoanPropertyGiftTypes().subscribe((data: any) => {
-      this.countryList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
           this.giftTypeList.push({ loanPropertyGiftType1: element.loanPropertyGiftType1, id: element.id })
@@ -84,7 +94,7 @@ export class LoanPropertyInfoComponent implements OnInit {
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
 
-          this.stateList.push({ stateName: element.stateName, id: element.id })
+          this.stateList.push({ stateName: element.stateName, id: element.id, countryId: element.countryId })
         })
       }
     })
@@ -96,7 +106,7 @@ export class LoanPropertyInfoComponent implements OnInit {
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
 
-          this.cityList.push({ cityName: element.cityName, id: element.id })
+          this.cityList.push({ cityName: element.cityName, id: element.id, stateId: element.stateId })
         })
       }
     })
@@ -111,15 +121,21 @@ export class LoanPropertyInfoComponent implements OnInit {
     // if (mortgageFinancialLength == 1) {
     //   return;
     // }
-    if(mortgageFinancialLength > 0)
-    {
-      this.removeOtherNewMortgageLoansIndex.sort((a,b)=>{
-        return b-a;
+    if (mortgageFinancialLength == 1) {
+      return;
+    }
+    else if (mortgageFinancialLength > 1) {
+      this.removeOtherNewMortgageLoansIndex.sort((a, b) => {
+        return b - a;
       })
-      this.removeOtherNewMortgageLoansIndex.forEach((element:any)=>{
-        this.loanPropertyInfoModel.newMortgageLoans.splice(element,1)
+      this.removeOtherNewMortgageLoansIndex.forEach((element: any) => {
+        this.loanPropertyInfoModel.newMortgageLoans.splice(element, 1)
       })
-      this.removeOtherNewMortgageLoansIndex=[]
+      if (this.loanPropertyInfoModel.newMortgageLoans.length == 0) {
+        this.loanPropertyInfoModel.newMortgageLoans.push(new NewMortgageLoans());
+      }
+      this.removeOtherNewMortgageLoansIndex = []
+      this.flgRemove1 = false;
     }
 
   }
@@ -129,15 +145,18 @@ export class LoanPropertyInfoComponent implements OnInit {
   }
   removeGiftsOrGrants() {
     var mortgageFinancialLength = this.loanPropertyInfoModel.giftsOrGrants.length;
-    if(mortgageFinancialLength > 0)
-    {
-      this.removeGiftsorGrantsIndex.sort((a,b)=>{
-        return b-a;
+    if (mortgageFinancialLength > 0) {
+      this.removeGiftsorGrantsIndex.sort((a, b) => {
+        return b - a;
       })
-      this.removeGiftsorGrantsIndex.forEach((element:any)=>{
-        this.loanPropertyInfoModel.giftsOrGrants.splice(element,1)
+      this.removeGiftsorGrantsIndex.forEach((element: any) => {
+        this.loanPropertyInfoModel.giftsOrGrants.splice(element, 1)
       })
-      this.removeGiftsorGrantsIndex=[]
+      if (this.loanPropertyInfoModel.giftsOrGrants.length == 0) {
+        this.loanPropertyInfoModel.giftsOrGrants.push(new GiftsOrGrants())
+      }
+      this.removeGiftsorGrantsIndex = []
+      this.flgRemove2 = false
     }
 
   }
@@ -145,25 +164,28 @@ export class LoanPropertyInfoComponent implements OnInit {
 
   create() {
     debugger
+    var objLoanPropertyInfoModel= this.loanPropertyInfoModel
     if (this.flgOtherNewMortgageLoans == true) {
-      this.loanPropertyInfoModel.newMortgageLoans = [];
+      objLoanPropertyInfoModel.newMortgageLoans = [];
     }
     if (this.flgRentalIncome == true) {
-      this.loanPropertyInfoModel.rentalIncome = null;
+      objLoanPropertyInfoModel.rentalIncome = null;
     }
     if (this.flgGiftsorGrants == true) {
-      this.loanPropertyInfoModel.giftsOrGrants = [];
+      objLoanPropertyInfoModel.giftsOrGrants = [];
     }
-    var obj = this.loanPropertyInfoModel;
+
     localStorage.removeItem("loanPropertyInfoModel")
     localStorage.removeItem("flgOtherNewMortgageLoans")
     localStorage.removeItem("flgRentalIncome")
     localStorage.removeItem("flgGiftsorGrants")
-    localStorage.setItem("loanPropertyInfoModel", JSON.stringify(obj))
+    localStorage.setItem("loanPropertyInfoModel", JSON.stringify(this.loanPropertyInfoModel))
     localStorage.setItem("flgOtherNewMortgageLoans", JSON.stringify(this.flgOtherNewMortgageLoans))
     localStorage.setItem("flgRentalIncome", JSON.stringify(this.flgRentalIncome))
     localStorage.setItem("flgGiftsorGrants", JSON.stringify(this.flgGiftsorGrants))
-    this.loanPropertyInfoService.create(obj).subscribe((data: any) => {
+    localStorage.setItem("form4CityList", JSON.stringify(this.cityListAddress0))
+    localStorage.setItem("form4StateList", JSON.stringify(this.stateListAddress0))
+    this.loanPropertyInfoService.create(objLoanPropertyInfoModel).subscribe((data: any) => {
       if (data.success == true) {
         alert("Data inserted successfully");
         this.router.navigateByUrl('app/admin/incomplete-loan-application/declarations');
@@ -195,13 +217,15 @@ export class LoanPropertyInfoComponent implements OnInit {
 
     COMPONENT_TEMPLATE = { postal_code: 'long_name' },
       Address_01.postalCode = this.getAddrComponent(place, COMPONENT_TEMPLATE);
+    const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
+    this.getStateByCountryId(CountryID)
+    const stateID = this.stateList.find(state => state.stateName === Address_01.state);
 
+    this.getCityByStateId(stateID);
 
     const cityID = this.cityList.find(city => city.cityName === Address_01.city);
     this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = cityID.id;
 
-    const stateID = this.stateList.find(state => state.stateName === Address_01.state);
-    const CountryID = this.countryList.find(country => country.countryName === Address_01.countryShort);
     this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street = Address_01.addressLine1 + " " + Address_01.addressLine2;
     this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip = Address_01.postalCode;
     //this.loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId = this.cityList.find(city => city.cityName === Address_01.city);
@@ -224,53 +248,66 @@ export class LoanPropertyInfoComponent implements OnInit {
   flgOtherNewMortgageLoansF(event: any) {
     if (event == true) {
       this.loanPropertyInfoModel.newMortgageLoans = []
+      this.loanPropertyInfoModel.newMortgageLoans = [new NewMortgageLoans()]
     }
 
   }
-  removeOtherNewMortgageLoansF(index:any,event:any){
+  removeOtherNewMortgageLoansF(index: any, event: any) {
     debugger
-    if(event.target.checked == true){
+    if (event.target.checked == true) {
       this.removeOtherNewMortgageLoansIndex.push(index)
     }
-    else
-    {
-      var remove =this.removeOtherNewMortgageLoansIndex.findIndex((s:any)=>s == index)
-      this.removeOtherNewMortgageLoansIndex.splice(remove,1)
+    else {
+      var remove = this.removeOtherNewMortgageLoansIndex.findIndex((s: any) => s == index)
+      this.removeOtherNewMortgageLoansIndex.splice(remove, 1)
     }
-   
+    if (this.removeOtherNewMortgageLoansIndex.length > 0) {
+      this.flgRemove1 = true;
+    }
+    else {
+      this.flgRemove1 = false;
+    }
+
   }
   flgRentalIncomeF(event: any) {
     if (event == true) {
-      this.loanPropertyInfoModel.rentalIncome =new RentalIncome()
+      this.loanPropertyInfoModel.rentalIncome = new RentalIncome()
     }
 
   }
   flgGiftsorGrantsF(event: any) {
     if (event == true) {
-      this.loanPropertyInfoModel.giftsOrGrants =[]
+      this.loanPropertyInfoModel.giftsOrGrants = []
+      this.loanPropertyInfoModel.giftsOrGrants.push(new GiftsOrGrants())
+
     }
 
   }
-  removeGiftsorGrantsF(index:any,event:any){
+  removeGiftsorGrantsF(index: any, event: any) {
     debugger
-    if(event.target.checked == true){
+    if (event.target.checked == true) {
       this.removeGiftsorGrantsIndex.push(index)
     }
-    else
-    {
-      var remove =this.removeGiftsorGrantsIndex.findIndex((s:any)=>s == index)
-      this.removeGiftsorGrantsIndex.splice(remove,1)
+    else {
+      var remove = this.removeGiftsorGrantsIndex.findIndex((s: any) => s == index)
+      this.removeGiftsorGrantsIndex.splice(remove, 1)
     }
-   
+    if (this.removeGiftsorGrantsIndex.length > 0) {
+      this.flgRemove2 = true;
+    }
+    else {
+      this.flgRemove2 = false;
+    }
+
   }
 
-  fixDecimals(event: any){
+  fixDecimals(event: any) {
     var vals = event.target.value;
-    var int:number = parseInt(vals);
+    var int: number = parseInt(vals);
     var dec = vals - int;
-    if(dec > 0){
+    if (dec > 0) {
       event.target.value = int + dec;
-    }else{
+    } else {
       event.target.value = int + ".00";
     }
   }
@@ -279,45 +316,64 @@ export class LoanPropertyInfoComponent implements OnInit {
     //up 38 down 40
     var curBox = event.currentTarget;
     if (event.keyCode === 40) {//down
-        var curBox = event.currentTarget;
-        var cellNo = event.currentTarget.offsetParent.cellIndex;
-        var nextRow = curBox.parentElement.parentElement.nextElementSibling;
-        if (nextRow) {
-            var nextCell = nextRow.cells[cellNo].lastElementChild;
-            //---Select text
-            if (nextCell.type == 'number') {
-                nextCell.type = 'text';
-                nextCell.setSelectionRange(0, nextCell.value.length);
-                nextCell.type = 'number';
-            } else {
-                nextCell.setSelectionRange(0, nextCell.value.length);
-            }
-            nextCell.focus();
+      var curBox = event.currentTarget;
+      var cellNo = event.currentTarget.offsetParent.cellIndex;
+      var nextRow = curBox.parentElement.parentElement.nextElementSibling;
+      if (nextRow) {
+        var nextCell = nextRow.cells[cellNo].lastElementChild;
+        //---Select text
+        if (nextCell.type == 'number') {
+          nextCell.type = 'text';
+          nextCell.setSelectionRange(0, nextCell.value.length);
+          nextCell.type = 'number';
+        } else {
+          nextCell.setSelectionRange(0, nextCell.value.length);
         }
+        nextCell.focus();
+      }
 
-        event.preventDefault();
+      event.preventDefault();
     } else if (event.keyCode === 38) { //up
-        var curBox = event.currentTarget;
-        var cellNo = event.currentTarget.offsetParent.cellIndex;
-        var prvRow = curBox.parentElement.parentElement.previousElementSibling;
-        if (prvRow) {
-            var prvCell = prvRow.cells[cellNo].lastElementChild;
-            if (prvCell.type == 'number') {
-                prvCell.type = 'text';
-                prvCell.setSelectionRange(0, prvCell.value.length);
-                prvCell.type = 'number';
-            } else {
-                prvCell.setSelectionRange(0, prvCell.value.length);
-            }
-            prvCell.focus();
+      var curBox = event.currentTarget;
+      var cellNo = event.currentTarget.offsetParent.cellIndex;
+      var prvRow = curBox.parentElement.parentElement.previousElementSibling;
+      if (prvRow) {
+        var prvCell = prvRow.cells[cellNo].lastElementChild;
+        if (prvCell.type == 'number') {
+          prvCell.type = 'text';
+          prvCell.setSelectionRange(0, prvCell.value.length);
+          prvCell.type = 'number';
+        } else {
+          prvCell.setSelectionRange(0, prvCell.value.length);
         }
-        event.preventDefault();
+        prvCell.focus();
+      }
+      event.preventDefault();
     }
     else if (event.keyCode === 9) { //---do not enable save button on pressing tab
-        return
+      return
     } else {
-        return;
+      return;
     }
-}
+  }
+  getStateByCountryId(id: any) {
+    debugger
+    if (this.stateList.length > 0) {
+      this.stateListAddress0 = []
+      this.stateList.filter((s: any) => s.countryId == id).forEach((element: any) => {
+        this.stateListAddress0.push({ stateName: element.stateName, id: element.id })
+      })
+    }
+  }
+  getCityByStateId(id: any) {
+    debugger
+    if (this.cityList.length > 0) {
+      this.cityListAddress0 = []
+      this.cityList.filter((s: any) => s.stateId == id).forEach((element: any) => {
+
+        this.cityListAddress0.push({ cityName: element.cityName, id: element.id })
+      })
+    }
+  }
 
 }
