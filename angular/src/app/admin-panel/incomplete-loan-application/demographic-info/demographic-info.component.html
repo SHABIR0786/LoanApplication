@@ -312,7 +312,7 @@
             <div class="form-check form-check-inline frm-fld-input">
                 <label class="form-check-label" for="inlineCheckbox3"> Print race:</label>
                 <input  type="text"  id="otherAsianRace" class="bottom_border"
-                name="otherAsianRace"
+                name="otherAsianRace" maxlength="50"
                 #otherAsianRace="ngModel" [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 [(ngModel)]="demographicInfoModels.otherAsianRace" />
             </div>
@@ -368,7 +368,7 @@
             <div class="form-check form-check-inline frm-fld-input">
                 <label class="form-check-label" for="inlineCheckbox3"> Print race:</label>
                 <input  type="text"   id="otherPacificIslanderRace"
-                name="otherPacificIslanderRace"
+                name="otherPacificIslanderRace" maxlength="50"
                 #otherPacificIslanderRace="ngModel" [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 [(ngModel)]="demographicInfoModels.otherPacificIslanderRace "/>
             </div>
@@ -557,7 +557,7 @@
       <div class="input-group">
         <div class="input-group-text">Borrower Name:</div>
         <input
-          type="text"
+          type="text" maxlength="30"
           class="form-control"
           id="specificSizeInputGroupUsername"
         />

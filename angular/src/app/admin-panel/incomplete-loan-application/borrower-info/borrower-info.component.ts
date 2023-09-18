@@ -227,6 +227,9 @@ export class BorrowerInfoComponent implements OnInit {
 
     var removearray = [];
     if (this.borrowerInfo.incomeOtherSources[0].sources.length == 1) {
+      this.borrowerInfo.incomeOtherSources[0].sources=[]
+      this.borrowerInfo.incomeOtherSources[0].sources.push(new Source())
+      this.flgShowRemoveButton = false;
       return;
     }
     else {
@@ -787,12 +790,17 @@ export class BorrowerInfoComponent implements OnInit {
 
   }
   getStateByCountryId(id: any, section: any, index: any) {
-      debugger
+      
       if (this.stateList.length > 0 ) {
         if (section == "Address" && index == 0) {
           this.stateListAddress0 = []
-          this.borrowerInfo.personalInformation.address[0].stateId = 0;
-          this.borrowerInfo.personalInformation.address[0].cityId = 0;
+          debugger
+          if(this.borrowerInfo.personalInformation.address[0].stateId != null)
+          {
+            this.borrowerInfo.personalInformation.address[0].stateId = 0;
+            this.borrowerInfo.personalInformation.address[0].cityId = 0;
+          }
+          
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
             debugger
 
@@ -801,8 +809,12 @@ export class BorrowerInfoComponent implements OnInit {
         }
         else if (section == "Address" && index == 1) {
           this.stateListAddress1 = []
-          this.borrowerInfo.personalInformation.address[1].stateId = 0;
-          this.borrowerInfo.personalInformation.address[1].cityId = 0;
+          if(this.borrowerInfo.personalInformation.address[1].stateId  != null)
+          {
+            this.borrowerInfo.personalInformation.address[1].stateId = 0;
+            this.borrowerInfo.personalInformation.address[1].cityId = 0;
+          }
+         
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
 
             this.stateListAddress1.push({ stateName: element.stateName, id: element.id })
@@ -810,8 +822,12 @@ export class BorrowerInfoComponent implements OnInit {
         }
         else if (section == "Address" && index == 2) {
           this.stateListAddress2 = []
-          this.borrowerInfo.personalInformation.address[1].stateId = 0;
-          this.borrowerInfo.personalInformation.address[1].cityId = 0;
+          if( this.borrowerInfo.personalInformation.address[2].stateId   != null)
+          {
+            this.borrowerInfo.personalInformation.address[2].stateId = 0;
+            this.borrowerInfo.personalInformation.address[2].cityId = 0;
+          }
+  
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
 
             this.stateListAddress2.push({ stateName: element.stateName, id: element.id })
@@ -819,8 +835,12 @@ export class BorrowerInfoComponent implements OnInit {
         }
         else if (section == "Emp" && index == 0) {
           this.stateListEmp0 = []
-          this.borrowerInfo.employment[0].stateId = 0;
-          this.borrowerInfo.employment[0].cityId = 0;
+          if( this.borrowerInfo.employment[0].stateId   != null)
+          {
+            this.borrowerInfo.employment[0].stateId = 0;
+            this.borrowerInfo.employment[0].cityId = 0;
+          }
+          
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
 
             this.stateListEmp0.push({ stateName: element.stateName, id: element.id })
@@ -828,8 +848,11 @@ export class BorrowerInfoComponent implements OnInit {
         }
         else if (section == "Emp" && index == 1) {
           this.stateListEmp1 = []
-          this.borrowerInfo.employment[0].stateId = 1;
-          this.borrowerInfo.employment[0].cityId = 1;
+          if(     this.borrowerInfo.employment[1].stateId  != null)
+          {
+            this.borrowerInfo.employment[1].stateId = 0;
+            this.borrowerInfo.employment[1].cityId = 0;
+          }
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
 
             this.stateListEmp1.push({ stateName: element.stateName, id: element.id })
@@ -837,13 +860,18 @@ export class BorrowerInfoComponent implements OnInit {
         }
         else if (section == "Emp" && index == 2) {
           this.stateListEmp2 = []
-          this.borrowerInfo.employment[0].stateId = 1;
-          this.borrowerInfo.employment[0].cityId = 1;
+          if(     this.borrowerInfo.employment[2].stateId  != null)
+          {
+            this.borrowerInfo.employment[2].stateId = 0;
+            this.borrowerInfo.employment[2].cityId = 0;
+          }
+
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
 
             this.stateListEmp2.push({ stateName: element.stateName, id: element.id })
           })
         }
+        // alert(this.borrowerInfo.personalInformation.address[0].stateId)
       }
   }
   getCityByStateId(id: any, section: any, index: any) {

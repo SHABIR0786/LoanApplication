@@ -526,7 +526,7 @@
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditorName.errors}"
                 [ngClass]="{'error':  creditorName.touched && creditorName.errors}">
                   <p class="frm-fld-input height35" style="margin-top: 5px;">
-                    <input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.creditorName" name="{{j}}_creditorName" id="{{j}}_creditorName" #creditorName="ngModel"
+                    <input type="text" maxlength="30" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.creditorName" name="{{j}}_creditorName" id="{{j}}_creditorName" #creditorName="ngModel"
                   /></p>
               </div>
 
@@ -1025,6 +1025,7 @@
         <div class="input-group-text">Borrower Name:</div>
         <input
           type="text"
+          maxlength="30"
           class="form-control"
           id="specificSizeInputGroupUsername"
         />

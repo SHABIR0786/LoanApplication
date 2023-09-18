@@ -122,6 +122,9 @@ export class LoanPropertyInfoComponent implements OnInit {
     //   return;
     // }
     if (mortgageFinancialLength == 1) {
+      this.loanPropertyInfoModel.newMortgageLoans=[]
+      this.loanPropertyInfoModel.newMortgageLoans.push(new NewMortgageLoans());
+      this.flgRemove1 = false;
       return;
     }
     else if (mortgageFinancialLength > 1) {
@@ -135,8 +138,9 @@ export class LoanPropertyInfoComponent implements OnInit {
         this.loanPropertyInfoModel.newMortgageLoans.push(new NewMortgageLoans());
       }
       this.removeOtherNewMortgageLoansIndex = []
-      this.flgRemove1 = false;
+      
     }
+    this.flgRemove1 = false;
 
   }
   addGiftsOrGrants() {
@@ -158,6 +162,12 @@ export class LoanPropertyInfoComponent implements OnInit {
       this.removeGiftsorGrantsIndex = []
       this.flgRemove2 = false
     }
+    else if(mortgageFinancialLength == 1){
+      this.loanPropertyInfoModel.giftsOrGrants=[]
+      this.loanPropertyInfoModel.giftsOrGrants.push(new GiftsOrGrants())
+      return;
+    }
+    this.flgRemove2 = false
 
   }
 

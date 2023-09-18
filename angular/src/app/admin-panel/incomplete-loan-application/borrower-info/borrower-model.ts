@@ -28,8 +28,8 @@ export class BorrowModel {
     socialSecurityNumber: string
     dob: string
     citizenship: string
-    marritalStatus: string="-1"
-    dependents: string ="-1"
+    marritalStatus: string | null=null
+    dependents: string | null=null
     applyingFor: string
     totalBorrowers: number
     yourInitials: string
@@ -139,7 +139,7 @@ export class BorrowModel {
   }
   
   export class Source {
-    sourceType: string="-1"
+    sourceType: string;
     monthlyIncome: number
     flgDeletedRow:boolean=false;
   }

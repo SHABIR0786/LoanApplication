@@ -138,6 +138,8 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       else {
         var mortgageFinancialLength = this.financialInfoRealState[index].mortgageLoanOnProperty.length;
         if (mortgageFinancialLength == 1) {
+          this.financialInfoRealState[index].mortgageLoanOnProperty=[]
+          this.financialInfoRealState[index].mortgageLoanOnProperty.push(new MortgageLoanOnProperty())
           return;
         }
         else {

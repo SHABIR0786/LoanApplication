@@ -117,6 +117,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     var mortgageFinancialAssetsLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length;
     if(mortgageFinancialAssetsLength == 1)
     {
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets=[]
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.push(new mortgageFinancialAssets()) 
+      this.getTotalMortgageFinancialAssets()
       return;
     }
     else if(mortgageFinancialAssetsLength > 1){
@@ -143,6 +146,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     var mortgageFinancialOtherAssets1 = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
     if(mortgageFinancialOtherAssets1 == 1)
     {
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets =[]
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets());
+      this.getTotalMortgageFinancialOtherAssets();
       return;
       
     }
@@ -172,6 +178,9 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   removeMortgageFinancialLiabilities() {    
     var indexList:any[]=[]
     if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length == 1){
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities=[]
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.push(new mortgageFinancialLiabilities())
+      this.getTotalMortgageFinancialOtherLaibilities();
       return;
     }
     else if(this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 1)
@@ -225,6 +234,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     var mortgageFinancialOtherLaibilitiesLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.length;
     if(mortgageFinancialOtherLaibilitiesLength == 1)
     {
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities=[]
+      this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities.push(new mortgageFinancialOtherLaibilities());
       return;
    
     }
@@ -244,7 +255,11 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   submitFinancialAssetsLiabilities() {    
     debugger
-    var financialInfo= this.financialInfoAssetsLiabilitiesModels
+    var financialInfo= new FinancialInfoAssetsLiabilitiesModels()
+    financialInfo.mortgageFinancialAssets =  this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets
+    financialInfo.mortgageFinancialLiabilities =  this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities
+    financialInfo.mortgageFinancialOtherAssets =  this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets
+    financialInfo.mortgageFinancialOtherLaibilities =  this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities
     if (this.flgMortgageFinancialOtherAssets == true) {
       financialInfo.mortgageFinancialOtherAssets = [];
     }

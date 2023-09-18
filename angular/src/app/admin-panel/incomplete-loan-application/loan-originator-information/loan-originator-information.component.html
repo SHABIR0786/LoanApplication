@@ -121,7 +121,7 @@
           [ngClass]="{'error':  originatorName.touched && originatorName.errors}">
             <div class="input-group-text">Loan Originator Name</div>
             <input
-            maxlength="50"
+            maxlength="30"
               type="text"
               class="form-control"
               id="originatorName" name="originatorName"
@@ -241,7 +241,7 @@
       <div class="input-group">
         <div class="input-group-text">Borrower Name:</div>
         <input
-          type="text" style="background-color: white !important;"
+          type="text" maxlength="30" style="background-color: white !important;"
           class="form-control"
           id="specificSizeInputGroupUsername"
         />

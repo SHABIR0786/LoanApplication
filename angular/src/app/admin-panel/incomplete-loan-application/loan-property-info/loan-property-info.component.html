@@ -194,7 +194,7 @@
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && street.errors}"
                 [ngClass]="{'error':  street.touched && street.errors}">
                 
-                <input type="text"  ngx-google-places-autocomplete    [options]='options' 
+                <input type="text"  ngx-google-places-autocomplete maxlength="50"    [options]='options' 
                 (onAddressChange)="handleAddressChange($event,0)"
                 [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.street"  
                 name="street" id="street" #street="ngModel" required />
@@ -245,7 +245,7 @@
               <div class="col-1  p-0 input-border-bottom mt-1"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && zip.errors}"
                 [ngClass]="{'error':  zip.touched && zip.errors}">
-                <input type="text" min="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
+                <input type="text" min="0" maxlength="10"[(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.zip"
                   name="zip" id="zip" #zip="ngModel" required />
               </div>
 
@@ -271,7 +271,7 @@
             <div class="row mt-2 ml-2">
               <div class="col-2 p-0"><label class="gray-text" style="font-size: 14px !important;">Number of Units</label></div>
               <div class="col-2  p-0 input-border-bottom">
-                <input type="text" maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel" />
+                <input type="text" maxlength="5"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel" />
                   <!-- <p-inputNumber maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber> -->
               </div>
 
@@ -1000,7 +1000,7 @@
       <div class="col-sm-8">
         <div class="input-group">
           <div class="input-group-text">Borrower Name:</div>
-          <input type="text" class="form-control shadow-none" id="specificSizeInputGroupUsername" />
+          <input type="text" maxlength="30" class="form-control shadow-none" id="specificSizeInputGroupUsername" />
         </div>
       </div>
     </div>

@@ -191,7 +191,7 @@
                         [ngClass]="{'error':  financialInstitution.touched && financialInstitution.errors}">
                         <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.financialInstitution"
                             id="{{i}}.financialInstitution" required name="{{i}}.financialInstitution"
-                            #financialInstitution="ngModel" /></p>
+                            #financialInstitution="ngModel" maxlength="50"/></p>
                       </div>
                     </div>
                     <div class="col-3">
@@ -199,6 +199,7 @@
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
                         [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
                         <p class="frm-fld-input height35"><input type="text" [(ngModel)]="item.accountNumber"
+                          maxlength="50"
                             id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" required /></p>
                       </div>
                     </div>
@@ -529,6 +530,7 @@
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && companyName.errors}"
                         [ngClass]="{'error':  companyName.touched && companyName.errors}">
                         <p class="frm-fld-input height35"><input type="text"
+                          maxlength="30"
                             [required]="flgMortgageFinancialLiabilities ==false"
                             [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.companyName"
                             id="{{i}}.companyName" name="{{i}}.companyName" #companyName="ngModel" /></p>
@@ -539,6 +541,7 @@
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
                         [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
                         <p class="frm-fld-input height35"><input type="text"
+                          maxlength="50"
                             [required]="flgMortgageFinancialLiabilities ==false"
                             [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.accountNumber"
                             id="{{i}}.accountNumber" name="{{i}}.accountNumber" #accountNumber="ngModel" /></p>
@@ -757,7 +760,7 @@
       <div class="col-sm-8">
         <div class="input-group">
           <div class="input-group-text">Borrower Name:</div>
-          <input type="text" class="form-control" id="specificSizeInputGroupUsername" />
+          <input type="text" class="form-control" id="specificSizeInputGroupUsername" maxlength="30"/>
         </div>
       </div>
     </div>
