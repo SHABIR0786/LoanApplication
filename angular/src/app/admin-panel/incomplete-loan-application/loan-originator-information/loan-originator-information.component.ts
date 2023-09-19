@@ -69,6 +69,25 @@ export class LoanOriginatorInformationComponent implements OnInit {
           localStorage.removeItem("flgOtherNewMortgageLoans");
           localStorage.removeItem("flgRentalIncome");
           localStorage.removeItem("flgGiftsorGrants");
+          localStorage.removeItem("doNotApplyForAddress0");
+          localStorage.removeItem("totalMortgageFinancialOtherLaibilities");
+          localStorage.removeItem("totalMortgageFinancialOtherAssets");
+          localStorage.removeItem("totalMortgageFinancialAssets");
+
+          localStorage.removeItem("cityListAddress0");
+          localStorage.removeItem("cityListAddress1");
+          localStorage.removeItem("cityListAddress2");
+          localStorage.removeItem("cityListEmp0");
+          localStorage.removeItem("cityListEmp1");
+          localStorage.removeItem("cityListEmp2");
+          localStorage.removeItem("stateListAddress0");
+          localStorage.removeItem("stateListAddress1");
+          localStorage.removeItem("stateListAddress2");
+          localStorage.removeItem("stateListEmp0");
+          localStorage.removeItem("stateListEmp1");
+          localStorage.removeItem("stateListEmp2");
+          localStorage.removeItem("form4CityList");
+          localStorage.removeItem("form4StateList");
         }
       });
   }

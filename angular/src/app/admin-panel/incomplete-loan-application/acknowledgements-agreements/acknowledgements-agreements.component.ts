@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./acknowledgements-agreements.component.css"],
 })
 export class AcknowledgementsAgreementsComponent implements OnInit {
+  currentDate: Date = new Date();
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -19,5 +21,35 @@ export class AcknowledgementsAgreementsComponent implements OnInit {
     this.router.navigateByUrl(
       "app/admin/incomplete-loan-application/military-service"
     );
+  }
+
+  onBlurDt(event: any) {
+    var sDate = new Date(event.target.value);
+    var currentDate = new Date();
+    if (
+      sDate.getFullYear() < 1900 ||
+      sDate > currentDate ||
+      this.isValidDate(sDate.getFullYear(), sDate.getMonth(), sDate.getDay()) ==
+        false
+    ) {
+      event.target.value = currentDate.getDate().toString();
+    } else {
+    }
+
+    if (Number.isNaN(sDate.getDate())) {
+      event.target.value = "";
+    }
+  }
+
+  isValidDate(year, month, day) {
+    var d = new Date(year, month, day);
+    if (
+      d.getFullYear() == year &&
+      d.getMonth() == month &&
+      d.getDate() == day
+    ) {
+      return true;
+    }
+    return false;
   }
 }

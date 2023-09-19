@@ -40,6 +40,19 @@ export class DeclarationsComponent implements OnInit {
   assignQuestionId(index, questionId) {
     this.declarationsList[index].declarationQuestionId = questionId;
   }
+  clearQuestionData() {
+    this.declarationsList[1].answer = "";
+    this.declarationsList[2].answer = "";
+    this.declarationsList[3].answer = "";
+  }
+  clearQuestionData1() {
+    this.declarationsList[2].answer = "";
+    this.declarationsList[3].answer = "";
+  }
+  clearQuestionData2() {
+    this.declarationsList[6].answer = "";
+  }
+
   create() {
     if (
       this.declarationsList[17] != undefined &&
@@ -88,5 +101,20 @@ export class DeclarationsComponent implements OnInit {
         );
       }
     });
+  }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value;
+    var int: number = parseInt(vals);
+    var dec = vals - int;
+    if (dec > 0) {
+      event.target.value = int + dec;
+    } else {
+      event.target.value = int + ".00";
+    }
+  }
+
+  selectNumber(event) {
+    event.target.select();
   }
 }

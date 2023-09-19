@@ -183,8 +183,16 @@
           }"
         >
           <input
-            max="{{ currentDate | date: 'yyyy-MM-dd' }}"
             type="date"
+            (blur)="onBlurDt($event)"
+            id="specificSizeInputGroupUsername1"
+            max="{{ currentDate | date: 'yyyy-MM-dd' }}"
+            style="
+              border-bottom: 1px solid #9d9d9d;
+              border-left: 0px;
+              border-right: 0px;
+              border-top: 0px;
+            "
             id="projectedExpirationServiceDate"
             name="projectedExpirationServiceDate"
             [(ngModel)]="militaryServiceModel.projectedExpirationServiceDate"
@@ -192,6 +200,13 @@
             [disabled]="militaryServiceModel.isServeUSForces == false"
             [required]="militaryServiceModel.isServeUSForces == true"
           />
+
+          <!--         
+        <input onfocus="this.showPicker()" onkeydown="return false" max="{{currentDate | date:'yyyy-MM-dd'}}" type="date" id="projectedExpirationServiceDate" name="projectedExpirationServiceDate"
+            [(ngModel)]="militaryServiceModel.projectedExpirationServiceDate" #projectedExpirationServiceDate="ngModel"
+            [disabled]="militaryServiceModel.isServeUSForces == false" 
+            [required]="militaryServiceModel.isServeUSForces == true" 
+       /> -->
         </div>
       </div>
     </div>

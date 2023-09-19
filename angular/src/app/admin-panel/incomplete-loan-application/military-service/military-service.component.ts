@@ -59,4 +59,34 @@ export class MilitaryServiceComponent implements OnInit {
     debugger;
     var aa = this.militaryServiceModel.isServeUSForces;
   }
+
+  onBlurDt(event: any) {
+    var sDate = new Date(event.target.value);
+    var currentDate = new Date();
+    if (
+      sDate.getFullYear() < 1900 ||
+      sDate > currentDate ||
+      this.isValidDate(sDate.getFullYear(), sDate.getMonth(), sDate.getDay()) ==
+        false
+    ) {
+      event.target.value = currentDate.getDate().toString();
+    } else {
+    }
+
+    if (Number.isNaN(sDate.getDate())) {
+      event.target.value = "";
+    }
+  }
+
+  isValidDate(year, month, day) {
+    var d = new Date(year, month, day);
+    if (
+      d.getFullYear() == year &&
+      d.getMonth() == month &&
+      d.getDate() == day
+    ) {
+      return true;
+    }
+    return false;
+  }
 }

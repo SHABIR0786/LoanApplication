@@ -25,6 +25,9 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   cityList: any[] = [];
   countryList: any[] = [];
   stateList: any[] = [];
+  proprtyStatusList: any[] = [];
+  loanPropertyOccupanciesList: any[] = [];
+  mortgageLoanTypeList: any[] = [];
   options: any = {
     componentRestrictions: { country: "US" },
   };
@@ -32,9 +35,10 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   objMortgageLoanProperty: MortgageLoanOnProperty = new MortgageLoanOnProperty();
   ngOnInit(): void {
     // this.financialInfoRealState.push(this.objFinancialInfoRealState)
-    this.getCities();
+
     this.getCountries();
     this.getStates();
+    this.getCities();
     if (
       localStorage.financialInfoRealState != undefined &&
       localStorage.financialInfoRealState != ""
@@ -43,11 +47,64 @@ export class FinancialInfoRealEstateComponent implements OnInit {
         localStorage.getItem("financialInfoRealState")
       );
     }
+    //---Get Property Status
+    this.financialInfoRealEstateService
+      .getFinancialPropertyStatuses()
+      .subscribe((data: any) => {
+        if (data.success == true && data.result.length > 0) {
+          data.result.forEach((element: any) => {
+            this.proprtyStatusList.push({
+              financialPropertyStatus1: element.financialPropertyStatus1,
+              id: element.id,
+            });
+          });
+        }
+      });
+    //--- Loan Property Occupencies
+    this.financialInfoRealEstateService
+      .getLoanPropertyOccupancies()
+      .subscribe((data: any) => {
+        if (data.success == true && data.result.length > 0) {
+          data.result.forEach((element: any) => {
+            this.loanPropertyOccupanciesList.push({
+              loanPropertyOccupancy1: element.loanPropertyOccupancy1,
+              id: element.id,
+            });
+          });
+        }
+      });
+    //--- Mortgage Loan Types
+    this.financialInfoRealEstateService
+      .getMortageLoanTypes()
+      .subscribe((data: any) => {
+        if (data.success == true && data.result.length > 0) {
+          data.result.forEach((element: any) => {
+            this.mortgageLoanTypeList.push({
+              mortageLoanTypesId: element.mortageLoanTypesId,
+              id: element.id,
+            });
+          });
+        }
+      });
   }
+  // getCountries()
+  // {
+  //   this.financialInfoRealEstateService.getCountries().subscribe((data:any)=>{
+  //     this.countryList=[]
+  //     if(data.success == true && data.result.length > 0)
+  //     {
+  //       data.result.forEach((element:any)=>{
+  //         this.countryList.push({countryName:element.countryName,id:element.id})
+  //       })
+  //     }
+  //   })
+  // }
+
   getCountries() {
     this.financialInfoRealEstateService
       .getCountries()
       .subscribe((data: any) => {
+        debugger;
         this.countryList = [];
         if (data.success == true && data.result.length > 0) {
           data.result.forEach((element: any) => {
@@ -59,12 +116,17 @@ export class FinancialInfoRealEstateComponent implements OnInit {
         }
       });
   }
+
   getStates() {
     this.financialInfoRealEstateService.getStates().subscribe((data: any) => {
       this.stateList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          this.stateList.push({ stateName: element.stateName, id: element.id });
+          this.stateList.push({
+            stateName: element.stateName,
+            id: element.id,
+            countryId: element.countryId,
+          });
         });
       }
     });
@@ -74,7 +136,11 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       this.cityList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
-          this.cityList.push({ cityName: element.cityName, id: element.id });
+          this.cityList.push({
+            cityName: element.cityName,
+            id: element.id,
+            stateId: element.stateId,
+          });
         });
       }
     });
@@ -89,7 +155,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     if (this.financialInfoRealState[index].mortgageLoanOnProperty.length > 0) {
       this.financialInfoRealState[index].mortgageLoanOnProperty.forEach(
         (element: any, index: any) => {
-          if (element.isPaidBeforeClosing == true) {
+          if (element.isPaidBeforeClosing1 == true) {
             indexList.push({ index: index });
           }
         }
@@ -105,10 +171,21 @@ export class FinancialInfoRealEstateComponent implements OnInit {
             1
           );
         });
+        if (
+          this.financialInfoRealState[index].mortgageLoanOnProperty.length == 0
+        ) {
+          this.financialInfoRealState[index].mortgageLoanOnProperty.push(
+            new MortgageLoanOnProperty()
+          );
+        }
       } else {
         var mortgageFinancialLength = this.financialInfoRealState[index]
           .mortgageLoanOnProperty.length;
         if (mortgageFinancialLength == 1) {
+          this.financialInfoRealState[index].mortgageLoanOnProperty = [];
+          this.financialInfoRealState[index].mortgageLoanOnProperty.push(
+            new MortgageLoanOnProperty()
+          );
           return;
         } else {
           var obj = mortgageFinancialLength - 1;
@@ -119,12 +196,16 @@ export class FinancialInfoRealEstateComponent implements OnInit {
         }
       }
     }
+    this.financialInfoRealState[index].flgShowRemove = false;
     // isPaidBeforeClosing
   }
   create() {
     debugger;
     var obj = this.financialInfoRealState;
-    localStorage.setItem("financialInfoRealState", JSON.stringify(obj));
+    localStorage.setItem(
+      "financialInfoRealState",
+      JSON.stringify(this.financialInfoRealState)
+    );
     this.financialInfoRealEstateService.create(obj).subscribe((data: any) => {
       if (data.success == true) {
         alert("Data inserted successfully");
@@ -180,25 +261,39 @@ export class FinancialInfoRealEstateComponent implements OnInit {
         COMPONENT_TEMPLATE
       ));
 
-    console.log(Address_01);
+    const CountryID = this.countryList.find(
+      (country) => country.countryName === Address_01.countryShort
+    );
+    this.getStateByCountryId(CountryID, fldIndex);
 
     const stateID = this.stateList.find(
       (state) => state.stateName === Address_01.state
     );
-    const CountryID = this.countryList.find(
-      (country) => country.countryName === Address_01.countryShort
-    );
+    this.getCityByStateId(stateID, fldIndex);
+    debugger;
 
-    console.log(CountryID);
+    const cityID = this.cityList.find(
+      (city) => city.cityName === Address_01.city
+    );
+    this.financialInfoRealState[fldIndex].cityId = cityID.id;
 
     this.financialInfoRealState[fldIndex].street =
       Address_01.addressLine1 + " " + Address_01.addressLine2;
     this.financialInfoRealState[fldIndex].zip = Address_01.postalCode;
-    this.financialInfoRealState[fldIndex].cityId = this.cityList.find(
-      (city) => city.cityName === Address_01.city
-    );
+    //this.financialInfoRealState[fldIndex].cityId = this.cityList.find(city => city.cityName === Address_01.city);
     this.financialInfoRealState[fldIndex].stateId = stateID.id;
     this.financialInfoRealState[fldIndex].countryId = CountryID.id;
+  }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value;
+    var int: number = parseInt(vals);
+    var dec = vals - int;
+    if (dec > 0) {
+      event.target.value = int + dec;
+    } else {
+      event.target.value = int + ".00";
+    }
   }
 
   getAddrComponent(place, componentTemplate) {
@@ -212,5 +307,112 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       }
     }
     return;
+  }
+  disabledSection(index: any) {
+    this.financialInfoRealState[index].mortgageLoanOnProperty = [];
+    this.financialInfoRealState[index].mortgageLoanOnProperty.push(
+      new MortgageLoanOnProperty()
+    );
+  }
+
+  scroll(event: any) {
+    //up 38 down 40
+    var curBox = event.currentTarget;
+    if (event.keyCode === 40) {
+      //down
+      var curBox = event.currentTarget;
+      var cellNo = event.currentTarget.offsetParent.cellIndex;
+      var nextRow = curBox.parentElement.parentElement.nextElementSibling;
+      if (nextRow) {
+        var nextCell = nextRow.cells[cellNo].lastElementChild;
+        //---Select text
+        if (nextCell.type == "number") {
+          nextCell.type = "text";
+          nextCell.setSelectionRange(0, nextCell.value.length);
+          nextCell.type = "number";
+        } else {
+          nextCell.setSelectionRange(0, nextCell.value.length);
+        }
+        nextCell.focus();
+      }
+
+      event.preventDefault();
+    } else if (event.keyCode === 38) {
+      //up
+      var curBox = event.currentTarget;
+      var cellNo = event.currentTarget.offsetParent.cellIndex;
+      var prvRow = curBox.parentElement.parentElement.previousElementSibling;
+      if (prvRow) {
+        var prvCell = prvRow.cells[cellNo].lastElementChild;
+        if (prvCell.type == "number") {
+          prvCell.type = "text";
+          prvCell.setSelectionRange(0, prvCell.value.length);
+          prvCell.type = "number";
+        } else {
+          prvCell.setSelectionRange(0, prvCell.value.length);
+        }
+        prvCell.focus();
+      }
+      event.preventDefault();
+    } else if (event.keyCode === 9) {
+      //---do not enable save button on pressing tab
+      return;
+    } else {
+      return;
+    }
+  }
+
+  // removeMortgageLoanIndex(model: any, event: any, index:any,parentIndex:any) {
+  //   if(event.target.checked){
+  //     model.removeMortgageLoanPropertyList.push(index)
+  //   }
+  //   else
+  //   {
+  //     var remove =model.removeMortgageLoanPropertyList.findIndex((s:any)=>s == index)
+  //     model.removeMortgageLoanPropertyList.splice(remove,1)
+  //   }
+
+  // }
+
+  getStateByCountryId(id: any, index: any) {
+    debugger;
+    if (this.stateList.length > 0) {
+      this.financialInfoRealState[index].stateListAddress0 = [];
+      this.stateList
+        .filter((s: any) => s.countryId == id)
+        .forEach((element: any) => {
+          this.financialInfoRealState[index].stateListAddress0.push({
+            stateName: element.stateName,
+            id: element.id,
+          });
+        });
+    }
+  }
+  getCityByStateId(id: any, index: any) {
+    debugger;
+    if (this.cityList.length > 0) {
+      this.financialInfoRealState[index].cityListAddress0 = [];
+      this.cityList
+        .filter((s: any) => s.stateId == id)
+        .forEach((element: any) => {
+          this.financialInfoRealState[index].cityListAddress0.push({
+            cityName: element.cityName,
+            id: element.id,
+          });
+        });
+    }
+  }
+  removeData(index1: any, index2: any, event: any) {
+    if (event.target.checked == true) {
+      this.financialInfoRealState[index1].mortgageLoanOnProperty.forEach(
+        (element: any) => {
+          if (element.isPaidBeforeClosing1 == true) {
+            this.financialInfoRealState[index1].flgShowRemove = true;
+          }
+        }
+      );
+    } else {
+      this.financialInfoRealState[index1].flgShowRemove = false;
+    }
   }
 }

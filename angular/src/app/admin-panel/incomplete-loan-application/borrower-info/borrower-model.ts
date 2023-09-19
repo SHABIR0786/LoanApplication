@@ -26,11 +26,12 @@ export class PersonalInformation {
   socialSecurityNumber: string;
   dob: string;
   citizenship: string;
-  marritalStatus: string = "-1";
-  dependents: string = "-1";
+  marritalStatus: string | null = null;
+  dependents: string | null = null;
   applyingFor: string;
   totalBorrowers: number;
   yourInitials: string;
+  yourInitials1: string;
   alternateNames: AlternateNames;
   typeOfCredit: TypeOfCredit;
   contactInformation: ContactInformation;
@@ -38,6 +39,7 @@ export class PersonalInformation {
   creditValue: string;
   creditList: CreditList[] = [];
   endDate: Date;
+  BorrowerName: string;
 }
 
 export class AlternateNames {
@@ -78,7 +80,7 @@ export class Address {
   stateId: number;
   countryId: number;
   zip: string;
-  year: number;
+  year: number | null;
   month: string;
   housingType: string;
   rent: number;
@@ -105,7 +107,7 @@ export class Employment {
   zip: string;
   ownershipShare: number;
   monthlyIncome: number;
-  workingYears: number;
+  workingYears: number | null;
   workingMonths: number;
   position: string;
   startDate: string;
@@ -132,8 +134,9 @@ export class IncomeOtherSource {
 }
 
 export class Source {
-  sourceType: string = "-1";
+  sourceType: string;
   monthlyIncome: number;
+  flgDeletedRow: boolean = false;
 }
 
 export class OtherBorrower {
@@ -150,6 +153,7 @@ export class OtherBorrower {
   applyingFor: string;
   totalBorrowers: number;
   yourInitials: string;
+  yourInitials1: string;
   alternateNames: AlternateNames2;
   typeOfCredit: TypeOfCredit2;
   contactInformation: ContactInformation2;
@@ -184,7 +188,7 @@ export class Address2 {
   stateId: number;
   countryId: number;
   zip: string;
-  year: number;
+  year: number | null;
   month: string;
   housingType: string;
   rent: number;

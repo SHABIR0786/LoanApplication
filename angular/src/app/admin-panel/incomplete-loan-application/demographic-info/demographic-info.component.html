@@ -147,6 +147,7 @@
                   name="canNotProvideEthnicInfo"
                   #canNotProvideEthnicInfo="ngModel"
                   [(ngModel)]="demographicInfoModels.canNotProvideEthnicInfo"
+                  (change)="disbaleEnthicity(canNotProvideEthnicInfo.value)"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -201,6 +202,7 @@
                   name="canNotProvideSexInfo"
                   #canNotProvideSexInfo="ngModel"
                   [(ngModel)]="demographicInfoModels.canNotProvideSexInfo"
+                  (change)="disbaleGender(canNotProvideSexInfo.value)"
                 />
                 <label class="form-check-label" for="defaultCheck1">
                   I do not wish to provide this information
@@ -363,6 +365,7 @@
                 id="otherAsianRace"
                 class="bottom_border"
                 name="otherAsianRace"
+                maxlength="50"
                 #otherAsianRace="ngModel"
                 [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 [(ngModel)]="demographicInfoModels.otherAsianRace"
@@ -435,6 +438,7 @@
                 type="text"
                 id="otherPacificIslanderRace"
                 name="otherPacificIslanderRace"
+                maxlength="50"
                 #otherPacificIslanderRace="ngModel"
                 [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 [(ngModel)]="demographicInfoModels.otherPacificIslanderRace"
@@ -451,7 +455,7 @@
                 type="checkbox"
                 id="isWhite"
                 name="isWhite"
-                [disabled]="demographicInfoModels.canNotProvideSexInfo == true"
+                [disabled]="demographicInfoModels.canNotProvideRaceInfo == true"
                 #isWhite="ngModel"
                 [(ngModel)]="demographicInfoModels.isWhite"
               />
@@ -468,6 +472,7 @@
                 name="canNotProvideRaceInfo"
                 #canNotProvideRaceInfo="ngModel"
                 [(ngModel)]="demographicInfoModels.canNotProvideRaceInfo"
+                (change)="disbaleRace(canNotProvideRaceInfo.value)"
               />
               <label class="form-check-label" for="inlineCheckbox3"
                 >I do not wish to provide this information</label
@@ -803,6 +808,7 @@
         <div class="input-group-text">Borrower Name:</div>
         <input
           type="text"
+          maxlength="30"
           class="form-control"
           id="specificSizeInputGroupUsername"
         />

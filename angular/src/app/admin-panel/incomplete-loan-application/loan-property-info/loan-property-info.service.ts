@@ -20,6 +20,9 @@ export class LoanPropertyInfoService extends BaseService {
   getCities() {
     return this.get(ApiRoute.getCities, null);
   }
+  getLoanPropertyGiftTypes() {
+    return this.get(ApiRoute.getLoanPropertyGiftTypes, null);
+  }
   create(data: any) {
     return this.post(ApiRoute.createFinancialInfo, data);
   }

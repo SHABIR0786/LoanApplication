@@ -25,6 +25,9 @@ export class FinancialInfoRealEstate {
   mortgageLoanOnProperty: MortgageLoanOnProperty[] = [
     new MortgageLoanOnProperty(),
   ];
+  flgShowRemove: boolean = false;
+  cityListAddress0: any[] = [];
+  stateListAddress0: any[] = [];
 }
 export class MortgageLoanOnProperty {
   id: number;
@@ -42,4 +45,6 @@ export class MortgageLoanOnProperty {
   type: string;
   creditLimit: number;
   isPaidBeforeClosing: boolean;
+  isPaidBeforeClosing1: boolean;
+  // removeMortgageLoanPropertyList:any[]=[]
 }

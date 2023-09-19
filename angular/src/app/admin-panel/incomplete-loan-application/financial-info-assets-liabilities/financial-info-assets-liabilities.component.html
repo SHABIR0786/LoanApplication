@@ -153,7 +153,8 @@
               <div class="row mb-2">
                 <div class="col-9">
                   <div class="row">
-                    <div class="col-6">
+                    <div style="width: 2%"></div>
+                    <div class="col-4">
                       <label class="frm-label"
                         >Account Type - Use list above</label
                       >
@@ -180,7 +181,21 @@
                       index as i
                     "
                   >
-                    <div class="col-6">
+                    <div
+                      style="
+                        width: 2% !important;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-items: center;
+                        padding-top: 5px;
+                      "
+                    >
+                      <input
+                        type="checkbox"
+                        (change)="removeMortgageFinancialAssetsF(i, $event)"
+                      />
+                    </div>
+                    <div class="col-4">
                       <div
                         class="frm-group mt-2"
                         [ngClass]="{
@@ -201,28 +216,12 @@
                             #accountTypeId="ngModel"
                             required
                           >
-                            <option [ngValue]="-1" selected>
-                              Interest and Dividends
-                            </option>
-                            <option value="1">Checking</option>
-                            <option value="2">Savings</option>
-                            <option value="3">Money Market</option>
-                            <option value="4">Certificate of Deposit</option>
-                            <option value="5">Mutual Fund</option>
-                            <option value="6">Stocks</option>
-                            <option value="7">Stock Options</option>
-                            <option value="8">Bonds</option>
-                            <option value="9">
-                              Retirement (e.g. , 401k ,IRA)
-                            </option>
-                            <option value="10">Bridhe Loan Proceeds</option>
-                            <option value="11">
-                              Individual Development Account
-                            </option>
-                            <option value="12">Trust Account</option>
-                            <option value="13">
-                              Cash Value of Life Insurance (used for the
-                              transaction)
+                            <option [ngValue]="-1" disabled>-Select-One</option>
+                            <option
+                              *ngFor="let obj of assetTypeList"
+                              [ngValue]="obj.id"
+                            >
+                              {{ obj.assetsType }}
                             </option>
                           </select>
                         </div>
@@ -250,6 +249,7 @@
                             required
                             name="{{ i }}.financialInstitution"
                             #financialInstitution="ngModel"
+                            maxlength="50"
                           />
                         </p>
                       </div>
@@ -270,6 +270,7 @@
                           <input
                             type="text"
                             [(ngModel)]="item.accountNumber"
+                            maxlength="50"
                             id="{{ i }}.accountNumber"
                             name="{{ i }}.accountNumber"
                             #accountNumber="ngModel"
@@ -312,17 +313,44 @@
                             "
                             >$
                           </span>
-                          <p-inputNumber
-                            style="width: 100%"
+
+                          <!-- <span style="border-bottom: 1px solid #696969 !important;"> -->
+                          <input
+                            type="number"
+                            onFocus="this.select();"
+                            (blur)="fixDecimals($event)"
+                            style="
+                              border: 0px !important;
+                              padding-left: 5px;
+                              border: 0px !important;
+                              font-size: 16px;
+                              margin-bottom: 0px;
+                              padding-left: 5px !important;
+                              padding-right: 5px !important;
+                              width: 100%;
+                              color: #a5a5a5;
+                              font-weight: 500;
+                            "
+                            [min]="0"
+                            maxlength="9"
                             [(ngModel)]="item.cashMarketValue"
                             id="{{ i }}.cashMarketValue"
                             name="{{ i }}.cashMarketValue"
                             #cashMarketValue="ngModel"
-                            (onBlur)="getTotalMortgageFinancialAssets()"
+                            (focusout)="getTotalMortgageFinancialAssets()"
                             [minFractionDigits]="2"
                             [min]="0"
                             [maxFractionDigits]="2"
-                          ></p-inputNumber>
+                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/"
+                            step="0.1"
+                          />
+                          <!-- </span> -->
+
+                          <!-- <p-inputNumber  style="width: 100%;"
+                           [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
+                          name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                          (onBlur)="getTotalMortgageFinancialAssets()"
+                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                         </div>
                       </div>
                     </div>
@@ -338,7 +366,7 @@
                       style="
                         color: #696969;
                         text-decoration: none;
-                        font-size: 14px;
+                        font-size: 12px;
                       "
                     >
                       <a
@@ -350,12 +378,13 @@
                         (click)="addMortgageFinancialAssets()"
                         >Add more
                       </a>
-                      /
+                      <span *ngIf="flgShowRemove1 == true"> /</span>
                       <a
+                        *ngIf="flgShowRemove1 == true"
                         style="
                           color: #696969;
                           text-decoration: none;
-                          font-size: 14px;
+                          font-size: 12px;
                           margin-left: 2px;
                         "
                         (click)="removeMortgageFinancialAssets()"
@@ -363,15 +392,14 @@
                       >
                     </div>
                     <div class="col-6 text-right" style="text-align: right">
-                      <a
-                        href="#"
+                      <span
                         style="
                           color: #000000;
                           text-decoration: none;
-                          font-size: 14px;
+                          font-size: 12px;
                           text-align: right;
                         "
-                        >Provide TOTAL Amount Here</a
+                        >Provide TOTAL Amount Here</span
                       >
                     </div>
                   </div>
@@ -439,6 +467,11 @@
               id="flgMortgageFinancialOtherAssets"
               name="flgMortgageFinancialOtherAssets"
               #txtflgMortgageFinancialOtherAssets="ngModel"
+              (change)="
+                flgMortgageFinancialOtherAssetsF(
+                  txtflgMortgageFinancialOtherAssets.value
+                )
+              "
             />
             <span class="checkmark" style="margin-top: 6px"></span>
           </label>
@@ -518,15 +551,38 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-8">
+                  <div
+                    class="col-8"
+                    [ngClass]="{
+                      disabled: flgMortgageFinancialOtherAssets == true
+                    }"
+                  >
                     <div
-                      class="row"
+                      style="display: flex; align-items: center !important"
                       *ngFor="
                         let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets;
                         index as i
                       "
                     >
-                      <div class="col-12">
+                      <div
+                        style="
+                          width: 2% !important;
+                          display: inline-flex;
+                          align-items: center;
+                          justify-items: center;
+                          padding-top: 5px;
+                        "
+                      >
+                        <input
+                          type="checkbox"
+                          name="deleteSelectRow1"
+                          id="eleteSelectRow1"
+                          (change)="
+                            addRemoveMortgageFinancialOtherAssets(i, $event)
+                          "
+                        />
+                      </div>
+                      <div style="width: 98% !important">
                         <div
                           class="frm-group mt-1"
                           [ngClass]="{
@@ -558,27 +614,12 @@
                               <option value="-1" selected disabled>
                                 -Select One-
                               </option>
-                              <option value="1">
-                                Proceeds from Real Estate
+                              <option
+                                *ngFor="let obj of creditTypeList"
+                                [ngValue]="obj.id"
+                              >
+                                {{ obj.creditType1 }}
                               </option>
-                              <option value="2">
-                                Property to be sold on or before closing
-                              </option>
-                              <option value="3">
-                                Proceeds from Sale of Non-Real Estate Asset
-                              </option>
-                              <option value="4">Secured Borrowed Funds</option>
-                              <option value="5">
-                                Unsecured Borrowed Funds
-                              </option>
-                              <option value="6">Earnest Money</option>
-                              <option value="7">Employer Assistance</option>
-                              <option value="8">Lot Equity</option>
-                              <option value="9">Relocation Funds</option>
-                              <option value="10">Rent Credit</option>
-                              <option value="11">Sweat Equity</option>
-                              <option value="12">Trade Equity</option>
-                              <option value="13">Other</option>
                             </select>
                           </div>
                         </div>
@@ -586,7 +627,12 @@
                     </div>
                   </div>
 
-                  <div class="col-4 frm-group-combine-border">
+                  <div
+                    class="col-4 frm-group-combine-border"
+                    [ngClass]="{
+                      disabled: flgMortgageFinancialOtherAssets == true
+                    }"
+                  >
                     <div
                       class="row"
                       *ngFor="
@@ -629,8 +675,25 @@
                                 "
                                 >$
                               </span>
-                              <p-inputNumber
-                                style="width: 100%"
+
+                              <input
+                                type="number"
+                                onFocus="this.select();"
+                                (blur)="fixDecimals($event)"
+                                style="
+                                  border: 0px !important;
+                                  padding-left: 5px;
+                                  border: 0px !important;
+                                  font-size: 16px;
+                                  margin-bottom: 0px;
+                                  padding-left: 5px !important;
+                                  padding-right: 5px !important;
+                                  width: 100%;
+                                  color: #a5a5a5;
+                                  font-weight: 500;
+                                "
+                                [min]="0"
+                                maxlength="9"
                                 [disabled]="flgMortgageFinancialOtherAssets"
                                 [required]="
                                   flgMortgageFinancialOtherAssets == false
@@ -639,13 +702,22 @@
                                 id="{{ i }}.cashMarketValue"
                                 name="{{ i }}.cashMarketValue"
                                 #cashMarketValue="ngModel"
-                                (onBlur)="
+                                (focusout)="
                                   getTotalMortgageFinancialOtherAssets()
                                 "
                                 [minFractionDigits]="2"
                                 [min]="0"
                                 [maxFractionDigits]="2"
-                              ></p-inputNumber>
+                                ng-pattern="/^[0-9]+(\.[0-9]{1,2})/"
+                                step="0.1"
+                              />
+
+                              <!-- <p-inputNumber  style="width: 100%;" 
+                             [disabled]="flgMortgageFinancialOtherAssets"
+                              [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue"
+                              id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                              (onBlur)="getTotalMortgageFinancialOtherAssets()" 
+                              [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                             </div>
                           </div>
                         </div>
@@ -662,14 +734,14 @@
                         style="
                           color: #696969;
                           text-decoration: none;
-                          font-size: 14px;
+                          font-size: 12px;
                         "
                       >
                         <a
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           [ngClass]="{
                             disabled: flgMortgageFinancialOtherAssets == true
@@ -677,15 +749,16 @@
                           (click)="addMortgageFinancialOtherAssets()"
                           >Add more</a
                         >
-                        /
+                        <span *ngIf="flgShowRemove2 == true"> /</span>
                         <a
+                          *ngIf="flgShowRemove2 == true"
                           [ngClass]="{
                             disabled: flgMortgageFinancialOtherAssets == true
                           }"
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           (click)="removeMortgageFinancialOtherAssets()"
                           >Remove</a
@@ -695,15 +768,14 @@
                         class="col-6 text-right mt-1"
                         style="text-align: right"
                       >
-                        <a
-                          href="#"
+                        <span
                           style="
                             color: #000000;
                             text-decoration: none;
                             font-size: 14px;
                             text-align: right;
                           "
-                          >Provide TOTAL Amount Here</a
+                          >Provide TOTAL Amount Here</span
                         >
                       </div>
                     </div>
@@ -774,6 +846,11 @@
               id="flgMortgageFinancialLiabilities"
               name="flgMortgageFinancialLiabilities"
               #txtflgMortgageFinancialLiabilities="ngModel"
+              (change)="
+                flgMortgageFinancialLiabilitiesF(
+                  txtflgMortgageFinancialLiabilities.value
+                )
+              "
             />
             <span class="checkmark" style="margin-top: 6px"></span>
           </label>
@@ -825,7 +902,8 @@
                 <div class="row mb-2">
                   <label class="col-10 frm-label" style="white-space: normal">
                     <div class="row">
-                      <div class="col-6">
+                      <div style="width: 2% !important"></div>
+                      <div class="col-5">
                         <span
                           >Account Type – use list above Company Name Account
                           Number</span
@@ -855,7 +933,19 @@
                         index as i
                       "
                     >
-                      <div class="col-6">
+                      <div style="width: 2% !important; display: flex">
+                        <input
+                          type="checkbox"
+                          [disabled]="flgMortgageFinancialLiabilities"
+                          [(ngModel)]="item.isPaidBeforeClosing1"
+                          id="{{ i }}.isPaidBeforeClosing1"
+                          name="{{ i }}.isPaidBeforeClosing1"
+                          #isPaidBeforeClosing1="ngModel"
+                          style="width: 40px"
+                          (change)="showRemoveOption()"
+                        />
+                      </div>
+                      <div class="col-5">
                         <div
                           class="frm-group mt-1"
                           [ngClass]="{
@@ -872,7 +962,12 @@
                               financialLaibilitiesTypeId.errors
                           }"
                         >
-                          <div class="frm-fld-input">
+                          <div
+                            class="frm-fld-input"
+                            [ngClass]="{
+                              disabled: flgMortgageFinancialLiabilities == true
+                            }"
+                          >
                             <select
                               [disabled]="flgMortgageFinancialLiabilities"
                               class="form-control shadow-none"
@@ -887,17 +982,12 @@
                               <option value="-1" selected disabled>
                                 -Select One-
                               </option>
-                              <option value="1">
-                                Revolving (e.g., credit cards)
+                              <option
+                                *ngFor="let obj of financialLiabilityTypeList"
+                                [ngValue]="obj.id"
+                              >
+                                {{ obj.financialLaibilitiesType1 }}
                               </option>
-                              <option value="2">
-                                Installment (e.g., car, student, personal loans)
-                              </option>
-                              <option value="3">
-                                Open 30-Day (balance paid monthly)
-                              </option>
-                              <option value="4">Lease (not real estate)</option>
-                              <option value="5">Other</option>
                             </select>
                           </div>
                         </div>
@@ -920,6 +1010,7 @@
                           <p class="frm-fld-input height35">
                             <input
                               type="text"
+                              maxlength="30"
                               [required]="
                                 flgMortgageFinancialLiabilities == false
                               "
@@ -950,6 +1041,7 @@
                           <p class="frm-fld-input height35">
                             <input
                               type="text"
+                              maxlength="50"
                               [required]="
                                 flgMortgageFinancialLiabilities == false
                               "
@@ -1017,7 +1109,12 @@
                     </div>
                   </div>
 
-                  <div class="col-2 frm-group-combine-border">
+                  <div
+                    class="col-2 frm-group-combine-border"
+                    [ngClass]="{
+                      disabled: flgMortgageFinancialLiabilities == true
+                    }"
+                  >
                     <div
                       class="row"
                       *ngFor="
@@ -1077,14 +1174,14 @@
                         style="
                           color: #696969;
                           text-decoration: none;
-                          font-size: 14px; ;
+                          font-size: 12px; ;
                         "
                       >
                         <a
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           [ngClass]="{
                             disabled: flgMortgageFinancialLiabilities == true
@@ -1092,31 +1189,32 @@
                           (click)="addMortgageFinancialLiabilities()"
                           >Add more</a
                         >
-                        /
+                        <span *ngIf="flgShowRemove3 == true"> /</span>
                         <a
                           [ngClass]="{
                             disabled: flgMortgageFinancialLiabilities == true
                           }"
+                          *ngIf="flgShowRemove3 == true"
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           (click)="removeMortgageFinancialLiabilities()"
                           >Remove</a
                         >
                       </div>
                       <div class="col-6 text-right" style="text-align: right">
-                        <a
-                          href="#"
+                        <span
                           style="
                             color: #000000;
                             text-decoration: none;
                             font-size: 14px;
                             text-align: right;
                           "
-                          >Provide TOTAL Amount Here</a
                         >
+                          Provide TOTAL Amount Here
+                        </span>
                       </div>
                     </div>
                   </label>
@@ -1181,6 +1279,11 @@
               id="flgMortgageFinancialOtherLaibilities"
               name="flgMortgageFinancialOtherLaibilities"
               #txtflgMortgageFinancialOtherLaibilities="ngModel"
+              (change)="
+                flgMortgageFinancialOtherLaibilitiesF(
+                  txtflgMortgageFinancialOtherLaibilities.value
+                )
+              "
             />
             <span class="checkmark" style="margin-top: 8px !important"></span>
           </label>
@@ -1242,13 +1345,34 @@
                 <div class="row">
                   <div class="col-8">
                     <div
-                      class="row"
+                      style="display: flex; align-items: center !important"
                       *ngFor="
                         let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities;
                         index as i
                       "
                     >
-                      <div class="col-12">
+                      <div
+                        style="
+                          width: 2%;
+                          display: inline-flex;
+                          align-items: center;
+                          justify-items: center;
+                          padding-top: 5px;
+                        "
+                      >
+                        <input
+                          type="checkbox"
+                          name="deleteSelectRow21"
+                          id="deleteSelectRow21"
+                          (change)="
+                            addRemoveMortgageFinancialOtherLaibilities(
+                              i,
+                              $event
+                            )
+                          "
+                        />
+                      </div>
+                      <div style="width: 98%">
                         <div
                           class="frm-group mt-1"
                           [ngClass]="{
@@ -1266,7 +1390,13 @@
                               financialLaibilitiesTypeId1.errors
                           }"
                         >
-                          <div class="frm-fld-input">
+                          <div
+                            class="frm-fld-input"
+                            [ngClass]="{
+                              disabled:
+                                flgMortgageFinancialOtherLaibilities == true
+                            }"
+                          >
                             <select
                               [disabled]="flgMortgageFinancialOtherLaibilities"
                               class="form-control shadow-none"
@@ -1281,11 +1411,12 @@
                               <option value="-1" selected disabled>
                                 -Select One-
                               </option>
-                              <option value="1">Alimony</option>
-                              <option value="2">Child Support</option>
-                              <option value="3">Separate Maintenance</option>
-                              <option value="4">Job Related Expenses</option>
-                              <option value="5">Other</option>
+                              <option
+                                *ngFor="let obj of otherLiabilityTypeList"
+                                [ngValue]="obj.id"
+                              >
+                                {{ obj.financialOtherLaibilitiesType1 }}
+                              </option>
                             </select>
                           </div>
                         </div>
@@ -1293,7 +1424,12 @@
                     </div>
                   </div>
 
-                  <div class="col-4 frm-group mt-1">
+                  <div
+                    class="col-4 frm-group mt-1"
+                    [ngClass]="{
+                      disabled: flgMortgageFinancialOtherLaibilities == true
+                    }"
+                  >
                     <div
                       class="row"
                       *ngFor="
@@ -1365,14 +1501,14 @@
                         style="
                           color: #696969;
                           text-decoration: none;
-                          font-size: 14px;
+                          font-size: 12px;
                         "
                       >
                         <a
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           [ngClass]="{
                             disabled:
@@ -1381,8 +1517,9 @@
                           (click)="addMortgageFinancialOtherLaibilities()"
                           >Add more</a
                         >
-                        /
+                        <span *ngIf="flgShowRemove4 == true"> /</span>
                         <a
+                          *ngIf="flgShowRemove4 == true"
                           [ngClass]="{
                             disabled:
                               flgMortgageFinancialOtherLaibilities == true
@@ -1390,7 +1527,7 @@
                           style="
                             color: #696969;
                             text-decoration: none;
-                            font-size: 14px;
+                            font-size: 12px;
                           "
                           (click)="removeMortgageFinancialOtherLaibilities()"
                           >Remove</a
@@ -1416,6 +1553,7 @@
             type="text"
             class="form-control"
             id="specificSizeInputGroupUsername"
+            maxlength="30"
           />
         </div>
       </div>

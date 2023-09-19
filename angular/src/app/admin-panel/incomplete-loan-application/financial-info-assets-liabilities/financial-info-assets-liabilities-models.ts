@@ -54,6 +54,7 @@ export class mortgageFinancialLiabilities {
   accountNumber: string;
   unpaidBalance: number;
   isPaidBeforeClosing: boolean = false;
+  isPaidBeforeClosing1: boolean = false;
   monthlyPayment: number;
   PersonalInformationId: number;
 }

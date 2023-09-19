@@ -1,3 +1,17 @@
+<style>
+  ::ng-deep input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+</style>
 <div>
   <h4 class="section-title">Acknowledgments and Agreements</h4>
   <div class="info-block">
@@ -190,10 +204,22 @@
       <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-text">Date</div>
-          <input
+          <!-- <input
             type="date"
             class="form-control"
+            id="specificSizeInputGroupUsername" /> -->
+
+          <input
+            type="date"
+            (blur)="onBlurDt($event)"
             id="specificSizeInputGroupUsername"
+            max="{{ currentDate | date: 'yyyy-MM-dd' }}"
+            style="
+              border-bottom: 1px solid #9d9d9d;
+              border-left: 0px;
+              border-right: 0px;
+              border-top: 0px;
+            "
           />
         </div>
       </div>
@@ -212,10 +238,25 @@
       <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-text">Date</div>
-          <input
+          <!-- <input
             type="date"
             class="form-control"
             id="specificSizeInputGroupUsername"
+          /> -->
+
+          <!-- <input type="date" id="specificSizeInputGroupUsername" max="{{currentDate | date:'yyyy-MM-dd'}}" required /> -->
+
+          <input
+            type="date"
+            (blur)="onBlurDt($event)"
+            id="specificSizeInputGroupUsername1"
+            max="{{ currentDate | date: 'yyyy-MM-dd' }}"
+            style="
+              border-bottom: 1px solid #9d9d9d;
+              border-left: 0px;
+              border-right: 0px;
+              border-top: 0px;
+            "
           />
         </div>
       </div>
