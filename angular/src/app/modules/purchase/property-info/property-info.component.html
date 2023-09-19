@@ -167,7 +167,9 @@
               #propertyOption="ngModel"
               id="propertyOption3"
             />
-            <label for="propertyOption3" class="radio-label">New construction</label>
+            <label for="propertyOption3" class="radio-label"
+              >New construction</label
+            >
           </div>
         </div>
         <div class="row">
@@ -182,7 +184,9 @@
               #propertyOption="ngModel"
               id="propertyOption4"
             />
-            <label for="propertyOption4" class="radio-label">Foreclosure / Bank Owned</label>
+            <label for="propertyOption4" class="radio-label"
+              >Foreclosure / Bank Owned</label
+            >
           </div>
         </div>
       </div>
@@ -357,10 +361,10 @@
 <!-- No# 7 Purchasing Start -->
 <div class="main-content" *ngIf="number == 4">
   <h2 class="little-space">Do you know your credit score?</h2>
-  <h6>We Use this into to match you with the perfect load options.</h6>
-  <div
-    class="button-list"
-  >
+  <h6 class="pb-5">
+    We Use this into to match you with the perfect load options.
+  </h6>
+  <div class="button-list">
     <a
       [routerLink]="['/app/purchase/property-info', 5]"
       class="btn btn-primary btn-style btn-orange"
@@ -422,9 +426,7 @@
   <h6 style="margin-bottom: 50px !important; font-size: 16px">
     Please provide you full legal name.
   </h6>
-  <div
-    class="button-list"
-  >
+  <div class="button-list">
     <form action="" id="personal" #f5="ngForm">
       <div class="row">
         <div class="col-md-6">
@@ -669,9 +671,7 @@
     </form>
 
     <div class="row margin-top">
-      <div
-        class="col-md-2 offset-md-1"
-      >
+      <div class="col-md-2 offset-md-1">
         <a
           [routerLink]="['/app/purchase/property-info', 6]"
           class="btn btn-orange"
@@ -679,16 +679,12 @@
           >Back</a
         >
       </div>
-      <div
-        class="col-md-2 offset-md-1"
-      >
+      <div class="col-md-2 offset-md-1">
         <a class="btn btn-orange" id="btn-next" (click)="onPehlaForm(f7, 8)"
           >Next</a
         >
       </div>
-      <div
-        class="col-md-2 offset-md-1"
-      >
+      <div class="col-md-2 offset-md-1">
         <a class="btn btn-orange" id="btn-back" (click)="skip(8)">Skip</a>
       </div>
     </div>
@@ -816,9 +812,7 @@
     />
   </h6>
 
-  <div
-    class="button-list"
-  >
+  <div class="button-list">
     <a
       [routerLink]="['/app/purchase/property-info', 10]"
       class="btn btn-primary btn-style btn-orange"
@@ -893,9 +887,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="button-list"
-    >
+    <div class="button-list">
       <div class="row">
         <div class="col-md-3 offset-md-3">
           <a
@@ -938,9 +930,7 @@
         </div>
       </div>
 
-      <div
-        class="button-list"
-      >
+      <div class="button-list">
         <div class="form-group">
           <input
             type="text"
@@ -1058,7 +1048,9 @@
                 #propertyOption_10="ngModel"
                 id="propertyOption1"
               />
-              <label for="propertyOption1" class="radio-label">New construction</label>
+              <label for="propertyOption1" class="radio-label"
+                >New construction</label
+              >
             </div>
           </div>
           <div class="row">
@@ -1073,7 +1065,9 @@
                 #propertyOption_10="ngModel"
                 id="propertyOption2"
               />
-              <label for="propertyOption2" class="radio-label">Foreclosure / Bank Owned</label>
+              <label for="propertyOption2" class="radio-label"
+                >Foreclosure / Bank Owned</label
+              >
             </div>
           </div>
         </div>
@@ -1393,7 +1387,6 @@
           (click)="onHomePlanClick('condo')"
           [class.orange-active]="model.homePlan == 'condo'"
           [class.active]="model.homePlan == 'condo'"
-
         >
           Condo
         </button>
@@ -1431,6 +1424,17 @@
         >
           No
         </button>
+
+        <div class="row">
+          <div class="col-md-12">
+            <a
+              (click)="onEditNextClick()"
+              class="btn btn-gray mb-4"
+              style="width: 100%; background: #80808033"
+              >Done</a
+            >
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-md-3 offset-md-3">
