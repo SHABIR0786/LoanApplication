@@ -61,7 +61,10 @@ font-family: 'Source Sans Pro', sans-serif; */
   cursor: not-allowed;
   margin-bottom: 74px;
 }
-
+.frm-group.disabled.frm-group{
+  pointer-events: none;
+  background-color: #E7E7E7 !important;
+}
 .form-block.disabled {
   cursor: not-allowed;
 }
@@ -694,3 +697,24 @@ number-shadow-none{
   -webkit-appearance: none;
 }
 
+input[type="checkbox"]:disabled {
+  border-color: #eee;
+  color: #ccc;
+  background: #ccc; 
+  /* linear-gradient(to top, #e6e6e6 0px, #fff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); */
+}
+
+
+input[type=radio], input[type=checkbox] :disabled {
+  border-color: #eee  !important; 
+  background: #ccc !important; 
+  /* linear-gradient(to top, #e6e6e6 0px, #fff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); */
+}
+
+.radio:disabled {
+  background-color: #ccc !important;
+}
+
+input[disabled] {
+  background-color: #ccc !important;
+}

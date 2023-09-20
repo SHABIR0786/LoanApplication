@@ -524,9 +524,10 @@
                   <input type="checkbox" (change)="removeOtherNewMortgageLoansF(i,$event)">
                 </div>
 
-                <div class="frm-group mt-2"  [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
+                <div class="frm-group mt-2"  
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && txtcreditorName.errors}"
-                  [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}">
+                  [ngClass]="{'error':  txtcreditorName.touched && txtcreditorName.errors}"
+                  [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
@@ -580,9 +581,10 @@
 
 
               <div class="col-2">
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
+                <div class="frm-group mt-2" 
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && monthlyPayment.errors}"
-                    [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}">
+                    [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}"
+                    [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}">
                   <div class="input-border-bottom"
                     >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
@@ -612,9 +614,10 @@
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
+                <div class="frm-group mt-2" 
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && txtloanAmount.errors}"
-                [ngClass]="{'error':  txtloanAmount.touched && txtloanAmount.errors}">
+                [ngClass]="{'error':  txtloanAmount.touched && txtloanAmount.errors}"
+                [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}">
                   <div class="input-border-bottom"
                    >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
@@ -644,9 +647,10 @@
               </div>
 
               <div class="col-2">
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}"
+                <div class="frm-group mt-2" 
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && creditLimit.errors}"
-                [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}">
+                [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}"
+                [ngClass]="{'disabled':flgOtherNewMortgageLoans==true}">
                   <div class="input-border-bottom"
                 >
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
@@ -890,8 +894,9 @@
                 <input type="checkbox"  (change)="removeGiftsorGrantsF(i,$event)">
               </div>
               <div style="width: 20% !important; padding-left:0px !important; border-right: 1px solid #a5a5a5 !important;padding-right: 10px !important;">
-                <div class="frm-group" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
-                  [ngClass]="{'error':  assetTypeId.touched && assetTypeId.errors}">
+                <div class="frm-group"  [ngClass]="{'error': loanPropertyInfoForm.submitted && assetTypeId.errors}"
+                  [ngClass]="{'error':  assetTypeId.touched && assetTypeId.errors}"
+                  [ngClass]="{'disabled':flgGiftsorGrants==true}">
                   <p class="frm-fld-input" [ngClass]="{'disabled':flgGiftsorGrants==true}">
                     <select class="form-control shadow-none" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
                       name="{{i}}.assetTypeId" id="{{i}}.assetTypeId" #assetTypeId="ngModel"
@@ -928,8 +933,9 @@
 
 
               <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important" >
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}" [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
-                  [ngClass]="{'error':  source.touched && source.errors}">
+                <div class="frm-group mt-2"  [ngClass]="{'error': loanPropertyInfoForm.submitted && source.errors}"
+                  [ngClass]="{'error':  source.touched && source.errors}"
+                  [ngClass]="{'disabled':flgGiftsorGrants==true}">
                   <p class="frm-fld-input" [ngClass]="{'disabled':flgGiftsorGrants==true}">
                     <select [disabled]="flgGiftsorGrants == true" class="form-control shadow-none"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
@@ -950,9 +956,10 @@
               </div>
 
               <div style="width: 20% !important; border-left: 1px solid #696969;padding-left:10px !important">
-                <div class="frm-group mt-2" [ngClass]="{'disabled':flgGiftsorGrants==true}"
+                <div class="frm-group mt-2" 
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && marketValue.errors}"
-                  [ngClass]="{'error':  marketValue.touched && marketValue.errors}">
+                  [ngClass]="{'error':  marketValue.touched && marketValue.errors}"
+                  [ngClass]="{'disabled':flgGiftsorGrants==true}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 

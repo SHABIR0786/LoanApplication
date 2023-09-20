@@ -21,6 +21,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   mortgageFinancialOtherLaibilities: mortgageFinancialOtherLaibilities = new mortgageFinancialOtherLaibilities()
   financialInfoAssetsLiabilitiesModels: FinancialInfoAssetsLiabilitiesModels = new FinancialInfoAssetsLiabilitiesModels();
   assetTypeList:any[]=[];
+  accountTypeList:any[]=[];
   creditTypeList:any[]=[];
   financialLiabilityTypeList:any[]=[]
   otherLiabilityTypeList:any[]=[]
@@ -62,7 +63,19 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     {
       this.totalMortgageFinancialOtherLaibilities = JSON.parse(localStorage.getItem('totalMortgageFinancialOtherLaibilities'));
     }
-  
+    
+    //---Get asset Types
+  this.financialInfoService.getFinancialAccountTypes().subscribe(
+    (res:any)=>{
+      this.accountTypeList=[];
+      debugger
+      if(res.success ==true && res.result.length>0){
+        res.result.forEach((element:any)=>{
+          this.accountTypeList.push({assetsType:element.assetsType, id:element.id})
+        })
+      }
+    }
+  )
   //---Get asset Types
   this.financialInfoService.getAssetTypes().subscribe(
     (res:any)=>{

@@ -23,6 +23,9 @@ export class FinancialInfoAssetsLiabilitiesService extends BaseService {
   getFinancialOtherLaibilitiesTypes(){
     return this.get(ApiRoute.getFinancialOtherLaibilitiesTypes,null)
   }
+  getFinancialAccountTypes(){
+    return this.get(ApiRoute.getFinancialAccountTypes,null)
+  }
   getAllFinancialInfoAssetsLiabilities(data) {
     return this.get(ApiRoute.getMortgageApplicationAssetandLiability, {
       Sorting: "",

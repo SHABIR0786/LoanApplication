@@ -1185,7 +1185,7 @@
 
                 </div>
 
-                <div class="col-3 pl-1" style="text-align: right; padding-right:10px"><label class="gray-text">How long
+                <div class="col-4 pl-1" style="text-align: right; padding-right:10px"><label class="gray-text">How long
                     in this line of work?</label></div>
                 <div class="col-2 p-0 input-border-bottom" style="display: flex;">
                   <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
@@ -1238,10 +1238,10 @@
                   I am employed by a family member, property seller, real estate agent, or other party to the
                   transaction.
                 </span>
-                <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isEmployedBySomeone"
+                <input type="checkbox" [ngClass]="{'disabled':doNotApplyForEmp0==true}" [(ngModel)]="borrowerInfo.employment[0].isEmployedBySomeone"
                   [disabled]="doNotApplyForEmp0 == true" name="isEmployedBySomeone" id="isEmployedBySomeone"
                   #isEmployedBySomeone="ngModel">
-                <span class="checkmark" style="margin-top: 8px;"></span>
+                <span class="checkmark" style="margin-top: 8px;" [ngClass]="{'disabled':doNotApplyForEmp0==true}"></span>
               </label>
 
             </div>
@@ -1261,10 +1261,10 @@
                       <label class="container">
                         <span style=" font-weight: normal;font-size: 10px;margin-top:-10px">Check if you are the
                           Business Owner or Self-Employed </span>
-                        <input type="checkbox" [(ngModel)]="borrowerInfo.employment[0].isSelfEmployed"
+                        <input type="checkbox" [ngClass]="{'disabled':doNotApplyForEmp0==true}" [(ngModel)]="borrowerInfo.employment[0].isSelfEmployed"
                           [disabled]="doNotApplyForEmp0 == true" name="isSelfEmployed" id="isSelfEmployed"
                           #isSelfEmployed="ngModel">
-                        <span class="checkmark" style="margin-top:5px;"></span>
+                        <span class="checkmark" style="margin-top:5px;" [ngClass]="{'disabled':doNotApplyForEmp0==true}"></span>
                       </label>
                     </div>
                   </label>
@@ -1276,8 +1276,9 @@
 
               <div class="row">
                 <div class="col-9" style="display: flex; margin-left:20px">
-                  <div style="display: flex; padding-left: 30px; margin-top: 5px; align-items:center;"><input
-                      type="radio" id="credit3" name="credit3" #credit3="ngModel" [readonly]="doNotApplyForEmp0 == true"
+                  <div style="display: flex; padding-left: 30px; margin-top: 5px; align-items:center;" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+                    <input
+                      type="radio" [ngClass]="{'disabled':doNotApplyForEmp0==true}" id="credit3" name="credit3" #credit3="ngModel" [readonly]="doNotApplyForEmp0 == true"
                       [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25" value="true"
                       style="margin-right: 8px; width: 15px; height:15px;" [required]="doNotApplyForEmp0 == false"
                       [ngClass]="{'error-checkbox': borrowForm.submitted && credit3.errors}"
@@ -1287,7 +1288,8 @@
                       I have an ownership share of less than 25%.
                     </label>
                   </div>
-                  <div style="display: flex;margin-top: 5px; align-items:center;"><input type="radio" name="credit3"
+                  <div style="display: flex;margin-top: 5px; align-items:center;" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+                    <input type="radio" name="credit3" [ngClass]="{'disabled':doNotApplyForEmp0==true}"
                       [readonly]="doNotApplyForEmp0 == true" id="credit3" name="credit3" #credit3="ngModel"
                       [(ngModel)]="borrowerInfo.employment[0].isOwnershipLessThan25" value="false"
                       style="margin-right: 8px; width: 15px; height:15px;  color:#a5a5a5;"
@@ -1670,7 +1672,7 @@
                     [required]="doNotApplyForEmp1 == false" /> -->
                 </div>
 
-                <div class="col-3 p-0" style="text-align: right;  padding-right:10px">
+                <div class="col-4 p-0" style="text-align: right;  padding-right:10px">
                   <label class="gray-text pl-2">How long in this line of work?</label>
                 </div>
                 <div class="col-2 p-0 input-border-bottom" style="display: flex;">
@@ -1723,10 +1725,11 @@
                   I am employed by a family member, property seller, real estate agent, or other party to the
                   transaction.
                 </span>
-                <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isEmployedBySomeone"
+
+                <input type="checkbox"  [(ngModel)]="borrowerInfo.employment[1].isEmployedBySomeone"
                   [disabled]="doNotApplyForEmp1 == true" name="isEmployedBySomeone1" id="isEmployedBySomeone1"
                   #isEmployedBySomeone1="ngModel">
-                <span class="checkmark" style="margin-top: 5px;"></span>
+                <span class="checkmark" [ngClass]="{'disabled':doNotApplyForEmp1==true}" style="margin-top: 5px;"></span>
               </label>
 
             </div>
@@ -1746,10 +1749,10 @@
                       <label class="container" style="margin-left:20px;"><span
                           style=" font-weight: normal;font-size: 10px;">Check if you are the Business Owner or
                           Self-Employed </span>
-                        <input type="checkbox" [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed"
+                        <input type="checkbox" [ngClass]="{'disabled':doNotApplyForEmp1==true}" [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed"
                           [disabled]="doNotApplyForEmp1 == true" name="isSelfEmployed1" id="isSelfEmployed1"
                           #isSelfEmployed1="ngModel">
-                        <span class="checkmark" style="margin-top:5px;"></span>
+                        <span class="checkmark" [ngClass]="{'disabled':doNotApplyForEmp1==true}" style="margin-top:5px;"></span>
                       </label>
                     </div>
                   </label>
@@ -2230,8 +2233,8 @@
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
             Apply</span>
           <input type="checkbox" [(ngModel)]="incomeFromOtherSources" name="incomeFromOtherSources4"
-            id="incomeFromOtherSources4" #incomeFromOtherSources4="ngModel"
-            (change)="incomeFromOtherSourcesF(incomeFromOtherSources4.value)">
+            id="incomeFromOtherSources4" #incomeFromOtherSources45="ngModel"
+            (change)="incomeFromOtherSourcesF(incomeFromOtherSources45.value)">
           <span class="checkmark" style="margin-top: 10px !important;"></span>
         </label>
       </div>
@@ -2294,8 +2297,8 @@
         considered in determining your qualification for this loan.
       </div>
       <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
-        <div class="div-sub-grp">
-          <div class="frm-group" [ngClass]="{'disabled':incomeFromOtherSources==true}">
+        <div class="div-sub-grp" >
+          <div class="frm-group"  [ngClass]="{'disabled':incomeFromOtherSources == true}">
             <div class="row ">
               <label class="col-8 frm-label">
                 <span>Income Source (– use list above)</span>
@@ -2309,66 +2312,44 @@
               *ngFor="let itemOR of borrowerInfo.incomeOtherSources[0].sources; index as i">
               <div style="width:2%; display:inline-flex; align-items: center; justify-items: center;padding-top:5px">
                 <input type="checkbox" [(ngModel)]="itemOR.flgDeletedRow" name="{{i}}_deleteSelectRow1"
-                  id="{{i}}_deleteSelectRow1" #txtdeleteSelectRow1="ngModel" (change)="showRemoveButton()">
+                  id="{{i}}_deleteSelectRow1" #txtdeleteSelectRow12="ngModel" (change)="showRemoveButton()">
               </div>
 
               <div style="width: 58%; padding-left:15px !important;">
-                <div class="frm-group mt-3" [ngClass]="{'disabled':incomeFromOtherSources==true}"
-                  [ngClass]="{'error': borrowForm.submitted && txtsourceType.errors}">
-                  <div class="frm-fld-input" [ngClass]="{'disabled':incomeFromOtherSources==true}">
+                <div class="frm-group mt-3" 
+                [ngClass]="{'error': txtsourceType1.touched && txtsourceType1.errors}"
+                  [ngClass]="{'error': borrowForm.submitted && txtsourceType1.errors}"
+                  [ngClass]="{'disabled':incomeFromOtherSources == true}">
+                  <div class="frm-fld-input" >
                     <div style="display: flex; align-items: center;margin-top: 12px;"
-                      [ngClass]="{'disabled':incomeFromOtherSources==true}">
+                      >
                       <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-
-                      <select [disabled]="incomeFromOtherSources == true" [ngClass]="{'disabled':incomeFromOtherSources==true}" class="form-control shadow-none"
-                      name="{{i}}_sourceType" [(ngModel)]="itemOR.sourceType" id="{{i}}_sourceType"
-                      #txtsourceType="ngModel" [required]="incomeFromOtherSources == false">
+                      <select   class="form-control shadow-none" [(ngModel)]="itemOR.sourceType"
+                      name="{{i}}_sourceType"  id="{{i}}_sourceType"
+                      #txtsourceType1="ngModel" [required]="incomeFromOtherSources == false">
                       <option value="-1" selected disabled>-Select One-</option>
                       <option *ngFor="let obj of incomeTypeList" [ngValue]="obj.id"> {{obj.incomeType}} </option>
                     </select>
-
-                      <!-- <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"
-                        style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                        [min]="0" maxlength="9" [(ngModel)]="itemOR.monthlyIncome" maxlength="9"
-                        [readonly]="incomeFromOtherSources == true" name="{{i}}_monthlyIncome241"
-                        id="{{i}}_monthlyIncome241" #txtmonthlyIncome241="ngModel"
-                        [required]="incomeFromOtherSources == false" ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
-                        (keydown)="scroll($event);" /> -->
 
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- <div style="width: 58%;"  [ngClass]="{'disabled':incomeFromOtherSources==true}"
-              [ngClass]="{'error_bb': borrowForm.submitted && txtsourceType.errors}">
-                <div class="frm-group  mt-3" [ngClass]="{'disabled':incomeFromOtherSources==true}"
-                  [ngClass]="{'error_bb': borrowForm.submitted && txtsourceType.errors}">
-                  <div class="frm-fld-input" [ngClass]="{'error': borrowForm.submitted && txtsourceType.errors}">
-
-                    <select [disabled]="incomeFromOtherSources == true"
-                      [ngClass]="{'disabled':incomeFromOtherSources==true}" class="form-control shadow-none"
-                      name="{{i}}_sourceType" [(ngModel)]="itemOR.sourceType" id="{{i}}_sourceType"
-                      #txtsourceType="ngModel" [required]="incomeFromOtherSources == false">
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option *ngFor="let obj of incomeTypeList" [ngValue]="obj.id"> {{obj.incomeType}} </option>
-                    </select>
-                  </div>
-                </div>
-              </div> -->
               <div style="width: 40%; padding-left:15px !important;">
-                <div class="frm-group mt-3" [ngClass]="{'disabled':incomeFromOtherSources==true}"
-                  [ngClass]="{'error': borrowForm.submitted && txtmonthlyIncome241.errors}">
-                  <div class="frm-fld-input" [ngClass]="{'disabled':incomeFromOtherSources==true}">
+                <div class="frm-group mt-3" 
+                [ngClass]="{'error': txtmonthlyIncome2411.touched && txtmonthlyIncome2411.errors}"
+                  [ngClass]="{'error': borrowForm.submitted && txtmonthlyIncome2411.errors}"
+                  [ngClass]="{'disabled':incomeFromOtherSources==true}"
+                  >
+                  <div class="frm-fld-input" >
                     <div style="display: flex; align-items: center;margin-top: 12px;"
-                      [ngClass]="{'disabled':incomeFromOtherSources==true}">
+                     >
                       <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-
                       <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"
                         style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                        [min]="0" maxlength="9" [(ngModel)]="itemOR.monthlyIncome" maxlength="9"
+                        [min]="0" maxlength="9" [(ngModel)]="itemOR.monthlyIncome" 
                         [readonly]="incomeFromOtherSources == true" name="{{i}}_monthlyIncome241"
-                        id="{{i}}_monthlyIncome241" #txtmonthlyIncome241="ngModel"
+                        id="{{i}}_monthlyIncome241" #txtmonthlyIncome2411="ngModel"
                         [required]="incomeFromOtherSources == false" ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);" />
 
@@ -2400,17 +2381,9 @@
 
                       <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"
                         style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                        [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"
+                        [min]="0" maxlength="9" name="monthlyIncome12" id="monthlyIncome12" #ctatcat="ngModel" [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"
                         [disabled]="incomeFromOtherSources == true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);" />
-
-                      <!-- <input type="number"
-                        [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"
-                        [readonly]="incomeFromOtherSources == true" /> -->
-                      <!-- <p-inputNumber maxlength="9" (onFocus)="selectNumber($event)"
-                        [(ngModel)]="borrowerInfo.incomeOtherSources[0].monthlyIncome"
-                        [disabled]="incomeFromOtherSources == true" [minFractionDigits]="2" [min]="0"
-                        [maxFractionDigits]="2"></p-inputNumber> -->
                     </div>
                   </div>
                 </div>
