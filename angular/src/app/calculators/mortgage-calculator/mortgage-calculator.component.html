@@ -2,8 +2,8 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="border-bottom m-0 pb-3 text-primary">
-        Home<span class="text-muted ml-3 d-inline-block"
-          >Mortgage Calculator</span
+        Home<span class="text-muted ml-3 d-inline-block">
+          <i class="fa fa-angle-right"></i> Mortgage Calculator</span
         >
       </p>
     </section>
@@ -81,7 +81,9 @@
               </label>
             </div>
             <div>
-              <span class="float-right text-muted"
+              <span
+                (click)="editDownPayment = !editDownPayment"
+                class="float-right text-muted cursor-pointer"
                 ><i class="fa fa-edit"></i> Edit</span
               >
             </div>
@@ -100,7 +102,10 @@
                 >{{ DownPaymentPercent }}% (${{ DownPaymentUSD }})</span
               >
             </div>
-            <div class="form-group slider-value-form-group">
+            <div
+              class="form-group slider-value-form-group"
+              *ngIf="editDownPayment"
+            >
               <input
                 type="text"
                 class="form-control"
@@ -174,7 +179,9 @@
             <div class="form-group">
               <div class="d-flex justify-content-between">
                 <label>Interest rate</label>
-                <span class="float-right text-muted"
+                <span
+                  class="float-right text-muted cursor-pointer"
+                  (click)="editInterestRate = !editInterestRate"
                   ><i class="fa fa-edit"></i> Edit</span
                 >
               </div>
@@ -193,7 +200,10 @@
                 >
               </div>
             </div>
-            <div class="form-group slider-value-form-group">
+            <div
+              class="form-group slider-value-form-group mb-2"
+              *ngIf="editInterestRate"
+            >
               <input
                 type="number"
                 class="form-control"
@@ -208,36 +218,41 @@
             <div class="form-group">
               <label>Yearly property taxes</label>
               <input
-                type="number"
+                type="text"
                 [(ngModel)]="YearlyPropertyTaxes"
                 (change)="YearlyPropertyTaxesChanged()"
-                class="form-control"
+                class="form-control homeprice-input"
                 name=""
                 mask="separator.2"
                 thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
             </div>
             <div class="form-group">
               <label>Yearly homeowners insurance</label>
               <input
-                type="number"
+                type="text"
                 [(ngModel)]="YearlyHomeInsurance"
                 (change)="YearlyHomeOwnerInsuranceChanged()"
-                class="form-control"
+                class="form-control homeprice-input"
                 name=""
                 mask="separator.2"
                 thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
             </div>
             <div class="form-group">
               <label>Monthly homeowners association (HOA) fee?</label>
               <input
-                type="number"
+                type="text"
                 [(ngModel)]="MonthlyHOAFee"
                 (change)="MonthlyHomeOwnerAssociationHOAFeeChanged()"
-                class="form-control"
+                class="form-control homeprice-input"
                 name=""
+                mask="separator.2"
+                thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ export class RentVsBuyCalculatorComponent implements OnInit {
   RentvsBuyForm: FormGroup;
   form: Object = {};
   submitted = false;
+  editDownPayment = false;
   averageMonthlyPayment = [];
   rental = {};
   DownPaymentType = "usd";

@@ -2,8 +2,8 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="m-0 text-primary">
-        Home<span class="text-muted ml-3 d-inline-block"
-          >Refinance Calculator</span
+        Home<span class="text-muted ml-3 d-inline-block">
+          <i class="fa fa-angle-right"></i> Refinance Calculator</span
         >
       </p>
     </section>
@@ -18,226 +18,322 @@
 
       <div class="row justify-content-center mt-5">
         <div class="col-lg-10">
-          <label class="mb-3 text-primary">I want to</label>
-          <div class="row">
-            <div
-              (click)="changeSelectedOption('lower')"
-              class="col-sm-4 form-group"
-            >
+          <form action="" id="refinance-calculator" #f6="ngForm">
+            <label class="mb-3 text-primary">I want to</label>
+            <div class="row">
               <div
-                [ngClass]="
-                  SelectedOption == 'lower' ? 'box-fill' : 'box-outline'
-                "
+                (click)="changeSelectedOption('lower')"
+                class="col-sm-4 form-group"
               >
-                <p class="m-0">Lower my monthly payment</p>
+                <div
+                  [ngClass]="
+                    SelectedOption == 'lower' ? 'box-fill' : 'box-outline'
+                  "
+                >
+                  <p class="m-0">Lower my monthly payment</p>
+                </div>
               </div>
-            </div>
-            <div
-              (click)="changeSelectedOption('faster')"
-              class="col-sm-4 form-group"
-            >
               <div
-                [ngClass]="
-                  SelectedOption == 'faster' ? 'box-fill' : 'box-outline'
-                "
+                (click)="changeSelectedOption('faster')"
+                class="col-sm-4 form-group"
               >
-                <p class="m-0">Pay of my mortgage faster</p>
+                <div
+                  [ngClass]="
+                    SelectedOption == 'faster' ? 'box-fill' : 'box-outline'
+                  "
+                >
+                  <p class="m-0">Pay of my mortgage faster</p>
+                </div>
               </div>
-            </div>
-            <div
-              (click)="changeSelectedOption('cashout')"
-              class="col-sm-4 form-group"
-            >
               <div
-                [ngClass]="
-                  SelectedOption == 'cashout' ? 'box-fill' : 'box-outline'
+                (click)="changeSelectedOption('cashout')"
+                class="col-sm-4 form-group"
+              >
+                <div
+                  [ngClass]="
+                    SelectedOption == 'cashout' ? 'box-fill' : 'box-outline'
+                  "
+                >
+                  <p class="m-0">Take cash out of my home</p>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-primary"
+                  >What is your mortgage balance?</label
+                >
+                <input
+                  type="text"
+                  [(ngModel)]="MortgageBalance"
+                  class="form-control pl-4"
+                  name="MortgageBalance"
+                  mask="separator.2"
+                  thousandSeparator=","
+                  #mortgageBalanceRef="ngModel"
+                  required
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="mortgageBalanceRef.errors?.required">
+                    Mortgage Balance is required
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="SelectedOption == 'lower'"
+                class="col-sm-12 form-group"
+              >
+                <label class="text-primary"
+                  >What is your current monthly payment?</label
+                >
+                <input
+                  type="text"
+                  [(ngModel)]="CurrentMonthlyPayment"
+                  class="form-control pl-4"
+                  name="CurrentMonthlyPayment"
+                  required
+                  mask="separator.2"
+                  thousandSeparator=","
+                  #currentMonthlyPaymentRef="ngModel"
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="mortgageBalanceRef.errors?.required">
+                    Current Monthly Payment is required
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="SelectedOption == 'lower'"
+                class="col-sm-12 form-group"
+              >
+                <label
+                  >Does your monthly payment include taxes and insurance?</label
+                >
+                <div class="d-flex">
+                  <div
+                    (click)="MonthlyPaymentTaxandInschanged(true)"
+                    [ngClass]="
+                      MonthlyPaymentIncludeTaxesandInsurance == true
+                        ? 'box-fill'
+                        : 'box-outline'
+                    "
+                    class="flex-grow-1"
+                  >
+                    Yes
+                  </div>
+                  <div
+                    (click)="MonthlyPaymentTaxandInschanged(false)"
+                    [ngClass]="
+                      MonthlyPaymentIncludeTaxesandInsurance == false
+                        ? 'box-fill'
+                        : 'box-outline'
+                    "
+                    class="ml-2 flex-grow-1"
+                  >
+                    No
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  MonthlyPaymentIncludeTaxesandInsurance == true &&
+                  SelectedOption == 'lower'
                 "
+                class="col-sm-12 form-group"
               >
-                <p class="m-0">Take cash out of my home</p>
-              </div>
-            </div>
-            <div class="col-sm-12 form-group">
-              <label class="text-primary">What is your mortgage balance?</label>
-              <input
-                type="number"
-                [(ngModel)]="MortgageBalance"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <div *ngIf="SelectedOption == 'lower'" class="col-sm-12 form-group">
-              <label class="text-primary"
-                >What is your current monthly payment?</label
-              >
-              <input
-                type="number"
-                [(ngModel)]="CurrentMonthlyPayment"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <div *ngIf="SelectedOption == 'lower'" class="col-sm-12 form-group">
-              <label
-                >Does your monthly payment include taxes and insurance?</label
-              >
-              <div class="d-flex">
-                <div
-                  (click)="MonthlyPaymentTaxandInschanged(true)"
-                  [ngClass]="
-                    MonthlyPaymentIncludeTaxesandInsurance == true
-                      ? 'box-fill'
-                      : 'box-outline'
-                  "
-                  class="flex-grow-1"
-                >
-                  Yes
-                </div>
-                <div
-                  (click)="MonthlyPaymentTaxandInschanged(false)"
-                  [ngClass]="
-                    MonthlyPaymentIncludeTaxesandInsurance == false
-                      ? 'box-fill'
-                      : 'box-outline'
-                  "
-                  class="ml-2 flex-grow-1"
-                >
-                  No
+                <label>Yearly property taxes</label>
+                <input
+                  type="text"
+                  [(ngModel)]="YearlyPropertyTaxes"
+                  (change)="YearlyPropertyTaxesChanged()"
+                  class="form-control pl-4"
+                  name="YearlyPropertyTaxes"
+                  required
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="mortgageBalanceRef.errors?.required">
+                    Currently Monthly Payment is required
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              *ngIf="
-                MonthlyPaymentIncludeTaxesandInsurance == true &&
-                SelectedOption == 'lower'
-              "
-              class="col-sm-12 form-group"
-            >
-              <label>Yearly property taxes</label>
-              <input
-                type="number"
-                [(ngModel)]="YearlyPropertyTaxes"
-                (change)="YearlyPropertyTaxesChanged()"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <div
-              *ngIf="
-                MonthlyPaymentIncludeTaxesandInsurance == true &&
-                SelectedOption == 'lower'
-              "
-              class="col-sm-12 form-group"
-            >
-              <label>Yearly homeowners insurance</label>
-              <input
-                type="number"
-                [(ngModel)]="YearlyHomeInsurance"
-                (change)="YearlyHomeOwnerInsuranceChanged()"
-                class="form-control"
-                name=""
-              />
-            </div>
-
-            <!-- This section is for faster  -->
-            <div
-              *ngIf="SelectedOption == 'faster'"
-              class="col-sm-12 form-group"
-            >
-              <label class="text-primary"
-                >What's the remaining term on your loan in years?</label
+              <div
+                *ngIf="
+                  MonthlyPaymentIncludeTaxesandInsurance == true &&
+                  SelectedOption == 'lower'
+                "
+                class="col-sm-12 form-group"
               >
-              <input
-                type="number"
-                [(ngModel)]="RemainingLoanTermsInYears"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <!-- End of faster section  -->
-
-            <!-- This sectioni s for cashout  -->
-            <div
-              *ngIf="SelectedOption == 'cashout'"
-              class="col-sm-12 form-group"
-            >
-              <label class="text-primary"
-                >How much cash do you want to take out?</label
-              >
-              <input
-                type="number"
-                [(ngModel)]="TakeCashOut"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <div class="col-sm-12 form-group">
-              <label class="text-primary"
-                >Approximately what is your home worth today?</label
-              >
-              <input
-                type="number"
-                [(ngModel)]="HomeWorthToday"
-                class="form-control"
-                name=""
-              />
-            </div>
-            <!-- End of cashout section  -->
-            <div class="col-sm-6 form-group">
-              <label class="text-primary">What is your home's ZIP code?</label>
-              <input type="number" class="form-control" name="" />
-            </div>
-            <div class="col-sm-6 form-group">
-              <label
-                >Are you a veteran or currently serving in the military?</label
-              >
-              <div class="d-flex">
-                <div
-                  (click)="changeveteran(true)"
-                  [ngClass]="
-                    VenetryorCurrentlyServing == true
-                      ? 'box-fill'
-                      : 'box-outline'
-                  "
-                  class="flex-grow-1"
-                >
-                  Yes
-                </div>
-                <div
-                  (click)="changeveteran(false)"
-                  [ngClass]="
-                    VenetryorCurrentlyServing == false
-                      ? 'box-fill'
-                      : 'box-outline'
-                  "
-                  class="ml-2 flex-grow-1"
-                >
-                  No
+                <label>Yearly homeowners insurance</label>
+                <input
+                  type="text"
+                  [(ngModel)]="YearlyHomeInsurance"
+                  (change)="YearlyHomeOwnerInsuranceChanged()"
+                  class="form-control pl-4"
+                  required
+                  mask="separator.2"
+                  name="YearlyHomeInsurance"
+                  #yearlyHomeInsuranceRef="ngModel"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="yearlyHomeInsuranceRef.errors?.required">
+                    Yearly homeowners insurance is required
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-12 form-group">
-              <label class="text-primary"
-                >How would you rate your credit?</label
-              >
-              <select class="form-control">
-                <option
-                  *ngFor="let option of RateYourCreditOptions; let i = index"
-                  [attr.data-index]="i"
-                >
-                  {{ option.value }}
-                </option>
-              </select>
-            </div>
 
-            <div class="col-sm-12 form-group">
-              <button
-                (click)="caculatormortgage()"
-                class="btn btn-secondary text-white text-uppercase w-100"
+              <!-- This section is for faster  -->
+              <div
+                *ngIf="SelectedOption == 'faster'"
+                class="col-sm-12 form-group"
               >
-                CALCULATE
-              </button>
+                <label class="text-primary"
+                  >What's the remaining term on your loan in years?</label
+                >
+                <input
+                  type="number"
+                  required
+                  [(ngModel)]="RemainingLoanTermsInYears"
+                  class="form-control"
+                  name="RemainingLoanTermsInYears"
+                  #remainingLoanTermsInYearsRef="ngModel"
+                />
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="remainingLoanTermsInYearsRef.errors?.required">
+                    Remaining Term on Your Loan in Years is required
+                  </div>
+                </div>
+              </div>
+              <!-- End of faster section  -->
+
+              <!-- This sectioni s for cashout  -->
+              <div
+                *ngIf="SelectedOption == 'cashout'"
+                class="col-sm-12 form-group"
+              >
+                <label class="text-primary"
+                  >How much cash do you want to take out?</label
+                >
+                <input
+                  type="text"
+                  [(ngModel)]="TakeCashOut"
+                  class="form-control pl-4"
+                  name="TakeCashOut"
+                  #takeCashOutRef="ngModel"
+                  required
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="takeCashOutRef.errors?.required">
+                    Cash Out Field is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-primary"
+                  >Approximately what is your home worth today?</label
+                >
+                <input
+                  type="text"
+                  [(ngModel)]="HomeWorthToday"
+                  class="form-control pl-4"
+                  name="HomeWorthToday"
+                  required
+                  #homeWorthTodayRef="ngModel"
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="homeWorthTodayRef.errors?.required">
+                    Home Worth Field is required
+                  </div>
+                </div>
+              </div>
+              <!-- End of cashout section  -->
+              <div class="col-sm-6 form-group">
+                <label class="text-primary"
+                  >What is your home's ZIP code?</label
+                >
+                <input
+                  type="number"
+                  [(ngModel)]="ZipCode"
+                  class="form-control"
+                  name="zipCode"
+                  pattern="^[0-9]{5}(?:-[0-9]{4})?$"
+                  required
+                  #zipCodeRef="ngModel"
+                />
+                <div *ngIf="submitted" class="text-danger d-flex">
+                  <div *ngIf="zipCodeRef.errors?.pattern">
+                    This is not a valid zip code
+                  </div>
+                  <div *ngIf="zipCodeRef.errors?.required">
+                    Zip Code is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label
+                  >Are you a veteran or currently serving in the
+                  military?</label
+                >
+                <div class="d-flex">
+                  <div
+                    (click)="changeveteran(true)"
+                    [ngClass]="
+                      VenetryorCurrentlyServing == true
+                        ? 'box-fill'
+                        : 'box-outline'
+                    "
+                    class="flex-grow-1"
+                  >
+                    Yes
+                  </div>
+                  <div
+                    (click)="changeveteran(false)"
+                    [ngClass]="
+                      VenetryorCurrentlyServing == false
+                        ? 'box-fill'
+                        : 'box-outline'
+                    "
+                    class="ml-2 flex-grow-1"
+                  >
+                    No
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-primary"
+                  >How would you rate your credit?</label
+                >
+                <select class="form-control">
+                  <option
+                    *ngFor="let option of RateYourCreditOptions; let i = index"
+                    [attr.data-index]="i"
+                  >
+                    {{ option.value }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <button
+                  type="submit"
+                  (click)="caculatormortgage(f6)"
+                  class="btn btn-secondary text-white text-uppercase w-100"
+                >
+                  CALCULATE
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
           <!-- Recommended Options Section  -->
           <!-- If selected option is lower -->
           <div class="row" *ngIf="SelectedOption == 'lower'">

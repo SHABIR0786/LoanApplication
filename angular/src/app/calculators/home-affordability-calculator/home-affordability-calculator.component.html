@@ -2,8 +2,8 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="m-0 text-primary">
-        Home<span class="text-muted ml-3 d-inline-block"
-          >Home Affordability Calculator</span
+        Home<span class="text-muted ml-3 d-inline-block">
+          <i class="fa fa-angle-right"></i> Home Affordability Calculator</span
         >
       </p>
     </section>
@@ -24,10 +24,13 @@
             <div class="form-group">
               <label class="text-primary">What is your annual income?</label>
               <input
-                type="number"
-                class="form-control"
+                type="text"
+                class="form-control pl-4"
                 formControlName="annualIncome"
+                mask="separator.2"
+                thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
               <p>
                 This is your income before taxes. Include income from any
                 co-borrowers.
@@ -49,10 +52,13 @@
                 >How much monthly debt do you have?</label
               >
               <input
-                type="number"
-                class="form-control"
+                type="text"
+                class="form-control pl-4"
                 formControlName="monthlyDebt"
+                mask="separator.2"
+                thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
               <p>Include all required minimum monthly debt payments..</p>
               <span
                 class="text-danger"
@@ -71,10 +77,14 @@
                 costs?</label
               >
               <input
-                type="number"
-                class="form-control"
+                type="text"
+                class="form-control pl-4"
                 formControlName="downPayment"
+                mask="separator.2"
+                thousandSeparator=","
               />
+              <span class="slide-value-usd">$</span>
+
               <p>Include only the amount of cash you're willing to use.</p>
               <span
                 class="text-danger"
@@ -87,13 +97,15 @@
               </span>
             </div>
             <div class="form-group">
-              <label class="text-primary"
+              <label class="text-primary" for="zipCode"
                 >What is the ZIP code of the home you want to buy?</label
               >
               <input
-                type="number"
+                type="text"
+                id="zipCode"
                 class="form-control"
                 formControlName="zipCode"
+                pattern="^[0-9]{5}(?:-[0-9]{4})?$"
               />
               <p>
                 If you don't have a home picked out yet, your best guess is
@@ -107,6 +119,12 @@
                 "
               >
                 zip Code is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="homeAffordAbilityControl.zipCode.errors?.pattern"
+              >
+                Invalid zip code format.
               </span>
             </div>
             <div class="form-group">

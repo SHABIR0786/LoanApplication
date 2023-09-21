@@ -9,6 +9,8 @@ import { Component, OnInit } from "@angular/core";
 export class MortgageCalculatorComponent implements OnInit {
   constructor() {}
   DownPaymentType = "usd";
+  editDownPayment = false;
+  editInterestRate = false;
   DownPaymentPercent = 0;
   DownPaymentUSD = 50000;
   DownPaymentInput = 0;

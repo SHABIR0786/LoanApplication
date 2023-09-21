@@ -7,8 +7,8 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
   styleUrls: ["./home-affordability-calculator.component.css"],
 })
 export class HomeAffordabilityCalculatorComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
   homeAffordAbility: FormGroup;
+  constructor(private fb: FormBuilder) {}
   get homeAffordAbilityControl() {
     return this.homeAffordAbility.controls;
   }

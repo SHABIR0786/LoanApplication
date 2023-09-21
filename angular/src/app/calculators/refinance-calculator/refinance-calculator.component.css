@@ -13,3 +13,13 @@
   padding: 0px;
   margin: 0px;
 }
+.slide-value-usd {
+  margin-top: -33px;
+  float: left;
+  margin-left: 12px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

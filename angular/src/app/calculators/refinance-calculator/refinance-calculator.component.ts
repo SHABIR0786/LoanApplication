@@ -10,15 +10,17 @@ export class RefinanceCalculatorComponent implements OnInit {
 
   ngOnInit(): void {}
   SelectedOption = "lower";
+  submitted = false;
   MonthlyPaymentIncludeTaxesandInsurance = false;
   VenetryorCurrentlyServing = false;
-  TakeCashOut = 0;
-  MortgageBalance = 0;
-  CurrentMonthlyPayment = 0;
-  YearlyPropertyTaxes = 0;
-  YearlyHomeInsurance = 0;
-  HomeWorthToday = 0;
+  TakeCashOut = null;
+  MortgageBalance = null;
+  CurrentMonthlyPayment = null;
+  YearlyPropertyTaxes = null;
+  YearlyHomeInsurance = null;
+  HomeWorthToday = null;
   RecommendedOptions = [];
+  ZipCode = null;
   RateYourCreditOptions = [
     { value: "Excellent (720 or above)", key: 0 },
     { value: "Good (660 - 719)", key: 1 },
@@ -28,135 +30,151 @@ export class RefinanceCalculatorComponent implements OnInit {
   ];
   Taxes = 0;
   Insurance = 0;
-  RemainingLoanTermsInYears = 0;
+  RemainingLoanTermsInYears = null;
   changeSelectedOption(value) {
     this.SelectedOption = value;
   }
-  caculatormortgage() {
-    this.RecommendedOptions = [];
-    if (this.SelectedOption == "lower") {
-      var result = this.calculateMonthlyMortgagePayment(
-        this.MortgageBalance,
-        3.25,
-        30
-      );
-      result = this.formatResult(result);
-      if (this.MonthlyPaymentIncludeTaxesandInsurance) {
-        this.Taxes = Math.ceil((this.YearlyPropertyTaxes / 12) * 100) / 100;
-        this.Insurance = Math.ceil((this.YearlyHomeInsurance / 12) * 100) / 100;
-        result = Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
-      }
-      var option1 = {
-        MonthlyPayment: result,
-        Save: this.CurrentMonthlyPayment - this.formatResult(result),
-        Term: "30-Year Fixed",
-        Rate: 3.25,
-        YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
-        homeInsurance: this.YearlyHomeInsurance,
-      };
-      this.RecommendedOptions.push(option1);
-      result = this.calculateMonthlyMortgagePayment(
-        this.MortgageBalance,
-        2.5,
-        30
-      );
-      result = this.formatResult(result);
-      if (this.MonthlyPaymentIncludeTaxesandInsurance) {
-        result = Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
-      }
-      var option2 = {
-        MonthlyPayment: result,
-        Save: this.CurrentMonthlyPayment - this.formatResult(result),
-        Term: "7/6 Arm Conforming",
-        Rate: 2.5,
-        YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
-        homeInsurance: this.YearlyHomeInsurance,
-      };
-      this.RecommendedOptions.push(option2);
-      result = this.calculateMonthlyMortgagePayment(
-        this.MortgageBalance,
-        2.625,
-        30
-      );
-      result = this.formatResult(result);
-      if (this.MonthlyPaymentIncludeTaxesandInsurance) {
-        result = Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
-      }
-      var option3 = {
-        MonthlyPayment: result,
-        Save: this.CurrentMonthlyPayment - this.formatResult(result),
-        Term: "7/6 Arm Conforming",
-        Rate: 2.625,
-        YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
-        homeInsurance: this.YearlyHomeInsurance,
-      };
-      this.RecommendedOptions.push(option3);
-    } else if (this.SelectedOption == "faster") {
-      if (this.RemainingLoanTermsInYears > 30) {
+  caculatormortgage(f9) {
+    this.submitted = true;
+    console.log(f9);
+    if (f9.valid) {
+      this.RecommendedOptions = [];
+      if (this.SelectedOption == "lower") {
         var result = this.calculateMonthlyMortgagePayment(
           this.MortgageBalance,
           3.25,
           30
         );
-        const option1 = {
-          MonthlyPayment: this.formatResult(result),
-          Save: this.RemainingLoanTermsInYears - 30,
-          Term: 30,
+        result = this.formatResult(result);
+        if (this.MonthlyPaymentIncludeTaxesandInsurance) {
+          this.Taxes = Math.ceil((this.YearlyPropertyTaxes / 12) * 100) / 100;
+          this.Insurance =
+            Math.ceil((this.YearlyHomeInsurance / 12) * 100) / 100;
+          result =
+            Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
+        }
+        var option1 = {
+          MonthlyPayment: result,
+          Save: this.CurrentMonthlyPayment - this.formatResult(result),
+          Term: "30-Year Fixed",
           Rate: 3.25,
+          YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
+          homeInsurance: this.YearlyHomeInsurance,
         };
         this.RecommendedOptions.push(option1);
-      }
-      if (this.RemainingLoanTermsInYears > 8) {
-        var result = this.calculateMonthlyMortgagePayment(
+        result = this.calculateMonthlyMortgagePayment(
           this.MortgageBalance,
-          2.375,
-          8
+          2.5,
+          30
         );
-        const option2 = {
-          MonthlyPayment: this.formatResult(result),
-          Save: this.RemainingLoanTermsInYears - 8,
-          Term: 8,
-          Rate: 2.375,
-        };
-        this.RecommendedOptions.push(option2);
-      }
-    } else if (this.SelectedOption == "cashout") {
-      // Find the cash out maximum value
-      var MaxCashOutLimit = this.HomeWorthToday - this.MortgageBalance;
-      if (this.TakeCashOut < MaxCashOutLimit) {
-        var newAmount = this.MortgageBalance + this.TakeCashOut;
-        console.log(newAmount);
-        var result = this.calculateMonthlyMortgagePayment(newAmount, 3.625, 30);
         result = this.formatResult(result);
-        const option1 = {
+        if (this.MonthlyPaymentIncludeTaxesandInsurance) {
+          result =
+            Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
+        }
+        var option2 = {
           MonthlyPayment: result,
-          Save: this.TakeCashOut,
-          Term: 30,
-          Rate: 3.625,
-        };
-        this.RecommendedOptions.push(option1);
-        var result = this.calculateMonthlyMortgagePayment(newAmount, 2.5, 30);
-        result = this.formatResult(result);
-        const option2 = {
-          MonthlyPayment: result,
-          Save: this.TakeCashOut,
-          Term: 30,
+          Save: this.CurrentMonthlyPayment - this.formatResult(result),
+          Term: "7/6 Arm Conforming",
           Rate: 2.5,
+          YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
+          homeInsurance: this.YearlyHomeInsurance,
         };
         this.RecommendedOptions.push(option2);
-        var result = this.calculateMonthlyMortgagePayment(newAmount, 2.75, 30);
+        result = this.calculateMonthlyMortgagePayment(
+          this.MortgageBalance,
+          2.625,
+          30
+        );
         result = this.formatResult(result);
-        const option3 = {
+        if (this.MonthlyPaymentIncludeTaxesandInsurance) {
+          result =
+            Math.round((result + this.Taxes + this.Insurance) * 100) / 100;
+        }
+        var option3 = {
           MonthlyPayment: result,
-          Save: this.TakeCashOut,
-          Term: 30,
-          Rate: 2.75,
+          Save: this.CurrentMonthlyPayment - this.formatResult(result),
+          Term: "7/6 Arm Conforming",
+          Rate: 2.625,
+          YearlyProtpertyTaxes: this.YearlyPropertyTaxes,
+          homeInsurance: this.YearlyHomeInsurance,
         };
         this.RecommendedOptions.push(option3);
+      } else if (this.SelectedOption == "faster") {
+        if (this.RemainingLoanTermsInYears > 30) {
+          var result = this.calculateMonthlyMortgagePayment(
+            this.MortgageBalance,
+            3.25,
+            30
+          );
+          const option1 = {
+            MonthlyPayment: this.formatResult(result),
+            Save: this.RemainingLoanTermsInYears - 30,
+            Term: 30,
+            Rate: 3.25,
+          };
+          this.RecommendedOptions.push(option1);
+        }
+        if (this.RemainingLoanTermsInYears > 8) {
+          var result = this.calculateMonthlyMortgagePayment(
+            this.MortgageBalance,
+            2.375,
+            8
+          );
+          const option2 = {
+            MonthlyPayment: this.formatResult(result),
+            Save: this.RemainingLoanTermsInYears - 8,
+            Term: 8,
+            Rate: 2.375,
+          };
+          this.RecommendedOptions.push(option2);
+        }
+      } else if (this.SelectedOption == "cashout") {
+        // Find the cash out maximum value
+        var MaxCashOutLimit = this.HomeWorthToday - this.MortgageBalance;
+        if (this.TakeCashOut < MaxCashOutLimit) {
+          var newAmount = this.MortgageBalance + this.TakeCashOut;
+          console.log(newAmount);
+          var result = this.calculateMonthlyMortgagePayment(
+            newAmount,
+            3.625,
+            30
+          );
+          result = this.formatResult(result);
+          const option1 = {
+            MonthlyPayment: result,
+            Save: this.TakeCashOut,
+            Term: 30,
+            Rate: 3.625,
+          };
+          this.RecommendedOptions.push(option1);
+          var result = this.calculateMonthlyMortgagePayment(newAmount, 2.5, 30);
+          result = this.formatResult(result);
+          const option2 = {
+            MonthlyPayment: result,
+            Save: this.TakeCashOut,
+            Term: 30,
+            Rate: 2.5,
+          };
+          this.RecommendedOptions.push(option2);
+          var result = this.calculateMonthlyMortgagePayment(
+            newAmount,
+            2.75,
+            30
+          );
+          result = this.formatResult(result);
+          const option3 = {
+            MonthlyPayment: result,
+            Save: this.TakeCashOut,
+            Term: 30,
+            Rate: 2.75,
+          };
+          this.RecommendedOptions.push(option3);
+        }
       }
+      console.log(this.RecommendedOptions);
+      // this.calculateRefinanceMortgagePayment();
     }
-    console.log(this.RecommendedOptions);
-    // this.calculateRefinanceMortgagePayment();
   }
   MonthlyPaymentTaxandInschanged(value) {
     this.MonthlyPaymentIncludeTaxesandInsurance = value;

@@ -2,8 +2,8 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="border-bottom m-0 pb-3 text-primary">
-        Home<span class="text-muted ml-3 d-inline-block"
-          >Rent vs Buy Calculator</span
+        Home<span class="text-muted ml-3 d-inline-block">
+          <i class="fa fa-angle-right"></i> Rent vs Buy Calculator</span
         >
       </p>
     </section>
@@ -23,12 +23,13 @@
             (ngSubmit)="calculateEstimatedMonthlyPayment()"
           >
             <h5>Your Detail</h5>
-            <div class="form-group usd">
+            <div class="form-group">
               <label>Zip Code</label>
               <input
                 type="number"
                 formControlName="zipCode"
-                class="form-control homeprice-input"
+                pattern="^[0-9]{5}(?:-[0-9]{4})?$"
+                class="form-control"
               />
               <span
                 class="text-danger"
@@ -38,6 +39,15 @@
                 "
               >
                 Zip Code is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (RentvsBuyFormControl.zipCode.touched || submitted) &&
+                  RentvsBuyFormControl.zipCode.errors?.pattern
+                "
+              >
+                Zip Code is Invalid
               </span>
             </div>
             <div class="form-group">
@@ -66,9 +76,11 @@
             <div class="form-group">
               <label>Purchase Price</label>
               <input
-                type="number"
+                type="text"
                 formControlName="purchasePrice"
-                class="form-control homeprice-input"
+                mask="separator.2"
+                thousandSeparator=","
+                class="form-control homeprice-input pl-4"
               />
               <span class="left-value-usd">$</span>
               <span
@@ -88,10 +100,10 @@
                   >Percentage
                   <input
                     type="radio"
-                    [(ngModel)]="DownPaymentType"
+                    formControlName="DownPaymentType"
+                    class="form-control"
                     (input)="downPaymentTypeChanged($event.target.value)"
                     value="percentage"
-                    name="downpayment"
                   />
                   <span class="checkmark"></span>
                 </label>
@@ -101,16 +113,18 @@
                   >USD
                   <input
                     type="radio"
-                    [(ngModel)]="DownPaymentType"
+                    formControlName="DownPaymentType"
+                    class="form-control"
                     (input)="downPaymentTypeChanged($event.target.value)"
                     value="usd"
-                    name="downpayment"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div>
-                <span class="float-right text-muted"
+                <span
+                  class="float-right text-muted cursor-pointer"
+                  (click)="editDownPayment = !editDownPayment"
                   ><i class="fa fa-edit"></i> Edit</span
                 >
               </div>
@@ -128,7 +142,10 @@
                   >{{ DownPaymentPercent }}% (${{ DownPaymentUSD }})</span
                 >
               </div>
-              <div class="form-group slider-value-form-group">
+              <div
+                class="form-group slider-value-form-group"
+                *ngIf="editDownPayment"
+              >
                 <input
                   type="text"
                   class="form-control"
@@ -138,10 +155,12 @@
                 />
                 <span
                   *ngIf="DownPaymentType == 'percentage'"
-                  class="slide-value-percent"
+                  class="slide-value-percent left-value-usd"
                   >%</span
                 >
-                <span *ngIf="DownPaymentType == 'usd'" class="slide-value-usd"
+                <span
+                  *ngIf="DownPaymentType == 'usd'"
+                  class="slide-value-usd left-value-usd"
                   >$</span
                 >
               </div>

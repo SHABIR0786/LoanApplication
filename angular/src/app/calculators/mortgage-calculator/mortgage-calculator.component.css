@@ -21,3 +21,14 @@
 .arrow-list a {
   position: relative !important;
 }
+.btn.btn-value {
+  margin-right: 3px;
+}
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
