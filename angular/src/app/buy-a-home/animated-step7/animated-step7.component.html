@@ -4,16 +4,15 @@
     <p>
       just an estimate is fine.You can update the amount later in the process.
     </p>
-
+    <br />
     <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
+      <div class="col-lg-4" id="back">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
       <div class="col-lg-4 px-0 pt-0">
-        <div class="btn px-0">
-          <br /><br />
+        <div class="px-0">
           <form class="form" [formGroup]="form">
             <input
               type="text"
@@ -30,8 +29,14 @@
               thousandSeparator=","
               maxlength="18"
             />
-            <span class="slide-value-percent">{{ Percentage }}%</span>
-
+            <div class="slide-value-percent">
+              <input
+                [(ngModel)]="Percentage"
+                formControlName="downPaymentPercent"
+                (input)="percentageChange($event)"
+              />
+              <span>%</span>
+            </div>
             <span
               class="text-danger"
               *ngIf="
@@ -51,7 +56,11 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4 right-back-btn pt-5">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
+      </div>
     </div>
     <div class="gage-chart-orange p37 d-lg-flex d-none">
       <span>37%</span>

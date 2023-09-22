@@ -5,9 +5,8 @@
       You can always add a co-borrower or edit this entry later.
     </h4>
     <div class="row justify-content-center">
-      <div class="col-lg-4">
+      <div class="col-lg-4" id="back">
         <p
-          id="back"
           class="fa fa-angle-left cursor_pointer"
           (click)="proceedToPrevious()"
         >
@@ -15,7 +14,7 @@
         </p>
       </div>
       <div class="col-lg-4" style="margin-top: -40px">
-        <div class="BTN">
+        <div class="btn">
           <form [formGroup]="form">
             <div id="first_name">
               <h3 style="width: 191px; font-size: 20px">Your Email Address*</h3>
@@ -64,7 +63,11 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4 right-back-btn pt-5">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
+      </div>
     </div>
     <div class="gage-chart-blue p95 mt-5 d-lg-flex d-none">
       <span>95%</span>

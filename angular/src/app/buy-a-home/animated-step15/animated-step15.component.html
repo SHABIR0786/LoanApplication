@@ -1,16 +1,15 @@
 <div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="">How would you rate your credit?</h2>
-
+    <h1>How would you rate your credit?</h1>
+    <br />
     <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <p id="back" class="fa fa-angle-left" (click)="proceedToPrevious()">
+      <div class="col-lg-4" id="back">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
       <div class="col-lg-4 px-0 pt-0">
-        <div class="btn px-0">
-          <br /><br />
+        <div class="px-0">
           <button
             type="button"
             class="btn btn-outline-orange btn-lg btn-block mb-3"
@@ -53,7 +52,11 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4 right-back-btn pt-5">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
+      </div>
     </div>
     <div class="gage-chart-orange p79 d-lg-flex d-none">
       <span>79%</span>

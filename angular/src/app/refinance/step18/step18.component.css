@@ -1,17 +1,4 @@
-/* .fa {
-  margin-right: 10px;
-} */
-
-#Family {
-  background-color: #091a52;
-}
-
-#num {
-  color: #0cc4d4 !important;
-}
-#Email {
-  color: #0cc4d4 !important;
-}
+@import url("../style.css");
 #Fn {
   padding: 28px;
   width: 100%;
@@ -43,48 +30,8 @@
 button.btn:hover {
   background-color: #091a52;
 }
-/* Hafiz's CSS */
-
-.Content-Step-Body.text-black {
-  background-color: white !important;
-  color: black;
-}
-.Content-Step-Body .btn-outline-blue {
-  border-color: #091a52;
-  color: #091a52;
-}
-.Content-Step-Body .btn-outline-blue:hover {
-  color: white;
-  background-color: #091a52;
-}
-.Content-Step-Body .form-control {
-  background-color: #091a52 !important;
-}
-.selected {
-  background-color: #091a52 !important;
-  color: white !important;
-}
-
-#back {
-  margin-top: 225px;
-  margin-right: 350px;
-  margin-left: 23px;
-  font-size: 20px;
-  cursor: pointer;
-  position: absolute;
-  left: 33%;
-  top: 240px;
-}
-
-.btn {
-  width: 75%;
-}
-
-h2 {
-  font-size: 30px !important;
-}
 #first_name {
-  margin-top: 100px !important;
+  margin-top: 50px !important;
   max-width: 80%;
   margin: 0 auto;
 }
@@ -96,24 +43,8 @@ h2 {
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  #back {
-    margin-top: 225px;
-    margin-right: 350px;
-    margin-left: 23px;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    left: 33%;
-    top: 240px;
-  }
-  .btn {
-    width: 75%;
-  }
-  h2 {
-    font-size: 30px !important;
-  }
   #first_name {
-    margin-top: 100px !important;
+    margin-top: 50px !important;
     max-width: 80%;
     margin: 0 auto;
   }
@@ -126,24 +57,8 @@ h2 {
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  #back {
-    margin-top: 225px;
-    margin-right: 350px;
-    margin-left: 23px;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    left: 42%;
-    top: 245px;
-  }
-  .btn {
-    width: 50%;
-  }
-  h2 {
-    font-size: 40px !important;
-  }
   #first_name {
-    margin-top: 100px !important;
+    margin-top: 50px !important;
     max-width: 55%;
     margin: 0 auto;
   }
@@ -156,24 +71,8 @@ h2 {
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-  #back {
-    margin-top: 225px;
-    margin-right: 350px;
-    margin-left: 23px;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .btn {
-    width: 100%;
-  }
-  h2 {
-    font-size: 40px !important;
-  }
   #first_name {
-    margin-top: 100px !important;
+    margin-top: 50px !important;
     max-width: 100%;
     margin: 0 auto;
   }
@@ -186,24 +85,8 @@ h2 {
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-  #back {
-    margin-top: 225px;
-    margin-right: 350px;
-    margin-left: 23px;
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .btn {
-    width: 100%;
-  }
-  h2 {
-    font-size: 40px;
-  }
   #first_name {
-    margin-top: 100px !important;
+    margin-top: 50px !important;
     max-width: 100%;
     margin: 0 auto;
   }

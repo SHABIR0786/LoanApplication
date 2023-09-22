@@ -1,12 +1,12 @@
 <div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="pb-5">Please enter your name below</h2>
+    <h1 class="pb-5">Please enter your name below</h1>
     <p class="co-borrower">
       You can always add a co-borrower or edit this entry later.
     </p>
     <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <p id="back" (click)="proceedToPrevious()" class="fa fa-angle-left">
+      <div class="col-lg-4" id="back">
+        <p (click)="proceedToPrevious()" class="fa fa-angle-left">
           <span style="margin-left: 10px">Back</span>
         </p>
       </div>
@@ -65,7 +65,11 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4 right-back-btn pt-5">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
+      </div>
     </div>
     <div class="gage-chart-orange p84 mt-5 d-lg-flex d-none">
       <span>84%</span>

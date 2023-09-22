@@ -46,6 +46,24 @@ export class AnimatedStep7Component implements OnInit {
   proceedToPrevious() {
     this._route.navigate(["app/buy-a-home-animated-step6"]);
   }
+  percentageChange(e) {
+    if (
+      this.formData.downPayment > this._homeBuyingDataService.data.purchasePrice
+    ) {
+      e.preventDefault();
+      this.form.controls["downPayment"].setValue(
+        this._homeBuyingDataService.data.purchasePrice
+      );
+    }
+    // this.form.controls["downPaymentPercent"].setValue(
+    //   (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
+    //     parseFloat(this._homeBuyingDataService.data.purchasePrice)
+    // );
+    this.formData.downPayment =
+      (parseFloat(this.Percentage) *
+        parseFloat(this._homeBuyingDataService.data.purchasePrice)) /
+      100;
+  }
 
   downPaymentChange(e) {
     if (e.target.value > this._homeBuyingDataService.data.purchasePrice) {
@@ -63,17 +81,6 @@ export class AnimatedStep7Component implements OnInit {
       (parseFloat(e.target.value.split("$")[1].replace(/,/g, "")) * 100) /
       parseFloat(this._homeBuyingDataService.data.purchasePrice);
     this.Percentage = this.Percentage.toFixed(0);
-
-    // if (this.form.value.downPayment <= this.form.value.estimatePrice) {
-    //   this.Percentage =
-    //     (this.form.value.downPayment / this.form.value.estimatePrice) * 100;
-    //   this.Percentage = this.Percentage.toFixed(0);
-    //   this.submitted = true;
-    // } else {
-    //   this.form.controls["downPayment"].setValue(0);
-    //   this.Percentage = 0;
-    //   this.submitted = false;
-    // }
   }
 
   proceedToNext() {

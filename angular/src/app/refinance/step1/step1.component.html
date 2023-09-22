@@ -1,13 +1,9 @@
 <div class="Content-Step-Body text-black">
   <div class="container">
-    <h2 class="pb-5 font-weight-bold">
-      What state is the property located in?
-    </h2>
-
+    <h1 class="font-weight-bold">What state is the property located in?</h1>
     <div class="row justify-content-center">
-      <div class="col-lg-4">
+      <div class="col-lg-4" id="back">
         <p
-          id="back"
           class="fa fa-angle-left cursor_pointer"
           (click)="proceedToPrevious()"
         >
@@ -15,11 +11,10 @@
         </p>
       </div>
       <div class="col-lg-4 px-0">
-        <div class="BTN px-0">
+        <div class="px-0">
           <select class="form-control input-special mb-3 h_70 fs_22 btn_mwh">
             <option value="california">California</option>
           </select>
-
           <button
             type="button"
             class="btn btn-outline-blue btn-lg btn-block mb-3 h_70 fs_22 btn_mwh"
@@ -29,7 +24,11 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4 right-back-btn pt-5">
+        <p class="fa fa-angle-left" (click)="proceedToPrevious()">
+          <span style="margin-left: 10px">Back</span>
+        </p>
+      </div>
     </div>
     <div class="gage-chart-blue p6 mt-5 d-lg-flex d-none">
       <span>6%</span>
