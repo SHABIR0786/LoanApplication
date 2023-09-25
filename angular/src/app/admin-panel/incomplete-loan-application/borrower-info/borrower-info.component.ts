@@ -7,6 +7,7 @@ import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
 import { add } from "lodash";
 import { NgForm } from "@angular/forms";
 import { elementEventFullName } from "@angular/compiler/src/view_compiler/view_compiler";
+import { parse } from "path";
 
 @Component({
   selector: "app-borrower-info",
@@ -41,6 +42,7 @@ export class BorrowerInfoComponent implements OnInit {
   maritalStatusList: any[] = [];
   incomeTypeList: any[] = [];
   currentDate: Date = new Date();
+  currentDateDob: Date = new Date();
   BorrowerName: any;
   flgShowRemoveButton: boolean = false;
   stateListAddress0: any[] = [];
@@ -63,6 +65,8 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentDateDob.setDate(this.currentDateDob.getDate() - 3600);
+
     this.monthYearList();
     this.getCountries();
     this.getStates();
@@ -196,6 +200,8 @@ export class BorrowerInfoComponent implements OnInit {
     this.yearList = [];
     this.monthList = [];
     this.browerList = [];
+    this.yearList.push({ id:0, label: '' });
+    this.monthList.push({ id: 0, label: '' });
     for (var i = 1; i <= 100; i = i + 1) {
       this.yearList.push({ id: i, label: i });
     }
@@ -566,17 +572,36 @@ export class BorrowerInfoComponent implements OnInit {
 
   fixDecimals(event: any) {
     var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
-    } else {
-      event.target.value = int + ".00";
+    if(vals !="" ){
+     vals = parseFloat(vals).toFixed(2);
+     var int: number = parseInt(vals);
+     var dec = vals - int;
+      if (dec > 0) {event.target.value = int + dec;} else {event.target.value = int + ".00";}
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
+    }else{
+      event.target.value = "0.00";
     }
   }
 
+  numberOnly(txt:any, evt): boolean {
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode == 46) {
+        if (evt.target.value.includes(".")) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        if (charCode > 31 &&
+          (charCode < 48 || charCode > 57))
+          return false;
+      }
+      return true;
+  }
+
   scroll(event: any) {
-    //up 38 down 40
     var curBox = event.currentTarget;
     if (event.keyCode === 40) {//down
       var curBox = event.currentTarget;
@@ -757,6 +782,7 @@ export class BorrowerInfoComponent implements OnInit {
   onBlurDt(event: any) {
     var sDate = new Date(event.target.value);
     var currentDate = new Date();
+    
     if (sDate.getFullYear() < 1900 || sDate > currentDate || this.isValidDate(sDate.getFullYear(), sDate.getMonth(), sDate.getDay()) == false) {
       event.target.value = currentDate.getDate().toString();
     } else { }
@@ -942,6 +968,32 @@ export class BorrowerInfoComponent implements OnInit {
     }
 
 
+  }
+  clearRentValue(value:any)
+  {
+    debugger
+    this.borrowerInfo.personalInformation.address[0].rent = 0;
+  }
+  clearRentValue1(value:any)
+  {
+    
+  }
+  disableBussinessOwner(event:any)
+  {
+    debugger
+    if(event.target.checked == false)
+    {
+      this.borrowerInfo.employment[0].isOwnershipLessThan25=null
+      this.borrowerInfo.employment[0].monthlyIncome = 0 
+    }
+  }
+  disableBussinessOwner1(event:any)
+  {
+    if(event.target.checked == false)
+    {
+      this.borrowerInfo.employment[1].isOwnershipLessThan25=null
+      this.borrowerInfo.employment[1].monthlyIncome = 0 
+    }
   }
 }
 

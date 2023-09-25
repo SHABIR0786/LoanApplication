@@ -20,6 +20,7 @@ export const ApiRoute = {
   getCreditTypes:"services/app/CreditTypeService/GetCreditTypes",
   getFinancialLaibilitiesTypes:"services/app/FinancialService/GetFinancialLaibilitiesTypes",
   getFinancialOtherLaibilitiesTypes: "services/app/FinancialService/GetFinancialOtherLaibilitiesTypes",
+  getFinancialAccountTypes: "services/app/FinancialService/GetFinancialAccountTypes",
   getFinancialPropertyStatuses :"services/app/FinancialService/GetFinancialPropertyStatuses",
   getLoanPropertyOccupancies: "services/app/LoanService/GetLoanPropertyOccupancies",
   getMortageLoanTypes:"services/app/LoanService/GetMortageLoanTypes",

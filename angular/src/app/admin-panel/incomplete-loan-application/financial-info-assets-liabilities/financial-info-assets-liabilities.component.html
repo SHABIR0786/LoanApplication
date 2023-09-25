@@ -146,33 +146,33 @@
             
 
               <div class="row mb-2">
-              <div class="col-9">
-                <div class="row">
+              <div class="col-10">
+                <div style="display:flex; align-items: center !important;">
                   <div style="width: 2%;"></div>
-                  <div class="col-4">
+                  <div style="width: 38%;">
                    <label class="frm-label">Account Type - Use list above</label>
                   </div>
-                  <div class="col-3">
+                  <div style="margin-left:10px;width: 30%;">
                     <label class="frm-label">Financial Institution</label>
                   </div>
-                  <div class="col-3">
+                  <div style="margin-left:10px;width: 30%;">
                     <label class="frm-label">Account Number</label>
                   </div>
                 </div>
               </div>
-              <div class=" col-3">
+              <div class=" col-2">
                 <label class="frm-label">Cash or Market Value</label>
               </div>
             </div>
 
 
               <div class="row">
-                <div class="col-9">
-                  <div class="row"  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
+                <div class="col-10">
+                  <div style="display:flex; align-items: center !important;" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
                     <div style="width: 2% !important; display:inline-flex; align-items: center; justify-items: center;padding-top:5px" >
-                      <input type="checkbox"   (change)="removeMortgageFinancialAssetsF(i,$event)">
+                      <input type="checkbox" (change)="removeMortgageFinancialAssetsF(i,$event)">
                     </div>
-                    <div class="col-4">
+                    <div style="width:38% !important">
                       <div class="frm-group mt-2"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}"
                         [ngClass]="{'error':  accountTypeId.touched && accountTypeId.errors}">
@@ -185,7 +185,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-3">
+                    <div style="margin-left:10px;width:30% !important">
                       <div class="frm-group mt-2"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialInstitution.errors}"
                         [ngClass]="{'error':  financialInstitution.touched && financialInstitution.errors}">
@@ -194,7 +194,7 @@
                             #financialInstitution="ngModel" maxlength="50"/></p>
                       </div>
                     </div>
-                    <div class="col-3">
+                    <div style="margin-left:10px;width:30% !important">
                       <div class="frm-group mt-2"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}"
                         [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}">
@@ -205,7 +205,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-2 col-3 frm-group-combine-border">
+                <div class="mt-2 col-2 frm-group-combine-border">
                   <div class="row mt-1"  *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
 
                  <div class="col-12">
@@ -213,21 +213,15 @@
                       <div style="display: flex; align-items: center;min-height: 40px;"><span
                           style="width: 20px; text-align: right; margin-right: 5px; ">$ </span>
 
-                          <!-- <span style="border-bottom: 1px solid #696969 !important;"> -->
-                            <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                            <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$" 
+                            style=" padding-right:10px; border-bottom: 1px solid #000 !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important; width: 100%;color: #A5A5A5;font-weight: 500;"
                             [min]="0" maxlength="9" 
                             [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
                             name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
                             (focusout)="getTotalMortgageFinancialAssets()"
                             [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"
                             ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"/>
-                          <!-- </span> -->
-
-                          <!-- <p-inputNumber  style="width: 100%;"
-                           [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue"
-                          name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
-                          (onBlur)="getTotalMortgageFinancialAssets()"
-                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+                         
                         </div>
                     </div>
                   </div>
@@ -236,7 +230,7 @@
               </div>
 
               <div class="row mt-0">
-                <label class="col-9 frm-label">
+                <label class="col-10 frm-label">
                   <div class="row mt-3">
                     <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;"><a style="color: #696969; text-decoration: none; font-size: 14px;"
                         (click)="addMortgageFinancialAssets()">Add more </a> 
@@ -247,13 +241,13 @@
                       <span style="color: #000000; text-decoration: none;font-size: 12px; text-align: right;">Provide TOTAL Amount Here</span></div>
                   </div>
                 </label>
-                <label class="col-3 p-0 frm-label">
-                  <div class="frm-group" style="border-radius: 0px 0px 10px 10px ;">
+                <label class="col-2 p-0 frm-label">
+                  <div class="frm-group" style="border-radius: 0px 0px 10px 10px ; padding:5px;">
                     <div class="input-border-bottom">
                       <div style="display: flex; align-items: center;  min-height:30px !important"><span
                           style="width: 20px; text-align: right; margin-right: 5px; color:black">$ </span> 
                         
-                          <p-inputNumber [disabled]="true" style="pointer-events: none; color:#000 !important; width:100%; border-bottom: 3px #000 !important;"
+                          <p-inputNumber [disabled]="true" style="pointer-events: none; color:#000 !important; padding-right:10px; width:100%; border-bottom: 3px #000 !important;"
                           [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets"
                           name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel"
                           [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
@@ -333,16 +327,16 @@
             <div class="div-sub-grp">
               <div class="frm-group pr-4" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                 <div class="row ">
-                  <label class="col-8 frm-label">
+                  <label class="col-10 frm-label">
                     <span>Asset or Credit Type – use list above</span>
                   </label>
-                  <label class="col-4 frm-label">
+                  <label class="col-2 frm-label">
                     <span>Cash or Market Value</span>
                   </label>
                 </div>
 
                 <div class="row">
-                  <div class="col-8" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
+                  <div class="col-10" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div style="display:flex; align-items: center !important;" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
                       <div style="width: 2% !important; display:inline-flex; align-items: center; justify-items: center;padding-top:5px" >
                         <input type="checkbox"  name="deleteSelectRow1" id="eleteSelectRow1" (change)="addRemoveMortgageFinancialOtherAssets(i,$event)">
@@ -366,7 +360,7 @@
                     </div>
                   </div>
 
-                  <div class=" col-4 frm-group-combine-border" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
+                  <div class=" col-2 frm-group-combine-border" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as i">
                       <div class="col-12">
                         <div class="mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
@@ -376,21 +370,15 @@
                           <div style="display: flex; align-items: center; min-height: 35px; margin-top: 8px; padding-right: 20px; padding-left:20px"><span
                               style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
                              
-                             <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                            [min]="0" maxlength="9" 
-                            [disabled]="flgMortgageFinancialOtherAssets"
-                            [required]="flgMortgageFinancialOtherAssets ==false"
-                            [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
-                            (focusout)="getTotalMortgageFinancialOtherAssets()"
-                            [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"
-                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"/>
+                             <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="padding-left:5px; border-bottom: 1px solid #000 !important;font-size: 16px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                              [min]="0" maxlength="9" 
+                              [disabled]="flgMortgageFinancialOtherAssets"
+                              [required]="flgMortgageFinancialOtherAssets ==false"
+                              [(ngModel)]="item.cashMarketValue" id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
+                              (focusout)="getTotalMortgageFinancialOtherAssets()"
+                              [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"
+                              ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"/>
 
-                              <!-- <p-inputNumber  style="width: 100%;" 
-                             [disabled]="flgMortgageFinancialOtherAssets"
-                              [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.cashMarketValue"
-                              id="{{i}}.cashMarketValue" name="{{i}}.cashMarketValue" #cashMarketValue="ngModel"
-                              (onBlur)="getTotalMortgageFinancialOtherAssets()" 
-                              [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                             </div>
                         </div>
                       </div>
@@ -402,7 +390,7 @@
                 </div>
 
                 <div class="row ">
-                  <label class="col-8 frm-label">
+                  <label class="col-10 frm-label">
                     <div class="row mt-3" >
                       <div class="col-6" style="color: #696969; text-decoration: none; font-size: 12px;">
                         <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
@@ -416,7 +404,7 @@
                       </div>
                     </div>
                   </label>
-                  <label class="col-4 p-0 frm-label mt-0">
+                  <label class="col-2 p-0 frm-label mt-0">
                     <div class="frm-group" style="border-radius: 0px 0px 10px 10px;" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}" >
                       <div class="input-border-bottom mt-2">
                         <div style="display: flex; align-items: center; margin-bottom: 10px;padding-right: 10px;"><span
@@ -609,11 +597,11 @@
                   </label>
 
                   <label class="col-2 p-0 frm-label mt-0">
-                    <div class="frm-group" style="border-radius: 0px 0px 10px 10px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
+                    <div class="frm-group" style="padding:0px; margin:0px; border-radius: 0px 0px 10px 10px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                       <div class="input-border-bottom">
-                        <div style="display: flex; align-items: center; margin-top: 5px;"><span
-                            style="width: 20px; text-align: right; margin-right: 5px; color:black">$ </span>
-                            <p-inputNumber  [disabled]="true" 
+                        <div style="display: flex; align-items: center; margin-top: 5px;">
+                          <span  style="width: 20px; text-align: right; margin-right: 5px; color:black">$ </span>
+                            <p-inputNumber  [disabled]="true"  style="padding: 0px; margin: 0px;"
                             [(ngModel)]="totalMortgageFinancialOtherLaibilities"
                             id="totalMortgageFinancialOtherLaibilities" name="totalMortgageFinancialOtherLaibilities"
                             #txttotalMortgageFinancialOtherLaibilities="ngModel" 
@@ -690,7 +678,7 @@
                 </div>
 
                 <div class="row" >
-                  <div class="col-8">
+                  <div class="col-10">
                     <div style="display:flex; align-items: center !important;" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
                       <div style="width:2%; display:inline-flex; align-items: center; justify-items: center;padding-top:5px">
                         <input type="checkbox"  name="deleteSelectRow21" id="deleteSelectRow21" (change)="addRemoveMortgageFinancialOtherLaibilities(i,$event)">
@@ -714,7 +702,7 @@
                     </div>
                   </div>
 
-                  <div class="col-4 frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
+                  <div class="col-2 frm-group mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
                     <div class="row" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as i">
                       <div class="col-12" style="margin-bottom: 12px;">
                         <div [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
@@ -723,7 +711,7 @@
                         <div class="input-border-bottom" >
                           <div style="display: flex; align-items: center;margin-top: 5px;">
                             <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
-                              <p-inputNumber style="width:100%;"
+                              <p-inputNumber style="width:100%; padding-right: 10px;"
                                [disabled]="flgMortgageFinancialOtherLaibilities"
                               [required]="flgMortgageFinancialOtherLaibilities ==false" [(ngModel)]="item.monthlyPayment"
                               id="{{i}}.monthlyPayment" name="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
@@ -735,11 +723,10 @@
                     </div>
                     
                   </div>
-
                 </div>
 
                 <div class="row ">
-                  <label class="col-8 frm-label">
+                  <label class="col-10 frm-label">
                     <div class="row mt-3">
                       <div class="col-12" style="color: #696969; text-decoration: none; font-size: 12px;">
                         <a style="color: #696969; text-decoration: none; font-size: 12px;" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"

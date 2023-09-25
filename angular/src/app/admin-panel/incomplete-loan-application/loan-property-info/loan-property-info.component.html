@@ -113,7 +113,8 @@
                     <div style="display: flex; align-items: center; margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
                      
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.loanAmount" name="loanAmount"
                         id="loanAmount" #loanAmount="ngModel" [required]="true"
@@ -280,7 +281,8 @@
                 <span class="mr-2" style="color:black">$</span>
 
                 <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
-                  <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                  <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);"/>
@@ -542,7 +544,8 @@
                         [required]="flgOtherNewMortgageLoans == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"
                         style="border:0px !important; padding-left:5px; border: 0px !important; font-size: 14px; margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditorName"
@@ -600,7 +603,8 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.monthlyPayment"
                         name="{{i}}.monthlyPayment" id="{{i}}.monthlyPayment" #monthlyPayment="ngModel"
@@ -633,7 +637,8 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$" style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.loanAmount"
                         name="{{i}}.loanAmount" id="{{i}}.loanAmount" #txtloanAmount="ngModel"
@@ -666,7 +671,8 @@
                         [required]="flgOtherNewMortgageLoans == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgOtherNewMortgageLoans == true" [(ngModel)]="item.creditLimit"
                         name="{{i}}.creditLimit" id="{{i}}.creditLimit" #creditLimit="ngModel"
@@ -747,7 +753,8 @@
                         [required]="flgRentalIncome == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
@@ -790,7 +797,8 @@
                         [required]="flgRentalIncome == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgRentalIncome == true"
                         [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
@@ -971,7 +979,8 @@
                          id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
                       
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" 
+                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.marketValue" name="{{i}}.marketValue"
                          id="{{i}}.marketValue" #marketValue="ngModel" [required]="flgGiftsorGrants == false"

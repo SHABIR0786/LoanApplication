@@ -124,18 +124,8 @@
     <h4 style="font-size: 14px; color: #000;margin-top:5px">Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
 
     <div class="div-main-grp" style="width: 100%; margin-top: 10px; margin-bottom: 20px;" *ngFor="let item of financialInfoRealState ; index as i">
-      <!-- <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;" [ngClass]="{'hidde':i == 0}">
-        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Property</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-          <input type="checkbox" [ngModel]="item.flgApplicableNotApply" (change)="changeCheckBox(i)"
-          id="{{i}}_flgApplicableNotApply" name="{{i}}_flgApplicableNotApply">
-          <span class="checkmark mt-2"></span>
-        </label>
-      </div> -->
-
-
       <div class="row div-sub-grp">
-        <div class="col-12">
+        <div class="col-12 p-0">
           <div class="frm-group pl-4 pr-4"   [ngClass]="{'disabled':item.flgApplicableNotApply == true}">
             <label class="frm-label">
               <span>Address</span>
@@ -146,11 +136,6 @@
               [ngClass]="{'error_bb': financialInfoRealEstateForm.submitted && street.errors}"
               [ngClass]="{'error_bb':  street.touched && street.errors}">
                 
-              <!-- <input ngx-google-places-autocomplete 
-              [readonly]="item.flgApplicableNotApply == true" 
-              [(ngModel)]="item.street" name="{{i}}_street" id="{{i}}_street" #street="ngModel"
-               (onAddressChange)="handleAddressChange($event,i)"/> -->
-
               <input ngx-google-places-autocomplete maxlength="50" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.street" name="{{i}}_street" id="{{i}}_street" #street="ngModel"  
                 [required]="item.flgApplicableNotApply == false"
                 (onAddressChange)="handleAddressChange($event,i)"
@@ -159,25 +144,20 @@
               </div>
 
               <div class="col-1  p-0 text-right pr-2 "><label class="gray-text">Unit #</label></div>
-              <div class="col-2  p-0 input-border-bottom" style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;"> 
-
-                <input type="text"  [min]="0"  maxlength="5"
-                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"/>
-
-                  <!-- <p-inputNumber  [min]="0"  maxlength="5"
-                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"></p-inputNumber> -->
+              <div class="col-2  p-0 input-border-bottom" style="padding-right: 15px !important;" > 
+                <input type="text"  [min]="0"  maxlength="5"   [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"/>
               </div>
               
             </div>
 
 
-            <div class="row mt-2">
+            <div class="row mt-0">
               <div class="col-1  p-0 mt-2" ><label class="gray-text">City</label></div>
               <div class="col-3  p-0 input-border-bottom"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && cityId.errors}"
               [ngClass]="{'error':  cityId.touched && cityId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
+                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px; ">
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.cityId" name="{{i}}_cityId" id="{{i}}_cityId" #cityId="ngModel"
                     [required]="item.flgApplicableNotApply == false" >
                       <option  disabled>Select City </option>
@@ -219,7 +199,7 @@
               <div class="col-2  p-0 input-border-bottom"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && countryId.errors}"
               [ngClass]="{'error':  countryId.touched && countryId.errors}">
-                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
+                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 15px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="{{i}}_countryId" id="{{i}}_countryId" #countryId="ngModel" [required]="item.flgApplicableNotApply == false" (change)="getStateByCountryId(countryId.value,i)" >
                       <option  disabled>Select Country </option>
@@ -290,7 +270,7 @@
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                       
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="item.flgApplicableNotApply == true" 
                         [(ngModel)]="item.propertyValue" name="{{i}}.propertyValue" 
@@ -348,7 +328,7 @@
 
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                      
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="item.flgApplicableNotApply == true"  
                         [(ngModel)]="item.monthlyInsurance" 
@@ -382,7 +362,7 @@
                  /> -->
                  <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                  
-                  <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                  <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="item.flgApplicableNotApply == true"  
                         [(ngModel)]="item.monthlyRentalIncome" 
@@ -421,7 +401,7 @@
 
                     <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                     
-                      <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                       [min]="0" maxlength="9" 
                       [disabled]="item.flgApplicableNotApply == true" 
                       [(ngModel)]="item.netMonthlyRentalIncome" 
@@ -556,7 +536,7 @@
 
                   <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
 
-                    <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                    <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                       [min]="0" maxlength="9" 
                       [required]="item.flgMortgageLoanNotApply == false " 
                       [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  
@@ -588,7 +568,7 @@
                       <!-- <input type="number"  min="0" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.unpaidBalance" name="{{i}}_unpaidBalance" id="{{i}}_unpaidBalance" #unpaidBalance="ngModel"/> -->
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                       
-                        <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                       [min]="0" maxlength="9" 
                       [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
                       [required]="item.flgMortgageLoanNotApply == false " 
@@ -637,7 +617,7 @@
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span>
 
-                      <input type="number" onFocus="this.select();" (blur)="fixDecimals($event)"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                      <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                       [min]="0" maxlength="9" 
                       [required]="item.flgMortgageLoanNotApply == false" 
                       [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
