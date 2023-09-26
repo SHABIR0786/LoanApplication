@@ -65,7 +65,8 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentDateDob.setDate(this.currentDateDob.getDate() - 3600);
+    
+    this.currentDateDob = new Date("01/30/2010");
 
     this.monthYearList();
     this.getCountries();

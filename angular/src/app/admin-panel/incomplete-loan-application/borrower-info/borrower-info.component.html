@@ -92,6 +92,13 @@
     top: 0;
     width: auto;
   }
+
+  :host/deep/ input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
 </style>
 <div>
   <!-- <form #borrowForm="ngForm" (ngSubmit)="borrowForm.valid && nextBtnClick()" class="w-full"> -->
@@ -170,7 +177,7 @@
               [ngClass]="{'error':  dob.touched && dob.errors}">
               <label class="frm-label">Date of Birth </label>
               <p class="frm-fld-input">
-                <input type="date" id="dob" name="dob" #dob="ngModel" (blur)="onBlurDt($event)" min="1900-01-01" 
+                <input type="date" data-date-format="MM-dd-yyyy" id="dob" type="date"  name="dob" #dob="ngModel" (blur)="onBlurDt($event)" min="1900-01-01" 
                   [(ngModel)]="borrowerInfo.personalInformation.dob" max="{{currentDateDob | date:'yyyy-MM-dd'}}"  required />
               </p>
             </div>
@@ -1174,7 +1181,7 @@
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate.errors}"
                   [ngClass]="{'error_bb':  startDate.touched && startDate.errors}">
 
-                  <input type="date" (blur)="onBlurDt($event)" name="startDate" id="startDate" #startDate="ngModel"
+                  <input type="date" data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" name="startDate" id="startDate" #startDate="ngModel"
                      [(ngModel)]="borrowerInfo.employment[0].startDate"
                     [required]="doNotApplyForEmp0 == false" [readonly]="doNotApplyForEmp0 == true"
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />
@@ -1671,7 +1678,7 @@
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate3.errors}"
                   [ngClass]="{'error_bb':  startDate3.touched && startDate3.errors}">
 
-                  <input type="date" (blur)="onBlurDt($event)" name="startDate3" id="startDate3" #startDate3="ngModel"
+                  <input type="date" data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" name="startDate3" id="startDate3" #startDate3="ngModel"
                     [(ngModel)]="borrowerInfo.employment[1].startDate" [readonly]="doNotApplyForEmp1 == true"
                     [required]="doNotApplyForEmp1 == false"
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />
@@ -2161,7 +2168,7 @@
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate4.errors}"
                   [ngClass]="{'error_bb':  startDate4.touched && startDate4.errors}">
 
-                  <input type="date" (blur)="onBlurDt($event)" [required]="doNotApplyForEmp2 == false"
+                  <input type="date"  data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" [required]="doNotApplyForEmp2 == false"
                     [(ngModel)]="borrowerInfo.employment[2].startDate" name="startDate4"
                     id="startDate4" #startDate4="ngModel" [readonly]="doNotApplyForEmp2 == true"
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />
@@ -2177,7 +2184,7 @@
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate5.errors}"
                   [ngClass]="{'error_bb':  startDate5.touched && startDate5.errors}">
 
-                  <input type="date" (blur)="onBlurDt($event)" [required]="doNotApplyForEmp2 == false"
+                  <input type="date" data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" [required]="doNotApplyForEmp2 == false"
                      [(ngModel)]="borrowerInfo.employment[2].endDate" name="startDate5"
                     id="startDate5" #startDate5="ngModel" [readonly]="doNotApplyForEmp2 == true"
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />

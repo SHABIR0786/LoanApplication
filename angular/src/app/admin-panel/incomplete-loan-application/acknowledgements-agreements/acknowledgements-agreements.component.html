@@ -210,7 +210,7 @@
             id="specificSizeInputGroupUsername" /> -->
 
 
-            <input type="date" (blur)="onBlurDt($event)" id="specificSizeInputGroupUsername" max="{{currentDate | date:'yyyy-MM-dd'}}" style=" border-bottom: 1px solid #9d9d9d; border-left:0px; border-right: 0px; border-top: 0px;" />
+            <input type="date" data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" id="specificSizeInputGroupUsername" max="{{currentDate | date:'yyyy-MM-dd'}}" style=" border-bottom: 1px solid #9d9d9d; border-left:0px; border-right: 0px; border-top: 0px;" />
 
         </div>
       </div>
@@ -237,7 +237,7 @@
 
           <!-- <input type="date" id="specificSizeInputGroupUsername" max="{{currentDate | date:'yyyy-MM-dd'}}" required /> -->
 
-          <input type="date"  (blur)="onBlurDt($event)" id="specificSizeInputGroupUsername1" max="{{currentDate | date:'yyyy-MM-dd'}}" style=" border-bottom: 1px solid #9d9d9d; border-left:0px; border-right: 0px; border-top: 0px;" />
+          <input type="date" data-date-format="MM-dd-yyyy"   (blur)="onBlurDt($event)" id="specificSizeInputGroupUsername1" max="{{currentDate | date:'yyyy-MM-dd'}}" style=" border-bottom: 1px solid #9d9d9d; border-left:0px; border-right: 0px; border-top: 0px;" />
 
         </div>
       </div>
