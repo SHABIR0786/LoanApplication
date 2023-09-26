@@ -305,21 +305,21 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   getTotalMortgageFinancialAssets() {
     
-    this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
+    this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce((sum, current) => sum + Number(current.cashMarketValue), 0)
   if(isNaN(this.totalMortgageFinancialAssets)  == true){
     this.totalMortgageFinancialAssets = 0;
   }
   }
   getTotalMortgageFinancialOtherAssets() {
     
-    this.totalMortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.reduce((sum, current) => sum + current.cashMarketValue, 0)
+    this.totalMortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.reduce((sum, current) => sum + Number(current.cashMarketValue), 0)
     if(isNaN(this.totalMortgageFinancialOtherAssets)  == true){
       this.totalMortgageFinancialOtherAssets = 0;
     }
   }
   getTotalMortgageFinancialOtherLaibilities() {
     
-    this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce((sum, current) => sum + current.monthlyPayment, 0)
+    this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce((sum, current) => sum + Number(current.monthlyPayment), 0)
     if(isNaN(this.totalMortgageFinancialOtherLaibilities)  == true){
       this.totalMortgageFinancialOtherLaibilities = 0;
     }

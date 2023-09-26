@@ -2190,15 +2190,15 @@
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-4" >
             <label class="container mt-1 mb-2">
               <span class="gray-text" style="font-size: 10px !important;">
                 Check if you were the Business Owner or Self-Employed.
               </span>
-              <input type="checkbox" style="zoom: 1 !important;" [(ngModel)]="borrowerInfo.employment[2].isSelfEmployed"
+              <input [ngClass]="{'disabled':doNotApplyForEmp2==true}" type="checkbox" style="zoom: 1 !important;" [(ngModel)]="borrowerInfo.employment[2].isSelfEmployed"
                 [disabled]="doNotApplyForEmp2 == true" name="isSelfEmployed4" id="isSelfEmployed4"
-                #isSelfEmployed4="ngModel" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
-              <span class="checkmark" style="margin-top: 5px;"></span>
+                #isSelfEmployed4="ngModel" >
+              <span class="checkmark" style="margin-top: 5px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}"></span>
             </label>
 
             <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
