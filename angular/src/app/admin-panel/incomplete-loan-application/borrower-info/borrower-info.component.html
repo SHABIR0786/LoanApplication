@@ -177,7 +177,7 @@
               [ngClass]="{'error':  dob.touched && dob.errors}">
               <label class="frm-label">Date of Birth </label>
               <p class="frm-fld-input">
-                <input type="date" data-date-format="MM-dd-yyyy" id="dob" type="date"  name="dob" #dob="ngModel" (blur)="onBlurDt($event)" min="1900-01-01" 
+                <input type="date" id="dob"  name="dob" #dob="ngModel" (blur)="onBlurDt($event)" min="1900-01-01"
                   [(ngModel)]="borrowerInfo.personalInformation.dob" max="{{currentDateDob | date:'yyyy-MM-dd'}}"  required />
               </p>
             </div>
@@ -692,10 +692,10 @@
                         <span class="gray-text ml-1">($</span>
                         <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
 
-                          <input type="text" 
+                          <input type="text"
                           onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"
                             style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                            [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.personalInformation.address[0].rent" 
+                            [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.personalInformation.address[0].rent"
                             id="MonthRent1" name="MonthRent1" #txtMonthRent1="ngModel"
                             [disabled]="borrowerInfo.personalInformation.address[0].housingType== '1'"
                             ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
@@ -1934,7 +1934,7 @@
                     <!-- <p-inputNumber (onFocus)="selectNumber($event)" class="showBorder" maxlength="9"
                       [disabled]="doNotApplyForEmp1 == true"
                       [(ngModel)]="borrowerInfo.employment[1].grossMonthlyIncome.commission" name="commission2"
-                      id="commission2" #commission2="ngModel" [minFractionDigits]="2" [min]="0" 
+                      id="commission2" #commission2="ngModel" [minFractionDigits]="2" [min]="0"
                       [maxFractionDigits]="2"></p-inputNumber>-->
                     <span>/month</span>
                   </div>

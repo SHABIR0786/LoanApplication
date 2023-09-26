@@ -23,6 +23,22 @@ export class AcknowledgementsAgreementsComponent implements OnInit {
     this.router.navigateByUrl('app/admin/incomplete-loan-application/military-service');
   }
 
+  fixDecimals(event: any) {
+    debugger
+    var vals = event.target.value.replace(",","") ;
+    if(vals !="" ){
+     vals = parseFloat(vals).toFixed(2);
+     var int: number = parseInt(vals);
+     var dec = vals - int;
+      if (dec > 0) {event.target.value = int + dec;} else {event.target.value = int + ".00";}
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
+    }else{
+      event.target.value = "0.00";
+    }
+  }
+  
   onBlurDt(event: any) {
   
     var sDate = new Date(event.target.value);

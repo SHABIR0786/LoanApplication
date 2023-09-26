@@ -572,7 +572,8 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   fixDecimals(event: any) {
-    var vals = event.target.value;
+    debugger
+    var vals = event.target.value.replace(",","") ;
     if(vals !="" ){
      vals = parseFloat(vals).toFixed(2);
      var int: number = parseInt(vals);
