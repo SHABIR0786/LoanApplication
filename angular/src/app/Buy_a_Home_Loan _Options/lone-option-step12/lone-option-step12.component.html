@@ -9,7 +9,6 @@
         </p>
       </div>
     </div>
-
     <div class="row justify-content-center pt-4">
       <div class="col-md-4 col-lg-3">
         <div class="card bg-white">
@@ -137,7 +136,7 @@
             <p id="Loan-Details">Loan Details</p>
             <img src="assets/images/Group 441.png" alt="" id="imges" />
             <div class="form-group">
-              <label>Purchase price</label>
+              <label>Purchase Price</label>
               <input
                 class="form-control form-control-lg-next text-primary bg-white"
                 prefix="$"
@@ -149,12 +148,13 @@
               />
             </div>
             <div class="form-group">
-              <label>Down payment</label>
+              <label>Down Payment</label>
               <input
                 class="form-control form-control-lg-next text-primary bg-white"
                 prefix="$"
                 style="display: inline-block; width: 65%"
                 [(ngModel)]="formData.downPayment"
+                (keyup)="percentChange()"
                 mask="separator.2"
                 thousandSeparator=","
                 maxlength="18"
@@ -162,12 +162,13 @@
               <input
                 class="form-control form-control-lg-next text-primary bg-white"
                 style="display: inline-block; width: 30%; margin-left: 5%"
-                prefix="$"
                 [(ngModel)]="formData.downPaymentPercent"
                 mask="separator.2"
                 thousandSeparator=","
+                (keyup)="downpaymentchange()"
                 maxlength="18"
               />
+              <span class="percent-sign">%</span>
             </div>
             <div class="form-group">
               <label>Zip Code</label>
@@ -183,6 +184,7 @@
                 class="form-control form-control-lg-next text-primary bg-white"
                 style="width: 100%; font-size: 14px"
                 [(ngModel)]="formData.PropertyUse"
+                disabled
               />
             </div>
             <div class="form-group">
@@ -191,30 +193,31 @@
                 class="form-control form-control-lg-next text-primary bg-white"
                 style="width: 100%; font-size: 14px"
                 [(ngModel)]="formData.important_to_you"
+                disabled
               />
             </div>
             <div class="form-group">
               <label>Credit score</label>
               <input
                 class="form-control form-control-lg-next text-primary bg-white"
-                prefix="$"
                 style="width: 100%"
                 [(ngModel)]="formData.rateCredit"
                 mask="separator.2"
                 thousandSeparator=","
                 maxlength="18"
+                disabled
               />
             </div>
             <div class="form-group">
               <label>Years you’ll own the property</label>
               <input
                 class="form-control form-control-lg-next text-primary bg-white"
-                prefix="$"
                 style="width: 100%"
                 [(ngModel)]="formData.howLongPlan"
                 mask="separator.2"
                 thousandSeparator=","
                 maxlength="18"
+                disabled
               />
             </div>
             <div>
@@ -238,7 +241,7 @@
     </div>
     <p
       id="button"
-      class="box-fill cursor_pointer"
+      class="box-fill cursor_pointer mt-3"
       (click)="proceedToNext('Nothing')"
     >
       SEE ALL OPTIONS

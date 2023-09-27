@@ -18,11 +18,15 @@
 .slide-value-percent {
   position: relative;
   bottom: 68px;
-  left: 113px;
+  height: 55px;
+  background: none;
+  left: 127px;
+  width: 108px;
   color: #f47741 !important;
   font-size: 40px;
   border-left: 1px solid black;
   padding: 12px;
+  border: none;
 }
 /* Hafiz's CSS */
 
@@ -90,4 +94,12 @@
     left: 20%;
     top: 120px;
   }
+}
+
+.percentsign {
+  position: absolute;
+  margin-left: 100px;
+  margin-top: -58px;
+  font-size: 23px;
+  color: #f47741 !important;
 }

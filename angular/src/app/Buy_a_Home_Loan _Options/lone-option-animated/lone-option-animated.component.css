@@ -4,6 +4,9 @@
   border: 1px solid #f47741;
   border-radius: 8px;
 }
+.font-weight-bold {
+  font-size: 100px;
+}
 .Content-Step-Body .refinance-card {
   color: #091a52;
   border: 1px solid #091a52;
@@ -13,31 +16,7 @@
   background-color: #f47741 !important;
   color: #ffffff !important;
 }
-
-/* .Content-Step-Body .card:hover,
-.refinance-card:hover {
-  background-color: #f47741 !important;
-  color: #ffffff !important;
-} */
-
-/* .Content-Step-Body .card:hover .home-bg-img {
-  background-image: url("../../../assets/images/home-white.png");
-}
-.refinance-card:hover .dollar-bg-img {
-  background-image: url("../../../assets/images/dollar-arrow1.png");
-  .home-bg-img {
-  width: 67px;
-  height: 66px;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: auto;
-  background-size: cover;
-  background-image: url("../../../assets/images/home.png");
-}
-} */
 .home-bg-img {
-  /* width: 67px;
-  height: 66px; */
   width: 121px;
   height: 116px;
   background-position: center;
@@ -48,8 +27,6 @@
 }
 
 .dollar-bg-img {
-  /* width: 60px;
-  height: 65px; */
   width: 108px;
   height: 116px;
   background-position: center;
@@ -58,8 +35,6 @@
   background-size: cover;
   background-image: url("../../../assets/images/dollar-arrow-blue.png");
 }
-/* Hafiz's CSS */
-
 .Content-Step-Body.text-black {
   background-color: white !important;
   color: black;

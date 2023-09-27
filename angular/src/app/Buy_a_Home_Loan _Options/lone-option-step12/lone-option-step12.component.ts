@@ -44,6 +44,32 @@ export class LoneOptionStep12Component implements OnInit {
     return result;
   }
 
+  percentChange() {
+    console.log(this.formData.downPayment);
+    this.formData.downPayment = parseInt(this.formData.downPayment + "");
+    this.formData.estimatePrice = parseInt(this.formData.estimatePrice + "");
+
+    if (this.formData.downPayment <= this.formData.estimatePrice) {
+      this.formData.downPaymentPercent =
+        (this.formData.downPayment / this.formData.estimatePrice) * 100;
+      this.formData.downPaymentPercent = parseInt(
+        this.formData.downPaymentPercent.toFixed(0)
+      );
+      this.formData.downPaymentPercent = this.formData.downPaymentPercent;
+    }
+  }
+  downpaymentchange() {
+    console.log(this.formData.downPaymentPercent);
+    if (this.formData.downPaymentPercent <= 100) {
+      this.formData.downPayment =
+        (this.formData.downPaymentPercent * this.formData.estimatePrice) / 100;
+      this.formData.downPayment = parseInt(
+        this.formData.downPayment.toFixed(0)
+      );
+      this.formData.downPayment = this.formData.downPayment;
+    }
+  }
+
   ngOnInit(): void {
     this.formData = this._loanOptionHomeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
@@ -73,5 +99,6 @@ export class LoneOptionStep12Component implements OnInit {
   }
   update() {
     this._loanOptionHomeBuyingDataService.data = this.formData;
+    this._route.navigate(["app/buy-a-home-loan-options-animated-step13"]);
   }
 }

@@ -18,10 +18,17 @@
               placeholder="ZIP Code"
               [(ngModel)]="formData.zipCode"
               formControlName="zipCode"
+              pattern="^[0-9]{5}(?:-[0-9]{4})?$"
               [ngClass]="{ 'is-invalid': submitted && f.zipCode.errors }"
             />
             <div *ngIf="submitted && f.zipCode.errors" class="invalid-feedback">
               <div *ngIf="f.zipCode.errors.required">Enter Valid Zip Code.</div>
+            </div>
+            <div
+              *ngIf="submitted && f.zipCode.errors?.pattern"
+              class="invalid-feedback"
+            >
+              This is not a valid zip code
             </div>
           </div>
         </form>

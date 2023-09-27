@@ -56,7 +56,14 @@
               thousandSeparator=","
               maxlength="18"
             />
-            <span class="slide-value-percent">{{ Percentage }}%</span>
+            <input
+              type="text"
+              class="slide-value-percent"
+              formControlName="downPaymentPercent"
+              (keyup)="downpaymentchange()"
+              [(ngModel)]="formData.downPaymentPercent"
+            />
+            <span class="percentsign">%</span>
           </div>
           <div
             *ngIf="submitted && f.downPayment.errors"

@@ -22,7 +22,7 @@ export class LoneOptionStep5Component implements OnInit {
   formData: IBuyingHomeLoanOptionModel;
   form: FormGroup;
   submitted = false;
-  Percentage = null;
+  // Percentage = null;
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -31,24 +31,50 @@ export class LoneOptionStep5Component implements OnInit {
     this.form = this.formBuilder.group({
       estimatePrice: [null, Validators.required],
       downPayment: [null, Validators.required],
+      downPaymentPercent: [null, Validators.required],
     });
     this.formData = this._loanOptionHomeBuyingDataService.data;
     if (this.formData == null || this.formData == undefined) {
       this._route.navigate(["app/buy-a-home-loan-options-animated-step1"]);
     }
-    this.Percentage = this.formData.downPaymentPercent;
+    // else {
+    //  this.Percentage = this.formData.downPaymentPercent;
+    // }
   }
   percentChange() {
     this.form.value.estimatePrice = parseInt(this.form.value.estimatePrice);
     this.form.value.downPayment = parseInt(this.form.value.downPayment);
+    console.log(this.form.value.downPaymentPercent);
     if (this.form.value.downPayment <= this.form.value.estimatePrice) {
-      this.Percentage =
+      this.form.value.downPaymentPercent =
         (this.form.value.downPayment / this.form.value.estimatePrice) * 100;
-      this.Percentage = this.Percentage.toFixed(0);
+      this.form.value.downPaymentPercent = this.form.value.downPaymentPercent.toFixed(
+        0
+      );
+      this.formData.downPaymentPercent = this.form.value.downPaymentPercent;
       this.submitted = true;
     } else {
       this.form.controls["downPayment"].setValue(0);
-      this.Percentage = 0;
+      this.form.value.downPaymentPercent = 0;
+      this.submitted = false;
+    }
+  }
+  downpaymentchange() {
+    this.form.value.estimatePrice = parseInt(this.form.value.estimatePrice);
+    this.form.value.downPaymentPercent = parseInt(
+      this.form.value.downPaymentPercent
+    );
+    console.log(this.form.value.downPaymentPercent);
+    if (this.form.value.downPaymentPercent <= 100) {
+      this.form.value.downPayment =
+        (this.form.value.downPaymentPercent * this.form.value.estimatePrice) /
+        100;
+      this.form.value.downPayment = this.form.value.downPayment.toFixed(0);
+      this.formData.downPayment = this.form.value.downPayment;
+      this.submitted = true;
+    } else {
+      this.form.controls["downPayment"].setValue(0);
+      this.form.value.downPaymentPercent = 0;
       this.submitted = false;
     }
   }
@@ -62,7 +88,7 @@ export class LoneOptionStep5Component implements OnInit {
     }
     this.formData.estimatePrice = data.estimatePrice;
     this.formData.downPayment = data.downPayment;
-    this.formData.downPaymentPercent = this.Percentage;
+    this.formData.downPaymentPercent = data.downPaymentPercent;
     this._loanOptionHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-loan-options-animated-step6"]);
   }

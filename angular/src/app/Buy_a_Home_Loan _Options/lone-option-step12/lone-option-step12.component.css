@@ -262,3 +262,9 @@ label {
 #icon {
   color: #f47741;
 }
+.percent-sign {
+  position: absolute;
+  margin-left: -24px;
+  color: #f47741;
+  margin-top: 13px;
+}

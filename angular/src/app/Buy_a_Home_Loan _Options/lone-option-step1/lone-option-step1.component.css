@@ -1,14 +1,15 @@
+.back-btn-mb div {
+  display: none;
+}
+.back-btn-mb {
+  max-width: 100%;
+}
+
 #Back {
-  position: relative;
-  top: 25px;
   font-size: 20px;
 }
 #icon {
-  top: 28px;
   font-size: 26px;
-  position: relative;
-  /* top: 141px; */
-  /* right: 300px; */
 }
 
 #button {
@@ -185,7 +186,16 @@ h5.mt-3 {
   }
 }
 
-/* Large devices (desktops, 992px and up)*/
+@media (max-width: 991px) {
+  .back-btn-mb div {
+    display: block;
+    max-width: 100% !important;
+  }
+  .back-btn {
+    display: none;
+  }
+}
+
 @media (min-width: 992px) {
   .pt-3.cursor_pointer {
     position: absolute;
@@ -197,7 +207,6 @@ h5.mt-3 {
   }
 }
 
-/* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .pt-3.cursor_pointer {
     position: absolute;

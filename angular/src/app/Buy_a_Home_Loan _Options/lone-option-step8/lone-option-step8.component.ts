@@ -28,4 +28,9 @@ export class LoneOptionStep8Component implements OnInit {
     this._loanOptionHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/buy-a-home-loan-options-animated-step9"]);
   }
+  skip() {
+    this.formData.important_to_you = "";
+    this._loanOptionHomeBuyingDataService.data = this.formData;
+    this._route.navigate(["app/buy-a-home-loan-options-animated-step9"]);
+  }
 }

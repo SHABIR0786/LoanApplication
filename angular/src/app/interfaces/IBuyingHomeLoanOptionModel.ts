@@ -19,4 +19,5 @@ export interface IBuyingHomeLoanOptionModel {
   lastName?: string;
   emailAddress?: string;
   phoneNumber?: string;
+  Percentage?: number;
 }

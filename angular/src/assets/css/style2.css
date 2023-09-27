@@ -681,7 +681,7 @@ ul.list-refinace li {
 .Content-Step-Body {
   background-color: #091a52 !important;
   text-align: center;
-  padding-top: 1.6rem;
+  /* padding-top: 1.6rem; */
   padding-bottom: 0.4rem;
 }
 .Content-Step-Body .card {

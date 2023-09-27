@@ -2,10 +2,7 @@
   border-radius: 8px !important;
   background-color: #e5e5e5 !important;
   border: 0px !important;
-}
-
-.float-left {
-  margin-top: 8px;
+  padding: 20px;
 }
 
 .number {
