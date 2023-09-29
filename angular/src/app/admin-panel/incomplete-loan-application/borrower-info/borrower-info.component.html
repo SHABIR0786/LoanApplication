@@ -1,11 +1,13 @@
 <style>
+
+@media only screen and (max-width: 600px) {
   :host/deep/ .ui-inputnumber {
     padding-left: 3px !important;
   }
 
   :host/deep/.ui-inputtext {
     border: 0px !important;
-    font-size: 16px;
+    font-size: 10px;
     margin-bottom: 0px;
     padding-left: 0px !important;
     width: 100%;
@@ -35,17 +37,17 @@
     background-color: #E7E7E7 !important;
   }
 
-  :host/deep/ .disabled .input-border-bottom .frm-group {
+  :host/deep/ .disabled .input-border-bottom .form-group {
     pointer-events: none;
     background-color: #E7E7E7 !important;
   }
 
-  :host/deep/ .frm-group .disabled {
+  :host/deep/ .form-group .disabled {
     pointer-events: none;
     background-color: #E7E7E7 !important;
   }
 
-  :host/deep/ .frm-group .disabled .frm-fld-input {
+  :host/deep/ .form-group .disabled .frm-fld-input {
     pointer-events: none;
     background-color: #E7E7E7 !important;
   }
@@ -98,14 +100,115 @@
         -webkit-appearance: none;
         margin: 0;
     }
+  }
+  @media only screen and (min-width: 601px) {
+    :host/deep/ .ui-inputnumber {
+    padding-left: 3px !important;
+  }
 
+  :host/deep/.ui-inputtext {
+    border: 0px !important;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-left: 0px !important;
+    width: 100%;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    color: #A5A5A5;
+    font-weight: 500;
+    line-height: 1.2575;
+    border-bottom: 0px solid #A5A5A5 !important;
+    background-color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 #ffffff !important;
+    outline: medium none;
+  }
+
+
+
+  :host/deep/ .disabled input {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .disabled .input-border-bottom {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .disabled .input-border-bottom .form-group {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .form-group .disabled {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  :host/deep/ .form-group .disabled .frm-fld-input {
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+
+  ::ng-deep .fifty .ui-inputtext {
+    width: 50% !important;
+    /* border: none !important; */
+  }
+
+  ::ng-deep .sixty .ui-inputtext {
+    width: 60% !important;
+    /* border: none !important; */
+  }
+
+  ::ng-deep .seventy .ui-inputtext {
+    width: 70% !important;
+    /* border: none !important; */
+  }
+
+  ::ng-deep .eighty .ui-inputtext {
+    width: 80% !important;
+    /* border: none !important; */
+  }
+
+  ::ng-deep .noBorder .ui-inputtext {
+    border: none !important;
+  }
+
+  ::ng-deep .showBorder .ui-inputtext {
+    border-bottom: 1px solid #A5A5A5 !important;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+
+  :host/deep/ input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+  }
 </style>
 <div>
   <!-- <form #borrowForm="ngForm" (ngSubmit)="borrowForm.valid && nextBtnClick()" class="w-full"> -->
   <form #borrowForm="ngForm" (ngSubmit)="borrowForm.valid && nextBtnClick()" class="w-full">
     <h4 class="section-title">Personal Information</h4>
     <div class="info-block">
-      <p>
+      <p class="top-clear-text">
         This section asks about your personal information and your income from
         employment and other sources, such as retirement, that you want considered
         to qualify for this loan.
@@ -115,153 +218,113 @@
     <div class="Main" style="width: 100%;">
       <div class="div-main-grp" style="width: 100%;">
         <div class="row div-sub-grp">
-          <div class="col-3 p-1">
-            <div class="frm-group" aria-disabled="true" [ngClass]="{'error': borrowForm.submitted && firstName.errors}"
+          <div class="col-sm-3 col-6 p-1">
+            <div class="form-group" aria-disabled="true" [ngClass]="{'error': borrowForm.submitted && firstName.errors}"
               [ngClass]="{'error':  firstName.touched && firstName.errors}">
               <label class="frm-label">First name</label>
-              <p class="frm-fld-input">
+              <div class="frm-fld-input">
                 <input type="text" maxlength="30" (blur)="getInitials()" max="30"
                   [(ngModel)]="borrowerInfo.personalInformation.firstName" id="firstName" name="firstName"
                   #firstName="ngModel" placeholder="First Name" required placeholder="First Name" />
-              </p>
+              </div>
 
             </div>
           </div>
-          <div class="col-3 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && middleName.errors}"
+          <div class="col-sm-3 col-6 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && middleName.errors}"
               [ngClass]="{'error':  middleName.touched && middleName.errors}">
               <label class="frm-label" style="color: #a5a5a5 !important;">Middle Name</label>
-              <p class="frm-fld-input" style="color: #d1d0d0 !important;">
+              <div class="frm-fld-input" style="color: #d1d0d0 !important;">
                 <input type="text" maxlength="30" id="middleName" name="middleName" #middleName="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.middleName" placeholder="Middle Name" />
-              </p>
+              </div>
             </div>
           </div>
-          <div class="col-3 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && lastName.errors}"
+          <div class="col-sm-3 col-6 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && lastName.errors}"
               [ngClass]="{'error':  lastName.touched && lastName.errors}">
               <label class="frm-label">Last Name</label>
-              <p class="frm-fld-input"><input (blur)="getInitials()" type="text" maxlength="30"
+              <div class="frm-fld-input"><input (blur)="getInitials()" type="text" maxlength="30"
                   [(ngModel)]="borrowerInfo.personalInformation.lastName" placeholder="Last Name" required id="lastName"
-                  name="lastName" #lastName="ngModel" /></p>
+                  name="lastName" #lastName="ngModel" /></div>
             </div>
           </div>
-          <div class="col-3 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && jr.errors}"
+          <div class="col-sm-3 col-6 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && jr.errors}"
               [ngClass]="{'error':  jr.touched && jr.errors}">
               <label class="frm-label" style="color: #a5a5a5 !important;">Suffix</label>
-              <p class="frm-fld-input" style="color: #d1d0d0 !important;">
+              <div class="frm-fld-input" style="color: #d1d0d0 !important;">
                 <input type="text" max="10" id="jr" name="jr" #jr="ngModel" maxlength="10"
                   [(ngModel)]="borrowerInfo.personalInformation.suffix" placeholder="(Jr. or Sr. if applicable)" />
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
 
         <div class="row div-sub-grp">
-          <div class="col-4 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && socialSecurityNumber.errors}"
+          <div class="col-sm-4 col-12 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && socialSecurityNumber.errors}"
               [ngClass]="{'error':  socialSecurityNumber.touched && socialSecurityNumber.errors}">
               <label class="frm-label">Social Security Number (Individual Taxpayer Identification Number)</label>
-              <p class="frm-fld-input">
+              <div class="frm-fld-input">
                 <p-inputMask class="noBorder" inputStyleClass="p-inputMask" mask="999-99-9999"
                   [(ngModel)]="borrowerInfo.personalInformation.socialSecurityNumber" id="socialSecurityNumber"
                   name="socialSecurityNumber" #socialSecurityNumber="ngModel" [required]="true"></p-inputMask>
-              </p>
+              </div>
             </div>
           </div>
 
-          <div class="col-4 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && dob.errors}"
+          <div class="col-sm-4 col-12 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && dob.errors}"
               [ngClass]="{'error':  dob.touched && dob.errors}">
               <label class="frm-label">Date of Birth </label>
-              <p class="frm-fld-input">
+              <div class="frm-fld-input">
                 <input type="date" id="dob"  name="dob" #dob="ngModel" (blur)="onBlurDt($event)" min="1900-01-01"
                   [(ngModel)]="borrowerInfo.personalInformation.dob" max="{{currentDateDob | date:'yyyy-MM-dd'}}"  required />
-              </p>
+              </div>
             </div>
           </div>
 
-          <div class="col-4 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && citizenship.errors}"
+          <div class="col-sm-4 col-12 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && citizenship.errors}"
               [ngClass]="{'error':  citizenship.touched && citizenship.errors}">
               <label class="frm-label">Citizenship</label>
-              <p class="frm-fld-input">
+              <div class="frm-fld-input">
                 <select class="form-control shadow-none" style="padding-left: 0px;" id="citizenship" name="citizenship"
                   #citizenship="ngModel" [(ngModel)]="borrowerInfo.personalInformation.citizenship">
                   <option [ngValue]="undefined">Citizenship</option>
                   <option *ngFor="let obj of citizenshipType" [ngValue]="obj.id"> {{obj.citizenshipType1}} </option>
                 </select>
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="row div-sub-grp">
-          <div class="col-10 p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && yourInitials2.errors}"
+          <div class="col-sm-10 col-10 p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && yourInitials2.errors}"
               [ngClass]="{'error':  yourInitials2.touched && yourInitials2.errors}"
               [ngClass]="{'disabled':doNotApplyForAddress0==true}">
               <label class="frm-label">Alternate Names</label>
 
-              <p class="frm-fld-input">
+              <div class="frm-fld-input">
                 <input [readonly]="doNotApplyForAddress0 == true" [required]="doNotApplyForAddress0 == false"
                   type="text" id="yourInitials2" name="yourInitials2" #yourInitials2="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.yourInitials1" required maxlength="30"
                   placeholder="List any names by which you are known or any names under which credit was previously received (First, Middle, Last, Suffix)" />
-              </p>
+              </div>
             </div>
           </div>
 
-          <div class="col-2  p-1">
-            <label class="container flex ">
-              <span style="font-weight: bold;">Do Not Apply</span>
+          <div class="col-sm-2 col-2 p-1">
+            <label class="container flex cls-checkbox ">
+              <span class="Checkbox-Label">Do Not Apply</span>
               <input type="checkbox" [(ngModel)]="doNotApplyForAddress0" name="adoNotApplyForAddress01"
                 id="adoNotApplyForAddress01" #txtdoNotApplyForAddress0="ngModel"
                 (change)="doNotApplyForAddress0F(txtdoNotApplyForAddress0.value)">
-              <span class="checkmark" style="margin-top: 5px !important;"></span>
+              <span class="checkmark" style="margin-top: 4px !important;"></span>
             </label>
-          </div>
-        </div>
-
-        <div class="row div-sub-grp" style="visibility: hidden; display: none;">
-          <div class="col-3 ">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && alterFirstName.errors}"
-              [ngClass]="{'error':  alterFirstName.touched && alterFirstName.errors}">
-              <label class="frm-label">First name</label>
-              <p class="frm-fld-input">
-                <input type="text" id="alterFirstName" maxlength="30" name="alterFirstName" #alterFirstName="ngModel"
-                  [(ngModel)]="borrowerInfo.personalInformation.alternateNames.firstName" placeholder="First Name" />
-              </p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="frm-group">
-              <label class="frm-label">Middle Name</label>
-              <p class="frm-fld-input"><input type="text" maxlength="30" id="alterMiddleName" name="alterMiddleName"
-                  #alterMiddleName="ngModel" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.middleName"
-                  placeholder="Middle Name">
-              </p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && alterLastName.errors}"
-              [ngClass]="{'error':  alterLastName.touched && alterLastName.errors}">
-              <label class="frm-label">Last Name</label>
-              <p class="frm-fld-input"><input type="text" maxlength="30" d="alterLastName" name="alterLastName"
-                  #alterLastName="ngModel" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.lastName"
-                  placeholder="Last Name" /></p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && alterSuffix.errors}"
-              [ngClass]="{'error':  alterSuffix.touched && alterSuffix.errors}">
-              <label class="frm-label">Suffix</label>
-              <p class="frm-fld-input"><input type="text" maxlength="10" id="alterSuffix" name="alterSuffix"
-                  #alterSuffix="ngModel" [(ngModel)]="borrowerInfo.personalInformation.alternateNames.suffix"
-                  placeholder="(Jr. or Sr. if applicable)" /></p>
-            </div>
           </div>
         </div>
 
@@ -270,8 +333,8 @@
       <!-- Type of Credit ---- List Name(s) of Other Borrower(s) Applying for this Loan -->
       <div class="div-main-grp" style="width: 100%;">
         <div class="row div-sub-grp">
-          <div class="col-4  p-1">
-            <div class="frm-group" [ngClass]="{'error': borrowForm.submitted && credit0.errors}"
+          <div class="col-sm-4 col-12  p-1">
+            <div class="form-group" [ngClass]="{'error': borrowForm.submitted && credit0.errors}"
               [ngClass]="{'error':  credit0.touched && credit0.errors}">
               <label class="frm-label">Type of Credit</label>
               <div class="frm-fld-input">
@@ -279,12 +342,7 @@
                   <input type="radio" required [(ngModel)]="borrowerInfo.personalInformation.creditValue" name="credit0"
                     id="credit0" #credit0="ngModel" (change)="creditClick()" value="1"
                     style="margin-right: 8px; width: 15px; height:15px;" />
-                  <label
-                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
-                    I am applying for
-                    <span class="span-bold">
-                      individual credit.</span>
-                  </label>
+                  <label class="radio-label"> I am applying for <b style="color:#545454 !important">individual credit.</b> </label>
                 </div>
                 <div style="display: flex;margin-top: 5px; align-items:center;">
                   <input type="radio" required name="credit0" id="credit0" #credit0="ngModel"
@@ -292,16 +350,9 @@
                     style="margin-right: 8px; width: 15px; height:15px;  color:#a5a5a5;"
                     [ngClass]="{'error': borrowForm.submitted && credit0.errors}"
                     [ngClass]="{'error':  credit0.touched && credit0.errors}" />
-                  <label
-                    style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
-                    am applying for <b
-                      style=" color:#696969; font-size: 14px !important; font-family: 'Mulish', sans-serif;">joint
-                      credit.</b></label>
+                  <label class="radio-label">I am applying for <b style="color:#545454 !important">joint credit.</b></label>
                 </div>
-                <div class="frm-fld-input-no-arrow"
-                  style="margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
-                  Total Number of <span class="span-bold">Borrowers:</span>
-
+                <div class="frm-fld-input-no-arrow no-arrow pt-1">  Total Number of <b style="color:#545454 !important">Borrowers:</b>
                   <select [disabled]="borrowerInfo.personalInformation.creditValue=='1'"
                     [required]="borrowerInfo.personalInformation.creditValue=='2'"
                     [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (change)="creditClick()"
@@ -315,14 +366,9 @@
 
                 </div>
 
-                <div class="frm-fld-input"
-                  style="margin-top:8px; margin-left: 10px;  color:#a5a5a5; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
-                  Each Borrower intends to apply for joint credit.</div>
-                <div class="frm-fld-input"
-                  style="margin-top: 8px; margin-left: 10px;  color:#696969; font-size: 14px; font-weight: bold;">Your
-                  initials:
-                  <input type="text" maxlength="2"
-                    style="width: 30px; border-bottom: 1px solid #696969 ; text-align: center; border-bottom: 1px solid #000;"
+                <div class="frm-fld-input frm-fld-input-text no-arrow pt-1">Each Borrower intends to apply for joint credit.</div>
+                <div class="frm-fld-input  no-arrow pt-1 frm-fld-input-text-dark" style="color:#545454 !important">Your initials:
+                  <input type="text" maxlength="2" class="initials" style="border-bottom: 1px solid #000 !important;"
                     [(ngModel)]="borrowerInfo.personalInformation.yourInitials" name="yourInitials1" id="yourInitials1"
                     #yourInitials1="ngModel" [ngClass]="{'error': borrowForm.submitted && yourInitials1.errors}"
                     [ngClass]="{'error':  yourInitials1.touched && yourInitials1.errors}" />
@@ -331,16 +377,16 @@
             </div>
           </div>
 
-          <div class="col-8  p-1">
-            <div class="frm-group" style="height: 170px; overflow-y: scroll; overflow-x: hidden;"
+          <div class="col-sm-8 col-12  p-1">
+            <div class="form-group borrower-info-personal" 
               [ngClass]="{'disabled':borrowerInfo.personalInformation.creditValue=='1'}">
               <label class="frm-label">List Name(s) of Other Borrower(s) Applying for this Loan</label>
               <div class="frm-fld-input">
                 <div class="gray-text">(First, Middle, Last, Suffix And Email)</div>
 
                 <div class="row mt-2 pr-3" *ngFor="let creditItem of borrowerInfo.personalInformation.creditList">
-                  <div class="col-3 p-0">
-                    <div class="frm-group-borderless"
+                  <div class="col-sm-3 col-4 p-0">
+                    <div class="form-group-borderless"
                       [ngClass]="{'error': borrowForm.submitted && creditItemsFirstName.errors}"
                       [ngClass]="{'error':  creditItemsFirstName.touched && creditItemsFirstName.errors}">
                       <label class="frm-label">First Name*</label>
@@ -352,8 +398,8 @@
                     </div>
                   </div>
 
-                  <div class="col-2  p-0">
-                    <div class="frm-group-borderless"
+                  <div class="col-sm-2 col-4  p-0">
+                    <div class="form-group-borderless"
                       [ngClass]="{'error': borrowForm.submitted && creditItemsMiddlename.errors}"
                       [ngClass]="{'error':  creditItemsFirstName.touched && creditItemsMiddlename.errors}">
                       <label class="frm-label">Middle Name</label>
@@ -363,8 +409,8 @@
                     </div>
                   </div>
 
-                  <div class="col-3  p-0">
-                    <div class="frm-group-borderless"
+                  <div class="col-sm-3 col-4  p-0">
+                    <div class="form-group-borderless"
                       [ngClass]="{'error': borrowForm.submitted && creditItemsLastname20.errors}"
                       [ngClass]="{'error':  creditItemsLastname20.touched && creditItemsLastname20.errors}">
                       <label class="frm-label">Last Name</label>
@@ -376,8 +422,8 @@
                     </div>
                   </div>
 
-                  <div class="col-1  p-0">
-                    <div class="frm-group-borderless"
+                  <div class="col-sm-1 col-4  p-0">
+                    <div class="form-group-borderless"
                       [ngClass]="{'error': borrowForm.submitted && creditItemsSurfix.errors}"
                       [ngClass]="{'error':  creditItemsSurfix.touched && creditItemsSurfix.errors}">
                       <label class="frm-label">Suffix</label>
@@ -387,8 +433,8 @@
                     </div>
                   </div>
 
-                  <div class="col-3  p-0">
-                    <div class="frm-group-borderless"
+                  <div class="col-sm-3 col-8  p-0">
+                    <div class="form-group-borderless"
                       [ngClass]="{'error': borrowForm.submitted && creditItemsEmail.errors}"
                       [ngClass]="{'error':  creditItemsEmail.touched && creditItemsEmail.errors}"
                       [ngClass]="{'error':  creditItemsEmail.touched && creditItemsEmail.errors?.pattern}">
@@ -412,8 +458,8 @@
 
       <div class="div-main-grp" style="width: 100%; text-align: top !important;">
         <div class="row div-sub-grp">
-          <div class="col-6 p-1">
-            <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && creditItemsMarritalStatus.errors}"
+          <div class="col-sm-6 col-12 p-1 align-self-start" >
+            <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && creditItemsMarritalStatus.errors}"
               [ngClass]="{'error_bb':  creditItemsMarritalStatus.touched && creditItemsMarritalStatus.errors}">
               <label class="frm-label">Marital Status</label>
               <div class="frm-fld-input">
@@ -426,7 +472,7 @@
               </div>
             </div>
             <div class="clear-all"></div>
-            <div class="frm-group" style="margin-bottom: 50px;"
+            <div class="form-group m-b-50" 
               [ngClass]="{'error': borrowForm.submitted && creditItemsDependents.errors}"
               [ngClass]="{'error':  creditItemsDependents.touched && creditItemsDependents.errors}">
               <label class="frm-label">Dependents</label>
@@ -450,8 +496,8 @@
               </div>
             </div>
           </div>
-          <div class="col-6  p-1">
-            <div class="frm-group">
+          <div class="col-sm-6 col-12 p-1">
+            <div class="form-group">
               <label class="frm-label">Contact Information</label>
               <div class="row mt-2">
                 <div class="col-3"><label class="gray-text">Home Phone</label></div>
@@ -525,14 +571,14 @@
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-bottom: 30px !important;">
+      <div class="div-main-grp m-b-30">
         <div class="row div-sub-grp">
-          <div class="col-12 p-1">
-            <div class="frm-group">
+          <div class="col-sm-12 col-12 p-1">
+            <div class="form-group">
               <label class="frm-label" style="margin-left: -10px;">Current Address</label>
               <div class="row mt-2 pr-3">
-                <div class="col-1 pl-1 pr-0 "><label class="gray-text">Street</label></div>
-                <div class="col-8 pl-0 pr-0 input-border-bottom"
+                <div class="col-sm-1 col-2 pl-1 pr-0 "><label class="gray-text">Street</label></div>
+                <div class="col-sm-8 col-6 pl-0 pr-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
                   [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[0].street"
@@ -540,8 +586,8 @@
                     (onAddressChange)="handleAddressChange($event,0)" />
                 </div>
 
-                <div class="col-1  pl-1 pr-0 " style="text-align: center;"><label class="gray-text">Unit #</label></div>
-                <div class="col-2 pl-0 pr-1 input-border-bottom">
+                <div class="col-sm-1 col-2  pl-1 pr-0 " style="text-align: center;"><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-2 col-2 pl-0 pr-1 input-border-bottom">
                   <input type="text" name="ZIP" id="ZIP" #ZIP="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].unit" name="creditItemsUnit"
                     id="creditItemsUnit" #creditItemsUnit="ngModel" [min]="0" maxlength="10" />
@@ -552,8 +598,8 @@
 
 
               <div class="row mt-2  pr-3">
-                <div class="col-1  pl-1 pr-0 mt-2 "><label class="gray-text">City</label></div>
-                <div class="col-3  pl-0 pr-0 input-border-bottom"
+                <div class="col-sm-1 col-1  pl-1 pr-0 mt-2 "><label class="gray-text">City</label></div>
+                <div class="col-sm-3 col-3  pl-0 pr-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemscityId.errors}"
                   [ngClass]="{'error_bb':  creditItemscityId.touched && creditItemscityId.errors}">
                   <div class=""
@@ -568,9 +614,9 @@
                   </div>
                 </div>
 
-                <div class="col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">State</label>
+                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">State</label>
                 </div>
-                <div class="col-2  pl-0 pr-0  input-border-bottom"
+                <div class="col-sm-2 col-2  pl-0 pr-0  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsState.errors}"
                   [ngClass]="{'error_bb':  creditItemsState.touched && creditItemsState.errors}">
                   <div class=""
@@ -587,9 +633,9 @@
                 </div>
 
 
-                <div class="col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">ZIP</label>
+                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">ZIP</label>
                 </div>
-                <div class="col-1  pl-0 pr-0  input-border-bottom mt-1"
+                <div class="col-sm-1 col-1  pl-0 pr-0  input-border-bottom mt-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && ZIP.errors}"
                   [ngClass]="{'error_bb':  ZIP.touched && ZIP.errors}">
                   <input type="text" maxlength="10" name="ZIP" id="ZIP" #ZIP="ngModel"
@@ -597,9 +643,9 @@
                 </div>
 
 
-                <div class="col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">Country</label>
+                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">Country</label>
                 </div>
-                <div class="col-2  p-0 pl-1 pr-1 input-border-bottom"
+                <div class="col-sm-2 col-2  p-0 pl-1 pr-1 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && Country.errors}"
                   [ngClass]="{'error_bb':  Country.touched && Country.errors}">
                   <div class=""
@@ -617,11 +663,11 @@
               </div>
 
               <div class="row mt-1 pl-1 pr-3">
-                <div class="col-2  pl-0 pr-0" style="min-width: 220px !important;margin-right:1px">
+                <div class="col-sm-2 col-2  pl-0 pr-0" style="min-width: 220px !important;margin-right:1px">
                   <label class="gray-text" style="white-space: nowrap !important; ">How Long at Current Address?</label>
                 </div>
-                <div class="col-1 p-0 input-border-bottom" style="display: flex;">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && year.errors}"
+                <div class="col-sm-1 col-1 p-0 input-border-bottom" style="display: flex;">
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && year.errors}"
                     [ngClass]="{'error_bb':  year.touched && year.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -636,8 +682,8 @@
                   </div>
                   <label class="gray-text pr-1">Years</label>
                 </div>
-                <div class="col-1  pl-1 pr-0  input-border-bottom" style="display: flex; ">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && month.errors}"
+                <div class="col-sm-1 col-1  pl-1 pr-0  input-border-bottom" style="display: flex; ">
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && month.errors}"
                     [ngClass]="{'error_bb':  month.touched && month.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -652,9 +698,9 @@
                   </div>
                   <label class="gray-text pr-1">Months</label>
                 </div>
-                <div class="col-7 ml-4">
+                <div class="col-sm-7 col-7 ml-4">
                   <div class="row">
-                    <div class="col-5 p-0" style="display: flex; align-items: center;">
+                    <div class="col-sm-5 col-5 p-0" style="display: flex; align-items: center;">
                       <label class="gray-text" style="color: #585858;"><b>Housing</b></label>
                       <div class="frm-fld-input" style="display: flex; align-items: center; justify-content: center;">
                         <div style="display: flex; margin-left: 5px; align-items:center;">
@@ -669,7 +715,7 @@
                       </div>
                     </div>
 
-                    <div class="col-3  p-0">
+                    <div class="col-sm-3 col-3  p-0">
                       <div style="display: flex; align-items: center; justify-content: center;">
                         <input type="radio" name="credit1" value="2" name="housingType" id="housingType"
                           #housingType="ngModel" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
@@ -680,7 +726,7 @@
                       </div>
                     </div>
 
-                    <div class="col-4 p-0">
+                    <div class="col-sm-4 col-4 p-0">
                       <div style="display: flex; align-items: center; justify-content: center;">
                         <input type="radio" name="credit1" value="3" name="housingType" id="housingType"
                           #housingType="ngModel" [(ngModel)]="borrowerInfo.personalInformation.address[0].housingType"
@@ -689,17 +735,19 @@
                           [ngClass]="{'error-checkbox':  housingType.touched && housingType.errors}"
                           [disabled]="borrowerInfo.personalInformation.address[0].housingType== '1'" />
                         <label class="gray-text">Rent</label>
-                        <span class="gray-text ml-1">($</span>
-                        <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
-
-                          <input type="text"
-                          onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"
-                            style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                            [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.personalInformation.address[0].rent"
+                        <span class="gray-text pl-1">($</span>
+                        
+                          <input type="text" class="number-text"
+                            onFocus="this.select();" 
+                            (blur)="fixDecimals($event)" 
+                            (keypress)="numberOnly(this,$event)"  
+                            pattern="^\d+(?:\.\d{1,2})?$"
+                            [min]="0" maxlength="12" 
+                            [(ngModel)]="borrowerInfo.personalInformation.address[0].rent"
                             id="MonthRent1" name="MonthRent1" #txtMonthRent1="ngModel"
                             [disabled]="borrowerInfo.personalInformation.address[0].housingType== '1'"
                             ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
-                        </span>
+                       
                         <span class="gray-text mr-2">/month)</span>
                       </div>
 
@@ -716,10 +764,10 @@
       </div>
 
 
-      <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="div-main-grp">
         <div class="row div-sub-grp">
           <div class="col-12 p-1">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForaddress1==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForaddress1==true}">
               <label class="frm-label">
                 <div style="display: flex; align-items: center; margin-left:-10px">
                   <span> If at Current Address for LESS than 2 years, list Former Address</span>
@@ -827,7 +875,7 @@
                   <label class="gray-text" style="white-space: nowrap !important; ">How Long at Current Address?</label>
                 </div>
                 <div class="col-1 p-0 input-border-bottom" style="display: flex;">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
                     [ngClass]="{'error_bb':  year1.touched && year1.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -844,7 +892,7 @@
                   <label class="gray-text pr-1">Years</label>
                 </div>
                 <div class="col-1 pl-1 pr-0 input-border-bottom" style="display: flex; ">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
                     [ngClass]="{'error_bb':  month1.touched && month1.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -930,10 +978,10 @@
       </div>
 
 
-      <div class="div-main-grp" style="width: 100%; margin-bottom: 50px;">
+      <div class="div-main-grp" >
         <div class="row div-sub-grp">
           <div class="col-12 p-1">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForaddress2==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForaddress2==true}">
               <label class="frm-label">
                 <div style="display: flex; align-items: center; margin-left:-10px">
                   <span> Mailing Address (if different from Current Address)</span>
@@ -1045,10 +1093,10 @@
         </label>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-12 p-1">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <label class="frm-label" style="margin-left:-10px">
                 <span>Employer or Business Name</span>
               </label>
@@ -1159,10 +1207,10 @@
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-9 p-0">
-            <div class="frm-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+            <div class="form-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <div class="row mt-2">
                 <div class="col-2 pl-1"><label class="gray-text">Position or Title</label></div>
                 <div class="col-10 p-0 input-border-bottom"
@@ -1195,7 +1243,7 @@
                 <div class="col-4 pl-1" style="text-align: right; padding-right:10px"><label class="gray-text">How long
                     in this line of work?</label></div>
                 <div class="col-2 p-0 input-border-bottom" style="display: flex;">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
                     [ngClass]="{'error_bb':  workingYears.touched && workingYears.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -1213,7 +1261,7 @@
                   <label class="gray-text pr-1">Years</label>
                 </div>
                 <div class="col-2 pl-1 input-border-bottom" style="display: flex; ">
-                  <div class="frm-group" [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}"
                     [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -1235,11 +1283,11 @@
           </div>
 
           <div class="col-3 ml-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <label class="frm-label">Current Address</label>
 
               <label class="container m-0">
-                <span class="gray-text" style="font-size: 12px !important; line-height: 20px;">
+                <span class="gray-text" style="font-size: 12px !important; line-height: 18px;">
                   I am employed by a family member, property seller, real estate agent, or other party to the
                   transaction.
                 </span>
@@ -1255,10 +1303,10 @@
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="div-main-grp" >
         <div class="row div-sub-grp">
           <div class="col-12 p-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
 
               <div class="row">
                 <div class="col-9 pl-2">
@@ -1356,7 +1404,7 @@
       <div class="div-main-grp" style="width: 100%;  margin-bottom: 20px;">
         <div class="row div-sub-grp">
           <div class="col-12 p-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <label class="frm-label" style="margin-left:-10px">
                 <span>Gross Monthly Income</span>
               </label>
@@ -1548,10 +1596,10 @@
         </label>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-12 p-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
               <label class="frm-label" style="margin-left:-10px">
                 <span>Employer or Business Name</span>
               </label>
@@ -1656,10 +1704,10 @@
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px; ">
         <div class="row div-sub-grp">
           <div class="col-9 p-0">
-            <div class="frm-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
+            <div class="form-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
               <div class="row mt-2">
                 <div class="col-2 pl-1"><label class="gray-text">Position or Title</label></div>
                 <div class="col-10  p-0 input-border-bottom"
@@ -1692,7 +1740,7 @@
                   <label class="gray-text pl-2">How long in this line of work?</label>
                 </div>
                 <div class="col-2 p-0 input-border-bottom" style="display: flex;">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
                     [ngClass]="{'error_bb':  workingYears3.touched && workingYears3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -1711,7 +1759,7 @@
 
 
                 <div class="col-2 p-0 input-border-bottom" style="display: flex; ">
-                  <div class="frm-group" [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
+                  <div class="form-group" [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                     [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
@@ -1732,10 +1780,10 @@
             </div>
           </div>
 
-          <div class="col-3 pl-1">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
+          <div class="col-3 ml-0">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
               <label class="frm-label">Current Address</label>
-              <label class="container mt-2"><span class="gray-text" style="font-size: 12px !important;">
+              <label class="container m-0"><span class="gray-text" style="font-size: 12px !important; line-height: 18px;">
                   I am employed by a family member, property seller, real estate agent, or other party to the
                   transaction.
                 </span>
@@ -1752,10 +1800,10 @@
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-bottom: 30px;">
+      <div class="div-main-grp" >
         <div class="row div-sub-grp">
           <div class="col-12 p-1">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
 
               <div class="row">
                 <div class="col-9 p-0">
@@ -1836,7 +1884,7 @@
       <div class="div-main-grp" style="width: 100%;  margin-bottom: 20px;">
         <div class="row div-sub-grp">
           <div class="col-12 p-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
               <label class="frm-label" style="margin-left:-10px">
                 <span>Gross Monthly Income</span>
               </label>
@@ -2022,28 +2070,30 @@
       </div>
 
       <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment &
+        <span class="chkBox-text">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment &
           Income</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
-            Apply</span>
+        <label class="container Checkbox-Label" style="margin-left:20px;width:200px">
+          <span style=" font-weight: bold;">Does Not  Apply</span>
           <input type="checkbox" [(ngModel)]="doNotApplyForEmp2" name="doNotApplyForEmp2" id="doNotApplyForEmp2"
             #txtdoNotApplyForEmp2="ngModel" (change)="doNotApplyForEmp2F(txtdoNotApplyForEmp2.value)">
-          <span class="checkmark" style="margin-top: 10px;"></span>
+          <span class="checkmark" style="margin-top: 2px;"></span>
         </label>
       </div>
-      <h4 style="font-size: 16px;">Provide at least 2 years of current and previous employment and income.</h4>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      
+      <h4 class="txt-note-h4">Provide at least 2 years of current and previous employment and income.</h4>
+
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
-          <div class="col-12 p-0">
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
+          <div class="col-sm-12 col-12 p-0">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
               <label class="frm-label" style="margin-left:-10px">
                 <span>Employer or Business Name</span>
               </label>
 
               <div class="row mt-2 pr-3">
-                <div class="col-3  pl-1"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-3  p-0 input-border-bottom"
+                <div class="col-sm-3 col-3  pl-1"><label class="gray-text">Employer or Business Name</label></div>
+                <div class="col-sm-3 col-3  p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && name9.errors}"
                   [ngClass]="{'error_bb':  name9.touched && name9.errors}">
                   <input type="text" maxlength="30" [(ngModel)]="borrowerInfo.employment[2].name" name="name9"
@@ -2051,8 +2101,8 @@
                     [readonly]="doNotApplyForEmp2 == true" />
                 </div>
 
-                <div class="col-1  p-0" style="text-align: center;"><label class="gray-text">Phone</label></div>
-                <div class="col-2  p-0 input-border-bottom" style="padding-left: 5px;"
+                <div class="col-sm-1 col-1  p-0" style="text-align: center;"><label class="gray-text">Phone</label></div>
+                <div class="col-sm-2 col-2  p-0 input-border-bottom" style="padding-left: 5px;"
                   [ngClass]="{'error_bb': borrowForm.submitted && phone9.errors}"
                   [ngClass]="{'error_bb':  phone9.touched && phone9.errors}">
                   <p-inputMask size="10" placeholder="(___) ___-____" [(ngModel)]="borrowerInfo.employment[2].phone"
@@ -2061,8 +2111,8 @@
                 </div>
 
 
-                <div class="col-1" style="text-align: center;"><label class="gray-text">Street</label></div>
-                <div class="col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
+                <div class="col-sm-1 col-1" style="text-align: center;"><label class="gray-text">Street</label></div>
+                <div class="col-sm-2 col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                   [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.employment[2].street" id="street9"
                     name="street9" max="100" [options]='options' #street9="ngModel"
@@ -2070,11 +2120,12 @@
                     [readonly]="doNotApplyForEmp1 == true" />
 
                 </div>
-              </div>
 
+              </div>
               <div class="row mt-2  pr-3">
-                <div class="col-1 pl-1"><label class="gray-text">City</label></div>
-                <div class="col-2 p-0 input-border-bottom"
+
+                <div class="col-sm-1 col-1 pl-1"><label class="gray-text">City</label></div>
+                <div class="col-sm-2  col-2 p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && cityId9.errors}"
                   [ngClass]="{'error_bb':  cityId9.touched && cityId9.errors}">
                   <div class=""
@@ -2089,16 +2140,16 @@
                   </div>
                 </div>
 
-                <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">Unit #</label></div>
-                <div class="col-1 p-0 input-border-bottom">
+                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-1 col-1 p-0 input-border-bottom">
                   <input type="text" [min]="0" class="showBorder" name="unit9" id="unit9" #unit9="ngModel" maxlength="5"
                     [(ngModel)]="borrowerInfo.employment[2].unit" [disabled]="doNotApplyForEmp2 == true" />
                 </div>
 
-                <div class="col-1 p-0" style="text-align: center;">
+                <div class="col-sm-1 col-1 p-0" style="text-align: center;">
                   <label class="gray-text">State</label>
                 </div>
-                <div class="col-1 p-0 input-border-bottom"
+                <div class="col-sm-1 col-1 p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId49.errors}"
                   [ngClass]="{'error_bb':  stateId49.touched && stateId49.errors}">
                   <div class=""
@@ -2115,8 +2166,8 @@
 
                 </div>
 
-                <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">ZIP</label></div>
-                <div class="col-1  p-0 input-border-bottom"
+                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1 col-1  p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
                   [ngClass]="{'error_bb':  zip9.touched && zip9.errors}">
                   <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.employment[2].zip"
@@ -2124,8 +2175,8 @@
                 </div>
 
 
-                <div class="col-1 p-0" style="text-align: center;"><label class="gray-text">Country</label></div>
-                <div class="col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Country</label></div>
+                <div class="col-sm-2 col-2 p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
                   [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}">
                   <div class=""
@@ -2140,16 +2191,18 @@
                     </div>
                   </div>
                 </div>
+              
               </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-8  p-0">
-            <div class="frm-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
+            <div class="form-group" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
               <div class="row mt-2">
                 <div class="col-3 pl-1"><label class="gray-text">Position or Title</label></div>
                 <div class="col-8  p-0 input-border-bottom"
@@ -2208,7 +2261,7 @@
               <span class="checkmark" style="margin-top: 5px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}"></span>
             </label>
 
-            <div class="frm-group" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
+            <div class="form-group" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
               <label class="frm-label">
                 <span>Previous Gross Monthly</span>
               </label>
@@ -2249,21 +2302,35 @@
       </div>
 
 
-      <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">Income from Other Sources</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
-            Apply</span>
+      <!-- <div class="section-title" style="display: flex; align-items: center; width: 100%;">
+        <span class="f-20">Income from Other Sources</span>
+        
+        <label class="container cls-checkbox" style="margin-left:20px;width:200px">
+          <span class="Checkbox-Label" style=" font-weight: bold;">Does Not Apply</span>
           <input type="checkbox" [(ngModel)]="incomeFromOtherSources" name="incomeFromOtherSources4"
             id="incomeFromOtherSources4" #incomeFromOtherSources45="ngModel"
             (change)="incomeFromOtherSourcesF(incomeFromOtherSources45.value)">
           <span class="checkmark" style="margin-top: 10px !important;"></span>
         </label>
-      </div>
-      <h4 style="font-size: 16px !important;">Include income from other sources below. Under Income Source, choose from
+      </div> -->
+
+      <label class="frm-label">
+        <div style="display: flex; align-items: center; margin-left:-10px">
+          <span class="chkBox-text">Income from Other Sources</span>
+          <label class="container flex" style="margin-left:20px; width: 30%">
+            <span class="Checkbox-Label" style=" font-weight: bold; ">Does Not Apply</span>
+            <input type="checkbox" [(ngModel)]="incomeFromOtherSources" name="incomeFromOtherSources4"
+            id="incomeFromOtherSources4" #incomeFromOtherSources45="ngModel"
+            (change)="incomeFromOtherSourcesF(incomeFromOtherSources45.value)">
+            <span class="checkmark" style="margin-top: 5px !important;"></span>
+          </label>
+        </div>
+      </label>
+
+      <h4 class="txt-note-h4">Include income from other sources below. Under Income Source, choose from
         the sources listed here:</h4>
     </div>
     <div class="row">
-
       <div class="col-2 p-0">
         <ul>
           <li>Alimony</li>
@@ -2313,13 +2380,13 @@
         </ul>
       </div>
 
-      <div style="font-size: 16px; font-style: italic;">
+      <div class="txt-note">
         <b>Note: </b> Reveal alimony, child support, separate maintenance, or other income ONLY IF you want it
         considered in determining your qualification for this loan.
       </div>
-      <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
+      <div class="div-main-grp" style="width: 100%; margin-top: 10px; ">
         <div class="div-sub-grp">
-          <div class="frm-group" [ngClass]="{'disabled':incomeFromOtherSources == true}">
+          <div class="form-group" [ngClass]="{'disabled':incomeFromOtherSources == true}">
             <div class="row ">
               <label class="col-8 frm-label">
                 <span>Income Source (– use list above)</span>
@@ -2329,15 +2396,15 @@
               </label>
             </div>
 
-            <div style="display:flex; align-items: center !important;"
+            <div class="row "
               *ngFor="let itemOR of borrowerInfo.incomeOtherSources[0].sources; index as i">
-              <div style="width:2%; display:inline-flex; align-items: center; justify-items: center;padding-top:5px">
+              <div class="col-1 pl-1 m-0  d-flex justify-content-center align-items-center">
                 <input type="checkbox" [(ngModel)]="itemOR.flgDeletedRow" name="{{i}}_deleteSelectRow1"
                   id="{{i}}_deleteSelectRow1" #txtdeleteSelectRow12="ngModel" (change)="showRemoveButton()">
               </div>
 
-              <div style="width: 58%; padding-left:15px !important;">
-                <div class="frm-group mt-3" [ngClass]="{'error': txtsourceType1.touched && txtsourceType1.errors}"
+              <div class="col-7 p-0 m-0" style=" padding-left:15px !important;">
+                <div class="form-group mt-2" [ngClass]="{'error': txtsourceType1.touched && txtsourceType1.errors}"
                   [ngClass]="{'error': borrowForm.submitted && txtsourceType1.errors}"
                   [ngClass]="{'disabled':incomeFromOtherSources == true}">
                   <div class="frm-fld-input">
@@ -2353,12 +2420,13 @@
                   </div>
                 </div>
               </div>
-              <div style="width: 40%; padding-left:15px !important;">
-                <div class="frm-group mt-3"
+
+              <div class="col-4 pl-1 m-0" style=" padding-left:15px !important;">
+                <div class="form-group mt-2 fld-footer"
                   [ngClass]="{'error': txtmonthlyIncome2411.touched && txtmonthlyIncome2411.errors}"
                   [ngClass]="{'error': borrowForm.submitted && txtmonthlyIncome2411.errors}"
                   [ngClass]="{'disabled':incomeFromOtherSources==true}">
-                  <div class="frm-fld-input">
+                  <div class="frm-fld-input div-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 12px;">
                       <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
                       <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)"  (keypress)="numberOnly(this,$event)" pattern="[0-9]+"
@@ -2375,8 +2443,8 @@
               </div>
             </div>
 
-            <div style="display:flex; align-items: center !important; margin-top:12px">
-              <div style="width: 60%;" class="frm-label">
+            <div class="row mt-1">
+              <div class="col-8 frm-label pl-1 mt-2" >
                 <div class="row mt-3">
                   <div class="col-6"><a (click)="addMoreIncomeSource()"
                       style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;">Add more</a>
@@ -2384,14 +2452,13 @@
                       *ngIf="flgShowRemoveButton == true"
                       style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;">Remove</a>
                   </div>
-                  <div class="col-6 text-right" style="text-align: right;"><span
-                      style="color: #000000; text-decoration: none;font-size: 14px; text-align: right;">
-                      Provide TOTAL Amount Here</span></div>
+                  <div class="col-6 text-right txt-total-amt mt-1" style="text-align: right;">
+                      Provide TOTAL Amount Here</div>
                 </div>
               </div>
-              <div style="width: 40%; padding-left:15px !important;" class=" frm-label">
-                <div class="frm-group" [ngClass]="{'disabled':incomeFromOtherSources==true}">
-                  <div class="input-border-bottom">
+              <div class="col-4 frm-label pl-1 m-0" style="padding-left:15px !important;">
+                <div class="form-group fld-footer " [ngClass]="{'disabled':incomeFromOtherSources==true}">
+                  <div class="input-border-bottom div-border-bottom">
                     <div style="display: flex; align-items: center;margin-top: 12px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
 
@@ -2414,14 +2481,10 @@
 
 
     <div class="separator"></div>
-    <div class="row borrower-block">
-      <div class="col-sm-8">
-        <div class="input-group" [ngClass]="{'error': borrowForm.submitted && BorrowerName.errors}">
-          <div class="input-group-text">Borrower Name:</div>
-          <input type="text" required maxlength="30" class="form-control" id="BorrowerName" name="BorrowerName"
+    <div class="row borrower-block mr-2 ml-2"  [ngClass]="{'error': borrowForm.submitted && BorrowerName.errors}">
+          <div class="col-sm-2 col-12 pt-2 pl-0"><b>Borrower Name:</b></div>
+          <input type="text" required maxlength="30" class="col-sm-10 col-12 form-control borrower-border" id="BorrowerName" name="BorrowerName"
             #BorrowerName="ngModel" required [(ngModel)]="borrowerInfo.personalInformation.BorrowerName" />
-        </div>
-      </div>
     </div>
     <div class="row text-right mt-5">
       <div class="col-sm-12">

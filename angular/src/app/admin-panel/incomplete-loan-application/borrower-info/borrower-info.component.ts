@@ -111,7 +111,7 @@ export class BorrowerInfoComponent implements OnInit {
         }
       }
     )
-    debugger
+    
     if (localStorage.cityListAddress0 != undefined && localStorage.cityListAddress0 != '') {
       this.cityListAddress0 = JSON.parse(localStorage.getItem('cityListAddress0'));
     }
@@ -147,7 +147,7 @@ export class BorrowerInfoComponent implements OnInit {
     }
     if (localStorage.stateListEmp2 != undefined && localStorage.stateListEmp2 != '') {
       this.stateListEmp2 = JSON.parse(localStorage.getItem('stateListEmp2'));
-      debugger
+      
 
     }
     if (localStorage.borrowerInfo != undefined) {
@@ -294,7 +294,7 @@ export class BorrowerInfoComponent implements OnInit {
     this.borrowService.createMortgageLoanApplication(borrowerModel).subscribe(
       (res: any) => {
         if (res.success == true) {
-          debugger
+          
 
           localStorage.setItem("cityListAddress0", JSON.stringify(this.cityListAddress0))
           localStorage.setItem("cityListAddress1", JSON.stringify(this.cityListAddress1))
@@ -376,7 +376,7 @@ export class BorrowerInfoComponent implements OnInit {
   // }
   getStates() {
     this.borrowService.getStates().subscribe((data: any) => {
-      debugger
+      
       this.stateList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
@@ -572,7 +572,7 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   fixDecimals(event: any) {
-    debugger
+    
     var vals = event.target.value.replace(",","") ;
     if(vals !="" ){
      vals = parseFloat(vals).toFixed(2);
@@ -764,7 +764,7 @@ export class BorrowerInfoComponent implements OnInit {
     }
   }
   incomeFromOtherSourcesF(event: any) {
-    debugger
+    
     if (event == true) {
       this.borrowerInfo.incomeOtherSources[0].sources = [];
       this.borrowerInfo.incomeOtherSources[0].sources.push(new Source())
@@ -822,7 +822,7 @@ export class BorrowerInfoComponent implements OnInit {
       if (this.stateList.length > 0 ) {
         if (section == "Address" && index == 0) {
           this.stateListAddress0 = []
-          debugger
+          
           if(this.borrowerInfo.personalInformation.address[0].stateId != null)
           {
             this.borrowerInfo.personalInformation.address[0].stateId = 0;
@@ -830,7 +830,7 @@ export class BorrowerInfoComponent implements OnInit {
           }
           
           this.stateList.filter((s:any)=>s.countryId == id).forEach((element: any) => {
-            debugger
+            
 
             this.stateListAddress0.push({ stateName: element.stateName, id: element.id })
           })
@@ -903,7 +903,7 @@ export class BorrowerInfoComponent implements OnInit {
       }
   }
   getCityByStateId(id: any, section: any, index: any) {
-    debugger
+    
       if (this.cityList.length >0) {
         if (section == "Address" && index == 0) {
           this.cityListAddress0 = []
@@ -950,7 +950,7 @@ export class BorrowerInfoComponent implements OnInit {
       }
   }
   phoneRequired(homePhone, cellPhone, workPhone) {
-    debugger
+    
     if (homePhone == null || homePhone == undefined || homePhone == "" || homePhone =="(___) ___-____") {
       this.flgPhoneRequired = true;
       if (cellPhone == null || cellPhone == undefined || cellPhone == "" || homePhone =="(___) ___-____") {
@@ -973,7 +973,7 @@ export class BorrowerInfoComponent implements OnInit {
   }
   clearRentValue(value:any)
   {
-    debugger
+    
     this.borrowerInfo.personalInformation.address[0].rent = 0;
   }
   clearRentValue1(value:any)
@@ -982,7 +982,7 @@ export class BorrowerInfoComponent implements OnInit {
   }
   disableBussinessOwner(event:any)
   {
-    debugger
+    
     if(event.target.checked == false)
     {
       this.borrowerInfo.employment[0].isOwnershipLessThan25=null
