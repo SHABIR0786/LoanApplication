@@ -420,7 +420,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   }
   
   fixDecimals(event: any) {
-    debugger
+    
     var vals = event.target.value.replace(",","") ;
     if(vals !="" ){
      vals = parseFloat(vals).toFixed(2);

@@ -121,6 +121,10 @@ export class BorrowModel {
     isSelfEmployed: boolean =false
     isOwnershipLessThan25: boolean
     grossMonthlyIncome: GrossMonthlyIncome
+    cityListEmpM: any[] = [];
+    stateListEmpM: any[] = [];
+    removeEmployeeIndex:number;
+    flgRemoveEmployee:boolean=false;
   }
   
   export class GrossMonthlyIncome {

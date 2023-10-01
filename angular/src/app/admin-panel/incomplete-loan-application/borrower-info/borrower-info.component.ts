@@ -58,7 +58,9 @@ export class BorrowerInfoComponent implements OnInit {
   stateListEmp2: any[] = [];
   cityListEmp2: any[] = [];
   flgPhoneRequired: boolean = true;
-
+  extraEmployeesList:Employment[]=[new Employment()];
+  removeEmployeeData:boolean=false;
+  removeEmpIndexList:any[]=[]
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
 
     //this.bindValues();
@@ -111,7 +113,7 @@ export class BorrowerInfoComponent implements OnInit {
         }
       }
     )
-    
+
     if (localStorage.cityListAddress0 != undefined && localStorage.cityListAddress0 != '') {
       this.cityListAddress0 = JSON.parse(localStorage.getItem('cityListAddress0'));
     }
@@ -153,6 +155,10 @@ export class BorrowerInfoComponent implements OnInit {
     if (localStorage.borrowerInfo != undefined) {
       this.borrowerInfo = JSON.parse(localStorage.getItem('borrowerInfo'));
     }
+    if (localStorage.extraEmployeesList != undefined && localStorage.extraEmployeesList != '') {
+      this.extraEmployeesList=[]
+      this.extraEmployeesList = JSON.parse(localStorage.getItem('extraEmployeesList'));
+    }
     else {
       this.borrowerInfo.personalInformation = new PersonalInformation();
       this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -165,8 +171,8 @@ export class BorrowerInfoComponent implements OnInit {
       this.borrowerInfo.employment[0].grossMonthlyIncome = new GrossMonthlyIncome();
       this.borrowerInfo.employment.push(new Employment()); //additional employement
       this.borrowerInfo.employment[1].grossMonthlyIncome = new GrossMonthlyIncome();
-      this.borrowerInfo.employment.push(new Employment()); //current or previous employement
-      this.borrowerInfo.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
+      // this.borrowerInfo.employment.push(new Employment());
+      // this.borrowerInfo.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
       this.borrowerInfo.incomeOtherSources = [];
       this.borrowerInfo.incomeOtherSources.push(new IncomeOtherSource());
       // this.borrowerInfo.incomeOtherSources.push(new IncomeOtherSource());
@@ -277,8 +283,14 @@ export class BorrowerInfoComponent implements OnInit {
     }
 
     if (this.doNotApplyForEmp2) {
-      borrowerModel.employment[2] = new Employment();
-      borrowerModel.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
+     return
+      
+    }
+    else
+    {
+      this.extraEmployeesList.forEach((element:any)=>{
+        borrowerModel.employment.push(element)
+      })
     }
     this.borrowerInfo.incomeOtherSources[0].sources.forEach((element:any)=>{
       element.flgDeletedRow =false;
@@ -291,6 +303,8 @@ export class BorrowerInfoComponent implements OnInit {
     localStorage.setItem("doNotApplyForEmp2", JSON.stringify(this.doNotApplyForEmp2))
     localStorage.setItem("doNotApplyForAddress0", JSON.stringify(this.doNotApplyForAddress0))
     localStorage.setItem("incomeFromOtherSources", JSON.stringify(this.incomeFromOtherSources))
+    localStorage.setItem("extraEmployeesList", JSON.stringify(this.extraEmployeesList))
+
     this.borrowService.createMortgageLoanApplication(borrowerModel).subscribe(
       (res: any) => {
         if (res.success == true) {
@@ -738,29 +752,8 @@ export class BorrowerInfoComponent implements OnInit {
   }
   doNotApplyForEmp2F(value: any) {
     if (value == true) {
-      this.borrowerInfo.employment[2].name = "";
-      this.borrowerInfo.employment[2].phone = "";
-      this.borrowerInfo.employment[2].street = ""
-      this.borrowerInfo.employment[2].cityId = 0;
-      this.borrowerInfo.employment[2].unit = "";
-      this.borrowerInfo.employment[2].stateId = 0;
-      this.borrowerInfo.employment[2].zip = "";
-      this.borrowerInfo.employment[2].countryId = 0;
-      this.borrowerInfo.employment[2].position = "";
-      this.borrowerInfo.employment[2].startDate = "";
-      this.borrowerInfo.employment[2].workingYears = 0;
-      this.borrowerInfo.employment[2].workingMonths = 0;
-      this.borrowerInfo.employment[2].isEmployedBySomeone = false;
-      this.borrowerInfo.employment[2].isSelfEmployed = false;
-      this.borrowerInfo.employment[2].isOwnershipLessThan25 = false;
-      this.borrowerInfo.employment[2].monthlyIncome = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.baseIncome = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.overtime = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.bonus = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.commission = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.militaryEntitlements = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.other = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.total = 0;
+      this.extraEmployeesList=[];
+      this.addEmployess();
     }
   }
   incomeFromOtherSourcesF(event: any) {
@@ -996,6 +989,104 @@ export class BorrowerInfoComponent implements OnInit {
       this.borrowerInfo.employment[1].isOwnershipLessThan25=null
       this.borrowerInfo.employment[1].monthlyIncome = 0 
     }
+  }
+  addEmployess()
+  {
+    this.extraEmployeesList.push(new Employment());
+    this.borrowerInfo.employment[this.extraEmployeesList.length -1].grossMonthlyIncome = new GrossMonthlyIncome();
+  }
+  onYearChange(yearValue :any, monthValue:any){
+    var yearToMonth:number|null=null;
+    var totalMonth:number|null=null;
+
+    if(yearValue != null){
+      yearToMonth = yearValue * 12;
+      totalMonth = yearToMonth;
+      if(monthValue != null){
+        totalMonth = yearToMonth + monthValue
+      }
+    }
+    if(monthValue != null){
+      totalMonth = monthValue;
+      if(yearValue != null){
+        totalMonth = yearToMonth + monthValue
+      }
+    }
+    this.doNotApplyForaddress1 = totalMonth > 23 ? true : false;
+    
+  }
+  getStateByCountryIdEmp(id: any,index:any) {
+    
+    if (this.stateList.length > 0) {
+      this.extraEmployeesList[index].stateListEmpM=[]
+      this.stateList.filter((s: any) => s.countryId == id).forEach((element: any) => {
+        this.extraEmployeesList[index].stateListEmpM.push({ stateName: element.stateName, id: element.id })
+      })
+    }
+  }
+  getCityByStateIdEmp(id: any,index:any) {
+    
+    if (this.cityList.length > 0) {
+      this.extraEmployeesList[index].cityListEmpM=[];
+      this.cityList.filter((s: any) => s.stateId == id).forEach((element: any) => {
+
+        this.extraEmployeesList[index].cityListEmpM.push({ cityName: element.cityName, id: element.id })
+      })
+    }
+  }
+  removeEmp(){
+    
+    if(this.extraEmployeesList.length == 1){
+      if(this.removeEmpIndexList.length > 0){
+        this.extraEmployeesList=[];
+        this.addEmployess()
+        this.removeEmployeeData=false;
+      }
+      
+    }
+    
+    else if(this.extraEmployeesList.length > 1 )
+    {
+      if(this.removeEmpIndexList.length > 0){
+        this.removeEmpIndexList.sort((a: any, b: any) => {
+          return b - a
+        })
+
+        this.removeEmpIndexList.forEach((element:any)=>{
+          this.extraEmployeesList.splice(element,1)
+        })
+        
+      }
+      if(this.extraEmployeesList.length == 0){
+        this.addEmployess()
+      }
+     
+      this.removeEmployeeData=false;
+    }
+    this.removeEmpIndexList=[]
+  }
+  removeEmpIndex(model:any,index:any){
+    
+    if(model.flgRemoveEmployee == true){
+      this.removeEmpIndexList.push(index)
+    }
+    else
+    { var findIndex=this.removeEmpIndexList.findIndex((s:any)=>s == index)
+      if(findIndex != -1){
+        this.removeEmpIndexList.splice(findIndex,1)
+      }
+      
+    }
+    
+    if(this.removeEmpIndexList.length > 0)
+    {
+      this.removeEmployeeData=true;
+    }
+    else if(this.removeEmpIndexList.length == 0)
+    {
+      this.removeEmployeeData=false;
+    }
+  
   }
 }
 

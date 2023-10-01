@@ -44,20 +44,20 @@ border-left: solid 0.1rem #A5A5A5;
 border-right: solid 0.1rem #A5A5A5;
 border-bottom: 0px;
 background-color: #ffffff;
-border-radius: 10px 10px 0px 0px;
+border-radius: 8px 8px 0px 0px;
 flex-shrink: 0;
 vertical-align: bottom;
 }
 
 
-.section-title {
+/* .section-title {
 border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 padding-bottom: 20px;
 font-weight: 900;
 font-size: 20px;
 line-height: 30px;
 color: #000000;
-}
+} */
 
 /* .error {
   box-sizing: border-box;
@@ -75,13 +75,9 @@ color: #000000;
 
   .error {
     box-sizing: border-box;
-    padding: 5px 5px 5px 16px;
-    min-height: 50px;
-    border: solid 1px !important;
-    border-color: red !important;
+    border: solid 1px #ff0000 !important;
     background-color: #ffffff;
     border-radius: 10px;
-    /* flex-shrink: 0; */
     }
   
     .error_bb{
@@ -144,7 +140,7 @@ padding: 0;
 cursor: not-allowed;
 }
 
-frm-group .frm-fld-input .form-control:focus{
+.frm-group .frm-fld-input .form-control:focus{
   box-shadow: none !important;
 outline: 0;
 }
@@ -156,7 +152,7 @@ outline: 0;
 margin-bottom: 8px;
 }
 
-shadow-none{
+.shadow-none{
   box-shadow: inset 0 -1px 0 #ddd !important;
 }
 
@@ -480,7 +476,7 @@ white-space: nowrap;
   box-shadow: none;
   outline: 0;
   }
-
+/* 
 .div-main-grp .div-sub-grp .frm-group .frm-fld-input select{
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -510,17 +506,9 @@ border:0px solid transparent;
 background-color: #e6e6e6;
 font-family: 'Mulish', sans-serif;
 white-space: nowrap;
-}
+} */
 
-ul{
-  font-size: 14px;
-  padding-left: 5px;
-}
 
-ul li{
-  font-size: 14px;
-  margin-top: 5px;
-}
 
 
 input::-webkit-outer-spin-button,
@@ -537,3 +525,317 @@ number-shadow-none{
   border: 0px !important;
   -webkit-appearance: none;
 }
+
+.txt-note-h4{
+  font-size: 16px !important;
+}
+
+.info-block {
+  padding: 15px;
+  background: #091a52;
+  border-radius: 8px;
+  margin: 16px 0px;
+}
+.info-block p {
+  color: #ffffff;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+}
+
+.top-clear-text{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+
+.custom-checkbox{
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px !important;
+  color:black !important;
+}
+
+.custom-checkbox .custom-control-label::before {
+  background-color: #fff;  
+  border-radius: 8%;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before,
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-color: #474747; 
+  border-radius: 8%;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+  color: #fff;
+  background-color: #cdcccc; 
+  width: 20px;
+  height: 20px;
+}
+  
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 255, 255, 0.25); 
+  width: 20px;
+  height: 20px;
+}
+
+shadow-none{
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+
+.form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd !important;;
+  outline: 0;
+  background-color: #fff;
+}
+
+
+.ptb-0{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+
+
+.fc-fullborder {
+  border:1px solid #A5A5A5 ;
+  border-radius: 8px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+.fc-fullborder:focus{
+  border:1px solid #A5A5A5 ;
+  border-radius: 8px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+
+.fc-bottom {
+  border-top:0px !important;
+  border-left:0px !important;
+  border-right:0px !important;
+  border-bottom:1px solid #A5A5A5 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+.fc-bottom:focus{
+  border-top:0px !important;
+  border-left:0px !important;
+  border-right:0px !important;
+  border-bottom:1px solid #A5A5A5 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+
+
+.fc-bottom-wr {
+  border-top:0px !important;
+  border-left:0px !important;
+  border-right:0px !important;
+  border-bottom:1px solid #A5A5A5 !important;
+  border-radius:0px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+.fc-bottom-wr:focus{
+  border-top:0px !important;
+  border-left:0px !important;
+  border-right:0px !important;
+  border-bottom:1px solid #A5A5A5 !important;
+  border-radius: 0px !important;
+  box-shadow: inset 0 -1px 0 #ddd !important;
+}
+
+fc-noborder{
+  border:0px !important;
+  border-radius: 0px !important;
+}
+
+.fc-left {
+  border-left:1px solid #A5A5A5 !important;
+  border-radius: 8px !important;
+}
+
+.fc-right {
+  border-right:1px solid #A5A5A5 !important;
+  border-radius: 8px !important;
+}
+
+.fc-top {
+  border-top:1px solid #A5A5A5 !important;
+  border-radius: 8px !important;
+}
+
+.fc-top-wr {
+  border-top:1px solid #A5A5A5 !important;
+  border-radius: 0px !important;
+}
+
+.error {
+  box-sizing: border-box;
+  border: solid 1px #ff0000 !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  }
+
+
+  .lable-add-remove{
+    color: #545454;
+    text-decoration: none; 
+    font-size: 12px; 
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  .lbl-total{
+    font-size: 14px;
+    color:#000000;
+    font-weight: 800;
+    font-family: 'Mulish', sans-serif;
+  }
+
+
+  .font-16{
+    font-size: 14px !important;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  .text-gray-color{
+    color:#A5A5A5 !important;
+  }
+
+  .text-black-color{
+    color:#000000 !important;
+  }
+
+  .b{font-weight: bold  !important;}
+
+
+  .col-round-border{
+    border-top: solid 0.1rem #A5A5A5;
+    border-left: solid 0.1rem #A5A5A5;
+    border-right: solid 0.1rem #A5A5A5;
+    border-bottom: 0px;
+    background-color: #ffffff;
+    border-radius: 8px 8px 0px 0px;
+    flex-shrink: 0;
+    vertical-align: bottom;
+    }
+
+    .col-round-border-bot{
+      border-bottom: solid 0.1rem #A5A5A5;
+      border-left: solid 0.1rem #A5A5A5;
+      border-right: solid 0.1rem #A5A5A5;
+      border-top: 0px;
+      background-color: #ffffff;
+      border-radius: 0px 0px 8px 8px;
+      flex-shrink: 0;
+      vertical-align: bottom;
+      }
+
+
+      .section-title {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        padding-bottom: 20px !important;
+        font-weight: 900 !important;
+        font-size: 20px !important;
+        line-height: 30px !important;
+        color: #000000;
+      }
+    
+      .section-title label {
+        font-weight: 600 !important;
+        font-size: 20px !important;
+        color: #000000;
+      }
+
+  .does-not-apply{
+    font-weight:600  !important;
+    font-size: 16px !important;
+    line-height: 10px  !important;
+    color: #000 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    padding-bottom: 20px;
+    font-family: 'Mulish', sans-serif;
+  }
+      
+  .chkBox-text{
+    font-size: 16px !important;
+    font-weight: bold !important;
+    font-family: 'Mulish', sans-serif;
+    padding-top: 3px;
+    padding-left: 8px;
+    color: #000 !important;
+  }
+
+  .Checkbox-Label{
+    font-weight:600  !important;
+    font-size: 16px !important;
+    line-height: 10px  !important;
+    color: #000 !important;
+    font-family: 'Mulish', sans-serif;
+  }
+  
+  .chkBox-padding-left-10{
+    padding-left: 10px;
+  }
+
+
+  .txt-note-h4{
+    font-size: 14px !important;
+    color:#000 !important;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600 !important;
+  }
+
+  ul{
+    font-size: 12px !important;
+    padding-left: 5px;
+  }
+  
+  ul li{
+    font-size: 12px !important;
+    margin-top: 2px;
+    font-family: 'Mulish', sans-serif;
+    color:#000 !important;
+  }
+
+  .bold-head{
+    font-size: 14px !important;
+    font-weight: 600;
+    font-family: 'Mulish', sans-serif;
+    color:#000 !important;
+  }
+
+  .borrower-border{
+    border-bottom: 3px solid #000 !important;
+    border-top:0px  !important;
+    border-left: 0px !important;
+    border-right: 0px  !important;
+    border-radius: 0px !important;
+  }
+
+    @media only screen and (max-width: 600px) {
+      ul li{
+        font-size: 8px !important;
+        font-family: 'Mulish', sans-serif;
+        color:#000;
+      }
+    }
+
+    @media only screen and (min-width: 601px) {
+      ul li{
+        font-size: 12px !important;
+        font-family: 'Mulish', sans-serif;
+        color:#000;
+      }
+    }

@@ -2,6 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,400;1,300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
 @media only screen and (max-width: 600px) {
+
+  .chkBox-padding-left-10{
+    padding-left: 5px;
+  }
+
+  .chkBox-text{
+    font-size: 8px !important;
+    font-weight: bold !important;
+    font-family: 'Mulish', sans-serif;
+
+  }
+
   body{
     background-color: #F5F5F5 !important;
   }
@@ -64,7 +76,7 @@
     cursor: not-allowed;
     margin-bottom: 74px;
   }
-  .form-group .disabled .form-group{
+  .div-border .disabled .div-border{
     pointer-events: none;
     background-color: #E7E7E7 !important;
   }
@@ -167,7 +179,7 @@
     flex-shrink: 0;
     width: 100%;
   }
-  .div-main-grp .div-sub-grp .form-group {
+  .div-main-grp .div-sub-grp .div-border {
     box-sizing: border-box;
     padding: 5px 20px 5px 15px !important;
     min-height: 50px;
@@ -241,7 +253,7 @@
       background-color: #E7E7E7 !important;
     }
   
-    .disabled .form-group-borderless{
+    .disabled .div-border-borderless{
       pointer-events: none;
       background-color: #E7E7E7 !important;
     }
@@ -258,7 +270,7 @@
     flex-shrink: 0;
     }
   
-  .div-main-grp .div-sub-grp .form-group .frm-label {
+  .div-main-grp .div-sub-grp .div-border .frm-label {
     margin-bottom: 0px;
     font-size: 8px !important;
     font-weight: 600;
@@ -267,7 +279,9 @@
     font-family: 'Mulish', sans-serif;
     white-space: nowrap;
   }
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input {
+
+ 
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input {
     font-size: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -277,7 +291,7 @@
     white-space: nowrap;
   }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input input{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input input{
     border: 0px !important;
     font-size: 10px;
     margin-bottom: 0px;
@@ -292,7 +306,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group-borderless {
+  .div-main-grp .div-sub-grp .div-border-borderless {
   box-sizing: border-box;
   /* padding: 5px 5px 5px 5px; */
   /* padding: 5px 15px 5px 25px !important; */
@@ -303,7 +317,7 @@
   flex-shrink: 0;
   }
   
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-label {
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-label {
   margin-bottom: 0px;
   font-size: 8px !important;
   font-weight: 600;
@@ -312,7 +326,7 @@
   font-family: 'Mulish', sans-serif;
   white-space: nowrap;
   }
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-fld-input {
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-fld-input {
   font-size: 10px;
   margin-top: 5px;
   margin-bottom: 0px;
@@ -324,7 +338,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-fld-input input{
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-fld-input input{
   border: 0px !important;
   font-size: 10px;
   margin-bottom: 0px;
@@ -551,7 +565,7 @@
   transform: rotate(45deg);
   }
   
-  .div-main-grp .div-sub-grp .form-group_sml .frm-fld-input {
+  .div-main-grp .div-sub-grp .div-border_sml .frm-fld-input {
     font-size: 16px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -561,7 +575,7 @@
     white-space: nowrap;
     }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml focus, input:focus{
   font-size: 10px;
   outline: none;
   font-weight: 500;
@@ -571,7 +585,7 @@
   white-space: nowrap;
   }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml select{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml select{
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
@@ -592,7 +606,7 @@
   
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
     font-size: 10px;
     outline: none;
     font-weight: 500;
@@ -603,7 +617,7 @@
     white-space: nowrap;
     }
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
       font-size: 10px;
       outline: none;
       font-weight: 500;
@@ -613,7 +627,7 @@
       white-space: nowrap;
       }
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input select{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input select{
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -638,7 +652,7 @@
       background-color: #E7E7E7 !important;
     }
     
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input-no-arrow select{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input-no-arrow select{
       -webkit-appearance: none;
       -moz-appearance: none;
       background: transparent;
@@ -658,7 +672,7 @@
       }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input select option{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input select option{
     font-size: 10px;
     width: 100%;
     margin-bottom: 20px !important;
@@ -668,7 +682,7 @@
     }
   
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml select option{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml select option{
       font-size: 10px;
       width: 100%;
       margin-bottom: 20px !important;
@@ -678,7 +692,7 @@
       }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, select:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, select:focus{
     font-size: 10px;
     outline: none;
     font-weight: 500;
@@ -690,7 +704,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
     font-size: 10px;
     outline: none;
     font-weight: 500;
@@ -866,10 +880,72 @@
 
 
 @media only screen and (min-width: 601px) {
+
+.custom-radio .custom-control-label::before {
+  background-color: #ffffff;  /* orange */
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::before,
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+  background-color: #474747;  /* green */
+  border-radius: 50%;
+}
+
+.custom-radio .custom-control-input:active ~ .custom-control-label::before {
+  color: #fff;
+  background-color: #818181; /* red */
+}
+  
+.custom-radio .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(193, 192, 193, 0.25); /* pink, 25% opacity */
+}
+
+
+
+
+.custom-checkbox .custom-control-label::before {
+  background-color: #fff;  
+  border-radius: 8%;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before,
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-color: #474747; 
+  border-radius: 8%;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+  color: #fff;
+  background-color: #cdcccc; 
+  width: 20px;
+  height: 20px;
+}
+  
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 255, 255, 0.25); 
+  width: 20px;
+  height: 20px;
+}
+
+
+
   .chkBox-text{
-    font-size: 20px !important;
+    font-size: 0.9rem !important;
     font-weight: bold !important;
+    font-family: 'Mulish', sans-serif;
+    padding-top: 3px;
+    padding-left: 8px;
   }
+
+  
+  .chkBox-padding-left-10{
+    padding-left: 10px;
+  }
+
   .f-20{
     font-size: 20px;
   }
@@ -879,7 +955,10 @@
   }
 
   ul li{
-    font-size: 14px !important;
+    font-size: 12px !important;
+    margin-top: 5px;
+    font-family: 'Mulish', sans-serif;
+    color:#000 !important;
   }
 
   .txt-note{
@@ -917,6 +996,30 @@
     line-height: 30px;
     color: #000000;
   }
+
+  .section-title label {
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+  }
+
+  .font-16{
+    font-size: 16px;
+    color:#A5A5A5;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  .font-12{
+    font-size: 12px !important; 
+    line-height: 25px !important;
+    color:#A5A5A5;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  .light-gray{
+    color:#A5A5A5 !important;
+  }
+
   .info-block {
     padding: 15px;
     background: #091a52;
@@ -936,7 +1039,7 @@
     cursor: not-allowed;
     margin-bottom: 74px;
   }
-  .form-group.disabled.form-group{
+  .div-border.disabled.div-border{
     pointer-events: none;
     background-color: #E7E7E7 !important;
   }
@@ -1037,7 +1140,7 @@
     flex-shrink: 0;
     width: 100%;
   }
-  .div-main-grp .div-sub-grp .form-group {
+  .div-main-grp .div-sub-grp .div-border {
     box-sizing: border-box;
     padding: 5px 15px 5px 20px !important;
     min-height: 50px;
@@ -1084,7 +1187,7 @@
       background-color: #E7E7E7 !important;
     }
   
-    .disabled .form-group-borderless{
+    .disabled .div-border-borderless{
       pointer-events: none;
       background-color: #E7E7E7 !important;
     }
@@ -1101,7 +1204,7 @@
     flex-shrink: 0;
     }
   
-  .div-main-grp .div-sub-grp .form-group .frm-label {
+  .div-main-grp .div-sub-grp .div-border .frm-label {
     margin-bottom: 0px;
     font-size: 10px !important;
     font-weight: 600;
@@ -1110,7 +1213,7 @@
     font-family: 'Mulish', sans-serif;
     white-space: nowrap;
   }
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input {
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input {
     font-size: 16px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -1120,7 +1223,7 @@
     white-space: nowrap;
   }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input input{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input input{
     border: 0px !important;
     font-size: 16px;
     margin-bottom: 0px;
@@ -1135,7 +1238,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group-borderless {
+  .div-main-grp .div-sub-grp .div-border-borderless {
   box-sizing: border-box;
   /* padding: 5px 5px 5px 5px; */
   /* padding: 5px 15px 5px 25px !important; */
@@ -1146,7 +1249,7 @@
   flex-shrink: 0;
   }
   
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-label {
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-label {
   margin-bottom: 0px;
   font-size: 10px !important;
   font-weight: 600;
@@ -1155,7 +1258,7 @@
   font-family: 'Mulish', sans-serif;
   white-space: nowrap;
   }
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-fld-input {
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-fld-input {
   font-size: 15px;
   margin-top: 5px;
   margin-bottom: 0px;
@@ -1167,7 +1270,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group-borderless .frm-fld-input input{
+  .div-main-grp .div-sub-grp .div-border-borderless .frm-fld-input input{
   border: 0px !important;
   font-size: 14px;
   margin-bottom: 0px;
@@ -1255,6 +1358,10 @@
   white-space: nowrap;
   }
   
+  .form-group input:focus{
+    outline:0px !important; 
+    box-shadow: none !important;
+ }
   
   
   .input-border-bottom select{
@@ -1308,6 +1415,7 @@
   white-space: nowrap;
   }
   
+  
   .gray-text{
   color:#A5A5A5  !important;
   font-size: 16px !important;
@@ -1330,7 +1438,7 @@
   padding-top: 5px;
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 25px;
   cursor: pointer;
   font-family: 'Mulish', sans-serif;
   font-size: 1.6rem;
@@ -1394,7 +1502,7 @@
   transform: rotate(45deg);
   }
   
-  .div-main-grp .div-sub-grp .form-group_sml .frm-fld-input {
+  .div-main-grp .div-sub-grp .div-border_sml .frm-fld-input {
     font-size: 16px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -1404,7 +1512,7 @@
     white-space: nowrap;
     }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml focus, input:focus{
   font-size: 15px;
   outline: none;
   font-weight: 500;
@@ -1414,7 +1522,7 @@
   white-space: nowrap;
   }
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml select{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml select{
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
@@ -1435,7 +1543,7 @@
   
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
     font-size: 15px;
     outline: none;
     font-weight: 500;
@@ -1446,7 +1554,7 @@
     white-space: nowrap;
     }
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
       font-size: 15px;
       outline: none;
       font-weight: 500;
@@ -1456,7 +1564,7 @@
       white-space: nowrap;
       }
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input select{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input select{
       -webkit-appearance: none;
       -moz-appearance: none;
       background: transparent;
@@ -1480,7 +1588,7 @@
       background-color: #E7E7E7 !important;
     }
     
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input-no-arrow select{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input-no-arrow select{
       -webkit-appearance: none;
       -moz-appearance: none;
       background: transparent;
@@ -1500,7 +1608,7 @@
       }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input select option{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input select option{
     font-size: 15px;
     width: 100%;
     margin-bottom: 20px !important;
@@ -1510,7 +1618,7 @@
     }
   
   
-    .div-main-grp .div-sub-grp .form-group .frm-fld-input_sml select option{
+    .div-main-grp .div-sub-grp .div-border .frm-fld-input_sml select option{
       font-size: 15px;
       width: 100%;
       margin-bottom: 20px !important;
@@ -1520,7 +1628,7 @@
       }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, select:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, select:focus{
     font-size: 15px;
     outline: none;
     font-weight: 500;
@@ -1532,7 +1640,7 @@
   }
   
   
-  .div-main-grp .div-sub-grp .form-group .frm-fld-input focus, input:focus{
+  .div-main-grp .div-sub-grp .div-border .frm-fld-input focus, input:focus{
     font-size: 15px;
     outline: none;
     font-weight: 500;
@@ -1543,7 +1651,7 @@
     white-space: nowrap;
     }
   
-    shadow-none{
+    .shadow-none{
       box-shadow: inset 0 -1px 0 #ddd !important;
     }
   
@@ -1663,6 +1771,13 @@
   }
 
   .txt-total-amt{
+    color: #000000; 
+    text-decoration: none;
+    font-size: 14px; 
+    text-align: right;
+  }
+
+  .lbl-sm-check{
     color: #000000; 
     text-decoration: none;
     font-size: 14px; 
