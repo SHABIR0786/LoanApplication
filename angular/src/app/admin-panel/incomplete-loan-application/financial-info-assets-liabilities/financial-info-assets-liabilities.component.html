@@ -284,7 +284,7 @@
 
         <h4 class="txt-note-h4">Include all other assets and credits below. Under Asset or Credit Type, choose from the types listed here:Assets</h4>
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-sm-2 col-2">
             <b class="lable-add-remove">Assets</b>
             <ul>
               <li>Proceeds from Real Estate
@@ -292,21 +292,21 @@
               before closing</li>
             </ul>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <b><br> </b>
             <ul>
               <li>Proceeds from Sale of Non-Real Estate Asset</li>
               <li>Secured Borrowed Funds</li>
             </ul>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <b><br> </b>
             <ul>
               <li>Unsecured Borrowed Funds</li>
               <li>Other</li>
             </ul>
           </div>
-          <div class="col-sm-2" style="border-left:1px solid #696969 ;">
+          <div class="col-sm-2  col-2" style="border-left:1px solid #696969 ;">
             <b class="lable-add-remove">Credits</b>
             <ul>
               <li>Earnest Money</li>
@@ -315,7 +315,7 @@
             </ul>
           </div>
 
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <b><br> </b>
             <ul>
               <li>Relocation Funds</li>
@@ -323,7 +323,7 @@
             </ul>
           </div>
 
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <b><br></b>
             <ul>
               <li>Sweat Equity</li>
@@ -337,14 +337,13 @@
             <div class="div-sub-grp">
               <div class="frm-group pr-4" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                 <div class="row ">
-                  <label class="col-sm-10 frm-label">
+                  <label class="col-sm-10  col-10 frm-label">
                     <span>Asset or Credit Type – use list above</span>
                   </label>
-                  <label class="col-sm-2 frm-label">
+                  <label class="col-sm-2  col-2 frm-label">
                     <span>Cash or Market Value</span>
                   </label>
                 </div>
-
 
                 <div class="row">
                   <div class="col-sm-10 col-10" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
@@ -377,26 +376,6 @@
                     </div>
                   </div>
 
-                  
-<!--                      
-                      <div style="width:98% !important">
-                        <div class="form-group mt-1"  
-                          [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
-                          [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}"
-                          [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
-                        
-                            <select  class="form-control form-select shadow-none" [disabled]="flgMortgageFinancialOtherAssets"
-                              [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
-                              id="{{j}}_financialAssetsTypeId" name="{{j}}_financialAssetsTypeId"
-                              #financialAssetsTypeId="ngModel">
-                              <option value="-1" selected disabled>-Select One-</option>
-                              <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
-                            </select>
-                         
-                        </div>
-                      </div> -->
-
-
                   <div class="col-sm-2 col-2 mt-0 ptb-0 col-round-border" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="row pb-2" *ngFor="let item2 of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as j">
                         <div class="col-sm-12 col-12 ptb-0">
@@ -423,6 +402,26 @@
                     </div>
                   </div>
                 </div>
+
+                <!--                      
+                      <div style="width:98% !important">
+                        <div class="form-group mt-1"  
+                          [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialAssetsTypeId.errors}"
+                          [ngClass]="{'error':  financialAssetsTypeId.touched && financialAssetsTypeId.errors}"
+                          [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
+                        
+                            <select  class="form-control form-select shadow-none" [disabled]="flgMortgageFinancialOtherAssets"
+                              [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
+                              id="{{j}}_financialAssetsTypeId" name="{{j}}_financialAssetsTypeId"
+                              #financialAssetsTypeId="ngModel">
+                              <option value="-1" selected disabled>-Select One-</option>
+                              <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
+                            </select>
+                         
+                        </div>
+                      </div> -->
+
+
                     <!-- <div class="row" *ngFor="let item2 of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as j">
                       <div class="col-sm-12">
                         <div class="mt-1" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
@@ -563,28 +562,28 @@
         <h4 class="txt-note-h4">List all liabilities below (except real estate) and include deferred payments. Under Account Type, choose from the types listed here:</h4>
 
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-sm-2 col-2">
             <ul>
               <li>Revolving (e.g., credit cards)</li>
             </ul>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <ul>
               <li>Installment (e.g., car, student, personal loans)</li>
             </ul>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <ul>
               <li>Open 30-Day (balance paid monthly)</li>
             </ul>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <ul>
               <li>Lease (not real estate)</li>
             </ul>
           </div>
 
-          <div class="col-sm-2">
+          <div class="col-sm-2  col-2">
             <ul>
               <li>Other</li>
             </ul>
@@ -596,7 +595,7 @@
             <div class="div-sub-grp">
               <div class="frm-group pr-4" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
                 <div class="row mb-2">
-                  <label class="col-sm-10 frm-label" style="white-space:normal">
+                  <label class="col-sm-10  col-10 frm-label" style="white-space:normal">
                     <div class="row">
                       <div style="width: 2% !important;"></div>
                       <div class="col-sm-5"><span>Account Type – use list above Company Name Account Number</span></div>
