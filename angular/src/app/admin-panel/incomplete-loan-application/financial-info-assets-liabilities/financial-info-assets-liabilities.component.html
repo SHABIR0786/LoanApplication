@@ -355,7 +355,7 @@
                           <div class="col-sm1 col-1  pr-1 pl-0 text-right ptb-0">
                               <div class="form-check  pt-1">
                                 <input type="checkbox" class="form-check-input" 
-                                name="deleteSelectRow1" id="eleteSelectRow1" (change)="addRemoveMortgageFinancialOtherAssets(i,$event)"/>
+                                name="deleteSelectRow1" id="eleteSelectRow1" (change)="addRemoveMortgageFinancialOtherAssets(j,$event)"/>
                               </div>
                           </div>
                           <div class="col-sm-11 col-11 form-group pl-0  ptb-0">
@@ -617,7 +617,8 @@
                       <div class="form-row">
                         <div class="col-sm-1 col-1  pr-1 pl-0 text-right ptb-0">
                             <div class="form-check  pt-1">
-                              <input type="checkbox" class="form-check-input"  [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.isPaidBeforeClosing1" id="{{k}}_isPaidBeforeClosing1" name="{{k}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"/>
+                              <input type="checkbox" class="form-check-input"  [disabled]="flgMortgageFinancialLiabilities" [(ngModel)]="item.isPaidBeforeClosing1" id="{{k}}_isPaidBeforeClosing1" name="{{k}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"
+                              (change)="showRemoveOption()"/>
                             </div>
                         </div>
                         <div class="col-sm-11 col-11 form-group pl-0  ptb-0">
@@ -947,7 +948,7 @@
                           <div class="col-sm1 col-1  pr-1 pl-0 text-right ptb-0">
                               <div class="form-check  pt-1">
                                 <input type="checkbox" class="form-check-input" 
-                                name="deleteSelectRow21" id="deleteSelectRow21" (change)="addRemoveMortgageFinancialOtherLaibilities(i,$event)"/>
+                                name="deleteSelectRow21" id="deleteSelectRow21" (change)="addRemoveMortgageFinancialOtherLaibilities(l,$event)"/>
                               </div>
                           </div>
                           <div class="col-sm-11 col-11 form-group pl-0  ptb-0">

@@ -126,7 +126,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.push(new mortgageFinancialAssets())
   }
   removeMortgageFinancialAssets() {
-    
+    debugger
     var mortgageFinancialAssetsLength = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.length;
     if(mortgageFinancialAssetsLength == 1)
     {
@@ -139,6 +139,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.removeMortgageFinancialAssetsList.sort((a,b)=>{
         return b-a;
       })
+      debugger
       this.removeMortgageFinancialAssetsList.forEach((element:any)=>{
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.splice(element,1)
       })
@@ -156,6 +157,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.push(new mortgageFinancialOtherAssets())
   }
   removeMortgageFinancialOtherAssets() {    
+    debugger
     var mortgageFinancialOtherAssets1 = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.length;
     if(mortgageFinancialOtherAssets1 == 1)
     {
@@ -169,6 +171,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.mortgageFinancialOtherAssetsRemoveIndex.sort((a,b)=>{
         return b-a;
       })
+      debugger
       this.mortgageFinancialOtherAssetsRemoveIndex.forEach((element:any)=>{
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(element,1)
       })
@@ -454,7 +457,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   showRemoveOption(){
     if( this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.length > 0){
       var found:any[]= this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.filter((s:any)=> s.isPaidBeforeClosing1 == true);
-        if(found){
+        if(found.length >0){
           this.flgShowRemove3 = true
         }
         else

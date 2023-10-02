@@ -60,7 +60,8 @@ export class BorrowerInfoComponent implements OnInit {
   flgPhoneRequired: boolean = true;
   extraEmployeesList:Employment[]=[new Employment()];
   removeEmployeeData:boolean=false;
-  removeEmpIndexList:any[]=[]
+  removeEmpIndexList:any[]=[];
+  flgValidateLess2Years:boolean=false;
   constructor(private loanManagmentService: LoanManagementService, private borrowService: BorrowService, private router: Router) {
 
     //this.bindValues();
@@ -1013,6 +1014,8 @@ export class BorrowerInfoComponent implements OnInit {
       }
     }
     this.doNotApplyForaddress1 = totalMonth > 23 ? true : false;
+    this.flgValidateLess2Years= totalMonth > 23 ?  false: true;
+    
     
   }
   getStateByCountryIdEmp(id: any,index:any) {

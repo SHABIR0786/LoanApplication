@@ -821,7 +821,8 @@
           <div class="col-12 p-1">
             <div class="div-border" [ngClass]="{'disabled':doNotApplyForaddress1==true}">
               <div class="form-inline">
-                <label class="frm-label mr-4"> If at Current Address for LESS than 2 years, list Former Address</label>
+                <label class="frm-label mr-4 chkBox-text" *ngIf="flgValidateLess2Years ==false"> If at Current Address for LESS than 2 years, list Former Address</label>
+                <label class="frm-label mr-4 chkBox-text" *ngIf="flgValidateLess2Years ==true" style="color: red !important;"> If at Current Address for LESS than 2 years, list Former Address</label>
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" style="pointer-events: all !important;"
                     [(ngModel)]="doNotApplyForaddress1" name="doNotApplyForaddress161" 
@@ -939,6 +940,7 @@
               
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
                     [ngClass]="{'error_bb':  year1.touched && year1.errors}"
+                    [ngClass]="{'disabled':doNotApplyForaddress1==true}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
                       style="border-bottom:1px solid #696969 !important ;  ">
@@ -955,6 +957,7 @@
                
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
                     [ngClass]="{'error_bb':  month1.touched && month1.errors}"
+                    [ngClass]="{'disabled':doNotApplyForaddress1==true}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                     <div class="frm-fld-input-no-arrow"
                       style="border-bottom:1px solid #696969 !important ;">
