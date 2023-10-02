@@ -279,8 +279,6 @@
     font-family: 'Mulish', sans-serif;
     white-space: nowrap;
   }
-
- 
   .div-main-grp .div-sub-grp .div-border .frm-fld-input {
     font-size: 10px;
     margin-top: 0px;
@@ -955,10 +953,7 @@
   }
 
   ul li{
-    font-size: 12px !important;
-    margin-top: 5px;
-    font-family: 'Mulish', sans-serif;
-    color:#000 !important;
+    font-size: 14px !important;
   }
 
   .txt-note{
@@ -1651,7 +1646,7 @@
     white-space: nowrap;
     }
   
-    .shadow-none{
+    shadow-none{
       box-shadow: inset 0 -1px 0 #ddd !important;
     }
   
@@ -1771,13 +1766,6 @@
   }
 
   .txt-total-amt{
-    color: #000000; 
-    text-decoration: none;
-    font-size: 14px; 
-    text-align: right;
-  }
-
-  .lbl-sm-check{
     color: #000000; 
     text-decoration: none;
     font-size: 14px; 
