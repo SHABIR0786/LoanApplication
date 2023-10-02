@@ -847,19 +847,17 @@
 
 
               <div class="row mt-2 pr-3">
-                <div class="col-1 pl-1 pr-0"><label class="gray-text">Street</label></div>
-                <div class="col-8 p-0 input-border-bottom"
+                <div class="col-sm-1  pl-1 pr-0"><label class="gray-text">Street</label></div>
+                <div class="col-sm-8  p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && street1.errors}"
                   [ngClass]="{'error_bb':  street1.touched && street1.errors}">
-
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[1].street"
                     id="street1" name="street1" [options]='options' #street1="ngModel"
                     (onAddressChange)="handleAddressChange($event,1)" />
                 </div>
 
-                <div class="col-1 pl-1 pr-0 text-right" style="text-align: center;"><label class="gray-text">Unit
-                    #</label></div>
-                <div class="col-2 p-0 pr-1 input-border-bottom">
+                <div class="col-sm-1  pl-1 pr-0 "><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-2  p-0 pr-1 input-border-bottom">
                   <input type="text" name="unit1" id="unit1" #unit1="ngModel" [disabled]="doNotApplyForaddress1 == true"
                     [(ngModel)]="borrowerInfo.personalInformation.address[1].unit" [min]="0" maxlength="5" />
                 </div>
@@ -885,7 +883,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" style="text-align: center;"><label class="gray-text">State</label>
+                <div class="col-sm-1 pl-1 pr-0 mt-2" ><label class="gray-text">State</label>
                 </div>
                 <div class="col-sm-2 p-0 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId1.errors}"
@@ -904,7 +902,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" style="text-align: center;"><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1 pl-1 pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
                 <div class="col-sm-1 p-0 input-border-bottom mt-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && address1w.errors}"
                   [ngClass]="{'error_bb':  address1w.touched && address1w.errors}">
@@ -914,7 +912,7 @@
                 </div>
 
 
-                <div class="col-sm-1 p-0 mt-2" style="text-align: center;"><label class="gray-text">Country</label></div>
+                <div class="col-sm-1 p-0 mt-2" ><label class="gray-text">Country</label></div>
                 <div class="col-sm-2  p-0 pl-1 pr-1 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && countryId1.errors}"
                   [ngClass]="{'error_bb':  countryId1.touched && countryId1.errors}">
@@ -2572,9 +2570,9 @@
    
       </div>
       <div class="row mt-1">
-        <div class="col-sm-8 col-8 frm-label pl-1 mt-2" >
+        <div class="col-sm-12 col-12 frm-label pl-1 mt-2" >
           <div class="row mt-3">
-            <div class="col-sm-6 col-6"><a (click)="addEmployess()"
+            <div class="col-sm-12 col-12 text-right"><a (click)="addEmployess()"
               style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;">Add more</a>
               <span *ngIf="removeEmployeeData == true"> /</span> <a (click)="removeEmp()"
                 *ngIf="removeEmployeeData == true"
@@ -2702,15 +2700,11 @@
                   [ngClass]="{'error': borrowForm.submitted && txtsourceType1.errors}"
                   [ngClass]="{'disabled':incomeFromOtherSources == true}">
                   <div class="frm-fld-input">
-                    <div style="display: flex; align-items: center;margin-top: 12px;">
-                      <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
                       <select class="form-control shadow-none" [(ngModel)]="itemOR.sourceType" name="{{i}}_sourceType"
                         id="{{i}}_sourceType" #txtsourceType1="ngModel" [required]="incomeFromOtherSources == false">
                         <option value="-1" selected disabled>-Select One-</option>
                         <option *ngFor="let obj of incomeTypeList" [ngValue]="obj.id"> {{obj.incomeType}} </option>
                       </select>
-
-                    </div>
                   </div>
                 </div>
               </div>
@@ -2721,7 +2715,7 @@
                   [ngClass]="{'error': borrowForm.submitted && txtmonthlyIncome2411.errors}"
                   [ngClass]="{'disabled':incomeFromOtherSources==true}">
                   <div class="frm-fld-input div-border-bottom">
-                    <div style="display: flex; align-items: center;margin-top: 12px;">
+                    <div style="display: flex; align-items: center;margin-top: 8px;">
                       <span style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
                       <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)"  (keypress)="numberOnly(this,$event)" pattern="[0-9]+"
                         style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
@@ -2742,7 +2736,7 @@
                 <div class="row mt-3">
                   <div class="col-sm-6 col-6"><a (click)="addMoreIncomeSource()"
                       style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;">Add more</a>
-                    <span *ngIf="flgShowRemoveButton == true"> /</span> <a (click)="delMoreIncomeSource()"
+                    <span *ngIf="flgShowRemoveButton == true"> / </span> <a (click)="delMoreIncomeSource()"
                       *ngIf="flgShowRemoveButton == true"
                       style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;">Remove</a>
                   </div>
@@ -2753,7 +2747,7 @@
               <div class="col-sm-4 col-4 frm-label pl-1 m-0" style="padding-left:15px !important;">
                 <div class="div-border fld-footer " [ngClass]="{'disabled':incomeFromOtherSources==true}">
                   <div class="input-border-bottom div-border-bottom">
-                    <div style="display: flex; align-items: center;margin-top: 12px;"><span
+                    <div style="display: flex; align-items: center;margin-top: 10px;"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
 
                       <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)"  (keypress)="numberOnly(this,$event)" pattern="[0-9]+"
