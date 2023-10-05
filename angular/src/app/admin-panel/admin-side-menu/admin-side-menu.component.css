@@ -465,8 +465,20 @@ div.content {
   width:6px;
   height:6px;
   content:"";
-  background-color: #585858;;
-  border:2px solid #585858;
+  background-color: #aeaeae;;
+  border:2px solid #aeaeae;
+  border-radius:4px;
+  margin-right: 1px !important;
+  margin-left: 0px !important;
+}
+
+.active a:before{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  content:"";
+  background-color: #585858 !important;
+  border:2px solid #585858 !important;
   border-radius:4px;
   margin-right: 1px !important;
   margin-left: 0px !important;

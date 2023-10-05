@@ -29,54 +29,54 @@
               <img src="https://i.stack.imgur.com/kOnzy.gif" style="width: 20px !important;" />
               <span class="pl-2" style="display: grid;">Incomplete Loan Application</span></a>
             <ul class="pl-2 sub-dropdown-menu2">
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/borrower-info' || activeMenu==1 }">
                 <a href="javascript:void(0)" (click)="navigateToBorrowerInfo()" 
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/borrower-info' || activeMenu==1 }" (click)="activeMenu =1;url=null">Borrower Info</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/financial-info-assets-liabilities' || activeMenu==2 }">
                 <a href="javascript:void(0)" (click)="navigateToFinancialInfoAssetsLiabilities()"
                   class="font-weight-light">
                   <span class="pl-2"  [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/financial-info-assets-liabilities' || activeMenu==2 }" (click)="activeMenu =2;url=null">
                     Financial Info - Assets & Liabilities  </span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/financial-info-real-estate'  || activeMenu==3}">
                 <a  href="javascript:void(0)"
                   (click)="navigateToFinancialInfoRealEstate()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/financial-info-real-estate'  || activeMenu==3}" (click)="activeMenu =3;url=null"> Financial Info - Real Estate</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/loan-property-info' || activeMenu==4 }">
                 <a  href="javascript:void(0)"
                   (click)="navigateToLoanPropertyInfo()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/loan-property-info' || activeMenu==4 }" (click)="activeMenu =4;url=null"> Loan & Property Info</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/declarations' || activeMenu==5}">
                 <a href="javascript:void(0)"
                   (click)="navigateToDeclarations()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/declarations' || activeMenu==5}" (click)="activeMenu =5;url=null"> Declarations</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/acknowledgements-agreements' || activeMenu==6}">
                 <a  href="javascript:void(0)"
                   (click)="navigateToAcknowledgements()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/acknowledgements-agreements' || activeMenu==6}" (click)="activeMenu =6;url=null"> Acknowledgements & Agreements</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/military-service' || activeMenu==7}">
                 <a href="javascript:void(0)"
                   (click)="navigateToMilitaryService()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/military-service' || activeMenu==7}" (click)="activeMenu =7;url=null"> Military Service</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/demographic-info'|| activeMenu==8 }">
                 <a  href="javascript:void(0)"
                   (click)="navigateToDemographicInfo()"
                   class="font-weight-light">
                   <span class="pl-2" [ngClass]="{'active_nav': url === '/app/admin/incomplete-loan-application/demographic-info'|| activeMenu==8 }" (click)="activeMenu =8;url=null"> Demographic Info</span></a>
               </li>
-              <li>
+              <li [ngClass]="{'active': url === '/app/admin/incomplete-loan-application/loan-originator-info' || activeMenu==9}">
                 <a href="javascript:void(0)"
                   (click)="navigateToLoanOriginatorInfo()"
                   class="font-weight-light">
