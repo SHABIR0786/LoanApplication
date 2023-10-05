@@ -113,16 +113,16 @@
   <div class="div-main-grp" style="width: 100%; margin-top: 30px; margin-bottom: 20px;">
 
     <div class="row div-sub-grp">
-    <div class="col-xs-12 col-12">
+    <div class="col-12">
       <div class="frm-group"  [ngClass]="{'error': declarationForm.submitted && txtquestion1.errors}"
       [ngClass]="{'error':  txtquestion1.touched && txtquestion1.errors}">
         <div class="row">
-          <div class="col-xs-9 col-9 txt"><b>A.</b> Will you occupy the property as your primary residence?</div>
-          <div class="col-xs-3 col-3">
+          <div class="col-9 txt"><b>A.</b> Will you occupy the property as your primary residence?</div>
+          <div class="col-3 pr-3 pl-0 pt-0">
             <div class="frm-fld-input">
-              <div class="row mt-2 pl-4">
-               <div class="col-xs-2 col-6">
-                <div class="custom-control  custom-radio">
+              <div class="row mt-2">
+               <div class="col-6">
+                <div class="custom-control  custom-radio pull-right">
                   <input class="custom-control-input" type="radio" value="Yes" 
                   name="question0" 
                   id="question0" 
@@ -134,7 +134,7 @@
                 </div>
                </div>
 
-               <div class="col-xs-2 col-6">
+               <div class="col-6">
                 <div class="custom-control  custom-radio">
                   <input class="custom-control-input" type="radio" value="No" name="question1" id="question1" #txtquestion1="ngModel" (change)="clearQuestionData()" [(ngModel)]="declarationsList[0].answer"  (change)="assignQuestionId(0,1)">
                   <label class="custom-control-label" for="question1">No</label>
@@ -184,18 +184,18 @@
 
 
         <div class="row">
-          <div class="col-xs-9 col-9 txt" style="padding-left: 50px;">
+          <div class="col-9 txt" style="padding-left: 50px;">
             If YES, have you had an ownership interest in another property in the last three years?
             <div class="pl-2">If YES, complete (1) and (2) below:</div>
           </div>
-          <div class="col-xs-9 col-3 txt">
+          <div class="col-3 pr-3 pl-0 pt-0">
             <div class="frm-fld-input"
             [ngClass]="{'error': declarationForm.submitted && question2.errors}"
             [ngClass]="{'error':  question2.touched && question2.errors}">
-              <div class="row mt-2 pl-4">
+              <div class="row mt-2">
 
-                <div class="col-xs-2 col-6">
-                  <div class="custom-control  custom-radio">
+                <div class="col-6">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input"  value="Yes" name="question2" id="question2[0]" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" (change)="assignQuestionId(1,1)" [(ngModel)]="declarationsList[1].answer"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                     [required]="declarationsList[0].answer == 'Yes'" >
                     <label class="custom-control-label" for="question2[0]">Yes</label>
@@ -204,7 +204,7 @@
                   
                 </div>
 
-                <div class="col-xs-2 col-6">
+                <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" value="No" name="question2" id="question2[1]" (change)="clearQuestionData1()" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" [(ngModel)]="declarationsList[1].answer"  (change)="assignQuestionId(1,1)"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                     [required]="declarationsList[0].answer == 'Yes'" >
@@ -237,14 +237,14 @@
 
 
         <div class="row mt-2">
-          <div class="col-xs-9 col-9 txt" style="padding-left: 60px;">
+          <div class="col-9 txt" style="padding-left: 60px;">
             <ol type="(1)" class="txt mt-2">
               <li>
                 What type of property did you own: primary residence (PR), FHA secondary residence (SR), second home (SH), or investment property (IP)?
               </li>
             </ol>
           </div>
-          <div class="col-xs-3 col-3 txt">
+          <div class="col-3 pr-3 pl-0 pt-0 txt">
             <div class="frm-group" style="  padding: 0px;   padding-top: 7px; padding-right: 10px;"   [ngClass]="{'error': declarationForm.submitted && drop1.errors}"
             [ngClass]="{'disabled': declarationsList[0].answer == 'No'}"
             [ngClass]="{'disabled': declarationsList[1].answer == 'No'}"
@@ -271,7 +271,7 @@
               </li>
             </ol>
           </div>
-          <div class="col-xs-3 col-3 txt">
+          <div class="col-xs-3 col-3 pr-3 pl-0 pt-0 txt">
             <div class="frm-group" style="
             padding: 0px;
             padding-top: 7px;
@@ -301,23 +301,23 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group" [ngClass]="{'error': declarationForm.submitted && question3.errors}"
         [ngClass]="{'error':  question3.touched && question3.errors}">
           <div class="row">
-            <div class="col-xs-12 col-9 txt mt-2">
+            <div class="col-9 txt mt-2">
               <ol type="A" start="2">
                 <li>
                   If this is a Purchase Transaction: Do you have a family relationship or business affiliation with the seller of the property?
                 </li>
               </ol>
                </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                    <div class="custom-control  custom-radio">
+                    <div class="custom-control  custom-radio pull-right">
                       <input class="custom-control-input" value="Yes" id="question3_0" #question3="ngModel" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" name="question3" >
                       <label class="custom-control-label" for="question3_0">Yes</label>
                     </div>
@@ -330,7 +330,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input"  value="No" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" id="question3_1" #question3="ngModel" name="question3" >
@@ -355,11 +355,11 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"     [ngClass]="{'error': declarationForm.submitted && question4.errors}"
         [ngClass]="{'error':  question4.touched && question4.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt mt-1">
+            <div class="col-9 txt mt-1">
               <ol type="A" start="3">
                 <li>
                   Are you borrowing any money for this real estate transaction (e.g., money for your closing costs or down payment)
@@ -367,10 +367,10 @@
                 </li>
               </ol>
                </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
                    <!-- <div style="display: flex; justify-content: center;">
                      <input type="radio" value="Yes" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3)" id="question4" #question4="ngModel" name="question4" style="-ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                      required
@@ -378,14 +378,14 @@
                      <label class="text-gray ml-2" style="font-size: 18px;">Yes</label>
                    </div> -->
 
-                   <div class="custom-control  custom-radio">
+                   <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input"  value="Yes" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3)" id="question4_0" #question4="ngModel" name="question4"  >
                     <label class="custom-control-label" for="question4_0">Yes</label>
                   </div>
 
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input"  value="No" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3);clearQuestionData2()" id="question4_1" #question4="ngModel" name="question4"  >
                     <label class="custom-control-label" for="question4_1">No</label>
@@ -404,13 +404,13 @@
           </div>
 
           <div class="row mt-2">
-            <div class="col-xs-9  col-9 txt" style="padding-left: 50px;">
+            <div class="col-9 txt" style="padding-left: 50px;">
               If YES, what is the amount of this money?
             </div>
-            <div class="col-xs-3 col-3"  [ngClass]="{'error': declarationForm.submitted && question4ans.errors}"  [ngClass]="{'error':  question4ans.touched && question4ans.errors}">
+            <div class="col-3 pr-3 pl-0 pt-0"  [ngClass]="{'error': declarationForm.submitted && question4ans.errors}"  [ngClass]="{'error':  question4ans.touched && question4ans.errors}">
               <div class="row">
-                <div class="col-xs-3 col-3 pr-1 pl-2 gray-text text-right" >$</div>
-                  <div class="col-xs-8 col-8 p-0">
+                <div class="col-3 pr-3 pl-0 pt-0 pr-1 pl-2 gray-text text-right" >$</div>
+                  <div class="col-8 p-0">
                     <input class="number-text" type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"
                         [min]="0" maxlength="9"  
                         style="  padding-left:5px;  font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100% !important;color: #A5A5A5;font-weight: 500;"
@@ -435,11 +435,11 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         >
           <div class="row">
-            <div class="col-xs-9 col-9 txt mt-2">
+            <div class="col-9 txt mt-2">
               <ol type="A" start="4">
                 <li>
                   <ol start="1">
@@ -453,14 +453,14 @@
              
               
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input"
               [ngClass]="{'error': declarationForm.submitted && question5.errors}"
         [ngClass]="{'error':  question5.touched && question5.errors}">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class=" col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input"  name="question5" id="question5[0]" #question5="ngModel"  value="yes"  [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"   >
                     <label class="custom-control-label" for="question5[0]">Yes</label>
                   </div>
@@ -473,7 +473,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class=" col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input"  name="question5" id="question5[1]" #question5="ngModel" value="No" [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"  >
@@ -494,7 +494,7 @@
 
 
           <div class="row">
-            <div class="col-xs-9 col-9 txt">
+            <div class="col-9 txt">
               
               <ol type="A" start="5">
                 <li style="list-style: none">
@@ -510,14 +510,14 @@
 
               
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input"
               [ngClass]="{'error': declarationForm.submitted && question6.errors}"
               [ngClass]="{'error':  question6.touched && question6.errors}">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" name="question6" id="question6[0]" #question6="ngModel"  value="Yes" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"   >
                     <label class="custom-control-label" for="question6[0]">Yes</label>
                   </div>
@@ -531,7 +531,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input"  name="question6" id="question6[1]" #question6="ngModel"  value="No" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"    >
                     <label class="custom-control-label" for="question6[1]">No</label>
@@ -559,12 +559,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question7.errors}"
         [ngClass]="{'error':  question7.touched && question7.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt mt-2">
+            <div class="col-9 txt mt-2">
               <ol type="A" start="5">
                 <li>
                   Will this property be subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien
@@ -572,11 +572,11 @@
                 </li>
               </ol>
              </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
-                  <div class="custom-control  custom-radio">
+                <div class="row mt-2 ">
+                 <div class="col-6">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" name="question7" id="question7[0]" #question7="ngModel" value="Yes" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)" />
                     <label class="custom-control-label" for="question7[0]">Yes</label>
                   </div>
@@ -589,7 +589,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question7" id="question7[1]" #question7="ngModel" value="No" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)"   />
@@ -617,12 +617,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question8.errors}"
         [ngClass]="{'error':  question8.touched && question8.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               
               <ol type="A" start="6">
                 <li>
@@ -631,12 +631,12 @@
               </ol>
                   
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" name="question8" id="question8[0]" #question8="ngModel" value="Yes" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"   />
                     <label class="custom-control-label" for="question8[0]">Yes</label>
                   </div>
@@ -649,7 +649,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question8[1]" id="question8" #question8="ngModel" value="No" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"    />
@@ -678,7 +678,7 @@
         [ngClass]="{'error': declarationForm.submitted && question9.errors}"
         [ngClass]="{'error':  question9.touched && question9.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               <ol type="A" start="7">
                 <li>
                   Are there any outstanding judgments against you?
@@ -686,12 +686,12 @@
               </ol>
              
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" name="question9" id="question9[0]" #question9="ngModel" value="Yes"  [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
                     <label class="custom-control-label" for="question9[0]">Yes</label>
                   </div>
@@ -704,7 +704,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question9" id="question9[1]" #question9="ngModel" value="No" [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
                     <label class="custom-control-label" for="question9[1]">No</label>
@@ -727,12 +727,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question10.errors}"
         [ngClass]="{'error':  question10.touched && question10.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               <ol type="A" start="8">
                 <li>
                   Are you currently delinquent or in default on a Federal debt?
@@ -740,12 +740,12 @@
               </ol>
              
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" name="question10" id="question10[0]" #question10="ngModel" value="Yes" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
                     <label class="custom-control-label" for="question10[0]">Yes</label>
                   </div>
@@ -758,7 +758,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question10" id="question10[1]" #question10="ngModel" value="No" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
                     <label class="custom-control-label" for="question10[1]">No</label>
@@ -782,12 +782,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question11.errors}"
         [ngClass]="{'error':  question11.touched && question11.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               <ol type="A" start="9">
                 <li>
                   Are you a party to a lawsuit in which you potentially have any personal financial liability?
@@ -796,12 +796,12 @@
 
               
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input"  value="Yes" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[0]" #question11="ngModel" name="question11"    />
                     <label class="custom-control-label" for="question11[0]">Yes</label>
                   </div>
@@ -814,11 +814,11 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[1]" #question11="ngModel" name="question11"   />
-                    <label class="custom-control-label" for="question11[1]">Yes</label>
+                    <label class="custom-control-label" for="question11[1]">No</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center; margin-left:40px">
@@ -839,12 +839,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question12.errors}"
         [ngClass]="{'error':  question12.touched && question12.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               
               <ol type="A" start="10">
                 <li>
@@ -854,12 +854,12 @@
 
              
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[0]" #question12="ngModel" name="question12"    />
                     <label class="custom-control-label" for="question12[1]">Yes</label>
                   </div>
@@ -872,7 +872,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[1]" #question12="ngModel" name="question12"  />
                     <label class="custom-control-label" for="question12[1]">No</label>
@@ -897,12 +897,12 @@
 
 
     <div class="row div-sub-grp">
-      <div class="col-xs-12 col-12">
+      <div class="col-12">
         <div class="frm-group"
         [ngClass]="{'error': declarationForm.submitted && question13.errors}"
         [ngClass]="{'error':  question13.touched && question13.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               
               <ol type="A" start="11">
                 <li>
@@ -914,12 +914,12 @@
 
              
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[0]" #question13="ngModel" name="question13"  />
                     <label class="custom-control-label" for="question13[2]">Yes</label>
                   </div>
@@ -932,7 +932,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[1]" #question13="ngModel" name="question13"  />
                     <label class="custom-control-label" for="question13[1]">No</label>
@@ -961,7 +961,7 @@
         [ngClass]="{'error': declarationForm.submitted && question14.errors}"
         [ngClass]="{'error':  question14.touched && question14.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               
               <ol type="A" start="12">
                 <li>
@@ -970,12 +970,12 @@
               </ol>
 
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                    <div class="custom-control  custom-radio">
+                    <div class="custom-control  custom-radio pull-right">
                       <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14[0]" #question14="ngModel" name="question14"  />
                       <label class="custom-control-label" for="question14[0]">Yes</label>
                     </div>
@@ -988,7 +988,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
                     <div class="custom-control  custom-radio">
                       <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question14[1]" #question13="ngModel" name="question13"  />
                       <label class="custom-control-label" for="question14[1]">No</label>
@@ -1016,19 +1016,19 @@
         [ngClass]="{'error': declarationForm.submitted && question15.errors}"
         [ngClass]="{'error':  question15.touched && question15.errors}">
           <div class="row">
-            <div class="col-xs-9 col-9 txt  mt-2">
+            <div class="col-9 txt  mt-2">
               <ol type="A" start="13">
                 <li>
                   Have you declared bankruptcy within the past 7 years?
                 </li>
               </ol>
             </div>
-            <div class="col-xs-3 col-3 txt">
+            <div class="col-3 pr-3 pl-0 pt-0 txt">
               <div class="frm-fld-input">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-6">
+                <div class="row mt-2 ">
+                 <div class="col-6">
 
-                  <div class="custom-control  custom-radio">
+                  <div class="custom-control  custom-radio pull-right">
                     <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15[0]" #question15="ngModel" name="question15"  />
                     <label class="custom-control-label" for="question15[1]">Yes</label>
                   </div>
@@ -1041,7 +1041,7 @@
                    </div> -->
                  </div>
 
-                 <div class="col-xs-2 col-6">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15" #question15="ngModel" name="question15"  />
@@ -1061,15 +1061,15 @@
           </div>
 
           <div class="row mb-2">
-            <div class="col-xs-4 col-4 txt" style="padding-left: 50px;">
+            <div class="col-4 txt" style="padding-left: 50px;">
               If YES, identify the type(s) of bankruptcy:
             </div>
-            <div class="col-xs-8 col-8">
+            <div class="col-8">
               <div class="frm-fld-input"
               [ngClass]="{'error': declarationForm.submitted && question16.errors}"
                      [ngClass]="{'error':  question16.touched && question16.errors}">
-                <div class="row mt-2 ml-4">
-                 <div class="col-xs-2 col-3 txt">
+                <div class="row mt-2 ">
+                 <div class="col-6 txt">
                    <!-- <div style="display: flex; justify-content: center;margin-left:20px">
                      <input type="radio" name="question16" id="question16" #question16="ngModel" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style=" width:80px;-ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" 
                      [required]="declarationsList[17].answer == 'Yes'"
@@ -1077,7 +1077,7 @@
                      <label class="text-gray ml-1" style="font-size: 18px;">Chapter 7 </label>
                    </div> -->
 
-                   <div class="custom-control  custom-radio">
+                   <div class="custom-control  custom-radio" >
                     <input class="custom-control-input" name="question16" id="question16_0" #question16="ngModel" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
                     <label class="custom-control-label" for="question16_0">Chapter 7</label>
                   </div>
@@ -1085,7 +1085,7 @@
 
                  </div>
 
-                 <div class="col-xs-2 col-3 txt ">
+                 <div class="col-6 txt ">
                    <!-- <div style="display: flex; justify-content: center; margin-left:20px">
                     <input type="radio" name="question16" id="question16" #question16="ngModel" value="Chapter 11" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" style="width:80px; -ms-transform: scale(1);  -webkit-transform: scale(1);  transform: scale(1);" 
                     [required]="declarationsList[17].answer == 'Yes'"
@@ -1101,7 +1101,7 @@
 
                  </div>
 
-                 <div class="col-xs-2 col-3">
+                 <div class="col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question16" id="question16_2" #question16="ngModel" value="Chapter 12" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
@@ -1117,7 +1117,7 @@
                 </div>
 
 
-                <div class="col-xs-2 col-3">
+                <div class=" col-6">
 
                   <div class="custom-control  custom-radio">
                     <input class="custom-control-input" name="question16" id="question16_3" #question16="ngModel" value="Chapter 13" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
