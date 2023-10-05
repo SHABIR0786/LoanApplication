@@ -1,4 +1,8 @@
 
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,400;1,300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
 .disabled {
   background-color: #E7E7E7 !important;
 }
@@ -30,14 +34,6 @@
 .info-block p {
   color: #fff;
   margin-bottom: 0;
-}
-.form-block {
-  background: #ffffff;
-  border: 1px solid #a5a5a5;
-  border-radius: 8px;
-  padding: 14px 21px 24px 21px;
-  cursor: not-allowed;
-  margin-bottom: 74px;
 }
 
 /* .error {
@@ -91,6 +87,29 @@
   color: #a5a5a5;
 }
 
+.btn-fill {
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  color: #ffffff;
+  padding: 12px 24px;
+  background: #0d2576;
+  border-radius: 6px;
+  width: 118px;
+}
+
+
+.form-block {
+  background: #ffffff;
+  border: 1px solid #a5a5a5;
+  border-radius: 8px;
+  padding: 14px 21px 24px 21px;
+  cursor: not-allowed;
+  margin-bottom: 74px;
+}
+
+
 .form-block.disabled .input-group .form-control {
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -100,10 +119,6 @@
   cursor: not-allowed;
 }
 
-.form-block.disabled .input-group .form-control:focus {
-  box-shadow: none;
-  outline: 0;
-}
 .separator {
   height: 6px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -134,22 +149,13 @@
   box-shadow: none;
   outline: 0;
 }
-.btn-fill {
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 13px;
-  text-align: center;
-  color: #ffffff;
-  padding: 12px 24px;
-  background: #0d2576;
-  border-radius: 6px;
-  width: 118px;
+
+
+.form-block.disabled .input-group .form-control:focus {
+  box-shadow: none;
+  outline: 0;
 }
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,400;1,300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
 /* font-family: 'Mulish', sans-serif;
 font-family: 'Nunito', sans-serif;

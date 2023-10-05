@@ -155,24 +155,25 @@
           <div class="div-sub-grp">
             <div class="frm-group ">
               <div class="row mb-0 mx-0 ">
-                <div class="col-sm-10 col-10 ptb-0">
+                <div class="col-sm-12 col-12 ptb-0">
                     <div class="row">
-                      <div class="col-sm-4 col-4 pl-5 ptb-0"><label class="frm-label">Account Type - Use list above</label></div>
-                      <div class="col-sm-4 col-4 pl-0 ptb-0"><label class="frm-label">Financial Institution</label></div>
-                      <div class="col-sm-4 col-4 pl-0 ptb-0"><label class="frm-label">Account Number</label></div>
+                      <div class="col-sm-3 col-3 pl-5 ptb-0"><label class="frm-label">Account Type - Use list above</label></div>
+                      <div class="col-sm-3 col-3 pl-0 ptb-0"><label class="frm-label">Financial Institution</label></div>
+                      <div class="col-sm-3 col-3 pl-0 ptb-0"><label class="frm-label">Account Number</label></div>
+                      <div class=" col-sm-3 col-3 ptb-0"><label class="frm-label">Cash or Market Value</label></div>
                     </div>
                 </div>
-                <div class="col-sm-2 col-2 pl-0 ptb-0">
+                <!-- <div class="col-sm-2 col-2 pl-0 ptb-0">
                   <div class="row">
                     <div class=" col-sm-12 col-12 ptb-0"><label class="frm-label">Cash or Market Value</label></div>
                   </div>
-                </div>
+                </div> -->
               </div>
              
             <div class="row mx-0 mt-1">
-              <div class="col-sm-10 col-10 pl-0 ptb-0">
+              <div class="col-sm-12 col-12 pl-0 ptb-0">
                 <div class="row mx-0 mt-2" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
-                  <div class="col-sm-4 col-4 pl-0  pr-1 ptb-0">
+                  <div class="col-sm-3 col-3 pl-0  pr-1 ptb-0">
                     <div class="form-row">
                       <div class="col-2 pr-1 pl-0 text-right ptb-0">
                           <div class="form-check  pt-1">
@@ -188,21 +189,38 @@
                     </div>
                   </div>
   
-                  <div class="col-sm-4 col-4 pl-1 pr-1 ptb-0" >
+                  <div class="col-sm-3 col-3 pl-1 pr-1 ptb-0" >
                     <div class="form-group ptb-0"  >
                       <input class="form-control  fc-fullborder text-gray-color" [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && financialInstitution.errors}" [ngClass]="{'error':  financialInstitution.touched && financialInstitution.errors}" type="text" [(ngModel)]="item.financialInstitution"  id="{{i}}_financialInstitution" required name="{{i}}_financialInstitution"  #financialInstitution="ngModel" maxlength="50"/>
                     </div>
                   </div>
                  
-                  <div class="col-sm-4 col-4 ptb-0 pl-1 pr-1 ">
+                  <div class="col-sm-3 col-3 ptb-0 pl-1 pr-1 ">
                     <div class="form-group ptb-0" >
                       <input class="form-control  fc-fullborder text-gray-color" [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountNumber.errors}" [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}"type="text" [(ngModel)]="item.accountNumber" maxlength="50"   id="{{i}}_accountNumber" name="{{i}}_accountNumber" #accountNumber="ngModel" required />
                     </div>
                   </div>
+
+                  <div class="col-sm-3 col-3 ptb-0">
+                    <div class="form-group row ptb-0">
+                      <label class="col-sm-1 col-1  pl-0 pr-0 col-form-label col-form-label-sm font-16 text-gray-color  pt-2 text-right">$</label>
+                      <div class="col-sm-11 col-11  pl-0">
+                        <input  type="text" class="form-control  fc-fullborder text-gray-color pl-1" onFocus="this.select();"
+                         (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)" 
+                          pattern="^\d+(?:\.\d{1,2})?$"   [minFractionDigits]="2" [min]="0"
+                           [maxFractionDigits]="2"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" 
+                           step="0.1" [min]="0" maxlength="9"  [(ngModel)]="item.cashMarketValue" 
+                           id="{{i}}_cashMarketValue" name="{{i}}_cashMarketValue" 
+                           #txtcashMarketValue13="ngModel"
+                            (focusout)="getTotalMortgageFinancialAssets()"  />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              <div class="col-sm-2 col-2 mt-0 ptb-0 col-round-border">
+              <!-- <div class="col-sm-2 col-2 mt-0 ptb-0 col-round-border">
                 <div class="row pt-1" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
                   <div class="col-sm-12 col-12 ptb-0">
                     <div class="form-group row ptb-0">
@@ -220,26 +238,23 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <div class="row mx-0">
-              <div class="col-sm-10 col-10 ptb-0">
+              <div class="col-sm-12 col-12 ptb-0">
                 <div class="row mx-0 mt-2">
-                  <div class="col-sm-4 col-4  ptb-0 ">
+                  <div class="col-sm-3 col-3  ptb-0 ">
                     <a  class="lable-add-remove pt-2" (click)="addMortgageFinancialAssets()">Add more </a> 
                     <span *ngIf="flgShowRemove1 == true" class="lable-add-remove pt-2 pl-1 pr-1"> / </span> 
                     <a *ngIf="flgShowRemove1 == true" class="lable-add-remove pt-2"  (click)="removeMortgageFinancialAssets()">Remove</a>
                   </div>
-                  <div class="col-sm-8 col-8  ptb-0 text-right">
+                  <div class="col-sm-6 col-6  ptb-0 text-right">
                     <label class="lbl-total font-16 text-black-color  pt-2 b">Provide TOTAL Amount Here</label>
                   </div>
-                </div>
-              </div>
 
-              <div class="col-sm-2 col-2 ptb-0 col-round-border-bot">
-                <div class="row pb-1">
-                  <div class="col-sm-12 col-12 ptb-0">
+
+                  <div class="col-sm-3 col-3 ptb-0">
                     <div class="form-group row ptb-0  ">
                       <label class="col-sm-1 col-1 pl-0 pr-0 text-right col-form-label col-form-label-sm font-16 text-black-color b pt-2">$</label>
                       <div class="col-sm-11 col-11 pl-1">
@@ -250,8 +265,25 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
+
+              <!-- <div class="col-sm-2 col-2 ptb-0 col-round-border-bot">
+                <div class="row pb-1">
+                  <div class="col-sm-12 col-12 ptb-0">
+                    <div class="form-group row ptb-0  ">
+                      <label class="col-sm-1 col-1 pl-0 pr-0 text-right col-form-label col-form-label-sm font-16 text-black-color b pt-2">$</label>
+                      <div class="col-sm-11 col-11 pl-1">
+                        <p-inputNumber [disabled]="true" class="form-control  fc-fullborder text-black-color pl-0"
+                            [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets"
+                            name="totalMortgageFinancialAssets" #txttotalMortgageFinancialAssets="ngModel"
+                            [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
             </div>
             </div>
           </div>

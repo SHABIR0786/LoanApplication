@@ -59,27 +59,6 @@ p{
   flex-shrink: 0;
   } */
 
-  .error {
-    box-sizing: border-box;
-    padding: 5px 5px 5px 16px;
-    min-height: 50px;
-    border: solid 1px !important;
-    border-color: red !important;
-    background-color: #ffffff;
-    border-radius: 10px;
-    /* flex-shrink: 0; */
-    }
-  
-    .error_bb{
-      box-sizing: border-box;
-      padding: 5px 5px 5px 16px;
-      border: solid 1px !important;
-      border-color: red !important;
-      background-color: #ffffff;
-      border-radius: 10px;
-      max-height:35px !important;
-      /* flex-shrink: 0; */
-    }
   
 .form-block {
   background: #ffffff;
@@ -118,6 +97,29 @@ p{
   cursor: not-allowed;
 }
 
+
+.error {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  min-height: 50px;
+  border: solid 1px !important;
+  border-color: red !important;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* flex-shrink: 0; */
+  }
+
+  .error_bb{
+    box-sizing: border-box;
+    padding: 5px 5px 5px 16px;
+    border: solid 1px !important;
+    border-color: red !important;
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-height:35px !important;
+    /* flex-shrink: 0; */
+  }
+
 .form-block.disabled .input-group .form-control:focus {
   box-shadow: none;
   outline: 0;
@@ -152,17 +154,6 @@ p{
   box-shadow: none;
   outline: 0;
 }
-.btn-fill {
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 13px;
-  text-align: center;
-  color: #ffffff;
-  padding: 12px 24px;
-  background: #0d2576;
-  border-radius: 6px;
-  width: 118px;
-}
 
 
 .frm-fld-input {
@@ -192,3 +183,17 @@ p{
   font-family: 'Mulish', sans-serif;
   white-space: nowrap;
   }
+
+
+  
+.btn-fill {
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  color: #ffffff;
+  padding: 12px 24px;
+  background: #0d2576;
+  border-radius: 6px;
+  width: 118px;
+}

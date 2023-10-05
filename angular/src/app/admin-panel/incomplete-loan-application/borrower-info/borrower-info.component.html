@@ -378,7 +378,7 @@
                     [ngClass]="{'error':  credit0.touched && credit0.errors}" />
                   <label class="radio-label">I am applying for <b style="color:#545454 !important">joint credit.</b></label>
                 </div> -->
-                <div class="frm-fld-input-no-arrow no-arrow pt-1">  Total Number of <b style="color:#545454 !important">Borrowers:</b>
+                <div class="frm-fld-input-no-arrow no-arrow pt-1">Total Number of <b style="color:#545454 !important">Borrowers:</b>
                   <select [disabled]="borrowerInfo.personalInformation.creditValue=='1'"
                     [required]="borrowerInfo.personalInformation.creditValue=='2'"
                     [(ngModel)]="borrowerInfo.personalInformation.totalBorrowers" (change)="creditClick()"

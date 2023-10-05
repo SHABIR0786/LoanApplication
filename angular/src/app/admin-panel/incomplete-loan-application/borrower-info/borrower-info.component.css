@@ -899,6 +899,23 @@
 }
 
 
+.no-arrow{
+  text-wrap: initial !important;
+  margin-left: 0px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;
+}
+
+.no-arrow b{
+  margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;
+}
+
+
+.frm-fld-input-text {
+  margin-top:8px; margin-left: 10px;  color:#a5a5a5; font-size: 14px !important; font-family: 'Mulish', sans-serif;
+}
+.frm-fld-input-text-dark{
+  margin-top: 8px; margin-left: 10px;  color:#2f2f2f; font-size: 14px; font-weight: bold !important;
+}
+
 
 
 .custom-checkbox .custom-control-label::before {
@@ -930,23 +947,6 @@
 }
 
 
-
-  .chkBox-text{
-    font-size: 0.9rem !important;
-    font-weight: bold !important;
-    font-family: 'Mulish', sans-serif;
-    padding-top: 3px;
-    padding-left: 8px;
-  }
-
-  
-  .chkBox-padding-left-10{
-    padding-left: 10px;
-  }
-
-  .f-20{
-    font-size: 20px;
-  }
 
   .txt-note-h4{
     font-size: 16px !important;
@@ -1004,6 +1004,26 @@
     font-family: 'Mulish', sans-serif;
   }
 
+
+  
+  .chkBox-text{
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+    font-family: 'Mulish', sans-serif;
+    padding-top: 3px;
+    padding-left: 8px;
+  }
+
+  
+  .chkBox-padding-left-10{
+    padding-left: 10px;
+  }
+
+  .f-20{
+    font-size: 20px;
+  }
+
+
   .font-12{
     font-size: 12px !important; 
     line-height: 25px !important;
@@ -1025,21 +1045,6 @@
     color: #ffffff;
     font-family: 'Mulish', sans-serif;
     font-size: 16px;
-  }
-  .form-block {
-    background: #e7e7e7;
-    border: 1px solid #a5a5a5;
-    border-radius: 8px;
-    padding: 14px 21px 24px 21px;
-    cursor: not-allowed;
-    margin-bottom: 74px;
-  }
-  .div-border.disabled.div-border{
-    pointer-events: none;
-    background-color: #E7E7E7 !important;
-  }
-  .form-block.disabled {
-    cursor: not-allowed;
   }
   
   .form-block .input-group {
@@ -1100,6 +1105,23 @@
     border-bottom: 3px solid #000000;
     background-color: transparent;
     padding: 0;
+  }
+
+  
+  .form-block {
+    background: #e7e7e7;
+    border: 1px solid #a5a5a5;
+    border-radius: 8px;
+    padding: 14px 21px 24px 21px;
+    cursor: not-allowed;
+    margin-bottom: 74px;
+  }
+  .div-border.disabled.div-border{
+    pointer-events: none;
+    background-color: #E7E7E7 !important;
+  }
+  .form-block.disabled {
+    cursor: not-allowed;
   }
   
   .borrower-block .input-group .form-control:focus {
@@ -1696,27 +1718,15 @@
   }
   
   .radio-label {
-    margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;
+    margin-right: 5px; color:#a5a5a5  !important; 
+    font-size: 14px !important; 
+    font-family: 'Mulish', sans-serif;
+    text-wrap: initial !important;
+
   }
   
   .radio-label b{
     color:#696969; font-size: 14px !important; font-family: 'Mulish', sans-serif;
-  }
-  
-  .no-arrow{
-    margin-left: 0px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;
-  }
-
-  .no-arrow b{
-    margin-left: 10px  !important;  color:#a5a5a5 !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;
-  }
-
-  
-  .frm-fld-input-text {
-    margin-top:8px; margin-left: 10px;  color:#a5a5a5; font-size: 14px !important; font-family: 'Mulish', sans-serif;
-  }
-  .frm-fld-input-text-dark{
-    margin-top: 8px; margin-left: 10px;  color:#2f2f2f; font-size: 14px; font-weight: bold !important;
   }
   
   .cls-checkbox {}

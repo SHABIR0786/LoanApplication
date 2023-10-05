@@ -76,6 +76,31 @@
 li {
   list-style: none;
 }
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+.bg_primary {
+  background-color: #213782 !important;
+}
+.text_primary {
+  color: #213782 !important;
+}
+.border_radius_10px {
+  border-radius: 10px;
+}
+.active_class {
+  color: #213782 !important ;
+}
+.d_none {
+  display: none;
+}
+.d_none_imp {
+  display: none !important;
+}
+
 .sidebar a {
   display: inline-block;
   color: #bdbdbd;
@@ -130,28 +155,6 @@ div.content {
   background: white;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: white;
-}
-.bg_primary {
-  background-color: #213782 !important;
-}
-.text_primary {
-  color: #213782 !important;
-}
-.border_radius_10px {
-  border-radius: 10px;
-}
-.active_class {
-  color: #213782 !important ;
-}
-.d_none {
-  display: none;
-}
-.d_none_imp {
-  display: none !important;
-}
 .width_webkit {
   width: -webkit-fill-available;
 }
@@ -383,14 +386,6 @@ div.content {
   font-weight: 600  !important;
   color: #0D2576  !important;
 }
-
-
-.sidebar a:active {
-  font-size: 16px  !important;
-  font-weight: 600  !important;
-  color: #0D2576 !important;
-}
-
 .sub-dropdown-menu ul{
  
   font-size: 14px  !important;
@@ -398,6 +393,14 @@ div.content {
   font-style: normal !important;
   color: #585858 !important;
 }
+
+.sidebar a:active {
+  font-size: 16px  !important;
+  font-weight: 600  !important;
+  color: #0D2576 !important;
+}
+
+
 .sub-dropdown-menu li{
  
   font-size: 14px  !important;
@@ -405,6 +408,17 @@ div.content {
   font-style: normal !important;
   color: #585858 !important;
   margin-bottom: 10px;
+}
+
+
+.sub-dropdown-menu2 li a span{
+  display: grid !important;
+}
+
+.active_nav{
+  color: #585858 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
 }
 
 .sub-dropdown-menu li a{
@@ -469,12 +483,3 @@ div.content {
   color: #a5a5a5 !important;
 }
 
-.sub-dropdown-menu2 li a span{
-  display: grid !important;
-}
-
-.active_nav{
-  color: #585858 !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
