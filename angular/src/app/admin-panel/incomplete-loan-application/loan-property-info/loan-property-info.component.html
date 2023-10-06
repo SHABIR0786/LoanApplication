@@ -140,9 +140,11 @@
                       </span>
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -381,7 +383,13 @@
                       #cityId="ngModel"
                       required
                     >
-                      <option disabled>Select City</option>
+                      <option
+                        [ngValue]="undefined"
+                        selected
+                        [disabled]="cityId.value > 0 && cityId.value != null"
+                      >
+                        Select City
+                      </option>
                       <option
                         *ngFor="let obj of cityListAddress0"
                         [ngValue]="obj.id"
@@ -429,7 +437,13 @@
                       required
                       (change)="getCityByStateId(stateId.value)"
                     >
-                      <option disabled>Select State</option>
+                      <option
+                        [ngValue]="undefined"
+                        selected
+                        [disabled]="stateId.value > 0 && stateId.value != null"
+                      >
+                        Select State
+                      </option>
                       <option
                         *ngFor="let obj of stateListAddress0"
                         [ngValue]="obj.id"
@@ -501,7 +515,15 @@
                       required
                       (change)="getStateByCountryId(countryId.value)"
                     >
-                      <option disabled>Select Country</option>
+                      <option
+                        [ngValue]="undefined"
+                        selected
+                        [disabled]="
+                          countryId.value > 0 && countryId.value != null
+                        "
+                      >
+                        Select Country
+                      </option>
                       <option
                         *ngFor="let obj of countryList"
                         [ngValue]="obj.id"
@@ -558,9 +580,11 @@
                   "
                 >
                   <input
-                    type="number"
+                    type="text"
                     onFocus="this.select();"
                     (blur)="fixDecimals($event)"
+                    (keypress)="numberOnly(this, $event)"
+                    pattern="^\d+(?:\.\d{1,2})?$"
                     style="
                       border: 0px !important;
                       padding-left: 5px;
@@ -1017,7 +1041,6 @@
 
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                   [ngClass]="{
                     error:
                       loanPropertyInfoForm.submitted && txtcreditorName.errors
@@ -1025,6 +1048,7 @@
                   [ngClass]="{
                     error: txtcreditorName.touched && txtcreditorName.errors
                   }"
+                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                 >
                   <div class="input-border-bottom">
                     <div
@@ -1054,9 +1078,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1153,7 +1179,6 @@
               <div class="col-2">
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                   [ngClass]="{
                     error:
                       loanPropertyInfoForm.submitted && monthlyPayment.errors
@@ -1161,6 +1186,7 @@
                   [ngClass]="{
                     error: monthlyPayment.touched && monthlyPayment.errors
                   }"
+                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                 >
                   <div class="input-border-bottom">
                     <div
@@ -1189,9 +1215,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1224,7 +1252,6 @@
               <div class="col-2">
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                   [ngClass]="{
                     error:
                       loanPropertyInfoForm.submitted && txtloanAmount.errors
@@ -1232,6 +1259,7 @@
                   [ngClass]="{
                     error: txtloanAmount.touched && txtloanAmount.errors
                   }"
+                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                 >
                   <div class="input-border-bottom">
                     <div
@@ -1260,9 +1288,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1295,13 +1325,13 @@
               <div class="col-2">
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                   [ngClass]="{
                     error: loanPropertyInfoForm.submitted && creditLimit.errors
                   }"
                   [ngClass]="{
                     error: creditLimit.touched && creditLimit.errors
                   }"
+                  [ngClass]="{ disabled: flgOtherNewMortgageLoans == true }"
                 >
                   <div class="input-border-bottom">
                     <div
@@ -1331,9 +1361,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1495,9 +1527,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1589,9 +1623,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;
@@ -1765,13 +1801,13 @@
               >
                 <div
                   class="frm-group"
-                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                   [ngClass]="{
                     error: loanPropertyInfoForm.submitted && assetTypeId.errors
                   }"
                   [ngClass]="{
                     error: assetTypeId.touched && assetTypeId.errors
                   }"
+                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                 >
                   <p
                     class="frm-fld-input"
@@ -1786,7 +1822,15 @@
                       #assetTypeId="ngModel"
                       [required]="flgGiftsorGrants == false"
                     >
-                      <option value="-1" selected disabled>-Select one-</option>
+                      <option
+                        [ngValue]="undefined"
+                        selected
+                        [disabled]="
+                          assetTypeId.value > 0 && assetTypeId.value != null
+                        "
+                      >
+                        -Select one-
+                      </option>
                       <option
                         *ngFor="let obj of giftTypeList"
                         [ngValue]="obj.id"
@@ -1867,11 +1911,11 @@
               >
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                   [ngClass]="{
                     error: loanPropertyInfoForm.submitted && source.errors
                   }"
                   [ngClass]="{ error: source.touched && source.errors }"
+                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                 >
                   <p
                     class="frm-fld-input"
@@ -1886,17 +1930,23 @@
                       #source="ngModel"
                       [required]="flgGiftsorGrants == false"
                     >
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option value="-1">Community Nonprofit</option>
-                      <option value="-1">Employer</option>
-                      <option value="-1">Federal Agency</option>
-                      <option value="-1">Local Agency</option>
-                      <option value="-1">Relative</option>
-                      <option value="-1">Religious Non Profit</option>
-                      <option value="-1">State Agency</option>
-                      <option value="-1">Unmarried Partner</option>
-                      <option value="-1">Lender</option>
-                      <option value="-1">Other</option>
+                      <option
+                        [ngValue]="undefined"
+                        selected
+                        [disabled]="source.value > 0 && source.value != null"
+                      >
+                        -Select One-
+                      </option>
+                      <option value="1">Community Nonprofit</option>
+                      <option value="2">Employer</option>
+                      <option value="3">Federal Agency</option>
+                      <option value="4">Local Agency</option>
+                      <option value="5">Relative</option>
+                      <option value="6">Religious Non Profit</option>
+                      <option value="7">State Agency</option>
+                      <option value="8">Unmarried Partner</option>
+                      <option value="9">Lender</option>
+                      <option value="10">Other</option>
                     </select>
                   </p>
                 </div>
@@ -1911,13 +1961,13 @@
               >
                 <div
                   class="frm-group mt-2"
-                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                   [ngClass]="{
                     error: loanPropertyInfoForm.submitted && marketValue.errors
                   }"
                   [ngClass]="{
                     error: marketValue.touched && marketValue.errors
                   }"
+                  [ngClass]="{ disabled: flgGiftsorGrants == true }"
                 >
                   <div class="input-border-bottom">
                     <div
@@ -1944,9 +1994,11 @@
                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
 
                       <input
-                        type="number"
+                        type="text"
                         onFocus="this.select();"
                         (blur)="fixDecimals($event)"
+                        (keypress)="numberOnly(this, $event)"
+                        pattern="^\d+(?:\.\d{1,2})?$"
                         style="
                           border: 0px !important;
                           padding-left: 5px;

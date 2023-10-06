@@ -18,6 +18,7 @@ import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
 import { add } from "lodash";
 import { NgForm } from "@angular/forms";
 import { elementEventFullName } from "@angular/compiler/src/view_compiler/view_compiler";
+import { parse } from "path";
 
 @Component({
   selector: "app-borrower-info",
@@ -50,6 +51,7 @@ export class BorrowerInfoComponent implements OnInit {
   maritalStatusList: any[] = [];
   incomeTypeList: any[] = [];
   currentDate: Date = new Date();
+  currentDateDob: Date = new Date();
   BorrowerName: any;
   flgShowRemoveButton: boolean = false;
   stateListAddress0: any[] = [];
@@ -65,7 +67,10 @@ export class BorrowerInfoComponent implements OnInit {
   stateListEmp2: any[] = [];
   cityListEmp2: any[] = [];
   flgPhoneRequired: boolean = true;
-
+  extraEmployeesList: Employment[] = [new Employment()];
+  removeEmployeeData: boolean = false;
+  removeEmpIndexList: any[] = [];
+  flgValidateLess2Years: boolean = false;
   constructor(
     private loanManagmentService: LoanManagementService,
     private borrowService: BorrowService,
@@ -75,6 +80,8 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentDateDob = new Date("01/30/2010");
+
     this.monthYearList();
     this.getCountries();
     this.getStates();
@@ -119,7 +126,7 @@ export class BorrowerInfoComponent implements OnInit {
         });
       }
     });
-    debugger;
+
     if (
       localStorage.cityListAddress0 != undefined &&
       localStorage.cityListAddress0 != ""
@@ -203,10 +210,18 @@ export class BorrowerInfoComponent implements OnInit {
       localStorage.stateListEmp2 != ""
     ) {
       this.stateListEmp2 = JSON.parse(localStorage.getItem("stateListEmp2"));
-      debugger;
     }
     if (localStorage.borrowerInfo != undefined) {
       this.borrowerInfo = JSON.parse(localStorage.getItem("borrowerInfo"));
+    }
+    if (
+      localStorage.extraEmployeesList != undefined &&
+      localStorage.extraEmployeesList != ""
+    ) {
+      this.extraEmployeesList = [];
+      this.extraEmployeesList = JSON.parse(
+        localStorage.getItem("extraEmployeesList")
+      );
     } else {
       this.borrowerInfo.personalInformation = new PersonalInformation();
       this.borrowerInfo.personalInformation.alternateNames = new AlternateNames();
@@ -219,8 +234,8 @@ export class BorrowerInfoComponent implements OnInit {
       this.borrowerInfo.employment[0].grossMonthlyIncome = new GrossMonthlyIncome();
       this.borrowerInfo.employment.push(new Employment()); //additional employement
       this.borrowerInfo.employment[1].grossMonthlyIncome = new GrossMonthlyIncome();
-      this.borrowerInfo.employment.push(new Employment()); //current or previous employement
-      this.borrowerInfo.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
+      // this.borrowerInfo.employment.push(new Employment());
+      // this.borrowerInfo.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
       this.borrowerInfo.incomeOtherSources = [];
       this.borrowerInfo.incomeOtherSources.push(new IncomeOtherSource());
       // this.borrowerInfo.incomeOtherSources.push(new IncomeOtherSource());
@@ -269,6 +284,8 @@ export class BorrowerInfoComponent implements OnInit {
     this.yearList = [];
     this.monthList = [];
     this.browerList = [];
+    this.yearList.push({ id: 0, label: "" });
+    this.monthList.push({ id: 0, label: "" });
     for (var i = 1; i <= 100; i = i + 1) {
       this.yearList.push({ id: i, label: i });
     }
@@ -344,8 +361,11 @@ export class BorrowerInfoComponent implements OnInit {
     }
 
     if (this.doNotApplyForEmp2) {
-      borrowerModel.employment[2] = new Employment();
-      borrowerModel.employment[2].grossMonthlyIncome = new GrossMonthlyIncome();
+      return;
+    } else {
+      this.extraEmployeesList.forEach((element: any) => {
+        borrowerModel.employment.push(element);
+      });
     }
     this.borrowerInfo.incomeOtherSources[0].sources.forEach((element: any) => {
       element.flgDeletedRow = false;
@@ -379,12 +399,15 @@ export class BorrowerInfoComponent implements OnInit {
       "incomeFromOtherSources",
       JSON.stringify(this.incomeFromOtherSources)
     );
+    localStorage.setItem(
+      "extraEmployeesList",
+      JSON.stringify(this.extraEmployeesList)
+    );
+
     this.borrowService
       .createMortgageLoanApplication(borrowerModel)
       .subscribe((res: any) => {
         if (res.success == true) {
-          debugger;
-
           localStorage.setItem(
             "cityListAddress0",
             JSON.stringify(this.cityListAddress0)
@@ -504,7 +527,6 @@ export class BorrowerInfoComponent implements OnInit {
   // }
   getStates() {
     this.borrowService.getStates().subscribe((data: any) => {
-      debugger;
       this.stateList = [];
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
@@ -745,18 +767,39 @@ export class BorrowerInfoComponent implements OnInit {
   }
 
   fixDecimals(event: any) {
-    var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
+    var vals = event.target.value.replace(",", "");
+    if (vals != "") {
+      vals = parseFloat(vals).toFixed(2);
+      var int: number = parseInt(vals);
+      var dec = vals - int;
+      if (dec > 0) {
+        event.target.value = int + dec;
+      } else {
+        event.target.value = int + ".00";
+      }
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
     } else {
-      event.target.value = int + ".00";
+      event.target.value = "0.00";
     }
   }
 
+  numberOnly(txt: any, evt): boolean {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+      if (evt.target.value.includes(".")) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    }
+    return true;
+  }
+
   scroll(event: any) {
-    //up 38 down 40
     var curBox = event.currentTarget;
     if (event.keyCode === 40) {
       //down
@@ -891,33 +934,11 @@ export class BorrowerInfoComponent implements OnInit {
   }
   doNotApplyForEmp2F(value: any) {
     if (value == true) {
-      this.borrowerInfo.employment[2].name = "";
-      this.borrowerInfo.employment[2].phone = "";
-      this.borrowerInfo.employment[2].street = "";
-      this.borrowerInfo.employment[2].cityId = 0;
-      this.borrowerInfo.employment[2].unit = "";
-      this.borrowerInfo.employment[2].stateId = 0;
-      this.borrowerInfo.employment[2].zip = "";
-      this.borrowerInfo.employment[2].countryId = 0;
-      this.borrowerInfo.employment[2].position = "";
-      this.borrowerInfo.employment[2].startDate = "";
-      this.borrowerInfo.employment[2].workingYears = 0;
-      this.borrowerInfo.employment[2].workingMonths = 0;
-      this.borrowerInfo.employment[2].isEmployedBySomeone = false;
-      this.borrowerInfo.employment[2].isSelfEmployed = false;
-      this.borrowerInfo.employment[2].isOwnershipLessThan25 = false;
-      this.borrowerInfo.employment[2].monthlyIncome = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.baseIncome = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.overtime = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.bonus = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.commission = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.militaryEntitlements = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.other = 0;
-      this.borrowerInfo.employment[2].grossMonthlyIncome.total = 0;
+      this.extraEmployeesList = [];
+      this.addEmployess();
     }
   }
   incomeFromOtherSourcesF(event: any) {
-    debugger;
     if (event == true) {
       this.borrowerInfo.incomeOtherSources[0].sources = [];
       this.borrowerInfo.incomeOtherSources[0].sources.push(new Source());
@@ -936,6 +957,7 @@ export class BorrowerInfoComponent implements OnInit {
   onBlurDt(event: any) {
     var sDate = new Date(event.target.value);
     var currentDate = new Date();
+
     if (
       sDate.getFullYear() < 1900 ||
       sDate > currentDate ||
@@ -980,7 +1002,7 @@ export class BorrowerInfoComponent implements OnInit {
     if (this.stateList.length > 0) {
       if (section == "Address" && index == 0) {
         this.stateListAddress0 = [];
-        debugger;
+
         if (this.borrowerInfo.personalInformation.address[0].stateId != null) {
           this.borrowerInfo.personalInformation.address[0].stateId = 0;
           this.borrowerInfo.personalInformation.address[0].cityId = 0;
@@ -989,8 +1011,6 @@ export class BorrowerInfoComponent implements OnInit {
         this.stateList
           .filter((s: any) => s.countryId == id)
           .forEach((element: any) => {
-            debugger;
-
             this.stateListAddress0.push({
               stateName: element.stateName,
               id: element.id,
@@ -1075,7 +1095,6 @@ export class BorrowerInfoComponent implements OnInit {
     }
   }
   getCityByStateId(id: any, section: any, index: any) {
-    debugger;
     if (this.cityList.length > 0) {
       if (section == "Address" && index == 0) {
         this.cityListAddress0 = [];
@@ -1141,7 +1160,6 @@ export class BorrowerInfoComponent implements OnInit {
     }
   }
   phoneRequired(homePhone, cellPhone, workPhone) {
-    debugger;
     if (
       homePhone == null ||
       homePhone == undefined ||
@@ -1171,6 +1189,115 @@ export class BorrowerInfoComponent implements OnInit {
       }
     } else {
       this.flgPhoneRequired = false;
+    }
+  }
+  clearRentValue(value: any) {
+    this.borrowerInfo.personalInformation.address[0].rent = 0;
+  }
+  clearRentValue1(value: any) {}
+  disableBussinessOwner(event: any) {
+    if (event.target.checked == false) {
+      this.borrowerInfo.employment[0].isOwnershipLessThan25 = null;
+      this.borrowerInfo.employment[0].monthlyIncome = 0;
+    }
+  }
+  disableBussinessOwner1(event: any) {
+    if (event.target.checked == false) {
+      this.borrowerInfo.employment[1].isOwnershipLessThan25 = null;
+      this.borrowerInfo.employment[1].monthlyIncome = 0;
+    }
+  }
+  addEmployess() {
+    this.extraEmployeesList.push(new Employment());
+    this.borrowerInfo.employment[
+      this.extraEmployeesList.length - 1
+    ].grossMonthlyIncome = new GrossMonthlyIncome();
+  }
+  onYearChange(yearValue: any, monthValue: any) {
+    var yearToMonth: number | null = null;
+    var totalMonth: number | null = null;
+
+    if (yearValue != null) {
+      yearToMonth = yearValue * 12;
+      totalMonth = yearToMonth;
+      if (monthValue != null) {
+        totalMonth = yearToMonth + monthValue;
+      }
+    }
+    if (monthValue != null) {
+      totalMonth = monthValue;
+      if (yearValue != null) {
+        totalMonth = yearToMonth + monthValue;
+      }
+    }
+    this.doNotApplyForaddress1 = totalMonth > 23 ? true : false;
+    this.flgValidateLess2Years = totalMonth > 23 ? false : true;
+  }
+  getStateByCountryIdEmp(id: any, index: any) {
+    if (this.stateList.length > 0) {
+      this.extraEmployeesList[index].stateListEmpM = [];
+      this.stateList
+        .filter((s: any) => s.countryId == id)
+        .forEach((element: any) => {
+          this.extraEmployeesList[index].stateListEmpM.push({
+            stateName: element.stateName,
+            id: element.id,
+          });
+        });
+    }
+  }
+  getCityByStateIdEmp(id: any, index: any) {
+    if (this.cityList.length > 0) {
+      this.extraEmployeesList[index].cityListEmpM = [];
+      this.cityList
+        .filter((s: any) => s.stateId == id)
+        .forEach((element: any) => {
+          this.extraEmployeesList[index].cityListEmpM.push({
+            cityName: element.cityName,
+            id: element.id,
+          });
+        });
+    }
+  }
+  removeEmp() {
+    if (this.extraEmployeesList.length == 1) {
+      if (this.removeEmpIndexList.length > 0) {
+        this.extraEmployeesList = [];
+        this.addEmployess();
+        this.removeEmployeeData = false;
+      }
+    } else if (this.extraEmployeesList.length > 1) {
+      if (this.removeEmpIndexList.length > 0) {
+        this.removeEmpIndexList.sort((a: any, b: any) => {
+          return b - a;
+        });
+
+        this.removeEmpIndexList.forEach((element: any) => {
+          this.extraEmployeesList.splice(element, 1);
+        });
+      }
+      if (this.extraEmployeesList.length == 0) {
+        this.addEmployess();
+      }
+
+      this.removeEmployeeData = false;
+    }
+    this.removeEmpIndexList = [];
+  }
+  removeEmpIndex(model: any, index: any) {
+    if (model.flgRemoveEmployee == true) {
+      this.removeEmpIndexList.push(index);
+    } else {
+      var findIndex = this.removeEmpIndexList.findIndex((s: any) => s == index);
+      if (findIndex != -1) {
+        this.removeEmpIndexList.splice(findIndex, 1);
+      }
+    }
+
+    if (this.removeEmpIndexList.length > 0) {
+      this.removeEmployeeData = true;
+    } else if (this.removeEmpIndexList.length == 0) {
+      this.removeEmployeeData = false;
     }
   }
 }

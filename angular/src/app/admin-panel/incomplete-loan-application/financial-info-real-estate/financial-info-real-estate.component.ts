@@ -104,7 +104,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.financialInfoRealEstateService
       .getCountries()
       .subscribe((data: any) => {
-        debugger;
         this.countryList = [];
         if (data.success == true && data.result.length > 0) {
           data.result.forEach((element: any) => {
@@ -200,7 +199,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     // isPaidBeforeClosing
   }
   create() {
-    debugger;
     var obj = this.financialInfoRealState;
     localStorage.setItem(
       "financialInfoRealState",
@@ -219,7 +217,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.financialInfoRealState.push(this.objFinancialInfoRealState);
   }
   changeCheckBox(index: any) {
-    debugger;
     if (this.financialInfoRealState[index].flgApplicableNotApply == false) {
       this.financialInfoRealState[index].flgApplicableNotApply = true;
       this.financialInfoRealState[index].flgMortgageLoanNotApply = true;
@@ -270,7 +267,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
       (state) => state.stateName === Address_01.state
     );
     this.getCityByStateId(stateID, fldIndex);
-    debugger;
 
     const cityID = this.cityList.find(
       (city) => city.cityName === Address_01.city
@@ -285,16 +281,16 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.financialInfoRealState[fldIndex].countryId = CountryID.id;
   }
 
-  fixDecimals(event: any) {
-    var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
-    } else {
-      event.target.value = int + ".00";
-    }
-  }
+  // fixDecimals(event: any) {
+  //   var vals = event.target.value;
+  //   var int: number = parseInt(vals);
+  //   var dec = vals - int;
+  //   if (dec > 0) {
+  //     event.target.value = int + dec;
+  //   } else {
+  //     event.target.value = int + ".00";
+  //   }
+  // }
 
   getAddrComponent(place, componentTemplate) {
     let result;
@@ -375,7 +371,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   // }
 
   getStateByCountryId(id: any, index: any) {
-    debugger;
     if (this.stateList.length > 0) {
       this.financialInfoRealState[index].stateListAddress0 = [];
       this.stateList
@@ -389,7 +384,6 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     }
   }
   getCityByStateId(id: any, index: any) {
-    debugger;
     if (this.cityList.length > 0) {
       this.financialInfoRealState[index].cityListAddress0 = [];
       this.cityList
@@ -414,5 +408,38 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     } else {
       this.financialInfoRealState[index1].flgShowRemove = false;
     }
+  }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value.replace(",", "");
+    if (vals != "") {
+      vals = parseFloat(vals).toFixed(2);
+      var int: number = parseInt(vals);
+      var dec = vals - int;
+      if (dec > 0) {
+        event.target.value = int + dec;
+      } else {
+        event.target.value = int + ".00";
+      }
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
+    } else {
+      event.target.value = "0.00";
+    }
+  }
+
+  numberOnly(txt: any, evt): boolean {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+      if (evt.target.value.includes(".")) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    }
+    return true;
   }
 }

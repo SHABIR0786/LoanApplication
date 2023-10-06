@@ -46,7 +46,6 @@ export class LoanOriginatorInformationComponent implements OnInit {
     this.loanOriginatorInfoService
       .create(this.loanOriginatorInfoModels)
       .subscribe((data: any) => {
-        debugger;
         if (data.success == true) {
           alert("Data inserted successfully");
           localStorage.removeItem("borrowerInfo");

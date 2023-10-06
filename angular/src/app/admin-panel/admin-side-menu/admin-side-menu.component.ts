@@ -15,7 +15,7 @@ import { SessionServiceProxy } from "@shared/service-proxies/service-proxies";
 export class AdminSideMenuComponent implements OnInit {
   sessionStorage: any;
   cookies: any;
-
+  url: any;
   constructor(
     private sessionService: SessionServiceProxy,
     private AdminUserServices: AdminUserServices,
@@ -26,8 +26,10 @@ export class AdminSideMenuComponent implements OnInit {
   userName: string;
   GlobalName = Enums;
   pageName = Enums.AdminDashboard;
+  activeMenu: number;
   // isActivePage:boolean=true
   ngOnInit(): void {
+    this.url = this._router.url;
     this.getUserDetails();
     // this.getAdminUserDetails();
     this.toggleSidebar = false;

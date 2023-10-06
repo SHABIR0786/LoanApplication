@@ -30,6 +30,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
   mortgageFinancialOtherLaibilities: mortgageFinancialOtherLaibilities = new mortgageFinancialOtherLaibilities();
   financialInfoAssetsLiabilitiesModels: FinancialInfoAssetsLiabilitiesModels = new FinancialInfoAssetsLiabilitiesModels();
   assetTypeList: any[] = [];
+  accountTypeList: any[] = [];
   creditTypeList: any[] = [];
   financialLiabilityTypeList: any[] = [];
   otherLiabilityTypeList: any[] = [];
@@ -82,6 +83,21 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       );
     }
 
+    //---Get asset Types
+    this.financialInfoService
+      .getFinancialAccountTypes()
+      .subscribe((res: any) => {
+        this.accountTypeList = [];
+
+        if (res.success == true && res.result.length > 0) {
+          res.result.forEach((element: any) => {
+            this.accountTypeList.push({
+              assetsType: element.assetsType,
+              id: element.id,
+            });
+          });
+        }
+      });
     //---Get asset Types
     this.financialInfoService.getAssetTypes().subscribe((res: any) => {
       this.assetTypeList = [];
@@ -156,6 +172,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.removeMortgageFinancialAssetsList.sort((a, b) => {
         return b - a;
       });
+
       this.removeMortgageFinancialAssetsList.forEach((element: any) => {
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.splice(
           element,
@@ -194,6 +211,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.mortgageFinancialOtherAssetsRemoveIndex.sort((a, b) => {
         return b - a;
       });
+
       this.mortgageFinancialOtherAssetsRemoveIndex.forEach((element: any) => {
         this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.splice(
           element,
@@ -238,8 +256,6 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities
         .length > 1
     ) {
-      debugger;
-
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.forEach(
         (element: any, index: any) => {
           if (element.isPaidBeforeClosing1 == true) {
@@ -325,7 +341,6 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     }
   }
   submitFinancialAssetsLiabilities() {
-    debugger;
     var financialInfo = new FinancialInfoAssetsLiabilitiesModels();
     financialInfo.mortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets;
     financialInfo.mortgageFinancialLiabilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities;
@@ -387,9 +402,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       });
   }
   getTotalMortgageFinancialAssets() {
-    debugger;
     this.totalMortgageFinancialAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets.reduce(
-      (sum, current) => sum + current.cashMarketValue,
+      (sum, current) => sum + Number(current.cashMarketValue),
       0
     );
     if (isNaN(this.totalMortgageFinancialAssets) == true) {
@@ -397,9 +411,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     }
   }
   getTotalMortgageFinancialOtherAssets() {
-    debugger;
     this.totalMortgageFinancialOtherAssets = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets.reduce(
-      (sum, current) => sum + current.cashMarketValue,
+      (sum, current) => sum + Number(current.cashMarketValue),
       0
     );
     if (isNaN(this.totalMortgageFinancialOtherAssets) == true) {
@@ -407,9 +420,8 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
     }
   }
   getTotalMortgageFinancialOtherLaibilities() {
-    debugger;
     this.totalMortgageFinancialOtherLaibilities = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.reduce(
-      (sum, current) => sum + current.monthlyPayment,
+      (sum, current) => sum + Number(current.monthlyPayment),
       0
     );
     if (isNaN(this.totalMortgageFinancialOtherLaibilities) == true) {
@@ -509,16 +521,40 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       this.flgShowRemove1 = false;
     }
   }
+
   fixDecimals(event: any) {
-    var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
+    var vals = event.target.value.replace(",", "");
+    if (vals != "") {
+      vals = parseFloat(vals).toFixed(2);
+      var int: number = parseInt(vals);
+      var dec = vals - int;
+      if (dec > 0) {
+        event.target.value = int + dec;
+      } else {
+        event.target.value = int + ".00";
+      }
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
     } else {
-      event.target.value = int + ".00";
+      event.target.value = "0.00";
     }
   }
+
+  numberOnly(txt: any, evt): boolean {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+      if (evt.target.value.includes(".")) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    }
+    return true;
+  }
+
   showRemoveOption() {
     if (
       this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities
@@ -527,7 +563,7 @@ export class FinancialInfoAssetsLiabilitiesComponent implements OnInit {
       var found: any[] = this.financialInfoAssetsLiabilitiesModels.mortgageFinancialLiabilities.filter(
         (s: any) => s.isPaidBeforeClosing1 == true
       );
-      if (found) {
+      if (found.length > 0) {
         this.flgShowRemove3 = true;
       } else {
         this.flgShowRemove3 = false;

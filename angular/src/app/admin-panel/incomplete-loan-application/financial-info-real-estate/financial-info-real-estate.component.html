@@ -138,17 +138,8 @@
         style="width: 100%; margin-top: 10px; margin-bottom: 20px"
         *ngFor="let item of financialInfoRealState; index as i"
       >
-        <!-- <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;" [ngClass]="{'hidde':i == 0}">
-        <span style="font-size: 20px;">IF APPLICABLE, Complete Information for Additional Property</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-          <input type="checkbox" [ngModel]="item.flgApplicableNotApply" (change)="changeCheckBox(i)"
-          id="{{i}}_flgApplicableNotApply" name="{{i}}_flgApplicableNotApply">
-          <span class="checkmark mt-2"></span>
-        </label>
-      </div> -->
-
         <div class="row div-sub-grp">
-          <div class="col-12">
+          <div class="col-12 p-0">
             <div
               class="frm-group pl-4 pr-4"
               [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -168,11 +159,6 @@
                   }"
                   [ngClass]="{ error_bb: street.touched && street.errors }"
                 >
-                  <!-- <input ngx-google-places-autocomplete 
-              [readonly]="item.flgApplicableNotApply == true" 
-              [(ngModel)]="item.street" name="{{i}}_street" id="{{i}}_street" #street="ngModel"
-               (onAddressChange)="handleAddressChange($event,i)"/> -->
-
                   <input
                     ngx-google-places-autocomplete
                     maxlength="50"
@@ -192,10 +178,7 @@
                 </div>
                 <div
                   class="col-2 p-0 input-border-bottom"
-                  style="
-                    border-bottom: 1px #696969 solid;
-                    margin-bottom: 5px !important;
-                  "
+                  style="padding-right: 15px !important"
                 >
                   <input
                     type="text"
@@ -206,13 +189,10 @@
                     id="{{ i }}_unit"
                     #unit="ngModel"
                   />
-
-                  <!-- <p-inputNumber  [min]="0"  maxlength="5"
-                  [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"></p-inputNumber> -->
                 </div>
               </div>
 
-              <div class="row mt-2">
+              <div class="row mt-0">
                 <div class="col-1 p-0 mt-2">
                   <label class="gray-text">City</label>
                 </div>
@@ -248,7 +228,13 @@
                         #cityId="ngModel"
                         [required]="item.flgApplicableNotApply == false"
                       >
-                        <option disabled>Select City</option>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="cityId.value > 0 && cityId.value != null"
+                        >
+                          Select City
+                        </option>
                         <option
                           *ngFor="let obj of item.cityListAddress0"
                           [ngValue]="obj.id"
@@ -296,7 +282,15 @@
                         [required]="item.flgApplicableNotApply == false"
                         (change)="getCityByStateId(stateId.value, i)"
                       >
-                        <option disabled>Select State</option>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="
+                            stateId.value > 0 && stateId.value != null
+                          "
+                        >
+                          Select State
+                        </option>
                         <option
                           *ngFor="let obj of item.stateListAddress0"
                           [ngValue]="obj.id"
@@ -345,7 +339,7 @@
                     style="
                       border: 0px solid !important;
                       padding-left: 0px !important;
-                      padding-right: 0px !important;
+                      padding-right: 15px !important;
                     "
                   >
                     <div
@@ -365,7 +359,15 @@
                         [required]="item.flgApplicableNotApply == false"
                         (change)="getStateByCountryId(countryId.value, i)"
                       >
-                        <option disabled>Select Country</option>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="
+                            countryId.value > 0 && countryId.value != null
+                          "
+                        >
+                          Select Country
+                        </option>
                         <option
                           *ngFor="let obj of countryList"
                           [ngValue]="obj.id"
@@ -480,9 +482,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -541,7 +545,14 @@
                         #financialInformationType="ngModel"
                         [required]="item.flgApplicableNotApply == false"
                       >
-                        <option value="-1" selected disabled>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="
+                            financialInformationType.value > 0 &&
+                            financialInformationType.value != null
+                          "
+                        >
                           -Select One-
                         </option>
                         <option
@@ -578,7 +589,14 @@
                         #intendedOccupancy="ngModel"
                         [required]="item.flgApplicableNotApply == false"
                       >
-                        <option value="-1" selected disabled>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="
+                            intendedOccupancy.value > 0 &&
+                            intendedOccupancy.value != null
+                          "
+                        >
                           -Select One-
                         </option>
                         <option
@@ -632,9 +650,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -711,9 +731,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -795,9 +817,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -971,15 +995,15 @@
                   <div
                     class="frm-group"
                     [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
-                    [ngClass]="{
                       error:
                         financialInfoRealEstateForm.submitted &&
                         creditorName.errors
                     }"
                     [ngClass]="{
                       error: creditorName.touched && creditorName.errors
+                    }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
                     }"
                   >
                     <p class="frm-fld-input height35" style="margin-top: 5px">
@@ -1011,15 +1035,15 @@
                   <div
                     class="frm-group"
                     [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
-                    [ngClass]="{
                       error:
                         financialInfoRealEstateForm.submitted &&
                         accountNumber.errors
                     }"
                     [ngClass]="{
                       error: accountNumber.touched && accountNumber.errors
+                    }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
                     }"
                   >
                     <p class="frm-fld-input height35" style="margin-top: 5px">
@@ -1049,9 +1073,6 @@
                 >
                   <div
                     class="frm-group mt-0"
-                    [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
                     style="display: flex; justify-content: space-between"
                     [ngClass]="{
                       error:
@@ -1062,6 +1083,9 @@
                       error:
                         monthlyMortagagePayment.touched &&
                         monthlyMortagagePayment.errors
+                    }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
                     }"
                   >
                     <div class="input-border-bottom mr-3">
@@ -1091,9 +1115,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -1153,15 +1179,15 @@
                   <div
                     class="frm-group"
                     [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
-                    [ngClass]="{
                       error:
                         financialInfoRealEstateForm.submitted &&
                         unpaidBalance.errors
                     }"
                     [ngClass]="{
                       error: unpaidBalance.touched && unpaidBalance.errors
+                    }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
                     }"
                   >
                     <div class="input-border-bottom">
@@ -1189,9 +1215,11 @@
                           "
                         >
                           <input
-                            type="number"
+                            type="text"
                             onFocus="this.select();"
                             (blur)="fixDecimals($event)"
+                            (keypress)="numberOnly(this, $event)"
+                            pattern="^\d+(?:\.\d{1,2})?$"
                             style="
                               border: 0px !important;
                               padding-left: 5px;
@@ -1251,13 +1279,13 @@
                   <div
                     class="frm-group mt-0"
                     [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
-                    [ngClass]="{
                       error:
                         financialInfoRealEstateForm.submitted && type.errors
                     }"
                     [ngClass]="{ error: type.touched && type.errors }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
+                    }"
                   >
                     <div
                       class="frm-fld-input"
@@ -1277,7 +1305,11 @@
                         id="{{ j }}_type"
                         #type="ngModel"
                       >
-                        <option value="-1" selected disabled>
+                        <option
+                          [ngValue]="undefined"
+                          selected
+                          [disabled]="type.value > 0 && type.value != null"
+                        >
                           -Select One-
                         </option>
                         <option
@@ -1302,15 +1334,15 @@
                   <div
                     class="frm-group"
                     [ngClass]="{
-                      disabled: item.flgMortgageLoanNotApply == true
-                    }"
-                    [ngClass]="{
                       error:
                         financialInfoRealEstateForm.submitted &&
                         creditLimit.errors
                     }"
                     [ngClass]="{
                       error: creditLimit.touched && creditLimit.errors
+                    }"
+                    [ngClass]="{
+                      disabled: item.flgMortgageLoanNotApply == true
                     }"
                   >
                     <div class="input-border-bottom">
@@ -1332,9 +1364,11 @@
                         </span>
 
                         <input
-                          type="number"
+                          type="text"
                           onFocus="this.select();"
                           (blur)="fixDecimals($event)"
+                          (keypress)="numberOnly(this, $event)"
+                          pattern="^\d+(?:\.\d{1,2})?$"
                           style="
                             border: 0px !important;
                             padding-left: 5px;

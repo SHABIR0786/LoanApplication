@@ -69,7 +69,7 @@
         <div class="col-10">
           <div class="d-flex">
             <div>
-              <p style="margin-right: 10px">If YES, check all that apply:</p>
+              <p style="padding-right: 10px">If YES, check all that apply:</p>
             </div>
             <div>
               <div class="form-check">
@@ -184,6 +184,7 @@
         >
           <input
             type="date"
+            data-date-format="MM-dd-yyyy"
             (blur)="onBlurDt($event)"
             id="specificSizeInputGroupUsername1"
             max="{{ currentDate | date: 'yyyy-MM-dd' }}"

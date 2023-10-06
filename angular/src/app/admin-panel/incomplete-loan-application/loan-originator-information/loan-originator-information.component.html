@@ -30,37 +30,33 @@
     </div>
     <div class="form-block">
       <div class="row gx-3 gy-2 mb-3 align-items-center">
-        <div class="col-12">
-          <label class="visually-hidden" for="specificSizeInputGroupUsername"
-            >Loan Originator Organization Name</label
-          >
-          <div
-            class="input-group"
-            [ngClass]="{
-              error: loanOriginatorForm.submitted && organizationName.errors
-            }"
-            [ngClass]="{
-              error: organizationName.touched && organizationName.errors
-            }"
-          >
-            <div class="input-group-text">
-              Loan Originator Organization Name
-            </div>
-            <input
-              maxlength="50"
-              type="text"
-              class="form-control"
-              id="organizationName"
-              name="organizationName"
-              #organizationName="ngModel"
-              [(ngModel)]="loanOriginatorInfoModels.organizationName"
-              required
-            />
-          </div>
+        <label class="col-sm-12 col-12 visually-hidden" for="organizationName"
+          >Loan Originator Organization Name</label
+        >
+        <div
+          class="input-group"
+          [ngClass]="{
+            error: loanOriginatorForm.submitted && organizationName.errors
+          }"
+          [ngClass]="{
+            error: organizationName.touched && organizationName.errors
+          }"
+        >
+          <div class="input-group-text">Loan Originator Organization Name</div>
+          <input
+            maxlength="50"
+            type="text"
+            class="form-control"
+            id="organizationName"
+            name="organizationName"
+            #organizationName="ngModel"
+            [(ngModel)]="loanOriginatorInfoModels.organizationName"
+            required
+          />
         </div>
       </div>
       <div class="row gx-3 gy-2 mb-3 align-items-center">
-        <div class="col-12">
+        <div class="col-sm-12 col-12">
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
             >Address</label
           >
@@ -80,7 +76,6 @@
               name="address"
               #address="ngModel"
               [(ngModel)]="loanOriginatorInfoModels.address"
-              required
             />
           </div>
         </div>
@@ -109,20 +104,13 @@
               #organizationNmlsrId="ngModel"
               [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId"
               mask="9999 9999 9999 9999"
-              [required]="true"
             ></p-inputMask>
-            <!-- <input
-              type="text"
-              class="form-control"
-              id="organizationNmlsrId" name="organizationNmlsrId"
-              #organizationNmlsrId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationNmlsrId"
-            /> -->
           </div>
         </div>
         <div class="col">
           <label class="visually-hidden" for="specificSizeInputGroupUsername"
-            >State License ID#
-          </label>
+            >State License ID#</label
+          >
           <div
             class="input-group"
             [ngClass]="{
@@ -145,12 +133,6 @@
               mask="9999 9999 9999 9999"
               [required]="true"
             ></p-inputMask>
-            <!-- <input
-              type="text"
-              class="form-control"
-              id="organizationStateLicenceId" name="organizationStateLicenceId"
-              #organizationStateLicenceId="ngModel" [(ngModel)]="loanOriginatorInfoModels.organizationStateLicenceId"
-            /> -->
           </div>
         </div>
       </div>

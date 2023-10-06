@@ -103,18 +103,51 @@ export class DeclarationsComponent implements OnInit {
     });
   }
 
-  fixDecimals(event: any) {
-    var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
-    } else {
-      event.target.value = int + ".00";
-    }
-  }
+  // fixDecimals(event: any) {
+  //   var vals = event.target.value;
+  //   var int: number = parseInt(vals);
+  //   var dec = vals - int;
+  //   if (dec > 0) {
+  //     event.target.value = int + dec;
+  //   } else {
+  //     event.target.value = int + ".00";
+  //   }
+  // }
 
   selectNumber(event) {
     event.target.select();
+  }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value.replace(",", "");
+    if (vals != "") {
+      vals = parseFloat(vals).toFixed(2);
+      var int: number = parseInt(vals);
+      var dec = vals - int;
+      if (dec > 0) {
+        event.target.value = int + dec;
+      } else {
+        event.target.value = int + ".00";
+      }
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
+    } else {
+      event.target.value = "0.00";
+    }
+  }
+
+  numberOnly(txt: any, evt): boolean {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+      if (evt.target.value.includes(".")) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    }
+    return true;
   }
 }

@@ -113,9 +113,13 @@ export class Employment {
   startDate: string;
   endDate: string;
   isEmployedBySomeone: boolean;
-  isSelfEmployed: boolean;
+  isSelfEmployed: boolean = false;
   isOwnershipLessThan25: boolean;
   grossMonthlyIncome: GrossMonthlyIncome;
+  cityListEmpM: any[] = [];
+  stateListEmpM: any[] = [];
+  removeEmployeeIndex: number;
+  flgRemoveEmployee: boolean = false;
 }
 
 export class GrossMonthlyIncome {

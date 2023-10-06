@@ -211,7 +211,6 @@ export class LoanPropertyInfoComponent implements OnInit {
   }
 
   create() {
-    debugger;
     var objLoanPropertyInfoModel = this.loanPropertyInfoModel;
     if (this.flgOtherNewMortgageLoans == true) {
       objLoanPropertyInfoModel.newMortgageLoans = [];
@@ -339,7 +338,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   removeOtherNewMortgageLoansF(index: any, event: any) {
-    debugger;
     if (event.target.checked == true) {
       this.removeOtherNewMortgageLoansIndex.push(index);
     } else {
@@ -366,7 +364,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   removeGiftsorGrantsF(index: any, event: any) {
-    debugger;
     if (event.target.checked == true) {
       this.removeGiftsorGrantsIndex.push(index);
     } else {
@@ -382,16 +379,16 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
 
-  fixDecimals(event: any) {
-    var vals = event.target.value;
-    var int: number = parseInt(vals);
-    var dec = vals - int;
-    if (dec > 0) {
-      event.target.value = int + dec;
-    } else {
-      event.target.value = int + ".00";
-    }
-  }
+  // fixDecimals(event: any) {
+  //   var vals = event.target.value;
+  //   var int: number = parseInt(vals);
+  //   var dec = vals - int;
+  //   if (dec > 0) {
+  //     event.target.value = int + dec;
+  //   } else {
+  //     event.target.value = int + ".00";
+  //   }
+  // }
 
   scroll(event: any) {
     //up 38 down 40
@@ -440,7 +437,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   getStateByCountryId(id: any) {
-    debugger;
     if (this.stateList.length > 0) {
       this.stateListAddress0 = [];
       this.stateList
@@ -454,7 +450,6 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   getCityByStateId(id: any) {
-    debugger;
     if (this.cityList.length > 0) {
       this.cityListAddress0 = [];
       this.cityList
@@ -466,5 +461,38 @@ export class LoanPropertyInfoComponent implements OnInit {
           });
         });
     }
+  }
+
+  fixDecimals(event: any) {
+    var vals = event.target.value.replace(",", "");
+    if (vals != "") {
+      vals = parseFloat(vals).toFixed(2);
+      var int: number = parseInt(vals);
+      var dec = vals - int;
+      if (dec > 0) {
+        event.target.value = int + dec;
+      } else {
+        event.target.value = int + ".00";
+      }
+      var parts = event.target.value.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      event.target.value = parts.join(".");
+    } else {
+      event.target.value = "0.00";
+    }
+  }
+
+  numberOnly(txt: any, evt): boolean {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+      if (evt.target.value.includes(".")) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+    }
+    return true;
   }
 }

@@ -48,7 +48,7 @@ export class DemographicInfoComponent implements OnInit {
     ) {
       this.demographicInfoModels.demographicInfoByFinancialInstitution.isGenderByObservation = true;
     }
-    debugger;
+
     if (this.notPresent == true) {
       alert("Provide atleast one option");
       return;
@@ -65,7 +65,6 @@ export class DemographicInfoComponent implements OnInit {
     });
   }
   provideEthicity() {
-    debugger;
     if (
       this.demographicInfoModels.isHispanicOrLatino == true ||
       this.demographicInfoModels.isMexican == true ||
