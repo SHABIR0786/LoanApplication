@@ -48,7 +48,7 @@ export class MilitaryServiceComponent implements OnInit {
   }
   test()
   {
-    debugger
+    
     var aa=this.militaryServiceModel.isServeUSForces
   }
 

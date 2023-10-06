@@ -293,7 +293,7 @@
               <div class="frm-fld-input">
                 <select class="form-control shadow-none" style="padding-left: 0px;" id="citizenship" name="citizenship"
                   #citizenship="ngModel" [(ngModel)]="borrowerInfo.personalInformation.citizenship">
-                  <option [ngValue]="undefined">Citizenship</option>
+                  <option [ngValue]="undefined" selected [disabled]="citizenship.value > 0 && citizenship.value != null">-- Select Citizenship--</option>
                   <option *ngFor="let obj of citizenshipType" [ngValue]="obj.id"> {{obj.citizenshipType1}} </option>
                 </select>
               </div>
@@ -386,7 +386,7 @@
                     style="width: 30px; border-bottom: 1px solid #000000  !important;  margin-left: 10px; width: 50px; text-align: center;"
                     [ngClass]="{'error': borrowForm.submitted && totalBorrowers.errors}"
                     [ngClass]="{'error':  totalBorrowers.touched && totalBorrowers.errors}">
-                    <option [ngValue]="undefined" disabled>Select Borrowers </option>
+                    <option [ngValue]="undefined" selected [disabled]="totalBorrowers.value > 0 && totalBorrowers.value != null">Select Borrowers </option>
                     <option *ngFor="let obj of browerList" [ngValue]="obj.id"> {{obj.label}} </option>
                   </select>
 
@@ -492,7 +492,7 @@
                 <select name="firstName" style="padding-left: 5px;" required class="form-control shadow-none"
                   name="creditItemsMarritalStatus" id="creditItemsMarritalStatus" #creditItemsMarritalStatus="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.marritalStatus">
-                  <option [ngValue]="-1" disabled>Marital Status</option>
+                  <option [ngValue]="null" selected [disabled]=" creditItemsMarritalStatus.value != null">--Select one--</option>
                   <option *ngFor="let obj of maritalStatusList" [ngValue]="obj.id"> {{obj.maritialStatus1}} </option>
                 </select>
               </div>
@@ -506,7 +506,7 @@
                 <select style="padding-left: 5px;" required class="form-control shadow-none"
                   name="creditItemsDependents" id="creditItemsDependents" #creditItemsDependents="ngModel"
                   [(ngModel)]="borrowerInfo.personalInformation.dependents">
-                  <option value="-1" selected disabled>(not listed by another Borrower)</option>
+                  <option [ngValue]="null" selected [disabled]="creditItemsDependents.value > 0 && creditItemsDependents.value != null">(not listed by another Borrower)</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -632,7 +632,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId"
                         name="creditItemscityId" id="creditItemscityId" #creditItemscityId="ngModel">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="creditItemscityId.value > 0 && creditItemscityId.value != null">Select City</option>
                         <option *ngFor="let obj of cityListAddress0" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -650,7 +650,7 @@
                       <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"
                         (change)="getCityByStateId(creditItemsState.value,'Address',0)" name="creditItemsState"
                         id="creditItemsState" #creditItemsState="ngModel">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="creditItemsState.value > 0 && creditItemsState.value != null">Select State</option>
                         <option *ngFor="let obj of stateListAddress0" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -679,7 +679,7 @@
                       <select required name="Country" id="Country" #Country="ngModel" style="text-align: center;"
                         (change)="getStateByCountryId(Country.value,'Address',0)"
                         [(ngModel)]="borrowerInfo.personalInformation.address[0].countryId">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="Country.value > 0 && Country.value != null">Select Country</option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -699,6 +699,7 @@
                         [(ngModel)]="borrowerInfo.personalInformation.address[0].year"
                         [ngClass]="{'error_bb': borrowForm.submitted && year.errors}"
                         [ngClass]="{'error_bb':  year.touched && year.errors}" (change)="onYearChange(year.value,month.value)">
+                        <option [ngValue]="undefined" selected [disabled]="year.value > 0 && year.value != null">Years</option>
                         <option *ngFor="let obj of yearList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -712,6 +713,7 @@
                         [(ngModel)]="borrowerInfo.personalInformation.address[0].month"
                         [ngClass]="{'error_bb': borrowForm.submitted && month.errors}"
                         [ngClass]="{'error_bb':  month.touched && month.errors}" (change)="onYearChange(year.value,month.value)">
+                        <option [ngValue]="undefined" selected [disabled]="month.value > 0 && month.value != null">Months</option>
                         <option *ngFor="let obj of monthList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -876,7 +878,7 @@
                       <select [required]="doNotApplyForaddress1 == false" [disabled]="doNotApplyForaddress1 == true"
                         name="cityId1" id="cityId1" #cityId1="ngModel"
                         [(ngModel)]="borrowerInfo.personalInformation.address[1].cityId">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="cityId1.value > 0 && cityId1.value != null">Select City</option>
                         <option *ngFor="let obj of cityListAddress1" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -895,7 +897,7 @@
                         name="stateId1" id="stateId1" #stateId1="ngModel"
                         (change)="getCityByStateId(stateId1.value,'Address',1)"
                         [(ngModel)]="borrowerInfo.personalInformation.address[1].stateId">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="stateId1.value > 0 && stateId1.value != null">Select State</option>
                         <option *ngFor="let obj of stateListAddress1" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -923,7 +925,7 @@
                         #countryId1="ngModel" [(ngModel)]="borrowerInfo.personalInformation.address[1].countryId"
                         [required]="doNotApplyForaddress1 == false"
                         (change)="getStateByCountryId(countryId1.value,'Address',1)">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="countryId1.value > 0 && countryId1.value != null">Select Country</option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -947,6 +949,7 @@
                         [disabled]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
                         [ngClass]="{'error_bb':  year1.touched && year1.errors}">
+                        <option [ngValue]="undefined" selected [disabled]="year1.value > 0 && year1.value != null">Year</option>
                         <option *ngFor="let obj of yearList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -964,6 +967,7 @@
                         [disabled]="doNotApplyForaddress1 == true" [required]="doNotApplyForaddress1 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
                         [ngClass]="{'error_bb':  month1.touched && month1.errors}">
+                        <option [ngValue]="undefined" selected [disabled]="month1.value > 0 && month1.value != null">Months</option>
                         <option *ngFor="let obj of monthList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -1127,7 +1131,7 @@
                       <select [disabled]="doNotApplyForaddress2 == true"
                         [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId"
                         [required]="doNotApplyForaddress2 == false" name="cityId2" id="cityId2" #cityId2="ngModel">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="cityId2.value > 0 && cityId2.value != null">Select City</option>
                         <option *ngFor="let obj of cityListAddress2" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -1144,7 +1148,7 @@
                       <select [disabled]="doNotApplyForaddress2 == true" [required]="doNotApplyForaddress2 == false"
                         [(ngModel)]="borrowerInfo.personalInformation.address[2].stateId" name="stateId2" id="stateId2"
                         #stateId2="ngModel" (change)="getCityByStateId(stateId2.value,'Address',2)">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="stateId2.value > 0 && stateId2.value != null">Select State</option>
                         <option *ngFor="let obj of stateListAddress2" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -1173,7 +1177,7 @@
                         name="countryId2" id="countryId2" #countryId2="ngModel"
                         (change)="getStateByCountryId(countryId2.value,'Address',2)"
                         [(ngModel)]="borrowerInfo.personalInformation.address[2].countryId">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="countryId2.value > 0 && countryId2.value != null">Select Country</option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -1259,7 +1263,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp0 == true" name="cityId3" id="cityId3" #cityId3="ngModel"
                         [(ngModel)]="borrowerInfo.employment[0].cityId" [required]="doNotApplyForEmp0 == false">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="cityId3.value > 0 && cityId3.value != null">Select City</option>
                         <option *ngFor="let obj of cityListEmp0" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -1283,7 +1287,7 @@
                       <select [disabled]="doNotApplyForEmp0 == true" name="stateId3" id="stateId3" #stateId3="ngModel"
                         [(ngModel)]="borrowerInfo.employment[0].stateId" [required]="doNotApplyForEmp0 == false"
                         (change)="getCityByStateId(stateId3.value,'Emp',0)">
-                        <option [ngValue]="undefined" disabled></option>
+                        <option [ngValue]="undefined" selected [disabled]="stateId3.value > 0 && stateId3.value != null">Select State</option>
                         <option *ngFor="let obj of stateListEmp0" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -1309,7 +1313,7 @@
                         #countryId3="ngModel" [(ngModel)]="borrowerInfo.employment[0].countryId"
                         [required]="doNotApplyForEmp0 == false"
                         (change)="getStateByCountryId(countryId3.value,'Emp',0)">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="countryId3.value > 0 && countryId3.value != null">Select Country</option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -1366,6 +1370,7 @@
                         [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
                         [ngClass]="{'error_bb':  workingYears.touched && workingYears.errors}"
                         [required]="doNotApplyForEmp0 == false">
+                        <option [ngValue]="undefined" selected [disabled]="workingYears.value > 0 && workingYears.value != null">Years</option>
                         <option *ngFor="let obj of yearList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -1383,6 +1388,7 @@
                         [disabled]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                         [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}">
+                        <option [ngValue]="undefined" selected [disabled]="workingMonths.value > 0 && workingMonths.value != null">Months</option>
                         <option *ngFor="let obj of monthList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -1803,7 +1809,7 @@
                     <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                       <select [disabled]="doNotApplyForEmp1 == true" name="cityId4" id="cityId4" #cityId4="ngModel"
                         [(ngModel)]="borrowerInfo.employment[1].cityId" [required]="doNotApplyForEmp1 == false">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="cityId4.value > 0 && cityId4.value != null">Select City</option>
                         <option *ngFor="let obj of cityListEmp1" [ngValue]="obj.id"> {{obj.cityName}} </option>
                       </select>
                     </div>
@@ -1829,7 +1835,7 @@
                       <select style="text-align: center;" [disabled]="doNotApplyForEmp1 == true" name="stateId4"
                         id="stateId4" #stateId4="ngModel" [(ngModel)]="borrowerInfo.employment[1].stateId"
                         [required]="doNotApplyForEmp1 == false" (change)="getCityByStateId(stateId4.value,'Emp',1)">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="stateId4.value > 0 && stateId4.value != null">Select State</option>
                         <option *ngFor="let obj of stateListEmp1" [ngValue]="obj.id"> {{obj.stateName}} </option>
                       </select>
                     </div>
@@ -1857,7 +1863,7 @@
                         #countryId4="ngModel" [(ngModel)]="borrowerInfo.employment[1].countryId"
                         [required]="doNotApplyForEmp1 == false"
                         (change)="getStateByCountryId(countryId4.value,'Emp',1)">
-                        <option [ngValue]="undefined" disabled> </option>
+                        <option [ngValue]="undefined" selected [disabled]="countryId4.value > 0 && countryId4.value != null">Select Country</option>
                         <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                       </select>
                     </div>
@@ -1916,6 +1922,7 @@
                         [required]="doNotApplyForEmp1 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
                         [ngClass]="{'error_bb':  workingYears3.touched && workingYears3.errors}">
+                        <option [ngValue]="undefined" selected [disabled]="workingYears3.value > 0 && workingYears3.value != null">Years</option>
                         <option *ngFor="let obj of yearList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -1936,6 +1943,7 @@
                         [required]="doNotApplyForEmp0 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                         [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}">
+                        <option [ngValue]="undefined" selected [disabled]="workingMonths.value > 0 && workingMonths.value != null">Months</option>
                         <option *ngFor="let obj of monthList" [ngValue]="obj.id"> {{obj.label}} </option>
                       </select>
                     </div>
@@ -2398,7 +2406,7 @@
                         <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                           <select [disabled]="doNotApplyForEmp2 == true" name="{{j}}_cityId9" id="{{j}}_cityId9" #cityId9="ngModel"
                             [(ngModel)]="empItem.cityId" [required]="doNotApplyForEmp2 == false">
-                            <option [ngValue]="undefined" disabled> </option>
+                            <option [ngValue]="undefined" selected [disabled]="cityId9.value > 0 && cityId9.value != null">Select City</option>
                             <option *ngFor="let obj of empItem.cityListEmpM" [ngValue]="obj.id"> {{obj.cityName}} </option>
                           </select>
                         </div>
@@ -2423,7 +2431,7 @@
                           <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
                             [(ngModel)]="empItem.stateId" name="{{j}}_stateId49" id="{{j}}_stateId49"
                             #stateId49="ngModel" (change)="getCityByStateIdEmp(stateId49.value,j)">
-                            <option [ngValue]="undefined" disabled> </option>
+                            <option [ngValue]="undefined" selected [disabled]="stateId49.value > 0 && stateId49.value != null">Select State</option>
                             <option *ngFor="let obj of empItem.stateListEmpM" [ngValue]="obj.id"> {{obj.stateName}} </option>
                           </select>
                         </div>
@@ -2450,7 +2458,7 @@
                           <select [disabled]="doNotApplyForEmp2 == true" [required]="doNotApplyForEmp2 == false"
                             [(ngModel)]="empItem.countryId" name="{{j}}_countryId9" id="{{j}}_countryId9"
                             #countryId9="ngModel" (change)="getStateByCountryIdEmp(countryId9.value,j)">
-                            <option [ngValue]="undefined" disabled></option>
+                            <option [ngValue]="undefined" selected [disabled]="countryId9.value > 0 && countryId9.value != null">Select Country</option>
                             <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                           </select>
                         </div>
@@ -2702,7 +2710,7 @@
                   <div class="frm-fld-input">
                       <select class="form-control shadow-none" [(ngModel)]="itemOR.sourceType" name="{{i}}_sourceType"
                         id="{{i}}_sourceType" #txtsourceType1="ngModel" [required]="incomeFromOtherSources == false">
-                        <option value="-1" selected disabled>-Select One-</option>
+                        <option [ngValue]="undefined" selected [disabled]="txtsourceType1.value > 0 && txtsourceType1.value != null">-Select One-</option>
                         <option *ngFor="let obj of incomeTypeList" [ngValue]="obj.id"> {{obj.incomeType}} </option>
                       </select>
                   </div>

@@ -31,7 +31,7 @@ export class DemographicInfoComponent implements OnInit {
     if (this.demographicInfoModels.canNotProvideSexInfo == false || this.demographicInfoModels.canNotProvideSexInfo == null) {
       this.demographicInfoModels.demographicInfoByFinancialInstitution.isGenderByObservation = true;
     }
-    debugger
+    
     if(this.notPresent == true)
     {
       alert("Provide atleast one option");
@@ -47,7 +47,7 @@ export class DemographicInfoComponent implements OnInit {
     })
   }
   provideEthicity() {
-    debugger
+    
     if (this.demographicInfoModels.isHispanicOrLatino == true || this.demographicInfoModels.isMexican ==true ||this.demographicInfoModels.isNotHispanicOrLatino == true || this.demographicInfoModels.isPuertoRican == true || this.demographicInfoModels.isCuban == true || this.demographicInfoModels.isOtherHispanicOrLatino ==true) {
       this.notPresent = false
       return;

@@ -173,7 +173,7 @@ export class LoanPropertyInfoComponent implements OnInit {
 
 
   create() {
-    debugger
+    
     var objLoanPropertyInfoModel= this.loanPropertyInfoModel
     if (this.flgOtherNewMortgageLoans == true) {
       objLoanPropertyInfoModel.newMortgageLoans = [];
@@ -263,7 +263,7 @@ export class LoanPropertyInfoComponent implements OnInit {
 
   }
   removeOtherNewMortgageLoansF(index: any, event: any) {
-    debugger
+    
     if (event.target.checked == true) {
       this.removeOtherNewMortgageLoansIndex.push(index)
     }
@@ -294,7 +294,7 @@ export class LoanPropertyInfoComponent implements OnInit {
 
   }
   removeGiftsorGrantsF(index: any, event: any) {
-    debugger
+    
     if (event.target.checked == true) {
       this.removeGiftsorGrantsIndex.push(index)
     }
@@ -367,7 +367,7 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   getStateByCountryId(id: any) {
-    debugger
+    
     if (this.stateList.length > 0) {
       this.stateListAddress0 = []
       this.stateList.filter((s: any) => s.countryId == id).forEach((element: any) => {
@@ -376,7 +376,7 @@ export class LoanPropertyInfoComponent implements OnInit {
     }
   }
   getCityByStateId(id: any) {
-    debugger
+    
     if (this.cityList.length > 0) {
       this.cityListAddress0 = []
       this.cityList.filter((s: any) => s.stateId == id).forEach((element: any) => {
@@ -388,7 +388,7 @@ export class LoanPropertyInfoComponent implements OnInit {
 
 
   fixDecimals(event: any) {
-    debugger
+    
     var vals = event.target.value.replace(",","") ;
     if(vals !="" ){
      vals = parseFloat(vals).toFixed(2);

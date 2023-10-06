@@ -190,15 +190,15 @@
           </div>
           <div class="col-3 pr-3 pl-0 pt-0">
             <div class="frm-fld-input"
-            [ngClass]="{'error': declarationForm.submitted && question2.errors}"
-            [ngClass]="{'error':  question2.touched && question2.errors}">
+            [ngClass]="{'error': (declarationForm.submitted && txtquestion2a.errors) || (declarationForm.submitted && txtquestion2b.errors)}"
+            [ngClass]="{'error':  (txtquestion2a.touched && txtquestion2a.errors) ||  (txtquestion2b.touched && txtquestion2b.errors)}">
               <div class="row mt-2">
 
                 <div class="col-6">
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input"  value="Yes" name="question2" id="question2[0]" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" (change)="assignQuestionId(1,1)" [(ngModel)]="declarationsList[1].answer"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                    <input class="custom-control-input" type="radio"  value="Yes" name="question2a" id="question2a" #txtquestion2a="ngModel" [disabled]="declarationsList[0].answer == 'No'" (change)="assignQuestionId(1,1)" [(ngModel)]="declarationsList[1].answer"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                     [required]="declarationsList[0].answer == 'Yes'" >
-                    <label class="custom-control-label" for="question2[0]">Yes</label>
+                    <label class="custom-control-label" for="question2a">Yes</label>
                   </div>
 
                   
@@ -206,9 +206,9 @@
 
                 <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" value="No" name="question2" id="question2[1]" (change)="clearQuestionData1()" #question2="ngModel" [disabled]="declarationsList[0].answer == 'No'" [(ngModel)]="declarationsList[1].answer"  (change)="assignQuestionId(1,1)"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
+                    <input class="custom-control-input" type="radio"  value="No" name="question2b" id="question2b" (change)="clearQuestionData1()" #txtquestion2b="ngModel" [disabled]="declarationsList[0].answer == 'No'" [(ngModel)]="declarationsList[1].answer"  (change)="assignQuestionId(1,1)"  style="width:80px; -ms-transform: scale(1.5);  -webkit-transform: scale(1.5);  transform: scale(1.5);" 
                     [required]="declarationsList[0].answer == 'Yes'" >
-                    <label class="custom-control-label" for="question2[1]">No</label>
+                    <label class="custom-control-label" for="question2b">No</label>
                   </div>
                 </div>
                <!-- <div class="col-xs-2 col-6">
@@ -252,7 +252,7 @@
               <div class="frm-fld-input"  >
                 <select class="form-control shadow-none" [disabled]="declarationsList[1].answer == 'No'" [(ngModel)]="declarationsList[2].answer" (change)="assignQuestionId(2,1)"
                 [required]="declarationsList[0].answer == 'Yes'"  name="drop1" id="drop1" #drop1="ngModel" [disabled]="declarationsList[0].answer == 'No'">
-                  <option value="-1" selected disabled>Select One</option>
+                  <option [ngValue]="''" selected [disabled]="drop1.value !='' ">Select One</option>
                   <option value="PR" >PR</option>
                   <option value="SR" >SR</option>
                   <option value="SH" >SH</option>
@@ -285,7 +285,7 @@
                 [required]="declarationsList[0].answer == 'Yes'"
                
           >
-                  <option value="-1" selected disabled>Select One</option>
+                  <option [ngValue]="''" selected [disabled]="drop2.value != ''">Select One</option>
                   <option value="SP" >SP</option>
                   <option value="S" >S</option>
                   <option value="O" >O</option>
@@ -302,8 +302,8 @@
 
     <div class="row div-sub-grp">
       <div class="col-12">
-        <div class="frm-group" [ngClass]="{'error': declarationForm.submitted && question3.errors}"
-        [ngClass]="{'error':  question3.touched && question3.errors}">
+        <div class="frm-group" [ngClass]="{'error': declarationForm.submitted && question3a.errors}"
+        [ngClass]="{'error':  question3a.touched && question3a.errors}">
           <div class="row">
             <div class="col-9 txt mt-2">
               <ol type="A" start="2">
@@ -318,8 +318,8 @@
                  <div class="col-6">
 
                     <div class="custom-control  custom-radio pull-right">
-                      <input class="custom-control-input" value="Yes" id="question3_0" #question3="ngModel" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" name="question3" >
-                      <label class="custom-control-label" for="question3_0">Yes</label>
+                      <input class="custom-control-input" type="radio"  value="Yes" id="question3a" #question3a="ngModel" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" name="question3a" >
+                      <label class="custom-control-label" for="question3a">Yes</label>
                     </div>
 
                    <!-- <div style="display: flex; justify-content: center;">
@@ -333,8 +333,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input"  value="No" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" id="question3_1" #question3="ngModel" name="question3" >
-                    <label class="custom-control-label" for="question3_1">No</label>
+                    <input class="custom-control-input" type="radio"   value="No" [(ngModel)]="declarationsList[4].answer" (change)="assignQuestionId(4,2)" id="question3b" #question3b="ngModel" name="question3b" >
+                    <label class="custom-control-label" for="question3b">No</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center; margin-left:40px">
@@ -379,7 +379,7 @@
                    </div> -->
 
                    <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input"  value="Yes" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3)" id="question4_0" #question4="ngModel" name="question4"  >
+                    <input class="custom-control-input" type="radio"   value="Yes" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3)" id="question4_0" #question4="ngModel" name="question4"  >
                     <label class="custom-control-label" for="question4_0">Yes</label>
                   </div>
 
@@ -387,7 +387,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input"  value="No" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3);clearQuestionData2()" id="question4_1" #question4="ngModel" name="question4"  >
+                    <input class="custom-control-input" type="radio"   value="No" [(ngModel)]="declarationsList[5].answer" (change)="assignQuestionId(5,3);clearQuestionData2()" id="question4_1" #question4="ngModel" name="question4"  >
                     <label class="custom-control-label" for="question4_1">No</label>
                   </div>
 
@@ -461,7 +461,7 @@
                  <div class=" col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input"  name="question5" id="question5[0]" #question5="ngModel"  value="yes"  [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"   >
+                    <input class="custom-control-input" type="radio"  name="question5" id="question5[0]" #question5="ngModel"  value="yes"  [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"   >
                     <label class="custom-control-label" for="question5[0]">Yes</label>
                   </div>
 
@@ -476,7 +476,7 @@
                  <div class=" col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input"  name="question5" id="question5[1]" #question5="ngModel" value="No" [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"  >
+                    <input class="custom-control-input" type="radio"  name="question5" id="question5[1]" #question5="ngModel" value="No" [(ngModel)]="declarationsList[7].answer" (change)="assignQuestionId(7,4)"  >
                     <label class="custom-control-label" for="question5[1]">No</label>
                   </div>
 
@@ -518,7 +518,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" name="question6" id="question6[0]" #question6="ngModel"  value="Yes" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"   >
+                    <input class="custom-control-input" type="radio" name="question6" id="question6[0]" #question6="ngModel"  value="Yes" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"   >
                     <label class="custom-control-label" for="question6[0]">Yes</label>
                   </div>
 
@@ -533,7 +533,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input"  name="question6" id="question6[1]" #question6="ngModel"  value="No" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"    >
+                    <input class="custom-control-input" type="radio"  name="question6" id="question6[1]" #question6="ngModel"  value="No" [(ngModel)]="declarationsList[8].answer" (change)="assignQuestionId(8,2)"    >
                     <label class="custom-control-label" for="question6[1]">No</label>
                   </div>
 
@@ -577,7 +577,7 @@
                 <div class="row mt-2 ">
                  <div class="col-6">
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" name="question7" id="question7[0]" #question7="ngModel" value="Yes" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)" />
+                    <input class="custom-control-input" type="radio" name="question7" id="question7[0]" #question7="ngModel" value="Yes" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)" />
                     <label class="custom-control-label" for="question7[0]">Yes</label>
                   </div>
 
@@ -592,7 +592,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question7" id="question7[1]" #question7="ngModel" value="No" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)"   />
+                    <input class="custom-control-input" type="radio" name="question7" id="question7[1]" #question7="ngModel" value="No" [(ngModel)]="declarationsList[9].answer" (change)="assignQuestionId(9,5)"   />
                     <label class="custom-control-label" for="question7[1]">No</label>
                   </div>
 
@@ -637,8 +637,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" name="question8" id="question8[0]" #question8="ngModel" value="Yes" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"   />
-                    <label class="custom-control-label" for="question8[0]">Yes</label>
+                    <input class="custom-control-input" type="radio" name="question8a" id="question8a" #question8="ngModel" value="Yes" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"   />
+                    <label class="custom-control-label" for="question8a">Yes</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center;">
@@ -652,8 +652,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question8[1]" id="question8" #question8="ngModel" value="No" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"    />
-                    <label class="custom-control-label" for="question8[1]">No</label>
+                    <input class="custom-control-input" type="radio" name="question8b" id="question8b" #question8="ngModel" value="No" [(ngModel)]="declarationsList[10].answer" (change)="assignQuestionId(10,6)"    />
+                    <label class="custom-control-label" for="question8b">No</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center; margin-left:40px">
@@ -692,7 +692,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" name="question9" id="question9[0]" #question9="ngModel" value="Yes"  [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
+                    <input class="custom-control-input" type="radio" name="question9[0]" id="question9[0]" #question9="ngModel" value="Yes"  [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
                     <label class="custom-control-label" for="question9[0]">Yes</label>
                   </div>
 
@@ -706,7 +706,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question9" id="question9[1]" #question9="ngModel" value="No" [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
+                    <input class="custom-control-input" type="radio" name="question9[1]" id="question9[1]" #question9="ngModel" value="No" [(ngModel)]="declarationsList[11].answer" (change)="assignQuestionId(11,7)"    />
                     <label class="custom-control-label" for="question9[1]">No</label>
                   </div>
                   
@@ -746,7 +746,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" name="question10" id="question10[0]" #question10="ngModel" value="Yes" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
+                    <input class="custom-control-input" type="radio" name="question10[0]" id="question10[0]" #question10="ngModel" value="Yes" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
                     <label class="custom-control-label" for="question10[0]">Yes</label>
                   </div>
 
@@ -760,7 +760,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question10" id="question10[1]" #question10="ngModel" value="No" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
+                    <input class="custom-control-input" type="radio" name="question10[1]" id="question10[1]" #question10="ngModel" value="No" [(ngModel)]="declarationsList[12].answer" (change)="assignQuestionId(12,8)"    />
                     <label class="custom-control-label" for="question10[1]">No</label>
                   </div>
 
@@ -802,7 +802,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input"  value="Yes" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[0]" #question11="ngModel" name="question11"    />
+                    <input class="custom-control-input" type="radio"  value="Yes" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[0]" #question11="ngModel" name="question11[0]"    />
                     <label class="custom-control-label" for="question11[0]">Yes</label>
                   </div>
 
@@ -817,7 +817,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[1]" #question11="ngModel" name="question11"   />
+                    <input class="custom-control-input" type="radio" value="No" [(ngModel)]="declarationsList[13].answer" (change)="assignQuestionId(13,9)" id="question11[1]" #question11="ngModel" name="question11[1]"   />
                     <label class="custom-control-label" for="question11[1]">No</label>
                   </div>
 
@@ -860,8 +860,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[0]" #question12="ngModel" name="question12"    />
-                    <label class="custom-control-label" for="question12[1]">Yes</label>
+                    <input class="custom-control-input" type="radio" value="Yes" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[0]" #question12="ngModel" name="question12[0]"    />
+                    <label class="custom-control-label" for="question12[0]">Yes</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center;">
@@ -874,7 +874,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[1]" #question12="ngModel" name="question12"  />
+                    <input class="custom-control-input" type="radio" value="No" [(ngModel)]="declarationsList[14].answer" (change)="assignQuestionId(14,10)" id="question12[1]" #question12="ngModel" name="question12[1]"  />
                     <label class="custom-control-label" for="question12[1]">No</label>
                   </div>
 
@@ -920,8 +920,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[0]" #question13="ngModel" name="question13"  />
-                    <label class="custom-control-label" for="question13[2]">Yes</label>
+                    <input class="custom-control-input" type="radio" value="Yes" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[0]" #question13="ngModel" name="question13[0]"  />
+                    <label class="custom-control-label" for="question13[0]">Yes</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center;">
@@ -934,7 +934,7 @@
 
                  <div class="col-6">
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[1]" #question13="ngModel" name="question13"  />
+                    <input class="custom-control-input" type="radio" value="No" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question13[1]" #question13="ngModel" name="question13[1]"  />
                     <label class="custom-control-label" for="question13[1]">No</label>
                   </div>
 
@@ -976,7 +976,7 @@
                  <div class="col-6">
 
                     <div class="custom-control  custom-radio pull-right">
-                      <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14[0]" #question14="ngModel" name="question14"  />
+                      <input class="custom-control-input" type="radio" value="Yes" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14[0]" #question14="ngModel" name="question14[0]"  />
                       <label class="custom-control-label" for="question14[0]">Yes</label>
                     </div>
 
@@ -990,7 +990,7 @@
 
                  <div class="col-6">
                     <div class="custom-control  custom-radio">
-                      <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[15].answer" (change)="assignQuestionId(15,11)" id="question14[1]" #question13="ngModel" name="question13"  />
+                      <input class="custom-control-input" type="radio" value="No" [(ngModel)]="declarationsList[16].answer" (change)="assignQuestionId(16,12)" id="question14[1]" #question14="ngModel" name="question14[1]"  />
                       <label class="custom-control-label" for="question14[1]">No</label>
                     </div>
                    <!-- <div style="display: flex; justify-content: center; margin-left:40px">
@@ -1029,8 +1029,8 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio pull-right">
-                    <input class="custom-control-input" value="Yes" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15[0]" #question15="ngModel" name="question15"  />
-                    <label class="custom-control-label" for="question15[1]">Yes</label>
+                    <input class="custom-control-input" type="radio" value="Yes" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15[0]" #question15="ngModel" name="question15[0]"  />
+                    <label class="custom-control-label" for="question15[0]">Yes</label>
                   </div>
 
                    <!-- <div style="display: flex; justify-content: center;">
@@ -1044,7 +1044,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" value="No" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13)" id="question15" #question15="ngModel" name="question15"  />
+                    <input class="custom-control-input" type="radio" value="No" [(ngModel)]="declarationsList[17].answer" (change)="assignQuestionId(17,13);declarationsList[18].answer =''" id="question15[1]" #question15="ngModel" name="question15[1]"  />
                     <label class="custom-control-label" for="question15[1]">No</label>
                   </div>
 
@@ -1078,7 +1078,7 @@
                    </div> -->
 
                    <div class="custom-control  custom-radio" >
-                    <input class="custom-control-input" name="question16" id="question16_0" #question16="ngModel" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
+                    <input class="custom-control-input" type="radio" name="question16_0" id="question16_0" #question16="ngModel" value="Chapter 7" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
                     <label class="custom-control-label" for="question16_0">Chapter 7</label>
                   </div>
 
@@ -1094,7 +1094,7 @@
                    </div> -->
 
                    <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question16" id="question16_1" #question16="ngModel" value="Chapter 11" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)"/>
+                    <input class="custom-control-input"  type="radio" name="question16_1" id="question16_1" #question16="ngModel" value="Chapter 11" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)"/>
                     <label class="custom-control-label" for="question16_1">Chapter 11</label>
                   </div>
 
@@ -1104,7 +1104,7 @@
                  <div class="col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question16" id="question16_2" #question16="ngModel" value="Chapter 12" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
+                    <input class="custom-control-input" type="radio" name="question16_2" id="question16_2" #question16="ngModel" value="Chapter 12" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
                     <label class="custom-control-label" for="question16_2">Chapter 12</label>
                   </div>
 
@@ -1120,7 +1120,7 @@
                 <div class=" col-6">
 
                   <div class="custom-control  custom-radio">
-                    <input class="custom-control-input" name="question16" id="question16_3" #question16="ngModel" value="Chapter 13" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
+                    <input class="custom-control-input" type="radio" name="question16_3" id="question16_3" #question16="ngModel" value="Chapter 13" [disabled]="declarationsList[17].answer == 'No'" [(ngModel)]="declarationsList[18].answer" (change)="assignQuestionId(18,13)" />
                     <label class="custom-control-label" for="question16_3">Chapter 13</label>
                   </div>
 

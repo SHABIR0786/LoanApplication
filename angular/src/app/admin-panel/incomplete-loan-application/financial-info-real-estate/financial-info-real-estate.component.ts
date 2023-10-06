@@ -75,7 +75,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
 
   getCountries() {
     this.financialInfoRealEstateService.getCountries().subscribe((data: any) => {
-      debugger
+      
       this.countryList = []
       if (data.success == true && data.result.length > 0) {
         data.result.forEach((element: any) => {
@@ -155,7 +155,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
 
   }
   create() {
-    debugger
+    
     var obj = this.financialInfoRealState
     localStorage.setItem("financialInfoRealState", JSON.stringify(this.financialInfoRealState))
     this.financialInfoRealEstateService.create(obj).subscribe((data: any) => {
@@ -171,7 +171,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     this.financialInfoRealState.push(this.objFinancialInfoRealState);
   }
   changeCheckBox(index: any) {
-    debugger
+    
     if (this.financialInfoRealState[index].flgApplicableNotApply == false) {
       this.financialInfoRealState[index].flgApplicableNotApply = true;
       this.financialInfoRealState[index].flgMortgageLoanNotApply = true
@@ -215,7 +215,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
 
     const stateID = this.stateList.find(state => state.stateName === Address_01.state);
     this.getCityByStateId(stateID,fldIndex)
-    debugger
+    
 
     const cityID = this.cityList.find(city => city.cityName === Address_01.city);
     this.financialInfoRealState[fldIndex].cityId = cityID.id;
@@ -315,7 +315,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
   // }
 
   getStateByCountryId(id: any,index:any) {
-    debugger
+    
     if (this.stateList.length > 0) {
       this.financialInfoRealState[index].stateListAddress0=[]
       this.stateList.filter((s: any) => s.countryId == id).forEach((element: any) => {
@@ -324,7 +324,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
     }
   }
   getCityByStateId(id: any,index:any) {
-    debugger
+    
     if (this.cityList.length > 0) {
       this.financialInfoRealState[index].cityListAddress0=[];
       this.cityList.filter((s: any) => s.stateId == id).forEach((element: any) => {
@@ -352,7 +352,7 @@ export class FinancialInfoRealEstateComponent implements OnInit {
 
 
 fixDecimals(event: any) {
-  debugger
+  
   var vals = event.target.value.replace(",","") ;
   if(vals !="" ){
    vals = parseFloat(vals).toFixed(2);

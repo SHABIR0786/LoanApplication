@@ -26,7 +26,7 @@ export class LoanOriginatorInformationComponent implements OnInit {
   create() {
     localStorage.setItem("loanOriginatorInfoModels", JSON.stringify(this.loanOriginatorInfoModels))
     this.loanOriginatorInfoService.create(this.loanOriginatorInfoModels).subscribe((data: any) => {
-      debugger
+      
       if (data.success == true) {
         alert("Data inserted successfully")
         localStorage.removeItem('borrowerInfo');

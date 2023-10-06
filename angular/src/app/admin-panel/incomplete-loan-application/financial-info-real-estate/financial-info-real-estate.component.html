@@ -160,7 +160,7 @@
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px; ">
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.cityId" name="{{i}}_cityId" id="{{i}}_cityId" #cityId="ngModel"
                     [required]="item.flgApplicableNotApply == false" >
-                      <option  disabled>Select City </option>
+                      <option  [ngValue]="undefined" selected [disabled]="cityId.value > 0 && cityId.value != null">Select City </option>
                       <option *ngFor="let obj of item.cityListAddress0" 
                       [ngValue]="obj.id" > {{obj.cityName}} </option>
                     </select>
@@ -177,7 +177,7 @@
                     <select class="form-control shadow-none" [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.stateId" name="{{i}}_stateId" id="{{i}}_stateId" #stateId="ngModel"
                     [required]="item.flgApplicableNotApply == false" 
                     (change)="getCityByStateId(stateId.value,i)">
-                      <option  disabled>Select State </option>
+                      <option  [ngValue]="undefined" selected [disabled]="stateId.value > 0 && stateId.value != null">Select State </option>
                       <option *ngFor="let obj of item.stateListAddress0" 
                       [ngValue]="obj.id" > {{obj.stateName}} </option>
                     </select>
@@ -202,7 +202,7 @@
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 15px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="{{i}}_countryId" id="{{i}}_countryId" #countryId="ngModel" [required]="item.flgApplicableNotApply == false" (change)="getStateByCountryId(countryId.value,i)" >
-                      <option  disabled>Select Country </option>
+                      <option  [ngValue]="undefined" selected [disabled]="countryId.value > 0 && countryId.value != null">Select Country </option>
                       <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                     </select>
                   </div>
@@ -296,7 +296,7 @@
                   <div class="frm-fld-input">
                       <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.financialInformationType" name="{{i}}.financialInformationType" id="{{i}}.financialInformationType" #financialInformationType="ngModel"
                       [required]="item.flgApplicableNotApply == false">
-                      <option value="-1" selected disabled>-Select One-</option>
+                      <option [ngValue]="undefined" selected [disabled]="financialInformationType.value > 0 && financialInformationType.value != null">-Select One-</option>
                       <option *ngFor="let obj of proprtyStatusList" [ngValue]="obj.id"> {{obj.financialPropertyStatus1}} </option>
                     </select>
                   </div>
@@ -310,7 +310,7 @@
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.intendedOccupancy" name="{{i}}.intendedOccupancy" id="{{i}}.intendedOccupancy" #intendedOccupancy="ngModel"
                     [required]="item.flgApplicableNotApply == false"
                    >
-                   <option value="-1" selected disabled>-Select One-</option>
+                   <option [ngValue]="undefined" selected [disabled]="intendedOccupancy.value > 0 && intendedOccupancy.value != null">-Select One-</option>
                    <option *ngFor="let obj of loanPropertyOccupanciesList" [ngValue]="obj.id"> {{obj.loanPropertyOccupancy1}} </option>
                   </select>
                 </div>
@@ -602,7 +602,7 @@
                 [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
                   <div class="frm-fld-input" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
                       <select  class="form-control shadow-none"  [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.type" name="{{j}}_type" id="{{j}}_type" #type="ngModel">
-                        <option value="-1" selected disabled>-Select One-</option>
+                        <option [ngValue]="undefined" selected [disabled]="type.value > 0 && type.value != null">-Select One-</option>
                         <option *ngFor="let obj of mortgageLoanTypeList" [ngValue]="obj.id"> {{obj.mortageLoanTypesId}} </option>
                     </select>
                   </div>

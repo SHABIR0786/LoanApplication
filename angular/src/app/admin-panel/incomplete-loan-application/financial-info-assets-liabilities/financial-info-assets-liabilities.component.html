@@ -182,7 +182,7 @@
                       </div>
                       <div class="col-10 pl-0 form-group ptb-0">
                           <select class="form-control form-select  fc-fullborder text-black-color" [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && accountTypeId.errors}" [ngClass]="{'error':  accountTypeId.touched && accountTypeId.errors}" [(ngModel)]="item.accountTypeId"  id="{{i}}_accountTypeId" name="{{i}}_accountTypeId" #accountTypeId="ngModel" required>
-                            <option [ngValue]="-1"  disabled>-Select One-</option>
+                            <option [ngValue]="undefined" selected [disabled]="accountTypeId.value > 0 && accountTypeId.value != null">-Select One-</option>
                             <option *ngFor="let obj of assetTypeList" [ngValue]="obj.id"> {{obj.assetsType}} </option>
                           </select>
                       </div>
@@ -399,7 +399,7 @@
                               [required]="flgMortgageFinancialOtherAssets ==false" [(ngModel)]="item.financialAssetsTypeId"
                               id="{{j}}_financialAssetsTypeId" name="{{j}}_financialAssetsTypeId"
                               #financialAssetsTypeId="ngModel">
-                              <option value="-1" selected disabled>-Select One-</option>
+                              <option [ngValue]="undefined" selected [disabled]="financialAssetsTypeId.value > 0 && financialAssetsTypeId.value != null">-Select One-</option>
                               <option *ngFor="let obj of creditTypeList" [ngValue]="obj.id"> {{obj.creditType1}} </option>
                             </select>
                           </div>
@@ -663,7 +663,7 @@
                             [required]="flgMortgageFinancialLiabilities == false"
                             [(ngModel)]="item.financialLaibilitiesTypeId" id="{{k}}_financialLaibilitiesTypeId"
                             name="{{k}}_financialLaibilitiesTypeId" #financialLaibilitiesTypeId="ngModel">
-                            <option value="-1" selected disabled>-Select One-</option>
+                            <option [ngValue]="undefined" selected [disabled]="financialLaibilitiesTypeId.value > 0 && financialLaibilitiesTypeId.value != null">-Select One-</option>
                             <option *ngFor="let obj of financialLiabilityTypeList" [ngValue]="obj.id"> {{obj.financialLaibilitiesType1}} </option>
                           </select>
                         </div>
@@ -992,7 +992,7 @@
                               [required]="flgMortgageFinancialOtherLaibilities ==false"
                               [(ngModel)]="item.financialLaibilitiesTypeId" id="{{l}}_financialLaibilitiesTypeId"
                               name="{{l}}_financialLaibilitiesTypeId" #financialLaibilitiesTypeId1="ngModel">
-                              <option value="-1" selected disabled>-Select One-</option>
+                              <option [ngValue]="undefined" selected [disabled]="financialLaibilitiesTypeId1.value > 0 && financialLaibilitiesTypeId1.value != null">-Select One-</option>
                               <option *ngFor="let obj of otherLiabilityTypeList" [ngValue]="obj.id"> {{obj.financialOtherLaibilitiesType1}} </option>
                           </select>
                           </div>

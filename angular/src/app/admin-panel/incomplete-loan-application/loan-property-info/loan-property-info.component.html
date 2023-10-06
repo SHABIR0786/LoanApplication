@@ -219,7 +219,7 @@
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.cityId" name="cityId"
                       id="cityId" #cityId="ngModel" required>
-                      <option disabled>Select City </option>
+                      <option [ngValue]="undefined" selected [disabled]="cityId.value > 0 && cityId.value != null">Select City </option>
                       <option *ngFor="let obj of cityListAddress0" [ngValue]="obj.id"> {{obj.cityName}} </option>
                     </select>
                   </div>
@@ -234,7 +234,7 @@
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.stateId" name="stateId"
                       id="stateId" #stateId="ngModel" required (change)="getCityByStateId(stateId.value)">
-                      <option disabled>Select State </option>
+                      <option [ngValue]="undefined" selected [disabled]="stateId.value > 0 && stateId.value != null">Select State </option>
                       <option *ngFor="let obj of stateListAddress0" [ngValue]="obj.id"> {{obj.stateName}} </option>
                     </select>
                   </div>
@@ -259,7 +259,7 @@
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.countryId"
                       name="countryId" id="countryId" #countryId="ngModel" required (change)="getStateByCountryId(countryId.value)">
-                      <option disabled>Select Country </option>
+                      <option [ngValue]="undefined" selected [disabled]="countryId.value > 0 && countryId.value != null">Select Country </option>
                       <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
                     </select>
                   </div>
@@ -909,7 +909,7 @@
                     <select class="form-control shadow-none" [disabled]="flgGiftsorGrants == true" [(ngModel)]="item.assetTypeId"
                       name="{{i}}.assetTypeId" id="{{i}}.assetTypeId" #assetTypeId="ngModel"
                       [required]="flgGiftsorGrants == false">
-                      <option value="-1" selected disabled>-Select one-</option>
+                      <option [ngValue]="undefined" selected [disabled]="assetTypeId.value > 0 && assetTypeId.value != null">-Select one-</option>
                       <option *ngFor="let obj of giftTypeList" [ngValue]="obj.id"> {{obj.loanPropertyGiftType1}} </option>
                     </select>
                   </p>
@@ -948,17 +948,17 @@
                     <select [disabled]="flgGiftsorGrants == true" class="form-control shadow-none"
                       [(ngModel)]="item.source" name="{{i}}.source" id="{{i}}.source" #source="ngModel"
                       [required]="flgGiftsorGrants == false" >
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option value="-1" >Community Nonprofit</option>
-                      <option value="-1" >Employer</option>
-                      <option value="-1" >Federal Agency</option>
-                      <option value="-1" >Local Agency</option>
-                      <option value="-1" >Relative</option>
-                      <option value="-1" >Religious Non Profit</option>
-                      <option value="-1" >State Agency</option>
-                      <option value="-1" >Unmarried Partner</option>
-                      <option value="-1" >Lender</option>
-                      <option value="-1" >Other</option>
+                      <option [ngValue]="undefined" selected [disabled]="source.value > 0 && source.value != null">-Select One-</option>
+                      <option value="1" >Community Nonprofit</option>
+                      <option value="2" >Employer</option>
+                      <option value="3" >Federal Agency</option>
+                      <option value="4" >Local Agency</option>
+                      <option value="5" >Relative</option>
+                      <option value="6" >Religious Non Profit</option>
+                      <option value="7" >State Agency</option>
+                      <option value="8" >Unmarried Partner</option>
+                      <option value="9" >Lender</option>
+                      <option value="10" >Other</option>
                     </select></p>
                 </div>
               </div>
