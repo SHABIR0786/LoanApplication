@@ -190,12 +190,12 @@
 
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
-          <div class="frm-group">
+        <div class="col-12 p-0 m-0 mt-2">
+          <div class="frm-group pr-4">
             <label class="frm-label">Property Address</label>
             <div class="row mt-2  ">
-              <div class="col-sm-1 col-sm-push-3 pr-4"><label class="gray-text">Street</label></div>
-              <div class="col-sm-7 col-sm-push-8  pr-4 input-border-bottom"
+              <div class="col-sm-1 col-sm-push-3 pr-2"><label class="gray-text">Street</label></div>
+              <div class="col-sm-6 col-sm-push-7  pr-2 input-border-bottom"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && street.errors}"
                 [ngClass]="{'error':  street.touched && street.errors}">
                 
@@ -207,16 +207,16 @@
               
               </div>
 
-              <div class="col-sm-1 col-sm-push-3  pr-4"><label class="gray-text" >Unit#</label></div>
-              <div class="col-sm-3 col-sm-push-8  pr-4 input-border-bottom">
+              <div class="col-sm-1 col-sm-push-3  pr-2"><label class="gray-text" >Unit#</label></div>
+              <div class="col-sm-3 col-sm-push-7  pr-2 input-border-bottom">
                 <input type="text" class="showBorder" maxlength="5"  [min]="0" />
                 <!-- <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber> -->
               </div>
             </div>
 
             <div class="row mt-2 pr-3 ">
-              <div class="col-sm-1 col-sm-push-3   pr-4 mt-2"><label class="gray-text">City</label></div>
-              <div class="col-sm-2 col-sm-push-8   pr-4 input-border-bottom">
+              <div class="col-sm-1 col-sm-push-3   pr-2 mt-2"><label class="gray-text">City</label></div>
+              <div class="col-sm-2 col-sm-push-8   pr-2 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && cityId.errors}"
                   [ngClass]="{'error':  cityId.touched && cityId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -231,8 +231,8 @@
                 </div>
               </div>
 
-              <div class="col-sm-1 col-sm-push-3 pr-4 mt-2"><label class="gray-text" >State</label></div>
-              <div class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom">
+              <div class="col-sm-1 col-sm-push-3 pr-2 mt-2"><label class="gray-text" >State</label></div>
+              <div class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && stateId.errors}"
                   [ngClass]="{'error':  stateId.touched && stateId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -249,8 +249,8 @@
               </div>
 
 
-              <div class="col-sm-1 col-sm-push-3  pr-4 mt-2"><label class="gray-text" >ZIP</label></div>
-              <div class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom mt-1"
+              <div class="col-sm-1 col-sm-push-3  pr-2 mt-2"><label class="gray-text" >ZIP</label></div>
+              <div class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom mt-1"
                 [ngClass]="{'error': loanPropertyInfoForm.submitted && zip.errors}"
                 [ngClass]="{'error':  zip.touched && zip.errors}">
                 <!-- <label class="gray-text" style="text-align: center;">ZIP</label> -->
@@ -258,8 +258,8 @@
                   name="zip" id="zip" #zip="ngModel" required />
               </div>
 
-              <div class="col-sm-1 col-sm-push-3  pr-4 mt-2"><label class="gray-text" >Country</label></div>
-              <div class="col-sm-2 col-sm-push-8  pr-4 input-border-bottom">
+              <div class="col-sm-1 col-sm-push-3  pr-2 mt-2"><label class="gray-text" >Country</label></div>
+              <div class="col-sm-2 col-sm-push-8  pr-2 input-border-bottom">
                 <div class="frm-group" [ngClass]="{'error': loanPropertyInfoForm.submitted && countryId.errors}"
                   [ngClass]="{'error':  countryId.touched && countryId.errors}"
                   style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -309,7 +309,7 @@
 
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-0 mt-2">
           <div class="frm-group">
 
             <div class="row">
@@ -387,7 +387,7 @@
 
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-0 mt-2">
           <div class="frm-group">
 
             <div class="row">
@@ -532,7 +532,7 @@
               <div class="col-sm-3 col-sm-push-3">
                 
                 <div class="row p-0">
-                  <div class="col-1  pt-0 p-0 " style="text-align: center;display: flex;">
+                  <div class="col-1  pt-0 p-0 pl-2" style="text-align: center;display: flex;">
                     <input type="checkbox" (change)="removeOtherNewMortgageLoansF(i,$event)">
                   </div>
                   <div class="col-11 pt-0 p-0 ">
