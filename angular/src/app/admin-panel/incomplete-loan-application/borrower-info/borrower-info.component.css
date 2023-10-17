@@ -12,6 +12,14 @@
     font-weight: normal !important;
   } */
 
+  .mpl-10{
+    padding-left: 10px !important;
+  }
+
+  .mpr-10{
+    padding-right: 10px !important;
+  }
+
   .chkBox-text{
     padding-top: 5px;
     font-size: 8px !important;

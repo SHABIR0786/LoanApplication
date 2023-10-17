@@ -598,14 +598,14 @@
       </div>
 
       <div class="div-main-grp m-b-30">
-        <div class="row div-sub-grp">
+        <div class="row div-sub-grp ">
           <div class="col-sm-12 col-12 p-1">
-            <div class="div-border">
+            <div class="div-border ">
               <label class="frm-label" style="margin-left: -10px;">Current Address</label>
                 
                 <div class="row mt-2 pr-3">
-                  <div class="col-sm-1  pl-1 pr-0"><label class="gray-text">Street</label></div>
-                  <div class="col-sm-8  p-0 input-border-bottom"
+                  <div class="col-sm-1  pr-0"><label class="gray-text">Street</label></div>
+                  <div class="col-sm-8   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
                   [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
                     <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[0].street"
@@ -613,8 +613,8 @@
                     (onAddressChange)="handleAddressChange($event,0)" />
                   </div>
   
-                  <div class="col-sm-1  pl-1 pr-0 "><label class="gray-text">Unit #</label></div>
-                  <div class="col-sm-2  p-0 pr-1 input-border-bottom">
+                  <div class="col-sm-1   pr-0 "><label class="gray-text">Unit #</label></div>
+                  <div class="col-sm-2   pr-1 input-border-bottom">
                     <input type="text" name="ZIP" id="ZIP" #ZIP="ngModel"
                     [(ngModel)]="borrowerInfo.personalInformation.address[0].unit" name="creditItemsUnit"
                     id="creditItemsUnit" #creditItemsUnit="ngModel" [min]="0" maxlength="10"  />
@@ -622,8 +622,8 @@
                 </div>
               
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1 pl-1 pr-0 mt-2"><label class="gray-text">City</label></div>
-                <div class="col-sm-3 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2"><label class="gray-text">City</label></div>
+                <div class="col-sm-3  input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && creditItemscityId.errors}"
                 [ngClass]="{'error_bb':  creditItemscityId.touched && creditItemscityId.errors}">
                   <div class=""  style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -637,9 +637,9 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" ><label class="gray-text">State</label>
+                <div class="col-sm-1  pr-0 mt-2" ><label class="gray-text">State</label>
                 </div>
-                <div class="col-sm-2 p-0 input-border-bottom"
+                <div class="col-sm-2 p input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && creditItemsState.errors}"
                 [ngClass]="{'error_bb':  creditItemsState.touched && creditItemsState.errors}">
                   <div class=""
@@ -655,8 +655,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 p-0 input-border-bottom mt-1"
+                <div class="col-sm-1  pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1  input-border-bottom mt-1"
                 [ngClass]="{'error_bb': borrowForm.submitted && ZIP.errors}"
                 [ngClass]="{'error_bb':  ZIP.touched && ZIP.errors}">
                   <input type="text" type="text" maxlength="10" name="ZIP" id="ZIP" #ZIP="ngModel"
@@ -664,8 +664,8 @@
                 </div>
 
 
-                <div class="col-sm-1 p-0 mt-2" ><label class="gray-text">Country</label></div>
-                <div class="col-sm-2  p-0 pl-1 pr-1 input-border-bottom"
+                <div class="col-sm-1  mt-2" ><label class="gray-text">Country</label></div>
+                <div class="col-sm-2    pr-1 input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && Country.errors}"
                 [ngClass]="{'error_bb':  Country.touched && Country.errors}">
                   <div class=""
@@ -683,73 +683,6 @@
               </div>
 
 
-
-<!--               
-
-              <div class="row mt-2  pr-3">
-                <div class="col-sm-1 col-1  pl-1 pr-0 mt-2 "><label class="gray-text">City</label></div>
-                <div class="col-sm-3 col-3  pl-0 pr-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemscityId.errors}"
-                  [ngClass]="{'error_bb':  creditItemscityId.touched && creditItemscityId.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].cityId"
-                        name="creditItemscityId" id="creditItemscityId" #creditItemscityId="ngModel">
-                        <option [ngValue]="undefined" selected [disabled]="creditItemscityId.value > 0 && creditItemscityId.value != null">Select City</option>
-                        <option *ngFor="let obj of cityListAddress0" [ngValue]="obj.id"> {{obj.cityName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">State</label>
-                </div>
-                <div class="col-sm-2 col-2  pl-0 pr-0  input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && creditItemsState.errors}"
-                  [ngClass]="{'error_bb':  creditItemsState.touched && creditItemsState.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select required [(ngModel)]="borrowerInfo.personalInformation.address[0].stateId"
-                        (change)="getCityByStateId(creditItemsState.value,'Address',0)" name="creditItemsState"
-                        id="creditItemsState" #creditItemsState="ngModel">
-                        <option [ngValue]="undefined" selected [disabled]="creditItemsState.value > 0 && creditItemsState.value != null">Select State</option>
-                        <option *ngFor="let obj of stateListAddress0" [ngValue]="obj.id"> {{obj.stateName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">ZIP</label>
-                </div>
-                <div class="col-sm-1 col-1  pl-0 pr-0  input-border-bottom mt-1"
-                  [ngClass]="{'error_bb': borrowForm.submitted && ZIP.errors}"
-                  [ngClass]="{'error_bb':  ZIP.touched && ZIP.errors}">
-                  <input type="text" maxlength="10" name="ZIP" id="ZIP" #ZIP="ngModel"
-                    [(ngModel)]="borrowerInfo.personalInformation.address[0].zip" />
-                </div>
-
-
-                <div class="col-sm-1 col-1  pl-1 pr-0  mt-2" style="text-align: center;"><label class="gray-text">Country</label>
-                </div>
-                <div class="col-sm-2 col-2  p-0 pl-1 pr-1 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && Country.errors}"
-                  [ngClass]="{'error_bb':  Country.touched && Country.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select required name="Country" id="Country" #Country="ngModel" style="text-align: center;"
-                        (change)="getStateByCountryId(Country.value,'Address',0)"
-                        [(ngModel)]="borrowerInfo.personalInformation.address[0].countryId">
-                        <option [ngValue]="undefined" selected [disabled]="Country.value > 0 && Country.value != null">Select Country</option>
-                        <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
 
 
               <div class="row mt-1 pl-1 ">
@@ -875,23 +808,9 @@
                 </div>
               </div>
 
-              <!-- <label class="frm-label">
-                <div style="display: flex; align-items: center; margin-left:-10px">
-                  <span> If at Current Address for LESS than 2 years, list Former Address</span>
-                  <label class="container flex" style="margin-left:20px;" style="margin-left:20px;pointer-events: all !important;">
-                    <span style=" font-weight: bold; ">Does Not Apply</span>
-                    <input type="checkbox" [(ngModel)]="doNotApplyForaddress1" name="doNotApplyForaddress1"
-                      id="doNotApplyForaddress1" #txtdoNotApplyForaddress1="ngModel"
-                      (change)="doNotApplyForaddress1F(txtdoNotApplyForaddress1.value)" style="margin-left:20px;pointer-events: all !important;">
-                    <span class="checkmark" style="margin-top: 2px !important;"></span>
-                  </label>
-                </div>
-              </label> -->
-
-
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1  pl-1 pr-0"><label class="gray-text">Street</label></div>
-                <div class="col-sm-8  p-0 input-border-bottom"
+                <div class="col-sm-1   pr-0"><label class="gray-text">Street</label></div>
+                <div class="col-sm-8   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && street1.errors}"
                   [ngClass]="{'error_bb':  street1.touched && street1.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[1].street"
@@ -899,8 +818,8 @@
                     (onAddressChange)="handleAddressChange($event,1)" />
                 </div>
 
-                <div class="col-sm-1  pl-1 pr-0 "><label class="gray-text">Unit #</label></div>
-                <div class="col-sm-2  p-0 pr-1 input-border-bottom">
+                <div class="col-sm-1   pr-0 "><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-2   pr-1 input-border-bottom">
                   <input type="text" name="unit1" id="unit1" #unit1="ngModel" [disabled]="doNotApplyForaddress1 == true"
                     [(ngModel)]="borrowerInfo.personalInformation.address[1].unit" [min]="0" maxlength="5" />
                 </div>
@@ -909,8 +828,8 @@
 
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1 pl-1 pr-0 mt-2"><label class="gray-text">City</label></div>
-                <div class="col-sm-3 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2"><label class="gray-text">City</label></div>
+                <div class="col-sm-3  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && cityId1.errors}"
                   [ngClass]="{'error_bb':  cityId1.touched && cityId1.errors}">
                   <div class=""
@@ -926,9 +845,9 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" ><label class="gray-text">State</label>
+                <div class="col-sm-1  pr-0 mt-2" ><label class="gray-text">State</label>
                 </div>
-                <div class="col-sm-2 p-0 input-border-bottom"
+                <div class="col-sm-2  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId1.errors}"
                   [ngClass]="{'error_bb':  stateId1.touched && stateId1.errors}">
                   <div class=""
@@ -945,8 +864,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 p-0 input-border-bottom mt-1"
+                <div class="col-sm-1  pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1  input-border-bottom mt-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && address1w.errors}"
                   [ngClass]="{'error_bb':  address1w.touched && address1w.errors}">
                   <input type="text" maxlength="10" [readonly]="doNotApplyForaddress1 == true" name="address1w"
@@ -955,8 +874,8 @@
                 </div>
 
 
-                <div class="col-sm-1 p-0 mt-2" ><label class="gray-text">Country</label></div>
-                <div class="col-sm-2  p-0 pl-1 pr-1 input-border-bottom"
+                <div class="col-sm-1  mt-2" ><label class="gray-text">Country</label></div>
+                <div class="col-sm-2    pr-1 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && countryId1.errors}"
                   [ngClass]="{'error_bb':  countryId1.touched && countryId1.errors}">
                   <div class=""
@@ -976,9 +895,8 @@
 
 
               <div class="row mt-1 pr-3">
-                <div class="col-sm-5  p-0 form-inline" >
+                <div class="col-sm-5 pl-2  form-inline" >
                   <label class="gray-text" style="white-space: nowrap !important; ">How Long at Current Address?</label>
-              
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
                     [ngClass]="{'error_bb':  year1.touched && year1.errors}"
                     [ngClass]="{'disabled':doNotApplyForaddress1==true}"
@@ -995,7 +913,7 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-2 pr-2">Years</label>
+                  <label class="gray-text pl-1 pr-1">Years</label>
                
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
                     [ngClass]="{'error_bb':  month1.touched && month1.errors}"
@@ -1013,11 +931,11 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-2 pr-2">Months</label>
+                  <label class="gray-text pl-1 pr-1">Months</label>
                 </div>
 
 
-                <div class="col-sm-7  p-0 ">
+                <div class="col-sm-7  pl-3 ">
                   <div class="row">
                      <div class="col-sm-2 col-12">
                       <label class="gray-text" style="color: #585858;"><b>Housing</b></label>
@@ -1073,50 +991,12 @@
                         id="MonthRent1" name="MonthRent1" #txtMonthRent1="ngModel"
                         [disabled]="borrowerInfo.personalInformation.address[0].housingType== '1'"
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
-
-
-<!--                         
-                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)"  (keypress)="numberOnly(this,$event)"  pattern="[0-9]+"
-                        style="border:0px !important;  font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                        [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.personalInformation.address[1].rent"
-                        id="MonthRent2" name="MonthRent2" #txtMonthRent2="ngModel"
-                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
-                         -->
                        </span>
                        <span class="gray-text pr-2">/month)</span>
                      </div>
                   </div>
                 </div>
-
-
-                <!-- <div class="col-sm-7  p-0 form-inline">
-                  <label class="gray-text pr-2" style="color: #585858;"><b>Housing</b></label>
-                
-
-                        <div class="custom-control custom-radio ml-2">
-                          <input type="radio" class="custom-control-input" [disabled]="doNotApplyForaddress1 == true" id="creditHousingType3" name="creditHousingType3"
-                          #creditHousingType13="ngModel" value="3"
-                          [(ngModel)]="borrowerInfo.personalInformation.address[1].housingType"
-                          [required]="doNotApplyForaddress1 == false"
-                          [ngClass]="{'error-checkbox': borrowForm.submitted && creditHousingType13.errors}"
-                          [ngClass]="{'error-checkbox':  creditHousingType13.touched && creditHousingType13.errors}" >
-                          <label class="custom-control-label radio-label" for="creditHousingType3">Rent</label>
-                        </div>
-
-                        
-                        <span class="gray-text">($</span>
-                        <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
-                          <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)"  (keypress)="numberOnly(this,$event)" pattern="[0-9]+"
-                            style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                            [min]="0" maxlength="9" [(ngModel)]="borrowerInfo.personalInformation.address[1].rent"
-                            id="MonthRent2" name="MonthRent2" #txtMonthRent2="ngModel"
-                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
-                        </span>
-                        <span class="gray-text ">/month)</span>
-                </div> -->
               </div>
-
-
             </div>
           </div>
         </div>
@@ -1139,42 +1019,10 @@
               </div>
 
 
-              <!-- <label class="frm-label">
-                <div style="display: flex; align-items: center; margin-left:-10px">
-                  <span> Mailing Address (if different from Current Address)</span>
-                  <label class="container" style="margin-left:20px;" style="margin-left:20px;pointer-events: all !important;">
-                    <span style=" font-weight: bold; margin-top: 5px;">Does Not Apply</span>
-                    <input type="checkbox" [(ngModel)]="doNotApplyForaddress2" name="doNotApplyForaddress2"
-                      id="doNotApplyForaddress2" #txtdoNotApplyForaddress2="ngModel"
-                      (change)="doNotApplyForaddress2F(txtdoNotApplyForaddress2.value)" style="margin-left:20px;pointer-events: all !important;">
-                    <span class="checkmark" style="margin-top: 5px !important;"></span>
-                  </label>
-                </div>
-              </label> -->
-
-              
-              <!-- <div class="row mt-2 pr-3">
-                <div class="col-1 pl-1"><label class="gray-text">Street</label></div>
-                <div class="col-8  p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && street2.errors}"
-                  [ngClass]="{'error_bb':  street2.touched && street2.errors}">
-
-                  <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[2].street"
-                    id="street2" name="street2" [options]='options' #street2="ngModel"
-                    (onAddressChange)="handleAddressChange($event,2)" [required]="doNotApplyForaddress2 == false"
-                    [readonly]="doNotApplyForaddress2 == true" />
-                </div>
-
-                <div class="col-1  pl-1 text-right "><label class="gray-text">Unit #</label></div>
-                <div class="col-2  p-0 input-border-bottom">
-                  <input type="text" [min]="0" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit"
-                    maxlength="5" [disabled]="doNotApplyForaddress2 == true" name="unit2" id="unit2" #unit2="ngModel" />
-                </div>
-              </div> -->
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1  pl-1 pr-0"><label class="gray-text">Street</label></div>
-                <div class="col-sm-8  p-0 input-border-bottom"
+                <div class="col-sm-1   pr-0"><label class="gray-text">Street</label></div>
+                <div class="col-sm-8  input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && street2.errors}"
                   [ngClass]="{'error_bb':  street2.touched && street2.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[2].street"
@@ -1183,8 +1031,8 @@
                   [readonly]="doNotApplyForaddress2 == true" />
                 </div>
 
-                <div class="col-sm-1  pl-1 pr-0 "><label class="gray-text">Unit #</label></div>
-                <div class="col-sm-2  p-0 pr-1 input-border-bottom">
+                <div class="col-sm-1   pr-0 "><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-2   pr-1 input-border-bottom">
                   <input type="text" [min]="0" [(ngModel)]="borrowerInfo.personalInformation.address[2].unit"
                   maxlength="5" [disabled]="doNotApplyForaddress2 == true" name="unit2" id="unit2" #unit2="ngModel" />
                 </div>
@@ -1193,8 +1041,8 @@
 
               
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1 pl-1 pr-0 mt-2"><label class="gray-text">City</label></div>
-                <div class="col-sm-3 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2"><label class="gray-text">City</label></div>
+                <div class="col-sm-3 input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && cityId2.errors}"
                   [ngClass]="{'error_bb':  cityId2.touched && cityId2.errors}">
                   <div class=""  style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1210,8 +1058,8 @@
                 </div>
 
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" ><label class="gray-text">State</label></div>
-                <div class="col-sm-2 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2" ><label class="gray-text">State</label></div>
+                <div class="col-sm-2  input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && stateId2.errors}"
                   [ngClass]="{'error_bb':  stateId2.touched && stateId2.errors}">
                   <div class=""
@@ -1227,8 +1075,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 p-0 input-border-bottom mt-1"
+                <div class="col-sm-1  pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1 input-border-bottom mt-1"
                 [ngClass]="{'error_bb': borrowForm.submitted && zip2.errors}"
                 [ngClass]="{'error_bb':  zip2.touched && zip2.errors}">
                 <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip"
@@ -1238,8 +1086,8 @@
 
              
 
-                <div class="col-sm-1 p-0 mt-2" ><label class="gray-text">Country</label></div>
-                <div class="col-sm-2  p-0 pl-1 pr-1 input-border-bottom"
+                <div class="col-sm-1  mt-2" ><label class="gray-text">Country</label></div>
+                <div class="col-sm-2   pr-1 input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && countryId2.errors}"
                   [ngClass]="{'error_bb':  countryId2.touched && countryId2.errors}">
                   <div class=""
@@ -1257,70 +1105,6 @@
                 </div>
             </div>
 
-              <!-- <div class="row mt-2 pr-3">
-                <div class="col-1  pl-1 mt-2"><label class="gray-text">City</label></div>
-                <div class="col-3 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && cityId2.errors}"
-                  [ngClass]="{'error_bb':  cityId2.touched && cityId2.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForaddress2 == true"
-                        [(ngModel)]="borrowerInfo.personalInformation.address[2].cityId"
-                        [required]="doNotApplyForaddress2 == false" name="cityId2" id="cityId2" #cityId2="ngModel">
-                        <option [ngValue]="undefined" selected [disabled]="cityId2.value > 0 && cityId2.value != null">Select City</option>
-                        <option *ngFor="let obj of cityListAddress2" [ngValue]="obj.id"> {{obj.cityName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-1  pl-1 mt-2" style="text-align: center;"><label class="gray-text">State</label></div>
-                <div class="col-2 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && stateId2.errors}"
-                  [ngClass]="{'error_bb':  stateId2.touched && stateId2.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForaddress2 == true" [required]="doNotApplyForaddress2 == false"
-                        [(ngModel)]="borrowerInfo.personalInformation.address[2].stateId" name="stateId2" id="stateId2"
-                        #stateId2="ngModel" (change)="getCityByStateId(stateId2.value,'Address',2)">
-                        <option [ngValue]="undefined" selected [disabled]="stateId2.value > 0 && stateId2.value != null">Select State</option>
-                        <option *ngFor="let obj of stateListAddress2" [ngValue]="obj.id"> {{obj.stateName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-1  pl-1 mt-2" style="text-align: center;"><label class="gray-text">ZIP</label></div>
-                <div class="col-1 p-0 input-border-bottom mt-1"
-                  [ngClass]="{'error_bb': borrowForm.submitted && zip2.errors}"
-                  [ngClass]="{'error_bb':  zip2.touched && zip2.errors}">
-                  <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.personalInformation.address[2].zip"
-                    name="zip2" id="zip2" #zip2="ngModel" [readonly]="doNotApplyForaddress2 == true"
-                    [required]="doNotApplyForaddress2 == false" />
-                </div>
-
-
-                <div class="col-1  pl-1 mt-2" style="text-align: center;"><label class="gray-text">Country</label></div>
-                <div class="col-2 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && countryId2.errors}"
-                  [ngClass]="{'error_bb':  countryId2.touched && countryId2.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForaddress2 == true" [required]="doNotApplyForaddress2 == false"
-                        name="countryId2" id="countryId2" #countryId2="ngModel"
-                        (change)="getStateByCountryId(countryId2.value,'Address',2)"
-                        [(ngModel)]="borrowerInfo.personalInformation.address[2].countryId">
-                        <option [ngValue]="undefined" selected [disabled]="countryId2.value > 0 && countryId2.value != null">Select Country</option>
-                        <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -1338,16 +1122,6 @@
         </div>
       </div>
 
-      <!-- <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">Current Employment / Self-Employment and Income</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
-            Apply</span>
-          <input type="checkbox" [(ngModel)]="doNotApplyForEmp0" name="doNotApplyForEmp0" id="doNotApplyForEmp0"
-            #txtdoNotApplyForEmp0="ngModel" (change)="doNotApplyForEmp0F(txtdoNotApplyForEmp0.value)">
-          <span class="checkmark" style="margin-top: 8px !important;"></span>
-        </label>
-      </div> -->
-
       <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-sm-12 col-12 p-1">
@@ -1358,7 +1132,7 @@
 
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-3 col-4 pl-1 pr-0  pl-1 pr-0"><label class="gray-text">Employer or Business Name</label></div>
+                <div class="col-sm-3 col-4  pr-0   pr-0"><label class="gray-text">Employer or Business Name</label></div>
                 <div class="col-sm-3 col-5 p-0 input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && name3.errors}"
                 [ngClass]="{'error_bb':  name3.touched && name3.errors}">
@@ -1367,7 +1141,7 @@
                   [required]="doNotApplyForEmp0 == false" />
                 </div>
 
-                <div class="col-1 pl-1 pr-0"><label class="gray-text">Phone</label></div>
+                <div class="col-1 pl-0 pr-0"><label class="gray-text">Phone</label></div>
                 <div class="col-2 p-0 pr-1 input-border-bottom"[ngClass]="{'error_bb': borrowForm.submitted && phone3.errors}" [ngClass]="{'error_bb':  phone3.touched && phone3.errors}">
                   <p-inputMask size="10" [(ngModel)]="borrowerInfo.employment[0].phone" mask="(999) 999-9999"
                   placeholder="(___) ___-____" name="phone3" id="phone3" #phone3="ngModel"
@@ -1375,8 +1149,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">Street</label></div>
-                <div class="col-sm-2 col-12  p-0 input-border-bottom"
+                <div class="col-sm-1 col-1 " style="text-align: center;"><label class="gray-text">Street</label></div>
+                <div class="col-sm-2 col-12  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
                   [ngClass]="{'error_bb':  street3.touched && street3.errors}">
 
@@ -1388,65 +1162,9 @@
               </div>
 
 
-              <!-- <div class="row mt-2 pr-3">
-                <div class="col-sm-1  pl-1 pr-0"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-sm-8  p-0 input-border-bottom"
-                [ngClass]="{'error_bb': borrowForm.submitted && name3.errors}"
-                  [ngClass]="{'error_bb':  name3.touched && name3.errors}">
-                  <input type="text" maxlength="30" [(ngModel)]="borrowerInfo.employment[0].name" name="name3"
-                    id="name3" #name3="ngModel" [readonly]="doNotApplyForEmp0 == true"
-                    [required]="doNotApplyForEmp0 == false" />
-                </div>
-
-                <div class="col-sm-1  pl-1 pr-0 ">
-                  <label class="gray-text">Phone</label></div>
-                  <div class="col-sm-2  p-0 pr-1 input-border-bottom"    [ngClass]="{'error_bb': borrowForm.submitted && phone3.errors}" [ngClass]="{'error_bb':  phone3.touched && phone3.errors}">
-                    <p-inputMask size="10" [(ngModel)]="borrowerInfo.employment[0].phone" mask="(999) 999-9999"
-                    placeholder="(___) ___-____" name="phone3" id="phone3" #phone3="ngModel"
-                    [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false"></p-inputMask>
-                  </div>
-              </div> -->
-
-
-              <!-- <div class="row  p-0 mt-2 pr-3">
-                <div class="col-sm-3 col-3 pl-1"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-sm-4 col-4 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && name3.errors}"
-                  [ngClass]="{'error_bb':  name3.touched && name3.errors}">
-
-
-                  <input type="text" maxlength="30" [(ngModel)]="borrowerInfo.employment[0].name" name="name3"
-                    id="name3" #name3="ngModel" [readonly]="doNotApplyForEmp0 == true"
-                    [required]="doNotApplyForEmp0 == false" />
-
-                </div>
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">Phone</label></div>
-                <div class="col-sm-1 col-1 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && phone3.errors}"
-                  [ngClass]="{'error_bb':  phone3.touched && phone3.errors}">
-                  <p-inputMask size="10" [(ngModel)]="borrowerInfo.employment[0].phone" mask="(999) 999-9999"
-                    placeholder="(___) ___-____" name="phone3" id="phone3" #phone3="ngModel"
-                    [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false"></p-inputMask>
-                </div>
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">Street</label></div>
-                <div class="col-sm-2 col-2  p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
-                  [ngClass]="{'error_bb':  street3.touched && street3.errors}">
-
-                  <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.employment[0].street" id="street3"
-                    name="street3" max="100" [options]='options' #street3="ngModel"
-                    (onAddressChange)="handleEmploymentChange($event,0)" [readonly]="doNotApplyForEmp0 == true"
-                    [required]="doNotApplyForEmp0 == false" />
-                </div>
-              </div> -->
-
-
-
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1 pl-1 pr-0 mt-2"><label class="gray-text">City</label></div>
-                <div class="col-sm-2 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2"><label class="gray-text">City</label></div>
+                <div class="col-sm-2  input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && cityId3.errors}"
                   [ngClass]="{'error_bb':  cityId3.touched && cityId3.errors}">
                   <div class=""  style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1460,14 +1178,14 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1  pl-1"><label class="gray-text ">Unit #</label></div>
-                <div class="col-sm-1  p-0 input-border-bottom">
+                <div class="col-sm-1  "><label class="gray-text ">Unit #</label></div>
+                <div class="col-sm-1   input-border-bottom">
                   <input type="text" [min]="0" maxlength="5" [(ngModel)]="borrowerInfo.employment[0].unit" name="Unit3"
                     id="Unit3" #Unit3="ngModel" [disabled]="doNotApplyForEmp0 == true" />
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2" ><label class="gray-text">State</label></div>
-                <div class="col-sm-1 p-0 input-border-bottom"
+                <div class="col-sm-1  pr-0 mt-2" ><label class="gray-text">State</label></div>
+                <div class="col-sm-1  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId3.errors}"
                   [ngClass]="{'error_bb':  stateId3.touched && stateId3.errors}">
                   <div  style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1482,8 +1200,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 pl-1 pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 p-0 input-border-bottom mt-1"
+                <div class="col-sm-1  pr-0 mt-2"  ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1  input-border-bottom mt-1"
                 [ngClass]="{'error_bb': borrowForm.submitted && zip3.errors}"
                 [ngClass]="{'error_bb':  zip3.touched && zip3.errors}">
                 <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.employment[0].zip" name="zip3" id="zip3"
@@ -1491,8 +1209,8 @@
                 </div>
 
 
-                <div class="col-sm-1 p-0 mt-2" ><label class="gray-text">Country</label></div>
-                <div class="col-sm-2  p-0 pl-1 pr-1 input-border-bottom"
+                <div class="col-sm-1  mt-2" ><label class="gray-text">Country</label></div>
+                <div class="col-sm-2   pr-1 input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && countryId3.errors}"
                 [ngClass]="{'error_bb':  countryId3.touched && countryId3.errors}">
                   <div class=""
@@ -1510,80 +1228,6 @@
                 </div>
               </div>
 
-
-
-
-<!--               
-              <div class="row mt-2 pr-3">
-                <div class="col-sm-1 col-1 pl-1"><label class="gray-text">City</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && cityId3.errors}"
-                  [ngClass]="{'error_bb':  cityId3.touched && cityId3.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp0 == true" name="cityId3" id="cityId3" #cityId3="ngModel"
-                        [(ngModel)]="borrowerInfo.employment[0].cityId" [required]="doNotApplyForEmp0 == false">
-                        <option [ngValue]="undefined" selected [disabled]="cityId3.value > 0 && cityId3.value != null">Select City</option>
-                        <option *ngFor="let obj of cityListEmp0" [ngValue]="obj.id"> {{obj.cityName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text text-right">Unit #</label>
-                </div>
-                <div class="col-sm-1 col-1 p-0 input-border-bottom">
-                  <input type="text" [min]="0" maxlength="5" [(ngModel)]="borrowerInfo.employment[0].unit" name="Unit3"
-                    id="Unit3" #Unit3="ngModel" [disabled]="doNotApplyForEmp0 == true" />
-                </div>
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">State</label></div>
-                <div class="col-sm-1 col-1 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && stateId3.errors}"
-                  [ngClass]="{'error_bb':  stateId3.touched && stateId3.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp0 == true" name="stateId3" id="stateId3" #stateId3="ngModel"
-                        [(ngModel)]="borrowerInfo.employment[0].stateId" [required]="doNotApplyForEmp0 == false"
-                        (change)="getCityByStateId(stateId3.value,'Emp',0)">
-                        <option [ngValue]="undefined" selected [disabled]="stateId3.value > 0 && stateId3.value != null">Select State</option>
-                        <option *ngFor="let obj of stateListEmp0" [ngValue]="obj.id"> {{obj.stateName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 col-1 p-0 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && zip3.errors}"
-                  [ngClass]="{'error_bb':  zip3.touched && zip3.errors}">
-                  <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.employment[0].zip" name="zip3" id="zip3"
-                    #zip3="ngModel" [readonly]="doNotApplyForEmp0 == true" [required]="doNotApplyForEmp0 == false" />
-                </div>
-
-
-                <div class="col-sm-1 col-1 pl-1" style="text-align: center;"><label class="gray-text">Country</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && countryId3.errors}"
-                  [ngClass]="{'error_bb':  countryId3.touched && countryId3.errors}">
-                  <div class=""
-                    style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                    <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                      <select [disabled]="doNotApplyForEmp0 == true" name="countryId3" id="countryId3"
-                        #countryId3="ngModel" [(ngModel)]="borrowerInfo.employment[0].countryId"
-                        [required]="doNotApplyForEmp0 == false"
-                        (change)="getStateByCountryId(countryId3.value,'Emp',0)">
-                        <option [ngValue]="undefined" selected [disabled]="countryId3.value > 0 && countryId3.value != null">Select Country</option>
-                        <option *ngFor="let obj of countryList" [ngValue]="obj.id"> {{obj.countryName}} </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-
-
             </div>
           </div>
         </div>
@@ -1594,8 +1238,8 @@
           <div class="col-sm-9 col-12 p-0">
             <div class="div-border" style="padding-bottom: 10px;" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <div class="row mt-2 ">
-                <div class="col-sm-2  pl-1"><label class="gray-text">Position or Title</label></div>
-                <div class="col-sm-10  pr-2 pl-0 input-border-bottom"
+                <div class="col-sm-2 "><label class="gray-text">Position or Title</label></div>
+                <div class="col-sm-10  pr-2  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && position2.errors}"
                   [ngClass]="{'error_bb':  position2.touched && position2.errors}">
                   <input type="text" maxlength="50" name="position2" id="position2" #position2="ngModel"
@@ -1606,7 +1250,7 @@
 
               <div class="row mt-2">
                 <div class="col-sm-2 "><label class="gray-text">Start Date <span  style="font-size: 10px;padding-right: 2px;"></span></label></div>
-                <div class="col-sm-2 p-0 input-border-bottom"
+                <div class="col-sm-2  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate.errors}"
                   [ngClass]="{'error_bb':  startDate.touched && startDate.errors}">
                   <input type="date" data-date-format="MM-dd-yyyy"  (blur)="onBlurDt($event)" name="startDate" id="startDate" #startDate="ngModel"
@@ -1619,7 +1263,7 @@
                 
                 <div class="col-sm-4">
                     <div class="row pl-3">
-                      <div class="col-3 p-0 input-border-bottom"
+                      <div class="col-3  input-border-bottom"
                         [ngClass]="{'error_bb': borrowForm.submitted && workingYears.errors}"
                         [ngClass]="{'error_bb':  workingYears.touched && workingYears.errors}">
 
@@ -1846,6 +1490,7 @@
                   </div>
                 </div>
               </div>
+
             </div>
 
           </div>
@@ -1862,8 +1507,8 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-2 pl-1"><label class="gray-text">Base</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2 "><label class="gray-text">Base</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome.errors}"
                   [ngClass]="{'error_bb':  baseIncome.touched && baseIncome.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1880,8 +1525,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  pl-1" ><label class="gray-text">Overtime</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2 " ><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime.errors}"
                   [ngClass]="{'error_bb':  overtime.touched && overtime.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1898,8 +1543,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2  pl-1" ><label class="gray-text">Bonus</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  " ><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus.errors}"
                   [ngClass]="{'error_bb':  bonus.touched && bonus.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1915,8 +1560,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  pl-1"><label class="gray-text">Commission</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  "><label class="gray-text">Commission</label></div>
+                <div class="col-sm-2 col-10 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission.errors}"
                   [ngClass]="{'error_bb':  commission.touched && commission.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1935,8 +1580,8 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-sm-2 col-2  pl-1"><label class="gray-text">Military Entitlements</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-2 col-2  "><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements.touched && militaryEntitlements.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1953,8 +1598,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-1 p-0" ><label class="gray-text">Other</label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  " ><label class="gray-text">Other</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && other.errors}"
                   [ngClass]="{'error_bb':  other.touched && other.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1971,9 +1616,9 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2 p-0 pl-1" ><label class="gray-text"
+                <div class="col-sm-1 col-2  " ><label class="gray-text"
                     style="color: #313131 !important; font-weight: 600;">TOTAL </label></div>
-                <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                <div class="col-sm-2 col-10   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && total.errors}"
                   [ngClass]="{'error_bb':  total.touched && total.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1996,9 +1641,9 @@
       </div>
 
 
-      <div class="section-title form-inline">
-        <label class="mr-4">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and Income</label>
-        <div class="custom-control custom-checkbox">
+      <div class="section-title form-inline row">
+        <label class="col-sm-5 col-9">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and Income</label>
+        <div class="custom-control custom-checkbox col-sm-4 col-3">
           <input class="custom-control-input" type="checkbox" id="doNotApplyForEmp1"
           [(ngModel)]="doNotApplyForEmp1" name="doNotApplyForEmp1" id="doNotApplyForEmp1"
             #txtdoNotApplyForEmp1="ngModel" (change)="doNotApplyForEmp1F(txtdoNotApplyForEmp1.value)">
@@ -2008,17 +1653,7 @@
         </div>
       </div>
 
-      <!-- <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 18px;">IF APPLICABLE, Complete Information for Additional Employment/Self-Employment and
-          Income</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not
-            Apply</span>
-          <input type="checkbox" [(ngModel)]="doNotApplyForEmp1" name="doNotApplyForEmp1" id="doNotApplyForEmp1"
-            #txtdoNotApplyForEmp1="ngModel" (change)="doNotApplyForEmp1F(txtdoNotApplyForEmp1.value)">
-          <span class="checkmark" style="margin-top: 10px !important;"></span>
-        </label>
-      </div> -->
-
+ 
       <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
         <div class="row div-sub-grp">
           <div class="col-sm-12 col-12 p-0">
@@ -2028,8 +1663,8 @@
               </label>
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-3 col-3 pl-1"><label class="gray-text">Employer or Business Name</label></div>
-                <div class="col-sm-4 col-4 p-0 input-border-bottom"
+                <div class="col-sm-3 "><label class="gray-text">Employer or Business Name</label></div>
+                <div class="col-sm-4  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && name4.errors}"
                   [ngClass]="{'error_bb':  name4.touched && name4.errors}">
                   <input type="text" maxlength="30" name="name4" id="name4" #name4="ngModel"
@@ -2038,8 +1673,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 p-0"><label class="gray-text">Street</label></div>
-                <div class="col-sm-4 col-4 p-0 input-border-bottom"
+                <div class="col-sm-1  "><label class="gray-text">Street</label></div>
+                <div class="col-sm-4   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && street4.errors}"
                   [ngClass]="{'error_bb':  street4.touched && street4.errors}">
 
@@ -2051,8 +1686,8 @@
               </div>
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1 col-1 pl-1"><label class="gray-text">City</label></div>
-                <div class="col-sm-2 col-2  p-0 input-border-bottom"
+                <div class="col-sm-1  "><label class="gray-text">City</label></div>
+                <div class="col-sm-2    input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && cityId4.errors}"
                   [ngClass]="{'error_bb':  cityId4.touched && cityId4.errors}">
                   <div class=""
@@ -2067,8 +1702,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-1  p-0" style="text-align: center;"><label class="gray-text">Unit #</label></div>
-                <div class="col-sm-1 col-1  p-0 input-border-bottom">
+                <div class="col-sm-1  " ><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-1   input-border-bottom">
 
                   <input type="text" [min]="0" class="showBorder" maxlength="5"
                     [(ngModel)]="borrowerInfo.employment[1].unit" name="unnit11" id="unnit11 " #unnit11="ngModel"
@@ -2076,8 +1711,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">State</label></div>
-                <div class="col-sm-1 col-1 p-0 input-border-bottom"
+                <div class="col-sm-1 " ><label class="gray-text">State</label></div>
+                <div class="col-sm-1  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId4.errors}"
                   [ngClass]="{'error_bb':  stateId4.touched && stateId4.errors}">
                   <div class=""
@@ -2094,8 +1729,8 @@
 
                 </div>
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">ZIP</label></div>
-                <div class="col-sm-1 col-1 p-0  input-border-bottom"
+                <div class="col-sm-1 " ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && zip4.errors}"
                   [ngClass]="{'error_bb':  zip4.touched && zip4.errors}">
                   <input type="text" maxlength="10" [(ngModel)]="borrowerInfo.employment[1].zip" name="zip4" id="zip4"
@@ -2103,8 +1738,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 p-0 " style="text-align: center;"><label class="gray-text">Country</label></div>
-                <div class="col-sm-2 col-2 p-0  input-border-bottom"
+                <div class="col-sm-1 " ><label class="gray-text">Country</label></div>
+                <div class="col-sm-2  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && countryId4.errors}"
                   [ngClass]="{'error_bb':  countryId4.touched && countryId4.errors}">
                   <div class=""
@@ -2133,7 +1768,7 @@
           <div class="col-sm-9 col-12 p-0">
             <div class="div-border" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
               <div class="row mt-2">
-                <div class="col-sm-2 col-2 pl-1"><label class="gray-text">Position or Title</label></div>
+                <div class="col-sm-2  pl-1"><label class="gray-text">Position or Title</label></div>
                 <div class="col-sm-10 col-10  pr-2 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && position3.errors}"
                   [ngClass]="{'error_bb':  position3.touched && position3.errors}">
@@ -2144,9 +1779,8 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-sm-2 col-2  pl-1"><label class="gray-text">Start Date <span
-                      style="font-size: 10px;"></span></label></div>
-                <div class="col-sm-2 col-2  p-0 input-border-bottom"
+                <div class="col-sm-2 col-2 pl-1"><label class="gray-text">Start Date</label></div>
+                <div class="col-sm-2 col-8 pl-1 input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && startDate3.errors}"
                   [ngClass]="{'error_bb':  startDate3.touched && startDate3.errors}">
 
@@ -2154,16 +1788,12 @@
                     [(ngModel)]="borrowerInfo.employment[1].startDate" [readonly]="doNotApplyForEmp1 == true"
                     [required]="doNotApplyForEmp1 == false"
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />
-
-                  <!-- <input type="date" onkeydown="return false" name="startDate3" id="startDate3" #startDate3="ngModel"
-                    [(ngModel)]="borrowerInfo.employment[1].startDate" [readonly]="doNotApplyForEmp1 == true"
-                    [required]="doNotApplyForEmp1 == false" /> -->
                 </div>
 
-                <div class="col-sm-4 col-4 p-0" style="text-align: right;  padding-right:10px">
-                  <label class="gray-text pl-2">How long in this line of work?</label>
+                <div class="col-sm-4 col-4 p-0" style=" padding-right:10px">
+                  <label class="gray-text pl-1">How long in this line of work?</label>
                 </div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom" style="display: flex;">
+                <div class="col-sm-2 col-3 p-0 input-border-bottom" style="display: flex;">
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
                     [ngClass]="{'error_bb':  workingYears3.touched && workingYears3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -2183,7 +1813,7 @@
                 </div>
 
 
-                <div class="col-sm-2 col-2 p-0 input-border-bottom" style="display: flex; ">
+                <div class="col-sm-2 col-3 p-0 input-border-bottom" style="display: flex; ">
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                     [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -2191,7 +1821,7 @@
                       style="border-bottom:1px solid #696969 !important ; margin: 0px; margin-top: -5px !important;">
                       <select style="min-width: 40px;" name="workingMonths3" style="min-width: 40px; text-align: center"
                         id="workingMonths3" #workingMonths="ngModel"
-                        [(ngModel)]="borrowerInfo.employment[0].workingMonths" [disabled]="doNotApplyForEmp0 == true"
+                        [(ngModel)]="borrowerInfo.employment[0].workingMonths" 
                         [required]="doNotApplyForEmp0 == false"
                         [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                         [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}">
@@ -2202,6 +1832,8 @@
                   </div>
                   <label class="gray-text pr-1">Months</label>
                 </div>
+
+
               </div>
             </div>
           </div>
@@ -2257,6 +1889,24 @@
             <div class="div-border" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
 
               <div class="row">
+                <div class="col-sm-9 col-9 pl-2">
+                  <label class="frm-label">
+                    <div style="display: flex; align-items: center;">
+                      <label class="container">
+                        <span style=" font-weight: normal;font-size: 10px;margin-top:-10px">Check if you are the Business Owner or Self-Employed </span>
+                        <input type="checkbox" [ngClass]="{'disabled':doNotApplyForEmp1==true}"
+                          [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed" [disabled]="doNotApplyForEmp1 == true"
+                          name="isSelfEmployed1" id="isSelfEmployed1" #isSelfEmployed1="ngModel"
+                          (change)="disableBussinessOwner1($event)">
+                          <span class="checkmark" [ngClass]="{'disabled':doNotApplyForEmp1==true}"
+                          style="margin-top:5px;"></span>
+                      </label>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- <div class="row">
                 <div class="col-sm-9 col-9 p-0">
                   <label class="frm-label">
                     <div style="display: flex; align-items: center;">
@@ -2276,74 +1926,30 @@
                 <div class="col-sm-3 col-3  p-0">
                   <label class="frm-label">Monthly Income (or Loss)</label>
                 </div>
-              </div>
-
-              <div class="row">
-                <!-- <div class="col-sm-9 col-9 p-0" style="display: flex; padding-left: 35px;">
-                  <div style="display: flex; margin-top: 5px; align-items:center;"
-                    [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}">
-                    <input type="radio"
-                      name="credit4" [readonly]="doNotApplyForEmp1 == true" id="isOwnershipLessThan251"
-                      #isOwnershipLessThan251="ngModel" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
-                      value="true" style="margin-right: 8px; width: 15px; height:15px;"
-                      [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
-                      [required]="doNotApplyForEmp1 == false"
-                      [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan251.errors}"
-                      [ngClass]="{'error-checkbox':  isOwnershipLessThan251.touched && isOwnershipLessThan251.errors}" />
-                      <label
-                      style="margin-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">I
-                      have an ownership share of less than 25%.</label></div> -->
-
-                      <div class="col-sm-9 col-9" style="display: flex;  padding-left: 35px;">
+              </div> -->
 
 
-                        <div class="custom-control custom-radio" [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}">
-                          <input type="radio" class="custom-control-input" type="radio" class="custom-control-input"
-                          name="isOwnershipLessThan252" [readonly]="doNotApplyForEmp1 == true" id="isOwnershipLessThan252"
-                          #isOwnershipLessThan252="ngModel" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
-                          value="true" style="padding-right: 8px; width: 15px; height:15px;"
-                          [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
-                          [required]="doNotApplyForEmp1 == false"
-                          [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan252.errors}"
-                          [ngClass]="{'error-checkbox':  isOwnershipLessThan252.touched && isOwnershipLessThan252.errors}">
-                          <label class="custom-control-label radio-label" for="isOwnershipLessThan252">
-                            I have an ownership share of less than 25%.
-                          </label>
-                        </div>
-
-
-                        <!-- <div style="display: flex; padding-left: 30px; margin-top: 5px; align-items:center;"
-                        [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}">
-                          <input type="radio"
-                          name="credit4" [readonly]="doNotApplyForEmp1 == true" id="isOwnershipLessThan251"
-                          #isOwnershipLessThan251="ngModel" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
-                          value="true" style="padding-right: 8px; width: 15px; height:15px;"
-                          [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
-                          [required]="doNotApplyForEmp1 == false"
-                          [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan251.errors}"
-                          [ngClass]="{'error-checkbox':  isOwnershipLessThan251.touched && isOwnershipLessThan251.errors}" />
-                          <label
-                          style="padding-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
-                          I have an ownership share of less than 25%.</label>
-                        </div> -->
-
-                        <!-- <div style="display: flex;margin-top: 5px; align-items:center;"
-                        [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}">
-                        <input type="radio" type="radio" class="custom-control-input"
-                        [readonly]="doNotApplyForEmp1 == true" name="credit4" id="isOwnershipLessThan251"
-                        [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25" value="false"
-                        #isOwnershipLessThan251="ngModel"
-                        style="padding-right: 8px; width: 15px; height:15px;  color:#a5a5a5;"
-                        [required]="doNotApplyForEmp1 == false"
+              <div class="row pt-1"  [ngClass]="{'disabled':borrowerInfo.employment[0].isSelfEmployed == false}">
+                <div class="col-sm-9 col-12" style=" padding-left: 35px;">
+                  <div class="row">
+                    <div class="col-sm-6 col-12 p-0">
+                      <div class="custom-control custom-radio" [ngClass]="{'disabled':doNotApplyForEmp0==true || borrowerInfo.employment[0].isSelfEmployed == false}">
+                        <input type="radio" class="custom-control-input" type="radio" class="custom-control-input"
+                        name="isOwnershipLessThan252" [readonly]="doNotApplyForEmp1 == true" id="isOwnershipLessThan252"
+                        #isOwnershipLessThan252="ngModel" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
+                        value="true" style="padding-right: 8px; width: 15px; height:15px;"
                         [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
-                        [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan251.errors}"
-                        [ngClass]="{'error-checkbox':  isOwnershipLessThan251.touched && isOwnershipLessThan251.errors}"  />
-                        <label class="custom-control-label radio-label"
-                      style="padding-right: 5px; color:#a5a5a5  !important; font-size: 14px !important; font-family: 'Mulish', sans-serif;">
-                      I  have an ownership share of 25% or more.</label>
-                      </div> -->
+                        [required]="doNotApplyForEmp1 == false"
+                        [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan252.errors}"
+                        [ngClass]="{'error-checkbox':  isOwnershipLessThan252.touched && isOwnershipLessThan252.errors}">
+                        <label class="custom-control-label radio-label" for="creditOwnerShip1">
+                          I have an ownership share of less than 25%.
+                        </label>
+                      </div>
+                    </div>
 
-                      <div class="custom-control custom-radio" [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}">
+                    <div class="col-sm-6 col-12  p-0">
+                      <div class="custom-control custom-radio" [ngClass]="{'disabled':doNotApplyForEmp0==true || borrowerInfo.employment[0].isSelfEmployed == false}">
                         <input type="radio" class="custom-control-input" type="radio" class="custom-control-input"
                         [readonly]="doNotApplyForEmp1 == true" name="isOwnershipLessThan251" id="isOwnershipLessThan251"
                         [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25" value="false"
@@ -2353,21 +1959,22 @@
                         [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
                         [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan251.errors}"
                         [ngClass]="{'error-checkbox':  isOwnershipLessThan251.touched && isOwnershipLessThan251.errors}" >
-                        <label class="custom-control-label radio-label" for="isOwnershipLessThan251">
+                        <label class="custom-control-label radio-label" for="creditOwnerShip2">
                           I have an ownership share of 25% or more.
                         </label>
                       </div>
-
+                    </div>
+                  </div>
                 </div>
 
-                
-                
-                <div  class="col-sm-3 col-3 input-border-bottom"
-                  [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome2.errors}"
-                  [ngClass]="{'error_bb':  monthlyIncome2.touched && monthlyIncome2.errors}">
-                  
-                  <div style="display: -webkit-inline-box; justify-content: center; align-items: center;">
-                  <span>$</span>
+
+                <div class="col-sm-3 col-12 input-border-bottom pt-1">
+                  <label class="frm-label">Monthly Income (or Loss)</label>
+
+                  <div style="display: -webkit-inline-box; justify-content: center; align-items: center;" 
+                    [ngClass]="{'error_bb': borrowForm.submitted && monthlyIncome2.errors}"
+                    [ngClass]="{'error_bb':  monthlyIncome2.touched && monthlyIncome2.errors}" >
+                    <span>$</span>
                     <div style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">
                       <span style="border-bottom: 1px solid #696969 !important;">
                         <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" [min]="0" maxlength="9"  (keypress)="numberOnly(this,$event)" pattern="[0-9]+"
@@ -2376,6 +1983,7 @@
                         [disabled]="borrowerInfo.employment[1].isSelfEmployed == false || doNotApplyForEmp1 == true"
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1" (keydown)="scroll($event);" />
                       </span>
+
                     </div>
                   </div>
                 </div>
@@ -2396,8 +2004,8 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-1 pl-1"><label class="gray-text">Base</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2 "><label class="gray-text">Base</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome2.errors}"
                   [ngClass]="{'error_bb':  baseIncome2.touched && baseIncome2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2422,8 +2030,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Overtime</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2 " style="text-align: center;"><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime2.errors}"
                   [ngClass]="{'error_bb':  overtime2.touched && overtime2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2448,8 +2056,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Bonus</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-2 col-10   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus2.errors}"
                   [ngClass]="{'error_bb':  bonus2.touched && bonus2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2470,8 +2078,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Commission</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Commission</label></div>
+                <div class="col-sm-2 col-10   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission2.errors}"
                   [ngClass]="{'error_bb':  commission2.touched && commission2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2496,8 +2104,8 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-sm-2 col-2 pl-1"><label class="gray-text">Military Entitlements</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-2 col-2  "><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-2 col-10   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements2.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements2.touched && militaryEntitlements2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2519,8 +2127,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Other</label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Other</label></div>
+                <div class="col-sm-2 col-10   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && other3.errors}"
                   [ngClass]="{'error_bb':  other3.touched && other3.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2541,9 +2149,9 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 p-0" style="text-align: right;"><label class="gray-text"
+                <div class="col-sm-1 col-2  " style="text-align: right;"><label class="gray-text"
                     style="color:#000; padding-right:5px;">TOTAL </label></div>
-                <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsaLastname.errors}"
                   [ngClass]="{'error_bb':  creditItemsaLastname.touched && creditItemsaLastname.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2575,50 +2183,40 @@
         </div>
       </div>
 
-      <div class="section-title form-inline">
-        <label class="mr-4">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment & Income</label>
-        <div class="custom-control custom-checkbox">
+      <div class="section-title form-inline row">
+        <label class="col-sm-5 col-9">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment & Income</label>
+        <div class="custom-control custom-checkbox col-sm-4 col-3">
           <input class="custom-control-input" type="checkbox" [(ngModel)]="doNotApplyForEmp2" name="doNotApplyForEmp2" id="doNotApplyForEmp2"
-          #txtdoNotApplyForEmp2="ngModel" (change)="doNotApplyForEmp2F(txtdoNotApplyForEmp2.value)">
-          <label class="custom-control-label chkBox-text" for="doNotApplyForEmp2">
+            #txtdoNotApplyForEmp2="ngModel" (change)="doNotApplyForEmp2F(txtdoNotApplyForEmp2.value)">
+
+          <label class="custom-control-label chkBox-text" for="doNotApplyForEmp1" >
             Does Not Apply
           </label>
         </div>
       </div>
 
-      <!-- <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-        <span class="chkBox-text">IF APPLICABLE, Complete Information for Previous Employment/Self-Employment &
-          Income</span>
-        <label class="container Checkbox-Label" style="margin-left:20px;width:200px">
-          <span style=" font-weight: bold;">Does Not  Apply</span>
-          <input type="checkbox" [(ngModel)]="doNotApplyForEmp2" name="doNotApplyForEmp2" id="doNotApplyForEmp2"
-            #txtdoNotApplyForEmp2="ngModel" (change)="doNotApplyForEmp2F(txtdoNotApplyForEmp2.value)">
-          <span class="checkmark" style="margin-top: 2px;"></span>
-        </label>
-      </div> -->
-
       
       <h4 class="txt-note-h4">Provide at least 2 years of current and previous employment and income.</h4>
       <div *ngFor="let empItem of extraEmployeesList;index as j">
-        <div >
+       
           
           <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
             <div class="row div-sub-grp">
     
-              <div class="col-sm-1 pl-0 m-0  d-flex justify-content-center align-items-center">
+              <div class="col-sm-1 col-1 pl-0 m-0  d-flex justify-content-center align-items-center">
                 <input type="checkbox" [(ngModel)]="empItem.flgRemoveEmployee" name="{{j}}_flgRemoveEmployee"
                   id="{{j}}_flgRemoveEmployee" #aaflgRemoveEmployee="ngModel" (change)="removeEmpIndex(empItem,j)">
               </div>
 
-              <div class="col-sm-11 p-0">
+              <div class="col-sm-11 col-11 p-0">
                 <div class="div-border" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
                   <label class="frm-label" style="margin-left:-10px">
                     <span>Employer or Business Name</span>
                   </label>
     
                   <div class="row mt-2 pr-3">
-                    <div class="col-sm-3 col-3  pl-1"><label class="gray-text">Employer or Business Name</label></div>
-                    <div class="col-sm-3 col-3  p-0 input-border-bottom"
+                    <div class="col-sm-3 col-4 "><label class="gray-text">Employer or Business Name</label></div>
+                    <div class="col-sm-3 col-5 pr-1 input-border-bottom"
                       [ngClass]="{'error_bb': borrowForm.submitted && name9.errors}"
                       [ngClass]="{'error_bb':  name9.touched && name9.errors}">
                       <input type="text" maxlength="30" [(ngModel)]="empItem.name" name="{{j}}_name9"
@@ -2626,8 +2224,8 @@
                         [readonly]="doNotApplyForEmp2 == true" />
                     </div>
     
-                    <div class="col-sm-1 col-1  p-0" style="text-align: center;"><label class="gray-text">Phone</label></div>
-                    <div class="col-sm-2 col-2  p-0 input-border-bottom" style="padding-left: 5px;"
+                    <div class="col-sm-1 col-1 p-0" ><label class="gray-text">Phone</label></div>
+                    <div class="col-sm-2 col-2 p-0 input-border-bottom" style="padding-left: 5px;"
                       [ngClass]="{'error_bb': borrowForm.submitted && phone9.errors}"
                       [ngClass]="{'error_bb':  phone9.touched && phone9.errors}">
                       <p-inputMask size="10" placeholder="(___) ___-____" [(ngModel)]="empItem.phone"
@@ -2636,8 +2234,8 @@
                     </div>
     
     
-                    <div class="col-sm-1 col-1" style="text-align: center;"><label class="gray-text">Street</label></div>
-                    <div class="col-sm-2 col-2 input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
+                    <div class="col-sm-1 col-1 " ><label class="gray-text">Street</label></div>
+                    <div class="col-sm-2 col-11  input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                       [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                       <input ngx-google-places-autocomplete [(ngModel)]="empItem.street" id="{{j}}_street9"
                         name="{{j}}_street9" max="100" [options]='options' #street9="ngModel"
@@ -2649,8 +2247,8 @@
                   </div>
                   <div class="row mt-2  pr-3">
     
-                    <div class="col-sm-1 col-1 pl-1"><label class="gray-text">City</label></div>
-                    <div class="col-sm-2  col-2 p-0 input-border-bottom"
+                    <div class="col-sm-1 mt-2"><label class="gray-text">City</label></div>
+                    <div class="col-sm-2    input-border-bottom"
                       [ngClass]="{'error_bb': borrowForm.submitted && cityId9.errors}"
                       [ngClass]="{'error_bb':  cityId9.touched && cityId9.errors}">
                       <div class=""
@@ -2665,16 +2263,16 @@
                       </div>
                     </div>
     
-                    <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Unit #</label></div>
-                    <div class="col-sm-1 col-1 p-0 input-border-bottom">
+                    <div class="col-sm-1 " ><label class="gray-text">Unit #</label></div>
+                    <div class="col-sm-1   input-border-bottom">
                       <input type="text" [min]="0" class="showBorder" name="{{j}}_unit9" id="{{j}}_unit9" #unit9="ngModel" maxlength="5"
                         [(ngModel)]="empItem.unit" [disabled]="doNotApplyForEmp2 == true" />
                     </div>
     
-                    <div class="col-sm-1 col-1 p-0" style="text-align: center;">
+                    <div class="col-sm-1 " >
                       <label class="gray-text">State</label>
                     </div>
-                    <div class="col-sm-1 col-1 p-0 input-border-bottom"
+                    <div class="col-sm-1  input-border-bottom"
                       [ngClass]="{'error_bb': borrowForm.submitted && stateId49.errors}"
                       [ngClass]="{'error_bb':  stateId49.touched && stateId49.errors}">
                       <div class=""
@@ -2691,8 +2289,8 @@
     
                     </div>
     
-                    <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">ZIP</label></div>
-                    <div class="col-sm-1 col-1  p-0 input-border-bottom"
+                    <div class="col-sm-1 " ><label class="gray-text">ZIP</label></div>
+                    <div class="col-sm-1    input-border-bottom"
                       [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
                       [ngClass]="{'error_bb':  zip9.touched && zip9.errors}">
                       <input type="text" maxlength="10" [(ngModel)]="empItem.zip"
@@ -2700,8 +2298,8 @@
                     </div>
     
     
-                    <div class="col-sm-1 col-1 p-0" style="text-align: center;"><label class="gray-text">Country</label></div>
-                    <div class="col-sm-2 col-2 p-0 input-border-bottom"
+                    <div class="col-sm-1 " ><label class="gray-text">Country</label></div>
+                    <div class="col-sm-2   input-border-bottom"
                       [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
                       [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}">
                       <div class=""
@@ -2726,8 +2324,8 @@
     
           <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
             <div class="row div-sub-grp">
-              <div class="col-sm-1"></div>
-              <div class="col-sm-8  p-0">
+              <div class="col-sm-1 col-1"></div>
+              <div class="col-sm-8 col-11 p-0">
                 <div class="div-border" style="padding-bottom: 30px;" [ngClass]="{'disabled':doNotApplyForEmp2==true}">
                   <div class="row mt-2">
                     <div class="col-3 pl-1"><label class="gray-text">Position or Title</label></div>
@@ -2826,7 +2424,7 @@
               </div>
             </div>
           </div>
-        </div>
+       
    
       </div>
       <div class="row mt-1">
