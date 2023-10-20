@@ -16,6 +16,13 @@
     margin: 0px !important;
   }
 
+  .font-12{
+    font-size: 12px !important; 
+    line-height: 25px !important;
+    color:#A5A5A5;
+    font-family: 'Mulish', sans-serif;
+  }
+
 .disabled {
   background-color: #E7E7E7 !important;
 }
@@ -202,19 +209,24 @@ width: 118px;
 
 .div-main-grp {
   width: 100%;
-  /* margin: 0px 0px 70px 5px; */
+  margin: 0px 0px 10px 0px;
   align-items: center;
-
+  /* display: flex; */
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
 
 .div-main-grp .div-sub-grp {
-margin-bottom: 17px;
-/* display: flex; */
-align-items: center;
-flex-shrink: 0;
-width: 100%;
+  margin-bottom: 5px !important;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
 }
+
 .div-main-grp .div-sub-grp .frm-group {
 box-sizing: border-box;
 padding: 5px 5px 5px 16px;

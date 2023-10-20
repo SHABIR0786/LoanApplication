@@ -359,7 +359,7 @@
                   </div>
                  </div>
               </div>
-              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3">
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-3 pr-3">
                 <div class="frm-group"
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && netMonthlyRentalIncome.errors}"
@@ -402,49 +402,43 @@
       <div class="div-sub-grp mt-1" >
         <div class="row frm-group p-1">
           <div class="col-12" >
-            <div class="" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-              <div style="display:flex; align-items: center !important;">
-                <div style="width:4% !important;">
-                  <label class="frm-label">
-                    <span></span>
-                  </label>
-                </div>
+            <div class="row" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
               
-                <div style="width: 16% !important;padding-right:8px !important;">
+                <div class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Creditor Name:</span>
                   </label>
                 </div>
 
 
-                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important;border-left:1px solid #ffffff">
+                <div class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Account Number:</span>
                   </label>
 
                 </div>
 
-                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Monthly Mortgage Payment:</span>
                   </label>
                 </div>
 
-                <div style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                <div class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Unpaid Balance:</span>
                   </label>
                   <label class="text-gray">(To be paid off at or before closing)</label>
                 </div>
 
-                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Type:</span>
                   </label>
                   <label class="text-gray">(FHA, VA, Conventional, USDA-RD, Other)</label>
                 </div>
 
-                <div  style="width: 16% !important;border-left:1px solid #ffffff">
+                <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Credit Limit</span>
                   </label>
@@ -453,7 +447,7 @@
 
               </div>
             </div>
-          </div>
+         
           <div class="col-12">
               <div class="row mt-1" *ngFor="let item2 of item.mortgageLoanOnProperty;index as j">
                 <div class="col-sm-2 col-12 p-0">

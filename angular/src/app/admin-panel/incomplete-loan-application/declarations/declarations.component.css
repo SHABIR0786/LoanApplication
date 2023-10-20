@@ -205,22 +205,22 @@ flex-direction: column;
 flex-shrink: 0;
 }
 
-
 .div-main-grp .div-sub-grp {
 margin-bottom: 17px;
 /* display: flex; */
-align-items: center;
-flex-shrink: 0;
-width: 100%;
+/* align-items: center;
+flex-shrink: 0; */
+/* width: 100%; */
 }
+
 .div-main-grp .div-sub-grp .frm-group {
-box-sizing: border-box;
-padding: 5px 5px 5px 16px;
-min-height: 50px;
-border: solid 0.1rem #A5A5A5;
-background-color: #ffffff;
-border-radius: 10px;
-flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 5px 5px 5px 16px;
+  min-height: 50px;
+  border: solid 0.1rem #A5A5A5;
+  background-color: #ffffff;
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .div-main-grp .div-sub-grp .frm-group .frm-label {
