@@ -103,8 +103,7 @@
 
   <h4 class="section-title">Property You Own</h4>
   <div class="info-block">
-    <p> This section asks you to list all properties you currently own and what you owe on them.</p>
-
+    <p class="top-clear-text"> This section asks you to list all properties you currently own and what you owe on them.</p>
    
     <label class="container flex ">
       <span style="font-weight: bold; color: #fff;">I do not own any real estate</span>
@@ -127,33 +126,27 @@
       <div class="row div-sub-grp">
         <div class="col-12 p-0">
           <div class="frm-group pl-4 pr-4"   [ngClass]="{'disabled':item.flgApplicableNotApply == true}">
-            <label class="frm-label">
-              <span>Address</span>
-            </label>
-            <div class="row mt-12">
-              <div class="col-1 p-0"><label class="gray-text">Street</label></div>
-              <div class="col-8  p-0 input-border-bottom" 
-              [ngClass]="{'error_bb': financialInfoRealEstateForm.submitted && street.errors}"
-              [ngClass]="{'error_bb':  street.touched && street.errors}">
-                
-              <input ngx-google-places-autocomplete maxlength="50" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.street" name="{{i}}_street" id="{{i}}_street" #street="ngModel"  
-                [required]="item.flgApplicableNotApply == false"
-                (onAddressChange)="handleAddressChange($event,i)"
-                [options]='options' />
+            <label class="frm-label">  Address </label>
 
+            <div class="row p-0">
+              <div class="col-sm-1 col-2 p-0 text-align-right"><label class="gray-text">Street</label></div>
+              <div class="col-sm-8 col-6 p-0 input-border-bottom" 
+                [ngClass]="{'error_bb': financialInfoRealEstateForm.submitted && street.errors}"
+                [ngClass]="{'error_bb':  street.touched && street.errors}">
+                
+                <input ngx-google-places-autocomplete maxlength="50" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.street" name="{{i}}_street" id="{{i}}_street" #street="ngModel"  
+                  [required]="item.flgApplicableNotApply == false"
+                  (onAddressChange)="handleAddressChange($event,i)"
+                  [options]='options' />
               </div>
 
-              <div class="col-1  p-0 text-right pr-2 "><label class="gray-text">Unit #</label></div>
-              <div class="col-2  p-0 input-border-bottom" style="padding-right: 15px !important;" > 
+              <div class="col-sm-1 col-1 p-0 text-align-right"><label class="gray-text">Unit#</label></div>
+              <div class="col-sm-2 col-3 p-0 input-border-bottom" style="padding-right: 15px !important;" > 
                 <input type="text"  [min]="0"  maxlength="5"   [(ngModel)]="item.unit" name="{{i}}_unit" id="{{i}}_unit" #unit="ngModel"/>
               </div>
-              
-            </div>
-
-
-            <div class="row mt-0">
-              <div class="col-1  p-0 mt-2" ><label class="gray-text">City</label></div>
-              <div class="col-3  p-0 input-border-bottom"
+           
+              <div class="col-sm-1 col-2 p-0 mt-2 text-align-right" ><label class="gray-text">City</label></div>
+              <div class="col-sm-3 col-10 p-0 input-border-bottom"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && cityId.errors}"
               [ngClass]="{'error':  cityId.touched && cityId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -168,10 +161,10 @@
                 </div>
               </div>
 
-              <div class="col-1 p-0  mt-2" style="text-align: center;"><label class="gray-text" >State</label></div>
-              <div class="col-2  p-0 input-border-bottom"
-              [ngClass]="{'error': financialInfoRealEstateForm.submitted && stateId.errors}"
-              [ngClass]="{'error':  stateId.touched && stateId.errors}">
+              <div class="col-sm-1 col-2 p-0 mt-2 text-align-right" style="text-align: left;"><label class="gray-text" >State</label></div>
+              <div class="col-sm-2 col-10 p-0 input-border-bottom"
+                [ngClass]="{'error': financialInfoRealEstateForm.submitted && stateId.errors}"
+                [ngClass]="{'error':  stateId.touched && stateId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select class="form-control shadow-none" [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.stateId" name="{{i}}_stateId" id="{{i}}_stateId" #stateId="ngModel"
@@ -185,20 +178,21 @@
                 </div>
               </div>
 
-              <div class="col-1  p-0 mt-2" style="text-align: center;"><label class="gray-text" >ZIP</label></div>
-              <div class="col-1  p-0 input-border-bottom mt-1"
-              [ngClass]="{'error': financialInfoRealEstateForm.submitted && zip.errors}"
-              [ngClass]="{'error':  zip.touched && zip.errors}">
+              <div class="col-sm-1 col-2 p-0 mt-2 text-align-right" style="text-align: left;"><label class="gray-text" >ZIP</label></div>
+              <div class="col-sm-1 col-3 p-0 input-border-bottom mt-1"
+                [ngClass]="{'error': financialInfoRealEstateForm.submitted && zip.errors}"
+                [ngClass]="{'error':  zip.touched && zip.errors}">
                 <input type="text" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.zip" name="{{i}}_zip" id="{{i}}_zip" #zip="ngModel"
                 [required]="item.flgApplicableNotApply == false" />
               </div>
 
-              <div class="col-1  p-0 mt-2" style="text-align: center;">
+              <div class="col-sm-1 col-2  p-0 mt-2 text-align-right" style="text-align: left;">
                 <label class="gray-text">Country</label>
               </div>
-              <div class="col-2  p-0 input-border-bottom"
-              [ngClass]="{'error': financialInfoRealEstateForm.submitted && countryId.errors}"
-              [ngClass]="{'error':  countryId.touched && countryId.errors}">
+
+              <div class="col-sm-2 col-5  p-0 input-border-bottom"
+                [ngClass]="{'error': financialInfoRealEstateForm.submitted && countryId.errors}"
+                [ngClass]="{'error':  countryId.touched && countryId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 15px !important;">
                   <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
                     <select  class="form-control shadow-none"  [disabled]="item.flgApplicableNotApply == true"   [(ngModel)]="item.countryId" name="{{i}}_countryId" id="{{i}}_countryId" #countryId="ngModel" [required]="item.flgApplicableNotApply == false" (change)="getStateByCountryId(countryId.value,i)" >
@@ -208,50 +202,53 @@
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
 
+
+
       <div class="row div-sub-grp">
-        <div class="col-12">
+        <div class="col-12 p-0">
           <div class="frm-group" [ngClass]="{'disabled':item.flgApplicableNotApply == true}">
             <div class="row">
-              <div class="col-2">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0">
                 <label class="frm-label">
                   <span>Property Value</span>
                 </label>
               </div>
 
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0" >
                 <label class="frm-label mb-2">
                   <span>Status</span>
                 </label>
                 <label class="text-gray ">Sold, Pending Sale, or Retained</label>
               </div>
 
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0left-border" >
                 <label class="frm-label  mb-2">
                   <span>Intended Occupancy:</span>
                 </label>
                 <label class="text-gray">Investment, Primary Residence, Second Home, Other</label>
               </div>
 
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0 left-border" >
                 <label class="frm-label  mb-2">
                   <span style="white-space:normal">Monthly Insurance,Taxes, Association Dues, etc.</span>
                 </label>
                 <label class="text-gray">if not included in Monthly Mortgage Payment</label>
               </div>
 
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0 left-border">
                 <label class="frm-label  mb-2">
                   <span style="white-space:normal">For 2-4 Unit Primary or Investment Property</span>
                 </label>
                 <label class="text-gray">Monthly Rental Income</label>
               </div>
 
-              <div class="col-2"  style="border-left:0px solid #a5a5a5">
+              <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0 left-border">
                 <label class="frm-label  mb-2">
                   <span style="color: white;">-</span>
                 </label>
@@ -261,7 +258,7 @@
             </div>
 
             <div class="row">
-              <div class="col-2">
+              <div class="col-sm-2 col-12  pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3">
                 <div class="frm-group"
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && propertyValue.errors}"
@@ -269,7 +266,6 @@
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                      
                         <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
                         [disabled]="item.flgApplicableNotApply == true" 
@@ -278,17 +274,12 @@
                         [required]="item.flgApplicableNotApply == false" 
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);"/>
-
-
-                      <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                       type="number" [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.propertyValue" name="{{i}}.propertyValue" id="{{i}}.propertyValue" #propertyValue="ngModel"
-                      [required]="item.flgApplicableNotApply == false" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-                          </span>
+                     </span>
                     </div>
                   </div>
                  </div>
               </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3" >
                 <div class="frm-group "
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && financialInformationType.errors}"
@@ -302,7 +293,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5"><div class="frm-group "
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"><div class="frm-group "
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && intendedOccupancy.errors}"
                 [ngClass]="{'error':  intendedOccupancy.touched && intendedOccupancy.errors}">
@@ -315,17 +306,14 @@
                   </select>
                 </div>
               </div></div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3" >
                 <div class="frm-group"
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyInsurance.errors}"
                       [ngClass]="{'error':  monthlyInsurance.touched && monthlyInsurance.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
-                      <!-- <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="{{i}}.monthlyInsurance" id="{{i}}.monthlyInsurance" #monthlyInsurance="ngModel"                
-                      [required]="item.flgApplicableNotApply == false"
-                      /> -->
-
+                     
                       <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                      
                         <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
@@ -339,27 +327,19 @@
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);"/>
 
-                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                      [disabled]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyInsurance" name="{{i}}.monthlyInsurance" id="{{i}}.monthlyInsurance" #monthlyInsurance="ngModel"                
-                      [required]="item.flgApplicableNotApply == false"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
-
                         </span>
                     </div>
                   </div>
                  </div>
               </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3" >
                 <div class="frm-group"
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyRentalIncome.errors}"
                 [ngClass]="{'error':  monthlyRentalIncome.touched && monthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
-                      <!-- <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true"  [(ngModel)]="item.monthlyRentalIncome" name="{{i}}.monthlyRentalIncome" id="{{i}}.monthlyRentalIncome" #monthlyRentalIncome="ngModel"                 
-                      [required]="item.flgApplicableNotApply == false"
-                 /> -->
+                
                  <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                  
                   <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
@@ -373,34 +353,20 @@
                         ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                         (keydown)="scroll($event);"/>
 
-                  <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                  [disabled]="item.flgApplicableNotApply == true"  
-                  [(ngModel)]="item.monthlyRentalIncome" 
-                  name="{{i}}.monthlyRentalIncome" 
-                  id="{{i}}.monthlyRentalIncome" 
-                  #monthlyRentalIncome="ngModel"                 
-                 [required]="item.flgApplicableNotApply == false"
-                       [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
 
                       </span>
                 </div>
                   </div>
                  </div>
               </div>
-              <div class="col-2" style="border-left:0px solid #a5a5a5">
+              <div class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3">
                 <div class="frm-group"
                 [ngClass]="{'disabled':item.flgApplicableNotApply==true}"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && netMonthlyRentalIncome.errors}"
                 [ngClass]="{'error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
                     <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
-                      <!-- <input type="number" min="0" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="{{i}}.netMonthlyRentalIncome" id="{{i}}.netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"                
-                      [required]="item.flgApplicableNotApply == false"
-                    /> -->
-
-                    <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                    
+                      <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
                       <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                       [min]="0" maxlength="9" 
                       [disabled]="item.flgApplicableNotApply == true" 
@@ -411,26 +377,21 @@
                       [required]="item.flgApplicableNotApply == false"
                       ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
                       (keydown)="scroll($event);"/>
-
-                      <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                     [disabled]="item.flgApplicableNotApply == true" [(ngModel)]="item.netMonthlyRentalIncome" name="{{i}}.netMonthlyRentalIncome" id="{{i}}.netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"                
-                      [required]="item.flgApplicableNotApply == false"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
-
                     </span>
                   </div>
                   </div>
                  </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </div>
 
 
       <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;" >
-        <span style="font-size: 20px;">Mortgage Loans on this Property</span>
+        <span class="font-12">Mortgage Loans on this Property</span>
         <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold; color:black">Does Not Apply</span>
           <input type="checkbox" (change)="disabledSection(i)" [(ngModel)]="item.flgMortgageLoanNotApply" name="{{i}}_flgMortgageLoanNotApply" id="{{i}}_flgMortgageLoanNotApply">
           <span class="checkmark mt-2"></span>
@@ -438,228 +399,216 @@
       </div>
 
 
-      <div class="row div-sub-grp mt-1" >
-        <div class="col-12" >
-          <div class="frm-group" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-
-            <div style="display:flex; align-items: center !important;">
-              <div style="width:4% !important;">
-                <label class="frm-label">
-                  <span></span>
-                </label>
-              </div>
-             
-              <div style="width: 16% !important;padding-right:8px !important;">
-                <label class="frm-label">
-                  <span>Creditor Name:</span>
-                </label>
-              </div>
-
-
-              <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important;border-left:1px solid #ffffff">
-                <label class="frm-label">
-                  <span>Account Number:</span>
-                </label>
-
-              </div>
-
-              <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
-                <label class="frm-label">
-                  <span>Monthly Mortgage Payment:</span>
-                </label>
-              </div>
-
-              <div style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
-                <label class="frm-label">
-                  <span>Unpaid Balance:</span>
-                </label>
-                <label class="text-gray">(To be paid off at or before closing)</label>
-              </div>
-
-              <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
-                <label class="frm-label">
-                  <span>Type:</span>
-                </label>
-                <label class="text-gray">(FHA, VA, Conventional, USDA-RD, Other)</label>
-              </div>
-
-              <div  style="width: 16% !important;border-left:1px solid #ffffff">
-                <label class="frm-label">
-                  <span>Credit Limit</span>
-                </label>
-                <label class="text-gray">(if applicable)</label>
-              </div>
-
-            </div>
-
-            <div class="mt-1" style="display:flex; align-items: center !important;" *ngFor="let item2 of item.mortgageLoanOnProperty;index as j">
-              <div cclass="width:4%; display:inline-flex; align-items: center; justify-items: center;padding-top:5px">
-                <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
-                [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
-                id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"
-                style="width: 40px;" (change)="removeData(i,j,$event)"/>
-
-              </div>
-
-              <div style="width: 16% !important;padding-right:8px !important;">
-                <div class="frm-group " 
-                [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditorName.errors}"
-                [ngClass]="{'error':  creditorName.touched && creditorName.errors}"
-                [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                  <p class="frm-fld-input height35" style="margin-top: 5px;">
-                    <input type="text" maxlength="30" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.creditorName" name="{{j}}_creditorName" id="{{j}}_creditorName" #creditorName="ngModel"
-                  /></p>
-              </div>
-
-              </div>
-              <div class=""  style="padding-left:8px !important;padding-right:8px !important; width: 16% !important; border-left:1px solid #ffffff">
-                <div class="frm-group " 
-                [ngClass]="{'error': financialInfoRealEstateForm.submitted && accountNumber.errors}"
-                [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}"
-                [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                    <p class="frm-fld-input height35" style="margin-top: 5px;"><input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.accountNumber" name="{{j}}_accountNumber" id="{{j}}_accountNumber" #accountNumber="ngModel" 
-                /></p>
+      <div class="div-sub-grp mt-1" >
+        <div class="row frm-group p-1">
+          <div class="col-12" >
+            <div class="" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+              <div style="display:flex; align-items: center !important;">
+                <div style="width:4% !important;">
+                  <label class="frm-label">
+                    <span></span>
+                  </label>
                 </div>
-              </div>
-              <div class=""  style="padding-left:8px !important;padding-right:8px !important; width: 16% !important;border-left:1px solid #ffffff">
-
-
-              <div class="frm-group mt-0" 
-              style="display: flex; justify-content: space-between;"
-              [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyMortagagePayment.errors}"
-              [ngClass]="{'error':  monthlyMortagagePayment.touched && monthlyMortagagePayment.errors}"
-              [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                <div class="input-border-bottom  mr-3">
-                  <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
-                    <!-- <input type="number" min="0" [required]="item.flgMortgageLoanNotApply == false " [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="{{i}}_monthlyMortagagePayment" id="{{i}}_monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"
-                  /> -->
-
-                  <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-
-                    <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                      [min]="0" maxlength="9" 
-                      [required]="item.flgMortgageLoanNotApply == false " 
-                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  
-                      [(ngModel)]="item2.monthlyMortagagePayment" 
-                      name="{{j}}_monthlyMortagagePayment" 
-                      id="{{j}}_monthlyMortagagePayment" 
-                      #monthlyMortagagePayment="ngModel"
-                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
-                      (keydown)="scroll($event);"/>
-
-                  <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                  type="number" min="0" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="{{i}}_monthlyMortagagePayment" id="{{i}}_monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"
-                     [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-                     </span>
+              
+                <div style="width: 16% !important;padding-right:8px !important;">
+                  <label class="frm-label">
+                    <span>Creditor Name:</span>
+                  </label>
                 </div>
+
+
+                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important;border-left:1px solid #ffffff">
+                  <label class="frm-label">
+                    <span>Account Number:</span>
+                  </label>
+
                 </div>
-                  <input type="checkbox" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.isPaidBeforeClosing" name="{{i}}_isPaidBeforeClosing" id="{{i}}_isPaidBeforeClosing" #isPaidBeforeClosing="ngModel"
-                 >
-              </div>
 
-            </div>
-              <div class=""  style="padding-left:8px !important;padding-right:8px !important; width: 16% !important;border-left:1px solid #ffffff">
-                <div class="frm-group" 
-                [ngClass]="{'error': financialInfoRealEstateForm.submitted && unpaidBalance.errors}"
-                [ngClass]="{'error':  unpaidBalance.touched && unpaidBalance.errors}"
-                [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
-                      <!-- <input type="number"  min="0" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.unpaidBalance" name="{{i}}_unpaidBalance" id="{{i}}_unpaidBalance" #unpaidBalance="ngModel"/> -->
-                      <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
-                      
-                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                      [min]="0" maxlength="9" 
-                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
-                      [required]="item.flgMortgageLoanNotApply == false " 
-                      [(ngModel)]="item2.unpaidBalance" 
-                      name="{{j}}_unpaidBalance" 
-                      id="{{j}}_unpaidBalance" 
-                      #unpaidBalance="ngModel"
-                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
-                      (keydown)="scroll($event);"/>
-
-                        <!-- <p-inputNumber class="showBorder"  maxlength="9"
-                      type="number"  min="0" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.unpaidBalance" name="{{i}}_unpaidBalance" id="{{i}}_unpaidBalance" #unpaidBalance="ngModel"
-                         [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-                        </span>
-
-
-                        <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
-                            [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item.isPaidBeforeClosing"
-                            id="{{j}}.isPaidBeforeClosing" name="{{j}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel"
-                            style="width: 40px;" />
-
-
-                    </div>
-                  </div>
-                 </div>
-              </div>
-              <div class=""  style="padding-left:8px !important;padding-right:8px !important; width: 16% !important;border-left:1px solid #ffffff">
-                <div class="frm-group mt-0" 
-                [ngClass]="{'error': financialInfoRealEstateForm.submitted && type.errors}"
-                [ngClass]="{'error':  type.touched && type.errors}"
-                [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                  <div class="frm-fld-input" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                      <select  class="form-control shadow-none"  [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.type" name="{{j}}_type" id="{{j}}_type" #type="ngModel">
-                        <option [ngValue]="undefined" selected [disabled]="type.value > 0 && type.value != null">-Select One-</option>
-                        <option *ngFor="let obj of mortgageLoanTypeList" [ngValue]="obj.id"> {{obj.mortageLoanTypesId}} </option>
-                    </select>
-                  </div>
+                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                  <label class="frm-label">
+                    <span>Monthly Mortgage Payment:</span>
+                  </label>
                 </div>
-              </div>
-              <div class="" style="padding-left:8px !important;padding-right:8px !important; width: 16% !important;border-left:1px solid #ffffff">
 
-                <div class="frm-group " 
-                [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditLimit.errors}"
-                [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}"
-                [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center;margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span>
-
-                      <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
-                      [min]="0" maxlength="9" 
-                      [required]="item.flgMortgageLoanNotApply == false" 
-                      [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
-                      [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
-                      [(ngModel)]="item2.creditLimit" name="{{j}}_creditLimit" 
-                      id="{{j}}_creditLimit" 
-                      #creditLimit="ngModel"
-                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
-                      (keydown)="scroll($event);"/>
-
-                       <!-- <input type="text" maxlength="5" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.creditLimit" name="creditLimit" id="creditLimit" #creditLimit="ngModel"/> -->
-                       <!-- <p-inputNumber 
-                       type="number" min="0" [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.monthlyMortagagePayment" name="{{i}}_monthlyMortagagePayment" id="{{i}}_monthlyMortagagePayment" #monthlyMortagagePayment="ngModel"
-                          [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-                      </div>
-                  </div>
-              </div>
-
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12">
-                <div class="col-6 p-0 mt-2" >
-                  <span style="border-bottom: 1px solid #696969; font-size: 12px; font-weight: 600;">
-                    <a [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="addMortgageLoanList(i)">Add more</a> 
-                    <span *ngIf="item.flgShowRemove == true">/</span> 
-                    <a *ngIf="item.flgShowRemove == true" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="removeMortgageLoanList(i)">Remove</a>
-                  </span>
+                <div style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                  <label class="frm-label">
+                    <span>Unpaid Balance:</span>
+                  </label>
+                  <label class="text-gray">(To be paid off at or before closing)</label>
                 </div>
+
+                <div  style="width: 16% !important;padding-left:8px !important;padding-right:8px !important; border-left:1px solid #ffffff">
+                  <label class="frm-label">
+                    <span>Type:</span>
+                  </label>
+                  <label class="text-gray">(FHA, VA, Conventional, USDA-RD, Other)</label>
+                </div>
+
+                <div  style="width: 16% !important;border-left:1px solid #ffffff">
+                  <label class="frm-label">
+                    <span>Credit Limit</span>
+                  </label>
+                  <label class="text-gray">(if applicable)</label>
+                </div>
+
               </div>
             </div>
           </div>
+          <div class="col-12">
+              <div class="row mt-1" *ngFor="let item2 of item.mortgageLoanOnProperty;index as j">
+                <div class="col-sm-2 col-12 p-0">
+                  <div class="form-row">
+                      <div class="col-sm-1 col-1 pl-sm-1 pl-3 p-0" style="display: inline-flex;">
+
+                        <div class="form-check  pt-1">
+                          <input type="checkbox" class="form-check-input" [disabled]="flgMortgageFinancialLiabilities"
+                          [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
+                          id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"  (change)="removeData(i,j,$event)">
+                        </div>
+
+                        <!-- <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
+                        [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
+                        id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"
+                        style="width: 40px;" (change)="removeData(i,j,$event)"/> -->
+                      </div>
+                      <div class="col-sm-11 col-11 pl-sm-1 pl-0">
+                        <div class="frm-group" 
+                          [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditorName.errors}"
+                          [ngClass]="{'error':  creditorName.touched && creditorName.errors}"
+                          [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                          <span class="frm-fld-input height35" style="margin-top: 5px;">
+                            <input type="text" maxlength="30" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.creditorName" name="{{j}}_creditorName" id="{{j}}_creditorName" #creditorName="ngModel"/></span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1" >
+                  <div class="frm-group " 
+                  [ngClass]="{'error': financialInfoRealEstateForm.submitted && accountNumber.errors}"
+                  [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}"
+                  [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                      <span class="frm-fld-input height35" style="margin-top: 5px;"><input type="text" [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [required]="item.flgMortgageLoanNotApply == false " [(ngModel)]="item2.accountNumber" name="{{j}}_accountNumber" id="{{j}}_accountNumber" #accountNumber="ngModel"/></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"  >
+                  <div class="frm-group mt-0"  style="display: flex; "
+                    [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyMortagagePayment.errors}"
+                    [ngClass]="{'error':  monthlyMortagagePayment.touched && monthlyMortagagePayment.errors}"
+                    [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                    <div class="input-border-bottom  mr-3">
+                      <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
+                        <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
+                          <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                            [min]="0" maxlength="9" 
+                            [required]="item.flgMortgageLoanNotApply == false " 
+                            [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  
+                            [(ngModel)]="item2.monthlyMortagagePayment" 
+                            name="{{j}}_monthlyMortagagePayment" 
+                            id="{{j}}_monthlyMortagagePayment" 
+                            #monthlyMortagagePayment="ngModel"
+                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                            (keydown)="scroll($event);"/>
+                          </span>
+                      </div>
+                    </div>
+                      <input type="checkbox" [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true"  [(ngModel)]="item2.isPaidBeforeClosing" name="{{i}}_isPaidBeforeClosing" id="{{i}}_isPaidBeforeClosing" #isPaidBeforeClosing="ngModel">
+                  </div>
+                </div>
+
+                <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"  >
+                  <div class="frm-group" 
+                    [ngClass]="{'error': financialInfoRealEstateForm.submitted && unpaidBalance.errors}"
+                    [ngClass]="{'error':  unpaidBalance.touched && unpaidBalance.errors}"
+                    [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                    <div class="input-border-bottom">
+                      <div style="display: flex; align-items: center; margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span> 
+                        <span style="border-bottom: 1px #696969 solid;margin-bottom: 5px !important;">  
+                          <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                            [min]="0" maxlength="9" 
+                            [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                            [required]="item.flgMortgageLoanNotApply == false " 
+                            [(ngModel)]="item2.unpaidBalance" 
+                            name="{{j}}_unpaidBalance" 
+                            id="{{j}}_unpaidBalance" 
+                            #unpaidBalance="ngModel"
+                            ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                            (keydown)="scroll($event);"/>
+                        </span>
+                          <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
+                              [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item.isPaidBeforeClosing"
+                              id="{{j}}.isPaidBeforeClosing" name="{{j}}.isPaidBeforeClosing" #isPaidBeforeClosing="ngModel"
+                              style="width: 40px;" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1">
+                  <div class="frm-group mt-0" 
+                  [ngClass]="{'error': financialInfoRealEstateForm.submitted && type.errors}"
+                  [ngClass]="{'error':  type.touched && type.errors}"
+                  [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                    <div class="frm-fld-input" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                        <select  class="form-control shadow-none"  [required]="item.flgMortgageLoanNotApply == false " [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" [(ngModel)]="item2.type" name="{{j}}_type" id="{{j}}_type" #type="ngModel">
+                          <option [ngValue]="undefined" selected [disabled]="type.value > 0 && type.value != null">-Select One-</option>
+                          <option *ngFor="let obj of mortgageLoanTypeList" [ngValue]="obj.id"> {{obj.mortageLoanTypesId}} </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1">
+
+                  <div class="frm-group " 
+                  [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditLimit.errors}"
+                  [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}"
+                  [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
+                    <div class="input-border-bottom">
+                      <div style="display: flex; align-items: center;margin-top: 5px;"><span style="width: 20px; text-align: right; margin-right: 5px;color:black">$ </span>
+
+                        <input type="text" onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
+                        [min]="0" maxlength="9" 
+                        [required]="item.flgMortgageLoanNotApply == false" 
+                        [disabled]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                        [readonly]="item.flgMortgageLoanNotApply == true || item.flgApplicableNotApply == true" 
+                        [(ngModel)]="item2.creditLimit" name="{{j}}_creditLimit" 
+                        id="{{j}}_creditLimit" 
+                        #creditLimit="ngModel"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})/" step="0.1"
+                        (keydown)="scroll($event);"/>
+
+                      
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="col-6 p-0 mt-2" >
+                    <span style="border-bottom: 1px solid #696969; font-size: 12px; font-weight: 600;">
+                      <a [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="addMortgageLoanList(i)">Add more</a> 
+                      <span *ngIf="item.flgShowRemove == true">/</span> 
+                      <a *ngIf="item.flgShowRemove == true" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="removeMortgageLoanList(i)">Remove</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
         <div  style="display: flex;justify-content: end;margin-top: 3px;">
-          <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px; border-bottom: 1px solid #696969;  font-weight: 600;" (click)="addMoreProperty()">Add More Property</a></div>
+          <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px; border-bottom: 1px solid #696969;  font-weight: 600;" (click)="addMoreProperty()">Add More Property</a>
+        </div>
       </div>
 
     
       
     </div>
-<!-- 
+
+    <!-- 
       <div class="row div-sub-grp">
         <div class="col-12">
           <div class="frm-group">
