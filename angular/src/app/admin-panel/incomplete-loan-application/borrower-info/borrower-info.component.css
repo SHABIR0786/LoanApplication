@@ -21,11 +21,16 @@
   }
 
   .chkBox-text{
-    padding-top: 5px;
+    padding-top: 1px;
     font-size: 8px !important;
     font-weight: bold !important;
     font-family: 'Mulish', sans-serif;
     color:#000 !important;
+  }
+
+  .chkBox-text1{
+    padding-top: 1px !important;
+    
   }
 
   body{

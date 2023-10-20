@@ -1507,8 +1507,8 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-2 "><label class="gray-text">Base</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Base</label></div>
+                <div class="col-sm-2 col-4  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome.errors}"
                   [ngClass]="{'error_bb':  baseIncome.touched && baseIncome.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1525,8 +1525,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 " ><label class="gray-text">Overtime</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-2 col-4  input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime.errors}"
                   [ngClass]="{'error_bb':  overtime.touched && overtime.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1543,8 +1543,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2  " ><label class="gray-text">Bonus</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-2 col-4  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus.errors}"
                   [ngClass]="{'error_bb':  bonus.touched && bonus.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1560,8 +1560,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  "><label class="gray-text">Commission</label></div>
-                <div class="col-sm-2 col-10 input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Commission</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission.errors}"
                   [ngClass]="{'error_bb':  commission.touched && commission.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1577,11 +1577,9 @@
                   </div>
                 </div>
 
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-sm-2 col-2  "><label class="gray-text">Military Entitlements</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+             
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-2 col-4  input-border-bottom "
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements.touched && militaryEntitlements.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1598,8 +1596,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  " ><label class="gray-text">Other</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1  " ><label class="gray-text">Other</label></div>
+                <div class="col-sm-2 col-4  input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && other.errors}"
                   [ngClass]="{'error_bb':  other.touched && other.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -1616,9 +1614,10 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2  " ><label class="gray-text"
-                    style="color: #313131 !important; font-weight: 600;">TOTAL </label></div>
-                <div class="col-sm-2 col-10   input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" >
+                  <label class="gray-text" style="color: #313131 !important; font-weight: 600;">TOTAL </label>
+                </div>
+                <div class="col-sm-2 col-4   input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && total.errors}"
                   [ngClass]="{'error_bb':  total.touched && total.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2004,8 +2003,8 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-2 "><label class="gray-text">Base</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Base</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome2.errors}"
                   [ngClass]="{'error_bb':  baseIncome2.touched && baseIncome2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2030,8 +2029,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 " style="text-align: center;"><label class="gray-text">Overtime</label></div>
-                <div class="col-sm-2 col-10  input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime2.errors}"
                   [ngClass]="{'error_bb':  overtime2.touched && overtime2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2056,8 +2055,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Bonus</label></div>
-                <div class="col-sm-2 col-10   input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus2.errors}"
                   [ngClass]="{'error_bb':  bonus2.touched && bonus2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2078,8 +2077,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Commission</label></div>
-                <div class="col-sm-2 col-10   input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Commission</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission2.errors}"
                   [ngClass]="{'error_bb':  commission2.touched && commission2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2101,11 +2100,9 @@
                     <span>/month</span>
                   </div>
                 </div>
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-sm-2 col-2  "><label class="gray-text">Military Entitlements</label></div>
-                <div class="col-sm-2 col-10   input-border-bottom"
+              
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements2.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements2.touched && militaryEntitlements2.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2127,8 +2124,8 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2  " style="text-align: center;"><label class="gray-text">Other</label></div>
-                <div class="col-sm-2 col-10   input-border-bottom"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Other</label></div>
+                <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && other3.errors}"
                   [ngClass]="{'error_bb':  other3.touched && other3.errors}">
                   <div style="display: flex; align-items: center;"><span>$ </span>
@@ -2149,7 +2146,7 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2  " style="text-align: right;"><label class="gray-text"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text"
                     style="color:#000; padding-right:5px;">TOTAL </label></div>
                 <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsaLastname.errors}"
