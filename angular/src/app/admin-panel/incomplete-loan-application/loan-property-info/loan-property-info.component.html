@@ -186,7 +186,7 @@
                 <div class="frm-group">
                   <div class="frm-fld-input">
                     <div class="row mt-2">
-                      <div class="col-sm-2 col-sm-push-4">
+                      <div class="col-sm-2 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -222,7 +222,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-2 col-sm-push-4">
+                      <div class="col-sm-2 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -258,7 +258,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-3 col-sm-push-4">
+                      <div class="col-sm-3 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -310,15 +310,15 @@
       </div>
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
-          <div class="frm-group">
+        <div class="col-12 p-0 m-0 mt-2">
+          <div class="frm-group pr-4">
             <label class="frm-label">Property Address</label>
             <div class="row mt-2">
-              <div class="col-sm-1 col-sm-push-3 pr-4">
+              <div class="col-sm-1 col-sm-push-3 pr-2">
                 <label class="gray-text">Street</label>
               </div>
               <div
-                class="col-sm-7 col-sm-push-8 pr-4 input-border-bottom"
+                class="col-sm-6 col-sm-push-7 pr-2 input-border-bottom"
                 [ngClass]="{
                   error: loanPropertyInfoForm.submitted && street.errors
                 }"
@@ -341,20 +341,20 @@
                 />
               </div>
 
-              <div class="col-sm-1 col-sm-push-3 pr-4">
+              <div class="col-sm-1 col-sm-push-3 pr-2">
                 <label class="gray-text">Unit#</label>
               </div>
-              <div class="col-sm-3 col-sm-push-8 pr-4 input-border-bottom">
+              <div class="col-sm-3 col-sm-push-7 pr-2 input-border-bottom">
                 <input type="text" class="showBorder" maxlength="5" [min]="0" />
                 <!-- <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber> -->
               </div>
             </div>
 
             <div class="row mt-2 pr-3">
-              <div class="col-sm-1 col-sm-push-3 pr-4 mt-2">
+              <div class="col-sm-1 col-sm-push-3 pr-2 mt-2">
                 <label class="gray-text">City</label>
               </div>
-              <div class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom">
+              <div class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom">
                 <div
                   class="frm-group"
                   [ngClass]="{
@@ -403,10 +403,10 @@
                 </div>
               </div>
 
-              <div class="col-sm-1 col-sm-push-3 pr-4 mt-2">
+              <div class="col-sm-1 col-sm-push-3 pr-2 mt-2">
                 <label class="gray-text">State</label>
               </div>
-              <div class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom">
+              <div class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom">
                 <div
                   class="frm-group"
                   [ngClass]="{
@@ -457,11 +457,11 @@
                 </div>
               </div>
 
-              <div class="col-sm-1 col-sm-push-3 pr-4 mt-2">
+              <div class="col-sm-1 col-sm-push-3 pr-2 mt-2">
                 <label class="gray-text">ZIP</label>
               </div>
               <div
-                class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom mt-1"
+                class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom mt-1"
                 [ngClass]="{
                   error: loanPropertyInfoForm.submitted && zip.errors
                 }"
@@ -482,10 +482,10 @@
                 />
               </div>
 
-              <div class="col-sm-1 col-sm-push-3 pr-4 mt-2">
+              <div class="col-sm-1 col-sm-push-3 pr-2 mt-2">
                 <label class="gray-text">Country</label>
               </div>
-              <div class="col-sm-2 col-sm-push-8 pr-4 input-border-bottom">
+              <div class="col-sm-2 col-sm-push-8 pr-2 input-border-bottom">
                 <div
                   class="frm-group"
                   [ngClass]="{
@@ -559,7 +559,6 @@
                   id="numberOfUnits"
                   #numberOfUnits="ngModel"
                 />
-                <!-- <p-inputNumber maxlength="9"  class="showBorder" [min]="0" [(ngModel)]="loanPropertyInfoModel.loanPropertyInfo.propertyAddress.numberOfUnits" name="numberOfUnits" id="numberOfUnits" #numberOfUnits="ngModel"></p-inputNumber> -->
               </div>
 
               <div class="col-sm-2 col-sm-push-3 p-0">
@@ -573,41 +572,20 @@
                 class="col-sm-2 col-sm-push-8 p-0 input-border-bottom"
                 style="display: flex"
               >
-                <span class="mr-2" style="color: black">$</span>
-
-                <span
-                  style="
-                    border-bottom: 1px #696969 solid;
-                    margin-bottom: 5px !important;
-                  "
-                >
-                  <input
-                    type="text"
-                    onFocus="this.select();"
-                    (blur)="fixDecimals($event)"
-                    (keypress)="numberOnly(this, $event)"
-                    pattern="^\d+(?:\.\d{1,2})?$"
-                    style="
-                      border: 0px !important;
-                      padding-left: 5px;
-                      border: 0px !important;
-                      font-size: 14px;
-                      margin-bottom: 0px;
-                      padding-left: 5px !important;
-                      padding-right: 5px !important;
-                      width: 100%;
-                      color: #a5a5a5;
-                      font-weight: 500;
-                    "
-                    [min]="0"
-                    maxlength="9"
-                    ng-pattern="/^[0-9]+(\.[0-9]{1,2})/"
-                    step="0.1"
-                    (keydown)="scroll($event)"
-                  />
-                </span>
-
-                <!-- <p-inputNumber maxlength="9" class="showBorder" [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
+                <span>$</span>
+                <input
+                  type="text"
+                  class="showBorder"
+                  onFocus="this.select();"
+                  (blur)="fixDecimals($event)"
+                  (keypress)="numberOnly(this, $event)"
+                  pattern="^\d+(?:\.\d{1,2})?$"
+                  [min]="0"
+                  maxlength="9"
+                  ng-pattern="/^[0-9]+(\.[0-9]{1,2})/"
+                  step="0.1"
+                  (keydown)="scroll($event)"
+                />
               </div>
             </div>
           </div>
@@ -615,7 +593,7 @@
       </div>
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-0 mt-2">
           <div class="frm-group">
             <div class="row">
               <div class="col-sm-12 col-sm-push-12">
@@ -636,7 +614,7 @@
                 <div class="frm-group">
                   <div class="frm-fld-input">
                     <div class="row mt-2">
-                      <div class="col-sm-2 col-sm-push-4">
+                      <div class="col-sm-2 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -673,7 +651,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-2 col-sm-push-4">
+                      <div class="col-sm-2 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -709,7 +687,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-2 col-sm-push-4">
+                      <div class="col-sm-2 col-sm-push-4 pb-1">
                         <div style="display: flex">
                           <input
                             type="radio"
@@ -745,7 +723,7 @@
                         </div>
                       </div>
 
-                      <div class="col-sm-4 col-sm-push-12 ml-4">
+                      <div class="col-sm-4 col-sm-push-12 ml-4 pb-1">
                         <div style="display: flex">
                           <label
                             class="text-gray"
@@ -774,7 +752,7 @@
       </div>
 
       <div class="row div-sub-grp">
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-0 mt-2">
           <div class="frm-group">
             <div class="row">
               <div class="col-6">
@@ -808,8 +786,8 @@
               <div class="col-6 text-right">
                 <div class="frm-fld-input">
                   <div class="row mt-2">
-                    <div class="col-2">
-                      <div style="display: flex; justify-content: center">
+                    <div class="col-sm-6 col-lg-3 pl-3">
+                      <div style="display: flex; justify-content: left">
                         <input
                           type="radio"
                           value="true"
@@ -834,7 +812,7 @@
                           }"
                         />
                         <label
-                          class="text-gray"
+                          class="text-gray pl-1"
                           style="
                             color: #000 !important;
                             font-size: 12px !important;
@@ -845,8 +823,8 @@
                       </div>
                     </div>
 
-                    <div class="col-2">
-                      <div style="display: flex; justify-content: center">
+                    <div class="col-sm-6 col-lg-3 pl-3">
+                      <div style="display: flex; justify-content: left">
                         <input
                           type="radio"
                           value="false"
@@ -871,7 +849,7 @@
                           }"
                         />
                         <label
-                          class="text-gray"
+                          class="text-gray pl-1"
                           style="
                             color: #000 !important;
                             font-size: 12px !important;
@@ -888,8 +866,8 @@
               <div class="col-6 text-right">
                 <div class="frm-fld-input">
                   <div class="row mt-2">
-                    <div class="col-2">
-                      <div style="display: flex; justify-content: center">
+                    <div class="col-sm-6 col-lg-3 pl-3">
+                      <div style="display: flex; justify-content: left">
                         <input
                           type="radio"
                           value="true"
@@ -913,12 +891,12 @@
                               isManufacturedHome.errors
                           }"
                         />
-                        <label class="text-gray">Yes</label>
+                        <label class="text-gray pl-1">Yes</label>
                       </div>
                     </div>
 
                     <div class="col-2">
-                      <div style="display: flex; justify-content: center">
+                      <div style="display: flex; justify-content: left">
                         <input
                           type="radio"
                           value="false"
@@ -942,7 +920,7 @@
                               isManufacturedHome.errors
                           }"
                         />
-                        <label class="text-gray">No</label>
+                        <label class="text-gray pl-1">No</label>
                       </div>
                     </div>
                   </div>
@@ -957,7 +935,7 @@
         class="section-title-wo-border"
         style="display: flex; align-items: center; width: 100%"
       >
-        <span style="font-size: 20px"
+        <span class="font-20"
           >Other New Mortgage Loans on the Property You are Buying or
           Refinancing</span
         >
@@ -1024,7 +1002,7 @@
               <div class="col-sm-3 col-sm-push-3">
                 <div class="row p-0">
                   <div
-                    class="col-1 pt-0 p-0"
+                    class="col-1 pt-0 p-0 pl-2"
                     style="text-align: center; display: flex"
                   >
                     <input
@@ -1413,7 +1391,7 @@
         class="section-title-wo-border"
         style="display: flex; align-items: center; width: 100%"
       >
-        <span style="font-size: 20px"
+        <span class="font-20"
           >Rental Income on the Property You Want to Purchase (For Purchase Only
           )</span
         >
@@ -1745,13 +1723,16 @@
             >
               <div class="col-sm-4 col-sm-push-12">
                 <div class="row">
-                  <div class="col-1" style="text-align: center; display: flex">
+                  <div
+                    class="col-1 pr-0"
+                    style="text-align: center; display: flex"
+                  >
                     <input
                       type="checkbox"
                       (change)="removeGiftsorGrantsF(i, $event)"
                     />
                   </div>
-                  <div class="col-11">
+                  <div class="col-11 pl-0">
                     <div
                       class="frm-group"
                       [ngClass]="{
@@ -1798,7 +1779,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-2 col-sm-push-12">
+              <div class="col-sm-2 col-sm-push-12 pt-2">
                 <div
                   style="display: flex; justify-content: left"
                   class="mt-0 ml-3"
@@ -1824,7 +1805,7 @@
                           isDeposited.touched && isDeposited.errors
                       }"
                     />
-                    <label class="text-gray ml-2">Deposited</label>
+                    <label class="text-gray pl-2 pt-2">Deposited</label>
                   </div>
 
                   <div
@@ -1832,6 +1813,7 @@
                       display: flex;
                       justify-content: center;
                       margin-left: 40px;
+                      justify-content: center;
                     "
                   >
                     <input
@@ -1853,7 +1835,7 @@
                           isDeposited.touched && isDeposited.errors
                       }"
                     />
-                    <label class="text-gray ml-2">Not Deposited</label>
+                    <label class="text-gray pl-2">Not Deposited</label>
                   </div>
                 </div>
               </div>

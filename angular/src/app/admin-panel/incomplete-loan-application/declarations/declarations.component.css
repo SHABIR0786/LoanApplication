@@ -208,10 +208,11 @@
 .div-main-grp .div-sub-grp {
   margin-bottom: 17px;
   /* display: flex; */
-  align-items: center;
-  flex-shrink: 0;
-  width: 100%;
+  /* align-items: center;
+flex-shrink: 0; */
+  /* width: 100%; */
 }
+
 .div-main-grp .div-sub-grp .frm-group {
   box-sizing: border-box;
   padding: 5px 5px 5px 16px;

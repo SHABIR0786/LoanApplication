@@ -5,11 +5,30 @@
   .chkBox-padding-left-10 {
     padding-left: 5px;
   }
+  /* 
+  .chkBox-text{
+    font-size: 12px !important;
+    font-weight: normal !important;
+  } */
+
+  .mpl-10 {
+    padding-left: 10px !important;
+  }
+
+  .mpr-10 {
+    padding-right: 10px !important;
+  }
 
   .chkBox-text {
+    padding-top: 1px;
     font-size: 8px !important;
     font-weight: bold !important;
     font-family: "Mulish", sans-serif;
+    color: #000 !important;
+  }
+
+  .chkBox-text1 {
+    padding-top: 1px !important;
   }
 
   body {
@@ -874,11 +893,6 @@
 
   .f-20 {
     font-size: 14px;
-  }
-
-  .chkBox-text {
-    font-size: 12px !important;
-    font-weight: normal !important;
   }
 }
 
@@ -1788,12 +1802,4 @@
     font-size: 14px;
     text-align: right;
   }
-}
-.verify-application {
-  color: #545454;
-  font-family: Avenir;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
 }
