@@ -1789,3 +1789,11 @@
     text-align: right;
   }
 }
+.verify-application {
+  color: #545454;
+  font-family: Avenir;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}

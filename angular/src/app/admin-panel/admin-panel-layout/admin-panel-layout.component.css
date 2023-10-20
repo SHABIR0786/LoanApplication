@@ -10,7 +10,7 @@
 .welcome_text {
   color: #000;
   font-family: Avenir;
-  font-size: 24px;  
+  font-size: 24px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -20,7 +20,7 @@
   height: 34px;
   flex-shrink: 0;
   border-radius: 6px;
-  background: #0D2576;
+  background: #0d2576;
 }
 .noti_text {
   right: 31px;
@@ -58,7 +58,6 @@
   font-weight: 500;
 }
 
-
 /* Previous styles  */
 /*
 .content_side {
@@ -72,7 +71,8 @@ a {
  */
 
 div.content {
-  margin-left: 300px;
+  padding-right: 50px;
+  padding-left: 30px;
   height: auto;
   transition: all 0.5s ease;
 }
@@ -127,7 +127,7 @@ div.content {
 }
 @media screen and (min-width: 1101px) {
   div.content {
-    margin-left: 300px !important;
+    /* margin-left: 300px !important; */
   }
 }
 
@@ -139,12 +139,12 @@ div.content {
     margin: 1px !important;
   }
   div.content {
-    margin-left: 250px;
+    /* margin-left: 250px; */
   }
 }
 @media only screen and (max-width: 1000px) and (min-width: 936px) {
   div.content {
-    margin-left: 200px;
+    /* margin-left: 200px; */
   }
   .nav_icon {
     padding: 8px !important;
@@ -154,9 +154,8 @@ div.content {
   }
 }
 @media only screen and (max-width: 935px) and (min-width: 769px) {
-
   div.content {
-    margin-left: 200px;
+    /* margin-left: 200px; */
   }
   .nav_icon {
     padding: 8px !important;
@@ -173,7 +172,7 @@ div.content {
     display: block;
   }
   div.content {
-    margin-left: 0px;
+    /* margin-left: 0px; */
   }
   .nav_icon {
     padding: 8px !important;
@@ -197,7 +196,7 @@ div.content {
     display: block;
   }
   div.content {
-    margin-left: 0px;
+    /* margin-left: 0px; */
     overflow: hidden;
   }
   .nav_icon {
