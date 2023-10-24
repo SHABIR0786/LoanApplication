@@ -605,7 +605,7 @@
                 
                 <div class="row mt-2 pr-3">
                   <div class="col-sm-1  pr-0"><label class="gray-text">Street</label></div>
-                  <div class="col-sm-8   input-border-bottom"
+                  <div class="col-sm-8 input-border-bottom ml-sm-0 ml-1 pl-sm-3 pl-2 mb-sm-0 mb-2"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsStreet.errors}"
                   [ngClass]="{'error_bb':  creditItemsStreet.touched && creditItemsStreet.errors}">
                     <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[0].street"
@@ -810,7 +810,7 @@
 
               <div class="row mt-2 pr-3">
                 <div class="col-sm-1   pr-0"><label class="gray-text">Street</label></div>
-                <div class="col-sm-8   input-border-bottom"
+                <div class="col-sm-8   input-border-bottom pl-sm-3 pl-2 ml-sm-0 ml-1  mb-sm-0 mb-2"
                   [ngClass]="{'error_bb': borrowForm.submitted && street1.errors}"
                   [ngClass]="{'error_bb':  street1.touched && street1.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[1].street"
@@ -1022,7 +1022,7 @@
 
               <div class="row mt-2 pr-3">
                 <div class="col-sm-1   pr-0"><label class="gray-text">Street</label></div>
-                <div class="col-sm-8  input-border-bottom"
+                <div class="col-sm-8  input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2"
                 [ngClass]="{'error_bb': borrowForm.submitted && street2.errors}"
                   [ngClass]="{'error_bb':  street2.touched && street2.errors}">
                   <input ngx-google-places-autocomplete [(ngModel)]="borrowerInfo.personalInformation.address[2].street"
@@ -1150,7 +1150,7 @@
 
 
                 <div class="col-sm-1 col-1 " style="text-align: center;"><label class="gray-text">Street</label></div>
-                <div class="col-sm-2 col-12  input-border-bottom"
+                <div class="col-sm-2 col-12  input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2"
                   [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
                   [ngClass]="{'error_bb':  street3.touched && street3.errors}">
 
@@ -1348,7 +1348,7 @@
                 </div> -->
 
 
-          <div class="col-sm-3 col-12 ml-0 pl-2 pr-0 ">
+          <div class="col-sm-3 col-12 ml-0 pl-sm-2 pl-0 pr-0 mt-sm-0 mt-2">
             <div class="div-border" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
               <label class="frm-label">Check if this statement applies:</label>
 
@@ -1507,7 +1507,7 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Base</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1"><label class="gray-text">Base</label></div>
                 <div class="col-sm-2 col-4  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome.errors}"
                   [ngClass]="{'error_bb':  baseIncome.touched && baseIncome.errors}">
@@ -1525,7 +1525,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Overtime</label></div>
                 <div class="col-sm-2 col-4  input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime.errors}"
                   [ngClass]="{'error_bb':  overtime.touched && overtime.errors}">
@@ -1543,7 +1543,7 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Bonus</label></div>
                 <div class="col-sm-2 col-4  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus.errors}"
                   [ngClass]="{'error_bb':  bonus.touched && bonus.errors}">
@@ -1560,7 +1560,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Commission</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1"><label class="gray-text">Commission</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission.errors}"
                   [ngClass]="{'error_bb':  commission.touched && commission.errors}">
@@ -1578,7 +1578,7 @@
                 </div>
 
              
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1"><label class="gray-text">Military Entitlements</label></div>
                 <div class="col-sm-2 col-4  input-border-bottom "
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements.touched && militaryEntitlements.errors}">
@@ -1596,7 +1596,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1  " ><label class="gray-text">Other</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1 " ><label class="gray-text">Other</label></div>
                 <div class="col-sm-2 col-4  input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && other.errors}"
                   [ngClass]="{'error_bb':  other.touched && other.errors}">
@@ -1614,7 +1614,7 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" >
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" >
                   <label class="gray-text" style="color: #313131 !important; font-weight: 600;">TOTAL </label>
                 </div>
                 <div class="col-sm-2 col-4   input-border-bottom"
@@ -1673,7 +1673,7 @@
 
 
                 <div class="col-sm-1  "><label class="gray-text">Street</label></div>
-                <div class="col-sm-4   input-border-bottom"
+                <div class="col-sm-4   input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2"
                   [ngClass]="{'error_bb': borrowForm.submitted && street4.errors}"
                   [ngClass]="{'error_bb':  street4.touched && street4.errors}">
 
@@ -1789,10 +1789,10 @@
                     max="{{currentDate | date:'MM-dd-yyyy'}}" />
                 </div>
 
-                <div class="col-sm-4 col-4 p-0" style=" padding-right:10px">
+                <div class="col-sm-4 col-4 p-0 mt-sm-0 mt-2" style=" padding-right:10px">
                   <label class="gray-text pl-1">How long in this line of work?</label>
                 </div>
-                <div class="col-sm-2 col-3 p-0 input-border-bottom" style="display: flex;">
+                <div class="col-sm-2 col-3 p-0 input-border-bottom mt-sm-0 mt-2" style="display: flex;">
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && workingYears3.errors}"
                     [ngClass]="{'error_bb':  workingYears3.touched && workingYears3.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1812,7 +1812,7 @@
                 </div>
 
 
-                <div class="col-sm-2 col-3 p-0 input-border-bottom" style="display: flex; ">
+                <div class="col-sm-2 col-3 p-0 input-border-bottom mt-sm-0 mt-2" style="display: flex; ">
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && workingMonths.errors}"
                     [ngClass]="{'error_bb':  workingMonths.touched && workingMonths.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -1837,7 +1837,7 @@
             </div>
           </div>
 
-          <div class="col-sm-3 col-12  pr-0 ml-0">
+          <div class="col-sm-3 col-12  ml-0 pl-sm-2 pl-0 pr-0 mt-sm-0 mt-2">
             <div class="div-border" [ngClass]="{'disabled':doNotApplyForEmp1==true}">
 
               <label class="frm-label">Check if this statement applies:</label>
@@ -2003,7 +2003,7 @@
               </label>
 
               <div class="row mt-2 pr-2">
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Base</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1"><label class="gray-text">Base</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && baseIncome2.errors}"
                   [ngClass]="{'error_bb':  baseIncome2.touched && baseIncome2.errors}">
@@ -2029,7 +2029,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Overtime</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Overtime</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && overtime2.errors}"
                   [ngClass]="{'error_bb':  overtime2.touched && overtime2.errors}">
@@ -2055,7 +2055,7 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Bonus</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Bonus</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && bonus2.errors}"
                   [ngClass]="{'error_bb':  bonus2.touched && bonus2.errors}">
@@ -2077,7 +2077,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Commission</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Commission</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && commission2.errors}"
                   [ngClass]="{'error_bb':  commission2.touched && commission2.errors}">
@@ -2101,7 +2101,7 @@
                   </div>
                 </div>
               
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1"><label class="gray-text">Military Entitlements</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1"><label class="gray-text">Military Entitlements</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && militaryEntitlements2.errors}"
                   [ngClass]="{'error_bb':  militaryEntitlements2.touched && militaryEntitlements2.errors}">
@@ -2124,7 +2124,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text">Other</label></div>
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text">Other</label></div>
                 <div class="col-sm-2 col-4 input-border-bottom pr-sm-1 pr-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && other3.errors}"
                   [ngClass]="{'error_bb':  other3.touched && other3.errors}">
@@ -2146,7 +2146,7 @@
                 </div>
 
 
-                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1" ><label class="gray-text"
+                <div class="col-sm-1 col-2 pl-sm-0 pr-0 pl-1 pt-sm-0 pt-1 pb-sm-0 pb-1" ><label class="gray-text"
                     style="color:#000; padding-right:5px;">TOTAL </label></div>
                 <div class="col-sm-2 col-10  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && creditItemsaLastname.errors}"
@@ -2232,7 +2232,7 @@
     
     
                     <div class="col-sm-1 col-1 " ><label class="gray-text">Street</label></div>
-                    <div class="col-sm-2 col-11  input-border-bottom" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
+                    <div class="col-sm-2 col-11  input-border-bottom  pl-sm-3 pl-2" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                       [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                       <input ngx-google-places-autocomplete [(ngModel)]="empItem.street" id="{{j}}_street9"
                         name="{{j}}_street9" max="100" [options]='options' #street9="ngModel"

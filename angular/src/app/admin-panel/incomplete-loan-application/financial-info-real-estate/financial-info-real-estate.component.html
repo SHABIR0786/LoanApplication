@@ -401,52 +401,40 @@
 
       <div class="div-sub-grp mt-1" >
         <div class="row frm-group p-1">
-          <div class="col-12" >
+          <!-- <div class="col-12" >
             <div class="row" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}">
-              
                 <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Creditor Name:</span>
-                  </label>
+                  <label class="frm-label">Creditor Name:</label>
                 </div>
-
-
                 <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Account Number:</span>
-                  </label>
+                  <label class="frm-label">Account Number:</label>
 
                 </div>
-
                 <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Monthly Mortgage Payment:</span>
                   </label>
                 </div>
-
                 <div class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Unpaid Balance:</span>
                   </label>
                   <label class="text-gray">(To be paid off at or before closing)</label>
                 </div>
-
                 <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Type:</span>
                   </label>
                   <label class="text-gray">(FHA, VA, Conventional, USDA-RD, Other)</label>
                 </div>
-
                 <div  class="col-sm-2 col-12">
                   <label class="frm-label">
                     <span>Credit Limit</span>
                   </label>
                   <label class="text-gray">(if applicable)</label>
                 </div>
-
               </div>
-            </div>
+            </div> -->
          
           <div class="col-12">
               <div class="row mt-1" *ngFor="let item2 of item.mortgageLoanOnProperty;index as j">
@@ -454,7 +442,7 @@
                   <div class="form-row">
                       <div class="col-sm-1 col-1 pl-sm-1 pl-3 p-0" style="display: inline-flex;">
 
-                        <div class="form-check  pt-1">
+                        <div class="form-check pt-sm-4 pt-4 pl-sm-4 pl-4">
                           <input type="checkbox" class="form-check-input" [disabled]="flgMortgageFinancialLiabilities"
                           [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
                           id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"  (change)="removeData(i,j,$event)">
@@ -466,6 +454,7 @@
                         style="width: 40px;" (change)="removeData(i,j,$event)"/> -->
                       </div>
                       <div class="col-sm-11 col-11 pl-sm-1 pl-0">
+                        <label class="frm-label">Creditor Name:</label>
                         <div class="frm-group" 
                           [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditorName.errors}"
                           [ngClass]="{'error':  creditorName.touched && creditorName.errors}"
@@ -478,6 +467,7 @@
                 </div>
 
                 <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-sm-1 pt-2" >
+                  <label class="frm-label">Account Number:</label>
                   <div class="frm-group " 
                   [ngClass]="{'error': financialInfoRealEstateForm.submitted && accountNumber.errors}"
                   [ngClass]="{'error':  accountNumber.touched && accountNumber.errors}"
@@ -487,6 +477,7 @@
                 </div>
 
                 <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"  >
+                  <label class="frm-label">Monthly Mortgage Payment: </label>
                   <div class="frm-group mt-0"  style="display: flex; "
                     [ngClass]="{'error': financialInfoRealEstateForm.submitted && monthlyMortagagePayment.errors}"
                     [ngClass]="{'error':  monthlyMortagagePayment.touched && monthlyMortagagePayment.errors}"
@@ -512,6 +503,9 @@
                 </div>
 
                 <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"  >
+                  <label class="frm-label">
+                    <span>Unpaid Balance:</span>
+                  </label>
                   <div class="frm-group" 
                     [ngClass]="{'error': financialInfoRealEstateForm.submitted && unpaidBalance.errors}"
                     [ngClass]="{'error':  unpaidBalance.touched && unpaidBalance.errors}"
@@ -540,6 +534,9 @@
                 </div>
 
                 <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1">
+                  <label class="frm-label">
+                    <span>Type:</span>
+                  </label>
                   <div class="frm-group mt-0" 
                   [ngClass]="{'error': financialInfoRealEstateForm.submitted && type.errors}"
                   [ngClass]="{'error':  type.touched && type.errors}"
@@ -553,7 +550,10 @@
                   </div>
                 </div>
                 <div class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1">
-
+                  <label class="frm-label">
+                     Credit Limit  (if applicable)
+                  </label>
+                  
                   <div class="frm-group " 
                   [ngClass]="{'error': financialInfoRealEstateForm.submitted && creditLimit.errors}"
                   [ngClass]="{'error':  creditLimit.touched && creditLimit.errors}"
