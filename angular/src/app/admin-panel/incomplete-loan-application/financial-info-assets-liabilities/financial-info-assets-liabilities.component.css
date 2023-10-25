@@ -9,7 +9,7 @@
   }
   .dollar{
     width: 20px; text-align: right; margin-right: 5px; color:black;
-    font-size: 14px;
+    font-size: 10px;
     font-family: 'Mulish', sans-serif;
   }
   .display-desktop{
@@ -85,10 +85,10 @@
   }
 
   .lbl-total{
-    font-size: 10px;
-    color:#000000;
-    font-weight: 800;
-    font-family: 'Mulish', sans-serif;
+    font-size: 10px !important;
+    color:#000000 !important;
+    font-weight: 600 !important;
+    font-family: 'Mulish', sans-serif !important;
   }
 
   .lable-add-remove{
