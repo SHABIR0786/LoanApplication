@@ -686,8 +686,8 @@
 
 
               <div class="row mt-1 pl-1 ">
-                <div class="col-sm-5  p-0 form-inline" >
-                  <label class="gray-text" style="white-space: nowrap !important; ">How Long at Current Address?</label>
+                <div class="col-sm-5  p-0  form-inline" >
+                  <label class="gray-text pt-sm-0 pt-2" style="white-space: nowrap !important; ">How Long at Current Address?</label>
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && year.errors}"
                     [ngClass]="{'error_bb':  year.touched && year.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -701,7 +701,7 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-2 pr-2 ">Years</label>
+                  <label class="gray-text pl-2 pr-2 pt-sm-0 pt-2">Years</label>
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && month.errors}"
                     [ngClass]="{'error_bb':  month.touched && month.errors}"
                     style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -715,7 +715,7 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-2">Months</label>
+                  <label class="gray-text pl-2 pt-sm-0 pt-2">Months</label>
                 </div>
 
 
@@ -896,7 +896,7 @@
 
               <div class="row mt-1 pr-3">
                 <div class="col-sm-5 pl-2  form-inline" >
-                  <label class="gray-text" style="white-space: nowrap !important; ">How Long at Current Address?</label>
+                  <label class="gray-text pr-2 pt-sm-0 pt-2" style="white-space: nowrap !important; ">How Long at Current Address?</label>
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && year1.errors}"
                     [ngClass]="{'error_bb':  year1.touched && year1.errors}"
                     [ngClass]="{'disabled':doNotApplyForaddress1==true}"
@@ -913,7 +913,7 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-1 pr-1">Years</label>
+                  <label class="gray-text pl-1 pr-1 pr-2 pt-sm-0 pt-2">Years</label>
                
                   <div class="div-border" [ngClass]="{'error_bb': borrowForm.submitted && month1.errors}"
                     [ngClass]="{'error_bb':  month1.touched && month1.errors}"
@@ -931,7 +931,7 @@
                       </select>
                     </div>
                   </div>
-                  <label class="gray-text pl-1 pr-1">Months</label>
+                  <label class="gray-text pl-1 pr-1 pr-2 pt-sm-0 pt-2">Months</label>
                 </div>
 
 
@@ -1149,8 +1149,8 @@
                 </div>
 
 
-                <div class="col-sm-1 col-1 " style="text-align: center;"><label class="gray-text">Street</label></div>
-                <div class="col-sm-2 col-12  input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2"
+                <div class="col-sm-1 col-1 pt-sm-0 pt-2" style="text-align: center;"><label class="gray-text">Street</label></div>
+                <div class="col-sm-2 col-12  input-border-bottom  pl-sm-3 pl-2  pb-sm-0 pb-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && street3.errors}"
                   [ngClass]="{'error_bb':  street3.touched && street3.errors}">
 
@@ -1163,7 +1163,7 @@
 
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1  pr-0 mt-2"><label class="gray-text">City</label></div>
+                <div class="col-sm-1  pr-0 pt-sm-0 pt-0 "><label class="gray-text">City</label></div>
                 <div class="col-sm-2  input-border-bottom"
                 [ngClass]="{'error_bb': borrowForm.submitted && cityId3.errors}"
                   [ngClass]="{'error_bb':  cityId3.touched && cityId3.errors}">
@@ -1672,8 +1672,8 @@
                 </div>
 
 
-                <div class="col-sm-1  "><label class="gray-text">Street</label></div>
-                <div class="col-sm-4   input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2"
+                <div class="col-sm-1 pt-sm-0 pt-2 "><label class="gray-text">Street</label></div>
+                <div class="col-sm-4   input-border-bottom  pl-sm-3 pl-2  mb-sm-0 mb-2 pt-sm-0 pt-1"
                   [ngClass]="{'error_bb': borrowForm.submitted && street4.errors}"
                   [ngClass]="{'error_bb':  street4.touched && street4.errors}">
 
@@ -1685,7 +1685,7 @@
               </div>
 
               <div class="row mt-2 pr-3">
-                <div class="col-sm-1  "><label class="gray-text">City</label></div>
+                <div class="col-sm-1 pt-sm-0 pt-0"><label class="gray-text">City</label></div>
                 <div class="col-sm-2    input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && cityId4.errors}"
                   [ngClass]="{'error_bb':  cityId4.touched && cityId4.errors}">
@@ -1701,7 +1701,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-1  " ><label class="gray-text">Unit #</label></div>
+                <div class="col-sm-1 pt-sm-0 pt-2 " ><label class="gray-text">Unit #</label></div>
                 <div class="col-sm-1   input-border-bottom">
 
                   <input type="text" [min]="0" class="showBorder" maxlength="5"
@@ -1710,7 +1710,7 @@
                 </div>
 
 
-                <div class="col-sm-1 " ><label class="gray-text">State</label></div>
+                <div class="col-sm-1 pt-sm-0 pt-2" ><label class="gray-text">State</label></div>
                 <div class="col-sm-1  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && stateId4.errors}"
                   [ngClass]="{'error_bb':  stateId4.touched && stateId4.errors}">
@@ -1728,7 +1728,7 @@
 
                 </div>
 
-                <div class="col-sm-1 " ><label class="gray-text">ZIP</label></div>
+                <div class="col-sm-1 pt-sm-0 pt-2" ><label class="gray-text">ZIP</label></div>
                 <div class="col-sm-1  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && zip4.errors}"
                   [ngClass]="{'error_bb':  zip4.touched && zip4.errors}">
@@ -1737,7 +1737,7 @@
                 </div>
 
 
-                <div class="col-sm-1 " ><label class="gray-text">Country</label></div>
+                <div class="col-sm-1 pt-sm-0 pt-2" ><label class="gray-text">Country</label></div>
                 <div class="col-sm-2  input-border-bottom"
                   [ngClass]="{'error_bb': borrowForm.submitted && countryId4.errors}"
                   [ngClass]="{'error_bb':  countryId4.touched && countryId4.errors}">
@@ -2195,8 +2195,6 @@
       
       <h4 class="txt-note-h4">Provide at least 2 years of current and previous employment and income.</h4>
       <div *ngFor="let empItem of extraEmployeesList;index as j">
-       
-          
           <div class="div-main-grp" style="width: 100%; margin-top: 10px;">
             <div class="row div-sub-grp">
     
@@ -2231,8 +2229,8 @@
                     </div>
     
     
-                    <div class="col-sm-1 col-1 " ><label class="gray-text">Street</label></div>
-                    <div class="col-sm-2 col-11  input-border-bottom  pl-sm-3 pl-2" [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
+                    <div class="col-sm-1 col-1 pr-0 pt-sm-2 pt-2" ><label class="gray-text">Street</label></div>
+                    <div class="col-sm-2 col-11  input-border-bottom  pl-sm-3 pl-2 pt-sm-2 pt-2 " [ngClass]="{'error_bb': borrowForm.submitted && street9.errors}"
                       [ngClass]="{'error_bb':  street9.touched && street9.errors}">
                       <input ngx-google-places-autocomplete [(ngModel)]="empItem.street" id="{{j}}_street9"
                         name="{{j}}_street9" max="100" [options]='options' #street9="ngModel"
@@ -2241,11 +2239,11 @@
     
                     </div>
     
-                  </div>
+                  <!-- </div>
                   <div class="row mt-2  pr-3">
-    
-                    <div class="col-sm-1 mt-2"><label class="gray-text">City</label></div>
-                    <div class="col-sm-2    input-border-bottom"
+     -->
+                    <div class="col-sm-1 pt-sm-2 pt-2"><label class="gray-text">City</label></div>
+                    <div class="col-sm-2 input-border-bottom  pt-sm-2 pt-0"
                       [ngClass]="{'error_bb': borrowForm.submitted && cityId9.errors}"
                       [ngClass]="{'error_bb':  cityId9.touched && cityId9.errors}">
                       <div class=""
@@ -2260,16 +2258,16 @@
                       </div>
                     </div>
     
-                    <div class="col-sm-1 " ><label class="gray-text">Unit #</label></div>
-                    <div class="col-sm-1   input-border-bottom">
+                    <div class="col-sm-1 pt-sm-2 pt-2" ><label class="gray-text">Unit #</label></div>
+                    <div class="col-sm-1   input-border-bottom pt-sm-2 pt-0" >
                       <input type="text" [min]="0" class="showBorder" name="{{j}}_unit9" id="{{j}}_unit9" #unit9="ngModel" maxlength="5"
                         [(ngModel)]="empItem.unit" [disabled]="doNotApplyForEmp2 == true" />
                     </div>
     
-                    <div class="col-sm-1 " >
+                    <div class="col-sm-1 pt-sm-2 pt-2" >
                       <label class="gray-text">State</label>
                     </div>
-                    <div class="col-sm-1  input-border-bottom"
+                    <div class="col-sm-1  input-border-bottompt-sm-2 pt-0"
                       [ngClass]="{'error_bb': borrowForm.submitted && stateId49.errors}"
                       [ngClass]="{'error_bb':  stateId49.touched && stateId49.errors}">
                       <div class=""
@@ -2286,8 +2284,8 @@
     
                     </div>
     
-                    <div class="col-sm-1 " ><label class="gray-text">ZIP</label></div>
-                    <div class="col-sm-1    input-border-bottom"
+                    <div class="col-sm-1 pt-sm-2 pt-2" ><label class="gray-text">ZIP</label></div>
+                    <div class="col-sm-1    input-border-bottom pt-sm-2 pt-0"
                       [ngClass]="{'error_bb': borrowForm.submitted && zip9.errors}"
                       [ngClass]="{'error_bb':  zip9.touched && zip9.errors}">
                       <input type="text" maxlength="10" [(ngModel)]="empItem.zip"
@@ -2295,8 +2293,8 @@
                     </div>
     
     
-                    <div class="col-sm-1 " ><label class="gray-text">Country</label></div>
-                    <div class="col-sm-2   input-border-bottom"
+                    <div class="col-sm-1 pt-sm-2 pt-2" ><label class="gray-text">Country</label></div>
+                    <div class="col-sm-2   input-border-bottom pt-sm-2 pt-0"
                       [ngClass]="{'error_bb': borrowForm.submitted && countryId9.errors}"
                       [ngClass]="{'error_bb':  countryId9.touched && countryId9.errors}">
                       <div class=""
@@ -2478,39 +2476,39 @@
         the sources listed here:</h4>
     </div>
     <div class="row">
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Alimony</li>
           <li>Automobile Allowance</li>
           <li>Boarder Income</li>
           <li>Capital Gains</li>
         </ul>
       </div>
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Child Support</li>
           <li>Disability</li>
           <li>Foster Care</li>
           <li>Housing or Parsonage</li>
         </ul>
       </div>
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Interest and Dividends</li>
           <li>Mortgage Credit Certificate</li>
           <li>Mortgage Differential Payments</li>
         </ul>
       </div>
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Notes Receivable</li>
           <li>Public Assistance</li>
           <li>Retirement (e.g., Pension, IRA)</li>
         </ul>
       </div>
 
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Royalty Payments</li>
           <li>Separate Maintenance</li>
           <li>Social Security</li>
@@ -2518,8 +2516,8 @@
         </ul>
       </div>
 
-      <div class="col-sm-2 col-2 p-0">
-        <ul>
+      <div class="col-sm-2 col-3 p-0">
+        <ul class="pb-sm-0 pb-0  mb-sm-0 mb-0">
           <li>Unemployment</li>
           <li>Benefits</li>
           <li>VA Compensation</li>

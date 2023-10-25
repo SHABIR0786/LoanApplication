@@ -169,8 +169,8 @@
                 <div class="row mx-0 mt-2" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialAssets; index as i">
                   <div class="col-sm-3 col-12 pl-0 pb-1 pr-1 pt-0 m-0 ptb-0">
                     <div class="form-row">
-                      <div class="col-sm-1 col-1 p-0  ptb-0">
-                          <div class="form-check  pt-1">
+                      <div class="col-sm-1 col-1 p-0 ptb-0 pt-sm-1 pt-0" style="display: flex; align-items: center;">
+                          <div class="form-check pt-sm-0 pt-1">
                             <input type="checkbox" class="form-check-input" (change)="removeMortgageFinancialAssetsF(i,$event)">
                           </div>
                       </div>
@@ -627,7 +627,7 @@
 
                   <div class="col-sm-2 col-2 p-0 frm-label mt-0">
                     <div class="frm-group fc-fullborder" style="padding:0px; margin:0px; border-radius: 0px 0px 10px 10px;" [ngClass]="{'disabled':flgMortgageFinancialLiabilities==true}">
-                        <div style="display: flex; align-items: center; margin-top: 5px;">
+                        <div style="display: flex; align-items: center; margin-top: 0px;">
                           <span class="dollar">$ </span>
                             <p-inputNumber class="form-control fc-fullborder-0 text-black-color pl-1"  [disabled]="true" 
                             [(ngModel)]="totalMortgageFinancialOtherLaibilities"
