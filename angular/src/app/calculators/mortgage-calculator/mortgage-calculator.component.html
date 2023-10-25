@@ -45,7 +45,7 @@
               type="text"
               [(ngModel)]="form.principal"
               (change)="HomePriceChanged()"
-              class="form-control homeprice-input"
+              class="form-control homeprice-input pl-4"
               mask="separator.2"
               thousandSeparator=","
             />
@@ -108,7 +108,7 @@
             >
               <input
                 type="text"
-                class="form-control"
+                class="form-control pl-4"
                 (change)="downPaymentInputChanged($event.target.value)"
                 [(ngModel)]="DownPaymentInput"
                 id="slidervalue"

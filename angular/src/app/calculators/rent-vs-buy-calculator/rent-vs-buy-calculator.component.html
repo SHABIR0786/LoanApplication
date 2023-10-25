@@ -2,8 +2,8 @@
   <div class="container">
     <section class="page-order-sec py-3 border-bottom-0">
       <p class="border-bottom m-0 pb-3 text-primary">
-        Home<span class="text-muted ml-3 d-inline-block">
-          <i class="fa fa-angle-right"></i> Rent vs Buy Calculator</span
+        Home<span class="text-muted ml-3 d-inline-block"
+          >Rent vs Buy Calculator</span
         >
       </p>
     </section>
@@ -15,203 +15,492 @@
       <p>Calculate your monthly payment and review your loan options.</p>
     </section>
     <section class="pt-0">
-      <div class="row">
-        <div class="col-sm-6">
-          <form
-            class="form"
-            [formGroup]="RentvsBuyForm"
-            (ngSubmit)="calculateEstimatedMonthlyPayment()"
-          >
-            <h5>Your Detail</h5>
-            <div class="form-group">
-              <label>Zip Code</label>
-              <input
-                type="number"
-                formControlName="zipCode"
-                pattern="^[0-9]{5}(?:-[0-9]{4})?$"
-                class="form-control"
-              />
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.zipCode.touched || submitted) &&
-                  RentvsBuyFormControl.zipCode.errors?.required
-                "
-              >
-                Zip Code is required
-              </span>
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.zipCode.touched || submitted) &&
-                  RentvsBuyFormControl.zipCode.errors?.pattern
-                "
-              >
-                Zip Code is Invalid
-              </span>
-            </div>
-            <div class="form-group">
-              <label class="text-primary"
-                >How would you rate your credit?</label
-              >
-              <select formControlName="creditScore" class="form-control">
-                <option
-                  *ngFor="let option of RateYourCreditOptions; let i = index"
-                  [attr.data-index]="i"
-                >
-                  {{ option.value }}
-                </option>
-              </select>
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.creditScore.touched || submitted) &&
-                  RentvsBuyFormControl.creditScore.errors?.required
-                "
-              >
-                credit Score is required
-              </span>
-            </div>
-            <h5>Buy Details</h5>
-            <div class="form-group">
-              <label>Purchase Price</label>
-              <input
-                type="text"
-                formControlName="purchasePrice"
-                mask="separator.2"
-                thousandSeparator=","
-                class="form-control homeprice-input pl-4"
-              />
-              <span class="left-value-usd">$</span>
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.purchasePrice.touched || submitted) &&
-                  RentvsBuyFormControl.purchasePrice.errors?.required
-                "
-              >
-                purchase Pirce is required
-              </span>
-            </div>
-            <div class="form-group">
-              <label>Down payment mode</label>
-              <div class="checkbox-inline mr-2">
-                <label class="containercheck"
-                  >Percentage
-                  <input
-                    type="radio"
-                    formControlName="DownPaymentType"
-                    class="form-control"
-                    (input)="downPaymentTypeChanged($event.target.value)"
-                    value="percentage"
-                  />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <div class="checkbox-inline">
-                <label class="containercheck"
-                  >USD
-                  <input
-                    type="radio"
-                    formControlName="DownPaymentType"
-                    class="form-control"
-                    (input)="downPaymentTypeChanged($event.target.value)"
-                    value="usd"
-                  />
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <div>
-                <span
-                  class="float-right text-muted cursor-pointer"
-                  (click)="editDownPayment = !editDownPayment"
-                  ><i class="fa fa-edit"></i> Edit</span
-                >
-              </div>
-              <div class="slidecontainer">
-                <input
-                  type="range"
-                  min="1"
-                  max="100"
-                  [value]="DownPaymentPercent"
-                  value="50"
-                  class="slider"
-                  id="myRange"
-                />
-                <span class="text-secondary"
-                  >{{ DownPaymentPercent }}% (${{ DownPaymentUSD }})</span
-                >
-              </div>
-              <div
-                class="form-group slider-value-form-group"
-                *ngIf="editDownPayment"
-              >
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="DownPayment"
-                  id="slidervalue"
-                  name=""
-                />
-                <span
-                  *ngIf="DownPaymentType == 'percentage'"
-                  class="slide-value-percent left-value-usd"
-                  >%</span
-                >
-                <span
-                  *ngIf="DownPaymentType == 'usd'"
-                  class="slide-value-usd left-value-usd"
-                  >$</span
-                >
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Interest Rate</label>
-              <input
-                type="text"
-                formControlName="interestRate"
-                class="form-control homeprice-input"
-              />
-              <span class="right-value-percentage">%</span>
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.interestRate.touched || submitted) &&
-                  RentvsBuyFormControl.interestRate.errors?.required
-                "
-              >
-                interest Rate is required
-              </span>
-            </div>
-            <div class="form-group">
-              <label>Rent Details</label>
-              <input
-                type="number"
-                formControlName="monthlyPayment"
-                class="form-control homeprice-input"
-              />
-              <span class="right-value-percentage">%</span>
-              <span
-                class="text-danger"
-                *ngIf="
-                  (RentvsBuyFormControl.monthlyPayment.touched || submitted) &&
-                  RentvsBuyFormControl.monthlyPayment.errors?.required
-                "
-              >
-                monthly Payment is required
-              </span>
-            </div>
-            <div class="col-sm-12" style="margin-top: 15px">
+      <form
+        class="form"
+        [formGroup]="RentvsBuyForm"
+        (ngSubmit)="calculateEstimatedMonthlyPayment()"
+      >
+        <div class="row">
+          <div class="col-sm-5">
+            <h5 class="heading-text">Home Purchase</h5>
+            <table class="w-100">
+              <tr>
+                <td>Home price</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="home_price">$</span>
+                    </div>
+                    <input
+                      type="number"
+                      formControlName="home_price"
+                      class="form-control homeprice-input"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Down payment</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="down_payment"
+                      placeholder="0"
+                      aria-describedby="down_payment"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="down_payment">%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Interest rate</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="interest_rate"
+                      placeholder="0"
+                      aria-describedby="interest_rate"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="interest_rate">%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Loan term</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="loan_term"
+                      placeholder="0"
+                      aria-describedby="loan_term"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="loan_term">Years</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Buying closing costs</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="buy_closing"
+                      placeholder="0"
+                      aria-describedby="buy_closing"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="buy_closing">%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Property tax</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="property_tax"
+                      placeholder="0"
+                      aria-describedby="property_tax"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="property_tax"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Property tax increase</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="tax_increase"
+                      placeholder="0"
+                      aria-describedby="tax_increase"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="tax_increase"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Home insurance</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="home_insurance"
+                        >$</span
+                      >
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="home_insurance"
+                      placeholder="0"
+                      aria-describedby="home_insurance"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="home_insurance"
+                        >Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>HOA fee</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="hoa_fee">$</span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="hoa_fee"
+                      placeholder="0"
+                      aria-describedby="hoa_fee"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="hoa_fee">Years</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Maintenance cost</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="maintenance_cost"
+                      placeholder="0"
+                      aria-describedby="maintenance_cost"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="maintenance_cost"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Home value appreciation</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="home_value_appreciation"
+                      placeholder="0"
+                      aria-describedby="home_value_appreciation"
+                    />
+                    <div class="input-group-append">
+                      <span
+                        class="input-group-text"
+                        id="home_value_appreciation"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Cost/insurance increase</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="cost_insurance_increase"
+                      placeholder="0"
+                      aria-describedby="cost_insurance_increase"
+                    />
+                    <div class="input-group-append">
+                      <span
+                        class="input-group-text"
+                        id="cost_insurance_increase"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Selling closing costs</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="selling_closing_costs"
+                      placeholder="0"
+                      aria-describedby="selling_closing_costs"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="selling_closing_costs"
+                        >%
+                      </span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-sm-5">
+            <h5 class="heading-text">Home Rent</h5>
+            <table class="w-100">
+              <tr>
+                <td>Monthly rental fee</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="monthly_rental_fee"
+                        >$</span
+                      >
+                    </div>
+                    <input
+                      type="number"
+                      formControlName="monthly_rental_fee"
+                      class="form-control homeprice-input"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Rental fee increase</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="rental_fee_increase"
+                      placeholder="0"
+                      aria-describedby="rental_fee_increase"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="rental_fee_increase"
+                        >% / Years</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Renter's insurance</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="renter_insurance"
+                        >$</span
+                      >
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="renter_insurance"
+                      placeholder="0"
+                      aria-describedby="renter_insurance"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="renter_insurance">
+                        Month</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Security deposit</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="security_deposit"
+                        >$</span
+                      >
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="security_deposit"
+                      placeholder="0"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Upfront cost</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="upfront_cost">$</span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="upfront_cost"
+                      placeholder="0"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <h5 class="heading-text mt-3">Your Information</h5>
+            <table class="w-100">
+              <tr>
+                <td>Average investment return</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      formControlName="average_investment_return"
+                      class="form-control homeprice-input"
+                    />
+                    <div class="input-group-append">
+                      <span
+                        class="input-group-text"
+                        id="average_investment_return"
+                        >%</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Marginal federal tax rate</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="marginal_federal_tax_rate"
+                      placeholder="0"
+                      aria-describedby="rental_fee_increase"
+                    />
+                    <div class="input-group-append">
+                      <span
+                        class="input-group-text"
+                        id="marginal_federal_tax_rate"
+                        >%</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Marginal state tax rate</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="marginal_state_tax_rate"
+                      placeholder="0"
+                      aria-describedby="marginal_state_tax_rate"
+                    />
+                    <div class="input-group-append">
+                      <span
+                        class="input-group-text"
+                        id="marginal_state_tax_rate"
+                        >%</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Tax filing status</td>
+                <td style="width: 250px">
+                  <div class="input-group mb-2">
+                    <select
+                      formControlName="tax_filing_status"
+                      class="form-control"
+                    >
+                      <option value="Single">single</option>
+                      <option value="MarriedJoint" selected="">
+                        married filing jointly
+                      </option>
+                      <option value="MarriedSeparately">
+                        married filing separately
+                      </option>
+                      <option value="HeadofHousehold">head of household</option>
+                      <option value="Widow">qualified widow</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div class="text-right mt-3">
               <button
-                class="btn btn-secondary text-white text-uppercase w-100"
                 type="submit"
+                class="btn btn-success text-uppercase aplbtn mr-2"
               >
                 Calculate
               </button>
+              <button
+                type="button"
+                class="btn btn-default text-uppercase aplbtn"
+              >
+                Clear
+              </button>
             </div>
-          </form>
+          </div>
         </div>
-        <div class="col-sm-6"></div>
+      </form>
+
+      <div class="row mt-4" *ngIf="averageMonthlyPayment.length > 0">
+        <div class="col-sm-8">
+          <h5 class="heading-text">Calculation Result Rent vs Buy</h5>
+          <table class="w-100 table table-sm table-bordered">
+            <thead>
+              <tr>
+                <td rowspan="2" class="align-middle">Staying Length</td>
+                <td colspan="2" class="align-middle">Average Buying Cost</td>
+                <td colspan="2" class="align-middle">Average Renting Cost</td>
+              </tr>
+              <tr>
+                <td>Monthly</td>
+                <td>Annual</td>
+                <td>Monthly</td>
+                <td>Annual</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let history of averageMonthlyPayment">
+                <td>{{ history.year }} Year</td>
+                <td>${{ history.monthly_price | number }}</td>
+                <td>${{ history.yearly_price | number }}</td>
+                <td>${{ history.monthly_rent | number }}</td>
+                <td>${{ history.yearly_rent | number }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   </div>

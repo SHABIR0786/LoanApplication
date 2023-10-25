@@ -137,7 +137,7 @@ ul.arrow-list li {
   list-style-image: url(../images/arrow.png);
   margin-bottom: 1rem;
   padding-left: 0.8rem;
-  text-decoration: underline;
+  text-decoration: none;
   line-height: 1.8;
 }
 #rate-updates h3 {

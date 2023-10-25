@@ -32,6 +32,7 @@ export class Step19Component implements OnInit {
     }
   }
   proceedToPrevious() {
+    this._refinanceHomeBuyingDataService.data = this.formData;
     this._route.navigate(["app/refinance-step18"]);
   }
   notify(type, message) {

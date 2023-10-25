@@ -15,3 +15,11 @@
   width: 96px;
   height: 34px;
 }
+
+.phCall i {
+  margin-right: 20px;
+  height: 38px;
+  width: 38px;
+  transform: rotate(88deg);
+  text-align: center;
+}

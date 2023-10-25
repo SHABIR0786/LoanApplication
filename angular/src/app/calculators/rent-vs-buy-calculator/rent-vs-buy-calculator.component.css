@@ -22,3 +22,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .cursor-pointer:hover {
   cursor: pointer;
 }
+.heading-text {
+  background: #10107a;
+  color: #fff;
+  padding: 5px 10px;
+}

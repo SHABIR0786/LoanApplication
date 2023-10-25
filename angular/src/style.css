@@ -22,3 +22,10 @@
 .main-content h2 {
   font-size: 32px;
 }
+.p-left-25 {
+  padding-left: 25px;
+}
+.input-group-text {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+}
