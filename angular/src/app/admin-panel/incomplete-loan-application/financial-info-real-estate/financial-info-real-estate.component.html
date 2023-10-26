@@ -52,48 +52,6 @@
     pointer-events: none;
     background-color: #e7e7e7 !important;
   }
-  /* ::ng-deep .fifty .ui-inputtext {
-        width: 50% !important;
-  }
-  ::ng-deep .sixty .ui-inputtext {
-        width: 60% !important;
-  }
-  ::ng-deep .seventy .ui-inputtext {
-        width: 70% !important;
-  }
-  ::ng-deep .eighty .ui-inputtext {
-        width: 80% !important;
-  }
-  ::ng-deep .noBorder .ui-inputtext {
-        border: none !important;
-  } */
-
-  /*   
-  :host/deep/.ui-inputtext {
-    border: 0px !important;
-    font-size: 16px;
-    margin-bottom: 0px;
-    padding-left: 0px !important;
-    width: 100%;
-    border-top: 0px !important;
-    border-left: 0px !important;
-    border-right: 0px !important;
-    color: #A5A5A5;
-    font-weight: 500;
-    line-height: 1.2575;
-    border-bottom: 0px solid #A5A5A5 !important;
-    background-color: #ffffff;
-    font-family: 'Mulish', sans-serif;
-    white-space: nowrap;
-    box-shadow: inset 0 0 0 #ffffff !important;
-    outline: medium none;
-  }
-
-  ::ng-deep .showBorder .ui-inputtext {
-        border-bottom:1px solid #A5A5A5 !important;
-        padding-left:5px ;
-        padding-right: 5px;
-  } */
 </style>
 <div>
   <h4 class="section-title">Property You Own</h4>
@@ -147,7 +105,7 @@
               <label class="frm-label"> Address </label>
 
               <div class="row p-0">
-                <div class="col-sm-1 col-2 p-0 text-align-right">
+                <div class="col-sm-1 col-2 p-0 text-align-right pt-sm-0 pt-2">
                   <label class="gray-text">Street</label>
                 </div>
                 <div
@@ -172,7 +130,7 @@
                   />
                 </div>
 
-                <div class="col-sm-1 col-1 p-0 text-align-right">
+                <div class="col-sm-1 col-1 p-0 text-align-right pt-sm-0 pt-2">
                   <label class="gray-text">Unit#</label>
                 </div>
                 <div
@@ -190,7 +148,9 @@
                   />
                 </div>
 
-                <div class="col-sm-1 col-2 p-0 mt-2 text-align-right">
+                <div
+                  class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2"
+                >
                   <label class="gray-text">City</label>
                 </div>
                 <div
@@ -244,7 +204,7 @@
                 </div>
 
                 <div
-                  class="col-sm-1 col-2 p-0 mt-2 text-align-right"
+                  class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2"
                   style="text-align: left"
                 >
                   <label class="gray-text">State</label>
@@ -303,7 +263,7 @@
                 </div>
 
                 <div
-                  class="col-sm-1 col-2 p-0 mt-2 text-align-right"
+                  class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2"
                   style="text-align: left"
                 >
                   <label class="gray-text">ZIP</label>
@@ -327,14 +287,14 @@
                 </div>
 
                 <div
-                  class="col-sm-1 col-2 p-0 mt-2 text-align-right"
+                  class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2"
                   style="text-align: left"
                 >
                   <label class="gray-text">Country</label>
                 </div>
 
                 <div
-                  class="col-sm-2 col-5 p-0 input-border-bottom"
+                  class="col-sm-2 col-5 p-0 input-border-bottom pt-sm-0 pt-2"
                   [ngClass]="{
                     error:
                       financialInfoRealEstateForm.submitted && countryId.errors
@@ -396,17 +356,13 @@
               class="frm-group"
               [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
             >
-              <div class="row">
+              <div class="row display-desktop">
                 <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0">
-                  <label class="frm-label">
-                    <span>Property Value</span>
-                  </label>
+                  <label class="frm-label"> Property Value </label>
                 </div>
 
                 <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0">
-                  <label class="frm-label mb-2">
-                    <span>Status</span>
-                  </label>
+                  <label class="frm-label mb-2">Status</label>
                   <label class="text-gray"
                     >Sold, Pending Sale, or Retained</label
                   >
@@ -415,9 +371,7 @@
                 <div
                   class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0left-border"
                 >
-                  <label class="frm-label mb-2">
-                    <span>Intended Occupancy:</span>
-                  </label>
+                  <label class="frm-label mb-2">Intended Occupancy:</label>
                   <label class="text-gray"
                     >Investment, Primary Residence, Second Home, Other</label
                   >
@@ -463,6 +417,9 @@
                 <div
                   class="col-sm-2 col-12 pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"
                 >
+                  <label class="frm-label display-mobile">
+                    Property Value
+                  </label>
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -536,6 +493,7 @@
                 <div
                   class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"
                 >
+                  <label class="frm-label display-mobile"> Status </label>
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -583,6 +541,9 @@
                 <div
                   class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"
                 >
+                  <label class="frm-label display-mobile">
+                    Intended Occupancy:</label
+                  >
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -629,6 +590,10 @@
                 <div
                   class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"
                 >
+                  <label class="frm-label display-mobile"
+                    >Monthly Insurance,Taxes, Association Dues, etc.</label
+                  >
+
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -703,6 +668,9 @@
                 <div
                   class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-1 pr-3"
                 >
+                  <label class="frm-label display-mobile"
+                    >For 2-4 Unit Primary or Investment Property</label
+                  >
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -779,6 +747,9 @@
                 <div
                   class="col-sm-2 col-12 left-border pt-sm-0 pt-1 p-0 pl-sm-1 pl-1 pr-sm-3 pr-3"
                 >
+                  <label class="frm-label display-mobile"
+                    >For LENDER to calculate:</label
+                  >
                   <div
                     class="frm-group"
                     [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
@@ -878,56 +849,6 @@
           <div class="row frm-group p-1">
             <div class="col-12">
               <div
-                class="row"
-                [ngClass]="{ disabled: item.flgMortgageLoanNotApply == true }"
-              >
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Creditor Name:</span>
-                  </label>
-                </div>
-
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Account Number:</span>
-                  </label>
-                </div>
-
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Monthly Mortgage Payment:</span>
-                  </label>
-                </div>
-
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Unpaid Balance:</span>
-                  </label>
-                  <label class="text-gray"
-                    >(To be paid off at or before closing)</label
-                  >
-                </div>
-
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Type:</span>
-                  </label>
-                  <label class="text-gray"
-                    >(FHA, VA, Conventional, USDA-RD, Other)</label
-                  >
-                </div>
-
-                <div class="col-sm-2 col-12">
-                  <label class="frm-label">
-                    <span>Credit Limit</span>
-                  </label>
-                  <label class="text-gray">(if applicable)</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <div
                 class="row mt-1"
                 *ngFor="let item2 of item.mortgageLoanOnProperty; index as j"
               >
@@ -937,7 +858,7 @@
                       class="col-sm-1 col-1 pl-sm-1 pl-3 p-0"
                       style="display: inline-flex"
                     >
-                      <div class="form-check pt-1">
+                      <div class="form-check pt-sm-4 pt-4 pl-sm-4 pl-4">
                         <input
                           type="checkbox"
                           class="form-check-input"
@@ -950,13 +871,9 @@
                           (change)="removeData(i, j, $event)"
                         />
                       </div>
-
-                      <!-- <input type="checkbox" [disabled]="flgMortgageFinancialLiabilities"
-                        [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
-                        id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"
-                        style="width: 40px;" (change)="removeData(i,j,$event)"/> -->
                     </div>
                     <div class="col-sm-11 col-11 pl-sm-1 pl-0">
+                      <label class="frm-label">Creditor Name:</label>
                       <div
                         class="frm-group"
                         [ngClass]="{
@@ -994,8 +911,9 @@
                 </div>
 
                 <div
-                  class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"
+                  class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-sm-1 pt-2"
                 >
+                  <label class="frm-label">Account Number:</label>
                   <div
                     class="frm-group"
                     [ngClass]="{
@@ -1029,6 +947,7 @@
                 <div
                   class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"
                 >
+                  <label class="frm-label">Monthly Mortgage Payment: </label>
                   <div
                     class="frm-group mt-0"
                     style="display: flex"
@@ -1122,6 +1041,9 @@
                 <div
                   class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"
                 >
+                  <label class="frm-label">
+                    <span>Unpaid Balance:</span>
+                  </label>
                   <div
                     class="frm-group"
                     [ngClass]="{
@@ -1201,7 +1123,7 @@
                           id="{{ j }}.isPaidBeforeClosing"
                           name="{{ j }}.isPaidBeforeClosing"
                           #isPaidBeforeClosing="ngModel"
-                          style="width: 40px"
+                          style="width: 13px"
                         />
                       </div>
                     </div>
@@ -1211,6 +1133,9 @@
                 <div
                   class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"
                 >
+                  <label class="frm-label">
+                    <span>Type:</span>
+                  </label>
                   <div
                     class="frm-group mt-0"
                     [ngClass]="{
@@ -1260,6 +1185,10 @@
                 <div
                   class="col-sm-2 col-12 pb-sm-0 pb-1 p-0 pl-sm-1 pl-4 pt-sm-1 pt-1"
                 >
+                  <label class="frm-label">
+                    Credit Limit (if applicable)
+                  </label>
+
                   <div
                     class="frm-group"
                     [ngClass]="{
@@ -1395,342 +1324,6 @@
           </div>
         </div>
       </div>
-
-      <!-- 
-      <div class="row div-sub-grp">
-        <div class="col-12">
-          <div class="frm-group">
-            <label class="frm-label">
-              <span>Address</span>
-            </label>
-            <div class="row mt-12">
-              <div class="col-1"><label class="gray-text">Street</label></div>
-              <div class="col-10 input-border-bottom">
-                <input type="text"  />
-              </div>
-            </div>
-
-
-
-            <div class="row mt-2">
-              <div class="col-1 mt-2"><label class="gray-text">City</label></div>
-              <div class="col-3 input-border-bottom">
-                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select>
-                      <option  disabled>Select State </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">State</label></div>
-              <div class="col-1 input-border-bottom">
-                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select>
-                      <option  disabled>Select State </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-1 mt-2"><label class="gray-text" style="text-align: right;">ZIP</label></div>
-              <div class="col-1 input-border-bottom mt-1">
-                <input type="text" />
-              </div>
-
-
-              <div class="col-1 mt-2"><label class="gray-text">Country</label></div>
-              <div class="col-2 input-border-bottom">
-                <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
-                  <div class="frm-fld-input_sml" style="border-bottom:1px solid #696969 !important ; margin: 0px;">
-                    <select   >
-                      <option  disabled>Select Country </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="row div-sub-grp">
-        <div class="col-12">
-          <div class="frm-group">
-
-            <div class="row">
-              <div class="col-2">
-                <label class="frm-label">
-                  <span>Property Value</span>
-                </label>
-              </div>
-
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Status</span>
-                </label>
-                <label class="text-gray">Sold, Pending Sale, or Retained</label>
-              </div>
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Intended Occupancy:</span>
-                </label>
-                <label class="text-gray">Investment, Primary Residence, Second Home, Other</label>
-              </div>
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Monthly Insurance,Taxes, Association Dues, etc.</span>
-                </label>
-                <label class="text-gray">if not included in Monthly Mortgage Payment</label>
-              </div>
-
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>For 2-4 Unit Primary or Investment Property</span>
-                </label>
-                <label class="text-gray">Monthly Rental Income</label>
-              </div>
-
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span></span>
-                </label>
-                <label class="text-gray">For LENDER to calculate: Net Monthly Rental Income</label>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-2">
-                <div class="frm-group">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-                 </div>
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group ">
-                  <div class="frm-fld-input">
-                      <select name="firstName">
-                        <option value="-1" selected disabled>-Select One-</option>
-                        <option>Alimony</option>
-                        <option>Child Support</option>
-                        <option>Separate Maintenance</option>
-                        <option>Job Related Expenses</option>
-                        <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5"><div class="frm-group ">
-                <div class="frm-fld-input">
-                    <select name="firstName">
-                      <option value="-1" selected disabled>-Select One-</option>
-                      <option>Alimony</option>
-                      <option>Child Support</option>
-                      <option>Separate Maintenance</option>
-                      <option>Job Related Expenses</option>
-                      <option>Other</option>
-                  </select>
-                </div>
-              </div></div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-                 </div>
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-                 </div>
-              </div>
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <div class="frm-group">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="section-title-wo-border" style="display: flex; align-items: center; width: 100%;">
-        <span style="font-size: 20px;">Mortgage Loans on this Property</span>
-        <label class="container" style="margin-left:20px;width:200px"><span style=" font-weight: bold;">Does Not Apply</span>
-          <input type="checkbox">
-          <span class="checkmark mt-2"></span>
-        </label>
-      </div> -->
-
-      <!-- <div class="row div-sub-grp mt-1">
-        <div class="col-12">
-          <div class="frm-group">
-
-            <div class="row">
-              <div class="col-2">
-                <label class="frm-label">
-                  <span>Creditor Name:</span>
-                </label>
-              </div>
-
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Account Number:</span>
-                </label>
-
-              </div>
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Monthly Mortgage Payment:</span>
-                </label>
-              </div>
-
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Unpaid Balance:</span>
-                </label>
-                <label class="text-gray">(To be paid off at or before closing)</label>
-              </div>
-
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Type:</span>
-                </label>
-                <label class="text-gray">(FHA, VA, Conventional, USDA-RD, Other)</label>
-              </div>
-
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <label class="frm-label">
-                  <span>Credit Limit</span>
-                </label>
-                <label class="text-gray">(if applicable)</label>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-2">
-                <div class="frm-group ">
-                  <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
-              </div>
-
-              <div class="frm-group mt-2">
-                <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
-            </div>
-
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group ">
-                    <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
-                </div>
-                <div class="frm-group mt-2">
-                  <p class="frm-fld-input height35"><input type="text" name="firstName" /></p>
-              </div>
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-               <div class="frm-group ">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-              </div>
-
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-            </div>
-
-            </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-                 </div>
-                 <div class="frm-group mt-2">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-              </div>
-              </div>
-              <div class="col-2"  style="border-left:1px solid #a5a5a5">
-                <div class="frm-group mt-2">
-                  <div class="frm-fld-input">
-                      <select name="firstName">
-                        <option value="-1" selected disabled>Interest and Dividends</option>
-                        <option value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Money Market">Money Market</option>
-                        <option value="Certificate of Deposit">Certificate of Deposit</option>
-                        <option value="Mutual Fund">Mutual Fund</option>
-                        <option value="Bridge Loan Proceeds">Bridge Loan Proceeds</option>
-                        <option value="Individual Development Account">Individual Development Account</option>
-                        <option value="Trust Account">Trust Account</option>
-                        <option value="Cash Value of Life Insurance (used for the transaction)">Cash Value of Life Insurance (used for the transaction)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="frm-group mt-2">
-                  <div class="frm-fld-input">
-                      <select name="firstName">
-                        <option value="-1" selected disabled>Interest and Dividends</option>
-                        <option value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Money Market">Money Market</option>
-                        <option value="Certificate of Deposit">Certificate of Deposit</option>
-                        <option value="Mutual Fund">Mutual Fund</option>
-                        <option value="Bridge Loan Proceeds">Bridge Loan Proceeds</option>
-                        <option value="Individual Development Account">Individual Development Account</option>
-                        <option value="Trust Account">Trust Account</option>
-                        <option value="Cash Value of Life Insurance (used for the transaction)">Cash Value of Life Insurance (used for the transaction)</option>
-                    </select>
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-2" style="border-left:1px solid #a5a5a5">
-
-                <div class="frm-group ">
-                  <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                  </div>
-              </div>
-
-              <div class="frm-group mt-2">
-                <div class="input-border-bottom">
-                  <div style="display: flex; align-items: center; margin-bottom: 15px;"><span style="width: 20px; text-align: right; margin-right: 5px;">$ </span> <input type="text" /></div>
-                </div>
-            </div>
-
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12">
-                <div class="col-6"><a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Add more</a> / <a  style="cursor: pointer;color: #696969; text-decoration: none; font-size: 14px;">Remove</a></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div> -->
 
       <div class="separator"></div>
       <div class="row borrower-block">

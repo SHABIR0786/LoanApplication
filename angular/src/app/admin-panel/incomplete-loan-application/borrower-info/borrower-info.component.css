@@ -198,7 +198,7 @@
   .div-main-grp .div-sub-grp .div-border {
     box-sizing: border-box;
     padding: 5px 20px 5px 15px !important;
-    min-height: 50px;
+    min-height: 40px;
     border: solid 0.1rem #a5a5a5;
     background-color: #ffffff;
     border-radius: 10px;
@@ -629,7 +629,7 @@
     -moz-appearance: none;
     background: transparent;
     background-image: url("https://cdn-icons-png.flaticon.com/512/60/60995.png");
-    background-size: auto 60%;
+    background-size: auto 40%;
     background-repeat: no-repeat;
     height: 30px !important;
     background-position-x: 98%;
