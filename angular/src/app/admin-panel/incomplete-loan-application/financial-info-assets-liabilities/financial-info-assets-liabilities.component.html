@@ -19,7 +19,10 @@
     width: 100% !important;
   }
 
-  
+  :host ::ng-deep .p-inputnumber .p-inputnumber-input:enabled:focus, 
+  :host ::ng-deep .p-inputnumber {
+  background-color: white !important;
+  }
  
   :host/deep/  .disabled input{
     pointer-events: none;
@@ -235,7 +238,7 @@
 
                   <div class="col-sm-3 col-4 p-sm-0 p-0 ptb-0">
                     <div class="form-group pt-0 m-0 fc-fullborder" style="display:flex; align-items: center;">
-                      <label class="pr-sm-0 pr-2 pl-sm-1 pl-2 pt-sm-0 pt-1 text-right">$</label>
+                      <label class="pr-sm-0 pr-2 pl-sm-1 pl-2 pt-sm-0 pt-0 text-right">$</label>
                       <div style="width:100%;" class="pl-sm-1 pl-0">
                             <p-inputNumber [disabled]="true" class="form-control fc-fullborder-0 text-black-color pl-0"
                             [(ngModel)]="totalMortgageFinancialAssets" id="totalMortgageFinancialAssets"
@@ -362,10 +365,10 @@
 
                   <div class="col-sm-2 col-4 mt-0 ptb-0 " [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="row pb-0 pt-1" *ngFor="let item2 of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherAssets; index as j"
-                        [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
+                        [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
+                        <div class="col-sm-12 col-12 ptb-0 fc-fullborder"
                         [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && cashMarketValue312.errors}"
-                        [ngClass]="{'error':  cashMarketValue312.touched && cashMarketValue312.errors}" >
-                        <div class="col-sm-12 col-12 ptb-0 fc-fullborder ">
+                        [ngClass]="{'error':  cashMarketValue312.touched && cashMarketValue312.errors}">
                           <div class="form-group row pb-sm-0 mb-0 mb-sm-0 pb-0 ptb-0">
                             <label class="col-sm-1 col-1 pl-0 pr-0 col-form-label col-form-label-sm  text-gray-color pt-2 text-right">$</label>
                             <div class="col-sm-11 col-11 pl-0">
@@ -403,7 +406,7 @@
                   
                   <div class="col-sm-2 col-4 p-sm-0 p-0 ptb-0" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
                     <div class="form-group ptb-0 fc-fullborder" style="display: flex; align-items: center;"  [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}">
-                      <label class="pr-sm-0 pr-2 pl-sm-1 pl-2 pt-sm-0 pt-1 text-right">$</label>
+                      <label class="pr-sm-0 pr-0 pl-sm-1 pl-2 pt-sm-0 pt-0 text-right">$</label>
                       <div class=" pl-1">
                         <p-inputNumber  class="form-control fc-fullborder-0 text-black-color pl-1" [ngClass]="{'disabled':flgMortgageFinancialOtherAssets==true}"
                         [disabled]="true" style="width: 100%;"   min="0" [(ngModel)]="totalMortgageFinancialOtherAssets"
@@ -695,7 +698,7 @@
 
           <div class="div-main-grp" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
             <div class="div-sub-grp">
-              <div class="frm-group pr-4" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
+              <div class="frm-group pr-sm-4 pr-0" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
 
                 <div class="row">
                   <label class="col-sm-10 col-7 frm-label  pl-sm-0 pl-4">
@@ -749,17 +752,15 @@
 
                   <div class="col-sm-2 col-5 pl-sm-2 pl-4 mt-0 ptb-0 pr-0 pr-4" [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}">
                     <div class="row pb-0 pb-0 pb-sm-0 pt-1 pt-sm-1 mb-0 mb-sm-0" *ngFor="let item of financialInfoAssetsLiabilitiesModels.mortgageFinancialOtherLaibilities; index as l">
-                      <!-- <label class="pl-sm-0 pl-0">
-                        Cash or Market Value
-                      </label>   -->
-                      <div class="col-sm-12 col-12 ptb-0 fc-fullborder" >
+                      <div class="col-sm-12 col-12 ptb-0 fc-fullborder" 
+                      [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && monthlyPayment.errors}"
+                      [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}" >
                           <div class="form-group row mb-sm-0 mb-0 pl-sm-0 pl-0 pb-sm-0 pb-0 ptb-0">
                             <label class="col-sm-1 col-1 pl-0 pr-0 text-right col-form-label col-form-label-sm  text-black-color pt-2">$</label>
                             <div class="col-sm-11 col-11  mb-sm-0 mb-0 pl-sm-1 pl-1 pb-sm-0 pb-0">
                               <p-inputNumber class="form-control  fc-fullborder-0  text-gray-color mb-sm-0 mb-0 pl-sm-1 pl-1 pb-sm-0 pb-0" style="width:100%; padding-right: 10px;"
                                 [ngClass]="{'disabled':flgMortgageFinancialOtherLaibilities==true}"
-                                [ngClass]="{'error': financialInfoAssetsLiaForm.submitted && monthlyPayment.errors}"
-                                [ngClass]="{'error':  monthlyPayment.touched && monthlyPayment.errors}"
+                               
 
                                 [disabled]="flgMortgageFinancialOtherLaibilities"
                                 [required]="flgMortgageFinancialOtherLaibilities ==false" [(ngModel)]="item.monthlyPayment"

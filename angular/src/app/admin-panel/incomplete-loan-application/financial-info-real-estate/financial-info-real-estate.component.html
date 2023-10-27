@@ -74,7 +74,7 @@
     <form #financialInfoRealEstateForm="ngForm" (ngSubmit)="financialInfoRealEstateForm.valid && create()" class="w-full">
     
       <div class="section-title" style="display: flex; align-items: center; width: 100%;">
-      <span style="font-size: 20px;">If you are refinancing, list the property you are refinancing FIRST.</span>
+      <span class="section-subtitle">If you are refinancing, list the property you are refinancing FIRST.</span>
     </div>
 
     <h4 style="font-size: 14px; color: #000;margin-top:5px">Include income from other sources below. Under Income Source, choose from the sources listed here:</h4>
@@ -103,7 +103,7 @@
               </div>
            
               <div class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2" ><label class="gray-text">City</label></div>
-              <div class="col-sm-3 col-10 p-0 input-border-bottom"
+              <div class="col-sm-3 col-10 p-0 input-border-bottom mt-sm-0 mt-1"
               [ngClass]="{'error': financialInfoRealEstateForm.submitted && cityId.errors}"
               [ngClass]="{'error':  cityId.touched && cityId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -119,7 +119,7 @@
               </div>
 
               <div class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2" style="text-align: left;"><label class="gray-text" >State</label></div>
-              <div class="col-sm-2 col-10 p-0 input-border-bottom"
+              <div class="col-sm-2 col-10 p-0 input-border-bottom mt-sm-0 mt-1"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && stateId.errors}"
                 [ngClass]="{'error':  stateId.touched && stateId.errors}">
                 <div class="frm-group" style="border: 0px solid !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -136,14 +136,14 @@
               </div>
 
               <div class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2" style="text-align: left;"><label class="gray-text" >ZIP</label></div>
-              <div class="col-sm-1 col-3 p-0 input-border-bottom mt-1"
+              <div class="col-sm-1 col-3 p-0 input-border-bottom mt-sm-3 mt-3"
                 [ngClass]="{'error': financialInfoRealEstateForm.submitted && zip.errors}"
                 [ngClass]="{'error':  zip.touched && zip.errors}">
                 <input type="text" [readonly]="item.flgApplicableNotApply == true" [(ngModel)]="item.zip" name="{{i}}_zip" id="{{i}}_zip" #zip="ngModel"
                 [required]="item.flgApplicableNotApply == false" />
               </div>
 
-              <div class="col-sm-1 col-2  p-0 mt-2 text-align-right pt-sm-2 pt-2" style="text-align: left;">
+              <div class="col-sm-1 col-2  p-0 mt-sm-2 mt-3 text-align-right pt-sm-2 pt-2" style="text-align: left;">
                 <label class="gray-text">Country</label>
               </div>
 
@@ -169,7 +169,7 @@
 
       <div class="row div-sub-grp">
         <div class="col-12 p-0">
-          <div class="frm-group" [ngClass]="{'disabled':item.flgApplicableNotApply == true}">
+          <div class="sub-div-border" [ngClass]="{'disabled':item.flgApplicableNotApply == true}">
             <div class="row display-desktop">
               <div class="col-sm-2 col-12 pl-sm-1 pl-0 pr-sm-1 pr-0">
                 <label class="frm-label"> Property Value </label>
@@ -365,7 +365,7 @@
                 <div class="col-sm-2 col-12 p-0">
                   <div class="form-row">
                       <div class="col-sm-1 col-1 pl-sm-1 pl-3 p-0" style="display: inline-flex;">
-                        <div class="form-check pt-sm-4 pt-4 pl-sm-4 pl-4">
+                        <div class="form-check pt-sm-4 pt-3 pl-sm-4 pl-4">
                           <input type="checkbox" class="form-check-input" [disabled]="flgMortgageFinancialLiabilities"
                           [required]="flgMortgageFinancialLiabilities ==false" [(ngModel)]="item2.isPaidBeforeClosing1"
                           id="{{j}}_isPaidBeforeClosing1" name="{{j}}_isPaidBeforeClosing1" #isPaidBeforeClosing1="ngModel"  (change)="removeData(i,j,$event)">
@@ -502,10 +502,10 @@
               <div class="row">
                 <div class="col-12">
                   <div class="col-6 p-0 mt-2" >
-                    <span style="border-bottom: 1px solid #696969; font-size: 12px; font-weight: 600;">
-                      <a [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="addMortgageLoanList(i)">Add more</a> 
-                      <span *ngIf="item.flgShowRemove == true">/</span> 
-                      <a *ngIf="item.flgShowRemove == true" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: none; font-size: 12px;" (click)="removeMortgageLoanList(i)">Remove</a>
+                    <span style=" font-size: 12px; font-weight: 600;">
+                      <a [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;" (click)="addMortgageLoanList(i)">Add more</a> 
+                      <span *ngIf="item.flgShowRemove == true"> / </span> 
+                      <a *ngIf="item.flgShowRemove == true" [ngClass]="{'disabled':item.flgMortgageLoanNotApply==true}" style="cursor: pointer;color: #696969; text-decoration: underline; font-size: 12px;" (click)="removeMortgageLoanList(i)">Remove</a>
                     </span>
                   </div>
                 </div>

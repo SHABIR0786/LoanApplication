@@ -168,13 +168,6 @@
                           <label class="text-gray" style="padding-top: 5px; font-size: 11px !important; color: #000 !important; font-weight: 600;">Other (specify)</label>
                         </div>
                       </div>
-
-                      <!-- <div class="col-3">
-                        <div class="col-2 input-border-bottom">
-                          <input type="text" />
-                        </div>
-                      </div> -->
-
                     </div>
                   </div>
                 </div>
@@ -208,7 +201,6 @@
               <div class="col-sm-1 col-sm-push-3  pr-2"><label class="gray-text" >Unit#</label></div>
               <div class="col-sm-3 col-sm-push-7  pr-2 input-border-bottom">
                 <input type="text" class="showBorder" maxlength="5"  [min]="0" />
-                <!-- <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber> -->
               </div>
             </div>
 
@@ -314,13 +306,6 @@
                   <span>Occupancy</span>
                 </label>
               </div>
-
-              <!-- <div class="col-10">
-                <label class="frm-label">
-                  <span></span>
-                </label>
-              </div> -->
-
             </div>
 
             <div class="row mt-2">
@@ -728,25 +713,12 @@
 
               </div>
               <div class="col-sm-4 col-sm-push-12">
-                <div class="frm-group mt-3" [ngClass]="{'disabled':flgRentalIncome==true}"
+                <div class="frm-group mt-sm-3 mt-3" [ngClass]="{'disabled':flgRentalIncome==true}"
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && txtmonthlyRentalIncome.errors}"
                   [ngClass]="{'error':  txtmonthlyRentalIncome.touched && txtmonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                    <div  class="mt-sm-2 mt-2"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span> 
-                        <!-- <input type="number"
-                        min="0" [readonly]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
-                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" /> -->
-
-                        <!-- <p-inputNumber class="showBorder" maxlength="9"
-                        [disabled]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
-                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
                         <input type="text" 
                           onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
@@ -776,21 +748,8 @@
                   [ngClass]="{'error': loanPropertyInfoForm.submitted && netMonthlyRentalIncome.errors}"
                   [ngClass]="{'error':  netMonthlyRentalIncome.touched && netMonthlyRentalIncome.errors}">
                   <div class="input-border-bottom">
-                    <div style="display: flex; align-items: center;margin-top: 15px;"><span
+                    <div style="display: flex; align-items: center;" class="mt-sm-2 mt-2"><span
                         style="width: 20px; text-align: right; margin-right: 5px;">$ </span>
-                         <!-- <input type="number"
-                        min="0" [readonly]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
-                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" /> -->
-
-                        <!-- <p-inputNumber class="showBorder" maxlength="9"
-                         [disabled]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
-                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
                         <input type="text" 
                           onFocus="this.select();" (blur)="fixDecimals($event)" (keypress)="numberOnly(this,$event)"  pattern="^\d+(?:\.\d{1,2})?$"  style="border:0px !important;   padding-left:5px;    border: 0px !important;font-size: 14px;margin-bottom: 0px; padding-left: 5px !important;padding-right: 5px !important;width: 100%;color: #A5A5A5;font-weight: 500;"
                         [min]="0" maxlength="9" 
@@ -806,9 +765,6 @@
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>
