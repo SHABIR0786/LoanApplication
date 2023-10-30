@@ -15,7 +15,9 @@ export class RentVsBuyCalculatorComponent implements OnInit {
   RentvsBuyForm: FormGroup;
   form: Object = {};
   submitted = false;
-  averageMonthlyPayment = [];
+  buyingCosts = [];
+  rentingCosts = [];
+  loanTerms = 0;
   rental = {};
   DownPaymentType = "usd";
   DownPaymentPercent = 0;
@@ -42,179 +44,118 @@ export class RentVsBuyCalculatorComponent implements OnInit {
   myForm() {}
   ngOnInit(): void {
     this.RentvsBuyForm = this.fb.group({
-      home_price: ["", Validators.required],
-      down_payment: [null],
-      interest_rate: [null],
-      loan_term: [null],
-      buy_closing: [null],
-      property_tax: [null],
-      tax_increase: [null],
-      home_insurance: [null],
-      hoa_fee: [null],
-      maintenance_cost: [null],
-      home_value_appreciation: [null],
-      cost_insurance_increase: [null],
-      selling_closing_costs: [null],
+      home_price: [500000, Validators.required],
+      down_payment: [20, Validators.required],
+      interest_rate: [7.03, Validators.required],
+      loan_term: [30, Validators.required],
+      buy_closing: [2, Validators.required],
+      property_tax: [1.5, Validators.required],
+      tax_increase: [3, Validators.required],
+      home_insurance: [2500, Validators.required],
+      hoa_fee: [0, Validators.required],
+      maintenance_cost: [1.5, Validators.required],
+      home_value_appreciation: [3, Validators.required],
+      cost_insurance_increase: [3, Validators.required],
+      selling_closing_costs: [7, Validators.required],
 
-      monthly_rental_fee: [null],
-      rental_fee_increase: [null],
-      renter_insurance: [null],
-      security_deposit: [null],
-      upfront_cost: [null],
+      monthly_rental_fee: [3000, Validators.required],
+      rental_fee_increase: [3, Validators.required],
+      renter_insurance: [15, Validators.required],
+      security_deposit: [3000, Validators.required],
+      upfront_cost: [100],
 
-      average_investment_return: [null],
-      marginal_federal_tax_rate: [null],
-      marginal_state_tax_rate: [null],
-      tax_filing_status: [null],
+      average_investment_return: [5, Validators.required],
+      marginal_federal_tax_rate: [25, Validators.required],
+      marginal_state_tax_rate: [0, Validators.required],
+      tax_filing_status: ["MarriedJoint", Validators.required],
     });
   }
 
-  //   downPaymentChanged(e) {
-  //       this.DownPaymentPercent = e;
-  //       this.DownPaymentUSD = (this.DownPaymentPercent * this.RentvsBuyForm.value.purchasePrice) / 100;
-  //       this.downPaymentTypeUpdated(this.DownPaymentType);
-  //       this.calculateEstimatedMonthlyPayment();
-  //   }
-  //   HomePriceChanged() {
-  //       this.calculateEstimatedMonthlyPayment();
-  //       this.DownPaymentUSD = (this.DownPaymentPercent * this.RentvsBuyForm.value.purchasePrice) / 100;
-  //       this.downPaymentTypeUpdated(this.DownPaymentType);
-  //   }
-  // downPaymentTypeChanged(value) {
-  //     this.DownPaymentType = value;
-  //   this.downPaymentTypeUpdated(value);
-  //   this.DownPaymentUSD = (this.DownPaymentPercent * this.RentvsBuyForm.value.purchasePrice) / 100;
-  //   this.DownPaymentPercent = (this.DownPaymentUSD / this.RentvsBuyForm.value.purchasePrice) * 100;
-  // }
+  getNumberRange(start: number, end: number): number[] {
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  }
 
-  // monthly_rental_fee: [null],
-  // rental_fee_increase: [null],
-  // renter_insurance: [null],
-  // security_deposit: [null],
-  // upfront_cost: [null],
+  calculateMonthlyMortgagePayment = (principal, interestRate, termInYears) => {
+    interestRate = interestRate === 0 ? 0 : interestRate / 100;
+    const monthlyInterestRate = interestRate === 0 ? 0 : interestRate / 12;
+    const numberOfMonthlyPayments = termInYears * 12;
+    return (
+      (monthlyInterestRate *
+        principal *
+        Math.pow(1 + monthlyInterestRate, numberOfMonthlyPayments)) /
+        (Math.pow(1 + monthlyInterestRate, numberOfMonthlyPayments) - 1) || 0
+    );
+  };
   calculateEstimatedMonthlyPayment() {
-    this.averageMonthlyPayment = [];
-    this.submitted = true;
-    var monthlyfee = 0;
-    var monthlyPrice = 0;
-    monthlyfee = this.RentvsBuyForm.value.monthly_rental_fee;
-    monthlyPrice = this.RentvsBuyForm.value.home_price;
-    for (var i = 0; i < 30; i++) {
-      if (i == 0) {
-        var RentalFeeIncrease =
-          (monthlyfee * this.RentvsBuyForm.value.rental_fee_increase) / 100;
-        monthlyfee =
-          this.RentvsBuyForm.value.upfront_cost +
-          monthlyfee +
-          RentalFeeIncrease +
-          this.RentvsBuyForm.value.renter_insurance +
-          this.RentvsBuyForm.value.security_deposit;
+    const homePrice = this.RentvsBuyForm.value.home_price;
+    const downPaymentPercentage = this.RentvsBuyForm.value.down_payment;
+    const interestRate = this.RentvsBuyForm.value.interest_rate;
+    const loanTermYears = this.RentvsBuyForm.value.loan_term;
+    const buyingClosingCostsPercentage = this.RentvsBuyForm.value.buy_closing;
+    const propertyTaxRate = this.RentvsBuyForm.value.property_tax;
+    const propertyTaxIncreaseRate = this.RentvsBuyForm.value.tax_increase;
+    const homeInsurance = this.RentvsBuyForm.value.home_insurance;
+    const monthlyRentalFee = this.RentvsBuyForm.value.monthly_rental_fee;
+    const rentalFeeIncreaseRate = this.RentvsBuyForm.value.rental_fee_increase;
+    const renterInsuranceMonthly = this.RentvsBuyForm.value.renter_insurance;
+    const securityDeposit = this.RentvsBuyForm.value.security_deposit;
+    const upfrontCost = this.RentvsBuyForm.value.upfront_cost;
+    const maintenanceCostRate = this.RentvsBuyForm.value.maintenance_cost;
+    const homeValueAppreciationRate = this.RentvsBuyForm.value
+      .home_value_appreciation;
+    const costInsuranceIncreaseRate = this.RentvsBuyForm.value
+      .cost_insurance_increase;
+    const sellingClosingCostsPercentage = this.RentvsBuyForm.value
+      .selling_closing_costs;
 
-        var down_payment =
-          (monthlyPrice * this.RentvsBuyForm.value.down_payment) / 100;
-        var buy_closing =
-          (monthlyPrice * this.RentvsBuyForm.value.buy_closing) / 100;
-        var property_tax =
-          (monthlyPrice * this.RentvsBuyForm.value.property_tax) / 100;
-        var interest_rate =
-          (monthlyPrice * this.RentvsBuyForm.value.interest_rate) / 100;
-        var tax_increase =
-          (monthlyPrice * this.RentvsBuyForm.value.tax_increase) / 100;
-        var home_insurance = this.RentvsBuyForm.value.home_insurance;
-        var hoa_fee = this.RentvsBuyForm.value.hoa_fee;
-        var maintenance_cost =
-          (monthlyPrice * this.RentvsBuyForm.value.maintenance_cost) / 100;
-        var home_value_appreciation =
-          (monthlyPrice * this.RentvsBuyForm.value.home_value_appreciation) /
-          100;
-        var cost_insurance_increase =
-          (monthlyPrice * this.RentvsBuyForm.value.cost_insurance_increase) /
-          100;
-        var selling_closing_costs =
-          (monthlyPrice * this.RentvsBuyForm.value.selling_closing_costs) / 100;
-        monthlyPrice =
-          down_payment +
-          monthlyPrice * buy_closing +
-          property_tax +
-          interest_rate +
-          tax_increase +
-          home_insurance +
-          hoa_fee +
-          maintenance_cost +
-          home_value_appreciation +
-          cost_insurance_increase +
-          selling_closing_costs;
-      } else {
-        // var RentalFeeIncrease = (monthlyfee * (this.RentvsBuyForm.value.rental_fee_increase / 100)) / 1.952;
-        var RentalFeeIncrease =
-          (monthlyfee * this.RentvsBuyForm.value.rental_fee_increase) / 100;
-        var investment_return =
-          (monthlyfee * this.RentvsBuyForm.value.average_investment_return) /
-          100;
-        var marginal_federal_tax_rate =
-          (monthlyfee * this.RentvsBuyForm.value.marginal_federal_tax_rate) /
-          100;
-        var marginal_state_tax_rate =
-          (monthlyfee * this.RentvsBuyForm.value.marginal_state_tax_rate) / 100;
-        monthlyfee =
-          this.RentvsBuyForm.value.upfront_cost +
-          monthlyfee +
-          RentalFeeIncrease +
-          this.RentvsBuyForm.value.renter_insurance +
-          this.RentvsBuyForm.value.security_deposit +
-          investment_return -
-          marginal_federal_tax_rate -
-          marginal_state_tax_rate;
+    // Initialize variables
+    let buyingCosts = [];
+    let rentingCosts = [];
+    let monthlyMortgagePayment =
+      ((homePrice - homePrice * (downPaymentPercentage / 100)) *
+        (interestRate / 100 / 12)) /
+      (1 - Math.pow(1 + interestRate / 100 / 12, -loanTermYears * 12));
+    let remainingLoan = homePrice - homePrice * (downPaymentPercentage / 100);
 
-        var down_payment =
-          (monthlyPrice * this.RentvsBuyForm.value.down_payment) / 100;
-        var buy_closing =
-          (monthlyPrice * this.RentvsBuyForm.value.buy_closing) / 100;
-        var property_tax =
-          (monthlyPrice * this.RentvsBuyForm.value.property_tax) / 100;
-        var interest_rate =
-          (monthlyPrice * this.RentvsBuyForm.value.interest_rate) / 100;
-        var tax_increase =
-          (monthlyPrice * this.RentvsBuyForm.value.tax_increase) / 100;
-        var home_insurance = this.RentvsBuyForm.value.home_insurance;
-        var hoa_fee = this.RentvsBuyForm.value.hoa_fee;
-        var maintenance_cost =
-          (monthlyPrice * this.RentvsBuyForm.value.maintenance_cost) / 100;
-        var home_value_appreciation =
-          (monthlyPrice * this.RentvsBuyForm.value.home_value_appreciation) /
-          100;
-        var cost_insurance_increase =
-          (monthlyPrice * this.RentvsBuyForm.value.cost_insurance_increase) /
-          100;
-        var selling_closing_costs =
-          (monthlyPrice * this.RentvsBuyForm.value.selling_closing_costs) / 100;
-        monthlyPrice =
-          down_payment +
-          monthlyPrice * buy_closing +
-          property_tax +
-          interest_rate +
-          tax_increase +
-          home_insurance +
-          hoa_fee +
-          maintenance_cost +
-          home_value_appreciation +
-          cost_insurance_increase +
-          selling_closing_costs;
-      }
-      monthlyfee = Math.floor(monthlyfee);
-      const data = {
-        year: i + 1,
-        monthly_rent: monthlyfee,
-        yearly_rent: monthlyfee * 12,
-        monthly_price: monthlyPrice,
-        yearly_price: monthlyPrice * 12,
-      };
-      this.averageMonthlyPayment.push(data);
+    for (let year = 1; year <= 30; year++) {
+      // Calculate annual buying costs for year N
+      const monthlyPropertyTax =
+        (homePrice *
+          (propertyTaxRate / 100) *
+          Math.pow(1 + propertyTaxIncreaseRate / 100, year - 1)) /
+        12;
+      const monthlyMaintenanceCost =
+        (homePrice *
+          (maintenanceCostRate / 100) *
+          Math.pow(1 + costInsuranceIncreaseRate / 100, year - 1)) /
+        12;
+      const monthlySellingCosts =
+        (homePrice *
+          (sellingClosingCostsPercentage / 100) *
+          Math.pow(1 + homeValueAppreciationRate / 100, year - 1)) /
+        12;
+      const annualBuyingCost =
+        monthlyMortgagePayment * 12 +
+        monthlyPropertyTax * 12 +
+        homeInsurance +
+        monthlyMaintenanceCost * 12 +
+        monthlySellingCosts;
+
+      // Calculate annual renting costs for year N
+      const monthlyRent =
+        monthlyRentalFee * Math.pow(1 + rentalFeeIncreaseRate / 100, year - 1);
+      const annualRenterInsurance = renterInsuranceMonthly * 12;
+      const annualUpfrontCost = upfrontCost;
+      const annualRentingCost =
+        monthlyRent * 12 + annualRenterInsurance + annualUpfrontCost;
+
+      // Store the results
+      buyingCosts.push(annualBuyingCost);
+      rentingCosts.push(annualRentingCost);
     }
-
-    // if(this.RentvsBuyForm.valid) {
-    //   console.log(this.RentvsBuyForm.value.averageMonthlyPayment);
-    // }
+    this.buyingCosts = buyingCosts;
+    this.rentingCosts = rentingCosts;
+    this.loanTerms = this.RentvsBuyForm.value.loan_term;
   }
   downPaymentTypeUpdated(value) {
     this.DownPaymentType = value;

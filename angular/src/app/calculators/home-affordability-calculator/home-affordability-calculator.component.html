@@ -47,6 +47,33 @@
               </span>
             </div>
 
+            <!-- Mortgage Loan Term -->
+            <div class="form-group">
+              <label class="text-primary"
+                >What is your Mortgage Loan Term?</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="loanTerm"
+              />
+              <span
+                class="slide-value-percent"
+                style="left: 6px !important; font-size: 15px; top: -32px"
+                >Years</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  (homeAffordAbilityControl.loanTerm.touched || submitted) &&
+                  homeAffordAbilityControl.loanTerm.errors?.required
+                "
+              >
+                Mortgage Loan term is required
+              </span>
+            </div>
+            <!-- End of Mortgage Loan Term  -->
+
             <div class="form-group">
               <label class="text-primary"
                 >How much monthly debt do you have?</label
@@ -76,15 +103,52 @@
                 >How much money do you have for your down payment and closing
                 costs?</label
               >
-              <input
-                type="text"
-                class="form-control pl-4"
-                formControlName="downPayment"
-                mask="separator.2"
-                thousandSeparator=","
-              />
-              <span class="slide-value-usd">$</span>
 
+              <div class="checkbox-inline mr-2">
+                <label class="containercheck"
+                  >Percentage
+                  <input
+                    type="radio"
+                    formControlName="downPaymentType"
+                    (input)="downPaymentTypeChanged($event.target.value)"
+                    value="percentage"
+                    name="downPaymentType"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="checkbox-inline">
+                <label class="containercheck">
+                  USD
+                  <input
+                    type="radio"
+                    formControlName="downPaymentType"
+                    (input)="downPaymentTypeChanged($event.target.value)"
+                    value="usd"
+                    name="downPaymentType"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+
+              <div *ngIf="downPaymentType == 'usd'">
+                <input
+                  type="text"
+                  class="form-control pl-4"
+                  formControlName="downPayment"
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+              </div>
+              <div *ngIf="downPaymentType == 'percentage'">
+                <input
+                  type="text"
+                  class="form-control pl-4"
+                  formControlName="downPayment"
+                />
+                <span class="slide-value-percent">%</span>
+              </div>
               <p>Include only the amount of cash you're willing to use.</p>
               <span
                 class="text-danger"
@@ -96,6 +160,145 @@
                 down Payment is required
               </span>
             </div>
+            <!-- Property Tax will be here  -->
+            <div class="form-group">
+              <label class="text-primary">Propety Tax Per Year</label>
+              <!-- <div class="checkbox-inline mr-2">
+                <label class="containercheck">Percentage
+                  <input type="radio" formControlName="propertyTaxType"
+                    (input)="propertyTaxTypeChanged($event.target.value)" value="percentage" name="propertyTax" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="checkbox-inline">
+                <label class="containercheck"> USD
+                  <input type="radio" formControlName="propertyTaxType"
+                    (input)="propertyTaxTypeChanged($event.target.value)" value="usd" name="propertyTax" />
+                  <span class="checkmark"></span>
+                </label>
+              </div> -->
+              <div *ngIf="propertyTaxType == 'usd'">
+                <input
+                  type="text"
+                  class="form-control pl-4"
+                  formControlName="propertyTax"
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+              </div>
+              <div *ngIf="propertyTaxType == 'percentage'">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="propertyTax"
+                />
+                <span class="slide-value-percent">%</span>
+              </div>
+            </div>
+            <!-- End of Property Tax Field  -->
+
+            <!-- HOA or co-op fee Field  -->
+            <div class="form-group">
+              <label class="text-primary">HOA or co-op fee Per Year</label>
+              <!-- <div class="checkbox-inline mr-2">
+                <label class="containercheck">Percentage
+                  <input type="radio" formControlName="HOAType" (input)="HOATypeChanged($event.target.value)"
+                    value="percentage" name="HOAType" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="checkbox-inline">
+                <label class="containercheck"> USD
+                  <input type="radio" formControlName="HOAType" (input)="HOATypeChanged($event.target.value)"
+                    value="usd" name="HOAType" />
+                  <span class="checkmark"></span>
+                </label>
+              </div> -->
+              <div *ngIf="HOAType == 'usd'">
+                <input
+                  type="text"
+                  class="form-control pl-4"
+                  formControlName="HOAFee"
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+              </div>
+              <div *ngIf="HOAType == 'percentage'">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="HOAFee"
+                />
+                <span class="slide-value-percent">%</span>
+              </div>
+            </div>
+            <!-- End of HOA or co-op fee  -->
+
+            <!-- Insurance Field  -->
+            <div class="form-group">
+              <label class="text-primary">Insurance Per Year</label>
+              <!-- <div class="checkbox-inline mr-2">
+                <label class="containercheck">Percentage
+                  <input type="radio" formControlName="InsuranceType" (input)="InsuranceTypeChanged($event.target.value)"
+                    value="percentage" name="InsuranceType" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="checkbox-inline">
+                <label class="containercheck"> USD
+                  <input type="radio" formControlName="InsuranceType" (input)="InsuranceTypeChanged($event.target.value)"
+                    value="usd" name="InsuranceType" />
+                  <span class="checkmark"></span>
+                </label>
+              </div> -->
+              <div *ngIf="InsuranceType == 'usd'">
+                <input
+                  type="text"
+                  class="form-control pl-4"
+                  formControlName="insurance"
+                  mask="separator.2"
+                  thousandSeparator=","
+                />
+                <span class="slide-value-usd">$</span>
+              </div>
+              <div *ngIf="InsuranceType == 'percentage'">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="insurance"
+                />
+                <span class="slide-value-percent">%</span>
+              </div>
+            </div>
+            <!-- End of Insurance Field  -->
+
+            <!-- Debt-to-income (DTI) ratio Field  -->
+            <div class="form-group">
+              <label class="text-primary">Debt-to-income (DTI) ratio?</label>
+              <select formControlName="DTI" class="form-control">
+                <option
+                  *ngFor="let option of DTIOptions; let i = index"
+                  [attr.data-index]="i"
+                  [value]="option.key"
+                >
+                  {{ option.value }}
+                </option>
+              </select>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (homeAffordAbilityControl.DTI.touched || submitted) &&
+                  homeAffordAbilityControl.DTI.errors?.required
+                "
+              >
+                Debt-to-income (DTI) ratio is required
+              </span>
+            </div>
+
+            <!-- End of Debt-to-income (DTI) ratio  -->
+
             <div class="form-group">
               <label class="text-primary" for="zipCode"
                 >What is the ZIP code of the home you want to buy?</label
@@ -131,7 +334,11 @@
               <label class="text-primary"
                 >How would you rate your credit?</label
               >
-              <select formControlName="creditScore" class="form-control">
+              <select
+                formControlName="creditScore"
+                (change)="changeCreditScore($event)"
+                class="form-control"
+              >
                 <option
                   *ngFor="let option of RateYourCreditOptions; let i = index"
                   [attr.data-index]="i"
@@ -150,6 +357,30 @@
                 credit Score is required
               </span>
             </div>
+            <!-- Interest Rate Calculator  -->
+            <div class="form-group">
+              <label class="text-primary">Interest Rate?</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="interestRate"
+                mask="separator.2"
+                thousandSeparator=","
+              />
+              <span class="slide-value-percent">%</span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (homeAffordAbilityControl.interestRate.touched ||
+                    submitted) &&
+                  homeAffordAbilityControl.interestRate.errors?.required
+                "
+              >
+                Interest Rate is required
+              </span>
+            </div>
+
+            <!-- End of Interest Rate Calculator  -->
             <div class="form-group mb-5">
               <button
                 type="submit"
@@ -160,12 +391,95 @@
             </div>
           </form>
         </div>
-        <div class="col-sm-4" style="text-align: center; margin-top: 100px">
-          <div *ngIf="HomeAfford > 0">
-            <b>A price of</b>
-            <h3>{{ HomeAfford }}</h3>
-            <b>home is affordable for you.</b>
-          </div>
+        <div
+          class="col-sm-4"
+          style="text-align: center; margin-top: 100px"
+          *ngIf="submitted"
+        >
+          <h2 class="text-left">Results</h2>
+          <p class="text-left">
+            You can afford a house up to <b>${{ results.totalPrice }}</b> within
+            which ${{ results.borrowAmount }} is the loan and ${{
+              results.totalPrice - results.borrowAmount
+            }}
+            is the down payment.
+          </p>
+          <table class="results-table">
+            <tbody>
+              <tr>
+                <td class="text-left"><b>You can borrow</b></td>
+                <td align="right">
+                  <b>${{ results.borrowAmount }}</b>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Total price of the house</td>
+                <td align="right">${{ results.totalPrice }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Down payment</td>
+                <td align="right">
+                  ${{ results.totalPrice - results.borrowAmount }}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  Estimated closing cost (one time, assume 3%)
+                </td>
+                <td align="right">${{ results.estimateClosingCost }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  <b>Total one-time payment at closing</b>
+                </td>
+                <td align="right">
+                  <b
+                    >${{
+                      results.totalPrice -
+                        results.borrowAmount +
+                        results.estimateClosingCost
+                    }}</b
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="text-left">Monthly mortgage payment</td>
+                <td align="right">${{ results.monthlyMortgage }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Annual property tax</td>
+                <td align="right">${{ results.propertyTax }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Annual HOA or co-op fee</td>
+                <td align="right">${{ results.HOAFee }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Annual insurance cost</td>
+                <td align="right">${{ results.insurance }}</td>
+              </tr>
+              <tr>
+                <td td class="text-left">
+                  Estimated annual maintenance cost<br />(repair, utility etc.,
+                  assume 1.5%)
+                </td>
+                <td align="right">
+                  ${{ results.estimatedAnnualMainenanceCost }}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  <b>Total monthly cost on the house</b>
+                </td>
+                <td align="right">
+                  <b>${{ results.totalMonthlyCost }}</b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <h5 class="text-secondary">Know About</h5>

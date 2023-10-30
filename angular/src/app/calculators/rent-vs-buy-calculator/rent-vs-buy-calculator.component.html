@@ -473,7 +473,7 @@
         </div>
       </form>
 
-      <div class="row mt-4" *ngIf="averageMonthlyPayment.length > 0">
+      <div class="row mt-4" *ngIf="loanTerms > 0">
         <div class="col-sm-8">
           <h5 class="heading-text">Calculation Result Rent vs Buy</h5>
           <table class="w-100 table table-sm table-bordered">
@@ -491,12 +491,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let history of averageMonthlyPayment">
-                <td>{{ history.year }} Year</td>
-                <td>${{ history.monthly_price | number }}</td>
-                <td>${{ history.yearly_price | number }}</td>
-                <td>${{ history.monthly_rent | number }}</td>
-                <td>${{ history.yearly_rent | number }}</td>
+              <tr
+                *ngFor="
+                  let loanTermYear of getNumberRange(1, loanTerms);
+                  let i = index
+                "
+              >
+                <td>
+                  {{ loanTermYear }} {{ loanTermYear == 1 ? "Year" : "Years" }}
+                </td>
+                <td>${{ (buyingCosts[loanTermYear - 1] / 12).toFixed(0) }}</td>
+                <td>${{ buyingCosts[loanTermYear - 1].toFixed(0) }}</td>
+                <td>${{ (rentingCosts[loanTermYear - 1] / 12).toFixed(0) }}</td>
+                <td>${{ rentingCosts[loanTermYear - 1].toFixed(0) }}</td>
               </tr>
             </tbody>
           </table>

@@ -47,8 +47,9 @@ export class AmortizationComponent implements OnInit {
     );
   };
   calculateEstimatedMonthlyPayment(f) {
+    console.log(f);
     this.submitted = true;
-    if (f.isValid) {
+    if (f.valid) {
       this.currentLoanAmount =
         this.currentLoanAmount - this.additionalPaymentAmount;
       var result = this.calculateMonthlyMortgagePayment(
