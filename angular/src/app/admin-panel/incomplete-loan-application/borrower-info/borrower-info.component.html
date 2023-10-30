@@ -453,7 +453,7 @@
                 "
               />
               <label
-                class="custom-control-label chkBox-text"
+                class="custom-control-label chkBox-text chkBox-texts"
                 for="adoNotApplyForAddress01212"
               >
                 Does not apply
@@ -1667,7 +1667,7 @@
                     "
                   />
                   <label
-                    class="custom-control-label chkBox-text"
+                    class="custom-control-label chkBox-text chkBox-texts"
                     for="doNotApplyForaddress161"
                     >Does Not Apply</label
                   >
@@ -2481,7 +2481,7 @@
             (change)="doNotApplyForEmp0F(txtdoNotApplyForEmp0.value)"
           />
           <label
-            class="custom-control-label chkBox-text"
+            class="custom-control-label chkBox-text checkbox-fix"
             for="doNotApplyForEmp0"
           >
             Does Not Apply
@@ -3075,14 +3075,11 @@
       <div class="div-main-grp">
         <div class="row div-sub-grp">
           <div class="col-sm-12 col-12 p-0">
-            <div
-              class="div-border"
-              [ngClass]="{ disabled: doNotApplyForEmp0 == true }"
-              [ngClass]="{
-                disabled: borrowerInfo.employment[0].isSelfEmployed == false
-              }"
-            >
-              <div class="row">
+            <div class="div-border">
+              <div
+                class="row"
+                [ngClass]="{ disabled: doNotApplyForEmp0 == true }"
+              >
                 <div class="col-sm-9 col-9 pl-2">
                   <label class="frm-label">
                     <div style="display: flex; align-items: center">
@@ -3119,7 +3116,7 @@
               </div>
 
               <div
-                class="row pt-1"
+                class="row mt-sm-1 mt-1 pt-1"
                 [ngClass]="{
                   disabled: borrowerInfo.employment[0].isSelfEmployed == false
                 }"
@@ -3744,7 +3741,7 @@
             (change)="doNotApplyForEmp1F(txtdoNotApplyForEmp1.value)"
           />
           <label
-            class="custom-control-label chkBox-text"
+            class="custom-control-label chkBox-text checkbox-fix"
             for="doNotApplyForEmp1"
           >
             Does Not Apply
@@ -4293,7 +4290,10 @@
                         </span>
                         <input
                           type="checkbox"
-                          [ngClass]="{ disabled: doNotApplyForEmp1 == true }"
+                          [ngClass]="{
+                            disabled:
+                              borrowerInfo.employment[1].isSelfEmployed == false
+                          }"
                           [(ngModel)]="
                             borrowerInfo.employment[1].isSelfEmployed
                           "
@@ -4305,7 +4305,10 @@
                         />
                         <span
                           class="checkmark"
-                          [ngClass]="{ disabled: doNotApplyForEmp1 == true }"
+                          [ngClass]="{
+                            disabled:
+                              borrowerInfo.employment[1].isSelfEmployed == false
+                          }"
                           style="margin-top: 5px"
                         ></span>
                       </label>
@@ -4337,9 +4340,9 @@
               </div> -->
 
               <div
-                class="row pt-1"
+                class="row mt-sm-1 mt-1 pt-1"
                 [ngClass]="{
-                  disabled: borrowerInfo.employment[0].isSelfEmployed == false
+                  disabled: borrowerInfo.employment[1].isSelfEmployed == false
                 }"
               >
                 <div class="col-sm-9 col-12" style="padding-left: 35px">
@@ -4347,11 +4350,7 @@
                     <div class="col-sm-6 col-12 p-0">
                       <div
                         class="custom-control custom-radio"
-                        [ngClass]="{
-                          disabled:
-                            doNotApplyForEmp0 == true ||
-                            borrowerInfo.employment[0].isSelfEmployed == false
-                        }"
+                        [ngClass]="{ disabled: doNotApplyForEmp1 == true }"
                       >
                         <input
                           type="radio"
@@ -4384,7 +4383,7 @@
                         />
                         <label
                           class="custom-control-label radio-label"
-                          for="creditOwnerShip1"
+                          for="isOwnershipLessThan252"
                         >
                           I have an ownership share of less than 25%.
                         </label>
@@ -4397,7 +4396,7 @@
                         [ngClass]="{
                           disabled:
                             doNotApplyForEmp0 == true ||
-                            borrowerInfo.employment[0].isSelfEmployed == false
+                            borrowerInfo.employment[1].isSelfEmployed == false
                         }"
                       >
                         <input
@@ -4436,7 +4435,7 @@
                         />
                         <label
                           class="custom-control-label radio-label"
-                          for="creditOwnerShip2"
+                          for="isOwnershipLessThan251"
                         >
                           I have an ownership share of 25% or more.
                         </label>
@@ -4963,8 +4962,8 @@
           />
 
           <label
-            class="custom-control-label chkBox-text"
-            for="doNotApplyForEmp1"
+            class="custom-control-label chkBox-text checkbox-fix"
+            for="doNotApplyForEmp2"
           >
             Does Not Apply
           </label>
@@ -5550,7 +5549,7 @@
             (change)="incomeFromOtherSourcesF(incomeFromOtherSources45.value)"
           />
           <label
-            class="custom-control-label chkBox-text"
+            class="custom-control-label chkBox-text checkbox-fix"
             for="incomeFromOtherSources4"
           >
             Does Not Apply

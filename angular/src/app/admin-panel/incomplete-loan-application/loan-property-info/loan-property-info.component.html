@@ -292,12 +292,6 @@
                           >
                         </div>
                       </div>
-
-                      <!-- <div class="col-3">
-                        <div class="col-2 input-border-bottom">
-                          <input type="text" />
-                        </div>
-                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -344,7 +338,6 @@
               </div>
               <div class="col-sm-3 col-sm-push-7 pr-2 input-border-bottom">
                 <input type="text" class="showBorder" maxlength="5" [min]="0" />
-                <!-- <p-inputNumber class="showBorder" maxlength="5"  [min]="0"></p-inputNumber> -->
               </div>
             </div>
 
@@ -599,12 +592,6 @@
                   <span>Occupancy</span>
                 </label>
               </div>
-
-              <!-- <div class="col-10">
-                <label class="frm-label">
-                  <span></span>
-                </label>
-              </div> -->
             </div>
 
             <div class="row mt-2">
@@ -1447,7 +1434,7 @@
               </div>
               <div class="col-sm-4 col-sm-push-12">
                 <div
-                  class="frm-group mt-3"
+                  class="frm-group mt-sm-3 mt-3"
                   [ngClass]="{ disabled: flgRentalIncome == true }"
                   [ngClass]="{
                     error:
@@ -1461,13 +1448,7 @@
                   }"
                 >
                   <div class="input-border-bottom">
-                    <div
-                      style="
-                        display: flex;
-                        align-items: center;
-                        margin-top: 15px;
-                      "
-                    >
+                    <div class="mt-sm-2 mt-2">
                       <span
                         style="
                           width: 20px;
@@ -1476,19 +1457,6 @@
                         "
                         >$
                       </span>
-                      <!-- <input type="number"
-                        min="0" [readonly]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
-                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" /> -->
-
-                      <!-- <p-inputNumber class="showBorder" maxlength="9"
-                        [disabled]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.monthlyRentalIncome" name="monthlyRentalIncome"
-                        id="monthlyRentalIncome" #txtmonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
                       <input
                         type="text"
                         onFocus="this.select();"
@@ -1560,11 +1528,8 @@
                 >
                   <div class="input-border-bottom">
                     <div
-                      style="
-                        display: flex;
-                        align-items: center;
-                        margin-top: 15px;
-                      "
+                      style="display: flex; align-items: center"
+                      class="mt-sm-2 mt-2"
                     >
                       <span
                         style="
@@ -1574,19 +1539,6 @@
                         "
                         >$
                       </span>
-                      <!-- <input type="number"
-                        min="0" [readonly]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
-                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false" /> -->
-
-                      <!-- <p-inputNumber class="showBorder" maxlength="9"
-                         [disabled]="flgRentalIncome == true"
-                        [(ngModel)]="loanPropertyInfoModel.rentalIncome.netMonthlyRentalIncome"
-                        name="netMonthlyRentalIncome" id="netMonthlyRentalIncome" #netMonthlyRentalIncome="ngModel"
-                        [required]="flgRentalIncome == false"
-                        [minFractionDigits]="2" [min]="0" [maxFractionDigits]="2"></p-inputNumber> -->
-
                       <input
                         type="text"
                         onFocus="this.select();"

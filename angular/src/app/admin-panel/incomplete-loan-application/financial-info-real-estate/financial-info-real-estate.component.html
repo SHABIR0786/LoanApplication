@@ -80,7 +80,7 @@
         class="section-title"
         style="display: flex; align-items: center; width: 100%"
       >
-        <span style="font-size: 20px"
+        <span class="section-subtitle"
           >If you are refinancing, list the property you are refinancing
           FIRST.</span
         >
@@ -154,7 +154,7 @@
                   <label class="gray-text">City</label>
                 </div>
                 <div
-                  class="col-sm-3 col-10 p-0 input-border-bottom"
+                  class="col-sm-3 col-10 p-0 input-border-bottom mt-sm-0 mt-1"
                   [ngClass]="{
                     error:
                       financialInfoRealEstateForm.submitted && cityId.errors
@@ -210,7 +210,7 @@
                   <label class="gray-text">State</label>
                 </div>
                 <div
-                  class="col-sm-2 col-10 p-0 input-border-bottom"
+                  class="col-sm-2 col-10 p-0 input-border-bottom mt-sm-0 mt-1"
                   [ngClass]="{
                     error:
                       financialInfoRealEstateForm.submitted && stateId.errors
@@ -269,7 +269,7 @@
                   <label class="gray-text">ZIP</label>
                 </div>
                 <div
-                  class="col-sm-1 col-3 p-0 input-border-bottom mt-1"
+                  class="col-sm-1 col-3 p-0 input-border-bottom mt-sm-3 mt-3"
                   [ngClass]="{
                     error: financialInfoRealEstateForm.submitted && zip.errors
                   }"
@@ -287,7 +287,7 @@
                 </div>
 
                 <div
-                  class="col-sm-1 col-2 p-0 mt-2 text-align-right pt-sm-2 pt-2"
+                  class="col-sm-1 col-2 p-0 mt-sm-2 mt-3 text-align-right pt-sm-2 pt-2"
                   style="text-align: left"
                 >
                   <label class="gray-text">Country</label>
@@ -353,7 +353,7 @@
         <div class="row div-sub-grp">
           <div class="col-12 p-0">
             <div
-              class="frm-group"
+              class="sub-div-border"
               [ngClass]="{ disabled: item.flgApplicableNotApply == true }"
             >
               <div class="row display-desktop">
@@ -858,7 +858,7 @@
                       class="col-sm-1 col-1 pl-sm-1 pl-3 p-0"
                       style="display: inline-flex"
                     >
-                      <div class="form-check pt-sm-4 pt-4 pl-sm-4 pl-4">
+                      <div class="form-check pt-sm-4 pt-3 pl-sm-4 pl-4">
                         <input
                           type="checkbox"
                           class="form-check-input"
@@ -1267,13 +1267,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="col-6 p-0 mt-2">
-                    <span
-                      style="
-                        border-bottom: 1px solid #696969;
-                        font-size: 12px;
-                        font-weight: 600;
-                      "
-                    >
+                    <span style="font-size: 12px; font-weight: 600">
                       <a
                         [ngClass]="{
                           disabled: item.flgMortgageLoanNotApply == true
@@ -1281,13 +1275,13 @@
                         style="
                           cursor: pointer;
                           color: #696969;
-                          text-decoration: none;
+                          text-decoration: underline;
                           font-size: 12px;
                         "
                         (click)="addMortgageLoanList(i)"
                         >Add more</a
                       >
-                      <span *ngIf="item.flgShowRemove == true">/</span>
+                      <span *ngIf="item.flgShowRemove == true"> / </span>
                       <a
                         *ngIf="item.flgShowRemove == true"
                         [ngClass]="{
@@ -1296,7 +1290,7 @@
                         style="
                           cursor: pointer;
                           color: #696969;
-                          text-decoration: none;
+                          text-decoration: underline;
                           font-size: 12px;
                         "
                         (click)="removeMortgageLoanList(i)"

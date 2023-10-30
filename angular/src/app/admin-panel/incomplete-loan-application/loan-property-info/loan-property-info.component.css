@@ -192,7 +192,7 @@ font-family: 'Source Sans Pro', sans-serif; */
   }
   .borrower-block .input-group .input-group-text {
     font-weight: 900;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 36px;
     color: #000000;
     padding: 0;
@@ -328,7 +328,7 @@ font-family: 'Source Sans Pro', sans-serif; */
     line-height: 1.2575;
     background-color: #ffffff;
     font-family: "Mulish", sans-serif;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 
   .input-border-bottom {
@@ -718,6 +718,8 @@ color: #000000;
 
   .form-block.disabled .input-group .input-group-text {
     color: #a5a5a5;
+    font-size: 16px !important;
+    font-weight: 600;
   }
 
   .form-block.disabled .input-group .form-control {
