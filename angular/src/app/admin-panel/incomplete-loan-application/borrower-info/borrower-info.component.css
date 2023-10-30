@@ -3,6 +3,11 @@
 
 @media only screen and (max-width: 600px) {
 
+
+  .chkBox-texts{
+    padding-top:7px !important;
+  }
+
   .chkBox-padding-left-10{
     padding-left: 5px;
   }
@@ -21,7 +26,7 @@
   }
 
   .chkBox-text{
-    padding-top: 1px;
+    padding-top: 0px;
     font-size: 8px !important;
     font-weight: bold !important;
     font-family: 'Mulish', sans-serif;
@@ -895,6 +900,11 @@
 
 @media only screen and (min-width: 601px) {
 
+  .checkbox-fix{
+    width: 118px;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
 .custom-radio .custom-control-label::before {
   background-color: #ffffff;  /* orange */
 }

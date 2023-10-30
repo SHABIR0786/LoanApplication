@@ -323,7 +323,7 @@
                 [(ngModel)]="doNotApplyForAddress0" name="adoNotApplyForAddress01212"
                 id="adoNotApplyForAddress01212" #txtadoNotApplyForAddress01212="ngModel"
                 (change)="doNotApplyForAddress0F(txtadoNotApplyForAddress01212.value)">
-                <label class="custom-control-label chkBox-text" for="adoNotApplyForAddress01212">
+                <label class="custom-control-label chkBox-text chkBox-texts " for="adoNotApplyForAddress01212">
                   Does not apply
                 </label>
             </div>
@@ -804,7 +804,7 @@
                     [(ngModel)]="doNotApplyForaddress1" name="doNotApplyForaddress161" 
                     id="doNotApplyForaddress161" #txtdoNotApplyForaddress12a="ngModel"
                     (change)="doNotApplyForaddress1F(txtdoNotApplyForaddress12a.value)">
-                    <label class="custom-control-label chkBox-text" for="doNotApplyForaddress161">Does Not Apply</label>
+                    <label class="custom-control-label chkBox-text chkBox-texts" for="doNotApplyForaddress161">Does Not Apply</label>
                 </div>
               </div>
 
@@ -1116,7 +1116,7 @@
           <input class="custom-control-input" type="checkbox"
           [(ngModel)]="doNotApplyForEmp0" name="doNotApplyForEmp0" id="doNotApplyForEmp0"
             #txtdoNotApplyForEmp0="ngModel" (change)="doNotApplyForEmp0F(txtdoNotApplyForEmp0.value)">
-          <label class="custom-control-label chkBox-text" for="doNotApplyForEmp0">
+          <label class="custom-control-label chkBox-text checkbox-fix" for="doNotApplyForEmp0">
             Does Not Apply
           </label>
         </div>
@@ -1382,9 +1382,9 @@
       <div class="div-main-grp" >
         <div class="row div-sub-grp" >
           <div class="col-sm-12 col-12 p-0">
-            <div class="div-border" [ngClass]="{'disabled':doNotApplyForEmp0==true}"  [ngClass]="{'disabled':borrowerInfo.employment[0].isSelfEmployed == false}">
+            <div class="div-border" >
 
-              <div class="row">
+              <div class="row" [ngClass]="{'disabled':doNotApplyForEmp0==true}">
                 <div class="col-sm-9 col-9 pl-2">
                   <label class="frm-label">
                     <div style="display: flex; align-items: center;">
@@ -1402,7 +1402,7 @@
                 </div>
               </div>
 
-              <div class="row pt-1"  [ngClass]="{'disabled':borrowerInfo.employment[0].isSelfEmployed == false}">
+              <div class="row mt-sm-1 mt-1 pt-1"  [ngClass]="{'disabled':borrowerInfo.employment[0].isSelfEmployed == false}">
                 <div class="col-sm-9 col-12" style=" padding-left: 35px;">
                   <div class="row">
                     <div class="col-sm-6 col-12 p-0">
@@ -1646,7 +1646,7 @@
           <input class="custom-control-input" type="checkbox" id="doNotApplyForEmp1"
           [(ngModel)]="doNotApplyForEmp1" name="doNotApplyForEmp1" id="doNotApplyForEmp1"
             #txtdoNotApplyForEmp1="ngModel" (change)="doNotApplyForEmp1F(txtdoNotApplyForEmp1.value)">
-          <label class="custom-control-label chkBox-text" for="doNotApplyForEmp1" >
+          <label class="custom-control-label chkBox-text checkbox-fix" for="doNotApplyForEmp1" >
             Does Not Apply
           </label>
         </div>
@@ -1893,11 +1893,11 @@
                     <div style="display: flex; align-items: center;">
                       <label class="container">
                         <span style=" font-weight: normal;font-size: 10px;margin-top:-10px">Check if you are the Business Owner or Self-Employed </span>
-                        <input type="checkbox" [ngClass]="{'disabled':doNotApplyForEmp1==true}"
+                        <input type="checkbox" [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}"
                           [(ngModel)]="borrowerInfo.employment[1].isSelfEmployed" [disabled]="doNotApplyForEmp1 == true"
                           name="isSelfEmployed1" id="isSelfEmployed1" #isSelfEmployed1="ngModel"
                           (change)="disableBussinessOwner1($event)">
-                          <span class="checkmark" [ngClass]="{'disabled':doNotApplyForEmp1==true}"
+                          <span class="checkmark" [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}"
                           style="margin-top:5px;"></span>
                       </label>
                     </div>
@@ -1928,11 +1928,11 @@
               </div> -->
 
 
-              <div class="row pt-1"  [ngClass]="{'disabled':borrowerInfo.employment[0].isSelfEmployed == false}">
+              <div class="row mt-sm-1 mt-1 pt-1" [ngClass]="{'disabled':borrowerInfo.employment[1].isSelfEmployed == false}" >
                 <div class="col-sm-9 col-12" style=" padding-left: 35px;">
                   <div class="row">
                     <div class="col-sm-6 col-12 p-0">
-                      <div class="custom-control custom-radio" [ngClass]="{'disabled':doNotApplyForEmp0==true || borrowerInfo.employment[0].isSelfEmployed == false}">
+                      <div class="custom-control custom-radio"[ngClass]="{'disabled':doNotApplyForEmp1==true}">
                         <input type="radio" class="custom-control-input" type="radio" class="custom-control-input"
                         name="isOwnershipLessThan252" [readonly]="doNotApplyForEmp1 == true" id="isOwnershipLessThan252"
                         #isOwnershipLessThan252="ngModel" [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25"
@@ -1941,14 +1941,14 @@
                         [required]="doNotApplyForEmp1 == false"
                         [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan252.errors}"
                         [ngClass]="{'error-checkbox':  isOwnershipLessThan252.touched && isOwnershipLessThan252.errors}">
-                        <label class="custom-control-label radio-label" for="creditOwnerShip1">
+                        <label class="custom-control-label radio-label" for="isOwnershipLessThan252">
                           I have an ownership share of less than 25%.
                         </label>
                       </div>
                     </div>
 
                     <div class="col-sm-6 col-12  p-0">
-                      <div class="custom-control custom-radio" [ngClass]="{'disabled':doNotApplyForEmp0==true || borrowerInfo.employment[0].isSelfEmployed == false}">
+                      <div class="custom-control custom-radio" [ngClass]="{'disabled':doNotApplyForEmp0==true || borrowerInfo.employment[1].isSelfEmployed == false}">
                         <input type="radio" class="custom-control-input" type="radio" class="custom-control-input"
                         [readonly]="doNotApplyForEmp1 == true" name="isOwnershipLessThan251" id="isOwnershipLessThan251"
                         [(ngModel)]="borrowerInfo.employment[1].isOwnershipLessThan25" value="false"
@@ -1958,7 +1958,7 @@
                         [disabled]="borrowerInfo.employment[1].isSelfEmployed == false"
                         [ngClass]="{'error-checkbox': borrowForm.submitted && isOwnershipLessThan251.errors}"
                         [ngClass]="{'error-checkbox':  isOwnershipLessThan251.touched && isOwnershipLessThan251.errors}" >
-                        <label class="custom-control-label radio-label" for="creditOwnerShip2">
+                        <label class="custom-control-label radio-label" for="isOwnershipLessThan251">
                           I have an ownership share of 25% or more.
                         </label>
                       </div>
@@ -2186,7 +2186,7 @@
           <input class="custom-control-input" type="checkbox" [(ngModel)]="doNotApplyForEmp2" name="doNotApplyForEmp2" id="doNotApplyForEmp2"
             #txtdoNotApplyForEmp2="ngModel" (change)="doNotApplyForEmp2F(txtdoNotApplyForEmp2.value)">
 
-          <label class="custom-control-label chkBox-text" for="doNotApplyForEmp1" >
+          <label class="custom-control-label chkBox-text checkbox-fix" for="doNotApplyForEmp2" >
             Does Not Apply
           </label>
         </div>
@@ -2466,7 +2466,7 @@
           <input class="custom-control-input" type="checkbox" [(ngModel)]="incomeFromOtherSources" name="incomeFromOtherSources4"
           id="incomeFromOtherSources4" #incomeFromOtherSources45="ngModel"
           (change)="incomeFromOtherSourcesF(incomeFromOtherSources45.value)">
-          <label class="custom-control-label chkBox-text" for="incomeFromOtherSources4">
+          <label class="custom-control-label chkBox-text checkbox-fix" for="incomeFromOtherSources4">
             Does Not Apply
           </label>
         </div>

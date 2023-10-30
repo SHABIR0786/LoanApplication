@@ -981,6 +981,9 @@ export class BorrowerInfoComponent implements OnInit {
     {
       this.borrowerInfo.employment[0].isOwnershipLessThan25=null
       this.borrowerInfo.employment[0].monthlyIncome = 0 
+      this.borrowerInfo.employment[0].isSelfEmployed = false;
+    }else{
+      this.borrowerInfo.employment[0].isSelfEmployed = true;
     }
   }
   disableBussinessOwner1(event:any)
@@ -989,6 +992,9 @@ export class BorrowerInfoComponent implements OnInit {
     {
       this.borrowerInfo.employment[1].isOwnershipLessThan25=null
       this.borrowerInfo.employment[1].monthlyIncome = 0 
+      this.borrowerInfo.employment[1].isSelfEmployed = false;
+    }else{
+      this.borrowerInfo.employment[1].isSelfEmployed = true;
     }
   }
   addEmployess()
